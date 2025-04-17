@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -36,29 +94,33 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   TmplLottieAnimation</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -71,21 +133,22 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
     </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code>OnInit</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
+
 
 
 
@@ -101,6 +164,8 @@
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>plh-tmpl-lottie-animation</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -136,7 +201,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -195,7 +260,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -244,7 +309,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -272,7 +337,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -290,7 +355,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/animations/AnimationOptions" target="_blank" >AnimationOptions</a></code>
+                        <i>Type : </i>    <code>AnimationOptions</code>
 
                     </td>
                 </tr>
@@ -331,7 +396,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -398,7 +463,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &quot;@angular/core&quot;;
 import { FlowTypes } from &quot;data-models&quot;;
 import { TemplateBaseComponent } from &quot;./base&quot;;
@@ -456,7 +521,7 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
     </div>
 
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./tmpl-components-common.scss</code>
                 </p>
@@ -502,7 +567,7 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -528,7 +593,7 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="tmpl-lottie-anim-container" [class]="style">  <ng-lottie *ngIf="animOptions" [options]="animOptions"></ng-lottie></div></div>'
-    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TmplLottieAnimation'};
 </script>

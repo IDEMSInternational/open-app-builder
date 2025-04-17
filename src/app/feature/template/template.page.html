@@ -1,17 +1,15 @@
 <ion-content [scrollEvents]="shouldEmitScrollEvents">
-  <plh-template-container
-    *ngIf="templateName"
-    [templatename]="templateName"
-  ></plh-template-container>
-  <div *ngIf="!templateName" class="ion-padding">
+  @if (templateName) {
+  <plh-template-container [templatename]="templateName"></plh-template-container>
+  } @else {
+  <div class="ion-padding">
     <h3>Select a Template</h3>
     <ion-searchbar [(ngModel)]="filterTerm" (ionInput)="search()"></ion-searchbar>
     <ion-list>
-      <ion-item
-        *ngFor="let template of filteredTemplates; trackBy: trackByFn"
-        [routerLink]="template.flow_name"
-        >{{template.flow_name}}</ion-item
-      >
+      @for(template of filteredTemplates; track $index) {
+      <ion-item [routerLink]="template.flow_name">{{template.flow_name}}</ion-item>
+      }
     </ion-list>
   </div>
+  }
 </ion-content>

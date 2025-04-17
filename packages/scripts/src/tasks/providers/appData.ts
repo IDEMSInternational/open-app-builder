@@ -2,10 +2,12 @@ import { writeFileSync } from "fs-extra";
 import path from "path";
 import packageJSON from "../../../../../package.json";
 import { parseCommand } from "../../commands";
+import { ReportGenerator } from "../../commands/app-data/report/report";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
+import { AppDataOptimiser } from "../../commands/app-data/optimise";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
@@ -27,10 +29,15 @@ const postProcessSheets = async (options: {
   await parseCommand(`${cmd}`);
 };
 
+const generateReports = async () => {
+  const config = WorkflowRunner.config;
+  return new ReportGenerator(config).process();
+};
+
 /**
  * Copy data from source deployment folder to running app assets folder
  */
-const copyDeploymentDataToApp = () => {
+const copyDeploymentDataToApp = async () => {
   const { app_data } = WorkflowRunner.config;
 
   // copy filtered subset of app_data
@@ -58,10 +65,22 @@ const copyDeploymentDataToApp = () => {
   const runtimeConfig = generateRuntimeConfig(WorkflowRunner.config);
   writeFileSync(configTarget, JSON.stringify(runtimeConfig, null, 2));
 };
+const optimiseBuild = async () => new AppDataOptimiser(WorkflowRunner.config).run();
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
-  const { analytics, api, app_config, error_logging, firebase, git, name, supabase, web } =
-    deploymentConfig;
+  const {
+    analytics,
+    api,
+    app_config,
+    auth,
+    campaigns,
+    error_logging,
+    firebase,
+    git,
+    name,
+    supabase,
+    web,
+  } = deploymentConfig;
 
   return {
     _app_builder_version: packageJSON.version,
@@ -69,6 +88,8 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     analytics,
     api,
     app_config,
+    auth,
+    campaigns,
     error_logging,
     firebase,
     name,
@@ -77,4 +98,10 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
   };
 }
 
-export default { postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
+export default {
+  generateReports,
+  postProcessAssets,
+  postProcessSheets,
+  copyDeploymentDataToApp,
+  optimiseBuild,
+};

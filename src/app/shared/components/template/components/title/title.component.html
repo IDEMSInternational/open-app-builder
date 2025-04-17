@@ -1,0 +1,15 @@
+<div class="title-wrapper" [class]="params.style" [attr.data-variant]="params.variant">
+  <h1
+    [style.textAlign]="params.textAlign"
+    [class]="'tiny standard' + ' ' + params.style"
+    [innerHTML]="_row.value | markdown"
+  ></h1>
+  <ion-icon
+    *ngIf="params.help"
+    name="help-circle-outline"
+    class="title-help"
+    [pTooltip]="params.help"
+    [tooltipPosition]="params.tooltipPosition"
+    tooltipEvent="click"
+  ></ion-icon>
+</div>

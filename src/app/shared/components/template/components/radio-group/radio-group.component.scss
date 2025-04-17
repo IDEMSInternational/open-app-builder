@@ -96,7 +96,7 @@ img {
         }
         .checked {
           transition: 0.3s linear;
-          border: var(--ion-border-standard);
+          border: var(--border-standard);
           box-shadow: var(--ion-default-box-shadow);
         }
       }
@@ -110,7 +110,7 @@ img {
   max-width: fit-content;
   min-width: 100%;
   box-shadow: var(--ion-default-box-shadow);
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
   color: var(--ion-color-primary);
   background: var(--ion-color-primary-contrast);
 }

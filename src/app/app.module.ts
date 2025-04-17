@@ -10,10 +10,6 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
 
-// Native
-import { HTTP } from "@ionic-native/http/ngx";
-import { Device } from "@ionic-native/device/ngx";
-
 // Components
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -38,20 +34,18 @@ export function lottiePlayerFactory() {
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    TemplateComponentsModule,
+    DeploymentFeaturesModule,
     SharedModule,
     FormsModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
     // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
     // LottieCacheModule.forRoot(),
-    TemplateComponentsModule,
     TourModule,
     ContextMenuModule,
-    DeploymentFeaturesModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HTTP,
-    Device,
     // Use custom api interceptor to handle interaction with server backend
     { provide: HTTP_INTERCEPTORS, useClass: ServerAPIInterceptor, multi: true },
     // Use custom error handler

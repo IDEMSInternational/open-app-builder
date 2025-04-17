@@ -1,0 +1,18 @@
+<div class="plh-bottom-nav-wrapper">
+  @for (button of params.buttonList; track button.name) {
+    <a
+      class="nav-item"
+      routerLinkActive="active-link"
+      [routerLink]="'template/' + button.target_template"
+      [attr.data-name]="button.name"
+      #rla="routerLinkActive"
+    >
+      <div class="icon">
+        <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      </div>
+      <div class="label">
+        <p>{{ button.label }}</p>
+      </div>
+    </a>
+  }
+</div>

@@ -1,0 +1,16 @@
+// Some components require styling to be defined at the global scope E.g. pop-ups and nav-stacks,
+// which make use fo the ion-modal component which is injected dynamically into the DOM
+
+// Nav-stack modal
+@use "../app/feature/nav-stack/components/nav-stack/nav-stack.component.global.scss";
+
+// Template popup modal
+ion-modal.template-popup-modal {
+  --width: 100%;
+  --height: 100%;
+  --background: none;
+  // when a template wants to hide a modal simply put it behind
+  &.hide-popup-on-template {
+    z-index: -1 !important;
+  }
+}

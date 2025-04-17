@@ -12,9 +12,9 @@ import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { IAssetEntry } from "packages/data-models/deployment.model";
+import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap, convertBlobToBase64 } from "../../utils";
+import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
@@ -65,11 +65,11 @@ export class RemoteAssetService extends AsyncServiceBase {
           this.templateAssetService.assetsContentsList$.value
         );
         // Share updates to asset contents list with template asset service for lookup
+        // TODO?: only watch for nested changes rather than replacing whole list
         const obs = await this.dynamicDataService.query$(flow_type, flow_name);
         obs.subscribe((dataRows) => {
           const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
           this.templateAssetService.updateContentsList(assetContentsHashmap);
-          console.log("asset contents list", this.templateAssetService.assetsContentsList$.value);
         });
       }
     }
@@ -87,7 +87,20 @@ export class RemoteAssetService extends AsyncServiceBase {
           download: async () => {
             if (this.supabaseEnabled && this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
-              await this.downloadAndPopulateRequiredAssets(assetPackName);
+              if (assetPackName) {
+                try {
+                  await lastValueFrom(this.getAssetPackManifest(assetPackName));
+                  await this.downloadAndIntegrateAssetPack(this.manifest);
+                } catch (e) {
+                  console.error(e);
+                }
+              } else {
+                console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
+                // TODO: Implement default behaviour of generating a manifest of files to download in case of no named asset pack
+                // (e.g. look at what files are available locally vs required in accordance with current app config)
+                // const assetPackManifest = this.generateManifest()
+                // await this.downloadAndIntegrateAssetPack(assetPackManifest)
+              }
             } else
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
@@ -142,42 +155,37 @@ export class RemoteAssetService extends AsyncServiceBase {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
-  private async downloadAndPopulateRequiredAssets(assetPack?: string) {
-    // If a named asset pack is provided, download its manifest from supabase
-    if (assetPack) {
-      await lastValueFrom(this.getManifest(assetPack)).catch((error) => console.error(error));
-    }
-    // TODO: Else, somehow generate a manifest of files to download
-    // (e.g. look at what files are available locally vs required in accordance with current app config)
-    else {
-      this.manifest = this.generateManifest();
+  private async downloadAndIntegrateAssetPack(assetPackManifest: FlowTypes.AssetPack) {
+    const assetEntries = assetPackManifest.rows as IAssetEntry[];
+
+    // If running on native device, download assets and populate to filesystem, adding local
+    // filesystem path to asset entry in contents list for consumption by template asset service
+    if (Capacitor.isNativePlatform()) {
+      // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
+      for (const [index, assetEntry] of assetEntries.entries()) {
+        await this.handleAssetDownload(assetEntry, index, assetEntries.length);
+      }
     }
 
-    const assetEntries = this.manifest.rows as IAssetEntry[];
-    // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
-    for (const [index, assetEntry] of assetEntries.entries()) {
-      const url = this.getPublicUrl(assetEntry.id);
-      // If running on native device, download assets and populate to filesystem, adding local
-      // filesystem path to asset entry in contents list for consumption by template asset service
-      if (Capacitor.isNativePlatform()) {
-        await lastValueFrom(this.handleDownload(url, assetEntry, index, assetEntries.length)).catch(
-          (error) => console.error(error)
-        );
-      }
-      // On web, update contents list with asset's public URL for consumption by template asset service
-      else {
+    // On web, update contents list with asset's public URL for consumption by template asset service
+    // (files will be served remotely via supabse CDN)
+    else {
+      for (const [index, assetEntry] of assetEntries.entries()) {
         console.log(
           `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
         );
-        await this.updateAssetContents(assetEntry);
+        await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
       }
     }
   }
 
-  private getManifest(assetPack: string) {
+  /**
+   * Download the asset pack manifest for a named asset pack from supabase and store the result in this.manifest
+   */
+  private getAssetPackManifest(assetPackName: string) {
     let data: Blob;
     let progress: number;
-    const url = this.getPublicUrl(`${assetPack}/${assetPack}.json`);
+    const url = this.getPublicUrl(`${assetPackName}/${assetPackName}.json`);
     const progress$ = new Subject<number>();
     this.downloadFileFromUrl(url, "blob").subscribe({
       error: (err) => {
@@ -191,9 +199,10 @@ export class RemoteAssetService extends AsyncServiceBase {
         progress$.next(progress);
       },
       complete: async () => {
-        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPack}`);
+        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPackName}`);
         if (data) {
           this.manifest = JSON.parse(await data.text());
+          console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
         }
         progress$.next(progress);
         progress$.complete();
@@ -233,12 +242,92 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Download a single asset from an array of assets,
-   * save to local storage and update the assets contents list
+   * Native platforms only:
+   * Download an asset from an asset pack, including any overrides,
+   * and update the contents list so that the filepath is the path to the file in local storage
+   */
+  private async handleAssetDownload(
+    assetEntry: IAssetEntry,
+    fileIndex: number,
+    totalFiles?: number
+  ) {
+    // Download the top level asset, unless overridesOnly is specified
+    if (!assetEntry.overridesOnly) {
+      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
+      try {
+        await lastValueFrom(
+          this.downloadAssetAndUpdateContentsList(
+            topLevelAssetUrl,
+            assetEntry,
+            fileIndex,
+            totalFiles
+          )
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    const { overrides } = assetEntry;
+    if (overrides) {
+      for (const [themeName, languageOverrides] of Object.entries(overrides)) {
+        for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
+          const assetUrl = this.getPublicUrl(assetContentsEntry.filePath);
+          const overrideProps = { themeName, languageCode };
+          try {
+            await lastValueFrom(
+              this.downloadAssetAndUpdateContentsList(
+                assetUrl,
+                assetEntry,
+                fileIndex,
+                totalFiles,
+                overrideProps
+              )
+            );
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Web platform only:
+   * Update the contents list with the contents of an asset pack, including any overrides,
+   * updating filepath to be a public supabase CDN URL
+   */
+  public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
+    // Update the contents entry for the top level asset, unless overridesOnly is specified
+    if (!assetEntry.overridesOnly) {
+      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
+      await this.updateAssetContents(assetEntry, topLevelAssetUrl);
+    }
+    const { overrides } = assetEntry;
+    if (overrides) {
+      for (const [themeName, languageOverrides] of Object.entries(overrides)) {
+        for (const [languageCode, overrideAssetEntry] of Object.entries(languageOverrides)) {
+          const overrideProps = { themeName, languageCode };
+          const filepath = this.getPublicUrl(overrideAssetEntry.filePath);
+          await this.updateAssetContents(assetEntry, filepath, overrideProps);
+        }
+      }
+    }
+  }
+
+  /**
+   * Native platforms only:
+   * Download a single asset from an asset pack, save to local native storage and update the assets contents list
    * */
-  handleDownload(url: string, assetEntry: IAssetEntry, fileIndex: number, totalFiles: number) {
+  private downloadAssetAndUpdateContentsList(
+    url: string,
+    assetEntry: IAssetEntry,
+    fileIndex: number,
+    totalFiles?: number,
+    overrideProps?: IAssetOverrideProps
+  ) {
     console.log(
-      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles}: ${this.downloadProgress}%`
+      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}: ${this.downloadProgress}%`
     );
     let data: Blob;
     let progress: number;
@@ -258,8 +347,16 @@ export class RemoteAssetService extends AsyncServiceBase {
       complete: async () => {
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         if (data) {
-          await this.fileManagerService.saveFile({ data, targetPath: assetEntry.id });
-          await this.updateAssetContents(assetEntry);
+          let targetPath = assetEntry.id;
+
+          // For overrides, use the nested override filepath as the path to save the file in local storage
+          if (overrideProps) {
+            const { themeName, languageCode } = overrideProps;
+            const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
+            targetPath = overrideAssetEntry.filePath;
+          }
+          const { src } = await this.fileManagerService.saveFile({ data, targetPath });
+          await this.updateAssetContents(assetEntry, src, overrideProps);
         }
         progress$.next(progress);
         progress$.complete();
@@ -270,26 +367,45 @@ export class RemoteAssetService extends AsyncServiceBase {
 
   /**
    * Save updates to asset contents in dynamic data, including file path
-   * (local storage on native platforms and supabase URL on web)
+   * (filepath should be local storage on native platforms and supabase URL on web)
    * */
-  private async updateAssetContents(assetEntry: IAssetEntry) {
-    let filePath: string;
-    // On native platforms, get the path of the local file in storage
-    if (Capacitor.isNativePlatform()) {
-      filePath = await this.fileManagerService.getLocalFilepath(assetEntry.id);
-    }
-    // On web, get the remote URL of the file
-    else {
-      filePath = this.getPublicUrl(assetEntry.id);
-    }
-
-    const update = { ...assetEntry, filePath };
+  private async updateAssetContents(
+    assetEntry: IAssetEntry,
+    filepath: string,
+    overrideProps?: IAssetOverrideProps
+  ) {
+    const update = this.addFilePathToAssetEntry(assetEntry, filepath, overrideProps);
+    // Update the core asset pack in dynamic data, adding an entry for the asset or
+    // updating an existing entry if it already exists
     await this.dynamicDataService.update<IAssetEntry>(
       "asset_pack",
       CORE_ASSET_PACK_NAME,
       assetEntry.id,
       update
     );
+  }
+
+  private addFilePathToAssetEntry(
+    assetEntry: IAssetEntry,
+    filePath: string,
+    overrideProps?: IAssetOverrideProps
+  ): IAssetEntry {
+    // In the case that the asset is an override, add the new filepath to the nested override entry
+    if (overrideProps) {
+      const { themeName, languageCode } = overrideProps;
+      const update = {
+        overrides: {
+          [themeName]: {
+            [languageCode]: {
+              filePath,
+            },
+          },
+        },
+      };
+      return deepMergeObjects(assetEntry, update);
+    } else {
+      return { ...assetEntry, filePath };
+    }
   }
 
   /** A general function to download a file from a URL */
@@ -357,7 +473,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Download from a private supabase bucket using the SDK method. Not currently used.
    * NB this method does not support tracking download progress
    * */
-  async downloadFileFromPrivateBucket(filepath: string) {
+  public async downloadFileFromPrivateBucket(filepath: string) {
     let data: Blob;
     try {
       this.downloading = true;
@@ -383,7 +499,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Reset the core asset pack contents to its original state before any remote assets were downloaded.
    * Useful when testing. TODO: Also delete any downloaded assets from the device
    * */
-  async reset() {
+  private async reset() {
     await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
   }
 

@@ -13,8 +13,66 @@
         <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">frontend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -36,32 +94,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   TmplTimerComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,7 +137,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
     </p>
 
     <p class="comment">
@@ -82,14 +145,15 @@
     </p>
     <p class="comment">
                 <code>ITemplateRowProps</code>
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code>OnInit</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
     <table class="table table-sm table-hover metadata">
         <tbody>
+
 
 
 
@@ -105,6 +169,8 @@
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>plh-timer</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -129,7 +195,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -166,16 +232,26 @@
                                 <a href="#leftButtonName" >leftButtonName</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#minInput" >minInput</a>
                             </li>
                             <li>
                                 <a href="#minutes" >minutes</a>
                             </li>
                             <li>
+                                <a href="#pauseIcon" >pauseIcon</a>
+                            </li>
+                            <li>
                                 <a href="#ping" >ping</a>
                             </li>
                             <li>
                                 <a href="#player" >player</a>
+                            </li>
+                            <li>
+                                <a href="#playIcon" >playIcon</a>
+                            </li>
+                            <li>
+                                <a href="#resetIcon" >resetIcon</a>
                             </li>
                             <li>
                                 <a href="#rightButtonAction" >rightButtonAction</a>
@@ -187,6 +263,7 @@
                                 <a href="#rightButtonName" >rightButtonName</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#secInput" >secInput</a>
                             </li>
                             <li>
@@ -233,6 +310,9 @@
                             </li>
                             <li>
                                 <a href="#clickRightButton" >clickRightButton</a>
+                            </li>
+                            <li>
+                                <a href="#getAssetParamFromTemplateRow" >getAssetParamFromTemplateRow</a>
                             </li>
                             <li>
                                 <a href="#getColumnOptions" >getColumnOptions</a>
@@ -295,18 +375,18 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(pickerController: PickerController, platform: Platform, audioService: AudioService, templateAssetService: TemplateAssetService)</code>
+<code>constructor(pickerController: PickerController, platform: Platform, audioService: AudioService, plhAssetPipe: PLHAssetPipe)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:72</a></div>
                             </td>
                         </tr>
 
@@ -360,10 +440,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>templateAssetService</td>
+                                                        <td>plhAssetPipe</td>
                                                   
                                                         <td>
-                                                                    <code>TemplateAssetService</code>
+                                                                    <code>PLHAssetPipe</code>
                                                         </td>
                                                   
                                                     <td>
@@ -380,7 +460,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -428,7 +508,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -451,53 +531,51 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:90</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:93</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>state</td>
-                                    <td>
-                                                <code><a href="../interfaces/TimerState.html" target="_self" >TimerState</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>state</td>
+                                            <td>
+                                                            <code><a href="../interfaces/TimerState.html" target="_self" >TimerState</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -520,21 +598,21 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:114</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:125</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -557,21 +635,100 @@
             </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:118</a></div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAssetParamFromTemplateRow"></a>
+                    <span class="name">
+                        <span ><b>getAssetParamFromTemplateRow</b></span>
+                        <a href="#getAssetParamFromTemplateRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAssetParamFromTemplateRow(parameterName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, _default: string | null)</code>
                 </td>
             </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>parameterName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>_default</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -594,67 +751,65 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="184"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:184</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:195</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>columnIndex</td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>columnIndex</td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>numOptions</td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                                <tr>
-                                    <td>columnOptions</td>
+                                        </tr>
+                                        <tr>
+                                                <td>numOptions</td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>{}</code>
+                                        </tr>
+                                        <tr>
+                                                <td>columnOptions</td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{}</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -677,58 +832,56 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="156"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:156</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:167</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>numColumns</td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>numColumns</td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>columnOptions</td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>{}</code>
+                                        </tr>
+                                        <tr>
+                                                <td>columnOptions</td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{}</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -751,21 +904,21 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:110</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:121</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -788,21 +941,21 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:94</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:97</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -825,27 +978,27 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:122</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:133</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -895,7 +1048,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -926,7 +1079,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -952,7 +1105,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -978,7 +1131,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -1004,7 +1157,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -1030,7 +1183,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -1056,7 +1209,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -1069,6 +1222,7 @@
                 <td class="col-md-4">
                     <a name="minInput"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                         <span ><b>minInput</b></span>
                         <a href="#minInput"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1076,7 +1230,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                        <i>Type : </i>    <code>ElementRef</code>
 
                     </td>
                 </tr>
@@ -1117,7 +1271,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pauseIcon"></a>
+                    <span class="name">
+                        <span ><b>pauseIcon</b></span>
+                        <a href="#pauseIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -1143,7 +1323,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -1169,7 +1349,59 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="playIcon"></a>
+                    <span class="name">
+                        <span ><b>playIcon</b></span>
+                        <a href="#playIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetIcon"></a>
+                    <span class="name">
+                        <span ><b>resetIcon</b></span>
+                        <a href="#resetIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -1195,7 +1427,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -1221,7 +1453,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -1247,7 +1479,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -1260,6 +1492,7 @@
                 <td class="col-md-4">
                     <a name="secInput"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                         <span ><b>secInput</b></span>
                         <a href="#secInput"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1267,7 +1500,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                        <i>Type : </i>    <code>ElementRef</code>
 
                     </td>
                 </tr>
@@ -1308,7 +1541,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -1334,7 +1567,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -1360,7 +1593,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -1386,7 +1619,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -1417,7 +1650,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -1442,7 +1675,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -1467,7 +1700,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -1493,7 +1726,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -1502,7 +1735,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -1581,7 +1814,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:59</a></div>
                                 </td>
                             </tr>
 
@@ -1592,7 +1825,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:63</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1638,7 +1871,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, Input, OnInit, ViewChild } from &quot;@angular/core&quot;;
 import { FlowTypes } from &quot;data-models&quot;;
 import {
@@ -1651,7 +1884,7 @@ import { TemplateBaseComponent } from &quot;../base&quot;;
 import { ITemplateRowProps } from &quot;../../models&quot;;
 import { AudioService } from &quot;src/app/shared/services/audio/audio.service&quot;;
 import { AudioPlayer } from &quot;src/app/shared/services/audio/audio.player&quot;;
-import { TemplateAssetService } from &quot;../../services/template-asset.service&quot;;
+import { PLHAssetPipe } from &quot;../../pipes/plh-asset.pipe&quot;;
 
 @Component({
   selector: &quot;plh-timer&quot;,
@@ -1666,6 +1899,9 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   @Input() template: FlowTypes.Template;
   @ViewChild(&quot;min&quot;, { static: false }) minInput: ElementRef;
   @ViewChild(&quot;sec&quot;, { static: false }) secInput: ElementRef;
+  playIcon: string;
+  pauseIcon: string;
+  resetIcon: string;
   state: TimerState;
   leftButtonAction: string;
   leftButtonIcon: string;
@@ -1713,7 +1949,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     private pickerController: PickerController,
     private platform: Platform,
     private audioService: AudioService,
-    private templateAssetService: TemplateAssetService
+    private plhAssetPipe: PLHAssetPipe
   ) {
     super();
     this.changeState(new PausedState(this));
@@ -1723,7 +1959,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.getParams();
     this.state.callOnInit();
     if (this.ping) {
-      const pingSrc &#x3D; this.templateAssetService.getTranslatedAssetPath(this.ping);
+      const pingSrc &#x3D; this.plhAssetPipe.transform(this.ping);
       this.player &#x3D; this.audioService.createPlayer(pingSrc);
     }
   }
@@ -1736,6 +1972,9 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.title &#x3D; getStringParamFromTemplateRow(this._row, &quot;title&quot;, &quot;Timer&quot;);
     this.help &#x3D; getStringParamFromTemplateRow(this._row, &quot;help&quot;, null);
     this.ping &#x3D; getStringParamFromTemplateRow(this._row, &quot;ping&quot;, null);
+    this.playIcon &#x3D; this.getAssetParamFromTemplateRow(&quot;play_icon_asset&quot;, &quot;play-outline&quot;);
+    this.pauseIcon &#x3D; this.getAssetParamFromTemplateRow(&quot;pause_icon_asset&quot;, &quot;pause-outline&quot;);
+    this.resetIcon &#x3D; this.getAssetParamFromTemplateRow(&quot;reset_icon_asset&quot;, &quot;sync-outline&quot;);
     this.timerDurationExtension &#x3D;
       getNumberParamFromTemplateRow(this._row, &quot;duration_extension&quot;, 1) * 60;
     this.is_editable_on_playing &#x3D; getBooleanParamFromTemplateRow(
@@ -1746,6 +1985,11 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.starting_minutes &#x3D; getNumberParamFromTemplateRow(this._row, &quot;starting_minutes&quot;, 10);
     this.starting_seconds &#x3D; getNumberParamFromTemplateRow(this._row, &quot;starting_seconds&quot;, 0);
     this.value &#x3D; this.getDurationFromParams();
+  }
+
+  getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
+    const value &#x3D; getStringParamFromTemplateRow(this._row, parameterName, null);
+    return value ? this.plhAssetPipe.transform(value) : _default;
   }
 
   getDurationFromParams() {
@@ -1879,10 +2123,8 @@ class PlayingState extends State {
   constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction &#x3D; &quot;pause&quot;;
-    this.timer.leftButtonIcon &#x3D; &quot;pause-outline&quot;;
     this.timer.leftButtonName &#x3D; &quot;pause_timer&quot;;
     this.timer.rightButtonAction &#x3D; &quot;increase&quot;;
-    this.timer.rightButtonIcon &#x3D; &quot;reload-outline&quot;;
     this.timer.rightButtonName &#x3D; &quot;increase_timer&quot;;
     this.timer.timerStarted &#x3D; true;
     this.timer.isTimerEditable &#x3D; this.timer.is_editable_on_playing;
@@ -1915,10 +2157,8 @@ class PausedState extends State {
   constructor(timer: TmplTimerComponent) {
     super(timer);
     this.timer.leftButtonAction &#x3D; &quot;play&quot;;
-    this.timer.leftButtonIcon &#x3D; &quot;play-outline&quot;;
     this.timer.leftButtonName &#x3D; &quot;play_timer&quot;;
     this.timer.rightButtonAction &#x3D; &quot;refresh&quot;;
-    this.timer.rightButtonIcon &#x3D; &quot;sync-outline&quot;;
     this.timer.rightButtonName &#x3D; &quot;refresh_timer&quot;;
     this.timer.timerStarted &#x3D; false;
     this.timer.isTimerEditable &#x3D; true;
@@ -1935,7 +2175,7 @@ class PausedState extends State {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div
   class&#x3D;&quot;round-container wrapper-audio round-container-br-15 margin-t-large&quot;
   [style.paddingBottom.px]&#x3D;&quot;timerRow.offsetHeight - timerRow.offsetHeight / 3&quot;
@@ -1952,11 +2192,11 @@ class PausedState extends State {
     &gt;&lt;/ion-icon&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;timer-content&quot;&gt;
-    &lt;ion-button class&#x3D;&quot;add-min&quot; (click)&#x3D;&quot;clickLeftButton()&quot;&gt;
-      &lt;img
-        [src]&#x3D;&quot;!timerStarted ? &#x27;/assets/icon/timer/play.svg&#x27; : &#x27;/assets/icon/timer/pause.svg&#x27;&quot;
-        alt&#x3D;&quot;&quot;
-      /&gt;
+    &lt;ion-button class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;clickLeftButton()&quot;&gt;
+      &lt;ion-icon
+        [name]&#x3D;&quot;!timerStarted ? playIcon : pauseIcon&quot;
+        [src]&#x3D;&quot;!timerStarted ? playIcon : pauseIcon&quot;
+      &gt;&lt;/ion-icon&gt;
     &lt;/ion-button&gt;
     &lt;div class&#x3D;&quot;timer-counter round-container round-container-br-15&quot; (click)&#x3D;&quot;openPicker()&quot;&gt;
       &lt;div #min&gt;
@@ -1967,13 +2207,12 @@ class PausedState extends State {
         {{ seconds }}
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;ion-button class&#x3D;&quot;add-min&quot; (click)&#x3D;&quot;clickRightButton()&quot;&gt;
-      &lt;img
-        class&#x3D;&quot;right-icon&quot;
-        [class.left-icon]&#x3D;&quot;timerStarted&quot;
-        [src]&#x3D;&quot;timerStarted ? &#x27;/assets/icon/timer/add-time.svg&#x27; : &#x27;/assets/icon/timer/repeat.svg&#x27;&quot;
-        alt&#x3D;&quot;&quot;
-      /&gt;
+    &lt;ion-button class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;clickRightButton()&quot;&gt;
+      &lt;!-- Use name&#x3D;&quot;none&quot; to display no icon, as empty string does not replace the value --&gt;
+      &lt;ion-icon
+        [name]&#x3D;&quot;timerStarted ? &#x27;none&#x27; : resetIcon&quot;
+        [src]&#x3D;&quot;timerStarted ? &#x27;&#x27; : resetIcon&quot;
+      &gt;&lt;/ion-icon&gt;
       &lt;span class&#x3D;&quot;time-rewind-value&quot; *ngIf&#x3D;&quot;timerStarted&quot;&gt;+{{ timerDurationExtension / 60 }}&lt;/span&gt;
     &lt;/ion-button&gt;
   &lt;/div&gt;
@@ -1981,7 +2220,7 @@ class PausedState extends State {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./timer.component.scss</code>
                 </p>
@@ -2024,7 +2263,7 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
 .timer-row {
   display: flex;
 }
-.add-min {
+.btn {
   @include mixins.large-square;
   min-width: var(--buttons-size);
   position: relative;
@@ -2032,13 +2271,13 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
   --background-size: cover;
   --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;
-  .right-icon {
-    max-width: none;
-    top: 0;
+  ion-icon {
+    position: absolute;
+    font-size: var(--icon-size-large);
   }
   .time-rewind-value {
     position: absolute;
-    font-size: var(--font-size-text-tiny);
+    font-size: var(--font-size-text-large);
     font-weight: var(--font-weight-bold);
   }
 }
@@ -2063,7 +2302,7 @@ ion-button {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -2088,8 +2327,8 @@ ion-button {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  class="round-container wrapper-audio round-container-br-15 margin-t-large"  [style.paddingBottom.px]="timerRow.offsetHeight - timerRow.offsetHeight / 3">  <div class="timer-row" #timerRow>    <h2 class="timer-title">{{ title }}</h2>    <ion-icon      *ngIf="help"      name="help-circle-outline"      class="timer-help"      [pTooltip]="help"      tooltipPosition="right"      tooltipEvent="click"    ></ion-icon>  </div>  <div class="timer-content">    <ion-button class="add-min" (click)="clickLeftButton()">      <img        [src]="!timerStarted ? \'/assets/icon/timer/play.svg\' : \'/assets/icon/timer/pause.svg\'"        alt=""      />    </ion-button>    <div class="timer-counter round-container round-container-br-15" (click)="openPicker()">      <div #min>        {{ minutes }}      </div>      <div>:</div>      <div #sec>        {{ seconds }}      </div>    </div>    <ion-button class="add-min" (click)="clickRightButton()">      <img        class="right-icon"        [class.left-icon]="timerStarted"        [src]="timerStarted ? \'/assets/icon/timer/add-time.svg\' : \'/assets/icon/timer/repeat.svg\'"        alt=""      />      <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>    </ion-button>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+        var COMPONENT_TEMPLATE = '<div><div  class="round-container wrapper-audio round-container-br-15 margin-t-large"  [style.paddingBottom.px]="timerRow.offsetHeight - timerRow.offsetHeight / 3">  <div class="timer-row" #timerRow>    <h2 class="timer-title">{{ title }}</h2>    <ion-icon      *ngIf="help"      name="help-circle-outline"      class="timer-help"      [pTooltip]="help"      tooltipPosition="right"      tooltipEvent="click"    ></ion-icon>  </div>  <div class="timer-content">    <ion-button class="btn" (click)="clickLeftButton()">      <ion-icon        [name]="!timerStarted ? playIcon : pauseIcon"        [src]="!timerStarted ? playIcon : pauseIcon"      ></ion-icon>    </ion-button>    <div class="timer-counter round-container round-container-br-15" (click)="openPicker()">      <div #min>        {{ minutes }}      </div>      <div>:</div>      <div #sec>        {{ seconds }}      </div>    </div>    <ion-button class="btn" (click)="clickRightButton()">      <!-- Use name="none" to display no icon, as empty string does not replace the value -->      <ion-icon        [name]="timerStarted ? \'none\' : resetIcon"        [src]="timerStarted ? \'\' : resetIcon"      ></ion-icon>      <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>    </ion-button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TmplTimerComponent'};
 </script>

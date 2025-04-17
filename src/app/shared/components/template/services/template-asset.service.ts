@@ -6,6 +6,7 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, lastValueFrom } from "rxjs";
+import { cleanAssetName } from "packages/shared/src/utils/string-utils";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -55,7 +56,12 @@ export class TemplateAssetService extends AsyncServiceBase {
    * 4. default theme, default language
    */
   getTranslatedAssetPath(value: string) {
-    let assetName = this.cleanAssetName(value);
+    if (!value) return "";
+    // keep external links
+    if (value.startsWith("http")) {
+      return value;
+    }
+    let assetName = cleanAssetName(value);
     const assetEntry = this.assetsContentsList$.value[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
@@ -84,12 +90,6 @@ export class TemplateAssetService extends AsyncServiceBase {
       return this.getAssetPath(assetName, override3);
     }
     return this.getAssetPath(assetName, assetEntry);
-  }
-
-  private cleanAssetName(value: string) {
-    // remove prefix slash
-    if (value.startsWith("/")) value = value.substring(1);
-    return value;
   }
 
   private getAssetPath(

@@ -7,34 +7,42 @@ import { clearLogs } from "shared";
 
 import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
 import { ActiveDeployment } from "../../deployment/get";
+import { IDeploymentConfigJson } from "data-models";
 
-const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER } = TEST_DATA_PATHS;
+const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, TEST_DATA_DIR } =
+  TEST_DATA_PATHS;
 const paths = {
   inputFolders: [resolve(SHEETS_INPUT_FOLDER, "sheets")],
   outputFolder: resolve(SHEETS_OUTPUT_FOLDER, "sheets"),
   cacheFolder: resolve(SHEETS_CACHE_FOLDER),
+  reportsFolder: resolve(TEST_DATA_DIR, "reports"),
 };
 
-// HACK - avoid loading active deployment
-jest.spyOn(ActiveDeployment, "get").mockReturnValue({
+const mockDeployment: Partial<IDeploymentConfigJson> = {
   app_data: {
     sheets_filter_function: () => true,
     assets_filter_function: () => true,
     output_path: paths.outputFolder,
   },
-} as any);
+  // HACK - output reports get populated relative to workspace path so use test_data DIR
+  _workspace_path: TEST_DATA_DIR,
+};
+
+// HACK - avoid loading active deployment
+jest.spyOn(ActiveDeployment, "get").mockReturnValue(mockDeployment as IDeploymentConfigJson);
 
 /** yarn workspace scripts test -t convert.spec.ts */
 describe("App Data Converter", () => {
   let converter: AppDataConverter;
-  beforeAll(() => {
+
+  beforeEach(() => {
     ensureDirSync(paths.outputFolder);
     emptyDirSync(paths.outputFolder);
     ensureDirSync(paths.cacheFolder);
     emptyDirSync(paths.cacheFolder);
-  });
-  beforeEach(() => {
     converter = new AppDataConverter(paths);
+    // HACK - Tests failing on CI due to logs persisting between runs
+    clearLogs(true);
   });
 
   it("Uses child caches", async () => {

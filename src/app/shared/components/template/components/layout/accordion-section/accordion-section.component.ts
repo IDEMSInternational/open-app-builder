@@ -46,7 +46,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon_asset", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon_asset", null);
     this.disabledIcon = getStringParamFromTemplateRow(this._row, "disabled_icon_asset", null);
-    this.percentComplete = this._row.value ? this._row.value : 0;
+    this.percentComplete = this._row.value ? (this._row.value as number) : 0;
     this.updateStatus(this.percentComplete);
   }
 

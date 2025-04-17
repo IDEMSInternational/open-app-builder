@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
   Output,
+  signal,
 } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
@@ -17,6 +19,9 @@ import { TemplateBaseComponent } from "../base";
 import { IProgressStatus } from "src/app/shared/services/task/task.service";
 import { Subscription, debounceTime } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { ITEM_PIPE_OPERATOR_NAMES } from "../../processors/itemPipe";
+import { ItemProcessor } from "../../processors/item";
+import { filterObjectByKeys } from "packages/shared/src/utils/object-utils";
 
 interface ITaskProgressBarParams {
   /**
@@ -47,7 +52,7 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list that tracks the completed value of each subtask.
    * If there is no column with this name, the component will look for a column matching completed_field_column_name,
    * and use the corresponding app fields to track the completion status of subtasks.
-   * Deafult "completed"
+   * Default "completed"
    * */
   completedColumnName: string;
   /**
@@ -55,9 +60,13 @@ interface ITaskProgressBarParams {
    * The name of the column in the source data list which stores the name of the completed field of each subtask.
    * The app fields corresponding to the values in this column are used to evaluate the completion of subtasks iff the
    * completed_column_name column is not present. In this case, the task progress bar will not update without a page reload.
-   * Deafult "completed_field"
+   * Default "completed_field"
    * */
   completedFieldColumnName: string;
+  /** TEMPLATE PARAMETER: "variant". Default "bar". */
+  variant: "bar" | "wheel";
+  /* TEMPLATE PARAMETER: "wheel_title". The wheel title that appears at the bottom */
+  title?: string;
 }
 
 @Component({
@@ -72,19 +81,32 @@ export class TmplTaskProgressBarComponent
 {
   @Input() dataListName: string | null;
   @Input() completedField: string | null;
+  @Input() completedColumnName: string;
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
   @Input() showText: boolean;
+  // Pass whole parameter list from parent component to extract any item row operations
+  @Input() parameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
   params: Partial<ITaskProgressBarParams> = {};
-  dataRows: any[];
+  dataRows = signal<any[]>([]);
+  processedDataRows = computed(() => {
+    const processedDataRows = this.processDataRows(this.dataRows());
+    return processedDataRows;
+  });
   subtasksTotal: number;
   subtasksCompleted: number;
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
+  itemRowOperations: Partial<Pick<{ [param: string]: string }, string>>;
+  itemProcessor: ItemProcessor;
+
+  /** Progress wheel variables */
+  radius = 16; // Radius of the circle
+  circumference = 2 * Math.PI * this.radius; // Circumference of the circle
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -131,6 +153,11 @@ export class TmplTaskProgressBarComponent
         "completed_field_column_name",
         "completed_field"
       );
+      this.configureItemProcessor(this._row.parameter_list);
+      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "bar")
+        .split(",")
+        .join(" ") as ITaskProgressBarParams["variant"];
+      this.params.title = getStringParamFromTemplateRow(this._row, "wheel_title", null);
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
@@ -138,28 +165,63 @@ export class TmplTaskProgressBarComponent
       this.params.completedField = this.completedField;
       this.params.progressUnitsName = this.progressUnitsName;
       this.params.showText = this.showText;
-      this.params.completedColumnName = "completed";
+      this.params.completedColumnName = this.completedColumnName || "completed";
       this.params.completedFieldColumnName = "completed_field";
+      this.params.variant = "bar";
+      this.configureItemProcessor(this.parameterList);
     }
   }
 
   get progressPercentage() {
-    return (this.subtasksCompleted / this.subtasksTotal) * 100;
+    return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
+  }
+
+  /** Calculate circumference of progress circle based on number of tasks completed */
+  getStrokeOffset(): number {
+    const progressProportion = this.subtasksCompleted / this.subtasksTotal;
+    return this.circumference * (1 - (progressProportion || 0));
+  }
+
+  // Apply any item row operations, e.g. filter, if supplied to component via parameter list
+  private processDataRows(dataRows: any[]) {
+    if (this.itemProcessor) {
+      return this.itemProcessor.pipeData(dataRows, this.itemRowOperations);
+    }
+    return dataRows;
+  }
+
+  private configureItemProcessor(parameterList: any) {
+    const rawItemRowOperations = filterObjectByKeys(parameterList, ITEM_PIPE_OPERATOR_NAMES as any);
+    if (Object.keys(rawItemRowOperations).length > 0) {
+      this.itemRowOperations = this.hackParseItemRowOperationParams(rawItemRowOperations);
+      this.itemProcessor = new ItemProcessor();
+    }
+  }
+
+  // HACK: use `@task_item` reference in item row operations to prevent evaluation up to this point.
+  // Replace with `this.item` before passing to item processor for evaluation
+  private hackParseItemRowOperationParams(itemRowOperations: any) {
+    for (const [name, arg] of Object.entries(itemRowOperations)) {
+      if (arg && typeof arg === "string") {
+        itemRowOperations[name] = arg.replaceAll("@task_item", "this.item");
+      }
+    }
+    return itemRowOperations;
   }
 
   private async getTaskGroupDataRows() {
     await this.taskService.ready();
-    this.dataRows = await this.taskService.getTaskGroupDataRows(this.params.dataListName);
+    this.dataRows.set(await this.taskService.getTaskGroupDataRows(this.params.dataListName));
   }
 
   private checkAndSetUseDynamicData() {
-    this.useDynamicData = this.dataRows?.[0]?.hasOwnProperty(this.params.completedColumnName);
+    this.useDynamicData = this.dataRows()?.[0]?.hasOwnProperty(this.params.completedColumnName);
   }
 
   private async evaluateTaskGroupData() {
     const previousProgressStatus = this.progressStatus;
     const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } =
-      await this.taskService.evaluateTaskGroupData(this.dataRows, {
+      await this.taskService.evaluateTaskGroupData(this.processedDataRows(), {
         completedColumnName: this.params.completedColumnName,
         completedField: this.params.completedField,
         completedFieldColumnName: this.params.completedFieldColumnName,
@@ -186,7 +248,7 @@ export class TmplTaskProgressBarComponent
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
-        this.dataRows = data;
+        this.dataRows.set(data);
         await this.evaluateTaskGroupData();
       });
     }

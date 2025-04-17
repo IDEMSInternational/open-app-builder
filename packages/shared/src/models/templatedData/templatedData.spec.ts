@@ -118,8 +118,8 @@ describe("Templated Data Parsing", () => {
   function execTest(testData: ITestData) {
     const { input, output } = testData;
     it(JSON.stringify(input), () => {
-      const parser = new TemplatedData({ context: context.input, initialValue: input });
-      const parsedValue = parser.parse();
+      const parser = new TemplatedData({ context: context.input });
+      const parsedValue = parser.parse(input);
       expect(parsedValue).toEqual(output);
       // process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
     });

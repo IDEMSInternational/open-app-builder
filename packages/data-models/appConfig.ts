@@ -1,6 +1,7 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
 import clone from "clone";
+import { type RecursivePartial } from "shared/src/types";
 import { IAppSkin } from "./skin.model";
 
 /*********************************************************************************************
@@ -12,18 +13,6 @@ import { IAppSkin } from "./skin.model";
  * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
  * special use case for relative paths
  ********************************************************************************************/
-
-const DYNAMIC_PREFIXES = [
-  "local",
-  "field",
-  "fields",
-  "global",
-  "data",
-  "campaign",
-  "calc",
-  "item",
-  "raw",
-] as const;
 
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
@@ -73,9 +62,6 @@ const NOTIFICATION_DEFAULTS = {
 /** How often to attempt to re-evaluate scheduled notifications - currently every minutes */
 const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
-/** How often to attempt sync - currently every 5mins */
-const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
-
 const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
   home_route: "/template/home_screen",
@@ -94,24 +80,35 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-export type IHeaderColourOptions = "primary" | "secondary" | "none";
+export type IHeaderFooterBackgroundOptions = "primary" | "secondary" | "none";
+/** The "compact" variant reduces the header height and removes the title */
 export type IHeaderVariantOptions = "default" | "compact";
 
-const APP_HEADER_DEFAULTS = {
-  title: "App",
+interface IAppConfigHeader {
+  back_button: {
+    hidden?: boolean;
+  };
+  background: IHeaderFooterBackgroundOptions;
+  collapse: boolean;
+  hidden?: boolean;
+  menu_button: {
+    hidden?: boolean;
+  };
+  template: string | null;
+  title: string;
+  variant: IHeaderVariantOptions;
+  /** @deprecated use "background" instead */
+  colour?: IHeaderFooterBackgroundOptions;
+}
+
+const APP_HEADER_DEFAULTS: IAppConfigHeader = {
+  back_button: {},
+  background: "primary",
   collapse: false,
-  colour: "primary" as IHeaderColourOptions,
-  // The "compact" variant reduces the header height and removes the title
-  variant: "default" as IHeaderVariantOptions,
-  // default only show menu button on home screen
-  should_show_menu_button: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
-  // default show back button on all screens except home screen
-  should_show_back_button: (location: Location) =>
-    activeRoute(location) !== APP_ROUTE_DEFAULTS.home_route,
-  // on device minimize app when back button pressed from home screen
-  should_minimize_app_on_back: (location: Location) =>
-    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
+  menu_button: {},
+  template: null,
+  title: "App",
+  variant: "default",
 };
 
 /**
@@ -124,8 +121,20 @@ const activeRoute = (location: Location) => {
   return path;
 };
 
-const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
-  templateName: null,
+interface IAppConfigFooter {
+  background: IHeaderFooterBackgroundOptions;
+  template: string | null;
+  /** @deprecated use "template" instead */
+  templateName?: string | null;
+}
+
+const APP_FOOTER_DEFAULTS: IAppConfigFooter = {
+  background: "primary",
+  template: null,
+};
+
+const LAYOUT = {
+  page_padding: "24px",
 };
 
 const APP_SIDEMENU_DEFAULTS = {
@@ -139,10 +148,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
-const APP_AUTHENTICATION_DEFAULTS = {
-  enforceLogin: false,
-  signInTemplate: "sign_in",
-};
+/**
+ * @deprecated 0.18.0
+ * Use `deployment.auth` to configure auth
+ */
+const APP_AUTHENTICATION_DEFAULTS = {};
 
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
@@ -215,21 +225,61 @@ const APP_CONFIG = {
   APP_THEMES,
   APP_UPDATES,
   ASSET_PACKS,
-  DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
+  LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
-  SERVER_SYNC_FREQUENCY_MS,
   TASKS,
 };
-// Export as a clone to avoid risk one import could alter another
-export const getDefaultAppConfig = () => clone(APP_CONFIG);
+
+/**
+ * List of deprecated app_config properties
+ * These will be replaced at runtime if applied as config overrides
+ *
+ * Mappings should be maintained until methods exist in the parser to ensure authored
+ * configurations are valid. This will require updates to check for template-level
+ * config overrides (deployment and skin configs are otherwise type-checked)
+ */
+const DEPRECATION_RULES = {
+  APP_FOOTER_DEFAULTS: {
+    templateName: {
+      newProperty: "template",
+      message: "APP_FOOTER_DEFAULTS.templateName is deprecated. Use template instead.",
+    },
+  },
+  APP_HEADER_DEFAULTS: {
+    colour: {
+      newProperty: "background",
+      message: "APP_HEADER_DEFAULTS.colour is deprecated. Use background instead.",
+    },
+  },
+};
+
+/** Convert any deprecated properties to their new equivalents */
+export function applyAppConfigDeprecations(config: RecursivePartial<IAppConfig>) {
+  Object.entries(DEPRECATION_RULES).forEach(([configSection, rules]) => {
+    const sourceSection = config[configSection];
+    if (!sourceSection) return;
+
+    Object.entries(rules).forEach(([oldProperty, rule]) => {
+      if (oldProperty in sourceSection) {
+        console.warn(`[APP CONFIG] ${rule.message}`);
+        sourceSection[rule.newProperty] = sourceSection[oldProperty];
+        delete sourceSection[oldProperty];
+      }
+    });
+  });
+
+  return config;
+}
+
+/**
+ * Get full app config populated with default values
+ * Returned as an editable clone so that changes will not impact original
+ */
+export const getDefaultAppConfig = (): IAppConfig => clone(APP_CONFIG);
+
 export type IAppConfig = typeof APP_CONFIG;
 
-/** A recursive version of Partial, making all properties, included nested ones, optional.
- * Copied from https://stackoverflow.com/a/47914631
- */
-export type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>;
-};
+/** Config overrides support deep-nested partials, merged with defaults at runtime */
 export type IAppConfigOverride = RecursivePartial<IAppConfig>;

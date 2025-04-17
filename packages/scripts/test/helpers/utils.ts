@@ -11,7 +11,7 @@ import { Logger } from "shared/src/utils/logging/console-logger";
  * @param callOriginal specify whether to still call original Logger
  * methods after spy intercept
  */
-export function useMockLogger(callOriginal = true) {
+export function useMockLogger(callOriginal = false) {
   const error = jest.spyOn(Logger, "error");
   const warning = jest.spyOn(Logger, "warning");
   if (!callOriginal) {
@@ -21,10 +21,11 @@ export function useMockLogger(callOriginal = true) {
   return { error, warning };
 }
 
-const testDataDir = resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
+const TEST_DATA_DIR = resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 /** Common paths used for test data */
 export const TEST_DATA_PATHS = {
-  SHEETS_CACHE_FOLDER: resolve(testDataDir, "cache"),
-  SHEETS_INPUT_FOLDER: resolve(testDataDir, "input"),
-  SHEETS_OUTPUT_FOLDER: resolve(testDataDir, "output"),
+  SHEETS_CACHE_FOLDER: resolve(TEST_DATA_DIR, "cache"),
+  SHEETS_INPUT_FOLDER: resolve(TEST_DATA_DIR, "input"),
+  SHEETS_OUTPUT_FOLDER: resolve(TEST_DATA_DIR, "output"),
+  TEST_DATA_DIR,
 };

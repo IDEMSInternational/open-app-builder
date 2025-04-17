@@ -1,10 +1,10 @@
 # gdrive service account for gdrive download scripts
 config/*
-!config/public.key
-!config/*.enc
+!config/.gitkeep
 build
 dist
 exec
 
 test/data/cache
 test/data/output
+test/data/reports

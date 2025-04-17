@@ -9,8 +9,20 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
+
+/**
+ * List of protected fields to include when importing a user profile
+ * TODO - ideally should have distinct lists for protected fields that can and cannot be imported
+ * */
+const IMPORTABLE_PROTECTED_FIELD_NAMES: IProtectedFieldName[] = [
+  "APP_FIRST_LAUNCH",
+  "APP_LANGUAGE",
+  "APP_SKIN",
+  "APP_THEME",
+];
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService extends AsyncServiceBase {
@@ -65,6 +77,9 @@ export class UserMetaService extends AsyncServiceBase {
 
   /** Import existing user contact fields and replace current user */
   private async importUser(id: string) {
+    if (!id) {
+      throw new Error(`[User Import] no id provided`);
+    }
     try {
       // TODO - get type-safe return types using openapi http client
       const profile = await firstValueFrom(
@@ -75,24 +90,45 @@ export class UserMetaService extends AsyncServiceBase {
         return;
       }
       const { contact_fields, dynamic_data } = profile as any;
-      console.log("[User Import]", { contact_fields, dynamic_data });
+      console.log("[User Import]", profile);
       await this.importUserContactFields(contact_fields);
       await this.importUserDynamicData(dynamic_data);
+      // Reload to re-initialise default values on dynamic data and internal tables
+      location.reload();
     } catch (error) {
       console.error("[User Import] failed", error);
     }
   }
 
-  private async importUserContactFields(contact_fields = {}) {
+  private async importUserContactFields(contact_fields: Record<string, string> = {}) {
+    // create a reverse mapping of protected fields that are allowed to be imported
+    // to allow setting protected fields such as rp-contact-field._app_skin
+    const protectedFieldMapping: Record<string, string> = {};
+    const { prefix } = this.localStorageService;
+    for (const fieldName of IMPORTABLE_PROTECTED_FIELD_NAMES) {
+      const mappedName = `${prefix}.${getProtectedFieldName(fieldName)}`;
+      protectedFieldMapping[mappedName] = fieldName;
+    }
     for (const [key, value] of Object.entries(contact_fields)) {
-      // TODO - handle special contact fields as required (e.g. _app_skin, _app_theme)
       if (!this.localStorageService.isProtected(key)) {
-        this.localStorageService.setString(key, value as string);
+        this.localStorageService.setString(key, value);
+      } else {
+        // allow import if non-protected or marked as importable protected
+        const mappedKey = protectedFieldMapping[key];
+        if (mappedKey) {
+          this.localStorageService.setProtected(mappedKey as any, value);
+        }
       }
     }
   }
 
   private async importUserDynamicData(dynamic_data?: IDynamicDataState) {
+    /**
+     * Reset all user dynamic data before importing new data
+     * TODO: implement a variety of different merge strategies and expose options to template action
+     */
+    await this.dynamicDataService.resetAll();
+
     if (!dynamic_data) return;
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {

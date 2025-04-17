@@ -2,20 +2,6 @@ import { TestBed } from "@angular/core/testing";
 
 import { LocalStorageService } from "./local-storage.service";
 
-/** Mock calls to localstorage to store values in-memory */
-export class MockLocalStorageService implements Partial<LocalStorageService> {
-  private values: Record<string, string> = {};
-  public getString(key: string): string {
-    return this.values[key];
-  }
-  public setString(key: string, value: string): void {
-    this.values[key] = value;
-  }
-  public ready(): boolean {
-    return true;
-  }
-}
-
 /**
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/services/local-storage/local-storage.service.spec.ts
@@ -63,6 +49,18 @@ describe("LocalStorageService", () => {
 
   it("checks protected key ", () => {
     expect(service.isProtected("rp-contact-field._app_user_id")).toEqual(true);
+  });
+
+  it("sets and gets private entries", () => {
+    service.setProtected("AUTH_USER_NAME", "private_user_name");
+    expect(service.getProtected("AUTH_USER_NAME")).toEqual("private_user_name");
+    expect(localStorage.getItem("rp-contact-field._auth_user_name")).toEqual("private_user_name");
+  });
+
+  it("omits private entries from getAll method", () => {
+    service.setProtected("AUTH_USER_NAME", "private_user_name");
+    const res = service.getAll();
+    expect(res).toEqual({});
   });
 
   // TODO - currently deprecated but not throwing error

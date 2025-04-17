@@ -12,13 +12,11 @@ import { TemplateService } from "../template.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
-import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateActionRegistry } from "./template-action.registry";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -33,6 +31,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
 export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
+  private actionsInterceptors = new Map();
 
   constructor(
     private injector: Injector,
@@ -65,9 +64,6 @@ export class TemplateActionService extends SyncServiceBase {
   private get dbSyncService() {
     return getGlobalService(this.injector, DBSyncService);
   }
-  private get authService() {
-    return getGlobalService(this.injector, AuthService);
-  }
   private get skinService() {
     return getGlobalService(this.injector, SkinService);
   }
@@ -75,9 +71,6 @@ export class TemplateActionService extends SyncServiceBase {
     return getGlobalService(this.injector, ThemeService);
   }
 
-  private get campaignService() {
-    return getGlobalService(this.injector, CampaignService);
-  }
   private get templateActionRegistry() {
     // HACK - as only service that does not extend sync/async base just return
     return this.injector.get(TemplateActionRegistry);
@@ -93,7 +86,6 @@ export class TemplateActionService extends SyncServiceBase {
       this.analyticsService,
       this.templateService,
       this.eventService,
-      this.authService,
       this.skinService,
     ]);
   }
@@ -103,9 +95,17 @@ export class TemplateActionService extends SyncServiceBase {
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
+    // Track action trigger source
+    // Will be undefined if triggered from service instead of row component
+    actions = actions.map((a) => {
+      a._triggeredBy = _triggeredBy;
+      return a;
+    });
+
     await this.ensurePublicServicesReady();
+    // process any global action interceptors
     const unhandledActions = await this.handleActionsInterceptor(actions);
-    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
+    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.container?.parent) {
@@ -119,11 +119,31 @@ export class TemplateActionService extends SyncServiceBase {
   /** Optional method child component can add to handle post-action callback */
   public async handleActionsCallback(actions: FlowTypes.TemplateRowAction[], results: any) {}
 
-  /** Optional method child component can filter action list to handle outside of default handlers */
+  /**
+   * @deprecated v0.18.0 - prefer to use `registerActionsInterceptor`
+   * Provide a single override method that will be applied to all actions triggered within the
+   * current container
+   * */
   public async handleActionsInterceptor(
     actions: FlowTypes.TemplateRowAction[]
   ): Promise<FlowTypes.TemplateRowAction[]> {
     return actions;
+  }
+
+  /**
+   * Register an action interceptor to apply to all actions within a named scope
+   * @param scope namespace to apply actions. Any actions triggered by components starting with
+   * the same namespace will be intercepted, matched by the component nested name. Usually this
+   * will be the current component row name, to apply to all nested children
+   * @param handler function to apply to action. If action is returned from function then the action
+   * will continue to be piped through any more interceptors as well as final processing.
+   * Return undefined to prevent further action processing
+   * */
+  public async registerActionsInterceptor(
+    scope: string,
+    handler: (action: FlowTypes.TemplateRowAction) => FlowTypes.TemplateRowAction | undefined
+  ) {
+    this.actionsInterceptors.set(scope, handler);
   }
 
   /**
@@ -138,9 +158,13 @@ export class TemplateActionService extends SyncServiceBase {
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
-        await this.processAction(action);
+        // Pipe action through interceptors. Only process if interceptors return a value
+        const postInterceptAction = await this.processActionInterceptors(action);
+        if (postInterceptAction) {
+          await this.processAction(action);
+          processedActions.push(action);
+        }
         this.actionsQueue.shift();
-        processedActions.push(action);
       }
       this.actionsQueueProcessing$.next(false);
       log_groupEnd();
@@ -156,6 +180,7 @@ export class TemplateActionService extends SyncServiceBase {
       const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
         "set_field",
         "set_local",
+        "set_self",
         "trigger_actions",
       ];
       if (processedActions.find((a) => reprocessActions.includes(a.action_id))) {
@@ -163,15 +188,21 @@ export class TemplateActionService extends SyncServiceBase {
       }
     }
   }
-  private async processAction(action: FlowTypes.TemplateRowAction) {
-    action.args = action.args.map((arg) => {
-      // HACK - update any self referenced values (see note from template.parser method)
-      if (typeof arg === "string" && arg.startsWith("this.")) {
-        const selfField = arg.split(".")[1];
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
+
+  private async processActionInterceptors(action: FlowTypes.TemplateRowAction) {
+    const actionScope = action._triggeredBy?._nested_name;
+    if (!actionScope) return action;
+    for (const [scope, interceptor] of this.actionsInterceptors) {
+      if (action && actionScope.startsWith(scope)) {
+        action = await interceptor(action);
       }
-      return arg;
-    });
+    }
+    return action;
+  }
+
+  private async processAction(action: FlowTypes.TemplateRowAction) {
+    action = this.hackUpdateActionSelfReferenceValues(action);
+
     const { action_id, args } = action;
 
     // Call any action registered with global handler
@@ -187,6 +218,9 @@ export class TemplateActionService extends SyncServiceBase {
       case "reset_app":
         return this.settingsService.resetApp();
       case "set_local":
+        console.log("[SET LOCAL]", { key, value });
+        return this.setLocalVariable(key, value);
+      case "set_self":
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
       case "go_to":
@@ -263,7 +297,6 @@ export class TemplateActionService extends SyncServiceBase {
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();
-          await this.dbSyncService.syncToServer();
         }
         if (parent) {
           const msg = ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`;
@@ -290,6 +323,39 @@ export class TemplateActionService extends SyncServiceBase {
     }
   }
 
+  // HACK - update any self referenced values (see note from template.parser method)
+  // This workaround is required in order for self referenced values in action args and params to
+  // access the up-to-date value, as opposed to the value as it was when the action was originally parsed
+  // See https://github.com/IDEMSInternational/open-app-builder/pull/2749
+  private hackUpdateActionSelfReferenceValues(
+    action: FlowTypes.TemplateRowAction
+  ): FlowTypes.TemplateRowAction {
+    // Update action.args and action.params
+    const currentValue = action._triggeredBy?.value;
+    // define a replacer that preserves type if `this.value` specified, replacing as string for
+    // other expressions `@local.some_field_{this.value}`
+    function replaceReference(v: any) {
+      if (typeof v === "string") {
+        if (v === "this.value") {
+          return currentValue;
+        }
+        if (v.includes("{this.value}")) {
+          return v.replace("{this.value}", currentValue as string);
+        }
+      }
+      return v;
+    }
+    if (action.args) {
+      action.args = action.args.map((arg) => replaceReference(arg));
+    }
+    if (action.params) {
+      for (const [key, value] of Object.entries(action.params)) {
+        action.params[key] = replaceReference(value);
+      }
+    }
+    return action;
+  }
+
   /**
    * Update a local template row
    *
@@ -311,6 +377,8 @@ export class TemplateActionService extends SyncServiceBase {
       }
       rowEntry.value = value;
       this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
+      this.container.templateRowService.templateRowMapValues[rowEntry._nested_name] =
+        rowEntry.value;
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");

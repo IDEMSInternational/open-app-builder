@@ -224,5 +224,5 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
 .display-group-wrapper[data-param-style~="white_box"] {
   @include essential-tool;
   background: var(--ion-color-primary-contrast);
-  border: var(--ion-border-standard);
+  border: var(--border-standard);
 }

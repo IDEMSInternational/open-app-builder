@@ -1,5 +1,6 @@
 import { FlowTypes } from "data-models";
-import { setNestedProperty, booleanStringToBoolean } from "../utils";
+import { setNestedProperty } from "../utils";
+import { parseStringValue } from "shared/src/utils";
 
 /**
  * Convert app data map string to object
@@ -48,11 +49,16 @@ export function parseAppDataCollectionString(
     let [key, value] = el.split(":");
     value = value ? value.trim() : value;
     // handle keys that define deeper nesting, such as time.hours: 7
-    if (key.includes(".")) {
+    // do not nest dynamic references
+    if (key.includes(".") && !key.startsWith("@")) {
       const [base, ...nested] = key.split(".");
-      collection[base] = setNestedProperty(nested.join("."), value, collection[base]);
+      collection[base] = setNestedProperty(
+        nested.join("."),
+        parseStringValue(value),
+        collection[base]
+      );
     } else {
-      collection[key] = booleanStringToBoolean(value);
+      collection[key] = parseStringValue(value);
     }
   });
   return collection;
@@ -97,6 +103,7 @@ export function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow[
 }
 
 // Standardise newline characters within a string (i.e. replace "\r\n" (CRLF) with "\n" (LF))
+// also replace any remaining \r with \n (https://github.com/IDEMSInternational/open-app-builder/issues/2499)
 export function standardiseNewlines(str: string) {
-  return str.replace(/\\r\\n/g, "\\n");
+  return str.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n");
 }

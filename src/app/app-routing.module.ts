@@ -1,23 +1,23 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_CONFIG } from "./data";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { TourComponent } from "./feature/tour/tour.component";
 
-// TODO: These should come from the appConfigService
-const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
-
-/** Routes specified from data-models */
-const DataRoutes: Routes = [
-  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
-  ...APP_ROUTE_DEFAULTS.redirects,
-];
-const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
-
-/** Routes required for main app features */
-const FeatureRoutes: Routes = [
+/**
+ * Routes required for main app features
+ * Additional home template redirects and fallback routes will be specified
+ * from deployment config via the AppConfigService
+ **/
+const featureRoutes: Routes = [
   {
     path: "campaigns",
     loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
+  },
+  {
+    path: "component",
+    loadChildren: () =>
+      import("./feature/template/pages/component/component.module").then(
+        (m) => m.TemplateComponentModule
+      ),
   },
   {
     path: "notifications",
@@ -45,7 +45,9 @@ const FeatureRoutes: Routes = [
     path: "user",
     loadChildren: () => import("./feature/user/user.module").then((m) => m.UserModule),
   },
-  // Routes to show in sidebar routing
+];
+// Routes available for display in sidebar routing
+const sidebarRoutes: Routes = [
   {
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
@@ -58,17 +60,17 @@ const FeatureRoutes: Routes = [
     outlet: "sidebar",
   },
   {
-    path: "component",
-    loadChildren: () =>
-      import("./feature/template/pages/component/component.module").then(
-        (m) => m.TemplateComponentModule
-      ),
+    path: "user",
+    loadChildren: () => import("./feature/user/user.module").then((m) => m.UserModule),
+    outlet: "sidebar",
   },
 ];
 
+export const APP_FEATURE_ROUTES = [...featureRoutes, ...sidebarRoutes];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot([...FeatureRoutes, ...DataRoutes, fallbackRoute], {
+    RouterModule.forRoot(APP_FEATURE_ROUTES, {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",

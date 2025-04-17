@@ -1,31 +1,51 @@
-import { Injectable } from "@angular/core";
-import { getDefaultAppConfig, IAppConfig, IAppConfigOverride } from "data-models";
+import { Injectable, signal } from "@angular/core";
+import {
+  getDefaultAppConfig,
+  IAppConfig,
+  IAppConfigOverride,
+  applyAppConfigDeprecations,
+} from "data-models";
 import { BehaviorSubject } from "rxjs";
 import { deepMergeObjects, RecursivePartial, trackObservableObjectChanges } from "../../utils";
-import clone from "clone";
 import { SyncServiceBase } from "../syncService.base";
 import { startWith } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { DeploymentService } from "../deployment/deployment.service";
+import { updateRoutingDefaults } from "./app-config.utils";
+import { Router } from "@angular/router";
+import { isEqual } from "packages/shared/src/utils/object-utils";
+
+/** Config overrides can come from a variety of sources with orders of priority */
+const APP_CONFIG_OVERRIDE_ORDER = {
+  default: 0,
+  deployment: 1,
+  skin: 2,
+  template: 3,
+};
+type IAppConfigOverrideSource = keyof typeof APP_CONFIG_OVERRIDE_ORDER;
 
 @Injectable({
   providedIn: "root",
 })
 export class AppConfigService extends SyncServiceBase {
-  /** List of constants provided by data-models combined with deployment-specific overrides and skin-specific overrides */
-  appConfig$ = new BehaviorSubject<IAppConfig>(undefined as any);
+  /** Signal representation of current appConfig value */
+  public appConfig = signal<IAppConfig>(undefined);
+
+  /**
+   * @deprecated - prefer use of config signal and computed/effect bindings
+   * List of constants provided by data-models combined with deployment-specific overrides and skin-specific overrides
+   **/
+  public appConfig$ = new BehaviorSubject<IAppConfig>(undefined);
 
   /** Tracking observable of deep changes to app config, exposed in `changes` public method */
   private appConfigChanges$: Observable<RecursivePartial<IAppConfig>>;
 
-  APP_CONFIG: IAppConfig;
-  deploymentAppConfig: IAppConfig;
-
-  public get value() {
-    return this.appConfig$.value;
-  }
+  /** Array of all applied config overrides. Array position represents override order (0-3) */
+  private configOverrides: IAppConfigOverride[] = [];
 
   /**
+   * @deprecated - prefer use of config signal and computed/effect bindings
+   *
    * Track deep object diff of app config changes.
    * Creates subject on demand, so that multiple listeners can efficiently subscribe to changes
    */
@@ -36,35 +56,66 @@ export class AppConfigService extends SyncServiceBase {
     return this.appConfigChanges$;
   }
 
-  /** Track deep object diff of app config changes, including full initial value */
+  /**
+   * @deprecated - prefer use of config signal and computed/effect bindings
+   * Track deep object diff of app config changes, including full initial value
+   * */
   public get changesWithInitialValue$() {
-    return this.changes$.pipe(startWith(this.value));
+    return this.changes$.pipe(startWith(this.appConfig()));
   }
 
-  constructor(private deploymentService: DeploymentService) {
+  constructor(
+    private deploymentService: DeploymentService,
+    private router: Router
+  ) {
     super("AppConfig");
     this.initialise();
   }
 
+  /** When service initialises load config defaults and deployment to trigger any side-effects  */
   private initialise() {
-    const deploymentOverrides: IAppConfigOverride = this.deploymentService.config.app_config || {};
-    this.APP_CONFIG = getDefaultAppConfig();
-    // Store app config with deployment overrides applied, to be merged with additional overrides when applied
-    this.deploymentAppConfig = this.applyAppConfigOverrides(this.APP_CONFIG, deploymentOverrides);
-    this.updateAppConfig(deploymentOverrides);
+    this.setAppConfig(getDefaultAppConfig(), "default");
+    this.setAppConfig(this.deploymentService.config.app_config, "deployment");
   }
 
-  public updateAppConfig(overrides: IAppConfigOverride) {
-    // Clone this.deploymentAppConfig so that the original is unaffected by deepMergeObjects()
-    const appConfigWithOverrides = this.applyAppConfigOverrides(
-      clone(this.deploymentAppConfig),
-      overrides
-    );
-    this.APP_CONFIG = appConfigWithOverrides;
-    this.appConfig$.next(appConfigWithOverrides);
+  /**
+   * Generate a complete app config by deep-merging app config overrides
+   * with the initial config
+   */
+  public setAppConfig(overrides: IAppConfigOverride = {}, source: IAppConfigOverrideSource) {
+    overrides = applyAppConfigDeprecations(overrides);
+
+    // use override source to specify index used in override order
+    const overrideIndex = APP_CONFIG_OVERRIDE_ORDER[source];
+
+    if (!overrideIndex && overrideIndex !== 0)
+      return console.error(`[APP CONFIG] Unknown config override source, ${source}`);
+
+    // ignore updates that are identical to current overrides for a given level
+    if (isEqual(overrides, this.configOverrides[overrideIndex])) {
+      return;
+    }
+
+    // replace any overrides at the existing level (e.g. skin or template)
+    this.configOverrides[overrideIndex] = overrides;
+
+    // merge all levels of override, with higher order levels merged on top of lower
+    const mergedConfig = deepMergeObjects({} as IAppConfig, ...this.configOverrides);
+
+    // if merged config unchanged ignore (e.g. lower order update superseded by higher order)
+    if (isEqual(this.appConfig(), mergedConfig)) {
+      return;
+    }
+
+    // trigger change effects
+    this.handleConfigSideEffects(overrides, mergedConfig);
+    this.appConfig.set(mergedConfig);
+    this.appConfig$.next(mergedConfig);
   }
 
-  private applyAppConfigOverrides(appConfig: IAppConfig, overrides: IAppConfigOverride) {
-    return deepMergeObjects(appConfig, overrides);
+  private handleConfigSideEffects(overrides: IAppConfigOverride = {}, config: IAppConfig) {
+    if (overrides.APP_ROUTE_DEFAULTS) {
+      updateRoutingDefaults(config.APP_ROUTE_DEFAULTS, this.router);
+    }
   }
 }

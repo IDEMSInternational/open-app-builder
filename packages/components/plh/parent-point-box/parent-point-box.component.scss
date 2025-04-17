@@ -1,0 +1,116 @@
+@use "/src/theme/mixins";
+
+$item-background: var(--points-item-background, var(--ion-color-primary-200));
+$item-background-complete: var(
+  --points-item-background-complete,
+  var(--ion-color-primary-contrast)
+);
+$item-border: var(--points-item-border, none);
+
+.wrapper-point {
+  padding: var(--regular-padding) 5px;
+  .item {
+    @include mixins.flex-centered;
+    margin: 0 auto;
+    padding: 20px 0;
+    width: var(--points-item-width);
+    max-width: 100%; // Don't allow overlap
+    height: var(--points-item-height);
+    background: $item-background;
+    box-shadow: var(--ion-default-box-shadow);
+    border: 1px solid $item-border;
+    border-radius: var(--ion-border-radius-standard);
+    position: relative;
+    flex-direction: column;
+
+    .star {
+      @include mixins.flex-centered;
+      position: absolute;
+      left: -12px;
+      top: -16px;
+      .star-value {
+        padding-top: 4px;
+        font-weight: var(--font-weight-standard);
+        font-size: var(--line-height-text-tiny);
+        color: var(--ion-color-primary);
+        position: absolute;
+      }
+      img {
+        width: 47px;
+        height: 47px;
+      }
+    }
+    .info-button {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    .image {
+      max-height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text {
+      margin: var(--tiny-margin) 0;
+      font-weight: var(--font-weight-standard);
+      font-size: var(--font-size-text-small);
+      line-height: var(--line-height-text-small);
+      text-align: center;
+      color: var(--ion-color-primary);
+      padding: 0 var(--tiny-padding);
+    }
+  }
+  .complete {
+    background: $item-background-complete;
+  }
+}
+.celebrationAnim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+}
+.on-add {
+  animation: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes bounce {
+  from,
+  20%,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}

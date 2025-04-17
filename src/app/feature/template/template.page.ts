@@ -18,6 +18,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   filteredTemplates: FlowTypes.FlowTypeBase[] = [];
   appConfigChanges$: Subscription;
   shouldEmitScrollEvents: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -26,21 +27,23 @@ export class TemplatePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
-    const allTemplates = this.appDataService.listSheetsByType("template");
-    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
-    this.filteredTemplates = allTemplates;
+    if (!this.templateName) {
+      this.listTemplates();
+    }
     this.subscribeToAppConfigChanges();
   }
 
-  search() {
-    this.allTemplates = this.allTemplates;
+  public search() {
     this.filteredTemplates = this.allTemplates.filter(
       (i) => i.flow_name.toLocaleLowerCase().indexOf(this.filterTerm.toLowerCase()) > -1
     );
   }
 
-  trackByFn(index) {
-    return index;
+  /** Create a list of all templates to display when no specific template loaded */
+  private listTemplates() {
+    const allTemplates = this.appDataService.listSheetsByType("template");
+    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
+    this.filteredTemplates = allTemplates;
   }
 
   private subscribeToAppConfigChanges() {

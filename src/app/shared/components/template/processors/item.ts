@@ -1,28 +1,23 @@
-// NOTE - importing from 'shared' will fail as contains non-browser packages and
-// name conflicts with local 'shared' folder. Import full path from packages instead
-import { JSEvaluator } from "packages/shared/src/models/jsEvaluator/jsEvaluator";
 import { TemplatedData } from "packages/shared/src/models/templatedData/templatedData";
-
-import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
-import { objectToArray } from "../utils";
+import { ItemDataPipe } from "./itemPipe";
 
 export class ItemProcessor {
   constructor(
-    private dataList: any,
-    private parameterList?: any
+    private dataListRows: FlowTypes.Data_listRow[] = [],
+    private parameterList: any = {}
   ) {}
 
   public process(templateRows: any) {
-    const data = objectToArray(this.dataList);
-    const pipedData = this.pipeData(data, this.parameterList);
-    const itemRows = this.generateLoopItemRows(templateRows, pipedData);
-    const parsedItemRows = this.hackSetNestedName(itemRows);
+    const pipedData = this.pipeData(this.dataListRows, this.parameterList);
+    const itemTemplateRows = this.generateLoopItemRows(templateRows, pipedData);
+    const parsedItemTemplatedRows = this.hackSetNestedName(itemTemplateRows);
     // Return both rows for rendering and list of itemData used (post pipe operations)
-    return { itemRows: parsedItemRows, itemData: pipedData };
+    return { itemTemplateRows: parsedItemTemplatedRows, itemData: pipedData };
   }
 
-  private pipeData(data: any[], parameter_list: any) {
+  /** Process all item list operators, such as filter, sort and limit */
+  public pipeData(data: any[], parameter_list: any) {
     if (parameter_list) {
       const operations = Object.entries<any>(parameter_list).map(([name, arg]) => ({
         name,
@@ -54,7 +49,7 @@ export class ItemProcessor {
         _last: _index === lastItemIndex,
       };
       const evalContext: FlowTypes.TemplateRow["_evalContext"] = {
-        itemContext: {
+        item: {
           ...item,
           ...itemContextMeta,
           // Assign row dynamic context to allow reference to rendered row metadata, including
@@ -72,7 +67,7 @@ export class ItemProcessor {
   private setRecursiveRowEvalContext(
     row: FlowTypes.TemplateRow,
     evalContext: FlowTypes.TemplateRow["_evalContext"]
-  ) {
+  ): FlowTypes.TemplateRow {
     // Workaround destructure for memory allocation issues (applying click action of last item only)
     const { rows, ...rest } = JSON.parse(JSON.stringify(row));
     const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
@@ -95,56 +90,14 @@ export class ItemProcessor {
   private hackSetNestedName(itemRows: FlowTypes.TemplateRow[]) {
     const parsedRows = [];
     for (const row of itemRows) {
-      const parser = new TemplatedData({ context: { item: row._evalContext.itemContext } });
+      const parser = new TemplatedData({ context: { item: row._evalContext.item } });
       const { rows, _nested_name } = row;
       row._nested_name = parser.parse(_nested_name);
       if (rows) {
-        row.rows = this.hackSetNestedName(rows);
+        row.rows = this.hackSetNestedName(rows as FlowTypes.TemplateRow[]);
       }
       parsedRows.push(row);
     }
     return parsedRows;
   }
-}
-
-/**
- *
- */
-class ItemDataPipe {
-  public process(data: any[], operations: { name: string; arg?: string }[]) {
-    for (const { name, arg } of operations) {
-      const operator = this.operations[name];
-      if (operator) {
-        data = operator(data, arg);
-      } else {
-        console.error("No item pipeline operation found", name);
-      }
-    }
-    return data;
-  }
-
-  private operations = {
-    shuffle: (items: any[] = []) => {
-      return shuffleArray(items);
-    },
-    sort: (items: any[] = [], sortField: string) => {
-      if (!sortField) return items;
-      return items.sort((a, b) => (a[sortField] > b[sortField] ? 1 : -1));
-    },
-    filter: (items: any[] = [], expression: string) => {
-      if (!expression) return;
-      return items.filter((item) => {
-        // NOTE - expects all non-item condition to be evaluated
-        // e.g. `@item.field > @local.some_value` already be evaluated to `this.item.field > "local value"`
-        const evaluator = new JSEvaluator();
-        const evaluated = evaluator.evaluate(expression, { item });
-        return evaluated;
-      });
-    },
-    reverse: (items: any[] = []) => items.reverse(),
-    limit: (items: any[] = [], value: string) => {
-      if (!value) return items;
-      return items.slice(0, Number(value));
-    },
-  };
 }
