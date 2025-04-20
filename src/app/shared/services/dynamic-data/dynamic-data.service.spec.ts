@@ -61,7 +61,7 @@ describe("DynamicDataService", () => {
     service = TestBed.inject(DynamicDataService);
     await service.ready();
     // Ensure any data previously persisted is cleared
-    await service.resetFlow("data_list", "test_flow");
+    await service.resetAll();
   });
 
   it("populates initial flows from json", async () => {
@@ -159,15 +159,41 @@ describe("DynamicDataService", () => {
     ).toBeRejectedWithError();
   });
 
-  it("supports internal collections", async () => {
+  it("sets all values in internal collection", async () => {
     await service.setInternalCollection("mock", [{ id: "1", string: "hello" }]);
     const obs = service.query$<any>("data_list", "_mock");
     const data = await firstValueFrom(obs);
     expect(data).toEqual([{ id: "1", string: "hello" }]);
   });
 
-  it("TODO - delete bulk/single", async () => {
-    // TODO
+  it("internal collection manual insert", async () => {
+    await service.insert("data_list", "_local_list", { id: "id_1", number: 1 });
+    const obs = service.query$<any>("data_list", "_local_list");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id_1", number: 1 }]);
+  });
+
+  it("internal collection delete single", async () => {
+    await service.bulkUpsert("data_list", "_local_list", [
+      { id: "id_1", number: 1 },
+      { id: "id_2", number: 2 },
+    ]);
+    await service.remove("data_list", "_local_list", ["id_1"]);
+    const obs = service.query$<any>("data_list", "_local_list");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id_2", number: 2 }]);
+    // ensure state persisted correctly
+    const persistState = await service.getState();
+    expect(persistState).toEqual({
+      data_list: {
+        _local_list: {
+          id_2: {
+            id: "id_2",
+            number: 2,
+          },
+        },
+      },
+    });
   });
 
   // QA
