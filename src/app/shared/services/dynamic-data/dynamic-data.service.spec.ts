@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { firstValueFrom } from "rxjs";
+import { catchError, firstValueFrom, of } from "rxjs";
 
 import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
@@ -61,25 +61,25 @@ describe("DynamicDataService", () => {
     service = TestBed.inject(DynamicDataService);
     await service.ready();
     // Ensure any data previously persisted is cleared
-    await service.resetFlow("data_list", "test_flow");
+    await service.resetAll();
   });
 
   it("populates initial flows from json", async () => {
-    const obs = await service.query$("data_list", "test_flow");
+    const obs = service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data.length).toEqual(3);
   });
 
   it("supports partial flow row updates", async () => {
     await service.update("data_list", "test_flow", "id1", { number: 1.1 });
-    const obs = await service.query$<any>("data_list", "test_flow");
+    const obs = service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].number).toEqual(1.1);
   });
   it("allows reset to initial data", async () => {
     await service.update("data_list", "test_flow", "id1", { number: 1.1 });
     await service.resetFlow("data_list", "test_flow");
-    const obs = await service.query$<any>("data_list", "test_flow");
+    const obs = service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].number).toEqual(1);
   });
@@ -108,7 +108,7 @@ describe("DynamicDataService", () => {
     // HACK - ensure any previous data cleared before running test
     await service.resetFlow("data_list", "test_flow");
     const queryResults: ITestRow[][] = [];
-    const obs = await service.query$("data_list", "test_flow", {
+    const obs = service.query$("data_list", "test_flow", {
       selector: { number: { $gt: 2 } },
     });
     obs.subscribe((v) => {
@@ -125,7 +125,7 @@ describe("DynamicDataService", () => {
 
   it("Supports parallel requests without recreating collections", async () => {
     const queries = new Array(20).fill(0).map(async () => {
-      const obs = await service.query$("data_list", "test_flow");
+      const obs = service.query$("data_list", "test_flow");
       return firstValueFrom(obs);
     });
     const res = await Promise.all(queries);
@@ -133,20 +133,20 @@ describe("DynamicDataService", () => {
   });
 
   it("supports reading data with protected fields", async () => {
-    const obs = await service.query$("data_list", "test_flow");
+    const obs = service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0]["_meta_field"]).toEqual({ test: "hello" });
   });
 
   it("adds metadata (row_index) to docs", async () => {
-    const obs = await service.query$<any>("data_list", "test_flow");
+    const obs = service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].row_index).toEqual(0);
     expect(data[1].row_index).toEqual(1);
   });
 
   it("returns data sorted by row_index", async () => {
-    const obs = await service.query$<any>("data_list", "test_flow");
+    const obs = service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data[0].id).toEqual("id1");
     expect(data[1].id).toEqual("id2");
@@ -159,23 +159,53 @@ describe("DynamicDataService", () => {
     ).toBeRejectedWithError();
   });
 
-  it("supports internal collections", async () => {
+  it("sets all values in internal collection", async () => {
     await service.setInternalCollection("mock", [{ id: "1", string: "hello" }]);
-    const obs = await service.query$<any>("data_list", "_mock");
+    const obs = service.query$<any>("data_list", "_mock");
     const data = await firstValueFrom(obs);
     expect(data).toEqual([{ id: "1", string: "hello" }]);
   });
 
-  it("TODO - delete bulk/single", async () => {
-    // TODO
+  it("internal collection manual insert", async () => {
+    await service.insert("data_list", "_local_list", { id: "id_1", number: 1 });
+    const obs = service.query$<any>("data_list", "_local_list");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id_1", number: 1 }]);
+  });
+
+  it("internal collection delete single", async () => {
+    await service.bulkUpsert("data_list", "_local_list", [
+      { id: "id_1", number: 1 },
+      { id: "id_2", number: 2 },
+    ]);
+    await service.remove("data_list", "_local_list", ["id_1"]);
+    const obs = service.query$<any>("data_list", "_local_list");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id_2", number: 2 }]);
+    // ensure state persisted correctly
+    const persistState = await service.getState();
+    expect(persistState).toEqual({
+      data_list: {
+        _local_list: {
+          id_2: {
+            id: "id_2",
+            number: 2,
+          },
+        },
+      },
+    });
   });
 
   // QA
   it("prevents query of non-existent data lists", async () => {
     let errMsg: string;
-    await service.query$("data_list", "fakeData").catch((err) => {
-      errMsg = err.message;
-    });
+    const query = service.query$("data_list", "fakeData").pipe(
+      catchError((err) => {
+        errMsg = err.message;
+        return of([]);
+      })
+    );
+    await firstValueFrom(query);
     expect(errMsg).toEqual(`No data exists for collection [fakeData], cannot initialise`);
   });
 
