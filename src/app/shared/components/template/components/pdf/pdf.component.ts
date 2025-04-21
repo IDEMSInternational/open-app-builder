@@ -2,6 +2,7 @@ import { AfterViewInit, Component, computed, ViewEncapsulation } from "@angular/
 import { TemplateBaseComponent } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { PDFViewerService } from "./pdf.service";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 const errorMessageDefault =
   "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app";
@@ -32,6 +33,8 @@ export class TmplPdfComponent extends TemplateBaseComponent implements AfterView
       openExternalText: open_external_text || "Open with...",
     };
   });
+
+  public serviceReady = toSignal(this.service["initialised$"]);
 
   // Additional locales are currently excluded from main build to reduce bundle sizes
   public locale = "en-US";
