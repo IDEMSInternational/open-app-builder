@@ -211,7 +211,6 @@ export class SharedDataService extends AsyncServiceBase {
   private async updateCache(docs: ISharedDataCollection[]) {
     if (docs.length > 0) {
       const cacheName = "_shared_data";
-      console.log("update docs", docs);
       await this.dynamicDataService.bulkUpsert("data_list", cacheName, docs);
     }
   }
