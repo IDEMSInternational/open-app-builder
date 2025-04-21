@@ -1,8 +1,18 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, Component, computed, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
-import { isLegacyBrowser } from "src/app/shared/utils";
+import { PDFViewerService } from "./pdf.service";
+
+const errorMessageDefault =
+  "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app";
+
+interface IAuthorParams {
+  starting_page?: string;
+  /** Message displayed when legacy browser detected */
+  error_message?: string;
+  /** Open external text. Default "Open with..." */
+  open_external_text?: string;
+}
 
 @Component({
   selector: "plh-pdf",
@@ -11,30 +21,34 @@ import { isLegacyBrowser } from "src/app/shared/utils";
   // Allow override of global pdf viewer styles
   encapsulation: ViewEncapsulation.None,
 })
-export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
-  startingPage: number;
-  legacyBrowser = false;
-  errorMessage: string;
+export class TmplPdfComponent extends TemplateBaseComponent implements AfterViewInit {
+  public pdfSrc = computed(() => this.value());
 
-  constructor() {
+  public params = computed(() => {
+    const { error_message, starting_page, open_external_text } = this.params as IAuthorParams;
+    return {
+      startingPage: Number(starting_page || 1),
+      errorMessage: error_message || errorMessageDefault,
+      openExternalText: open_external_text || "Open with...",
+    };
+  });
+
+  // Additional locales are currently excluded from main build to reduce bundle sizes
+  public locale = "en-US";
+
+  constructor(public service: PDFViewerService) {
     super();
     // name of folder pdf viewer assets copied to as declared in `angular.json`
     pdfDefaultOptions.assetsFolder = "assets/comp-pdf";
-    // additional locales are currently excluded from main build
-    pdfDefaultOptions.locale = "en-GB";
+  }
+  ngAfterViewInit(): void {
+    this.service.ready();
   }
 
-  ngOnInit() {
-    this.getParams();
-    this.legacyBrowser = isLegacyBrowser();
-  }
-
-  getParams() {
-    this.startingPage = getNumberParamFromTemplateRow(this._row, "starting_page", 1);
-    this.errorMessage = getStringParamFromTemplateRow(
-      this._row,
-      "error_message",
-      "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view"
+  public openExternal() {
+    this.parent.handleActions(
+      [{ action_id: "open_external", args: [this.value()], trigger: "click" }],
+      this.rowSignal()
     );
   }
 }

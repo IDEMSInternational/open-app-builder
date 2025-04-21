@@ -1,20 +1,30 @@
 <div class="pdf-viewer">
-  <ngx-extended-pdf-viewer
-    *ngIf="!legacyBrowser"
-    [src]="_row.value | plhAsset"
-    [page]="startingPage"
-    [customToolbar]="customToolbar"
-    [showBorders]="false"
-    [mobileFriendlyZoom]="'1.3'"
-    [height]="'80%'"
-    [textLayer]="false"
-    [backgroundColor]="'var(--ion-color-gray-light)'"
-    [zoom]="'page-width'"
-  >
-  </ngx-extended-pdf-viewer>
-  <div class="error-message" *ngIf="legacyBrowser">
-    {{ errorMessage }}
-  </div>
+  @if (service.readySignal()) {
+    @if (service.isCompatible()) {
+      <ngx-extended-pdf-viewer
+        [src]="pdfSrc() | plhAsset"
+        [page]="params().startingPage"
+        [customToolbar]="customToolbar"
+        [showBorders]="false"
+        [mobileFriendlyZoom]="'1.3'"
+        [height]="'80%'"
+        [textLayer]="false"
+        [backgroundColor]="'var(--ion-color-gray-light)'"
+        [zoom]="'page-width'"
+        [language]="locale"
+      >
+      </ngx-extended-pdf-viewer>
+    } @else {
+      <div class="error-message">
+        {{ params().errorMessage }}
+      </div>
+      <ion-button (click)="openExternal()" fill="outline" style="margin-top: 1rem">
+        <ion-icon name="open-outline" slot="start"></ion-icon>{{ params().openExternalText }}
+      </ion-button>
+    }
+  } @else {
+    Loading...
+  }
 </div>
 
 <!-- Custom toolbar examples here: https://pdfviewer.net/extended-pdf-viewer/custom-toolbar -->
