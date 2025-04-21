@@ -1,5 +1,5 @@
 <div class="pdf-viewer">
-  @if (service.readySignal()) {
+  @if (serviceReady()) {
     @if (service.isCompatible()) {
       <ngx-extended-pdf-viewer
         [src]="pdfSrc() | plhAsset"

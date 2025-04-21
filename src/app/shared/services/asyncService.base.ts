@@ -26,9 +26,6 @@ export class AsyncServiceBase {
   /** Private variable for tracking if initialised */
   private initialised$ = new BehaviorSubject(false);
 
-  /** Signal to check whether service ready and trigger initialisation if not */
-  public readySignal = toSignal(this.initialised$);
-
   /** Private track whether init called */
   private initCalled = false;
 
