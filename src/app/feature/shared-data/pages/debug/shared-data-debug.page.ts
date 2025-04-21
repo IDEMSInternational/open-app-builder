@@ -35,10 +35,11 @@ export class SharedDataDebugPage implements OnInit {
   public displayTableData = computed(() => {
     const collection = this.sharedDataSingle();
     if (collection && collection.data) {
-      const { data, ...meta } = collection;
+      const { data, admins, members, ...meta } = collection;
       return {
         meta: Object.entries(meta).map(([key, value]) => ({ key, value })),
         data: Object.entries(data).map(([key, value]) => ({ key, value })),
+        admins,
       };
     }
   });
@@ -81,5 +82,12 @@ export class SharedDataDebugPage implements OnInit {
     if (role === "destructive") {
       this.service.deleteSharedCollection(id);
     }
+  }
+
+  public addAdmin(memberId: string) {
+    return this.service.addCollectionMember(this.selectedId(), memberId, "admin");
+  }
+  public removeAdmin(memberId: string) {
+    return this.service.removeCollectionMember(this.selectedId(), memberId, "admin");
   }
 }

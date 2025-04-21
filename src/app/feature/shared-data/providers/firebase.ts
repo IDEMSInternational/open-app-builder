@@ -67,10 +67,10 @@ const sharedDataConverter: FirestoreDataConverter<
  *
  * Table data is represented within firestore collections prefixed via `shared_`
  */
-export class FirebaseDataProvider extends SharedDataProviderBase {
+export class FirebaseDataProvider implements SharedDataProviderBase {
   private db: Firestore;
 
-  public override async initialise(injector: Injector) {
+  public async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     firebaseService.ready();
 
@@ -81,7 +81,7 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     this.db = getFirestore(app);
   }
 
-  public override querySingle$(params: SharedDataQueryParams) {
+  public querySingle$(params: SharedDataQueryParams) {
     const { id } = params;
     const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
     const docRef = doc(collectionRef, id);
@@ -89,7 +89,7 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return this.docRefToObservable(docRef);
   }
 
-  public override queryMultiple$(params: SharedDataQueryParams) {
+  public queryMultiple$(params: SharedDataQueryParams) {
     const { id = "" } = params;
     const resourcePath = id ? `${COLLECTION}/${id}` : COLLECTION;
     const collectionRef = collection(this.db, resourcePath).withConverter(sharedDataConverter);
@@ -101,15 +101,16 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return this.queryToObservable<ISharedDataCollection>(docsQuery);
   }
 
-  public override async createSharedCollection(id: string, data: ISharedDataCollection) {
+  public async createSharedCollection(id: string, data: ISharedDataCollection) {
     const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
     const docRef = doc(collectionRef, id);
     await setDoc(docRef, data);
     return data;
   }
 
-  public override updateSharedData(id: string, key: string, value: any) {
-    const docRef = doc(this.db, COLLECTION, id);
+  public updateSharedData(id: string, key: string, value: any) {
+    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
+    const docRef = doc(collectionRef, id);
     // remove nested data entry
     if (value === undefined) {
       value = deleteField();
@@ -118,10 +119,15 @@ export class FirebaseDataProvider extends SharedDataProviderBase {
     return updateDoc(docRef, { [`data.${key}`]: value, _updated_at: serverTimestamp() });
   }
 
-  public override async deleteSharedCollection(id: string) {
+  public async deleteSharedCollection(id: string) {
     const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
     const docRef = doc(collectionRef, id);
     return deleteDoc(docRef);
+  }
+  public async updateCollectionMetadata(id: string, update: Partial<ISharedDataCollection>) {
+    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
+    const docRef = doc(collectionRef, id);
+    return updateDoc(docRef, { ...update, _updated_at: serverTimestamp() });
   }
 
   private buildDocumentQuery(

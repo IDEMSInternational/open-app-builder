@@ -17,6 +17,10 @@ h3 {
   &:hover {
     transform: scale(1.03);
   }
+  &.selected {
+    transform: scale(1.03);
+    background: wheat;
+  }
 }
 .item-title {
   font-size: x-small;

@@ -2,23 +2,13 @@
 
 
 ## Review Notes
-- Auth requirement
-  - Assuming required at level of admin/member. 
-- Making data available to anonymous users...?
-  - Maybe public groups. But wouldn't want to make top-level listable as would sync all data in groups (maybe search by accessCode or similar)
-- Decoupling general functionality from specific co-facilitator requirements
-  - Want to add data structures to support what will be needed
-- Conceptually shared_data should be thought of as a single data_list, with rows containing sharable data.
-Each row has a unique id, and a specific "data" column of shared json data. Additional columns will be used in
-the future for general functionality, such as marking the row as public/private, or providing list of users to share with
-
 Firestore structures
 
 - Querying optimised for all documents in a collection
 
 Case 1
 `/shared_data/{group_id}`
-                  |  { createdBy: 'user_1', updatedAt: '...', isPublic: true, label:'Group 1',}
+                  |  { createdBy: 'user_1', updatedAt: '...', label:'Group 1',}
 
 
 + Single query to `shared_data` can list all groups
@@ -27,7 +17,7 @@ Case 1
 Case 2
 `/shared_data/{group_id}/shared/data`
                   |               | { label:'Group 1' }    
-                  | { createdBy: 'user_1', updatedAt: '...', isPublic: true, label:'Group 1',}
+                  | { createdBy: 'user_1', updatedAt: '...', label:'Group 1',}
 + Can still list all groups without 
 
 Case 3
@@ -40,38 +30,23 @@ Case 4
 - Likely difficulty in making data migrations in future. Why want to keep very minimal top-level info (server data compatibility with legacy app users).
 Minimal track collection creator auth id (assume later permissions), and a single boolean `isPublic` . These top-level used for db access control and query efficiency.
 
-- Default enabled for all projects using firebase integration. Although only inits when used in templates/actions so non-issue if firebase not configured
-- Debug project configured to work with firebase `debug-e8934`. I don't have access so locally overwrite to use `idems-app-debug`. If making this the encrypted config will likely need to update ios plist also with new credentials if testing auth on simulator builds
 - Shared data is automatically stored in local data_lists for offline access. Authors should avoid manually authoring any lists with reserved prefix `shared_`, unless explicitly expecting it to be replaced by server data
-
-```json
- {
-  "apiKey": "AIzaSyD3G_qN_NEUdTtiKIzjyEX_YuHW-HxHT3E",
-  "authDomain": "idems-app-debug.firebaseapp.com",
-  "projectId": "idems-app-debug",
-  "storageBucket": "idems-app-debug.firebasestorage.app",
-  "messagingSenderId": "487261580762",
-  "appId": "1:487261580762:web:236d09a04ee64a26d5e4e3"
-}
-```
 
 
 ## TODO
 **Discuss on call**
-- Top-level naming (maybe prefix?)  e.g. `parent_groups` -> `shared_parent_groups`
 - Auth ids vs device ids (ability to use security rules)
 - Security rules (rule not filters, unlike postgres... determines if query will be allowed or not)
 - Deleting collections (local persistence)
 - Optimising reads (keeping deleted on server)
 
 **Dev**
-- Fix cache -- appears to add both `/` and `__` versions but only remove underscore
-- Split PRs
 - PLH-specific group component
-- Add actions to update data
-- Render data_items
-- - Make plans for nested (do not implement)
-- Invite system
+- Handle deleted collections / removed groups (possible regular full query and/or aggregation), or some sort of user_sync table that informs users of operations required such as local delete when collection or user permission removed from a collection. Might need cloud function to populate (or open security rules to allow write by shared data user), and keep timestamped to allow sync across multiple devices. E.g. user_sync/{user_id}/operations/{op_id}  (or deltas)
+- Authoring actions and components
+  - Update data
+  - Render data_items
+- Make plans for nested (do not implement)
   Short term possible public groups all synced and filtered by code?
 - Add separate public/private group queries (handle case where public <-> private but already persisted)
   Possible require all stale data to be re-synced? Or just disallow toggle... Or just leave synced snapshot
@@ -82,8 +57,6 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 - [ ] Local data caching and only fetch updated responses (consistent timestamp management)
 - [ ] Support both collection and doc query (depending on path segments)
       Collection query returns array of items, doc query returns single item 
-
-
 
 **Component**
 - [ ] Process item loop dynamic data (?)
@@ -107,6 +80,14 @@ Minimal track collection creator auth id (assume later permissions), and a singl
 - [ ] Location Pricing (https://cloud.google.com/firestore/pricing)
 - [ ] Component Demo
 - [ ] Migrate to documentation pages
+
+
+**Rules**
+Firestore uses rules to manage control access to data. They differ from typical row-based access control (RBAC) in that they do not filter data, but instead assert whether a request is permitted or not. 
+
+So if rules are setup to only allow a user to query data where they have been marked as the original creator, then querying all data will fail, and only a query with specific user filter will work. See more info at: https://firebase.google.com/docs/firestore/security/rules-query
+
+See below current list of recommended rules for data access
 
 ```js
 rules_version = '2';

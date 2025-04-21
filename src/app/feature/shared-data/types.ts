@@ -13,14 +13,16 @@ export interface ISharedDataCollectionMetadata {
   _updated_at: string;
 }
 
+export interface ISharedDataCollectionUsers {
+  /** list of device_ids registered as members */
+  members: string[];
+  /** list of device_ids registered as admins */
+  admins: string[];
+}
+
 export type ISharedDataCollection = ISharedDataCollectionConfig &
-  ISharedDataCollectionMetadata & {
+  ISharedDataCollectionMetadata &
+  ISharedDataCollectionUsers & {
     /** publicly available group data, stored as key-value pairs */
     data: Record<string, any>;
-    /** list of device_ids registered as members */
-    members: string[];
-    /** list of device_ids registered as admins */
-    admins: string[];
-
-    isPublic?: boolean;
   };
