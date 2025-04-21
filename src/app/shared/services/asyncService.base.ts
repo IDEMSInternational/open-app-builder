@@ -1,6 +1,7 @@
 import { filter, first, tap, timeout } from "rxjs/operators";
 import { BehaviorSubject, of, firstValueFrom } from "rxjs";
 import type { SyncServiceBase } from "./syncService.base";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 /**
  * Base class for service with async init method
@@ -24,6 +25,9 @@ import type { SyncServiceBase } from "./syncService.base";
 export class AsyncServiceBase {
   /** Private variable for tracking if initialised */
   private initialised$ = new BehaviorSubject(false);
+
+  /** Signal to check whether service ready and trigger initialisation if not */
+  public readySignal = toSignal(this.initialised$);
 
   /** Private track whether init called */
   private initCalled = false;
@@ -53,9 +57,12 @@ export class AsyncServiceBase {
     }
     // HACK - until code a bit tidier ensure all services still register after random timeout (5-10s)
     else {
-      setTimeout(() => {
-        this.callInitFunction();
-      }, 5000 + Math.random() * 5000);
+      setTimeout(
+        () => {
+          this.callInitFunction();
+        },
+        5000 + Math.random() * 5000
+      );
     }
   }
 

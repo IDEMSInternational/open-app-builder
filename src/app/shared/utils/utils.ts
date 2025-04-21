@@ -468,32 +468,6 @@ export function isNonEmptyArray(value: unknown): value is any[] {
 }
 
 /**
- * Check whether browser supports post-ES5 features. Further checks could be made, for example
- * whether the browser is IE/iOS, but not necessary at runtime as these platforms aren't supported anyway.
- * See discussion thread here: https://github.com/IDEMSInternational/parenting-app-ui/issues/1726
- */
-export function isLegacyBrowser() {
-  if (typeof window === "undefined") {
-    // server-side rendering
-    return false;
-  }
-  return (
-    typeof ReadableStream === "undefined" ||
-    typeof Promise["allSettled"] === "undefined" ||
-    !supportsOptionalChaining()
-  );
-}
-
-function supportsOptionalChaining() {
-  try {
-    eval("const foo = {}; foo?.bar");
-  } catch (e) {
-    return false;
-  }
-  return true;
-}
-
-/**
  * Compiles markdown to HTML synchronously.
  * Extends the renderer of "marked" plugin to ensure that links open in new tags.
  * Code from https://github.com/markedjs/marked/pull/1371#issuecomment-434320596

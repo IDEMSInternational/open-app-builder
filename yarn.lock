@@ -18117,7 +18117,7 @@ __metadata:
     marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
-    ngx-extended-pdf-viewer: ^19.7.1
+    ngx-extended-pdf-viewer: ^23.1.1
     ngx-lottie: ^12.0.0
     ngx-matomo-client: ^6.0.2
     nouislider: ^15.7.1
@@ -22165,13 +22165,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.deburr@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "lodash.deburr@npm:4.1.0"
-  checksum: 6e2012315c20a4d8ed4f1884ed4b8e6b0093c6355a87bfd95ecf25a5243c8c88d747d67375d52cb87ebc99d090935ed8dc3814c8e661e3275a6dbe02b68efc99
-  languageName: node
-  linkType: hard
-
 "lodash.defaults@npm:^4.2.0":
   version: 4.2.0
   resolution: "lodash.defaults@npm:4.2.0"
@@ -23734,17 +23727,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-extended-pdf-viewer@npm:^19.7.1":
-  version: 19.7.1
-  resolution: "ngx-extended-pdf-viewer@npm:19.7.1"
+"ngx-extended-pdf-viewer@npm:^23.1.1":
+  version: 23.1.1
+  resolution: "ngx-extended-pdf-viewer@npm:23.1.1"
   dependencies:
-    lodash.deburr: ^4.1.0
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ">=16.0.0 <18.0.0"
-    "@angular/core": ">=16.0.0 <18.0.0"
-    rxjs: ">=7.0.0"
-  checksum: 261346475949e8360febee60d0413b9846cc7ba3045dd5c4f0a649317c7665895070d36335e67fc309ebd8f120c57e94dd2c103a6ab22bd61e2320613ee3eba6
+    "@angular/common": ">=17.0.0 <21.0.0"
+    "@angular/core": ">=17.0.0 <21.0.0"
+  checksum: 4ed4fbd6a2465a72aa58b025dbc012fa3579a2f016c5143a3e015d97e8132b939da7a63f45db8593729f6f3531c2e66ff5dc60829ab5c8571af2179fe2403174
   languageName: node
   linkType: hard
 
