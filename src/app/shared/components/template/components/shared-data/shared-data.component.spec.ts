@@ -2,8 +2,9 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
 import { TmplSharedDataComponent } from "./shared-data.component";
-import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
-import { MockDeploymentService } from "src/app/shared/services/deployment/deployment.service.mock.spec";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 describe("SharedDataComponent", () => {
   let component: TmplSharedDataComponent;
@@ -12,11 +13,15 @@ describe("SharedDataComponent", () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TmplSharedDataComponent],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), HttpClientTestingModule],
       providers: [
         {
-          provide: DeploymentService,
-          useValue: new MockDeploymentService(),
+          provide: SharedDataService,
+          useValue: {},
+        },
+        {
+          provide: AuthService,
+          useValue: {},
         },
       ],
     }).compileComponents();
