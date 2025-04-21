@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { SharedDataComponent } from "./shared-data.component";
+import { TmplSharedDataComponent } from "./shared-data.component";
 
 describe("SharedDataComponent", () => {
-  let component: SharedDataComponent;
-  let fixture: ComponentFixture<SharedDataComponent>;
+  let component: TmplSharedDataComponent;
+  let fixture: ComponentFixture<TmplSharedDataComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SharedDataComponent],
+      declarations: [TmplSharedDataComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SharedDataComponent);
+    fixture = TestBed.createComponent(TmplSharedDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
