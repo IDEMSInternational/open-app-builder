@@ -138,6 +138,36 @@ export class SharedDataService extends AsyncServiceBase {
     return this.provider.updateSharedData(id, key, value);
   }
 
+  public async addCollectionMember(id: string, memberId: string, role: "member" | "admin") {
+    const auth_id = this.authService.provider.authUser()?.uid;
+    const currentDocQuery = this.provider.querySingle$({ auth_id, id, since: undefined });
+    const currentDoc = await firstValueFrom(currentDocQuery);
+    if (!currentDoc.members.includes(memberId)) {
+      const update: Partial<ISharedDataCollection> = {
+        members: [...currentDoc.members, memberId],
+      };
+      if (role === "admin") {
+        update.admins = [...currentDoc.admins, memberId];
+      }
+      return this.provider.updateCollectionMetadata(id, update);
+    }
+  }
+
+  public async removeCollectionMember(id: string, memberId: string, role: "member" | "admin") {
+    const auth_id = this.authService.provider.authUser()?.uid;
+    const currentDocQuery = this.provider.querySingle$({ auth_id, id, since: undefined });
+    const currentDoc = await firstValueFrom(currentDocQuery);
+    if (currentDoc.members.includes(memberId) && memberId !== currentDoc._created_by) {
+      const update: Partial<ISharedDataCollection> = {
+        members: currentDoc.members.filter((v) => v !== memberId),
+      };
+      if (role === "admin") {
+        update.admins = currentDoc.admins.filter((v) => v !== memberId);
+      }
+      return this.provider.updateCollectionMetadata(id, update);
+    }
+  }
+
   public async clearCache() {
     // stop all active data subscriptions
     [...this.queryCache.values()].forEach((subject) => {
@@ -178,16 +208,17 @@ export class SharedDataService extends AsyncServiceBase {
     );
   }
 
-  private async updateCache(id: string, docs: ISharedDataCollection[]) {
+  private async updateCache(docs: ISharedDataCollection[]) {
     if (docs.length > 0) {
-      const cacheName = id ? `_shared_data/${id}` : "_shared_data";
+      const cacheName = "_shared_data";
+      console.log("update docs", docs);
       await this.dynamicDataService.bulkUpsert("data_list", cacheName, docs);
     }
   }
 
   /** Retrieve docs stored in cache, sorted by most recently updated */
   private getCacheQuery(id?: string) {
-    const cacheName = id ? `_shared_data/${id}` : "_shared_data";
+    const cacheName = "_shared_data";
 
     // if id provided filter query to only return doc matching id, default return all in collection
     const query: MangoQuery = id ? { selector: { id } } : {};
@@ -220,7 +251,7 @@ export class SharedDataService extends AsyncServiceBase {
 
         // 4. When new data received update the cache as a side-effect
         return serverQuery.pipe(
-          tap((serverDocs) => this.updateCache(id, serverDocs)),
+          tap((serverDocs) => this.updateCache(serverDocs)),
           catchError((err) => {
             console.error("server query err", err);
             return of([]);

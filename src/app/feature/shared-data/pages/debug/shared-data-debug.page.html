@@ -2,8 +2,10 @@
   <h2>Shared Data</h2>
 
   <h3>Auth</h3>
-  @if(authService.provider.authUser()){
+  @if(authService.provider.authUser(); as authUser){
+
   <ion-button (click)="authService.provider.signOut()"> Sign out </ion-button>
+  <code style="margin-left: 1rem">{{authUser.uid}}</code>
 
   <!-- Multiple query -->
   <h3>Shared Data - List Rows</h3>
@@ -20,7 +22,11 @@
   <!-- Multiple results -->
   <div class="items-container">
     @for(item of sharedDataMultiple(); track item.id){
-    <div class="item-container" (click)="selectedId.set(item.id)">
+    <div
+      class="item-container"
+      (click)="selectedId.set(item.id)"
+      [class.selected]="sharedDataSingle()?.id===item.id"
+    >
       <div style="display: flex">
         <div class="item-title" style="flex: 1">{{item.id}}</div>
         <ion-button class="item-delete" (click)="promptCollectionDelete(item.id)" fill="clear">
@@ -50,7 +56,7 @@
   <!-- Single result -->
   @if(displayTableData(); as tableData){
 
-  <ion-accordion-group [multiple]="true" [value]="['metadata', 'shared_data']">
+  <ion-accordion-group [multiple]="true" [value]="[ 'shared_data','users','metadata']">
     <!-- Shared Data -->
     <ion-accordion value="shared_data">
       <ion-item slot="header" color="light">
@@ -85,6 +91,37 @@
       </div>
     </ion-accordion>
 
+    <!-- Users -->
+    <ion-accordion value="users">
+      <ion-item slot="header" color="light">
+        <ion-label>Users</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Admin users can be added by Firebase Auth Id. The original creator cannot be removed.</p>
+        @for(adminId of tableData.admins; track adminId){
+        <ion-item>
+          <ion-input disabled #userInput [value]="adminId"></ion-input>
+          <ion-button
+            fill="clear"
+            (click)="removeAdmin(adminId)"
+            [disabled]="adminId===sharedDataSingle()._created_by"
+            ><ion-icon name="remove-circle-outline" size="large"></ion-icon
+          ></ion-button>
+        </ion-item>
+        }
+        <ion-item>
+          <ion-input label="Firebase Auth ID" labelPlacement="floating" #userInput></ion-input>
+          <ion-button
+            [disabled]="!userInput.value"
+            fill="clear"
+            (click)="addAdmin(userInput.value.toString())"
+          >
+            <ion-icon name="add-outline" size="large"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
     <!-- Collection Metadata -->
     <ion-accordion value="metadata">
       <ion-item slot="header" color="light">
@@ -107,6 +144,7 @@
       </div>
     </ion-accordion>
   </ion-accordion-group>
+
   }
 
   <hr style="margin-top: 2rem" />

@@ -30,8 +30,13 @@ export class SharedDataProviderBase {
 
   /** Create a new shared data collection with a given id */
   public async createSharedCollection(id: string, data: ISharedDataCollection) {
-    console.error(`[Shared Data] Provider method not implemented: create`);
+    console.error(`[Shared Data] Provider method not implemented: createSharedCollection`);
     return data;
+  }
+
+  public async updateCollectionMetadata(id: string, update: Partial<ISharedDataCollection>) {
+    console.error(`[Shared Data] Provider method not implemented: updateCollectionMetadata`);
+    return null;
   }
 
   /**
@@ -39,14 +44,14 @@ export class SharedDataProviderBase {
    * NOTE - setting as `undefined` will remove from the database
    */
   public async updateSharedData(id: string, key: string, value: any) {
-    console.error(`[Shared Data] Provider method not implemented: updateData`);
-    return;
+    console.error(`[Shared Data] Provider method not implemented: updateSharedData`);
+    return null;
   }
 
   /**
    * Delete
    */
   public async deleteSharedCollection(id: string) {
-    console.error(`[Shared Data] Provider method not implemented: remove`);
+    console.error(`[Shared Data] Provider method not implemented: deleteSharedCollection`);
   }
 }
