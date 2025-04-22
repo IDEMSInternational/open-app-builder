@@ -17,7 +17,6 @@ interface IDateTimePickerParams {
 export class TmplDateTimePickerComponent extends TemplateBaseComponent implements OnInit {
   public dateTimeValue: WritableSignal<string | undefined>;
   public params = computed(() => this.getParams());
-  public name = computed(() => this.rowSignal()?.name);
 
   constructor() {
     super();

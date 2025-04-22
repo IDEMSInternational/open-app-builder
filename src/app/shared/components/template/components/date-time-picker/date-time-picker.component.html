@@ -1,4 +1,4 @@
-<ion-datetime-button [datetime]="name()" [disabled]="params().disabled">
+<ion-datetime-button [datetime]="rowSignal()?.name" [disabled]="params().disabled">
   @if (dateTimeValue() === undefined) {
     <ion-icon name="calendar-outline" size="large" slot="date-target"></ion-icon>
     <ion-icon name="time-outline" size="large" slot="time-target"></ion-icon>
@@ -8,7 +8,7 @@
 <ion-modal [keepContentsMounted]="true">
   <ng-template>
     <ion-datetime
-      [id]="name()"
+      [id]="rowSignal()?.name"
       #datetime
       [(ngModel)]="dateTimeValue"
       [showDefaultButtons]="true"
