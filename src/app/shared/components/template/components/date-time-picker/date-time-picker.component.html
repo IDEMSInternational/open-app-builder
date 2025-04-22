@@ -1,16 +1,8 @@
 <ion-datetime-button [datetime]="name()" [disabled]="params().disabled">
-  <ion-icon
-    name="calendar-outline"
-    size="large"
-    slot="date-target"
-    *ngIf="dateTimeValue() === undefined"
-  ></ion-icon>
-  <ion-icon
-    name="time-outline"
-    size="large"
-    slot="time-target"
-    *ngIf="dateTimeValue() === undefined"
-  ></ion-icon>
+  @if (dateTimeValue() === undefined) {
+    <ion-icon name="calendar-outline" size="large" slot="date-target"></ion-icon>
+    <ion-icon name="time-outline" size="large" slot="time-target"></ion-icon>
+  }
 </ion-datetime-button>
 
 <ion-modal *ngIf="params().type" [keepContentsMounted]="true">
