@@ -18,6 +18,7 @@ env:
     PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
     DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
     FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+    GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
   
   ##################################################################################
   #         Main Code
