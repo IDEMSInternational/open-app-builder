@@ -18,6 +18,7 @@ env:
     PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
     DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
     FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+    # Any secrets used by post-build-cmd need to be explicitly defined
     GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
   
   ##################################################################################
@@ -61,10 +62,6 @@ on:
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
-      # Any secrets used by post-build-cmd need to be explicitly defined
-      secrets:
-        GOOGLE_SERVICES_PLIST:
-          description: "Google Services plist content"
 jobs:
     build:
       outputs:
