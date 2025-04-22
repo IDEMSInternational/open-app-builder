@@ -51,7 +51,10 @@ jobs:
     uses: ./.github/workflows/reusable-app-build.yml
     with:
       branch: ${{ inputs.branch }}
-      post-build-cmd: yarn workflow ios configure && npx cap sync ios
+      post-build-cmd: |
+        echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist 
+        yarn workflow ios configure
+        npx cap sync ios
       # Upload ios directory as it includes configured template files and www content
       additional-artifact: ios
       # Ensure build also run on macos to allow npx cap sync to configure ios pods
