@@ -1,5 +1,5 @@
-import {  Controller, Get,  Param,  } from "@nestjs/common";
-import {  ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
+import { Controller, Get, Param } from "@nestjs/common";
+import { ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { DeploymentHeaders } from "src/modules/deployment.decorators";
 import { DeploymentService } from "src/modules/deployment.service";
 import { AppUser } from "../app_users/app_user.model";
@@ -19,6 +19,6 @@ export class AuthUsersController {
   @DeploymentHeaders()
   findOne(@Param("auth_user_id") auth_user_id: string): Promise<AppUser[]> {
     const model = this.deploymentService.model(AppUser);
-    return model.findAll({where:{auth_user_id}})
+    return model.findAll({ where: { auth_user_id } });
   }
 }
