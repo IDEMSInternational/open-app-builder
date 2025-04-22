@@ -104,19 +104,17 @@ export class DataItemsService {
       if (variableRows.length > 0) {
         _evalContext.local = {};
         for (const { name, value } of variableRows) {
-          if (typeof value === "string") {
-            let evaluated: any;
-            // HACK - AppDataEvaluator can't detect or extract `@calc(...)` statements so process manually
-            // TODO - add support to extract @calc statements to AppDataEvaluator and provide callable function
-            if (value.startsWith("@calc")) {
-              evaluated = this.templateCalcService.evaluate(value, _evalContext);
-            } else {
-              evaluator.setExecutionContext(_evalContext as any);
-              evaluated = evaluator.evaluate(value);
-            }
-            // use base name instead of nested as still unique within item loop context
-            _evalContext.local[name] = evaluated;
+          let evaluated: any;
+          // HACK - AppDataEvaluator can't detect or extract `@calc(...)` statements so process manually
+          // TODO - add support to extract @calc statements to AppDataEvaluator and provide callable function
+          if (typeof value === "string" && value.startsWith("@calc")) {
+            evaluated = this.templateCalcService.evaluate(value, _evalContext);
+          } else {
+            evaluator.setExecutionContext(_evalContext as any);
+            evaluated = evaluator.evaluate(value);
           }
+          // use base name instead of nested as still unique within item loop context
+          _evalContext.local[name] = evaluated;
         }
       }
 
