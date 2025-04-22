@@ -60,6 +60,10 @@ on:
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
+      # Any secrets used by post-build-cmd need to be explicitly defined
+      secrets:
+        GOOGLE_SERVICES_PLIST:
+          description: "Google Services plist content"
 jobs:
     build:
       outputs:
