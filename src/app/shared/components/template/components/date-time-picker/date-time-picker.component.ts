@@ -1,4 +1,4 @@
-import { Component, computed, signal } from "@angular/core";
+import { Component, computed, OnInit, signal, WritableSignal } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getStringParamFromTemplateRow, parseBoolean } from "src/app/shared/utils";
 
@@ -14,13 +14,17 @@ interface IDateTimePickerParams {
   templateUrl: "./date-time-picker.component.html",
   styleUrls: ["./date-time-picker.component.scss"],
 })
-export class TmplDateTimePickerComponent extends TemplateBaseComponent {
-  public dateTimeValue = this.value() ? this.value : signal(undefined);
+export class TmplDateTimePickerComponent extends TemplateBaseComponent implements OnInit {
+  public dateTimeValue: WritableSignal<string | undefined>;
   public params = computed(() => this.getParams());
   public name = computed(() => this.rowSignal()?.name);
 
   constructor() {
     super();
+  }
+
+  public ngOnInit(): void {
+    this.dateTimeValue = signal(this.value() || undefined);
   }
 
   public handleChange(value: string | string[]) {
