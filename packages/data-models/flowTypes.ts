@@ -460,6 +460,7 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    "copy",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
   ] as const;
