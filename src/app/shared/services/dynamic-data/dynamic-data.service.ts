@@ -165,7 +165,29 @@ export class DynamicDataService extends AsyncServiceBase {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     const { id } = data;
     await this.db.bulkInsert(collectionName, [data]);
-    this.writeCache.update({ flow_type, flow_name, id, data });
+    this.writeCache.set({ flow_type, flow_name, id, data });
+  }
+
+  public async upsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T
+  ) {
+    return this.bulkUpsert(flow_type, flow_name, [data]);
+  }
+
+  /** Insert multiple docs into database. If given doc already exists it will be replaced */
+  public async bulkUpsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T[]
+  ) {
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    await this.db.bulkUpsert(collectionName, data);
+    for (const row of data) {
+      const { id } = row;
+      this.writeCache.set({ flow_type, flow_name, id, data: row });
+    }
   }
 
   /** Remove user_generated data row */
