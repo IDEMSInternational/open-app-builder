@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal, viewChild } from "@angular/core";
+import { Component, computed, OnInit, signal } from "@angular/core";
 import { SharedDataService } from "../../shared-data.service";
 import { AlertController, IonicModule } from "@ionic/angular";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
