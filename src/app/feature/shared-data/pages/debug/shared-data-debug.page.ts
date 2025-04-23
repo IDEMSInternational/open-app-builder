@@ -80,6 +80,10 @@ export class SharedDataDebugPage implements OnInit {
     await actionSheet.present();
     const { role } = await actionSheet.onDidDismiss();
     if (role === "destructive") {
+      // de-select before deleting
+      if (id === this.selectedId()) {
+        this.selectedId.set(undefined);
+      }
       this.service.deleteSharedCollection(id);
     }
   }
