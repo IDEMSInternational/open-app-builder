@@ -1,0 +1,53 @@
+<!-- Rules in codeblock for viewing purposes only - should use contents when uploading to firebase -->
+
+```ts
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+  	// Function to check if user is the owner
+    function isOwner() {
+      return request.auth != null && resource.data._created_by == request.auth.uid;
+    }
+
+    function isMember() {
+      return request.auth.uid in resource.data.members;
+    }
+
+    function isPublic() {
+      return resource.data.isPublic == true;
+    }
+
+    // Function to check whether only nested document.data updated and not
+    // any parent keys such as document.public or document._created_by
+    function isProfileUpdateOnly(){
+    	return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['profile','_updated_at'])
+    }
+
+    // Match documents in the shared_data collection
+    match /shared_data/{documentId} {
+
+    	// Allow all users to sync list of groups
+    	allow list: if isOwner() || isMember() || isPublic();
+
+      // Allow reads if the document has public field set to true
+      allow read: if isOwner() || isMember() || isPublic();
+
+      // Allow creation if user is authenticated and doc sets _created_by
+      allow create: if request.resource.data._created_by == request.auth.uid;
+
+      // Allow update by creator, or to child inner data by anyone
+      allow update: if isOwner();
+
+     // Allow deletes only by the creator
+      allow delete: if isOwner();
+    }
+
+    // Default rule - deny all other access
+    match /{document=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+  }
+}
+```
