@@ -2,9 +2,9 @@
 
 ## Example
 
-| type             | name          | value | parameter_list |
-| ---------------- | ------------  | ----- | -------------- |
-| date_time_picker | date_time_1   | ----- | -------------- |	
+| type             | name          | value              | parameter_list |
+| ---------------- | ------------  | ------------------ | -------------- |
+| date_time_picker | date_time_1   | "YYYY-MM-DDTHH:mm" | -------------- |	
 
 
 ![example](../assets/images/date-time-picker.png)
