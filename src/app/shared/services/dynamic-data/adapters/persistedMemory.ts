@@ -17,7 +17,8 @@ addRxPlugin(RxDBUpdatePlugin);
 import { debounceTime, filter, firstValueFrom, Subject } from "rxjs";
 
 import { FlowTypes } from "data-models";
-import { compareObjectKeys, deepMergeObjects } from "../../../utils";
+import { deepMergeObjects } from "../../../utils";
+import { arrayToHashmap, diffObjects } from "packages/shared/src/utils/object-utils";
 
 /**
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
