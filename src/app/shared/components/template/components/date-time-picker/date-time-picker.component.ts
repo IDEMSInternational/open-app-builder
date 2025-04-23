@@ -16,6 +16,8 @@ interface IDateTimePickerParams {
 })
 export class TmplDateTimePickerComponent extends TemplateBaseComponent {
   public params = computed(() => this.getParams());
+
+  // Generate unique ID to allow multiple date-time components to correctly bind datetime-button with datetime
   public uuid = generateUUID();
 
   constructor() {

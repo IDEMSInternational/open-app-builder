@@ -10,6 +10,7 @@
   [
     "cocoapods",
     "danfojs",
+    "datetime",
     "dexie",
     "firebaserc",
     "fontawesome",
