@@ -1,5 +1,5 @@
 ## Shared Data
-
+(Rough notes for use in discussions and planning follow-ups)
 
 ## Review Notes
 Firestore structures
