@@ -13,6 +13,7 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
     data_list_name: "example",
     rows: [],
     _xlsxPath: "sheets/test_input.xlsx",
+    _sheetsFolderId: "x8ZbnYqoD6Im2CiV3tO7N1bnfRECeJmDU",
   },
   {
     flow_type: "template",
@@ -21,6 +22,7 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
     status: "released",
     rows: [],
     _xlsxPath: "sheets/test_input.xlsx",
+    _sheetsFolderId: "x8ZbnYqoD6Im2CiV3tO7N1bnfRECeJmDU",
   },
   {
     flow_type: "data_pipe",
@@ -29,6 +31,7 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
     status: "released",
     rows: [],
     _xlsxPath: "sheets/test_input.xlsx",
+    _sheetsFolderId: "x8ZbnYqoD6Im2CiV3tO7N1bnfRECeJmDU",
   },
   ,
 ];
