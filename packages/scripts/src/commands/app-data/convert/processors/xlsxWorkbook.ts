@@ -30,6 +30,7 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     const _xlsxPath = path.relative(SHEETS_INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
     const processed = merged.map((v) => {
       v._xlsxPath = _xlsxPath;
+      v._sheetsFolderId = path.basename(SHEETS_INPUT_FOLDER);
       return v;
     });
     return processed;
