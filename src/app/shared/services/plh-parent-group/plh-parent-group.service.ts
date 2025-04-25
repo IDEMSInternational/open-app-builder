@@ -79,10 +79,9 @@ export class PlhParentGroupService extends SyncServiceBase {
           params as IPlhParentGroupActionParams;
         const childActions = {
           /**
-           * Share a specified parent group with a specified user (co-facilitator)
+           * Push a specified parent group to shared data and add a specified user (co-facilitator) as a member
            */
           add_cofacilitator: async () => {
-            console.log("add_cofacilitator", params as IPlhParentGroupActionParams);
             const requiredParams = {
               parent_group_id,
               auth_id,
@@ -107,7 +106,6 @@ export class PlhParentGroupService extends SyncServiceBase {
            * Remove a specified co-facilitator from a specified parent group
            */
           remove_cofacilitator: async () => {
-            console.log("remove_cofacilitator", params as IPlhParentGroupActionParams);
             const requiredParams = {
               parent_group_id,
               auth_id,
@@ -128,12 +126,14 @@ export class PlhParentGroupService extends SyncServiceBase {
               parent_groups_data_list,
               parents_data_list
             );
+
+            // TODO: remove from shared data if there are no other members?
           },
           /**
            * Push local state of any shared parent groups to shared database
+           * If a parent group id is provided, push only that parent group
            */
           push: async () => {
-            console.log("push", params as IPlhParentGroupActionParams);
             const requiredParams = {
               parent_groups_data_list,
               parents_data_list,
@@ -148,10 +148,19 @@ export class PlhParentGroupService extends SyncServiceBase {
           },
           /**
            * Pull state from shared database and update local parent groups
+           * If a parent group id is provided, pull only that parent group
            */
           pull: async () => {
-            console.log("update", params as IPlhParentGroupActionParams);
-            console.log("this.authId()", this.authId());
+            const requiredParams = {
+              parent_groups_data_list,
+              parents_data_list,
+            };
+            for (const [param, value] of Object.entries(requiredParams)) {
+              if (!value) {
+                console.error(`[PLH PARENT GROUP] - PULL - ${param} must be provided`);
+                return;
+              }
+            }
             await this.handlePull(parent_group_id, parent_groups_data_list, parents_data_list);
           },
         };
@@ -164,6 +173,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
   }
 
+  /**
+   * Push a specified parent group to shared data and add a specified user (co-facilitator) as a member
+   */
   private async handleShare(
     parentGroupId: string,
     coFacilitatorAuthId: string,
@@ -184,7 +196,10 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
-  /** TODO */
+  /**
+   * Push local state of any shared parent groups to shared database
+   * If a parent group id is provided, push only that parent group
+   */
   private async handlePush(
     parentGroupsDataList: string,
     parentsDataList: string,
@@ -196,7 +211,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
     // else, get local data for specified parent group and push changes to shared data
-    const parentGroup = await this.getParentGroup(
+    const parentGroup = await this.getLocalParentGroup(
       parentGroupId,
       parentGroupsDataList,
       parentsDataList
@@ -208,6 +223,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
   }
 
+  /**
+   * Push local state of all shared parent groups to shared database
+   */
   private async handlePushBulk(parentGroupsDataList: string, parentsDataList: string) {
     // for each local parent group that has already been shared, update shared data to reflect local state
     const sharedParentGroupsQuery = this.dynamicDataService.query$(
@@ -226,7 +244,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     const sharedParentGroupRefs = await firstValueFrom(sharedParentGroupsQuery);
     const sharedParentGroups = await Promise.all(
       sharedParentGroupRefs.map((sharedParentGroupRef) =>
-        this.getParentGroup(sharedParentGroupRef.id, parentGroupsDataList, parentsDataList)
+        this.getLocalParentGroup(sharedParentGroupRef.id, parentGroupsDataList, parentsDataList)
       )
     );
     for (const parentGroup of sharedParentGroups) {
@@ -234,6 +252,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
   }
 
+  /**
+   * Push local state of a specified parent group to shared database
+   */
   private async pushParentGroupData(parentGroup: IParentGroup) {
     if (!parentGroup.shared_id) {
       console.error(
@@ -254,7 +275,10 @@ export class PlhParentGroupService extends SyncServiceBase {
     // if user is not creator, set to `readonly: true` or `writeAccess: false`
   }
 
-  /** TODO */
+  /**
+   * Pull state from shared database and update local parent groups
+   * If a parent group id is provided, pull only that parent group
+   */
   private async handlePull(
     parentGroupId: string,
     parentGroupsDataList: string,
@@ -286,8 +310,6 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     const sharedParentGroupData = sharedParentGroupDoc.data.parentGroupData;
 
-    console.log("sharedParentGroupDoc", sharedParentGroupDoc);
-    console.log("sharedParentGroupData", sharedParentGroupData);
     await this.updateLocalParentGroupData(
       sharedParentGroupData,
       parentGroupsDataList,
@@ -295,13 +317,18 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
+  /**
+   * Ensure a parent group is shared in shared data
+   * If the parent group is already shared, return the shared id
+   * If the parent group is not shared, create a new shared parent group and return the shared id
+   */
   private async ensureSharedParentGroup(
     parentGroupId: string,
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
     // check if parent group is already shared
-    const parentGroup = await this.getParentGroup(
+    const parentGroup = await this.getLocalParentGroup(
       parentGroupId,
       parentGroupsDataList,
       parentsDataList
@@ -313,15 +340,17 @@ export class PlhParentGroupService extends SyncServiceBase {
     return await this.createSharedParentGroup(parentGroupId, parentGroupsDataList, parentsDataList);
   }
 
+  /**
+   * Create a new shared parent group in shared data
+   * @returns the shared id of the new parent group
+   */
   private async createSharedParentGroup(
     parentGroupId: string,
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
-    // update local data for parent group, `shared: true`
-    await this.setSharedStatus(parentGroupId, parentGroupsDataList, true);
     // publish parent group to shared data (create new shared data collection for parent group)
-    const parentGroup = await this.getParentGroup(
+    const parentGroup = await this.getLocalParentGroup(
       parentGroupId,
       parentGroupsDataList,
       parentsDataList
@@ -339,10 +368,10 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Retrieves a parent group by combining data from parent groups and parents data lists
+   * Retrieves a parent group from local data by combining data from parent groups and parents data lists
    * @returns IParentGroup object with parent group data and associated parents
    */
-  private async getParentGroup(
+  private async getLocalParentGroup(
     parentGroupId: string,
     parentGroupsDataList: string,
     parentsDataList: string
@@ -364,7 +393,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     } as IParentGroup;
   }
 
-  /** Adds a co-facilitator as a member to the shared parent group collection */
+  /**
+   * Adds a co-facilitator as a member to the shared parent group collection
+   * */
   private async addCoFacilitator(
     sharedCollectionId: string,
     coFacilitatorAuthId: string,
@@ -379,6 +410,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.setCofacilitatorId(parentGroupId, parentGroupsDataList, coFacilitatorAuthId);
   }
 
+  /**
+   * Remove a co-facilitator from the shared parent group collection
+   */
   private async handleRemoveCoFacilitator(
     sharedCollectionId: string,
     coFacilitatorAuthId: string,
@@ -393,14 +427,14 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.setCofacilitatorId(parentGroupId, parentGroupsDataList, undefined);
   }
 
+  /**
+   * Update local parent group data across multiple data lists to reflect incoming parentGroup data
+   */
   private async updateLocalParentGroupData(
     parentGroupData: IParentGroup,
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
-    console.log("parentGroupData", parentGroupData);
-
-    // update local parent group data across multiple data lists to reflect incoming parentGroup data
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupData.id, {
       ...parentGroupData,
     });
@@ -412,17 +446,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
   }
 
-  /** Sets the `shared` status of a local parent group in the parent groups data list */
-  private async setSharedStatus(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    shared: boolean
-  ) {
-    await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
-      shared,
-    });
-  }
-
+  /**
+   * Set the shared id of a parent group in the local parent groups data list
+   */
   private async setSharedId(
     parentGroupId: string,
     parentGroupsDataList: string,
@@ -433,6 +459,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
   }
 
+  /**
+   * Set the co-facilitator id of a parent group in the local parent groups data list
+   */
   private async setCofacilitatorId(
     parentGroupId: string,
     parentGroupsDataList: string,
