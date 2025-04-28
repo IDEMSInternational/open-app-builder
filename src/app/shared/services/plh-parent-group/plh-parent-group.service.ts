@@ -53,6 +53,7 @@ interface IParentGroup {
   providedIn: "root",
 })
 export class PlhParentGroupService extends SyncServiceBase {
+  /** The auth_id of the logged in user */
   authId = computed(() => this.authService.provider.authUser()?.uid);
 
   constructor(
@@ -66,14 +67,18 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   private initialise() {
-    this.ensureAsyncServicesReady([this.sharedDataService]);
+    this.ensureAsyncServicesReady([
+      this.authService,
+      this.dynamicDataService,
+      this.sharedDataService,
+    ]);
     this.registerTemplateActionHandlers();
   }
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
       plh_parent_group: async ({ args, params }) => {
-        console.log("plh_parent_group", args, params);
+        console.log("[PLH PARENT GROUP] - TEMPLATE ACTION", args, params);
         const [actionId] = args;
         const { auth_id, parent_group_id, parent_groups_data_list, parents_data_list } =
           params as IPlhParentGroupActionParams;
@@ -205,9 +210,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string,
     parentGroupId?: string
   ) {
-    // if no parent group id is provided, push all local parent groups to shared data
+    // if no parent group id is provided, push all local parent groups that have already been shared to shared data
     if (!parentGroupId) {
-      await this.handlePushBulk(parentGroupsDataList, parentsDataList);
+      await this.handlePushAll(parentGroupsDataList, parentsDataList);
       return;
     }
     // else, get local data for specified parent group and push changes to shared data
@@ -226,7 +231,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   /**
    * Push local state of all shared parent groups to shared database
    */
-  private async handlePushBulk(parentGroupsDataList: string, parentsDataList: string) {
+  private async handlePushAll(parentGroupsDataList: string, parentsDataList: string) {
     // for each local parent group that has already been shared, update shared data to reflect local state
     const sharedParentGroupsQuery = this.dynamicDataService.query$(
       "data_list",
@@ -318,9 +323,9 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Ensure a parent group is shared in shared data
-   * If the parent group is already shared, return the shared id
-   * If the parent group is not shared, create a new shared parent group and return the shared id
+   * Ensure a parent group is saved in shared data
+   * If the parent group is not shared already, create a new entry in shared data
+   * @returns the ID of the parent group collection in shared data (shared_id)
    */
   private async ensureSharedParentGroup(
     parentGroupId: string,
@@ -342,7 +347,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /**
    * Create a new shared parent group in shared data
-   * @returns the shared id of the new parent group
+   * @returns the ID of the new parent group collection in shared data (shared_id)
    */
   private async createSharedParentGroup(
     parentGroupId: string,
@@ -362,8 +367,10 @@ export class PlhParentGroupService extends SyncServiceBase {
       "parentGroupData",
       parentGroup
     );
-    // copy firebase-generated guid back to local data, e.g. `sharedId: <guid>`?
-    await this.setSharedId(parentGroupId, parentGroupsDataList, sharedCollectionId);
+    // copy firebase-generated guid back to local data, e.g. `shared_id: <guid>`?
+    await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
+      shared_id: sharedCollectionId,
+    });
     return sharedCollectionId;
   }
 
@@ -407,7 +414,9 @@ export class PlhParentGroupService extends SyncServiceBase {
       coFacilitatorAuthId,
       "member"
     );
-    await this.setCofacilitatorId(parentGroupId, parentGroupsDataList, coFacilitatorAuthId);
+    await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
+      cofacilitator_id: coFacilitatorAuthId,
+    });
   }
 
   /**
@@ -424,7 +433,9 @@ export class PlhParentGroupService extends SyncServiceBase {
       coFacilitatorAuthId,
       "member"
     );
-    await this.setCofacilitatorId(parentGroupId, parentGroupsDataList, undefined);
+    await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
+      cofacilitator_id: undefined,
+    });
   }
 
   /**
@@ -447,28 +458,15 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Set the shared id of a parent group in the local parent groups data list
+   * Set a property on a parent group in the local parent groups data list
    */
-  private async setSharedId(
+  private async setLocalParentGroupProperty<T>(
     parentGroupId: string,
     parentGroupsDataList: string,
-    sharedCollectionId: string
+    update: Partial<T>
   ) {
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
-      shared_id: sharedCollectionId,
-    });
-  }
-
-  /**
-   * Set the co-facilitator id of a parent group in the local parent groups data list
-   */
-  private async setCofacilitatorId(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    cofacilitatorId: string
-  ) {
-    await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
-      cofacilitator_id: cofacilitatorId,
+      ...update,
     });
   }
 }
