@@ -22,8 +22,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   // TODO - main row should just be an input.required and child code refactored to avoid set override
   // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
-  // NOTE - the signal does not use an `{equal: isEqual}` optimisation to allow field variable updates
-  // to still trigger signal update on external field update
+  // NOTE - the signal does not use an `{equal: isEqual}` optimisation to allow signal update on external
+  // field set: https://github.com/IDEMSInternational/open-app-builder/pull/2915
   rowSignal = signal<FlowTypes.TemplateRow>(undefined);
   value = computed(() => this.rowSignal()?.value, { equal: isEqual });
   parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
