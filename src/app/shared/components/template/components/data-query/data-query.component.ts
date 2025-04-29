@@ -8,9 +8,8 @@ import { MangoQuery, MangoQuerySelector, MangoQuerySortPart } from "rxdb";
 import { jsComparisonToMangoQuery } from "packages/shared/src/utils/rxdb.utils";
 import { FlowTypes } from "packages/data-models";
 
-// Author params require a list_id. Additionally they can pass full data_query via lookup
+// Authors may specify some additional parameters that modify how parameters are generated
 type IAuthorParams = Partial<IQueryParams> & {
-  list_id: string;
   /**
    * Ref if passing query from data_list instead of defining inline.
    * E.g. `@data.query_list.example_query_1`
@@ -21,7 +20,6 @@ type IAuthorParams = Partial<IQueryParams> & {
 
 interface IQueryParams {
   list_id: string;
-
   /**
    * If using multiple query conditions within value, specify whether to join
    * these conditions as "and" or "or" operations
@@ -45,7 +43,6 @@ interface IQueryParams {
 /**
  *
  * TODO
- * - raw query
  * - sort authoring (consistent/inconsistent with data-items and items?). Could include commas
  * - tests
  * - update RFC
@@ -119,7 +116,7 @@ export class TmplDataQueryComponent extends TemplateBaseComponent implements OnI
     );
   }
 
-  private mapAuthorParams(params: IAuthorParams = { list_id: "" }): IQueryParams {
+  private mapAuthorParams(params: IAuthorParams = {}): IQueryParams {
     const { list_id, condition_type = "and", sort = "id", raw = false } = params;
     if (!list_id) {
       console.error(`data-query requires "list_id" in params`, { params });
@@ -129,13 +126,17 @@ export class TmplDataQueryComponent extends TemplateBaseComponent implements OnI
   }
 
   private subscribeToDynamicData(value: string, params: IQueryParams) {
-    const { list_id, condition_type, sort } = params;
-    const selectorCondition = condition_type === "or" ? "$or" : "$and";
+    const { list_id, condition_type, sort, raw } = params;
     const queryObj: MangoQuery<any> = {
       limit: 1,
       sort: this.generateSort(sort),
-      selector: { [selectorCondition]: this.generateQuery(value) },
     };
+    if (raw) {
+      queryObj.selector = JSON.parse(value);
+    } else {
+      const selectorCondition = condition_type === "or" ? "$or" : "$and";
+      queryObj.selector = { [selectorCondition]: this.generateQuery(value) };
+    }
     return this.dynamicDataService.query$("data_list", list_id, queryObj).pipe(
       tap((v) => {
         console.log("data updated", queryObj, v);
