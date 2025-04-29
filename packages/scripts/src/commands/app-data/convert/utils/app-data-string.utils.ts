@@ -64,6 +64,20 @@ export function parseAppDataCollectionString(
   return collection;
 }
 
+/** Convert parameter list string array (as provided by default parser) to key-value pairs */
+export function parseAppDataParameterList(parameterList: string[]) {
+  const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
+  parameterList.forEach((p) => {
+    let [key, value] = p.split(":").map((str) => str.trim()) as any[];
+    // if a single word is specified, e.g. 'box_display', assume setting param to true
+    if (value === undefined) {
+      value = "true";
+    }
+    parameterObj[key] = value;
+  });
+  return parameterObj;
+}
+
 /**
  * When excel sheets store dates the store a datevalue as number of days since 1900 (or sometimes 1904!)
  * Convert to corresponding iso date string (e.g. 2021-11-24T18:03:36.002Z) and then leave as a local date string
