@@ -30,6 +30,7 @@ import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
+import { TmplDataQueryComponent } from "./data-query/data-query.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
 import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
@@ -170,6 +171,7 @@ const COMMON_COMPONENT_MAPPING = {
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
+  data_query: TmplDataQueryComponent,
   date_time_picker: TmplDateTimePickerComponent,
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
