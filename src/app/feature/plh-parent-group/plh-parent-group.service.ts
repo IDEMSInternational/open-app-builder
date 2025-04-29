@@ -1,22 +1,10 @@
-import { Injectable, signal, computed } from "@angular/core";
-import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { SyncServiceBase } from "../syncService.base";
-import { AuthService } from "../auth/auth.service";
-import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { Injectable, computed } from "@angular/core";
+import { SyncServiceBase } from "../../shared/services/syncService.base";
+import { AuthService } from "../../shared/services/auth/auth.service";
+import { DynamicDataService } from "../../shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";
-
-interface IPlhParentGroupActionParams {
-  /** ID of a co-faciliator to share data with */
-  auth_id?: string;
-  /** ID of a parent group to target */
-  parent_group_id?: string;
-  /** Name of the data list of parent groups */
-  parent_groups_data_list?: string;
-  /** Name of the data list of parents */
-  parents_data_list?: string;
-}
 
 interface IParent {
   id: string;
@@ -58,7 +46,6 @@ export class PlhParentGroupService extends SyncServiceBase {
   authId = computed(() => this.authService.provider.authUser()?.uid);
 
   constructor(
-    private templateActionRegistry: TemplateActionRegistry,
     private authService: AuthService,
     private dynamicDataService: DynamicDataService,
     private sharedDataService: SharedDataService
@@ -73,128 +60,12 @@ export class PlhParentGroupService extends SyncServiceBase {
       this.dynamicDataService,
       this.sharedDataService,
     ]);
-    this.registerTemplateActionHandlers();
-  }
-
-  private registerTemplateActionHandlers() {
-    this.templateActionRegistry.register({
-      plh_parent_group: async ({ args, params }) => {
-        console.log("[PLH PARENT GROUP] - TEMPLATE ACTION", args, params);
-        const [actionId] = args;
-        const { auth_id, parent_group_id, parent_groups_data_list, parents_data_list } =
-          params as IPlhParentGroupActionParams;
-        const childActions = {
-          /**
-           * Push a specified parent group to shared data and add a specified user (co-facilitator) as a member
-           */
-          add_cofacilitator: async () => {
-            const requiredParams = {
-              parent_group_id,
-              auth_id,
-              parent_groups_data_list,
-              parents_data_list,
-            };
-
-            for (const [param, value] of Object.entries(requiredParams)) {
-              if (!value) {
-                console.error(`[PLH PARENT GROUP] - SHARE - ${param} must be provided`);
-                return;
-              }
-            }
-            await this.handleShare(
-              parent_group_id,
-              auth_id,
-              parent_groups_data_list,
-              parents_data_list
-            );
-          },
-          /**
-           * Remove a specified co-facilitator from a specified parent group
-           */
-          remove_cofacilitator: async () => {
-            const requiredParams = {
-              parent_group_id,
-              auth_id,
-              parent_groups_data_list,
-              parents_data_list,
-            };
-            for (const [param, value] of Object.entries(requiredParams)) {
-              if (!value) {
-                console.error(
-                  `[PLH PARENT GROUP] - REMOVE CO-FACILITATOR - ${param} must be provided`
-                );
-                return;
-              }
-            }
-            await this.handleRemoveCoFacilitator(auth_id, parent_group_id, parent_groups_data_list);
-
-            // TODO: remove from shared data if there are no other members?
-          },
-          /**
-           * Push local state of any shared parent groups to shared database
-           * If a parent group id is provided, push only that parent group
-           */
-          push: async () => {
-            const requiredParams = {
-              parent_groups_data_list,
-              parents_data_list,
-            };
-            for (const [param, value] of Object.entries(requiredParams)) {
-              if (!value) {
-                console.error(`[PLH PARENT GROUP] - PUSH - ${param} must be provided`);
-                return;
-              }
-            }
-            await this.handlePush(parent_groups_data_list, parents_data_list, parent_group_id);
-          },
-          /**
-           * Pull state from shared database and update local parent groups
-           * If a parent group id is provided, pull only that parent group
-           */
-          pull: async () => {
-            const requiredParams = {
-              parent_groups_data_list,
-              parents_data_list,
-            };
-            for (const [param, value] of Object.entries(requiredParams)) {
-              if (!value) {
-                console.error(`[PLH PARENT GROUP] - PULL - ${param} must be provided`);
-                return;
-              }
-            }
-            await this.handlePull(parent_group_id, parent_groups_data_list, parents_data_list);
-          },
-
-          /**
-           * Create a local parent group with randomly generated data – used for debugging other functionality
-           */
-          create_random: async () => {
-            const requiredParams = {
-              parent_groups_data_list,
-              parents_data_list,
-            };
-            for (const [param, value] of Object.entries(requiredParams)) {
-              if (!value) {
-                console.error(`[PLH PARENT GROUP] - GENERATE RANDOM - ${param} must be provided`);
-                return;
-              }
-            }
-            await this.generateRandomParentGroup(parent_groups_data_list, parents_data_list);
-          },
-        };
-        if (!(actionId in childActions)) {
-          console.error(`[PLH PARENT GROUP] - No action, "${actionId}"`);
-          return;
-        }
-        return childActions[actionId]();
-      },
-    });
   }
 
   /**
    * Push a specified parent group to shared data and add a specified user (co-facilitator) as a member
    */
-  private async handleShare(
+  public async handleShare(
     parentGroupId: string,
     coFacilitatorAuthId: string,
     parentGroupsDataList: string,
@@ -217,7 +88,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Push local state of any shared parent groups to shared database
    * If a parent group id is provided, push only that parent group
    */
-  private async handlePush(
+  public async handlePush(
     parentGroupsDataList: string,
     parentsDataList: string,
     parentGroupId?: string
@@ -238,6 +109,28 @@ export class PlhParentGroupService extends SyncServiceBase {
     } else {
       await this.pushParentGroupData(parentGroup);
     }
+  }
+
+  /** Generate a random parent group, for debugging */
+  public async generateRandomParentGroup(parentGroupsDataList: string, parentsDataList: string) {
+    const randomId = Math.random().toString(36).substring(2, 15);
+
+    const parentGroup = {
+      id: "parent_group_" + randomId,
+      name: "Parent Group " + randomId,
+      text: "Parent Group " + randomId,
+      parents: [
+        {
+          id: "parent_" + randomId,
+          first_name: "Parent " + randomId,
+          last_name: "Parent " + randomId,
+          number: "1234567890",
+          age: "30",
+        },
+      ],
+    } as IParentGroup;
+
+    await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
   }
 
   /**
@@ -277,7 +170,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Pull state from shared database and update local parent groups
    * If a parent group id is provided, pull only that parent group
    */
-  private async handlePull(
+  public async handlePull(
     parentGroupId: string,
     parentGroupsDataList: string,
     parentsDataList: string
@@ -483,7 +376,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   /**
    * Remove a co-facilitator from the shared parent group collection
    */
-  private async handleRemoveCoFacilitator(
+  public async handleRemoveCoFacilitator(
     coFacilitatorAuthId: string,
     parentGroupId: string,
     parentGroupsDataList: string
@@ -563,27 +456,5 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
       ...update,
     });
-  }
-
-  /** Generate a random parent group, for debugging */
-  private async generateRandomParentGroup(parentGroupsDataList: string, parentsDataList: string) {
-    const randomId = Math.random().toString(36).substring(2, 15);
-
-    const parentGroup = {
-      id: "parent_group_" + randomId,
-      name: "Parent Group " + randomId,
-      text: "Parent Group " + randomId,
-      parents: [
-        {
-          id: "parent_" + randomId,
-          first_name: "Parent " + randomId,
-          last_name: "Parent " + randomId,
-          number: "1234567890",
-          age: "30",
-        },
-      ],
-    } as IParentGroup;
-
-    await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
   }
 }

@@ -41,7 +41,7 @@ import { ScreenOrientationService } from "./shared/services/screen-orientation/s
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
 import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
-import { PlhParentGroupService } from "./shared/services/plh-parent-group/plh-parent-group.service";
+import { PlhParentGroupService } from "./feature/plh-parent-group/plh-parent-group.service";
 
 @Component({
   selector: "app-root",
