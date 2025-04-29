@@ -6,6 +6,7 @@ import {
   parseAppDataCollectionString,
   parseAppDataActionString,
   parseAppDateValue,
+  parseAppDataParameterList,
 } from "../../../utils";
 import { ActiveDeployment } from "../../../../../deployment/get";
 import { FlowParserProcessor } from "../flowParser";
@@ -242,6 +243,10 @@ class RowProcessor {
         if (typeof value === "string") {
           if (field.endsWith("_list") || field.includes("_list_")) {
             this.row[field] = parseAppDataListString(value);
+            // allow parameter_lists defined in data_lists to be processed in the same way as templates
+            if (field === "parameter_list") {
+              this.row[field] = parseAppDataParameterList(this.row[field]);
+            }
           }
           if (field.endsWith("_collection") || field.includes("_collection_")) {
             this.row[field] = parseAppDataCollectionString(this.row[field]);
