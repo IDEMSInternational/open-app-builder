@@ -1,0 +1,150 @@
+/* Basic body styling */
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  color: #333;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2em;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+h2 {
+  font-size: 1.6em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 3px;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 15px;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+ul li,
+ol li {
+  margin-bottom: 5px;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #ccc;
+  padding: 10px 15px;
+  margin: 15px 0;
+  background-color: #f9f9f9;
+  color: #555;
+  font-style: italic;
+}
+
+/* Code (inline and block) */
+code {
+  font-family: monospace;
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #f0f0f0;
+  padding: 15px;
+  overflow-x: auto; /* Add horizontal scroll for long lines */
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+pre code {
+  background-color: transparent; /* Remove background from inner code tag */
+  padding: 0;
+}
+
+/* Horizontal Rule */
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Images */
+img {
+  max-width: 100%; /* Ensure images don't overflow containers */
+  height: auto;
+  display: block; /* Prevent extra space below image */
+  margin: 0 auto 15px; /* Center images and add bottom margin */
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Remove space between borders */
+  margin-bottom: 15px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: white;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Optional: Add a subtle shadow or border to the whole table */
+table {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
