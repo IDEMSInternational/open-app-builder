@@ -7,7 +7,7 @@ export interface SharedDataQueryParams {
    * Shared data identifier. Can be single doc reference (e.g. "group_1")
    * or entire collection (e.g. "group_1/messages")
    **/
-  id: string;
+  id?: string;
   /** id of authenticated user */
   auth_id: string;
   /** Timestamp of most recent document to search for newer than */
