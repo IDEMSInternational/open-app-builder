@@ -7,7 +7,8 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20241118.0;
+const cacheVersion = 20250429.0;
+const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
 export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
   constructor(paths: IConverterPaths) {
@@ -28,9 +29,11 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     // Ensure all paths use / to match HTTP style paths
     const { SHEETS_INPUT_FOLDER } = this.context.paths;
     const _xlsxPath = path.relative(SHEETS_INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
+    const sheetsFolderId = path.basename(SHEETS_INPUT_FOLDER);
+    const sheetsFolderUrl = `${sheetsFolderBaseUrl}/${sheetsFolderId}`;
     const processed = merged.map((v) => {
       v._xlsxPath = _xlsxPath;
-      v._sheetsFolderId = path.basename(SHEETS_INPUT_FOLDER);
+      v._sheetsFolderUrl = sheetsFolderUrl;
       return v;
     });
     return processed;
