@@ -285,7 +285,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const sharedParentGroups = await firstValueFrom(sharedParentGroupsQuery);
     for (const sharedParentGroupDoc of sharedParentGroups) {
-      await this.updateLocalParentGroupData(
+      await this.updateLocalParentGroupDataFromSharedDoc(
         sharedParentGroupDoc,
         parentGroupsDataList,
         parentsDataList
@@ -316,7 +316,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    await this.updateLocalParentGroupData(
+    await this.updateLocalParentGroupDataFromSharedDoc(
       sharedParentGroupDoc,
       parentGroupsDataList,
       parentsDataList
@@ -469,7 +469,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   /**
    * Update local parent group data across multiple data lists to reflect incoming parentGroup data
    */
-  private async updateLocalParentGroupData(
+  private async updateLocalParentGroupDataFromSharedDoc(
     sharedParentGroupDoc: ISharedDataCollection,
     parentGroupsDataList: string,
     parentsDataList: string
@@ -478,14 +478,23 @@ export class PlhParentGroupService extends SyncServiceBase {
     const parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
     const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
     parentGroupData.readonly = !userIsAdmin;
+    // When saving a shared parent group to local data, use the shared_id of the shared parent group as the parent group id
+    // (avoids conflicts with other local parent groups)
+    parentGroupData.id = sharedParentGroupDoc.id;
 
-    console.log("parentGroupData", parentGroupData);
+    await this.updateLocalParentGroupData(parentGroupData, parentGroupsDataList, parentsDataList);
+  }
 
+  /**
+   * Update local parent group data across multiple data lists to reflect incoming parentGroup data
+   */
+  private async updateLocalParentGroupData(
+    parentGroupData: IParentGroup,
+    parentGroupsDataList: string,
+    parentsDataList: string
+  ) {
     await this.dynamicDataService.upsert("data_list", parentGroupsDataList, {
       ...parentGroupData,
-      // When saving a shared parent group to local data, use the shared_id of the shared parent group as the parent group id
-      // (avoids conflicts with other local parent groups)
-      id: sharedParentGroupDoc.id,
     });
 
     for (const parent of parentGroupData.parents) {
@@ -507,5 +516,26 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
       ...update,
     });
+  }
+
+  /** Generate a random parent group, for debugging */
+  private async generateRandomParentGroup(parentGroupsDataList: string, parentsDataList: string) {
+    const randomId = Math.random().toString(36).substring(2, 15);
+
+    const parentGroup = {
+      id: "parent_group_" + randomId,
+      name: "Parent Group " + randomId,
+      parents: [
+        {
+          id: "parent_" + randomId,
+          first_name: "Parent " + randomId,
+          last_name: "Parent " + randomId,
+          number: "1234567890",
+          age: "30",
+        },
+      ],
+    } as IParentGroup;
+
+    await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
   }
 }
