@@ -2,7 +2,7 @@ import { Component, computed, effect, ElementRef, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { distinctUntilChanged, filter, map, switchMap, tap } from "rxjs";
+import { distinctUntilChanged, filter, map, switchMap } from "rxjs";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { MangoQuery, MangoQuerySelector, MangoQuerySortPart } from "rxdb";
 import { jsComparisonToMangoQuery } from "packages/shared/src/utils/rxdb.utils";
@@ -40,15 +40,6 @@ interface IQueryParams {
   raw: boolean;
 }
 
-/**
- *
- * TODO
- * - sort authoring (consistent/inconsistent with data-items and items?). Could include commas
- * - tests
- * - update RFC
- * - make fully headless (so parent doesn't render content)
- * - markdown component demo
- */
 @Component({
   selector: "tmpl-data-query",
   template: "",
@@ -138,9 +129,6 @@ export class TmplDataQueryComponent extends TemplateBaseComponent implements OnI
       queryObj.selector = { [selectorCondition]: this.generateQuery(value) };
     }
     return this.dynamicDataService.query$("data_list", list_id, queryObj).pipe(
-      tap((v) => {
-        console.log("data updated", queryObj, v);
-      }),
       // return first entry from array (if exists)
       map((v) => v?.[0])
     );
