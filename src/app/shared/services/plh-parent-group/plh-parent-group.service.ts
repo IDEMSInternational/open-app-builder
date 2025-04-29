@@ -233,25 +233,12 @@ export class PlhParentGroupService extends SyncServiceBase {
    */
   private async handlePushAll(parentGroupsDataList: string, parentsDataList: string) {
     // for each local parent group that has already been shared, update shared data to reflect local state
-    const sharedParentGroupsQuery = this.dynamicDataService.query$(
-      "data_list",
-      parentGroupsDataList,
-      {
-        selector: {
-          $and: [
-            { shared_id: { $exists: true } },
-            { shared_id: { $ne: null } },
-            { shared_id: { $ne: "" } },
-          ],
-        },
-      }
-    );
-    const sharedParentGroupRefs = await firstValueFrom(sharedParentGroupsQuery);
-    const sharedParentGroups = await Promise.all(
+    const sharedParentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
+    const sharedParentGroups = (await Promise.all(
       sharedParentGroupRefs.map((sharedParentGroupRef) =>
         this.getLocalParentGroup(sharedParentGroupRef.id, parentGroupsDataList, parentsDataList)
       )
-    );
+    )) as IParentGroup[];
     for (const parentGroup of sharedParentGroups) {
       this.pushParentGroupData(parentGroup);
     }
@@ -274,12 +261,6 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
-  /** TODO */
-  private handlePullBulk() {
-    // fetch data for all parent groups in shared data that user has access to, and use to update local data
-    // if user is not creator, set to `readonly: true` or `writeAccess: false`
-  }
-
   /**
    * Pull state from shared database and update local parent groups
    * If a parent group id is provided, pull only that parent group
@@ -289,6 +270,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
+    if (!parentGroupId) {
+      await this.handlePullAll(parentGroupsDataList, parentsDataList);
+      return;
+    }
+
     // get shared_id from local data
     const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
       selector: { id: parentGroupId },
@@ -296,10 +282,31 @@ export class PlhParentGroupService extends SyncServiceBase {
     const [parentGroupData] = await firstValueFrom(parentGroupQuery);
     const sharedId = parentGroupData.shared_id;
 
-    console.log("sharedId", sharedId);
+    await this.pullParentGroupDataBySharedId(parentGroupsDataList, parentsDataList, sharedId);
+  }
 
+  /** Pull  */
+  private async handlePullAll(parentGroupsDataList: string, parentsDataList: string) {
+    // current implementation only queries for parent groups that have already been shared
+    // TODO: fetch data for all parent groups in shared data that user has access to, and use to update local data
+    const parentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
+    const parentGroupSharedIds = parentGroupRefs.map((parentGroupRef) => parentGroupRef.shared_id);
+
+    for (const sharedId of parentGroupSharedIds) {
+      await this.pullParentGroupDataBySharedId(parentGroupsDataList, parentsDataList, sharedId);
+    }
+  }
+
+  /**
+   * Fetch shared data for spectified parent group and use to update local parent group data, including write permissions
+   * */
+  private async pullParentGroupDataBySharedId(
+    parentGroupsDataList: string,
+    parentsDataList: string,
+    sharedId: string
+  ) {
     // Get a snapshot directly from the server
-    // TODO: using query$ gave stale data from cache, try to resolve
+    // TODO: using query$ gives stale data from cache, try to resolve
     const sharedParentGroupDoc = await firstValueFrom(
       this.sharedDataService.provider.querySingle$({
         id: sharedId,
@@ -313,6 +320,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
+    // Parent group data is nested inside data key
     const sharedParentGroupData = sharedParentGroupDoc.data.parentGroupData;
 
     await this.updateLocalParentGroupData(
@@ -320,6 +328,12 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupsDataList,
       parentsDataList
     );
+
+    // Mark local parent group as readonly if user is not admin
+    const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
+    await this.setLocalParentGroupProperty(sharedParentGroupData.id, parentGroupsDataList, {
+      readonly: userIsAdmin,
+    });
   }
 
   /**
@@ -372,6 +386,27 @@ export class PlhParentGroupService extends SyncServiceBase {
       shared_id: sharedCollectionId,
     });
     return sharedCollectionId;
+  }
+
+  /**
+   * Get partial data (that which is stored in parentGroupsDataList) for all parent groups in local data that have been shared to shared data
+   * @returns an array of parent group references
+   */
+  private async getLocalParentGroupRefs(parentGroupsDataList: string) {
+    const sharedParentGroupsQuery = this.dynamicDataService.query$(
+      "data_list",
+      parentGroupsDataList,
+      {
+        selector: {
+          $and: [
+            { shared_id: { $exists: true } },
+            { shared_id: { $ne: null } },
+            { shared_id: { $ne: "" } },
+          ],
+        },
+      }
+    );
+    return await firstValueFrom(sharedParentGroupsQuery);
   }
 
   /**
