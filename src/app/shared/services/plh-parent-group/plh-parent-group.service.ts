@@ -205,7 +205,6 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupsDataList,
       parentsDataList
     );
-    console.log("sharedCollectionId", sharedCollectionId);
     await this.addCoFacilitator(
       sharedCollectionId,
       coFacilitatorAuthId,
@@ -315,16 +314,13 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Check local parent group data for any previously shared parent groups that were created by another user
     // These are those which have had access removed: If found, delete the local parent group data
     const localParentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
-    console.log("localParentGroupRefs", localParentGroupRefs);
     const previouslySharedParentGroups = localParentGroupRefs.filter(
       (group) => group.shared_id && group.readonly
     );
-    console.log("previouslySharedParentGroups", previouslySharedParentGroups);
     const unsharedParentGroups = previouslySharedParentGroups.filter(
       (group) => !incomingParentGroupIds.includes(group.id)
     );
     const unsharedParentGroupIds = unsharedParentGroups.map((group) => group.id);
-    console.log("unsharedParentGroupIds", unsharedParentGroupIds);
     await this.dynamicDataService.remove("data_list", parentGroupsDataList, unsharedParentGroupIds);
   }
 
@@ -564,7 +560,6 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     update: Partial<T>
   ) {
-    console.log("Setting local parent group property", parentGroupId, parentGroupsDataList, update);
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
       ...update,
     });
