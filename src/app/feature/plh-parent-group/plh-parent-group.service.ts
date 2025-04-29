@@ -38,12 +38,17 @@ interface IParentGroup {
   shared_id?: string;
 }
 
+/**
+ * Service for managing parent groups and sharing them between users
+ * Specifically for plh_facilitator_* deployments
+ * See https://github.com/IDEMSInternational/open-app-builder/pull/2910
+ */
 @Injectable({
   providedIn: "root",
 })
 export class PlhParentGroupService extends SyncServiceBase {
   /** The auth_id of the logged in user */
-  authId = computed(() => this.authService.provider.authUser()?.uid);
+  private authId = computed(() => this.authService.provider.authUser()?.uid);
 
   constructor(
     private authService: AuthService,
@@ -111,19 +116,24 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
   }
 
-  /** Generate a random parent group, for debugging */
-  public async generateRandomParentGroup(parentGroupsDataList: string, parentsDataList: string) {
+  /**
+   * Generate a random parent group for debugging purposes
+   */
+  public async generateRandomParentGroup(
+    parentGroupsDataList: string,
+    parentsDataList: string
+  ): Promise<void> {
     const randomId = Math.random().toString(36).substring(2, 15);
 
-    const parentGroup = {
-      id: "parent_group_" + randomId,
-      name: "Parent Group " + randomId,
-      text: "Parent Group " + randomId,
+    const parentGroup: IParentGroup = {
+      id: `parent_group_${randomId}`,
+      name: `Parent Group ${randomId}`,
+      text: `Parent Group ${randomId}`,
       parents: [
         {
-          id: "parent_" + randomId,
-          first_name: "Parent " + randomId,
-          last_name: "Parent " + randomId,
+          id: `parent_${randomId}`,
+          first_name: `Parent ${randomId}`,
+          last_name: `Parent ${randomId}`,
           number: "1234567890",
           age: "30",
         },
@@ -139,9 +149,10 @@ export class PlhParentGroupService extends SyncServiceBase {
   private async handlePushAll(parentGroupsDataList: string, parentsDataList: string) {
     // for each local parent group that has already been shared, update shared data to reflect local state
     const sharedParentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
+    const filteredSharedParentGroupRefs = sharedParentGroupRefs.filter((ref) => !ref.readonly);
     const sharedParentGroups = (await Promise.all(
-      sharedParentGroupRefs.map((sharedParentGroupRef) =>
-        this.getLocalParentGroup(sharedParentGroupRef.id, parentGroupsDataList, parentsDataList)
+      filteredSharedParentGroupRefs.map((ref) =>
+        this.getLocalParentGroup(ref.id, parentGroupsDataList, parentsDataList)
       )
     )) as IParentGroup[];
     for (const parentGroup of sharedParentGroups) {
@@ -186,8 +197,6 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /** Pull  */
   private async handlePullAll(parentGroupsDataList: string, parentsDataList: string) {
-    // current implementation only queries for parent groups that have already been shared
-    // TODO: fetch data for all parent groups in shared data that user has access to, and use to update local data
     const sharedParentGroupsQuery = this.sharedDataService.provider.queryMultiple$({
       since: undefined,
       auth_id: this.authId(),
@@ -202,10 +211,17 @@ export class PlhParentGroupService extends SyncServiceBase {
         parentsDataList
       );
       incomingParentGroupIds.push(parentGroupId);
+      await this.cleanupUnsharedParentGroups(parentGroupsDataList, incomingParentGroupIds);
     }
+  }
 
-    // Check local parent group data for any previously shared parent groups that were created by another user
-    // These are those which have had access removed: If found, delete the local parent group data
+  /**
+   * Remove any parent groups from local data that were previously shared with current user not present in the incoming parent group ids
+   */
+  private async cleanupUnsharedParentGroups(
+    parentGroupsDataList: string,
+    incomingParentGroupIds: string[]
+  ) {
     const localParentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
     const previouslySharedParentGroups = localParentGroupRefs.filter(
       (group) => group.shared_id && group.readonly
@@ -214,6 +230,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       (group) => !incomingParentGroupIds.includes(group.id)
     );
     const unsharedParentGroupIds = unsharedParentGroups.map((group) => group.id);
+
     await this.dynamicDataService.remove("data_list", parentGroupsDataList, unsharedParentGroupIds);
   }
 
@@ -271,11 +288,11 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupsDataList,
       parentsDataList
     );
-    if (parentGroup.shared_id) {
-      return parentGroup.shared_id;
-    }
-    // create new shared parent group
-    return await this.createSharedParentGroup(parentGroupId, parentGroupsDataList, parentsDataList);
+
+    return (
+      parentGroup.shared_id ||
+      (await this.createSharedParentGroup(parentGroupId, parentGroupsDataList, parentsDataList))
+    );
   }
 
   /**
@@ -293,6 +310,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupsDataList,
       parentsDataList
     );
+
     const { id: sharedCollectionId } = await this.sharedDataService.createSharedCollection();
     await this.sharedDataService.updateSharedData(sharedCollectionId, "type", "parent_group");
     await this.sharedDataService.updateSharedData(
@@ -406,6 +424,12 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
+    if (!sharedParentGroupDoc.data.parentGroupData) {
+      console.error(
+        `[PLH PARENT GROUP] - PULL - Parent group data not found in shared data, id: ${sharedParentGroupDoc.id}`
+      );
+      return;
+    }
     // Parent group data is nested inside data key
     const parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
     const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
