@@ -5,6 +5,7 @@ import { AuthService } from "../auth/auth.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
+import { ISharedDataCollection } from "src/app/feature/shared-data/types";
 
 interface IPlhParentGroupActionParams {
   /** ID of a co-faciliator to share data with */
@@ -125,12 +126,7 @@ export class PlhParentGroupService extends SyncServiceBase {
                 return;
               }
             }
-            await this.handleRemoveCoFacilitator(
-              parent_group_id,
-              auth_id,
-              parent_groups_data_list,
-              parents_data_list
-            );
+            await this.handleRemoveCoFacilitator(auth_id, parent_group_id, parent_groups_data_list);
 
             // TODO: remove from shared data if there are no other members?
           },
@@ -275,13 +271,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    // get shared_id from local data
-    const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
-      selector: { id: parentGroupId },
-    });
-    const [parentGroupData] = await firstValueFrom(parentGroupQuery);
-    const sharedId = parentGroupData.shared_id;
-
+    const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
     await this.pullParentGroupDataBySharedId(parentGroupsDataList, parentsDataList, sharedId);
   }
 
@@ -289,11 +279,17 @@ export class PlhParentGroupService extends SyncServiceBase {
   private async handlePullAll(parentGroupsDataList: string, parentsDataList: string) {
     // current implementation only queries for parent groups that have already been shared
     // TODO: fetch data for all parent groups in shared data that user has access to, and use to update local data
-    const parentGroupRefs = await this.getLocalParentGroupRefs(parentGroupsDataList);
-    const parentGroupSharedIds = parentGroupRefs.map((parentGroupRef) => parentGroupRef.shared_id);
-
-    for (const sharedId of parentGroupSharedIds) {
-      await this.pullParentGroupDataBySharedId(parentGroupsDataList, parentsDataList, sharedId);
+    const sharedParentGroupsQuery = this.sharedDataService.provider.queryMultiple$({
+      since: undefined,
+      auth_id: this.authId(),
+    });
+    const sharedParentGroups = await firstValueFrom(sharedParentGroupsQuery);
+    for (const sharedParentGroupDoc of sharedParentGroups) {
+      await this.updateLocalParentGroupData(
+        sharedParentGroupDoc,
+        parentGroupsDataList,
+        parentsDataList
+      );
     }
   }
 
@@ -320,20 +316,11 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    // Parent group data is nested inside data key
-    const sharedParentGroupData = sharedParentGroupDoc.data.parentGroupData;
-
     await this.updateLocalParentGroupData(
-      sharedParentGroupData,
+      sharedParentGroupDoc,
       parentGroupsDataList,
       parentsDataList
     );
-
-    // Mark local parent group as readonly if user is not admin
-    const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
-    await this.setLocalParentGroupProperty(sharedParentGroupData.id, parentGroupsDataList, {
-      readonly: userIsAdmin,
-    });
   }
 
   /**
@@ -458,31 +445,47 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Remove a co-facilitator from the shared parent group collection
    */
   private async handleRemoveCoFacilitator(
-    sharedCollectionId: string,
     coFacilitatorAuthId: string,
     parentGroupId: string,
     parentGroupsDataList: string
   ) {
-    await this.sharedDataService.removeCollectionMember(
-      sharedCollectionId,
-      coFacilitatorAuthId,
-      "member"
-    );
+    const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
+
+    await this.sharedDataService.removeCollectionMember(sharedId, coFacilitatorAuthId, "member");
     await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
       cofacilitator_id: undefined,
     });
+  }
+
+  /** Get the shared_id for a parent group from local data */
+  private async getSharedIdFromParentGroupId(parentGroupId: string, parentGroupsDataList: string) {
+    const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
+      selector: { id: parentGroupId },
+    });
+    const [parentGroupData] = await firstValueFrom(parentGroupQuery);
+    return parentGroupData.shared_id;
   }
 
   /**
    * Update local parent group data across multiple data lists to reflect incoming parentGroup data
    */
   private async updateLocalParentGroupData(
-    parentGroupData: IParentGroup,
+    sharedParentGroupDoc: ISharedDataCollection,
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
-    await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupData.id, {
+    // Parent group data is nested inside data key
+    const parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
+    const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
+    parentGroupData.readonly = !userIsAdmin;
+
+    console.log("parentGroupData", parentGroupData);
+
+    await this.dynamicDataService.upsert("data_list", parentGroupsDataList, {
       ...parentGroupData,
+      // When saving a shared parent group to local data, use the shared_id of the shared parent group as the parent group id
+      // (avoids conflicts with other local parent groups)
+      id: sharedParentGroupDoc.id,
     });
 
     for (const parent of parentGroupData.parents) {
@@ -500,6 +503,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     update: Partial<T>
   ) {
+    console.log("Setting local parent group property", parentGroupId, parentGroupsDataList, update);
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
       ...update,
     });
