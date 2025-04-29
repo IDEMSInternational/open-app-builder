@@ -211,8 +211,8 @@ export class PlhParentGroupService extends SyncServiceBase {
         parentsDataList
       );
       incomingParentGroupIds.push(parentGroupId);
-      await this.cleanupUnsharedParentGroups(parentGroupsDataList, incomingParentGroupIds);
     }
+    await this.cleanupUnsharedParentGroups(parentGroupsDataList, incomingParentGroupIds);
   }
 
   /**
