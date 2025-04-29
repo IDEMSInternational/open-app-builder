@@ -92,8 +92,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
             if (k.startsWith("@")) {
               const keyDynamicEvaluators = extractDynamicEvaluators(k);
               const evaluatedKey = await this.evaluatePLHString(keyDynamicEvaluators, context);
-              data[evaluatedKey] = data[k];
-              delete data[k];
+              // Allow a dynamic lookup to populate full object data (e.g. parameter_list: @data.lookup_row.parameter_list)
+              if (isObjectLiteral(evaluatedKey)) {
+                data = evaluatedKey as any;
+              }
+              // Default replace the object key with evaluated
+              else {
+                data[evaluatedKey] = data[k];
+                delete data[k];
+              }
               return this.evaluatePLHData({ ...data }, context, omitFields);
             }
             value[k] = data[k];
