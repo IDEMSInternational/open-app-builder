@@ -1,17 +1,14 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SharedDataService } from "./shared-data.service";
 
-interface INavStackActionParams {
-  template: string;
-  title: string;
-  show_close_button: boolean;
-  header: boolean;
+interface ISharedDataActionParams {
+  //
 }
 
 export class SharedDataActionFactory {
   constructor(private service: SharedDataService) {}
 
-  public shared_data: IActionHandler<INavStackActionParams> = async ({ params, args }) => {
+  public shared_data: IActionHandler<ISharedDataActionParams> = async ({ params, args }) => {
     await this.service.ready();
     const [actionId] = args;
     const childActions = {
