@@ -197,6 +197,8 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /** Pull  */
   private async handlePullAll(parentGroupsDataList: string, parentsDataList: string) {
+    // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
+    // since they are optimised to return a stream from the server and cache combined.
     const sharedParentGroupsQuery = this.sharedDataService.provider.queryMultiple$({
       since: undefined,
       auth_id: this.authId(),
@@ -243,8 +245,8 @@ export class PlhParentGroupService extends SyncServiceBase {
     sharedId: string
   ) {
     try {
-      // Get a snapshot directly from the server
-      // TODO: using query$ gives stale data from cache, try to resolve
+      // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
+      // since they are optimised to return a stream from the server and cache combined.
       const sharedParentGroupDoc = await firstValueFrom(
         this.sharedDataService.provider.querySingle$({
           id: sharedId,
