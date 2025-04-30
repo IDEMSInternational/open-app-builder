@@ -13,6 +13,7 @@
     "datetime",
     "dexie",
     "firebaserc",
+    "firestore",
     "fontawesome",
     "gdrive",
     "glitchtip",
