@@ -49,7 +49,7 @@ export class SharedDataService extends AsyncServiceBase {
   ) {
     super("Shared Data");
     this.provider = getDataProvider(this.config.provider);
-    this.registerInitFunction(this.initialise);
+    this.registerInitFunction(this.initialise, "defer");
   }
 
   /**
@@ -265,6 +265,7 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   private async initialise() {
+    console.trace("[shared data] init");
     await this.provider.initialise(this.injector);
     await this.dynamicDataService.ready();
   }
