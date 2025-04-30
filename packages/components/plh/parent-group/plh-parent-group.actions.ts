@@ -10,6 +10,8 @@ interface IPlhParentGroupActionParams {
   parent_groups_data_list?: string;
   /** Name of the data list of parents */
   parents_data_list?: string;
+  /** Name of the data list that tracks completion of modules by parent group */
+  completion_tracking_data_list?: string;
 }
 
 export class PlhParentGroupActionFactory {
@@ -21,7 +23,13 @@ export class PlhParentGroupActionFactory {
   }) => {
     console.log("[PLH PARENT GROUP] - TEMPLATE ACTION", args, params);
     const [actionId] = args;
-    const { auth_id, parent_group_id, parent_groups_data_list, parents_data_list } = params;
+    const {
+      auth_id,
+      parent_group_id,
+      parent_groups_data_list,
+      parents_data_list,
+      completion_tracking_data_list,
+    } = params;
 
     const childActions = {
       /**
@@ -105,7 +113,12 @@ export class PlhParentGroupActionFactory {
             return;
           }
         }
-        await this.service.handlePull(parent_group_id, parent_groups_data_list, parents_data_list);
+        await this.service.handlePull(
+          parent_group_id,
+          parent_groups_data_list,
+          parents_data_list,
+          completion_tracking_data_list
+        );
       },
 
       /**

@@ -5,6 +5,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";
+import setDataAction from "src/app/shared/services/dynamic-data/actions/set_data.action";
 
 interface IParent {
   id: string;
@@ -184,33 +185,46 @@ export class PlhParentGroupService extends SyncServiceBase {
   public async handlePull(
     parentGroupId: string,
     parentGroupsDataList: string,
-    parentsDataList: string
+    parentsDataList: string,
+    completionTrackingDataList?: string
   ) {
     if (!parentGroupId) {
-      await this.handlePullAll(parentGroupsDataList, parentsDataList);
+      await this.handlePullAll(parentGroupsDataList, parentsDataList, completionTrackingDataList);
       return;
     }
 
     const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
-    await this.pullParentGroupDataBySharedId(parentGroupsDataList, parentsDataList, sharedId);
+    await this.pullParentGroupDataBySharedId(
+      parentGroupsDataList,
+      parentsDataList,
+      sharedId,
+      completionTrackingDataList
+    );
   }
 
   /** Pull  */
-  private async handlePullAll(parentGroupsDataList: string, parentsDataList: string) {
+  private async handlePullAll(
+    parentGroupsDataList: string,
+    parentsDataList: string,
+    completionTrackingDataList?: string
+  ) {
     // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
     // since they are optimised to return a stream from the server and cache combined.
-    const sharedParentGroupsQuery = this.sharedDataService.provider.queryMultiple$({
+    const sharedDataQuery = this.sharedDataService.provider.queryMultiple$({
       since: undefined,
       auth_id: this.authId(),
     });
-    const sharedParentGroups = await firstValueFrom(sharedParentGroupsQuery);
+    const sharedData = await firstValueFrom(sharedDataQuery);
+    const sharedParentGroups = sharedData.filter((doc) => doc.data.type === "parent_group");
+    console.log("[PLH PARENT GROUP] - PULL - Shared parent groups", sharedParentGroups);
 
     const incomingParentGroupIds = [];
     for (const sharedParentGroupDoc of sharedParentGroups) {
       const parentGroupId = await this.updateLocalParentGroupDataFromSharedDoc(
         sharedParentGroupDoc,
         parentGroupsDataList,
-        parentsDataList
+        parentsDataList,
+        completionTrackingDataList
       );
       incomingParentGroupIds.push(parentGroupId);
     }
@@ -242,7 +256,8 @@ export class PlhParentGroupService extends SyncServiceBase {
   private async pullParentGroupDataBySharedId(
     parentGroupsDataList: string,
     parentsDataList: string,
-    sharedId: string
+    sharedId: string,
+    completionTrackingDataList?: string
   ) {
     try {
       // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
@@ -264,7 +279,8 @@ export class PlhParentGroupService extends SyncServiceBase {
       await this.updateLocalParentGroupDataFromSharedDoc(
         sharedParentGroupDoc,
         parentGroupsDataList,
-        parentsDataList
+        parentsDataList,
+        completionTrackingDataList
       );
     } catch (error) {
       console.error(
@@ -426,7 +442,8 @@ export class PlhParentGroupService extends SyncServiceBase {
   private async updateLocalParentGroupDataFromSharedDoc(
     sharedParentGroupDoc: ISharedDataCollection,
     parentGroupsDataList: string,
-    parentsDataList: string
+    parentsDataList: string,
+    completionTrackingDataList?: string
   ) {
     if (!sharedParentGroupDoc.data.parentGroupData) {
       console.error(
@@ -448,11 +465,44 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupData.name = sharedId;
     }
 
+    if (completionTrackingDataList) {
+      await this.hackUpdateCompletionTrackingDataList(
+        sharedId,
+        parentGroupsDataList,
+        completionTrackingDataList
+      );
+    }
+
     return await this.updateLocalParentGroupData(
       parentGroupData,
       parentGroupsDataList,
       parentsDataList
     );
+  }
+
+  /**
+   * Update the completion tracking data list with new field to track completion of a parent group
+   */
+  private async hackUpdateCompletionTrackingDataList(
+    parentGroupId: string,
+    parentGroupsDataList: string,
+    completionTrackingDataList: string
+  ) {
+    // If parent group is new, update completionTrackingDataList with a new field to track completion for this parent group
+    const localDocQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
+      selector: { id: parentGroupId },
+    });
+    const queryResult = await firstValueFrom(localDocQuery);
+    if (!queryResult || queryResult.length === 0) {
+      await setDataAction(this.dynamicDataService, {
+        _list_id: completionTrackingDataList,
+        _updates: [
+          {
+            [`completed_${parentGroupId}`]: false,
+          },
+        ],
+      });
+    }
   }
 
   /**
