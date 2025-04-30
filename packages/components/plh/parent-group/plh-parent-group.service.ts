@@ -1,7 +1,7 @@
 import { Injectable, computed } from "@angular/core";
-import { SyncServiceBase } from "../../shared/services/syncService.base";
-import { AuthService } from "../../shared/services/auth/auth.service";
-import { DynamicDataService } from "../../shared/services/dynamic-data/dynamic-data.service";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";

@@ -5,7 +5,7 @@ import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
 import { provideSharedData } from "./feature/shared-data";
-import { PlhParentGroupModule } from "./feature/plh-parent-group/plh-parent-group.module";
+import { PLH_FEATURE_MODULES } from "packages/components/plh";
 
 /**
  * Module imports required for specific deployment features
@@ -25,7 +25,7 @@ import { PlhParentGroupModule } from "./feature/plh-parent-group/plh-parent-grou
     AnalyticsModule,
     CampaignModule,
     NavStackModule,
-    PlhParentGroupModule,
+    ...PLH_FEATURE_MODULES,
     /* */
   ],
   // Modules defined as modern angular providers
