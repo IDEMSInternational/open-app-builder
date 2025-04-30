@@ -255,6 +255,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
       if (!sharedParentGroupDoc) {
         console.error(`[PLH PARENT GROUP] - PULL - Shared parent group not found, id: ${sharedId}`);
+        // TODO: remove parent group from local data?
         return;
       }
 
@@ -268,6 +269,7 @@ export class PlhParentGroupService extends SyncServiceBase {
         `[PLH PARENT GROUP] - PULL - Error pulling parent group data, id: ${sharedId}`,
         error
       );
+      // TODO: remove parent group from local data?
       return;
     }
   }
@@ -434,11 +436,14 @@ export class PlhParentGroupService extends SyncServiceBase {
     const parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
     const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
     parentGroupData.readonly = !userIsAdmin;
-    parentGroupData.shared_id = sharedParentGroupDoc.id;
+    const sharedId = sharedParentGroupDoc.id;
+    parentGroupData.shared_id = sharedId;
     if (sharedParentGroupDoc._created_by !== this.authId()) {
       // When saving a shared parent group to local data that was created by another user,
-      // use the shared_id of the shared parent group as the parent group id (avoids conflicts with other local parent groups)
-      parentGroupData.id = sharedParentGroupDoc.id;
+      // use the shared_id of the shared parent group as the parent group id AND the parent group "name" (effectively another ID)
+      // (avoids conflicts with other local parent groups)
+      parentGroupData.id = sharedId;
+      parentGroupData.name = sharedId;
     }
 
     return await this.updateLocalParentGroupData(
