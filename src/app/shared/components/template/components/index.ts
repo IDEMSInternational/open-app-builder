@@ -48,6 +48,7 @@ import { TmplProgressPathComponent } from "./progress-path/progress-path.compone
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplSharedDataComponent } from "./shared-data/shared-data.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplSubtitleComponent } from "./subtitle";
@@ -124,6 +125,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
+  TmplSharedDataComponent,
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
@@ -201,6 +203,7 @@ const COMMON_COMPONENT_MAPPING = {
   radio_group: TmplRadioGroupComponent,
   round_button: RoundIconButtonComponent,
   select_text: SelectTextComponent,
+  shared_data: TmplSharedDataComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
