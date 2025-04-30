@@ -494,14 +494,17 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const queryResult = await firstValueFrom(localDocQuery);
     if (!queryResult || queryResult.length === 0) {
-      await setDataAction(this.dynamicDataService, {
-        _list_id: completionTrackingDataList,
-        _updates: [
-          {
-            [`completed_${parentGroupId}`]: false,
-          },
-        ],
-      });
+      const completionTrackingQuery = this.dynamicDataService.query$(
+        "data_list",
+        completionTrackingDataList
+      );
+      const completionTrackingData = await firstValueFrom(completionTrackingQuery);
+      const completionTrackingRowIds = completionTrackingData.map((doc) => doc.id);
+      for (const rowId of completionTrackingRowIds) {
+        await this.dynamicDataService.update("data_list", completionTrackingDataList, rowId, {
+          [`completed_${parentGroupId}`]: false,
+        });
+      }
     }
   }
 
