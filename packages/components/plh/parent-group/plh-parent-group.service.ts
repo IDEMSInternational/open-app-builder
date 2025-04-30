@@ -481,7 +481,8 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Update the completion tracking data list with new field to track completion of a parent group
+   * Update the completion tracking data list with new field to track completion of a parent group.
+   * Replicates custom functionality previously authored manually
    */
   private async hackUpdateCompletionTrackingDataList(
     parentGroupId: string,
@@ -494,6 +495,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const queryResult = await firstValueFrom(localDocQuery);
     if (!queryResult || queryResult.length === 0) {
+      // HACK: no method to bulk update, so get ids for all rows and update sequentially
       const completionTrackingQuery = this.dynamicDataService.query$(
         "data_list",
         completionTrackingDataList
