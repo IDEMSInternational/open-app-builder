@@ -265,7 +265,6 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   private async initialise() {
-    console.trace("[shared data] init");
     await this.provider.initialise(this.injector);
     await this.dynamicDataService.ready();
   }
