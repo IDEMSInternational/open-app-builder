@@ -2,7 +2,6 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAssetEntry } from "./assets.model";
-import { PLH_ACTIONS_LIST } from "components/plh/actions";
 
 /*********************************************************************************************
  *  Base flow types
@@ -418,6 +417,8 @@ export namespace FlowTypes {
 
   const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
   const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
+  // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
+  const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -465,8 +466,7 @@ export namespace FlowTypes {
     "copy",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
-    // Actions imported from package may not be available at initial build time
-    ...(PLH_ACTIONS_LIST || []),
+    ...PLH_ACTIONS_LIST,
   ] as const;
 
   export interface TemplateRowAction<ParamsType = any> {
