@@ -5,9 +5,9 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";
-import setDataAction from "src/app/shared/services/dynamic-data/actions/set_data.action";
 
 interface IParent {
+  group_id: string;
   id: string;
   first_name: string;
   last_name: string;
@@ -128,10 +128,11 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     const parentGroup: IParentGroup = {
       id: `parent_group_${randomId}`,
-      name: `Parent Group ${randomId}`,
+      name: `parent_group_${randomId}`,
       text: `Parent Group ${randomId}`,
       parents: [
         {
+          group_id: `parent_group_${randomId}`,
           id: `parent_${randomId}`,
           first_name: `Parent ${randomId}`,
           last_name: `Parent ${randomId}`,
@@ -381,8 +382,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const [parentGroupData] = await firstValueFrom(parentGroupQuery);
 
+    // HACK: currently the parent group name is used as the ID assigned to parents, so use this for the query
+    const parentGroupName = parentGroupData.name;
+
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
-      selector: { group_id: parentGroupId },
+      selector: { group_id: parentGroupName },
     });
     const parentsData = await firstValueFrom(parentsQuery);
 
