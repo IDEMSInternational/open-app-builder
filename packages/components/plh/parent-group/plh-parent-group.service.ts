@@ -211,6 +211,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
     // since they are optimised to return a stream from the server and cache combined.
     const sharedDataQuery = this.sharedDataService.provider.queryMultiple$({
+      id: "",
       since: undefined,
       auth_id: this.authId(),
     });
