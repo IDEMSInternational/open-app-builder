@@ -443,7 +443,6 @@ export namespace FlowTypes {
     "nav",
     "nav_stack",
     "open_external",
-    "plh_parent_group",
     "pop_up",
     "process_template",
     "reset_app",
