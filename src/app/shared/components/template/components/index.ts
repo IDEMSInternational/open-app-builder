@@ -30,6 +30,7 @@ import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
+import { TmplDataQueryComponent } from "./data-query/data-query.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
 import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
@@ -70,9 +71,11 @@ import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
 import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
 import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
+import { TmplMarkdownComponent } from "./markdown/markdown.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
+  TmplMarkdownComponent,
   TmplTableComponent,
 ];
 
@@ -172,6 +175,7 @@ const COMMON_COMPONENT_MAPPING = {
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
+  data_query: TmplDataQueryComponent,
   date_time_picker: TmplDateTimePickerComponent,
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
@@ -186,6 +190,7 @@ const COMMON_COMPONENT_MAPPING = {
   image: TmplImageComponent,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
+  markdown: TmplMarkdownComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   navigation_bar: TmplNavigationBarComponent,

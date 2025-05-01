@@ -43,9 +43,9 @@ export class TemplateParser extends DefaultParser {
         }
       }
     }
-    if (row.parameter_list) {
-      row.parameter_list = this.parseParameterList(row.parameter_list as any);
-    }
+    // parameter_list converted in default_parser
+
+    // process action_list
     if (row.action_list) {
       row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
     }
@@ -106,20 +106,6 @@ export class TemplateParser extends DefaultParser {
       parsed = parsed.map((el: string) => parseAppDataCollectionString(el, "|"));
     }
     return parsed;
-  }
-
-  /** Convert parameter list string array (as provided by default parser) to key-value pairs */
-  private parseParameterList(parameterList: string[]) {
-    const parameterObj: FlowTypes.TemplateRow["parameter_list"] = {};
-    parameterList.forEach((p) => {
-      let [key, value] = p.split(":").map((str) => str.trim()) as any[];
-      // if a single word is specified, e.g. 'box_display', assume setting param to true
-      if (value === undefined) {
-        value = "true";
-      }
-      parameterObj[key] = value;
-    });
-    return parameterObj;
   }
 
   private parseExcludeFromTranslation(value: boolean) {
