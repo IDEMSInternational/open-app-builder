@@ -49,7 +49,7 @@ export class SharedDataService extends AsyncServiceBase {
   ) {
     super("Shared Data");
     this.provider = getDataProvider(this.config.provider);
-    this.registerInitFunction(this.initialise);
+    this.registerInitFunction(this.initialise, "defer");
   }
 
   /**
