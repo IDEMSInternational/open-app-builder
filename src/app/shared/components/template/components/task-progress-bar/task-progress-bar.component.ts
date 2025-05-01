@@ -246,7 +246,7 @@ export class TmplTaskProgressBarComponent
     }
     if (this.params.dataListName) {
       await this.dynamicDataService.ready();
-      const query = await this.dynamicDataService.query$("data_list", this.params.dataListName);
+      const query = this.dynamicDataService.query$("data_list", this.params.dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         this.dataRows.set(data);
         await this.evaluateTaskGroupData();

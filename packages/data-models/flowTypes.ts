@@ -451,6 +451,7 @@ export namespace FlowTypes {
     "set_local",
     "set_self",
     "share",
+    "shared_data",
     "style",
     "start_tour",
     "task",
@@ -459,6 +460,7 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    "copy",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
   ] as const;
