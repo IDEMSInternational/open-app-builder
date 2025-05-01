@@ -1,0 +1,38 @@
+@use "/src/theme/mixins";
+
+.searchbar {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &.ios {
+    position: unset;
+    top: unset;
+  }
+}
+
+.modal-title {
+  font-size: 20px;
+  text-align: center;
+  color: var(--ion-color-primary);
+  margin-top: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  top: auto;
+}
+
+ion-radio {
+  --color: transparent;
+  --color-checked: transparent;
+}
+
+ion-list {
+  background-color: var(--background);
+}
+
+ion-item {
+  --background: var(--ion-background-color, #fff);
+}
+
+ion-item.selected {
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-200));
+  --color: var(--combo-box-selected-value-text, var(--ion-color-primary));
+}
