@@ -1,6 +1,8 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { PlhParentGroupService } from "./plh-parent-group.service";
 
+export const PLH_PARENT_GROUP_ACTIONS = ["plh_parent_group"] as const;
+
 interface IPlhParentGroupActionParams {
   /** ID of a co-faciliator to share data with */
   auth_id?: string;

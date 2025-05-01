@@ -2,6 +2,7 @@
 
 import type { IDataPipeOperation } from "shared";
 import type { IAssetEntry } from "./assets.model";
+import { PLH_ACTIONS_LIST } from "components/plh/actions";
 
 /*********************************************************************************************
  *  Base flow types
@@ -464,6 +465,8 @@ export namespace FlowTypes {
     "copy",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
+    // Actions imported from package may not be available at initial build time
+    ...(PLH_ACTIONS_LIST || []),
   ] as const;
 
   export interface TemplateRowAction<ParamsType = any> {
