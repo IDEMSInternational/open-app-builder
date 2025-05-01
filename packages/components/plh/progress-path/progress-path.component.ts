@@ -12,22 +12,16 @@ import { filter, map, switchMap } from "rxjs";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { DataItemsService } from "src/app/shared/components/template/components/data-items/data-items.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import {
-  getIonContentHeight,
-  setIonContentScrollTop,
-} from "src/app/shared/components/template/utils";
-import {
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "src/app/shared/utils";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IPlhProgressPathParams {
   /** TEMPLATE_PARAMETER: "background_image_asset". Used to set the progress path background */
   backgroundImageAsset: string;
   /**
    * TEMPLATE_PARAMETER: "start_at_bottom". If true, child items will start at bottom of path
-   * and component will scroll to the bottom on page load */
-  startAtBottom: boolean;
+   * and component will scroll to the bottom on page load. Default false */
+  // startAtBottom: boolean;
+  startingPosition: "top" | "bottom";
 }
 
 @Component({
@@ -55,7 +49,7 @@ export class PlhProgressPathComponent
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
       switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap)),
-      map((items) => (this.params.startAtBottom ? [...items].reverse() : items))
+      map((items) => (this.params.startingPosition === "bottom" ? [...items].reverse() : items))
     )
   );
 
@@ -71,28 +65,15 @@ export class PlhProgressPathComponent
   }
 
   ngAfterViewInit() {
-    this.scrollToCentre();
+    if (this.params.startingPosition === "bottom") this.scrollToBottom();
     setTimeout(() => {
       this.loading.set(false);
     }, 100);
   }
 
-  // Scroll to centre the starting child step in the viewport
-  private scrollToCentre() {
+  private scrollToBottom() {
     const element = this.progressPath.nativeElement;
-
-    // Scroll component content horizontally to centre component content
-    const scrollLeft = (element.scrollWidth - window.innerWidth) / 2;
-    element.scrollTo({
-      left: scrollLeft,
-    });
-
-    if (this.params.startAtBottom) {
-      console.log("scrolling to bottom");
-      // Scroll parent ion-content element to the bottom
-      const height = getIonContentHeight(this.progressPath);
-      setIonContentScrollTop(this.progressPath, height);
-    }
+    element.scrollIntoView({ block: "end" });
   }
 
   private getParams() {
@@ -101,6 +82,10 @@ export class PlhProgressPathComponent
       "background_image_asset",
       null
     );
-    this.params.startAtBottom = getBooleanParamFromTemplateRow(this._row, "start_at_bottom", false);
+    this.params.startingPosition = getStringParamFromTemplateRow(
+      this._row,
+      "starting_position",
+      "bottom"
+    ) as IPlhProgressPathParams["startingPosition"];
   }
 }
