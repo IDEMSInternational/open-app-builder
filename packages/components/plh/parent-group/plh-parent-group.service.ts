@@ -457,17 +457,13 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
     // Parent group data is nested inside data key
-    const parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
+    let parentGroupData = sharedParentGroupDoc.data.parentGroupData as IParentGroup;
     const userIsAdmin = sharedParentGroupDoc.admins.includes(this.authId());
     parentGroupData.readonly = !userIsAdmin;
     const sharedId = sharedParentGroupDoc.id;
     parentGroupData.shared_id = sharedId;
     if (sharedParentGroupDoc._created_by !== this.authId()) {
-      // When saving a shared parent group to local data that was created by another user,
-      // use the shared_id of the shared parent group as the parent group id AND the parent group "name" (effectively another ID)
-      // (avoids conflicts with other local parent groups)
-      parentGroupData.id = sharedId;
-      parentGroupData.name = sharedId;
+      parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
 
     if (completionTrackingDataList) {
@@ -523,15 +519,18 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
-    await this.dynamicDataService.upsert("data_list", parentGroupsDataList, {
-      ...parentGroupData,
-    });
+    // Save data from parent group to respective data lists
+    const { parents, ...parentGroup } = parentGroupData;
 
-    for (const parent of parentGroupData.parents) {
+    for (const parent of parents) {
       await this.dynamicDataService.upsert("data_list", parentsDataList, {
         ...parent,
       });
     }
+
+    await this.dynamicDataService.upsert("data_list", parentGroupsDataList, {
+      ...parentGroup,
+    });
 
     return parentGroupData.id;
   }
@@ -547,5 +546,24 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.dynamicDataService.update("data_list", parentGroupsDataList, parentGroupId, {
       ...update,
     });
+  }
+
+  /**
+   * When saving a shared parent group to local data that was created by another user,
+   * modify the data to avoid conflicts with other local parent groups
+   * */
+  private hackTransformReadonlyParentGroupData(parentGroup: IParentGroup, sharedId: string) {
+    // use the shared_id of the shared parent group as the parent group id AND the parent group "name" (effectively another ID)
+    // (avoids conflicts with other local parent groups)
+    parentGroup.id = sharedId;
+    parentGroup.name = sharedId;
+
+    // include the parent group id as the parents' group_id
+    parentGroup.parents = parentGroup.parents.map((parent) => ({
+      ...parent,
+      group_id: sharedId,
+    }));
+
+    return parentGroup;
   }
 }
