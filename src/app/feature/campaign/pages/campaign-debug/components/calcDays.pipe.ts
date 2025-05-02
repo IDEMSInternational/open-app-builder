@@ -3,6 +3,7 @@ import { differenceInDays } from "date-fns";
 
 @Pipe({
   name: "calcDaysDiff",
+  standalone: false,
 })
 export class CalcDaysDiffPipe implements PipeTransform {
   transform(value: any, ...args: any[]): any {

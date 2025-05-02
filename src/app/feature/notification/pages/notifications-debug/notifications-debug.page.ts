@@ -10,6 +10,7 @@ import {
 @Component({
   templateUrl: "./notifications-debug.page.html",
   styleUrls: ["./notifications-debug.page.scss"],
+  standalone: false,
 })
 export class NotificationsDebugPage implements OnInit {
   public editableNotification: ILocalNotification;

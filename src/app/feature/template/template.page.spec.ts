@@ -10,7 +10,11 @@ import { MockAppConfigService } from "src/app/shared/services/app-config/app-con
 import { Component, input } from "@angular/core";
 
 // HACK - mock child `<plh-template-container>` component to bypass imports
-@Component({ selector: "plh-template-container", template: "<div></div>" })
+@Component({
+  selector: "plh-template-container",
+  template: "<div></div>",
+  standalone: false,
+})
 class MockTemplateContainerComponent {
   templatename = input<string>();
 }

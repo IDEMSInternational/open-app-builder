@@ -16,6 +16,7 @@ import { TemplateAssetService } from "../../services/template-asset.service";
   selector: "plh-timer",
   templateUrl: "./timer.component.html",
   styleUrls: ["./timer.component.scss"],
+  standalone: false,
 })
 export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   _row: FlowTypes.TemplateRow;

@@ -29,6 +29,7 @@ interface IDisplayGroupParams {
   selector: "plh-tmpl-display-group",
   templateUrl: "./display-group.component.html",
   styleUrls: ["../../tmpl-components-common.scss", "./display-group.component.scss"],
+  standalone: false,
 })
 export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IDisplayGroupParams> = {};

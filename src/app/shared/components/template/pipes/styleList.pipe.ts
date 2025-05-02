@@ -4,7 +4,10 @@ import { Pipe, PipeTransform } from "@angular/core";
  * @example <div [styles]="_row.style_list | styleList"></div>
  */
 
-@Pipe({ name: "styleList" })
+@Pipe({
+  name: "styleList",
+  standalone: false,
+})
 export class StyleListPipe implements PipeTransform {
   transform(style_list: string[]) {
     if (style_list && Array.isArray(style_list)) {

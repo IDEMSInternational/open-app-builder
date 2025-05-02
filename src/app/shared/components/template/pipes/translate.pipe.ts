@@ -11,7 +11,10 @@ import { TemplateTranslateService } from "../services/template-translate.service
  * <div>{{parameters.option1 | translate}}</div>
  * ```
  */
-@Pipe({ name: "translate" })
+@Pipe({
+  name: "translate",
+  standalone: false,
+})
 export class TranslatePipe implements PipeTransform {
   constructor(private templateTranslate: TemplateTranslateService) {}
   transform(value: string) {

@@ -10,6 +10,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-text-box",
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
+  standalone: false,
 })
 export class TmplTextBoxComponent extends TemplateBaseComponent implements OnInit {
   prioritisePlaceholder: boolean;

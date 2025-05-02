@@ -38,6 +38,7 @@ interface IRoundButtonParams {
   selector: "plh-round-button",
   templateUrl: "./round-icon-button.component.html",
   styleUrls: ["../button/button.component.scss", "./round-icon-button.component.scss"],
+  standalone: false,
 })
 export class RoundIconButtonComponent
   extends TemplateBaseComponent

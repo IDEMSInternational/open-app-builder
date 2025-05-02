@@ -19,6 +19,7 @@ type IDynamicDataState = { [flow_name: string]: { [row_id: string]: any } };
   selector: "user-debug-page",
   templateUrl: "user-debug.page.html",
   styleUrl: "user-debug.page.scss",
+  standalone: false,
 })
 export class UserDebugPage implements OnInit {
   /** Id of current user */

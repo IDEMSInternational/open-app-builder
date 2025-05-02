@@ -13,6 +13,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     </div>
   `,
   styleUrls: ["./subtitle.scss"],
+  standalone: false,
 })
 export class TmplSubtitleComponent
   extends TemplateBaseComponent

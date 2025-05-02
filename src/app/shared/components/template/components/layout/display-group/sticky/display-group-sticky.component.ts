@@ -12,6 +12,7 @@ import {
   selector: "tmpl-display-group-sticky",
   templateUrl: "display-group-sticky.component.html",
   styleUrl: "display-group-sticky.component.scss",
+  standalone: false,
 })
 /**
  *

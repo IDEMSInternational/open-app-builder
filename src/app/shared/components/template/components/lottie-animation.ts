@@ -22,6 +22,7 @@ import { TemplateAssetService } from "../services/template-asset.service";
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit {
   style: string;

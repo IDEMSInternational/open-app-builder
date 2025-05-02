@@ -11,6 +11,7 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
   templateUrl: "./data-items.component.html",
   styleUrls: ["./data-items.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 /**
  * Data Items are a structural row component that subscribes to a dynamic data list

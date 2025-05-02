@@ -10,6 +10,7 @@ import { isLegacyBrowser } from "src/app/shared/utils";
   styleUrls: ["./pdf.component.scss"],
   // Allow override of global pdf viewer styles
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TmplPdfComponent extends TemplateBaseComponent implements OnInit {
   startingPage: number;

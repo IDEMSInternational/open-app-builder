@@ -14,6 +14,7 @@ import { TemplateTranslateService } from "../../services/template-translate.serv
   selector: "plh-select-text",
   templateUrl: "./select-text.component.html",
   styleUrls: ["./select-text.component.scss"],
+  standalone: false,
 })
 export class SelectTextComponent
   extends TemplateBaseComponent

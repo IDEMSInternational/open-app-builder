@@ -7,6 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../../utils";
   selector: "plh-icon-banner",
   templateUrl: "./icon-banner.component.html",
   styleUrls: ["./icon-banner.component.scss"],
+  standalone: false,
 })
 export class TmplIconBannerComponent
   extends TemplateBaseComponent
