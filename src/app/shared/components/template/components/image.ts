@@ -30,6 +30,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
   style: "no-padding" = null;

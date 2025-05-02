@@ -6,6 +6,7 @@ import { ModalController } from "@ionic/angular";
   selector: "combo-box-search",
   templateUrl: "./combo-box-search.component.html",
   styleUrls: ["./combo-box-search.component.scss"],
+  standalone: false,
 })
 export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();

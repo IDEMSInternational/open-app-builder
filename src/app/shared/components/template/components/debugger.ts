@@ -76,6 +76,7 @@ import { TemplateBaseComponent } from "./base";
       }
     `,
   ],
+  standalone: false,
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
   constructor(private templateFieldService: TemplateFieldService) {

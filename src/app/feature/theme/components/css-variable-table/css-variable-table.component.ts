@@ -14,6 +14,7 @@ interface ICustomVariableMeta {
   selector: "plh-css-variable-table",
   templateUrl: "./css-variable-table.component.html",
   styleUrls: ["./css-variable-table.component.scss"],
+  standalone: false,
 })
 export class CssVariableTableComponent implements AfterViewInit {
   customStyleVariables: ICustomVariableMeta[] = [];

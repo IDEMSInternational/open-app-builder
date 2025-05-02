@@ -145,6 +145,7 @@ import { CampaignService } from "../../../campaign.service";
       }
     `,
   ],
+  standalone: false,
 })
 export class CampaignScheduleDebugRowComponent {
   @Input() row: FlowTypes.Campaign_Schedule;

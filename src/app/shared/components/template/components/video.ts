@@ -17,6 +17,7 @@ import { TemplateBaseComponent } from "./base";
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplVideoComponent extends TemplateBaseComponent implements OnInit {
   style: string;

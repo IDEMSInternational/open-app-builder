@@ -12,6 +12,7 @@ interface ITextParams {
   selector: "plh-tmpl-text",
   templateUrl: "./text.component.html",
   styleUrls: ["../tmpl-components-common.scss", "./text.component.scss"],
+  standalone: false,
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextParams> = {};

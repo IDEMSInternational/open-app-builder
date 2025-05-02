@@ -10,6 +10,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-square-icon-button",
   templateUrl: "./square-icon-button.component.html",
   styleUrls: ["./square-icon-button.component.scss"],
+  standalone: false,
 })
 export class SquareIconButtonComponent
   extends TemplateBaseComponent

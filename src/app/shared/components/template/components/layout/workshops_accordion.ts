@@ -17,6 +17,7 @@ import { FlowTypes } from "packages/data-models";
     </div>
   </div>`,
   styleUrls: ["./workshops_accordion.scss"],
+  standalone: false,
 })
 export class WorkshopsComponent extends TemplateBaseComponent implements OnInit {
   public accordionRows: FlowTypes.TemplateRow[] = [];

@@ -138,6 +138,7 @@ import { FlowTypes } from "src/app/shared/model";
       }
     `,
   ],
+  standalone: false,
 })
 export class CampaignDebugRowComponent {
   @Input() row: FlowTypes.Campaign_listRow;

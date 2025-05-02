@@ -5,6 +5,7 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
   selector: "tmpl-button-google-sign-in",
   templateUrl: "./button-google-sign-in.component.html",
   styleUrls: ["./button-google-sign-in.component.scss"],
+  standalone: false,
 })
 export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   // The button text is set as row value directly in the HTML template

@@ -27,6 +27,7 @@ interface IPlhProgressPathParams {
   selector: "plh-progress-path",
   templateUrl: "./plh-progress-path.component.html",
   styleUrls: ["./plh-progress-path.component.scss"],
+  standalone: false,
 })
 export class PlhProgressPathComponent
   extends TemplateBaseComponent

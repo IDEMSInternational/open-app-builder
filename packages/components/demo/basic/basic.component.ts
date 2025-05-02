@@ -18,6 +18,7 @@ interface IDemoBasicComponentParams {
   selector: "demo-basic",
   templateUrl: "./basic.component.html",
   styleUrls: ["./basic.component.scss"],
+  standalone: false,
 })
 export class DemoBasicComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IDemoBasicComponentParams> = {};

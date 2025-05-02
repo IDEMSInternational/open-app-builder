@@ -10,6 +10,7 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
   selector: "plh-template-page",
   templateUrl: "./template.page.html",
   styleUrls: ["./template.page.scss"],
+  standalone: false,
 })
 export class TemplatePage implements OnInit, OnDestroy {
   templateName: string;

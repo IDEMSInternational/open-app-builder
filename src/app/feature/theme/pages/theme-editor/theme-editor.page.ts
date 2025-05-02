@@ -6,6 +6,7 @@ import { ThemeService } from "../../services/theme.service";
   selector: "plh-theme-editor-page",
   templateUrl: "./theme-editor.page.html",
   styleUrls: ["./theme-editor.page.scss"],
+  standalone: false,
 })
 export class ThemeEditorPage implements OnInit {
   availableThemes: IAppConfig["APP_THEMES"]["available"];

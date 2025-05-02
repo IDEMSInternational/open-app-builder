@@ -35,6 +35,7 @@ interface IRadioButtonGridParams {
   selector: "plh-radio-button-grid",
   templateUrl: "./radio-button-grid.component.html",
   styleUrls: ["./radio-button-grid.component.scss"],
+  standalone: false,
 })
 export class TmplRadioButtonGridComponent
   extends TemplateBaseComponent

@@ -7,6 +7,7 @@ import { TemplateBaseComponent } from "../../base";
   selector: "plh-advanced-dashed-box",
   templateUrl: "./advanced-dashed-box.component.html",
   styleUrls: ["./advanced-dashed-box.component.scss"],
+  standalone: false,
 })
 export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implements OnInit {
   @Input() inputRow: FlowTypes.TemplateRow;

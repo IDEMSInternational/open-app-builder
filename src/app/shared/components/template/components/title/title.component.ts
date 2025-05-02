@@ -20,6 +20,7 @@ interface ITitleParams {
   selector: "plh-tmpl-title",
   templateUrl: "./title.component.html",
   styleUrls: ["./title.component.scss"],
+  standalone: false,
 })
 export class TmplTitleComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   params: Partial<ITitleParams> = {};

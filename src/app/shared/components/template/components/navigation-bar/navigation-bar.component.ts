@@ -13,6 +13,7 @@ interface IButton {
   selector: "plh-navigation-bar",
   templateUrl: "./navigation-bar.component.html",
   styleUrls: ["./navigation-bar.component.scss"],
+  standalone: false,
 })
 export class TmplNavigationBarComponent extends TemplateBaseComponent implements OnInit {
   buttonList: IButton[];

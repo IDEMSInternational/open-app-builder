@@ -18,6 +18,7 @@ interface ITextBubbleParams {
   selector: "tmpl-text-bubble",
   templateUrl: "text-bubble.component.html",
   styleUrl: "text-bubble.component.scss",
+  standalone: false,
 })
 export class TmplTextBubbleComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextBubbleParams> = {};

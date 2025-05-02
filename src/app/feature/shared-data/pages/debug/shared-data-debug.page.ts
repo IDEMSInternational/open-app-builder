@@ -11,7 +11,6 @@ import { ROW_TEMPLATES } from "./row-templates";
 @Component({
   templateUrl: "./shared-data-debug.page.html",
   styleUrls: ["./shared-data-debug.page.scss"],
-  standalone: true,
   imports: [IonicModule, TemplateComponentsModule, JsonPipe],
 })
 export class SharedDataDebugPage implements OnInit {

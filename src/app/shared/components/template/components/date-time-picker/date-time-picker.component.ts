@@ -13,6 +13,7 @@ interface IDateTimePickerParams {
   selector: "plh-date-time-picker",
   templateUrl: "./date-time-picker.component.html",
   styleUrls: ["./date-time-picker.component.scss"],
+  standalone: false,
 })
 export class TmplDateTimePickerComponent extends TemplateBaseComponent {
   public params = computed(() => this.getParams());
