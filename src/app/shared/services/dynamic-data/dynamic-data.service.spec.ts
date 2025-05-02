@@ -1,9 +1,10 @@
 import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { catchError, firstValueFrom, of } from "rxjs";
 
 import { DynamicDataService } from "./dynamic-data.service";
 import { AppDataService } from "../data/app-data.service";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { DeploymentService } from "../deployment/deployment.service";
 import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
@@ -39,7 +40,7 @@ describe("DynamicDataService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         DynamicDataService,
         {
@@ -48,6 +49,8 @@ describe("DynamicDataService", () => {
             data_list: { test_flow: TEST_DATA_LIST() },
           }),
         },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         {
           provide: DeploymentService,
           useValue: new MockDeploymentService({ name: "test" }),

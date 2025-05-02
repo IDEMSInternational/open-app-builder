@@ -1,12 +1,13 @@
 import { TestBed } from "@angular/core/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { TemplateVariablesService } from "./template-variables.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TemplateFieldService } from "./template-field.service";
 import { MockTemplateFieldService } from "./template-field.service.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { TemplateCalcService } from "./template-calc.service";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MockTemplateCalcService } from "./template-calc.service.mock.spec";
 import { TemplateTranslateService } from "./template-translate.service";
 import { FlowTypes } from "packages/data-models";
@@ -124,7 +125,7 @@ describe("TemplateVariablesService", () => {
   beforeEach(async () => {
     getNextCampaignRowsSpy = jasmine.createSpy();
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         {
           provide: TemplateFieldService,
@@ -146,6 +147,8 @@ describe("TemplateVariablesService", () => {
             getNextCampaignRows: getNextCampaignRowsSpy,
           },
         },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         {
           provide: TemplateTranslateService,
           useValue: { ready: async () => true, translateRow: (row) => row },
