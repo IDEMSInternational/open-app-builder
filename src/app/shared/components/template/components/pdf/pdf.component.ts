@@ -4,16 +4,19 @@ import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { PDFViewerService } from "./pdf.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 
-const errorMessageDefault =
-  "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app";
-
 interface IAuthorParams {
   starting_page?: string;
   /** Message displayed when legacy browser detected */
-  error_message?: string;
+  compatibility_error_message?: string;
   /** Open external text. Default "Open with..." */
   open_external_text?: string;
 }
+
+const DEFAULT_PARAMS: IAuthorParams = {
+  compatibility_error_message:
+    "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app",
+  open_external_text: "Open with...",
+};
 
 @Component({
   selector: "plh-pdf",
@@ -26,11 +29,12 @@ export class TmplPdfComponent extends TemplateBaseComponent implements AfterView
   public pdfSrc = computed(() => this.value());
 
   public params = computed(() => {
-    const { error_message, starting_page, open_external_text } = this.params as IAuthorParams;
+    const merged: IAuthorParams = { ...DEFAULT_PARAMS, ...this.params };
+    const { compatibility_error_message, starting_page, open_external_text } = merged;
     return {
       startingPage: Number(starting_page || 1),
-      errorMessage: error_message || errorMessageDefault,
-      openExternalText: open_external_text || "Open with...",
+      compatErrorMessage: compatibility_error_message,
+      openExternalText: open_external_text,
     };
   });
 
