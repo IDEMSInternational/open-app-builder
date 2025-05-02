@@ -33,7 +33,7 @@
     "sequelize": "^6.37.7",
     "sequelize-typescript": "^2.1.6",
     "swagger-ui-express": "^5.0.1",
-    "typescript": "5.2.2",
+    "typescript": "5.5.4",
     "umzug": "3.8.2"
   },
   "devDependencies": {

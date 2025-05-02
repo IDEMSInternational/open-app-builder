@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import clone from "clone";
 
 import { IAppConfig } from "../../model";
@@ -15,6 +15,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { CampaignService } from "../../../feature/campaign/campaign.service";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { MockDynamicDataService } from "../dynamic-data/dynamic-data.service.mock.spec";
 
@@ -84,7 +85,7 @@ describe("TaskService", () => {
     mockTemplateFieldService = new MockTemplateFieldService(clone(MOCK_FIELDS));
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         {
           provide: TemplateFieldService,
@@ -112,6 +113,8 @@ describe("TaskService", () => {
             scheduleCampaignNotifications: scheduleCampaignNotificationsSpy,
           },
         },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
       ],
     });
     service = TestBed.inject(TaskService);
