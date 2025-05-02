@@ -74,28 +74,6 @@ export function mergeArrayOfArrays<T>(arr: T[][]) {
   return [].concat.apply([], arr);
 }
 
-/**
- * Take 2 object arrays identified by a given key field, and merge rows together.
- * In case of rows with identical keys, only one will be retained
- *
- * @param primaryRows set of rows given priority in case of conflict
- * @param secondaryRows set of rows to merge into primary
- * @param keyfield key in rows to identify conflicts
- */
-export function mergeObjectArrays<T>(
-  primaryRows: T[],
-  secondaryRows: T[] = [],
-  keyfield: keyof T
-): T[] {
-  const secondaryHash = arrayToHashmap(secondaryRows, keyfield as string);
-  primaryRows.forEach((r) => {
-    if (r.hasOwnProperty(keyfield)) {
-      secondaryHash[r[keyfield as string]] = r;
-    }
-  });
-  return Object.values(secondaryHash);
-}
-
 export function randomElementFromArray<T>(arr: T[] = null) {
   try {
     const randomItem = arr[Math.floor(Math.random() * arr.length)];
