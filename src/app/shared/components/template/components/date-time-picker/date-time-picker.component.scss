@@ -1,0 +1,8 @@
+ion-datetime-button::part(native) {
+  font-size: var(--buttons-font-size-small);
+  font-weight: var(--font-weight-standard);
+  color: var(--ion-color-primary-contrast);
+  background: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+  padding: var(--regular-padding);
+  border-radius: var(--ion-border-radius-standard);
+}
