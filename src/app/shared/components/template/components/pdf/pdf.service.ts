@@ -30,6 +30,7 @@ export class PDFViewerService extends AsyncServiceBase {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers#browser_compatibility
 
     // This is currently known to be resolved as of chrome 119
+    // See testing notes in https://github.com/IDEMSInternational/open-app-builder/pull/2904
 
     // Use inline scripts. Note if Using CSP security should set to false and include
     // `op-chaining-support.js` in list of assets copied to run compatibility checks from js file instead of inline
