@@ -65,30 +65,24 @@ export class UserDebugPage implements OnInit {
     private injector: Injector
   ) {
     // load first dynamic data option by default
-    effect(
-      () => {
-        const selected = this.dynamicDataSelected();
-        if (!selected) {
-          const options = this.dynamicDataSelectOptions();
-          if (options[0]) {
-            this.dynamicDataSelected.set(options[0]);
-          }
+    effect(() => {
+      const selected = this.dynamicDataSelected();
+      if (!selected) {
+        const options = this.dynamicDataSelectOptions();
+        if (options[0]) {
+          this.dynamicDataSelected.set(options[0]);
         }
-      },
-      { allowSignalWrites: true }
-    );
+      }
+    });
     // load table data when selected flow or corresponding data sub-state changes
-    effect(
-      async () => {
-        const selected = this.dynamicDataSelected();
-        const dynamicData = this.dynamicDataSelectedState();
-        if (selected) {
-          const { headers, rows } = await this.loadDynamicDataTable(selected, dynamicData);
-          this.dynamicDataTableData.set({ headers, rows });
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => {
+      const selected = this.dynamicDataSelected();
+      const dynamicData = this.dynamicDataSelectedState();
+      if (selected) {
+        const { headers, rows } = await this.loadDynamicDataTable(selected, dynamicData);
+        this.dynamicDataTableData.set({ headers, rows });
+      }
+    });
   }
 
   async ngOnInit() {

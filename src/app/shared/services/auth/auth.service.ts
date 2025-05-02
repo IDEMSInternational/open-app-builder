@@ -37,22 +37,19 @@ export class AuthService extends AsyncServiceBase {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
     this.registerInitFunction(this.initialise);
-    effect(
-      async () => {
-        const authUser = this.provider.authUser();
-        if (authUser) {
-          this.addStorageEntry(authUser);
-          // perform immediate sync if user signed in to ensure data backed up
-          await this.serverService.syncUserData();
-          await this.checkForUserRestore(authUser);
-        } else {
-          // If signed out or no auth user reset previous data and return
-          this.restoreProfiles.set([]);
-          this.clearUserData();
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => {
+      const authUser = this.provider.authUser();
+      if (authUser) {
+        this.addStorageEntry(authUser);
+        // perform immediate sync if user signed in to ensure data backed up
+        await this.serverService.syncUserData();
+        await this.checkForUserRestore(authUser);
+      } else {
+        // If signed out or no auth user reset previous data and return
+        this.restoreProfiles.set([]);
+        this.clearUserData();
+      }
+    });
     // expose restore profile data to authoring via `app_auth_profiles` internal collection
     effect(async () => {
       const profiles = this.restoreProfiles();
