@@ -61,28 +61,22 @@ export class headerComponent implements OnInit, OnDestroy {
     private location: Location,
     private appConfigService: AppConfigService
   ) {
-    effect(
-      () => {
-        // when header config changes set the height and collapse properties
-        const { collapse, variant } = this.headerConfig();
-        this.setHeaderHeightCSS(variant);
-        if (collapse !== undefined) {
-          this.setHeaderCollapse(collapse);
-        }
-      },
-      { allowSignalWrites: true }
-    );
-    effect(
-      () => {
-        // when route changes handle side-effects
-        const e = this.routeChanges();
-        this.handleRouteChange();
-        if (e instanceof NavigationStart) {
-          this.hasBackHistory = true;
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      // when header config changes set the height and collapse properties
+      const { collapse, variant } = this.headerConfig();
+      this.setHeaderHeightCSS(variant);
+      if (collapse !== undefined) {
+        this.setHeaderCollapse(collapse);
+      }
+    });
+    effect(() => {
+      // when route changes handle side-effects
+      const e = this.routeChanges();
+      this.handleRouteChange();
+      if (e instanceof NavigationStart) {
+        this.hasBackHistory = true;
+      }
+    });
   }
 
   async ngOnInit() {
