@@ -45,21 +45,23 @@ export class AsyncServiceBase {
    * On the plus side it means extended class init methods can be marked as private and do not have
    * to be called init
    *
-   * @param callImmediately Call init function immediately (default false, defer until first `ready()` called)
+   * @param strategy specify whether the service should automatically call the init after a delay (default)
+   * or whether to defer calling init until related service calls `ready()` function
    */
-  public registerInitFunction(fn: () => Promise<void>, callImmediately = false) {
+  public registerInitFunction(fn: () => Promise<void>, strategy: "delay" | "defer" = "delay") {
     this.initFunction = fn;
-    if (callImmediately) {
-      this.callInitFunction();
-    }
-    // HACK - until code a bit tidier ensure all services still register after random timeout (5-10s)
-    else {
+    // HACK - specify random delay to ensure initialised but at random time after template init (5-10s)
+    if (strategy === "delay") {
       setTimeout(
         () => {
           this.callInitFunction();
         },
         5000 + Math.random() * 5000
       );
+    }
+    // Avoiding calling init function until service ready call
+    if (strategy === "defer") {
+      return;
     }
   }
 
