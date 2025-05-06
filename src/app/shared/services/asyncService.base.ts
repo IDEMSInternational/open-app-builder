@@ -1,7 +1,6 @@
 import { filter, first, tap, timeout } from "rxjs/operators";
 import { BehaviorSubject, of, firstValueFrom } from "rxjs";
 import type { SyncServiceBase } from "./syncService.base";
-import { toSignal } from "@angular/core/rxjs-interop";
 
 /**
  * Base class for service with async init method
