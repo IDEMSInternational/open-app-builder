@@ -9,7 +9,9 @@ import { TemplateAssetService } from "../services/template-asset.service";
   selector: "plh-tmpl-lottie-animation",
   template: `
     <div class="tmpl-lottie-anim-container" [class]="style">
-      <ng-lottie *ngIf="animOptions" [options]="animOptions"></ng-lottie>
+      @if (animOptions) {
+        <ng-lottie [options]="animOptions"></ng-lottie>
+      }
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
