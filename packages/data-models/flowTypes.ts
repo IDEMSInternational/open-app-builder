@@ -53,6 +53,7 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     _xlsxPath?: string; // debug info
+    _sheetsFolderUrl?: string; // debug info
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
@@ -451,6 +452,7 @@ export namespace FlowTypes {
     "set_local",
     "set_self",
     "share",
+    "shared_data",
     "style",
     "start_tour",
     "task",
