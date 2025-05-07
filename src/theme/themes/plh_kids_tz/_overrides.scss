@@ -1,3 +1,5 @@
+@use "../../mixins";
+
 body[data-theme="plh_kids_tz"] {
   /** COMPONENTS **/
 
@@ -14,11 +16,159 @@ body[data-theme="plh_kids_tz"] {
       }
     }
   }
-
   // Button
   plh-button {
     .navigation.standard {
       color: var(--ion-color-primary-shade);
+    }
+  }
+  // Audio
+  plh-audio {
+    border: 1px solid transparent;
+    .container-player[data-variant~="compact"] {
+      width: var(--buttons-full-width);
+
+      border: 0.9px solid var(--ion-color-primary-100);
+      border-radius: var(--ion-border-radius-round);
+      box-shadow: none;
+
+      background-color: var(--ion-color-primary-50);
+      padding: 8px 16px;
+      padding-right: 24px;
+      margin-top: 30px;
+
+      .top-row {
+        min-height: 0 !important;
+        position: absolute;
+        top: -52px;
+        margin: 0 0 0 -14px;
+        // padding-top: 30px;
+        h3 {
+          margin: 0;
+          color: var(--ion-color-gray-900) !important;
+          max-width: 95%;
+          font-weight: var(--font-weight-bold);
+          font-size: var(var(--font-size-text-medium) + 2);
+          // margin-top: 20px !important;
+        }
+      }
+      .second-row {
+        .controls {
+          ion-button.btn-play {
+            --background: var(--ion-color-primary-600) !important;
+            --border-radius: var(--ion-border-radius-round) !important;
+            --box-shadow: none !important;
+            height: 56px !important;
+            width: 56px !important;
+            ion-icon {
+              font-size: var(--icon-size-large) !important;
+            }
+          }
+        }
+        .progress-block {
+          ion-range {
+            width: 100% !important;
+            --bar-background: var(--ion-color-danger-contrast) !important;
+            --bar-height: 12px !important;
+            --knob-size: 16px !important;
+            --knob-background: var(--ion-color-primary-600) !important;
+            --bar-border-radius: var(--ion-border-radius-standard) !important;
+            --knob-box-shadow: none !important;
+          }
+          .time {
+            .time-value {
+              font-size: var(--font-size-text-small) !important;
+              font-weight: var(--font-weight-medium) !important;
+              line-height: var(--line-height-text-tiny) !important;
+              color: var(--ion-color-gray-700) !important;
+            }
+          }
+        }
+      }
+    }
+    .container-player[data-variant~="large"] {
+      background: var(--ion-color-primary-50);
+      border: 0.9px solid var(--ion-color-primary-100);
+      box-sizing: border-box;
+      box-shadow: none;
+      border-radius: var(--ion-border-radius-standard);
+      padding: 12px 16px;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      margin-top: 20px;
+      .top-row {
+        position: absolute;
+        top: -56px;
+        margin: 0 0 0 -14px;
+        h3 {
+          margin: 0;
+          margin-right: 0;
+          color: var(--ion-color-gray-900);
+          max-width: 85%;
+          font-weight: var(--font-weight-bold);
+          font-size: var(var(--font-size-text-medium) + 2);
+        }
+        ion-button.action-button {
+          --padding-start: 2px;
+          --padding-end: 2px;
+        }
+      }
+      .second-row {
+        display: flex;
+        flex-direction: column-reverse;
+        .controls {
+          width: var(--audio-controls-width) !important;
+          .rewind,
+          .forward {
+            ion-icon {
+              font-size: var(--icon-size-extra-large) !important;
+              color: var(--ion-color-primary-600) !important;
+              border-radius: 2px !important;
+            }
+          }
+          .btn-play {
+            @include mixins.large-square;
+            --background: var(--ion-color-primary-50) !important;
+            --border-radius: var(--ion-border-radius-round) !important;
+            --padding: 0 !important;
+            --box-shadow: none !important;
+            ion-icon {
+              position: absolute !important;
+              font-size: var(--icon-size-largest) !important;
+              color: var(--ion-color-primary-600) !important;
+            }
+          }
+        }
+        .progress-block {
+          .audio-range {
+            --bar-background-active: var(--ion-color-primary-600) !important;
+            --bar-background: var(--ion-color-danger-contrast) !important;
+            --bar-height: 12px !important;
+            --bar-border-radius: var(--ion-border-radius-standard) !important;
+            --knob-size: 0px !important;
+            --pin-background: var(--ion-color-primary-300) !important;
+            --knob-background: var(--ion-color-primary-300) !important;
+            padding-inline: 0;
+          }
+
+          ion-range::part(bar) {
+            border: none !important;
+          }
+
+          ion-range::part(bar-active) {
+            top: -1.5px !important;
+            margin-left: 0 !important;
+          }
+          .time {
+            &-value {
+              font-size: var(--font-size-text-small) !important;
+              line-height: var(--line-height-text-tiny) !important;
+              color: var(--ion-color-gray-700) !important;
+            }
+          }
+        }
+      }
     }
   }
 }
