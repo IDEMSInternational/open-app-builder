@@ -18,9 +18,9 @@ interface IPlhProgressPathParams {
   /** TEMPLATE_PARAMETER: "background_image_asset". Used to set the progress path background */
   backgroundImageAsset: string;
   /**
-   * TEMPLATE_PARAMETER: "start_at_bottom". If true, child items will start at bottom of path
-   * and component will scroll to the bottom on page load. Default false */
-  // startAtBottom: boolean;
+   * TEMPLATE_PARAMETER: "starting_position". If "bottom", child items will start at bottom of path
+   * and component will scroll to the bottom on page load. Default "bottom".
+   * */
   startingPosition: "top" | "bottom";
 }
 
