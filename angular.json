@@ -28,7 +28,7 @@
                 "output": "./svg"
               },
               {
-                "glob": "{*.min.mjs,images/*,locale/en-GB/*,op-chaining-support.js,locale/locale.json,standard_fonts/**}",
+                "glob": "{*.min.mjs,images/*,locale/en-US/*,locale/locale.json,standard_fonts/**}",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
                 "ignore": ["**/*-es5.min.mjs"],
                 "output": "/assets/comp-pdf"
@@ -72,7 +72,7 @@
                 "fonts": true
               },
               "budgets": [
-                { "type": "initial", "maximumWarning": "850kb", "maximumError": "5mb" },
+                { "type": "initial", "maximumWarning": "850kb", "maximumError": "6mb" },
                 { "type": "anyComponentStyle", "maximumWarning": "3kb", "maximumError": "200kb" }
               ]
             },
