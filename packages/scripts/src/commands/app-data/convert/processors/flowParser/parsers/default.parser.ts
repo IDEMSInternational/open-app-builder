@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { Logger, TemplatedData } from "shared";
+import { TemplatedData } from "shared";
 import {
   parseAppDataListString,
   parseAppDataCollectionString,
@@ -197,17 +197,9 @@ class RowProcessor {
         childFlow.rows = group;
         const parsedGroup = subParser.run(childFlow);
         this.row = { ...this.row, type: groupType, rows: parsedGroup.rows as any };
-      } catch (err) {
-        if (err.message === "missing_end_statement") {
-          Logger.error({
-            msg1: `Template missing "${type.replace("begin", "end")}" statement`,
-            logOnly: true,
-          });
-        }
-        const { rows, _xlsxPath, ...parentMeta } = this.parent.flow;
-        console.warn("Error in flow:", parentMeta);
-        console.warn("Row:", this.row);
-        console.warn("XLSX:", _xlsxPath);
+      } catch (ex) {
+        console.warn("Error on group extract on row", this.row, this.parent.flow, ex);
+        console.warn("Error is in sheet ", this.parent.flow._xlsxPath);
       }
     }
     // Can ignore as handled during subgroup extraction
@@ -230,8 +222,10 @@ class RowProcessor {
       return nestedIfCount === 0;
     });
     if (endIndex === -1) {
-      // Found instance of `begin_` statement without `end_`. Further details logged in parent try-catch
-      throw new Error(`missing_end_statement`);
+      console.log("could not find end index", startIndex);
+      throw new Error(
+        "extract group error. count not find end index for start index=" + startIndex
+      );
     }
     const queueEndIndex = startIndex + endIndex;
     // remove all rows from the queue excluding start and end clause statements (e.g. if/end-if)
@@ -323,7 +317,7 @@ class RowProcessor {
         } else {
           if (typeof this.row[key] === "string") {
             if (this.row[key].includes("@include_default")) {
-              this.row[key] = this.row[key].replace("@include_default", value as any);
+              this.row[key] = this.row[key].replace("@include_default", value);
             }
             if (this.row[key].includes("@omit_default")) {
               delete this.row[key];
