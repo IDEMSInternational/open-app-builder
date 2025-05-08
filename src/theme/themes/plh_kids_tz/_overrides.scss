@@ -176,6 +176,7 @@ body[data-theme="plh_kids_tz"] {
     // Fine-tune the position of the child steps to reflect theme image
     .progress-path-child-content {
       &:nth-child(1) {
+        top: 4% !important;
         left: 8% !important;
       }
       &:nth-child(3) {
@@ -194,6 +195,7 @@ body[data-theme="plh_kids_tz"] {
     @media (max-width: 384px) {
       .progress-path-child-content {
         &:nth-child(1) {
+          top: 5% !important;
           left: 4% !important;
         }
         &:nth-child(3) {
