@@ -18,6 +18,7 @@ export class TmplTextBoxComponent extends TemplateBaseComponent implements OnIni
   textAlign: string;
   maxLength: number;
   style: string;
+  disabled: boolean;
 
   ngOnInit() {
     this.getParams();
@@ -37,5 +38,6 @@ export class TmplTextBoxComponent extends TemplateBaseComponent implements OnIni
       "prioritise_placeholder",
       false
     );
+    this.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
   }
 }
