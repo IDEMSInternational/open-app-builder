@@ -16,7 +16,12 @@ body[data-theme="plh_kids_tz"] {
       }
     }
   }
-
+  // Button
+  plh-button {
+    .navigation.standard {
+      color: var(--ion-color-primary-shade);
+    }
+  }
   // Audio
   plh-audio {
     border: 1px solid transparent;
