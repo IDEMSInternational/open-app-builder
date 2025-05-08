@@ -1,8 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { RemoteAssetService } from "./remote-asset.service";
-import { provideHttpClientTesting } from "@angular/common/http/testing";
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { IAssetContents } from "src/app/data";
 import { FlowTypes } from "../../model";
 import { IAssetEntry, IDeploymentRuntimeConfig } from "data-models";
@@ -113,10 +112,8 @@ describe("RemoteAssetsService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [HttpClientTestingModule],
       providers: [
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting(),
         { provide: DeploymentService, useValue: new MockDeploymentService(MOCK_DEPLOYMENT_CONFIG) },
       ],
     });
