@@ -1,6 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { FlowTypes } from "../../models";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { DataItemsService } from "./data-items.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
@@ -10,8 +11,6 @@ import { TemplateVariablesService } from "../../services/template-variables.serv
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { TemplateCalcService } from "../../services/template-calc.service";
 import { MockTemplateCalcService } from "../../services/template-calc.service.mock.spec";
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
-import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 /***************************************************************************************
  * Test Setup
@@ -88,10 +87,8 @@ describe("DataItemsService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [],
+      imports: [HttpClientTestingModule],
       providers: [
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting(),
         {
           provide: DynamicDataService,
           useValue: new MockDynamicDataService({

@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
 import { TemplateContainerComponent } from "./template-container.component";
@@ -11,7 +11,7 @@ describe("TemplateComponent", () => {
   let component: TemplateContainerComponent;
   let fixture: ComponentFixture<TemplateContainerComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TemplateContainerComponent, FilterDisplayComponentPipe],
       imports: [IonicModule.forRoot()],
