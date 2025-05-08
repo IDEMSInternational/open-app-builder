@@ -1,6 +1,5 @@
 @use "/src/theme/mixins";
 
-
 .searchbar {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -18,10 +17,11 @@
   margin-bottom: 8px;
   position: relative;
   top: auto;
+  margin-left: 32px;
 }
 
-ion-radio{
-  --color:transparent;
+ion-radio {
+  --color: transparent;
   --color-checked: transparent;
 }
 
@@ -33,8 +33,7 @@ ion-item {
   --background: var(--ion-background-color, #fff);
 }
 
-ion-item.selected
-{
-  --background: var(--combo-box-background-with-value, var(--ion-color-primary-200)); 
+ion-item.selected {
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-200));
   --color: var(--combo-box-selected-value-text, var(--ion-color-primary));
 }
