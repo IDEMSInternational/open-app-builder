@@ -5,7 +5,6 @@ import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
 import { provideSharedData } from "./feature/shared-data";
-import { PLH_FEATURE_MODULES } from "packages/components/plh";
 
 /**
  * Module imports required for specific deployment features
@@ -25,7 +24,6 @@ import { PLH_FEATURE_MODULES } from "packages/components/plh";
     AnalyticsModule,
     CampaignModule,
     NavStackModule,
-    ...PLH_FEATURE_MODULES,
     /* */
   ],
   // Modules defined as modern angular providers

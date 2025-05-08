@@ -34,11 +34,6 @@ export class ComboBoxSearchComponent {
     this.searchTerm.set(searchTerm);
   }
 
-  public cancel() {
-    let selectedItem = this.answerOptions().find((item) => item.name === this.selectedValue());
-    this.closeModal({ answer: selectedItem });
-  }
-
   private closeModal(value) {
     setTimeout(async () => {
       await this.modalController.dismiss(value);

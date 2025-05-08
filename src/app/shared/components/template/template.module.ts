@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { LottieModule } from "ngx-lottie";
 import { NouisliderModule } from "ng2-nouislider";
 import { RouterModule } from "@angular/router";
 import { SwiperModule } from "swiper/angular";
@@ -20,14 +21,13 @@ import { TemplatePipesModule } from "./pipes";
 // Components from external packages
 import { PLH_COMPONENTS } from "packages/components/plh";
 import { DEMO_COMPONENTS } from "packages/components/demo";
-import { LottieComponent } from "ngx-lottie";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LottieComponent,
+    LottieModule,
     NgxExtendedPdfViewerModule,
     NouisliderModule,
     ReactiveFormsModule,
