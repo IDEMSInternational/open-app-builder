@@ -80,6 +80,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
       }
     `,
   ],
+  standalone: false,
 })
 export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
   @Input() campaignId: string = "";

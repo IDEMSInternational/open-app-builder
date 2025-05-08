@@ -10,5 +10,6 @@ import { TemplateBaseComponent } from "../base";
       [parent]="parent"
     ></plh-template-component>
   </div>`,
+  standalone: false,
 })
 export class AnimatedSectionGroupComponent extends TemplateBaseComponent {}

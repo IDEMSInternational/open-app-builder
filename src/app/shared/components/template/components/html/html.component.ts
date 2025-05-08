@@ -5,6 +5,7 @@ import { TemplateBaseComponent } from "src/app/shared/components/template/compon
 @Component({
   selector: "template-html-component",
   template: `<div [outerHTML]="html"></div>`,
+  standalone: false,
 })
 /** Render raw html */
 export class TemplateHTMLComponent extends TemplateBaseComponent implements OnInit {

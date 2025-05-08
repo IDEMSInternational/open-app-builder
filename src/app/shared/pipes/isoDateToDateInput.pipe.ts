@@ -3,6 +3,7 @@ import { format } from "date-fns";
 
 @Pipe({
   name: "isoDateToDateInput",
+  standalone: false,
 })
 /**
  * Convert an iso date string to format for date input (e.g. 2020-21-09)

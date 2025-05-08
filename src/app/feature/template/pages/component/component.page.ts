@@ -15,12 +15,16 @@ interface ITemplateComponent {
   selector: "template-component-page",
   templateUrl: "./component.page.html",
   styleUrls: ["./component.page.scss"],
+  standalone: false,
 })
 export class ComponentPage implements OnInit {
   selectedComponent: ITemplateComponent;
   components: ITemplateComponent[] = [];
 
-  constructor(private route: ActivatedRoute, private appDataService: AppDataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private appDataService: AppDataService
+  ) {}
 
   ngOnInit() {
     this.selectedComponent = this.route.snapshot.params.componentName;

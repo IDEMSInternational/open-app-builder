@@ -24,6 +24,7 @@ const DEFAULT_PARAMS: IAuthorParams = {
   styleUrls: ["./pdf.component.scss"],
   // Allow override of global pdf viewer styles
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TmplPdfComponent extends TemplateBaseComponent implements AfterViewInit {
   public pdfSrc = computed(() => this.value());

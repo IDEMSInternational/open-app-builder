@@ -16,6 +16,7 @@ interface IModuleHeaderParams {
   selector: "plh-module-details-header",
   templateUrl: "./module-details-header.component.html",
   styleUrls: ["./module-details-header.component.scss"],
+  standalone: false,
 })
 export class PlhModuleDetailsHeaderComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IModuleHeaderParams> = {};

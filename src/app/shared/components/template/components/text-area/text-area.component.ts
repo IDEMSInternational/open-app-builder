@@ -7,6 +7,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
   selector: "plh-text-area",
   templateUrl: "./text-area.component.html",
   styleUrls: ["./text-area.component.scss"],
+  standalone: false,
 })
 export class TmplTextAreaComponent
   extends TemplateBaseComponent

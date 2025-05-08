@@ -28,6 +28,7 @@ interface IModuleListItemParams {
   selector: "plh-module-list-item",
   templateUrl: "./module-list-item.component.html",
   styleUrls: ["./module-list-item.component.scss"],
+  standalone: false,
 })
 export class PlhModuleListItemComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));

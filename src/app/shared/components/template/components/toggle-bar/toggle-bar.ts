@@ -35,6 +35,7 @@ interface IToggleParams {
   selector: "plh-tmpl-toggle-bar",
   templateUrl: "./toggle-bar.html",
   styleUrls: ["./toggle-bar.scss"],
+  standalone: false,
 })
 export class TmplToggleBarComponent
   extends TemplateBaseComponent

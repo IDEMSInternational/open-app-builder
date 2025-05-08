@@ -47,6 +47,7 @@ import { ClipboardService } from "./shared/services/clipboard/clipboard.service"
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AppComponent {
   footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);

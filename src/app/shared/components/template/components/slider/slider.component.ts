@@ -14,6 +14,7 @@ import { Options, PipsMode } from "nouislider";
   selector: "plh-slider-new",
   templateUrl: "./slider.component.html",
   styleUrls: ["./slider.component.scss"],
+  standalone: false,
 })
 export class TmplSliderComponent
   extends TemplateBaseComponent

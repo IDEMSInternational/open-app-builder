@@ -6,6 +6,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-drawer",
   templateUrl: "./drawer.component.html",
   styleUrls: ["./drawer.component.scss"],
+  standalone: false,
 })
 export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit {
   @ViewChild("drawer") drawer: ElementRef;

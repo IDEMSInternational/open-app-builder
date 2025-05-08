@@ -27,6 +27,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *********************************************************************/
 @Directive({
   selector: "[plhTemplateComponentHost]",
+  standalone: false,
 })
 export class TmplCompHostDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
@@ -59,6 +60,7 @@ export class TmplCompHostDirective {
   `,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ["./template-component.scss"],
+  standalone: false,
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**

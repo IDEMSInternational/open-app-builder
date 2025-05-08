@@ -45,6 +45,7 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
     </ion-item>`,
   // Notification  interacted
   styleUrls: ["./notification-debug-row.scss"],
+  standalone: false,
 })
 export class NotificationDebugInteractedRowComponent {
   public previewCountdown: number;

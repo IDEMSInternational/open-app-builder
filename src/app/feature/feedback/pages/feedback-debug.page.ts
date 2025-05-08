@@ -8,12 +8,16 @@ import { IFeedbackEntryDB } from "../feedback.types";
 @Component({
   templateUrl: "./feedback-debug.page.html",
   styleUrls: ["./feedback-debug.page.scss"],
+  standalone: false,
 })
 export class FeedbackDebugPage implements OnInit, OnDestroy {
   private componentDestroyed$ = new Subject<boolean>();
   public feedbackPending: IFeedbackEntryDB[] = [];
   public feedbackSent: IFeedbackEntryDB[] = [];
-  constructor(public feedbackService: FeedbackService, private dbService: DbService) {}
+  constructor(
+    public feedbackService: FeedbackService,
+    private dbService: DbService
+  ) {}
 
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
