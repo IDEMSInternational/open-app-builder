@@ -49,11 +49,3 @@ $navigation-bar-height: var(--navigation-bar-height);
     }
   }
 }
-
-.navigation-bar-wrapper[data-variant~="background_primary"] {
-  background-color: var(--ion-color-primary);
-}
-
-.navigation-bar-wrapper[data-variant~="background_none"] {
-  background-color: transparent;
-}

@@ -7,7 +7,7 @@ interface INavigationBarParams {
   /** TEMPLATE PARAMETER: "button_list" */
   buttonList: INavigationBarButton[];
   /** TEMPLATE PARAMETER: "variant". Default: "text_primary_contrast" */
-  variant: "text_primary_contrast" | "text_primary" | "background_primary" | "background_none";
+  variant: "text_primary_contrast" | "text_primary";
 }
 
 interface INavigationBarButton {
