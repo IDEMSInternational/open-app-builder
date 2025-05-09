@@ -7,8 +7,9 @@ $navigation-bar-height: var(--navigation-bar-height);
   height: $navigation-bar-height;
   padding: var(--tiny-padding);
 
-  .button-wrapper {
+  a.button-wrapper {
     @include mixins.flex-centered;
+    text-decoration: none;
     flex-direction: column;
     height: 100%;
     width: 30%;
@@ -33,10 +34,22 @@ $navigation-bar-height: var(--navigation-bar-height);
 
     p {
       flex: 0 1 auto;
-      color: var(--ion-color-primary-contrast);
       text-align: center;
       font-size: var(--font-size-text-tiny);
       margin: var(--tiny-margin) 0;
     }
+  }
+}
+
+.navigation-bar-wrapper[data-variant="background_primary"] {
+  background-color: var(--ion-color-primary);
+  p {
+    color: var(--ion-color-primary-contrast);
+  }
+}
+.navigation-bar-wrapper[data-variant="background_none"] {
+  background-color: transparent;
+  p {
+    color: var(--ion-color-primary);
   }
 }
