@@ -12,21 +12,22 @@ import { filter, map, switchMap } from "rxjs";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { DataItemsService } from "src/app/shared/components/template/components/data-items/data-items.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import {
-  getIonContentHeight,
-  setIonContentScrollTop,
-} from "src/app/shared/components/template/utils";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IPlhProgressPathParams {
   /** TEMPLATE_PARAMETER: "background_image_asset". Used to set the progress path background */
   backgroundImageAsset: string;
+  /**
+   * TEMPLATE_PARAMETER: "starting_position". If "bottom", child items will start at bottom of path
+   * and component will scroll to the bottom on page load. Default "bottom".
+   * */
+  startingPosition: "top" | "bottom";
 }
 
 @Component({
   selector: "plh-progress-path",
-  templateUrl: "./plh-progress-path.component.html",
-  styleUrls: ["./plh-progress-path.component.scss"],
+  templateUrl: "./progress-path.component.html",
+  styleUrls: ["./progress-path.component.scss"],
 })
 export class PlhProgressPathComponent
   extends TemplateBaseComponent
@@ -47,7 +48,8 @@ export class PlhProgressPathComponent
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap)),
+      map((items) => (this.params.startingPosition === "bottom" ? [...items].reverse() : items))
     )
   );
 
@@ -63,25 +65,15 @@ export class PlhProgressPathComponent
   }
 
   ngAfterViewInit() {
-    this.scrollToBottomMiddle();
+    if (this.params.startingPosition === "bottom") this.scrollToBottom();
     setTimeout(() => {
       this.loading.set(false);
     }, 100);
   }
 
-  // Scroll to the bottom and horizontally to the middle of the component
-  private scrollToBottomMiddle() {
+  private scrollToBottom() {
     const element = this.progressPath.nativeElement;
-
-    // Scroll component content horizontally to centre component content
-    const scrollLeft = (element.scrollWidth - window.innerWidth) / 2;
-    element.scrollTo({
-      left: scrollLeft,
-    });
-
-    // Scroll parent ion-content element to the bottom
-    const height = getIonContentHeight(this.progressPath);
-    setIonContentScrollTop(this.progressPath, height);
+    element.scrollIntoView({ block: "end" });
   }
 
   private getParams() {
@@ -90,5 +82,10 @@ export class PlhProgressPathComponent
       "background_image_asset",
       null
     );
+    this.params.startingPosition = getStringParamFromTemplateRow(
+      this._row,
+      "starting_position",
+      "bottom"
+    ) as IPlhProgressPathParams["startingPosition"];
   }
 }
