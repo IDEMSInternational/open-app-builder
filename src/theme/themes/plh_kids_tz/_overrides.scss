@@ -26,6 +26,7 @@ body[data-theme="plh_kids_tz"] {
       background-color: transparent;
       background: transparent;
       min-height: var(--buttons-size);
+      --box-shadow: none;
       p {
         font-weight: var(--font-weight-standard);
       }
@@ -206,7 +207,7 @@ body[data-theme="plh_kids_tz"] {
       background-color: var(--ion-color-primary-50);
       border-bottom: 1px solid var(--ion-color-primary-300);
       h1 {
-        padding: 18px;
+        padding: 18px 24px;
         border: none;
       }
     }
