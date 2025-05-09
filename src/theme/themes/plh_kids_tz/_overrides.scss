@@ -215,4 +215,44 @@ body[data-theme="plh_kids_tz"] {
       padding: 10px 0;
     }
   }
+  // Progress Path
+  plh-progress-path {
+    // Fine-tune the position of the child steps to reflect theme image
+    .progress-path-child-content {
+      &:nth-child(1) {
+        top: 4% !important;
+        left: 8% !important;
+      }
+      &:nth-child(3) {
+        right: 2% !important;
+      }
+      &:nth-child(4) {
+        top: 34% !important;
+      }
+      &:nth-child(8) {
+        right: 4% !important;
+      }
+      &:nth-child(9) {
+        bottom: 6% !important;
+      }
+    }
+    @media (max-width: 384px) {
+      .progress-path-child-content {
+        &:nth-child(1) {
+          top: 5% !important;
+          left: 4% !important;
+        }
+        &:nth-child(3) {
+          top: 16% !important;
+        }
+        &:nth-child(8) {
+          bottom: 13% !important;
+        }
+        &:nth-child(9) {
+          bottom: 4% !important;
+          left: 30% !important;
+        }
+      }
+    }
+  }
 }
