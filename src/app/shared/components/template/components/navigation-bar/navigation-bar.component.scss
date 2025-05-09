@@ -33,6 +33,7 @@ $navigation-bar-height: var(--navigation-bar-height);
     }
 
     p {
+      color: var(--ion-color-primary-contrast);
       flex: 0 1 auto;
       text-align: center;
       font-size: var(--font-size-text-tiny);
@@ -41,15 +42,18 @@ $navigation-bar-height: var(--navigation-bar-height);
   }
 }
 
-.navigation-bar-wrapper[data-variant="background_primary"] {
-  background-color: var(--ion-color-primary);
-  p {
-    color: var(--ion-color-primary-contrast);
+.navigation-bar-wrapper[data-variant~="text_primary"] {
+  a.button-wrapper {
+    p {
+      color: var(--ion-color-primary);
+    }
   }
 }
-.navigation-bar-wrapper[data-variant="background_none"] {
+
+.navigation-bar-wrapper[data-variant~="background_primary"] {
+  background-color: var(--ion-color-primary);
+}
+
+.navigation-bar-wrapper[data-variant~="background_none"] {
   background-color: transparent;
-  p {
-    color: var(--ion-color-primary);
-  }
 }
