@@ -6,8 +6,8 @@ import { FlowTypes } from "packages/data-models";
 interface INavigationBarParams {
   /** TEMPLATE PARAMETER: "button_list" */
   buttonList: INavigationBarButton[];
-  /** TEMPLATE PARAMETER: "variant" */
-  variant: "background_primary" | "background_none";
+  /** TEMPLATE PARAMETER: "variant". Default: "text_primary_contrast" */
+  variant: "text_primary_contrast" | "text_primary" | "background_primary" | "background_none";
 }
 
 interface INavigationBarButton {
@@ -28,7 +28,9 @@ export class TmplNavigationBarComponent extends TemplateBaseComponent {
   getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): INavigationBarParams {
     return {
       buttonList: getParamFromTemplateRow(this._row, "button_list", []),
-      variant: getParamFromTemplateRow(this._row, "variant", "background-primary"),
+      variant: getParamFromTemplateRow(this._row, "variant", "text_primary_contrast")
+        .split(",")
+        .join(" "),
     };
   }
 }
