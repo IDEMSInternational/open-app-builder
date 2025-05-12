@@ -84,7 +84,18 @@
       progress-path-line-background: var(--ion-color-gray-100),
       module-list-item-color-default: var(--ion-color-secondary-300),
       module-list-item-color-highlighted: var(--color-accent-pink),
-      ion-default-box-shadow: 0 2px 8px rgba(32, 32, 32, 0.2)
+      ion-default-box-shadow: 0 2px 8px rgba(32, 32, 32, 0.2),
+      // Text Bubbles
+      text-bubble-background-color-1: var(--ion-color-gray-100),
+      text-bubble-border-color-1: var(--ion-color-gray-300),
+      text-bubble-background-color-2: var(--ion-color-primary-50),
+      text-bubble-border-color-2: var(--ion-color-primary-700),
+      text-bubble-background-color-3: var(--ion-color-secondary-200),
+      text-bubble-border-color-3: var(--ion-color-secondary-500),
+      text-bubble-background-color-4: var(--ion-background-color),
+      text-bubble-border-color-4: var(--ion-color-yellow),
+      text-bubble-background-color-5: var(--ion-background-color),
+      text-bubble-border-color-5: var(--ion-color-green)
     );
     @include utils.generateTheme(
       $p: $color-primary,
