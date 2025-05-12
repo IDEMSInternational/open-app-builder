@@ -3,6 +3,16 @@
 // NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
 
 $imageSize: 64px;
+$bubble-background-color-1: var(--text-bubble-background-color-1);
+$bubble-border-color-1: var(--text-bubble-border-color-1);
+$bubble-background-color-2: var(--text-bubble-background-color-2);
+$bubble-border-color-2: var(--text-bubble-border-color-2);
+$bubble-background-color-3: var(--text-bubble-background-color-3);
+$bubble-border-color-3: var(--text-bubble-border-color-3);
+$bubble-background-color-4: var(--text-bubble-background-color-4);
+$bubble-border-color-4: var(--text-bubble-border-color-4);
+$bubble-background-color-5: var(--text-bubble-background-color-5);
+$bubble-border-color-5: var(--text-bubble-border-color-5);
 
 .text-bubble-container {
   position: relative;
@@ -17,22 +27,22 @@ $imageSize: 64px;
 
   &[data-variant~="gray"] {
     .text-bubble {
-      border: 1px solid var(--ion-color-gray-300);
-      background-color: var(--ion-color-gray-100);
+      border: 1px solid $bubble-border-color-1;
+      background-color: $bubble-background-color-1;
     }
   }
 
   &[data-variant~="primary"] {
     .text-bubble {
-      border: 1px solid var(--ion-color-primary-700);
-      background-color: var(--ion-color-primary-100);
+      border: 1px solid $bubble-border-color-2;
+      background-color: $bubble-background-color-2;
     }
   }
 
   &[data-variant~="secondary"] {
     .text-bubble {
-      border: 1px solid var(--ion-color-secondary-500);
-      background-color: var(--ion-color-secondary-200);
+      border: 1px solid $bubble-border-color-3;
+      background-color: $bubble-background-color-3;
     }
   }
 
@@ -44,15 +54,15 @@ $imageSize: 64px;
 
   &[data-variant~="speaker-3"] {
     .text-bubble {
-      border: 1px solid var(--ion-color-success);
-      background-color: var(--ion-color-light-tint);
+      border: 1px solid $bubble-border-color-4;
+      background-color: $bubble-background-color-4;
     }
   }
 
   &[data-variant~="speaker-4"] {
     .text-bubble {
-      border: 1px solid var(--ion-color-danger);
-      background-color: var(--ion-color-light-tint);
+      border: 1px solid $bubble-border-color-5;
+      background-color: $bubble-background-color-5;
     }
   }
 
