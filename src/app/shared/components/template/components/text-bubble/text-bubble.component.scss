@@ -3,16 +3,16 @@
 // NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
 
 $imageSize: 64px;
-$bubble-background-color-1: var(--text-bubble-background-color-1);
-$bubble-border-color-1: var(--text-bubble-border-color-1);
-$bubble-background-color-2: var(--text-bubble-background-color-2);
-$bubble-border-color-2: var(--text-bubble-border-color-2);
-$bubble-background-color-3: var(--text-bubble-background-color-3);
-$bubble-border-color-3: var(--text-bubble-border-color-3);
-$bubble-background-color-4: var(--text-bubble-background-color-4);
-$bubble-border-color-4: var(--text-bubble-border-color-4);
-$bubble-background-color-5: var(--text-bubble-background-color-5);
-$bubble-border-color-5: var(--text-bubble-border-color-5);
+$bubble-background-color-1: var(--text-bubble-background-color-1, var(--ion-color-gray-100));
+$bubble-border-color-1: var(--text-bubble-border-color-1, var(--ion-color-gray-300));
+$bubble-background-color-2: var(--text-bubble-background-color-2, var(--ion-color-primary-100));
+$bubble-border-color-2: var(--text-bubble-border-color-2, var(--ion-color-primary-700));
+$bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-color-secondary-100));
+$bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-secondary-600));
+$bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-yellow-50));
+$bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-yellow-700));
+$bubble-background-color-5: var(--text-bubble-background-color-5, var(--ion-color-yellow-50));
+$bubble-border-color-5: var(--text-bubble-border-color-5, var(--ion-color-secondary-700));
 
 .text-bubble-container {
   position: relative;
