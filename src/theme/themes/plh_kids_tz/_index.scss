@@ -83,7 +83,10 @@
       // checkbox-background-color: white,
       progress-path-line-background: var(--ion-color-gray-100),
       module-list-item-color-default: var(--ion-color-secondary-300),
-      module-list-item-color-highlighted: var(--color-accent-pink)
+      module-list-item-color-highlighted: var(--color-accent-pink),
+      // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(36, 120, 199, 0.5),
+      box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6)
     );
     @include utils.generateTheme(
       $p: $color-primary,
