@@ -29,6 +29,29 @@ body[data-theme="plh_kids_tz"] {
     .navigation.standard {
       color: var(--ion-color-secondary-900);
     }
+    ion-button[data-variant~="card"][data-param-style~="no-background"] {
+      border: 1px solid transparent;
+      background-color: transparent;
+      background: transparent;
+      min-height: var(--buttons-size);
+      --box-shadow: none;
+      p {
+        font-weight: var(--font-weight-standard);
+      }
+      &[data-language-direction~="rtl"] {
+        .left.text {
+          text-align: right;
+          p {
+            text-align: right !important;
+          }
+        }
+        .left.right {
+          p {
+            text-align: left !important;
+          }
+        }
+      }
+    }
   }
   // Audio
   plh-audio {
@@ -179,7 +202,29 @@ body[data-theme="plh_kids_tz"] {
       }
     }
   }
-
+  // Title
+  plh-tmpl-title {
+    .title-wrapper h1 {
+      font-size: var(--font-size-text-title);
+      margin: 8px 0;
+      line-height: var(--font-size-title-large);
+    }
+    .title-wrapper[data-variant~="section_banner"] {
+      font-size: var(--font-size-text-large) !important;
+      font-weight: var(--font-weight-bold) !important;
+      background-color: var(--ion-color-primary-50);
+      border-bottom: 1px solid var(--ion-color-primary-300);
+      h1 {
+        padding: 18px 24px;
+        border: none;
+      }
+    }
+    .title-wrapper[data-variant~="page_banner"] h1 {
+      font-size: var(--font-size-title-large) !important;
+      padding: 10px 0;
+    }
+  }
+  // Progress Path
   plh-progress-path {
     // Fine-tune the position of the child steps to reflect theme image
     .progress-path-child-content {
