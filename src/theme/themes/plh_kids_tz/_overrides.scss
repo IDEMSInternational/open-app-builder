@@ -18,8 +18,16 @@ body[data-theme="plh_kids_tz"] {
   }
   // Button
   plh-button {
+    ion-button {
+      &.information[data-variant~="default"] {
+        --box-shadow: var(--box-shadow-primary);
+      }
+      &.navigation {
+        --box-shadow: var(--box-shadow-secondary);
+      }
+    }
     .navigation.standard {
-      color: var(--ion-color-primary-shade);
+      color: var(--ion-color-secondary-900);
     }
   }
   // Audio
@@ -208,6 +216,16 @@ body[data-theme="plh_kids_tz"] {
           bottom: 4% !important;
           left: 30% !important;
         }
+      }
+    }
+  }
+
+  // Round Button
+  plh-round-button {
+    ion-tab-button {
+      &.navigation {
+        color: var(--ion-color-secondary-900);
+        box-shadow: var(--box-shadow-secondary);
       }
     }
   }
