@@ -464,6 +464,7 @@ export namespace FlowTypes {
     "trigger_actions",
     "user",
     "copy",
+    "scroll_top",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
     ...PLH_ACTIONS_LIST,
