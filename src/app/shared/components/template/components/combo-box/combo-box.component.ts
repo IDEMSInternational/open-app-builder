@@ -60,7 +60,7 @@ export class TmplComboBoxComponent
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
   public displayText = computed(() => {
-    if (this.disabled()) return this.params().disabledText;
+    if (this.disabled() && this.params().disabledText) return this.params().disabledText;
     if (this.customAnswerSelected()) return this.customAnswerText;
     return this.answerText() && !this.params().prioritisePlaceholder
       ? this.answerText()
@@ -113,7 +113,8 @@ export class TmplComboBoxComponent
     await this.setValue(value);
   }
 
-  async openModal() {
+  public async openModal() {
+    if (this.disabled()) return;
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
