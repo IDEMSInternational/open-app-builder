@@ -113,7 +113,7 @@ export class TmplComboBoxComponent
     await this.setValue(value);
   }
 
-  async openModal() {
+  public async openModal() {
     if (this.disabled()) return;
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
