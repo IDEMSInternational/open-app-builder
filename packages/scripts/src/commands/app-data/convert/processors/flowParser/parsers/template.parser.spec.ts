@@ -174,9 +174,9 @@ describe("Template Parser PostProcessor", () => {
   it("Creates nested path names for child rows", () => {
     const rows: FlowTypes.TemplateRow[] = [
       {
-        _nested_name: "my_items",
-        name: "my_items",
-        type: "items",
+        _nested_name: "dg",
+        name: "dg",
+        type: "display_group",
         // Handle case of both named and unnamed nested row names
         rows: [
           {
@@ -191,7 +191,7 @@ describe("Template Parser PostProcessor", () => {
     const res = parser.run({ flow_type: "template", flow_name: "test_nested", rows });
     const itemRows = res.rows[0].rows;
     const nestedNames = itemRows.map((n) => n._nested_name);
-    expect(nestedNames).toEqual(["my_items.named_text", "my_items.text_2"]);
+    expect(nestedNames).toEqual(["dg.named_text", "dg.text_2"]);
   });
 });
 
