@@ -7,7 +7,7 @@ import { FlowTypes } from "packages/data-models";
 interface IButtonParams {
   /** TEMPLATE PARAMETER: "variant" */
   variant:
-    | ""
+    | "default"
     | "alternative"
     | "card"
     | "card-portrait"
@@ -76,7 +76,7 @@ export class TmplButtonComponent extends TemplateBaseComponent {
       style: `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
         this.isTwoColumns() ? "two_columns" : ""
       }` as any,
-      variant: getStringParamFromTemplateRow(this._row, "variant", "")
+      variant: getStringParamFromTemplateRow(this._row, "variant", "default")
         .split(",")
         .join(" ") as IButtonParams["variant"],
       image: getStringParamFromTemplateRow(this._row, "image_asset", null),
@@ -98,7 +98,7 @@ export class TmplButtonComponent extends TemplateBaseComponent {
     }
   }
 
-  private populateVariantMap(variant: IButtonParams["variant"] = ""): IVariantMap {
+  private populateVariantMap(variant: IButtonParams["variant"] = "default"): IVariantMap {
     const variantArray = variant.split(" ");
     return {
       cardPortrait: variantArray.includes("card-portrait"),
