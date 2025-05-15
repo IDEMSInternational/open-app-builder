@@ -176,7 +176,7 @@ export class TemplateParser extends DefaultParser {
   private generateItemRowNames(rows: FlowTypes.TemplateRow[]) {
     return rows.map((row, i) => {
       if (!row.name) {
-        row.name = this.generateRowName(row, i);
+        row.name = this.generateRowName(row, i + 1);
         row.name = `${row.name}_@item.id`;
       }
       return row;
