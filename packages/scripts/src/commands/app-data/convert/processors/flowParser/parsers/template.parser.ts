@@ -27,6 +27,14 @@ export class TemplateParser extends DefaultParser {
     if (!row.name) {
       row.name = this.generateRowName(row, rowNumber);
     }
+
+    // Ensure nested item or data_items rows also have unique names
+    if (row.type === "data_items" || row.type === "items") {
+      if (row.rows) {
+        row.rows = this.generateItemRowNames(row.rows);
+      }
+    }
+
     // track path to row when nested
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
@@ -158,6 +166,20 @@ export class TemplateParser extends DefaultParser {
         }
       }
       return action;
+    });
+  }
+
+  /**
+   * Ensure any child rows of items or data_items have a name that will generate
+   * uniquely with reference to item id
+   */
+  private generateItemRowNames(rows: FlowTypes.TemplateRow[]) {
+    return rows.map((row, i) => {
+      if (!row.name) {
+        row.name = this.generateRowName(row, i);
+        row.name = `${row.name}_@item.id`;
+      }
+      return row;
     });
   }
 

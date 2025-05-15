@@ -255,14 +255,6 @@ describe("DataItemsService", () => {
     expect(translateDataListRowsSpy).toHaveBeenCalledTimes(1);
   });
 
-  // TODO - unique id created as part of row processor which is stubbed during tests
-  // Should refactor when replacing hack method with alt. row processor class
-  xit("creates unique _nested_name for row", async () => {
-    const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW(), {});
-    const data = await firstValueFrom(obs);
-    expect(data[0]._nested_name).toEqual(`button.id_1`);
-  });
-
   // TODO - requires improvement to mocked dynamic data service
   // it("provides live update when data changes", async () => {
   //   const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
