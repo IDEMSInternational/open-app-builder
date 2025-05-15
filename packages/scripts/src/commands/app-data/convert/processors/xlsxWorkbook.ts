@@ -7,7 +7,7 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20250429.0;
+const cacheVersion = 20250515.0;
 const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
 export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
@@ -59,6 +59,18 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
         ) {
           html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
           worksheet[cellId].v = html;
+        }
+      });
+      // If authored value was a percentage, override converted decimal value to preserve percentage representation
+      Object.keys(worksheet).forEach((cellId) => {
+        const cell = worksheet[cellId];
+        // parser saves formatted text version of cell value in the .w field
+        // https://docs.sheetjs.com/docs/api/parse-options#parsing-options
+        const cellText = cell?.w;
+        if (cell && typeof cell.v === "number" && cellText) {
+          if (cellText.includes("%")) {
+            cell.v = cellText;
+          }
         }
       });
       json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
