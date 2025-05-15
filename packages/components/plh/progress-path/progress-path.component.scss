@@ -39,40 +39,40 @@
     .progress-path-child-content {
       position: absolute;
       &:nth-child(1) {
-        bottom: 1%;
-        left: 40%;
+        top: 2%;
+        left: 13%;
       }
       &:nth-child(2) {
-        bottom: 18%;
-        right: 0;
+        top: 13%;
+        right: 37%;
       }
       &:nth-child(3) {
-        bottom: 29%;
-        right: 34%;
+        top: 16%;
+        right: 0;
       }
       &:nth-child(4) {
-        bottom: 30%;
-        left: 7%;
+        top: 32%;
+        left: 46%;
       }
       &:nth-child(5) {
         top: 36%;
         left: 2%;
       }
       &:nth-child(6) {
-        top: 32%;
-        left: 46%;
+        bottom: 30%;
+        left: 7%;
       }
       &:nth-child(7) {
-        top: 16%;
-        right: 0;
+        bottom: 29%;
+        right: 34%;
       }
       &:nth-child(8) {
-        top: 13%;
-        right: 37%;
+        bottom: 18%;
+        right: 0;
       }
       &:nth-child(9) {
-        top: 2%;
-        left: 13%;
+        bottom: 1%;
+        left: 40%;
       }
     }
   }
@@ -85,40 +85,40 @@
     .progress-path-child-wrapper {
       .progress-path-child-content {
         &:nth-child(1) {
-          bottom: 1%;
-          left: 40%;
+          top: 2%;
+          left: 10%;
         }
         &:nth-child(2) {
-          bottom: 10%;
-          right: 3%;
+          top: 13%;
+          right: 40%;
         }
         &:nth-child(3) {
-          bottom: 29%;
-          right: 13%;
+          top: 14%;
+          right: 1%;
         }
         &:nth-child(4) {
-          bottom: 28%;
-          left: 20%;
+          top: 32%;
+          right: 10%;
         }
         &:nth-child(5) {
           top: 34%;
           left: 4%;
         }
         &:nth-child(6) {
-          top: 32%;
-          right: 10%;
+          bottom: 28%;
+          left: 20%;
         }
         &:nth-child(7) {
-          top: 14%;
-          right: 1%;
+          bottom: 29%;
+          right: 13%;
         }
         &:nth-child(8) {
-          top: 13%;
-          right: 40%;
+          bottom: 10%;
+          right: 3%;
         }
         &:nth-child(9) {
-          top: 2%;
-          left: 10%;
+          bottom: 1%;
+          left: 40%;
         }
       }
     }
