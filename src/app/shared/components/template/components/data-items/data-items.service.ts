@@ -236,6 +236,12 @@ export class DataItemsService {
     processor.templateRowMapValues = templateRowMapValues;
 
     await processor.processContainerTemplateRows();
-    return processor.renderedRows();
+    const processedRows = processor.renderedRows();
+
+    // Ensure the _nested_name includes item id for unique id in for loop track
+    return processedRows.map((row) => {
+      row._nested_name = `${row._nested_name}.${row._evalContext.item._id}`;
+      return row;
+    });
   }
 }
