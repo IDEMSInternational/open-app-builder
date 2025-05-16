@@ -3,16 +3,25 @@
 // NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
 
 $imageSize: 64px;
-$bubble-background-color-1: var(--text-bubble-background-color-1, var(--ion-color-gray-100));
-$bubble-border-color-1: var(--text-bubble-border-color-1, var(--ion-color-gray-300));
-$bubble-background-color-2: var(--text-bubble-background-color-2, var(--ion-color-primary-100));
-$bubble-border-color-2: var(--text-bubble-border-color-2, var(--ion-color-primary-700));
-$bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-color-secondary-100));
-$bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-secondary-600));
+$bubble-background-color-gray: var(--text-bubble-background-color-gray, var(--ion-color-gray-100));
+$bubble-border-color-gray: var(--text-bubble-border-color-gray, var(--ion-color-gray-300));
+$bubble-background-color-primary: var(
+  --text-bubble-background-color-primary,
+  var(--ion-color-primary-100)
+);
+$bubble-border-color-primary: var(--text-bubble-border-color-primary, var(--ion-color-primary-700));
+$bubble-background-color-secondary: var(
+  --text-bubble-background-color-secondary,
+  var(--ion-color-secondary-100)
+);
+$bubble-border-color-secondary: var(
+  --text-bubble-border-color-secondary,
+  var(--ion-color-secondary-600)
+);
+$bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-color-yellow-50));
+$bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-yellow-700));
 $bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-yellow-50));
-$bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-yellow-700));
-$bubble-background-color-5: var(--text-bubble-background-color-5, var(--ion-color-yellow-50));
-$bubble-border-color-5: var(--text-bubble-border-color-5, var(--ion-color-secondary-700));
+$bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-secondary-700));
 
 .text-bubble-container {
   position: relative;
@@ -27,22 +36,22 @@ $bubble-border-color-5: var(--text-bubble-border-color-5, var(--ion-color-second
 
   &[data-variant~="gray"] {
     .text-bubble {
-      border: 1px solid $bubble-border-color-1;
-      background-color: $bubble-background-color-1;
+      border: 1px solid $bubble-border-color-gray;
+      background-color: $bubble-background-color-gray;
     }
   }
 
   &[data-variant~="primary"] {
     .text-bubble {
-      border: 1px solid $bubble-border-color-2;
-      background-color: $bubble-background-color-2;
+      border: 1px solid $bubble-border-color-primary;
+      background-color: $bubble-background-color-primary;
     }
   }
 
   &[data-variant~="secondary"] {
     .text-bubble {
-      border: 1px solid $bubble-border-color-3;
-      background-color: $bubble-background-color-3;
+      border: 1px solid $bubble-border-color-secondary;
+      background-color: $bubble-background-color-secondary;
     }
   }
 
@@ -54,15 +63,15 @@ $bubble-border-color-5: var(--text-bubble-border-color-5, var(--ion-color-second
 
   &[data-variant~="speaker-3"] {
     .text-bubble {
-      border: 1px solid $bubble-border-color-4;
-      background-color: $bubble-background-color-4;
+      border: 1px solid $bubble-border-color-3;
+      background-color: $bubble-background-color-3;
     }
   }
 
   &[data-variant~="speaker-4"] {
     .text-bubble {
-      border: 1px solid $bubble-border-color-5;
-      background-color: $bubble-background-color-5;
+      border: 1px solid $bubble-border-color-4;
+      background-color: $bubble-background-color-4;
     }
   }
 
@@ -128,8 +137,8 @@ $bubble-border-color-5: var(--text-bubble-border-color-5, var(--ion-color-second
   clip-path: none;
   border-image: none;
   border-radius: 0px 12px 12px 12px;
-  border: 1px solid var(--ion-color-primary-700);
-  background-color: var(--ion-color-primary-50);
+  border: 1px solid $bubble-border-color-primary;
+  background-color: $bubble-background-color-primary;
   padding: 14px 16px;
   min-width: 124px;
 
