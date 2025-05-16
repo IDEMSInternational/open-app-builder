@@ -95,7 +95,9 @@
       text-bubble-background-color-4: var(--ion-background-color),
       text-bubble-border-color-4: var(--ion-color-yellow),
       text-bubble-background-color-5: var(--ion-background-color),
-      text-bubble-border-color-5: var(--ion-color-green)
+      text-bubble-border-color-5: var(--ion-color-green) // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(36, 120, 199, 0.5),
+      box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6)
     );
     @include utils.generateTheme(
       $p: $color-primary,
