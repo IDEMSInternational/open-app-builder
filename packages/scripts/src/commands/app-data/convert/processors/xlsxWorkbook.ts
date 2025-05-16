@@ -48,34 +48,38 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     const json = {};
     const workbook = xlsx.readFile(xlsxFilePath);
     const { Sheets } = workbook;
-    Object.entries(Sheets).forEach(([sheet_name, worksheet]) => {
-      /* If bold or italics, include HTML in cell value */
-      Object.keys(worksheet).forEach((cellId) => {
-        let html = worksheet[cellId]?.h;
-        if (
-          html !== undefined &&
-          typeof html === "string" &&
-          (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
-        ) {
-          html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
-          worksheet[cellId].v = html;
-        }
-      });
-      // If authored value was a percentage, override converted decimal value to preserve percentage representation
-      Object.keys(worksheet).forEach((cellId) => {
-        const cell = worksheet[cellId];
-        // parser saves formatted text version of cell value in the .w field
-        // https://docs.sheetjs.com/docs/api/parse-options#parsing-options
-        const cellText = cell?.w;
-        if (cell && typeof cell.v === "number" && cellText) {
-          if (cellText.includes("%")) {
-            cell.v = cellText;
-          }
-        }
-      });
-      json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
-    });
+
+    for (const [sheetName, worksheet] of Object.entries(Sheets)) {
+      Object.values(worksheet).forEach(this.processCell);
+      json[sheetName] = xlsx.utils.sheet_to_json(worksheet);
+    }
     return json;
+  }
+
+  /**
+   * Interpret cell formatting and update cell value
+   */
+  private processCell(cell: xlsx.CellObject) {
+    if (!cell) return;
+
+    // If bold or italics, include HTML in cell value
+    let html = cell.h;
+    if (
+      html !== undefined &&
+      typeof html === "string" &&
+      (html.includes("<b>") || html.includes("<em>") || html.includes("<i>"))
+    ) {
+      html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
+      cell.v = html;
+    }
+
+    // If authored value was a percentage, override converted decimal value to preserve percentage representation
+    // xlsx library parser saves formatted text version of cell value in the .w field
+    // https://docs.sheetjs.com/docs/api/parse-options#parsing-options
+    const cellText = cell.w;
+    if (typeof cell.v === "number" && cellText?.includes("%")) {
+      cell.v = cellText;
+    }
   }
 
   /**
