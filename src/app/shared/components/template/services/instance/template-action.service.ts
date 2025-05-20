@@ -390,10 +390,43 @@ export class TemplateActionService extends SyncServiceBase {
       }
     });
 
+    // Handle any actions that should be triggered by the changed value
+    this.handleParentChangedActions(key, value);
+
     // update parent reference in case actions force a re-intialisation
     // (not currently implemented)
     if (this.container.parent) {
       this.container.parent.children[this.container.name] = this.container;
+    }
+  }
+
+  /**
+   * If the row type is template, get parent variables
+   * that match by key and handle any 'changed' events.
+   * @param key variable name
+   * @param value variable value
+   */
+  private handleParentChangedActions(key: string, value: any) {
+    if (this.container?.row?.type === "template") {
+      const parentRows = this.container.row?.rows;
+      const parentVariableRows = parentRows?.filter(
+        (r) => r.type === "set_variable" && r.name === key
+      );
+
+      for (const row of parentVariableRows) {
+        if (!row.action_list) continue;
+
+        const changedActions = row.action_list
+          .filter((a) => a.trigger === "changed")
+          .map((a) => {
+            a.args.push(value);
+            return a;
+          });
+
+        if (changedActions.length === 0) continue;
+
+        this.container.parent.templateActionService.handleActions(changedActions, row);
+      }
     }
   }
 
