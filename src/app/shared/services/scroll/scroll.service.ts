@@ -23,7 +23,7 @@ export class ScrollService extends SyncServiceBase {
     this.templateActionRegistry.register({
       scroll: async ({ args, params }) => {
         const [actionId] = args as [ScrollPosition];
-        const { duration } = params as IScrollActionParams;
+        const { duration } = (params as IScrollActionParams) || {};
         const childActions = {
           top: async () => await this.handleScroll("top", duration),
           bottom: async () => await this.handleScroll("bottom", duration),
