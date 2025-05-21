@@ -5,15 +5,18 @@
 @mixin theme-plh_kids_tz {
   [data-theme="plh_kids_tz"] {
     /** Authoring variables **/
-    $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-    $color-secondary: #edb135; // #EDB135
+    $color-primary: hsl(209, 64%, 25%); // #174168
+    $color-secondary: hsl(40, 97%, 49%); // #F6A504
     $page-background: white;
-    $color-green: #92c96d;
+    $color-green: #92cb44;
 
     /** Global and component variables **/
     $variable-overrides: (
       // Custom palette
       color-accent-pink: #ee007b,
+      ion-color-primary-500: #0092d4,
+      ion-color-secondary-700: #ac6800,
+      ion-color-yellow: #edb135,
       // color-accent-pink-50: #ffe6f3,
       // color-accent-pink-100: #ffcce6,
       // color-accent-pink-200: #ff99ce,
@@ -82,8 +85,9 @@
       task-progress-bar-color: var(--ion-color-green),
       // checkbox-background-color: white,
       progress-path-line-background: var(--ion-color-gray-100),
-      module-list-item-color-default: var(--ion-color-secondary-300),
-      module-list-item-color-highlighted: var(--color-accent-pink),
+      module-list-item-color-default: var(--ion-color-primary-500),
+      module-list-item-color-highlighted: var(--ion-color-yellow),
+      module-list-item-color-completed: var(--ion-color-secondary-700),
       // BOX SHADOW
       box-shadow-primary: 0px 1.5px 8px rgba(36, 120, 199, 0.5),
       box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6)
