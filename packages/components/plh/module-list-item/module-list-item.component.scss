@@ -4,7 +4,7 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
 // Styles common to variants
 .container {
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   border-width: 2px;
   border-style: solid;
@@ -30,8 +30,10 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
 
   &[data-locked~="true"] {
     cursor: not-allowed;
-    border-color: var(--ion-color-gray-200);
+    border-color: var(--ion-color-primary-100);
     background-color: white;
+    border-width: 1px;
+    box-shadow: 0 2px 8px rgba(219, 227, 242, 0.6);
   }
 }
 
