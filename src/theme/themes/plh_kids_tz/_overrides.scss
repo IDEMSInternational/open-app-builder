@@ -7,12 +7,34 @@ body[data-theme="plh_kids_tz"] {
   plh-module-list-item {
     .container {
       border-width: 3px;
-    }
-    .container[data-variant~="circle"] {
-      border-width: 8px;
-      // Use [class] to increase specificity without using !important
-      .module-image[class] {
-        padding: 0px;
+      box-shadow: var(--box-shadow-primary);
+      border-width: 1.5px;
+      &[data-variant~="circle"] {
+        border-width: 8px;
+        // Use [class] to increase specificity without using !important
+        .module-image[class] {
+          padding: 0px;
+        }
+      }
+      &[data-completed~="true"] {
+        box-shadow: none;
+        .module-title {
+          p {
+            color: var(--ion-color-secondary-700) !important;
+          }
+        }
+        .module-image {
+          width: 70px !important;
+          height: 70px !important;
+        }
+      }
+      &[data-highlighted~="true"] {
+        box-shadow: var(--box-shadow-secondary);
+        .module-title {
+          p {
+            color: var(--ion-color-secondary-600) !important;
+          }
+        }
       }
     }
   }
