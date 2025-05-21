@@ -20,17 +20,15 @@ export class ScrollService extends SyncServiceBase {
   }
 
   private async handleScrollTop() {
-    const contents = Array.from(document.querySelectorAll("ion-content")) as HTMLElement[];
+    const contents = Array.from(
+      document.querySelectorAll("ion-content")
+    ) as HTMLIonContentElement[];
     const visible = contents.find((c) => c.offsetParent !== null);
-    const scrollable = visible?.shadowRoot?.querySelector(
-      "div.inner-scroll.scroll-y"
-    ) as HTMLElement;
-
-    if (scrollable) {
-      scrollable.scrollTop = 0;
+    if (visible) {
+      await visible.scrollToTop(0);
       console.log("[SCROLL] Scrolled visible ion-content to top");
     } else {
-      console.warn("[SCROLL] No scrollable inner div found in visible ion-content");
+      console.warn("[SCROLL] No visible ion-content found");
     }
   }
 }
