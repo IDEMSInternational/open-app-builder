@@ -1,26 +1,19 @@
-import { Injectable, NgZone } from "@angular/core";
-import { ViewportScroller } from "@angular/common";
+import { Injectable } from "@angular/core";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "../syncService.base";
-import { take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class ScrollService extends SyncServiceBase {
-  constructor(
-    private templateActionRegistry: TemplateActionRegistry,
-    private viewportScroller: ViewportScroller,
-    private ngZone: NgZone
-  ) {
+  constructor(private templateActionRegistry: TemplateActionRegistry) {
     super("Scroll");
     this.registerTemplateActionHandlers();
   }
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      scroll_top: async (action) => {
-        let {} = action as {};
+      scroll_top: async () => {
         await this.handleScrollTop();
       },
     });
@@ -35,9 +28,9 @@ export class ScrollService extends SyncServiceBase {
 
     if (scrollable) {
       scrollable.scrollTop = 0;
-      console.log("[SCROLL_TOP] Scrolled visible ion-content to top");
+      console.log("[SCROLL] Scrolled visible ion-content to top");
     } else {
-      console.warn("[SCROLL_TOP] No scrollable inner div found in visible ion-content");
+      console.warn("[SCROLL] No scrollable inner div found in visible ion-content");
     }
   }
 }
