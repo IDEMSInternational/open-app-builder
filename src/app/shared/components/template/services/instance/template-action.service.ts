@@ -425,7 +425,7 @@ export class TemplateActionService extends SyncServiceBase {
 
         if (changedActions.length === 0) continue;
 
-        this.container.parent.templateActionService.handleActions(changedActions, row);
+        this.container.parent.templateActionService.handleActions(changedActions);
       }
     }
   }
