@@ -41,6 +41,7 @@ import { ScreenOrientationService } from "./shared/services/screen-orientation/s
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
 import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
+import { ScrollService } from "./shared/services/scroll/scroll.service";
 
 @Component({
   selector: "app-root",
@@ -120,7 +121,8 @@ export class AppComponent {
     private shareService: ShareService,
     private fileManagerService: FileManagerService,
     private screenOrientationService: ScreenOrientationService,
-    private clipboardService: ClipboardService
+    private clipboardService: ClipboardService,
+    private scrollService: ScrollService
   ) {
     this.initializeApp();
   }
@@ -226,6 +228,7 @@ export class AppComponent {
         this.templateMetadataService,
         this.screenOrientationService,
         this.clipboardService,
+        this.scrollService,
       ],
       deferred: [this.analyticsService],
       implicit: [
