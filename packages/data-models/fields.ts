@@ -3,7 +3,11 @@
  * They are used to store store computed or exported variables and are not user overridable
  */
 enum PROTECTED_FIELDS {
+  /** Runtime environment, `production` or `development` */
+  APP_ENVIRONMENT = "app_environment",
   APP_FIRST_LAUNCH = "app_first_launch",
+  /** Location hostname of app, e.g. `localhost`, `example.web.app` */
+  APP_HOSTNAME = "app_hostname",
   APP_LANGUAGE = "app_language",
   APP_LANGUAGE_DIRECTION = "app_language_direction",
   APP_SKIN = "app_skin",
