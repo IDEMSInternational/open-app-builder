@@ -1,7 +1,11 @@
-@for (row of itemRows(); track row._nested_name) {
-  <plh-template-component
-    [row]="row"
-    [parent]="parent"
-    [attr.data-rowname]="row.name"
-  ></plh-template-component>
+<!-- Only render item rows if initial row had children 
+ (empty data_items still sometimes used for data-changed action) -->
+@if (rows()?.length > 0) {
+  @for (row of itemRows(); track row._nested_name) {
+    <plh-template-component
+      [row]="row"
+      [parent]="parent"
+      [attr.data-rowname]="row.name"
+    ></plh-template-component>
+  }
 }
