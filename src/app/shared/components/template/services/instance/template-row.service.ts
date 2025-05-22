@@ -124,10 +124,18 @@ export class TemplateRowService extends SyncServiceBase {
   }
   /**
    * When overriding rows we don't want to include any dynamic references for the parent
-   * as these will not always update in the child. Remove these along with type and nested name
+   * as these will not always update in the child. Remove these along with type, _nested_name
+   * and action_list
    */
   private extractOverrideFields(row: FlowTypes.TemplateRow) {
-    const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
+    const {
+      _nested_name,
+      _dynamicFields,
+      _dynamicDependencies,
+      type,
+      action_list,
+      ...overrideFields
+    } = row;
     if (overrideFields.rows) {
       overrideFields.rows = overrideFields.rows.map((r) => this.extractOverrideFields(r));
     }
