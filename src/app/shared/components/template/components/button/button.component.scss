@@ -85,7 +85,7 @@ ion-button[data-variant~="card"] {
   border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-standard);
   min-height: var(--buttons-short-height);
-  filter: drop-shadow(var(--ion-default-box-shadow));
+  box-shadow: var(--ion-default-box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,8 +93,14 @@ ion-button[data-variant~="card"] {
   // TODO: make a variable
   width: 160px;
 
-  &:active {
-    background-color: var(--ion-color-gray-light);
+  &[data-disabled="true"] {
+    opacity: 0.6;
+  }
+
+  &:not([data-disabled="true"]) {
+    &:active {
+      background-color: var(--ion-color-gray-light);
+    }
   }
 
   img {
@@ -106,10 +112,10 @@ ion-button[data-variant~="card"] {
     padding: 1rem 0 0.5rem;
     text-align: center;
     &.right {
-      text-align: right;
+      text-align: end;
     }
     &.left {
-      text-align: left;
+      text-align: start;
     }
     &.center {
       text-align: center;
@@ -121,7 +127,7 @@ ion-button[data-variant~="card"] {
   .children {
     position: absolute;
     align-self: flex-end;
-    right: -4px;
+    inset-inline-end: -4px;
     top: -12px;
     display: flex;
     align-items: center;
@@ -167,19 +173,16 @@ ion-button[data-variant~="card"] {
 
 .left ::ng-deep {
   margin: 0 auto 0 2px;
-  text-align: left;
+  text-align: start;
   p {
     margin: 0 0 0 2px;
   }
 }
 .right {
   margin: 0 2px 0 auto;
-  text-align: right;
+  text-align: end;
 }
 .center {
-  text-align: center;
-}
-.centre {
   text-align: center;
 }
 
