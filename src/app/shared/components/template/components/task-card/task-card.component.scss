@@ -126,6 +126,10 @@
     width: 36px;
   }
   .circle {
+    &.notStarted {
+      display: none;
+    }
+
     box-shadow: var(--ion-default-box-shadow);
     height: 36px;
     width: 36px;
