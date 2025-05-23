@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, signal } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -27,10 +27,8 @@ import { LocalNotificationInteractionService } from "./shared/services/notificat
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
-import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
-import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { RemoteAssetService } from "./shared/services/remote-asset/remote-asset.service";
@@ -41,22 +39,35 @@ import { SeoService } from "./shared/services/seo/seo.service";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
+import { DeploymentService } from "./shared/services/deployment/deployment.service";
+import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
+import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  APP_VERSION = environment.version;
-  CONTENT_VERSION = environment.deploymentConfig.git.content_tag_latest;
-  DEPLOYMENT_NAME = environment.deploymentName;
-  appConfig: IAppConfig;
-  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
-  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
-  footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
+  footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  sideMenuConfig = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
+  layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
+
+  public routeContainerStyle = computed(() => {
+    const { page_padding } = this.layoutConfig();
+    return {
+      "--page-padding": page_padding,
+    };
+  });
+
   /** Track when app ready to render sidebar and route templates */
-  public renderAppTemplates = false;
+  public renderAppTemplates = signal(false);
+
+  public get deploymentConfig() {
+    return this.deploymentService.config;
+  }
+
   /**
    * A space-separated list of values, hierarchically representing the current platform,
    * e.g. on iPhone the value would be "mobile ios iphone".
@@ -66,9 +77,11 @@ export class AppComponent {
   platforms: string;
 
   constructor(
+    // Component UI
+    private deploymentService: DeploymentService,
+
     // 3rd Party Services
     private platform: Platform,
-    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     // App services
@@ -83,6 +96,7 @@ export class AppComponent {
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
+    private templateMetadataService: TemplateMetadataService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
@@ -94,7 +108,6 @@ export class AppComponent {
     public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
-    private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
     private feedbackService: FeedbackService,
@@ -105,7 +118,8 @@ export class AppComponent {
     private appUpdateService: AppUpdateService,
     private remoteAssetService: RemoteAssetService,
     private shareService: ShareService,
-    private fileManagerService: FileManagerService
+    private fileManagerService: FileManagerService,
+    private screenOrientationService: ScreenOrientationService
   ) {
     this.initializeApp();
   }
@@ -113,13 +127,11 @@ export class AppComponent {
   private async initializeApp() {
     this.platform.ready().then(async () => {
       this.platforms = this.platform.platforms().join(" ");
-      this.subscribeToAppConfigChanges();
       await this.populateAppInitFields();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      await this.loadAuthConfig();
 
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -140,56 +152,22 @@ export class AppComponent {
         await SplashScreen.hide();
       }
       // Show main template
-      this.renderAppTemplates = true;
-      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
-      this.cdr.detectChanges();
+      this.renderAppTemplates.set(true);
       this.scheduleReinitialisation();
     });
   }
   /** Populate contact fields that may be used by other services during initialisation */
   private async populateAppInitFields() {
-    this.localStorageService.setProtected("DEPLOYMENT_NAME", this.DEPLOYMENT_NAME);
-    this.localStorageService.setProtected("APP_VERSION", this.APP_VERSION);
-    this.localStorageService.setProtected("CONTENT_VERSION", this.CONTENT_VERSION);
+    const { _content_version, _app_builder_version, name } = this.deploymentService.config;
+    this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
+    this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
+    this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
     // HACK - ensure first_app_launch migrated from event service
     if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
       this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
     }
-  }
-
-  /**
-   * Authentication requires verified domain and app ids populated to firebase console
-   * Currently only run on native where specified (but can comment out for testing locally)
-   */
-  private async loadAuthConfig() {
-    const { firebase } = environment.deploymentConfig;
-    const { enforceLogin } = this.appAuthenticationDefaults;
-    const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
-    if (ensureLogin) {
-      this.authService.ready();
-      const authUser = await this.authService.getCurrentUser();
-      if (!authUser) {
-        const templatename = this.appAuthenticationDefaults.signInTemplate;
-        const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
-          showCloseButton: false,
-          waitForDismiss: false,
-        });
-        await this.authService.waitForSignInComplete();
-        await modal.dismiss();
-      }
-    }
-  }
-
-  /** Initialise appConfig and set dependent properties */
-  private subscribeToAppConfigChanges() {
-    this.appConfigService.changesWithInitialValue$.subscribe((changes: IAppConfig) => {
-      this.appConfig = { ...this.appConfig, ...changes };
-      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
-      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
-      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-    });
   }
 
   /**
@@ -236,12 +214,13 @@ export class AppComponent {
         this.templateService,
         this.templateProcessService,
         this.appDataService,
-        this.authService,
         this.serverService,
         this.seoService,
         this.feedbackService,
         this.shareService,
         this.fileManagerService,
+        this.templateMetadataService,
+        this.screenOrientationService,
       ],
       deferred: [this.analyticsService],
       implicit: [
