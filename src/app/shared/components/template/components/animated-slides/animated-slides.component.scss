@@ -28,7 +28,7 @@
   }
   .skip-button {
     position: absolute;
-    top: 0;
+    top: var(--ion-safe-area-top, 0);
     right: 0;
     opacity: 0.3;
   }
