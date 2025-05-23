@@ -1,19 +1,37 @@
-<ion-header [class.ion-no-border]="colour === 'none'" [style.marginTop]="marginTop">
-  <ion-toolbar [color]="colour" [attr.data-colour]="colour">
-    <ion-buttons slot="start" style="position: absolute">
-      <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
-      <ion-button
-        [style.display]="showBackButton ? 'block' : 'none'"
-        (click)="handleBackButtonClick()"
-      >
-        <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ng-container>
-      <ion-title *ngIf="!(variant === 'compact')" style="text-align: center" routerLink="/">
-        <span>{{ headerConfig.title }}</span>
-      </ion-title>
-    </ng-container>
-    <ion-buttons slot="end"> </ion-buttons>
+<ion-header
+  [class.ion-no-border]="headerConfig().colour === 'none'"
+  [style.marginTop]="marginTop() + 'px'"
+>
+  <!-- When the header is hidden at the app config level, render the ion-toolbar element with 0 height to handle the top safe area on iOS.
+ See https://github.com/IDEMSInternational/open-app-builder/issues/2692 -->
+  <ion-toolbar
+    [color]="headerConfig().hidden ? 'none' : headerConfig().colour"
+    [class.header-hidden]="headerConfig().hidden"
+    [attr.data-colour]="headerConfig().colour"
+  >
+    @if (!headerConfig().hidden) {
+      <ion-buttons slot="start" style="position: absolute">
+        @if (showMenuButton()) {
+          <ion-menu-button autoHide="false" menu="start"></ion-menu-button>
+        }
+        <ion-button
+          [style.display]="showBackButton() ? 'block' : 'none'"
+          (click)="handleBackButtonClick()"
+        >
+          <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      @if (headerConfig().template) {
+        <plh-template-container
+          [templatename]="headerConfig().template"
+          [ignoreQueryParamChanges]="true"
+        ></plh-template-container>
+      } @else if (headerConfig().title && headerConfig().variant !== "compact") {
+        <ion-title style="text-align: center" routerLink="/">
+          <span>{{ headerConfig().title }}</span>
+        </ion-title>
+      }
+      <ion-buttons slot="end"> </ion-buttons>
+    }
   </ion-toolbar>
 </ion-header>
