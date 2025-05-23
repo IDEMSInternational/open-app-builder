@@ -8,32 +8,17 @@ ion-toggle {
 }
 
 ion-toggle {
-  --track-background: #b4b7b7;
-  --handle-spacing: 2px;
-  --track-background-checked: var(--ion-color-primary, "darkblue");
-  --handle-background: var(--ion-item-background, #fefefe);
-  --handle-background-checked: #fff;
+  --track-background: var(--ion-color-gray-200);
+  --track-background-checked: var(--ion-color-primary-500);
+  --handle-background: var(--ion-item-background, white);
   --padding-inline: $togglePadding;
-}
 
-.show-tick-cross {
-  $iconPadding: 3px;
-  ion-toggle[aria-checked="true"]::before,
-  ion-toggle[aria-checked="false"]::after {
-    position: absolute;
-    top: $togglePadding + $iconPadding;
-    left: $togglePadding + $iconPadding;
-    color: white;
-    z-index: 1;
-    content: " ";
-    width: $toggleWidth - 2 * $iconPadding;
-    height: $toggleHeight - 2 * $iconPadding;
+  &[data-mode~="ios"] {
+    --handle-background-checked: white;
   }
-  ion-toggle[aria-checked="true"]::before {
-    background: url(/assets/icon/shared/tick.svg) no-repeat left / contain;
-  }
-  ion-toggle[aria-checked="false"]::after {
-    background: url(/assets/icon/shared/cross.svg) no-repeat right / contain;
+  &[data-mode~="md"] {
+    --handle-background-checked: var(--ion-color-primary);
+    --padding-inline: $togglePadding;
   }
 }
 
@@ -45,9 +30,13 @@ ion-toggle {
 
   &[data-param-style~="in_button"],
   &[data-variant~="in_button"] {
-    flex-direction: row-reverse;
     ion-toggle {
-      transform: translate($togglePadding, $togglePadding);
+      transform: translate(12px, -4px);
+    }
+    &[data-variant~="ios"] {
+      ion-toggle {
+        transform: translate(4px, 4px);
+      }
     }
   }
 
