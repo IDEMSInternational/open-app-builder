@@ -1,5 +1,9 @@
 .popup-backdrop {
-  height: 100vh;
+  // Ensure some padding applied even when --ion-safe-area-* is 0px
+  --pop-up-top-padding: max(var(--ion-safe-area-top), 24px);
+  --pop-up-bottom-padding: max(var(--ion-safe-area-bottom), 24px);
+
+  height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
@@ -7,21 +11,28 @@
   justify-content: center;
   .popup-container {
     position: relative;
+    height: fit-content;
+    max-height: var(--safe-area-height);
     width: var(--content-max-width);
     padding: 0 2rem;
     margin: auto;
-    margin-top: var(--ion-safe-area-top, 0);
-    margin-bottom: var(--ion-safe-area-bottom, 0);
+    padding-top: var(--pop-up-top-padding);
+    padding-bottom: var(--pop-up-bottom-padding);
   }
   &[data-fullscreen] {
     background: white;
     .popup-container {
-      height: var(--safe-area-height);
+      height: 100%;
+      max-height: unset;
+      .close-button {
+        top: calc(var(--ion-safe-area-top, 0) + 10px);
+        inset-inline-end: 10px;
+      }
     }
   }
   .popup-content {
-    margin: 30px auto;
-    max-height: calc(var(--safe-area-height) - 60px);
+    height: fit-content;
+    max-height: 100%;
     background: white;
     border-radius: 20px;
     padding: 20px;
@@ -39,8 +50,7 @@
   }
   .close-button {
     position: absolute;
-    top: 16px;
-    right: 22px;
+    top: calc(var(--pop-up-top-padding) - 10px);
     background: white;
     width: 40px;
     height: 40px;
@@ -54,5 +64,7 @@
     z-index: 1;
     box-shadow: var(--ion-default-box-shadow);
     color: var(--ion-color-primary);
+    // align 18px from end (varies with rtl/ltr direction)
+    inset-inline-end: 18px;
   }
 }
