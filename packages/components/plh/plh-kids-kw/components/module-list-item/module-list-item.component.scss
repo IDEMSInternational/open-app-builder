@@ -1,0 +1,146 @@
+$default-color: var(--module-list-item-color-default, var(--ion-color-primary-300));
+$highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-secondary-300));
+
+// Styles common to variants
+.container {
+  cursor: pointer;
+  border: 2px solid $default-color;
+  box-shadow: 1px 1px 10px $default-color;
+  background-color: color-mix(in srgb, $default-color 5%, white);
+
+  &[data-language-direction~="rtl"] {
+    .module-image img,
+    .icon {
+      transform: scaleX(-1);
+    }
+  }
+
+  &[data-locked~="true"] {
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 2px solid var(--ion-color-gray-200);
+    background-color: white;
+  }
+
+  &[data-highlighted~="true"] {
+    border: 2px solid $highlighted-color;
+    box-shadow: 1px 1px 10px $highlighted-color;
+    background-color: color-mix(in srgb, $highlighted-color 5%, white);
+  }
+}
+
+// Default variant
+.container[data-variant~="default"] {
+  width: 100%;
+  border-radius: var(--ion-border-radius-secondary);
+  padding: var(--small-padding);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .module-image {
+    flex-shrink: 1;
+    width: 96px;
+    height: 96px;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    @media (max-width: 340px) {
+      width: 72px;
+      height: 72px;
+      min-width: 48px;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .module-title {
+    flex-shrink: 10;
+    margin: 0 8px;
+    margin-inline-end: auto;
+    padding: 0 8px;
+    p {
+      font-size: var(--font-size-text-medium);
+      color: var(--ion-color-primary-700);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-text-small);
+      text-align: start;
+    }
+  }
+  .icon {
+    flex-shrink: 0;
+    width: 28px;
+    max-width: unset;
+  }
+
+  &[data-locked~="true"] {
+    opacity: 0.5;
+
+    .module-image {
+      width: 60px;
+      height: 60px;
+      min-width: 36px;
+    }
+  }
+}
+
+// Circle variant
+.container[data-variant~="circle"] {
+  --circle-width: 84px;
+  &[data-locked~="true"] {
+    --circle-width: 76px;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  width: var(--circle-width);
+  height: var(--circle-width);
+  border-radius: 50%;
+  border-width: 4px;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+
+  .module-image {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    img {
+      width: 100%;
+      height: 100%;
+      clip-path: circle(#{var(--circle-width) / 2 - 4px} at center);
+    }
+  }
+  .locked-icon {
+    position: absolute;
+    margin: 0 auto;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 36px;
+      max-width: 40px;
+      object-fit: contain;
+    }
+  }
+  .module-title {
+    display: none;
+  }
+  .nav-icon {
+    display: none;
+  }
+  .icon-spacer {
+    display: none;
+  }
+
+  &[data-locked~="true"] {
+    border-width: 2px;
+    .module-image {
+      opacity: 0.5;
+    }
+    .locked-icon {
+      opacity: 0.7;
+    }
+  }
+}
