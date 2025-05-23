@@ -11,9 +11,14 @@ body[data-theme="plh_kids_tz"] {
       border-width: 1.5px;
       &[data-variant~="circle"] {
         border-width: 8px;
+        box-shadow: var(--box-shadow-primary);
         // Use [class] to increase specificity without using !important
         .module-image[class] {
           padding: 0px;
+        }
+        &[data-completed~="false"][data-highlighted~="false"][data-locked~="false"],
+        &[data-completed~="false"][data-highlighted~="true"][data-locked~="false"] {
+          --circle-width: 92px !important;
         }
       }
       &[data-completed~="true"] {
@@ -27,6 +32,9 @@ body[data-theme="plh_kids_tz"] {
           width: 70px !important;
           height: 70px !important;
         }
+        .nav-icon {
+          opacity: 0.7;
+        }
       }
       &[data-highlighted~="true"] {
         box-shadow: var(--box-shadow-secondary);
@@ -35,6 +43,10 @@ body[data-theme="plh_kids_tz"] {
             color: var(--ion-color-secondary-600) !important;
           }
         }
+      }
+      &[data-locked~="true"] {
+        border-color: var(--ion-color-gray-300);
+        box-shadow: none;
       }
     }
   }
