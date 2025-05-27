@@ -1,17 +1,20 @@
 <ng-container *ngTemplateOutlet="enketoLogo"> </ng-container>
 
 <div #formContainerEl></div>
-<section id="form-footer">
-  <button class="btn btn-default" id="save-draft" (click)="save({ draft: true })">
-    <i class="icon icon-pencil"> </i>
-    <span data-i18n="formfooter.savedraft.btn">Save Draft</span>
-  </button>
-  <button class="btn btn-primary" id="submit-form" (click)="save()">
-    <i class="icon icon-check">✔️</i>
-    <span data-i18n="formfooter.submit.btn">Submit</span>
-  </button>
-  <!--  TODO - add next/prev page button and bindings (remove custom css to display all)  -->
-</section>
+<!-- TODO - Handle save/submit buttons. For now, changes are saved on change and there is no concept of a draft, so buttons are redundant -->
+@if (parameter_list.show_save_buttons) {
+  <section id="form-footer">
+    <button class="btn btn-default" id="save-draft" (click)="save({ draft: true })">
+      <i class="icon icon-pencil"> </i>
+      <span data-i18n="formfooter.savedraft.btn">Save Draft</span>
+    </button>
+    <button class="btn btn-primary" id="submit-form" (click)="save()">
+      <i class="icon icon-check">✔️</i>
+      <span data-i18n="formfooter.submit.btn">Submit</span>
+    </button>
+     TODO - add next/prev page button and bindings (remove custom css to display all) 
+  </section>
+}
 
 <!-- enketo logo (rendered above but kept here for tidiness) -->
 <ng-template #enketoLogo>
