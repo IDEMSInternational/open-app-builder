@@ -3542,6 +3542,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/toast@npm:^6.0.0":
+  version: 6.0.3
+  resolution: "@capacitor/toast@npm:6.0.3"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+  checksum: 60b107820632c22d17e496aedc14fcff010acd1af5ad9c2813dbe6a669775c4e8a7f9fc64a5980d936cc3a2454e8b41b0b53f35ec2231ae5db5b9151784e0e92
+  languageName: node
+  linkType: hard
+
 "@capawesome/capacitor-app-update@npm:^6.0.0":
   version: 6.0.0
   resolution: "@capawesome/capacitor-app-update@npm:6.0.0"
@@ -18041,6 +18050,7 @@ __metadata:
     "@capacitor/screen-orientation": ^6.0.2
     "@capacitor/share": ^6.0.0
     "@capacitor/splash-screen": ^6.0.0
+    "@capacitor/toast": ^6.0.0
     "@capawesome/capacitor-app-update": ^6.0.0
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.5.3
