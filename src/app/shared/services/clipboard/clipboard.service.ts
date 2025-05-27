@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Clipboard } from "@capacitor/clipboard";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "../syncService.base";
-import { Dialog } from "@capacitor/dialog";
+import { Toast } from "@capacitor/toast";
 
 interface IClipboardActionParams {
   text?: string;
@@ -37,8 +37,8 @@ export class ClipboardService extends SyncServiceBase {
         string: params.text,
       });
       if (params.message) {
-        await Dialog.alert({
-          message: params.message,
+        await Toast.show({
+          text: params.message,
         });
       }
     } catch (error) {

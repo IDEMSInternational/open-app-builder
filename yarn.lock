@@ -3479,15 +3479,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/dialog@npm:^6.0.0":
-  version: 6.0.2
-  resolution: "@capacitor/dialog@npm:6.0.2"
-  peerDependencies:
-    "@capacitor/core": ^6.0.0
-  checksum: 36ebf75620291d5657cdb213e5f6737c07398675402309fa60003c64f8061a0225873b3b3bb831f80497ec7065e8f5a7a79205347c85a20c00e6579a90d74846
-  languageName: node
-  linkType: hard
-
 "@capacitor/filesystem@npm:^6.0.0":
   version: 6.0.1
   resolution: "@capacitor/filesystem@npm:6.0.1"
@@ -3548,6 +3539,15 @@ __metadata:
   peerDependencies:
     "@capacitor/core": ^6.0.0
   checksum: 9093c476084681d2b60d9a9a740ceaad6c9147b7b68bc08def9da6b56ff5a0aee28f8216c7f6d1a1aeb1f378e5f1cee44521d3517a8df928d3bde1c5d943dc05
+  languageName: node
+  linkType: hard
+
+"@capacitor/toast@npm:^6.0.0":
+  version: 6.0.3
+  resolution: "@capacitor/toast@npm:6.0.3"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+  checksum: 60b107820632c22d17e496aedc14fcff010acd1af5ad9c2813dbe6a669775c4e8a7f9fc64a5980d936cc3a2454e8b41b0b53f35ec2231ae5db5b9151784e0e92
   languageName: node
   linkType: hard
 
@@ -18043,7 +18043,6 @@ __metadata:
     "@capacitor/clipboard": ^6.0.0
     "@capacitor/core": ^6.0.0
     "@capacitor/device": ^6.0.0
-    "@capacitor/dialog": ^6.0.0
     "@capacitor/filesystem": ^6.0.0
     "@capacitor/ios": ^6.0.0
     "@capacitor/local-notifications": ^6.0.0
@@ -18051,6 +18050,7 @@ __metadata:
     "@capacitor/screen-orientation": ^6.0.2
     "@capacitor/share": ^6.0.0
     "@capacitor/splash-screen": ^6.0.0
+    "@capacitor/toast": ^6.0.0
     "@capawesome/capacitor-app-update": ^6.0.0
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.5.3
