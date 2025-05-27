@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 import { Clipboard } from "@capacitor/clipboard";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "../syncService.base";
+import { Dialog } from "@capacitor/dialog";
 
 interface IClipboardActionParams {
   text?: string;
+  message?: string;
 }
 
 @Injectable({
@@ -20,7 +22,6 @@ export class ClipboardService extends SyncServiceBase {
     this.templateActionRegistry.register({
       copy: async (action) => {
         let { params } = action as { params: IClipboardActionParams };
-
         if (params) {
           await this.handleCopy(params);
         } else {
@@ -35,6 +36,11 @@ export class ClipboardService extends SyncServiceBase {
       await Clipboard.write({
         string: params.text,
       });
+      if (params.message) {
+        await Dialog.alert({
+          message: params.message,
+        });
+      }
     } catch (error) {
       console.error("[COPY] Error copying to clipboard", error);
     }
