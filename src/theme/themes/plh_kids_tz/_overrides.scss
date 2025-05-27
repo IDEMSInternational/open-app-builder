@@ -46,6 +46,11 @@ body[data-theme="plh_kids_tz"] {
       }
       &[data-locked~="true"] {
         border-color: var(--ion-color-gray-300);
+        .module-title {
+          p {
+            color: var(--ion-color-gray-300) !important;
+          }
+        }
         box-shadow: none;
       }
     }
