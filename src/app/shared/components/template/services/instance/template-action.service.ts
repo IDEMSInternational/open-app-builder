@@ -219,10 +219,10 @@ export class TemplateActionService extends SyncServiceBase {
         return this.settingsService.resetApp();
       case "set_local":
         console.log("[SET LOCAL]", { key, value });
-        return this.setLocalVariable(key, value);
+        return await this.setLocalVariable(key, value);
       case "set_self":
         console.log("[SET LOCAL]", { key, value });
-        return this.setLocalVariable(key, value);
+        return await this.setLocalVariable(key, value);
       case "go_to":
         return this.templateNavService.handleNavAction(action);
       case "go_to_url":
@@ -360,7 +360,7 @@ export class TemplateActionService extends SyncServiceBase {
    * Update a local template row
    *
    */
-  private setLocalVariable(key: string, value: any) {
+  private async setLocalVariable(key: string, value: any) {
     if (!this.container) return;
     const row_name = key;
     // convert values likely intended as boolean
@@ -391,7 +391,7 @@ export class TemplateActionService extends SyncServiceBase {
     });
 
     // Handle any actions that should be triggered by the changed value
-    this.handleParentChangedActions(key, value);
+    await this.handleParentChangedActions(key, value);
 
     // update parent reference in case actions force a re-intialisation
     // (not currently implemented)
@@ -406,7 +406,7 @@ export class TemplateActionService extends SyncServiceBase {
    * @param key variable name
    * @param value variable value
    */
-  private handleParentChangedActions(key: string, value: any) {
+  private async handleParentChangedActions(key: string, value: any) {
     if (this.container?.row?.type === "template") {
       const parentRows = this.container.row?.rows;
       const parentVariableRows = parentRows?.filter(
@@ -425,7 +425,7 @@ export class TemplateActionService extends SyncServiceBase {
 
         if (changedActions.length === 0) continue;
 
-        this.container.parent.templateActionService.handleActions(changedActions);
+        await this.container.parent.templateActionService.handleActions(changedActions);
       }
     }
   }
