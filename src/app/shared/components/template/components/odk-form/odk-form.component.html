@@ -2,7 +2,7 @@
 
 <div #formContainerEl></div>
 <!-- TODO - Handle save/submit buttons. For now, changes are saved on change and there is no concept of a draft, so buttons are redundant -->
-@if (parameter_list.show_save_buttons) {
+@if (parameter_list?.show_save_buttons) {
   <section id="form-footer">
     <button class="btn btn-default" id="save-draft" (click)="save({ draft: true })">
       <i class="icon icon-pencil"> </i>
