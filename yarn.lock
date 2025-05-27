@@ -3479,6 +3479,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/dialog@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "@capacitor/dialog@npm:6.0.2"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+  checksum: 36ebf75620291d5657cdb213e5f6737c07398675402309fa60003c64f8061a0225873b3b3bb831f80497ec7065e8f5a7a79205347c85a20c00e6579a90d74846
+  languageName: node
+  linkType: hard
+
 "@capacitor/filesystem@npm:^6.0.0":
   version: 6.0.1
   resolution: "@capacitor/filesystem@npm:6.0.1"
@@ -18034,6 +18043,7 @@ __metadata:
     "@capacitor/clipboard": ^6.0.0
     "@capacitor/core": ^6.0.0
     "@capacitor/device": ^6.0.0
+    "@capacitor/dialog": ^6.0.0
     "@capacitor/filesystem": ^6.0.0
     "@capacitor/ios": ^6.0.0
     "@capacitor/local-notifications": ^6.0.0
