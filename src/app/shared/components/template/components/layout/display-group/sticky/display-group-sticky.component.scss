@@ -7,9 +7,9 @@
   z-index: 10;
 
   &[sticky-position="top"] {
-    top: 0;
+    top: var(--ion-safe-area-top, 0);
   }
   &[sticky-position="bottom"] {
-    bottom: 0;
+    bottom: var(--ion-safe-area-bottom, 0);
   }
 }
