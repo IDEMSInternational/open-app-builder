@@ -3,7 +3,11 @@ import { TestBed } from "@angular/core/testing";
 import { MockAppDataService } from "../../data/app-data.service.mock.spec";
 import { AppDataService } from "../../data/app-data.service";
 
-import setDataAction, { IActionSetDataParams } from "./set_data.action";
+import setDataAction, {
+  IActionSetDataParams,
+  mergeUpdatesById,
+  hackProcessUpdatesInBatches,
+} from "./set_data.action";
 import { DynamicDataService } from "../dynamic-data.service";
 import { firstValueFrom } from "rxjs";
 import { FlowTypes } from "packages/data-models";
@@ -207,5 +211,94 @@ describe("set_data Action", () => {
     await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
+  });
+
+  /*************************************************************
+   *  mergeUpdatesById Tests
+   ************************************************************/
+  describe("mergeUpdatesById", () => {
+    it("merges updates for the same ID correctly", () => {
+      const updates = [
+        { id: "123", user: { name: "Jasper" } },
+        { id: "123", user: { age: 9 } },
+        { id: "123", status: "active" },
+        { id: "123", status: "inactive" },
+      ];
+      const result = mergeUpdatesById(updates);
+      expect(result).toEqual({
+        "123": {
+          user: { name: "Jasper", age: 9 },
+          status: "inactive",
+        },
+      });
+    });
+
+    it("handles multiple IDs correctly", () => {
+      const updates = [
+        { id: "123", name: "Alice" },
+        { id: "456", name: "Bob" },
+        { id: "123", age: 25 },
+        { id: "456", age: 30 },
+      ];
+      const result = mergeUpdatesById(updates);
+      expect(result).toEqual({
+        "123": { name: "Alice", age: 25 },
+        "456": { name: "Bob", age: 30 },
+      });
+    });
+
+    it("handles deep nested objects correctly", () => {
+      const updates = [
+        { id: "123", user: { profile: { name: "Alice" } } },
+        { id: "123", user: { profile: { age: 25 } } },
+        { id: "123", user: { settings: { theme: "dark" } } },
+      ];
+      const result = mergeUpdatesById(updates);
+      expect(result).toEqual({
+        "123": {
+          user: {
+            profile: { name: "Alice", age: 25 },
+            settings: { theme: "dark" },
+          },
+        },
+      });
+    });
+
+    it("handles empty updates array", () => {
+      const updates: FlowTypes.Data_listRow[] = [];
+      const result = mergeUpdatesById(updates);
+      expect(result).toEqual({});
+    });
+  });
+
+  /*************************************************************
+   *  hackProcessUpdatesInBatches Tests
+   ************************************************************/
+  describe("hackProcessUpdatesInBatches", () => {
+    it("updates are all processed", async () => {
+      const updatesByID = {
+        id_0: { number: 1 },
+        id_1: { number: 2 },
+      };
+
+      // Reset spy calls before test
+      serviceUpdateSpy.calls.reset();
+
+      await hackProcessUpdatesInBatches(service, "test_flow", updatesByID, 2);
+
+      // Verify all updates were called
+      expect(serviceUpdateSpy).toHaveBeenCalledTimes(2);
+
+      // Verify the actual update calls
+      const calls = serviceUpdateSpy.calls.all();
+      expect(calls[0].args).toEqual(["data_list", "test_flow", "id_0", { number: 1 }]);
+      expect(calls[1].args).toEqual(["data_list", "test_flow", "id_1", { number: 2 }]);
+    });
+
+    it("handles empty updates object", async () => {
+      const updatesByID = {};
+      await hackProcessUpdatesInBatches(service, "test_flow", updatesByID, 2);
+      expect(serviceUpdateSpy).not.toHaveBeenCalled();
+    });
   });
 });
