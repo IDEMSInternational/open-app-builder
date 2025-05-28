@@ -37,7 +37,7 @@ interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
 export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
 /**
- * Merges multiple updates for the same ID into a single update object.
+ * Given a list of updates, merge them by ID and return a map of ID to update object.
  * For example:
  * [
  *   { id: "123", user: { name: "Jasper" } },
@@ -56,8 +56,11 @@ export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any
  * If multiple updates target the same property:
  * - For nested objects, the properties are merged
  * - For primitive values (strings, numbers, etc), the last update wins
+ *
+ * @param updates - List of updates to merge
+ * @returns Map of ID to update object
  */
-function mergeUpdatesByID(updates: FlowTypes.Data_listRow[]): Record<string, any> {
+function mergeUpdatesById(updates: FlowTypes.Data_listRow[]): Record<string, any> {
   return updates.reduce(
     (idUpdates, update) => {
       const { id, ...writeableProps } = update;
@@ -111,7 +114,7 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
   console.log("[Set Data]", _list_id, _updates);
 
   // First merge all updates for each ID
-  const mergedUpdates = mergeUpdatesByID(_updates);
+  const mergedUpdates = mergeUpdatesById(_updates);
 
   // Then process the merged updates in batches
   await hackProcessUpdatesInBatches(service, _list_id, mergedUpdates);
