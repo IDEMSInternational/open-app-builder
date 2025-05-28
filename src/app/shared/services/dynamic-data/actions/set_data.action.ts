@@ -7,6 +7,7 @@ import {
   evaluateDynamicDataUpdate,
   isItemChanged,
 } from "../dynamic-data.utils";
+import { deepMergeObjects } from "../../../utils";
 
 interface IActionSetDataOperatorParams {
   // TODO - ideally use same itemPipe operators
@@ -35,6 +36,72 @@ interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
 /** Key-value pairs to update. These support reference to self `@item` context */
 export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
+/**
+ * Merges multiple updates for the same ID into a single update object.
+ * For example:
+ * [
+ *   { id: "123", user: { name: "Jasper" } },
+ *   { id: "123", user: { age: 9 } },
+ *   { id: "123", status: "active" },
+ *   { id: "123", status: "inactive" }
+ * ]
+ * becomes:
+ * {
+ *   "123": {
+ *     user: { name: "Jasper", age: 9 },  // Nested objects are merged
+ *     status: "inactive"                  // Last update wins
+ *   }
+ * }
+ *
+ * If multiple updates target the same property:
+ * - For nested objects, the properties are merged
+ * - For primitive values (strings, numbers, etc), the last update wins
+ */
+function mergeUpdatesByID(updates: FlowTypes.Data_listRow[]): Record<string, any> {
+  return updates.reduce(
+    (idUpdates, update) => {
+      const { id, ...writeableProps } = update;
+      if (!idUpdates[id]) {
+        idUpdates[id] = {};
+      }
+      idUpdates[id] = deepMergeObjects({}, idUpdates[id], writeableProps);
+      return idUpdates;
+    },
+    {} as Record<string, any>
+  );
+}
+
+/**
+ * HACK: No current method to bulk update, so process in batches.
+ * Updates within each batch are processed concurrently, but batches are processed sequentially
+ * to avoid overwhelming the system.
+ *
+ * For example, with batchSize=2:
+ * Updates for IDs [1,2,3,4,5] would be processed as:
+ * - First batch: [1,2] in parallel
+ * - Second batch: [3,4] in parallel
+ * - Third batch: [5] in parallel
+ *
+ * @param service Service to use for updates
+ * @param listId ID of the list being updated
+ * @param updatesByID Map where each key is an ID and value is the data to update for that ID
+ * @param batchSize Number of updates to process in parallel (default: 10)
+ */
+async function hackProcessUpdatesInBatches(
+  service: DynamicDataService,
+  listId: string,
+  updatesByID: Record<string, any>,
+  batchSize: number = 10
+) {
+  const updateEntries = Object.entries(updatesByID);
+  for (let i = 0; i < updateEntries.length; i += batchSize) {
+    const batch = updateEntries.slice(i, i + batchSize);
+    await Promise.all(
+      batch.map(([id, updateData]) => service.update("data_list", listId, id, updateData))
+    );
+  }
+}
+
 export default async (service: DynamicDataService, params: IActionSetDataParams) => {
   // if called from set_item will already include list of updates to apply, if not generate
   if (!params._updates) {
@@ -42,10 +109,12 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
   }
   const { _list_id, _updates } = params;
   console.log("[Set Data]", _list_id, _updates);
-  // Hack, no current method for bulk update so make successive (changes debounced in component)
-  for (const { id, ...writeableProps } of _updates) {
-    await service.update("data_list", _list_id, id, writeableProps);
-  }
+
+  // First merge all updates for each ID
+  const mergedUpdates = mergeUpdatesByID(_updates);
+
+  // Then process the merged updates in batches
+  await hackProcessUpdatesInBatches(service, _list_id, mergedUpdates);
 };
 
 async function generateUpdateList(service: DynamicDataService, params: IActionSetDataParams) {
