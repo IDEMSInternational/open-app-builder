@@ -15,6 +15,9 @@ import {
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import { FlowTypes, ITemplateRowProps } from "./models";
 import { TemplateContainerComponent } from "./template-container.component";
+import { TemplateRowService } from "./services/instance/template-row.service";
+import { TemplateActionService } from "./services/instance/template-action.service";
+import { te } from "date-fns/locale";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -182,6 +185,17 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
         // As it is not currently easy to isolate this case, fully recreate any child template when
         // the parent template updates
         if (componentRef.instance.templatename()) {
+          // Hack: need to set child properties to their current child values, this is not an actual
+          //       solutions because values not referenced in the parent will lose their current values
+          //       we need to force rerender with existing values not this though rerender method
+          //       though componentRef.instance.forceRerender();
+          for (const child of this.row.rows) {
+            let value =
+              componentRef.instance.parent.children[this.row.name].templateRowService
+                .templateRowMapValues[child.name];
+            child.value = value;
+          }
+
           this.componentRef.destroy();
           this.renderTemplateComponent(this._row);
           // TODO - test better ways to manage from container, confirming test cases from
