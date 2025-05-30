@@ -991,35 +991,49 @@ body[data-theme="plh_facilitator_mapa"] {
   // Round Button
   ion-tab-button {
     box-shadow: none;
-    &[data-variant~="navigation"] {
-      background: var(--ion-color-primary-700) !important;
+    &[data-variant~="navigation"],
+    &.navigation {
+      background: var(--ion-color-primary-800) !important;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none !important;
-      min-height: 32px;
-      width: 36px;
+      min-width: 48px;
       ion-icon {
-        font-size: 18px;
+        height: 28px;
       }
     }
-    &[data-variant~="module"] {
-      background: var(--color-secondary-blue-40) !important;
+    &[data-variant~="module"],
+    &.module {
+      background: var(--ion-color-primary-800) !important;
       border-radius: var(--ion-border-radius-rounded);
-      box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
-      border: 1px solid var(--color-secondary-blue-60);
+      box-shadow: var(--box-shadow-primary);
+      border: 1px solid var(--ion-color-primary-500);
       min-width: 68px;
-      min-height: 64px;
+      min-height: 68px;
     }
-    &[data-variant~="orange"] {
-      background: var(--color-accent-orange-70);
+    &[data-variant~="orange"],
+    &.orange {
+      background: var(--color-accent-orange-60);
     }
-    &[data-variant~="yellow"] {
-      background: var(--color-accent-yellow-70);
+    &[data-variant~="yellow"],
+    &.yellow {
+      background: var(--ion-color-yellow-400);
     }
-    &[data-variant~="dark_orange"] {
-      background: var(--color-accent-orange-40) !important;
+    &[data-variant~="dark_orange"],
+    &.dark_orange {
+      background: var(--color-accent-orange-40);
     }
-    &[data-variant~="information"] {
-      background: var(--color-secondary-blue-40);
+    &[data-variant~="information"],
+    &.information {
+      background: var(--ion-color-primary-800);
+    }
+    &[data-variant~="no-background"],
+    &.no-background {
+      color: unset;
+      background: transparent !important;
+      box-shadow: none;
+      ion-icon {
+        height: 32px;
+      }
     }
   }
 
