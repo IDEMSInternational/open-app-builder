@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.19.1",
+  "version": "0.19.3",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -59,6 +59,7 @@
     "@capacitor/screen-orientation": "^6.0.2",
     "@capacitor/share": "^6.0.0",
     "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/toast": "^6.0.0",
     "@capawesome/capacitor-app-update": "^6.0.0",
     "@ionic/angular": "^8.5.3",
     "@ionic/pwa-elements": "^3.2.2",
