@@ -824,50 +824,14 @@ body[data-theme="plh_facilitator_mapa"] {
 
   // module-list-item
   plh-module-list-item {
-    .module-item {
+    .container {
       width: 100%;
-      border: 2px solid var(--color-secondary-blue-60);
       border-radius: var(--ion-border-radius-secondary);
       padding: 16px;
-      box-shadow: 1px 1px 10px #92b7da;
-      background-color: #f6fafe;
+      box-shadow: var(--box-shadow-primary);
+      background-color: var(--ion-color-primary-50);
       margin-bottom: 16px;
-      .container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .module-image {
-        img {
-          width: 100px;
-          height: 100px;
-          max-width: unset;
-        }
-      }
-      .module-title {
-        margin: 0 12px;
-        margin-right: 18px;
-        p {
-          font-size: var(--font-size-text-medium);
-          color: var(--ion-color-primary-700);
-          font-weight: var(--font-weight-bold);
-          line-height: var(--line-height-text-small);
-          text-align: left;
-          text-transform: none;
-          &[data-variant~="capitalise"] {
-            text-transform: capitalize;
-          }
-          &[data-variant~="uppercase"] {
-            text-transform: uppercase;
-          }
-        }
-      }
-      .icon {
-        width: 28px;
-        max-width: unset;
-      }
-      .container[data-language-direction~="rtl"] {
+      &[data-language-direction~="rtl"] {
         .module-title {
           p {
             text-align: right;
@@ -884,18 +848,17 @@ body[data-theme="plh_facilitator_mapa"] {
           transform: scaleX(-1);
         }
       }
-    }
-    .module-item[data-lock~="true"] {
-      box-shadow: none;
-      opacity: 0.5;
-      border: 2px solid #dbe3f2;
-      background-color: var(--color-surface-white);
-      .module-image {
-        img {
-          width: 60px;
-          height: 60px;
-          max-width: unset;
+      &[data-variant~="circle"] {
+        border-width: 8px;
+        box-shadow: var(--box-shadow-primary);
+        .module-image[class] {
+          padding: 0px;
         }
+      }
+      &[data-highlighted~="true"] {
+        border-color: var(--ion-color-yellow-200);
+        box-shadow: var(--box-shadow-yellow);
+        background-color: var(--color-surface-white);
       }
     }
   }
