@@ -1038,18 +1038,48 @@ body[data-theme="plh_facilitator_mapa"] {
   }
 
   // Combo-box
-  button.open-combobox {
-    border: 1px solid var(--ion-color-primary-400) !important;
-    border-radius: var(--ion-border-radius-small) !important;
-    filter: none !important;
-    box-shadow: -2px 2px 6px var(--ion-color-primary-100);
-    min-height: 58px !important;
-    &.placeholder-style {
-      color: var(--ion-color-primary-300) !important;
-      font-weight: var(--font-weight-bold) !important;
+  plh-combo-box {
+    .combo-box-container.dropdown {
+      ion-select {
+        background-color: var(--ion-color-primary-100) !important;
+        border: none !important;
+        padding-left: 16px !important;
+        font-size: var(--font-size-text-mid-size);
+        &.hasValue {
+          background: var(--ion-color-primary-800) !important;
+        }
+      }
     }
-    &.with-value {
-      font-weight: var(--font-weight-bold) !important;
+    button.open-combobox {
+      background-color: var(--ion-color-primary-100);
+      border-radius: var(--ion-border-radius-small);
+      filter: none !important;
+      min-height: 58px !important;
+      border: 1px solid var(--ion-color-primary-300);
+      &.placeholder-style {
+        color: var(--ion-color-gray-400);
+        font-weight: var(--font-weight-standard);
+      }
+      &.with-value {
+        font-weight: var(--font-weight-bold);
+        background-color: var(--ion-color-primary-600);
+      }
+    }
+    button.open-search-combobox {
+      background-color: var(--ion-color-primary-100);
+      border-radius: var(--ion-border-radius-small);
+      filter: none !important;
+      min-height: 58px !important;
+      border: 1px solid var(--ion-color-primary-300);
+      padding-left: 16px;
+      &.placeholder-style {
+        color: var(--ion-color-gray-600);
+        font-weight: var(--font-weight-standard);
+      }
+      &.with-value {
+        font-weight: var(--font-weight-bold);
+        background-color: var(--ion-color-primary-800);
+      }
     }
   }
   combo-box-modal {
