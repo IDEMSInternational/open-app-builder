@@ -761,7 +761,7 @@ body[data-theme="plh_facilitator_mapa"] {
       padding: 0;
       border-radius: 12px !important;
       .text {
-        border: 1px solid var(--color-accent-orange-80);
+        border: 1px solid var(--color-accent-orange-60);
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
 
@@ -771,7 +771,7 @@ body[data-theme="plh_facilitator_mapa"] {
         padding: 0 12px;
         height: 60px;
 
-        color: var(--ion-color-gray-600);
+        color: var(--color-accent-orange-40);
         font-size: var(--font-size-text-small) !important;
         text-overflow: ellipsis;
       }
@@ -787,10 +787,10 @@ body[data-theme="plh_facilitator_mapa"] {
         border-top-right-radius: 12px;
         border-bottom-right-radius: 12px;
 
-        background-color: var(--color-accent-orange-40);
+        background-color: var(--color-accent-orange-60);
         color: var(--color-surface-white);
         font-size: var(--font-size-text-small) !important;
-        font-weight: var(--font-weight-bold);
+        font-weight: var(--font-weight-medium);
         text-align: center;
         text-overflow: clip;
       }
@@ -800,6 +800,10 @@ body[data-theme="plh_facilitator_mapa"] {
       }
       &[data-toggled="true"] {
         background-color: var(--color-accent-orange-95) !important;
+        .text {
+          color: var(--color-accent-orange-40);
+          font-weight: var(--font-weight-medium);
+        }
       }
     }
     .box-wrapper[data-language-direction~="rtl"] {
