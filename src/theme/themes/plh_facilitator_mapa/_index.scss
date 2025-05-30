@@ -12,27 +12,27 @@
     /** Global and component variables **/
     $variable-overrides: (
       // PRIMARY PALETTE OVERRIDE
-      ion-color-primary-900: #203244,
       // primary-20
+      ion-color-primary-900: #203244,
+      // primary-30
       ion-color-primary-800: #2e4964,
-      //primary-30
-      ion-color-primary-700: #406182,
       //primary-40
-      ion-color-primary-600: #587a9e,
+      ion-color-primary-700: #406182,
       //primary-50
-      ion-color-primary-500: #7493b7,
+      ion-color-primary-600: #587a9e,
       //primary-60
-      ion-color-primary-400: #94aecd,
+      ion-color-primary-500: #7493b7,
       //primary-70
-      ion-color-primary-300: #b6c8e0,
+      ion-color-primary-400: #94aecd,
       //primary-80
-      ion-color-primary-200: #dae3f0,
+      ion-color-primary-300: #b6c8e0,
       //primary-90
-      ion-color-primary-100: #ecf1f8,
+      ion-color-primary-200: #dae3f0,
       //primary-95
+      ion-color-primary-100: #ecf1f8,
+      //primary-98
       ion-color-primary-50: #f8f9fc,
 
-      //primary-98
       font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
@@ -132,7 +132,13 @@
       color-accent-orange-60: #e16e68,
       color-accent-orange-70: #f58f87,
       color-accent-orange-80: #ffb3ac,
-      color-accent-orange-95: #ffece9
+      color-accent-orange-95: #ffece9,
+
+      // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(146, 183, 218, 0.6),
+      box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
+      box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
+      box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5)
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
