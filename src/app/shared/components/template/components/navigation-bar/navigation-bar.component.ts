@@ -12,9 +12,9 @@ interface INavigationBarParams {
 
 interface INavigationBarButton {
   image: string | null;
-  text: string | null;
+  name?: string | null;
   target_template: string | null;
-  name: string | null;
+  text?: string | null;
 }
 
 @Component({

@@ -229,4 +229,27 @@ describe("TemplateVariablesService", () => {
     );
     expect(res).toEqual({ number: 2 });
   });
+
+  it("Evaluates _nested_name metadata fields", async () => {
+    const res = await service.evaluatePLHData(
+      { _nested_name: `button_{@item.id}` },
+      {
+        row: {
+          ...MOCK_CONTEXT_BASE.row,
+          _dynamicFields: {
+            _nested_name: [
+              {
+                fullExpression: "button_@item.id",
+                matchedExpression: "@item.id",
+                type: "item",
+                fieldName: "id",
+              },
+            ],
+          },
+        },
+        item: { id: "id_1", _first: true, _last: true, _id: "id_1", _index: 1 },
+      }
+    );
+    expect(res).toEqual({ _nested_name: `button_id_1` });
+  });
 });
