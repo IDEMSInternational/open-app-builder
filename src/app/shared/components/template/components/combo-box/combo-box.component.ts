@@ -78,7 +78,9 @@ export class TmplComboBoxComponent
     effect(
       () => {
         if (this.answerOptions().length > 0 && this._row.value) {
-          const selectedAnswer = this.answerOptions().find((x) => x.name === this._row.value);
+          const selectedAnswer = this.answerOptions().find(
+            (x) => String(x.name) === String(this._row.value)
+          );
           if (!selectedAnswer) {
             this.customAnswerSelected.set(true);
           } else {
