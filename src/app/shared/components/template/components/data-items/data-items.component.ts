@@ -33,7 +33,6 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     super();
     effect(async () => {
       const itemRows = this.itemRows();
-      console.log("[Data Items] Effect triggered. Item Rows:", itemRows);
       if (itemRows !== undefined) {
         // TODO - if data_items have child rows the generated itemRows will be looped items
         // Need different method to always pass data_items list and not generated loop
@@ -49,7 +48,6 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     effect(() => {
       const shouldHide = !this.rowSignal().rows?.length || !this.itemRows()?.length;
       if (shouldHide) {
-        console.log("this.parent", this.parent);
         this.parent.elRef.nativeElement.setAttribute("data-hidden", "true");
       } else {
         this.parent.elRef.nativeElement.setAttribute("data-hidden", "false");
