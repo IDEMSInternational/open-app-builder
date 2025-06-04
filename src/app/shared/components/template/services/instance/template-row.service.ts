@@ -1,4 +1,4 @@
-import { Injector } from "@angular/core";
+import { Injector, signal } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
@@ -9,6 +9,7 @@ import { mergeTemplateRows } from "../../utils/template-utils";
 import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -34,7 +35,11 @@ export class TemplateRowService extends SyncServiceBase {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
-  public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
+
+  /** Modified templateRowMap to only include row values, for use in local evalContext */
+  public templateRowMapValues: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] } = {};
+
+  public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
 
   constructor(
     private injector: Injector,
@@ -234,7 +239,7 @@ export class TemplateRowService extends SyncServiceBase {
     const renderedRows = this.filterConditionalTemplateRows(
       JSON.parse(JSON.stringify(processedRows))
     );
-    this.renderedRows = renderedRows;
+    this.renderedRows.set(renderedRows);
     log("[Rows Processed]", logName, { rows, processedRows, renderedRows });
     return processedRows;
   }
@@ -243,11 +248,12 @@ export class TemplateRowService extends SyncServiceBase {
     preProcessedRow: FlowTypes.TemplateRow,
     isNestedTemplate: boolean
   ) {
-    const { _nested_name, _evalContext } = preProcessedRow;
+    const { _nested_name, _evalContext = {} } = preProcessedRow;
     // Evaluate row variables in context of current local state
-    const evalContext = {
+    // TODO - only extract local variables as needed
+    const evalContext: FlowTypes.TemplateRowEvalContext = {
       ..._evalContext,
-      templateRowMap: this.templateRowMap,
+      local: { ...this.templateRowMapValues, ..._evalContext.local },
       row: preProcessedRow,
     };
 
@@ -282,12 +288,14 @@ export class TemplateRowService extends SyncServiceBase {
     if (type === "template") isNestedTemplate = true;
 
     // data_items still need to process on render so avoid populating child rows to templateRowMap
-    if (type === "data_items") isNestedTemplate = true;
+    if (type === "data_items") return row;
 
     // Instead of returning themselves items looped child rows
     if (type === "items") {
       // items have their data lists already parsed as hashmap. convert back to array and process
-      const itemDataList = row.value as Record<string, FlowTypes.Data_listRow>;
+      // TODO - ideally should store parsed hashmap as part of evalContext instead of replacing value
+      // (will make easier to make type-safe and remove need to un-parse)
+      const itemDataList = row.value as any as Record<string, FlowTypes.Data_listRow>;
       const parsedItemDataList = await this.parseDataList(itemDataList);
       const parsedItemDataRows = Object.values(parsedItemDataList);
       const { parameter_list, rows } = row;
@@ -313,12 +321,13 @@ export class TemplateRowService extends SyncServiceBase {
         case "set_field":
           // console.warn("[W] Setting fields from template is not advised", row);
 
-          await this.templateFieldService.setField(name, value);
+          await this.templateFieldService.setField(name, value as string);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
         case "set_variable":
           this.templateRowMap[name] = row;
+          this.templateRowMapValues[name] = row.value;
           if (_dynamicFields) {
             return preProcessedRow;
           }
@@ -342,6 +351,7 @@ export class TemplateRowService extends SyncServiceBase {
         default:
           // all other types should just set own value for use in future processing
           this.templateRowMap[_nested_name] = row;
+          this.templateRowMapValues[_nested_name] = row.value;
           break;
       }
     }

@@ -1,0 +1,35 @@
+<div
+  class="container"
+  [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  [attr.data-locked]="params().isLocked"
+  [attr.data-highlighted]="params().highlighted"
+  [attr.data-completed]="params().completed"
+  [attr.data-variant]="params().variant"
+  (click)="handleClick()"
+>
+  @if (params().moduleImageAsset) {
+    <div class="module-image">
+      <img [src]="params().moduleImageAsset | plhAsset" />
+    </div>
+  } @else {
+    <div class="image-spacer"></div>
+  }
+
+  @if (_row.value) {
+    <div class="module-title">
+      <p>{{ _row.value }}</p>
+    </div>
+  }
+
+  @if (params().isLocked && params().lockedImageAsset !== null) {
+    <div class="locked-icon">
+      <img class="icon" [src]="params().lockedImageAsset | plhAsset" />
+    </div>
+  } @else if (!params().isLocked && params().navImageAsset !== null) {
+    <div class="nav-icon">
+      <img class="icon" [src]="params().navImageAsset | plhAsset" />
+    </div>
+  } @else {
+    <div class="icon-spacer"></div>
+  }
+</div>

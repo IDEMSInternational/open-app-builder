@@ -17,16 +17,12 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<ITextParams> = {};
   hasTextValue: boolean;
 
-  constructor() {
-    super();
-  }
-
   ngOnInit() {
     this.getParams();
   }
 
   getParams() {
-    this.hasTextValue = !["undefined", "NaN", "null", '""'].includes(this._row.value);
+    this.hasTextValue = !["undefined", "NaN", "null", '""'].includes(this._row.value as string);
     this.params.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
     this.params.type = this._row.parameter_list?.style?.includes("numbered")
       ? "numbered"

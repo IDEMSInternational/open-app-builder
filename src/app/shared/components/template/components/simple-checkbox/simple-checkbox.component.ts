@@ -21,7 +21,6 @@ export class TmplSimpleCheckboxComponent extends TemplateBaseComponent implement
   }
   public async handleChange(isChecked: boolean) {
     await this.setValue(isChecked);
-    this.triggerActions("changed");
   }
 
   getParams() {

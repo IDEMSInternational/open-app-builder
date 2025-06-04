@@ -68,8 +68,20 @@ const copyDeploymentDataToApp = async () => {
 const optimiseBuild = async () => new AppDataOptimiser(WorkflowRunner.config).run();
 
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
-  const { analytics, api, app_config, error_logging, firebase, git, name, supabase, web } =
-    deploymentConfig;
+  const {
+    analytics,
+    api,
+    app_config,
+    auth,
+    campaigns,
+    error_logging,
+    firebase,
+    git,
+    name,
+    shared_data,
+    supabase,
+    web,
+  } = deploymentConfig;
 
   return {
     _app_builder_version: packageJSON.version,
@@ -77,9 +89,12 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     analytics,
     api,
     app_config,
+    auth,
+    campaigns,
     error_logging,
     firebase,
     name,
+    shared_data,
     supabase,
     web,
   };

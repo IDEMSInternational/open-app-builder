@@ -1,4 +1,4 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector, runInInjectionContext } from "@angular/core";
 import { FlowTypes } from "data-models";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
@@ -53,20 +53,24 @@ export class TemplateProcessService extends SyncServiceBase {
   public async processTemplateWithoutRender(template: FlowTypes.Template) {
     console.log("[Template Process]", template.flow_name);
     this.ensurePublicMethodServices();
-    // Create mock template container component
-    this.container = new TemplateContainerComponent(
-      this.templateService,
-      this.templateNavService,
-      this.injector
-    );
-    // this.container.name = this.container.name || this.templatename;
-    // this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-    this.container.template = template;
-    // reset any existing templateRowMap data
-    this.container.templateRowService.templateRowMap = {};
-    // process the template as if it were rendered
-    // TODO - should filter out template rows to only include those used programatically (e.g. set_variable, set_field etc.)
-    await this.container.templateRowService.processContainerTemplateRows();
+    // Use injection context to avoid error thrown by templatename input signal
+    runInInjectionContext(this.injector, async () => {
+      // Create mock template container component
+      this.container = new TemplateContainerComponent(
+        this.templateService,
+        this.templateNavService,
+        this.injector
+      );
+      // this.container.name = this.container.name || this.templatename;
+      // this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
+      this.container.template = template;
+      // reset any existing templateRowMap data
+      this.container.templateRowService.templateRowMap = {};
+      this.container.templateRowService.templateRowMapValues = {};
+      // process the template as if it were rendered
+      // TODO - should filter out template rows to only include those used programatically (e.g. set_variable, set_field etc.)
+      await this.container.templateRowService.processContainerTemplateRows();
+    });
   }
 
   public async initialiseStartupTemplates() {

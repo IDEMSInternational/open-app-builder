@@ -53,6 +53,7 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     _xlsxPath?: string; // debug info
+    _sheetsFolderUrl?: string; // debug info
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
@@ -291,10 +292,26 @@ export namespace FlowTypes {
    * */
   type TemplateRowDeploymentType = string & {};
 
+  /** Mapping of dynamic variables by prefix to value references */
+  export interface TemplateRowEvalContext {
+    item?: TemplateRowItemEvalContextMetadata & { [key: string]: any };
+    local?: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] };
+    row?: FlowTypes.TemplateRow;
+    /**
+     * HACK - when evaluating dynamic context the "field" value references the column name being evaluated
+     * and not @field values
+     * TODO - refactor
+     */
+    field?: string;
+    // TODO - type definition appears in template-calc service but not easy to import (should refactor)
+    calc?: any;
+    // TODO - generic support for all prefixes
+  }
+
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
-    value?: any; // TODO - incoming data will be string, so components should handle own parsing
+    value?: boolean | number | string;
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
@@ -314,7 +331,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
-    _evalContext?: any; // force specific context variables when calculating eval statements (such as loop items)
+    _evalContext?: TemplateRowEvalContext;
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
 
@@ -338,7 +355,7 @@ export namespace FlowTypes {
 
   const DYNAMIC_PREFIXES_COMPILER = ["gen", "row", "default"] as const;
 
-  const DYNAMIC_PREFIXES_RUNTIME = [
+  export const DYNAMIC_PREFIXES_RUNTIME = [
     "local",
     "field",
     "fields",
@@ -350,12 +367,27 @@ export namespace FlowTypes {
     "raw",
   ] as const;
 
+  type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
+
   export const DYNAMIC_PREFIXES = [
     ...DYNAMIC_PREFIXES_COMPILER,
     ...DYNAMIC_PREFIXES_RUNTIME,
   ] as const;
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
+
+  /**
+   * Namespaced hashmap of dynamic variables. Values may include evaluated value,
+   * or may include variable metadata depending on use context
+   * @example
+   * ```
+   * {
+   * local: {my_local_var: {}
+   * field: {some_field_var: {}
+   * }
+   * ```
+   * */
+  export type IDynamicContext = { [key in IDynamicPrefix]?: { [fieldName: string]: any } };
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -378,10 +410,16 @@ export namespace FlowTypes {
     | "changed"
     | "click"
     | "completed"
+    | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
     | "sent" // notification sent
     | "uncompleted";
+
+  const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
+  const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
+  // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
+  const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -394,6 +432,7 @@ export namespace FlowTypes {
     "audio_play",
     "auth",
     "changed",
+    "copy",
     "emit",
     "feedback",
     "go_to",
@@ -403,6 +442,8 @@ export namespace FlowTypes {
      * Use `auth: sign_in_google` instead
      * */
     "google_auth",
+    "nav",
+    "nav_stack",
     "open_external",
     "pop_up",
     "process_template",
@@ -410,14 +451,12 @@ export namespace FlowTypes {
     "reset_data",
     "save_to_device",
     "screen_orientation",
+    "scroll",
     "set_field",
-    /** NOTE - only available from with data_items loop */
-    "set_item",
-    /** NOTE - only available from with data_items loop */
-    "set_items",
-    "set_data",
     "set_local",
+    "set_self",
     "share",
+    "shared_data",
     "style",
     "start_tour",
     "task",
@@ -426,14 +465,17 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    ...DATA_ACTIONS_LIST,
+    ...ITEMS_ACTIONS_LIST,
+    ...PLH_ACTIONS_LIST,
   ] as const;
 
-  export interface TemplateRowAction {
+  export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
-    params?: any; // additional params also used by args (does not require position argument)
+    params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**

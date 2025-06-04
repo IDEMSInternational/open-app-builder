@@ -1,4 +1,4 @@
-import { Component, Input, signal } from "@angular/core";
+import { Component, computed, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
@@ -20,9 +20,17 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   /** @ignore */
   _row: FlowTypes.TemplateRow;
 
-  value = signal<FlowTypes.TemplateRow["value"]>(undefined, { equal: isEqual });
-  parameterList = signal<FlowTypes.TemplateRow["parameter_list"]>({}, { equal: isEqual });
-  actionList = signal<FlowTypes.TemplateRow["action_list"]>([], { equal: isEqual });
+  // TODO - main row should just be an input.required and child code refactored to avoid set override
+  // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
+  // NOTE - the signal does not use an `{equal: isEqual}` optimisation to allow signal update on external
+  // field set: https://github.com/IDEMSInternational/open-app-builder/pull/2915
+  rowSignal = signal<FlowTypes.TemplateRow>(undefined);
+  value = computed(() => this.rowSignal()?.value, { equal: isEqual });
+  parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
+  actionList = computed<FlowTypes.TemplateRowAction[]>(() => this.rowSignal().action_list || [], {
+    equal: isEqual,
+  });
+  rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
   /**
    * @ignore
@@ -30,9 +38,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    **/
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
-    this.value.set(row.value);
-    this.parameterList.set(row.parameter_list);
-    this.actionList.set(row.action_list);
+    // take shallow clone to still be able to detect changes if this._row directly modified
+    this.rowSignal.set({ ...row });
   }
 
   /**
@@ -40,7 +47,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
-  constructor() {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
@@ -55,21 +61,31 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     }
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    return this.parent.handleActions(actionsForTrigger, this._row);
+    if (actionsForTrigger.length > 0) {
+      return this.parent.handleActions(actionsForTrigger, this._row);
+    }
   }
 
   /**
    * Update the current value of the row by setting a local variable that matches
    * @ignore
    **/
-  setValue(value: any) {
-    // console.log("setting value", value);
+  async setValue(value: any) {
+    // TODO - also want to prevent triggering changed action
+    if (value === this._row.value) {
+      return;
+    }
+    // HACK - provide optimistic update so that data_items interceptor also can access updated row value
+    this._row.value = value;
+    this.rowSignal.update((v) => ({ ...v, value }));
+
     const action: FlowTypes.TemplateRowAction = {
-      action_id: "set_local",
+      action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
-    return this.parent.handleActions([action], this._row);
+    await this.parent.handleActions([action], this._row);
+    await this.triggerActions("changed");
   }
 
   /** @ignore */

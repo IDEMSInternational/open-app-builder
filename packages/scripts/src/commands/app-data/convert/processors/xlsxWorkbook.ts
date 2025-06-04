@@ -7,7 +7,8 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20241118.0;
+const cacheVersion = 20250515.0;
+const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
 export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
   constructor(paths: IConverterPaths) {
@@ -28,8 +29,11 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     // Ensure all paths use / to match HTTP style paths
     const { SHEETS_INPUT_FOLDER } = this.context.paths;
     const _xlsxPath = path.relative(SHEETS_INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
+    const sheetsFolderId = path.basename(SHEETS_INPUT_FOLDER);
+    const sheetsFolderUrl = `${sheetsFolderBaseUrl}/${sheetsFolderId}`;
     const processed = merged.map((v) => {
       v._xlsxPath = _xlsxPath;
+      v._sheetsFolderUrl = sheetsFolderUrl;
       return v;
     });
     return processed;
@@ -44,22 +48,38 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     const json = {};
     const workbook = xlsx.readFile(xlsxFilePath);
     const { Sheets } = workbook;
-    Object.entries(Sheets).forEach(([sheet_name, worksheet]) => {
-      /* If bold or italics, include HTML in cell value */
-      Object.keys(worksheet).forEach((cellId) => {
-        let html = worksheet[cellId]?.h;
-        if (
-          html !== undefined &&
-          typeof html === "string" &&
-          (html.indexOf("<b>") > -1 || html.indexOf("<em>") > -1 || html.indexOf("<i>") > -1)
-        ) {
-          html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
-          worksheet[cellId].v = html;
-        }
-      });
-      json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
-    });
+
+    for (const [sheetName, worksheet] of Object.entries(Sheets)) {
+      Object.values(worksheet).forEach(this.processCell);
+      json[sheetName] = xlsx.utils.sheet_to_json(worksheet);
+    }
     return json;
+  }
+
+  /**
+   * Interpret cell formatting and update cell value
+   */
+  private processCell(cell: xlsx.CellObject) {
+    if (!cell) return;
+
+    // If bold or italics, include HTML in cell value
+    let html = cell.h;
+    if (
+      html !== undefined &&
+      typeof html === "string" &&
+      (html.includes("<b>") || html.includes("<em>") || html.includes("<i>"))
+    ) {
+      html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
+      cell.v = html;
+    }
+
+    // If authored value was a percentage, override converted decimal value to preserve percentage representation
+    // xlsx library parser saves formatted text version of cell value in the .w field
+    // https://docs.sheetjs.com/docs/api/parse-options#parsing-options
+    const cellText = cell.w;
+    if (typeof cell.v === "number" && cellText?.includes("%")) {
+      cell.v = cellText;
+    }
   }
 
   /**

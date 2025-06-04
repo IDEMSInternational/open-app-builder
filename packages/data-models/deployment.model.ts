@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20241111.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20250407.1;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -22,6 +22,8 @@ export interface IDeploymentRuntimeConfig {
      * Will be replaced when running locally as per `src\app\shared\services\server\interceptors.ts`
      * */
     endpoint?: string;
+    /** Frequency (in ms) to attempt syncing data to server. Default 1000 * 60 * 5 (5 mins) */
+    sync_frequency?: number;
   };
   analytics: {
     enabled: boolean;
@@ -36,32 +38,47 @@ export interface IDeploymentRuntimeConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
+  /** Enable auth actions by specifying auth provider */
+  auth: {
+    /** provider to use with authentication actions. actions will be disabled if no provider specified */
+    provider?: "firebase" | "supabase";
+    /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
+    enforceLoginTemplate?: string;
+  };
+  campaigns: {
+    /**
+     * Specify whether campaigns notification used by deployment. Default `true`
+     * Disabling campaigns will also remove the use and permission prompt for localNotifications
+     **/
+    enabled?: boolean;
+  };
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
-  firebase: {
+  firebase?: {
     /** Project config as specified in firebase console (recommend loading from encrypted environment) */
-    config?: {
+    config: {
       apiKey: string;
       authDomain: string;
-      databaseURL: string;
+      databaseURL?: string;
       projectId: string;
       storageBucket: string;
       messagingSenderId: string;
       appId: string;
       measurementId: string;
     };
-    auth: {
-      /** Enables `auth` actions to allow user sign-in/out */
-      enabled: boolean;
-    };
-    crashlytics: {
-      /** Enables app crash reports to firebase crashlytics */
+    /** Configure app crash reports to firebase crashlytics */
+    crashlytics?: {
       enabled: boolean;
     };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
+
+  /** 3rd party integration for shared data management. Default enabled with firebase provider */
+  shared_data?: {
+    provider: "firebase";
+  };
   /** 3rd party integration for remote asset storage and sync */
   supabase: {
     enabled: boolean;
@@ -192,6 +209,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: true,
     db_name: "plh",
     endpoint: "https://apps-server.idems.international/api",
+    sync_frequency: 1000 * 60 * 5,
   },
   analytics: {
     enabled: true,
@@ -200,10 +218,12 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     endpoint: "https://apps-server.idems.international/analytics",
   },
   app_config: {},
-  firebase: {
-    config: null,
-    auth: { enabled: false },
-    crashlytics: { enabled: true },
+  auth: {},
+  campaigns: {
+    enabled: true,
+  },
+  shared_data: {
+    provider: "firebase",
   },
   supabase: {
     enabled: false,

@@ -6,6 +6,10 @@ import {
   sortJsonKeys,
   toEmptyObject,
   arrayToHashmap,
+  filterObjectByKeys,
+  uniqueObjectArrayKeys,
+  mergeObjectArrays,
+  diffObjects,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -22,6 +26,9 @@ const MOCK_NESTED_OBJECT = {
   number: 1,
 };
 
+/**
+ * yarn workspace shared test --filter "Object Utils"
+ */
 describe("Object Utils", () => {
   it("isObjectLiteral", () => {
     expect(isObjectLiteral({})).toEqual(true);
@@ -142,6 +149,53 @@ describe("Object Utils", () => {
       id_1: { id: "id_1", number: 1 },
       id_2: { id: "id_2", number: 2 },
       id_2_duplicate: { id: "id_2", number: 2.1 },
+    });
+  });
+  it("filterObjectByKeys", () => {
+    const res = filterObjectByKeys({ keep: 1, ignore: 2 }, ["keep"]);
+    expect(res).toEqual({ keep: 1 });
+  });
+  it("uniqueObjectArrayKeys", () => {
+    const res = uniqueObjectArrayKeys([
+      { a: 1, b: 2 },
+      { b: 3, c: 4 },
+    ]);
+    expect(res).toEqual(["a", "b", "c"]);
+  });
+  it("uniqueObjectArrayKeys max depth", () => {
+    const res = uniqueObjectArrayKeys([{ a: 1 }, { b: 2 }, { c: 3 }], 2);
+    expect(res).toEqual(["a", "b"]);
+  });
+  it("mergeObjectArrays", () => {
+    const baseArr: any[] = [
+      { id: "id_1", string: "hello" },
+      { id: "id_2", string: "hello", nested: { boolean: true, string: "hello" } },
+    ];
+    const mergeArr: any[] = [
+      { id: "id_2", string: "goodbye", nested: { boolean: false, number: 1 } },
+      { id: "id_3", string: "hello" },
+    ];
+    const mergeRes = mergeObjectArrays(baseArr, mergeArr, { keyField: "id", deep: false });
+    expect(mergeRes).toEqual([
+      { id: "id_1", string: "hello" },
+      { id: "id_2", string: "goodbye", nested: { boolean: false, number: 1 } },
+      { id: "id_3", string: "hello" },
+    ]);
+    const deepMergeRes = mergeObjectArrays(baseArr, mergeArr, { keyField: "id", deep: true });
+    expect(deepMergeRes).toEqual([
+      { id: "id_1", string: "hello" },
+      { id: "id_2", string: "goodbye", nested: { boolean: false, number: 1, string: "hello" } },
+      { id: "id_3", string: "hello" },
+    ]);
+  });
+  it("diffObjects", () => {
+    const a = { key_1: { string: "hello", number: 1 }, key_2: { boolean: true } };
+    const b = { key_1: { string: "goodbye", number: 1 }, key_3: false };
+    const res = diffObjects(a, b);
+    expect(res).toEqual({
+      add: [{ key: "key_3", value: false }],
+      update: [{ key: "key_1", value: { string: "goodbye", number: 1 } }],
+      delete: [{ key: "key_2", value: undefined }],
     });
   });
 });

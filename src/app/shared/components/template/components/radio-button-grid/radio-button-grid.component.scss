@@ -1,30 +1,155 @@
-// @use "/src/theme/mixins";
-
+// Vars for primary style
+$background: var(--radio-group-background, white);
 $background-selected: var(
   --radio-group-background-selected,
   var(--gradient-primary-light-vertical)
 );
-$border: var(--border-standard);
-$border-radius: var(--ion-border-radius-standard);
+$border: var(--radio-group-border, var(--border-standard));
+$border-selected: var(--radio-group-border-selected, var(--border-standard));
+
+// Vars for secondary style
+$background-secondary: var(--radio-group-background-secondary, white);
+$background-selected-secondary: var(
+  --radio-group-background-selected-secondary,
+  var(--gradient-secondary-light-vertical)
+);
+$border-secondary: var(--radio-group-border-secondary, var(--border-standard));
+$border-selected-secondary: var(--radio-group-border-selected-secondary, var(--border-standard));
+
+$border-radius: var(--radio-group-border-radius, var(--ion-border-radius-standard));
+$box-shadow: var(--radio-group-box-shadow, var(--ion-default-box-shadow));
 $text-size: var(--radio-button-font-size, 1.25rem);
 $text-color: var(--radio-button-font-color, var(--ion-color-primary));
 
-.radio-grid {
+.radio-buttons {
   display: grid;
+  .item {
+    border: $border;
+    border-radius: $border-radius;
+    text-align: center;
+    padding: 8px;
+    background: $background;
+    cursor: pointer;
+    box-shadow: $box-shadow;
+    &[data-selected="true"] {
+      background: $background-selected;
+      border: $border-selected;
+      transition: 0.2s linear;
+    }
+    .item-text {
+      font-size: $text-size;
+      color: $text-color;
+    }
+  }
+
+  &[data-style="secondary"] {
+    .item {
+      border: $border-secondary;
+      background: $background-secondary;
+      &[data-selected="true"] {
+        background: $background-selected-secondary;
+        border: $border-selected-secondary;
+      }
+    }
+  }
 }
-.item {
-  border: $border;
-  border-radius: 15px;
-  text-align: center;
-  padding: 8px;
-  background: white;
-  cursor: pointer;
-  box-shadow: var(--ion-default-box-shadow);
+
+.radio-buttons[data-variant="circle-icon"] {
+  display: grid;
+
+  .item {
+    border: none;
+    padding: 0px;
+    box-shadow: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+  }
+  .item-image-container {
+    background: var(--ion-color-primary-50);
+    border: 1px solid var(--ion-color-primary-200);
+    border-radius: 50%;
+
+    width: 86px;
+    height: 86px;
+
+    padding: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 48px;
+    }
+  }
+  .item-text {
+    font-size: large;
+    color: var(--ion-color-gray-800);
+    margin-top: 6px;
+  }
+
+  .item[data-selected="true"] {
+    background: unset;
+    .item-image-container {
+      border: 2px solid var(--ion-color-primary-300);
+      background: var(--ion-color-primary-200);
+    }
+    .item-text {
+      font-weight: bold;
+    }
+  }
 }
-.item[data-selected="true"] {
-  background: $background-selected;
-}
-.item-text {
-  font-size: $text-size;
-  color: $text-color;
+
+.radio-buttons[data-variant="flex"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  .item {
+    flex: 1 1 auto;
+    width: 25%;
+    min-width: var(--min-item-width, 10px);
+    background-color: $background;
+    box-shadow: $box-shadow;
+    border: $border;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 8px;
+
+    &[data-selected="true"] {
+      background-color: $background-selected;
+      border: $border-selected;
+    }
+    .item-image-container {
+      height: var(--icon-size-largest);
+      img {
+        height: 100%;
+      }
+    }
+    .item-text {
+      p {
+        font-size: var(--font-size-text-small);
+        text-align: center;
+        margin: 0px;
+      }
+    }
+  }
+
+  &[data-style="secondary"] {
+    .item {
+      border: $border-secondary;
+      background: $background-secondary;
+      &[data-selected="true"] {
+        background: $background-selected-secondary;
+        border: $border-selected-secondary;
+      }
+    }
+  }
 }

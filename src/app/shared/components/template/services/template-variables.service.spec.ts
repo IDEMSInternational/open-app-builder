@@ -1,13 +1,16 @@
 import { TestBed } from "@angular/core/testing";
-import { IVariableContext, TemplateVariablesService } from "./template-variables.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { MockTemplateFieldService } from "./template-field.service.spec";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
-import { MockAppDataService } from "src/app/shared/services/data/app-data.service.spec";
+import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { TemplateCalcService } from "./template-calc.service";
-import { MockTemplateCalcService } from "./template-calc.service.spec";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { MockTemplateCalcService } from "./template-calc.service.mock.spec";
+import { TemplateTranslateService } from "./template-translate.service";
+import { FlowTypes } from "packages/data-models";
 
 const MOCK_APP_DATA = {};
 
@@ -17,9 +20,10 @@ const MOCK_FIELDS = {
   _app_skin: "default",
   string_field: "test_string_value",
   number_field: 2,
+  dynamic_field: "number",
 };
 
-const MOCK_CONTEXT_BASE: IVariableContext = {
+const MOCK_CONTEXT_BASE: FlowTypes.TemplateRowEvalContext = {
   // Assume the row will have a dynamic 'field' entry
   field: "value",
   row: {
@@ -28,8 +32,8 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
     name: "test_row",
     _nested_name: "test_row",
   },
-  templateRowMap: {},
-  calcContext: {
+  local: {},
+  calc: {
     globalConstants: {},
     globalFunctions: {},
     thisCtxt: {
@@ -39,7 +43,7 @@ const MOCK_CONTEXT_BASE: IVariableContext = {
   },
 };
 
-const TEST_FIELD_CONTEXT: IVariableContext = {
+const TEST_FIELD_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -59,7 +63,7 @@ const TEST_FIELD_CONTEXT: IVariableContext = {
 
 // Context adapted from this debug template:
 // https://docs.google.com/spreadsheets/d/1tL6CPHEIW-GPMYjdhVKQToy_hZ1H5qNIBkkh9XnA5QM/edit#gid=114708400
-const TEST_ITEM_CONTEXT: IVariableContext = {
+const TEST_ITEM_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -76,7 +80,7 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
       ],
     },
   },
-  itemContext: {
+  item: {
     id: "id1",
     number: 1,
     string: "hello",
@@ -88,16 +92,11 @@ const TEST_ITEM_CONTEXT: IVariableContext = {
   },
 };
 
-const TEST_LOCAL_CONTEXT: IVariableContext = {
+const TEST_LOCAL_CONTEXT: FlowTypes.TemplateRowEvalContext = {
   ...MOCK_CONTEXT_BASE,
-  templateRowMap: {
+  local: {
     // Mock row setting a local variable
-    string_local: {
-      name: "string_local",
-      value: "Jasper",
-      type: "set_variable",
-      _nested_name: "string_local",
-    },
+    string_local: "Jasper",
   },
   row: {
     ...MOCK_CONTEXT_BASE.row,
@@ -126,7 +125,7 @@ describe("TemplateVariablesService", () => {
   beforeEach(async () => {
     getNextCampaignRowsSpy = jasmine.createSpy();
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
         {
           provide: TemplateFieldService,
@@ -140,15 +139,19 @@ describe("TemplateVariablesService", () => {
           provide: TemplateCalcService,
           useValue: new MockTemplateCalcService(),
         },
-        // Mock single method from campaign service called
+        // Mock single method from campaign and templateTranslate services called
         {
           provide: CampaignService,
           useValue: {
-            ready: async () => {
-              return true;
-            },
+            ready: async () => true,
             getNextCampaignRows: getNextCampaignRowsSpy,
           },
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+        {
+          provide: TemplateTranslateService,
+          useValue: { ready: async () => true, translateRow: (row) => row },
         },
       ],
     });
@@ -198,12 +201,13 @@ describe("TemplateVariablesService", () => {
     expect(resWithItemContext).toEqual(1);
     // Retain raw expression if evaluating outside of item context
     // https://github.com/IDEMSInternational/parenting-app-ui/pull/2215#discussion_r1514757364
-    delete TEST_ITEM_CONTEXT.itemContext;
+    delete TEST_ITEM_CONTEXT.item;
     const resWithoutItemContext = await service.evaluatePLHData(
       MOCK_ITEM_STRING,
       TEST_ITEM_CONTEXT
     );
-    expect(resWithoutItemContext).toEqual(MOCK_ITEM_STRING);
+    // NOTE - currently replaces `@item` with `this.item` when value not found
+    expect(resWithoutItemContext).toEqual("this.item._index + 1");
   });
 
   it("Evaluates string containing local variable", async () => {
@@ -213,5 +217,16 @@ describe("TemplateVariablesService", () => {
       TEST_LOCAL_CONTEXT
     );
     expect(resWithLocalContext).toEqual("Hello Jasper");
+  });
+
+  it("Evaluates templateLiteral with dynamic keys", async () => {
+    const res = await service.evaluatePLHData(
+      { "@field.dynamic_field": 2 },
+      {
+        row: { ...MOCK_CONTEXT_BASE.row, _dynamicFields: {} },
+        local: {},
+      }
+    );
+    expect(res).toEqual({ number: 2 });
   });
 });

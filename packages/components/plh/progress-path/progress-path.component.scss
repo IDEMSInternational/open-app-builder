@@ -1,0 +1,126 @@
+.progress-path {
+  &.loading {
+    visibility: hidden;
+  }
+
+  height: 700px;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .wrapper {
+    height: 100%;
+    width: 100vw;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: scroll;
+
+    max-width: 430px;
+    min-width: 280px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .progress-path-child-wrapper {
+    height: 100%;
+    .progress-path-child-content-wrapper {
+      height: 100%;
+      position: relative;
+    }
+    .progress-path-child-content {
+      position: absolute;
+      &:nth-child(1) {
+        top: 2%;
+        left: 13%;
+      }
+      &:nth-child(2) {
+        top: 13%;
+        right: 37%;
+      }
+      &:nth-child(3) {
+        top: 16%;
+        right: 0;
+      }
+      &:nth-child(4) {
+        top: 32%;
+        left: 46%;
+      }
+      &:nth-child(5) {
+        top: 36%;
+        left: 2%;
+      }
+      &:nth-child(6) {
+        bottom: 30%;
+        left: 7%;
+      }
+      &:nth-child(7) {
+        bottom: 29%;
+        right: 34%;
+      }
+      &:nth-child(8) {
+        bottom: 18%;
+        right: 0;
+      }
+      &:nth-child(9) {
+        bottom: 1%;
+        left: 40%;
+      }
+    }
+  }
+}
+@media (max-width: 384px) {
+  .progress-path {
+    .wrapper {
+      background-position: bottom;
+    }
+    .progress-path-child-wrapper {
+      .progress-path-child-content {
+        &:nth-child(1) {
+          top: 2%;
+          left: 10%;
+        }
+        &:nth-child(2) {
+          top: 13%;
+          right: 40%;
+        }
+        &:nth-child(3) {
+          top: 14%;
+          right: 1%;
+        }
+        &:nth-child(4) {
+          top: 32%;
+          right: 10%;
+        }
+        &:nth-child(5) {
+          top: 34%;
+          left: 4%;
+        }
+        &:nth-child(6) {
+          bottom: 28%;
+          left: 20%;
+        }
+        &:nth-child(7) {
+          bottom: 29%;
+          right: 13%;
+        }
+        &:nth-child(8) {
+          bottom: 10%;
+          right: 3%;
+        }
+        &:nth-child(9) {
+          bottom: 1%;
+          left: 40%;
+        }
+      }
+    }
+  }
+}

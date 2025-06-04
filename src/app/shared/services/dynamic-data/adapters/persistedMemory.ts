@@ -17,18 +17,20 @@ addRxPlugin(RxDBUpdatePlugin);
 import { debounceTime, filter, firstValueFrom, Subject } from "rxjs";
 
 import { FlowTypes } from "data-models";
-import { deepMergeObjects, compareObjectKeys } from "../../../utils";
+import { deepMergeObjects } from "../../../utils";
+import { arrayToHashmap, diffObjects } from "packages/shared/src/utils/object-utils";
 
 /**
  * All persisted docs are stored in the same format with a standard set of meta fields and doc data
  * This avoids breaking schema changes for underlying data changes
  * */
-interface IPersistedDoc {
+export interface IPersistedDoc {
   id: string;
   flow_name: string;
   flow_type: string;
   row_id: string;
-  data: any;
+  /** Partial user data overrides to apply */
+  data: Record<string, any>;
 }
 
 /** The full schema is provided for persisted memory */
@@ -36,7 +38,7 @@ const SCHEMA: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
-  version: 2,
+  version: 3,
   primaryKey: "id",
   type: "object",
   properties: {
@@ -47,13 +49,12 @@ const SCHEMA: RxJsonSchema<any> = {
     flow_name: { type: "string", maxLength: 64 },
     flow_type: { type: "string", maxLength: 64 },
     row_id: { type: "string", maxLength: 64 },
-    row_index: { type: "integer", minimum: 0, maximum: 10000, multipleOf: 1, final: true },
     data: {
       type: "object",
     },
   },
-  required: ["id", "flow_type", "flow_name", "row_id", "data", "row_index"],
-  indexes: ["flow_type", "flow_name", "row_id", "row_index"],
+  required: ["id", "flow_type", "flow_name", "row_id", "data"],
+  indexes: ["flow_type", "flow_name", "row_id"],
 };
 const MIGRATIONS: MigrationStrategies = {
   // As part of RXDb v14 update all data requires migrating to change metadata fields (no doc data changes)
@@ -62,6 +63,10 @@ const MIGRATIONS: MigrationStrategies = {
   2: (oldDoc) => {
     const newDoc = { ...oldDoc, row_index: 0 };
     return newDoc;
+  },
+  // remove row_index from persisted memory as user writes will never modify
+  3: (doc) => {
+    return doc;
   },
 };
 
@@ -135,11 +140,40 @@ export class PersistedMemoryAdapter {
     this.persistStateToDB();
   }
 
-  public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
-    if (this.get(flow_type, flow_name)) {
-      delete this.state[flow_type][flow_name];
-      this.persistStateToDB();
+  /** Set data for a given entry. Will overwrite any existing data */
+  public set(update: IDataUpdate) {
+    const { flow_name, flow_type, id, data } = update;
+    if (!this.state[flow_type]) this.state[flow_type] = {};
+    if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
+    // Remove any values marked as undefined
+    for (const [key, value] of Object.entries(data)) {
+      if (value === undefined) {
+        delete data[key];
+      }
     }
+    this.state[flow_type][flow_name][id] = data;
+    this.persistStateToDB();
+  }
+
+  public async delete(flow_type: FlowTypes.FlowType, flow_name: string, ids?: string[]) {
+    const stateRef = this.get(flow_type, flow_name);
+    if (!stateRef) return;
+    // delete individuals
+    if (ids) {
+      for (const id of ids) {
+        delete this.state[flow_type][flow_name][id];
+      }
+    }
+    // delete all - mark as empty so it still persists to disk
+    else {
+      this.state[flow_type][flow_name] = {};
+    }
+    await this.persistStateToDB();
+  }
+
+  public async deleteAll() {
+    this.state = {};
+    await this.persistStateToDB();
   }
 
   /** Trigger persist handler. Requests will be debounced and notified when complete */
@@ -166,34 +200,44 @@ export class PersistedMemoryAdapter {
   }
 
   /**
-   * TODO - could perform more incremental updates and avoid overwrite with same data
-   */
+   * Compare in-memory and persisted states, and update persisted state to match memory
+   **/
   private async handleStatePersist() {
-    // Handle insertions and updates
-    const updates: IPersistedDoc[] = [];
+    const persistedState = await this.getPersistedHashmap();
+    const currentState = this.getStateHashmap();
+
+    const ops = diffObjects(persistedState, currentState);
+    const upsert = [...ops.add, ...ops.update].map(({ value }) => value);
+
+    await this.collection.bulkUpsert(upsert);
+    await this.collection.bulkRemove(ops.delete.map(({ key }) => key));
+  }
+
+  /**
+   * Get a flattened hashmap of all rows, keyed by flow_type, name and row id, e.g.
+   * ```ts
+   * {
+   *  data_list__module_list__row_1 : {....},
+   *  data_list__module_list__row_2 : {....}
+   * }
+   * ```
+   */
+  private getStateHashmap() {
+    const hashmap: Record<string, any> = {};
     for (const [flow_type, flowHash] of Object.entries(this.state)) {
       for (const [flow_name, rowHash] of Object.entries(flowHash)) {
-        for (const [row_id, update] of Object.entries(rowHash)) {
+        for (const [row_id, data] of Object.entries(rowHash)) {
           const id = `${flow_type}__${flow_name}__${row_id}`;
-          updates.push({ id, row_id, flow_type, flow_name, data: update });
+          hashmap[id] = { id, row_id, flow_type, flow_name, data };
         }
       }
     }
-    await this.collection.bulkUpsert(updates);
-
-    // Handle deletions (check for flows that exist in DB but not in state, and remove from DB)
-    const db = await this.mapDBToObject({});
-    const idsToDelete = [];
-    for (const flow_type of Object.keys(db)) {
-      const { deleted } = compareObjectKeys(db[flow_type], this.state[flow_type]);
-      for (const flow_name of deleted) {
-        const rowHash = db[flow_type][flow_name];
-        for (const row_id of Object.keys(rowHash)) {
-          idsToDelete.push(`${flow_type}__${flow_name}__${row_id}`);
-        }
-      }
-    }
-    this.collection.bulkRemove(idsToDelete);
+    return hashmap;
+  }
+  private async getPersistedHashmap() {
+    const res: RxDocument[] = await this.collection.find().exec();
+    const docs = res.map((r) => r.toMutableJSON() as IPersistedDoc);
+    return arrayToHashmap(docs, "id");
   }
 
   private async mapDBToState() {
