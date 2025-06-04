@@ -11,17 +11,22 @@
 
 @include themes.theme-default;
 @include themes.theme-professional;
+@include themes.theme-plh_kids_tz;
 @include themes.theme-pfr;
 @include themes.theme-plh_facilitator_mx;
 @include themes.theme-early_family_math;
 @include themes.theme-plh_kids_kw;
+@include themes.theme-plh_facilitator_mapa;
 
 /** Ionic CSS Variables **/
 :root {
-  // The total height of the central safe area of the device viewport
-  --safe-area-height: calc(100vh - var(--ion-safe-area-top, 0) - var(--ion-safe-area-bottom, 0));
+  // The total height of the central safe area of the device viewport.
+  // Use 100% rather than 100vh to handle browsers with toolbars,
+  // see https://github.com/IDEMSInternational/open-app-builder/issues/2680
+  --safe-area-height: calc(100% - var(--ion-safe-area-top, 0) - var(--ion-safe-area-bottom, 0));
 
   // Margins //
+  --row-margin-top: 1em; // used in downstream calculations, e.g. sticky display-group
   --tiny-margin: 5px;
   --small-margin: 10px;
   --regular-margin: 15px;
@@ -51,7 +56,7 @@
   // Borders //
   // --- border-radiuses
   --ion-border-radius-small: 8px;
-  --ion-border-radius-standard: 15px;
+  --ion-border-radius-standard: 12px;
   --ion-border-radius-secondary: 20px;
   --ion-border-radius-rounded: 50%;
 

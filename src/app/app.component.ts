@@ -13,21 +13,17 @@ import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
-import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
-import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
-import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
-import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { TaskService } from "./shared/services/task/task.service";
@@ -43,6 +39,9 @@ import { LocalStorageService } from "./shared/services/local-storage/local-stora
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
 import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
+import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
+import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
+import { ScrollService } from "./shared/services/scroll/scroll.service";
 
 @Component({
   selector: "app-root",
@@ -51,8 +50,21 @@ import { TemplateMetadataService } from "./shared/components/template/services/t
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  sideMenuDefaults = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
-  footerDefaults = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
+  sideMenuConfig = computed(() => this.appConfigService.appConfig().APP_SIDEMENU_DEFAULTS);
+  layoutConfig = computed(() => this.appConfigService.appConfig().LAYOUT);
+
+  public routeContainerStyle = computed(() => {
+    const { page_padding } = this.layoutConfig();
+    const { top, right, bottom, left } = getPaddingValuesFromShorthand(page_padding);
+    return {
+      "--page-padding-top": top,
+      "--page-padding-start": left,
+      "--page-padding-bottom": bottom,
+      "--page-padding-end": right,
+    };
+  });
+
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = signal(false);
 
@@ -91,16 +103,12 @@ export class AppComponent {
     private templateMetadataService: TemplateMetadataService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
-    private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
-    private localNotificationService: LocalNotificationService,
-    private localNotificationInteractionService: LocalNotificationInteractionService,
     // make public so that language direction signal can be read directly in template
     public templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
-    private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
     private feedbackService: FeedbackService,
@@ -112,7 +120,9 @@ export class AppComponent {
     private remoteAssetService: RemoteAssetService,
     private shareService: ShareService,
     private fileManagerService: FileManagerService,
-    private screenOrientationService: ScreenOrientationService
+    private screenOrientationService: ScreenOrientationService,
+    private clipboardService: ClipboardService,
+    private scrollService: ScrollService
   ) {
     this.initializeApp();
   }
@@ -125,7 +135,6 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      await this.loadAuthConfig();
 
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -156,34 +165,17 @@ export class AppComponent {
     this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
+    this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
+
+    const appEnv = environment.production ? "production" : "development";
+    this.localStorageService.setProtected("APP_ENVIRONMENT", appEnv);
+    this.localStorageService.setProtected("APP_HOSTNAME", location.hostname);
+
     // HACK - ensure first_app_launch migrated from event service
     if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
       this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
-    }
-  }
-
-  /**
-   * Authentication requires verified domain and app ids populated to firebase console
-   * Currently only run on native where specified (but can comment out for testing locally)
-   */
-  private async loadAuthConfig() {
-    const { firebase } = this.deploymentService.config;
-    const { enforceLogin, signInTemplate } =
-      this.appConfigService.appConfig().APP_AUTHENTICATION_DEFAULTS;
-    const ensureLogin = firebase.config && enforceLogin && Capacitor.isNativePlatform();
-    if (ensureLogin) {
-      this.authService.ready();
-      const authUser = await this.authService.getCurrentUser();
-      if (!authUser) {
-        const { modal } = await this.templateService.runStandaloneTemplate(signInTemplate, {
-          showCloseButton: false,
-          waitForDismiss: false,
-        });
-        await this.authService.waitForSignInComplete();
-        await modal.dismiss();
-      }
     }
   }
 
@@ -216,11 +208,8 @@ export class AppComponent {
         this.dynamicDataService,
         this.userMetaService,
         this.tourService,
-        this.localNotificationService,
-        this.localNotificationInteractionService,
         this.taskService,
         this.taskActions,
-        this.campaignService,
         this.remoteAssetService,
       ],
       nonBlocking: [
@@ -231,7 +220,6 @@ export class AppComponent {
         this.templateService,
         this.templateProcessService,
         this.appDataService,
-        this.authService,
         this.serverService,
         this.seoService,
         this.feedbackService,
@@ -239,6 +227,8 @@ export class AppComponent {
         this.fileManagerService,
         this.templateMetadataService,
         this.screenOrientationService,
+        this.clipboardService,
+        this.scrollService,
       ],
       deferred: [this.analyticsService],
       implicit: [

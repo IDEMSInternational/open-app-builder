@@ -1,6 +1,11 @@
 import { NgModule } from "@angular/core";
 
 import { AnalyticsModule } from "./shared/services/analytics";
+import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
+import { AuthModule } from "./shared/services/auth/auth.module";
+import { CampaignModule } from "./feature/campaign/campaign.module";
+import { provideSharedData } from "./feature/shared-data";
+import { PLH_FEATURE_MODULES } from "packages/components/plh";
 
 /**
  * Module imports required for specific deployment features
@@ -13,5 +18,20 @@ import { AnalyticsModule } from "./shared/services/analytics";
  *
  * This is a feature marked for future implementation
  */
-@NgModule({ imports: [AnalyticsModule] })
+@NgModule({
+  imports: [
+    /* */
+    AuthModule,
+    AnalyticsModule,
+    CampaignModule,
+    NavStackModule,
+    ...PLH_FEATURE_MODULES,
+    /* */
+  ],
+  // Modules defined as modern angular providers
+  providers: [
+    /** */
+    provideSharedData(),
+  ],
+})
 export class DeploymentFeaturesModule {}

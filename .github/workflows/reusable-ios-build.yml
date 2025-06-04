@@ -1,0 +1,199 @@
+##################################################################################
+#         About
+##################################################################################
+# Reuseable workflow to be called from content repos.
+# Build and deploy app bundle for ios
+#
+#         Version : 1.1
+#
+##################################################################################
+#         Configuration
+##################################################################################
+env:
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
+  PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
+  PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
+  PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
+
+  GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
+  GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
+
+  ##################################################################################
+  #         Main Code
+  ##################################################################################
+name:
+  IOS Build
+
+  # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
+concurrency:
+  group: ios-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        type: string
+        description: "Specify branch for deployment"
+        default: ""
+    secrets:
+      DEPLOYMENT_PRIVATE_KEY:
+        description: Provide private key if deployment uses encrypted config
+
+jobs:
+  #############################################################################
+  #         Build Deployment Web
+  #############################################################################
+
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: |
+        echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist 
+        yarn workflow ios configure
+        npx cap sync ios
+      # Upload ios directory as it includes configured template files and www content
+      additional-artifact: ios
+      # Ensure build also run on macos to allow npx cap sync to configure ios pods
+      workflow-runner: macos-latest
+    secrets: inherit
+
+  #############################################################################
+  #         Build IOS
+  #############################################################################
+
+  build_ios:
+    runs-on: macos-latest
+    needs: build_web
+    steps:
+      # Checkout builder repo and install node_modules so that they can be used in ios build
+      # (e.g. capacitor plugins store podfiles in node_modules)
+      - uses: actions/checkout@v4
+        with:
+          repository: "IDEMSInternational/open-app-builder.git"
+          ref: ${{env.APP_CODE_BRANCH}}
+
+      - name: Download IOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ios
+          # DEBUG - uncomment lines below, `build_web` job and `needs: build_web` to skip build step
+          # and use the output from a previous run for quicker debugging. Requires github-token
+          # https://github.com/actions/download-artifact/issues/320
+
+          # github-token: ${{ github.token }}
+          # run-id: 13743953801
+
+      # Remove default ios folder and replace with artifact generated
+      - name: Setup IOS folder
+        run: |
+          rm -R ios/*
+          tar -xf artifact.tar --directory ios
+          echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
+
+      # Create a ruby gemfile declaring fastlane dep for install. This will be auto-installed
+      # via the setup-ruby command. This file could also be created and committed to core repo is required
+      - name: Add fastlane gem
+        working-directory: ios/App
+        run: |
+          echo 'source "https://rubygems.org"' > Gemfile
+          echo 'gem "fastlane"' >> Gemfile
+          cat Gemfile
+
+      # Setup ruby. Use bundler-cache to auto-install Gemfile in working directory
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
+          working-directory: ios/App
+
+      # Install node_module dependencies (includes capacitor plugin pods required for build)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.17.0
+          cache: yarn
+      - run: yarn workspaces focus frontend --production
+
+      # Attempt to create an unsigned build for local testing
+      # https://github.com/fastlane/fastlane/discussions/21996
+      - name: Build IOS (simulator)
+        working-directory: ios/App
+        env:
+          # Common args used to create unsigned builds (simulator or xcarchive)
+          CODE_SIGNING_ARGS: --skip_codesigning true --skip_package_ipa true
+          # Args to create simulator build. Output format will be .app
+          SIMULATOR_BUILD_ARGS: --destination "generic/platform=iOS Simulator" --derived_data_path "./output/data" --skip_archive true
+
+        # Call fastlane build_ios_app track
+        # https://docs.fastlane.tools/actions/build_ios_app/
+        run: |
+          bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" ${{env.CODE_SIGNING_ARGS}} ${{env.SIMULATOR_BUILD_ARGS}}
+
+      #############################################################################
+      #         Upload
+      # This will export an xcarchive that can be signed manually
+      #############################################################################
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulator_app
+          path: ios/App/output/data/Build/Products/Release-iphonesimulator/*.app
+          retention-days: 30
+
+          #############################################################################
+          #         WiP Notes - IOS Deploy Testflight
+          # Possibly separate action to testflight deployment]
+          # Will need to use production code-signing methods (e.g. match or manual p12)
+          # https://docs.fastlane.tools/codesigning/getting-started/
+          #############################################################################
+
+          # env:
+          # IOS_FASTLANE_MATCH_GCS_SERVICE_JSON: ${{secrets.IOS_FASTLANE_MATCH_GCS_SERVICE_JSON}}
+
+          # IOS_CODE_SIGNING_IDENTITY: ${{ secrets.IOS_CODE_SIGNING_IDENTITY }}
+          # IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+
+          # IOS_MOBILEPROVISION_BASE64: ${{secrets.IOS_MOBILEPROVISION_BASE64}}
+          # # Combined P12 key+cert encoded as base64
+          # IOS_P12_BASE64: ${{secrets.IOS_P12_BASE64}}
+          # IOS_P12_PASSWORD: ${{secrets.IOS_P12_PASSWORD}}
+
+          # https://docs.fastlane.tools/codesigning/getting-started/
+
+          # TODO - still need to use app store connect to manage
+          # TODO - when passing commands via fastlane run needs formatting differently (should test without run)
+          # - name: Setup development certificates
+          #   working-directory: ios/App
+          #   env:
+          #     IOS_USERNAME: "example@idems.international"
+          #   run: |
+          #     mkdir fastlane
+          #     bundle exec fastlane run create_keychain name:"temp.keychain", password:"temp1234", unlock, default_keychain
+          #     bundle exec fastlane run get_certificates username:"${{env.IOS_USERNAME}}", development, force
+          #     bundle exec fastlane run get_provisioning_profile
+          #     bundle exec fastlane run disable_automatic_code_signing
+
+          # - name: Setup Fastlane Match
+          #   working-directory: ios/App/fastlane
+          #   run: |
+          #     echo 'google_cloud_bucket_name("${{env.IOS_FASTLANE_MATCH_GCS_BUCKET_NAME}}")' > Matchfile
+          #     echo 'storage_mode("google_cloud")' >> Matchfile
+          #     echo 'type("development")' >> Matchfile'
+
+          #
+          # - name: Setup IOS Certs
+          #   run: |
+          #     echo ${{env.IOS_P12_BASE64}} | base64 --decode > cert.p12
+          #     bundle exec fastlane create_keychain --name "temp.keychain" --password "temp1234" --unlock true --default-keychain true
+          #     bundle exec import_certificate --certificate_path cert.p12 --certificate_password "${{env.IOS_P12_PASSWORD}}"
+
+          # TODO - possible config to build xcarchive file that could be signed into IPA after download
+          # https://stackoverflow.com/a/66278353
+          # XCARCHIVE_BUILD_ARGS: --archive_path "./output/archive"
+
+          # TODO - review args required if building signed IPA
+          # IPA_BUILD_ARGS: --build_path "./output/build" --output_directory "./output/output"

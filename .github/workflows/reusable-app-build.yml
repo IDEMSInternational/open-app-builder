@@ -18,6 +18,8 @@ env:
     PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
     DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
     FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+    # Any secrets used by post-build-cmd need to be explicitly defined
+    GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
   
   ##################################################################################
   #         Main Code
@@ -41,22 +43,32 @@ on:
           type: string
           default: ""
         lfs:
-          description: Enable git lfs to include download of all binary assets (user-facing deployments)
+          description: Enable git lfs asset download for content repos (if used by repo)
           type: boolean
           default: true
-  
+        post-build-cmd:
+          description: Optional command to run postbuild
+          type: string
+          default: ""
+        additional-artifact:
+          description: Optional folder name to upload as additional artifact (e.g. ios/android folders)
+          type: string
+          default: ""
+        workflow-runner:
+          description: Optionally specify github runner to use for build action
+          type: string
+          default: ubuntu-latest
       outputs:
         GIT_SHA:
           description: "Git SHA of build head"
           value: ${{ jobs.build.outputs.GIT_SHA }}
-  
 jobs:
     build:
       outputs:
         GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
       env:
         ARTIFACT: test
-      runs-on: ubuntu-latest
+      runs-on: ${{inputs.workflow-runner}}
 
       steps:
         - name: Check out app code
@@ -72,6 +84,8 @@ jobs:
             path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
             repository: ${{env.PARENT_DEPLOYMENT_REPO}}
             ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
+            # main repo does not use lfs so explicitly omit
+            lfs: false
   
         - name: Checkout deployment
           uses: actions/checkout@v4
@@ -79,6 +93,7 @@ jobs:
             ref: ${{inputs.branch}}
             path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
             fetch-depth: 0
+            # content repo optionally includes lfs
             lfs: ${{inputs.lfs}}
             
         - name: Populate Encryption key
@@ -117,9 +132,20 @@ jobs:
 
         - name: Build
           run: yarn build ${{inputs.build-flags}}
+
+        - name: Post-Build
+          if: ${{inputs.post-build-cmd}}
+          run: ${{inputs.post-build-cmd}}
   
-        - name: Upload artifact
+        - name: Upload www artifact
           uses: actions/upload-pages-artifact@v3
           with:
             path: "www/"
             name: www  
+
+        - name: Upload additional artifacts
+          if: ${{inputs.additional-artifact}}
+          uses: actions/upload-pages-artifact@v3
+          with:
+            path: "${{inputs.additional-artifact}}/"
+            name: ${{inputs.additional-artifact}}

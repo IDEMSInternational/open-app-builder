@@ -1,7 +1,11 @@
 import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes } from "../../models";
-import { getAnswerListParamFromTemplateRow, IAnswerListItem } from "src/app/shared/utils";
+import {
+  getAnswerListParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+  IAnswerListItem,
+} from "src/app/shared/utils";
 
 interface IRadioButtonGridParams {
   /** List of options presented as radio items */
@@ -21,6 +25,10 @@ interface IRadioButtonGridParams {
    * Default '16px'
    **/
   grid_gap: string;
+  /* TEMPLATE PARAMETER: "variant". The style variant of the button_grid */
+  variant?: "default" | "circle-icon" | "flex";
+  /* TEMPLATE PARAMETER: "style". The "secondary" style sets the colour of the buttons */
+  style?: "secondary" | undefined;
 }
 
 @Component({
@@ -57,13 +65,20 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponent {
    */
   public async handleItemClick(item: IAnswerListItem) {
     await this.setValue(item.name);
-    this.triggerActions("changed");
   }
 
   private setParams() {
     this.parameter_list = this._row.parameter_list || ({} as any);
     this.radioItems = getAnswerListParamFromTemplateRow(this._row, "answer_list", []);
     this.gridStyle = this.generateGridStyle();
+    this.parameter_list.style = getStringParamFromTemplateRow(
+      this._row,
+      "style",
+      undefined
+    ) as IRadioButtonGridParams["style"];
+    this.parameter_list.variant = getStringParamFromTemplateRow(this._row, "variant", "default")
+      .split(",")
+      .join(" ") as IRadioButtonGridParams["variant"];
   }
 
   /**

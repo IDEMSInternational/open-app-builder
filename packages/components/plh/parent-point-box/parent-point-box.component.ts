@@ -80,7 +80,7 @@ export class PlhParentPointBoxComponent extends TemplateBaseComponent implements
     if (this._row.disabled) {
       return;
     }
-    this._row.value = parseInt(this._row.value) + 1;
+    this._row.value = parseInt(this._row.value as string) + 1;
     this._value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
     if (this.play_celebration) {
@@ -96,7 +96,6 @@ export class PlhParentPointBoxComponent extends TemplateBaseComponent implements
     this.wasClicked = true;
     await this.setValue(this._value);
     await this.triggerActions("click");
-    await this.triggerActions("changed");
   }
 
   async clickInfo(event) {

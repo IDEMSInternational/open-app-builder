@@ -112,7 +112,9 @@ export class TmplTimerComponent extends TemplateBaseComponent implements OnInit 
   }
 
   getDurationFromParams() {
-    return this._row.value ? this._row.value : this.starting_minutes * 60 + this.starting_seconds;
+    return this._row.value
+      ? (this._row.value as number)
+      : this.starting_minutes * 60 + this.starting_seconds;
   }
 
   clickLeftButton() {
@@ -123,6 +125,10 @@ export class TmplTimerComponent extends TemplateBaseComponent implements OnInit 
     this.state.clickRightButton();
   }
 
+  /**
+   * TODO: ionic pickerController is legacy and will be deprecated, refactor to use inline ion-picker component,
+   * see example: https://ionicframework.com/docs/api/picker#picker-in-modal
+   */
   openPicker() {
     if (this.isTimerEditable) {
       const numColumns = 4;

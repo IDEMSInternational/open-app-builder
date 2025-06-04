@@ -24,6 +24,5 @@ export class TmplTextAreaComponent extends TemplateBaseComponent implements OnIn
 
   public async handleChange(value: any) {
     await this.setValue(value);
-    this.triggerActions("changed");
   }
 }

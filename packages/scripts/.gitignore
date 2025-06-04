@@ -1,7 +1,6 @@
 # gdrive service account for gdrive download scripts
 config/*
-!config/public.key
-!config/*.enc
+!config/.gitkeep
 build
 dist
 exec

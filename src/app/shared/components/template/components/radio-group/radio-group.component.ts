@@ -59,7 +59,6 @@ export class TmplRadioGroupComponent extends TemplateBaseComponent implements On
 
   public async handleRadioButtonClick(selectedValue: string) {
     await this.setValue(selectedValue);
-    this.triggerActions("changed");
   }
 
   /**

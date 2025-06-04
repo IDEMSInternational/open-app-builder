@@ -7,15 +7,26 @@ import { TourComponent } from "./feature/tour/tour.component";
  * Additional home template redirects and fallback routes will be specified
  * from deployment config via the AppConfigService
  **/
-export const APP_FEATURE_ROUTES: Routes = [
+const featureRoutes: Routes = [
   {
     path: "campaigns",
     loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
   },
   {
+    path: "component",
+    loadChildren: () =>
+      import("./feature/template/pages/component/component.module").then(
+        (m) => m.TemplateComponentModule
+      ),
+  },
+  {
     path: "notifications",
     loadChildren: () =>
       import("./feature/notification/notification.module").then((m) => m.NotificationsModule),
+  },
+  {
+    path: "shared-data",
+    loadChildren: () => import("./feature/shared-data").then((m) => m.SHARED_DATA_ROUTES),
   },
   {
     path: "template",
@@ -38,11 +49,17 @@ export const APP_FEATURE_ROUTES: Routes = [
     path: "user",
     loadChildren: () => import("./feature/user/user.module").then((m) => m.UserModule),
   },
-  // Routes to show in sidebar routing
+];
+// Routes available for display in sidebar routing
+const sidebarRoutes: Routes = [
   {
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
     outlet: "sidebar",
+  },
+  {
+    path: "shared-data",
+    loadChildren: () => import("./feature/shared-data").then((m) => m.SHARED_DATA_ROUTES),
   },
   {
     path: "template",
@@ -51,13 +68,13 @@ export const APP_FEATURE_ROUTES: Routes = [
     outlet: "sidebar",
   },
   {
-    path: "component",
-    loadChildren: () =>
-      import("./feature/template/pages/component/component.module").then(
-        (m) => m.TemplateComponentModule
-      ),
+    path: "user",
+    loadChildren: () => import("./feature/user/user.module").then((m) => m.UserModule),
+    outlet: "sidebar",
   },
 ];
+
+export const APP_FEATURE_ROUTES = [...featureRoutes, ...sidebarRoutes];
 
 @NgModule({
   imports: [

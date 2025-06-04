@@ -57,7 +57,6 @@ export class TmplToggleBarComponent extends TemplateBaseComponent implements OnI
     e.preventDefault();
     e.stopImmediatePropagation();
     await this.setValue(!this._row.value);
-    this.triggerActions("changed");
   }
 
   getParams() {

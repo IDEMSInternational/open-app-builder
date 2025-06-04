@@ -74,7 +74,7 @@ export class TmplSliderComponent extends TemplateBaseComponent implements OnInit
       // if restoring functionality assume the value reverts to last known (if a number)
       await this.changeValue(typeof this.previousValue === "number" ? this.previousValue : 0);
     } else {
-      this.previousValue = this._row.value;
+      this.previousValue = this._row.value as number;
       // if removing functionality specify the value as no_value
       await this.changeValue("no_value");
     }
@@ -82,7 +82,6 @@ export class TmplSliderComponent extends TemplateBaseComponent implements OnInit
 
   async changeValue(value: number | "no_value") {
     await this.setValue(value);
-    await this.triggerActions("changed");
   }
 
   updateConfigParams() {

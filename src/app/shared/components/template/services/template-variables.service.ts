@@ -4,11 +4,11 @@ import { FlowTypes } from "src/app/shared/model";
 import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
-import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -23,13 +23,6 @@ const { TEMPLATE_ROW_ITEM_METADATA_FIELDS } = FlowTypes;
  * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
  * @param templateRowMap hashmap containing list of all template rows, keyed by their nested row name
  */
-export interface IVariableContext {
-  templateRowMap: ITemplateRowMap;
-  row: FlowTypes.TemplateRow;
-  field?: string;
-  calcContext?: ICalcContext;
-  itemContext?: any; // used when iterating over items
-}
 
 @Injectable({ providedIn: "root" })
 export class TemplateVariablesService extends AsyncServiceBase {
@@ -74,7 +67,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
    */
   public async evaluatePLHData(
     data: string | number | boolean | any,
-    context: IVariableContext,
+    context: FlowTypes.TemplateRowEvalContext,
     omitFields: string[] = []
   ) {
     const dynamicFields = context.row._dynamicFields;
@@ -93,7 +86,16 @@ export class TemplateVariablesService extends AsyncServiceBase {
       else if (data !== null) {
         // only evaluate if there are dynamic fields recorded somewhere in the object
         if (dynamicFields) {
-          for (const k of Object.keys(data)) {
+          for (let k of Object.keys(data)) {
+            // HACK - replace any dynamic keys and re-evaluate
+            // TODO - should ideally be easier to identify within existing dynamicFields system
+            if (k.startsWith("@")) {
+              const keyDynamicEvaluators = extractDynamicEvaluators(k);
+              const evaluatedKey = await this.evaluatePLHString(keyDynamicEvaluators, context);
+              data[evaluatedKey] = data[k];
+              delete data[k];
+              return this.evaluatePLHData({ ...data }, context, omitFields);
+            }
             value[k] = data[k];
             if (this.shouldEvaluateField(k as any, omitFields)) {
               // evalute each object element with reference to any dynamic specified for it's index (instead of fieldname)
@@ -144,10 +146,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
     const dynamicEvaluators = extractDynamicEvaluators(conditionString);
     if (dynamicEvaluators) {
       // Assumes that no specific row information available (@local undefined)
-      const context: IVariableContext = {
-        row: {} as any,
-        templateRowMap: {} as any,
-      };
+      const context: FlowTypes.TemplateRowEvalContext = {};
       return this.evaluatePLHString(dynamicEvaluators, context);
     }
     return conditionString;
@@ -171,7 +170,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
    */
   private async evaluatePLHString(
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
-    context: IVariableContext
+    context: FlowTypes.TemplateRowEvalContext
   ) {
     const fullExpression = evaluators[0].fullExpression;
     log_group(fullExpression);
@@ -184,7 +183,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
     const parsedEvaluators: FlowTypes.TemplateRowDynamicEvaluator[] = [];
     for (const evaluator of evaluators) {
       const { type, fieldName, matchedExpression } = evaluator;
-      context.calcContext = calcContext;
+      context.calc = calcContext;
 
       // If a raw evaluator exists for any part of expression, return full expression unparsed
       // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
@@ -195,7 +194,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
       // If the appropriate context is not available, do not evaluate that particular evaluator
       // NOTE - this will mean compound expressions will need to be evaluated later
       // E.g. @item.some_field === @local.other_field -> this.item.id === "local value", which needs further evaluation
-      if (type === "item" && !context.itemContext) {
+      if (type === "item" && !context.item) {
         return this.hackProcessItemEvaluators(evaluators, context);
       }
 
@@ -248,7 +247,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
    */
   private async hackProcessItemEvaluators(
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
-    context: IVariableContext
+    context: FlowTypes.TemplateRowEvalContext
   ) {
     let expression = evaluators[0].fullExpression;
     for (const evaluator of evaluators) {
@@ -300,12 +299,11 @@ export class TemplateVariablesService extends AsyncServiceBase {
    * @param evaluators
    */
   private async parseContextExpression(
-    context: IVariableContext,
+    context: FlowTypes.TemplateRowEvalContext,
     fullExpression: string,
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
   ) {
-    const { calcContext } = context;
-    const { thisCtxt, globalFunctions, globalConstants } = calcContext;
+    const { thisCtxt, globalFunctions, globalConstants } = context.calc as ICalcContext;
     let evaluated: any;
     try {
       // first pass - full evaluation
@@ -358,45 +356,42 @@ export class TemplateVariablesService extends AsyncServiceBase {
    */
   private async processDynamicEvaluator(
     evaluator: FlowTypes.TemplateRowDynamicEvaluator,
-    context: IVariableContext
+    context: FlowTypes.TemplateRowEvalContext
   ) {
     let parsedValue: any;
     let parseSuccess = true;
     const { type, fieldName } = evaluator;
-    const { templateRowMap, field } = context;
+    const { local = {}, field } = context;
     switch (type) {
       case "local":
-        // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
-        const returnField: keyof FlowTypes.TemplateRow = "value";
-
         // find any rows where nested path corresponds to match path
-        let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-        Object.entries(templateRowMap).forEach(([nestedName, row]) => {
+        let matchedValues: { value: FlowTypes.TemplateRow["value"]; nestedName: string }[] = [];
+        Object.entries(local).forEach(([nestedName, value]) => {
           if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
-            matchedRows.push({ row, nestedName });
+            matchedValues.push({ nestedName, value });
           }
         });
         // no match found. If condition assume this is fine, otherwise authoring error
-        if (matchedRows.length === 0) {
+        if (matchedValues.length === 0) {
           if (field === "condition") {
             parsedValue = false;
           } else {
             parseSuccess = false;
             console.error(`@local.${fieldName} not found`, {
               evaluator,
-              rowMap: templateRowMap,
+              rowMap: local,
             });
           }
         }
         // match found - return least nested (in case of duplicates)
         else {
-          matchedRows = matchedRows.sort(
+          matchedValues = matchedValues.sort(
             (a, b) => a.nestedName.split(".").length - b.nestedName.split(".").length
           );
-          if (matchedRows.length > 1) {
-            console.warn(`@local.${fieldName} found multiple`, { matchedRows });
+          if (matchedValues.length > 1) {
+            console.warn(`@local.${fieldName} found multiple`, { matchedValues });
           }
-          parsedValue = matchedRows[0].row[returnField];
+          parsedValue = matchedValues[0].value;
         }
 
         break;
@@ -431,15 +426,15 @@ export class TemplateVariablesService extends AsyncServiceBase {
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
-        const { thisCtxt, globalFunctions, globalConstants } = context.calcContext;
+        const { thisCtxt, globalFunctions, globalConstants } = context.calc as ICalcContext;
         log("evaluate calc", { expression, thisCtxt, globalFunctions });
         // TODO - merge string replacements with above methods
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
       case "item":
         // only attempt to evaluate items if context passed, otherwise leave as original unparsed string
-        if (context?.itemContext) {
-          parsedValue = context.itemContext[fieldName];
+        if (context?.item) {
+          parsedValue = context.item[fieldName];
         } else {
           parsedValue = evaluator.matchedExpression;
         }
@@ -452,8 +447,8 @@ export class TemplateVariablesService extends AsyncServiceBase {
         // This will be checked a second time and could cause an infinite loop
         parsedValue = "";
     }
-    parsedValue = this.ensureValueTranslated(parsedValue);
-    return { parsedValue, parseSuccess };
+    const translatedValue = this.ensureValueTranslated(parsedValue);
+    return { parsedValue: translatedValue, parseSuccess };
   }
 
   /**
@@ -464,7 +459,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
   private ensureValueTranslated(value: any) {
     // If translatable value should be an object with _translations property
     // TODO - check if case needs to be added to translate arrays
-    if (value && typeof value === "object" && !Array.isArray(value)) {
+    if (isObjectLiteral(value)) {
       if (value.hasOwnProperty("_translations")) {
         value = this.templateTranslateService.translateRow(value);
       } else {

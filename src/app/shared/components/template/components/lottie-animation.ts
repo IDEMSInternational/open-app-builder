@@ -9,7 +9,9 @@ import { TemplateAssetService } from "../services/template-asset.service";
   selector: "plh-tmpl-lottie-animation",
   template: `
     <div class="tmpl-lottie-anim-container" [class]="style">
-      <ng-lottie *ngIf="animOptions" [options]="animOptions"></ng-lottie>
+      @if (animOptions) {
+        <ng-lottie [options]="animOptions"></ng-lottie>
+      }
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -37,7 +39,7 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
     // Loop by default
     const loop = r?.parameter_list?.loop === "false" ? false : true;
     if (r.value) {
-      const path = this.templateAssetService.getTranslatedAssetPath(r.value);
+      const path = this.templateAssetService.getTranslatedAssetPath(r.value as string);
       this.animOptions = {
         path,
         loop,

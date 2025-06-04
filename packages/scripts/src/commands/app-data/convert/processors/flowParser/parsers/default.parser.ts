@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { TemplatedData } from "shared";
+import { Logger, TemplatedData } from "shared";
 import {
   parseAppDataListString,
   parseAppDataCollectionString,
@@ -75,7 +75,7 @@ export class DefaultParser<
 
   /** If any flows have a first row that starts `@default` return values */
   private extractRowDefaultValues(flow: FlowType) {
-    const firstRow = flow.rows?.[0] || {};
+    const firstRow: Record<string, any> = flow.rows?.[0] || {};
     if (Object.values(firstRow)[0] === "@default") {
       const defaultKey = Object.keys(firstRow)[0];
       delete firstRow[defaultKey];
@@ -116,7 +116,7 @@ class RowProcessor {
   constructor(
     public row: IRowData,
     public parent: DefaultParser,
-    public defaultValues?: any
+    public defaultValues?: Record<string, any>
   ) {}
 
   public run() {
@@ -197,9 +197,17 @@ class RowProcessor {
         childFlow.rows = group;
         const parsedGroup = subParser.run(childFlow);
         this.row = { ...this.row, type: groupType, rows: parsedGroup.rows as any };
-      } catch (ex) {
-        console.warn("Error on group extract on row", this.row, this.parent.flow, ex);
-        console.warn("Error is in sheet ", this.parent.flow._xlsxPath);
+      } catch (err) {
+        if (err.message === "missing_end_statement") {
+          Logger.error({
+            msg1: `Template missing "${type.replace("begin", "end")}" statement`,
+            logOnly: true,
+          });
+        }
+        const { rows, _xlsxPath, ...parentMeta } = this.parent.flow;
+        console.warn("Error in flow:", parentMeta);
+        console.warn("Row:", this.row);
+        console.warn("XLSX:", _xlsxPath);
       }
     }
     // Can ignore as handled during subgroup extraction
@@ -222,10 +230,8 @@ class RowProcessor {
       return nestedIfCount === 0;
     });
     if (endIndex === -1) {
-      console.log("could not find end index", startIndex);
-      throw new Error(
-        "extract group error. count not find end index for start index=" + startIndex
-      );
+      // Found instance of `begin_` statement without `end_`. Further details logged in parent try-catch
+      throw new Error(`missing_end_statement`);
     }
     const queueEndIndex = startIndex + endIndex;
     // remove all rows from the queue excluding start and end clause statements (e.g. if/end-if)
@@ -246,6 +252,7 @@ class RowProcessor {
           if (field.endsWith("_collection") || field.includes("_collection_")) {
             this.row[field] = parseAppDataCollectionString(this.row[field]);
           }
+          // parse action_list within default parser in case referenced from data_list
           if (field.endsWith("action_list")) {
             this.row[field] = this.row[field]
               .map((actionString) => parseAppDataActionString(actionString))
@@ -316,7 +323,7 @@ class RowProcessor {
         } else {
           if (typeof this.row[key] === "string") {
             if (this.row[key].includes("@include_default")) {
-              this.row[key] = this.row[key].replace("@include_default", value);
+              this.row[key] = this.row[key].replace("@include_default", value as any);
             }
             if (this.row[key].includes("@omit_default")) {
               delete this.row[key];

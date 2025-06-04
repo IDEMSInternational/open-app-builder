@@ -24,12 +24,15 @@ import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/adv
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
+import { TmplButtonAppleSignInComponent } from "./button-apple-sign-in/button-apple-sign-in.component";
+import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
 import { TmplDisplayGridComponent } from "./layout/display-grid/display-grid.component";
 import { TmplDisplayGroupComponent } from "./layout/display-group/display-group.component";
+import { TmplDisplayGroupStickyComponent } from "./layout/display-group/sticky/display-group-sticky.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
 import { TmplHelpIconComponent } from "./help-icon";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
@@ -44,9 +47,11 @@ import { TmplProgressPathComponent } from "./progress-path/progress-path.compone
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplSharedDataComponent } from "./shared-data/shared-data.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplSubtitleComponent } from "./subtitle";
+import { TmplTableComponent } from "./table/table.component";
 import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
@@ -54,7 +59,7 @@ import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextComponent } from "./text/text.component";
 import { TmplTextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
-import { TmplTitleComponent } from "./title";
+import { TmplTitleComponent } from "./title/title.component";
 import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
@@ -63,6 +68,13 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
+import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
+import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
+
+export const TEMPLATE_STANDALONE_COMPONENTS = [
+  // tmpl prefix
+  TmplTableComponent,
+];
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -71,6 +83,7 @@ export const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   AnimatedSectionGroupComponent,
   ComboBoxModalComponent,
+  ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
   RoundIconButtonComponent,
@@ -86,12 +99,15 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
+  TmplButtonAppleSignInComponent,
+  TmplButtonGoogleSignInComponent,
   TmplCarouselComponent,
   TmplComboBoxComponent,
   TmplDashedBoxComponent,
   TmplDataItemsComponent,
   TmplDisplayGridComponent,
   TmplDisplayGroupComponent,
+  TmplDisplayGroupStickyComponent,
   TmplDrawerComponent,
   TmplHelpIconComponent,
   TmplIconBannerComponent,
@@ -106,6 +122,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
+  TmplSharedDataComponent,
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
@@ -120,6 +137,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTitleComponent,
   TmplToggleBarComponent,
   TmplVideoComponent,
+  TmplDateTimePickerComponent,
   // no prefix
   WorkshopsComponent,
 ];
@@ -148,16 +166,20 @@ const COMMON_COMPONENT_MAPPING = {
   animated_section: AnimatedSectionComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  apple_sign_in_button: TmplButtonAppleSignInComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
+  date_time_picker: TmplDateTimePickerComponent,
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
+  display_group_sticky: TmplDisplayGroupStickyComponent,
   drawer: TmplDrawerComponent,
   form: FormComponent,
+  google_sign_in_button: TmplButtonGoogleSignInComponent,
   help_icon: TmplHelpIconComponent,
   html: TemplateHTMLComponent,
   icon_banner: TmplIconBannerComponent,
@@ -176,10 +198,12 @@ const COMMON_COMPONENT_MAPPING = {
   radio_group: TmplRadioGroupComponent,
   round_button: RoundIconButtonComponent,
   select_text: SelectTextComponent,
+  shared_data: TmplSharedDataComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
+  table: TmplTableComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
   text_area: TmplTextAreaComponent,

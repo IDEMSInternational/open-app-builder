@@ -1,14 +1,13 @@
-<div class="wrapper margin-t-regular" [class]="style">
+<div class="wrapper margin-t-regular" [class]="params().style">
   <ion-input
     #input
     class="text-box-input"
-    [inputmode]="isNumberInput ? 'tel' : 'text'"
+    [inputmode]="params().isNumberInput ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
-    [value]="prioritisePlaceholder ? '' : _row.value"
-    [placeholder]="placeholder"
-    [maxlength]="maxLength"
-    [style.textAlign]="textAlign"
+    [value]="params().prioritisePlaceholder ? '' : value()"
+    [placeholder]="params().placeholder"
+    [maxlength]="params().maxLength"
+    [style.textAlign]="params().textAlign"
+    [disabled]="params().disabled"
   ></ion-input>
 </div>
-
-<!--  -->

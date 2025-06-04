@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { addRxPlugin, MangoQuery, RxDocument } from "rxdb";
-import { firstValueFrom, lastValueFrom, map, AsyncSubject } from "rxjs";
+import { addRxPlugin, MangoQuery } from "rxdb";
+import { firstValueFrom, lastValueFrom, AsyncSubject } from "rxjs";
 
 import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
@@ -10,11 +10,9 @@ import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { TopLevelProperty } from "rxdb/dist/types/types";
-import ActionsFactory from "./dynamic-data.actions";
+import { DynamicDataActionFactory } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
-
-type IDocWithMeta = { id: string; APP_META?: Record<string, any> };
+import { Observable, defer, switchMap } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -54,10 +52,10 @@ export class DynamicDataService extends AsyncServiceBase {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
     // register action handlers
-    const { set_data, reset_data } = new ActionsFactory(this);
-    this.templateActionRegistry.register({ set_data, reset_data });
+    const { add_data, remove_data, reset_data, set_data } = new DynamicDataActionFactory(this);
+    this.templateActionRegistry.register({ add_data, remove_data, reset_data, set_data });
     // HACK - Legacy `set_item` action still managed here (will be removed in #2454)
-    this.registerTemplateActionHandlers();
+    this.registerLegacyItemsActions();
   }
 
   private async initialise() {
@@ -75,7 +73,7 @@ export class DynamicDataService extends AsyncServiceBase {
     this.writeCache = await new PersistedMemoryAdapter(name).create();
     this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
-  private registerTemplateActionHandlers() {
+  private registerLegacyItemsActions() {
     this.templateActionRegistry.register({
       /**
        * Write properties on the current item (default), or on an explicitly targeted item,
@@ -102,35 +100,36 @@ export class DynamicDataService extends AsyncServiceBase {
   }
 
   /** Watch for changes to a specific flow */
-  public async query$<T extends IDocWithMeta>(
+  public query$<T = FlowTypes.Data_listRow>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
-    queryObj?: MangoQuery
-  ) {
-    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
-
-    // by default, use `row_index` as query index to return results sorted on this property
-    const defaultQueryObj = { index: ["row_index", "id"] };
-    queryObj = { ...defaultQueryObj, ...queryObj };
-    // use a live query to return all documents in the collection, converting
-    // from reactive documents to json data instead
-    let query = this.db.query(collectionName, queryObj);
-    return query.pipe(
-      map((v) => {
-        const docs = v as RxDocument<T>[];
-        return docs.map((doc) => {
-          // we need mutable json so that we can replace dynamic references as required
-          const data = doc.toMutableJSON();
-          // ensure any previously extracted metadata fields are repopulated
-          return this.populateMeta(data) as T;
-        });
+    queryObj?: MangoQuery<T>
+  ): Observable<T[]> {
+    // ensure service ready and collection created when querying
+    // use defer to enable subscribing synchronously
+    return defer(async () => {
+      await this.ready();
+      const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+      return collectionName;
+    }).pipe(
+      switchMap((collectionName) => {
+        // by default, use `row_index` as query index to return results sorted on this property
+        const defaultQueryObj = { index: ["row_index", "id"] };
+        queryObj = { ...defaultQueryObj, ...queryObj };
+        // use a live query to return all documents in the collection, converting
+        // from reactive documents to json data instead
+        let query = this.db.query<T>(collectionName, queryObj);
+        return query as Observable<T[]>;
       })
     );
   }
 
   /** Take a snapshot of the current state of a table */
-  public async snapshot<T extends IDocWithMeta>(flow_type: FlowTypes.FlowType, flow_name: string) {
-    const obs = await this.query$<T>(flow_type, flow_name);
+  public snapshot<T extends FlowTypes.Data_listRow>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string
+  ) {
+    const obs = this.query$<T>(flow_type, flow_name);
     return firstValueFrom(obs);
   }
 
@@ -148,14 +147,55 @@ export class DynamicDataService extends AsyncServiceBase {
         const mergedUpdate = deepMergeObjects(data, update);
         // update memory db
         await this.db.updateDoc({ collectionName, id: row_id, data: mergedUpdate });
-        // update persisted db
-        this.writeCache.update({ flow_name, flow_type, id: row_id, data: mergedUpdate });
+        // update persisted db - only use partial update as will be merged
+        this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
         );
       }
     }
+  }
+
+  public async insert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: Partial<T>
+  ) {
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    const { id } = data;
+    await this.db.bulkInsert(collectionName, [data]);
+    this.writeCache.set({ flow_type, flow_name, id, data });
+  }
+
+  public async upsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T
+  ) {
+    return this.bulkUpsert(flow_type, flow_name, [data]);
+  }
+
+  /** Insert multiple docs into database. If given doc already exists it will be replaced */
+  public async bulkUpsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T[]
+  ) {
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    await this.db.bulkUpsert(collectionName, data);
+    for (const row of data) {
+      const { id } = row;
+      this.writeCache.set({ flow_type, flow_name, id, data: row });
+    }
+  }
+
+  /** Remove user_generated data row */
+  public async remove(flow_type: FlowTypes.FlowType, flow_name: string, ids: string[]) {
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    const collection = this.db.getCollection(collectionName);
+    await collection.bulkRemove(ids);
+    await this.writeCache.delete(flow_type, flow_name, ids);
   }
 
   /** Remove user writes on a flow to return it to its original state */
@@ -175,11 +215,21 @@ export class DynamicDataService extends AsyncServiceBase {
       const docs = await existingCollection.find().exec();
       await existingCollection.bulkRemove(docs.map((d) => d.id));
       // Re-seed initial data
-      const initialData = await this.getInitialData(flow_type, flow_name);
-      await existingCollection.bulkInsert(initialData);
+      const { data } = await this.prepareInitialData(flow_type, flow_name);
+      await existingCollection.bulkInsert(data);
     } else {
       await this.createCollection(flow_type, flow_name);
     }
+  }
+
+  /**
+   * Remove user writes on all flows
+   * NOTE - as this will also reset internal flows it is recommended to reload the app
+   * after reset
+   * */
+  public async resetAll() {
+    await this.db.removeAll();
+    await this.writeCache.deleteAll();
   }
 
   /** Access full state of all persisted data layers */
@@ -189,9 +239,28 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.writeCache.state;
   }
 
-  public getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
-    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+  public async getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
+    // ensure collection has been created when accessing schema
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     return this.db.getCollection(collectionName)?.schema;
+  }
+
+  public getCount(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    return this.db.getCollection(collectionName)?.count().exec();
+  }
+
+  /**
+   * Set the data for an internal data collection
+   * All internal collections are prefixed by `_` and are only stored ephemerally (not persisted)
+   * Data that is set will override any pre-existing data
+   **/
+  public async setInternalCollection(name: string, data: any[]) {
+    const { collectionName } = await this.ensureCollection("data_list", `_${name}`);
+    const collection = this.db.getCollection(collectionName);
+    const docs = await collection.find().exec();
+    await collection.bulkRemove(docs.map((d) => d.id));
+    await this.db.bulkInsert(collectionName, data);
   }
 
   /** Ensure a collection exists, creating if not and populating with corresponding list data */
@@ -212,35 +281,62 @@ export class DynamicDataService extends AsyncServiceBase {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     // create collection and insert initial data. Use AsyncSubject to notify only when complete
     this.collectionCreators[collectionName] = new AsyncSubject();
-    const initialData = await this.getInitialData(flow_type, flow_name);
-    if (initialData.length === 0) {
-      throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
-    }
+    const { data, schema } = await this.prepareInitialData(flow_type, flow_name);
 
-    const schema = this.inferSchema(initialData[0]);
     await this.db.createCollection(collectionName, schema);
-    await this.db.bulkInsert(collectionName, initialData);
+    await this.db.bulkInsert(collectionName, data);
     // notify any observers that collection has been created
     this.collectionCreators[collectionName].next(collectionName);
     this.collectionCreators[collectionName].complete();
     delete this.collectionCreators[collectionName];
   }
 
-  /** Retrieve json sheet data and merge with any user writes */
-  private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
-    const flowData = await this.appDataService.getSheet(flow_type, flow_name);
+  /**
+   * Retrieve json sheet data and merge with any user writes
+   * Use the retrieved sheet data as source of truth for schema and ensure write data
+   * compatible in case of schema changes
+   * */
+  private async prepareInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
+    // Default initial rows and schema, used for internal data
+    let initialRows: any[] = [];
+    let schema = { ...REACTIVE_SCHEMA_BASE };
+
+    // Assume any flows that do not start with an underscore should be initialised from sheets
+    if (!flow_name.startsWith("_")) {
+      const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(
+        flow_type,
+        flow_name
+      );
+      if (!flowData || flowData.rows.length === 0) {
+        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+      }
+      // add index property to each element before insert, for sorting queried data by original order
+      initialRows = flowData.rows.map((el, i) => ({ ...el, row_index: i }));
+      // Infer schema from flow. Specific data types will be included within flow._metadata,
+      // and all other fields considered string
+      schema = this.inferSchema(flowData.rows[0], flowData._metadata);
+    }
+
+    // Cached data will automatically be cast to correct data type from schema,
+    // with any additional fields ignored
+    const mergedData = this.mergeWriteCacheData(flow_type, flow_name, initialRows);
+
+    return { data: mergedData, schema };
+  }
+
+  private mergeWriteCacheData(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    initialData: any[]
+  ) {
     const writeData = this.writeCache.get(flow_type, flow_name) || {};
-    const writeDataArray: IDocWithMeta[] = Object.entries(writeData).map(([id, v]) => ({
+    const writeDataArray: FlowTypes.Data_listRow[] = Object.entries(writeData).map(([id, v]) => ({
       ...v,
       id,
     }));
-    const mergedData = this.mergeData(flowData?.rows, writeDataArray);
-    // HACK - rxdb can't write any fields prefixed with `_` so extract all to top-level APP_META key
-    const cleaned = mergedData.map((el) => this.extractMeta(el));
-
-    // add index property to each element before insert, for sorting queried data by original order
-    const initialDataWithMeta = cleaned.map((el) => ({ ...el, row_index: cleaned.indexOf(el) }));
-    return initialDataWithMeta;
+    const mergedData = this.mergeData(initialData, writeDataArray);
+    // TODO - how to preserve order when including user-generated writes (should just work...)
+    return mergedData;
   }
 
   /** When working with rxdb collections only alphanumeric lower case names allowed  */
@@ -248,7 +344,7 @@ export class DynamicDataService extends AsyncServiceBase {
     return `${flow_type}${flow_name}`.toLowerCase().replace(/[^a-z0-9]/g, "");
   }
 
-  private mergeData<T extends IDocWithMeta>(flowData: T[] = [], dbData: T[] = []) {
+  private mergeData<T extends FlowTypes.Data_listRow>(flowData: T[] = [], dbData: T[] = []) {
     const flowHashmap = arrayToHashmap(flowData, "id");
     const dbDataHashmap = arrayToHashmap(dbData, "id");
     const merged = deepMergeObjects(flowHashmap, dbDataHashmap);
@@ -259,23 +355,23 @@ export class DynamicDataService extends AsyncServiceBase {
    * Any fields that will be used in querying need to have defined properties for each field
    * Use an example data entry to try and infer schema from datatypes present in that row
    *
-   * TODO - ideally better if schmea can also be defined using an `@schema` row or similar
    */
-  private inferSchema(data: any) {
-    const { id, ...fields } = data;
+  private inferSchema(dataRow: any, metadata: FlowTypes.Data_list["_metadata"] = {}) {
+    const { id, ...fields } = dataRow;
     // TODO - could make QC check in parser instead of at runtime
     if (!id) {
-      throw new Error("Cannot create dynamic data without id column\n" + data);
+      throw new Error("Cannot create dynamic data without id column\n" + dataRow);
     }
     if (typeof id !== "string") {
-      throw new Error("ID column must be formatted as a string\n" + data);
+      throw new Error("ID column must be formatted as a string\n" + dataRow);
     }
     const schema = REACTIVE_SCHEMA_BASE;
-    for (const [key, value] of Object.entries(fields)) {
-      if (!schema.properties[key]) {
-        const type = typeof value;
-        const entry: TopLevelProperty = { type };
-        schema.properties[key] = entry;
+    for (const key of Object.keys(fields)) {
+      // assign any provided metadata, with fallback 'string' type if not specified
+      // ignore any `_` fields as these will be merged into APP_META (do not satisfy rxdb regex)
+      if (!schema.properties[key] && !key.startsWith("_")) {
+        const type = metadata[key]?.type || "string";
+        schema.properties[key] = { ...metadata[key], type };
       }
     }
     return schema;
@@ -308,33 +404,11 @@ export class DynamicDataService extends AsyncServiceBase {
     }
 
     if (itemDataIDs.includes(targetRowId)) {
+      console.log("[Set Item]", flow_name, targetRowId, writeableProps);
       await this.update("data_list", flow_name, targetRowId, writeableProps);
     } else {
       console.warn(`[SET ITEM] - No item ${_id ? "with ID " + _id : "at index " + _index}`);
     }
-  }
-
-  /**
-   * Iterate over a document's key-value pairs and populate any properties starting with
-   * an underscore to a single top-level APP_META property
-   */
-  private extractMeta(doc: IDocWithMeta) {
-    const APP_META: Record<string, any> = {};
-    for (const [key, value] of Object.entries(doc)) {
-      if (key.startsWith("_")) {
-        APP_META[key] = value;
-        delete doc[key];
-      }
-    }
-    if (Object.keys(APP_META).length > 0) {
-      doc.APP_META = APP_META;
-    }
-    return doc;
-  }
-  /** Populate any previously extracted APP_META properties back to document */
-  private populateMeta(doc: IDocWithMeta) {
-    const { APP_META, ...data } = doc;
-    return { ...data, ...APP_META };
   }
 }
 

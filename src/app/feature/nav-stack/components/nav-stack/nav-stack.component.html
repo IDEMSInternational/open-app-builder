@@ -1,0 +1,23 @@
+@if (config.header) {
+  <ion-toolbar>
+    @if (config.title) {
+      <!-- use mode="ios" to centre title within toolbar -->
+      <ion-title mode="ios">
+        {{ config.title }}
+      </ion-title>
+    }
+    @if (config.showCloseButton) {
+      <ion-buttons slot="end">
+        <ion-button (click)="close()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+}
+<ion-content>
+  <plh-template-container
+    class="template-container"
+    [templatename]="config.templateName"
+  ></plh-template-container>
+</ion-content>
