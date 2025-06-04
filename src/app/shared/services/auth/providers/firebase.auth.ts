@@ -91,6 +91,24 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   /**
+   * Determine the auth provider from user data
+   */
+  private determineAuthProvider(user: User) {
+    let providerId = "firebase"; // fallback
+    if (user?.providerData?.length) {
+      providerId = user.providerData[0].providerId;
+    }
+
+    console.log("[FIREBASE AUTH] - determineAuthProvider - providerId", providerId);
+
+    if (providerId === "apple.com") return "apple";
+    if (providerId === "google.com") return "google";
+
+    console.warn("[FIREBASE AUTH] Unrecognized provider:", providerId);
+    return providerId;
+  }
+
+  /**
    * When a user signs in for the first time a full profile is retrieved which includes openID profile data.
    * However, when automated sign-in happens on app reload, only firebase-specific profile information is available.
    * As such use localStorage to persist and retrieve openID profile information
@@ -101,11 +119,17 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.auth.authStateReady();
     const { user } = await FirebaseAuthentication.getCurrentUser();
     if (user) {
+      const provider = this.determineAuthProvider(user);
+
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
         this.setAuthUser(user, JSON.parse(storedProfile));
-      } else {
-        this.signInWithGoogle();
+      } else if (provider) {
+        if (provider === "google") {
+          this.signInWithGoogle();
+        } else if (provider === "apple") {
+          this.signInWithApple();
+        }
       }
     }
   }
