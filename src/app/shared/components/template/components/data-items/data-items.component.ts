@@ -47,11 +47,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     // If there are no child rows to render, hide the parent container (otherwise it will be visible as a blank row with default margins)
     effect(() => {
       const shouldHide = !this.rowSignal().rows?.length || !this.itemRows()?.length;
-      if (shouldHide) {
-        this.parent.elRef.nativeElement.setAttribute("data-hidden", "true");
-      } else {
-        this.parent.elRef.nativeElement.setAttribute("data-hidden", "false");
-      }
+      this._row.hidden = shouldHide;
     });
   }
 
