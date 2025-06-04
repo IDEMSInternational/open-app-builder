@@ -1,7 +1,8 @@
-import { Component, computed, Input, signal } from "@angular/core";
+import { Component, computed, effect, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import type { TemplateComponent } from "../template-component";
 
 @Component({
   template: ``,
@@ -32,6 +33,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   });
   rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
+  /** Specify whether component should be shown or not. If hidden sets display:none on host component */
+  public shouldShow = signal(true);
+
   /**
    * @ignore
    * specific data used in component rendering
@@ -44,9 +48,33 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /**
    * @ignore
+   * @deprecated
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
+
+  /**
+   * reference to parent template container - does not have setter as should remain static
+   **/
+  @Input() parentContainerComponentRef: TemplateContainerComponent;
+
+  /**
+   * reference to parent template container - does not have setter as should remain static
+   **/
+  @Input() parentTemplateComponentRef: TemplateComponent;
+
+  constructor() {
+    // Handle show/hide override from component (bypasses templating system)
+    effect(() => {
+      const shouldShow = this.shouldShow();
+      const templateComponentRef = this.parentTemplateComponentRef;
+      if (templateComponentRef) {
+        const templateEl = templateComponentRef.elRef.nativeElement as HTMLDivElement;
+        // Set display to "none" when hiding, or use empty string to remove specific override
+        templateEl.style.display = shouldShow ? "" : "none";
+      }
+    });
+  }
 
   /**
    * Whenever actions are triggered handle in the parent template component
