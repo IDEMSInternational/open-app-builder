@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect } from "@angular/core";
+import { ChangeDetectionStrategy, Component, effect } from "@angular/core";
 import { FlowTypes } from "../../models";
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "./data-items.service";
@@ -45,10 +45,13 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
       this.hackInterceptComponentActions(_nested_name);
     });
     // If there are no child rows to render, hide the parent container (otherwise it will be visible as a blank row with default margins)
-    effect(() => {
-      const shouldHide = !this.rowSignal().rows?.length || !this.itemRows()?.length;
-      this._row.hidden = shouldHide;
-    });
+    effect(
+      () => {
+        const shouldHide = !this.rowSignal().rows?.length || !this.itemRows()?.length;
+        this.shouldShow.set(!shouldHide);
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   /** Trigger a `data_changed` action and evaluate with items list context */
