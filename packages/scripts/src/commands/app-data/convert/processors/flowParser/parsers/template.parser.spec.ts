@@ -48,6 +48,21 @@ describe("Template Parser PostProcessor", () => {
     ]);
   });
 
+  it("Generates row names for nested item rows", () => {
+    const itemRows = [{ type: "text" }, { type: "button", name: "btn_@item.id" }];
+
+    const res = parser.run({
+      flow_name: "",
+      flow_type: "template",
+      rows: [{ ...ROW_BASE, name: "", type: "data_items", rows: itemRows }],
+    });
+    const [textRow, buttonRow] = res.rows[0].rows;
+    // default generate base name and item suffix
+    expect(textRow.name).toEqual("text_1_@item.id");
+    // allow author-provided value
+    expect(buttonRow.name).toEqual("btn_@item.id");
+  });
+
   it("Converts rows ending _list or containing _list_ in name to templated list", () => {
     // CASE 0 - Do not convert rows unless explicit includes _list_ or ends _list
     const case0_1 = parser.postProcessRow({
@@ -159,9 +174,9 @@ describe("Template Parser PostProcessor", () => {
   it("Creates nested path names for child rows", () => {
     const rows: FlowTypes.TemplateRow[] = [
       {
-        _nested_name: "my_items",
-        name: "my_items",
-        type: "items",
+        _nested_name: "dg",
+        name: "dg",
+        type: "display_group",
         // Handle case of both named and unnamed nested row names
         rows: [
           {
@@ -176,7 +191,7 @@ describe("Template Parser PostProcessor", () => {
     const res = parser.run({ flow_type: "template", flow_name: "test_nested", rows });
     const itemRows = res.rows[0].rows;
     const nestedNames = itemRows.map((n) => n._nested_name);
-    expect(nestedNames).toEqual(["my_items.named_text", "my_items.text_2"]);
+    expect(nestedNames).toEqual(["dg.named_text", "dg.text_2"]);
   });
 });
 
