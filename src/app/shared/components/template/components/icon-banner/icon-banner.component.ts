@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "../../../../utils";
 
 @Component({
@@ -8,10 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../../utils";
   templateUrl: "./icon-banner.component.html",
   styleUrls: ["./icon-banner.component.scss"],
 })
-export class TmplIconBannerComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class TmplIconBannerComponent extends TemplateBaseComponent implements OnInit {
   image_src: string | null;
   title: string | null;
   text: string | null;
