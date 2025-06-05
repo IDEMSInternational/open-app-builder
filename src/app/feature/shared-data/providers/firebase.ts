@@ -1,6 +1,5 @@
 import { Injector } from "@angular/core";
 import {
-  CACHE_SIZE_UNLIMITED,
   collection,
   CollectionReference,
   deleteDoc,
@@ -11,9 +10,7 @@ import {
   Firestore,
   FirestoreDataConverter,
   getFirestore,
-  initializeFirestore,
   onSnapshot,
-  persistentLocalCache,
   Query,
   query,
   serverTimestamp,
@@ -82,12 +79,6 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
       throw new Error(`Shared data provider required firebase to be configured`);
     }
     this.db = getFirestore(app);
-
-    // Possible fix for iOS emulator issues (replace getFirestore)
-    // this.db = initializeFirestore(app, {
-    //   experimentalForceLongPolling: true,
-    //   localCache: persistentLocalCache({ cacheSizeBytes: CACHE_SIZE_UNLIMITED })
-    // });
   }
 
   public querySingle$(params: SharedDataQueryParams) {
