@@ -16,6 +16,8 @@ const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
 
 export type FirebaseAuthUser = User;
 
+type IAuthProvider = "apple" | "google" | undefined;
+
 @Injectable({
   providedIn: "root",
 })
@@ -93,19 +95,23 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   /**
    * Determine the auth provider from user data
    */
-  private determineAuthProvider(user: User) {
-    let providerId = "firebase"; // fallback
-    if (user?.providerData?.length) {
-      providerId = user.providerData[0].providerId;
+  private determineAuthProvider(user: User): IAuthProvider {
+    const providerId = user?.providerData?.[0]?.providerId;
+
+    if (!providerId) {
+      console.warn("[FIREBASE AUTH] No provider data found for user.");
+      return undefined;
     }
 
-    console.log("[FIREBASE AUTH] - determineAuthProvider - providerId", providerId);
-
-    if (providerId === "apple.com") return "apple";
-    if (providerId === "google.com") return "google";
-
-    console.warn("[FIREBASE AUTH] Unrecognized provider:", providerId);
-    return providerId;
+    switch (providerId) {
+      case "apple.com":
+        return "apple";
+      case "google.com":
+        return "google";
+      default:
+        console.warn("[FIREBASE AUTH] Unrecognized provider:", providerId);
+        return undefined;
+    }
   }
 
   /**
@@ -130,6 +136,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
         } else if (provider === "apple") {
           this.signInWithApple();
         }
+      } else {
+        console.warn("[FIREBASE AUTH] - handleAutomatedLogin - no provider found, signing out");
+        this.signOut();
       }
     }
   }
