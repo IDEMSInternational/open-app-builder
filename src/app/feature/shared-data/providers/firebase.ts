@@ -4,31 +4,24 @@ import { SharedDataProviderBase, SharedDataQueryParams } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
 import { Observable } from "rxjs";
 import { ISharedDataCollection } from "../types";
-import {
-  FirestoreDataConverter,
-  DocumentData,
-  QueryDocumentSnapshot,
-  SnapshotMetadata,
-} from "firebase/firestore";
 
 /** Prefix applied to all firebase collections for storing shared data */
 const COLLECTION = `shared_data`;
 
 /** Convert data between app and firestore formats */
-const dataConverter: FirestoreDataConverter<ISharedDataCollection, DocumentData> = {
-  toFirestore: (data) => ({
+const sharedDataConverter = {
+  toFirestore: (data: ISharedDataCollection) => ({
     ...data,
     _created_at: data._created_at || new Date().toISOString(),
     _updated_at: new Date().toISOString(),
   }),
-  fromFirestore: (snapshot: QueryDocumentSnapshot<DocumentData>) => {
-    const data = snapshot.data();
-    return {
+  fromFirestore: (data: any, id: string) =>
+    ({
+      id,
       ...data,
       _created_at: data._created_at,
       _updated_at: data._updated_at,
-    } as ISharedDataCollection;
-  },
+    }) as ISharedDataCollection,
 };
 
 /**
@@ -62,20 +55,11 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
               return;
             }
             if (result?.snapshot) {
-              // Create a QueryDocumentSnapshot-like object that matches the converter's expectations
-              const snapshot = {
-                data: () => result.snapshot.data,
-                id: result.snapshot.id,
-                exists: true,
-                ref: { id: result.snapshot.id },
-                get: () => result.snapshot.data,
-                metadata: {
-                  fromCache: false,
-                  hasPendingWrites: false,
-                } as SnapshotMetadata,
-              } as unknown as QueryDocumentSnapshot<DocumentData>;
-              const data = dataConverter.fromFirestore(snapshot);
-              observer.next({ id: result.snapshot.id, ...data });
+              const data = sharedDataConverter.fromFirestore(
+                result.snapshot.data,
+                result.snapshot.id
+              );
+              observer.next(data);
             }
           }
         );
@@ -125,22 +109,9 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
               return;
             }
             if (result?.snapshots) {
-              const items = result.snapshots.map((snapshot) => {
-                // Create a QueryDocumentSnapshot-like object that matches the converter's expectations
-                const querySnapshot = {
-                  data: () => snapshot.data,
-                  id: snapshot.id,
-                  exists: true,
-                  ref: { id: snapshot.id },
-                  get: () => snapshot.data,
-                  metadata: {
-                    fromCache: false,
-                    hasPendingWrites: false,
-                  } as SnapshotMetadata,
-                } as unknown as QueryDocumentSnapshot<DocumentData>;
-                const data = dataConverter.fromFirestore(querySnapshot);
-                return { id: snapshot.id, ...data };
-              });
+              const items = result.snapshots.map((snapshot) =>
+                sharedDataConverter.fromFirestore(snapshot.data, snapshot.id)
+              );
               observer.next(items);
             }
           }
@@ -156,7 +127,7 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
   }
 
   public async createSharedCollection(id: string, data: ISharedDataCollection) {
-    const convertedData = dataConverter.toFirestore(data);
+    const convertedData = sharedDataConverter.toFirestore(data);
     await FirebaseFirestore.setDocument({
       reference: `${COLLECTION}/${id}`,
       data: convertedData,
@@ -182,7 +153,7 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
   }
 
   public async updateCollectionMetadata(id: string, update: Partial<ISharedDataCollection>) {
-    const convertedUpdate = dataConverter.toFirestore(update as ISharedDataCollection);
+    const convertedUpdate = sharedDataConverter.toFirestore(update as ISharedDataCollection);
     await FirebaseFirestore.updateDocument({
       reference: `${COLLECTION}/${id}`,
       data: { ...convertedUpdate, _updated_at: new Date().toISOString() },
