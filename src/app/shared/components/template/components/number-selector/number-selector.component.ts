@@ -1,13 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "../../../../model";
+import { Component, OnInit } from "@angular/core";
 import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
   getParamFromTemplateRow,
 } from "src/app/shared/utils";
-import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
-import { TemplateContainerComponent } from "../../template-container.component";
 
 interface ICategoryList {
   from: number;
@@ -19,12 +16,7 @@ interface ICategoryList {
   templateUrl: "./number-selector.component.html",
   styleUrls: ["./number-selector.component.scss"],
 })
-export class TmplNumberComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
-  @Input() parent: TemplateContainerComponent;
-
+export class TmplNumberComponent extends TemplateBaseComponent implements OnInit {
   title: string | null;
   min_value: number | null = 0;
   displayValue: any = 0;
