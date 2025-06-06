@@ -105,7 +105,18 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       if (storedProfile) {
         this.setAuthUser(user, JSON.parse(storedProfile));
       } else {
-        this.signInWithGoogle();
+        // trigger automated login depending on provider
+        const providerId = user.providerData?.[0]?.providerId;
+        switch (providerId) {
+          case "apple.com":
+            this.signInWithApple();
+          case "google.com":
+            this.signInWithGoogle();
+          default:
+            const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
+            console.warn(msg);
+            this.signOut();
+        }
       }
     }
   }

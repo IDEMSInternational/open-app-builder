@@ -8,7 +8,7 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { FlowTypes } from "../../models";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
@@ -28,10 +28,7 @@ interface IComboBoxParams {
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
 })
-export class TmplComboBoxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnDestroy
-{
+export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDestroy {
   public params: Signal<IComboBoxParams> = computed(() => this.getParams(this.parameterList()));
 
   public answerText = signal("");

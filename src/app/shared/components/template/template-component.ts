@@ -13,7 +13,7 @@ import {
   ComponentRef,
 } from "@angular/core";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
-import { FlowTypes, ITemplateRowProps } from "./models";
+import type { FlowTypes, ITemplateRowProps } from "./models";
 import { TemplateContainerComponent } from "./template-container.component";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
@@ -102,7 +102,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private elRef: ElementRef) {}
+  constructor(public elRef: ElementRef) {}
 
   ngOnInit() {
     this.renderRow(this._row);
@@ -165,6 +165,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     // assign input variables
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = row;
+    // Add self-reference in case child component needs direct access to parent
+    componentRef.instance.parentContainerComponentRef = this.parent;
+    componentRef.instance.parentTemplateComponentRef = this;
     this.componentRef = componentRef;
   }
 
