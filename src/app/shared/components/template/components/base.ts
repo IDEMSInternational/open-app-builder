@@ -47,20 +47,12 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   }
 
   /**
-   * @ignore
-   * @deprecated
-   * reference to parent template container - does not have setter as should remain static
-   **/
+   * @deprecated - use `parentContainerComponentRef` instead
+   */
   @Input() parent: TemplateContainerComponent;
 
-  /**
-   * reference to parent template container - does not have setter as should remain static
-   **/
   @Input() parentContainerComponentRef: TemplateContainerComponent;
 
-  /**
-   * reference to parent template container - does not have setter as should remain static
-   **/
   @Input() parentTemplateComponentRef: TemplateComponent;
 
   constructor() {
