@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 @Component({
@@ -8,7 +7,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
   templateUrl: "./tile-component.component.html",
   styleUrls: ["./tile-component.component.scss"],
 })
-export class TmplTileComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+export class TmplTileComponent extends TemplateBaseComponent implements OnInit {
   first_line_text: string | null;
   second_line_text: string | null;
   icon_src: string | null;
