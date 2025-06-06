@@ -137,6 +137,8 @@ export class TemplateVariablesService extends AsyncServiceBase {
     // Evaluate fields that are names of item metadata fields, e.g. "_index", "_id",
     // E.g. for use in actions such as `click | set_item | _index: @item._index + 1, completed:false`
     if (TEMPLATE_ROW_ITEM_METADATA_FIELDS.includes(fieldName as any)) return true;
+    // ensure _nested_name evaluated (e.g. dynamic data_items)
+    if (fieldName === "_nested_name") return true;
     if (fieldName.startsWith("_")) return false;
     return true;
   }
