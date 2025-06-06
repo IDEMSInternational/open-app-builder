@@ -7,7 +7,6 @@ import {
   evaluateDynamicDataUpdate,
   isItemChanged,
 } from "../dynamic-data.utils";
-import { deepMergeObjects } from "../../../utils";
 
 interface IActionSetDataOperatorParams {
   // TODO - ideally use same itemPipe operators
