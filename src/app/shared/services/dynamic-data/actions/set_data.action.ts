@@ -75,44 +75,6 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
 }
 
 /**
- * Given a list of updates, merge them by ID and return a map of ID to update object.
- * For example:
- * [
- *   { id: "123", user: { name: "Jasper" } },
- *   { id: "123", user: { age: 9 } },
- *   { id: "123", status: "active" },
- *   { id: "123", status: "inactive" }
- * ]
- * becomes:
- * {
- *   "123": {
- *     user: { name: "Jasper", age: 9 },  // Nested objects are merged
- *     status: "inactive"                  // Last update wins
- *   }
- * }
- *
- * If multiple updates target the same property:
- * - For nested objects, the properties are merged
- * - For primitive values (strings, numbers, etc), the last update wins
- *
- * @param updates - List of updates to merge
- * @returns Map of ID to update object
- */
-export function mergeUpdatesById(updates: FlowTypes.Data_listRow[]): Record<string, any> {
-  return updates.reduce(
-    (idUpdates, update) => {
-      const { id, ...writeableProps } = update;
-      if (!idUpdates[id]) {
-        idUpdates[id] = {};
-      }
-      idUpdates[id] = deepMergeObjects({}, idUpdates[id], writeableProps);
-      return idUpdates;
-    },
-    {} as Record<string, any>
-  );
-}
-
-/**
  * HACK: No current method to bulk update, so process in batches.
  * Updates within each batch are processed concurrently, but batches are processed sequentially
  * to avoid overwhelming the system.
