@@ -74,37 +74,6 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
   return parseUpdateData(schema, update, items, _list_id);
 }
 
-/**
- * HACK: No current method to bulk update, so process in batches.
- * Updates within each batch are processed concurrently, but batches are processed sequentially
- * to avoid overwhelming the system.
- *
- * For example, with batchSize=2:
- * Updates for IDs [1,2,3,4,5] would be processed as:
- * - First batch: [1,2] in parallel
- * - Second batch: [3,4] in parallel
- * - Third batch: [5] in parallel
- *
- * @param service Service to use for updates
- * @param listId ID of the list being updated
- * @param updatesByID Map where each key is an ID and value is the data to update for that ID
- * @param batchSize Number of updates to process in parallel (default: 10)
- */
-export async function hackProcessUpdatesInBatches(
-  service: DynamicDataService,
-  listId: string,
-  updatesByID: Record<string, any>,
-  batchSize: number = 10
-) {
-  const updateEntries = Object.entries(updatesByID);
-  for (let i = 0; i < updateEntries.length; i += batchSize) {
-    const batch = updateEntries.slice(i, i + batchSize);
-    await Promise.all(
-      batch.map(([id, updateData]) => service.update("data_list", listId, id, updateData))
-    );
-  }
-}
-
 function parseUpdateData(
   schema: RxSchema<any>,
   updateData: Record<string, any>,

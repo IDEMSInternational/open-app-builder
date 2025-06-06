@@ -3,10 +3,7 @@ import { TestBed } from "@angular/core/testing";
 import { MockAppDataService } from "../../data/app-data.service.mock.spec";
 import { AppDataService } from "../../data/app-data.service";
 
-import setDataAction, {
-  IActionSetDataParams,
-  hackProcessUpdatesInBatches,
-} from "./set_data.action";
+import setDataAction, { IActionSetDataParams } from "./set_data.action";
 import { DynamicDataService } from "../dynamic-data.service";
 import { firstValueFrom } from "rxjs";
 import { FlowTypes } from "packages/data-models";
@@ -210,36 +207,5 @@ describe("set_data Action", () => {
     await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
       `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
-  });
-
-  /*************************************************************
-   *  hackProcessUpdatesInBatches Tests
-   ************************************************************/
-  describe("hackProcessUpdatesInBatches", () => {
-    it("updates are all processed", async () => {
-      const updatesByID = {
-        id_0: { number: 1 },
-        id_1: { number: 2 },
-      };
-
-      // Reset spy calls before test
-      serviceUpdateSpy.calls.reset();
-
-      await hackProcessUpdatesInBatches(service, "test_flow", updatesByID, 2);
-
-      // Verify all updates were called
-      expect(serviceUpdateSpy).toHaveBeenCalledTimes(2);
-
-      // Verify the actual update calls
-      const calls = serviceUpdateSpy.calls.all();
-      expect(calls[0].args).toEqual(["data_list", "test_flow", "id_0", { number: 1 }]);
-      expect(calls[1].args).toEqual(["data_list", "test_flow", "id_1", { number: 2 }]);
-    });
-
-    it("handles empty updates object", async () => {
-      const updatesByID = {};
-      await hackProcessUpdatesInBatches(service, "test_flow", updatesByID, 2);
-      expect(serviceUpdateSpy).not.toHaveBeenCalled();
-    });
   });
 });
