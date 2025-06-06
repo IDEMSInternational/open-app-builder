@@ -37,13 +37,22 @@ interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
 export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
 export default async (service: DynamicDataService, params: IActionSetDataParams) => {
-  // if called from set_item will already include list of updates to apply, if not generate
-  if (!params._updates) {
-    params._updates = await generateUpdateList(service, params);
-  }
   const { _list_id, _updates } = params;
-  console.log("[Set Data]", _list_id, _updates);
-  await service.bulkUpsert("data_list", _list_id, _updates);
+  // if called from set_item will already include list of updates to apply
+  // apply individually using update op
+  if (_updates) {
+    for (const { id, ...writeableProps } of params._updates) {
+      console.log("[Set Data]", _list_id, params._updates);
+      await service.update("data_list", _list_id, id, writeableProps);
+    }
+  }
+  // if called directly generate a full list of updates required for the
+  // target items in the list and apply as bulkUpsert
+  else {
+    const generatedUpdates = await generateUpdateList(service, params);
+    console.log("[Set Data]", _list_id, generatedUpdates);
+    await service.bulkUpsert("data_list", _list_id, generatedUpdates);
+  }
 };
 
 async function generateUpdateList(service: DynamicDataService, params: IActionSetDataParams) {
