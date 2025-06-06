@@ -176,7 +176,10 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.bulkUpsert(flow_type, flow_name, [data]);
   }
 
-  /** Insert multiple docs into database. If given doc already exists it will be replaced */
+  /**
+   * Insert multiple docs into database. If given doc already exists it will be replaced.
+   * If requiring a `bulkUpdate` operation should first merge with existing docs and then upsert
+   * */
   public async bulkUpsert<T extends { id: string }>(
     flow_type: FlowTypes.FlowType,
     flow_name: string,
