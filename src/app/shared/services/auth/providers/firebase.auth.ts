@@ -16,8 +16,6 @@ const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
 
 export type FirebaseAuthUser = User;
 
-type IAuthProvider = "apple" | "google" | undefined;
-
 @Injectable({
   providedIn: "root",
 })
@@ -93,28 +91,6 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   /**
-   * Determine the auth provider from user data
-   */
-  private determineAuthProvider(user: User): IAuthProvider {
-    const providerId = user?.providerData?.[0]?.providerId;
-
-    if (!providerId) {
-      console.warn("[FIREBASE AUTH] No provider data found for user.");
-      return undefined;
-    }
-
-    switch (providerId) {
-      case "apple.com":
-        return "apple";
-      case "google.com":
-        return "google";
-      default:
-        console.warn("[FIREBASE AUTH] Unrecognized provider:", providerId);
-        return undefined;
-    }
-  }
-
-  /**
    * When a user signs in for the first time a full profile is retrieved which includes openID profile data.
    * However, when automated sign-in happens on app reload, only firebase-specific profile information is available.
    * As such use localStorage to persist and retrieve openID profile information
@@ -125,20 +101,22 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.auth.authStateReady();
     const { user } = await FirebaseAuthentication.getCurrentUser();
     if (user) {
-      const provider = this.determineAuthProvider(user);
-
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
         this.setAuthUser(user, JSON.parse(storedProfile));
-      } else if (provider) {
-        if (provider === "google") {
-          this.signInWithGoogle();
-        } else if (provider === "apple") {
-          this.signInWithApple();
-        }
       } else {
-        console.warn("[FIREBASE AUTH] - handleAutomatedLogin - no provider found, signing out");
-        this.signOut();
+        // trigger automated login depending on provider
+        const providerId = user.providerData?.[0]?.providerId;
+        switch (providerId) {
+          case "apple.com":
+            this.signInWithApple();
+          case "google.com":
+            this.signInWithGoogle();
+          default:
+            const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
+            console.warn(msg);
+            this.signOut();
+        }
       }
     }
   }
