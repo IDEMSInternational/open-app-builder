@@ -64,6 +64,11 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    * Configure Firebase Auth to use indexedDB for persistence on native platforms.
    * See https://github.com/IDEMSInternational/open-app-builder/pull/2835#pullrequestreview-2672295259
    * and https://firebase.google.com/docs/auth/web/custom-dependencies#platform-specific_considerations
+   *
+   * NOTE - only required if using Firebase JS SDK directly on native (not capacitor-firebase native)
+   * https://github.com/capawesome-team/capacitor-firebase/blob/main/packages/authentication/docs/firebase-js-sdk.md
+   * This isn't advisable as any requests that require auth will fail as the auth will only be
+   * signed in on native layer, but should still maintain compatibility if using native sdks
    */
   private initialiseAuth(app: FirebaseApp) {
     if (Capacitor.isNativePlatform()) {
