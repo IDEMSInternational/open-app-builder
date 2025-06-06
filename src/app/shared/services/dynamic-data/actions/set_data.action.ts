@@ -36,15 +36,21 @@ interface IActionSetDataParamsMeta extends IActionSetDataOperatorParams {
 export type IActionSetDataParams = IActionSetDataParamsMeta & Record<string, any>;
 
 export default async (service: DynamicDataService, params: IActionSetDataParams) => {
-  // if called from set_item will already include list of updates to apply, if not generate
-  if (!params._updates) {
-    params._updates = await generateUpdateList(service, params);
-  }
   const { _list_id, _updates } = params;
-  console.log("[Set Data]", _list_id, _updates);
-  // Hack, no current method for bulk update so make successive (changes debounced in component)
-  for (const { id, ...writeableProps } of _updates) {
-    await service.update("data_list", _list_id, id, writeableProps);
+  // if called from set_item will already include list of updates to apply
+  // apply individually using update op
+  if (_updates) {
+    for (const { id, ...writeableProps } of params._updates) {
+      console.log("[Set Data]", _list_id, params._updates);
+      await service.update("data_list", _list_id, id, writeableProps);
+    }
+  }
+  // if called directly generate a full list of updates required for the
+  // target items in the list and apply as bulkUpsert
+  else {
+    const generatedUpdates = await generateUpdateList(service, params);
+    console.log("[Set Data]", _list_id, generatedUpdates);
+    await service.bulkUpsert("data_list", _list_id, generatedUpdates);
   }
 };
 
@@ -55,7 +61,7 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
   if (_id) {
     query.selector = { id: _id };
   }
-  let ref = await service.query$<any>("data_list", _list_id, query);
+  let ref = service.query$<any>("data_list", _list_id, query);
   let items = await firstValueFrom(ref);
   if (items.length === 0) {
     const msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_id: ${_id}`;
@@ -90,8 +96,14 @@ function parseUpdateData(
   // Coerce updates to correct data types (inline parameter_list values parsed as strings)
   const coerced = coerceDataUpdateTypes(schema?.jsonSchema?.properties, evaluated);
 
-  // Filter to only include updates that will change original item
-  return coerced.filter((el, i) => isItemChanged(items[i], el));
+  // Compare updates and filter out any that will leave original unchanged
+  // Merge update with original to return full document for bulkUpsert op
+  const docsForUpsert = coerced
+    .map((update, i) => ({ update, item: items[i] }))
+    .filter(({ item, update }) => isItemChanged(item, update))
+    .map(({ item, update }) => ({ ...item, ...update }));
+
+  return docsForUpsert;
 }
 
 function removeUpdateMetadata(update: Record<string, any>) {
