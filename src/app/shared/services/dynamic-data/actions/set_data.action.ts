@@ -43,12 +43,7 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
   }
   const { _list_id, _updates } = params;
   console.log("[Set Data]", _list_id, _updates);
-
-  // First merge all updates for each ID
-  const mergedUpdates = mergeUpdatesById(_updates);
-
-  // Then process the merged updates in batches
-  await hackProcessUpdatesInBatches(service, _list_id, mergedUpdates);
+  await service.bulkUpsert("data_list", _list_id, _updates);
 };
 
 async function generateUpdateList(service: DynamicDataService, params: IActionSetDataParams) {
@@ -58,7 +53,7 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
   if (_id) {
     query.selector = { id: _id };
   }
-  let ref = await service.query$<any>("data_list", _list_id, query);
+  let ref = service.query$<any>("data_list", _list_id, query);
   let items = await firstValueFrom(ref);
   if (items.length === 0) {
     const msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_id: ${_id}`;
@@ -162,8 +157,14 @@ function parseUpdateData(
   // Coerce updates to correct data types (inline parameter_list values parsed as strings)
   const coerced = coerceDataUpdateTypes(schema?.jsonSchema?.properties, evaluated);
 
-  // Filter to only include updates that will change original item
-  return coerced.filter((el, i) => isItemChanged(items[i], el));
+  // Compare updates and filter out any that will leave original unchanged
+  // Merge update with original to return full document for bulkUpsert op
+  const docsForUpsert = coerced
+    .map((update, i) => ({ update, item: items[i] }))
+    .filter(({ item, update }) => isItemChanged(item, update))
+    .map(({ item, update }) => ({ ...item, ...update }));
+
+  return docsForUpsert;
 }
 
 function removeUpdateMetadata(update: Record<string, any>) {
