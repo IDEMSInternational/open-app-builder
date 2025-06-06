@@ -77,17 +77,25 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupsDataList: string,
     parentsDataList: string
   ) {
-    const sharedCollectionId = await this.ensureSharedParentGroup(
-      parentGroupId,
-      parentGroupsDataList,
-      parentsDataList
-    );
-    await this.addCoFacilitator(
-      sharedCollectionId,
-      coFacilitatorAuthId,
-      parentGroupId,
-      parentGroupsDataList
-    );
+    try {
+      const sharedCollectionId = await this.ensureSharedParentGroup(
+        parentGroupId,
+        parentGroupsDataList,
+        parentsDataList
+      );
+      await this.addCoFacilitator(
+        sharedCollectionId,
+        coFacilitatorAuthId,
+        parentGroupId,
+        parentGroupsDataList
+      );
+    } catch (error) {
+      console.error(
+        `[PLH PARENT GROUP] - SHARE - Error sharing parent group, id: ${parentGroupId}`,
+        error
+      );
+      return;
+    }
   }
 
   /**
@@ -99,21 +107,26 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string,
     parentGroupId?: string
   ) {
-    // if no parent group id is provided, push all local parent groups that have already been shared to shared data
-    if (!parentGroupId) {
-      await this.handlePushAll(parentGroupsDataList, parentsDataList);
+    try {
+      // if no parent group id is provided, push all local parent groups that have already been shared to shared data
+      if (!parentGroupId) {
+        await this.handlePushAll(parentGroupsDataList, parentsDataList);
+        return;
+      }
+      // else, get local data for specified parent group and push changes to shared data
+      const parentGroup = await this.getLocalParentGroup(
+        parentGroupId,
+        parentGroupsDataList,
+        parentsDataList
+      );
+      if (!parentGroup.shared_id) {
+        await this.ensureSharedParentGroup(parentGroup.id, parentGroupsDataList, parentsDataList);
+      } else {
+        await this.pushParentGroupData(parentGroup);
+      }
+    } catch (error) {
+      console.error("[PLH PARENT GROUP] - PUSH - Error pushing parent group data", error);
       return;
-    }
-    // else, get local data for specified parent group and push changes to shared data
-    const parentGroup = await this.getLocalParentGroup(
-      parentGroupId,
-      parentGroupsDataList,
-      parentsDataList
-    );
-    if (!parentGroup.shared_id) {
-      await this.ensureSharedParentGroup(parentGroup.id, parentGroupsDataList, parentsDataList);
-    } else {
-      await this.pushParentGroupData(parentGroup);
     }
   }
 
@@ -189,18 +202,23 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string,
     completionTrackingDataList?: string
   ) {
-    if (!parentGroupId) {
-      await this.handlePullAll(parentGroupsDataList, parentsDataList, completionTrackingDataList);
+    try {
+      if (!parentGroupId) {
+        await this.handlePullAll(parentGroupsDataList, parentsDataList, completionTrackingDataList);
+        return;
+      }
+
+      const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
+      await this.pullParentGroupDataBySharedId(
+        parentGroupsDataList,
+        parentsDataList,
+        sharedId,
+        completionTrackingDataList
+      );
+    } catch (error) {
+      console.error("[PLH PARENT GROUP] - PULL - Error pulling parent group data", error);
       return;
     }
-
-    const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
-    await this.pullParentGroupDataBySharedId(
-      parentGroupsDataList,
-      parentsDataList,
-      sharedId,
-      completionTrackingDataList
-    );
   }
 
   /** Pull  */
@@ -432,12 +450,19 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentGroupId: string,
     parentGroupsDataList: string
   ) {
-    const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
+    try {
+      const sharedId = await this.getSharedIdFromParentGroupId(parentGroupId, parentGroupsDataList);
 
-    await this.sharedDataService.removeCollectionMember(sharedId, coFacilitatorAuthId, "member");
-    await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
-      cofacilitator_id: undefined,
-    });
+      await this.sharedDataService.removeCollectionMember(sharedId, coFacilitatorAuthId, "member");
+      await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
+        cofacilitator_id: undefined,
+      });
+    } catch (error) {
+      console.error(
+        "[PLH PARENT GROUP] - REMOVE CO-FACILITATOR - Error removing co-facilitator",
+        error
+      );
+    }
   }
 
   /** Get the shared_id for a parent group from local data */
