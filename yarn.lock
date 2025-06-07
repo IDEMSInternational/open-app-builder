@@ -3392,6 +3392,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor-firebase/firestore@npm:6.3.1":
+  version: 6.3.1
+  resolution: "@capacitor-firebase/firestore@npm:6.3.1"
+  peerDependencies:
+    "@capacitor/core": ^6.0.0
+    firebase: ^10.9.0 || ^11.0.0
+  peerDependenciesMeta:
+    firebase:
+      optional: true
+  checksum: cba001e8a57f76ffa33575fd86ee9be87f6b70d313a4e6e417feb9404a615a3e226787b6fb5127299270a128e0661084db02c0b2bb68d978fc030e55c03671cf
+  languageName: node
+  linkType: hard
+
 "@capacitor-firebase/performance@npm:^6.3.1":
   version: 6.3.1
   resolution: "@capacitor-firebase/performance@npm:6.3.1"
@@ -18036,6 +18049,7 @@ __metadata:
     "@capacitor-community/file-opener": ^6.0.0
     "@capacitor-firebase/authentication": ^6.3.1
     "@capacitor-firebase/crashlytics": ^6.3.1
+    "@capacitor-firebase/firestore": 6.3.1
     "@capacitor-firebase/performance": ^6.3.1
     "@capacitor/android": ^6.0.0
     "@capacitor/app": ^6.0.0
