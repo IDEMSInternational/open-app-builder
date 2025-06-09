@@ -8,11 +8,13 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  Signal,
   signal,
 } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import {
   getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
@@ -22,6 +24,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { ITEM_PIPE_OPERATOR_NAMES } from "../../processors/itemPipe";
 import { ItemProcessor } from "../../processors/item";
 import { filterObjectByKeys } from "packages/shared/src/utils/object-utils";
+import { FlowTypes } from "packages/data-models";
 
 interface ITaskProgressBarParams {
   /**
@@ -67,6 +70,10 @@ interface ITaskProgressBarParams {
   variant: "bar" | "wheel";
   /* TEMPLATE PARAMETER: "wheel_title". The wheel title that appears at the bottom */
   title?: string;
+  progressPercent?: number;
+  /** TEMPLATE PARAMETER: progressPercent
+   * postion of the progress on the bar, will override any calculations
+   */
 }
 
 @Component({
@@ -79,6 +86,10 @@ export class TmplTaskProgressBarComponent
   extends TemplateBaseComponent
   implements OnInit, OnDestroy
 {
+  public params: Signal<ITaskProgressBarParams> = computed(() =>
+    this.getParams(this.parameterList())
+  );
+
   @Input() dataListName: string | null;
   @Input() completedField: string | null;
   @Input() completedColumnName: string;
@@ -90,7 +101,7 @@ export class TmplTaskProgressBarComponent
   @Input() parameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
-  params: Partial<ITaskProgressBarParams> = {};
+
   dataRows = signal<any[]>([]);
   processedDataRows = computed(() => {
     const processedDataRows = this.processDataRows(this.dataRows());
@@ -127,53 +138,60 @@ export class TmplTaskProgressBarComponent
     }
   }
 
-  getParams() {
+  getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): ITaskProgressBarParams {
     // If component is being explicitly instantiated from a template, get the params from the template row
     if (this._row) {
       this.standalone = true;
-      this.params.dataListName = getStringParamFromTemplateRow(this._row, "task_group_data", null);
-      this.params.completedField = getStringParamFromTemplateRow(
-        this._row,
-        "completed_field",
-        null
-      );
-      this.params.progressUnitsName = getStringParamFromTemplateRow(
-        this._row,
-        "progress_units_name",
-        "sections"
-      );
-      this.params.showText = getBooleanParamFromTemplateRow(this._row, "show_text", false);
-      this.params.completedColumnName = getStringParamFromTemplateRow(
-        this._row,
-        "completed_column_name",
-        "completed"
-      );
-      this.params.completedFieldColumnName = getStringParamFromTemplateRow(
-        this._row,
-        "completed_field_column_name",
-        "completed_field"
-      );
       this.configureItemProcessor(this._row.parameter_list);
-      this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "bar")
-        .split(",")
-        .join(" ") as ITaskProgressBarParams["variant"];
-      this.params.title = getStringParamFromTemplateRow(this._row, "wheel_title", null);
+      return {
+        dataListName: getStringParamFromTemplateRow(this._row, "task_group_data", null),
+        completedField: getStringParamFromTemplateRow(this._row, "completed_field", null),
+        progressUnitsName: getStringParamFromTemplateRow(
+          this._row,
+          "progress_units_name",
+          "sections"
+        ),
+        showText: getBooleanParamFromTemplateRow(this._row, "show_text", false),
+        completedColumnName: getStringParamFromTemplateRow(
+          this._row,
+          "completed_column_name",
+          "completed"
+        ),
+        completedFieldColumnName: getStringParamFromTemplateRow(
+          this._row,
+          "completed_field_column_name",
+          "completed_field"
+        ),
+        variant: getStringParamFromTemplateRow(this._row, "variant", "bar")
+          .split(",")
+          .join(" ") as ITaskProgressBarParams["variant"],
+        title: getStringParamFromTemplateRow(this._row, "wheel_title", null),
+        progressPercent: getNumberParamFromTemplateRow(this._row, "progress_percent", null),
+      };
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
-      this.params.dataListName = this.dataListName;
-      this.params.completedField = this.completedField;
-      this.params.progressUnitsName = this.progressUnitsName;
-      this.params.showText = this.showText;
-      this.params.completedColumnName = this.completedColumnName || "completed";
-      this.params.completedFieldColumnName = "completed_field";
-      this.params.variant = "bar";
       this.configureItemProcessor(this.parameterList);
+      return {
+        dataListName: this.dataListName,
+        completedField: this.completedField,
+        progressUnitsName: this.progressUnitsName,
+        showText: this.showText,
+        completedColumnName: this.completedColumnName || "completed",
+        completedFieldColumnName: "completed_field",
+        variant: "bar",
+        progressPercent: null,
+      };
     }
   }
 
   get progressPercentage() {
-    return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
+    console.log("progress: %d", this.params().progressPercent);
+    if (this.params().progressPercent) {
+      return this.params().progressPercent;
+    } else {
+      return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
+    }
   }
 
   /** Calculate circumference of progress circle based on number of tasks completed */
@@ -211,21 +229,21 @@ export class TmplTaskProgressBarComponent
 
   private async getTaskGroupDataRows() {
     await this.taskService.ready();
-    this.dataRows.set(await this.taskService.getTaskGroupDataRows(this.params.dataListName));
+    this.dataRows.set(await this.taskService.getTaskGroupDataRows(this.params().dataListName));
   }
 
   private checkAndSetUseDynamicData() {
-    this.useDynamicData = this.dataRows()?.[0]?.hasOwnProperty(this.params.completedColumnName);
+    this.useDynamicData = this.dataRows()?.[0]?.hasOwnProperty(this.params().completedColumnName);
   }
 
   private async evaluateTaskGroupData() {
     const previousProgressStatus = this.progressStatus;
     const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } =
       await this.taskService.evaluateTaskGroupData(this.processedDataRows(), {
-        completedColumnName: this.params.completedColumnName,
-        completedField: this.params.completedField,
-        completedFieldColumnName: this.params.completedFieldColumnName,
-        dataListName: this.params.dataListName,
+        completedColumnName: this.params().completedColumnName,
+        completedField: this.params().completedField,
+        completedFieldColumnName: this.params().completedFieldColumnName,
+        dataListName: this.params().dataListName,
         useDynamicData: this.useDynamicData,
       });
     this.progressStatus = progressStatus;
@@ -244,9 +262,9 @@ export class TmplTaskProgressBarComponent
     if (this.dataQuery$) {
       this.dataQuery$.unsubscribe();
     }
-    if (this.params.dataListName) {
+    if (this.params().dataListName) {
       await this.dynamicDataService.ready();
-      const query = this.dynamicDataService.query$("data_list", this.params.dataListName);
+      const query = this.dynamicDataService.query$("data_list", this.params().dataListName);
       this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
         this.dataRows.set(data);
         await this.evaluateTaskGroupData();
