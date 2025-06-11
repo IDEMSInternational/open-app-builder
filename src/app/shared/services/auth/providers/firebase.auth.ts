@@ -34,7 +34,6 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     // Emits `{user:null}` if not signed in, or user object if existing user re-authenticated
     await firstValueFrom(this.initialising$.pipe(filter((v) => v === true)));
     await this.handleAutomatedLogin();
-    console.log("auth init complete");
   }
 
   public async signInWithApple() {

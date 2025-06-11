@@ -71,7 +71,6 @@ export class AuthService extends AsyncServiceBase {
 
   private async initialise() {
     await this.provider.initialise(this.injector);
-    console.log("auth shared data initialised");
     this.registerTemplateActionHandlers();
     if (this.config.enforceLoginTemplate) {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
