@@ -12,6 +12,10 @@
 		"classpath": "io.capawesome.capacitorjs.plugins.firebase.crashlytics.FirebaseCrashlyticsPlugin"
 	},
 	{
+		"pkg": "@capacitor-firebase/firestore",
+		"classpath": "io.capawesome.capacitorjs.plugins.firebase.firestore.FirebaseFirestorePlugin"
+	},
+	{
 		"pkg": "@capacitor-firebase/performance",
 		"classpath": "io.capawesome.capacitorjs.plugins.firebase.performance.FirebasePerformancePlugin"
 	},
@@ -50,6 +54,10 @@
 	{
 		"pkg": "@capacitor/splash-screen",
 		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
+	},
+	{
+		"pkg": "@capacitor/toast",
+		"classpath": "com.capacitorjs.plugins.toast.ToastPlugin"
 	},
 	{
 		"pkg": "@capawesome/capacitor-app-update",
