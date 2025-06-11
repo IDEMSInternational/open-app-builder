@@ -1,10 +1,19 @@
 import { Injectable, Injector } from "@angular/core";
 import {
   AdditionalUserInfo,
+  AuthCredential,
   FirebaseAuthentication,
   User,
 } from "@capacitor-firebase/authentication";
-import { getAuth, initializeAuth, indexedDBLocalPersistence, Auth } from "firebase/auth";
+import {
+  getAuth,
+  initializeAuth,
+  indexedDBLocalPersistence,
+  Auth,
+  OAuthProvider,
+  GoogleAuthProvider,
+  signInWithCredential,
+} from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser } from "../types";
@@ -33,8 +42,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithApple() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
+    const { user, additionalUserInfo, credential } = await FirebaseAuthentication.signInWithApple();
     if (user) {
+      await this.hackSyncNativeAuth("apple", credential);
       // Note: Apple allows for anonymous sign-in so profile info may be minimal
       const { profile = {} } = additionalUserInfo;
       this.setAuthUser(user, profile);
@@ -44,8 +54,10 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithGoogle() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
+    const { user, additionalUserInfo, credential } =
+      await FirebaseAuthentication.signInWithGoogle();
     if (user) {
+      await this.hackSyncNativeAuth("google", credential);
       const { profile = {} } = additionalUserInfo;
       this.setAuthUser(user, profile);
       this.saveUserInfo(user, profile);
@@ -123,6 +135,38 @@ export class FirebaseAuthProvider extends AuthProviderBase {
             this.signOut();
         }
       }
+    }
+  }
+
+  /**
+   * When using firebase on native device, capacitor-firebase is used to perform native
+   * login, which stores auth credentials on the native layer. However, when using
+   * firestore some services require calling methods on the web layer instead of native
+   * (notably shared-data service which relies on Timestamps which are unavailable on native layer)
+   *
+   * As a result requests made to endpoints that need to evaluate auth user will fail as the
+   * auth user is not present on the web layer. This method aims to re-use any token generated
+   * from native auth to also sign in on web layer, so that web sdk can be used in services
+   */
+  private async hackSyncNativeAuth(provider: "google" | "apple", credential: AuthCredential) {
+    if (Capacitor.isNativePlatform()) {
+      try {
+        const webCredential = this.hackGetWebSignInCredential(provider, credential);
+        await signInWithCredential(this.auth, webCredential);
+        console.log("[Auth] signed in on native layer");
+      } catch (error) {
+        console.error("Failed to sync auth", error);
+      }
+    }
+  }
+
+  private hackGetWebSignInCredential(provider: "apple" | "google", credential: AuthCredential) {
+    if (provider === "google") return GoogleAuthProvider.credential(credential.idToken);
+    if (provider === "apple") {
+      return new OAuthProvider("apple.com").credential({
+        idToken: credential.idToken,
+        rawNonce: credential.nonce,
+      });
     }
   }
 }
