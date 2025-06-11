@@ -465,6 +465,7 @@ export namespace FlowTypes {
     "track_event",
     "trigger_actions",
     "user",
+    "toast",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
     ...PLH_ACTIONS_LIST,
