@@ -1,0 +1,1 @@
+- Follow Angular style guide conventions (https://angular.io/guide/styleguide)
