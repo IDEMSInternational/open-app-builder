@@ -151,7 +151,7 @@ export class AppComponent {
 
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
-        if (!isDeveloperMode) {
+        if (environment.production && !isDeveloperMode) {
           this.removeConsoleLogs();
         }
         await SplashScreen.hide();
