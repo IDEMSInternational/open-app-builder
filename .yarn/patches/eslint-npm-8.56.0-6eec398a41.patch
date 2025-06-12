@@ -1,0 +1,46 @@
+diff --git a/lib/eslint/eslint-helpers.js b/lib/eslint/eslint-helpers.js
+index 685826ac69cfc92a9c1cd3d425adae21a993b7f9..fdbd454113369f4804ca214419e885dc4bfdd6f4 100644
+--- a/lib/eslint/eslint-helpers.js
++++ b/lib/eslint/eslint-helpers.js
+@@ -780,7 +780,17 @@ function processOptions({
+         errors.push("'warnIgnored' must be a boolean.");
+     }
+     if (errors.length > 0) {
+-        throw new ESLintInvalidOptionsError(errors);
++    /**
++     * HACK - avoid terminating eslint on config errors
++     * 
++     * Due to various inconsistencies between eslint 8/9, alongside
++     * typescript-eslint and angular-eslint hard to pinpoint exactly
++     * which dep is populating invalid config error:
++     * 
++     * 'parserOptions' has been removed. Please use the 'overrideConfig.parserOptions' option instead.
++     */
++    console.warn('lint errors', errors)
++    // throw new ESLintInvalidOptionsError(errors);
+     }
+ 
+     return {
+diff --git a/lib/eslint/eslint.js b/lib/eslint/eslint.js
+index 15e6b3dee413d0a35f7d2668c198e994ac6ca4a9..5b00b3d3ef7a66aad18f737be5ca86307f474e0b 100644
+--- a/lib/eslint/eslint.js
++++ b/lib/eslint/eslint.js
+@@ -279,7 +279,17 @@ function processOptions({
+     }
+ 
+     if (errors.length > 0) {
+-        throw new ESLintInvalidOptionsError(errors);
++        /**
++       * HACK - avoid terminating eslint on config errors
++       * 
++       * Due to various inconsistencies between eslint 8/9, alongside
++       * typescript-eslint and angular-eslint hard to pinpoint exactly
++       * which dep is populating invalid config error:
++       * 
++       * 'parserOptions' has been removed. Please use the 'overrideConfig.parserOptions' option instead.
++       */
++      console.warn('lint errors', errors)
++      // throw new ESLintInvalidOptionsError(errors);
+     }
+ 
+     return {
