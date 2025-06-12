@@ -119,10 +119,9 @@ export class LocalNotificationService extends AsyncServiceBase {
       await this.cleanDBNotifications();
       await this.handleUnprocessedNotifications();
 
-      // complete one intiial load
+      // complete intial load
       // defer and debounce any further calls to load notifications to avoid duplicate processing
-      await this.handleNotificationLoad();
-      this.notificationsLoader$.pipe(debounceTime(5000)).subscribe(async () => {
+      this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(async () => {
         await this.handleNotificationLoad();
         await this.setApiNotifications();
       });
@@ -287,8 +286,12 @@ export class LocalNotificationService extends AsyncServiceBase {
    * Schedule a local notification
    * This will create an optimistic database update, which will then be scheduled to Capacitor
    * API during the loadNotifications callback
+   *
+   * @param notification - localNotification config passed to capacitor notification api
+   * @param id - string notification id. This will be written to db for notification lookup as
+   * by default capacitor generates and uses integer ids
    */
-  public async scheduleNotification(notification: ILocalNotification) {
+  public async scheduleNotification(notification: ILocalNotification, id: string) {
     if (!this.permissionGranted) return;
     // add default values
     Object.entries(this.localNotificationDefaults).forEach(([key, value]) => {
@@ -305,16 +308,21 @@ export class LocalNotificationService extends AsyncServiceBase {
     // Capacitor notifications use a random integer as id, however we also want to retain the id of the
     // row used to trigger the notification to avoid duplicates. Ideally this _row_id should be the primary
     // key, however swapping the columns would require additional db migration so just retaining both for now
-    notification._row_id = notification.extra.id;
-    notification.id = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
+    notification._row_id = id;
+
     // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
     notification.largeBody = notification.largeBody || notification.body;
 
-    const existingNotification = this.notificationsByRowId[notification._row_id];
+    const existingNotification = this.notificationsByRowId[id];
     if (existingNotification) {
       await this.removeNotifications([existingNotification.id]);
     }
-    this.notificationsByRowId[notification._row_id] = notification;
+    // When writing to db and scheduling use integer ID as required by capacitor
+    const intId = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
+    notification.id = intId;
+    this.notificationsByRowId[id] = notification;
+    console.log("[Notification] schedule", notification);
+
     await this.addDBNotification(notification as ILocalNotification);
     this.loadNotifications();
   }
@@ -342,7 +350,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       ...notification,
       schedule: { at: notificationDeliveryTime },
     };
-    await this.scheduleNotification(immediateNotification);
+    await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNative && forceBackground) {
