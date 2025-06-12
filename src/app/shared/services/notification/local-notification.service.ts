@@ -30,7 +30,11 @@ const NOTIFICATION_ID_MAX = 2147483647;
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
   schedule: LocalNotificationSchema["schedule"];
-  extra: any;
+  /**
+   * Depending on notification source, `extra` data may be included for use in processing
+   * E.g. campaigns system provides full campaign row
+   */
+  extra: Record<string, any>;
   _created?: any;
   _row_id?: string;
   _action_performed?: string;
@@ -202,7 +206,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       sound: null,
       attachments: null,
       // actionTypeId: "action_1", // Currently no action buttons included
-      extra: null,
+      extra: {},
       // Note, we don't want android to remove notification as we will handle in db
       autoCancel: false,
     };
