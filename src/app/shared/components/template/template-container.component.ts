@@ -203,6 +203,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     }
     log_groupEnd();
     // Ensure any parents using onPush are notified of changes (e.g. data-items)
+
     this.cdr.markForCheck();
   }
 

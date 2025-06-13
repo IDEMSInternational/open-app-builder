@@ -40,6 +40,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row = row;
     // take shallow clone to still be able to detect changes if this._row directly modified
     this.rowSignal.set({ ...row });
+    this.subscribeToDependantVariables();
   }
 
   /**
@@ -90,4 +91,22 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /** @ignore */
   trackByRow = (index: number, row: FlowTypes.TemplateRow) => this.parent.trackByRow(index, row);
+
+  private subscribeToDependantVariables() {
+    this.subscribeToParentVariables();
+  }
+
+  private subscribeToParentVariables() {
+    // to avoid circular dependency, only subscribe to parent variables if the parent is a template row?
+    // to unsubscribe from the variables on destroy
+    if (!this.parent || this.parent.row?.type !== "template") return;
+
+    let parentVariableStore = this.parent.templateRowService.variableStore;
+    let hasVariable = parentVariableStore.hasVariable(this._row._nested_name);
+
+    if (!hasVariable) return;
+    parentVariableStore.watchVariable(this._row._nested_name).subscribe(async (value) => {
+      await this.setValue(value);
+    });
+  }
 }

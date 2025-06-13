@@ -235,6 +235,11 @@ export class DataItemsService {
     );
     processor.templateRowMapValues = templateRowMapValues;
 
+    // Copy variables from parent template row map to child variable store
+    Object.entries(templateRowMap).forEach(([key, { value }]) => {
+      processor.variableStore.setVariable(key, value);
+    });
+
     await processor.processContainerTemplateRows();
     return processor.renderedRows();
   }

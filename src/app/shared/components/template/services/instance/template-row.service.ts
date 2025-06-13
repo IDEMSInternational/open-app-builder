@@ -10,6 +10,7 @@ import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { VariableStore } from "./variable-store";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -40,6 +41,8 @@ export class TemplateRowService extends SyncServiceBase {
   public templateRowMapValues: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] } = {};
 
   public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
+
+  public variableStore = new VariableStore(); // store for dynamic variables used in template rows
 
   constructor(
     private injector: Injector,
@@ -339,6 +342,7 @@ export class TemplateRowService extends SyncServiceBase {
           if (_dynamicFields) {
             return preProcessedRow;
           }
+          this.variableStore.setVariable(name, row.value);
           return;
         // merge new actions with existing container action list
         case "update_action_list":
@@ -360,6 +364,7 @@ export class TemplateRowService extends SyncServiceBase {
           // all other types should just set own value for use in future processing
           this.templateRowMap[_nested_name] = row;
           this.templateRowMapValues[_nested_name] = row.value;
+          this.variableStore.setVariable(name, row.value);
           break;
       }
     }
