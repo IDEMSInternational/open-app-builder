@@ -15,4 +15,4 @@ The action, service and types all currently sit independently to the campaigns s
 
 ## TODO
 - [ ] Update debug pages to track notifications created from action (not only campaigns)
-- [ ] Tests
+- [ ] Add support for tracking notification interaction within db entries
