@@ -46,6 +46,11 @@ export interface ILocalNotification extends LocalNotificationSchema {
   providedIn: "root",
 })
 /**
+ * @deprecated since v0.20.0
+ * This service is tightly coupled with the campaigns system and requires overhaul
+ * Alternate work started within the notifications feature in
+ * `src\app\feature\notification\notification.service.ts`
+ *
  * The local notification service manages scheduled notifications in the database, and handles
  * mapping db notifications to the Capactor notifications API
  * https://capacitorjs.com/docs/apis/local-notifications
