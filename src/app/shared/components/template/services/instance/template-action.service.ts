@@ -219,10 +219,10 @@ export class TemplateActionService extends SyncServiceBase {
         return this.settingsService.resetApp();
       case "set_local":
         console.log("[SET LOCAL]", { key, value });
-        return this.setLocalVariable(key, value);
+        return await this.setLocalVariable(key, value);
       case "set_self":
         console.log("[SET LOCAL]", { key, value });
-        return this.setLocalVariable(key, value);
+        return await this.setLocalVariable(key, value);
       case "go_to":
         return this.templateNavService.handleNavAction(action);
       case "go_to_url":
@@ -360,7 +360,7 @@ export class TemplateActionService extends SyncServiceBase {
    * Update a local template row
    *
    */
-  private setLocalVariable(key: string, value: any) {
+  private async setLocalVariable(key: string, value: any) {
     if (!this.container) return;
     const row_name = key;
     // convert values likely intended as boolean
@@ -379,6 +379,7 @@ export class TemplateActionService extends SyncServiceBase {
       this.container.templateRowService.templateRowMap[rowEntry._nested_name] = rowEntry;
       this.container.templateRowService.templateRowMapValues[rowEntry._nested_name] =
         rowEntry.value;
+      this.container.templateRowService.variableStore.setVariable(rowEntry.name, rowEntry.value);
     } else {
       // TODO
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
@@ -390,10 +391,43 @@ export class TemplateActionService extends SyncServiceBase {
       }
     });
 
+    // Handle any actions that should be triggered by the changed value
+    await this.handleParentChangedActions(key, value);
+
     // update parent reference in case actions force a re-intialisation
     // (not currently implemented)
     if (this.container.parent) {
       this.container.parent.children[this.container.name] = this.container;
+    }
+  }
+
+  /**
+   * If the row type is template, get parent variables
+   * that match by key and handle any 'changed' events.
+   * @param key variable name
+   * @param value variable value
+   */
+  private async handleParentChangedActions(key: string, value: any) {
+    if (this.container?.row?.type === "template") {
+      const parentRows = this.container.row?.rows;
+      const parentVariableRows = parentRows?.filter(
+        (r) => r.type === "set_variable" && r.name === key
+      );
+
+      for (const row of parentVariableRows) {
+        if (!row.action_list) continue;
+
+        const changedActions = row.action_list
+          .filter((a) => a.trigger === "changed")
+          .map((a) => {
+            a.args.push(value);
+            return a;
+          });
+
+        if (changedActions.length === 0) continue;
+
+        await this.container.parent.templateActionService.handleActions(changedActions);
+      }
     }
   }
 
