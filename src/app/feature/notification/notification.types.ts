@@ -1,12 +1,12 @@
 import { LocalNotificationSchema } from "@capacitor/local-notifications";
 
 export interface INotification {
-  title: string;
-  text: string;
   id: string;
   // NOTE - when passing from authored date object will be serialized to isoString
   // this will likely be in local timezone format, e.g. "2025-06013T19:20:00"
   schedule_at: string;
+  title?: string;
+  text?: string;
 }
 
 export interface IDBNotification extends INotification {
