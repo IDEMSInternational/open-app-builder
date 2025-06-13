@@ -25,7 +25,6 @@ export class NotificationService {
     effect(() => {
       const permissionStatus = this.permissionStatus();
       localStorageService.setProtected("NOTIFICATION_PERMISSION_STATUS", permissionStatus);
-      console.log("[Notifications] Permission", permissionStatus);
       if (permissionStatus === "granted") {
         this.recheckScheduledNotifications();
       }
@@ -94,7 +93,6 @@ export class NotificationService {
 
   /** Convert authored notification to schema required by capacitor */
   private generateInternalNotification(notification: INotification) {
-    console.log("validate notification", notification);
     // Create random integer ID compatible with capacitor
     const internalId = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
 
