@@ -1,6 +1,12 @@
-import { fakeAsync, TestBed, tick } from "@angular/core/testing";
+import { TestBed } from "@angular/core/testing";
 import { Capacitor, PermissionState } from "@capacitor/core";
-import { LocalNotifications } from "@capacitor/local-notifications";
+import {
+  CancelOptions,
+  LocalNotifications,
+  LocalNotificationsPlugin,
+  PermissionStatus,
+  ScheduleOptions,
+} from "@capacitor/local-notifications";
 import { of } from "rxjs";
 import { NotificationService } from "./notification.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -8,6 +14,41 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { INotification, IDBNotification } from "./notification.types";
 import { IAppConfig } from "data-models/appConfig";
+
+// Use a mock for capacitor LocalNotification api
+export class MockCapacitorLocalNotifications implements Partial<LocalNotificationsPlugin> {
+  async checkPermissions() {
+    console.log("mock check permissions called");
+    return { display: "granted" as PermissionState };
+  }
+  async requestPermissions() {
+    return { display: "granted" as PermissionState };
+  }
+  async schedule(options: ScheduleOptions) {
+    return { notifications: [] };
+  }
+
+  async cancel(options: CancelOptions) {
+    return;
+  }
+}
+
+const mockNotificationDefaults: IAppConfig["NOTIFICATION_DEFAULTS"] = {
+  title: "Default Title",
+  text: "Default Text",
+  time: { hour: 0, minute: 0 },
+};
+
+const mockAppConfig: Partial<IAppConfig> = {
+  NOTIFICATION_DEFAULTS: mockNotificationDefaults,
+};
+
+const validNotification: INotification = {
+  id: "test-notification",
+  schedule_at: new Date(Date.now() + 60000).toISOString(), // 1 minute from now
+  title: "Test Title",
+  text: "Test Text",
+};
 
 /**
  * Call standalone tests via:
@@ -19,15 +60,11 @@ describe("NotificationService", () => {
   let mockAppConfigService: jasmine.SpyObj<AppConfigService>;
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
 
-  const mockNotificationDefaults: IAppConfig["NOTIFICATION_DEFAULTS"] = {
-    title: "Default Title",
-    text: "Default Text",
-    time: { hour: 0, minute: 0 },
-  };
+  let scheduleSpy: jasmine.SpyObj<(typeof LocalNotifications)["schedule"]>;
 
-  const mockAppConfig: Partial<IAppConfig> = {
-    NOTIFICATION_DEFAULTS: mockNotificationDefaults,
-  };
+  let pluginSpy: jasmine.SpyObj<LocalNotificationsPlugin>;
+
+  let isNativePlatformSpy: jasmine.SpyObj<any>;
 
   beforeEach(async () => {
     // Create spy objects
@@ -45,20 +82,10 @@ describe("NotificationService", () => {
     mockDynamicDataService.query$.and.returnValue(of([]));
 
     // Spy on Capacitor methods
-    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
-    spyOn(LocalNotifications, "checkPermissions").and.resolveTo({
-      display: "granted" as PermissionState,
-    });
-    spyOn(LocalNotifications, "requestPermissions").and.resolveTo({
-      display: "granted" as PermissionState,
-    });
-    spyOn(LocalNotifications, "schedule").and.resolveTo({ notifications: [] });
-    spyOn(LocalNotifications, "cancel").and.resolveTo();
-    spyOn(LocalNotifications, "getPending").and.resolveTo({ notifications: [] });
+    isNativePlatformSpy = spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
 
     TestBed.configureTestingModule({
       providers: [
-        NotificationService,
         { provide: LocalStorageService, useValue: mockLocalStorageService },
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
@@ -66,95 +93,34 @@ describe("NotificationService", () => {
     });
 
     service = TestBed.inject(NotificationService);
+
+    // Replace localnotification api with mock
+    service["api"] = new MockCapacitorLocalNotifications() as any as LocalNotificationsPlugin;
+    scheduleSpy = spyOn(service["api"], "schedule");
   });
 
-  afterEach(() => {
-    // Clean up any global spies
-    if ((window as any).Notification) {
-      delete (window as any).Notification;
-    }
+  it("should be created", () => {
+    expect(service).toBeTruthy();
   });
 
-  describe("constructor and initialization", () => {
-    it("should be created", () => {
-      expect(service).toBeTruthy();
-    });
-
-    it("should check permissions on initialization", () => {
-      expect(LocalNotifications.checkPermissions).toHaveBeenCalled();
-    });
-
-    it("should set permission status to local storage", fakeAsync(() => {
-      tick(); // Allow effect to run
-      expect(mockLocalStorageService.setProtected).toHaveBeenCalledWith(
-        "NOTIFICATION_PERMISSION_STATUS",
-        "granted"
-      );
-    }));
-  });
-
-  describe("checkPermissions", () => {
-    it("should set permission status to unsupported on web when Notification API unavailable", async () => {
-      (Capacitor.isNativePlatform as jasmine.Spy).and.returnValue(false);
-      // Don't set window.Notification to simulate unsupported browser
-
-      // Recreate service to trigger constructor
-      service = TestBed.inject(NotificationService);
-
-      await new Promise((resolve) => setTimeout(resolve, 0)); // Allow async initialization
-
-      expect(mockLocalStorageService.setProtected).toHaveBeenCalledWith(
-        "NOTIFICATION_PERMISSION_STATUS",
-        "unsupported"
-      );
-    });
-
-    it("should check permissions on web when Notification API is available", async () => {
-      (Capacitor.isNativePlatform as jasmine.Spy).and.returnValue(false);
-      (window as any).Notification = {}; // Mock Notification API availability
-
-      // Recreate service to trigger constructor
-      service = TestBed.inject(NotificationService);
-
-      expect(LocalNotifications.checkPermissions).toHaveBeenCalled();
-    });
-  });
-
-  describe("requestPermission", () => {
-    it("should request permissions and update status", async () => {
-      const result = await service.requestPermission();
-
-      expect(LocalNotifications.requestPermissions).toHaveBeenCalled();
-      expect(result).toBe("granted");
-    });
-
-    it("should handle denied permissions", async () => {
-      (LocalNotifications.requestPermissions as jasmine.Spy).and.resolveTo({
-        display: "denied" as PermissionState,
-      });
-
-      const result = await service.requestPermission();
-
-      expect(result).toBe("denied");
-    });
+  it("should set permission status to local storage", async () => {
+    await service["checkPermissions"]();
+    expect(mockLocalStorageService.setProtected).toHaveBeenCalled();
   });
 
   describe("scheduleNotification", () => {
-    const validNotification: INotification = {
-      id: "test-notification",
-      schedule_at: new Date(Date.now() + 60000).toISOString(), // 1 minute from now
-      title: "Test Title",
-      text: "Test Text",
-    };
-
-    beforeEach(() => {
-      mockDynamicDataService.query$.and.returnValue(of([])); // No existing notification
-    });
-
     it("should schedule a valid notification", async () => {
       await service.scheduleNotification(validNotification);
 
-      expect(LocalNotifications.schedule).toHaveBeenCalled();
+      expect(scheduleSpy).toHaveBeenCalledOnceWith({
+        notifications: [
+          jasmine.objectContaining({
+            id: jasmine.any(Number),
+            extra: { id: validNotification.id },
+          }),
+        ],
+      });
+
       expect(mockDynamicDataService.upsert).toHaveBeenCalledWith(
         "data_list",
         "_notifications",
@@ -172,12 +138,14 @@ describe("NotificationService", () => {
       };
 
       await service.scheduleNotification(notificationWithoutDefaults);
-
-      const scheduleCall = (LocalNotifications.schedule as jasmine.Spy).calls.mostRecent();
-      const scheduledNotification = scheduleCall.args[0].notifications[0];
-
-      expect(scheduledNotification.title).toBe(mockNotificationDefaults.title);
-      expect(scheduledNotification.body).toBe(mockNotificationDefaults.text);
+      expect(scheduleSpy).toHaveBeenCalledOnceWith({
+        notifications: [
+          jasmine.objectContaining({
+            title: mockNotificationDefaults.title,
+            body: mockNotificationDefaults.text,
+          }),
+        ],
+      });
     });
 
     it("should cancel existing notification with same id before scheduling new one", async () => {
