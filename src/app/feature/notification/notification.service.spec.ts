@@ -273,8 +273,6 @@ describe("NotificationService", () => {
         notifications: pendingNotifications,
       });
       expect(mockDynamicDataService.resetFlow).toHaveBeenCalledWith("data_list", "_notifications");
-      // restore previous spy method
-      spyOn(service["api"], "getPending").and.resolveTo({ notifications: [] });
     });
   });
 
