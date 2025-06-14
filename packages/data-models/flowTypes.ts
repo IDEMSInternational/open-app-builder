@@ -444,6 +444,7 @@ export namespace FlowTypes {
     "google_auth",
     "nav",
     "nav_stack",
+    "notification",
     "open_external",
     "pop_up",
     "process_template",
