@@ -333,7 +333,7 @@ describe("NotificationService", () => {
   });
 
   describe("generateInternalNotification", () => {
-    fit("should generate internal notification with correct structure", async () => {
+    it("should generate internal notification with correct structure", async () => {
       const notification: INotification = {
         id: "test-notification",
         schedule_at: new Date(Date.now() + 60000).toISOString(),
