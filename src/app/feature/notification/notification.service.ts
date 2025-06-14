@@ -16,26 +16,27 @@ type IPermissionStatus = PermissionState | "unsupported";
 export class NotificationService {
   private permissionStatus = signal<IPermissionStatus | undefined>(undefined);
 
+  /** Hack - proxy to native LocalNotification api for easier test mocking */
+  private api = LocalNotifications;
+
   constructor(
-    localStorageService: LocalStorageService,
+    private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService
   ) {
     // Ensure permisison status reflected to protected field
-    effect(() => {
+    effect(async () => {
       const permissionStatus = this.permissionStatus();
-      localStorageService.setProtected("NOTIFICATION_PERMISSION_STATUS", permissionStatus);
       if (permissionStatus === "granted") {
-        this.recheckScheduledNotifications();
+        await this.recheckScheduledNotifications();
       }
     });
-
     // Check permissions on initial load
     this.checkPermissions();
   }
 
   public async requestPermission() {
-    const { display } = await LocalNotifications.requestPermissions();
+    const { display } = await this.api.requestPermissions();
     this.permissionStatus.set(display);
     return display;
   }
@@ -56,11 +57,13 @@ export class NotificationService {
     notification.title ??= NOTIFICATION_DEFAULTS.title;
     notification.text ??= NOTIFICATION_DEFAULTS.text;
 
+    console.log("schedule notification", notification);
+
     const internalNotification = this.generateInternalNotification(notification);
 
     try {
       // Res typically only returns array of ids, so not useful to keep
-      await LocalNotifications.schedule({ notifications: [internalNotification] });
+      await this.api.schedule({ notifications: [internalNotification] });
 
       // Store to dynamic data
       const dbNotification: IDBNotification = {
@@ -78,7 +81,7 @@ export class NotificationService {
   public async cancelNotification(id: string) {
     const dbNotification = await this.getNotificationById(id);
     if (dbNotification) {
-      await LocalNotifications.cancel({
+      await this.api.cancel({
         notifications: [{ id: dbNotification._internal_id }],
       });
       await this.dynamicDataService.remove("data_list", "_notifications", [id]);
@@ -86,8 +89,8 @@ export class NotificationService {
   }
 
   public async cancelAll() {
-    const { notifications } = await LocalNotifications.getPending();
-    await LocalNotifications.cancel({ notifications }); // Cancels all
+    const { notifications } = await this.api.getPending();
+    await this.api.cancel({ notifications }); // Cancels all
     await this.dynamicDataService.resetFlow("data_list", "_notifications");
   }
 
@@ -124,7 +127,10 @@ export class NotificationService {
         return;
       }
     }
-    const { display } = await LocalNotifications.checkPermissions();
+    const { display } = await this.api.checkPermissions();
+    console.log("check permission result", display);
+    // Store to localstorage and signal
+    this.localStorageService.setProtected("NOTIFICATION_PERMISSION_STATUS", display);
     this.permissionStatus.set(display);
   }
 
