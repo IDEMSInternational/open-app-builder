@@ -57,10 +57,7 @@ export class NotificationService {
     notification.title ??= NOTIFICATION_DEFAULTS.title;
     notification.text ??= NOTIFICATION_DEFAULTS.text;
 
-    console.log("schedule notification", notification);
-
     const internalNotification = this.generateInternalNotification(notification);
-
     try {
       // Res typically only returns array of ids, so not useful to keep
       await this.api.schedule({ notifications: [internalNotification] });
@@ -73,7 +70,7 @@ export class NotificationService {
       await this.dynamicDataService.upsert("data_list", "_notifications", dbNotification);
     } catch (error) {
       // In case of scheduling issues try to rollback
-      console.error(`[Notification] error`, error);
+      console.error(`[Notification]`, error);
       return this.cancelNotification(notification.id);
     }
   }
@@ -128,7 +125,6 @@ export class NotificationService {
       }
     }
     const { display } = await this.api.checkPermissions();
-    console.log("check permission result", display);
     // Store to localstorage and signal
     this.localStorageService.setProtected("NOTIFICATION_PERMISSION_STATUS", display);
     this.permissionStatus.set(display);
