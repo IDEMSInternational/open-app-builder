@@ -105,12 +105,23 @@ export class TmplTaskProgressBarComponent
   @Output() newlyCompleted = new EventEmitter<boolean>();
 
   dataRows = signal<any[]>([]);
+
   processedDataRows = computed(() => {
     const processedDataRows = this.processDataRows(this.dataRows());
     return processedDataRows;
   });
-  subtasksTotal: number;
-  subtasksCompleted: number;
+
+  progressPercentage = computed(() => {
+    // If progress percent is authored explicitly, use it. Otherwise, calculate based on proportion of subtasks completed.
+    if (this.params().progressPercent || this.params().progressPercent === 0) {
+      return this.params().progressPercent;
+    } else {
+      return Math.round((this.subtasksCompleted() / this.subtasksTotal()) * 100);
+    }
+  });
+
+  subtasksTotal = signal<number>(0);
+  subtasksCompleted = signal<number>(0);
   standalone: boolean = false;
   useDynamicData: boolean;
   private dataQuery$: Subscription;
@@ -187,18 +198,9 @@ export class TmplTaskProgressBarComponent
     }
   }
 
-  get progressPercentage() {
-    // If progress percent is authored explicitly, use it. Otherwise, calculate based on proportion of subtasks completed.
-    if (this.params().progressPercent !== null && this.params().progressPercent !== undefined) {
-      return this.params().progressPercent;
-    } else {
-      return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
-    }
-  }
-
   /** Calculate circumference of progress circle based on number of tasks completed */
   getStrokeOffset(): number {
-    const progressProportion = this.subtasksCompleted / this.subtasksTotal;
+    const progressProportion = this.subtasksCompleted() / this.subtasksTotal();
     return this.circumference * (1 - (progressProportion || 0));
   }
 
@@ -249,8 +251,8 @@ export class TmplTaskProgressBarComponent
         useDynamicData: this.useDynamicData,
       });
     this.progressStatus = progressStatus;
-    this.subtasksCompleted = subtasksCompleted;
-    this.subtasksTotal = subtasksTotal;
+    this.subtasksCompleted.set(subtasksCompleted);
+    this.subtasksTotal.set(subtasksTotal);
 
     if (previousProgressStatus !== this.progressStatus)
       this.progressStatusChange.emit(this.progressStatus);
