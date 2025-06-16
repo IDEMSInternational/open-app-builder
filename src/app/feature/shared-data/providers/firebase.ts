@@ -70,7 +70,7 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
 
     await FirebaseFirestore.setDocument({
       reference: docPath,
-      data: data,
+      data,
     });
     return data;
   }
