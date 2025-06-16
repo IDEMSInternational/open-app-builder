@@ -28,6 +28,12 @@ import { FlowTypes } from "packages/data-models";
 
 interface ITaskProgressBarParams {
   /**
+   * TEMPLATE PARAMETER: "progress_percent".
+   * Set the progress of the bar to a specific value. If provided, this will override any calculations (the task features will not be used).
+   * Default null.
+   */
+  progressPercent?: number;
+  /**
    * TEMPLATE PARAMETER: task_group_data.
    * The name of the task group to track the progress of (through the completion of its subtasks)
    */
@@ -70,10 +76,6 @@ interface ITaskProgressBarParams {
   variant: "bar" | "wheel";
   /* TEMPLATE PARAMETER: "wheel_title". The wheel title that appears at the bottom */
   title?: string;
-  progressPercent?: number;
-  /** TEMPLATE PARAMETER: progressPercent
-   * postion of the progress on the bar, will override any calculations
-   */
 }
 
 @Component({
@@ -186,8 +188,8 @@ export class TmplTaskProgressBarComponent
   }
 
   get progressPercentage() {
-    console.log("progress: %d", this.params().progressPercent);
-    if (this.params().progressPercent) {
+    // If progress percent is authored explicitly, use it. Otherwise, calculate based on proportion of subtasks completed.
+    if (this.params().progressPercent !== null && this.params().progressPercent !== undefined) {
       return this.params().progressPercent;
     } else {
       return Math.round((this.subtasksCompleted / this.subtasksTotal) * 100);
