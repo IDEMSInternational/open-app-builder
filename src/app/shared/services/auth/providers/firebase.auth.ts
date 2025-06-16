@@ -37,7 +37,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithApple() {
-    const { user, additionalUserInfo, credential } = await FirebaseAuthentication.signInWithApple();
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
     if (user) {
       // Note: Apple allows for anonymous sign-in so profile info may be minimal
       const { profile = {} } = additionalUserInfo;
@@ -48,8 +48,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithGoogle() {
-    const { user, additionalUserInfo, credential } =
-      await FirebaseAuthentication.signInWithGoogle();
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
     if (user) {
       const { profile = {} } = additionalUserInfo;
       this.setAuthUser(user, profile);
@@ -97,12 +96,15 @@ export class FirebaseAuthProvider extends AuthProviderBase {
         switch (providerId) {
           case "apple.com":
             this.signInWithApple();
+            break;
           case "google.com":
             this.signInWithGoogle();
+            break;
           default:
             const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
             console.warn(msg);
             this.signOut();
+            break;
         }
       }
     }
