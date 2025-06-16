@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
-import { ITemplateRowProps } from "../models";
 import { getStringParamFromTemplateRow } from "../../../utils";
 
 @Component({
@@ -14,10 +13,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   `,
   styleUrls: ["./subtitle.scss"],
 })
-export class TmplSubtitleComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit
-{
+export class TmplSubtitleComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string;
   style: string | null;
 
