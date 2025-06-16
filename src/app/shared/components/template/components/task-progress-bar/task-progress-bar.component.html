@@ -5,9 +5,11 @@
     [class]="progressStatus"
     [class.standalone]="standalone"
   >
-    <p *ngIf="params().showText" class="tiny progress-text">
-      {{ subtasksTotal + " " + params().progressUnitsName }}
-    </p>
+    @if (params().showText) {
+      <p class="tiny progress-text">
+        {{ subtasksTotal + " " + params().progressUnitsName }}
+      </p>
+    }
     <div class="progress-bar-background">
       <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
     </div>
