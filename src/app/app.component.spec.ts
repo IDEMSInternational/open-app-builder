@@ -3,24 +3,23 @@ import { TestBed, waitForAsync } from "@angular/core/testing";
 
 import { ModalController, Platform } from "@ionic/angular";
 import { SplashScreen } from "@capacitor/splash-screen";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
 import { MockDeploymentService } from "./shared/services/deployment/deployment.service.mock.spec";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { MockAppDataService } from "./shared/services/data/app-data.service.mock.spec";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { AnalyticsService } from "./shared/services/analytics";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 describe("AppComponent", () => {
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  let splashScreenSpy, platformReadySpy, platformSpy;
 
   beforeEach(waitForAsync(() => {
-    statusBarSpy = jasmine.createSpyObj("StatusBar", ["styleDefault"]);
     splashScreenSpy = jasmine.createSpyObj("SplashScreen", ["hide"]);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj("Platform", { ready: platformReadySpy });
@@ -28,9 +27,9 @@ describe("AppComponent", () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientTestingModule],
       providers: [
-        { provide: StatusBar, useValue: statusBarSpy },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
         { provide: DeploymentService, useValue: new MockDeploymentService() },

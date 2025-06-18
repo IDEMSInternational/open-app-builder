@@ -8,8 +8,6 @@ import {
   ViewChild,
 } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
-import { TemplateContainerComponent } from "../../template-container.component";
 import {
   getNumberParamFromTemplateRow,
   getParamFromTemplateRow,
@@ -24,12 +22,8 @@ import { ReplaySubject } from "rxjs";
   templateUrl: "./radio-group.component.html",
   styleUrls: ["./radio-group.component.scss"],
 })
-export class TmplRadioGroupComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy
-{
+export class TmplRadioGroupComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
   @Input() changeTheme: EventEmitter<boolean>;
-  @Input() parent: TemplateContainerComponent;
   @ViewChild("labelImage", { static: false, read: true }) labelImage: ElementRef;
   arrayOfBtn: Array<IAnswerListItem>;
   groupName: string;

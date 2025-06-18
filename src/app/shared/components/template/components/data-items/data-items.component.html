@@ -1,7 +1,12 @@
-@for (row of itemRows(); track row._nested_name) {
-  <plh-template-component
-    [row]="row"
-    [parent]="parent"
-    [attr.data-rowname]="row.name"
-  ></plh-template-component>
+<!-- Only render item rows if initial row had children 
+ (empty data_items still sometimes used for data-changed action) -->
+@if (rows()?.length > 0) {
+  <!-- Ensure item id include in track as nested name not guaranteed unique (e.g if item row is a named template) -->
+  @for (row of itemRows(); track row._nested_name + row._evalContext.item.id) {
+    <plh-template-component
+      [row]="row"
+      [parent]="parent"
+      [attr.data-rowname]="row.name"
+    ></plh-template-component>
+  }
 }

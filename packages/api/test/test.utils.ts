@@ -55,6 +55,6 @@ export async function testWait(ms = 1000) {
   return new Promise((resolve) =>
     setTimeout(() => {
       resolve(true);
-    }, ms)
+    }, ms),
   );
 }

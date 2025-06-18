@@ -49,7 +49,7 @@ describe("app_user (e2e)", () => {
 
   it("[Get] list one", async () => {
     const { status, body } = await request(app.getHttpServer()).get(
-      `${ENDPOINT_BASE}/${app_user_id}`
+      `${ENDPOINT_BASE}/${app_user_id}`,
     );
     expect(status).toEqual(200);
     expect(body.app_user_id).toEqual(app_user_id);

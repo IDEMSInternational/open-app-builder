@@ -1,5 +1,4 @@
 # Use postgres/example user/password credentials
-version: "3.1"
 services:
   ####################################################################
   # Primary Webserver (Nginx)
@@ -46,12 +45,12 @@ services:
     #   context: ../../api
     #   dockerfile: Dockerfile
     #   target: prod-env
-    image: idems/apps-api:1.6.1
+    image: idems/apps-api:1.7.0
     env_file:
       - ../../api/.env
     environment:
       DB_HOST: db
-      API_BASE_PATH: api
+      API_BASE_URL: api
     networks:
       - db_network
       - webserver_network

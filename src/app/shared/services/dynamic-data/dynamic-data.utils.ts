@@ -66,9 +66,9 @@ export function coerceDataUpdateTypes(schemaProperties: Record<string, JsonSchem
   for (const el of data) {
     if (isObjectLiteral(el)) {
       for (const [key, value] of Object.entries(el)) {
-        // only map values if they are strings and have a defined mapping function
-        if (propertyMapping[key] && typeof value === "string") {
-          el[key] = propertyMapping[key](value);
+        // only map values if they have a defined mapping function
+        if (propertyMapping[key]) {
+          el[key] = propertyMapping[key](value as any);
         }
       }
     }
@@ -78,21 +78,39 @@ export function coerceDataUpdateTypes(schemaProperties: Record<string, JsonSchem
 }
 
 /**
- * Mapping functions used to coerce string values to RXDB schema types
+ * Mapping functions used to coerce values to RXDB schema types
  * This is a subset of mappings that could alternatively be provided by
  * https://ajv.js.org/coercion.html
  * **/
-const typeMappings: Record<JsonSchemaTypes, (v: string) => any | undefined> = {
+const typeMappings: Record<JsonSchemaTypes, (v: any) => any | undefined> = {
   // do not attempt to coerce arrays (data_list does not store array values)
   array: undefined,
   // convert boolean string to boolean
-  boolean: (v) => booleanStringToBoolean(v),
+  boolean: (v) => {
+    if (typeof v === "string") {
+      return booleanStringToBoolean(v);
+    }
+    // coerce all other types using boolean constructor (reasonably reliable)
+    return Boolean(v);
+  },
   // convert string integer to integer
-  integer: (v) => parseInt(v, 10),
+  integer: (v) => {
+    if (typeof v === "string") {
+      return parseInt(v, 10);
+    }
+    // fallback avoid trying to parse other values types (unreliable, e.g. NaN)
+    return v;
+  },
   // do not attempt to coerce null schema
   null: undefined,
   // convert string number to number
-  number: (v) => Number(v),
+  number: (v) => {
+    if (typeof v === "string") {
+      return Number(v);
+    }
+    // fallback avoid trying to parse other values types (unreliable, e.g. NaN)
+    return v;
+  },
   // do not attempt to coerce objects (data_list does not store object values)
   object: undefined,
   // as incoming values will be formatted as strings do not provide any additional mapping

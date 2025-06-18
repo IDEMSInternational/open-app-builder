@@ -9,7 +9,7 @@ import { DeploymentHeaders } from "src/modules/deployment.decorators";
 @Controller("app_notification_interaction")
 export class AppNotificationInteractionController {
   constructor(
-    private readonly appNotificationInteractionService: AppNotificationInteractionService
+    private readonly appNotificationInteractionService: AppNotificationInteractionService,
   ) {}
 
   @Get()

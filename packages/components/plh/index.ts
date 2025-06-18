@@ -5,7 +5,8 @@ import { PlhActivityCheckInComponent } from "./plh-kids-kw/components/activity-c
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
 import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component";
-import { PlhProgressPathComponent } from "./plh-kids-kw/components/plh-progress-path/plh-progress-path.component";
+import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
+import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 
 export {
   PlhParentPointCounterComponent,
@@ -16,7 +17,10 @@ export {
   PlhModuleDetailsHeaderComponent,
   PlhBottomNavigationBarComponent,
   PlhProgressPathComponent,
+  PlhParentGroupModule,
 };
+
+export const PLH_FEATURE_MODULES = [PlhParentGroupModule];
 
 export const PLH_COMPONENTS = [
   PlhParentPointCounterComponent,

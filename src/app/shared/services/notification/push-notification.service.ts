@@ -1,6 +1,4 @@
 import { Injectable } from "@angular/core";
-import { HTTP } from "@ionic-native/http/ngx";
-import { Device } from "@ionic-native/device/ngx";
 import { Subject } from "rxjs";
 
 import {
@@ -19,7 +17,7 @@ export class PushNotificationService extends AsyncServiceBase {
   initializing = false;
   public token: string;
   public messages$ = new Subject<any>();
-  constructor(public device: Device, public http: HTTP) {
+  constructor() {
     super("PushNotification");
     super.registerInitFunction(this.initialise);
   }

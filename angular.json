@@ -28,17 +28,17 @@
                 "output": "./svg"
               },
               {
-                "glob": "{*.min.js,op-chaining-support.js,cmaps/*,images/*,locale/en-GB/*,locale/locale.properties,standard_fonts/**}",
+                "glob": "{*.min.mjs,images/*,locale/en-US/*,locale/locale.json,standard_fonts/**}",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
-                "ignore": ["**/*-es5.min.js"],
+                "ignore": ["**/*-es5.min.mjs"],
                 "output": "/assets/comp-pdf"
               }
             ],
             "styles": [
               "./node_modules/intro.js/introjs.css",
               "./node_modules/katex/dist/katex.min.css",
-              { "input": "src/theme/variables.scss", "inject": true },
-              { "input": "src/global.scss", "inject": true }
+              { "input": "src/global.scss", "inject": true },
+              { "input": "src/theme/variables.scss", "inject": true }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
             "allowedCommonJsDependencies": ["*"]
@@ -72,7 +72,7 @@
                 "fonts": true
               },
               "budgets": [
-                { "type": "initial", "maximumWarning": "850kb", "maximumError": "5mb" },
+                { "type": "initial", "maximumWarning": "850kb", "maximumError": "6mb" },
                 { "type": "anyComponentStyle", "maximumWarning": "3kb", "maximumError": "200kb" }
               ]
             },

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox.component";

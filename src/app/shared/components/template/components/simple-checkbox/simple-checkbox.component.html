@@ -1,14 +1,10 @@
-<div
-  class="checkbox-wrapper margin-t-large"
-  [class]="style"
-  [class]="position"
-  [class.reverse]="reverse"
->
+<div class="checkbox-wrapper margin-t-large" [class]="style" [class]="position">
   <ion-checkbox
     #checkbox
     [checked]="_row.value"
     (ionChange)="handleChange(checkbox.checked)"
     color="primary"
-  ></ion-checkbox>
-  <label *ngIf="label_text" [innerHTML]="label_text | markdown">{{ label_text }}</label>
+    [labelPlacement]="reverse ? 'start' : 'end'"
+    >{{ label_text }}</ion-checkbox
+  >
 </div>

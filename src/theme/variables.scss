@@ -16,6 +16,7 @@
 @include themes.theme-plh_facilitator_mx;
 @include themes.theme-early_family_math;
 @include themes.theme-plh_kids_kw;
+@include themes.theme-plh_facilitator_mapa;
 
 /** Ionic CSS Variables **/
 :root {
@@ -55,7 +56,7 @@
   // Borders //
   // --- border-radiuses
   --ion-border-radius-small: 8px;
-  --ion-border-radius-standard: 15px;
+  --ion-border-radius-standard: 12px;
   --ion-border-radius-secondary: 20px;
   --ion-border-radius-rounded: 50%;
 

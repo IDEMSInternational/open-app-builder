@@ -1,0 +1,31 @@
+h3 {
+  margin-top: 1rem;
+}
+.items-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.item-container {
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  height: 100px;
+  width: 180px;
+  &:hover {
+    transform: scale(1.03);
+  }
+  &.selected {
+    transform: scale(1.03);
+    background: wheat;
+  }
+}
+.item-title {
+  font-size: x-small;
+}
+.item-delete {
+  margin-right: -8px;
+  margin-top: -8px;
+}

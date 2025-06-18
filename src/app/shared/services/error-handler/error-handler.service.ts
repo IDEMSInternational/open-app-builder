@@ -42,7 +42,7 @@ export class ErrorHandlerService extends ErrorHandler {
     }
     if (environment.production && this.firebaseService.app && Capacitor.isNativePlatform()) {
       // crashlytics initialised in app component so omitted here
-      this.crashlyticsEnabled = firebase.crashlytics.enabled;
+      this.crashlyticsEnabled = firebase.crashlytics?.enabled;
     }
     this.initialised = true;
   }

@@ -122,6 +122,18 @@
       ion-color-primary-200: #a2ced1,
       ion-color-primary-100: #d0e7e8,
       ion-color-primary-50: #e7f3f4,
+
+      // TEXT BUBBLE COLOURS
+      text-bubble-background-color-gray: var(--color-surface-white-variant),
+      text-bubble-border-color-gray: var(--color-outline),
+      text-bubble-background-color-primary: var(--ion-color-primary-50),
+      text-bubble-border-color-primary: var(--ion-color-primary-700),
+      text-bubble-background-color-secondary: var(--ion-color-secondary-50),
+      text-bubble-border-color-secondary: var(--ion-color-secondary-600),
+      text-bubble-background-color-3: var(--color-accent-orange-95),
+      text-bubble-border-color-3: var(--color-accent-orange-70),
+      text-bubble-background-color-4: var(--color-accent-blue-90),
+      text-bubble-border-color-4: var(--color-accent-blue-70),
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {

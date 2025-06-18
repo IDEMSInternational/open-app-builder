@@ -18,6 +18,7 @@ export class AppNotificationInteractionService {
   async createOrUpdate(body: UserNotificationInteractionDto) {
     const { app_user_id, app_user_record_id, data } = body;
     // populate rest of data with exception of id field (do not want to override generated)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, ...rest } = data;
     const update = { ...body, ...rest };
     const foundItem = await this.model.findOne({

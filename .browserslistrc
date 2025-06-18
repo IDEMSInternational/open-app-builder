@@ -5,8 +5,20 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-> 0.5%
+# Minimum browser versions Ionic officially supports
+Chrome >= 89
+ChromeAndroid >= 89
+Firefox >= 75
+Edge >= 89
+Safari >= 15
+iOS >= 15
+
+# Also include recent and widely-used browsers
 last 2 versions
-Firefox ESR
+> 0.5%
 not dead
-not IE 9-11 # For IE 9-11 support, remove 'not'.
+
+# Explicitly unsupported browsers
+not op_mini all
+not IE 9-11
+not KaiOS > 0

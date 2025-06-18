@@ -68,7 +68,7 @@ export class TablesController {
   @DeploymentHeaders()
   async addMappedTableColumns(
     @Param() params: { table_name: string },
-    @Body() data: TableColumnMappingDto
+    @Body() data: TableColumnMappingDto,
   ) {
     const { table_name } = params;
     const { columns } = data;
@@ -92,7 +92,7 @@ export class TablesController {
   @DeploymentHeaders()
   async removeMappedTableColumns(
     @Param() params: { table_name: string },
-    @Body() data: TableColumnMappingDto
+    @Body() data: TableColumnMappingDto,
   ) {
     const { table_name } = params;
     const { columns } = data;

@@ -19,16 +19,13 @@
     --size: var(--checkbox-size);
     margin: 0 var(--small-margin);
     min-width: var(--checkbox-size);
-  }
 
-  label {
-    max-width: var(--checkbox-label-max-width);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-text-medium);
-    line-height: var(--line-height-text-largest);
-    color: var(--ion-color-primary);
+    &::part(label) {
+      max-width: var(--checkbox-label-max-width);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-text-medium);
+      line-height: var(--line-height-text-largest);
+      color: var(--ion-color-primary);
+    }
   }
-}
-.reverse {
-  flex-direction: row-reverse;
 }

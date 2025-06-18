@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { PlhProgressPathComponent } from "./plh-progress-path.component";
+import { PlhProgressPathComponent } from "./progress-path.component";
 
 describe("PlhProgressPathComponent", () => {
   let component: PlhProgressPathComponent;

@@ -22,7 +22,7 @@ export function DeploymentHeaders() {
       name: "x-deployment-db-name",
       description: "Name of db for deployment to populate",
       schema: { type: "string", default: environment.APP_DB_NAME },
-    })
+    }),
   );
 }
 

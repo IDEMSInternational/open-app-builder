@@ -1,0 +1,163 @@
+<ion-content class="ion-padding">
+  <h2>Shared Data</h2>
+
+  <h3>Auth</h3>
+  @if(authService.provider.authUser(); as authUser){
+
+  <ion-button (click)="authService.provider.signOut()"> Sign out </ion-button>
+  <code style="margin-left: 1rem">{{authUser.uid}}</code>
+
+  <!-- Multiple query -->
+  <h3>Shared Data - List Rows</h3>
+  <p>Use an empty shared_data row to query for all shared data collections available to a user</p>
+  <p>
+    NOTE - All row data updates will be synced in realtime<br />This may be excessive if many
+    rows/frequent updates
+  </p>
+  <code style="display: block; margin-bottom: 1rem">{{templateRowMultiple() | json}}</code>
+
+  <tmpl-shared-data [row]="templateRowMultiple()" (itemsChanged)="sharedDataMultiple.set($event)">
+  </tmpl-shared-data>
+
+  <!-- Multiple results -->
+  <div class="items-container">
+    @for(item of sharedDataMultiple(); track item.id){
+    <div
+      class="item-container"
+      (click)="selectedId.set(item.id)"
+      [class.selected]="sharedDataSingle()?.id===item.id"
+    >
+      <div style="display: flex">
+        <div class="item-title" style="flex: 1">{{item.id}}</div>
+        <ion-button class="item-delete" (click)="promptCollectionDelete(item.id)" fill="clear">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="item-label">{{item.data.label}}</div>
+    </div>
+
+    }
+    <ion-button (click)="createSharedData()">
+      <ion-icon name="add"></ion-icon> New Collection
+    </ion-button>
+  </div>
+
+  <!-- Single query -->
+  @if(templateRowSingle()){
+  <h3>Shared Data - Selected Row</h3>
+  <p>Use a value to select a single shared_row collection</p>
+  <code style="display: block; margin-bottom: 1rem">{{templateRowSingle() | json}}</code>
+
+  <tmpl-shared-data [row]="templateRowSingle()" (itemChanged)="sharedDataSingle.set($event)">
+  </tmpl-shared-data>
+  }
+
+  <!-- Single result -->
+  @if(displayTableData(); as tableData){
+
+  <ion-accordion-group [multiple]="true" [value]="[ 'shared_data','users','metadata']">
+    <!-- Shared Data -->
+    <ion-accordion value="shared_data">
+      <ion-item slot="header" color="light">
+        <ion-label>Group Data</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Data can be read by all users, but only updated by group owner</p>
+        @for(el of tableData.data; track el.key){
+        <ion-item>
+          <ion-input
+            [label]="el.key"
+            labelPlacement="fixed"
+            [value]="el.value"
+            disabled
+          ></ion-input>
+        </ion-item>
+        }
+        <!-- Data editor -->
+        <div style="display: flex; gap: 1rem; margin-top: 2rem">
+          <ion-item style="flex: 1">
+            <ion-input label="key" labelPlacement="floating" #keyInput></ion-input>
+          </ion-item>
+          <ion-item style="flex: 1">
+            <ion-input label="value" labelPlacement="floating" #valInput></ion-input>
+          </ion-item>
+          <ion-button
+            [disabled]="!keyInput.value"
+            (click)="update(keyInput.value.toString(),valInput.value.toString())"
+            >Update</ion-button
+          >
+        </div>
+      </div>
+    </ion-accordion>
+
+    <!-- Users -->
+    <ion-accordion value="users">
+      <ion-item slot="header" color="light">
+        <ion-label>Users</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Admin users can be added by Firebase Auth Id. The original creator cannot be removed.</p>
+        @for(adminId of tableData.admins; track adminId){
+        <ion-item>
+          <ion-input disabled #userInput [value]="adminId"></ion-input>
+          <ion-button
+            fill="clear"
+            (click)="removeAdmin(adminId)"
+            [disabled]="adminId===sharedDataSingle()._created_by"
+            ><ion-icon name="remove-circle-outline" size="large"></ion-icon
+          ></ion-button>
+        </ion-item>
+        }
+        <ion-item>
+          <ion-input label="Firebase Auth ID" labelPlacement="floating" #userInput></ion-input>
+          <ion-button
+            [disabled]="!userInput.value"
+            fill="clear"
+            (click)="addAdmin(userInput.value.toString())"
+          >
+            <ion-icon name="add-outline" size="large"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+    <!-- Collection Metadata -->
+    <ion-accordion value="metadata">
+      <ion-item slot="header" color="light">
+        <ion-label>Metadata</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>
+          Group metadata is set automatically or by specific actions and cannot be directly modified
+        </p>
+        @for(el of tableData.meta; track el.key){
+        <ion-item>
+          <ion-input
+            [label]="el.key"
+            labelPlacement="fixed"
+            [value]="el.value"
+            disabled
+          ></ion-input>
+        </ion-item>
+        }
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  }
+
+  <hr style="margin-top: 2rem" />
+
+  <h3>Clear Cached Data</h3>
+  <p>
+    If data is manually removed or edited on server, changes will not be synced to client.
+    Workaround to force hard resync
+  </p>
+  <ion-button (click)="service.clearCache()"> Clear Cached Data </ion-button>
+
+  } @else{
+  <p>Users need to be signed in to firebase to use shared data</p>
+  <ion-button (click)="authService.provider.signInWithGoogle()"> Sign in </ion-button>
+  }
+</ion-content>

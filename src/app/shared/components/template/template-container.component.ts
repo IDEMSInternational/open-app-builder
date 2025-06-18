@@ -77,20 +77,14 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
-    effect(
-      () => {
-        // re-render template whenever input template name changes
-        // TODO - this isn't passed when running standalone. Should ideally de-couple render/service logic
-        const templatename = this.templatename();
-        if (templatename) {
-          this.hostTemplateName = templatename;
-          this.renderTemplate(templatename);
-        }
-      },
-      // NOTE - pass the injector from the constructor as angular will not be able
-      // to auto-determine injector when called from a standalone template
-      { injector }
-    );
+    effect(() => {
+      // re-render template whenever input template name changes
+      const templatename = this.templatename();
+      if (templatename) {
+        this.hostTemplateName = templatename;
+        this.renderTemplate(templatename);
+      }
+    });
     this.templateActionService = new TemplateActionService(injector, this);
     this.templateRowService = new TemplateRowService(injector, this);
   }

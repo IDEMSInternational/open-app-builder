@@ -72,6 +72,7 @@ export class NotificationDebugRowComponent {
    * @param notification
    */
   public async triggerSend(notification: ILocalNotification) {
+    await this.localNotificationService.ready();
     const delaySeconds = 3;
     await this.localNotificationService.scheduleImmediateNotification(
       notification,

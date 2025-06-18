@@ -16,7 +16,7 @@ export class DeploymentService {
 
   constructor(
     private connectionManager: ConnectionManagerService,
-    @Inject(REQUEST) readonly request: Request
+    @Inject(REQUEST) readonly request: Request,
   ) {
     DeploymentService.service = this;
     this.dbName = (request.headers["x-deployment-db-name"] as string) || environment.APP_DB_NAME;
@@ -58,7 +58,7 @@ export class DeploymentService {
    * Access sequelize methods for a given model
    * @param entity Sequelize model representation of db table and columns
    */
-  public model<T extends Function>(entity: T) {
+  public model<T extends { name: string }>(entity: T) {
     const model = this.client.model<T, T>(entity.name);
     // HACK - when accessing client model ensure using correct query interface
     // (appears issue when creating models globally will assume default interface)

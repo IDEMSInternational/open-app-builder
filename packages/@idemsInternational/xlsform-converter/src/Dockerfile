@@ -11,7 +11,7 @@ RUN apk add --no-cache make g++
 WORKDIR /app
 
 # Install python and node dependencies to convert forms
-RUN pip3 install pyxform && npm install enketo-transformer
+RUN pip3 install pyxform && npm install enketo-transformer && npm install libxslt
 
 COPY . .
 

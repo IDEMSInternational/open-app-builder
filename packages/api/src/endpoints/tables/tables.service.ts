@@ -6,7 +6,10 @@ import { arrayToHashmap, dropTableColumn, listTableColumns } from "src/utils";
 
 @Injectable()
 export class TableService {
-  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {}
+  constructor(
+    private eventEmitter: EventEmitter2,
+    private deploymentService: DeploymentService,
+  ) {}
 
   /** Dynamically create or drop table columns */
   async updateTableColumns(table_name: string, op: "add" | "drop", columns: ColumnMappingType[]) {
@@ -24,20 +27,20 @@ export class TableService {
             console.error(`[${fieldTypeKey}] not supported`);
             throw new Error(
               `[${fieldTypeKey}] not supported, available types: [${Object.keys(
-                FieldDataTypeMapping
-              )}]`
+                FieldDataTypeMapping,
+              )}]`,
             );
           }
           await queryInterface.addColumn(
             table_name,
             column.field_name,
-            FieldDataTypeMapping[fieldTypeKey]
+            FieldDataTypeMapping[fieldTypeKey],
           );
         }
         break;
       case "drop":
         const deletedColumns = columns.filter((c) =>
-          tableColumnsHashmap.hasOwnProperty(c.field_name)
+          tableColumnsHashmap.hasOwnProperty(c.field_name),
         );
         for (const column of deletedColumns) {
           await dropTableColumn(table_name, column.field_name);

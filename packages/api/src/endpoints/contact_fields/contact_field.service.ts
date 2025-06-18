@@ -5,15 +5,15 @@ import { ContactFieldEntry } from "./contact_field.model";
 import { CUSTOM_EVENTS } from "src/types";
 import { DeploymentService } from "src/modules/deployment.service";
 
-/** Legacy binding to make it easier to track expected columns for a table - could be re-introduced for efficiency */
-type ITableColumn = { column_name: string; data_type: string };
-
 @Injectable()
 export class ContactFieldService {
   private initialised = false;
   // columns: ITableColumn[];
   // columnsHashmap: { [column_name: string]: ITableColumn };
-  constructor(private eventEmitter: EventEmitter2, private deploymentService: DeploymentService) {}
+  constructor(
+    private eventEmitter: EventEmitter2,
+    private deploymentService: DeploymentService,
+  ) {}
 
   get model() {
     // only complete init on first request so that deployment service can configure db connections as required
@@ -44,19 +44,19 @@ export class ContactFieldService {
     // Bind to column change updates to repopulate rows
     this.eventEmitter.addListener(
       `${CUSTOM_EVENTS.COLUMNS_UPDATED}.${model.tableName}`,
-      async (columns) => {
+      async () => {
         const existing = await this.model.findAll();
         // force save hook to trigger by simpling updating the raw data field
-        await this.deploymentService.client.transaction(async (t) => {
+        await this.deploymentService.client.transaction(async () => {
           const _updated = new Date().getTime();
           return Promise.all(
             existing.map((entry) => {
               const { raw } = entry.toJSON() as any;
               entry.update({ raw: { ...raw, _updated } });
-            })
+            }),
           );
         });
-      }
+      },
     );
   }
 

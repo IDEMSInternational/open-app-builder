@@ -317,34 +317,6 @@ export function convertJsonToTs(
   }
 }
 
-/**
- * Deep merge two objects.
- * Copied from https://stackoverflow.com/a/34749873/5693245
- * @param target
- * @param ...sources
- */
-export function deepMergeObjects(target: any, ...sources: any) {
-  if (!sources.length) return target;
-  const source = sources.shift();
-
-  if (isObject(target) && isObject(source)) {
-    for (const key in source) {
-      if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
-        deepMergeObjects(target[key], source[key]);
-      } else {
-        Object.assign(target, { [key]: source[key] });
-      }
-    }
-  }
-
-  return deepMergeObjects(target, ...sources);
-}
-
-function isObject(item: any) {
-  return item && typeof item === "object" && !Array.isArray(item);
-}
-
 /** Search a folder for a file ending _contents and return parsed json  */
 export function readContentsFile(folderPath: string) {
   if (!fs.existsSync(folderPath)) {

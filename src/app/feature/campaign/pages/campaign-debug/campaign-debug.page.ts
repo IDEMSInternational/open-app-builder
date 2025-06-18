@@ -35,6 +35,7 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    await this.campaignService.ready();
     this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {

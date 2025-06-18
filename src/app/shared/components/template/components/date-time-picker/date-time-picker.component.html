@@ -1,0 +1,28 @@
+<ion-datetime-button [datetime]="uuid" [disabled]="params().disabled">
+  @if (!value()) {
+    <ion-icon name="calendar-outline" size="large" slot="date-target"></ion-icon>
+    <ion-icon name="time-outline" size="large" slot="time-target"></ion-icon>
+  }
+</ion-datetime-button>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      [id]="uuid"
+      #datetime
+      [value]="value()"
+      [showDefaultButtons]="true"
+      [presentation]="params().type"
+      (ionChange)="handleChange(datetime.value)"
+    >
+      <ion-buttons slot="buttons">
+        <ion-button color="danger" (click)="datetime.cancel(true)">
+          <ion-icon name="close-outline" size="large"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" (click)="datetime.confirm(true)">
+          <ion-icon name="checkmark-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-datetime>
+  </ng-template>
+</ion-modal>

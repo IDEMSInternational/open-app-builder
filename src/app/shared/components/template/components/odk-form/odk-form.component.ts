@@ -4,6 +4,7 @@ import Events from "./libs/enketo/js/event";
 import { Form } from "./libs/enketo/js/form";
 import { TemplateBaseComponent } from "../base";
 import { TemplateAssetService } from "../../services/template-asset.service";
+import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 
 /** Enketo-transformed form representation */
 interface IEnketoFormData {
@@ -41,6 +42,11 @@ interface IODKFormComponentParameters {
    * Path to asset file containing form data in enketo-transformed json format
    */
   form_asset?: string;
+  /**
+   * Show save buttons
+   * @default false
+   */
+  show_save_buttons?: boolean;
 }
 
 @Component({
@@ -85,6 +91,8 @@ export class TmplOdkFormComponent extends TemplateBaseComponent implements OnIni
 
   private async processParameterList() {
     this.parameter_list = this._row.parameter_list || ({} as any);
+    this.parameter_list.show_save_buttons = getBooleanParamFromTemplateRow(this._row, "show_save_buttons", false);
+
     // load form from form_asset parameter
     const { form_asset } = this.parameter_list;
     if (!form_asset) {

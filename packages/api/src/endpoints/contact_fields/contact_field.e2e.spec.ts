@@ -64,7 +64,7 @@ describe.skip("contact_field (e2e)", () => {
     expect(status).toEqual(201);
     const { rows, rowCount } = await testDBQuery(
       `select * from app_notification_interaction`,
-      dbName
+      dbName,
     );
     expect(rowCount).toEqual(1);
     expect(rows[0].app_user_id).toEqual(app_user_id);
