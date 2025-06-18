@@ -4,32 +4,26 @@
   [attr.data-param-style]="params.style"
   [attr.data-variant]="params.variant"
 >
-  <ng-container [ngSwitch]="variantMap.icon">
+  <div class="toggle_wrapper">
+    @if (!variantMap.icon) {
     <!-- Default variant -->
-    <div
-      *ngSwitchCase="false"
-      class="toggle_wrapper"
-      [class.show-tick-cross]="params.showTickAndCross"
+    <ion-toggle
+      [attr.data-mode]="platformVariant"
+      [mode]="platformVariant"
+      [enableOnOffLabels]="params.showTickAndCross && params.showIcons"
+      [checked]="!!_row.value"
+      (click)="handleClick($event)"
     >
-      <ion-toggle
-        [attr.data-mode]="platformVariant"
-        [mode]="platformVariant"
-        [enableOnOffLabels]="params.showTickAndCross && params.showIcons"
-        [checked]="!!_row.value"
-        (click)="handleClick($event)"
-      >
-      </ion-toggle>
-    </div>
-
+    </ion-toggle>
+    } @else {
     <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
-    <div *ngSwitchCase="true" class="toggle_wrapper">
-      <div class="icon-wrapper" (click)="handleClick($event)">
-        <img [src]="(_row.value ? params.iconTrue : params.iconFalse) | plhAsset" />
-      </div>
+    <div class="icon-wrapper" (click)="handleClick($event)">
+      <img [src]="(_row.value ? params.iconTrue : params.iconFalse) | plhAsset" />
     </div>
-  </ng-container>
+    }
+  </div>
 
-  <span class="label" *ngIf="params.trueText && params.falseText"
-    >{{ _row.value ? params.trueText : params.falseText }}
-  </span>
+  @if (params.trueText && params.falseText) {
+  <span class="label">{{ _row.value ? params.trueText : params.falseText }}</span>
+  }
 </div>

@@ -11,6 +11,6 @@
     "@types/clone": "^2.1.1",
     "@types/node": "^16.18.9",
     "shared": "workspace:*",
-    "typescript": "~4.2.4"
+    "typescript": "5.5.4"
   }
 }

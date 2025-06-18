@@ -1,7 +1,8 @@
-import { Component, computed, Input, signal } from "@angular/core";
+import { Component, computed, effect, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import type { TemplateComponent } from "../template-component";
 
 @Component({
   template: ``,
@@ -22,13 +23,18 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   // TODO - main row should just be an input.required and child code refactored to avoid set override
   // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
-  rowSignal = signal<FlowTypes.TemplateRow>(undefined, { equal: isEqual });
-  value = computed(() => this.rowSignal().value, { equal: isEqual });
+  // NOTE - the signal does not use an `{equal: isEqual}` optimisation to allow signal update on external
+  // field set: https://github.com/IDEMSInternational/open-app-builder/pull/2915
+  rowSignal = signal<FlowTypes.TemplateRow>(undefined);
+  value = computed(() => this.rowSignal()?.value, { equal: isEqual });
   parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
   actionList = computed<FlowTypes.TemplateRowAction[]>(() => this.rowSignal().action_list || [], {
     equal: isEqual,
   });
   rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
+
+  /** Specify whether component should be shown or not. If hidden sets display:none on host component */
+  public shouldShow = signal(true);
 
   /**
    * @ignore
@@ -41,10 +47,26 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   }
 
   /**
-   * @ignore
-   * reference to parent template container - does not have setter as should remain static
-   **/
+   * @deprecated - use `parentContainerComponentRef` instead
+   */
   @Input() parent: TemplateContainerComponent;
+
+  @Input() parentContainerComponentRef: TemplateContainerComponent;
+
+  @Input() parentTemplateComponentRef: TemplateComponent;
+
+  constructor() {
+    // Handle show/hide override from component (bypasses templating system)
+    effect(() => {
+      const shouldShow = this.shouldShow();
+      const templateComponentRef = this.parentTemplateComponentRef;
+      if (templateComponentRef) {
+        const templateEl = templateComponentRef.elRef.nativeElement as HTMLDivElement;
+        // Set display to "none" when hiding, or use empty string to remove specific override
+        templateEl.style.display = shouldShow ? "" : "none";
+      }
+    });
+  }
 
   /**
    * Whenever actions are triggered handle in the parent template component

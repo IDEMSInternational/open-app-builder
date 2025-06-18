@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250303.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20250407.1;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -45,6 +45,13 @@ export interface IDeploymentRuntimeConfig {
     /** prevent user accessing app pages without being logged in. Specified template will be shown until logged in */
     enforceLoginTemplate?: string;
   };
+  campaigns: {
+    /**
+     * Specify whether campaigns notification used by deployment. Default `true`
+     * Disabling campaigns will also remove the use and permission prompt for localNotifications
+     **/
+    enabled?: boolean;
+  };
   /**
    * Specify if using firebase for auth and crashlytics.
    * Requires firebase config available through encrypted config */
@@ -53,7 +60,7 @@ export interface IDeploymentRuntimeConfig {
     config: {
       apiKey: string;
       authDomain: string;
-      databaseURL: string;
+      databaseURL?: string;
       projectId: string;
       storageBucket: string;
       messagingSenderId: string;
@@ -67,6 +74,11 @@ export interface IDeploymentRuntimeConfig {
   };
   /** Friendly name used to identify the deployment name */
   name: string;
+
+  /** 3rd party integration for shared data management. Default enabled with firebase provider */
+  shared_data?: {
+    provider: "firebase";
+  };
   /** 3rd party integration for remote asset storage and sync */
   supabase: {
     enabled: boolean;
@@ -207,6 +219,12 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   },
   app_config: {},
   auth: {},
+  campaigns: {
+    enabled: true,
+  },
+  shared_data: {
+    provider: "firebase",
+  },
   supabase: {
     enabled: false,
   },

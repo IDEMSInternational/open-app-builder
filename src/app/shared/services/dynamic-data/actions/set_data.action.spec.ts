@@ -1,6 +1,5 @@
 import { TestBed } from "@angular/core/testing";
 
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { MockAppDataService } from "../../data/app-data.service.mock.spec";
 import { AppDataService } from "../../data/app-data.service";
 
@@ -12,6 +11,8 @@ import { DeploymentService } from "../../deployment/deployment.service";
 import { MockDeploymentService } from "../../deployment/deployment.service.mock.spec";
 import { TemplateActionRegistry } from "../../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory } from "./index";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 type ITestRow = { id: string; number: number; string: string; _meta_field?: any };
 
@@ -44,7 +45,7 @@ const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
 async function triggerTestSetDataAction(service: DynamicDataService, params: IActionSetDataParams) {
   params._list_id = "test_flow";
   await setDataAction(service, params);
-  const obs = await service.query$<any>("data_list", "test_flow");
+  const obs = service.query$<any>("data_list", "test_flow");
   const data = await firstValueFrom(obs);
   return data;
 }
@@ -55,12 +56,14 @@ async function triggerTestSetDataAction(service: DynamicDataService, params: IAc
  *******************************************************************************/
 describe("set_data Action", () => {
   let service: DynamicDataService;
-  let serviceUpdateSpy: jasmine.Spy;
+  let serviceBulkUpsertSpy: jasmine.Spy;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         DynamicDataService,
         {
           provide: AppDataService,
@@ -86,7 +89,7 @@ describe("set_data Action", () => {
 
     service = TestBed.inject(DynamicDataService);
 
-    serviceUpdateSpy = spyOn(service, "update").and.callThrough();
+    serviceBulkUpsertSpy = spyOn(service, "bulkUpsert").and.callThrough();
 
     await service.ready();
     // Ensure any data previously persisted is cleared
@@ -135,10 +138,10 @@ describe("set_data Action", () => {
     const params: IActionSetDataParams = { _list_id: "test_flow", number: 1 };
     await triggerTestSetDataAction(service, params);
     // expect only 1 row to be updated (skip id_1 which has same number)
-    console.log("spy", serviceUpdateSpy.calls.all());
-    expect(serviceUpdateSpy).toHaveBeenCalledOnceWith("data_list", "test_flow", "id_0", {
-      number: 1,
-    });
+    // console.log("spy", serviceBulkUpsertSpy.calls.all());
+    expect(serviceBulkUpsertSpy).toHaveBeenCalledOnceWith("data_list", "test_flow", [
+      { id: "id_0", number: 1, string: "hello", row_index: 0, _meta_field: "original" },
+    ]);
   });
 
   it("set_data prevents update to metadata fields", async () => {

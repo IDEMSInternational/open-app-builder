@@ -37,12 +37,14 @@ describe("DynamicDataService Utils", () => {
   it("coerceDataUpdateTypes", () => {
     const schemaMapping: Record<string, JsonSchema> = {
       number: { type: "number" },
+      integer: { type: "integer" },
       boolean: { type: "boolean" },
       text: { type: "string" },
     };
     const res1 = coerceDataUpdateTypes(schemaMapping, [
       {
-        number: "1",
+        number: "1.5",
+        integer: "5",
         boolean: "true",
         text: "hello",
         additional: "string",
@@ -50,18 +52,31 @@ describe("DynamicDataService Utils", () => {
     ]);
     expect(res1).toEqual([
       {
-        number: 1,
+        number: 1.5,
+        integer: 5,
         boolean: true,
         text: "hello",
         additional: "string",
       },
     ]);
-    // does not coerce missing or undefined properties
+    // does not coerce missing or undefined number/integer but does boolean
     const res2 = coerceDataUpdateTypes(schemaMapping, [
       {
         number: undefined,
+        integer: undefined,
+        boolean: undefined,
+        text: undefined,
+        additional: undefined,
       },
     ]);
-    expect(res2).toEqual([{ number: undefined }]);
+    expect(res2).toEqual([
+      {
+        number: undefined,
+        integer: undefined,
+        boolean: false,
+        text: undefined,
+        additional: undefined,
+      },
+    ]);
   });
 });

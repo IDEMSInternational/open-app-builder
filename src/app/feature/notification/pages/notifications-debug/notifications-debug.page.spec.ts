@@ -13,7 +13,10 @@ describe("NotificationsDebugPage", () => {
     await TestBed.configureTestingModule({
       declarations: [NotificationsDebugPage],
       providers: [
-        { provide: LocalNotificationService, useValue: { pendingNotifications$: of([]) } },
+        {
+          provide: LocalNotificationService,
+          useValue: { pendingNotifications$: of([]), persistAdapter: { dbEntries$: of([]) } },
+        },
         { provide: DBSyncService, useValue: {} },
       ],
     }).compileComponents();

@@ -5,15 +5,18 @@
 @mixin theme-plh_kids_tz {
   [data-theme="plh_kids_tz"] {
     /** Authoring variables **/
-    $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-    $color-secondary: #edb135; // #EDB135
+    $color-primary: hsl(209, 64%, 25%); // #174168
+    $color-secondary: hsl(40, 97%, 49%); // #F6A504
     $page-background: white;
-    $color-green: #92c96d;
+    $color-green: #92cb44;
 
     /** Global and component variables **/
     $variable-overrides: (
       // Custom palette
       color-accent-pink: #ee007b,
+      ion-color-primary-500: #0092d4,
+      ion-color-secondary-700: #ac6800,
+      ion-color-yellow: #edb135,
       // color-accent-pink-50: #ffe6f3,
       // color-accent-pink-100: #ffcce6,
       // color-accent-pink-200: #ff99ce,
@@ -24,6 +27,19 @@
       // color-accent-pink-700: #98014f,
       // color-accent-pink-800: #660035,
       // color-accent-pink-900: #33001a,
+      // ICON SIZE
+      icon-size-small: 16px,
+      icon-size-medium: 24px,
+      icon-size-large: 32px,
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
+
+      // BORDER RADIUS
+      ion-border-radius-small: 8px,
+      ion-border-radius-standard: 12px,
+      ion-border-radius-secondary: 20px,
+      ion-border-radius-round: 50px,
+
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
       border-width-default: 1px,
@@ -69,8 +85,22 @@
       task-progress-bar-color: var(--ion-color-primary-500),
       // checkbox-background-color: white,
       progress-path-line-background: var(--ion-color-gray-100),
-      module-list-item-color-default: var(--ion-color-secondary-300),
-      module-list-item-color-highlighted: var(--color-accent-pink)
+      module-list-item-color-default: var(--ion-color-primary-500),
+      module-list-item-color-highlighted: var(--ion-color-yellow),
+      module-list-item-color-completed: var(--ion-color-secondary-700),
+      ion-default-box-shadow: 0 2px 8px rgba(32, 32, 32, 0.2),
+      // Text Bubbles
+      text-bubble-background-color-primary: var(--ion-color-primary-50),
+      text-bubble-border-color-primary: var(--ion-color-primary-700),
+      text-bubble-background-color-secondary: var(--ion-color-secondary-200),
+      text-bubble-border-color-secondary: var(--ion-color-secondary-500),
+      text-bubble-background-color-3: var(--ion-background-color),
+      text-bubble-border-color-3: var(--ion-color-yellow),
+      text-bubble-background-color-4: var(--ion-background-color),
+      text-bubble-border-color-4: var(--ion-color-green),
+      // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(36, 120, 199, 0.5),
+      box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6)
     );
     @include utils.generateTheme(
       $p: $color-primary,

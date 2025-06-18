@@ -1,7 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 
 import { FlowTypes } from "../../models";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { DataItemsService } from "./data-items.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { MockDynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service.mock.spec";
@@ -11,6 +10,8 @@ import { TemplateVariablesService } from "../../services/template-variables.serv
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { TemplateCalcService } from "../../services/template-calc.service";
 import { MockTemplateCalcService } from "../../services/template-calc.service.mock.spec";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 /***************************************************************************************
  * Test Setup
@@ -87,8 +88,10 @@ describe("DataItemsService", () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [],
       providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
         {
           provide: DynamicDataService,
           useValue: new MockDynamicDataService({
@@ -177,6 +180,36 @@ describe("DataItemsService", () => {
     expect(data[2]._evalContext.local).toEqual({ itemDouble: 6, mockString: "test 6" });
     // templated row values will not be evaluated by service, but instead by template processor
     expect(data[0].value).toEqual("@local.mockString");
+  });
+
+  it("supports non-string intermediate variables", async () => {
+    // child rows include local variable setter and display component
+    const itemsRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      rows: [
+        {
+          type: "set_variable",
+          name: "intermediateMultiplier",
+          _nested_name: "",
+          value: 10,
+        },
+        {
+          type: "set_variable",
+          name: "multipliedNumber",
+          _nested_name: "",
+          value: "@calc(@local.intermediateMultiplier * @item.number)",
+        },
+        MOCK_BUTTON({ value: "test @local.multipliedNumber" }),
+      ],
+    };
+
+    const obs = service.getItemsObservable(itemsRow, {});
+    const data: FlowTypes.TemplateRow[] = await firstValueFrom(obs);
+    // local context
+    expect(data[1]._evalContext.local).toEqual({
+      intermediateMultiplier: 10,
+      multipliedNumber: 20,
+    });
   });
 
   it("evaluates data actions rows with items context (if empty)", async () => {

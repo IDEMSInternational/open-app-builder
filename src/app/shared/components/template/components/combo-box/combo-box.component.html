@@ -1,6 +1,6 @@
 @if (params().variant === "modal") {
   <button
-    class="open-combobox margin-t-regular"
+    class="open-combobox"
     (click)="openModal()"
     [ngClass]="{
       disabled: disabled(),
@@ -12,7 +12,17 @@
   >
     {{ displayText() | translate }}
   </button>
-} @else if (params().variant === "dropdown") {
+} @else if (params().variant === "dropdown" && showSearch()) {
+  <button
+    class="open-search-combobox"
+    (click)="openSearch()"
+    [ngClass]="searchButtonClass()"
+    [disabled]="disabled()"
+  >
+    <span class="text">{{ displayText() | translate }}</span>
+    <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+  </button>
+} @else if (params().variant === "dropdown" && !showSearch()) {
   <div class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!_row.value"

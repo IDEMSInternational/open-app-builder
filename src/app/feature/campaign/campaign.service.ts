@@ -11,6 +11,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -45,14 +46,14 @@ export class CampaignService extends AsyncServiceBase {
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
-    private localNotificationService: LocalNotificationService,
     private templateTranslateService: TemplateTranslateService,
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
+    private deploymentService: DeploymentService,
     private injector: Injector
   ) {
     super("Campaigns");
-    this.registerInitFunction(this.inititialise);
+    this.registerInitFunction(this.initialise);
   }
 
   /**
@@ -63,11 +64,21 @@ export class CampaignService extends AsyncServiceBase {
     return this.injector.get(TemplateVariablesService);
   }
 
-  private async inititialise() {
+  // Call via injector to avoid accidental service init (unclear exact reason why it still inits when not called)
+  // TODO - can hopefully tidy up pending follow-ups to https://github.com/IDEMSInternational/open-app-builder/pull/2859
+  get localNotificationService() {
+    return this.injector.get(LocalNotificationService);
+  }
+
+  private async initialise() {
+    // Skip init if disabled by deployment. Include here and not in constructor to also handle re-init
+    if (!this.deploymentService.config.campaigns.enabled) {
+      return;
+    }
     await this.ensureAsyncServicesReady([
-      this.localNotificationService,
       this.templateTranslateService,
       this.templateVariablesService,
+      this.localNotificationService,
       this.dataEvaluationService,
     ]);
     this.ensureSyncServicesReady([this.appConfigService]);
@@ -89,7 +100,7 @@ export class CampaignService extends AsyncServiceBase {
     this._subscribeToNotificationUpdates();
   }
   public reInitialise() {
-    return this.inititialise();
+    return this.initialise();
   }
 
   /**

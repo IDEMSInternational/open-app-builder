@@ -24,6 +24,7 @@ import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/adv
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
+import { TmplButtonAppleSignInComponent } from "./button-apple-sign-in/button-apple-sign-in.component";
 import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
@@ -46,6 +47,7 @@ import { TmplProgressPathComponent } from "./progress-path/progress-path.compone
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplRadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplSharedDataComponent } from "./shared-data/shared-data.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplSubtitleComponent } from "./subtitle";
@@ -66,6 +68,8 @@ import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
+import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
+import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -79,6 +83,7 @@ export const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   AnimatedSectionGroupComponent,
   ComboBoxModalComponent,
+  ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
   RoundIconButtonComponent,
@@ -94,6 +99,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
+  TmplButtonAppleSignInComponent,
   TmplButtonGoogleSignInComponent,
   TmplCarouselComponent,
   TmplComboBoxComponent,
@@ -116,6 +122,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplQRCodeComponent,
   TmplRadioButtonGridComponent,
   TmplRadioGroupComponent,
+  TmplSharedDataComponent,
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
@@ -130,6 +137,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplTitleComponent,
   TmplToggleBarComponent,
   TmplVideoComponent,
+  TmplDateTimePickerComponent,
   // no prefix
   WorkshopsComponent,
 ];
@@ -158,11 +166,13 @@ const COMMON_COMPONENT_MAPPING = {
   animated_section: AnimatedSectionComponent,
   animated_section_group: AnimatedSectionGroupComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  apple_sign_in_button: TmplButtonAppleSignInComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   carousel: TmplCarouselComponent,
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
+  date_time_picker: TmplDateTimePickerComponent,
   debug_toggle: PLHDebugToggleComponent,
   display_grid: TmplDisplayGridComponent,
   display_group: TmplDisplayGroupComponent,
@@ -188,6 +198,7 @@ const COMMON_COMPONENT_MAPPING = {
   radio_group: TmplRadioGroupComponent,
   round_button: RoundIconButtonComponent,
   select_text: SelectTextComponent,
+  shared_data: TmplSharedDataComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
