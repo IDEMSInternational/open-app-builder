@@ -3,29 +3,24 @@ import { IHttpCacheAdapter } from "./adapters/types";
 import { Capacitor } from "@capacitor/core";
 import { HttpCacheAdapterFile } from "./adapters/file.adapter";
 import { HTTPCacheAdapterOPFS } from "./adapters/opfs.adapter";
-
-interface IMemoryCacheEntry {
-  storagePath: string;
-  size: number;
-  modified: string;
-  expiry: number;
-  data: any;
-}
+import { HttpCacheManifest, ICacheManifestEntry } from "./http-cache-manifest";
 
 /**
- * ...
- * TODO (see end of page)
  *
  */
 export class HttpCache {
   /**
    * Layer-1 cache that keeps in-memory
-   * Also tracks storage metadata including
-   * */
+   * This is used for quick retrieval of frequently accessed files
+   * It has a fixed size allocation and automatic eviction of least-recently used (LRU)
+   **/
   private memoryCache = new HttpCacheAdapterMemory();
 
   /** Layer-2 cache that persists to storage */
   private storageCache?: IHttpCacheAdapter;
+
+  /** Entries manifest stores metadata for Layer-2 */
+  private manifest: HttpCacheManifest;
 
   private initialised = false;
 
@@ -63,23 +58,15 @@ export class HttpCache {
     return new HttpCacheAdapterMemory();
   }
 
-  /** Layer-2 cache for platform storage implementation */
-
   public async ready() {
     if (this.initialised) return;
 
     // auto-select best storage adapter if not specified
     this.storageCache ??= await this.createStorageAdapter();
 
-    // TODO - purge expired from cache (passed by parent?)
-    // or maybe _metadata object stored in cache (?)
+    this.manifest = new HttpCacheManifest(this.storageCache);
+    await this.manifest.initialise();
 
-    const keys = await this.storageCache.list();
-    console.log("storage cache keys", keys);
-    for (const key of keys) {
-      // keep reference to
-      this.memoryCache.set(key, {});
-    }
     this.initialised = true;
     return;
   }
@@ -104,13 +91,21 @@ export class HttpCache {
     // TODO - stream req to file? ... or more like a pipe op
   }
 
-  public async set(key: string, value: any, expiry: number) {
-    // TODO - serialisation (cache-dependent)
-    await this.storageCache.set(key, value);
+  public async set(key: string, res: Response, expiry?: number) {
+    const blob = await res.blob();
+
+    // TODO - manifest first, then use to populate to storage
+
+    const entry = await this.createManifestEntry(res, blob);
+    await this.manifest.set(entry);
+
+    // Store to storage as contentSHA256 to avoid filename collision or duplication
+    await this.storageCache.set(entry.contentSha256, blob);
 
     // TODO - determine when/if to set to memory
     // Do not await, prefer to eagerly return
-    this.memoryCache.set(key, value);
+    this.memoryCache.set(key, blob);
+
     return;
   }
 
@@ -126,11 +121,47 @@ export class HttpCache {
     }
     return deleteRes;
   }
+
+  private async createManifestEntry(res: Response, data: Blob) {
+    const headersObj: Record<string, string> = {};
+    res.headers.forEach((value, key) => {
+      headersObj[key] = value;
+    });
+    const contentSha256 = await hashBlobSHA256(data);
+
+    // TODO - generate checksum
+
+    const entry: ICacheManifestEntry = {
+      contentSha256,
+      created: new Date().getTime(),
+      headers: headersObj,
+      size: data.size,
+      status: res.status,
+      storageKey: contentSha256,
+      expiry: "",
+    };
+    return entry;
+  }
+}
+
+/** Generate a SHA-256 hash from a Blob */
+async function hashBlobSHA256(blob: Blob): Promise<string> {
+  const arrayBuffer = await blob.arrayBuffer();
+  // TODO - cross platform compatibility?
+  const hashBuffer = await crypto.subtle.digest("SHA-256", arrayBuffer);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 /**
  *
  * TODO
+ * - expiry header as string? (but also want 0 for no expiry?)
+ *    probably keep number for now?
+ *
+ * - adding support for object url methods? maybe in other service
+ *
  * - valid response caching
  * - storing expiry and such
  * - storing blobs (native and browser)
@@ -140,6 +171,9 @@ export class HttpCache {
  * - max in-memory size
  * - checksums and revalidation
  * - namespaced caches (with separate contents)
+ * - consider bumping min chrome version for compatibility (? or just fallback in-memory where not)
+ * - add headers for things like source (e.g. x-source=network|cache)
+ * - debug page to test strategies, urls etc.
  *
  * Review how cacheable-request encodes....
  * https://github.dev/jaredwray/cacheable/tree/main/packages/cacheable-request
