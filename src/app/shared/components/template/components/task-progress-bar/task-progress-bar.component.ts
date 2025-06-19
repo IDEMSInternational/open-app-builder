@@ -116,7 +116,12 @@ export class TmplTaskProgressBarComponent
     if (this.params().progressPercent || this.params().progressPercent === 0) {
       return this.params().progressPercent;
     } else {
-      return Math.round((this.subtasksCompleted() / this.subtasksTotal()) * 100);
+      const completed = this.subtasksCompleted();
+      const total = this.subtasksTotal();
+      if (completed === 0 || total === 0) {
+        return 0;
+      }
+      return Math.round((completed / total) * 100);
     }
   });
 
@@ -141,7 +146,13 @@ export class TmplTaskProgressBarComponent
   }
 
   async ngOnInit() {
-    this.getParams();
+    const params = this.getParams();
+    if (params.dataListName) {
+      await this.initialiseTaskGroupData();
+    }
+  }
+
+  private async initialiseTaskGroupData() {
     await this.getTaskGroupDataRows();
     this.checkAndSetUseDynamicData();
     if (this.useDynamicData) {
@@ -198,10 +209,9 @@ export class TmplTaskProgressBarComponent
     }
   }
 
-  /** Calculate circumference of progress circle based on number of tasks completed */
+  /** Calculate stroke offset for progress circle based on completion percentage */
   getStrokeOffset(): number {
-    const progressProportion = this.subtasksCompleted() / this.subtasksTotal();
-    return this.circumference * (1 - (progressProportion || 0));
+    return this.circumference * (1 - this.progressPercentage() / 100);
   }
 
   // Apply any item row operations, e.g. filter, if supplied to component via parameter list
