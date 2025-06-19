@@ -153,6 +153,7 @@ describe("NotificationService", () => {
     it("should cancel existing notification with same id before scheduling new one", async () => {
       const existingNotification: IDBNotification = {
         ...validNotification,
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([existingNotification]));
@@ -231,6 +232,7 @@ describe("NotificationService", () => {
       const existingNotification: IDBNotification = {
         id: "test-notification",
         schedule_at: new Date(Date.now() + 60000).toISOString(),
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([existingNotification]));
@@ -321,6 +323,7 @@ describe("NotificationService", () => {
       const pendingNotification: IDBNotification = {
         ...validNotification,
         schedule_at: futureDate,
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([pendingNotification]));
@@ -329,6 +332,8 @@ describe("NotificationService", () => {
       expect(serviceScheduleSpy).toHaveBeenCalledWith(pendingNotification);
     });
   });
+
+  describe("notification interaction", () => {});
 
   describe("generateInternalNotification", () => {
     it("should generate internal notification with correct structure", async () => {

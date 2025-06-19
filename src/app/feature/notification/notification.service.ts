@@ -24,11 +24,15 @@ export class NotificationService {
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService
   ) {
-    // Ensure permisison status reflected to protected field
+    // Setup listeners immediately to ensure events are not dropped
+    this.addNotificationListeners();
+
+    // Ensure permission status reflected to protected field
     effect(async () => {
       const permissionStatus = this.permissionStatus();
       if (permissionStatus === "granted") {
         await this.recheckScheduledNotifications();
+        await this.markDismissedNotifications();
       }
     });
     // Check permissions on initial load
@@ -66,13 +70,18 @@ export class NotificationService {
       const dbNotification: IDBNotification = {
         ...notification,
         _internal_id: internalNotification.id,
+        status: "pending",
       };
-      await this.dynamicDataService.upsert("data_list", "_notifications", dbNotification);
+      await this.setDBNotification(dbNotification);
     } catch (error) {
       // In case of scheduling issues try to rollback
       console.error(`[Notification]`, error);
       return this.cancelNotification(notification.id);
     }
+  }
+
+  private async setDBNotification(dbNotification: IDBNotification) {
+    return this.dynamicDataService.upsert("data_list", "_notifications", dbNotification);
   }
 
   public async cancelNotification(id: string) {
@@ -103,7 +112,7 @@ export class NotificationService {
       schedule: { at: new Date(schedule_at) },
       // replace string id with randomly generated integer and store original id in extra
       id: internalId,
-      extra: { id },
+      extra: { id, source: "action" },
     };
     return internalNotification;
   }
@@ -145,6 +154,21 @@ export class NotificationService {
     }
   }
 
+  private async markDismissedNotifications() {
+    // notification schedule_at will not be indexed so retrieve all notifications and filter after
+    const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
+    const allNotifications = await firstValueFrom(query);
+    const now = new Date().getTime();
+    // Assume any notifications scheduled in past that haven't been interacted with must have been dismissed
+    const dismissed = allNotifications
+      .filter((n) => n.status === "pending" && new Date(n.schedule_at).getTime() < now)
+      .map((n) => {
+        n.status = "dismissed";
+        return n;
+      });
+    await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+  }
+
   /** List notifications from DB scheduled in the future */
   private async listDBPendingNotifications() {
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
@@ -154,10 +178,34 @@ export class NotificationService {
     return allNotifications.filter((v) => new Date(v.schedule_at).getTime() > now);
   }
 
+  private addNotificationListeners() {
+    // Subscribe to notification action events and update the DB when notification interacted with
+    LocalNotifications.addListener("localNotificationActionPerformed", async (n) => {
+      const { extra } = n.notification as INotificationInternal;
+      if (extra?.id && extra?.source === "action") {
+        const dbNotification = await this.getNotificationById(n.notification.extra.id);
+        const update: IDBNotification = {
+          ...dbNotification,
+          status: "interacted",
+          action_performed: {
+            timestamp: getLocalISOString(),
+            id: n.actionId,
+          },
+        };
+        await this.setDBNotification(update);
+      }
+    });
+    // Whenever any notification received use as prompt to mark notifications as dismissed
+    // This may be replaced in the future if the above action is triggered
+    LocalNotifications.addListener("localNotificationReceived", async () => {
+      await this.markDismissedNotifications();
+    });
+  }
+
   /** Check for potential scheduling issues and return any errors */
   private async validateNotification(notification: Partial<INotification> = {}) {
     const { id, schedule_at } = notification;
-    // Check for notificaiton permisison - request if not already granted
+    // Check for notification permission - request if not already granted
     if (this.permissionStatus() === "unsupported") {
       return { valid: false, msg: "unsupported on device" };
     }
@@ -178,4 +226,21 @@ export class NotificationService {
     }
     return { valid: true };
   }
+}
+
+/**
+ * Utility method to generate a string in the format of an isoString,
+ * but using users local timezone.
+ *  */
+function getLocalISOString() {
+  const now = new Date();
+  // Get components
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+  // Format as "YYYY-MM-DDTHH:mm:ss"
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
 }
