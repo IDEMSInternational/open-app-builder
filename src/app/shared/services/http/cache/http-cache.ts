@@ -97,7 +97,7 @@ export class HttpCache {
     // TODO - manifest first, then use to populate to storage
 
     const entry = await this.createManifestEntry(res, blob);
-    await this.manifest.set(entry);
+    await this.manifest.set(key, entry);
 
     // Store to storage as contentSHA256 to avoid filename collision or duplication
     await this.storageCache.set(entry.contentSha256, blob);
