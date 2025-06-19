@@ -141,7 +141,13 @@ export class TmplTaskProgressBarComponent
   }
 
   async ngOnInit() {
-    this.getParams();
+    const params = this.getParams();
+    if (params.dataListName) {
+      await this.initialiseTaskGroupData();
+    }
+  }
+
+  private async initialiseTaskGroupData() {
     await this.getTaskGroupDataRows();
     this.checkAndSetUseDynamicData();
     if (this.useDynamicData) {
