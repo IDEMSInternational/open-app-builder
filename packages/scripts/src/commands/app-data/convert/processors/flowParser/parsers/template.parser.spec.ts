@@ -203,15 +203,15 @@ describe("Template Parser PostProcess", () => {
   it("hoists variable references from display_groups", () => {
     const rows: FlowTypes.TemplateRow[] = [
       {
-        _nested_name: "",
-        name: "",
+        _nested_name: "dg",
+        name: "dg",
         type: "display_group",
         rows: [
           {
-            _nested_name: "",
+            _nested_name: "db.inner_var",
             type: "set_variable",
-            name: "dg_inner_var",
-            value: "dg_inner_val",
+            name: "inner_var",
+            value: "inner_val",
           },
         ],
       },
@@ -219,6 +219,7 @@ describe("Template Parser PostProcess", () => {
     const res = parser.postProcessFlow({ flow_name: "", flow_type: "template", rows });
     expect(res.rows.length).toEqual(2);
     expect(res.rows[0].type).toEqual("set_variable");
+    expect(res.rows[0]._nested_name).toEqual("inner_var");
     expect(res.rows[1].type).toEqual("display_group");
   });
 });
