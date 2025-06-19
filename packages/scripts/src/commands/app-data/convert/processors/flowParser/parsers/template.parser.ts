@@ -82,6 +82,11 @@ export class TemplateParser extends DefaultParser {
     return row;
   }
 
+  public override postProcessFlow(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
+    const hoisted = this.hackHoistDisplayGroupVariables(flow);
+    return hoisted;
+  }
+
   public override postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
     const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
@@ -193,6 +198,28 @@ export class TemplateParser extends DefaultParser {
       default:
         return `${row.type}_${rowNumber}`;
     }
+  }
+
+  /**
+   * Automatically hoist any variables defined as direct child within display-group to top level
+   * See https://github.com/IDEMSInternational/open-app-builder/issues/2989
+   *
+   * NOTE - in future more consistent handling would involve hoisting all variables declared within
+   * UI components to nearest boundary. Default boundary is top-level of template, although
+   * sub-boundaries would exist for nested templates or data_items loops
+   * */
+  private hackHoistDisplayGroupVariables(flow: FlowTypes.FlowTypeWithData) {
+    const hoisted: FlowTypes.TemplateRow[] = [];
+    flow.rows = flow.rows.map((row) => {
+      if (row.type === "display_group" && Array.isArray(row.rows)) {
+        const innerRows = row.rows as FlowTypes.TemplateRow[];
+        hoisted.push(...innerRows.filter((r) => r.type === "set_variable"));
+        row.rows = innerRows.filter((r) => r.type !== "set_variable");
+      }
+      return row;
+    });
+    flow.rows = [...hoisted, ...flow.rows];
+    return flow;
   }
 
   private qualityControlCheck(row: FlowTypes.TemplateRow) {
