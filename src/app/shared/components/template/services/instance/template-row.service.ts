@@ -24,6 +24,15 @@ type ITemplateOverridesHash = {
   [template_nested_name: string]: IRowOverridesHash;
 };
 export type ITemplateRowMap = { [row_nested_name: string]: FlowTypes.TemplateRow };
+
+interface ISetVariableParameterList {
+  /**
+   * Language code to translate the value to.
+   * Should be a valid language code that matches the deployment's supported languages.
+   */
+  language?: string;
+}
+
 /**
  * This service handles template row initialisation (with parent override merging)
  * and dynamic row processing.
@@ -326,6 +335,18 @@ export class TemplateRowService extends SyncServiceBase {
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
         case "set_variable":
+          if (row.parameter_list) {
+            const { language } = row.parameter_list as ISetVariableParameterList;
+            if (language) {
+              const translated = await this.templateTranslateService.translateValueToLanguage(
+                row.value,
+                language
+              );
+              if (translated) {
+                row.value = translated;
+              }
+            }
+          }
           this.templateRowMap[name] = row;
           this.templateRowMapValues[name] = row.value;
           if (_dynamicFields) {
