@@ -213,7 +213,12 @@ export class TemplateParser extends DefaultParser {
     flow.rows = flow.rows.map((row) => {
       if (row.type === "display_group" && Array.isArray(row.rows)) {
         const innerRows = row.rows as FlowTypes.TemplateRow[];
-        hoisted.push(...innerRows.filter((r) => r.type === "set_variable"));
+        // extract set_variable rows and rename to sit on top-level
+        const hoistedRows = innerRows
+          .filter((r) => r.type === "set_variable")
+          .map((r) => ({ ...r, _nested_name: r.name }));
+        hoisted.push(...hoistedRows);
+        // remove extracted rows from original
         row.rows = innerRows.filter((r) => r.type !== "set_variable");
       }
       return row;
