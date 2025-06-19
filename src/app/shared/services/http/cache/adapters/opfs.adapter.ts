@@ -18,27 +18,19 @@ export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
   constructor(private rootFS: FileSystemDirectoryHandle) {}
 
   public async get(key: string) {
-    // note: trick to skip `await` microtask when
-    // not a promise
-
     const fh = await this.rootFS.getFileHandle(key, { create: true });
     const file = await fh.getFile();
-    const value = (await file.text()) || null;
-    // TODO - handle serialisation (binary/blob/json)... maybe superjson use?
-    // return safeJSONParse(value);
-    return value;
+    return file;
   }
 
-  public async set(key: string, value: any) {
+  public async set(key: string, value: Blob) {
     console.log("set opfs", key, value);
     // note: trick to skip `await` microtask when
     // not a promise
 
     const fh = await this.rootFS.getFileHandle(key, { create: true });
     const file = await fh.createWritable();
-    await file.write(
-      value != null && typeof value == "object" ? JSON.stringify(value) : String(value)
-    );
+    await file.write(value);
     await file.close();
     return true;
   }

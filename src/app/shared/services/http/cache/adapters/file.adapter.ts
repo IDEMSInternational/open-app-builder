@@ -20,9 +20,9 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
   }
   public async get(key: string) {
     // TODO
-    return;
+    return new Blob();
   }
-  public async set(key: string, value: any) {
+  public async set(key: string, value: Blob) {
     // TODO
     return;
   }
