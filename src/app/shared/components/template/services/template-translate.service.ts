@@ -194,35 +194,11 @@ export class TemplateTranslateService extends AsyncServiceBase {
    * @param currentLanguageCode - The language code for the current language, used for reverse lookup if target language is default.
    * @returns The translated value.
    */
-  public async translateValueToLanguage(
-    value: any,
-    targetLanguageCode: string,
-    currentLanguageCode: string
-  ) {
+  public async translateValueToLanguage(value: any, languageCode: string) {
     if (typeof value !== "string") return value;
-
-    // HACK: if the target language code is the default language, do a reverse lookup on the current language translations to get the default value
-    if (targetLanguageCode === this.appLanguages.default) {
-      const translationStrings =
-        await this.appDataService.getTranslationStrings(currentLanguageCode);
-      if (translationStrings) {
-        // Find the key whose value matches the current value
-        const defaultKey = Object.keys(translationStrings).find(
-          (key) => translationStrings[key] === value
-        );
-        return defaultKey ?? value;
-      } else {
-        console.warn(
-          `[TRANSLATE] - No translations found for current language: ${currentLanguageCode}`
-        );
-        return value;
-      }
-    }
-
-    // Otherwise, translate to the target language
-    const translationStrings = await this.appDataService.getTranslationStrings(targetLanguageCode);
+    const translationStrings = await this.appDataService.getTranslationStrings(languageCode);
     if (!translationStrings) {
-      console.error(`[TRANSLATE] - No translations found for ${targetLanguageCode}`);
+      console.error(`[TRANSLATE] - No translations found for ${languageCode}`);
       return value;
     }
     return translationStrings.hasOwnProperty(value) ? translationStrings[value] : value;
