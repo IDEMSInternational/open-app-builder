@@ -5,7 +5,6 @@ import ky from "ky";
 import { Options } from "ky/distribution/types/options";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { HttpCache } from "./cache/http-cache";
-import { SyncServiceBase } from "../syncService.base";
 
 export interface IHttpRequestOptions extends Options {
   /**
@@ -27,6 +26,7 @@ export interface IHttpRequestOptions extends Options {
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
   cacheExpiry: "30d",
+  // TODO(discuss) - default option cache or network first?
   strategy: "cache-first",
   retry: 2,
 };
@@ -36,51 +36,57 @@ const DEFAULT_OPTIONS: IHttpRequestOptions = {
  * For more details see [Readme](./README.md)
  */
 @Injectable({ providedIn: "root" })
-export class HttpService extends SyncServiceBase {
+export class HttpService {
   private client = this.getClient();
 
   /** Map of cache instances by namespace */
   private cacheNamespaces: Record<string, HttpCache> = {};
 
-  constructor() {
-    super("HTTP Service");
-  }
-
+  /**
+   * Make a get request to a url. Use options to define default caching behaviour,
+   * such as cache-first or network-only approaches
+   */
   public async get(url: string, options: IHttpRequestOptions = {}) {
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const { strategy, cacheExpiry } = mergedOptions;
+    const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
     // populate cache expiry header to handle in after-response hook
     options.headers ??= {};
     options.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
+    options.headers["x-cache-name"] = cacheName;
 
-    switch (strategy) {
-      case "cache-only":
-        return this.handleCacheRequest(url, mergedOptions);
-
-      case "cache-first":
-        const cacheRes = await this.handleCacheRequest(url, mergedOptions);
-        if (cacheRes.status === 200) {
-          return cacheRes;
-        }
-        return this.handleNetworkRequest(url, mergedOptions);
-
-      case "network-first":
-        const networkRes = await this.handleNetworkRequest(url, mergedOptions);
-        if (this.isSuccessStatus(networkRes.status)) {
-          return networkRes;
-        }
-        return this.handleCacheRequest(url, mergedOptions);
-
-      default:
-        // TODO - should default be cache-first?
-        return this.handleNetworkRequest(url, mergedOptions);
-    }
+    return this.requestStrategyHandlers[strategy](url, mergedOptions);
   }
 
+  /** Specific handling of different request strategies */
+  private requestStrategyHandlers: Record<
+    IHttpRequestOptions["strategy"],
+    (url: string, options: IHttpRequestOptions) => Promise<Response>
+  > = {
+    "cache-only": async (url, options) => this.handleCacheRequest(url, options),
+    "cache-first": async (url, options) => {
+      const cacheRes = await this.handleCacheRequest(url, options);
+      if (cacheRes.status === 200) {
+        return cacheRes;
+      }
+      return this.handleNetworkRequest(url, options);
+    },
+    "network-only": async (url, options) => this.handleNetworkRequest(url, options),
+    "network-first": async (url, options) => {
+      const networkRes = await this.handleNetworkRequest(url, options);
+      if (this.isSuccessStatus(networkRes.status)) {
+        return networkRes;
+      }
+      return this.handleCacheRequest(url, options);
+    },
+  };
+
+  /**
+   * Check if the response received corresponds to a cacheable success code
+   * Currently does not support opaque responses, but could be extended similar to
+   * https://github.com/kornelski/http-cache-semantics
+   */
   private isSuccessStatus(code: number) {
-    // TODO - consider other cacheable response validation, e.g.
-    // https://github.com/kornelski/http-cache-semantics
     return code >= 200 && code < 300;
   }
 
@@ -93,13 +99,16 @@ export class HttpService extends SyncServiceBase {
     const cache = await this.getCache(cacheName);
     const key = generateRequestKey({ url, method: options.method });
 
-    // TODO - evaluate and handle expirty here to invalidate existing cache which
-    // may have originally set a longer expiry
-
-    const cacheRes = await cache.get(key, expiryTime);
-    const status = cacheRes ? 200 : 400;
+    const cacheRes = await cache.get(key);
     const headers = new Headers({ "x-res-source": "cache" });
-    return new Response(cacheRes, { status, headers });
+    if (cacheRes) {
+      console.log("cacheRes", cacheRes);
+      // TODO - evaluate and handle expiry here to invalidate existing cache which
+      // may have originally set a longer expiry
+      return new Response(cacheRes, { status: 200, headers });
+    }
+
+    return new Response(cacheRes, { status: 400, headers });
   }
 
   private async getCache(name: string) {
@@ -118,15 +127,19 @@ export class HttpService extends SyncServiceBase {
 
   private async updateCache(req: Request, res: Response) {
     if (this.isSuccessStatus(res.status)) {
+      const cacheName = req.headers.get("x-cache-name");
+      const cache = await this.getCache(cacheName);
       const key = generateRequestKey({ url: req.url, method: req.method });
       const expiry = req.headers.get("x-cache-expiry");
       const expiryTime = expiry ? shorthandToTime(expiry) : undefined;
-      console.log("expirty time", expiryTime);
+
       // TODO - handle here or in cache?
 
       // Use response clone to allow initial response to still be passed
       // TODO - handle streaming body response
       const clone = res.clone();
+
+      await cache.set(key, clone, expiryTime);
 
       // TODO - understand different application types
       // TODO - when to use buffer vs convert...
@@ -151,7 +164,7 @@ export class HttpService extends SyncServiceBase {
             // delay cache updates to avoid blocking UI
             setTimeout(() => {
               this.updateCache(req, res);
-            }, 500);
+            }, 50);
           },
         ],
       },
