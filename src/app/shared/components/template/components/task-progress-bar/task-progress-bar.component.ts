@@ -206,7 +206,7 @@ export class TmplTaskProgressBarComponent
 
   /** Calculate circumference of progress circle based on number of tasks completed */
   getStrokeOffset(): number {
-    const progressProportion = this.subtasksCompleted() / this.subtasksTotal();
+    const progressProportion = this.progressPercentage() / 100;
     return this.circumference * (1 - (progressProportion || 0));
   }
 
