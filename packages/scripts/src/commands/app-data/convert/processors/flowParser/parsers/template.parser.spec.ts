@@ -217,6 +217,8 @@ describe("Template Parser PostProcess", () => {
       },
     ];
     const res = parser.postProcessFlow({ flow_name: "", flow_type: "template", rows });
+    // hoisting should move inner set_variable to top-level, resulting in 2 flat rows
+    // the hoisted row should also have its nested_name updated to reflect new position
     expect(res.rows.length).toEqual(2);
     expect(res.rows[0].type).toEqual("set_variable");
     expect(res.rows[0]._nested_name).toEqual("inner_var");
