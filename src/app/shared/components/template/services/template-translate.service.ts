@@ -190,8 +190,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
   /**
    * Translate a value to a target language, not necessarily the app language.
    * @param value - The value to translate.
-   * @param targetLanguageCode - The language code for the target language.
-   * @param currentLanguageCode - The language code for the current language, used for reverse lookup if target language is default.
+   * @param languageCode - The language code for the target language.
    * @returns The translated value.
    */
   public async translateValueToLanguage(value: any, languageCode: string) {
