@@ -118,6 +118,7 @@ export class AuthService extends AsyncServiceBase {
           sign_in_google: async () => await this.provider.signInWithGoogle(),
           sign_in_apple: async () => await this.provider.signInWithApple(),
           sign_out: async () => await this.provider.signOut(),
+          delete_account: async () => await this.provider.deleteAccount(),
         };
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
