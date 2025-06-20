@@ -6,6 +6,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
+import { App } from "@capacitor/app";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -24,11 +25,15 @@ export class NotificationService {
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService
   ) {
-    // Ensure permisison status reflected to protected field
+    // Setup listeners immediately to ensure events are not dropped
+    this.addNotificationListeners();
+
+    // Ensure permission status reflected to protected field
     effect(async () => {
       const permissionStatus = this.permissionStatus();
       if (permissionStatus === "granted") {
         await this.recheckScheduledNotifications();
+        await this.checkDismissedNotifications();
       }
     });
     // Check permissions on initial load
@@ -66,13 +71,18 @@ export class NotificationService {
       const dbNotification: IDBNotification = {
         ...notification,
         _internal_id: internalNotification.id,
+        status: "pending",
       };
-      await this.dynamicDataService.upsert("data_list", "_notifications", dbNotification);
+      await this.setDBNotification(dbNotification);
     } catch (error) {
       // In case of scheduling issues try to rollback
       console.error(`[Notification]`, error);
       return this.cancelNotification(notification.id);
     }
+  }
+
+  private async setDBNotification(dbNotification: IDBNotification) {
+    return this.dynamicDataService.upsert("data_list", "_notifications", dbNotification);
   }
 
   public async cancelNotification(id: string) {
@@ -103,7 +113,7 @@ export class NotificationService {
       schedule: { at: new Date(schedule_at) },
       // replace string id with randomly generated integer and store original id in extra
       id: internalId,
-      extra: { id },
+      extra: { id, source: "action" },
     };
     return internalNotification;
   }
@@ -113,7 +123,10 @@ export class NotificationService {
       selector: { id },
     });
     const [notification] = await firstValueFrom(query);
-    return notification;
+    if (notification) {
+      return notification;
+    }
+    return null;
   }
 
   private async checkPermissions() {
@@ -145,6 +158,34 @@ export class NotificationService {
     }
   }
 
+  /**
+   * Check through list of all db notifications and infer dismissed status on any
+   * pending notifications where the schedule time is in the past
+   *
+   * This method is called during the following events to try and ensure status kept updates
+   * 1. Service init (initial template views should have correct data)
+   * 2. App resumes from minimised app state (check again to ensure UI updated)
+   *
+   * This is more reliable than depending on app timers (e.g. setTimeout, setInterval) as these timers
+   * are suspended while the app is minimised and do not catch up
+   *
+   * If notifications received while app in foreground they handled via native listener callback
+   */
+  private async checkDismissedNotifications() {
+    // notification schedule_at will not be indexed so retrieve all notifications and filter after
+    const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
+    const allNotifications = await firstValueFrom(query);
+    const now = new Date().getTime();
+    // Assume any notifications scheduled in past that haven't been interacted with must have been dismissed
+    const dismissed = allNotifications
+      .filter((n) => n.status === "pending" && new Date(n.schedule_at).getTime() < now)
+      .map((n) => {
+        n.status = "dismissed";
+        return n;
+      });
+    await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+  }
+
   /** List notifications from DB scheduled in the future */
   private async listDBPendingNotifications() {
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
@@ -154,10 +195,62 @@ export class NotificationService {
     return allNotifications.filter((v) => new Date(v.schedule_at).getTime() > now);
   }
 
+  private async addNotificationListeners() {
+    // HACK - call checkPermissions first to ensure capacitor notification api loaded
+    // On web the listeners seem to be registering too eagerly, and fail to process data
+    await this.checkPermissions();
+
+    // Subscribe to notification action events and update the DB when notification interacted with
+    this.api.addListener("localNotificationActionPerformed", (action) => {
+      const notification = action.notification as INotificationInternal;
+      // Only trigger actions for notifications also created by same service
+      if (notification.extra?.id && notification.extra?.source === "action") {
+        console.log("[Notification] Action", action);
+        this.handleNotificationAction(action.actionId, notification);
+      }
+    });
+    // Whenever any notification received use as prompt to mark notifications as dismissed
+    // This may be replaced in the future if the above action is triggered
+    this.api.addListener("localNotificationReceived", (notification: INotificationInternal) => {
+      if (notification.extra?.id && notification.extra?.source === "action") {
+        console.log("[Notification] Received", notification);
+        this.handleNotificationReceived(notification);
+      }
+    });
+    // Additionally listen to app resume events to also trigger processing to make sure
+    // DB up-to-date if a user has minimised the app and returns after notifications dismissed
+    App.addListener("resume", () => this.checkDismissedNotifications());
+  }
+
+  /** When notification interacted with update the db accordingly */
+  private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
+    const dbNotification = await this.getNotificationById(notification.extra.id);
+    if (dbNotification) {
+      const update: IDBNotification = {
+        ...dbNotification,
+        status: "interacted",
+        action_performed: {
+          timestamp: getLocalISOString(),
+          id: actionId,
+        },
+      };
+      await this.setDBNotification(update);
+    }
+  }
+
+  /** If notification received while app in foreground use as trigger to mark dismissed notifications */
+  private async handleNotificationReceived(notification: INotificationInternal) {
+    const dbNotification = await this.getNotificationById(notification.extra.id);
+    if (dbNotification) {
+      const update: IDBNotification = { ...dbNotification, status: "dismissed" };
+      await this.setDBNotification(update);
+    }
+  }
+
   /** Check for potential scheduling issues and return any errors */
   private async validateNotification(notification: Partial<INotification> = {}) {
     const { id, schedule_at } = notification;
-    // Check for notificaiton permisison - request if not already granted
+    // Check for notification permission - request if not already granted
     if (this.permissionStatus() === "unsupported") {
       return { valid: false, msg: "unsupported on device" };
     }
@@ -178,4 +271,21 @@ export class NotificationService {
     }
     return { valid: true };
   }
+}
+
+/**
+ * Utility method to generate a string in the format of an isoString,
+ * but using users local timezone.
+ *  */
+function getLocalISOString() {
+  const now = new Date();
+  // Get components
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+  // Format as "YYYY-MM-DDTHH:mm:ss"
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
 }
