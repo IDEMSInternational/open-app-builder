@@ -123,7 +123,10 @@ export class NotificationService {
       selector: { id },
     });
     const [notification] = await firstValueFrom(query);
-    return notification;
+    if (notification) {
+      return notification;
+    }
+    return null;
   }
 
   private async checkPermissions() {
@@ -222,22 +225,26 @@ export class NotificationService {
   /** When notification interacted with update the db accordingly */
   private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
     const dbNotification = await this.getNotificationById(notification.extra.id);
-    const update: IDBNotification = {
-      ...dbNotification,
-      status: "interacted",
-      action_performed: {
-        timestamp: getLocalISOString(),
-        id: actionId,
-      },
-    };
-    await this.setDBNotification(update);
+    if (dbNotification) {
+      const update: IDBNotification = {
+        ...dbNotification,
+        status: "interacted",
+        action_performed: {
+          timestamp: getLocalISOString(),
+          id: actionId,
+        },
+      };
+      await this.setDBNotification(update);
+    }
   }
 
   /** If notification received while app in foreground use as trigger to mark dismissed notifications */
   private async handleNotificationReceived(notification: INotificationInternal) {
     const dbNotification = await this.getNotificationById(notification.extra.id);
-    const update: IDBNotification = { ...dbNotification, status: "dismissed" };
-    await this.setDBNotification(update);
+    if (dbNotification) {
+      const update: IDBNotification = { ...dbNotification, status: "dismissed" };
+      await this.setDBNotification(update);
+    }
   }
 
   /** Check for potential scheduling issues and return any errors */
