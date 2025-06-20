@@ -11,7 +11,7 @@ import { NotificationService } from "./notification.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { INotification, IDBNotification } from "./notification.types";
+import { INotification, IDBNotification, INotificationInternal } from "./notification.types";
 import { IAppConfig } from "data-models/appConfig";
 
 /**
@@ -34,6 +34,9 @@ export class MockCapacitorLocalNotifications implements Partial<LocalNotificatio
   async getPending() {
     return { notifications: [] };
   }
+  async addListener(eventName: unknown, listenerFunc: unknown) {
+    return { remove: async () => null };
+  }
 
   async cancel(options: CancelOptions) {
     return;
@@ -55,6 +58,15 @@ const validNotification: INotification = {
   schedule_at: new Date(Date.now() + 60000).toISOString(), // 1 minute from now
   title: "Test Title",
   text: "Test Text",
+};
+const validNotificationInternal: INotificationInternal = {
+  body: validNotification.text,
+  id: 12345,
+  extra: { source: "action", id: validNotification.id },
+  title: validNotification.title,
+  schedule: {
+    at: new Date(validNotification.schedule_at),
+  },
 };
 
 /**
@@ -118,7 +130,7 @@ describe("NotificationService", () => {
         notifications: [
           jasmine.objectContaining({
             id: jasmine.any(Number),
-            extra: { id: validNotification.id },
+            extra: { id: validNotification.id, source: "action" },
           }),
         ],
       });
@@ -153,6 +165,7 @@ describe("NotificationService", () => {
     it("should cancel existing notification with same id before scheduling new one", async () => {
       const existingNotification: IDBNotification = {
         ...validNotification,
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([existingNotification]));
@@ -231,6 +244,7 @@ describe("NotificationService", () => {
       const existingNotification: IDBNotification = {
         id: "test-notification",
         schedule_at: new Date(Date.now() + 60000).toISOString(),
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([existingNotification]));
@@ -321,12 +335,63 @@ describe("NotificationService", () => {
       const pendingNotification: IDBNotification = {
         ...validNotification,
         schedule_at: futureDate,
+        status: "pending",
         _internal_id: 12345,
       };
       mockDynamicDataService.query$.and.returnValue(of([pendingNotification]));
       // will automatically be triggered by effect but call manually to ensure processed
       await service["recheckScheduledNotifications"]();
       expect(serviceScheduleSpy).toHaveBeenCalledWith(pendingNotification);
+    });
+  });
+
+  describe("notification interaction", () => {
+    xit("automatically updates notifications db on app start and when resumed from background", async () => {
+      // TODO - hard to mock app lifecycle but present in code
+    });
+    it("marks notifications as dismissed if received while app in foreground", async () => {
+      const pastDate = new Date(Date.now() - 60000).toISOString();
+      const pendingNotification: IDBNotification = {
+        ...validNotification,
+        schedule_at: pastDate,
+        status: "pending",
+        _internal_id: 12345,
+      };
+      mockDynamicDataService.query$.and.returnValue(of([pendingNotification]));
+      // NOTE - hard to mock specific notification listener so just trigger
+      await service["handleNotificationReceived"](validNotificationInternal);
+      expect(mockDynamicDataService.upsert).toHaveBeenCalledOnceWith(
+        "data_list",
+        "_notifications",
+        jasmine.objectContaining({
+          id: validNotification.id,
+          status: "dismissed",
+        })
+      );
+    });
+    it("marks notifications as interacted if notified from native", async () => {
+      const pastDate = new Date(Date.now() - 60000).toISOString();
+      const pendingNotification: IDBNotification = {
+        ...validNotification,
+        schedule_at: pastDate,
+        status: "pending",
+        _internal_id: 12345,
+      };
+      mockDynamicDataService.query$.and.returnValue(of([pendingNotification]));
+      // NOTE - hard to mock specific notification listener so just trigger
+      await service["handleNotificationAction"]("tap", validNotificationInternal);
+      expect(mockDynamicDataService.upsert).toHaveBeenCalledOnceWith(
+        "data_list",
+        "_notifications",
+        jasmine.objectContaining({
+          id: validNotification.id,
+          status: "interacted",
+          action_performed: {
+            timestamp: jasmine.any(String), // timestamp generated when received
+            id: "tap",
+          },
+        })
+      );
     });
   });
 
@@ -346,7 +411,7 @@ describe("NotificationService", () => {
             body: "Test Text",
             schedule: { at: jasmine.any(Date) },
             id: jasmine.any(Number),
-            extra: { id: "test-notification" },
+            extra: { id: "test-notification", source: "action" },
           }),
         ],
       });
