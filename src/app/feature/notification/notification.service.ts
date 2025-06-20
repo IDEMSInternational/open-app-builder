@@ -6,6 +6,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
+import { App } from "@capacitor/app";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -32,7 +33,7 @@ export class NotificationService {
       const permissionStatus = this.permissionStatus();
       if (permissionStatus === "granted") {
         await this.recheckScheduledNotifications();
-        await this.markDismissedNotifications();
+        await this.checkDismissedNotifications();
       }
     });
     // Check permissions on initial load
@@ -154,7 +155,20 @@ export class NotificationService {
     }
   }
 
-  private async markDismissedNotifications() {
+  /**
+   * Check through list of all db notifications and infer dismissed status on any
+   * pending notifications where the schedule time is in the past
+   *
+   * This method is called during the following events to try and ensure status kept updates
+   * 1. Service init (initial template views should have correct data)
+   * 2. App resumes from minimised app state (check again to ensure UI updated)
+   *
+   * This is more reliable than depending on app timers (e.g. setTimeout, setInterval) as these timers
+   * are suspended while the app is minimised and do not catch up
+   *
+   * If notifications received while app in foreground they handled via native listener callback
+   */
+  private async checkDismissedNotifications() {
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
     const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
     const allNotifications = await firstValueFrom(query);
@@ -185,20 +199,27 @@ export class NotificationService {
 
     // Subscribe to notification action events and update the DB when notification interacted with
     this.api.addListener("localNotificationActionPerformed", (action) => {
-      console.log("[Notification] Action", action);
       const notification = action.notification as INotificationInternal;
       // Only trigger actions for notifications also created by same service
       if (notification.extra?.id && notification.extra?.source === "action") {
+        console.log("[Notification] Action", action);
         this.handleNotificationAction(action.actionId, notification);
       }
     });
     // Whenever any notification received use as prompt to mark notifications as dismissed
     // This may be replaced in the future if the above action is triggered
-    this.api.addListener("localNotificationReceived", (n) => {
-      console.log("[Notification] Received", n);
-      this.markDismissedNotifications();
+    this.api.addListener("localNotificationReceived", (notification: INotificationInternal) => {
+      if (notification.extra?.id && notification.extra?.source === "action") {
+        console.log("[Notification] Received", notification);
+        this.handleNotificationReceived(notification);
+      }
     });
+    // Additionally listen to app resume events to also trigger processing to make sure
+    // DB up-to-date if a user has minimised the app and returns after notifications dismissed
+    App.addListener("resume", () => this.checkDismissedNotifications());
   }
+
+  /** When notification interacted with update the db accordingly */
   private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
     const dbNotification = await this.getNotificationById(notification.extra.id);
     const update: IDBNotification = {
@@ -209,6 +230,13 @@ export class NotificationService {
         id: actionId,
       },
     };
+    await this.setDBNotification(update);
+  }
+
+  /** If notification received while app in foreground use as trigger to mark dismissed notifications */
+  private async handleNotificationReceived(notification: INotificationInternal) {
+    const dbNotification = await this.getNotificationById(notification.extra.id);
+    const update: IDBNotification = { ...dbNotification, status: "dismissed" };
     await this.setDBNotification(update);
   }
 
