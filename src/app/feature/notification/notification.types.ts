@@ -1,4 +1,5 @@
 import { LocalNotificationSchema } from "@capacitor/local-notifications";
+import { FlowTypes } from "packages/data-models";
 
 export interface INotification {
   id: string;
@@ -7,6 +8,11 @@ export interface INotification {
   schedule_at: string;
   title?: string;
   text?: string;
+  /** Action to be triggered if user taps notification */
+  action?: FlowTypes.TemplateRowAction[];
+  // TODO - Future proposed syntax for multiple action buttons
+  //        would need to author as `{actions.0: some_action, actions.1: another_actions}
+  // actions?: { id: string; button_text?: string; action_list: FlowTypes.TemplateRowAction[] }[];
 }
 
 export interface IDBNotification extends INotification {
