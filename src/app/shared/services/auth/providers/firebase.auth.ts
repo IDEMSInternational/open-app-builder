@@ -64,6 +64,13 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     return this.authUser();
   }
 
+  public async deleteAccount() {
+    await FirebaseAuthentication.deleteUser();
+    this.authUser.set(undefined);
+    localStorage.removeItem(AUTH_METADATA_FIELD);
+    return this.authUser();
+  }
+
   private setAuthUser(user: User, profile: Partial<IAuthUser>) {
     const authUser: IAuthUser = {
       ...profile,
