@@ -178,28 +178,38 @@ export class NotificationService {
     return allNotifications.filter((v) => new Date(v.schedule_at).getTime() > now);
   }
 
-  private addNotificationListeners() {
+  private async addNotificationListeners() {
+    // HACK - call checkPermissions first to ensure capacitor notification api loaded
+    // On web the listeners seem to be registering too eagerly, and fail to process data
+    await this.checkPermissions();
+
     // Subscribe to notification action events and update the DB when notification interacted with
-    LocalNotifications.addListener("localNotificationActionPerformed", async (n) => {
-      const { extra } = n.notification as INotificationInternal;
-      if (extra?.id && extra?.source === "action") {
-        const dbNotification = await this.getNotificationById(n.notification.extra.id);
-        const update: IDBNotification = {
-          ...dbNotification,
-          status: "interacted",
-          action_performed: {
-            timestamp: getLocalISOString(),
-            id: n.actionId,
-          },
-        };
-        await this.setDBNotification(update);
+    this.api.addListener("localNotificationActionPerformed", (action) => {
+      console.log("[Notification] Action", action);
+      const notification = action.notification as INotificationInternal;
+      // Only trigger actions for notifications also created by same service
+      if (notification.extra?.id && notification.extra?.source === "action") {
+        this.handleNotificationAction(action.actionId, notification);
       }
     });
     // Whenever any notification received use as prompt to mark notifications as dismissed
     // This may be replaced in the future if the above action is triggered
-    LocalNotifications.addListener("localNotificationReceived", async () => {
-      await this.markDismissedNotifications();
+    this.api.addListener("localNotificationReceived", (n) => {
+      console.log("[Notification] Received", n);
+      this.markDismissedNotifications();
     });
+  }
+  private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
+    const dbNotification = await this.getNotificationById(notification.extra.id);
+    const update: IDBNotification = {
+      ...dbNotification,
+      status: "interacted",
+      action_performed: {
+        timestamp: getLocalISOString(),
+        id: actionId,
+      },
+    };
+    await this.setDBNotification(update);
   }
 
   /** Check for potential scheduling issues and return any errors */
