@@ -236,6 +236,9 @@ export class NotificationService {
       };
       await this.setDBNotification(update);
     }
+    if (dbNotification.action) {
+      // TODO - handle triggering actions
+    }
   }
 
   /** If notification received while app in foreground use as trigger to mark dismissed notifications */
