@@ -156,16 +156,15 @@ body[data-theme="plh_facilitator_mapa"] {
           display: flex;
           align-items: center;
           height: 90px !important;
-          border-right: 1px solid white;
+          border-inline-end: 1px solid white;
           img {
             height: 100% !important;
             border-radius: 0px !important;
-            border-top-left-radius: 16px !important;
-            border-bottom-left-radius: 16px !important;
+            border-start-start-radius: 16px !important;
+            border-end-start-radius: 16px !important;
 
             margin: 0px !important;
             object-fit: cover;
-            filter: grayscale(1);
           }
         }
         .text-wrapper {
@@ -178,7 +177,6 @@ body[data-theme="plh_facilitator_mapa"] {
         }
       }
       &[data-status~="inProgress"] {
-        border: none !important;
         box-shadow: none !important;
         .content-wrapper {
           background-color: var(--ion-color-primary-700) !important;
@@ -194,6 +192,15 @@ body[data-theme="plh_facilitator_mapa"] {
               font-size: var(--font-size-text-medium) !important;
               line-height: var(--line-height-text-small) !important;
               color: var(--color-surface-white) !important;
+            }
+          }
+        }
+      }
+      &[data-status~="completed"] {
+        .content-wrapper {
+          .image-wrapper {
+            img {
+              filter: grayscale(1) !important;
             }
           }
         }
