@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Signal } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable } from "rxjs";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 
 @Injectable({
   providedIn: "root",
 })
 export class VariableStore {
   private readonly state: { [key: string]: BehaviorSubject<any> } = {};
-
-  constructor() {}
 
   public setVariable(name: string, value: any): void {
     if (!this.state[name]) {
@@ -22,6 +22,10 @@ export class VariableStore {
       return undefined;
     }
     return this.state[name].value;
+  }
+
+  public asSignal(name: string): Signal<any> {
+    return toSignal(this.watchVariable(name), { equal: isEqual });
   }
 
   public watchVariable(name: string): Observable<any> {
