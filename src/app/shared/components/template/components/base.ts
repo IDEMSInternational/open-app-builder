@@ -119,8 +119,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       return;
     }
 
-    if (!this.variableStore.hasVariable(parentVariable._nested_name)) return;
-    this.variableStore.watchVariable(parentVariable._nested_name).subscribe(async (value) => {
+    if (!this.variableStore.has(parentVariable._nested_name)) return;
+    this.variableStore.watch(parentVariable._nested_name).subscribe(async (value) => {
       await this.setValue(value);
     });
   }
