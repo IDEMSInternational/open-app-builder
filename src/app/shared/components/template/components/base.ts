@@ -2,6 +2,7 @@ import { Component, computed, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
+import { VariableStore } from "../stores/variable-store";
 
 @Component({
   template: ``,
@@ -18,19 +19,24 @@ import { TemplateContainerComponent } from "../template-container.component";
  */
 export class TemplateBaseComponent implements ITemplateRowProps {
   /** @ignore */
-  _row: FlowTypes.TemplateRow;
+  public _row: FlowTypes.TemplateRow;
 
   // TODO - main row should just be an input.required and child code refactored to avoid set override
   // TODO - could also consider whether setting parent required (is it template row map or services?), possibly merge with row
   // NOTE - the signal does not use an `{equal: isEqual}` optimisation to allow signal update on external
   // field set: https://github.com/IDEMSInternational/open-app-builder/pull/2915
-  rowSignal = signal<FlowTypes.TemplateRow>(undefined);
-  value = computed(() => this.rowSignal()?.value, { equal: isEqual });
-  parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
-  actionList = computed<FlowTypes.TemplateRowAction[]>(() => this.rowSignal().action_list || [], {
+  public rowSignal = signal<FlowTypes.TemplateRow>(undefined);
+  public value = computed(() => this.rowSignal()?.value, { equal: isEqual });
+  public parameterList = computed(() => this.rowSignal().parameter_list || {}, { equal: isEqual });
+  public actionList = computed<FlowTypes.TemplateRowAction[]>(
+    () => this.rowSignal().action_list || [],
+    {
+      equal: isEqual,
+    }
+  );
+  public rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], {
     equal: isEqual,
   });
-  rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
 
   /**
    * @ignore
@@ -40,6 +46,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row = row;
     // take shallow clone to still be able to detect changes if this._row directly modified
     this.rowSignal.set({ ...row });
+    if (this.variableStore) {
+      this.value = this.variableStore.asSignal(this._row._nested_name);
+    }
+
     this.subscribeToDependantVariables();
   }
 
@@ -48,6 +58,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
+
+  /**
+   *
+   */
+  constructor(private variableStore?: VariableStore) {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
@@ -109,4 +124,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
       await this.setValue(value);
     });
   }
+
+  private subscribeToChildVariables() {}
 }
