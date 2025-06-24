@@ -1,8 +1,9 @@
-import { Component, computed, Input, signal } from "@angular/core";
+import { Component, computed, Input, OnDestroy, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 import { VariableStore } from "../stores/variable-store";
+import { Subscription } from "rxjs";
 
 @Component({
   template: ``,
@@ -17,7 +18,7 @@ import { VariableStore } from "../stores/variable-store";
  * Note, if extending the base component access to data is provided by the declared properties,
  * e.g. `_row`
  */
-export class TemplateBaseComponent implements ITemplateRowProps {
+export class TemplateBaseComponent implements ITemplateRowProps, OnDestroy {
   /** @ignore */
   public _row: FlowTypes.TemplateRow;
 
@@ -39,6 +40,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   });
 
   public variableStore: VariableStore;
+  private subscriptions: Subscription[] = [];
 
   /**
    * @ignore
@@ -120,8 +122,17 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     }
 
     if (!this.variableStore.has(parentVariable._nested_name)) return;
-    this.variableStore.watch(parentVariable._nested_name).subscribe(async (value) => {
-      await this.setValue(value);
-    });
+    const subscription = this.variableStore
+      .watch(parentVariable._nested_name)
+      .subscribe(async (value) => {
+        await this.setValue(value);
+      });
+
+    this.subscriptions.push(subscription);
+  }
+  public ngOnDestroy(): void {
+    // Unsubscribe from all variable store subscriptions to prevent memory leaks
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions = [];
   }
 }
