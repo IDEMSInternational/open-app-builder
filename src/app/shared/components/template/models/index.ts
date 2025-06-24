@@ -1,5 +1,6 @@
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
+import { VariableStore } from "../stores/variable-store";
 export { FlowTypes } from "src/app/shared/model";
 
 /**
@@ -10,4 +11,5 @@ export { FlowTypes } from "src/app/shared/model";
 export interface ITemplateRowProps {
   row: FlowTypes.TemplateRow;
   parent: TemplateContainerComponent;
+  variableStore: VariableStore; // Optional, used for variable management
 }
