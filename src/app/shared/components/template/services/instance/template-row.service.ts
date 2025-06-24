@@ -329,7 +329,7 @@ export class TemplateRowService extends SyncServiceBase {
     // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
     if (isNestedTemplate) {
       // if we have a row in a nested template, we need to put it's value in the variable store so that we can react to changes
-      this.variableStore.setVariable(_nested_name, row.value);
+      this.variableStore.set(_nested_name, row.value);
       return row;
     }
 
@@ -347,7 +347,7 @@ export class TemplateRowService extends SyncServiceBase {
         if (_dynamicFields) {
           return preProcessedRow;
         }
-        this.variableStore.setVariable(name, row.value);
+        this.variableStore.set(name, row.value);
         return;
       // merge new actions with existing container action list
       case "update_action_list":
@@ -369,7 +369,7 @@ export class TemplateRowService extends SyncServiceBase {
         // all other types should just set own value for use in future processing
         this.templateRowMap[_nested_name] = row;
         this.templateRowMapValues[_nested_name] = row.value;
-        this.variableStore.setVariable(name, row.value);
+        this.variableStore.set(name, row.value);
         break;
     }
 
