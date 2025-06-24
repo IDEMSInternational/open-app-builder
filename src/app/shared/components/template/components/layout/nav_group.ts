@@ -5,6 +5,7 @@ import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateLayoutComponent } from "./layout";
 import { isObject } from "src/app/shared/utils/utils";
 import { TemplateFieldService } from "../../services/template-field.service";
+import { VariableStore } from "../../stores/variable-store";
 
 @Component({
   selector: "plh-tmpl-nav-group",
@@ -82,8 +83,11 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
 
-  constructor(private templateFieldService: TemplateFieldService) {
-    super();
+  constructor(
+    private templateFieldService: TemplateFieldService,
+    variableStore: VariableStore
+  ) {
+    super(variableStore);
   }
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {

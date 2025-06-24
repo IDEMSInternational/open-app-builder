@@ -36,9 +36,7 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   }
   /** reference to parent template container - does not have setter as should remain static */
   @Input() parent: TemplateContainerComponent;
-  constructor() {}
-
-  public variableStore: VariableStore;
+  constructor(public variableStore: VariableStore) {}
 
   ngOnInit() {
     this.addParentActionsFilter();
