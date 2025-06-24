@@ -235,7 +235,8 @@ export class DataItemsService {
     );
     processor.templateRowMapValues = templateRowMapValues;
 
-    // Copy variables from parent template row map to child variable store
+    // This here because processor.templateRowMapValues is being directly updated
+    // todo: templateRowMapValues should be completely replaced by the variableStore
     Object.entries(templateRowMap).forEach(([key, { value }]) => {
       processor.variableStore.setVariable(key, value);
     });
