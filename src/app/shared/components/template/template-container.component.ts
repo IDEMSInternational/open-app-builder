@@ -55,7 +55,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};
 
-  public variableStore: VariableStore;
+  public variableStore = this.injector.get(VariableStore);
 
   template: FlowTypes.Template;
 
