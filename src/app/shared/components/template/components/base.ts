@@ -38,6 +38,8 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     equal: isEqual,
   });
 
+  public variableStore: VariableStore;
+
   /**
    * @ignore
    * specific data used in component rendering
@@ -46,9 +48,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row = row;
     // take shallow clone to still be able to detect changes if this._row directly modified
     this.rowSignal.set({ ...row });
-    if (this.variableStore) {
-      this.value = this.variableStore.asSignal(this._row._nested_name);
-    }
+
+    // variable store should be set by now.
+    this.value = this.variableStore.asSignal(this._row._nested_name);
 
     this.subscribeToDependantVariables();
   }
@@ -58,11 +60,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * reference to parent template container - does not have setter as should remain static
    **/
   @Input() parent: TemplateContainerComponent;
-
-  /**
-   *
-   */
-  constructor(private variableStore?: VariableStore) {}
 
   /**
    * Whenever actions are triggered handle in the parent template component
@@ -87,13 +84,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @ignore
    **/
   async setValue(value: any) {
-    // TODO - also want to prevent triggering changed action
-    if (value === this._row.value) {
-      return;
-    }
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
+    this.variableStore.setVariable(this._row._nested_name, value);
 
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_self",

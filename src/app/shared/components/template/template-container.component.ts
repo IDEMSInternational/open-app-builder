@@ -21,6 +21,7 @@ import { TemplateNavService } from "./services/template-nav.service";
 import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
+import { VariableStore } from "./stores/variable-store";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -53,6 +54,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   /** Query params are used for trigger template actions such as opening popups or enabling debug_mode. Ignored if required (e.g. app sidemenu template) */
   @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};
+
+  public variableStore: VariableStore;
 
   template: FlowTypes.Template;
 

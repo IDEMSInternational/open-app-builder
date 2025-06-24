@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
+import { VariableStore } from "../../stores/variable-store";
 
 @Component({
   template: ``,
@@ -36,6 +37,8 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   /** reference to parent template container - does not have setter as should remain static */
   @Input() parent: TemplateContainerComponent;
   constructor() {}
+
+  public variableStore: VariableStore;
 
   ngOnInit() {
     this.addParentActionsFilter();

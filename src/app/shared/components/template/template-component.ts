@@ -18,6 +18,7 @@ import { TemplateContainerComponent } from "./template-container.component";
 import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateActionService } from "./services/instance/template-action.service";
 import { te } from "date-fns/locale";
+import { VariableStore } from "./stores/variable-store";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -74,6 +75,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     this._row = row;
     if (this.componentRef) {
       log("[Component Update]", row.name, row);
+      this.componentRef.instance.variableStore = this.variableStore;
       this.componentRef.setInput("row", row);
       // // this.hackForceReprocessNestedTemplate();
     } else {
@@ -105,7 +107,10 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private elRef: ElementRef) {}
+  constructor(
+    private elRef: ElementRef,
+    public variableStore: VariableStore
+  ) {}
 
   ngOnInit() {
     this.renderRow(this._row);
