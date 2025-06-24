@@ -76,7 +76,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     if (this.componentRef) {
       log("[Component Update]", row.name, row);
       this.componentRef.setInput("row", row);
-      // // this.hackForceReprocessNestedTemplate();
     } else {
       log("[Component Create]", row.name, row);
     }
@@ -177,38 +176,4 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.row = row;
     this.componentRef = componentRef;
   }
-
-  /**
-   * If the current template is generated as a child of data_items then updates to
-   * parent variables will not propagate down. Force reprocessing to workaround
-   * See issue https://github.com/IDEMSInternational/open-app-builder/issues/2636
-   */
-  // // private async hackForceReprocessNestedTemplate() {
-  // //   if (this._row.type === "template") {
-  // //     const componentRef = this.componentRef as ComponentRef<TemplateContainerComponent>;
-  // //     if (componentRef.instance.parent) {
-  // //       // HACK - when a parent updates there may be cases when the updated variables need to be
-  // //       // reflected in the child template (e.g. set_nested_variable contains parent local variable)
-  // //       // As it is not currently easy to isolate this case, fully recreate any child template when
-  // //       // the parent template updates
-  // //       if (componentRef.instance.templatename()) {
-  // //         // Hack: need to set child properties to their current child values, this is not an actual
-  // //         //       solutions because values not referenced in the parent will lose their current values
-  // //         //       we need to force rerender with existing values not this though rerender method
-  // //         //       though componentRef.instance.forceRerender();
-  // //         for (const child of this.row.rows) {
-  // //           let value =
-  // //             componentRef.instance.parent.children[this.row.name].templateRowService
-  // //               .templateRowMapValues[child.name];
-  // //           child.value = value;
-  // //         }
-
-  // //         this.componentRef.destroy();
-  // //         this.renderTemplateComponent(this._row);
-  // //         // TODO - test better ways to manage from container, confirming test cases from
-  // //         // https://github.com/IDEMSInternational/open-app-builder/issues/2636
-  // //       }
-  // //     }
-  // //   }
-  // // }
 }
