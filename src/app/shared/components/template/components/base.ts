@@ -50,7 +50,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this.rowSignal.set({ ...row });
 
     // variable store should be set by now.
-    this.value = this.variableStore.asSignal(this._row._nested_name);
+    if (this.variableStore) {
+      this.value = this.variableStore.asSignal(this._row._nested_name);
+    } else {
+      console.warn("Variable store not set for TemplateBaseComponent, row:", this._row);
+    }
 
     this.subscribeToDependantVariables();
   }
@@ -87,7 +91,6 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
-    this.variableStore.setVariable(this._row._nested_name, value);
 
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_self",
@@ -106,18 +109,19 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   }
 
   private subscribeToParentVariables() {
-    // to avoid circular dependency, only subscribe to parent variables if the parent is a template row?
-    // to unsubscribe from the variables on destroy
     if (!this.parent || this.parent.row?.type !== "template") return;
 
-    let parentVariableStore = this.parent.templateRowService.variableStore;
-    let hasVariable = parentVariableStore.hasVariable(this._row._nested_name);
+    let parentVariable = this.parent.row.rows.find((parentRow) =>
+      this._row._nested_name.endsWith(parentRow.name)
+    );
 
-    if (!hasVariable) return;
-    parentVariableStore.watchVariable(this._row._nested_name).subscribe(async (value) => {
+    if (!parentVariable) {
+      return;
+    }
+
+    if (!this.variableStore.hasVariable(parentVariable._nested_name)) return;
+    this.variableStore.watchVariable(parentVariable._nested_name).subscribe(async (value) => {
       await this.setValue(value);
     });
   }
-
-  private subscribeToChildVariables() {}
 }

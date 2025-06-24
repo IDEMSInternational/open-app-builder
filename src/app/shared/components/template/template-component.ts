@@ -75,7 +75,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     this._row = row;
     if (this.componentRef) {
       log("[Component Update]", row.name, row);
-      this.componentRef.instance.variableStore = this.variableStore;
       this.componentRef.setInput("row", row);
       // // this.hackForceReprocessNestedTemplate();
     } else {
@@ -159,6 +158,8 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     const componentRef = viewContainerRef.createComponent(TemplateContainerComponent);
     // assign input variables (note template name taken from the row's value column)
     componentRef.instance.parent = this.parent;
+    componentRef.instance.variableStore = this.variableStore;
+
     componentRef.setInput("row", row);
     componentRef.instance.name = row.name;
     // assign templatename input using signal
@@ -171,6 +172,7 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     const viewContainerRef = this.tmplComponentHost.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(component);
     // assign input variables
+    componentRef.instance.variableStore = this.variableStore;
     componentRef.instance.parent = this.parent;
     componentRef.instance.row = row;
     this.componentRef = componentRef;
