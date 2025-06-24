@@ -18,7 +18,7 @@ export class VariableStore {
     if (!this.state[name]) {
       this.state[name] = new BehaviorSubject<any>(value);
     } else {
-      this.state[name].next(value);
+      if (value !== this.state[name].value) this.state[name].next(value);
     }
   }
 
@@ -40,10 +40,10 @@ export class VariableStore {
   /**
    * Not used but might be useful to snapshot the current state for debug reasons.
    */
-  public getAll(): { [key: string]: any } {
-    const result: { [key: string]: any } = {};
-    Object.keys(this.state).forEach((key) => {
-      result[key] = this.state[key].value;
+  public getAll(): { [name: string]: any } {
+    const result: { [name: string]: any } = {};
+    Object.keys(this.state).forEach((name) => {
+      result[name] = this.state[name].value;
     });
     return result;
   }
@@ -53,11 +53,11 @@ export class VariableStore {
    * todo: we will need to clear variables when changing the main template.
    */
   public clear(): void {
-    Object.keys(this.state).forEach((key) => {
-      this.state[key].complete();
+    Object.keys(this.state).forEach((name) => {
+      this.state[name].complete();
     });
-    Object.keys(this.state).forEach((key) => {
-      delete this.state[key];
+    Object.keys(this.state).forEach((name) => {
+      delete this.state[name];
     });
   }
 }
