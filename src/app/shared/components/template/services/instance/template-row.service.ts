@@ -10,7 +10,7 @@ import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { VariableStore } from "./variable-store";
+import { VariableStore } from "../../stores/variable-store";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -42,7 +42,7 @@ export class TemplateRowService extends SyncServiceBase {
 
   public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
 
-  public variableStore = new VariableStore(); // store for dynamic variables used in template rows
+  public variableStore = this.injector.get(VariableStore);
 
   constructor(
     private injector: Injector,
