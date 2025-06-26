@@ -3,7 +3,7 @@
 @use "sass:map";
 
 /// Calculates relative luminance of a color.
-/// Formula based on WCAG guidelines.
+/// Formula based on WCAG guidelines (4.5:1 for normal text, 3:1 for large text).
 @function luminance($color) {
   $rgb: (
     red: color.red($color),
