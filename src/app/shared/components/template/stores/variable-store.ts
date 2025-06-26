@@ -12,7 +12,7 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 export class VariableStore {
   private readonly state: { [key: string]: BehaviorSubject<any> } = {};
 
-  private injector = inject(Injector);
+  constructor(private injector: Injector) {}
 
   public set(name: string, value: any): void {
     if (!this.state[name]) {
