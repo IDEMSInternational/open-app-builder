@@ -18,7 +18,7 @@ export class VariableStore {
     if (!this.state[name]) {
       this.state[name] = new BehaviorSubject<any>(value);
     } else {
-      if (value !== this.state[name].value) this.state[name].next(value);
+      if (!isEqual(value, this.state[name].value)) this.state[name].next(value);
     }
   }
 
@@ -55,8 +55,6 @@ export class VariableStore {
   public clear(): void {
     Object.keys(this.state).forEach((name) => {
       this.state[name].complete();
-    });
-    Object.keys(this.state).forEach((name) => {
       delete this.state[name];
     });
   }
