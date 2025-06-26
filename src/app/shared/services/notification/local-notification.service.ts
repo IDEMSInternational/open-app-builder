@@ -408,7 +408,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       async (action) => {
-        console.log("[NOTIFICATION ACTION]", action);
+        console.log("[LOCAL NOTIFICATION] ACTION", action);
         await this.updateDBNotification(action.notification.id, {
           _action_performed: action.actionId,
         });
@@ -420,7 +420,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     );
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
     LocalNotifications.addListener("localNotificationReceived", async (notification) => {
-      console.log(["NOTIFICATION RECEIVED"], notification);
+      console.log("[LOCAL NOTIFICATION] RECEIVED", notification);
       this.loadNotifications();
     });
   }
