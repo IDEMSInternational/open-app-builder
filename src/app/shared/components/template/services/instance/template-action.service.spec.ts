@@ -7,7 +7,6 @@ import { TemplateActionRegistry } from "./template-action.registry";
 import { TemplateRowService } from "./template-row.service";
 import { TemplateNavService } from "../template-nav.service";
 import { VariableStore } from "../../stores/variable-store";
-import { tr } from "date-fns/locale";
 
 // Use a stubbed template action registry to allow registering custom actions in test
 const MockTemplateActionRegistry = new TemplateActionRegistry();
