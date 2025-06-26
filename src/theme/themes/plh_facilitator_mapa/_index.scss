@@ -8,6 +8,8 @@
     $color-primary: #123d5d;
     $color-secondary: #70aac0;
     $page-background: white;
+    $color-primary-alt: null;
+    $color-secondary-alt: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -105,7 +107,13 @@
       box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
       box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pa: $color-primary-alt,
+      $sa: $color-secondary-alt
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
