@@ -10,7 +10,7 @@ import { VariableStore } from "../../stores/variable-store";
 
 // Use a stubbed template action registry to allow registering custom actions in test
 const MockTemplateActionRegistry = new TemplateActionRegistry();
-const variableStore = new VariableStore();
+const variableStore = new VariableStore({} as Injector);
 
 // HACK - templateActionService injects child dependencies from injector
 // stub all injected services with stub (can be replaced as future tests require)
