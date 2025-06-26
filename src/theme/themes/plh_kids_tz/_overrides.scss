@@ -7,12 +7,51 @@ body[data-theme="plh_kids_tz"] {
   plh-module-list-item {
     .container {
       border-width: 3px;
-    }
-    .container[data-variant~="circle"] {
-      border-width: 8px;
-      // Use [class] to increase specificity without using !important
-      .module-image[class] {
-        padding: 0px;
+      box-shadow: var(--box-shadow-primary);
+      border-width: 1.5px;
+      &[data-variant~="circle"] {
+        border-width: 8px;
+        box-shadow: var(--box-shadow-primary);
+        // Use [class] to increase specificity without using !important
+        .module-image[class] {
+          padding: 0px;
+        }
+        &[data-completed~="false"][data-highlighted~="false"][data-locked~="false"],
+        &[data-completed~="false"][data-highlighted~="true"][data-locked~="false"] {
+          --circle-width: 92px !important;
+        }
+      }
+      &[data-completed~="true"] {
+        box-shadow: none;
+        .module-title {
+          p {
+            color: var(--ion-color-secondary-700) !important;
+          }
+        }
+        .module-image {
+          width: 70px !important;
+          height: 70px !important;
+        }
+        .nav-icon {
+          opacity: 0.7;
+        }
+      }
+      &[data-highlighted~="true"] {
+        box-shadow: var(--box-shadow-secondary);
+        .module-title {
+          p {
+            color: var(--ion-color-secondary-600) !important;
+          }
+        }
+      }
+      &[data-locked~="true"] {
+        border-color: var(--ion-color-gray-300);
+        .module-title {
+          p {
+            color: var(--ion-color-gray-300) !important;
+          }
+        }
+        box-shadow: none;
       }
     }
   }

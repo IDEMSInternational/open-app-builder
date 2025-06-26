@@ -33,6 +33,11 @@ type IScheduledNotificationsHashmap = {
   [campaign_id: string]: { [row_id: string]: ILocalNotification };
 };
 
+interface ICampaignNotificationExtra {
+  campaign_id: string;
+  action_list?: FlowTypes.TemplateRowAction[];
+}
+
 @Injectable({ providedIn: "root" })
 export class CampaignService extends AsyncServiceBase {
   allCampaigns: ICampaignHashmap = {};
@@ -149,13 +154,15 @@ export class CampaignService extends AsyncServiceBase {
         if (this._handledNotifications[notification.id]) shouldProcess = false;
         else this._handledNotifications[notification.id] = true;
       }
-      // process notification actions
-      const row = notification.extra as FlowTypes.Campaign_listRow;
-      if (shouldProcess && row.action_list) {
-        const actionsForTrigger = row.action_list.filter((action) => action.trigger === trigger);
-        if (actionsForTrigger.length > 0) {
-          actionsTriggered = true;
-          await this.triggerRowActions(actionsForTrigger);
+      // process notification actions if scheduled by campaign
+      if (notification.extra) {
+        const { action_list, campaign_id } = notification.extra as ICampaignNotificationExtra;
+        if (campaign_id && shouldProcess && action_list) {
+          const actionsForTrigger = action_list.filter((action) => action.trigger === trigger);
+          if (actionsForTrigger.length > 0) {
+            actionsTriggered = true;
+            await this.triggerRowActions(actionsForTrigger);
+          }
         }
       }
     }
@@ -271,6 +278,7 @@ export class CampaignService extends AsyncServiceBase {
     // HACK - remove markdown form title and text as not currently supported in capacitor notifications
     row.text = this.hackStripNotificationMarkdown(row.text);
     row.title = this.hackStripNotificationMarkdown(row.title);
+    const extra: ICampaignNotificationExtra = { campaign_id, action_list: row.action_list };
 
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
@@ -278,10 +286,10 @@ export class CampaignService extends AsyncServiceBase {
       largeBody: row.text || this.notificationDefaults.text,
       summaryText: "",
       title: row.title || this.notificationDefaults.title,
-      extra: { ...row, campaign_id },
+      extra,
       id: stringToIntegerHash(row.id),
     };
-    await this.localNotificationService.scheduleNotification(notificationSchedule);
+    await this.localNotificationService.scheduleNotification(notificationSchedule, row.id);
     return notificationSchedule;
   }
 

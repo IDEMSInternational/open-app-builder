@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.19.1",
+  "version": "0.19.6",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -46,6 +46,7 @@
     "@capacitor-community/file-opener": "^6.0.0",
     "@capacitor-firebase/authentication": "^6.3.1",
     "@capacitor-firebase/crashlytics": "^6.3.1",
+    "@capacitor-firebase/firestore": "6.3.1",
     "@capacitor-firebase/performance": "^6.3.1",
     "@capacitor/android": "^6.0.0",
     "@capacitor/app": "^6.0.0",
@@ -59,6 +60,7 @@
     "@capacitor/screen-orientation": "^6.0.2",
     "@capacitor/share": "^6.0.0",
     "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/toast": "^6.0.0",
     "@capawesome/capacitor-app-update": "^6.0.0",
     "@ionic/angular": "^8.5.3",
     "@ionic/pwa-elements": "^3.2.2",

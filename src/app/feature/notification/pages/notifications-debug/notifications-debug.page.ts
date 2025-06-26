@@ -46,7 +46,10 @@ export class NotificationsDebugPage implements OnInit {
     this.pickerValue = pickerValue;
     if (this.editableNotification) {
       this.editableNotification.schedule.at = new Date(pickerValue);
-      await this.localNotificationService.scheduleNotification(this.editableNotification as any);
+      await this.localNotificationService.scheduleNotification(
+        this.editableNotification as any,
+        this.editableNotification._row_id
+      );
     }
   }
   public logDebugInfo(notification: ILocalNotificationInteraction) {

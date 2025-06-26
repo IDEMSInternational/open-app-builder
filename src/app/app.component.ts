@@ -42,6 +42,7 @@ import { TemplateMetadataService } from "./shared/components/template/services/t
 import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
 import { ScrollService } from "./shared/services/scroll/scroll.service";
+import { ToastService } from "./shared/services/toast/toast.service";
 
 @Component({
   selector: "app-root",
@@ -122,7 +123,8 @@ export class AppComponent {
     private fileManagerService: FileManagerService,
     private screenOrientationService: ScreenOrientationService,
     private clipboardService: ClipboardService,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private toastService: ToastService
   ) {
     this.initializeApp();
   }
@@ -149,7 +151,7 @@ export class AppComponent {
 
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
-        if (!isDeveloperMode) {
+        if (environment.production && !isDeveloperMode) {
           this.removeConsoleLogs();
         }
         await SplashScreen.hide();
@@ -229,6 +231,7 @@ export class AppComponent {
         this.screenOrientationService,
         this.clipboardService,
         this.scrollService,
+        this.toastService,
       ],
       deferred: [this.analyticsService],
       implicit: [

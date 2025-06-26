@@ -3,7 +3,6 @@ import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
 } from "src/app/shared/utils";
-import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -13,7 +12,7 @@ import { TemplateBaseComponent } from "../base";
 })
 export class SquareIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit
+  implements OnInit, AfterViewInit
 {
   icon_src: string;
   style: string;

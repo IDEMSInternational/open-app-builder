@@ -129,7 +129,6 @@ export class DataItemsService {
         itemRows.push(rowWithUpdatedActionList);
       }
     }
-
     return itemRows;
   }
 
@@ -242,6 +241,8 @@ export class DataItemsService {
     });
 
     await processor.processContainerTemplateRows();
-    return processor.renderedRows();
+    const processedRows = processor.renderedRows();
+
+    return processedRows;
   }
 }
