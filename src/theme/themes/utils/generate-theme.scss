@@ -21,6 +21,7 @@
   $primary-alt: null,
   $secondary-alt: null
 ) {
+  // Alternative values derived from HSL transformations, following the analogous colour harmony
   @if ($primary-alt == null) {
     $primary-alt: hsl(
       wrap-hue(hue($primary) + 20),
@@ -52,7 +53,7 @@
     "default-box-shadow": 0 2px 8px rgba(0, 0, 0, 0.2),
     // Used for activated/focused/hover states of ion-button – may only be visible in web preview
     // TODO: Remove when migrating away from ionic
-    "color-primary-shade": color.adjust($primary, $lightness: -20%),
+    "color-primary-shade": color.adjust($primary, $lightness: -15%),
     "color-primary-tint": color.adjust($primary, $lightness: 50%),
   );
 
@@ -99,6 +100,50 @@
     $variants-map: map.merge($variants-map, $map);
   }
   $transparent: (color-#{$baseName}-transparent: rgba($base, 0.5));
+  @return $variants-map;
+}
+
+@function generateColourVariants($base, $baseName, $weights) {
+  $variants-map: ();
+
+  // Extract base HSL values
+  $base-h: color.hue($base);
+  $base-s: color.saturation($base);
+  $base-l: color.lightness($base);
+
+  // As lightness decreases, colours significantly lose vibrancy therefore scale stops are varied between 8% and 10%.
+  $lightness-scale: (
+    50: 96%,
+    100: 88%,
+    200: 78%,
+    300: 70%,
+    400: 58%,
+    500: 48%,
+    600: 40%,
+    700: 32%,
+    800: 24%,
+    900: 16%,
+  );
+
+  @each $weight in $weights {
+    $new-l: map.get($lightness-scale, $weight);
+
+    // Increase saturation gradually for darker shades (weight ≥ 400)
+    $darkness-factor: math.div($weight, 900); // 50 -> 0.05, 900 -> 1
+    $saturation-boost: 15% * $darkness-factor; // boost by ~1.5
+    $new-s: $base-s + $saturation-boost;
+
+    @if $new-s > 100% {
+      $new-s: 100%;
+    }
+
+    $new-color: hsl($base-h, $new-s, $new-l);
+
+    $variants-map: map.merge($variants-map, (color-#{$baseName}-#{$weight}: $new-color));
+  }
+
+  $variants-map: map.merge($variants-map, (color-#{$baseName}-transparent: rgba($base, 0.5)));
+
   @return $variants-map;
 }
 
