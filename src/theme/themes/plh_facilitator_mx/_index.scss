@@ -8,6 +8,8 @@
     $color-primary: #005054;
     $color-secondary: #a83c0c;
     $page-background: white;
+    $color-primary-alt: null;
+    $color-secondary-alt: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -135,7 +137,13 @@
       text-bubble-background-color-4: var(--color-accent-blue-90),
       text-bubble-border-color-4: var(--color-accent-blue-70),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pa: $color-primary-alt,
+      $sa: $color-secondary-alt
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
