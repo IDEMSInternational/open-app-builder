@@ -467,6 +467,7 @@ export namespace FlowTypes {
     "trigger_actions",
     "user",
     "toast",
+    "navigate_back",
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
     ...PLH_ACTIONS_LIST,
