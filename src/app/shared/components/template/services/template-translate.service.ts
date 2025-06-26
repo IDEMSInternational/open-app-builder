@@ -179,12 +179,28 @@ export class TemplateTranslateService extends AsyncServiceBase {
 
   public translateValue(value: any) {
     let translated = value;
-    if (typeof value === "string" && this.translation_strings.hasOwnProperty(value)) {
+    if (typeof value === "string" && this.translation_strings?.hasOwnProperty(value)) {
       translated = this.translation_strings[value];
     } else {
       // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
+  }
+
+  /**
+   * Translate a value to a target language, not necessarily the app language.
+   * @param value - The value to translate.
+   * @param languageCode - The language code for the target language.
+   * @returns The translated value.
+   */
+  public async translateValueToLanguage(value: any, languageCode: string) {
+    if (typeof value !== "string") return value;
+    const translationStrings = await this.appDataService.getTranslationStrings(languageCode);
+    if (!translationStrings) {
+      console.error(`[TRANSLATE] - No translations found for ${languageCode}`);
+      return value;
+    }
+    return translationStrings.hasOwnProperty(value) ? translationStrings[value] : value;
   }
 
   private subscribeToAppConfigChanges() {
