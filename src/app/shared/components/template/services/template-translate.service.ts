@@ -179,12 +179,53 @@ export class TemplateTranslateService extends AsyncServiceBase {
 
   public translateValue(value: any) {
     let translated = value;
-    if (typeof value === "string" && this.translation_strings.hasOwnProperty(value)) {
+    if (typeof value === "string" && this.translation_strings?.hasOwnProperty(value)) {
       translated = this.translation_strings[value];
     } else {
       // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
+  }
+
+  /**
+   * Translate a value to a target language, not necessarily the app language.
+   * @param value - The value to translate.
+   * @param targetLanguageCode - The language code for the target language.
+   * @param currentLanguageCode - The language code for the current language, used for reverse lookup if target language is default.
+   * @returns The translated value.
+   */
+  public async translateValueToLanguage(
+    value: any,
+    targetLanguageCode: string,
+    currentLanguageCode: string
+  ) {
+    if (typeof value !== "string") return value;
+
+    // HACK: if the target language code is the default language, do a reverse lookup on the current language translations to get the default value
+    if (targetLanguageCode === this.appLanguages.default) {
+      const translationStrings =
+        await this.appDataService.getTranslationStrings(currentLanguageCode);
+      if (translationStrings) {
+        // Find the key whose value matches the current value
+        const defaultKey = Object.keys(translationStrings).find(
+          (key) => translationStrings[key] === value
+        );
+        return defaultKey ?? value;
+      } else {
+        console.warn(
+          `[TRANSLATE] - No translations found for current language: ${currentLanguageCode}`
+        );
+        return value;
+      }
+    }
+
+    // Otherwise, translate to the target language
+    const translationStrings = await this.appDataService.getTranslationStrings(targetLanguageCode);
+    if (!translationStrings) {
+      console.error(`[TRANSLATE] - No translations found for ${targetLanguageCode}`);
+      return value;
+    }
+    return translationStrings.hasOwnProperty(value) ? translationStrings[value] : value;
   }
 
   private subscribeToAppConfigChanges() {
