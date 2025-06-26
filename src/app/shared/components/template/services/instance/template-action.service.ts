@@ -421,10 +421,10 @@ export class TemplateActionService extends SyncServiceBase {
 
         const changedActions = row.action_list
           .filter((a) => a.trigger === "changed")
-          .map((a) => {
-            a.args.push(value);
-            return a;
-          });
+          .map((a) => ({
+            ...a,
+            args: [...(a.args || []), value],
+          }));
 
         if (changedActions.length === 0) continue;
 
