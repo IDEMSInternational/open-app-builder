@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { FlowTypes } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { VariableStore } from "../../stores/variable-store";
+import { TemplateBaseComponent } from "../base";
 
 @Component({
   template: ``,
@@ -23,8 +24,7 @@ import { VariableStore } from "../../stores/variable-store";
  *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
  * ```
  */
-export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
-  _row: FlowTypes.TemplateRow;
+export class TemplateLayoutComponent extends TemplateBaseComponent implements OnInit {
   /** specific data used in component rendering */
   @Input() set row(row: FlowTypes.TemplateRow) {
     row.rows = (row.rows || []).map((r) => {
@@ -36,7 +36,10 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   }
   /** reference to parent template container - does not have setter as should remain static */
   @Input() parent: TemplateContainerComponent;
-  constructor(public variableStore: VariableStore) {}
+
+  constructor(public variableStore: VariableStore) {
+    super();
+  }
 
   ngOnInit() {
     this.addParentActionsFilter();

@@ -7,7 +7,7 @@ import {
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
-import { FlowTypes, ITemplateRowProps } from "../../models";
+import { FlowTypes } from "../../models";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
 @Component({
@@ -15,10 +15,7 @@ import { TemplateTranslateService } from "../../services/template-translate.serv
   templateUrl: "./select-text.component.html",
   styleUrls: ["./select-text.component.scss"],
 })
-export class SelectTextComponent
-  extends TemplateBaseComponent
-  implements OnInit, ITemplateRowProps
-{
+export class SelectTextComponent extends TemplateBaseComponent implements OnInit {
   public placeholder: string;
   public maxLength: number | string;
   public textAlign: string;
