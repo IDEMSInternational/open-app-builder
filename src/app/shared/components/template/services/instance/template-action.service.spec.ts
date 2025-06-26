@@ -6,9 +6,11 @@ import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateActionRegistry } from "./template-action.registry";
 import { TemplateRowService } from "./template-row.service";
 import { TemplateNavService } from "../template-nav.service";
+import { VariableStore } from "../../stores/variable-store";
 
 // Use a stubbed template action registry to allow registering custom actions in test
 const MockTemplateActionRegistry = new TemplateActionRegistry();
+const variableStore = new VariableStore({} as Injector);
 
 // HACK - templateActionService injects child dependencies from injector
 // stub all injected services with stub (can be replaced as future tests require)
@@ -19,6 +21,8 @@ const mockInjector: Injector = {
         return MockTemplateActionRegistry;
       case TemplateNavService:
         return { handleNavActionsFromChild: () => null, isReady: () => true, ready: () => true };
+      case VariableStore:
+        return variableStore;
       default:
         return { ready: () => true, isReady: () => true };
     }
