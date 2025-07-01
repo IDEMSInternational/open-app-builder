@@ -8,6 +8,8 @@
     $color-secondary: #e24000;
     $page-background: white;
     $green: #289b4c;
+    $color-primary-alt: null;
+    $color-secondary-alt: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -57,7 +59,14 @@
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background, $g: $green);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pa: $color-primary-alt,
+      $sa: $color-secondary-alt,
+      $g: $green
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
