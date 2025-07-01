@@ -111,6 +111,8 @@ export class TemplateBaseComponent implements ITemplateRowProps, OnDestroy {
    **/
   async setValue(value: any) {
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
+    if (isEqual(this.row.value, value)) return;
+
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
 
@@ -150,6 +152,7 @@ export class TemplateBaseComponent implements ITemplateRowProps, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
+
   public ngOnDestroy(): void {
     // Unsubscribe from all variable store subscriptions to prevent memory leaks
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
