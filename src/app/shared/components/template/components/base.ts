@@ -111,7 +111,7 @@ export class TemplateBaseComponent implements ITemplateRowProps, OnDestroy {
    **/
   async setValue(value: any) {
     // HACK - provide optimistic update so that data_items interceptor also can access updated row value
-    if (isEqual(this.row.value, value)) return;
+    if (isEqual(this._row.value, value)) return;
 
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
