@@ -1,201 +1,218 @@
 import { Injector } from "@angular/core";
+import { Observable } from "rxjs";
 import {
-  collection,
-  CollectionReference,
-  deleteDoc,
-  deleteField,
-  doc,
-  DocumentData,
-  DocumentReference,
-  Firestore,
-  FirestoreDataConverter,
-  getFirestore,
-  onSnapshot,
-  Query,
-  query,
-  serverTimestamp,
-  setDoc,
-  Timestamp,
-  updateDoc,
-  where,
-  WhereFilterOp,
-} from "firebase/firestore";
+  FirebaseFirestore,
+  AddCollectionSnapshotListenerOptions,
+  CallbackId,
+  QueryFieldFilterConstraint,
+} from "@capacitor-firebase/firestore";
 import { SharedDataProviderBase, SharedDataQueryParams } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
-import { Observable } from "rxjs";
 import { ISharedDataCollection } from "../types";
 
 /** Prefix applied to all firebase collections for storing shared data */
 const COLLECTION = `shared_data`;
 
-// Data stored in firestore replaces ISOString timestamps with Firestore Timestamps
-type ISharedDataCollectionFirestore = Omit<ISharedDataCollection, "_created_at" | "_updated_at"> & {
-  _created_at: Timestamp;
-  _updated_at: Timestamp;
-};
-
 // Utility to provide type-safety on where clause queries
-function whereTyped(fieldPath: keyof ISharedDataCollection, opStr: WhereFilterOp, value: unknown) {
-  return where(fieldPath, opStr, value);
+function whereTyped(
+  fieldPath: keyof ISharedDataCollection,
+  opStr: QueryFieldFilterConstraint["opStr"],
+  value: unknown
+): QueryFieldFilterConstraint {
+  return {
+    fieldPath,
+    opStr,
+    value,
+    type: "where",
+  };
 }
 
-/** Convert timestamps stored locally (isoString) and on firestore (Timestamp) */
-const sharedDataConverter: FirestoreDataConverter<
-  ISharedDataCollection,
-  ISharedDataCollectionFirestore
-> = {
-  fromFirestore: (snapshot) => {
-    const d = snapshot.data() as ISharedDataCollectionFirestore;
-    return {
-      ...d,
-      _created_at: d._created_at.toDate().toISOString(),
-      _updated_at: d._updated_at?.toDate().toISOString(),
-    };
-  },
-
-  toFirestore: (d: ISharedDataCollection) => {
-    return {
-      ...d,
-      _created_at: d._created_at ? Timestamp.fromDate(new Date(d._created_at)) : serverTimestamp(),
-      _updated_at: serverTimestamp(),
-    };
-  },
-};
-
 /**
- * Shared data provider that wraps Firebase Firestore for data sharing
+ * Unified provider to support firestore data on both web and native
  *
- * Table data is represented within firestore collections prefixed via `shared_`
+ * IMPORTANT
+ * @capacitor-firebase uses different sdks per platform (web/native).
+ * As such only features available to all platforms should be used
+ *
+ * Known Limitations
+ * Capacitor SDK does not (currently) support fieldValues like timestamp and serverTimestamp
+ * https://github.com/capawesome-team/capacitor-firebase/pull/677
+ *
  */
 export class FirebaseDataProvider implements SharedDataProviderBase {
-  private db: Firestore;
-
-  public async initialise(injector: Injector) {
+  public async initialise(injector: Injector): Promise<void> {
     const firebaseService = injector.get(FirebaseService);
     firebaseService.ready();
-
-    const app = firebaseService.app;
-    if (!app) {
-      throw new Error(`Shared data provider required firebase to be configured`);
-    }
-    this.db = getFirestore(app);
   }
 
-  public querySingle$(params: SharedDataQueryParams) {
+  public querySingle$(params: SharedDataQueryParams): Observable<ISharedDataCollection> {
     const { id } = params;
-    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
-    const docRef = doc(collectionRef, id);
-
-    return this.docRefToObservable(docRef);
+    const docPath = `${COLLECTION}/${id}`;
+    return this.documentToObservable(docPath);
   }
 
-  public queryMultiple$(params: SharedDataQueryParams) {
-    const { id = "" } = params;
-    const resourcePath = id ? `${COLLECTION}/${id}` : COLLECTION;
-    const collectionRef = collection(this.db, resourcePath).withConverter(sharedDataConverter);
+  public queryMultiple$(params: SharedDataQueryParams): Observable<ISharedDataCollection[]> {
+    const collectionPath = COLLECTION;
 
-    // Retrieve docs where public true or use included
-    const docsQuery = this.buildDocumentQuery(collectionRef, params);
-
-    // const privateDocs = query(collectionRef, where());
-    return this.queryToObservable<ISharedDataCollection>(docsQuery);
+    const listenerOptions: AddCollectionSnapshotListenerOptions = {
+      reference: collectionPath,
+      compositeFilter: {
+        type: "and", // All 'where' clauses must be met
+        queryConstraints: this.buildFilterConstraints(params),
+      },
+      // queryConstraints would go here if we had orderBy or limit clauses
+    };
+    return this.collectionToObservable(listenerOptions);
   }
 
   public async createSharedCollection(id: string, data: ISharedDataCollection) {
-    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
-    const docRef = doc(collectionRef, id);
-    await setDoc(docRef, data);
+    const docPath = `${COLLECTION}/${id}`;
+
+    await FirebaseFirestore.setDocument({
+      reference: docPath,
+      data,
+    });
     return data;
   }
 
   public updateSharedData(id: string, key: string, value: any) {
-    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
-    const docRef = doc(collectionRef, id);
+    const docRef = `${COLLECTION}/${id}`;
+    const valueToSet = value === undefined ? "deleteField" : value;
+
     // remove nested data entry
+    // HACK - not supported on native so set entire document without
     if (value === undefined) {
-      value = deleteField();
+      return this.hackHandleNativeDeleteField(docRef, key);
     }
-    // use data nested notation to apply partial update
-    return updateDoc(docRef, { [`data.${key}`]: value, _updated_at: serverTimestamp() });
-  }
 
-  public async deleteSharedCollection(id: string) {
-    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
-    const docRef = doc(collectionRef, id);
-    return deleteDoc(docRef);
-  }
-  public async updateCollectionMetadata(id: string, update: Partial<ISharedDataCollection>) {
-    const collectionRef = collection(this.db, COLLECTION).withConverter(sharedDataConverter);
-    const docRef = doc(collectionRef, id);
-    return updateDoc(docRef, { ...update, _updated_at: serverTimestamp() });
-  }
-
-  private buildDocumentQuery(
-    collectionRef: CollectionReference<ISharedDataCollection, ISharedDataCollectionFirestore>,
-    params: SharedDataQueryParams
-  ) {
-    const { since, auth_id } = params;
-
-    if (since) {
-      // convert isoString date to firestore timestamp for comparison
-      const queryDate = Timestamp.fromDate(new Date(since));
-
-      // optimise query to filter _updated_at first as likely will have fewer results
-      return query(
-        collectionRef,
-        whereTyped("_updated_at", ">", queryDate),
-        whereTyped("members", "array-contains", auth_id)
-      );
-    } else {
-      return query(collectionRef, whereTyped("members", "array-contains", auth_id));
-    }
-  }
-
-  /** Convert a firestore query to observable for easier subscription management */
-  private queryToObservable<T>(q: Query<DocumentData, DocumentData>): Observable<T[]> {
-    return new Observable<T[]>((observer) => {
-      try {
-        // Set up the snapshot listener
-        const unsubscribe = onSnapshot(
-          q,
-          (snapshot) => {
-            const items = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as T);
-            observer.next(items);
-          },
-          (error) => {
-            observer.error(error);
-          }
-        );
-
-        // Return the unsubscribe function to clean up when this Observable is unsubscribed
-        return unsubscribe;
-      } catch (error) {
-        observer.error(error);
-      }
+    return FirebaseFirestore.updateDocument({
+      reference: docRef,
+      data: {
+        [`data.${key}`]: valueToSet,
+        _updated_at: new Date().toISOString(),
+      },
     });
   }
 
-  /** Convert a firestore doc snapshot ref */
-  private docRefToObservable<T extends DocumentData>(ref: DocumentReference<T>): Observable<T> {
-    return new Observable<T>((observer) => {
-      try {
-        // Set up the snapshot listener
-        const unsubscribe = onSnapshot(
-          ref,
-          (snapshot) => {
-            const d = { id: snapshot.id, ...snapshot.data() } as T;
-            observer.next(d);
-          },
-          (error) => {
-            observer.error(error);
-          }
-        );
+  public deleteSharedCollection(id: string) {
+    const docPath = `${COLLECTION}/${id}`;
+    return FirebaseFirestore.deleteDocument({ reference: docPath });
+  }
 
-        // Return the unsubscribe function to clean up when this Observable is unsubscribed
-        return unsubscribe;
-      } catch (error) {
-        observer.error(error);
-      }
+  public async updateCollectionMetadata(
+    id: string,
+    update: Partial<ISharedDataCollection>
+  ): Promise<void> {
+    const docPath = `${COLLECTION}/${id}`;
+    return FirebaseFirestore.updateDocument({
+      reference: docPath,
+      data: {
+        ...update,
+        _updated_at: new Date().toISOString(),
+      },
+    });
+  }
+
+  /**
+   * Native sdk does not (currently) support `deleteField()` so manually retrieve doc
+   * delete field and update
+   */
+  private async hackHandleNativeDeleteField(docRef: string, field: string) {
+    const { snapshot } = await FirebaseFirestore.getDocument({ reference: docRef });
+    if (snapshot.data && field in snapshot.data) {
+      delete snapshot.data[field];
+      return FirebaseFirestore.setDocument({
+        reference: docRef,
+        data: { ...snapshot.data, _updated_at: new Date().toISOString() },
+        merge: false,
+      });
+    }
+  }
+
+  private buildFilterConstraints(params: SharedDataQueryParams): QueryFieldFilterConstraint[] {
+    const { since, auth_id } = params;
+    const constraints: QueryFieldFilterConstraint[] = [];
+
+    if (since) {
+      // convert isoString date to firestore timestamp for comparison
+      const queryDate = since;
+      constraints.push(whereTyped("_updated_at", ">", queryDate));
+    }
+
+    constraints.push(whereTyped("members", "array-contains", auth_id));
+    return constraints;
+  }
+
+  private collectionToObservable(
+    options: AddCollectionSnapshotListenerOptions
+  ): Observable<ISharedDataCollection[]> {
+    return new Observable<ISharedDataCollection[]>((observer) => {
+      let callbackId: CallbackId;
+
+      const registerListener = async () => {
+        try {
+          callbackId = await FirebaseFirestore.addCollectionSnapshotListener(
+            options, // Pass the whole options object
+            (event, error) => {
+              if (error) {
+                observer.error(error);
+                return;
+              }
+              if (event) {
+                const items = event.snapshots.map((doc) => doc.data as ISharedDataCollection);
+                console.log("items received", items);
+                observer.next(items);
+              }
+            }
+          );
+        } catch (e) {
+          observer.error(e);
+        }
+      };
+
+      registerListener();
+
+      return () => {
+        if (callbackId) {
+          FirebaseFirestore.removeSnapshotListener({ callbackId });
+        }
+      };
+    });
+  }
+
+  private documentToObservable(path: string): Observable<ISharedDataCollection> {
+    return new Observable<ISharedDataCollection>((observer) => {
+      let callbackId: CallbackId;
+
+      const registerListener = async () => {
+        try {
+          callbackId = await FirebaseFirestore.addDocumentSnapshotListener(
+            { reference: path },
+            (event, error) => {
+              if (error) {
+                observer.error(error);
+                return;
+              }
+              if (event && event.snapshot.data) {
+                const item = event.snapshot.data as ISharedDataCollection;
+                observer.next(item);
+              } else {
+                observer.next(undefined);
+              }
+            }
+          );
+        } catch (e) {
+          observer.error(e);
+        }
+      };
+
+      registerListener();
+
+      return () => {
+        if (callbackId) {
+          FirebaseFirestore.removeSnapshotListener({ callbackId });
+        }
+      };
     });
   }
 }
