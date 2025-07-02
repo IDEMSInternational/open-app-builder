@@ -2,11 +2,11 @@
 @use "sass:color";
 @use "./overrides";
 
-@mixin theme-plh_facilitator_mapa {
-  [data-theme="plh_facilitator_mapa"] {
+@mixin theme-plh_facilitator_ph {
+  [data-theme="plh_facilitator_ph"] {
     /** Authoring variables **/
-    $color-primary: #2c6578;
-    $color-secondary: #835507;
+    $color-primary: #123d5d;
+    $color-secondary: #70aac0;
     $page-background: white;
 
     /** Global and component variables **/
@@ -40,13 +40,14 @@
       border-width-default: 1px,
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
-      button-background-primary: var(--ion-color-primary-600),
-      button-background-secondary: var(--ion-color-secondary),
-      button-background-option: var(--ion-color-primary-800),
-      buttons-full-height: 48px,
+      button-background-primary: var(--ion-color-primary-700),
+      button-background-secondary: var(--color-accent-orange-60),
+      button-background-option: var(--color-accent-orange-40),
+      buttons-full-height: 56px,
+      buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
       round-button-background-secondary-mid: var(--color-accent-orange-60),
-      round-button-background-secondary-dark: var(--ion-color-primary-300),
+      round-button-background-secondary-dark: var(--ion-color-primary-200),
       round-button-min-height: 48px,
       round-button-width: 48px,
       tile-button-background-primary: var(--ion-color-primary-500),
@@ -64,12 +65,12 @@
       combo-box-background-no-value: var(--ion-color-primary-50),
       combo-box-background-with-value: var(--ion-color-primary-600),
       combo-box-selected-value-text: white,
-      accordion-background-highlight: var(--ion-color-primary-300),
-      tour-next-button-background: var(--ion-color-secondary),
+      accordion-background-highlight: var(--ion-color-primary-600),
+      tour-next-button-background: var(--ion-color-primary),
       radio-group-background-selected: var(--ion-color-primary-300),
       radio-group-background-selected-secondary: var(--ion-color-secondary-300),
       ion-item-background: var(--ion-color-gray-light),
-      task-progress-bar-color: var(--ion-color-green),
+      task-progress-bar-color: var(--ion-color-primary-700),
       progress-path-line-background: var(--ion-color-gray-100),
       // ICONS
       icon-size-small: 16px,
@@ -90,40 +91,19 @@
       color-outline: #74777c,
       color-outline-variant: #c4c7c9,
 
-      // SECONDARY PALETTE
-      color-secondary-green-40: #835507,
-      color-secondary-green-50: #a06c1e,
-      color-secondary-green-60: #bc863d,
-      color-secondary-green-70: #d4a263,
-      color-secondary-green-80: #e8bf91,
-      color-secondary-green-90: #f6dfc6,
-
       // ORANGE PALETTE
       color-accent-orange-40: #a53939,
       color-accent-orange-50: #c6514e,
       color-accent-orange-60: #e16e68,
       color-accent-orange-70: #f58f87,
       color-accent-orange-80: #ffb3ac,
-      color-accent-orange-95: #ffd9d4,
+      color-accent-orange-95: #ffece9,
 
-      // BLUE PALETTE
-      color-accent-blue-40: #406182,
-      color-accent-blue-50: #577a9e,
-      color-accent-blue-60: #7394b7,
-      color-accent-blue-70: #93aecd,
-      color-accent-blue-80: #b6c8e0,
-      color-accent-blue-90: #dae3f0,
-
-      // PRIMARY PALETTE OVERRIDE
-      ion-color-primary-800: #15343f,
-      ion-color-primary-700: #1d4c5c,
-      ion-color-primary-600: #2c6578,
-      ion-color-primary-500: #437f94,
-      ion-color-primary-400: #6298ad,
-      ion-color-primary-300: #85b2c4,
-      ion-color-primary-200: #accbd9,
-      ion-color-primary-100: #d5e5ec,
-      ion-color-primary-50: #eaf2f6,
+      // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(146, 183, 218, 0.6),
+      box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
+      box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
+      box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
