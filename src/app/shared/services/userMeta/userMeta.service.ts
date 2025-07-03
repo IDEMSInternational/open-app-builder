@@ -130,11 +130,33 @@ export class UserMetaService extends AsyncServiceBase {
     await this.dynamicDataService.resetAll();
 
     if (!dynamic_data) return;
+    // Import dynamic data with special handling for final fields (row_index)
+    // New documents can set row_index during creation, but existing documents cannot modify it
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
-        for (const [row_id, entry] of Object.entries(entriesByRowId)) {
-          // as no batch update method exists simply send writes and wait at end
-          this.dynamicDataService.update(flow_type as any, flow_name, row_id, entry);
+        const entriesArray = Object.entries(entriesByRowId).map(([row_id, entry]) => ({
+          ...entry,
+          id: row_id,
+        }));
+        if (entriesArray.length > 0) {
+          // Get existing documents to determine which are new vs existing
+          const existingDocs = await this.dynamicDataService.snapshot(flow_type as any, flow_name);
+          const existingIds = new Set(existingDocs.map((doc: any) => doc.id));
+
+          // Separate new and existing documents
+          const newDocs = entriesArray.filter((entry) => !existingIds.has(entry.id));
+          const existingDocsToUpdate = entriesArray.filter((entry) => existingIds.has(entry.id));
+
+          // Insert new documents (with row_index)
+          for (const doc of newDocs) {
+            await this.dynamicDataService.insert(flow_type as any, flow_name, doc);
+          }
+
+          // Update existing documents (without row_index to avoid final field error)
+          for (const entry of existingDocsToUpdate) {
+            const { row_index, ...updateData } = entry;
+            await this.dynamicDataService.update(flow_type as any, flow_name, entry.id, updateData);
+          }
         }
       }
     }
