@@ -10,6 +10,7 @@ import { TemplateFieldService } from "../../components/template/services/templat
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
+import { mergeData } from "../../utils";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -130,8 +131,8 @@ export class UserMetaService extends AsyncServiceBase {
     await this.dynamicDataService.resetAll();
 
     if (!dynamic_data) return;
-    // Import dynamic data with special handling for final fields (row_index)
-    // New documents can set row_index during creation, but existing documents cannot modify it
+    // Import dynamic data by merging with existing docs then using bulkUpsert
+    // This preserves final fields (e.g. row_index) from existing docs while updating other fields
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
         const entriesArray = Object.entries(entriesByRowId).map(([row_id, entry]) => ({
@@ -139,24 +140,10 @@ export class UserMetaService extends AsyncServiceBase {
           id: row_id,
         }));
         if (entriesArray.length > 0) {
-          // Get existing documents to determine which are new vs existing
+          // Get existing documents and merge with imported data
           const existingDocs = await this.dynamicDataService.snapshot(flow_type as any, flow_name);
-          const existingIds = new Set(existingDocs.map((doc: any) => doc.id));
-
-          // Separate new and existing documents
-          const newDocs = entriesArray.filter((entry) => !existingIds.has(entry.id));
-          const existingDocsToUpdate = entriesArray.filter((entry) => existingIds.has(entry.id));
-
-          // Insert new documents (with row_index)
-          for (const doc of newDocs) {
-            await this.dynamicDataService.insert(flow_type as any, flow_name, doc);
-          }
-
-          // Update existing documents (without row_index to avoid final field error)
-          for (const entry of existingDocsToUpdate) {
-            const { row_index, ...updateData } = entry;
-            await this.dynamicDataService.update(flow_type as any, flow_name, entry.id, updateData);
-          }
+          const mergedData = mergeData(existingDocs, entriesArray);
+          await this.dynamicDataService.bulkUpsert(flow_type as any, flow_name, mergedData);
         }
       }
     }
