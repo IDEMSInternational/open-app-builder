@@ -9,7 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
+import { FlowTypes, getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 import { mergeData } from "../../utils";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
@@ -141,9 +141,16 @@ export class UserMetaService extends AsyncServiceBase {
         }));
         if (entriesArray.length > 0) {
           // Get existing documents and merge with imported data
-          const existingDocs = await this.dynamicDataService.snapshot(flow_type as any, flow_name);
+          const existingDocs = await this.dynamicDataService.snapshot(
+            flow_type as FlowTypes.FlowType,
+            flow_name
+          );
           const mergedData = mergeData(existingDocs, entriesArray);
-          await this.dynamicDataService.bulkUpsert(flow_type as any, flow_name, mergedData);
+          await this.dynamicDataService.bulkUpsert(
+            flow_type as FlowTypes.FlowType,
+            flow_name,
+            mergedData
+          );
         }
       }
     }
