@@ -24,19 +24,19 @@ const BUFFER_SIZE = 20;
  * that are emitted eagerly
  */
 export class CapacitorEventService extends SyncServiceBase {
-  constructor(private platform: Platform) {
+  constructor(platform: Platform) {
     super("Capacitor Events");
-    // call immediately to ensure listeners are ready the moment they start to be emitted
-    this.setupListeners();
+    // use platform ready await to immediately register the listeners once ready to do so
+    platform.ready().then(() => {
+      this.setupListeners();
+    });
   }
 
   public localNotificationActionPerformed = new ReplaySubject<ActionPerformed>(BUFFER_SIZE);
 
   public localNotificationReceived = new ReplaySubject<LocalNotificationSchema>(BUFFER_SIZE);
 
-  private async setupListeners() {
-    // use platform ready await to immediately register the listeners once ready to do so
-    await this.platform.ready();
+  private setupListeners() {
     LocalNotifications.addListener("localNotificationActionPerformed", (e) => {
       // console.log("[Capacitor Event] localNotificationActionPerformed", e);
       this.localNotificationActionPerformed.next(e);

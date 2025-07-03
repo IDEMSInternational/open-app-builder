@@ -7,6 +7,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
 import { App } from "@capacitor/app";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -23,7 +24,8 @@ export class NotificationService {
   constructor(
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private capacitorEventService: CapacitorEventService
   ) {
     // Setup listeners immediately to ensure events are not dropped
     this.addNotificationListeners();
@@ -196,12 +198,9 @@ export class NotificationService {
   }
 
   private async addNotificationListeners() {
-    // HACK - call checkPermissions first to ensure capacitor notification api loaded
-    // On web the listeners seem to be registering too eagerly, and fail to process data
-    await this.checkPermissions();
-
     // Subscribe to notification action events and update the DB when notification interacted with
-    this.api.addListener("localNotificationActionPerformed", (action) => {
+    // Use proxy CapacitorEventService to capture any events emitted before this service ready
+    this.capacitorEventService.localNotificationActionPerformed.subscribe((action) => {
       const notification = action.notification as INotificationInternal;
       // Only trigger actions for notifications also created by same service
       if (notification.extra?.id && notification.extra?.source === "action") {
@@ -211,12 +210,14 @@ export class NotificationService {
     });
     // Whenever any notification received use as prompt to mark notifications as dismissed
     // This may be replaced in the future if the above action is triggered
-    this.api.addListener("localNotificationReceived", (notification: INotificationInternal) => {
-      if (notification.extra?.id && notification.extra?.source === "action") {
-        console.log("[Notification] Received", notification);
-        this.handleNotificationReceived(notification);
+    this.capacitorEventService.localNotificationReceived.subscribe(
+      (notification: INotificationInternal) => {
+        if (notification.extra?.id && notification.extra?.source === "action") {
+          console.log("[Notification] Received", notification);
+          this.handleNotificationReceived(notification);
+        }
       }
-    });
+    );
     // Additionally listen to app resume events to also trigger processing to make sure
     // DB up-to-date if a user has minimised the app and returns after notifications dismissed
     App.addListener("resume", () => this.checkDismissedNotifications());
