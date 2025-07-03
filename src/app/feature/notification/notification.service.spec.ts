@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { Capacitor, PermissionState } from "@capacitor/core";
+import { PermissionState } from "@capacitor/core";
 import {
   CancelOptions,
   LocalNotifications,
@@ -13,6 +13,8 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { INotification, IDBNotification, INotificationInternal } from "./notification.types";
 import { IAppConfig } from "data-models/appConfig";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
+import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -33,9 +35,6 @@ export class MockCapacitorLocalNotifications implements Partial<LocalNotificatio
   }
   async getPending() {
     return { notifications: [] };
-  }
-  async addListener(eventName: unknown, listenerFunc: unknown) {
-    return { remove: async () => null };
   }
 
   async cancel(options: CancelOptions) {
@@ -101,6 +100,7 @@ describe("NotificationService", () => {
         { provide: LocalStorageService, useValue: mockLocalStorageService },
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
+        { provide: CapacitorEventService, useValue: MockCapacitorEventService },
       ],
     });
 
