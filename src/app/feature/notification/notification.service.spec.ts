@@ -89,6 +89,7 @@ describe("NotificationService", () => {
       "remove",
       "resetFlow",
       "query$",
+      "ready",
     ]);
 
     // Setup default return values
