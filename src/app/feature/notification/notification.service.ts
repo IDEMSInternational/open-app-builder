@@ -8,6 +8,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
 import { App } from "@capacitor/app";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
+import { _wait } from "packages/shared/src/utils/async-utils";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -99,7 +100,9 @@ export class NotificationService {
 
   public async cancelAll() {
     const { notifications } = await this.api.getPending();
-    await this.api.cancel({ notifications }); // Cancels all
+    if (notifications.length > 0) {
+      await this.api.cancel({ notifications });
+    }
     await this.dynamicDataService.resetFlow("data_list", "_notifications");
   }
 
@@ -174,6 +177,8 @@ export class NotificationService {
    * If notifications received while app in foreground they handled via native listener callback
    */
   private async checkDismissedNotifications() {
+    // HACK - ensure check performed after any pending db writes related to actions processed
+    await _wait(1000);
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
     const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
     const allNotifications = await firstValueFrom(query);
@@ -185,7 +190,10 @@ export class NotificationService {
         n.status = "dismissed";
         return n;
       });
-    await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+    if (dismissed.length > 0) {
+      console.log("[Notification] Mark Dismissed", dismissed);
+      await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+    }
   }
 
   /** List notifications from DB scheduled in the future */
@@ -225,6 +233,8 @@ export class NotificationService {
 
   /** When notification interacted with update the db accordingly */
   private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
+    // If notification tap opened app from closed state will need to wait for services to be ready
+    await this.dynamicDataService.ready();
     const dbNotification = await this.getNotificationById(notification.extra.id);
     if (dbNotification) {
       const update: IDBNotification = {
@@ -236,6 +246,8 @@ export class NotificationService {
         },
       };
       await this.setDBNotification(update);
+    } else {
+      console.warn("Failed to find db notification:", notification.extra.id);
     }
   }
 
