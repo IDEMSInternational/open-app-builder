@@ -50,11 +50,10 @@ export class LocalNotificationPersistAdapter {
       )
       .subscribe(async (action) => {
         const { actionId, notification, inputValue } = action;
-        const { id, text, title, campaign_id } = notification.extra;
         const update: Partial<ILocalNotificationInteraction> = {
           action_id: actionId,
           action_recorded_timestamp: generateTimestamp(),
-          notification_meta: { id, text, title, campaign_id },
+          notification_meta: notification.extra,
         };
         if (inputValue) {
           update.action_meta = { inputValue };
@@ -70,9 +69,8 @@ export class LocalNotificationPersistAdapter {
       .subscribe(async (notifications) => {
         const timestamp = generateTimestamp();
         for (const notification of notifications) {
-          const { id, text, title, campaign_id } = notification.extra;
           await this.recordNotificationInteraction(notification.id, {
-            notification_meta: { id, text, title, campaign_id },
+            notification_meta: notification.extra,
             schedule_timestamp: generateTimestamp(notification.schedule.at),
             sent_recorded_timestamp: timestamp,
           });
