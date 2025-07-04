@@ -238,3 +238,21 @@ export function diffObjects(a: Record<string, any>, b: Record<string, any>) {
 
   return ops;
 }
+
+/**
+ * Merge two arrays of objects by a specified key field, with the second array taking precedence
+ * @param baseData - The base array of objects to merge from
+ * @param overrideData - The array of objects to merge onto the base array
+ * @param keyField - The key field to use for merging (default "id")
+ * @returns A new array with the merged objects
+ */
+export function deepMergeArrays<T extends Record<string, any>>(
+  baseData: T[] = [],
+  overrideData: T[] = [],
+  keyField: keyof T = "id" as keyof T
+): T[] {
+  const baseHashmap = arrayToHashmap(baseData, keyField);
+  const overrideHashmap = arrayToHashmap(overrideData, keyField);
+  const merged = deepMergeObjects(baseHashmap, overrideHashmap);
+  return Object.values(merged) as T[];
+}

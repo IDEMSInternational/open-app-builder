@@ -9,7 +9,8 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
+import { FlowTypes, getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
+import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -130,11 +131,26 @@ export class UserMetaService extends AsyncServiceBase {
     await this.dynamicDataService.resetAll();
 
     if (!dynamic_data) return;
+    // Import dynamic data by merging with existing docs then using bulkUpsert
+    // This preserves final fields (e.g. row_index) from existing docs while updating other fields
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
-        for (const [row_id, entry] of Object.entries(entriesByRowId)) {
-          // as no batch update method exists simply send writes and wait at end
-          this.dynamicDataService.update(flow_type as any, flow_name, row_id, entry);
+        const entriesArray = Object.entries(entriesByRowId).map(([row_id, entry]) => ({
+          ...entry,
+          id: row_id,
+        }));
+        if (entriesArray.length > 0) {
+          // Get existing documents and merge with imported data
+          const existingDocs = await this.dynamicDataService.snapshot(
+            flow_type as FlowTypes.FlowType,
+            flow_name
+          );
+          const mergedData = deepMergeArrays(existingDocs, entriesArray, "id");
+          await this.dynamicDataService.bulkUpsert(
+            flow_type as FlowTypes.FlowType,
+            flow_name,
+            mergedData
+          );
         }
       }
     }

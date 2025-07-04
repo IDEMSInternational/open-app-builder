@@ -13,4 +13,27 @@ export class MockDynamicDataService implements Partial<DynamicDataService> {
   public async ready() {
     return true;
   }
+
+  public async resetAll() {
+    return Promise.resolve();
+  }
+
+  public async snapshot<T extends FlowTypes.Data_listRow>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string
+  ): Promise<T[]> {
+    return Promise.resolve(this.mockQueryData[flow_type]?.[flow_name] || []);
+  }
+
+  public async bulkUpsert<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    data: T[]
+  ) {
+    return Promise.resolve();
+  }
+
+  public async getState() {
+    return Promise.resolve({});
+  }
 }

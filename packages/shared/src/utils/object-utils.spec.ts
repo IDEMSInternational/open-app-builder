@@ -10,6 +10,7 @@ import {
   uniqueObjectArrayKeys,
   mergeObjectArrays,
   diffObjects,
+  deepMergeArrays,
 } from "./object-utils";
 
 const MOCK_NESTED_OBJECT = {
@@ -197,5 +198,85 @@ describe("Object Utils", () => {
       update: [{ key: "key_1", value: { string: "goodbye", number: 1 } }],
       delete: [{ key: "key_2", value: undefined }],
     });
+  });
+
+  it("deepMergeArrays", () => {
+    const baseData: Record<string, any>[] = [
+      { id: "1", name: "Whiskers", age: 3, details: { city: "London", country: "UK" } },
+      { id: "2", name: "Mittens", age: 5, details: { city: "Edinburgh", country: "UK" } },
+    ];
+    const overrideData: Record<string, any>[] = [
+      {
+        id: "2",
+        name: "Mittens",
+        age: 6,
+        details: { city: "Edinburgh", country: "UK", postcode: "EH1 1AA" },
+      },
+      { id: "3", name: "Shadow", age: 2, details: { city: "Manchester", country: "UK" } },
+    ];
+
+    const result = deepMergeArrays(baseData, overrideData, "id");
+
+    expect(result).toEqual([
+      { id: "1", name: "Whiskers", age: 3, details: { city: "London", country: "UK" } },
+      {
+        id: "2",
+        name: "Mittens",
+        age: 6,
+        details: { city: "Edinburgh", country: "UK", postcode: "EH1 1AA" },
+      },
+      { id: "3", name: "Shadow", age: 2, details: { city: "Manchester", country: "UK" } },
+    ]);
+  });
+
+  it("deepMergeArrays with custom key field", () => {
+    const baseData: Record<string, any>[] = [
+      { catId: "cat1", name: "Luna", preferences: { food: "salmon", playtime: true } },
+      { catId: "cat2", name: "Oliver", preferences: { food: "chicken", playtime: false } },
+    ];
+    const overrideData: Record<string, any>[] = [
+      {
+        catId: "cat2",
+        name: "Oliver",
+        preferences: { food: "tuna", playtime: true, toys: "feathers" },
+      },
+    ];
+
+    const result = deepMergeArrays(baseData, overrideData, "catId");
+
+    expect(result).toEqual([
+      { catId: "cat1", name: "Luna", preferences: { food: "salmon", playtime: true } },
+      {
+        catId: "cat2",
+        name: "Oliver",
+        preferences: { food: "tuna", playtime: true, toys: "feathers" },
+      },
+    ]);
+  });
+
+  it("deepMergeArrays with empty arrays", () => {
+    const result1 = deepMergeArrays([], []);
+    expect(result1).toEqual([]);
+
+    const result2 = deepMergeArrays([{ id: "1", name: "Whiskers" }], []);
+    expect(result2).toEqual([{ id: "1", name: "Whiskers" }]);
+
+    const result3 = deepMergeArrays([], [{ id: "1", name: "Whiskers" }]);
+    expect(result3).toEqual([{ id: "1", name: "Whiskers" }]);
+  });
+
+  it("deepMergeArrays with default id key", () => {
+    const baseData = [
+      { id: "1", name: "Whiskers" },
+      { id: "2", name: "Mittens" },
+    ];
+    const overrideData = [{ id: "2", name: "Mittens" }];
+
+    const result = deepMergeArrays(baseData, overrideData);
+
+    expect(result).toEqual([
+      { id: "1", name: "Whiskers" },
+      { id: "2", name: "Mittens" },
+    ]);
   });
 });
