@@ -10,7 +10,7 @@ import { TemplateFieldService } from "../../components/template/services/templat
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { FlowTypes, getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
-import { mergeData } from "../../utils";
+import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -145,7 +145,7 @@ export class UserMetaService extends AsyncServiceBase {
             flow_type as FlowTypes.FlowType,
             flow_name
           );
-          const mergedData = mergeData(existingDocs, entriesArray);
+          const mergedData = deepMergeArrays(existingDocs, entriesArray, "id");
           await this.dynamicDataService.bulkUpsert(
             flow_type as FlowTypes.FlowType,
             flow_name,
