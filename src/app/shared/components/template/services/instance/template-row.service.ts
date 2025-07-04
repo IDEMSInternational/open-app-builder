@@ -10,6 +10,7 @@ import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { VariableStore } from "../../stores/variable-store";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -40,6 +41,8 @@ export class TemplateRowService extends SyncServiceBase {
   public templateRowMapValues: { [row_nested_name: string]: FlowTypes.TemplateRow["value"] } = {};
 
   public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
+
+  public variableStore = this.injector.get(VariableStore);
 
   constructor(
     private injector: Injector,
@@ -124,10 +127,18 @@ export class TemplateRowService extends SyncServiceBase {
   }
   /**
    * When overriding rows we don't want to include any dynamic references for the parent
-   * as these will not always update in the child. Remove these along with type and nested name
+   * as these will not always update in the child. Remove these along with type, _nested_name
+   * and action_list
    */
   private extractOverrideFields(row: FlowTypes.TemplateRow) {
-    const { _nested_name, _dynamicFields, _dynamicDependencies, type, ...overrideFields } = row;
+    const {
+      _nested_name,
+      _dynamicFields,
+      _dynamicDependencies,
+      type,
+      action_list,
+      ...overrideFields
+    } = row;
     if (overrideFields.rows) {
       overrideFields.rows = overrideFields.rows.map((r) => this.extractOverrideFields(r));
     }
@@ -316,45 +327,52 @@ export class TemplateRowService extends SyncServiceBase {
 
     // Handle rows that should only be initialised once
     // Only process rows if not part of a nested template row (which will be handled in own template initialisation)
-    if (!isNestedTemplate) {
-      switch (type) {
-        case "set_field":
-          // console.warn("[W] Setting fields from template is not advised", row);
-
-          await this.templateFieldService.setField(name, value as string);
-          return;
-        // ensure set_variables are recorded via their name (instead of default nested name)
-        // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
-        case "set_variable":
-          this.templateRowMap[name] = row;
-          this.templateRowMapValues[name] = row.value;
-          if (_dynamicFields) {
-            return preProcessedRow;
-          }
-          return;
-        // merge new actions with existing container action list
-        case "update_action_list":
-          // TODO - refactor to standalone array merge method
-          const existing_actions = this.container.row?.action_list || [];
-          // remove any actions previously added by the same update and then add newly processed actions
-          const base_actions = existing_actions.filter(
-            (a) => !a["_update_name"] || a["_update_name"] !== name
-          );
-          const new_actions = row.action_list.map((a) => ({
-            ...a,
-            _update_name: name, // keep track for future updates
-            _self_triggered: true, // by default actions are triggered from parent context, specify self
-          }));
-          const updated_actions = [...base_actions, ...new_actions];
-          this.container.row = { ...this.container.row, action_list: updated_actions };
-          break;
-        default:
-          // all other types should just set own value for use in future processing
-          this.templateRowMap[_nested_name] = row;
-          this.templateRowMapValues[_nested_name] = row.value;
-          break;
-      }
+    if (isNestedTemplate) {
+      // if we have a row in a nested template, we need to put it's value in the variable store so that we can react to changes
+      this.variableStore.set(_nested_name, row.value);
+      return row;
     }
+
+    switch (type) {
+      case "set_field":
+        // console.warn("[W] Setting fields from template is not advised", row);
+
+        await this.templateFieldService.setField(name, value as string);
+        return;
+      // ensure set_variables are recorded via their name (instead of default nested name)
+      // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
+      case "set_variable":
+        this.templateRowMap[name] = row;
+        this.templateRowMapValues[name] = row.value;
+        if (_dynamicFields) {
+          return preProcessedRow;
+        }
+        this.variableStore.set(name, row.value);
+        return;
+      // merge new actions with existing container action list
+      case "update_action_list":
+        // TODO - refactor to standalone array merge method
+        const existing_actions = this.container.row?.action_list || [];
+        // remove any actions previously added by the same update and then add newly processed actions
+        const base_actions = existing_actions.filter(
+          (a) => !a["_update_name"] || a["_update_name"] !== name
+        );
+        const new_actions = row.action_list.map((a) => ({
+          ...a,
+          _update_name: name, // keep track for future updates
+          _self_triggered: true, // by default actions are triggered from parent context, specify self
+        }));
+        const updated_actions = [...base_actions, ...new_actions];
+        this.container.row = { ...this.container.row, action_list: updated_actions };
+        break;
+      default:
+        // all other types should just set own value for use in future processing
+        this.templateRowMap[_nested_name] = row;
+        this.templateRowMapValues[_nested_name] = row.value;
+        this.variableStore.set(name, row.value);
+        break;
+    }
+
     return row;
   }
 

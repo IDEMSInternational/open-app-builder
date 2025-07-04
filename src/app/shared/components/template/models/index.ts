@@ -1,5 +1,6 @@
 import { FlowTypes } from "src/app/shared/model";
-import type { TemplateContainerComponent } from "../template-container.component";
+import { TemplateContainerComponent } from "../template-container.component";
+import { VariableStore } from "../stores/variable-store";
 import type { TemplateComponent } from "../template-component";
 export { FlowTypes } from "src/app/shared/model";
 
@@ -17,6 +18,7 @@ export interface ITemplateRowProps {
    * if needing to access directly
    */
   parent: TemplateContainerComponent;
+  variableStore: VariableStore; // Optional, used for variable management
   /**
    * Ref to parent TemplateContainerComponent class from hierarchy
    * ```html
