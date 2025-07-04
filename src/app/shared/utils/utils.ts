@@ -485,16 +485,3 @@ export function convertBlobToBase64(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
-
-/**
- * Merge two arrays of objects by ID, with the second array taking precedence
- */
-export function mergeData<T extends { id: string }>(
-  baseData: T[] = [],
-  overrideData: T[] = []
-): T[] {
-  const baseHashmap = arrayToHashmap(baseData, "id");
-  const overrideHashmap = arrayToHashmap(overrideData, "id");
-  const merged = deepMergeObjects(baseHashmap, overrideHashmap);
-  return Object.values(merged) as T[];
-}

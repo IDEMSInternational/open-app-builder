@@ -6,7 +6,8 @@ import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { deepMergeObjects, mergeData } from "../../utils";
+import { deepMergeObjects } from "../../utils";
+import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
@@ -337,7 +338,7 @@ export class DynamicDataService extends AsyncServiceBase {
       ...v,
       id,
     }));
-    const mergedData = mergeData(initialData, writeDataArray);
+    const mergedData = deepMergeArrays(initialData, writeDataArray, "id");
     // TODO - how to preserve order when including user-generated writes (should just work...)
     return mergedData;
   }
