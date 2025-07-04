@@ -1,6 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": ["packages/api/**/*", "packages/@idemsInternational/**/*"],
+  "ignorePatterns": [
+    "packages/api/**/*",
+    "packages/@idemsInternational/**/*",
+    "src/app/shared/components/template/components/odk-form/**"
+  ],
   "plugins": ["jasmine", "@typescript-eslint"],
   "env": {
     "jasmine": true
@@ -91,7 +95,7 @@
         "prefer-arrow/prefer-arrow-functions": "off",
         "no-underscore-dangle": "off",
         "object-shorthand": "warn",
-        "no-var": "warn",
+        "no-var": "error",
         "no-console": "off",
         "radix": "warn",
         "eqeqeq": "warn",
@@ -99,7 +103,14 @@
         "no-throw-literal": "warn",
         "use-isnan": "warn",
         "arrow-body-style": "off",
-        "sort-keys": "off"
+        "sort-keys": "off",
+        "no-restricted-imports": [
+          "error",
+          {
+            "name": "firebase/firestore",
+            "message": "Avoid using firestore web SDK. Use @capacitor-firebase/firestore instead."
+          }
+        ]
       }
     },
     {
@@ -121,4 +132,3 @@
     }
   ]
 }
-
