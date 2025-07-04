@@ -342,9 +342,7 @@ export class TemplateRowService extends SyncServiceBase {
                 row.value,
                 language
               );
-              if (translated) {
-                row.value = translated;
-              }
+              row.value = translated;
             }
           }
           this.templateRowMap[name] = row;
