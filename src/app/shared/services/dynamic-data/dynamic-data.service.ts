@@ -6,7 +6,8 @@ import { FlowTypes } from "data-models";
 import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import { arrayToHashmap, deepMergeObjects } from "../../utils";
+import { deepMergeObjects } from "../../utils";
+import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
@@ -337,7 +338,7 @@ export class DynamicDataService extends AsyncServiceBase {
       ...v,
       id,
     }));
-    const mergedData = this.mergeData(initialData, writeDataArray);
+    const mergedData = deepMergeArrays(initialData, writeDataArray, "id");
     // TODO - how to preserve order when including user-generated writes (should just work...)
     return mergedData;
   }
@@ -345,13 +346,6 @@ export class DynamicDataService extends AsyncServiceBase {
   /** When working with rxdb collections only alphanumeric lower case names allowed  */
   private normaliseCollectionName(flow_type: FlowTypes.FlowType, flow_name: string) {
     return `${flow_type}${flow_name}`.toLowerCase().replace(/[^a-z0-9]/g, "");
-  }
-
-  private mergeData<T extends FlowTypes.Data_listRow>(flowData: T[] = [], dbData: T[] = []) {
-    const flowHashmap = arrayToHashmap(flowData, "id");
-    const dbDataHashmap = arrayToHashmap(dbData, "id");
-    const merged = deepMergeObjects(flowHashmap, dbDataHashmap);
-    return Object.values(merged) as T[];
   }
 
   /**
