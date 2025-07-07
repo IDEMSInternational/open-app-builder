@@ -358,7 +358,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
-    if (Capacitor.isNative && forceBackground) {
+    if (Capacitor.isNativePlatform() && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
       // https://github.com/ionic-team/capacitor-plugins/issues/130
