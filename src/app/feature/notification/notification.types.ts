@@ -12,7 +12,7 @@ export interface INotification {
 export interface IDBNotification extends INotification {
   /** Track integer id provided to internal notification */
   _internal_id: number;
-  status: "pending" | "interacted" | "dismissed";
+  status: "pending" | "interacted" | "ignored";
   action_performed?: {
     timestamp: string;
     id?: string; // ID of action button interactions

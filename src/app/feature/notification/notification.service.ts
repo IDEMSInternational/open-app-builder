@@ -36,7 +36,7 @@ export class NotificationService {
       const permissionStatus = this.permissionStatus();
       if (permissionStatus === "granted") {
         await this.recheckScheduledNotifications();
-        await this.checkDismissedNotifications();
+        await this.checkIgnoredNotifications();
       }
     });
     // Check permissions on initial load
@@ -164,7 +164,7 @@ export class NotificationService {
   }
 
   /**
-   * Check through list of all db notifications and infer dismissed status on any
+   * Check through list of all db notifications and infer ignored status on any
    * pending notifications where the schedule time is in the past
    *
    * This method is called during the following events to try and ensure status kept updates
@@ -176,23 +176,23 @@ export class NotificationService {
    *
    * If notifications received while app in foreground they handled via native listener callback
    */
-  private async checkDismissedNotifications() {
+  private async checkIgnoredNotifications() {
     // HACK - ensure check performed after any pending db writes related to actions processed
     await _wait(1000);
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
     const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
     const allNotifications = await firstValueFrom(query);
     const now = new Date().getTime();
-    // Assume any notifications scheduled in past that haven't been interacted with must have been dismissed
-    const dismissed = allNotifications
+    // Assume any notifications scheduled in past that haven't been interacted with must have been ignored
+    const ignored = allNotifications
       .filter((n) => n.status === "pending" && new Date(n.schedule_at).getTime() < now)
       .map((n) => {
-        n.status = "dismissed";
+        n.status = "ignored";
         return n;
       });
-    if (dismissed.length > 0) {
-      console.log("[Notification] Mark Dismissed", dismissed);
-      await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+    if (ignored.length > 0) {
+      console.log("[Notification] Mark Ignored", ignored);
+      await this.dynamicDataService.bulkUpsert("data_list", "_notifications", ignored);
     }
   }
 
@@ -216,7 +216,7 @@ export class NotificationService {
         this.handleNotificationAction(action.actionId, notification);
       }
     });
-    // Whenever any notification received use as prompt to mark notifications as dismissed
+    // Whenever any notification received use as prompt to mark notifications as ignored
     // This may be replaced in the future if the above action is triggered
     this.capacitorEventService.localNotificationReceived.subscribe(
       (notification: INotificationInternal) => {
@@ -227,8 +227,8 @@ export class NotificationService {
       }
     );
     // Additionally listen to app resume events to also trigger processing to make sure
-    // DB up-to-date if a user has minimised the app and returns after notifications dismissed
-    App.addListener("resume", () => this.checkDismissedNotifications());
+    // DB up-to-date if a user has minimised the app and returns after notifications ignored
+    App.addListener("resume", () => this.checkIgnoredNotifications());
   }
 
   /** When notification interacted with update the db accordingly */
@@ -251,11 +251,11 @@ export class NotificationService {
     }
   }
 
-  /** If notification received while app in foreground use as trigger to mark dismissed notifications */
+  /** If notification received while app in foreground use as trigger to mark ignored notifications */
   private async handleNotificationReceived(notification: INotificationInternal) {
     const dbNotification = await this.getNotificationById(notification.extra.id);
     if (dbNotification) {
-      const update: IDBNotification = { ...dbNotification, status: "dismissed" };
+      const update: IDBNotification = { ...dbNotification, status: "ignored" };
       await this.setDBNotification(update);
     }
   }

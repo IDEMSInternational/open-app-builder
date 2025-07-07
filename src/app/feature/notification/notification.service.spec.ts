@@ -350,7 +350,7 @@ describe("NotificationService", () => {
     xit("automatically updates notifications db on app start and when resumed from background", async () => {
       // TODO - hard to mock app lifecycle but present in code
     });
-    it("marks notifications as dismissed if received while app in foreground", async () => {
+    it("marks notifications as ignored if received while app in foreground", async () => {
       const pastDate = new Date(Date.now() - 60000).toISOString();
       const pendingNotification: IDBNotification = {
         ...validNotification,
@@ -366,7 +366,7 @@ describe("NotificationService", () => {
         "_notifications",
         jasmine.objectContaining({
           id: validNotification.id,
-          status: "dismissed",
+          status: "ignored",
         })
       );
     });
