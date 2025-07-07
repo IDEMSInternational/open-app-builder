@@ -9,6 +9,8 @@ import { IDBNotification, INotification, INotificationInternal } from "./notific
 import { App } from "@capacitor/app";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { NotificationActionFactory } from "./notification.actions";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -26,8 +28,13 @@ export class NotificationService {
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService,
-    private capacitorEventService: CapacitorEventService
+    private capacitorEventService: CapacitorEventService,
+    actionRegistry: TemplateActionRegistry
   ) {
+    // Register action handlers
+    const { notification } = new NotificationActionFactory(this);
+    actionRegistry.register({ notification });
+
     // Setup listeners immediately to ensure events are not dropped
     this.addNotificationListeners();
 

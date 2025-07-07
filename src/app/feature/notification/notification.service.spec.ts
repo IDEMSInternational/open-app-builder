@@ -15,6 +15,7 @@ import { INotification, IDBNotification, INotificationInternal } from "./notific
 import { IAppConfig } from "data-models/appConfig";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -102,6 +103,7 @@ describe("NotificationService", () => {
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
         { provide: CapacitorEventService, useValue: MockCapacitorEventService },
+        { provide: TemplateActionRegistry, useValue: { register: () => null } },
       ],
     });
 
