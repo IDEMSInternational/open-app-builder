@@ -3358,63 +3358,63 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor-community/file-opener@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@capacitor-community/file-opener@npm:6.0.0"
+"@capacitor-community/file-opener@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@capacitor-community/file-opener@npm:7.0.1"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-  checksum: 008200294bf280bdc10a1fea0d883b0846eb0c5dd336818e4cdd40950a153d45610362327db194b516ac8ffc917c1c061103edaef3b00ce012cdb1c8b8fe1d54
+    "@capacitor/core": ">=7.0.0"
+  checksum: b23f01b038f90afc02313a1354b156761a659fd624735ab967704c653980c5576c6e2ace55d999820ecfade4c0408ce317bfb2dfd863ef555b1a4a839d3d99f8
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/authentication@npm:^6.3.1":
-  version: 6.3.1
-  resolution: "@capacitor-firebase/authentication@npm:6.3.1"
+"@capacitor-firebase/authentication@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/authentication@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0 || ^11.0.0
+    "@capacitor/core": ">=7.0.0"
+    firebase: ^11.2.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 148200081ff5100e992205a19d9940e155c32e92a428405eb490e04b009f56ac364fc1c606e0ce1c6aec35003701fbff0022dd6a3057ecb3a8fbe16cacaf4bb6
+  checksum: 48a723e9688df608010963c5be63287d0fa93ac738d3d71c989d60479637f3a6e6b574c38659ef04f112a3897f9368d512ce05ddf53490c34b5eee43c2ea86fd
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/crashlytics@npm:^6.3.1":
-  version: 6.3.1
-  resolution: "@capacitor-firebase/crashlytics@npm:6.3.1"
+"@capacitor-firebase/crashlytics@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/crashlytics@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
+    "@capacitor/core": ">=7.0.0"
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: b52dc7a42d2f961aa47b30b8918038fa9ae370308240e52f3b78f2d125b3318a7eed34aa845aa98470daf826878b62c8233d8dac47e33d6fcb7c89ea59201914
+  checksum: ec4ea668c500b55f419b84f2f7941fb546b588c5a095006a69d6d34af0b0d6940444bd31b159d7d26eb6eb021c116ad6dd4a41866dada3809cfeacbc4568b6a7
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/firestore@npm:6.3.1":
-  version: 6.3.1
-  resolution: "@capacitor-firebase/firestore@npm:6.3.1"
+"@capacitor-firebase/firestore@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/firestore@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0 || ^11.0.0
+    "@capacitor/core": ">=7.0.0"
+    firebase: ^11.2.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: cba001e8a57f76ffa33575fd86ee9be87f6b70d313a4e6e417feb9404a615a3e226787b6fb5127299270a128e0661084db02c0b2bb68d978fc030e55c03671cf
+  checksum: 9c68f9480ce867f4e6134181f7f50cc4946a8dc3ac26e7345a7cad34712e83e1325f996e11f15be62034570c5a6e68fb11787da8c7c7961b0c3b8ebf8230a0d8
   languageName: node
   linkType: hard
 
-"@capacitor-firebase/performance@npm:^6.3.1":
-  version: 6.3.1
-  resolution: "@capacitor-firebase/performance@npm:6.3.1"
+"@capacitor-firebase/performance@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@capacitor-firebase/performance@npm:7.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-    firebase: ^10.9.0 || ^11.0.0
+    "@capacitor/core": ">=7.0.0"
+    firebase: ^11.2.0
   peerDependenciesMeta:
     firebase:
       optional: true
-  checksum: 25b4da6e44db02520bfa9f0d89b1428c0efa275e1a270f9b567513e469e9f2ce8157c1c9ba70d8c83b21b462aaecadea1dec807f84ec036cb59be66963284a63
+  checksum: b9f91c11dd751b72f606583d2e05ea672282a278a67321ce8d7593961321d02534889c48ffaa93f7e73e26007266850d367a7ff328e31cfedb9210be0a8f9917
   languageName: node
   linkType: hard
 
@@ -3572,12 +3572,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capawesome/capacitor-app-update@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@capawesome/capacitor-app-update@npm:6.0.0"
+"@capawesome/capacitor-app-update@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@capawesome/capacitor-app-update@npm:7.0.1"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-  checksum: 8fe893f8fcb953b2520e38e395502820d3f633d3a77159584890631393c5beb42462d78a1139c7aa84a46c5316589ca2b1cf4d19222583a9e589416d7df848db
+    "@capacitor/core": ">=7.0.0"
+  checksum: fc947d46796685d8ed4a3582059946fdf3462e801a188eaec2e1d53becf25cbe9d17984ce4276d7701e0743846b4d13df699ba052bb44861160aaa7cf7b15b23
   languageName: node
   linkType: hard
 
@@ -18102,11 +18102,11 @@ __metadata:
     "@angular/platform-browser": ~18.2.5
     "@angular/platform-browser-dynamic": ~18.2.5
     "@angular/router": ~18.2.5
-    "@capacitor-community/file-opener": ^6.0.0
-    "@capacitor-firebase/authentication": ^6.3.1
-    "@capacitor-firebase/crashlytics": ^6.3.1
-    "@capacitor-firebase/firestore": 6.3.1
-    "@capacitor-firebase/performance": ^6.3.1
+    "@capacitor-community/file-opener": ^7.0.1
+    "@capacitor-firebase/authentication": ^7.2.0
+    "@capacitor-firebase/crashlytics": ^7.2.0
+    "@capacitor-firebase/firestore": ^7.2.0
+    "@capacitor-firebase/performance": ^7.2.0
     "@capacitor/android": ^7.0.0
     "@capacitor/app": ^7.0.0
     "@capacitor/cli": ^7.0.0
@@ -18121,7 +18121,7 @@ __metadata:
     "@capacitor/share": ^7.0.0
     "@capacitor/splash-screen": ^7.0.0
     "@capacitor/toast": ^7.0.0
-    "@capawesome/capacitor-app-update": ^6.0.0
+    "@capawesome/capacitor-app-update": ^7.0.1
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.5.3
     "@ionic/angular-toolkit": ^11.0.1
