@@ -12,9 +12,19 @@ export interface INotification {
 export interface IDBNotification extends INotification {
   /** Track integer id provided to internal notification */
   _internal_id: number;
+  status: "pending" | "interacted" | "ignored";
+  action_performed?: {
+    timestamp: string;
+    id?: string; // ID of action button interactions
+  };
 }
 
 /** When writing notification to capacitor include db notification id in extra */
 export type INotificationInternal = Omit<LocalNotificationSchema, "extra"> & {
-  extra: { id: string };
+  extra: {
+    /** reference to db notification id */
+    id: string;
+    /** source of notification, e.g. action, campaign */
+    source: string;
+  };
 };
