@@ -7,6 +7,10 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
 import { App } from "@capacitor/app";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
+import { _wait } from "packages/shared/src/utils/async-utils";
+import { NotificationActionFactory } from "./notification.actions";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -23,8 +27,14 @@ export class NotificationService {
   constructor(
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private capacitorEventService: CapacitorEventService,
+    actionRegistry: TemplateActionRegistry
   ) {
+    // Register action handlers
+    const { notification } = new NotificationActionFactory(this);
+    actionRegistry.register({ notification });
+
     // Setup listeners immediately to ensure events are not dropped
     this.addNotificationListeners();
 
@@ -33,7 +43,7 @@ export class NotificationService {
       const permissionStatus = this.permissionStatus();
       if (permissionStatus === "granted") {
         await this.recheckScheduledNotifications();
-        await this.checkDismissedNotifications();
+        await this.checkIgnoredNotifications();
       }
     });
     // Check permissions on initial load
@@ -97,7 +107,9 @@ export class NotificationService {
 
   public async cancelAll() {
     const { notifications } = await this.api.getPending();
-    await this.api.cancel({ notifications }); // Cancels all
+    if (notifications.length > 0) {
+      await this.api.cancel({ notifications });
+    }
     await this.dynamicDataService.resetFlow("data_list", "_notifications");
   }
 
@@ -159,7 +171,7 @@ export class NotificationService {
   }
 
   /**
-   * Check through list of all db notifications and infer dismissed status on any
+   * Check through list of all db notifications and infer ignored status on any
    * pending notifications where the schedule time is in the past
    *
    * This method is called during the following events to try and ensure status kept updates
@@ -171,19 +183,24 @@ export class NotificationService {
    *
    * If notifications received while app in foreground they handled via native listener callback
    */
-  private async checkDismissedNotifications() {
+  private async checkIgnoredNotifications() {
+    // HACK - ensure check performed after any pending db writes related to actions processed
+    await _wait(1000);
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
     const query = this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
     const allNotifications = await firstValueFrom(query);
     const now = new Date().getTime();
-    // Assume any notifications scheduled in past that haven't been interacted with must have been dismissed
-    const dismissed = allNotifications
+    // Assume any notifications scheduled in past that haven't been interacted with must have been ignored
+    const ignored = allNotifications
       .filter((n) => n.status === "pending" && new Date(n.schedule_at).getTime() < now)
       .map((n) => {
-        n.status = "dismissed";
+        n.status = "ignored";
         return n;
       });
-    await this.dynamicDataService.bulkUpsert("data_list", "_notifications", dismissed);
+    if (ignored.length > 0) {
+      console.log("[Notification] Mark Ignored", ignored);
+      await this.dynamicDataService.bulkUpsert("data_list", "_notifications", ignored);
+    }
   }
 
   /** List notifications from DB scheduled in the future */
@@ -196,12 +213,9 @@ export class NotificationService {
   }
 
   private async addNotificationListeners() {
-    // HACK - call checkPermissions first to ensure capacitor notification api loaded
-    // On web the listeners seem to be registering too eagerly, and fail to process data
-    await this.checkPermissions();
-
     // Subscribe to notification action events and update the DB when notification interacted with
-    this.api.addListener("localNotificationActionPerformed", (action) => {
+    // Use proxy CapacitorEventService to capture any events emitted before this service ready
+    this.capacitorEventService.localNotificationActionPerformed.subscribe((action) => {
       const notification = action.notification as INotificationInternal;
       // Only trigger actions for notifications also created by same service
       if (notification.extra?.id && notification.extra?.source === "action") {
@@ -209,21 +223,25 @@ export class NotificationService {
         this.handleNotificationAction(action.actionId, notification);
       }
     });
-    // Whenever any notification received use as prompt to mark notifications as dismissed
+    // Whenever any notification received use as prompt to mark notifications as ignored
     // This may be replaced in the future if the above action is triggered
-    this.api.addListener("localNotificationReceived", (notification: INotificationInternal) => {
-      if (notification.extra?.id && notification.extra?.source === "action") {
-        console.log("[Notification] Received", notification);
-        this.handleNotificationReceived(notification);
+    this.capacitorEventService.localNotificationReceived.subscribe(
+      (notification: INotificationInternal) => {
+        if (notification.extra?.id && notification.extra?.source === "action") {
+          console.log("[Notification] Received", notification);
+          this.handleNotificationReceived(notification);
+        }
       }
-    });
+    );
     // Additionally listen to app resume events to also trigger processing to make sure
-    // DB up-to-date if a user has minimised the app and returns after notifications dismissed
-    App.addListener("resume", () => this.checkDismissedNotifications());
+    // DB up-to-date if a user has minimised the app and returns after notifications ignored
+    App.addListener("resume", () => this.checkIgnoredNotifications());
   }
 
   /** When notification interacted with update the db accordingly */
   private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
+    // If notification tap opened app from closed state will need to wait for services to be ready
+    await this.dynamicDataService.ready();
     const dbNotification = await this.getNotificationById(notification.extra.id);
     if (dbNotification) {
       const update: IDBNotification = {
@@ -235,17 +253,19 @@ export class NotificationService {
         },
       };
       await this.setDBNotification(update);
+    } else {
+      console.warn("Failed to find db notification:", notification.extra.id);
     }
     if (dbNotification.action) {
       // TODO - handle triggering actions
     }
   }
 
-  /** If notification received while app in foreground use as trigger to mark dismissed notifications */
+  /** If notification received while app in foreground use as trigger to mark ignored notifications */
   private async handleNotificationReceived(notification: INotificationInternal) {
     const dbNotification = await this.getNotificationById(notification.extra.id);
     if (dbNotification) {
-      const update: IDBNotification = { ...dbNotification, status: "dismissed" };
+      const update: IDBNotification = { ...dbNotification, status: "ignored" };
       await this.setDBNotification(update);
     }
   }

@@ -20,4 +20,9 @@ export class AuthProviderBase {
     this.authUser.set(undefined);
     return this.authUser();
   }
+
+  public async deleteAccount() {
+    throw new Error("Delete account not enabled");
+    return this.authUser();
+  }
 }

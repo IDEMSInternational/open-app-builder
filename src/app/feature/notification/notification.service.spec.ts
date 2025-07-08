@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { Capacitor, PermissionState } from "@capacitor/core";
+import { PermissionState } from "@capacitor/core";
 import {
   CancelOptions,
   LocalNotifications,
@@ -13,6 +13,9 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { INotification, IDBNotification, INotificationInternal } from "./notification.types";
 import { IAppConfig } from "data-models/appConfig";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
+import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -33,9 +36,6 @@ export class MockCapacitorLocalNotifications implements Partial<LocalNotificatio
   }
   async getPending() {
     return { notifications: [] };
-  }
-  async addListener(eventName: unknown, listenerFunc: unknown) {
-    return { remove: async () => null };
   }
 
   async cancel(options: CancelOptions) {
@@ -90,6 +90,7 @@ describe("NotificationService", () => {
       "remove",
       "resetFlow",
       "query$",
+      "ready",
     ]);
 
     // Setup default return values
@@ -101,6 +102,8 @@ describe("NotificationService", () => {
         { provide: LocalStorageService, useValue: mockLocalStorageService },
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
+        { provide: CapacitorEventService, useValue: MockCapacitorEventService },
+        { provide: TemplateActionRegistry, useValue: { register: () => null } },
       ],
     });
 
@@ -349,7 +352,7 @@ describe("NotificationService", () => {
     xit("automatically updates notifications db on app start and when resumed from background", async () => {
       // TODO - hard to mock app lifecycle but present in code
     });
-    it("marks notifications as dismissed if received while app in foreground", async () => {
+    it("marks notifications as ignored if received while app in foreground", async () => {
       const pastDate = new Date(Date.now() - 60000).toISOString();
       const pendingNotification: IDBNotification = {
         ...validNotification,
@@ -365,7 +368,7 @@ describe("NotificationService", () => {
         "_notifications",
         jasmine.objectContaining({
           id: validNotification.id,
-          status: "dismissed",
+          status: "ignored",
         })
       );
     });
