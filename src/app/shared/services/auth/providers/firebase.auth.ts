@@ -4,6 +4,7 @@ import {
   FirebaseAuthentication,
   User,
 } from "@capacitor-firebase/authentication";
+import { Capacitor } from "@capacitor/core";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser } from "../types";
@@ -18,14 +19,61 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
+  /** Track init events from authStateChange event to know when auth settled */
+  private initialising$ = new BehaviorSubject(false);
+
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
+    FirebaseAuthentication.addListener("authStateChange", (e) => {
+      this.initialising$.next(true);
+    });
 
+    // Use different initialization strategies based on platform
+    if (Capacitor.getPlatform() === "ios") {
+      // iOS: Use polling method since authStateChange does not fire reliably
+      await this.waitForAuthInitialization();
+    } else {
+      // Non-iOS: Use authStateChange listener
+      await firstValueFrom(this.initialising$.pipe(filter((v) => v === true)));
+    }
     await this.handleAutomatedLogin();
+  }
+
+  /**
+   * Wait for Firebase Auth to fully initialize and restore any existing session.
+   * This handles the race condition where getCurrentUser() might return null
+   * before Firebase Auth has finished restoring the session from persistent storage.
+   */
+  private async waitForAuthInitialization(): Promise<void> {
+    const maxAttempts = 6;
+    const delayMs = 100;
+    const timeoutMs = 1000;
+    let attempts = 0;
+    const startTime = Date.now();
+    while (attempts < maxAttempts && Date.now() - startTime < timeoutMs) {
+      try {
+        const { user } = await FirebaseAuthentication.getCurrentUser();
+        if (user) {
+          console.log("[Firebase Auth] User found after initialization");
+          return;
+        }
+        if (attempts >= maxAttempts) {
+          console.log("[Firebase Auth] No user found, auth has settled");
+          return;
+        }
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+        attempts++;
+      } catch (error) {
+        console.warn("[Firebase Auth] Error checking current user:", error);
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+        attempts++;
+      }
+    }
+    console.log("[Firebase Auth] Auth initialization completed (timeout or max attempts reached)");
   }
 
   public async signInWithApple() {
@@ -84,28 +132,32 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    * As such use localStorage to persist and retrieve openID profile information
    */
   private async handleAutomatedLogin() {
-    const { user } = await FirebaseAuthentication.getCurrentUser();
-    if (user) {
-      const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
-      if (storedProfile) {
-        this.setAuthUser(user, JSON.parse(storedProfile));
-      } else {
-        // trigger automated login depending on provider
-        const providerId = user.providerData?.[0]?.providerId;
-        switch (providerId) {
-          case "apple.com":
-            this.signInWithApple();
-            break;
-          case "google.com":
-            this.signInWithGoogle();
-            break;
-          default:
-            const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
-            console.warn(msg);
-            this.signOut();
-            break;
+    try {
+      const { user } = await FirebaseAuthentication.getCurrentUser();
+      if (user) {
+        const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
+        if (storedProfile) {
+          this.setAuthUser(user, JSON.parse(storedProfile));
+        } else {
+          // trigger automated login depending on provider
+          const providerId = user.providerData?.[0]?.providerId;
+          switch (providerId) {
+            case "apple.com":
+              await this.signInWithApple();
+              break;
+            case "google.com":
+              await this.signInWithGoogle();
+              break;
+            default:
+              const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
+              console.warn(msg);
+              await this.signOut();
+              break;
+          }
         }
       }
+    } catch (error) {
+      console.error("[Firebase Auth] Error during automated login:", error);
     }
   }
 }
