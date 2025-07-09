@@ -18,9 +18,6 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
-  /** Track init events from authStateChange event to know when auth settled */
-  private initialising$ = new BehaviorSubject(false);
-
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
