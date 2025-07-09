@@ -27,12 +27,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-    FirebaseAuthentication.addListener("authStateChange", (e) => {
-      this.initialising$.next(true);
-    });
-    // Ensure auth has settled by waiting for first emit.
-    // Emits `{user:null}` if not signed in, or user object if existing user re-authenticated
-    await firstValueFrom(this.initialising$.pipe(filter((v) => v === true)));
+
     await this.handleAutomatedLogin();
   }
 
