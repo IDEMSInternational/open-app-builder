@@ -4,6 +4,7 @@ import { AnalyticsModule } from "./shared/services/analytics";
 import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
+import { NotificationsModule } from "./feature/notification/notification.module";
 import { provideSharedData } from "./feature/shared-data";
 import { PLH_FEATURE_MODULES } from "packages/components/plh";
 
@@ -25,6 +26,7 @@ import { PLH_FEATURE_MODULES } from "packages/components/plh";
     AnalyticsModule,
     CampaignModule,
     NavStackModule,
+    NotificationsModule,
     ...PLH_FEATURE_MODULES,
     /* */
   ],
