@@ -234,6 +234,12 @@ export class DataItemsService {
     );
     processor.templateRowMapValues = templateRowMapValues;
 
+    // This here because processor.templateRowMapValues is being directly updated
+    // todo: templateRowMapValues should be completely replaced by the variableStore
+    Object.entries(templateRowMap).forEach(([key, { value }]) => {
+      processor.variableStore.set(key, value);
+    });
+
     await processor.processContainerTemplateRows();
     const processedRows = processor.renderedRows();
 

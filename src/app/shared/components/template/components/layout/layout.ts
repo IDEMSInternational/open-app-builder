@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "../../models";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { VariableStore } from "../../stores/variable-store";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -31,6 +33,12 @@ export class TemplateLayoutComponent extends TemplateBaseComponent implements On
     });
     row = this.modifyRowSetter(row);
     this._row = row;
+  }
+  /** reference to parent template container - does not have setter as should remain static */
+  @Input() parent: TemplateContainerComponent;
+
+  constructor(public variableStore: VariableStore) {
+    super();
   }
 
   ngOnInit() {
