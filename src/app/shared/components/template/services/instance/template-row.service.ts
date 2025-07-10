@@ -29,6 +29,7 @@ interface ISetVariableParameterList {
   /**
    * Language code to translate the value to.
    * Should be a valid language code that matches the deployment's supported languages.
+   * TODO: Has no effect if language is the deployment's default language.
    */
   language?: string;
 }
@@ -337,7 +338,10 @@ export class TemplateRowService extends SyncServiceBase {
         case "set_variable":
           if (row.parameter_list) {
             const { language } = row.parameter_list as ISetVariableParameterList;
-            if (language) {
+            // TODO: Currently only works if language is not the default language,
+            // as instances of the default language are translated back to the app language before rendering.
+            // See https://github.com/IDEMSInternational/open-app-builder/pull/3006
+            if (language && language !== this.templateTranslateService.appLanguages.default) {
               const translated = await this.templateTranslateService.translateValueToLanguage(
                 row.value,
                 language
