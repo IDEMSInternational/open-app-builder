@@ -7,7 +7,6 @@ import {
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser } from "../types";
-import { BehaviorSubject, filter, firstValueFrom, map } from "rxjs";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
@@ -30,7 +29,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       await this.handleAutomatedLogin();
     });
     // Attempt to immediately load any previously signed in user
-    // (web and native app on web reload)
+    // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
   }
 
@@ -91,6 +90,10 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    */
   private async handleAutomatedLogin() {
     const { user } = await FirebaseAuthentication.getCurrentUser();
+    // Avoid setting the same author if native layer has already loaded user when called
+    if (user?.uid === this.authUser()?.uid) {
+      return;
+    }
     console.log("[Firebase Auth] user", user);
     if (user) {
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
