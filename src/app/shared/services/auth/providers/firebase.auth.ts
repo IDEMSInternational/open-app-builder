@@ -18,21 +18,19 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
-  /** Track init events from authStateChange event to know when auth settled */
-  private initialising$ = new BehaviorSubject(false);
-
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-    FirebaseAuthentication.addListener("authStateChange", (e) => {
-      this.initialising$.next(true);
+    // Add listener to ensure previously signed in user is updated
+    // when auth layer settles (native)
+    FirebaseAuthentication.addListener("authStateChange", async (e) => {
+      await this.handleAutomatedLogin();
     });
-    // Ensure auth has settled by waiting for first emit.
-    // Emits `{user:null}` if not signed in, or user object if existing user re-authenticated
-    await firstValueFrom(this.initialising$.pipe(filter((v) => v === true)));
+    // Attempt to immediately load any previously signed in user
+    // (web and native app on web reload)
     await this.handleAutomatedLogin();
   }
 
@@ -93,6 +91,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    */
   private async handleAutomatedLogin() {
     const { user } = await FirebaseAuthentication.getCurrentUser();
+    console.log("[Firebase Auth] user", user);
     if (user) {
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
