@@ -23,7 +23,9 @@ export class TemplateTranslateService extends AsyncServiceBase {
   appLanguages: IAppConfig["APP_LANGUAGES"];
   appLanguagesMeta: IAppConfig["APP_LANGUAGES_META"];
   languageDirection: WritableSignal<"ltr" | "rtl"> = signal("ltr");
-  translation_strings = {};
+  translation_strings: Record<string, string> = {};
+  /** Cache of strings loaded from json files */
+  private languageCache: { [lang_code: string]: Record<string, string> } = {};
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -80,13 +82,22 @@ export class TemplateTranslateService extends AsyncServiceBase {
       if (updateDB) {
         this.localStorageService.setProtected("APP_LANGUAGE", code);
       }
-      const translationStrings = await this.appDataService.getTranslationStrings(code);
-      this.translation_strings = translationStrings || {};
+      this.translation_strings = await this.getTranslationStrings(code);
       // update observable for subscribers
       this.app_language$.next(code);
       // update language direction signal
       this.languageDirection.set(this.appLanguagesMeta?.[code]?.rtl ? "rtl" : "ltr");
     }
+  }
+
+  private async getTranslationStrings(code: string) {
+    // load from json asset and store to cache if not previously loaded
+    if (!this.languageCache[code]) {
+      const strings = await this.appDataService.getTranslationStrings(code);
+      this.languageCache[code] = strings;
+    }
+    // return from cache
+    return this.languageCache[code];
   }
 
   /**
@@ -195,11 +206,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
    */
   public async translateValueToLanguage(value: any, languageCode: string) {
     if (typeof value !== "string") return value;
-    const translationStrings = await this.appDataService.getTranslationStrings(languageCode);
-    if (!translationStrings) {
-      console.error(`[TRANSLATE] - No translations found for ${languageCode}`);
-      return value;
-    }
+    const translationStrings = await this.getTranslationStrings(languageCode);
     return translationStrings.hasOwnProperty(value) ? translationStrings[value] : value;
   }
 
