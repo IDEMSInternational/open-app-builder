@@ -14,7 +14,7 @@ export class AudioService {
       this.playersBySrc[src] = new HTML5AudioPlayer(src);
     }
     return this.playersBySrc[src];
-    /* if (Capacitor.isNative) {
+    /* if (Capacitor.isNativePlatform) {
       return new IonicNativeAudioPlayer(src);
     } else {
       return new HTML5AudioPlayer(src);
