@@ -7,7 +7,6 @@ import {
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser } from "../types";
-import { BehaviorSubject, filter, firstValueFrom, map } from "rxjs";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
@@ -18,21 +17,19 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
-  /** Track init events from authStateChange event to know when auth settled */
-  private initialising$ = new BehaviorSubject(false);
-
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-    FirebaseAuthentication.addListener("authStateChange", (e) => {
-      this.initialising$.next(true);
+    // Add listener to ensure previously signed in user is updated
+    // when auth layer settles (native)
+    FirebaseAuthentication.addListener("authStateChange", async (e) => {
+      await this.handleAutomatedLogin();
     });
-    // Ensure auth has settled by waiting for first emit.
-    // Emits `{user:null}` if not signed in, or user object if existing user re-authenticated
-    await firstValueFrom(this.initialising$.pipe(filter((v) => v === true)));
+    // Attempt to immediately load any previously signed in user
+    // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
   }
 
@@ -93,6 +90,11 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    */
   private async handleAutomatedLogin() {
     const { user } = await FirebaseAuthentication.getCurrentUser();
+    // Avoid setting the same author if native layer has already loaded user when called
+    if (user?.uid === this.authUser()?.uid) {
+      return;
+    }
+    console.log("[Firebase Auth] user", user);
     if (user) {
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
