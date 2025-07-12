@@ -311,7 +311,8 @@ export namespace FlowTypes {
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowBaseType | TemplateRowCoreType | TemplateRowDeploymentType;
     name: string;
-    value?: boolean | number | string;
+    /** Value can be set from authored value (string, number, boolean), or transformed from action_list or _list types */
+    value?: any;
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
@@ -413,6 +414,8 @@ export namespace FlowTypes {
     | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
+    | "notification_interacted"
+    | "notification_received"
     | "sent" // notification sent
     | "uncompleted";
 
