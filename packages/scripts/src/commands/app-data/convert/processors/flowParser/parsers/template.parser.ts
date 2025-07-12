@@ -91,19 +91,15 @@ export class TemplateParser extends DefaultParser {
       // column is retained when interpreting data at runtime (workaround)
       if (rowName.endsWith("_action_list") || rowName?.includes("_action_list_")) {
         const entries = parseAppDataListString(rowValue);
-        return entries
-          .map((actionString) => parseAppDataActionString(actionString))
-          .filter((action) => action !== null);
+        return entries.map((actionString) => parseAppDataActionString(actionString));
       }
       if (rowName.endsWith("_list") || rowName?.includes("_list_")) {
         return this.parseTemplateList(rowValue);
       }
       if (rowName.endsWith("_collection") || rowName.includes("_collection_")) {
-        if (rowValue && typeof rowValue === "string") {
-          // TODO - verify if case used and whether it might be better to use a different
-          // column to store parsed object literal in value (would require type defs update)
-          return parseAppDataCollectionString(rowValue) as any;
-        }
+        // TODO - verify if case used and whether it might be better to use a different
+        // column to store parsed object literal in value (would require type defs update)
+        return parseAppDataCollectionString(rowValue) as any;
       }
     }
     return rowValue;
