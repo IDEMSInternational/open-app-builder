@@ -6,6 +6,7 @@ import {
   extractDynamicDependencies,
   parseAppDataCollectionString,
   parseAppDataListString,
+  parseAppDataActionString,
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
@@ -39,24 +40,15 @@ export class TemplateParser extends DefaultParser {
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     // in similar way to how top-level properties get converted by default parser
-    if (row.value && typeof row.value === "string") {
-      if (row.name?.endsWith("_list") || row.name?.includes("_list_")) {
-        row.value = this.parseTemplateList(row.value);
-      }
-      if (row.name?.endsWith("_collection") || row.name?.includes("_collection_")) {
-        if (row.value && typeof row.value === "string") {
-          // TODO - verify if case used and whether it might be better to use a different
-          // column to store parsed object literal in value (would require type defs update)
-          row.value = parseAppDataCollectionString(row.value) as any;
-        }
-      }
-    }
+    row.value = this.transformRowValue(row.name, row.value);
+
     if (row.parameter_list) {
       row.parameter_list = this.parseParameterList(row.parameter_list as any);
     }
     if (row.action_list) {
       row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
     }
+
     // extract dynamic fields for runtime evaluation
     const dynamicFields = extractDynamicFields(row);
     if (dynamicFields) {
@@ -90,6 +82,31 @@ export class TemplateParser extends DefaultParser {
   public override postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
     const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
+  }
+
+  /** Apply custom value transformations to rows with specific names, e.g. _list or _collection */
+  private transformRowValue(rowName: string, rowValue: any) {
+    if (rowName && rowValue && typeof rowValue === "string") {
+      // NOTE - required if passing an action_list from variable as only the `value`
+      // column is retained when interpreting data at runtime (workaround)
+      if (rowName.includes("action_list")) {
+        const entries = parseAppDataListString(rowValue);
+        return entries
+          .map((actionString) => parseAppDataActionString(actionString))
+          .filter((action) => action !== null);
+      }
+      if (rowName.endsWith("_list") || rowName?.includes("_list_")) {
+        return this.parseTemplateList(rowValue);
+      }
+      if (rowName.endsWith("_collection") || rowName.includes("_collection_")) {
+        if (rowValue && typeof rowValue === "string") {
+          // TODO - verify if case used and whether it might be better to use a different
+          // column to store parsed object literal in value (would require type defs update)
+          return parseAppDataCollectionString(rowValue) as any;
+        }
+      }
+    }
+    return rowValue;
   }
 
   /**
