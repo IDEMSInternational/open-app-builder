@@ -262,10 +262,10 @@ export class NotificationService {
         },
       };
       await this.setDBNotification(update);
+      await this.triggerNotificationActions(dbNotification.action_list, "notification_interacted");
     } else {
       console.warn("Failed to find db notification:", notification.extra.id);
     }
-    await this.triggerNotificationActions(dbNotification.action_list, "notification_interacted");
   }
 
   /** If notification received while app in foreground use as trigger to mark ignored notifications */
