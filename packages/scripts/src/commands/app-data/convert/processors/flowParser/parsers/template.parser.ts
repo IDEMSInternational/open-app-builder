@@ -89,7 +89,7 @@ export class TemplateParser extends DefaultParser {
     if (rowName && rowValue && typeof rowValue === "string") {
       // NOTE - required if passing an action_list from variable as only the `value`
       // column is retained when interpreting data at runtime (workaround)
-      if (rowName.includes("action_list")) {
+      if (rowName.endsWith("action_list") || rowName?.includes("_action_list_")) {
         const entries = parseAppDataListString(rowValue);
         return entries
           .map((actionString) => parseAppDataActionString(actionString))
