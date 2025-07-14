@@ -550,13 +550,15 @@ body[data-theme="plh_facilitator_my"] {
       width: 100%;
     }
     ion-item.accordion-content {
-      border-top: 1px solid var(--color-outline-variant) !important;
-      margin: 0px 10px !important;
+      margin: 1px !important;
+      --background: var(--color-surface-white) !important;
+      border-radius: 6px;
+      padding-bottom: unset !important;
 
       plh-tmpl-text {
         width: 100%;
         .standard {
-          color: var(--color-surface-white) !important;
+          color: var(--color-surface-black) !important;
           p,
           ul,
           ol {
@@ -565,12 +567,12 @@ body[data-theme="plh_facilitator_my"] {
             font-weight: var(--font-weight-standard) !important;
             margin-top: 8px;
             a {
-              color: var(--color-surface-white-variant) !important;
+              color: var(--ion-color-secondary-shade) !important;
               text-decoration: underline !important;
             }
           }
           a {
-            color: var(--color-surface-white-variant) !important;
+            color: var(--ion-color-secondary-shade) !important;
             text-decoration: underline !important;
           }
         }
