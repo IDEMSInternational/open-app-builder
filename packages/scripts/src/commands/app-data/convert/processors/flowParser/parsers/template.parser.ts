@@ -84,7 +84,10 @@ export class TemplateParser extends DefaultParser {
     return flowsWithOverrides;
   }
 
-  /** Apply custom value transformations to rows with specific names, e.g. _list or _collection */
+  /**
+   * Apply custom value transformations to rows with specific names, e.g. _list or _collection
+   * TODO - should ideally find way to merge with `default.parser` `handleSpecialFieldTypes` method
+   **/
   private transformRowValue(rowName: string, rowValue: any) {
     if (rowName && rowValue && typeof rowValue === "string") {
       // NOTE - required if passing an action_list from variable as only the `value`
