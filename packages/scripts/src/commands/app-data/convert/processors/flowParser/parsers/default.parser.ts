@@ -241,8 +241,8 @@ class RowProcessor {
 
   private handleSpecialFieldTypes() {
     Object.entries(this.row).forEach(([field, value]) => {
-      // skip processing any fields that will be populated from datalist itmes
-      const shouldSkip = typeof value === "string" && value.startsWith("@item.");
+      // skip processing any fields that will be populated from dynamic reference
+      const shouldSkip = typeof value === "string" && value.startsWith("@");
       // handle custom fields
       if (!shouldSkip) {
         if (typeof value === "string") {
