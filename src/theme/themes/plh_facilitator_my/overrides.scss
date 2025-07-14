@@ -955,44 +955,42 @@ body[data-theme="plh_facilitator_my"] {
   plh-combo-box {
     .combo-box-container.dropdown {
       ion-select {
-        background-color: var(--ion-color-primary-100) !important;
-        border: none !important;
+        background-color: var(--ion-color-gray-50) !important;
+        border: 1px solid var(--ion-color-gray-300) !important;
         padding-left: 16px !important;
         font-size: var(--font-size-text-mid-size);
         &.hasValue {
-          background: var(--ion-color-primary-800) !important;
+          background: var(--ion-color-gray-50) !important;
         }
       }
     }
     button.open-combobox {
-      background-color: var(--ion-color-primary-100);
+      background-color: var(--ion-color-gray-50) !important;
       border-radius: var(--ion-border-radius-small);
       filter: none !important;
       min-height: 58px !important;
-      border: 1px solid var(--ion-color-primary-300);
+      border: 1px solid var(--ion-color-gray-300) !important;
       &.placeholder-style {
-        color: var(--ion-color-gray-400);
+        color: var(--ion-color-gray-300);
         font-weight: var(--font-weight-standard);
       }
       &.with-value {
-        font-weight: var(--font-weight-bold);
-        background-color: var(--ion-color-primary-700);
+        background-color: var(--ion-color-gray-100);
       }
     }
     button.open-search-combobox {
-      background-color: var(--ion-color-primary-100);
+      background-color: var(--ion-color-gray-50) !important;
       border-radius: var(--ion-border-radius-small);
       filter: none !important;
       min-height: 58px !important;
-      border: 1px solid var(--ion-color-primary-300);
+      border: 1px solid var(--ion-color-gray-300) !important;
       padding-left: 16px;
       &.placeholder-style {
-        color: var(--ion-color-gray-600);
+        color: var(--ion-color-gray-300);
         font-weight: var(--font-weight-standard);
       }
       &.with-value {
-        font-weight: var(--font-weight-bold);
-        background-color: var(--ion-color-primary-800);
+        background-color: var(--ion-color-gray-100);
       }
     }
   }
@@ -1003,21 +1001,21 @@ body[data-theme="plh_facilitator_my"] {
       font-family: var(--ion-font-family);
       .header {
         font-size: var(--font-size-text-large) !important;
-        font-weight: var(--font-weight-bold) !important;
+        font-weight: var(--font-weight-medium) !important;
         text-align: unset !important;
-        color: var(--ion-color-gray-800);
+        color: var(--ion-color-gray-700);
       }
     }
     .container-radio {
       box-shadow: none !important;
       border-radius: var(--ion-border-radius-small) !important;
-      background: var(--ion-color-primary-100) !important;
-      border: 1px solid var(--ion-color-primary-300) !important;
+      background: var(--ion-color-gray-50) !important;
+      border: 1px solid var(--ion-color-gray-200) !important;
       label {
         padding: 8px !important;
         text-align: unset !important;
         font-size: var(--font-size-text-medium) !important;
-        color: var(--ion-color-gray-800) !important;
+        color: var(--ion-color-gray-700) !important;
         min-height: 56px !important;
         border-radius: var(--ion-border-radius-small) !important;
         font-weight: var(--font-weight-medium) !important;
@@ -1025,8 +1023,8 @@ body[data-theme="plh_facilitator_my"] {
       }
     }
     .checked-radio {
-      background: var(--ion-color-primary-100) !important;
-      border: 2px solid var(--ion-color-primary-600) !important;
+      background: var(--ion-color-gray-100) !important;
+      border: 2px solid var(--ion-color-gray-400) !important;
     }
     .wrapper {
       .text-box-input {
@@ -1044,7 +1042,7 @@ body[data-theme="plh_facilitator_my"] {
         border-radius: var(--ion-border-radius-standard) !important;
       }
       .checked-radion {
-        border: 2px solid var(--ion-color-primary-600) !important;
+        border: 2px solid var(--ion-color-gray-400) !important;
       }
     }
   }
