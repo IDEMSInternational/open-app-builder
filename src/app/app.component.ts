@@ -43,6 +43,7 @@ import { getPaddingValuesFromShorthand } from "./shared/components/template/util
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
 import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
+import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
 
 @Component({
   selector: "app-root",
@@ -124,7 +125,8 @@ export class AppComponent {
     private screenOrientationService: ScreenOrientationService,
     private clipboardService: ClipboardService,
     private scrollService: ScrollService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private capacitorEventService: CapacitorEventService
   ) {
     this.initializeApp();
   }
@@ -215,6 +217,7 @@ export class AppComponent {
         this.remoteAssetService,
       ],
       nonBlocking: [
+        this.capacitorEventService,
         this.skinService,
         this.appConfigService,
         this.appUpdateService,
