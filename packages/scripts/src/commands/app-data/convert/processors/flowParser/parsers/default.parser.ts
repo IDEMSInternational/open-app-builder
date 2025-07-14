@@ -241,8 +241,8 @@ class RowProcessor {
 
   private handleSpecialFieldTypes() {
     Object.entries(this.row).forEach(([field, value]) => {
-      // skip processing any fields that will be populated from dynamic reference
-      const shouldSkip = typeof value === "string" && value.startsWith("@");
+      // skip processing any fields that will be populated from datalist itmes
+      let shouldSkip = typeof value === "string" && value.startsWith("@item.");
       // handle custom fields
       if (!shouldSkip) {
         if (typeof value === "string") {
@@ -254,9 +254,12 @@ class RowProcessor {
           }
           // parse action_list within default parser in case referenced from data_list
           if (field.endsWith("action_list")) {
-            this.row[field] = this.row[field]
-              .map((actionString) => parseAppDataActionString(actionString))
-              .filter((action) => action !== null);
+            // do not parse action lists that are populated from variable reference
+            if (!value.startsWith("@")) {
+              this.row[field] = this.row[field]
+                .map((actionString) => parseAppDataActionString(actionString))
+                .filter((action) => action !== null);
+            }
           }
         }
         // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
