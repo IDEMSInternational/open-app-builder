@@ -195,6 +195,37 @@ describe("Template Parser PostProcessor", () => {
   });
 });
 
+describe("Template Parser PostProcess", () => {
+  let parser: TemplateParser;
+  beforeEach(() => {
+    parser = new TemplateParser({} as any);
+  });
+  it("hoists variable references from display_groups", () => {
+    const rows: FlowTypes.TemplateRow[] = [
+      {
+        _nested_name: "dg",
+        name: "dg",
+        type: "display_group",
+        rows: [
+          {
+            _nested_name: "db.inner_var",
+            type: "set_variable",
+            name: "inner_var",
+            value: "inner_val",
+          },
+        ],
+      },
+    ];
+    const res = parser.postProcessFlow({ flow_name: "", flow_type: "template", rows });
+    // hoisting should move inner set_variable to top-level, resulting in 2 flat rows
+    // the hoisted row should also have its nested_name updated to reflect new position
+    expect(res.rows.length).toEqual(2);
+    expect(res.rows[0].type).toEqual("set_variable");
+    expect(res.rows[0]._nested_name).toEqual("inner_var");
+    expect(res.rows[1].type).toEqual("display_group");
+  });
+});
+
 describe("Template Parser [QC]", () => {
   // TODO - confirm what checks to include and add to code
   // it("Ensures answer_list parameters refer to list variables", () => {
