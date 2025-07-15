@@ -86,7 +86,13 @@ export class TemplateParser extends DefaultParser {
 
   /**
    * Apply custom value transformations to rows with specific names, e.g. _list or _collection
-   * TODO - should ideally find way to merge with `default.parser` `handleSpecialFieldTypes` method
+   *
+   * NOTE - this is very similar to the `transformRowValue` method applied in the `default.parser`,
+   * with the following differences:
+   * 1. Applies to row name instead of column name
+   * 2. Supports `_action_list` as a suffix, instead of specific `action_list` column
+   * 3. Has no bypasses for dynamic variables (expects values to be static, not referencing other variables)
+   * 4. Does not include handling of excel dates
    **/
   private transformRowValue(rowName: string, rowValue: any) {
     if (rowName && rowValue && typeof rowValue === "string") {
