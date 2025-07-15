@@ -172,6 +172,7 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
       "schedule.start_date": "1990-11-01T00:00:00.000",
     });
   });
+  // Accidental linebreaks in cell could pass empty string
   it("QC - Converts columns with empty string to correct format", () => {
     processor.row = { style_list: "" } as any;
     processor["handleSpecialFieldTypes"]();
