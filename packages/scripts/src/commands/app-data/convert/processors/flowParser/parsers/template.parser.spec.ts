@@ -129,6 +129,30 @@ describe("Template Parser PostProcessor", () => {
     expect(res.value).toEqual({ key_1: "value_1", key_2: "value_2" });
   });
 
+  it("Converts rows with _action_list in name to templated action_list", () => {
+    const res = parser.postProcessRow({
+      ...ROW_BASE,
+      name: "test_action_list",
+      value: "click | set_field : test : true; click | go_to : example",
+    });
+    expect(res.value).toEqual([
+      {
+        _cleaned: "click | set_field : test : true",
+        _raw: "click | set_field : test : true",
+        action_id: "set_field",
+        args: ["test", true],
+        trigger: "click",
+      },
+      {
+        _cleaned: "click | go_to : example",
+        _raw: "click | go_to : example",
+        action_id: "go_to",
+        args: ["example"],
+        trigger: "click",
+      },
+    ]);
+  });
+
   it("Parses parameter lists", () => {
     const res = parser.postProcessRow({
       ...ROW_BASE,

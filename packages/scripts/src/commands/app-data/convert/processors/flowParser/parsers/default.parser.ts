@@ -112,7 +112,7 @@ export class DefaultParser<
  * Process individual template rows. By default this includes steps such as removing metadata columns,
  * migrating deprecated columns, processing default values and self-references and handling translations
  */
-class RowProcessor {
+export class RowProcessor {
   constructor(
     public row: IRowData,
     public parent: DefaultParser,
@@ -241,35 +241,43 @@ class RowProcessor {
 
   private handleSpecialFieldTypes() {
     Object.entries(this.row).forEach(([field, value]) => {
+      console.log({ field, value });
       // skip processing any fields that will be populated from datalist itmes
       let shouldSkip = typeof value === "string" && value.startsWith("@item.");
       // handle custom fields
       if (!shouldSkip) {
-        if (typeof value === "string") {
-          if (field.endsWith("_list") || field.includes("_list_")) {
-            this.row[field] = parseAppDataListString(value);
-          }
-          if (field.endsWith("_collection") || field.includes("_collection_")) {
-            this.row[field] = parseAppDataCollectionString(this.row[field]);
-          }
-          // parse action_list within default parser in case referenced from data_list
-          if (field.endsWith("action_list")) {
-            // do not parse action lists that are populated from variable reference
-            if (!value.startsWith("@")) {
-              this.row[field] = this.row[field]
-                .map((actionString) => parseAppDataActionString(actionString))
-                .filter((action) => action !== null);
-            }
-          }
-        }
-        // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
-        if (field.endsWith("_date")) {
-          if (typeof this.row[field] === "number") {
-            this.row[field] = parseAppDateValue(this.row[field]);
-          }
-        }
+        this.row[field] = this.transformRowValue(field, value);
       }
     });
+  }
+
+  /**
+   * Apply custom value transformations to columns with specific names, e.g. _list or _collection
+   */
+  private transformRowValue(field: string, value: any) {
+    if (field && value && typeof value === "string") {
+      if (field.endsWith("action_list")) {
+        // do not parse action lists that are populated from variable reference
+        if (value.startsWith("@")) return value;
+        const entries = parseAppDataListString(value);
+        return entries.map((actionString) => parseAppDataActionString(actionString));
+      }
+      if (field.endsWith("_list") || field?.includes("_list_")) {
+        return parseAppDataListString(value);
+      }
+      if (field.endsWith("_collection") || field.includes("_collection_")) {
+        // TODO - verify if case used and whether it might be better to use a different
+        // column to store parsed object literal in value (would require type defs update)
+        return parseAppDataCollectionString(value) as any;
+      }
+      // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
+      if (field.endsWith("_date")) {
+        if (typeof this.row[field] === "number") {
+          return parseAppDateValue(this.row[field]);
+        }
+      }
+    }
+    return value;
   }
 
   /** replace any self references, i.e "hello @row.id" => "hello some_id"   */
