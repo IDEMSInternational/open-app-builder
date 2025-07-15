@@ -231,21 +231,26 @@ export class TemplateParser extends DefaultParser {
    * sub-boundaries would exist for nested templates or data_items loops
    * */
   private hackHoistDisplayGroupVariables(flow: FlowTypes.FlowTypeWithData) {
-    const hoisted: FlowTypes.TemplateRow[] = [];
-    flow.rows = flow.rows.map((row) => {
+    const newRows: FlowTypes.TemplateRow[] = [];
+
+    for (const row of flow.rows) {
       if (row.type === "display_group" && Array.isArray(row.rows)) {
         const innerRows = row.rows as FlowTypes.TemplateRow[];
         // extract set_variable rows and rename to sit on top-level
         const hoistedRows = innerRows
           .filter((r) => r.type === "set_variable")
           .map((r) => ({ ...r, _nested_name: r.name }));
-        hoisted.push(...hoistedRows);
-        // remove extracted rows from original
+        // add hoisted rows before the display_group to preserve order
+        newRows.push(...hoistedRows);
+        // remove extracted rows from original and add the modified display_group
         row.rows = innerRows.filter((r) => r.type !== "set_variable");
+        newRows.push(row);
+      } else {
+        newRows.push(row);
       }
-      return row;
-    });
-    flow.rows = [...hoisted, ...flow.rows];
+    }
+
+    flow.rows = newRows;
     return flow;
   }
 
