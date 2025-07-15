@@ -5,6 +5,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";
+import { generateRandomCode } from "src/app/shared/utils";
 
 interface IParent {
   group_id: string;
@@ -143,6 +144,20 @@ export class PlhParentGroupService extends SyncServiceBase {
     } as IParentGroup;
 
     await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
+  }
+
+  public async generateAccessCode(parent_groups_data_list: string, parent_group_id: string) {
+    const parentGroupQuery = this.dynamicDataService.query$("data_list", parent_groups_data_list, {
+      selector: { id: parent_group_id },
+    });
+    const [parentGroupData] = await firstValueFrom<IParentGroup[]>(parentGroupQuery);
+    if (parentGroupData) {
+      const { shared_id } = parentGroupData;
+      const code = generateRandomCode(4);
+      // TODO - validate code to check no conflict with other groups
+      // will likely require backend function to generate and check as user will not have query permission
+      await this.sharedDataService.setCustomCollectionMeta(shared_id, "access_code", code);
+    }
   }
 
   /**
