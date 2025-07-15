@@ -141,7 +141,6 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
   it("Converts columns with list suffix", () => {
     processor.row = { condition_list: "@field.should_show === true;" } as any;
     processor["handleSpecialFieldTypes"]();
-    console.log("processed", processor.row);
     expect(processor.row).toEqual({
       condition_list: ["@field.should_show === true"],
     });
@@ -149,7 +148,6 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
   it("Converts columns named action_list", () => {
     processor.row = { action_list: "click | set_field : test_field : true" } as any;
     processor["handleSpecialFieldTypes"]();
-    console.log("processed", processor.row);
     expect(processor.row).toEqual({
       action_list: [
         {
@@ -166,5 +164,12 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
     processor.row = { action_list: "@local.example_action_list" } as any;
     processor["handleSpecialFieldTypes"]();
     expect(processor.row).toEqual({ action_list: "@local.example_action_list" });
+  });
+  it.only("Converts columns with date suffix", () => {
+    processor.row = { "schedule.start_date": 33178 } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      "schedule.start_date": "1990-11-01T00:00:00.000",
+    });
   });
 });

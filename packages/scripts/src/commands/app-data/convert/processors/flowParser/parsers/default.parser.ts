@@ -272,8 +272,8 @@ export class RowProcessor {
     }
     // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
     if (field.endsWith("_date")) {
-      if (typeof this.row[field] === "number") {
-        return parseAppDateValue(this.row[field]);
+      if (typeof value === "number") {
+        return parseAppDateValue(value);
       }
     }
     return value;
