@@ -18,6 +18,19 @@ export function generateRandomId() {
   return Math.random().toString(36).substring(2);
 }
 
+/**
+ * Generate a random alphanumeric string of specific length using character set provided
+ * Adapted from firebase id generation function
+ * @param characters - allowed characters. Default excludes O and 0 for disambiguation
+ */
+export function generateRandomCode(length = 4, characters = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789") {
+  let code = "";
+  for (let i = 0; i < length; i++) {
+    code += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return code;
+}
+
 /** Generate a uuid with v4 specification */
 export function generateUUID() {
   return uuidV4();
