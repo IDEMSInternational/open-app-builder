@@ -17,10 +17,7 @@ export class ReactiveTemplateComponent implements OnInit {
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
 
-  constructor(
-    private templateService: TemplateService,
-    private injector: Injector
-  ) {}
+  constructor(private templateService: TemplateService) {}
 
   async ngOnInit() {
     const template = await this.templateService.getTemplateByName(this.templateName(), false);
