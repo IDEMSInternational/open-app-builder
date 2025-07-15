@@ -241,9 +241,8 @@ export class RowProcessor {
 
   private handleSpecialFieldTypes() {
     Object.entries(this.row).forEach(([field, value]) => {
-      console.log({ field, value });
       // skip processing any fields that will be populated from datalist itmes
-      let shouldSkip = typeof value === "string" && value.startsWith("@item.");
+      const shouldSkip = typeof value === "string" && value.startsWith("@item.");
       // handle custom fields
       if (!shouldSkip) {
         this.row[field] = this.transformRowValue(field, value);
@@ -270,11 +269,11 @@ export class RowProcessor {
         // column to store parsed object literal in value (would require type defs update)
         return parseAppDataCollectionString(value) as any;
       }
-      // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
-      if (field.endsWith("_date")) {
-        if (typeof this.row[field] === "number") {
-          return parseAppDateValue(this.row[field]);
-        }
+    }
+    // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
+    if (field.endsWith("_date")) {
+      if (typeof this.row[field] === "number") {
+        return parseAppDateValue(this.row[field]);
       }
     }
     return value;
