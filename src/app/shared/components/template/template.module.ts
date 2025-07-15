@@ -21,6 +21,7 @@ import { TemplatePipesModule } from "./pipes";
 import { PLH_COMPONENTS } from "packages/components/plh";
 import { DEMO_COMPONENTS } from "packages/components/demo";
 import { LottieComponent } from "ngx-lottie";
+import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
 @NgModule({
   imports: [
@@ -35,12 +36,14 @@ import { LottieComponent } from "ngx-lottie";
     SharedPipesModule,
     SwiperModule,
     TemplatePipesModule,
+    ReactiveTemplateComponent,
   ],
   exports: [
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,
     TemplateContainerComponent,
+    ReactiveTemplateComponent,
   ],
   declarations: [
     TmplCompHostDirective,

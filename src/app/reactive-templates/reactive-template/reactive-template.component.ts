@@ -1,13 +1,33 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, computed, Injector, input, OnInit, signal } from "@angular/core";
+import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
+import { REACTIVE_COMPONENT_MAP } from "../reactive-components/components";
+import { NgComponentOutlet } from "@angular/common";
 
 @Component({
   selector: "oab-reactive-template",
   templateUrl: "./reactive-template.component.html",
   styleUrls: ["./reactive-template.component.scss"],
+  standalone: true,
+  imports: [NgComponentOutlet],
 })
 export class ReactiveTemplateComponent implements OnInit {
-  constructor(templateService: TemplateService) {}
+  public templateName = input.required<string>();
 
-  ngOnInit() {}
+  public template = signal<FlowTypes.Template | undefined>(undefined);
+  public rows = computed(() => this.template()?.rows || []);
+
+  constructor(
+    private templateService: TemplateService,
+    private injector: Injector
+  ) {}
+
+  async ngOnInit() {
+    const template = await this.templateService.getTemplateByName(this.templateName(), false);
+    this.template.set(template);
+  }
+
+  public getComponent(row: FlowTypes.TemplateRow) {
+    return REACTIVE_COMPONENT_MAP[row.type];
+  }
 }

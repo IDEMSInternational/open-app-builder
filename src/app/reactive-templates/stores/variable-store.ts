@@ -2,6 +2,7 @@ import { Injectable, Injector, Signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable } from "rxjs";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { IStore } from "./store";
 
 /**
  * A reactive global store for all local variables.
@@ -9,7 +10,7 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 @Injectable({
   providedIn: "root",
 })
-export class VariableStore {
+export class VariableStore implements IStore {
   private readonly state: { [key: string]: BehaviorSubject<any> } = {};
 
   constructor(private injector: Injector) {}
@@ -20,6 +21,13 @@ export class VariableStore {
     } else {
       if (!isEqual(value, this.state[name].value)) this.state[name].next(value);
     }
+  }
+
+  public get(name: string): any {
+    if (!this.state[name]) {
+      return undefined;
+    }
+    return this.state[name].value;
   }
 
   public asSignal(name: string): Signal<any> {
