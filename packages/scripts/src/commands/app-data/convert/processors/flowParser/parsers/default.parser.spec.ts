@@ -165,11 +165,18 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
     processor["handleSpecialFieldTypes"]();
     expect(processor.row).toEqual({ action_list: "@local.example_action_list" });
   });
-  it.only("Converts columns with date suffix", () => {
+  it("Converts columns with date suffix", () => {
     processor.row = { "schedule.start_date": 33178 } as any;
     processor["handleSpecialFieldTypes"]();
     expect(processor.row).toEqual({
       "schedule.start_date": "1990-11-01T00:00:00.000",
+    });
+  });
+  it("QC - Converts columns with empty string to correct format", () => {
+    processor.row = { style_list: "" } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      style_list: [],
     });
   });
 });

@@ -254,7 +254,7 @@ export class RowProcessor {
    * Apply custom value transformations to columns with specific names, e.g. _list or _collection
    */
   private transformRowValue(field: string, value: any) {
-    if (field && value && typeof value === "string") {
+    if (field && typeof value === "string") {
       if (field.endsWith("action_list")) {
         // do not parse action lists that are populated from variable reference
         if (value.startsWith("@")) return value;
