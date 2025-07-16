@@ -23,6 +23,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
+import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -30,7 +31,11 @@ const NOTIFICATION_ID_MAX = 2147483647;
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
   schedule: LocalNotificationSchema["schedule"];
-  extra: any;
+  /**
+   * Depending on notification source, `extra` data may be included for use in processing
+   * E.g. campaigns system provides full campaign row
+   */
+  extra: Record<string, any>;
   _created?: any;
   _row_id?: string;
   _action_performed?: string;
@@ -42,6 +47,11 @@ export interface ILocalNotification extends LocalNotificationSchema {
   providedIn: "root",
 })
 /**
+ * @deprecated since v0.20.0
+ * This service is tightly coupled with the campaigns system and requires overhaul
+ * Alternate work started within the notifications feature in
+ * `src\app\feature\notification\notification.service.ts`
+ *
  * The local notification service manages scheduled notifications in the database, and handles
  * mapping db notifications to the Capactor notifications API
  * https://capacitorjs.com/docs/apis/local-notifications
@@ -85,7 +95,8 @@ export class LocalNotificationService extends AsyncServiceBase {
 
   constructor(
     private dbService: DbService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private capacitorEventService: CapacitorEventService
   ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
@@ -115,10 +126,9 @@ export class LocalNotificationService extends AsyncServiceBase {
       await this.cleanDBNotifications();
       await this.handleUnprocessedNotifications();
 
-      // complete one intiial load
+      // complete intial load
       // defer and debounce any further calls to load notifications to avoid duplicate processing
-      await this.handleNotificationLoad();
-      this.notificationsLoader$.pipe(debounceTime(5000)).subscribe(async () => {
+      this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(async () => {
         await this.handleNotificationLoad();
         await this.setApiNotifications();
       });
@@ -202,7 +212,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       sound: null,
       attachments: null,
       // actionTypeId: "action_1", // Currently no action buttons included
-      extra: null,
+      extra: {},
       // Note, we don't want android to remove notification as we will handle in db
       autoCancel: false,
     };
@@ -283,8 +293,12 @@ export class LocalNotificationService extends AsyncServiceBase {
    * Schedule a local notification
    * This will create an optimistic database update, which will then be scheduled to Capacitor
    * API during the loadNotifications callback
+   *
+   * @param notification - localNotification config passed to capacitor notification api
+   * @param id - string notification id. This will be written to db for notification lookup as
+   * by default capacitor generates and uses integer ids
    */
-  public async scheduleNotification(notification: ILocalNotification) {
+  public async scheduleNotification(notification: ILocalNotification, id: string) {
     if (!this.permissionGranted) return;
     // add default values
     Object.entries(this.localNotificationDefaults).forEach(([key, value]) => {
@@ -301,16 +315,21 @@ export class LocalNotificationService extends AsyncServiceBase {
     // Capacitor notifications use a random integer as id, however we also want to retain the id of the
     // row used to trigger the notification to avoid duplicates. Ideally this _row_id should be the primary
     // key, however swapping the columns would require additional db migration so just retaining both for now
-    notification._row_id = notification.extra.id;
-    notification.id = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
+    notification._row_id = id;
+
     // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
     notification.largeBody = notification.largeBody || notification.body;
 
-    const existingNotification = this.notificationsByRowId[notification._row_id];
+    const existingNotification = this.notificationsByRowId[id];
     if (existingNotification) {
       await this.removeNotifications([existingNotification.id]);
     }
-    this.notificationsByRowId[notification._row_id] = notification;
+    // When writing to db and scheduling use integer ID as required by capacitor
+    const intId = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
+    notification.id = intId;
+    this.notificationsByRowId[id] = notification;
+    console.log("[Notification] schedule", notification);
+
     await this.addDBNotification(notification as ILocalNotification);
     this.loadNotifications();
   }
@@ -338,10 +357,10 @@ export class LocalNotificationService extends AsyncServiceBase {
       ...notification,
       schedule: { at: notificationDeliveryTime },
     };
-    await this.scheduleNotification(immediateNotification);
+    await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
-    if (Capacitor.isNative && forceBackground) {
+    if (Capacitor.isNativePlatform() && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
       // https://github.com/ionic-team/capacitor-plugins/issues/130
@@ -388,22 +407,21 @@ export class LocalNotificationService extends AsyncServiceBase {
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
   private async addLocalNotificationInteractionListeners() {
-    LocalNotifications.addListener(
-      "localNotificationActionPerformed",
-      async (action) => {
-        console.log("[NOTIFICATION ACTION]", action);
-        await this.updateDBNotification(action.notification.id, {
-          _action_performed: action.actionId,
-        });
-        this.interactedNotification$.next(action);
-        this.loadNotifications();
-      }
-      // TODO emit event for action to other listeners?
-      // good to have default as can only ever have 1 listener for each type
-    );
+    this.capacitorEventService.localNotificationActionPerformed.subscribe(async (action) => {
+      console.log("[LOCAL NOTIFICATION] ACTION", action);
+      await this.updateDBNotification(action.notification.id, {
+        _action_performed: action.actionId,
+      });
+      this.interactedNotification$.next(action);
+      this.loadNotifications();
+    });
+
+    // TODO emit event for action to other listeners?
+    // good to have default as can only ever have 1 listener for each type
+
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener("localNotificationReceived", async (notification) => {
-      console.log(["NOTIFICATION RECEIVED"], notification);
+    this.capacitorEventService.localNotificationReceived.subscribe(async (notification) => {
+      console.log("[LOCAL NOTIFICATION] RECEIVED", notification);
       this.loadNotifications();
     });
   }
