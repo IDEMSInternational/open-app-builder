@@ -153,6 +153,12 @@ export class PlhParentGroupService extends SyncServiceBase {
     const [parentGroupData] = await firstValueFrom<IParentGroup[]>(parentGroupQuery);
     if (parentGroupData) {
       const { shared_id } = parentGroupData;
+      if (!shared_id) {
+        console.error(
+          `[PLH PARENT GROUP] - Parent group ${parentGroupData.id} is not shared and cannot have an access code generated.`
+        );
+        return;
+      }
       const code = generateRandomCode(4);
       // TODO - validate code to check no conflict with other groups
       // will likely require backend function to generate and check as user will not have query permission
