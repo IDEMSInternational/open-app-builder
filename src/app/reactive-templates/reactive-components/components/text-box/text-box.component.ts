@@ -1,48 +1,36 @@
 import { Component, computed, OnInit, Signal } from "@angular/core";
-// import {
-//   getBooleanParamFromTemplateRow,
-//   getNumberParamFromTemplateRow,
-//   getStringParamFromTemplateRow,
-// } from "../../../../utils";
 import { FlowTypes } from "packages/data-models";
-import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
 import { IonInput } from "@ionic/angular/standalone";
+import { max } from "date-fns";
+import { style } from "@angular/animations";
+import { text } from "stream/consumers";
+import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
+import { IonicModule } from "@ionic/angular";
 
-interface ITextBoxParams {
-  disabled: boolean;
-  isNumberInput: boolean;
-  maxLength: number;
-  placeholder: string;
-  prioritisePlaceholder: boolean;
-  style: string;
-  textAlign: string;
-}
+const parameters: Parameters = {
+  disabled: { name: "disabled", value: false },
+  isNumberInput: { name: "number_input", value: false },
+  maxLength: { name: "max_length", value: -1 },
+  placeholder: { name: "placeholder", value: "" },
+  prioritisePlaceholder: { name: "prioritise_placeholder", value: false },
+  style: { name: "style", value: "" },
+  textAlign: { name: "text_align", value: "" },
+};
 
 @Component({
   selector: "oab-text-box",
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
-  imports: [IonInput],
   standalone: true,
+  imports: [IonicModule], // todo: ionic standalone doe snot seem to work.
 })
 export class TextBoxComponent extends ReactiveBaseComponent {
-  // public params: Signal<ITextBoxParams> = computed(() => this.getParams(this.parameterList()));
-  // public async handleChange(value: any) {
-  //   await this.setValue(value);
-  // }
-  // getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): ITextBoxParams {
-  //   return {
-  //     disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-  //     isNumberInput: getBooleanParamFromTemplateRow(this._row, "number_input", false),
-  //     maxLength: getNumberParamFromTemplateRow(this._row, "max_length", -1),
-  //     placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
-  //     prioritisePlaceholder: getBooleanParamFromTemplateRow(
-  //       this._row,
-  //       "prioritise_placeholder",
-  //       false
-  //     ),
-  //     style: getStringParamFromTemplateRow(this._row, "style", null),
-  //     textAlign: getStringParamFromTemplateRow(this._row, "text_align", ""),
-  //   };
-  // }
+  constructor(variableStore: VariableStore) {
+    super(variableStore, parameters);
+  }
+
+  public async handleChange(value: any) {
+    await this.setValue(value);
+  }
 }

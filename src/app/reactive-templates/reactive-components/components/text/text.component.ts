@@ -1,7 +1,9 @@
 import { Component, OnInit, signal, Signal } from "@angular/core";
 import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
-import { CommonModule } from "@angular/common";
+import { NgStyle } from "@angular/common";
+import { MarkdownPipe } from "src/app/shared/components/template/pipes/markdown.pipe";
+import { NumberingPipe } from "src/app/shared/components/template/pipes/numbering.pipe";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
 const parameters: Parameters = {
@@ -13,12 +15,11 @@ const parameters: Parameters = {
 @Component({
   selector: "oab-text",
   templateUrl: "./text.component.html",
-  // styleUrls: ["../tmpl-components-common.scss", "./text.component.scss"],
   styleUrls: ["./text.component.scss"],
   standalone: true,
   imports: [
-    CommonModule,
-    TemplatePipesModule, // todo: make all pipes standalone
+    NgStyle,
+    TemplatePipesModule, // todo: make pipes standalone
   ],
 })
 export class TextComponent extends ReactiveBaseComponent implements OnInit {

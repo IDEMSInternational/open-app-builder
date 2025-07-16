@@ -43,6 +43,7 @@ export abstract class ReactiveBaseComponent implements OnInit {
     this.watchDependencies();
 
     // set default value
+    this.variableStore.set(this.name, this.row().value);
 
     // todo: Add listeners for condition dependencies
     //       reevaluate
@@ -50,15 +51,22 @@ export abstract class ReactiveBaseComponent implements OnInit {
     //       reevaluate
   }
 
+  public setValue(value: any): void {
+    this.variableStore.set(this.name, value);
+  }
+
   private setParameters(parameters: Parameters) {
     const rowParams = this.row().parameter_list;
-
-    if (!rowParams || !rowParams.length) return;
 
     Object.keys(parameters).forEach((key) => {
       const param = parameters[key];
 
-      this.parameters[key] = signal(rowParams[param.name] || param.value); // todo: cast to correct type
+      if (!rowParams || !rowParams.hasOwnProperty(param.name)) {
+        this.parameters[key] = signal(param.value);
+        return;
+      }
+
+      this.parameters[key] = signal(this.castToType(rowParams[param.name], param.value));
     });
   }
 
@@ -86,13 +94,29 @@ export abstract class ReactiveBaseComponent implements OnInit {
     });
   }
 
-  private getExecutionContext(): any {
-    const context = {
-      local: {},
-    };
+  // private getExecutionContext(): any {
+  //   const context = {
+  //     local: {},
+  //   };
 
-    this.dependantVariables.forEach((fieldName) => {
-      context.local[fieldName] = this.variableStore.get(fieldName);
-    });
+  //   this.dependantVariables.forEach((fieldName) => {
+  //     context.local[fieldName] = this.variableStore.get(fieldName);
+  //   });
+  // }
+
+  private castToType(value: any, reference: any): any {
+    const type = typeof reference;
+    if (value === undefined || value === null) return reference;
+
+    switch (type) {
+      case "number":
+        return Number(value);
+      case "boolean":
+        return value === "true" || value === true;
+      case "string":
+        return String(value);
+      default:
+        return value;
+    }
   }
 }

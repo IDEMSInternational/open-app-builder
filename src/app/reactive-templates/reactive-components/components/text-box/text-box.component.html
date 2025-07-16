@@ -1,14 +1,13 @@
-<p>Text Box!</p>
-<!-- <div class="wrapper margin-t-regular" [class]="params().style">
+<div class="wrapper margin-t-regular" [class]="parameters.style()">
   <ion-input
     #input
     class="text-box-input"
-    [inputmode]="params().isNumberInput ? 'tel' : 'text'"
+    [inputmode]="parameters.isNumberInput() ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
-    [value]="params().prioritisePlaceholder ? '' : value()"
-    [placeholder]="params().placeholder"
-    [maxlength]="params().maxLength"
-    [style.textAlign]="params().textAlign"
-    [disabled]="params().disabled"
+    [value]="parameters.prioritisePlaceholder() ? '' : value()"
+    [placeholder]="parameters.placeholder()"
+    [maxlength]="parameters.maxLength()"
+    [style.textAlign]="parameters.textAlign()"
+    [disabled]="parameters.disabled()"
   ></ion-input>
-</div> -->
+</div>

@@ -6,7 +6,7 @@
     [innerHTML]="
       parameters.type() === 'numbered'
         ? (this.value() | number)
-        : (this.value?.toString() | markdown)
+        : (this.value()?.toString() | markdown)
     "
     [style]="row().style_list"
     [style.textAlign]="parameters.textAlign()"
