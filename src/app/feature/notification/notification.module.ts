@@ -8,6 +8,7 @@ import { NotificationsRoutingModule } from "./notification-routing.module";
 import { NotificationsDebugPage } from "./pages/notifications-debug/notifications-debug.page";
 import { NotificationDebugRowComponent } from "./pages/notifications-debug/components/notification-debug-row.component";
 import { NotificationDebugInteractedRowComponent } from "./pages/notifications-debug/components/notification-debug-interacted-row.component";
+import { NotificationService } from "./notification.service";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NotificationsRoutingModule, SharedPipesModule],
@@ -17,4 +18,7 @@ import { NotificationDebugInteractedRowComponent } from "./pages/notifications-d
     NotificationDebugInteractedRowComponent,
   ],
 })
-export class NotificationsModule {}
+export class NotificationsModule {
+  // include service so that constructor is instantiated and immediately registers action handlers and listeners
+  constructor(service: NotificationService) {}
+}
