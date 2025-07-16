@@ -145,7 +145,7 @@ export class PlhParentGroupActionFactory {
         };
         for (const [param, value] of Object.entries(requiredParams)) {
           if (!value) {
-            console.error(`[PLH PARENT GROUP] - GENERATE RANDOM - ${param} must be provided`);
+            console.error(`[PLH PARENT GROUP] - GENERATE ACCESS CODE - ${param} must be provided`);
             return;
           }
         }
