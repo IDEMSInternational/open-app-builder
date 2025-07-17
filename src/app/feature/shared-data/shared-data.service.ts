@@ -32,8 +32,8 @@ import { TrackedBehaviorSubject } from "./trackedBehaviorSubject";
 import { generateUUID } from "src/app/shared/utils";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 
-/** Placeholder used to avoid accidental core data overwrite in `setCustomCollectionMeta` method */
-const DUMMY_SHARED_DATA_COLLECTION: ISharedDataCollection = {
+/** Placeholder used to avoid accidental core data overwrite in `setCustomSharedMeta` method */
+const DUMMY_SHARED_DATA_DOC: ISharedDataCollection = {
   _created_at: "",
   _created_by: "",
   _updated_at: "",
@@ -150,12 +150,12 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   /**
-   * Update top-level collection properties.
+   * Update top-level shared-data document properties.
    * This is used to extend typical shared data properties and should not be used to overwrite
-   * core data (admins, members, metadata etc.)
+   * core properties (admins, members, metadata etc.)
    */
-  public setCustomCollectionMeta(id: string, key: string, value: any) {
-    if (key in DUMMY_SHARED_DATA_COLLECTION) {
+  public setCustomSharedMeta(id: string, key: string, value: any) {
+    if (key in DUMMY_SHARED_DATA_DOC) {
       console.error(`[Shared Data] cannot overwrite protected key:`, key, value);
       return;
     }
