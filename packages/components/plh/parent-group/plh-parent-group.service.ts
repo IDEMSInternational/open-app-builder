@@ -162,7 +162,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       const code = generateRandomCode(4);
       // TODO - validate code to check no conflict with other groups
       // will likely require backend function to generate and check as user will not have query permission
-      await this.sharedDataService.setCustomCollectionMeta(shared_id, "access_code", code);
+      await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
     }
   }
 
