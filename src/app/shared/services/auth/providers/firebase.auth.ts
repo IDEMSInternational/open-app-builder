@@ -3,10 +3,11 @@ import {
   AdditionalUserInfo,
   FirebaseAuthentication,
   User,
+  SignInResult,
 } from "@capacitor-firebase/authentication";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
-import { IAuthUser } from "../types";
+import { IAuthUser, ISignInProvider } from "../types";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
@@ -18,6 +19,12 @@ export type FirebaseAuthUser = User;
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
   private isAuthenticating = false;
+
+  /** Sign in methods to call depending on provider */
+  private providerMapping: Record<ISignInProvider, () => Promise<SignInResult>> = {
+    "apple.com": async () => FirebaseAuthentication.signInWithApple(),
+    "google.com": async () => FirebaseAuthentication.signInWithGoogle(),
+  };
 
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
@@ -35,7 +42,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.handleAutomatedLogin();
   }
 
-  public override async signIn(providerId: "apple.com" | "google.com") {
+  public override async signIn(providerId: ISignInProvider) {
     // HACK - Avoid duplicate requests sometimes seen on web when popup fails to communicate correctly
     // See https://github.com/IDEMSInternational/open-app-builder/pull/3052
     if (this.isAuthenticating) {
@@ -43,51 +50,24 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       return this.authUser();
     }
     this.isAuthenticating = true;
-
-    // handle main sign-in flow
-    try {
-      switch (providerId) {
-        case "apple.com":
-          this.signInWithApple();
-          break;
-        case "google.com":
-          this.signInWithGoogle();
-          break;
-        default:
-          const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
-          console.warn(msg);
-          this.signOut();
-          break;
-      }
-    } catch (error) {
-      console.error("[Firebase Auth] Apple sign-in error:", error);
-    } finally {
-      this.isAuthenticating = false;
-    }
-  }
-
-  private async signInWithApple() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
-    if (user) {
-      // Note: Apple allows for anonymous sign-in so profile info may be minimal
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
+    const signInFn = this.providerMapping[providerId];
+    if (signInFn) {
+      try {
+        const { user, additionalUserInfo } = await signInFn();
+        if (user) {
+          // Note: Apple allows for anonymous sign-in so profile info may be minimal
+          const { profile = {} } = additionalUserInfo;
+          this.setAuthUser(user, profile);
+          this.saveUserInfo(user, profile);
+        } else {
+          console.warn("[Firebase Auth] Apple sign-in returned no user");
+        }
+      } catch (error) {}
     } else {
-      console.warn("[Firebase Auth] Apple sign-in returned no user");
+      console.warn(`[FIREBASE AUTH] no support for provider ${providerId}, signing out`);
+      await this.signOut();
     }
-    return this.authUser();
-  }
-
-  private async signInWithGoogle() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
-    if (user) {
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
-    } else {
-      console.warn("[Firebase Auth] Google sign-in returned no user");
-    }
+    this.isAuthenticating = false;
     return this.authUser();
   }
 
