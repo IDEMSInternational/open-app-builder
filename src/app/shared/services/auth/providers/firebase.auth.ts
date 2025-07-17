@@ -35,71 +35,70 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.handleAutomatedLogin();
   }
 
-  public async signInWithApple() {
+  public override async signIn(providerId: "apple.com" | "google.com") {
+    // HACK - Avoid duplicate requests sometimes seen on web when popup fails to communicate correctly
+    // https://github.com/firebase/firebaseui-web/issues/947
     if (this.isAuthenticating) {
-      console.warn(
-        "[Firebase Auth] Authentication already in progress, ignoring duplicate request"
-      );
+      console.warn("[Firebase Auth] Auth already in progress, ignore duplicate request");
       return this.authUser();
     }
-
     this.isAuthenticating = true;
 
+    // handle main sign-in flow
     try {
-      const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
-      if (user) {
-        // Note: Apple allows for anonymous sign-in so profile info may be minimal
-        const { profile = {} } = additionalUserInfo;
-        this.setAuthUser(user, profile);
-        this.saveUserInfo(user, profile);
-      } else {
-        console.warn("[Firebase Auth] Apple sign-in returned no user");
+      switch (providerId) {
+        case "apple.com":
+          this.signInWithApple();
+          break;
+        case "google.com":
+          this.signInWithGoogle();
+          break;
+        default:
+          const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
+          console.warn(msg);
+          this.signOut();
+          break;
       }
-      return this.authUser();
     } catch (error) {
       console.error("[Firebase Auth] Apple sign-in error:", error);
-      throw error;
     } finally {
       this.isAuthenticating = false;
     }
   }
 
-  public async signInWithGoogle() {
-    if (this.isAuthenticating) {
-      console.warn(
-        "[Firebase Auth] Authentication already in progress, ignoring duplicate request"
-      );
-      return this.authUser();
+  private async signInWithApple() {
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
+    if (user) {
+      // Note: Apple allows for anonymous sign-in so profile info may be minimal
+      const { profile = {} } = additionalUserInfo;
+      this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
+    } else {
+      console.warn("[Firebase Auth] Apple sign-in returned no user");
     }
-
-    this.isAuthenticating = true;
-
-    try {
-      const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
-      if (user) {
-        const { profile = {} } = additionalUserInfo;
-        this.setAuthUser(user, profile);
-        this.saveUserInfo(user, profile);
-      } else {
-        console.warn("[Firebase Auth] Google sign-in returned no user");
-      }
-      return this.authUser();
-    } catch (error) {
-      console.error("[Firebase Auth] Google sign-in error:", error);
-      throw error;
-    } finally {
-      this.isAuthenticating = false;
-    }
+    return this.authUser();
   }
 
-  public async signOut() {
+  private async signInWithGoogle() {
+    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
+    if (user) {
+      const { profile = {} } = additionalUserInfo;
+      this.setAuthUser(user, profile);
+      this.saveUserInfo(user, profile);
+    } else {
+      console.warn("[Firebase Auth] Google sign-in returned no user");
+    }
+    return this.authUser();
+  }
+
+  public override async signOut() {
     await FirebaseAuthentication.signOut();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
     return this.authUser();
   }
 
-  public async deleteAccount() {
+  public override async deleteAccount() {
     await FirebaseAuthentication.deleteUser();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
@@ -141,19 +140,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       } else {
         // trigger automated login depending on provider
         const providerId = user.providerData?.[0]?.providerId;
-        switch (providerId) {
-          case "apple.com":
-            this.signInWithApple();
-            break;
-          case "google.com":
-            this.signInWithGoogle();
-            break;
-          default:
-            const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
-            console.warn(msg);
-            this.signOut();
-            break;
-        }
+        this.signIn(providerId as any);
       }
     }
   }
