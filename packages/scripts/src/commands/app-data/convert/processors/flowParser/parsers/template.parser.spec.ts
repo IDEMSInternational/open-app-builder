@@ -103,6 +103,21 @@ describe("Template Parser PostProcessor", () => {
       { key_1a: "textValue", key_1b: "@local.value" },
       { key_2a: "", key_2b: 5 },
     ]);
+    // CASE 5 - Action_list
+    const case5 = parser.postProcessRow({
+      ...ROW_BASE,
+      name: "test_action_list",
+      value: "click | set_field : test_field : hello",
+    });
+    expect(case5.value).toEqual([
+      {
+        trigger: "click",
+        action_id: "set_field",
+        args: ["test_field", "hello"],
+        _raw: "click | set_field : test_field : hello",
+        _cleaned: "click | set_field : test_field : hello",
+      },
+    ]);
   });
 
   it("Converts rows with _collection in name to templated collection", () => {
@@ -112,6 +127,30 @@ describe("Template Parser PostProcessor", () => {
       value: "key_1:value_1; key_2:value_2",
     });
     expect(res.value).toEqual({ key_1: "value_1", key_2: "value_2" });
+  });
+
+  it("Converts rows with _action_list in name to templated action_list", () => {
+    const res = parser.postProcessRow({
+      ...ROW_BASE,
+      name: "test_action_list",
+      value: "click | set_field : test : true; click | go_to : example",
+    });
+    expect(res.value).toEqual([
+      {
+        _cleaned: "click | set_field : test : true",
+        _raw: "click | set_field : test : true",
+        action_id: "set_field",
+        args: ["test", true],
+        trigger: "click",
+      },
+      {
+        _cleaned: "click | go_to : example",
+        _raw: "click | go_to : example",
+        action_id: "go_to",
+        args: ["example"],
+        trigger: "click",
+      },
+    ]);
   });
 
   it("Parses parameter lists", () => {
