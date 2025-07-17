@@ -49,10 +49,11 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       console.warn("[Firebase Auth] Auth already in progress, ignore duplicate request");
       return this.authUser();
     }
-    this.isAuthenticating = true;
+
     const signInFn = this.providerMapping[providerId];
     if (signInFn) {
       try {
+        this.isAuthenticating = true;
         const { user, additionalUserInfo } = await signInFn();
         if (user) {
           // Note: Apple allows for anonymous sign-in so profile info may be minimal
@@ -60,14 +61,18 @@ export class FirebaseAuthProvider extends AuthProviderBase {
           this.setAuthUser(user, profile);
           this.saveUserInfo(user, profile);
         } else {
-          console.warn("[Firebase Auth] Apple sign-in returned no user");
+          console.warn("[Firebase Auth] sign-in returned no user");
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error("[Firebase Auth] sign-in error", error);
+      } finally {
+        this.isAuthenticating = false;
+      }
     } else {
-      console.warn(`[FIREBASE AUTH] no support for provider ${providerId}, signing out`);
+      console.warn(`[Firebase Auth] no support for provider ${providerId}, signing out`);
       await this.signOut();
     }
-    this.isAuthenticating = false;
+
     return this.authUser();
   }
 
