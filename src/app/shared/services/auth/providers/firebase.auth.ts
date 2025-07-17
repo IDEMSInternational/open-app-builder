@@ -37,7 +37,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
 
   public override async signIn(providerId: "apple.com" | "google.com") {
     // HACK - Avoid duplicate requests sometimes seen on web when popup fails to communicate correctly
-    // https://github.com/firebase/firebaseui-web/issues/947
+    // See https://github.com/IDEMSInternational/open-app-builder/pull/3052
     if (this.isAuthenticating) {
       console.warn("[Firebase Auth] Auth already in progress, ignore duplicate request");
       return this.authUser();
