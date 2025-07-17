@@ -137,6 +137,20 @@ export class PlhParentGroupActionFactory {
         }
         await this.service.generateRandomParentGroup(parent_groups_data_list, parents_data_list);
       },
+
+      generate_access_code: async () => {
+        const requiredParams = {
+          parent_groups_data_list,
+          parent_group_id,
+        };
+        for (const [param, value] of Object.entries(requiredParams)) {
+          if (!value) {
+            console.error(`[PLH PARENT GROUP] - GENERATE ACCESS CODE - ${param} must be provided`);
+            return;
+          }
+        }
+        return this.service.generateAccessCode(parent_groups_data_list, parent_group_id);
+      },
     };
 
     if (!(actionId in childActions)) {
