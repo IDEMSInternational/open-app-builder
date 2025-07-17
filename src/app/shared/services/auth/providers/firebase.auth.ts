@@ -17,6 +17,8 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
+  private isAuthenticating = false;
+
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
@@ -34,24 +36,60 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public async signInWithApple() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
-    if (user) {
-      // Note: Apple allows for anonymous sign-in so profile info may be minimal
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
+    if (this.isAuthenticating) {
+      console.warn(
+        "[Firebase Auth] Authentication already in progress, ignoring duplicate request"
+      );
+      return this.authUser();
     }
-    return this.authUser();
+
+    this.isAuthenticating = true;
+
+    try {
+      const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
+      if (user) {
+        // Note: Apple allows for anonymous sign-in so profile info may be minimal
+        const { profile = {} } = additionalUserInfo;
+        this.setAuthUser(user, profile);
+        this.saveUserInfo(user, profile);
+      } else {
+        console.warn("[Firebase Auth] Apple sign-in returned no user");
+      }
+      return this.authUser();
+    } catch (error) {
+      console.error("[Firebase Auth] Apple sign-in error:", error);
+      throw error;
+    } finally {
+      this.isAuthenticating = false;
+    }
   }
 
   public async signInWithGoogle() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
-    if (user) {
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
+    if (this.isAuthenticating) {
+      console.warn(
+        "[Firebase Auth] Authentication already in progress, ignoring duplicate request"
+      );
+      return this.authUser();
     }
-    return this.authUser();
+
+    this.isAuthenticating = true;
+
+    try {
+      const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
+      if (user) {
+        const { profile = {} } = additionalUserInfo;
+        this.setAuthUser(user, profile);
+        this.saveUserInfo(user, profile);
+      } else {
+        console.warn("[Firebase Auth] Google sign-in returned no user");
+      }
+      return this.authUser();
+    } catch (error) {
+      console.error("[Firebase Auth] Google sign-in error:", error);
+      throw error;
+    } finally {
+      this.isAuthenticating = false;
+    }
   }
 
   public async signOut() {
@@ -99,6 +137,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
         this.setAuthUser(user, JSON.parse(storedProfile));
+        console.log("[Firebase Auth] Automated login successful with stored profile");
       } else {
         // trigger automated login depending on provider
         const providerId = user.providerData?.[0]?.providerId;
