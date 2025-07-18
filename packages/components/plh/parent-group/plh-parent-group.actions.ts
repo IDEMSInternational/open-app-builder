@@ -113,12 +113,12 @@ export class PlhParentGroupActionFactory {
             return;
           }
         }
-        await this.service.handlePull(
-          parent_group_id,
-          parent_groups_data_list,
-          parents_data_list,
-          completion_tracking_data_list
-        );
+        await this.service.handlePull({
+          parentGroupId: parent_group_id,
+          parentGroupsDataList: parent_groups_data_list,
+          parentsDataList: parents_data_list,
+          completionTrackingDataList: completion_tracking_data_list,
+        });
       },
 
       /**
@@ -141,6 +141,7 @@ export class PlhParentGroupActionFactory {
       generate_access_code: async () => {
         const requiredParams = {
           parent_groups_data_list,
+          parents_data_list,
           parent_group_id,
         };
         for (const [param, value] of Object.entries(requiredParams)) {
@@ -149,7 +150,11 @@ export class PlhParentGroupActionFactory {
             return;
           }
         }
-        return this.service.generateAccessCode(parent_groups_data_list, parent_group_id);
+        return this.service.generateAccessCode(
+          parent_groups_data_list,
+          parents_data_list,
+          parent_group_id
+        );
       },
     };
 
