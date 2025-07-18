@@ -28,6 +28,7 @@ interface IParent {
 }
 
 interface IParentGroup {
+  access_code?: string;
   archived: boolean;
   hidden: boolean;
   id: string;
@@ -146,7 +147,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
   }
 
-  public async generateAccessCode(parent_groups_data_list: string, parent_group_id: string) {
+  public async generateAccessCode(
+    parent_groups_data_list: string,
+    parents_data_list: string,
+    parent_group_id: string
+  ) {
     const parentGroupQuery = this.dynamicDataService.query$("data_list", parent_groups_data_list, {
       selector: { id: parent_group_id },
     });
@@ -160,9 +165,25 @@ export class PlhParentGroupService extends SyncServiceBase {
         return;
       }
       const code = generateRandomCode(4);
+
+      // Update shared data to add access code as collection meta
       // TODO - validate code to check no conflict with other groups
       // will likely require backend function to generate and check as user will not have query permission
       await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
+
+      // Now update local and shared parent group data to add access code:
+      // 1. Pull parent group data from shared data to ensure local data is up-to-date
+      await this.handlePull({
+        parentGroupId: parent_group_id,
+        parentGroupsDataList: parent_groups_data_list,
+        parentsDataList: parents_data_list,
+      });
+      // 2. Update parent group data in local data to add access code
+      await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
+        access_code: code,
+      });
+      // 3. Push parent group data to shared data to add access code
+      await this.handlePush(parent_groups_data_list, parents_data_list, parent_group_id);
     }
   }
 
@@ -204,12 +225,15 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Pull state from shared database and update local parent groups
    * If a parent group id is provided, pull only that parent group
    */
-  public async handlePull(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    parentsDataList: string,
-    completionTrackingDataList?: string
-  ) {
+  public async handlePull(options: {
+    parentGroupId?: string;
+    parentGroupsDataList: string;
+    parentsDataList: string;
+    completionTrackingDataList?: string;
+  }) {
+    const { parentGroupId, parentGroupsDataList, parentsDataList, completionTrackingDataList } =
+      options;
+
     if (!parentGroupId) {
       await this.handlePullAll(parentGroupsDataList, parentsDataList, completionTrackingDataList);
       return;
