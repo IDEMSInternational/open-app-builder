@@ -28,6 +28,7 @@ interface IParent {
 }
 
 interface IParentGroup {
+  access_code?: string;
   archived: boolean;
   hidden: boolean;
   id: string;
@@ -160,9 +161,20 @@ export class PlhParentGroupService extends SyncServiceBase {
         return;
       }
       const code = generateRandomCode(4);
+
+      // Update shared data to add access code as collection meta
       // TODO - validate code to check no conflict with other groups
       // will likely require backend function to generate and check as user will not have query permission
       await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
+
+      // Update parent group data in local data to add access code
+      await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
+        access_code: code,
+      });
+
+      // Update parent group data in shared data to add access code
+      parentGroupData.access_code = code;
+      await this.pushParentGroupData(parentGroupData);
     }
   }
 
