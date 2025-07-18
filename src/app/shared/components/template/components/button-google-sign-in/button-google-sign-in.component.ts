@@ -14,7 +14,7 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   }
 
   public async handleClick() {
-    await this.authService.provider.signInWithGoogle();
+    await this.authService.provider.signIn("google.com");
     this.triggerActions("click");
   }
 }

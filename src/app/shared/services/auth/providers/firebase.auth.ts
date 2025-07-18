@@ -3,10 +3,11 @@ import {
   AdditionalUserInfo,
   FirebaseAuthentication,
   User,
+  SignInResult,
 } from "@capacitor-firebase/authentication";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
-import { IAuthUser } from "../types";
+import { IAuthUser, ISignInProvider } from "../types";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
@@ -17,6 +18,14 @@ export type FirebaseAuthUser = User;
   providedIn: "root",
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
+  private isAuthenticating = false;
+
+  /** Sign in methods to call depending on provider */
+  private providerMapping: Record<ISignInProvider, () => Promise<SignInResult>> = {
+    "apple.com": async () => FirebaseAuthentication.signInWithApple(),
+    "google.com": async () => FirebaseAuthentication.signInWithGoogle(),
+  };
+
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
     // TODO - is service required here?
@@ -33,35 +42,48 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await this.handleAutomatedLogin();
   }
 
-  public async signInWithApple() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithApple();
-    if (user) {
-      // Note: Apple allows for anonymous sign-in so profile info may be minimal
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
+  public override async signIn(providerId: ISignInProvider) {
+    // HACK - Avoid duplicate requests sometimes seen on web when popup fails to communicate correctly
+    // See https://github.com/IDEMSInternational/open-app-builder/pull/3052
+    if (this.isAuthenticating) {
+      console.warn("[Firebase Auth] Auth already in progress, ignore duplicate request");
+      return this.authUser();
     }
+
+    const signInFn = this.providerMapping[providerId];
+    if (signInFn) {
+      try {
+        this.isAuthenticating = true;
+        const { user, additionalUserInfo } = await signInFn();
+        if (user) {
+          // Note: Apple allows for anonymous sign-in so profile info may be minimal
+          const { profile = {} } = additionalUserInfo;
+          this.setAuthUser(user, profile);
+          this.saveUserInfo(user, profile);
+        } else {
+          console.warn("[Firebase Auth] sign-in returned no user");
+        }
+      } catch (error) {
+        console.error("[Firebase Auth] sign-in error", error);
+      } finally {
+        this.isAuthenticating = false;
+      }
+    } else {
+      console.warn(`[Firebase Auth] no support for provider ${providerId}, signing out`);
+      await this.signOut();
+    }
+
     return this.authUser();
   }
 
-  public async signInWithGoogle() {
-    const { user, additionalUserInfo } = await FirebaseAuthentication.signInWithGoogle();
-    if (user) {
-      const { profile = {} } = additionalUserInfo;
-      this.setAuthUser(user, profile);
-      this.saveUserInfo(user, profile);
-    }
-    return this.authUser();
-  }
-
-  public async signOut() {
+  public override async signOut() {
     await FirebaseAuthentication.signOut();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
     return this.authUser();
   }
 
-  public async deleteAccount() {
+  public override async deleteAccount() {
     await FirebaseAuthentication.deleteUser();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
@@ -99,22 +121,11 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
       if (storedProfile) {
         this.setAuthUser(user, JSON.parse(storedProfile));
+        console.log("[Firebase Auth] Automated login successful with stored profile");
       } else {
         // trigger automated login depending on provider
         const providerId = user.providerData?.[0]?.providerId;
-        switch (providerId) {
-          case "apple.com":
-            this.signInWithApple();
-            break;
-          case "google.com":
-            this.signInWithGoogle();
-            break;
-          default:
-            const msg = `[FIREBASE AUTH] handleAutomatedLogin failed for provider ${providerId}, signing out`;
-            console.warn(msg);
-            this.signOut();
-            break;
-        }
+        this.signIn(providerId as any);
       }
     }
   }

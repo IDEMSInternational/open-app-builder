@@ -12,7 +12,7 @@
     <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
     } @else {
     <span style="margin-right: auto">Anonymous User </span>
-    <ion-button (click)="authService.provider.signInWithGoogle()">Sign In</ion-button>
+    <ion-button (click)="authService.provider.signIn('google.com')">Sign In</ion-button>
     }
   </div>
   <!-- Auth Profile Restore -->
