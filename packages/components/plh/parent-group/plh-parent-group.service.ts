@@ -176,12 +176,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       }
       const code = generateRandomCode(4);
 
-      // Update shared data to add access code as collection meta
-      // TODO - validate code to check no conflict with other groups
-      // will likely require backend function to generate and check as user will not have query permission
-      await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
-
-      // Now update local and shared parent group data to add access code:
+      // Update local and shared parent group data to add access code:
       // 1. Pull parent group data from shared data to ensure local data is up-to-date
       await this.handlePull({
         parentGroupId: parent_group_id,
@@ -194,6 +189,11 @@ export class PlhParentGroupService extends SyncServiceBase {
       });
       // 3. Push parent group data to shared data to add access code
       await this.handlePush(parent_groups_data_list, parents_data_list, parent_group_id);
+
+      // Now update shared data to add access code as collection meta
+      // TODO - validate code to check no conflict with other groups
+      // will likely require backend function to generate and check as user will not have query permission
+      await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
     }
   }
 
