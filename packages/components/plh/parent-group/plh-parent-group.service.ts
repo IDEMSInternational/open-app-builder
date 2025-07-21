@@ -10,21 +10,29 @@ import { generateRandomCode } from "src/app/shared/utils";
 interface IParent {
   group_id: string;
   id: string;
-  first_name: string;
-  last_name: string;
-  number: string;
-  age: string;
-  sex: string;
-  child_name: string;
-  child_age: string;
-  child_sex: string;
-  relationship: string;
-  members: string;
-  childcare: string;
-  goal: string;
-  other: string;
-  consoltation: string;
-  archived: boolean;
+  first_name?: string;
+  last_name?: string;
+  number?: string;
+  age?: string;
+  sex?: string;
+  child_name?: string;
+  child_age?: string;
+  child_sex?: string;
+  relationship?: string;
+  members?: string;
+  childcare?: string;
+  goal?: string;
+  other?: string;
+  consoltation?: string;
+  archived?: boolean;
+  // Allow for additional unspecified fields imported from RapidPro
+  [key: string]: any;
+  rapidpro_uuid?: string;
+}
+
+interface IParentFromRapidPro {
+  rapidpro_uuid: string;
+  rapidpro_fields: any;
 }
 
 interface IParentGroup {
@@ -33,7 +41,7 @@ interface IParentGroup {
   hidden: boolean;
   id: string;
   name: string;
-  parents: IParent[];
+  parents: (IParent | IParentFromRapidPro)[];
   text: string;
   cofacilitator_id?: string;
   readonly?: boolean;
@@ -107,11 +115,13 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
     // else, get local data for specified parent group and push changes to shared data
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+      removeRapidProFields: true,
+    });
+
     if (!parentGroup.shared_id) {
       await this.ensureSharedParentGroup(parentGroup.id, parentGroupsDataList, parentsDataList);
     } else {
@@ -196,7 +206,12 @@ export class PlhParentGroupService extends SyncServiceBase {
     const filteredSharedParentGroupRefs = sharedParentGroupRefs.filter((ref) => !ref.readonly);
     const sharedParentGroups = (await Promise.all(
       filteredSharedParentGroupRefs.map((ref) =>
-        this.getLocalParentGroup(ref.id, parentGroupsDataList, parentsDataList)
+        this.getLocalParentGroup({
+          parentGroupId: ref.id,
+          parentGroupsDataList,
+          parentsDataList,
+          removeRapidProFields: true,
+        })
       )
     )) as IParentGroup[];
     for (const parentGroup of sharedParentGroups) {
@@ -214,12 +229,17 @@ export class PlhParentGroupService extends SyncServiceBase {
       );
       return;
     }
+
+    this.hackTransformParentGroupData(parentGroup);
+
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
       "parentGroupData",
       parentGroup
     );
   }
+
+  private hackTransformParentGroupData(parentGroup: IParentGroup) {}
 
   /**
    * Pull state from shared database and update local parent groups
@@ -358,11 +378,12 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string
   ) {
     // check if parent group is already shared
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+      removeRapidProFields: true,
+    });
 
     return (
       parentGroup.shared_id ||
@@ -380,11 +401,12 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string
   ) {
     // publish parent group to shared data (create new shared data collection for parent group)
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+      removeRapidProFields: true,
+    });
 
     const { id: sharedCollectionId } = await this.sharedDataService.createSharedCollection();
     await this.sharedDataService.updateSharedData(sharedCollectionId, "type", "parent_group");
@@ -423,13 +445,17 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /**
    * Retrieves a parent group from local data by combining data from parent groups and parents data lists
+   * @param options.removeRapidProFields - if true, remove RapidPro fields from parent data, formatting for upload to shared data
    * @returns IParentGroup object with parent group data and associated parents
    */
-  private async getLocalParentGroup(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    parentsDataList: string
-  ) {
+  private async getLocalParentGroup(options: {
+    parentGroupId: string;
+    parentGroupsDataList: string;
+    parentsDataList: string;
+    removeRapidProFields?: boolean;
+  }) {
+    const { parentGroupId, parentGroupsDataList, parentsDataList, removeRapidProFields } = options;
+
     const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
       selector: { id: parentGroupId },
     });
@@ -441,13 +467,35 @@ export class PlhParentGroupService extends SyncServiceBase {
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
       selector: { group_id: parentGroupName },
     });
-    const parentsData = await firstValueFrom(parentsQuery);
+    let parentsData = await firstValueFrom(parentsQuery);
+
+    if (removeRapidProFields) {
+      parentsData = parentsData.map((parent) =>
+        this.hackRemoveRapidProFieldsFromParentData(parent)
+      );
+    }
 
     return {
       ...parentGroupData,
       // NB, additional fields may have been added to the parent data at runtime
       parents: parentsData,
     } as IParentGroup;
+  }
+
+  /**
+   * Format parent data for upload to shared data by removing RapidPro fields,
+   * since these are managed by RapidPro in shared data
+   */
+  private hackRemoveRapidProFieldsFromParentData(parent: any): any {
+    if (this.isParentFromRapidPro(parent)) {
+      // Remove RapidPro fields from parent data
+      const { rapidpro_uuid, ...rest } = parent;
+      const filteredRest = Object.fromEntries(
+        Object.entries(rest).filter(([key, _]) => !key.startsWith("rp_"))
+      );
+      return filteredRest;
+    }
+    return parent;
   }
 
   /**
@@ -519,6 +567,13 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
 
+    // Parent data added from RapidPro must be reformatted to match local parent data format
+    parentGroupData.parents = parentGroupData.parents.map((parent) =>
+      this.isParentFromRapidPro(parent)
+        ? this.hackFormatParentFromRapidPro(parent, parentGroupData.id)
+        : parent
+    );
+
     if (completionTrackingDataList) {
       await this.hackUpdateCompletionTrackingDataList(
         sharedId,
@@ -534,6 +589,25 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
+  private isParentFromRapidPro(
+    parent: IParent | IParentFromRapidPro
+  ): parent is IParentFromRapidPro {
+    return (parent as IParentFromRapidPro).rapidpro_uuid !== undefined;
+  }
+
+  private hackFormatParentFromRapidPro(parent: IParentFromRapidPro, parentGroupId: string) {
+    const { rapidpro_uuid, rapidpro_fields, ...rest } = parent;
+    const parsedRapidProFields = Object.fromEntries(
+      Object.entries(rapidpro_fields).map(([key, value]) => [`rp_${key}`, value])
+    );
+    return {
+      ...rest,
+      ...parsedRapidProFields,
+      id: rapidpro_uuid,
+      group_id: parentGroupId,
+      rapidpro_uuid,
+    } as IParent;
+  }
   /**
    * Update the completion tracking data list with new field to track completion of a parent group.
    * Replicates custom functionality previously authored manually
@@ -577,7 +651,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     for (const parent of parents) {
       await this.dynamicDataService.upsert("data_list", parentsDataList, {
-        ...parent,
+        ...(parent as IParent),
       });
     }
 
