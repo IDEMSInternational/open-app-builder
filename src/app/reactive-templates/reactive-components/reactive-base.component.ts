@@ -27,8 +27,8 @@ export abstract class ReactiveBaseComponent implements OnInit {
 
   private dependantVariables: string[];
 
-  private variableStore = inject(VariableStore);
-  private rowService = inject(RowService);
+  protected variableStore = inject(VariableStore);
+  protected rowService = inject(RowService);
 
   // todo: use service location to simplify components
   constructor(private params: Parameters) {}

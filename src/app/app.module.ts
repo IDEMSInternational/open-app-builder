@@ -20,7 +20,6 @@ import { ErrorHandlerService } from "./shared/services/error-handler/error-handl
 import { ServerAPIInterceptor } from "./shared/services/server/interceptors";
 import { DeploymentFeaturesModule } from "./deployment-features.module";
 import { provideLottieOptions } from "ngx-lottie";
-import { setVariableRowProcessorProvider } from "./reactive-templates/services/row-processors";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -52,7 +51,6 @@ export function lottiePlayerFactory() {
     provideLottieOptions({
       player: lottiePlayerFactory,
     }),
-    setVariableRowProcessorProvider,
   ],
   bootstrap: [AppComponent],
 })
