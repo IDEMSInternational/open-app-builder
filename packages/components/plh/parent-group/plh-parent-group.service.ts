@@ -28,7 +28,7 @@ interface IParent {
 }
 
 interface IParentGroup {
-  access_code?: string;
+  _access_code?: string;
   archived: boolean;
   hidden: boolean;
   id: string;
@@ -39,6 +39,10 @@ interface IParentGroup {
   readonly?: boolean;
   shared?: boolean;
   shared_id?: string;
+}
+
+interface ISharedParentGroup extends ISharedDataCollection {
+  access_code?: string;
 }
 
 /**
@@ -147,6 +151,10 @@ export class PlhParentGroupService extends SyncServiceBase {
     await this.updateLocalParentGroupData(parentGroup, parentGroupsDataList, parentsDataList);
   }
 
+  /**
+   * Generate a random access code for a parent group and add it to the parent group's shared data
+   * Adds the specified parent group to shared data if it is not already shared
+   */
   public async generateAccessCode(
     parent_groups_data_list: string,
     parents_data_list: string,
@@ -157,33 +165,22 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const [parentGroupData] = await firstValueFrom<IParentGroup[]>(parentGroupQuery);
     if (parentGroupData) {
-      const { shared_id } = parentGroupData;
-      if (!shared_id) {
-        console.error(
-          `[PLH PARENT GROUP] - Parent group ${parentGroupData.id} is not shared and cannot have an access code generated.`
-        );
-        return;
-      }
+      // If parent group is not already pushed to shared data, do so now
+      const shared_id = await this.ensureSharedParentGroup(
+        parent_group_id,
+        parent_groups_data_list,
+        parents_data_list
+      );
+
       const code = generateRandomCode(4);
-
-      // Update local and shared parent group data to add access code:
-      // 1. Pull parent group data from shared data to ensure local data is up-to-date
-      await this.handlePull({
-        parentGroupId: parent_group_id,
-        parentGroupsDataList: parent_groups_data_list,
-        parentsDataList: parents_data_list,
-      });
-      // 2. Update parent group data in local data to add access code
-      await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
-        access_code: code,
-      });
-      // 3. Push parent group data to shared data to add access code
-      await this.handlePush(parent_groups_data_list, parents_data_list, parent_group_id);
-
-      // Now update shared data to add access code as collection meta
       // TODO - validate code to check no conflict with other groups
       // will likely require backend function to generate and check as user will not have query permission
       await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
+
+      // Update local parent group data to add access code
+      await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
+        _access_code: code,
+      });
     }
   }
 
@@ -214,11 +211,24 @@ export class PlhParentGroupService extends SyncServiceBase {
       );
       return;
     }
+
+    parentGroup = this.formatParentGroupDataForPush(parentGroup);
+
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
       "parentGroupData",
       parentGroup
     );
+  }
+
+  /**
+   * Format parent group data for push to shared data by removing protected fields
+   */
+  private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
+    // Remove any field whose key starts with "_"
+    return Object.fromEntries(
+      Object.entries(parentGroup).filter(([key]) => !key.startsWith("_"))
+    ) as IParentGroup;
   }
 
   /**
@@ -385,13 +395,14 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupsDataList,
       parentsDataList
     );
+    const formattedParentGroup = this.formatParentGroupDataForPush(parentGroup);
 
     const { id: sharedCollectionId } = await this.sharedDataService.createSharedCollection();
     await this.sharedDataService.updateSharedData(sharedCollectionId, "type", "parent_group");
     await this.sharedDataService.updateSharedData(
       sharedCollectionId,
       "parentGroupData",
-      parentGroup
+      formattedParentGroup
     );
     // copy firebase-generated guid back to local data, e.g. `shared_id: <guid>`?
     await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
@@ -498,7 +509,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Update local parent group data across multiple data lists to reflect incoming parentGroup data
    */
   private async updateLocalParentGroupDataFromSharedDoc(
-    sharedParentGroupDoc: ISharedDataCollection,
+    sharedParentGroupDoc: ISharedParentGroup,
     parentGroupsDataList: string,
     parentsDataList: string,
     completionTrackingDataList?: string
@@ -518,6 +529,8 @@ export class PlhParentGroupService extends SyncServiceBase {
     if (sharedParentGroupDoc._created_by !== this.authId()) {
       parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
+    // Add access code to parent group data. This protected field will not be pushed to shared data
+    parentGroupData._access_code = sharedParentGroupDoc.access_code;
 
     if (completionTrackingDataList) {
       await this.hackUpdateCompletionTrackingDataList(
