@@ -14,8 +14,6 @@ export interface IRowProcessor {
   providedIn: "root",
 })
 export class NonDisplayRowProcessor implements IRowProcessor {
-  public processType: FlowTypes.TemplateRowBaseType;
-
   constructor(@Inject(TYPED_ROW_PROCESSORS) private rowProcessors: ITypedRowProcessor[]) {}
 
   public processRow(row: FlowTypes.TemplateRow): void {

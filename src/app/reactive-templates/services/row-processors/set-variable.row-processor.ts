@@ -9,9 +9,9 @@ export class SetVariableRowProcessor implements ITypedRowProcessor {
     private rowService: RowService
   ) {}
 
-  processType: FlowTypes.TemplateRowBaseType = "set_variable";
+  public processType: FlowTypes.TemplateRowBaseType = "set_variable";
 
-  processRow(row: FlowTypes.TemplateRow): void {
+  public processRow(row: FlowTypes.TemplateRow): void {
     this.setVariable(row._nested_name, this.evaluate(row));
   }
 
