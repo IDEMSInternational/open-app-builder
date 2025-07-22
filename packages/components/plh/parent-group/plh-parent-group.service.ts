@@ -36,7 +36,7 @@ interface IParentFromRapidPro {
 }
 
 interface IParentGroup {
-  _access_code?: string;
+  rp_access_code?: string;
   archived: boolean;
   hidden: boolean;
   id: string;
@@ -188,7 +188,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
       // Update local parent group data to add access code
       await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
-        _access_code: code,
+        rp_access_code: code,
       });
     }
   }
@@ -572,7 +572,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
     // Add access code to parent group data. This protected field will not be pushed to shared data
-    parentGroupData._access_code = sharedParentGroupDoc.access_code;
+    parentGroupData.rp_access_code = sharedParentGroupDoc.access_code;
 
     // Parent data added from RapidPro must be reformatted to match local parent data format
     parentGroupData.parents = parentGroupData.parents.map((parent) =>
