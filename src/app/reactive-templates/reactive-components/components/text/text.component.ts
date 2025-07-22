@@ -1,9 +1,7 @@
 import { Component, OnInit, signal, Signal } from "@angular/core";
 import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
-import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
-import { RowService } from "src/app/reactive-templates/services/row-service";
 
 const parameters: Parameters = {
   style: { name: "style", value: "" },
@@ -24,8 +22,8 @@ const parameters: Parameters = {
 export class TextComponent extends ReactiveBaseComponent implements OnInit {
   public hasTextValue: Signal<boolean>;
 
-  constructor(variableStore: VariableStore, rowService: RowService) {
-    super(variableStore, parameters, rowService);
+  constructor() {
+    super(parameters);
   }
 
   ngOnInit(): void {

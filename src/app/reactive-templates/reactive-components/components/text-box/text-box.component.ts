@@ -3,9 +3,7 @@ import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component
 import { max } from "date-fns";
 import { style } from "@angular/animations";
 import { text } from "stream/consumers";
-import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { IonicModule } from "@ionic/angular";
-import { RowService } from "src/app/reactive-templates/services/row-service";
 
 const parameters: Parameters = {
   disabled: { name: "disabled", value: false },
@@ -25,8 +23,8 @@ const parameters: Parameters = {
   imports: [IonicModule], // todo: ionic standalone doe snot seem to work.
 })
 export class TextBoxComponent extends ReactiveBaseComponent {
-  constructor(variableStore: VariableStore, rowService: RowService) {
-    super(variableStore, parameters, rowService);
+  constructor() {
+    super(parameters);
   }
 
   public async handleChange(value: any) {

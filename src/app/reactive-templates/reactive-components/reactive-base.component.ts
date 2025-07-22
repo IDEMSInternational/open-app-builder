@@ -1,4 +1,4 @@
-import { Component, input, OnInit, Optional, signal, Signal } from "@angular/core";
+import { Component, inject, input, OnInit, Optional, signal, Signal } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row-service";
@@ -27,12 +27,11 @@ export abstract class ReactiveBaseComponent implements OnInit {
 
   private dependantVariables: string[];
 
+  private variableStore = inject(VariableStore);
+  private rowService = inject(RowService);
+
   // todo: use service location to simplify components
-  constructor(
-    @Optional() private variableStore: VariableStore,
-    @Optional() private params: Parameters,
-    @Optional() private rowService: RowService
-  ) {}
+  constructor(private params: Parameters) {}
 
   ngOnInit(): void {
     this.name = this.row()._nested_name;
