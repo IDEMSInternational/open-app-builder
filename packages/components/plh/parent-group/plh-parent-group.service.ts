@@ -123,7 +123,6 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupId,
       parentGroupsDataList,
       parentsDataList,
-      removeRapidProFields: true,
     });
 
     if (!parentGroup.shared_id) {
@@ -207,7 +206,6 @@ export class PlhParentGroupService extends SyncServiceBase {
           parentGroupId: ref.id,
           parentGroupsDataList,
           parentsDataList,
-          removeRapidProFields: true,
         })
       )
     )) as IParentGroup[];
@@ -234,16 +232,6 @@ export class PlhParentGroupService extends SyncServiceBase {
       "parentGroupData",
       parentGroup
     );
-  }
-
-  /**
-   * Format parent group data for push to shared data by removing protected fields
-   */
-  private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
-    // Remove any field whose key starts with "_"
-    return Object.fromEntries(
-      Object.entries(parentGroup).filter(([key]) => !key.startsWith("_"))
-    ) as IParentGroup;
   }
 
   /**
@@ -387,7 +375,6 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupId,
       parentGroupsDataList,
       parentsDataList,
-      removeRapidProFields: true,
     });
 
     return (
@@ -410,7 +397,6 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupId,
       parentGroupsDataList,
       parentsDataList,
-      removeRapidProFields: true,
     });
 
     const formattedParentGroup = this.formatParentGroupDataForPush(parentGroup);
@@ -452,16 +438,14 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /**
    * Retrieves a parent group from local data by combining data from parent groups and parents data lists
-   * @param options.removeRapidProFields - if true, remove RapidPro fields from parent data, formatting for upload to shared data
    * @returns IParentGroup object with parent group data and associated parents
    */
   private async getLocalParentGroup(options: {
     parentGroupId: string;
     parentGroupsDataList: string;
     parentsDataList: string;
-    removeRapidProFields?: boolean;
   }) {
-    const { parentGroupId, parentGroupsDataList, parentsDataList, removeRapidProFields } = options;
+    const { parentGroupId, parentGroupsDataList, parentsDataList } = options;
 
     const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
       selector: { id: parentGroupId },
@@ -474,19 +458,29 @@ export class PlhParentGroupService extends SyncServiceBase {
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
       selector: { group_id: parentGroupName },
     });
-    let parentsData = await firstValueFrom(parentsQuery);
-
-    if (removeRapidProFields) {
-      parentsData = parentsData.map((parent) =>
-        this.hackRemoveRapidProFieldsFromParentData(parent)
-      );
-    }
+    const parentsData = await firstValueFrom(parentsQuery);
 
     return {
       ...parentGroupData,
       // NB, additional fields may have been added to the parent data at runtime
       parents: parentsData,
     } as IParentGroup;
+  }
+
+  /**
+   * Format parent group data for push to shared data by removing protected fields and RapidPro fields
+   */
+  private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
+    // Remove any field whose key starts with "_"
+    parentGroup = Object.fromEntries(
+      Object.entries(parentGroup).filter(([key]) => !key.startsWith("_"))
+    ) as IParentGroup;
+
+    parentGroup.parents = parentGroup.parents.map((parent) =>
+      this.hackRemoveRapidProFieldsFromParentData(parent)
+    );
+
+    return parentGroup;
   }
 
   /**

@@ -42,31 +42,60 @@ describe("PlhParentGroupService", () => {
     });
   });
 
-  describe("hackRemoveRapidProFieldsFromParentData", () => {
-    it("should remove RapidPro fields from parent data", () => {
-      const parentWithRapidProFields = {
-        rapidpro_uuid: "uuid-789",
-        name: "Parent Name",
-        rp_name: "Jasper",
-        rp_age: 10,
-        rp_custom_field: "value",
-        other_field: "keep me",
+  describe("formatParentGroupDataForPush", () => {
+    it("should remove protected fields and RapidPro fields from parent group and parents", () => {
+      const parentGroup: any = {
+        _access_code: "secret",
+        id: "group-1",
+        name: "Test Group",
+        text: "Some text",
+        archived: false,
+        hidden: false,
+        parents: [
+          {
+            rapidpro_uuid: "uuid-1",
+            rp_name: "RapidPro Name",
+            rp_age: 30,
+            rp_custom_field: "should be removed",
+            name: "Parent1",
+            other_field: "keep me",
+            id: "parent-1",
+            group_id: "group-1",
+          },
+          {
+            id: "parent-2",
+            group_id: "group-1",
+            name: "Parent2",
+            age: "40",
+            _internal: "should be removed",
+          },
+        ],
+        _internal: "should be removed",
+        cofacilitator_id: "cofac-1",
       };
-      const result = service["hackRemoveRapidProFieldsFromParentData"](parentWithRapidProFields);
+      const result = service["formatParentGroupDataForPush"]({ ...parentGroup });
       expect(result).toEqual({
-        name: "Parent Name",
-        other_field: "keep me",
+        id: "group-1",
+        name: "Test Group",
+        text: "Some text",
+        archived: false,
+        hidden: false,
+        parents: [
+          {
+            name: "Parent1",
+            other_field: "keep me",
+            id: "parent-1",
+            group_id: "group-1",
+          },
+          {
+            id: "parent-2",
+            group_id: "group-1",
+            name: "Parent2",
+            age: "40",
+          },
+        ],
+        cofacilitator_id: "cofac-1",
       });
-    });
-
-    it("should return parent unchanged if not from RapidPro", () => {
-      const localParent = {
-        id: "parent-1",
-        name: "Normal Parent",
-        age: 40,
-      };
-      const result = service["hackRemoveRapidProFieldsFromParentData"](localParent);
-      expect(result).toEqual(localParent);
     });
   });
 });
