@@ -28,7 +28,7 @@ interface IParent {
 }
 
 interface IParentGroup {
-  _access_code?: string;
+  rp_access_code?: string;
   archived: boolean;
   hidden: boolean;
   id: string;
@@ -179,7 +179,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
       // Update local parent group data to add access code
       await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
-        _access_code: code,
+        rp_access_code: code,
       });
     }
   }
@@ -227,7 +227,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
     // Remove any field whose key starts with "_"
     return Object.fromEntries(
-      Object.entries(parentGroup).filter(([key]) => !key.startsWith("_"))
+      Object.entries(parentGroup).filter(([key]) => !key.startsWith("rp_"))
     ) as IParentGroup;
   }
 
@@ -530,7 +530,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
     // Add access code to parent group data. This protected field will not be pushed to shared data
-    parentGroupData._access_code = sharedParentGroupDoc.access_code;
+    parentGroupData.rp_access_code = sharedParentGroupDoc.access_code;
 
     if (completionTrackingDataList) {
       await this.hackUpdateCompletionTrackingDataList(
