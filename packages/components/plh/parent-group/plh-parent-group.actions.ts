@@ -138,6 +138,10 @@ export class PlhParentGroupActionFactory {
         await this.service.generateRandomParentGroup(parent_groups_data_list, parents_data_list);
       },
 
+      /**
+       * Generate a random access code for a parent group and add it to the parent group's shared data
+       * Adds the specified parent group to shared data if it is not already shared
+       */
       generate_access_code: async () => {
         const requiredParams = {
           parent_groups_data_list,
