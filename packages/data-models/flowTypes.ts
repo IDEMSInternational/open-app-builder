@@ -273,7 +273,7 @@ export namespace FlowTypes {
   }
 
   /** Row types that do not display component but perform an action when processed */
-  type TemplateRowBaseType =
+  export type TemplateRowBaseType =
     | "items"
     | "nested_properties"
     | "set_default"

@@ -3,11 +3,7 @@
     class="large standard normal"
     [class]="parameters.style()"
     [ngStyle]="!hasTextValue ? { display: 'none' } : { display: 'block' }"
-    [innerHTML]="
-      parameters.type() === 'numbered'
-        ? (this.value() | number)
-        : (this.value()?.toString() | markdown)
-    "
+    [innerHTML]="this.value()?.toString() | markdown"
     [style]="row().style_list"
     [style.textAlign]="parameters.textAlign()"
   ></div>

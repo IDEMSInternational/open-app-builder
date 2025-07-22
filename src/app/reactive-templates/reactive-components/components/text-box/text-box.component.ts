@@ -1,12 +1,11 @@
-import { Component, computed, OnInit, Signal } from "@angular/core";
-import { FlowTypes } from "packages/data-models";
+import { Component } from "@angular/core";
 import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
-import { IonInput } from "@ionic/angular/standalone";
 import { max } from "date-fns";
 import { style } from "@angular/animations";
 import { text } from "stream/consumers";
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { IonicModule } from "@ionic/angular";
+import { RowService } from "src/app/reactive-templates/services/row-service";
 
 const parameters: Parameters = {
   disabled: { name: "disabled", value: false },
@@ -26,8 +25,8 @@ const parameters: Parameters = {
   imports: [IonicModule], // todo: ionic standalone doe snot seem to work.
 })
 export class TextBoxComponent extends ReactiveBaseComponent {
-  constructor(variableStore: VariableStore) {
-    super(variableStore, parameters);
+  constructor(variableStore: VariableStore, rowService: RowService) {
+    super(variableStore, parameters, rowService);
   }
 
   public async handleChange(value: any) {

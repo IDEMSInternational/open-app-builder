@@ -1,3 +1,3 @@
-@for (row of rows(); track row.name) {
+@for (row of rows() | filterDisplayComponent; track row.name) {
   <ng-container *ngComponentOutlet="getComponent(row); inputs: { row }" />
 }

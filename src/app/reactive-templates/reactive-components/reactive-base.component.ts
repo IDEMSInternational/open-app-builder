@@ -2,6 +2,7 @@ import { Component, input, OnInit, Optional, signal, Signal } from "@angular/cor
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
+import { RowService } from "../services/row-service";
 
 export class Parameter<T> {
   name: string;
@@ -28,9 +29,11 @@ export abstract class ReactiveBaseComponent implements OnInit {
   private evaluator = new AppDataEvaluator();
   private dependantVariables: string[];
 
+  // todo: use service location to simplify components
   constructor(
     @Optional() private variableStore: VariableStore,
-    @Optional() private params: Parameters
+    @Optional() private params: Parameters,
+    @Optional() private rowService: RowService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +46,7 @@ export abstract class ReactiveBaseComponent implements OnInit {
     this.watchDependencies();
 
     // set default value
-    this.variableStore.set(this.name, this.row().value);
+    this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
 
     // todo: Add listeners for condition dependencies
     //       reevaluate
@@ -71,13 +74,7 @@ export abstract class ReactiveBaseComponent implements OnInit {
   }
 
   private setDependencies() {
-    const dynamicFields = this.row()._dynamicFields?.value;
-
-    if (!Array.isArray(dynamicFields)) return;
-
-    this.dependantVariables = dynamicFields
-      .filter((field: any) => field.type === "local")
-      .map((field: any) => field.fieldName);
+    this.dependantVariables = this.rowService.getDependencies(this.row(), "local");
   }
 
   private watchDependencies() {
@@ -85,25 +82,12 @@ export abstract class ReactiveBaseComponent implements OnInit {
 
     this.dependantVariables.forEach((fieldName) => {
       this.variableStore.watch(fieldName).subscribe((value) => {
-        // Update the value based on the fieldName
-        //this.evaluator.setExecutionContext(this.getExecutionContext());
-        //const rowValue = this.evaluator.evaluate(value);
-        // todo: dynamically evaluate row value;
-        //this.variableStore.set(this.name, rowValue);
+        this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
       });
     });
   }
 
-  // private getExecutionContext(): any {
-  //   const context = {
-  //     local: {},
-  //   };
-
-  //   this.dependantVariables.forEach((fieldName) => {
-  //     context.local[fieldName] = this.variableStore.get(fieldName);
-  //   });
-  // }
-
+  // todo: implement this properly, somewhere else
   private castToType(value: any, reference: any): any {
     const type = typeof reference;
     if (value === undefined || value === null) return reference;
