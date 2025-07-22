@@ -731,7 +731,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
   /**
    * Merge two arrays of parents, ensuring that parents with the same id are merged
-   * - For parents with an id in both arrays: use the incoming parent, but add rapidpro_fields from the existing parent if present.
+   * - For parents with an id in both arrays: use the incoming parent, but add rapidpro_fields and rapidpro_uuid from the existing parent if present.
    * - For parents with an id only in incoming: use as-is.
    * - For parents with only rapidpro_uuid in existing (added from RapidPro but not yet synced to local data): preserve as-is.
    */
@@ -750,6 +750,9 @@ export class PlhParentGroupService extends SyncServiceBase {
       const newParent = { ...parent };
       if (existingParent && existingParent.rapidpro_fields) {
         newParent.rapidpro_fields = existingParent.rapidpro_fields;
+      }
+      if (existingParent && existingParent.rapidpro_uuid) {
+        newParent.rapidpro_uuid = existingParent.rapidpro_uuid;
       }
       merged.push(newParent);
     }

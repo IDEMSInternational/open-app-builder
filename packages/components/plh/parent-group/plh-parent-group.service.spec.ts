@@ -98,4 +98,60 @@ describe("PlhParentGroupService", () => {
       });
     });
   });
+
+  describe("hackMergeParentsArrays", () => {
+    it("should merge parents arrays correctly, preserving rapidpro_fields, rapidpro_uuid, and rapidpro_uuid-only parents", () => {
+      const existing = [
+        {
+          id: "parent-1",
+          name: "Existing Parent 1",
+          rapidpro_fields: { foo: "bar" },
+          rapidpro_uuid: "uuid-1",
+        },
+        {
+          id: "parent-2",
+          name: "Existing Parent 2",
+        },
+        {
+          rapidpro_uuid: "uuid-3",
+          rapidpro_fields: { rp: "rapid" },
+        },
+      ];
+      const incoming = [
+        {
+          id: "parent-1",
+          name: "Incoming Parent 1",
+        },
+        {
+          id: "parent-2",
+          name: "Incoming Parent 2",
+        },
+        {
+          id: "parent-4",
+          name: "Incoming Parent 4",
+        },
+      ];
+      const result = service["hackMergeParentsArrays"](existing, incoming);
+      expect(result).toEqual([
+        {
+          id: "parent-1",
+          name: "Incoming Parent 1",
+          rapidpro_fields: { foo: "bar" },
+          rapidpro_uuid: "uuid-1",
+        },
+        {
+          id: "parent-2",
+          name: "Incoming Parent 2",
+        },
+        {
+          id: "parent-4",
+          name: "Incoming Parent 4",
+        },
+        {
+          rapidpro_uuid: "uuid-3",
+          rapidpro_fields: { rp: "rapid" },
+        },
+      ]);
+    });
+  });
 });
