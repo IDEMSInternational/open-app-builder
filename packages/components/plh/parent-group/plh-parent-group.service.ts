@@ -227,6 +227,10 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     parentGroup = this.formatParentGroupDataForPush(parentGroup);
 
+    // In order to avoid overwriting parent fields added/updated from RapidPro,
+    // merge parent group data with existing shared data before pushing
+    parentGroup = await this.hackMergeParentGroupDataWithExistingSharedData(parentGroup);
+
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
       "parentGroupData",
@@ -695,5 +699,61 @@ export class PlhParentGroupService extends SyncServiceBase {
     }));
 
     return parentGroup;
+  }
+
+  /**
+   * Merges parent group data with a snapshot of existing shared data.
+   * The merge uses all fields for the incoming parent group data,
+   * but preserves rapidpro_fields on parents from the existing parent group.
+   */
+  private async hackMergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
+    const sharedParentGroupQuery = this.sharedDataService.provider.querySingle$({
+      id: parentGroup.shared_id,
+      auth_id: this.authId(),
+      since: undefined,
+    });
+    const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
+
+    if (!existingSharedParentGroup) {
+      console.error(
+        `[PLH PARENT GROUP] - PUSH - Existing shared parent group not found, id: ${parentGroup.shared_id}`
+      );
+      return;
+    }
+
+    parentGroup.parents = this.hackMergeParentsArrays(
+      existingSharedParentGroup.data.parents,
+      parentGroup.parents
+    );
+
+    return parentGroup;
+  }
+
+  /**
+   * Merge two arrays of parents, ensuring that parents with the same id are merged
+   * - For parents with an id in both arrays: use the incoming parent, but add rapidpro_fields from the existing parent if present.
+   * - For parents with an id only in incoming: use as-is.
+   * - For parents with only rapidpro_uuid in existing (added from RapidPro but not yet synced to local data): preserve as-is.
+   */
+  private hackMergeParentsArrays(existing: any[], incoming: any[]): any[] {
+    // Map for parents with an id
+    const existingParentsById = Object.fromEntries(
+      existing.filter((p) => p.id).map((p) => [p.id, p])
+    );
+    // Collect parents with rapidpro_uuid but no id (added from RapidPro but not yet synced to local data)
+    const rapidproOnlyParents = existing.filter((p) => !p.id && p.rapidpro_uuid);
+
+    const merged: any[] = [];
+
+    for (const parent of incoming) {
+      const existingParent = existingParentsById[parent.id];
+      const newParent = { ...parent };
+      if (existingParent && existingParent.rapidpro_fields) {
+        newParent.rapidpro_fields = existingParent.rapidpro_fields;
+      }
+      merged.push(newParent);
+    }
+
+    return [...merged, ...rapidproOnlyParents];
   }
 }
