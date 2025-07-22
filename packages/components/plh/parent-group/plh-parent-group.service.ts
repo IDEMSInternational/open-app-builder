@@ -722,7 +722,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
 
     parentGroup.parents = this.hackMergeParentsArrays(
-      existingSharedParentGroup.data.parents,
+      existingSharedParentGroup.data.parentGroupData.parents,
       parentGroup.parents
     );
 
@@ -730,33 +730,44 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Merge two arrays of parents, ensuring that parents with the same id are merged
-   * - For parents with an id in both arrays: use the incoming parent, but add rapidpro_fields and rapidpro_uuid from the existing parent if present.
-   * - For parents with an id only in incoming: use as-is.
-   * - For parents with only rapidpro_uuid in existing (added from RapidPro but not yet synced to local data): preserve as-is.
+   * Merge two arrays of parents, ensuring that parents representing the same entity are merged.
+   * - For each incoming parent:
+   *   - If an existing parent matches by `id`, or by `rapidpro_uuid` (where `rapidpro_uuid === incoming.id`), merge fields:
+   *     - Use the incoming parent as the base, but add `rapidpro_fields` and `rapidpro_uuid` from the existing parent if present.
+   *   - If no match, use the incoming parent as-is.
+   * - After merging, add any existing parent with a `rapidpro_uuid` (and no `id`) that was not already merged.
+   * This ensures no duplicates and preserves RapidPro data.
    */
   private hackMergeParentsArrays(existing: any[], incoming: any[]): any[] {
-    // Map for parents with an id
-    const existingParentsById = Object.fromEntries(
-      existing.filter((p) => p.id).map((p) => [p.id, p])
+    const existingById = new Map(existing.filter((p) => p.id).map((p) => [p.id, p]));
+    const existingByRapidproUuid = new Map(
+      existing.filter((p) => p.rapidpro_uuid).map((p) => [p.rapidpro_uuid, p])
     );
-    // Collect parents with rapidpro_uuid but no id (added from RapidPro but not yet synced to local data)
-    const rapidproOnlyParents = existing.filter((p) => !p.id && p.rapidpro_uuid);
-
+    const mergedRapidproUuids = new Set<string>();
     const merged: any[] = [];
 
     for (const parent of incoming) {
-      const existingParent = existingParentsById[parent.id];
-      const newParent = { ...parent };
-      if (existingParent && existingParent.rapidpro_fields) {
-        newParent.rapidpro_fields = existingParent.rapidpro_fields;
+      let existingParent = parent.id ? existingById.get(parent.id) : undefined;
+      if (!existingParent && parent.id) {
+        existingParent = existingByRapidproUuid.get(parent.id);
       }
-      if (existingParent && existingParent.rapidpro_uuid) {
-        newParent.rapidpro_uuid = existingParent.rapidpro_uuid;
+      const newParent = { ...parent };
+      if (existingParent) {
+        if (existingParent.rapidpro_fields)
+          newParent.rapidpro_fields = existingParent.rapidpro_fields;
+        if (existingParent.rapidpro_uuid) newParent.rapidpro_uuid = existingParent.rapidpro_uuid;
+        if (existingParent.rapidpro_uuid) mergedRapidproUuids.add(existingParent.rapidpro_uuid);
       }
       merged.push(newParent);
     }
 
-    return [...merged, ...rapidproOnlyParents];
+    // Add any existing parents with rapidpro_uuid that were not merged
+    for (const parent of existing) {
+      if (parent.rapidpro_uuid && !parent.id && !mergedRapidproUuids.has(parent.rapidpro_uuid)) {
+        merged.push(parent);
+      }
+    }
+
+    return merged;
   }
 }
