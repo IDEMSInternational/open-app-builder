@@ -2,6 +2,7 @@ import { InjectionToken } from "@angular/core";
 import { ITypedRowProcessor } from "./non-display.row-processor";
 import { VariableStore } from "../../stores/variable-store";
 import { SetVariableRowProcessor } from "./set-variable.row-processor";
+import { RowService } from "../row-service";
 
 export const TYPED_ROW_PROCESSORS = new InjectionToken<ITypedRowProcessor[]>(
   "TYPED_ROW_PROCESSORS"
@@ -10,6 +11,6 @@ export const TYPED_ROW_PROCESSORS = new InjectionToken<ITypedRowProcessor[]>(
 export const setVariableRowProcessorProvider = {
   provide: TYPED_ROW_PROCESSORS,
   useClass: SetVariableRowProcessor,
-  deps: [VariableStore],
+  deps: [VariableStore, RowService],
   multi: true,
 };

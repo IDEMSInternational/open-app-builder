@@ -1,7 +1,6 @@
 import { Component, input, OnInit, Optional, signal, Signal } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
-import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { RowService } from "../services/row-service";
 
 export class Parameter<T> {
@@ -26,7 +25,6 @@ export abstract class ReactiveBaseComponent implements OnInit {
   public parameters: any = {};
   public actions;
 
-  private evaluator = new AppDataEvaluator();
   private dependantVariables: string[];
 
   // todo: use service location to simplify components
