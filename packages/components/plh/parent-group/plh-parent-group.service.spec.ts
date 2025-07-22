@@ -3,9 +3,8 @@ import { TestBed } from "@angular/core/testing";
 import { PlhParentGroupService } from "./plh-parent-group.service";
 
 /**
- * TODO: Integrate with testing environment - e.g. Move to src?
  * Call standalone tests via (not currently working):
- * yarn ng test --include packages/components/plh/parent-group/plh-parent-group.service.spec.ts
+ * yarn ng test --include ../packages/components/plh/parent-group/plh-parent-group.service.spec.ts
  */
 describe("PlhParentGroupService", () => {
   let service: PlhParentGroupService;
