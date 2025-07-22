@@ -19,7 +19,7 @@ export class RowService {
       .map((field: any) => field.fieldName);
   }
 
-  public getExecutionContext(row: FlowTypes.TemplateRow): any {
+  public createExecutionContext(row: FlowTypes.TemplateRow): any {
     const context = { local: {} };
     const dependantVariables = this.getDependencies(row, "local");
 
@@ -31,7 +31,7 @@ export class RowService {
   }
 
   public evaluate(row: FlowTypes.TemplateRow): any {
-    this.evaluator.setExecutionContext(this.getExecutionContext(row));
+    this.evaluator.setExecutionContext(this.createExecutionContext(row));
     return this.evaluator.evaluate(row.value);
   }
 }
