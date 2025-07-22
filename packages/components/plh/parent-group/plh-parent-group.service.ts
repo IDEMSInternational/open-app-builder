@@ -475,10 +475,9 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Format parent group data for push to shared data by removing protected fields and RapidPro fields
    */
   private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
-    // Remove any field whose key starts with "_"
-    parentGroup = Object.fromEntries(
-      Object.entries(parentGroup).filter(([key]) => !key.startsWith("_"))
-    ) as IParentGroup;
+    // Remove the 'rapidpro_uuid' field
+    const { rapidpro_uuid, ...rest } = parentGroup as any;
+    parentGroup = rest as IParentGroup;
 
     parentGroup.parents = parentGroup.parents.map((parent) =>
       this.hackRemoveRapidProFieldsFromParentData(parent)
