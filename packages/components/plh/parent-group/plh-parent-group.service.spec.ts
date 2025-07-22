@@ -153,5 +153,42 @@ describe("PlhParentGroupService", () => {
         },
       ]);
     });
+
+    it("should merge by rapidpro_uuid when incoming id matches existing rapidpro_uuid", () => {
+      const existing = [
+        {
+          rapidpro_uuid: "uuid-10",
+          rapidpro_fields: { foo: "bar10" },
+          name: "Existing RapidPro Parent 10",
+        },
+        {
+          id: "parent-20",
+          name: "Existing Parent 20",
+        },
+      ];
+      const incoming = [
+        {
+          id: "uuid-10",
+          name: "Incoming Parent 10",
+        },
+        {
+          id: "parent-20",
+          name: "Incoming Parent 20",
+        },
+      ];
+      const result = service["hackMergeParentsArrays"](existing, incoming);
+      expect(result).toEqual([
+        {
+          id: "uuid-10",
+          name: "Incoming Parent 10",
+          rapidpro_fields: { foo: "bar10" },
+          rapidpro_uuid: "uuid-10",
+        },
+        {
+          id: "parent-20",
+          name: "Incoming Parent 20",
+        },
+      ]);
+    });
   });
 });
