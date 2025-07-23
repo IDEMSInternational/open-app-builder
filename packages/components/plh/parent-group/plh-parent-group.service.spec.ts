@@ -53,8 +53,8 @@ describe("PlhParentGroupService", () => {
         age: 10,
         custom_field: "value",
       },
-      name: "Lana",
-    };
+      group_id: "group-456",
+    } as IParentFromRapidPro;
     const parentGroupId = "group-456";
     const result = service["hackFormatParentFromRapidPro"](parentFromRapidPro, parentGroupId);
     expect(result).toEqual({
@@ -64,7 +64,6 @@ describe("PlhParentGroupService", () => {
       rp_name: "Jasper",
       rp_age: 10,
       rp_custom_field: "value",
-      name: "Lana",
     });
   });
 
