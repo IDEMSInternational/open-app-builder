@@ -8,7 +8,7 @@ import { SharedDataService } from "src/app/feature/shared-data/shared-data.servi
 import type { IParent, IParentFromRapidPro, IParentInSharedData } from "./parent-group.types";
 
 /**
- * Call standalone tests via (not currently working):
+ * Call standalone tests via:
  * yarn ng test --include ../packages/components/plh/parent-group/plh-parent-group.service.spec.ts
  */
 describe("PlhParentGroupService", () => {
@@ -53,7 +53,6 @@ describe("PlhParentGroupService", () => {
         age: 10,
         custom_field: "value",
       },
-      group_id: "group-456",
     } as IParentFromRapidPro;
     const parentGroupId = "group-456";
     const result = service["hackFormatParentFromRapidPro"](parentFromRapidPro, parentGroupId);
@@ -140,7 +139,6 @@ describe("PlhParentGroupService", () => {
         {
           rapidpro_uuid: "uuid-3",
           rapidpro_fields: { rp: "rapid" },
-          group_id: "group-1",
         } as IParentInSharedData,
       ];
       const incoming = [
@@ -177,7 +175,6 @@ describe("PlhParentGroupService", () => {
         {
           rapidpro_uuid: "uuid-3",
           rapidpro_fields: { rp: "rapid" },
-          group_id: "group-1",
         },
         {
           id: "parent-4",
