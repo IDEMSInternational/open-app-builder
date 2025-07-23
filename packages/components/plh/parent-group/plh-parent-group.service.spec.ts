@@ -70,7 +70,7 @@ describe("PlhParentGroupService", () => {
   describe("formatParentGroupDataForPush", () => {
     it("should remove protected fields and RapidPro fields from parent group and parents", () => {
       const parentGroup: any = {
-        _access_code: "secret",
+        rp_access_code: "secret",
         id: "group-1",
         name: "Test Group",
         text: "Some text",
@@ -92,10 +92,8 @@ describe("PlhParentGroupService", () => {
             group_id: "group-1",
             name: "Parent2",
             age: "40",
-            _internal: "should be removed",
           },
         ],
-        _internal: "should be removed",
         cofacilitator_id: "cofac-1",
       };
       const result = service["formatParentGroupDataForPush"]({ ...parentGroup });
