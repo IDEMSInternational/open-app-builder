@@ -26,7 +26,6 @@ export interface IParent {
 export interface IParentFromRapidPro {
   rapidpro_uuid: string;
   rapidpro_fields: any;
-  group_id: string;
 }
 
 // Parent in shared data. May have been pushed from local data, or added directly from RapidPro, or merged from both

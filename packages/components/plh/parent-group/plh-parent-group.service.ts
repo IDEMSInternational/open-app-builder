@@ -577,7 +577,41 @@ export class PlhParentGroupService extends SyncServiceBase {
     return (parent as IParentFromRapidPro).rapidpro_uuid !== undefined;
   }
 
-  private hackFormatParentFromRapidPro(parent: IParentFromRapidPro, parentGroupId: string) {
+  /**
+   * Convert parent data added to shared data from RapidPro into local parent data format
+   *
+   * Example input:
+   * ```
+   * {
+   *   rapidpro_uuid: "uuid-123",
+   *   rapidpro_fields: {
+   *     name: "Jasper",
+   *     age: 10,
+   *     custom_field: "value",
+   *   },
+   * }
+   * ```
+   *
+   * Example output:
+   * ```
+   * {
+   *   id: "uuid-123",
+   *   group_id: "group-456",
+   *   rapidpro_uuid: "uuid-123",
+   *   rp_name: "Jasper",
+   *   rp_age: 10,
+   *   rp_custom_field: "value",
+   * }
+   * ```
+   *
+   * @param parent - Parent data from RapidPro
+   * @param parentGroupId - ID of the parent group
+   * @returns Formatted parent data
+   */
+  private hackFormatParentFromRapidPro(
+    parent: IParentFromRapidPro,
+    parentGroupId: string
+  ): IParent {
     const { rapidpro_uuid, rapidpro_fields, ...rest } = parent;
     const parsedRapidProFields = Object.fromEntries(
       Object.entries(rapidpro_fields).map(([key, value]) => [`rp_${key}`, value])
