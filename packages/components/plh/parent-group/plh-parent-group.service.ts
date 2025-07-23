@@ -6,34 +6,7 @@ import { SharedDataService } from "src/app/feature/shared-data/shared-data.servi
 import { firstValueFrom } from "rxjs";
 import { ISharedDataCollection } from "src/app/feature/shared-data/types";
 import { generateRandomCode } from "src/app/shared/utils";
-
-interface IParent {
-  group_id: string;
-  id: string;
-  first_name?: string;
-  last_name?: string;
-  number?: string;
-  age?: string;
-  sex?: string;
-  child_name?: string;
-  child_age?: string;
-  child_sex?: string;
-  relationship?: string;
-  members?: string;
-  childcare?: string;
-  goal?: string;
-  other?: string;
-  consoltation?: string;
-  archived?: boolean;
-  // Allow for additional unspecified fields imported from RapidPro
-  [key: string]: any;
-  rapidpro_uuid?: string;
-}
-
-interface IParentFromRapidPro {
-  rapidpro_uuid: string;
-  rapidpro_fields: any;
-}
+import { IParent, IParentFromRapidPro, IParentInSharedData } from "./parent-group.types";
 
 interface IParentGroup {
   rp_access_code?: string;
@@ -41,7 +14,7 @@ interface IParentGroup {
   hidden: boolean;
   id: string;
   name: string;
-  parents: (IParent | IParentFromRapidPro)[];
+  parents: (IParent | IParentInSharedData)[];
   text: string;
   cofacilitator_id?: string;
   readonly?: boolean;
@@ -493,14 +466,14 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Format parent data for upload to shared data by removing RapidPro fields,
    * since these are managed by RapidPro in shared data
    */
-  private hackRemoveRapidProFieldsFromParentData(parent: any): any {
+  private hackRemoveRapidProFieldsFromParentData(parent: IParent | IParentFromRapidPro): IParent {
     if (this.isParentFromRapidPro(parent)) {
       // Remove RapidPro fields from parent data
       const { rapidpro_uuid, ...rest } = parent;
       const filteredRest = Object.fromEntries(
         Object.entries(rest).filter(([key, _]) => !key.startsWith("rp_"))
       );
-      return filteredRest;
+      return filteredRest as IParent;
     }
     return parent;
   }
@@ -716,23 +689,23 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
 
-    if (!existingSharedParentGroup) {
+    if (existingSharedParentGroup) {
+      parentGroup.parents = this.hackMergeParentsArrays(
+        existingSharedParentGroup.data.parentGroupData.parents,
+        parentGroup.parents as IParent[]
+      );
+    } else {
       console.error(
         `[PLH PARENT GROUP] - PUSH - Existing shared parent group not found, id: ${parentGroup.shared_id}`
       );
-      return;
     }
-
-    parentGroup.parents = this.hackMergeParentsArrays(
-      existingSharedParentGroup.data.parentGroupData.parents,
-      parentGroup.parents
-    );
 
     return parentGroup;
   }
 
   /**
-   * Merge two arrays of parents, ensuring that parents representing the same entity are merged.
+   * Merge two arrays of parents, ensuring that parents representing the same entity are merged,
+   * and any RapidPro fields added to the shared data are preserved.
    * - For each incoming parent:
    *   - If an existing parent matches by `id`, or by `rapidpro_uuid` (where `rapidpro_uuid === incoming.id`), merge fields:
    *     - Use the incoming parent as the base, but add `rapidpro_fields` and `rapidpro_uuid` from the existing parent if present.
@@ -740,33 +713,45 @@ export class PlhParentGroupService extends SyncServiceBase {
    * - After merging, add any existing parent with a `rapidpro_uuid` (and no `id`) that was not already merged.
    * This ensures no duplicates and preserves RapidPro data.
    */
-  private hackMergeParentsArrays(existing: any[], incoming: any[]): any[] {
-    const existingById = new Map(existing.filter((p) => p.id).map((p) => [p.id, p]));
-    const existingByRapidproUuid = new Map(
-      existing.filter((p) => p.rapidpro_uuid).map((p) => [p.rapidpro_uuid, p])
+  private hackMergeParentsArrays(
+    existing: IParentInSharedData[],
+    incoming: IParent[]
+  ): IParentInSharedData[] {
+    const incomingById = new Map(incoming.filter((p) => p.id).map((p) => [p.id, p]));
+    const incomingByRapidproUuid = new Map(
+      incoming.filter((p) => p.rapidpro_uuid).map((p) => [p.rapidpro_uuid, p])
     );
-    const mergedRapidproUuids = new Set<string>();
+    const matchedIncoming = new Set<any>();
     const merged: any[] = [];
 
-    for (const parent of incoming) {
-      let existingParent = parent.id ? existingById.get(parent.id) : undefined;
-      if (!existingParent && parent.id) {
-        existingParent = existingByRapidproUuid.get(parent.id);
+    // 1. For each parent in existing, merge with matching incoming (by id or rapidpro_uuid), preserving order
+    for (const existingParent of existing) {
+      let incomingParent = (existingParent as IParent).id
+        ? incomingById.get((existingParent as IParent).id)
+        : undefined;
+      if (!incomingParent && existingParent.rapidpro_uuid) {
+        incomingParent =
+          incomingById.get(existingParent.rapidpro_uuid) ||
+          incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
       }
-      const newParent = { ...parent };
-      if (existingParent) {
+      let mergedParent: IParentInSharedData;
+      if (incomingParent) {
+        mergedParent = { ...incomingParent };
+        // Preserve rapidpro_fields and rapidpro_uuid from existing if present
         if (existingParent.rapidpro_fields)
-          newParent.rapidpro_fields = existingParent.rapidpro_fields;
-        if (existingParent.rapidpro_uuid) newParent.rapidpro_uuid = existingParent.rapidpro_uuid;
-        if (existingParent.rapidpro_uuid) mergedRapidproUuids.add(existingParent.rapidpro_uuid);
+          mergedParent.rapidpro_fields = existingParent.rapidpro_fields;
+        if (existingParent.rapidpro_uuid) mergedParent.rapidpro_uuid = existingParent.rapidpro_uuid;
+        matchedIncoming.add(incomingParent);
+      } else {
+        mergedParent = { ...existingParent };
       }
-      merged.push(newParent);
+      merged.push(mergedParent);
     }
 
-    // Add any existing parents with rapidpro_uuid that were not merged
-    for (const parent of existing) {
-      if (parent.rapidpro_uuid && !parent.id && !mergedRapidproUuids.has(parent.rapidpro_uuid)) {
-        merged.push(parent);
+    // 2. Append any incoming parents not matched to the end
+    for (const incomingParent of incoming) {
+      if (!matchedIncoming.has(incomingParent)) {
+        merged.push({ ...incomingParent });
       }
     }
 
