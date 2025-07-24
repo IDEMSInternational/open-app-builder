@@ -48,6 +48,9 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
   constructor(private params: Parameters) {}
 
+  /**
+   * All ReactiveBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
+   */
   ngOnInit(): void {
     const row = this.row();
 
@@ -69,7 +72,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
    */
   public setValue(value: any): void {
     this.row().value = value;
-    this.variableStore.set(this.name, value);
+    this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
   }
 
   private setParameters(parameters: Parameters) {
