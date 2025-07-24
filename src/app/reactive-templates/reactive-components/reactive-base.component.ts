@@ -64,7 +64,11 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.variableStore.set(this.name, this.rowService.evaluate(row));
   }
 
+  /*
+   * Sets the rows value and updates the variable store.
+   */
   public setValue(value: any): void {
+    this.row().value = value;
     this.variableStore.set(this.name, value);
   }
 
