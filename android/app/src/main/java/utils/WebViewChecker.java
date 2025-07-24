@@ -8,12 +8,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.webkit.WebView;
 
 
 public class WebViewChecker {
 
-    public static final int TARGET_WEBVIEW_MAJOR_VERSION = 100;
+    public static final int TARGET_WEBVIEW_MAJOR_VERSION = 89;
+
+    private static final String TAG = "WebViewChecker";
 
     public static void check(Activity activity) {
         // 1. Ensure running on android 6.0 (API 23) or higher
@@ -23,62 +26,66 @@ public class WebViewChecker {
             return;
         }
 
-        // 2. Check WebView provider and version
-        String webViewPackage = "";
-        String webViewVersion = "";
-        String playStoreUrl = "";
-        String provider = "";
 
-        try {
-//            From Android API 29+ (Android 10) webview apk used   (
-            if (Build.VERSION.SDK_INT >= 29) {
-                PackageInfo info = WebView.getCurrentWebViewPackage();
-                if (info != null) {
-                    webViewPackage = info.packageName;
-                    webViewVersion = info.versionName;
-                }
-            } else {
-                // For older devices can either use WebView or Chrome depending on manufacturer
-                try {
-                    PackageInfo info = activity.getPackageManager().getPackageInfo("com.google.android.webview", 0);
-                    webViewPackage = info.packageName;
-                    webViewVersion = info.versionName;
-                } catch (PackageManager.NameNotFoundException e) {
-                    try {
-                        PackageInfo info = activity.getPackageManager().getPackageInfo("com.android.chrome", 0);
-                        webViewPackage = info.packageName;
-                        webViewVersion = info.versionName;
-                    } catch (PackageManager.NameNotFoundException ex) {
-                        // Not found
-                    }
-                }
-            }
-        } catch (Exception e) {
-            showUnsupportedDialog(activity, "Unable to determine WebView provider.");
+        PackageInfo info = getWebviewPackage(activity);
+
+        if(info == null) {
+            // Cannot determine webview provider, avoid showing any other messages
+            Log.e(TAG, "WebView provider not found");
             return;
         }
 
-        // 3. Decide if update is needed
-        boolean needsUpdate = false;
-        if (webViewPackage.contains("chrome")) {
-            provider = "Chrome";
-            playStoreUrl = "https://play.google.com/store/apps/details?id=com.android.chrome";
-            if (getMajorVersion(webViewVersion) < TARGET_WEBVIEW_MAJOR_VERSION) needsUpdate = true;
-        } else if (webViewPackage.contains("webview")) {
-            provider = "Android System WebView";
-            playStoreUrl = "https://play.google.com/store/apps/details?id=com.google.android.webview";
-            if (getMajorVersion(webViewVersion) < TARGET_WEBVIEW_MAJOR_VERSION) needsUpdate = true;
-        } else {
-            showUnsupportedDialog(activity, "No supported WebView provider found.");
-            return;
-        }
+        int webViewVersion = getMajorVersion(info.versionName);
 
-        if (needsUpdate) {
+        // 3. Decide if update is needed and show prompt
+        Log.i(TAG, "WebView provider: " + info.packageName + " version: " + webViewVersion);
+        if (webViewVersion < TARGET_WEBVIEW_MAJOR_VERSION){
+            String provider = getProviderName(info.packageName);
+            String playStoreUrl= getPlayStoreUrl(info.packageName);
             showUpdateDialog(activity, provider, playStoreUrl);
-            return;
         }
-
     }
+
+    private static PackageInfo getWebviewPackage(Activity activity){
+        // Android 8+ - has api to determine package
+        if(Build.VERSION.SDK_INT >= 26) {
+            return WebView.getCurrentWebViewPackage();
+        }
+        // Android 6 and 7 - check multiple potential providers with fallback
+        String[] providers = {"com.android.chrome", "com.google.android.webview", "com.android.webview"};
+        PackageManager pm = activity.getPackageManager();
+
+        for (String provider : providers) {
+            try {
+                return pm.getPackageInfo(provider, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                // Continue to next
+            }
+        }
+        return null;
+    }
+
+    // Add this helper method
+    private static String getProviderName(String packageName) {
+        if (packageName.contains("chrome")) return "Chrome";
+        if (packageName.contains("webview")) return "Android System WebView";
+        return "WebView";
+    }
+
+    private static String getPlayStoreUrl(String packageName) {
+        // Chrome uses its own package ID
+        if ("com.android.chrome".equals(packageName)) {
+            return "https://play.google.com/store/apps/details?id=com.android.chrome";
+        }
+        // Both system WebView variants should update via the main WebView app
+        if ("com.google.android.webview".equals(packageName) ||
+                "com.android.webview".equals(packageName)) {
+            return "https://play.google.com/store/apps/details?id=com.google.android.webview";
+        }
+        // Fallback
+        return "https://play.google.com/store/apps/details?id=com.google.android.webview";
+    }
+
 
     private static int getMajorVersion(String versionName) {
         if (versionName == null) return 0;
@@ -104,13 +111,13 @@ public class WebViewChecker {
             .setTitle("⬆️🔄 Update Required")
             .setMessage("Your " + provider + " is outdated. Please update to continue.")
             .setCancelable(false)
-            .setPositiveButton("📲 1. Update from the Play Store", (dialog, which) -> {
+            .setPositiveButton("1. Update from the Play Store 📲", (dialog, which) -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(playStoreUrl));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 activity.startActivity(intent);
                 activity.finish();
             })
-            .setNegativeButton("🔁 2. Restart the app", (dialog, which) -> activity.finish())
+            .setNegativeButton("2. Restart the app 🔁", (dialog, which) -> activity.finish())
             .show();
     }
 }
