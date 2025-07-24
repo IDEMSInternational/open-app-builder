@@ -13,7 +13,5 @@ export class SetVariableComponent extends ReactiveBaseComponent implements OnIni
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.setValue(this.row().value);
   }
 }
