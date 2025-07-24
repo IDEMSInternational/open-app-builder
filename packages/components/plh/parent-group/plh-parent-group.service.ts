@@ -448,15 +448,13 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Format parent group data for push to shared data by removing protected fields and RapidPro fields
    */
   private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
-    // Remove any field whose key starts with "rp_" (e.g. "rp_access_code") or "rapidpro_" (e.g. "rapidpro_uuid")
+    // Remove any field whose key starts with "rp_" (e.g. "rp_access_code", "rp_uuid")
     parentGroup = Object.fromEntries(
-      Object.entries(parentGroup).filter(
-        ([key]) => !key.startsWith("rp_") && !key.startsWith("rapidpro_")
-      )
+      Object.entries(parentGroup).filter(([key]) => !key.startsWith("rp_"))
     ) as IParentGroup;
 
     parentGroup.parents = parentGroup.parents.map((parent) =>
-      this.hackRemoveRapidProFieldsFromParentData(parent)
+      this.hackRemoveRapidProFieldsFromParentData(parent as IParent)
     );
 
     return parentGroup;
@@ -466,16 +464,12 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Format parent data for upload to shared data by removing RapidPro fields,
    * since these are managed by RapidPro in shared data
    */
-  private hackRemoveRapidProFieldsFromParentData(parent: IParent | IParentFromRapidPro): IParent {
-    if (this.isParentFromRapidPro(parent)) {
-      // Remove RapidPro fields from parent data
-      const { rapidpro_uuid, ...rest } = parent;
-      const filteredRest = Object.fromEntries(
-        Object.entries(rest).filter(([key, _]) => !key.startsWith("rp_"))
-      );
-      return filteredRest as IParent;
-    }
-    return parent;
+  private hackRemoveRapidProFieldsFromParentData(parent: IParent): IParent {
+    // Remove any field whose key starts with "rp_" (e.g. "rp_uuid", "rp_access_code")
+    const filtered = Object.fromEntries(
+      Object.entries(parent).filter(([key, _]) => !key.startsWith("rp_"))
+    );
+    return filtered as IParent;
   }
 
   /**
@@ -551,7 +545,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     // Parent data added from RapidPro must be reformatted to match local parent data format
     parentGroupData.parents = parentGroupData.parents.map((parent) =>
-      this.isParentFromRapidPro(parent)
+      this.parentHasRapidProData(parent)
         ? this.hackFormatParentFromRapidPro(parent, parentGroupData.id)
         : parent
     );
@@ -571,9 +565,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
-  private isParentFromRapidPro(
-    parent: IParent | IParentFromRapidPro
-  ): parent is IParentFromRapidPro {
+  private parentHasRapidProData(parent: IParentInSharedData): parent is IParentFromRapidPro {
     return (parent as IParentFromRapidPro).rapidpro_uuid !== undefined;
   }
 
@@ -597,7 +589,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * {
    *   id: "uuid-123",
    *   group_id: "group-456",
-   *   rapidpro_uuid: "uuid-123",
+   *   rp_uuid: "uuid-123",
    *   rp_name: "Jasper",
    *   rp_age: 10,
    *   rp_custom_field: "value",
@@ -621,7 +613,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       ...parsedRapidProFields,
       id: rapidpro_uuid,
       group_id: parentGroupId,
-      rapidpro_uuid,
+      rp_uuid: rapidpro_uuid,
     } as IParent;
   }
   /**
@@ -753,7 +745,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   ): IParentInSharedData[] {
     const incomingById = new Map(incoming.filter((p) => p.id).map((p) => [p.id, p]));
     const incomingByRapidproUuid = new Map(
-      incoming.filter((p) => p.rapidpro_uuid).map((p) => [p.rapidpro_uuid, p])
+      incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
     );
     const matchedIncoming = new Set<any>();
     const merged: any[] = [];

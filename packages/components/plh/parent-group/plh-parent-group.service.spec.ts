@@ -59,7 +59,7 @@ describe("PlhParentGroupService", () => {
     expect(result).toEqual({
       id: "uuid-123",
       group_id: "group-456",
-      rapidpro_uuid: "uuid-123",
+      rp_uuid: "uuid-123",
       rp_name: "Jasper",
       rp_age: 10,
       rp_custom_field: "value",
@@ -77,7 +77,7 @@ describe("PlhParentGroupService", () => {
         hidden: false,
         parents: [
           {
-            rapidpro_uuid: "uuid-1",
+            rp_uuid: "uuid-1",
             rp_name: "RapidPro Name",
             rp_age: 30,
             rp_custom_field: "should be removed",
