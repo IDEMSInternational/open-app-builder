@@ -18,7 +18,7 @@ const parameters: Parameters = {
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
   standalone: true,
-  imports: [IonicModule], // todo: ionic standalone doe snot seem to work.
+  imports: [IonicModule], // todo: ionic standalone does not seem to work.
 })
 export class TextBoxComponent extends ReactiveBaseComponent {
   constructor() {
