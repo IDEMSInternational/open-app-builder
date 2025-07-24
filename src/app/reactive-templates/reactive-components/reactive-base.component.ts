@@ -32,7 +32,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public value: Signal<any>;
   public condition = signal(true);
   public parameters: any = {};
-  public actions;
+  public actions; // todo: implement actions
 
   private dependantVariables: string[] = [];
 
@@ -101,7 +101,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
       const row = this.row();
       const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
         this.variableStore.set(this.name, this.rowService.evaluate(row));
-        this.condition.set(this.rowService.evaluate(row));
+        this.condition.set(this.rowService.evaluateCondition(row));
       });
       this.subscriptions.push(subscribe);
     });
