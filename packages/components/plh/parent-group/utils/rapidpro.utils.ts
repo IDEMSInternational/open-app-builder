@@ -106,23 +106,12 @@ function mergeParentsArraysPreservingRapidProData(
   existing: IParentInSharedData[],
   incoming: IParent[]
 ): IParentInSharedData[] {
-  const incomingById = new Map(incoming.filter((p) => p.id).map((p) => [p.id, p]));
-  const incomingByRapidproUuid = new Map(
-    incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
-  );
   const matchedIncoming = new Set<any>();
   const merged: any[] = [];
 
   // 1. For each parent in existing, merge with matching incoming (by id or rapidpro_uuid), preserving order
   for (const existingParent of existing) {
-    let incomingParent = (existingParent as IParent).id
-      ? incomingById.get((existingParent as IParent).id)
-      : undefined;
-    if (!incomingParent && existingParent.rapidpro_uuid) {
-      incomingParent =
-        incomingById.get(existingParent.rapidpro_uuid) ||
-        incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
-    }
+    const incomingParent = findMatchingIncomingParent(existingParent, incoming);
     let mergedParent: IParentInSharedData;
     if (incomingParent) {
       mergedParent = { ...incomingParent };
@@ -145,6 +134,33 @@ function mergeParentsArraysPreservingRapidProData(
   }
 
   return merged;
+}
+
+/**
+ * Find a matching incoming parent for an existing parent, by id or rapidpro_uuid.
+ * Returns the matching incoming parent or undefined if not found.
+ */
+function findMatchingIncomingParent(
+  existingParent: IParentInSharedData,
+  incoming: IParent[]
+): IParent | undefined {
+  const incomingById = new Map(incoming.filter((p) => p.id).map((p) => [p.id, p]));
+  const incomingByRapidproUuid = new Map(
+    incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
+  );
+  // Try to match by id
+  if ((existingParent as IParent).id) {
+    const matchById = incomingById.get((existingParent as IParent).id!);
+    if (matchById) return matchById;
+  }
+  // Try to match by rapidpro_uuid
+  if (existingParent.rapidpro_uuid) {
+    const matchById = incomingById.get(existingParent.rapidpro_uuid);
+    if (matchById) return matchById;
+    const matchByRapidproUuid = incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
+    if (matchByRapidproUuid) return matchByRapidproUuid;
+  }
+  return undefined;
 }
 
 export const rapidproUtils = {
