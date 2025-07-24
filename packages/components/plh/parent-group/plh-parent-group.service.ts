@@ -4,27 +4,14 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
-import { ISharedDataCollection } from "src/app/feature/shared-data/types";
 import { generateRandomCode } from "src/app/shared/utils";
-import { IParent, IParentFromRapidPro, IParentInSharedData } from "./parent-group.types";
-
-interface IParentGroup {
-  rp_access_code?: string;
-  archived: boolean;
-  hidden: boolean;
-  id: string;
-  name: string;
-  parents: (IParent | IParentInSharedData)[];
-  text: string;
-  cofacilitator_id?: string;
-  readonly?: boolean;
-  shared?: boolean;
-  shared_id?: string;
-}
-
-interface ISharedParentGroup extends ISharedDataCollection {
-  access_code?: string;
-}
+import type {
+  IParent,
+  IParentFromRapidPro,
+  IParentGroup,
+  ISharedParentGroupDoc,
+} from "./plh-parent-group.types";
+import { rapidproUtils } from "./utils/rapidpro.utils";
 
 /**
  * Service for managing parent groups and sharing them between users
@@ -198,7 +185,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    parentGroup = this.formatParentGroupDataForPush(parentGroup);
+    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
 
     // In order to avoid overwriting parent fields added/updated from RapidPro,
     // merge parent group data with existing shared data before pushing
@@ -376,7 +363,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       parentsDataList,
     });
 
-    const formattedParentGroup = this.formatParentGroupDataForPush(parentGroup);
+    const formattedParentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
 
     const { id: sharedCollectionId } = await this.sharedDataService.createSharedCollection();
     await this.sharedDataService.updateSharedData(sharedCollectionId, "type", "parent_group");
@@ -445,34 +432,6 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Format parent group data for push to shared data by removing protected fields and RapidPro fields
-   */
-  private formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
-    // Remove any field whose key starts with "rp_" (e.g. "rp_access_code", "rp_uuid")
-    parentGroup = Object.fromEntries(
-      Object.entries(parentGroup).filter(([key]) => !key.startsWith("rp_"))
-    ) as IParentGroup;
-
-    parentGroup.parents = parentGroup.parents.map((parent) =>
-      this.removeRapidProFieldsFromParentData(parent as IParent)
-    );
-
-    return parentGroup;
-  }
-
-  /**
-   * Format parent data for upload to shared data by removing RapidPro fields,
-   * since these are managed by RapidPro in shared data
-   */
-  private removeRapidProFieldsFromParentData(parent: IParent): IParent {
-    // Remove any field whose key starts with "rp_" (e.g. "rp_uuid", "rp_access_code")
-    const filtered = Object.fromEntries(
-      Object.entries(parent).filter(([key, _]) => !key.startsWith("rp_"))
-    );
-    return filtered as IParent;
-  }
-
-  /**
    * Adds a co-facilitator as a member to the shared parent group collection
    * */
   private async addCoFacilitator(
@@ -520,7 +479,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Update local parent group data across multiple data lists to reflect incoming parentGroup data
    */
   private async updateLocalParentGroupDataFromSharedDoc(
-    sharedParentGroupDoc: ISharedParentGroup,
+    sharedParentGroupDoc: ISharedParentGroupDoc,
     parentGroupsDataList: string,
     parentsDataList: string,
     completionTrackingDataList?: string
@@ -545,8 +504,11 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     // Parent data added from RapidPro must be reformatted to match local parent data format
     parentGroupData.parents = parentGroupData.parents.map((parent) =>
-      this.parentHasRapidProData(parent)
-        ? this.transformParentWithRapidProDataToLocalFormat(parent, parentGroupData.id)
+      rapidproUtils.parentHasRapidProData(parent)
+        ? rapidproUtils.transformParentWithRapidProDataToLocalFormat(
+            parent as IParentFromRapidPro,
+            parentGroupData.id
+          )
         : parent
     );
 
@@ -565,57 +527,6 @@ export class PlhParentGroupService extends SyncServiceBase {
     );
   }
 
-  private parentHasRapidProData(parent: IParentInSharedData): parent is IParentFromRapidPro {
-    return (parent as IParentFromRapidPro).rapidpro_uuid !== undefined;
-  }
-
-  /**
-   * Convert parent data added to shared data from RapidPro into local parent data format
-   *
-   * Example input:
-   * ```
-   * {
-   *   rapidpro_uuid: "uuid-123",
-   *   rapidpro_fields: {
-   *     name: "Jasper",
-   *     age: 10,
-   *     custom_field: "value",
-   *   },
-   * }
-   * ```
-   *
-   * Example output:
-   * ```
-   * {
-   *   id: "uuid-123",
-   *   group_id: "group-456",
-   *   rp_uuid: "uuid-123",
-   *   rp_name: "Jasper",
-   *   rp_age: 10,
-   *   rp_custom_field: "value",
-   * }
-   * ```
-   *
-   * @param parent - Parent data from RapidPro
-   * @param parentGroupId - ID of the parent group
-   * @returns Formatted parent data
-   */
-  private transformParentWithRapidProDataToLocalFormat(
-    parent: IParentFromRapidPro,
-    parentGroupId: string
-  ): IParent {
-    const { rapidpro_uuid, rapidpro_fields, ...rest } = parent;
-    const parsedRapidProFields = Object.fromEntries(
-      Object.entries(rapidpro_fields).map(([key, value]) => [`rp_${key}`, value])
-    );
-    return {
-      ...rest,
-      ...parsedRapidProFields,
-      id: rapidpro_uuid,
-      group_id: parentGroupId,
-      rp_uuid: rapidpro_uuid,
-    } as IParent;
-  }
   /**
    * Update the completion tracking data list with new field to track completion of a parent group.
    * Replicates custom functionality previously authored manually
@@ -716,7 +627,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
 
     if (existingSharedParentGroup) {
-      parentGroup.parents = this.mergeParentsArraysPreservingRapidProData(
+      parentGroup.parents = rapidproUtils.mergeParentsArraysPreservingRapidProData(
         existingSharedParentGroup.data.parentGroupData.parents,
         parentGroup.parents as IParent[]
       );
@@ -727,60 +638,5 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
 
     return parentGroup;
-  }
-
-  /**
-   * Merge two arrays of parents, ensuring that parents representing the same entity are merged,
-   * and any RapidPro fields added to the shared data are preserved.
-   * - For each incoming parent:
-   *   - If an existing parent matches by `id`, or by `rapidpro_uuid` (where `rapidpro_uuid === incoming.id`), merge fields:
-   *     - Use the incoming parent as the base, but add `rapidpro_fields` and `rapidpro_uuid` from the existing parent if present.
-   *   - If no match, use the incoming parent as-is.
-   * - After merging, add any existing parent with a `rapidpro_uuid` (and no `id`) that was not already merged.
-   * This ensures no duplicates and preserves RapidPro data.
-   */
-  private mergeParentsArraysPreservingRapidProData(
-    existing: IParentInSharedData[],
-    incoming: IParent[]
-  ): IParentInSharedData[] {
-    const incomingById = new Map(incoming.filter((p) => p.id).map((p) => [p.id, p]));
-    const incomingByRapidproUuid = new Map(
-      incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
-    );
-    const matchedIncoming = new Set<any>();
-    const merged: any[] = [];
-
-    // 1. For each parent in existing, merge with matching incoming (by id or rapidpro_uuid), preserving order
-    for (const existingParent of existing) {
-      let incomingParent = (existingParent as IParent).id
-        ? incomingById.get((existingParent as IParent).id)
-        : undefined;
-      if (!incomingParent && existingParent.rapidpro_uuid) {
-        incomingParent =
-          incomingById.get(existingParent.rapidpro_uuid) ||
-          incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
-      }
-      let mergedParent: IParentInSharedData;
-      if (incomingParent) {
-        mergedParent = { ...incomingParent };
-        // Preserve rapidpro_fields and rapidpro_uuid from existing if present
-        if (existingParent.rapidpro_fields)
-          mergedParent.rapidpro_fields = existingParent.rapidpro_fields;
-        if (existingParent.rapidpro_uuid) mergedParent.rapidpro_uuid = existingParent.rapidpro_uuid;
-        matchedIncoming.add(incomingParent);
-      } else {
-        mergedParent = { ...existingParent };
-      }
-      merged.push(mergedParent);
-    }
-
-    // 2. Append any incoming parents not matched to the end
-    for (const incomingParent of incoming) {
-      if (!matchedIncoming.has(incomingParent)) {
-        merged.push({ ...incomingParent });
-      }
-    }
-
-    return merged;
   }
 }

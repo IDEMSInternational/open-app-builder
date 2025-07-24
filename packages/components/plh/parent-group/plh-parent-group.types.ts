@@ -1,3 +1,5 @@
+import type { ISharedDataCollection } from "src/app/feature/shared-data/types";
+
 // Parent in local data. May have data merged from RapidPro
 export interface IParent {
   group_id: string;
@@ -30,3 +32,21 @@ export interface IParentFromRapidPro {
 
 // Parent in shared data. May have been pushed from local data, or added directly from RapidPro, or merged from both
 export type IParentInSharedData = IParent | IParentFromRapidPro | (IParent & IParentFromRapidPro);
+
+export interface IParentGroup {
+  rp_access_code?: string;
+  archived: boolean;
+  hidden: boolean;
+  id: string;
+  name: string;
+  parents: (IParent | IParentInSharedData)[];
+  text: string;
+  cofacilitator_id?: string;
+  readonly?: boolean;
+  shared?: boolean;
+  shared_id?: string;
+}
+
+export interface ISharedParentGroupDoc extends ISharedDataCollection {
+  access_code?: string;
+}
