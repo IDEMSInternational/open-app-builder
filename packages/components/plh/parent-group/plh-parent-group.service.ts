@@ -202,7 +202,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     // In order to avoid overwriting parent fields added/updated from RapidPro,
     // merge parent group data with existing shared data before pushing
-    parentGroup = await this.hackMergeParentGroupDataWithExistingSharedData(parentGroup);
+    parentGroup = await this.mergeParentGroupDataWithExistingSharedData(parentGroup);
 
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
@@ -454,7 +454,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     ) as IParentGroup;
 
     parentGroup.parents = parentGroup.parents.map((parent) =>
-      this.hackRemoveRapidProFieldsFromParentData(parent as IParent)
+      this.removeRapidProFieldsFromParentData(parent as IParent)
     );
 
     return parentGroup;
@@ -464,7 +464,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Format parent data for upload to shared data by removing RapidPro fields,
    * since these are managed by RapidPro in shared data
    */
-  private hackRemoveRapidProFieldsFromParentData(parent: IParent): IParent {
+  private removeRapidProFieldsFromParentData(parent: IParent): IParent {
     // Remove any field whose key starts with "rp_" (e.g. "rp_uuid", "rp_access_code")
     const filtered = Object.fromEntries(
       Object.entries(parent).filter(([key, _]) => !key.startsWith("rp_"))
@@ -546,7 +546,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Parent data added from RapidPro must be reformatted to match local parent data format
     parentGroupData.parents = parentGroupData.parents.map((parent) =>
       this.parentHasRapidProData(parent)
-        ? this.hackFormatParentFromRapidPro(parent, parentGroupData.id)
+        ? this.transformParentWithRapidProDataToLocalFormat(parent, parentGroupData.id)
         : parent
     );
 
@@ -600,7 +600,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * @param parentGroupId - ID of the parent group
    * @returns Formatted parent data
    */
-  private hackFormatParentFromRapidPro(
+  private transformParentWithRapidProDataToLocalFormat(
     parent: IParentFromRapidPro,
     parentGroupId: string
   ): IParent {
@@ -707,7 +707,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * The merge uses all fields for the incoming parent group data,
    * but preserves rapidpro_fields on parents from the existing parent group.
    */
-  private async hackMergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
+  private async mergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
     const sharedParentGroupQuery = this.sharedDataService.provider.querySingle$({
       id: parentGroup.shared_id,
       auth_id: this.authId(),
@@ -716,7 +716,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
 
     if (existingSharedParentGroup) {
-      parentGroup.parents = this.hackMergeParentsArrays(
+      parentGroup.parents = this.mergeParentsArraysPreservingRapidProData(
         existingSharedParentGroup.data.parentGroupData.parents,
         parentGroup.parents as IParent[]
       );
@@ -739,7 +739,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * - After merging, add any existing parent with a `rapidpro_uuid` (and no `id`) that was not already merged.
    * This ensures no duplicates and preserves RapidPro data.
    */
-  private hackMergeParentsArrays(
+  private mergeParentsArraysPreservingRapidProData(
     existing: IParentInSharedData[],
     incoming: IParent[]
   ): IParentInSharedData[] {

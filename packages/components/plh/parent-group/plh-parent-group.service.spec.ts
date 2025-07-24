@@ -55,7 +55,10 @@ describe("PlhParentGroupService", () => {
       },
     } as IParentFromRapidPro;
     const parentGroupId = "group-456";
-    const result = service["hackFormatParentFromRapidPro"](parentFromRapidPro, parentGroupId);
+    const result = service["transformParentWithRapidProDataToLocalFormat"](
+      parentFromRapidPro,
+      parentGroupId
+    );
     expect(result).toEqual({
       id: "uuid-123",
       group_id: "group-456",
@@ -121,7 +124,7 @@ describe("PlhParentGroupService", () => {
     });
   });
 
-  describe("hackMergeParentsArrays", () => {
+  describe("mergeParentsArraysPreservingRapidProData", () => {
     it("should merge parents arrays correctly, preserving rapidpro_fields, rapidpro_uuid, and rapidpro_uuid-only parents, and preserve order of existing with new at end", () => {
       const existing = [
         {
@@ -158,7 +161,7 @@ describe("PlhParentGroupService", () => {
           first_name: "Incoming Parent 1",
         } as IParent,
       ];
-      const result = service["hackMergeParentsArrays"](existing, incoming);
+      const result = service["mergeParentsArraysPreservingRapidProData"](existing, incoming);
       expect(result).toEqual([
         {
           id: "parent-1",
@@ -195,7 +198,7 @@ describe("PlhParentGroupService", () => {
         { id: "a", group_id: "g", first_name: "A2" } as IParent,
         { id: "d", group_id: "g", first_name: "D" } as IParent,
       ];
-      const result = service["hackMergeParentsArrays"](existing, incoming);
+      const result = service["mergeParentsArraysPreservingRapidProData"](existing, incoming);
       expect(result).toEqual([
         { id: "a", group_id: "g", first_name: "A2" },
         { id: "b", group_id: "g", first_name: "B2" },
@@ -230,7 +233,7 @@ describe("PlhParentGroupService", () => {
           first_name: "Incoming Parent 20",
         } as IParent,
       ];
-      const result = service["hackMergeParentsArrays"](existing, incoming);
+      const result = service["mergeParentsArraysPreservingRapidProData"](existing, incoming);
       expect(result).toEqual([
         {
           id: "uuid-10",
