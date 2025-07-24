@@ -19,7 +19,7 @@ export interface IParent {
   archived?: boolean;
   // Allow for fields added from RapidPro, which will be prefixed with `rp_`
   [key: string]: any;
-  rapidpro_uuid?: string;
+  rp_uuid?: string;
 }
 
 // Parent from RapidPro added directly to shared data
