@@ -74,11 +74,21 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
       const param = parameters[key];
 
       if (!rowParams || !rowParams.hasOwnProperty(param.name)) {
+        // Set default value if parameter is not defined in row
         this.parameters[key] = signal(param.value);
         return;
       }
 
-      this.parameters[key] = signal(param.cast(rowParams[param.name]));
+      const value = this.rowService.evaluateParameter(this.row(), param.name);
+      this.parameters[key] = signal(param.cast(value));
+    });
+  }
+
+  private updateParameters(): void {
+    Object.keys(this.parameters).forEach((key) => {
+      const param = this.parameters[key];
+      const value = this.rowService.evaluateParameter(this.row(), key);
+      param.set(value);
     });
   }
 
@@ -94,6 +104,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
       const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
         this.variableStore.set(this.name, this.rowService.evaluate(row));
         this.condition.set(this.rowService.evaluateCondition(row));
+        this.updateParameters();
       });
       this.subscriptions.push(subscribe);
     });

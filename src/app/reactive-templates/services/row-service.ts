@@ -41,4 +41,16 @@ export class RowService {
 
     return this.evaluator.evaluate(condition);
   }
+
+  public evaluateParameter(row: FlowTypes.TemplateRow, parameterName: string): any {
+    if (!row.parameter_list || !row.parameter_list[parameterName]) {
+      return null;
+    }
+
+    const parameterValue = row.parameter_list[parameterName];
+    if (!parameterValue) return null;
+
+    this.evaluator.setExecutionContext(this.createExecutionContext(row));
+    return this.evaluator.evaluate(parameterValue);
+  }
 }
