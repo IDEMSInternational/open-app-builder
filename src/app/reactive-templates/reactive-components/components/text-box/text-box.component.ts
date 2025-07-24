@@ -1,18 +1,19 @@
 import { Component } from "@angular/core";
-import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
+import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { Parameter, Parameters } from "../../parameters";
 import { max } from "date-fns";
 import { style } from "@angular/animations";
 import { text } from "stream/consumers";
 import { IonicModule } from "@ionic/angular";
 
 const parameters: Parameters = {
-  disabled: { name: "disabled", value: false },
-  isNumberInput: { name: "number_input", value: false },
-  maxLength: { name: "max_length", value: -1 },
-  placeholder: { name: "placeholder", value: "" },
-  prioritisePlaceholder: { name: "prioritise_placeholder", value: false },
-  style: { name: "style", value: "" },
-  textAlign: { name: "text_align", value: "" },
+  disabled: new Parameter<boolean>("disabled", false),
+  isNumberInput: new Parameter<boolean>("number_input", false),
+  maxLength: new Parameter<number>("max_length", -1),
+  placeholder: new Parameter<string>("placeholder", ""),
+  prioritisePlaceholder: new Parameter<boolean>("prioritise_placeholder", false),
+  style: new Parameter<string>("style", ""),
+  textAlign: new Parameter<string>("text_align", ""),
 };
 
 @Component({

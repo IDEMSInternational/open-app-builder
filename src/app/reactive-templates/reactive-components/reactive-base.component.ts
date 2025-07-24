@@ -11,15 +11,7 @@ import {
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row-service";
-
-export class Parameter<T> {
-  name: string;
-  value: T;
-}
-
-export class Parameters {
-  [key: string]: Parameter<any>;
-}
+import { Parameters } from "./parameters";
 
 @Component({
   selector: "oab-base",
@@ -86,7 +78,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this.parameters[key] = signal(this.castToType(rowParams[param.name], param.value));
+      this.parameters[key] = signal(param.cast(rowParams[param.name]));
     });
   }
 
@@ -105,23 +97,6 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
       });
       this.subscriptions.push(subscribe);
     });
-  }
-
-  // todo: implement this properly, somewhere else
-  private castToType(value: any, reference: any): any {
-    const type = typeof reference;
-    if (value === undefined || value === null) return reference;
-
-    switch (type) {
-      case "number":
-        return Number(value);
-      case "boolean":
-        return value === "true" || value === true;
-      case "string":
-        return String(value);
-      default:
-        return value;
-    }
   }
 
   public ngOnDestroy(): void {

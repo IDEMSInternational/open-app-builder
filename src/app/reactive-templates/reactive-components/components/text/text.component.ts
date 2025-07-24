@@ -1,12 +1,13 @@
 import { Component, OnInit, signal, Signal } from "@angular/core";
-import { Parameters, ReactiveBaseComponent } from "../../reactive-base.component";
+import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { Parameter, Parameters } from "../../parameters";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
 const parameters: Parameters = {
-  style: { name: "style", value: "" },
-  textAlign: { name: "text_align", value: null as string },
-  type: { name: "type", value: "marked" },
+  style: new Parameter<string>("style", ""),
+  textAlign: new Parameter<string>("text_align", null),
+  type: new Parameter<string>("type", "marked"),
 };
 
 @Component({
