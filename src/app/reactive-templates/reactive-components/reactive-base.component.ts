@@ -1,4 +1,13 @@
-import { Component, inject, input, OnInit, Optional, signal, Signal } from "@angular/core";
+import {
+  Component,
+  inject,
+  input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  signal,
+  Signal,
+} from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row-service";
@@ -16,39 +25,38 @@ export class Parameters {
   selector: "oab-base",
   template: ``,
 })
-export abstract class ReactiveBaseComponent implements OnInit {
+export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
 
   public name: string;
   public value: Signal<any>;
-  public condition: Signal<boolean>;
+  public condition = signal(true);
   public parameters: any = {};
   public actions;
 
-  private dependantVariables: string[];
+  private dependantVariables: string[] = [];
 
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
 
-  // todo: use service location to simplify components
+  private subscriptions = [];
+
   constructor(private params: Parameters) {}
 
   ngOnInit(): void {
-    this.name = this.row()._nested_name;
-    this.value = this.variableStore.asSignal(this.row()._nested_name);
+    const row = this.row();
+
+    this.name = row._nested_name;
+    this.value = this.variableStore.asSignal(row._nested_name);
+    this.condition = signal(this.rowService.evaluate(row, row.condition));
 
     // Initialize the evaluator with a context
     this.setParameters(this.params);
     this.setDependencies();
     this.watchDependencies();
 
-    // set default value
-    this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
-
-    // todo: Add listeners for condition dependencies
-    //       reevaluate
-    // todo: Add listeners for parameter dependencies
-    //       reevaluate
+    // Set default value
+    this.variableStore.set(this.name, this.rowService.evaluate(row, row.value));
   }
 
   public setValue(value: any): void {
@@ -78,9 +86,12 @@ export abstract class ReactiveBaseComponent implements OnInit {
     if (!this.dependantVariables || this.dependantVariables.length === 0) return;
 
     this.dependantVariables.forEach((fieldName) => {
-      this.variableStore.watch(fieldName).subscribe((value) => {
-        this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
+      const row = this.row();
+      const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
+        this.variableStore.set(this.name, this.rowService.evaluate(row, row.value));
+        this.condition.set(this.rowService.evaluate(row, row.condition));
       });
+      this.subscriptions.push(subscribe);
     });
   }
 
@@ -99,5 +110,11 @@ export abstract class ReactiveBaseComponent implements OnInit {
       default:
         return value;
     }
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
   }
 }

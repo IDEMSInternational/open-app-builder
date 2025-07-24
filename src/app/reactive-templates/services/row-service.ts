@@ -30,8 +30,8 @@ export class RowService {
     return context;
   }
 
-  public evaluate(row: FlowTypes.TemplateRow): any {
+  public evaluate(row: FlowTypes.TemplateRow, value: any): any {
     this.evaluator.setExecutionContext(this.createExecutionContext(row));
-    return this.evaluator.evaluate(row.value);
+    return this.evaluator.evaluate(value);
   }
 }
