@@ -1,9 +1,6 @@
 import { Component } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { Parameter, Parameters } from "../../parameters";
-import { max } from "date-fns";
-import { style } from "@angular/animations";
-import { text } from "stream/consumers";
 import { IonicModule } from "@ionic/angular";
 
 const parameters: Parameters = {

@@ -13,6 +13,7 @@ export class Parameter<T> {
    * @returns The casted value.
    * TODO: define a set of possible types so that we
    * can extend this to convert complex types?
+   * This could be moved to a params.service.ts to improve extensibility
    */
   public cast(value: any): T {
     const type = typeof this.value;
