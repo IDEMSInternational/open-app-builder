@@ -5,8 +5,6 @@ import { PlhParentGroupService } from "./plh-parent-group.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
-import type { IParent, IParentFromRapidPro, IParentInSharedData } from "./plh-parent-group.types";
-import { rapidproUtils } from "./utils/rapidpro.utils";
 
 /**
  * Call standalone tests via:
