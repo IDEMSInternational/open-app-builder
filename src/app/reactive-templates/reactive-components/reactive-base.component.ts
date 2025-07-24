@@ -1,10 +1,10 @@
 import {
   Component,
+  HostBinding,
   inject,
   input,
   OnDestroy,
   OnInit,
-  Optional,
   signal,
   Signal,
 } from "@angular/core";
@@ -23,7 +23,7 @@ export class Parameters {
 
 @Component({
   selector: "oab-base",
-  template: ``,
+  template: ``, // template is empty, to be overridden by child components
 })
 export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
@@ -41,6 +41,11 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
   private subscriptions = [];
 
+  @HostBinding("style.display")
+  get displayStyle() {
+    return this.condition() ? "" : "none";
+  }
+
   constructor(private params: Parameters) {}
 
   ngOnInit(): void {
@@ -48,7 +53,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
     this.name = row._nested_name;
     this.value = this.variableStore.asSignal(row._nested_name);
-    this.condition = signal(this.rowService.evaluate(row, row.condition));
+    this.condition.set(this.rowService.evaluateCondition(row));
 
     // Initialize the evaluator with a context
     this.setParameters(this.params);
@@ -56,7 +61,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.watchDependencies();
 
     // Set default value
-    this.variableStore.set(this.name, this.rowService.evaluate(row, row.value));
+    this.variableStore.set(this.name, this.rowService.evaluate(row));
   }
 
   public setValue(value: any): void {
@@ -88,8 +93,8 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.dependantVariables.forEach((fieldName) => {
       const row = this.row();
       const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
-        this.variableStore.set(this.name, this.rowService.evaluate(row, row.value));
-        this.condition.set(this.rowService.evaluate(row, row.condition));
+        this.variableStore.set(this.name, this.rowService.evaluate(row));
+        this.condition.set(this.rowService.evaluate(row));
       });
       this.subscriptions.push(subscribe);
     });

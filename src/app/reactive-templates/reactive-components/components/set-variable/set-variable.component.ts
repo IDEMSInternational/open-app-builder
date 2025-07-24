@@ -16,6 +16,6 @@ export class SetVariableComponent extends ReactiveBaseComponent implements OnIni
 
     const row = this.row();
 
-    this.variableStore.set(row._nested_name, this.rowService.evaluate(row, row.value));
+    this.variableStore.set(row._nested_name, this.rowService.evaluate(row));
   }
 }
