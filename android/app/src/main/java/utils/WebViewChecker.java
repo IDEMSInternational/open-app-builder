@@ -26,11 +26,11 @@ public class WebViewChecker {
             return;
         }
 
-
+        // 2. Determine package used to render webview content
         PackageInfo info = getWebviewPackage(activity);
 
         if(info == null) {
-            // Cannot determine webview provider, avoid showing any other messages
+             // If cannot determine simply return (avoid potential false-positive message popup)
             Log.e(TAG, "WebView provider not found");
             return;
         }
@@ -46,12 +46,15 @@ public class WebViewChecker {
         }
     }
 
+    // Determine package used to display webview content
     private static PackageInfo getWebviewPackage(Activity activity){
         // Android 8+ - has api to determine package
         if(Build.VERSION.SDK_INT >= 26) {
             return WebView.getCurrentWebViewPackage();
         }
+
         // Android 6 and 7 - check multiple potential providers with fallback
+        // Likely chrome on android 7 and google webview on Android 6, but may vary depending on manufacturer
         String[] providers = {"com.android.chrome", "com.google.android.webview", "com.android.webview"};
         PackageManager pm = activity.getPackageManager();
 
@@ -65,7 +68,7 @@ public class WebViewChecker {
         return null;
     }
 
-    // Add this helper method
+    // User-facing name for specific web-view package
     private static String getProviderName(String packageName) {
         if (packageName.contains("chrome")) return "Chrome";
         if (packageName.contains("webview")) return "Android System WebView";
