@@ -45,13 +45,19 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
     firebaseService.ready();
   }
 
-  public querySingle$(params: SharedDataQueryParams): Observable<ISharedDataCollection> {
+  public querySingle$(
+    params: SharedDataQueryParams,
+    options: { serverOnly?: boolean } = {}
+  ): Observable<ISharedDataCollection> {
     const { id } = params;
     const docPath = `${COLLECTION}/${id}`;
-    return this.documentToObservable(docPath);
+    return this.documentToObservable(docPath, options.serverOnly);
   }
 
-  public queryMultiple$(params: SharedDataQueryParams): Observable<ISharedDataCollection[]> {
+  public queryMultiple$(
+    params: SharedDataQueryParams,
+    options: { serverOnly?: boolean } = {}
+  ): Observable<ISharedDataCollection[]> {
     const collectionPath = COLLECTION;
 
     const listenerOptions: AddCollectionSnapshotListenerOptions = {
@@ -62,7 +68,7 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
       },
       // queryConstraints would go here if we had orderBy or limit clauses
     };
-    return this.collectionToObservable(listenerOptions);
+    return this.collectionToObservable(listenerOptions, options.serverOnly);
   }
 
   public async createSharedCollection(id: string, data: ISharedDataCollection) {
@@ -144,7 +150,8 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
   }
 
   private collectionToObservable(
-    options: AddCollectionSnapshotListenerOptions
+    options: AddCollectionSnapshotListenerOptions,
+    serverOnly?: boolean
   ): Observable<ISharedDataCollection[]> {
     return new Observable<ISharedDataCollection[]>((observer) => {
       let callbackId: CallbackId;
@@ -159,6 +166,12 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event) {
+                // If we want server-only data and this event is from cache, ignore it
+                const isFromCache = event.snapshots.some((doc) => doc.metadata.fromCache);
+                if (serverOnly && isFromCache) {
+                  return;
+                }
+
                 const items = event.snapshots.map((doc) => doc.data as ISharedDataCollection);
                 console.log("items received", items);
                 observer.next(items);
@@ -180,10 +193,12 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
     });
   }
 
-  private documentToObservable(path: string): Observable<ISharedDataCollection> {
+  private documentToObservable(
+    path: string,
+    serverOnly?: boolean
+  ): Observable<ISharedDataCollection> {
     return new Observable<ISharedDataCollection>((observer) => {
       let callbackId: CallbackId;
-
       const registerListener = async () => {
         try {
           callbackId = await FirebaseFirestore.addDocumentSnapshotListener(
@@ -194,6 +209,11 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event && event.snapshot.data) {
+                const isFromCache = event.snapshot.metadata.fromCache;
+                if (serverOnly && isFromCache) {
+                  return;
+                }
+
                 const item = event.snapshot.data as ISharedDataCollection;
                 observer.next(item);
               } else {

@@ -18,12 +18,12 @@ export class SharedDataProviderBase {
   public async initialise(injector: Injector) {}
 
   /** Provide a live-query to a single document and stream updates */
-  public querySingle$(params: SharedDataQueryParams) {
+  public querySingle$(params: SharedDataQueryParams, options: { serverOnly?: boolean } = {}) {
     console.error(`[Shared Data] Provider method not implemented: querySingle$`);
     return of({} as ISharedDataCollection);
   }
   /** Provide a live-query to all documents within    */
-  public queryMultiple$(params: SharedDataQueryParams) {
+  public queryMultiple$(params: SharedDataQueryParams, options: { serverOnly?: boolean } = {}) {
     console.error(`[Shared Data] Provider method not implemented: queryMultiple$`);
     return of([] as ISharedDataCollection[]);
   }
