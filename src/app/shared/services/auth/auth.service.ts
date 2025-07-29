@@ -115,8 +115,8 @@ export class AuthService extends AsyncServiceBase {
       auth: async ({ args }) => {
         const [actionId] = args;
         const childActions = {
-          sign_in_google: async () => await this.provider.signInWithGoogle(),
-          sign_in_apple: async () => await this.provider.signInWithApple(),
+          sign_in_google: async () => await this.provider.signIn("google.com"),
+          sign_in_apple: async () => await this.provider.signIn("apple.com"),
           sign_out: async () => await this.provider.signOut(),
           delete_account: async () => await this.provider.deleteAccount(),
         };
@@ -131,7 +131,7 @@ export class AuthService extends AsyncServiceBase {
        * Use `auth: sign_in_google` instead
        * */
       google_auth: async () => {
-        return await this.provider.signInWithGoogle();
+        return await this.provider.signIn("google.com");
       },
     });
   }

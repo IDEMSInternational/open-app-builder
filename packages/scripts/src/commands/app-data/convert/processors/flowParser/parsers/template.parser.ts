@@ -106,6 +106,36 @@ export class TemplateParser extends DefaultParser {
   }
 
   /**
+   * Apply custom value transformations to rows with specific names, e.g. _list or _collection
+   *
+   * NOTE - this is very similar to the `transformRowValue` method applied in the `default.parser`,
+   * with the following differences:
+   * 1. Applies to row name instead of column name
+   * 2. Supports `_action_list` as a suffix, instead of specific `action_list` column
+   * 3. Has no bypasses for dynamic variables (expects values to be static, not referencing other variables)
+   * 4. Does not include handling of excel dates
+   **/
+  private transformRowValue(rowName: string, rowValue: any) {
+    if (rowName && rowValue && typeof rowValue === "string") {
+      // NOTE - required if passing an action_list from variable as only the `value`
+      // column is retained when interpreting data at runtime (workaround)
+      if (rowName.endsWith("_action_list") || rowName?.includes("_action_list_")) {
+        const entries = parseAppDataListString(rowValue);
+        return entries.map((actionString) => parseAppDataActionString(actionString));
+      }
+      if (rowName.endsWith("_list") || rowName?.includes("_list_")) {
+        return this.parseTemplateList(rowValue);
+      }
+      if (rowName.endsWith("_collection") || rowName.includes("_collection_")) {
+        // TODO - verify if case used and whether it might be better to use a different
+        // column to store parsed object literal in value (would require type defs update)
+        return parseAppDataCollectionString(rowValue) as any;
+      }
+    }
+    return rowValue;
+  }
+
+  /**
    * Ensure any local variables defined with `_list` in their name are correctly
    * parsed into list format
    */
@@ -222,21 +252,26 @@ export class TemplateParser extends DefaultParser {
    * sub-boundaries would exist for nested templates or data_items loops
    * */
   private hackHoistDisplayGroupVariables(flow: FlowTypes.FlowTypeWithData) {
-    const hoisted: FlowTypes.TemplateRow[] = [];
-    flow.rows = flow.rows.map((row) => {
+    const newRows: FlowTypes.TemplateRow[] = [];
+
+    for (const row of flow.rows) {
       if (row.type === "display_group" && Array.isArray(row.rows)) {
         const innerRows = row.rows as FlowTypes.TemplateRow[];
         // extract set_variable rows and rename to sit on top-level
         const hoistedRows = innerRows
           .filter((r) => r.type === "set_variable")
           .map((r) => ({ ...r, _nested_name: r.name }));
-        hoisted.push(...hoistedRows);
-        // remove extracted rows from original
+        // add hoisted rows before the display_group to preserve order
+        newRows.push(...hoistedRows);
+        // remove extracted rows from original and add the modified display_group
         row.rows = innerRows.filter((r) => r.type !== "set_variable");
+        newRows.push(row);
+      } else {
+        newRows.push(row);
       }
-      return row;
-    });
-    flow.rows = [...hoisted, ...flow.rows];
+    }
+
+    flow.rows = newRows;
     return flow;
   }
 

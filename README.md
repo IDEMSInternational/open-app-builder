@@ -10,7 +10,8 @@
    This will be used to download the repository
 
 2. Download and install [Node](https://nodejs.org/en/download/)   
-   This is the programming language required to run the project. We currently support any of the versions prefixed `v20.x.x` or `v18.x.x`
+   This is the programming language required to run the project. 
+   We currently support any of the versions prefixed `v20.x.x` or `v22.x.x`
 
 3. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
