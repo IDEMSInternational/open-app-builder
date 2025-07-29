@@ -1,4 +1,4 @@
-import { DefaultParser } from "./default.parser";
+import { DefaultParser, RowProcessor } from "./default.parser";
 import { FlowTypes } from "data-models";
 
 /**
@@ -130,5 +130,54 @@ describe("Default Parser", () => {
         value: "This is a test string with spaces and tabs",
       },
     ]);
+  });
+});
+
+describe("RowProcessor - handleSpecialFieldTypes", () => {
+  let processor: RowProcessor;
+  beforeEach(() => {
+    processor = new RowProcessor(null as any, null as any);
+  });
+  it("Converts columns with list suffix", () => {
+    processor.row = { condition_list: "@field.should_show === true;" } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      condition_list: ["@field.should_show === true"],
+    });
+  });
+  it("Converts columns named action_list", () => {
+    processor.row = { action_list: "click | set_field : test_field : true" } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      action_list: [
+        {
+          trigger: "click",
+          action_id: "set_field",
+          args: ["test_field", true],
+          _raw: "click | set_field : test_field : true",
+          _cleaned: "click | set_field : test_field : true",
+        },
+      ],
+    });
+  });
+  it("Ignores action_list column if containing dynamic reference", () => {
+    processor.row = { action_list: "@local.example_action_list" } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({ action_list: "@local.example_action_list" });
+  });
+  it("Converts columns with date suffix", () => {
+    processor.row = { "schedule.start_date": 33178 } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      "schedule.start_date": "1990-11-01T00:00:00.000",
+    });
+  });
+  // Accidental linebreaks in cell could pass empty string
+  it("QC - Converts columns with empty string to correct format", () => {
+    processor.row = { style_list: "" } as any;
+    processor["handleSpecialFieldTypes"]();
+    expect(processor.row).toEqual({
+      style_list: [],
+    });
   });
 });
