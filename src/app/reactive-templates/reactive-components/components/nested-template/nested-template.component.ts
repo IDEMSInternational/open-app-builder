@@ -25,7 +25,7 @@ export class NestedTemplateComponent
 
   ngAfterViewChecked(): void {
     // Override variable values after all child rows in the nested template have been created
-    // todo: Also need to override the row expression.
+    // todo: Also need to override the row expression?
     for (const row of this.row().rows) {
       this.variableStore.set(
         this.nestedNamespace() + "." + row.name,
