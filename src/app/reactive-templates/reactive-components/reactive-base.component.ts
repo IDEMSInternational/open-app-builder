@@ -13,6 +13,7 @@ import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row-service";
 import { Parameters } from "./parameters";
+import { Namespace } from "../utils/namespace";
 
 @Component({
   selector: "oab-base",
@@ -21,9 +22,7 @@ import { Parameters } from "./parameters";
 export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
-  public name = computed(() => {
-    return this.namespace() ? `${this.namespace()}.${this.row().name}` : this.row().name;
-  });
+  public name = computed(() => Namespace.get(this.namespace(), this.row().name));
   public value: Signal<any>;
   public condition = signal(true);
   public parameters: any = {};
@@ -103,7 +102,10 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
     this.dependantVariables.forEach((fieldName) => {
       const row = this.row();
-      const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
+      // if the field name already includes a namespace, maybe we assume this is
+      // referring to a variable in a child template?
+      const name = Namespace.get(this.namespace(), fieldName);
+      const subscribe = this.variableStore.watch(name).subscribe(() => {
         this.variableStore.set(this.name(), this.rowService.evaluate(row));
         this.condition.set(this.rowService.evaluateCondition(row));
         this.updateParameters();
