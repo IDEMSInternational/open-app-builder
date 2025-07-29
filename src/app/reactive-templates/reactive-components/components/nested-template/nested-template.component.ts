@@ -28,7 +28,7 @@ export class NestedTemplateComponent
     // todo: Also need to override the row expression?
     for (const row of this.row().rows) {
       this.variableStore.set(
-        this.nestedNamespace() + "." + row.name,
+        this.namespaceService.get(this.nestedNamespace(), row.name),
         this.rowService.evaluate(row)
       );
     }
