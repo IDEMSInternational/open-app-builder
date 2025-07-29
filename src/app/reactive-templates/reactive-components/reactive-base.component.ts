@@ -34,7 +34,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   protected rowService = inject(RowService);
   protected namespaceService = inject(NamespaceService);
 
-  private subscriptions = [];
+  protected subscriptions = [];
 
   @HostBinding("style.display")
   get displayStyle() {

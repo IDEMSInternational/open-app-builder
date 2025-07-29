@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, computed, forwardRef, OnInit } from "@angular/core";
+import { AfterViewChecked, Component, computed, forwardRef, OnInit, signal } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
@@ -25,8 +25,6 @@ export class NestedTemplateComponent
 
   ngAfterViewChecked(): void {
     // Override variable values after all child rows in the nested template have been created
-    // todo: Also need to override the row expression?
-    //       or do we add a watch to the local row value an update the variable store when it changes?
     for (const row of this.row().rows) {
       this.variableStore.set(
         this.namespaceService.get(this.nestedNamespace(), row.name),
