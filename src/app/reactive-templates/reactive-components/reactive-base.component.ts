@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   HostBinding,
   inject,
   input,
@@ -19,8 +20,10 @@ import { Parameters } from "./parameters";
 })
 export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
-
-  public name: string;
+  public namespace = input("");
+  public name = computed(() => {
+    return this.namespace() ? `${this.namespace()}.${this.row().name}` : this.row().name;
+  });
   public value: Signal<any>;
   public condition = signal(true);
   public parameters: any = {};
@@ -46,8 +49,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const row = this.row();
 
-    this.name = row._nested_name;
-    this.value = this.variableStore.asSignal(row._nested_name);
+    this.value = this.variableStore.asSignal(this.name());
     this.condition.set(this.rowService.evaluateCondition(row));
 
     // Initialize the evaluator with a context
@@ -56,7 +58,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.watchDependencies();
 
     // Set default value
-    this.variableStore.set(this.name, this.rowService.evaluate(row));
+    this.variableStore.set(this.name(), this.rowService.evaluate(row));
   }
 
   /*
@@ -64,7 +66,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
    */
   public setValue(value: any): void {
     this.row().value = value;
-    this.variableStore.set(this.name, this.rowService.evaluate(this.row()));
+    this.variableStore.set(this.name(), this.rowService.evaluate(this.row()));
   }
 
   private setParameters(parameters: Parameters) {
@@ -102,7 +104,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.dependantVariables.forEach((fieldName) => {
       const row = this.row();
       const subscribe = this.variableStore.watch(fieldName).subscribe(() => {
-        this.variableStore.set(this.name, this.rowService.evaluate(row));
+        this.variableStore.set(this.name(), this.rowService.evaluate(row));
         this.condition.set(this.rowService.evaluateCondition(row));
         this.updateParameters();
       });

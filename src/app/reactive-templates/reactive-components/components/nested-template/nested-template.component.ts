@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, forwardRef, OnInit } from "@angular/core";
+import { AfterViewChecked, Component, computed, forwardRef, OnInit } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
@@ -13,6 +13,10 @@ export class NestedTemplateComponent
   extends ReactiveBaseComponent
   implements OnInit, AfterViewChecked
 {
+  public nestedNamespace = computed(() => {
+    return this.namespace() ? `${this.namespace()}.${this.name()}` : this.name();
+  });
+
   constructor() {
     super({}); // Has no parameters
   }
@@ -22,10 +26,13 @@ export class NestedTemplateComponent
   }
 
   ngAfterViewChecked(): void {
-    // Override the variable value after all child rows in the nested template have been created
+    // Override variable values after all child rows in the nested template have been created
     // todo: Also need to override the row expression.
     for (const row of this.row().rows) {
-      this.variableStore.set(row.name, this.rowService.evaluate(row));
+      this.variableStore.set(
+        this.nestedNamespace() + "." + row.name,
+        this.rowService.evaluate(row)
+      );
     }
   }
 }

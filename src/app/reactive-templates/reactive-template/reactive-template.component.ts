@@ -13,6 +13,7 @@ import { NgComponentOutlet } from "@angular/common";
 })
 export class ReactiveTemplateComponent implements OnInit {
   public templateName = input.required<string>();
+  public namespace = input("");
 
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
