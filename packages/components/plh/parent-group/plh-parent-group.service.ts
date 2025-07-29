@@ -237,11 +237,14 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
     // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
     // since they are optimised to return a stream from the server and cache combined.
-    const sharedDataQuery = this.sharedDataService.provider.queryMultiple$({
-      id: "",
-      since: undefined,
-      auth_id: this.authId(),
-    });
+    const sharedDataQuery = this.sharedDataService.provider.queryMultiple$(
+      {
+        id: "",
+        since: undefined,
+        auth_id: this.authId(),
+      },
+      { serverOnly: true }
+    );
     const sharedData = await firstValueFrom(sharedDataQuery);
     const sharedParentGroups = sharedData.filter((doc) => doc.data.type === "parent_group");
     console.log("[PLH PARENT GROUP] - PULL - Shared parent groups", sharedParentGroups);
@@ -295,11 +298,14 @@ export class PlhParentGroupService extends SyncServiceBase {
       // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
       // since they are optimised to return a stream from the server and cache combined.
       const sharedParentGroupDoc = await firstValueFrom(
-        this.sharedDataService.provider.querySingle$({
-          id: sharedId,
-          auth_id: this.authId(),
-          since: undefined,
-        })
+        this.sharedDataService.provider.querySingle$(
+          {
+            id: sharedId,
+            auth_id: this.authId(),
+            since: undefined,
+          },
+          { serverOnly: true }
+        )
       );
 
       if (!sharedParentGroupDoc) {
