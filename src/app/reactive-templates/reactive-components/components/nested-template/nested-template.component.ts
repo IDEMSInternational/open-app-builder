@@ -1,14 +1,6 @@
-import {
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  forwardRef,
-  OnInit,
-  viewChild,
-} from "@angular/core";
+import { AfterViewChecked, Component, forwardRef, OnInit } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
-import { After } from "v8";
 
 @Component({
   selector: "oab-nested-template",
