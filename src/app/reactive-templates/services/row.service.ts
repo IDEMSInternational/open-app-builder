@@ -10,13 +10,22 @@ export class RowService {
   constructor(private variableStore: VariableStore) {}
 
   public getDependencies(row: FlowTypes.TemplateRow, type: string): string[] {
-    const dynamicFields = row._dynamicFields?.value;
+    const dynamicDependencies = row._dynamicDependencies || {};
+    const dependencies = [];
 
-    if (!Array.isArray(dynamicFields)) return [];
+    if (!dynamicDependencies || !Object.keys(dynamicDependencies).length) {
+      return [];
+    }
 
-    return dynamicFields
-      .filter((field: any) => field.type === type)
-      .map((field: any) => field.fieldName);
+    Object.keys(dynamicDependencies).forEach((reference) => {
+      if (reference.startsWith("@local.")) {
+        // Local variables
+        const fieldName = reference.replace("@local.", ""); // Remove @local. prefix
+        dependencies.push(fieldName);
+      }
+    });
+
+    return dependencies;
   }
 
   public createExecutionContext(row: FlowTypes.TemplateRow): any {

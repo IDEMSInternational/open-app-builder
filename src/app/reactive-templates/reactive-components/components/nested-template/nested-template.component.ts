@@ -1,7 +1,6 @@
 import { AfterViewChecked, Component, computed, forwardRef, OnInit } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
-import { Namespace } from "src/app/reactive-templates/utils/namespace";
 
 @Component({
   selector: "oab-nested-template",
@@ -14,7 +13,7 @@ export class NestedTemplateComponent
   extends ReactiveBaseComponent
   implements OnInit, AfterViewChecked
 {
-  public nestedNamespace = computed(() => Namespace.get(this.namespace(), this.name()));
+  public nestedNamespace = computed(() => this.namespaceService.get(this.namespace(), this.name()));
 
   constructor() {
     super({}); // Has no parameters

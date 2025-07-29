@@ -11,9 +11,9 @@ import {
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
-import { RowService } from "../services/row-service";
+import { RowService } from "../services/row.service";
 import { Parameters } from "./parameters";
-import { Namespace } from "../utils/namespace";
+import { NamespaceService } from "../services/namespace.service";
 
 @Component({
   selector: "oab-base",
@@ -22,7 +22,7 @@ import { Namespace } from "../utils/namespace";
 export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
-  public name = computed(() => Namespace.get(this.namespace(), this.row().name));
+  public name = computed(() => this.namespaceService.get(this.namespace(), this.row().name));
   public value: Signal<any>;
   public condition = signal(true);
   public parameters: any = {};
@@ -32,6 +32,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
+  protected namespaceService = inject(NamespaceService);
 
   private subscriptions = [];
 
@@ -104,7 +105,10 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
       const row = this.row();
       // if the field name already includes a namespace, maybe we assume this is
       // referring to a variable in a child template?
-      const name = Namespace.get(this.namespace(), fieldName);
+      const name = this.namespaceService.isNamespaced(fieldName)
+        ? fieldName
+        : this.namespaceService.get(this.namespace(), fieldName);
+
       const subscribe = this.variableStore.watch(name).subscribe(() => {
         this.variableStore.set(this.name(), this.rowService.evaluate(row));
         this.condition.set(this.rowService.evaluateCondition(row));
