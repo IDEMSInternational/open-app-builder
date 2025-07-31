@@ -9,25 +9,16 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
   standalone: true,
   imports: [forwardRef(() => ReactiveTemplateComponent)],
 })
-export class NestedTemplateComponent
-  extends ReactiveBaseComponent
-  implements OnInit, AfterViewChecked
-{
-  public nestedNamespace = computed(() => this.namespaceService.get(this.namespace(), this.name()));
-
+export class NestedTemplateComponent extends ReactiveBaseComponent implements AfterViewChecked {
   constructor() {
     super({}); // Has no parameters
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
   }
 
   ngAfterViewChecked(): void {
     // Override variable values after all child rows in the nested template have been created
     for (const row of this.row().rows) {
       this.variableStore.set(
-        this.namespaceService.get(this.nestedNamespace(), row.name),
+        this.namespaceService.get(this.name(), row.name),
         this.rowService.evaluate(row)
       );
     }
