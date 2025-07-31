@@ -4,11 +4,11 @@
 @mixin theme-early_family_math {
   [data-theme="early_family_math"] {
     /** Authoring variables **/
-    $color-primary: #1874ac;
-    $color-secondary: #b53f94;
+    $color-primary: hsl(203 76% 38%); // #1874ac
+    $color-secondary: hsl(317 48% 48%); //#b53f94
     $page-background: white;
-    $color-primary-alt: null;
-    $color-secondary-alt: null;
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -63,8 +63,8 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $pa: $color-primary-alt,
-      $sa: $color-secondary-alt
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
     );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};

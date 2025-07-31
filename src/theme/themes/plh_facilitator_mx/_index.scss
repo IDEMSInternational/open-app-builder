@@ -5,11 +5,11 @@
 @mixin theme-plh_facilitator_mx {
   [data-theme="plh_facilitator_mx"] {
     /** Authoring variables **/
-    $color-primary: #005054;
-    $color-secondary: #a83c0c;
+    $color-primary: hsl(183 100% 16%); //#005054
+    $color-secondary: hsl(18 87% 35%); //#a83c0c
     $page-background: white;
-    $color-primary-alt: null;
-    $color-secondary-alt: null;
+    $color-primary-variant: hsl(183 77% 43%);
+    $color-secondary-variant: hsl(17 74% 55%);
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -141,8 +141,8 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $pa: $color-primary-alt,
-      $sa: $color-secondary-alt
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
     );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
