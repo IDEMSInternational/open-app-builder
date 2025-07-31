@@ -103,6 +103,21 @@ describe("Template Parser PostProcessor", () => {
       { key_1a: "textValue", key_1b: "@local.value" },
       { key_2a: "", key_2b: 5 },
     ]);
+    // CASE 5 - Action_list
+    const case5 = parser.postProcessRow({
+      ...ROW_BASE,
+      name: "test_action_list",
+      value: "click | set_field : test_field : hello",
+    });
+    expect(case5.value).toEqual([
+      {
+        trigger: "click",
+        action_id: "set_field",
+        args: ["test_field", "hello"],
+        _raw: "click | set_field : test_field : hello",
+        _cleaned: "click | set_field : test_field : hello",
+      },
+    ]);
   });
 
   it("Converts rows with _collection in name to templated collection", () => {
@@ -112,6 +127,30 @@ describe("Template Parser PostProcessor", () => {
       value: "key_1:value_1; key_2:value_2",
     });
     expect(res.value).toEqual({ key_1: "value_1", key_2: "value_2" });
+  });
+
+  it("Converts rows with _action_list in name to templated action_list", () => {
+    const res = parser.postProcessRow({
+      ...ROW_BASE,
+      name: "test_action_list",
+      value: "click | set_field : test : true; click | go_to : example",
+    });
+    expect(res.value).toEqual([
+      {
+        _cleaned: "click | set_field : test : true",
+        _raw: "click | set_field : test : true",
+        action_id: "set_field",
+        args: ["test", true],
+        trigger: "click",
+      },
+      {
+        _cleaned: "click | go_to : example",
+        _raw: "click | go_to : example",
+        action_id: "go_to",
+        args: ["example"],
+        trigger: "click",
+      },
+    ]);
   });
 
   it("Parses parameter lists", () => {
@@ -192,6 +231,106 @@ describe("Template Parser PostProcessor", () => {
     const itemRows = res.rows[0].rows;
     const nestedNames = itemRows.map((n) => n._nested_name);
     expect(nestedNames).toEqual(["dg.named_text", "dg.text_2"]);
+  });
+});
+
+describe("Template Parser PostProcess", () => {
+  let parser: TemplateParser;
+  beforeEach(() => {
+    parser = new TemplateParser({} as any);
+  });
+  it("hoists variable references from display_groups", () => {
+    const rows: FlowTypes.TemplateRow[] = [
+      {
+        _nested_name: "dg",
+        name: "dg",
+        type: "display_group",
+        rows: [
+          {
+            _nested_name: "db.inner_var",
+            type: "set_variable",
+            name: "inner_var",
+            value: "inner_val",
+          },
+        ],
+      },
+    ];
+    const res = parser.postProcessFlow({ flow_name: "", flow_type: "template", rows });
+    // hoisting should move inner set_variable to top-level, resulting in 2 flat rows
+    // the hoisted row should also have its nested_name updated to reflect new position
+    expect(res.rows.length).toEqual(2);
+    expect(res.rows[0].type).toEqual("set_variable");
+    expect(res.rows[0]._nested_name).toEqual("inner_var");
+    expect(res.rows[1].type).toEqual("display_group");
+  });
+
+  it("hoisting variable references from display_groups preserves order", () => {
+    const rows: FlowTypes.TemplateRow[] = [
+      {
+        _nested_name: "var1",
+        name: "var1",
+        type: "set_variable",
+        value: "value1",
+      },
+      {
+        _nested_name: "dg1",
+        name: "dg1",
+        type: "display_group",
+        rows: [
+          {
+            _nested_name: "dg1.var2",
+            type: "set_variable",
+            name: "var2",
+            value: "value2",
+          },
+          {
+            _nested_name: "dg1.button1",
+            type: "button",
+            name: "button1",
+          },
+        ],
+      },
+      {
+        _nested_name: "var3",
+        name: "var3",
+        type: "set_variable",
+        value: "value3",
+      },
+      {
+        _nested_name: "dg2",
+        name: "dg2",
+        type: "display_group",
+        rows: [
+          {
+            _nested_name: "dg2.var4",
+            type: "set_variable",
+            name: "var4",
+            value: "value4",
+          },
+        ],
+      },
+    ];
+    const res = parser.postProcessFlow({ flow_name: "", flow_type: "template", rows });
+
+    // Should have 6 rows total: var1, var2 (hoisted), dg1, var3, var4 (hoisted), dg2
+    expect(res.rows.length).toEqual(6);
+
+    // Check that order is preserved - hoisted variables appear before their display_groups
+    expect(res.rows[0].name).toEqual("var1");
+    expect(res.rows[1].name).toEqual("var2"); // hoisted from dg1
+    expect(res.rows[2].name).toEqual("dg1"); // display_group with var2 removed
+    expect(res.rows[3].name).toEqual("var3");
+    expect(res.rows[4].name).toEqual("var4"); // hoisted from dg2
+    expect(res.rows[5].name).toEqual("dg2"); // display_group with var4 removed
+
+    // Verify hoisted variables have correct _nested_name
+    expect(res.rows[1]._nested_name).toEqual("var2");
+    expect(res.rows[4]._nested_name).toEqual("var4");
+
+    // Verify display_groups no longer contain the hoisted variables
+    expect(res.rows[2].rows.length).toEqual(1); // only button1 remains
+    expect(res.rows[2].rows[0].name).toEqual("button1");
+    expect(res.rows[5].rows.length).toEqual(0); // empty after var4 hoisted
   });
 });
 

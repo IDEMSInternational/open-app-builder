@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { BottomNavigationBarComponent } from "./bottom-navigation-bar.component";
+import { PlhBottomNavigationBarComponent } from "./bottom-navigation-bar.component";
 
-describe("BottomNavigationBarComponent", () => {
-  let component: BottomNavigationBarComponent;
-  let fixture: ComponentFixture<BottomNavigationBarComponent>;
+describe("PlhBottomNavigationBarComponent", () => {
+  let component: PlhBottomNavigationBarComponent;
+  let fixture: ComponentFixture<PlhBottomNavigationBarComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [BottomNavigationBarComponent],
+      declarations: [PlhBottomNavigationBarComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BottomNavigationBarComponent);
+    fixture = TestBed.createComponent(PlhBottomNavigationBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

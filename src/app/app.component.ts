@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
+import { Device } from "@capacitor/device";
 import { DbService } from "./shared/services/db/db.service";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
@@ -43,6 +44,7 @@ import { getPaddingValuesFromShorthand } from "./shared/components/template/util
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
 import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
+import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
 
 @Component({
   selector: "app-root",
@@ -124,7 +126,8 @@ export class AppComponent {
     private screenOrientationService: ScreenOrientationService,
     private clipboardService: ClipboardService,
     private scrollService: ScrollService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private capacitorEventService: CapacitorEventService
   ) {
     this.initializeApp();
   }
@@ -168,7 +171,8 @@ export class AppComponent {
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
     this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
-
+    const { operatingSystem } = await Device.getInfo();
+    this.localStorageService.setProtected("OPERATING_SYSTEM", operatingSystem);
     const appEnv = environment.production ? "production" : "development";
     this.localStorageService.setProtected("APP_ENVIRONMENT", appEnv);
     this.localStorageService.setProtected("APP_HOSTNAME", location.hostname);
@@ -215,6 +219,7 @@ export class AppComponent {
         this.remoteAssetService,
       ],
       nonBlocking: [
+        this.capacitorEventService,
         this.skinService,
         this.appConfigService,
         this.appUpdateService,

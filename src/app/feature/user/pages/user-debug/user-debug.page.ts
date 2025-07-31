@@ -125,8 +125,12 @@ export class UserDebugPage implements OnInit {
 
   /** Prepare table data to display for provided dynamic data entry */
   private async loadDynamicDataTable(flowName: string, flowDynamicData: any = {}) {
-    const sheetData = await this.appDataService.getSheet("data_list", flowName);
-    const allTableData = sheetData?.rows || [];
+    let allTableData: any[] = [];
+    // Populate initial table data from sheets if not internal
+    if (!flowName.startsWith("_")) {
+      const sheetData = await this.appDataService.getSheet("data_list", flowName);
+      allTableData = sheetData?.rows || [];
+    }
     // generate list of all unique headers found across original data and overrides
     const headers = uniqueObjectArrayKeys([...allTableData, ...Object.values(flowDynamicData)]);
     // add placeholder rows for any created dynamically (no original sheet row)

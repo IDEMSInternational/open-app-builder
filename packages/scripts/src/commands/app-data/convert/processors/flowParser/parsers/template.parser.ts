@@ -6,6 +6,7 @@ import {
   extractDynamicDependencies,
   parseAppDataCollectionString,
   parseAppDataListString,
+  parseAppDataActionString,
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
@@ -39,24 +40,15 @@ export class TemplateParser extends DefaultParser {
     row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     // in similar way to how top-level properties get converted by default parser
-    if (row.value && typeof row.value === "string") {
-      if (row.name?.endsWith("_list") || row.name?.includes("_list_")) {
-        row.value = this.parseTemplateList(row.value);
-      }
-      if (row.name?.endsWith("_collection") || row.name?.includes("_collection_")) {
-        if (row.value && typeof row.value === "string") {
-          // TODO - verify if case used and whether it might be better to use a different
-          // column to store parsed object literal in value (would require type defs update)
-          row.value = parseAppDataCollectionString(row.value) as any;
-        }
-      }
-    }
+    row.value = this.transformRowValue(row.name, row.value);
+
     if (row.parameter_list) {
       row.parameter_list = this.parseParameterList(row.parameter_list as any);
     }
     if (row.action_list) {
       row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
     }
+
     // extract dynamic fields for runtime evaluation
     const dynamicFields = extractDynamicFields(row);
     if (dynamicFields) {
@@ -82,9 +74,44 @@ export class TemplateParser extends DefaultParser {
     return row;
   }
 
+  public override postProcessFlow(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
+    const hoisted = this.hackHoistDisplayGroupVariables(flow);
+    return hoisted;
+  }
+
   public override postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
     const flowsWithOverrides = assignFlowOverrides(flows);
     return flowsWithOverrides;
+  }
+
+  /**
+   * Apply custom value transformations to rows with specific names, e.g. _list or _collection
+   *
+   * NOTE - this is very similar to the `transformRowValue` method applied in the `default.parser`,
+   * with the following differences:
+   * 1. Applies to row name instead of column name
+   * 2. Supports `_action_list` as a suffix, instead of specific `action_list` column
+   * 3. Has no bypasses for dynamic variables (expects values to be static, not referencing other variables)
+   * 4. Does not include handling of excel dates
+   **/
+  private transformRowValue(rowName: string, rowValue: any) {
+    if (rowName && rowValue && typeof rowValue === "string") {
+      // NOTE - required if passing an action_list from variable as only the `value`
+      // column is retained when interpreting data at runtime (workaround)
+      if (rowName.endsWith("_action_list") || rowName?.includes("_action_list_")) {
+        const entries = parseAppDataListString(rowValue);
+        return entries.map((actionString) => parseAppDataActionString(actionString));
+      }
+      if (rowName.endsWith("_list") || rowName?.includes("_list_")) {
+        return this.parseTemplateList(rowValue);
+      }
+      if (rowName.endsWith("_collection") || rowName.includes("_collection_")) {
+        // TODO - verify if case used and whether it might be better to use a different
+        // column to store parsed object literal in value (would require type defs update)
+        return parseAppDataCollectionString(rowValue) as any;
+      }
+    }
+    return rowValue;
   }
 
   /**
@@ -193,6 +220,38 @@ export class TemplateParser extends DefaultParser {
       default:
         return `${row.type}_${rowNumber}`;
     }
+  }
+
+  /**
+   * Automatically hoist any variables defined as direct child within display-group to top level
+   * See https://github.com/IDEMSInternational/open-app-builder/issues/2989
+   *
+   * NOTE - in future more consistent handling would involve hoisting all variables declared within
+   * UI components to nearest boundary. Default boundary is top-level of template, although
+   * sub-boundaries would exist for nested templates or data_items loops
+   * */
+  private hackHoistDisplayGroupVariables(flow: FlowTypes.FlowTypeWithData) {
+    const newRows: FlowTypes.TemplateRow[] = [];
+
+    for (const row of flow.rows) {
+      if (row.type === "display_group" && Array.isArray(row.rows)) {
+        const innerRows = row.rows as FlowTypes.TemplateRow[];
+        // extract set_variable rows and rename to sit on top-level
+        const hoistedRows = innerRows
+          .filter((r) => r.type === "set_variable")
+          .map((r) => ({ ...r, _nested_name: r.name }));
+        // add hoisted rows before the display_group to preserve order
+        newRows.push(...hoistedRows);
+        // remove extracted rows from original and add the modified display_group
+        row.rows = innerRows.filter((r) => r.type !== "set_variable");
+        newRows.push(row);
+      } else {
+        newRows.push(row);
+      }
+    }
+
+    flow.rows = newRows;
+    return flow;
   }
 
   private qualityControlCheck(row: FlowTypes.TemplateRow) {
