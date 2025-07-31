@@ -4,12 +4,12 @@
 @mixin theme-pfr {
   [data-theme="pfr"] {
     /** Authoring variables **/
-    $color-primary: black;
-    $color-secondary: #e24000;
+    $color-primary: hsl(0 0% 0%);
+    $color-secondary: hsl(17 100% 44%); // #e24000
     $page-background: white;
-    $green: #289b4c;
-    $color-primary-alt: null;
-    $color-secondary-alt: null;
+    $green: hsl(139 59% 38%); //#289b4c
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -63,8 +63,8 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $pa: $color-primary-alt,
-      $sa: $color-secondary-alt,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant,
       $g: $green
     );
     @each $name, $value in $variable-overrides {

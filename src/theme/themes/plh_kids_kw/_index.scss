@@ -9,8 +9,8 @@
     $color-primary: hsl(209 63.8% 24.9%); // #174168
     $color-secondary: hsl(199 100% 41.6%); // #0092D4
     $page-background: white;
-    $color-primary-alt: null;
-    $color-secondary-alt: null;
+    $color-primary-variant: hsl(40 84% 57%);
+    $color-secondary-variant: hsl(17 100% 44%);
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -150,8 +150,8 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $pa: $color-primary-alt,
-      $sa: $color-secondary-alt
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
     );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};

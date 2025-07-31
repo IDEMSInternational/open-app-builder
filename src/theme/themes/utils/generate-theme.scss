@@ -18,20 +18,20 @@
   $red: null,
   $yellow: hsl(45, 100%, 50%),
   $gray: hsl(0, 0%, 10%),
-  $primary-alt: null,
-  $secondary-alt: null
+  $primary-variant: null,
+  $secondary-variant: null
 ) {
   // Alternative values derived from HSL transformations, following the analogous colour harmony
-  @if ($primary-alt == null) {
-    $primary-alt: hsl(
+  @if ($primary-variant == null) {
+    $primary-variant: hsl(
       wrap-hue(hue($primary) + 20),
       saturation($primary) - 12,
       lightness($primary) + 10
     );
   }
 
-  @if ($secondary-alt == null) {
-    $secondary-alt: hsl(
+  @if ($secondary-variant == null) {
+    $secondary-variant: hsl(
       wrap-hue(hue($secondary) - 23),
       saturation($secondary) + 16,
       lightness($secondary) + 5
@@ -40,10 +40,10 @@
 
   $result: (
     "color-primary": $primary,
-    "color-primary-alt": $primary-alt,
+    "color-primary-variant": $primary-variant,
     "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
     "color-secondary": $secondary,
-    "color-secondary-alt": $secondary-alt,
+    "color-secondary-variant": $secondary-variant,
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "background-color": color.change($primary, $lightness: 98%),
     "color-yellow": $yellow,
@@ -63,8 +63,14 @@
   $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
   $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
   $result: map.merge($result, generateColourVariants($gray, "gray", $weights));
-  $result: map.merge($result, generateColourVariants($primary-alt, "primary-alt", $weights));
-  $result: map.merge($result, generateColourVariants($secondary-alt, "secondary-alt", $weights));
+  $result: map.merge(
+    $result,
+    generateColourVariants($primary-variant, "primary-variant", $weights)
+  );
+  $result: map.merge(
+    $result,
+    generateColourVariants($secondary-variant, "secondary-variant", $weights)
+  );
 
   // Handle default values for optional params
   @if ($page-background != null) {
@@ -197,15 +203,15 @@
   @return $gradientPalette;
 }
 
-@mixin generateTheme($p, $s, $bg: null, $r: null, $g: null, $pa: null, $sa: null) {
+@mixin generateTheme($p, $s, $bg: null, $r: null, $g: null, $pv: null, $sv: null) {
   $colorPalette: getColorPalette(
     $p,
     $s,
     $bg,
     $red: $r,
     $green: $g,
-    $primary-alt: $pa,
-    $secondary-alt: $sa
+    $primary-variant: $pv,
+    $secondary-variant: $sv
   );
   $gradientPalette: getGradientPalette($colorPalette);
   @include colorVariables($colorPalette, $gradientPalette);
