@@ -4,40 +4,14 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
-import { ISharedDataCollection } from "src/app/feature/shared-data/types";
-
-interface IParent {
-  group_id: string;
-  id: string;
-  first_name: string;
-  last_name: string;
-  number: string;
-  age: string;
-  sex: string;
-  child_name: string;
-  child_age: string;
-  child_sex: string;
-  relationship: string;
-  members: string;
-  childcare: string;
-  goal: string;
-  other: string;
-  consoltation: string;
-  archived: boolean;
-}
-
-interface IParentGroup {
-  archived: boolean;
-  hidden: boolean;
-  id: string;
-  name: string;
-  parents: IParent[];
-  text: string;
-  cofacilitator_id?: string;
-  readonly?: boolean;
-  shared?: boolean;
-  shared_id?: string;
-}
+import { generateRandomCode } from "src/app/shared/utils";
+import type {
+  IParent,
+  IParentFromRapidPro,
+  IParentGroup,
+  ISharedParentGroupDoc,
+} from "./plh-parent-group.types";
+import { rapidproUtils } from "./utils/rapidpro.utils";
 
 /**
  * Service for managing parent groups and sharing them between users
@@ -105,11 +79,12 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
     // else, get local data for specified parent group and push changes to shared data
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+    });
+
     if (!parentGroup.shared_id) {
       await this.ensureSharedParentGroup(parentGroup.id, parentGroupsDataList, parentsDataList);
     } else {
@@ -146,6 +121,39 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
+   * Generate a random access code for a parent group and add it to the parent group's shared data
+   * Adds the specified parent group to shared data if it is not already shared
+   */
+  public async generateAccessCode(
+    parent_groups_data_list: string,
+    parents_data_list: string,
+    parent_group_id: string
+  ) {
+    const parentGroupQuery = this.dynamicDataService.query$("data_list", parent_groups_data_list, {
+      selector: { id: parent_group_id },
+    });
+    const [parentGroupData] = await firstValueFrom<IParentGroup[]>(parentGroupQuery);
+    if (parentGroupData) {
+      // If parent group is not already pushed to shared data, do so now
+      const shared_id = await this.ensureSharedParentGroup(
+        parent_group_id,
+        parent_groups_data_list,
+        parents_data_list
+      );
+
+      const code = generateRandomCode(4);
+      // TODO - validate code to check no conflict with other groups
+      // will likely require backend function to generate and check as user will not have query permission
+      await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
+
+      // Update local parent group data to add access code
+      await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
+        rp_access_code: code,
+      });
+    }
+  }
+
+  /**
    * Push local state of all shared parent groups to shared database
    */
   private async handlePushAll(parentGroupsDataList: string, parentsDataList: string) {
@@ -154,7 +162,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     const filteredSharedParentGroupRefs = sharedParentGroupRefs.filter((ref) => !ref.readonly);
     const sharedParentGroups = (await Promise.all(
       filteredSharedParentGroupRefs.map((ref) =>
-        this.getLocalParentGroup(ref.id, parentGroupsDataList, parentsDataList)
+        this.getLocalParentGroup({
+          parentGroupId: ref.id,
+          parentGroupsDataList,
+          parentsDataList,
+        })
       )
     )) as IParentGroup[];
     for (const parentGroup of sharedParentGroups) {
@@ -172,6 +184,13 @@ export class PlhParentGroupService extends SyncServiceBase {
       );
       return;
     }
+
+    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
+
+    // In order to avoid overwriting parent fields added/updated from RapidPro,
+    // merge parent group data with existing shared data before pushing
+    parentGroup = await this.mergeParentGroupDataWithExistingSharedData(parentGroup);
+
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
       "parentGroupData",
@@ -183,12 +202,15 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Pull state from shared database and update local parent groups
    * If a parent group id is provided, pull only that parent group
    */
-  public async handlePull(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    parentsDataList: string,
-    completionTrackingDataList?: string
-  ) {
+  public async handlePull(options: {
+    parentGroupId?: string;
+    parentGroupsDataList: string;
+    parentsDataList: string;
+    completionTrackingDataList?: string;
+  }) {
+    const { parentGroupId, parentGroupsDataList, parentsDataList, completionTrackingDataList } =
+      options;
+
     if (!parentGroupId) {
       await this.handlePullAll(parentGroupsDataList, parentsDataList, completionTrackingDataList);
       return;
@@ -313,11 +335,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string
   ) {
     // check if parent group is already shared
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+    });
 
     return (
       parentGroup.shared_id ||
@@ -335,18 +357,20 @@ export class PlhParentGroupService extends SyncServiceBase {
     parentsDataList: string
   ) {
     // publish parent group to shared data (create new shared data collection for parent group)
-    const parentGroup = await this.getLocalParentGroup(
+    const parentGroup = await this.getLocalParentGroup({
       parentGroupId,
       parentGroupsDataList,
-      parentsDataList
-    );
+      parentsDataList,
+    });
+
+    const formattedParentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
 
     const { id: sharedCollectionId } = await this.sharedDataService.createSharedCollection();
     await this.sharedDataService.updateSharedData(sharedCollectionId, "type", "parent_group");
     await this.sharedDataService.updateSharedData(
       sharedCollectionId,
       "parentGroupData",
-      parentGroup
+      formattedParentGroup
     );
     // copy firebase-generated guid back to local data, e.g. `shared_id: <guid>`?
     await this.setLocalParentGroupProperty(parentGroupId, parentGroupsDataList, {
@@ -380,11 +404,13 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Retrieves a parent group from local data by combining data from parent groups and parents data lists
    * @returns IParentGroup object with parent group data and associated parents
    */
-  private async getLocalParentGroup(
-    parentGroupId: string,
-    parentGroupsDataList: string,
-    parentsDataList: string
-  ) {
+  private async getLocalParentGroup(options: {
+    parentGroupId: string;
+    parentGroupsDataList: string;
+    parentsDataList: string;
+  }) {
+    const { parentGroupId, parentGroupsDataList, parentsDataList } = options;
+
     const parentGroupQuery = this.dynamicDataService.query$("data_list", parentGroupsDataList, {
       selector: { id: parentGroupId },
     });
@@ -453,7 +479,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Update local parent group data across multiple data lists to reflect incoming parentGroup data
    */
   private async updateLocalParentGroupDataFromSharedDoc(
-    sharedParentGroupDoc: ISharedDataCollection,
+    sharedParentGroupDoc: ISharedParentGroupDoc,
     parentGroupsDataList: string,
     parentsDataList: string,
     completionTrackingDataList?: string
@@ -473,6 +499,18 @@ export class PlhParentGroupService extends SyncServiceBase {
     if (sharedParentGroupDoc._created_by !== this.authId()) {
       parentGroupData = this.hackTransformReadonlyParentGroupData(parentGroupData, sharedId);
     }
+    // Add access code to parent group data. This protected field will not be pushed to shared data
+    parentGroupData.rp_access_code = sharedParentGroupDoc.access_code;
+
+    // Parent data added from RapidPro must be reformatted to match local parent data format
+    parentGroupData.parents = parentGroupData.parents.map((parent) =>
+      rapidproUtils.parentHasRapidProData(parent)
+        ? rapidproUtils.transformParentWithRapidProDataToLocalFormat(
+            parent as IParentFromRapidPro,
+            parentGroupData.id
+          )
+        : parent
+    );
 
     if (completionTrackingDataList) {
       await this.hackUpdateCompletionTrackingDataList(
@@ -532,7 +570,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     for (const parent of parents) {
       await this.dynamicDataService.upsert("data_list", parentsDataList, {
-        ...parent,
+        ...(parent as IParent),
       });
     }
 
@@ -571,6 +609,33 @@ export class PlhParentGroupService extends SyncServiceBase {
       ...parent,
       group_id: sharedId,
     }));
+
+    return parentGroup;
+  }
+
+  /**
+   * Merges parent group data with a snapshot of existing shared data.
+   * The merge uses all fields for the incoming parent group data,
+   * but preserves rapidpro_fields on parents from the existing parent group.
+   */
+  private async mergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
+    const sharedParentGroupQuery = this.sharedDataService.provider.querySingle$({
+      id: parentGroup.shared_id,
+      auth_id: this.authId(),
+      since: undefined,
+    });
+    const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
+
+    if (existingSharedParentGroup) {
+      parentGroup.parents = rapidproUtils.mergeParentsArraysPreservingRapidProData(
+        existingSharedParentGroup.data.parentGroupData.parents,
+        parentGroup.parents as IParent[]
+      );
+    } else {
+      console.error(
+        `[PLH PARENT GROUP] - PUSH - Existing shared parent group not found, id: ${parentGroup.shared_id}`
+      );
+    }
 
     return parentGroup;
   }

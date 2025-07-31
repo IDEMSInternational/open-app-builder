@@ -2,8 +2,8 @@
 @use "sass:color";
 @use "./overrides";
 
-@mixin theme-plh_facilitator_mapa {
-  [data-theme="plh_facilitator_mapa"] {
+@mixin theme-plh_facilitator_ph {
+  [data-theme="plh_facilitator_ph"] {
     /** Authoring variables **/
     $color-primary: #123d5d;
     $color-secondary: #70aac0;

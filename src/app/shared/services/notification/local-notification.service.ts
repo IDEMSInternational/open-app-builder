@@ -23,6 +23,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
+import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -94,7 +95,8 @@ export class LocalNotificationService extends AsyncServiceBase {
 
   constructor(
     private dbService: DbService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private capacitorEventService: CapacitorEventService
   ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
@@ -358,7 +360,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
-    if (Capacitor.isNative && forceBackground) {
+    if (Capacitor.isNativePlatform() && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
       // https://github.com/ionic-team/capacitor-plugins/issues/130
@@ -405,22 +407,21 @@ export class LocalNotificationService extends AsyncServiceBase {
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
   private async addLocalNotificationInteractionListeners() {
-    LocalNotifications.addListener(
-      "localNotificationActionPerformed",
-      async (action) => {
-        console.log("[NOTIFICATION ACTION]", action);
-        await this.updateDBNotification(action.notification.id, {
-          _action_performed: action.actionId,
-        });
-        this.interactedNotification$.next(action);
-        this.loadNotifications();
-      }
-      // TODO emit event for action to other listeners?
-      // good to have default as can only ever have 1 listener for each type
-    );
+    this.capacitorEventService.localNotificationActionPerformed.subscribe(async (action) => {
+      console.log("[LOCAL NOTIFICATION] ACTION", action);
+      await this.updateDBNotification(action.notification.id, {
+        _action_performed: action.actionId,
+      });
+      this.interactedNotification$.next(action);
+      this.loadNotifications();
+    });
+
+    // TODO emit event for action to other listeners?
+    // good to have default as can only ever have 1 listener for each type
+
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener("localNotificationReceived", async (notification) => {
-      console.log(["NOTIFICATION RECEIVED"], notification);
+    this.capacitorEventService.localNotificationReceived.subscribe(async (notification) => {
+      console.log("[LOCAL NOTIFICATION] RECEIVED", notification);
       this.loadNotifications();
     });
   }

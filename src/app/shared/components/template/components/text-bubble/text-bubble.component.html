@@ -25,9 +25,11 @@
       }
     </div>
   </div>
-  <img
-    [src]="params.speakerImageAsset | plhAsset"
-    class="speaker-image"
-    [attr.data-position]="params.speakerPosition"
-  />
+  @if (params.speakerImageAsset) {
+    <img
+      [src]="params.speakerImageAsset | plhAsset"
+      class="speaker-image"
+      [attr.data-position]="params.speakerPosition"
+    />
+  }
 </div>
