@@ -89,7 +89,7 @@ export class TmplTaskProgressBarComponent
   implements OnInit, OnDestroy
 {
   public params: Signal<ITaskProgressBarParams> = computed(() =>
-    this.getParams(this.parameterList())
+    this.getParams(this.inputParameterList || this.parameterList())
   );
 
   @Input() dataListName: string | null;
@@ -100,7 +100,7 @@ export class TmplTaskProgressBarComponent
   @Input() progressUnitsName: string;
   @Input() showText: boolean;
   // Pass whole parameter list from parent component to extract any item row operations
-  @Input() parameterList: any;
+  @Input() inputParameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
 
@@ -195,7 +195,7 @@ export class TmplTaskProgressBarComponent
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
-      this.configureItemProcessor(this.parameterList);
+      this.configureItemProcessor(this.inputParameterList);
       return {
         dataListName: this.dataListName,
         completedField: this.completedField,
