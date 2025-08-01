@@ -95,6 +95,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     } catch (error) {
       if (error.code === "auth/requires-recent-login") {
         try {
+          console.log("[Firebase Auth] re-authenticating user to delete account");
           await this.reauthenticate();
           await this.deleteUser();
         } catch (reauthError) {
@@ -157,13 +158,13 @@ export class FirebaseAuthProvider extends AuthProviderBase {
 
   /**
    * Re-authenticate the currently logged in user.
-   * Recent sign in is before some sensitive actions (e.g. deleting account)
+   * Recent sign in is required before some sensitive actions (e.g. deleting account)
    */
   private async reauthenticate() {
     const { user } = await FirebaseAuthentication.getCurrentUser();
     if (user) {
       const providerId = user.providerData?.[0]?.providerId;
-      this.signIn(providerId as any);
+      await this.signIn(providerId as any);
     }
   }
 }
