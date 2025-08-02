@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, computed, forwardRef, OnInit, signal } from "@angular/core";
+import { AfterViewChecked, Component, forwardRef } from "@angular/core";
 import { ReactiveBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
@@ -18,8 +18,8 @@ export class NestedTemplateComponent extends ReactiveBaseComponent implements Af
     // Override variable values after all child rows in the nested template have been created
     for (const row of this.row().rows) {
       this.variableStore.set(
-        this.namespaceService.get(this.name(), row.name),
-        this.rowService.evaluate(row)
+        this.namespaceService.getFullName(this.name(), row.name),
+        this.rowService.evaluateValue(row, this.namespace())
       );
     }
   }

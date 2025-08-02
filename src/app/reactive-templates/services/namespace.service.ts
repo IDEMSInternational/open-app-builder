@@ -6,11 +6,18 @@ import { Injectable } from "@angular/core";
 export class NamespaceService {
   constructor() {}
 
-  public get(namespace: string, name: string): string {
+  public getFullName(namespace: string, name: string): string {
     return namespace ? `${namespace}.${name}` : name;
   }
 
-  public isNamespaced(name: string): boolean {
-    return name.includes(".");
+  public getNamespacedExpression(
+    namespace: string,
+    expression: string | number | boolean
+  ): string | number | boolean {
+    if (typeof expression === "string" && namespace) {
+      return expression.replaceAll("@local.", `@local.${namespace}.`);
+    }
+
+    return expression;
   }
 }

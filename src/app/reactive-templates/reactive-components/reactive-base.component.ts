@@ -22,7 +22,9 @@ import { NamespaceService } from "../services/namespace.service";
 export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
-  public name = computed(() => this.namespaceService.get(this.namespace(), this.row().name));
+  public name = computed(() =>
+    this.namespaceService.getFullName(this.namespace(), this.row().name)
+  );
   public value: Signal<any>;
   public condition = signal(true);
   public parameters: any = {};
@@ -50,7 +52,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this.condition.set(this.rowService.evaluateCondition(row));
+    this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
 
     // Initialize the evaluator with a context
     this.setParameters(this.params);
@@ -58,7 +60,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
     this.watchDependencies();
 
     // Set default value
-    this.variableStore.set(this.name(), this.rowService.evaluate(row));
+    this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
   }
 
   /*
@@ -66,7 +68,10 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
    */
   public setValue(value: any): void {
     this.row().value = value;
-    this.variableStore.set(this.name(), this.rowService.evaluate(this.row()));
+    this.variableStore.set(
+      this.name(),
+      this.rowService.evaluateValue(this.row(), this.namespace())
+    );
   }
 
   private setParameters(parameters: Parameters) {
@@ -81,7 +86,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
         return;
       }
 
-      const value = this.rowService.evaluateParameter(this.row(), param.name);
+      const value = this.rowService.evaluateParameter(this.row(), param.name, this.namespace());
       this.parameters[key] = signal(param.cast(value));
     });
   }
@@ -89,7 +94,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   private updateParameters(): void {
     Object.keys(this.parameters).forEach((key) => {
       const param = this.parameters[key];
-      const value = this.rowService.evaluateParameter(this.row(), key);
+      const value = this.rowService.evaluateParameter(this.row(), key, this.namespace());
       param.set(value);
     });
   }
@@ -103,17 +108,17 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
 
     this.dependantVariables.forEach((fieldName) => {
       const row = this.row();
-      // if the field name already includes a namespace, maybe we assume this is
+      // if the field name already includes a namespace, we assume this is
       // referring to a variable in a child template?
-      const name = this.namespaceService.isNamespaced(fieldName)
-        ? fieldName
-        : this.namespaceService.get(this.namespace(), fieldName);
+      // todo: this is not actually an expression it's a fullname e.g. @local.something.something_else
+      const name = this.namespaceService.getFullName(this.namespace(), fieldName) as string;
 
       const subscribe = this.variableStore.watch(name).subscribe(() => {
-        this.variableStore.set(this.name(), this.rowService.evaluate(row));
-        this.condition.set(this.rowService.evaluateCondition(row));
+        this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
+        this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
         this.updateParameters();
       });
+
       this.subscriptions.push(subscribe);
     });
   }

@@ -2,12 +2,16 @@ import { FlowTypes } from "packages/data-models/flowTypes";
 import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
+import { NamespaceService } from "./namespace.service";
 
 @Injectable({ providedIn: "root" })
 export class RowService {
   private evaluator = new AppDataEvaluator();
 
-  constructor(private variableStore: VariableStore) {}
+  constructor(
+    private variableStore: VariableStore,
+    private namespaceService: NamespaceService
+  ) {}
 
   public getDependencies(row: FlowTypes.TemplateRow, type: string): string[] {
     const dynamicDependencies = row._dynamicDependencies;
@@ -18,30 +22,23 @@ export class RowService {
       .map((reference) => reference.replace(`@${type}.`, ""));
   }
 
-  public createExecutionContext(row: FlowTypes.TemplateRow): any {
-    const context = { local: {} };
-    const dependantVariables = this.getDependencies(row, "local");
-
-    dependantVariables.forEach((fieldName) => {
-      context.local[fieldName] = this.variableStore.get(fieldName);
-    });
-
-    return context;
+  public evaluateValue(row: FlowTypes.TemplateRow, namespace: string): any {
+    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
+    return this.evaluate(row.value, namespace);
   }
 
-  public evaluate(row: FlowTypes.TemplateRow): any {
-    this.evaluator.setExecutionContext(this.createExecutionContext(row));
-    return this.evaluator.evaluate(row.value);
-  }
-
-  public evaluateCondition(row: FlowTypes.TemplateRow): boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(row));
+  public evaluateCondition(row: FlowTypes.TemplateRow, namespace: string): boolean {
+    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
     let condition = row.condition ?? true;
 
-    return this.evaluator.evaluate(condition);
+    return this.evaluate(condition, namespace) as boolean;
   }
 
-  public evaluateParameter(row: FlowTypes.TemplateRow, parameterName: string): any {
+  public evaluateParameter(
+    row: FlowTypes.TemplateRow,
+    parameterName: string,
+    namespace: string
+  ): any {
     if (!row.parameter_list || !row.parameter_list[parameterName]) {
       return null;
     }
@@ -49,7 +46,26 @@ export class RowService {
     const parameterValue = row.parameter_list[parameterName];
     if (!parameterValue) return null;
 
-    this.evaluator.setExecutionContext(this.createExecutionContext(row));
-    return this.evaluator.evaluate(parameterValue);
+    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
+    return this.evaluate(parameterValue, namespace);
+  }
+
+  private createExecutionContext(row: FlowTypes.TemplateRow, namespace: string): any {
+    const context = { local: {} };
+    const dependantVariables = this.getDependencies(row, "local");
+
+    dependantVariables.forEach((fieldName) => {
+      let fullName = this.namespaceService.getFullName(namespace, fieldName) as string;
+
+      context.local[fullName] = this.variableStore.get(fullName);
+    });
+
+    return context;
+  }
+
+  private evaluate(expression: string | number | boolean, namespace: string): string | boolean {
+    return this.evaluator.evaluate(
+      this.namespaceService.getNamespacedExpression(namespace, expression)
+    );
   }
 }
