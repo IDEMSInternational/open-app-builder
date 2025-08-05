@@ -1045,4 +1045,13 @@ body[data-theme="plh_kids_kw"] {
       }
     }
   }
+
+  // Task Progress Bar
+  plh-task-progress-bar {
+    .progress-bar-wrapper {
+      .progress-bar {
+        height: 10px !important;
+      }
+    }
+  }
 }
