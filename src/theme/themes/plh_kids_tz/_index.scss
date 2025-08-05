@@ -9,6 +9,8 @@
     $color-secondary: hsl(40, 97%, 49%); // #F6A504
     $page-background: white;
     $color-green: #92cb44;
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -106,7 +108,9 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $g: $color-green
+      $g: $color-green,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
     );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
