@@ -4,10 +4,12 @@
 @mixin theme-pfr {
   [data-theme="pfr"] {
     /** Authoring variables **/
-    $color-primary: black;
-    $color-secondary: #e24000;
+    $color-primary: hsl(0 0% 0%);
+    $color-secondary: hsl(17 100% 44%); // #e24000
     $page-background: white;
-    $green: #289b4c;
+    $green: hsl(139 59% 38%); //#289b4c
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -57,7 +59,14 @@
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background, $g: $green);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant,
+      $g: $green
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }

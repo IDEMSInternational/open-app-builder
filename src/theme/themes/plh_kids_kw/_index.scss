@@ -9,6 +9,8 @@
     $color-primary: hsl(209 63.8% 24.9%); // #174168
     $color-secondary: hsl(199 100% 41.6%); // #0092D4
     $page-background: white;
+    $color-primary-variant: hsl(40 84% 57%);
+    $color-secondary-variant: hsl(17 100% 44%);
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -94,7 +96,7 @@
       radio-group-border: 1px solid var(--ion-color-gray-100),
       radio-group-box-shadow: none,
       round-button-background-secondary-light: var(--ion-color-yellow),
-      task-progress-bar-color: var(--ion-color-green),
+      task-progress-bar-color: var(--ion-color-secondary-600),
       tile-button-background-primary-light: var(--ion-color-primary-300),
       tile-button-background-primary: var(--ion-color-primary-500),
       tile-button-background-secondary-light: var(--ion-color-yellow),
@@ -144,7 +146,13 @@
       text-bubble-background-color-4: var(--color-accent-yellow-95),
       text-bubble-border-color-4: var(--color-accent-yellow-70),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }

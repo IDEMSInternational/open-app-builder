@@ -43,7 +43,6 @@ body[data-theme="plh_facilitator_my"] {
       filter: none !important;
       border: 1px solid var(--ion-color-primary-200) !important;
       box-shadow: -2px 3px 6px rgba($color: #dae8f6, $alpha: 0.3);
-      margin: 14px auto !important;
     }
     .image-wrapper {
       img {
@@ -227,7 +226,6 @@ body[data-theme="plh_facilitator_my"] {
     ion-button:disabled,
     ion-button[disabled] {
       filter: none;
-      --background: var(--ion-color-primary-300);
     }
 
     .left {
