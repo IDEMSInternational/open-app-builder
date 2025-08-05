@@ -60,7 +60,9 @@ export class VariableStore implements IStore {
    * Not used but might be useful to snapshot the current state for debug reasons.
    */
   public getAllList(): { name: string; value: any }[] {
-    return Object.keys(this.state).map((name) => ({ name, value: this.state[name].value }));
+    return Object.keys(this.state)
+      .sort()
+      .map((name) => ({ name, value: this.state[name].value }));
   }
 
   /**
