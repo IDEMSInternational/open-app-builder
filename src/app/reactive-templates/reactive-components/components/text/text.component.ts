@@ -1,5 +1,5 @@
 import { Component, OnInit, signal, Signal } from "@angular/core";
-import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../reactive-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
@@ -20,7 +20,7 @@ const parameters: Parameters = {
     TemplatePipesModule, // todo: make pipes standalone
   ],
 })
-export class TextComponent extends ReactiveBaseComponent implements OnInit {
+export class TextComponent extends RowBaseComponent implements OnInit {
   public hasTextValue: Signal<boolean>;
 
   constructor() {

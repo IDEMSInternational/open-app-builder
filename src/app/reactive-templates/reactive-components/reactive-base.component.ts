@@ -16,10 +16,10 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 
 @Component({
-  selector: "oab-base",
+  selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
 })
-export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
+export abstract class RowBaseComponent implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
   public name = computed(() =>
@@ -46,7 +46,7 @@ export abstract class ReactiveBaseComponent implements OnInit, OnDestroy {
   constructor(private params: Parameters) {}
 
   /**
-   * All ReactiveBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
+   * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
    */
   ngOnInit(): void {
     const row = this.row();

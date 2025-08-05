@@ -1,5 +1,5 @@
 import { AfterViewChecked, Component, forwardRef } from "@angular/core";
-import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../reactive-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
 @Component({
@@ -9,7 +9,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
   standalone: true,
   imports: [forwardRef(() => ReactiveTemplateComponent)],
 })
-export class NestedTemplateComponent extends ReactiveBaseComponent implements AfterViewChecked {
+export class NestedTemplateComponent extends RowBaseComponent implements AfterViewChecked {
   constructor() {
     super({}); // Has no parameters
   }

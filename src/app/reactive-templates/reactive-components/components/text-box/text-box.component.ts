@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ReactiveBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../reactive-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { IonicModule } from "@ionic/angular";
 
@@ -20,7 +20,7 @@ const parameters: Parameters = {
   standalone: true,
   imports: [IonicModule], // todo: ionic standalone does not seem to work.
 })
-export class TextBoxComponent extends ReactiveBaseComponent {
+export class TextBoxComponent extends RowBaseComponent {
   constructor() {
     super(parameters);
   }
