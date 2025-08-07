@@ -86,7 +86,8 @@ function transformParentWithRapidProDataToLocalFormat(
   return {
     ...rest,
     ...parsedRapidProFields,
-    id: rapidpro_uuid,
+    // Use a combined id of the parent group id and the rapidpro_uuid to ensure uniqueness
+    id: `${parentGroupId}+${rapidpro_uuid}`,
     group_id: parentGroupId,
     rp_uuid: rapidpro_uuid,
   } as IParent;

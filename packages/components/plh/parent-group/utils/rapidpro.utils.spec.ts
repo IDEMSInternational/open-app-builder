@@ -1,11 +1,10 @@
 import { rapidproUtils } from "./rapidpro.utils";
-import type {
-  IParent,
-  IParentFromRapidPro,
-  IParentInSharedData,
-  IParentGroup,
-} from "../plh-parent-group.types";
+import type { IParent, IParentFromRapidPro, IParentInSharedData } from "../plh-parent-group.types";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include ../packages/components/plh/parent-group/utils/rapidpro.utils.spec.ts
+ */
 describe("rapidproUtils", () => {
   it("should format a parent from RapidPro correctly", () => {
     const parentFromRapidPro = {
@@ -22,7 +21,7 @@ describe("rapidproUtils", () => {
       parentGroupId
     );
     expect(result).toEqual({
-      id: "uuid-123",
+      id: "group-456+uuid-123",
       group_id: "group-456",
       rp_uuid: "uuid-123",
       rp_name: "Jasper",
