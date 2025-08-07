@@ -10,8 +10,6 @@ $path-stroke-width: 28px;
 }
 
 .progress-path-child-wrapper {
-  $path-segment-spacing: 24px;
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -37,13 +35,13 @@ $path-stroke-width: 28px;
 
   .progress-path-child-content-wrapper {
     width: 100vw;
-    max-width: calc(var(--container-width) + 20px);
-    min-width: calc(var(--container-width) - 44px);
+    max-width: var(--container-width);
+    min-width: calc(var(--container-width) - 36px);
+    padding: 0 18px;
     display: flex;
     flex-direction: column;
   }
   .progress-path-child-content {
-    width: 150px;
     align-self: flex-start;
   }
 
@@ -55,8 +53,6 @@ $path-stroke-width: 28px;
     .path-segment {
       // Flip horizontally
       transform: scaleX(-1);
-      margin-left: 0px;
-      margin-right: $path-segment-spacing;
       // For right-to-left languages, flip the path to match the content position
       &[data-language-direction~="rtl"] {
         transform: none;
