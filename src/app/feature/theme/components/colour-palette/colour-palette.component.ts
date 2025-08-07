@@ -6,6 +6,6 @@ import { Component } from "@angular/core";
   styleUrls: ["./colour-palette.component.scss"],
 })
 export class ColourPaletteComponent {
-  themeColours = ["primary", "secondary"];
+  themeColours = ["primary", "primary-variant", "secondary", "secondary-variant"];
   colourWeights = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 }
