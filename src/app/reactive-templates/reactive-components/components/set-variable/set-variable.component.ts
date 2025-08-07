@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { RowBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 
 @Component({
   selector: "oab-set-variable",

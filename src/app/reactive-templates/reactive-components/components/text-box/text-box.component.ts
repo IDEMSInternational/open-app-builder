@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { RowBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { IonicModule } from "@ionic/angular";
 

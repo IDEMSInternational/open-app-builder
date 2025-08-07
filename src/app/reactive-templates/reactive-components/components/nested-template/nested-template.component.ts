@@ -1,5 +1,5 @@
 import { AfterViewChecked, Component, forwardRef } from "@angular/core";
-import { RowBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
 @Component({

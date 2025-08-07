@@ -1,5 +1,5 @@
 import { Component, OnInit, signal, Signal } from "@angular/core";
-import { RowBaseComponent } from "../../reactive-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";

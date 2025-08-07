@@ -6,5 +6,6 @@
     [innerHTML]="this.value()?.toString() | markdown"
     [style]="row().style_list"
     [style.textAlign]="parameters.textAlign()"
+    [attr.data-test]="name()"
   ></div>
 }

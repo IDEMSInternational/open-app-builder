@@ -3,11 +3,12 @@
     #input
     class="text-box-input"
     [inputmode]="parameters.isNumberInput() ? 'tel' : 'text'"
-    (ionBlur)="handleChange(input.value)"
+    (ionChange)="handleChange(input.value)"
     [value]="parameters.prioritisePlaceholder() ? '' : value()"
     [placeholder]="parameters.placeholder()"
     [maxlength]="parameters.maxLength()"
     [style.textAlign]="parameters.textAlign()"
     [disabled]="parameters.disabled()"
+    [attr.data-test]="name()"
   ></ion-input>
 </div>
