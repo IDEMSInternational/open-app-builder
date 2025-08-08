@@ -1,6 +1,6 @@
 @use "../../mixins";
 
-body[data-theme="plh_facilitator_ph"] {
+@mixin overrides {
   // Text
   plh-tmpl-text {
     .standard {

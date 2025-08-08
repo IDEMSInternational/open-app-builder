@@ -1,9 +1,14 @@
 @use "../utils";
 @use "sass:color";
-@use "./overrides";
+@use "./overrides" as overrides;
 
 @mixin theme-plh_facilitator_ph {
-  [data-theme="plh_facilitator_ph"] {
+  [data-theme="plh_facilitator_ph"],
+  // ion-modal components are dynamically created with content injected into a shadow DOM,
+  // the shadow part must be targeted explicitly to apply styling
+  [data-theme="plh_facilitator_ph"] ion-modal::part(content) {
+    @include overrides.overrides;
+
     /** Authoring variables **/
     $color-primary: hsl(206 68% 22%); //#123d5d
     $color-secondary: hsl(197 39% 60%); //#70aac0
