@@ -1,13 +1,12 @@
 @use "../utils";
 @use "sass:color";
 @use "./overrides" as overrides;
-@use "./typography" as typography;
+@use "./typography";
 
 @mixin theme-plh_kids_kw {
   @include utils.theme-selectors("plh_kids_kw") {
     @include overrides.overrides;
     @include variables;
-    @include typography.fonts;
   }
 }
 
