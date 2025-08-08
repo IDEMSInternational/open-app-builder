@@ -1,6 +1,6 @@
 @use "../../mixins";
 
-body[data-theme="plh_kids_kw"] {
+@mixin overrides {
   // button
   plh-button {
     ion-button {
