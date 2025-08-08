@@ -67,7 +67,6 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
       switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
-      // map((items) => (this.params.startingPosition === "bottom" ? [...items].reverse() : items))
     )
   );
 
