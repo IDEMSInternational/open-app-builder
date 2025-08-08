@@ -37,7 +37,10 @@ export class ThemeService extends SyncServiceBase {
   public setTheme(themeName: string) {
     if (this.availableThemes.includes(themeName)) {
       // console.log("[SET THEME]", themeName);
+
+      // Apply theme to the document root element, i.e. <html data-theme="...">
       document.documentElement.dataset.theme = themeName;
+
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
       this.localStorageService.setProtected("APP_THEME", themeName);
