@@ -3,10 +3,10 @@
     body {
       @content;
     }
-  }
-  // ion-modal components are dynamically created with content injected into a shadow DOM,
-  // the shadow part must be targeted explicitly to apply styling
-  [data-theme="#{$theme-name}"] ion-modal::part(content) {
-    @content;
+    // ion-modal components are dynamically created with content injected into a shadow DOM,
+    // the shadow part must be targeted explicitly to apply styling
+    ion-modal::part(content) {
+      @content;
+    }
   }
 }
