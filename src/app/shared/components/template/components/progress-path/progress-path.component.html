@@ -1,5 +1,5 @@
 <div class="progress-path-wrapper">
-  @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+  @for (childRow of progressRows() | filterDisplayComponent; track trackByRow($index, childRow)) {
     <div
       class="progress-path-child-wrapper"
       [class.odd-index]="$odd"
