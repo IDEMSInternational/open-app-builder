@@ -3,7 +3,7 @@
     <div
       class="progress-path-child-wrapper"
       [class.odd-index]="$odd"
-      [style.margin-bottom]="contentHeight"
+      [style.margin-bottom]="contentHeight()"
       [style.width]="width"
     >
       <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
@@ -21,8 +21,12 @@
         class="path-segment"
         [attr.data-language-direction]="templateTranslateService.languageDirection()"
       >
-        <svg [attr.viewBox]="svgViewBox" stroke="currentColor">
-          <path fill="none" [attr.d]="svgPath" />
+        <svg
+          [attr.viewBox]="svgViewBox()"
+          stroke="currentColor"
+          [style.margin-top]="svgPath() ? '-15px' : '0'"
+        >
+          <path fill="none" [attr.d]="svgPath()" />
         </svg>
       </div>
     </div>
