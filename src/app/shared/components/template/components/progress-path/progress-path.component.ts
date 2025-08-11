@@ -19,9 +19,9 @@ const SIZING = {
   /** Target height for text content */
   textContentHeight: 82,
   /** Adjust x for task card overlap */
-  xOffset: 54,
+  xOffset: 56,
   /** Adjust y for task card overlap */
-  yOffset: 48,
+  yOffset: 56,
 };
 
 @Component({
