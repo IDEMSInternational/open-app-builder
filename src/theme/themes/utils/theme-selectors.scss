@@ -1,3 +1,4 @@
+// Targets the relevant DOM elements in order to apply theme-specific styling rules and custom properties (variables)
 @mixin theme-selectors($theme-name) {
   [data-theme="#{$theme-name}"] {
     body {
