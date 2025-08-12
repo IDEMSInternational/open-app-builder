@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
+import { Device } from "@capacitor/device";
 import { DbService } from "./shared/services/db/db.service";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
@@ -170,7 +171,8 @@ export class AppComponent {
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
     this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
-
+    const { operatingSystem } = await Device.getInfo();
+    this.localStorageService.setProtected("OPERATING_SYSTEM", operatingSystem);
     const appEnv = environment.production ? "production" : "development";
     this.localStorageService.setProtected("APP_ENVIRONMENT", appEnv);
     this.localStorageService.setProtected("APP_HOSTNAME", location.hostname);
