@@ -159,6 +159,11 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event) {
+                // Ignore firestore cache and only emit data from server
+                const isFromCache = event.snapshots.some((doc) => doc.metadata?.fromCache);
+                if (isFromCache) {
+                  return;
+                }
                 const items = event.snapshots.map((doc) => doc.data as ISharedDataCollection);
                 console.log("items received", items);
                 observer.next(items);
@@ -194,6 +199,12 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event && event.snapshot.data) {
+                // Ignore firestore cache and only emit data from server
+                const isFromCache = event.snapshot.metadata?.fromCache;
+                if (isFromCache) {
+                  return;
+                }
+
                 const item = event.snapshot.data as ISharedDataCollection;
                 observer.next(item);
               } else {

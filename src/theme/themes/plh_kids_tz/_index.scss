@@ -1,14 +1,18 @@
 @use "../utils";
 @use "sass:color";
-@use "./overrides";
+@use "./overrides" as overrides;
 
 @mixin theme-plh_kids_tz {
-  [data-theme="plh_kids_tz"] {
+  @include utils.theme-selectors("plh_kids_tz") {
+    @include overrides.overrides;
+
     /** Authoring variables **/
     $color-primary: hsl(209, 64%, 25%); // #174168
     $color-secondary: hsl(40, 97%, 49%); // #F6A504
     $page-background: white;
     $color-green: #92cb44;
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -106,7 +110,9 @@
       $p: $color-primary,
       $s: $color-secondary,
       $bg: $page-background,
-      $g: $color-green
+      $g: $color-green,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
     );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};

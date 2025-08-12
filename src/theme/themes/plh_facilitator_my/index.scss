@@ -2,16 +2,14 @@
 @use "sass:color";
 @use "./overrides" as overrides;
 
-@mixin theme-plh_facilitator_ph {
-  @include utils.theme-selectors("plh_facilitator_ph") {
+@mixin theme-plh_facilitator_my {
+  @include utils.theme-selectors("plh_facilitator_my") {
     @include overrides.overrides;
 
     /** Authoring variables **/
-    $color-primary: hsl(206 68% 22%); //#123d5d
-    $color-secondary: hsl(197 39% 60%); //#70aac0
+    $color-primary: hsl(209, 64%, 25%);
+    $color-secondary: hsl(17, 100%, 44%);
     $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -45,12 +43,12 @@
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
       button-background-primary: var(--ion-color-primary-700),
-      button-background-secondary: var(--color-accent-orange-60),
-      button-background-option: var(--color-accent-orange-40),
+      button-background-secondary: var(--ion-color-secondary-600),
+      button-background-option: var(--ion-color-secondary-700),
       buttons-full-height: 56px,
       buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
-      round-button-background-secondary-mid: var(--color-accent-orange-60),
+      round-button-background-secondary-mid: var(--ion-color-secondary-500),
       round-button-background-secondary-dark: var(--ion-color-primary-200),
       round-button-min-height: 48px,
       round-button-width: 48px,
@@ -66,15 +64,15 @@
       display-group-background-home-light: var(--ion-color-primary-300),
       display-group-background-home-mid: var(--ion-color-primary-600),
       display-group-background-home-dark: var(--ion-color-primary-800),
-      combo-box-background-no-value: var(--ion-color-primary-50),
-      combo-box-background-with-value: var(--ion-color-primary-600),
-      combo-box-selected-value-text: white,
+      combo-box-background-no-value: var(--ion-color-gray-50),
+      combo-box-background-with-value: var(--ion-color-gray-700),
+      combo-box-selected-value-text: var(--ion-color-gray-700),
       accordion-background-highlight: var(--ion-color-primary-600),
       tour-next-button-background: var(--ion-color-primary),
       radio-group-background-selected: var(--ion-color-primary-300),
       radio-group-background-selected-secondary: var(--ion-color-secondary-300),
       ion-item-background: var(--ion-color-gray-light),
-      task-progress-bar-color: var(--ion-color-primary-700),
+      task-progress-bar-color: var(--ion-color-secondary-600),
       progress-path-line-background: var(--ion-color-gray-100),
       // ICONS
       icon-size-small: 16px,
@@ -82,10 +80,6 @@
       icon-size-large: 32px,
       icon-size-extra-large: 40px,
       icon-size-largest: 48px,
-
-      paragraph-margin-small: 8px,
-      paragraph-margin-medium: 12px,
-      paragraph-margin-large: 16px,
 
       // SURFACE COLOUR PALETTE
       color-surface-white: #ffffff,
@@ -95,27 +89,11 @@
       color-outline: #74777c,
       color-outline-variant: #c4c7c9,
 
-      // ORANGE PALETTE
-      color-accent-orange-40: #a53939,
-      color-accent-orange-50: #c6514e,
-      color-accent-orange-60: #e16e68,
-      color-accent-orange-70: #f58f87,
-      color-accent-orange-80: #ffb3ac,
-      color-accent-orange-95: #ffece9,
-
       // BOX SHADOW
-      box-shadow-primary: 0px 1.5px 8px rgba(146, 183, 218, 0.6),
-      box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
-      box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
-      box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
+      box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
+      box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
     );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }

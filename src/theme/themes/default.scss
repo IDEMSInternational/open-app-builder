@@ -2,11 +2,13 @@
 @use "sass:color";
 
 @mixin theme-default {
-  [data-theme="default"] {
+  @include utils.theme-selectors("default") {
     /** Authoring variables **/
     $color-primary: hsl(203, 76%, 21%); // #0d3f5e
     $color-secondary: hsl(31, 100%, 57%); // #fa9529
     $page-background: null;
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -67,7 +69,13 @@
       text-bubble-background-color-4: var(--gradient-yellow-vertical),
       text-bubble-border-color-4: var(--ion-color-secondary-700)
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }
