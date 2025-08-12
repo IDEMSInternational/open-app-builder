@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { RowBaseComponent } from "../../row-base.component";
-import { Parameter, Parameters } from "../../parameters";
+import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { defineParameters, Parameter } from "../../parameters";
 import { IonicModule } from "@ionic/angular";
 
-const parameters: Parameters = {
+const parameters = defineParameters({
   disabled: new Parameter<boolean>("disabled", false),
   isNumberInput: new Parameter<boolean>("number_input", false),
   maxLength: new Parameter<number>("max_length", -1),
@@ -11,7 +11,7 @@ const parameters: Parameters = {
   prioritisePlaceholder: new Parameter<boolean>("prioritise_placeholder", false),
   style: new Parameter<string>("style", ""),
   textAlign: new Parameter<string>("text_align", ""),
-};
+});
 
 @Component({
   selector: "oab-text-box",
@@ -19,13 +19,10 @@ const parameters: Parameters = {
   styleUrls: ["./text-box.component.scss"],
   standalone: true,
   imports: [IonicModule], // todo: ionic standalone does not seem to work.
+  providers: [{ provide: ROW_PARAMETERS, useValue: parameters }],
 })
-export class TextBoxComponent extends RowBaseComponent {
-  constructor() {
-    super(parameters);
-  }
-
+export class TextBoxComponent extends RowBaseComponent<typeof parameters> {
   public async handleChange(value: any) {
-    await this.setValue(value);
+    this.setValue(value);
   }
 }

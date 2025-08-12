@@ -1,18 +1,29 @@
+import { signal, WritableSignal } from "@angular/core";
+
+export function defineParameters<T extends Record<string, Parameter<any>>>(p: T) {
+  return p;
+}
+
+export type Parameters = Record<string, Parameter<any>>;
+
 export class Parameter<T> {
   public name: string;
-  public value: T;
+  public value: WritableSignal<T>;
 
-  constructor(name: string, value: T) {
+  constructor(name: string, defaultValue: T) {
     this.name = name;
-    this.value = value;
+    this.value = signal(defaultValue);
   }
 
-  /**
-   * Casts the value to the type of this parameter.
-   * @param value The value to cast.
-   * @returns The casted value.
-   */
-  public cast(value: any): T {
+  public setValue(value: T) {
+    this.value.set(this.cast(value));
+  }
+
+  clone(): Parameter<T> {
+    return new Parameter<T>(this.name, this.value());
+  }
+
+  private cast(value: any): T {
     const type = typeof this.value;
     switch (type) {
       case "boolean":
@@ -27,6 +38,10 @@ export class Parameter<T> {
   }
 }
 
-export class Parameters {
-  [key: string]: Parameter<any>;
+export function cloneParameters<T extends Parameters>(params: T): T {
+  const out: any = {};
+  for (const key of Object.keys(params)) {
+    out[key] = params[key].clone();
+  }
+  return out as T;
 }

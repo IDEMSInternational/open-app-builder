@@ -2,7 +2,9 @@ import {
   Component,
   computed,
   HostBinding,
+  Inject,
   inject,
+  InjectionToken,
   input,
   OnDestroy,
   OnInit,
@@ -12,14 +14,16 @@ import {
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row.service";
-import { Parameters } from "./parameters";
+import { cloneParameters, Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
+
+export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
 })
-export abstract class RowBaseComponent implements OnInit, OnDestroy {
+export abstract class RowBaseComponent<TParams extends Parameters> implements OnInit, OnDestroy {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
   public name = computed(() =>
@@ -27,7 +31,7 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy {
   );
   public value: Signal<any>;
   public condition = signal(true);
-  public parameters: any = {};
+  public parameters: TParams;
   public actions; // todo: implement actions
 
   private dependantVariables: string[] = [];
@@ -43,7 +47,11 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy {
     return this.condition() ? "" : "none";
   }
 
-  constructor(private params: Parameters) {}
+  constructor(@Inject(ROW_PARAMETERS) parameters: TParams) {
+    if (parameters) {
+      this.parameters = cloneParameters(parameters);
+    }
+  }
 
   /**
    * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
@@ -55,7 +63,7 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy {
     this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
 
     // Initialize the evaluator with a context
-    this.setParameters(this.params);
+    this.setParameters();
     this.setDependencies();
     this.watchDependencies();
 
@@ -74,28 +82,17 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy {
     );
   }
 
-  private setParameters(parameters: Parameters) {
+  private setParameters() {
+    if (!this.parameters) return;
     const rowParams = this.row().parameter_list;
 
-    Object.keys(parameters).forEach((key) => {
-      const param = parameters[key];
-
-      if (!rowParams || !rowParams.hasOwnProperty(param.name)) {
-        // Set default value if parameter is not defined in row
-        this.parameters[key] = signal(param.value);
-        return;
-      }
-
-      const value = this.rowService.evaluateParameter(this.row(), param.name, this.namespace());
-      this.parameters[key] = signal(param.cast(value));
-    });
-  }
-
-  private updateParameters(): void {
     Object.keys(this.parameters).forEach((key) => {
       const param = this.parameters[key];
-      const value = this.rowService.evaluateParameter(this.row(), key, this.namespace());
-      param.set(value);
+
+      if (rowParams && rowParams.hasOwnProperty(param.name)) {
+        const value = this.rowService.evaluateParameter(this.row(), param.name, this.namespace());
+        this.parameters[key].setValue(value);
+      }
     });
   }
 
@@ -116,7 +113,7 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy {
       const subscribe = this.variableStore.watch(name).subscribe(() => {
         this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
         this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
-        this.updateParameters();
+        this.setParameters();
       });
 
       this.subscriptions.push(subscribe);
