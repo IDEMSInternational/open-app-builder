@@ -3,7 +3,8 @@
   "ignorePatterns": [
     "packages/api/**/*",
     "packages/@idemsInternational/**/*",
-    "src/app/shared/components/template/components/odk-form/**"
+    "src/app/shared/components/template/components/odk-form/**",
+    "src/assets/**/*.js"
   ],
   "plugins": ["jasmine", "@typescript-eslint"],
   "env": {
