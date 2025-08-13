@@ -1,6 +1,6 @@
 @use "../../mixins";
 
-body[data-theme="plh_kids_tz"] {
+@mixin overrides {
   /** COMPONENTS **/
 
   // Module list item
