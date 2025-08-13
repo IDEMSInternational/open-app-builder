@@ -2,7 +2,7 @@
 @use "sass:color";
 
 @mixin theme-early_family_math {
-  [data-theme="early_family_math"] {
+  @include utils.theme-selectors("early_family_math") {
     /** Authoring variables **/
     $color-primary: hsl(203 76% 38%); // #1874ac
     $color-secondary: hsl(317 48% 48%); //#b53f94

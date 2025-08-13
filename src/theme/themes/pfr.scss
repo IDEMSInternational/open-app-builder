@@ -2,7 +2,7 @@
 @use "sass:color";
 
 @mixin theme-pfr {
-  [data-theme="pfr"] {
+  @include utils.theme-selectors("pfr") {
     /** Authoring variables **/
     $color-primary: hsl(0 0% 0%);
     $color-secondary: hsl(17 100% 44%); // #e24000
