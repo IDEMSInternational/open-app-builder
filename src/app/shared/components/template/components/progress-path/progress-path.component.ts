@@ -90,7 +90,7 @@ export class TmplProgressPathComponent extends TemplateBaseComponent implements 
     const curved = () =>
       `
     M ${xOffset},${yOffset}
-    c 0,140 280,-80 252,160 1
+    c 0,140 280,-80 252,160
     v 80
     `.trim();
 
