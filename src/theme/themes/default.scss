@@ -2,7 +2,7 @@
 @use "sass:color";
 
 @mixin theme-default {
-  [data-theme="default"] {
+  @include utils.theme-selectors("default") {
     /** Authoring variables **/
     $color-primary: hsl(203, 76%, 21%); // #0d3f5e
     $color-secondary: hsl(31, 100%, 57%); // #fa9529

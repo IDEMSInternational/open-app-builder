@@ -1,9 +1,11 @@
 @use "../utils";
 @use "sass:color";
-@use "./overrides";
+@use "./overrides" as overrides;
 
 @mixin theme-plh_kids_tz {
-  [data-theme="plh_kids_tz"] {
+  @include utils.theme-selectors("plh_kids_tz") {
+    @include overrides.overrides;
+
     /** Authoring variables **/
     $color-primary: hsl(209, 64%, 25%); // #174168
     $color-secondary: hsl(40, 97%, 49%); // #F6A504
