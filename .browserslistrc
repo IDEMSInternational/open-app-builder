@@ -5,7 +5,13 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-# Minimum browser versions Ionic officially supports
+# Minimum browser supported
+
+#                          NOTE - Open App Builder
+# Versions specified will determine which polyfills angular includes when generating bundles
+# Increasing version will result in smaller bundle size, but lose compatibility with older devices
+# Any changes here should be reflected in user prompt `android\app\src\main\java\utils\WebViewChecker.java`
+
 Chrome >= 89
 ChromeAndroid >= 89
 Firefox >= 75
