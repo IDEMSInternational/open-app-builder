@@ -1,6 +1,6 @@
 import { Component, computed, effect, signal, Signal } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
@@ -10,14 +10,17 @@ import { FlowTypes } from "packages/data-models";
 interface IProgressPathParams {
   /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
   variant: "basic" | "wavy" | "curved";
+  /**
+   * TEMPLATE_PARAMETER: "gap_height".
+   * The vertical gap between child steps, in pixels. E.g. to leave space for text. Default 82
+   */
+  gapHeight: number;
 }
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
   /** Total width for container */
   widthPx: 364,
-  /** Target height for text content */
-  textContentHeight: 82,
   /** Adjust x for task card overlap */
   xOffset: 56,
   /** Adjust y for task card overlap */
@@ -57,6 +60,7 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
       variant: getStringParamFromTemplateRow(this._row, "variant", "wavy")
         .split(",")
         .join(" ") as IProgressPathParams["variant"],
+      gapHeight: getNumberParamFromTemplateRow(this._row, "gap_height", 82),
     };
   }
 
@@ -80,10 +84,10 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
    */
   private generateSVGPath(variant: "basic" | "curved" | "wavy" = "wavy") {
     // arbitrary values used to make base width/height fit
-    const { widthPx, xOffset, yOffset, textContentHeight } = SIZING;
+    const { widthPx, xOffset, yOffset } = SIZING;
 
     // adjust viewbox to include both title content and 100px card (+overlap)
-    const viewboxHeight = textContentHeight + 128;
+    const viewboxHeight = this.params().gapHeight + 128;
 
     // SVG Generation (https://www.aleksandrhovhannisyan.com/blog/svg-tutorial/)
 
@@ -129,6 +133,6 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
         this.svgPath.set(wavy());
     }
     this.svgViewBox.set(`0 0 ${widthPx} ${viewboxHeight}`);
-    this.contentHeight.set(`${textContentHeight}px`);
+    this.contentHeight.set(`${this.params().gapHeight}px`);
   }
 }
