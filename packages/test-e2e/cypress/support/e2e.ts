@@ -16,3 +16,15 @@
 // Import commands.js using ES2015 syntax:
 import "./commands";
 import "./errors";
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to select DOM element by data-test attribute.
+       * @example cy.getRow('greeting')
+       */
+      getDataTest(value: string): Chainable<JQuery<HTMLElement>>;
+    }
+  }
+}
