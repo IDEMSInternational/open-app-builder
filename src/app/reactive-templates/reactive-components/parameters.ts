@@ -19,10 +19,6 @@ export class Parameter<T> {
     this.value.set(this.cast(value));
   }
 
-  clone(): Parameter<T> {
-    return new Parameter<T>(this.name, this.value());
-  }
-
   private cast(value: any): T {
     const type = typeof this.value;
     switch (type) {
@@ -36,12 +32,4 @@ export class Parameter<T> {
         return value as T;
     }
   }
-}
-
-export function cloneParameters<T extends Parameters>(params: T): T {
-  const out: any = {};
-  for (const key of Object.keys(params)) {
-    out[key] = params[key].clone();
-  }
-  return out as T;
 }

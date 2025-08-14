@@ -4,11 +4,15 @@ import { defineParameters, Parameter } from "../../parameters";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
-const parameters = defineParameters({
-  style: new Parameter("style", ""),
-  textAlign: new Parameter("text_align", null),
-  type: new Parameter("type", "marked"),
-});
+const parameters = () =>
+  defineParameters({
+    style: new Parameter("style", ""),
+    textAlign: new Parameter<"start" | "end" | "left" | "right" | "center" | "justify">(
+      "text_align",
+      null
+    ),
+    type: new Parameter("type", "marked"),
+  });
 
 @Component({
   selector: "oab-text",
@@ -19,9 +23,12 @@ const parameters = defineParameters({
     NgStyle,
     TemplatePipesModule, // todo: make pipes standalone
   ],
-  providers: [{ provide: ROW_PARAMETERS, useValue: parameters }],
+  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class TextComponent extends RowBaseComponent<typeof parameters> implements OnInit {
+export class TextComponent
+  extends RowBaseComponent<ReturnType<typeof parameters>>
+  implements OnInit
+{
   public hasTextValue: Signal<boolean>;
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@ import {
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row.service";
-import { cloneParameters, Parameters } from "./parameters";
+import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
@@ -48,9 +48,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   }
 
   constructor(@Inject(ROW_PARAMETERS) parameters: TParams) {
-    if (parameters) {
-      this.parameters = cloneParameters(parameters);
-    }
+    this.parameters = parameters;
   }
 
   /**
