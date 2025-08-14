@@ -5,9 +5,9 @@ import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
 const parameters = defineParameters({
-  style: new Parameter<string>("style", ""),
-  textAlign: new Parameter<string>("text_align", null),
-  type: new Parameter<string>("type", "marked"),
+  style: new Parameter("style", ""),
+  textAlign: new Parameter("text_align", null),
+  type: new Parameter("type", "marked"),
 });
 
 @Component({

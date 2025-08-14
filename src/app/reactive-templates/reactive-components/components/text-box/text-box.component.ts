@@ -4,13 +4,13 @@ import { defineParameters, Parameter } from "../../parameters";
 import { IonicModule } from "@ionic/angular";
 
 const parameters = defineParameters({
-  disabled: new Parameter<boolean>("disabled", false),
-  isNumberInput: new Parameter<boolean>("number_input", false),
-  maxLength: new Parameter<number>("max_length", -1),
-  placeholder: new Parameter<string>("placeholder", ""),
-  prioritisePlaceholder: new Parameter<boolean>("prioritise_placeholder", false),
-  style: new Parameter<string>("style", ""),
-  textAlign: new Parameter<string>("text_align", ""),
+  disabled: new Parameter("disabled", false),
+  isNumberInput: new Parameter("number_input", false),
+  maxLength: new Parameter("max_length", -1),
+  placeholder: new Parameter("placeholder", ""),
+  prioritisePlaceholder: new Parameter("prioritise_placeholder", false),
+  style: new Parameter("style", ""),
+  textAlign: new Parameter("text_align", ""),
 });
 
 @Component({
