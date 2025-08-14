@@ -31,7 +31,6 @@ const SIZING = {
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent {
   public params: Signal<IProgressPathParams> = computed(() => {
-    console.log("parameterList", this.parameterList());
     return this.getParams(this.parameterList());
   });
 
