@@ -20,7 +20,7 @@ $path-stroke-width: 28px;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: -1;
+    z-index: 1;
     svg {
       inline-size: 100%;
       block-size: 100%;
@@ -40,6 +40,7 @@ $path-stroke-width: 28px;
     padding: 0 18px;
     display: flex;
     flex-direction: column;
+    z-index: 2;
   }
   .progress-path-child-content {
     align-self: flex-start;
