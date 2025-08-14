@@ -22,7 +22,7 @@
         [attr.data-language-direction]="templateTranslateService.languageDirection()"
       >
         <svg
-          [attr.viewBox]="svgViewBox()"
+          [attr.viewBox]="svgViewBox() || '0 0 0 0'"
           stroke="currentColor"
           [style.margin-top]="svgPath() ? '-15px' : '0'"
         >
