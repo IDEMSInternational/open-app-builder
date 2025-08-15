@@ -81,7 +81,6 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       "background_image_position",
       "top"
     );
-    const backgroundSize = "contain";
-    return { backgroundImage, backgroundPosition, backgroundSize };
+    return { backgroundImage, backgroundPosition };
   }
 }
