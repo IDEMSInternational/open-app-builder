@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../../base";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../../utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "../../../../../utils";
 import { NgStyle } from "@angular/common";
 import { TemplateAssetService } from "../../../services/template-asset.service";
 
@@ -23,6 +27,8 @@ interface IDisplayGroupParams {
   backgroundImagePosition: string;
   /** TEMPLATE PARAMETER: "sticky". Set to "top" or "bottom" to make the display group a sticky inline header/footer */
   sticky: "top" | "bottom" | null;
+  /** TEMPLATE PARAMETER: "ignore_safe_area". Use in conjunction with "sticky" to ignore the safe area of the device */
+  ignoreSafeArea: boolean;
 }
 
 @Component({
@@ -57,6 +63,11 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       .join(" ")
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
     this.params.sticky = getStringParamFromTemplateRow(this._row, "sticky", null) as any;
+    this.params.ignoreSafeArea = getBooleanParamFromTemplateRow(
+      this._row,
+      "ignore_safe_area",
+      false
+    );
     this.type = this.getTypeFromStyles();
     this.backgroundImageStyles = this.getBackgroundImageStyles();
   }

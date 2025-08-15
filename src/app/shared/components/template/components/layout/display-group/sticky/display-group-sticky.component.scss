@@ -5,11 +5,22 @@
   left: 0;
   width: 100vw;
   z-index: 10;
+}
 
-  &[sticky-position="top"] {
-    top: var(--pop-up-top-padding, 0);
-  }
-  &[sticky-position="bottom"] {
-    bottom: var(--pop-up-bottom-padding, 0);
-  }
+// Top sticky positioning
+:host[sticky-position="top"] {
+  top: var(--pop-up-top-padding, 0);
+}
+
+:host[sticky-position="top"][ignore-safe-area="true"] {
+  top: 0;
+}
+
+// Bottom sticky positioning
+:host[sticky-position="bottom"] {
+  bottom: var(--pop-up-bottom-padding, 0);
+}
+
+:host[sticky-position="bottom"][ignore-safe-area="true"] {
+  bottom: 0;
 }
