@@ -1,23 +1,24 @@
 import { Component, computed, effect, signal } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
-import * as z from "zod";
 
-import { snakeToCamelKeys } from "src/app/shared/utils";
-import { TemplateBaseComponent } from "../base";
 import { TemplateTranslateService } from "../../services/template-translate.service";
+import {
+  defineAuthorParameterSchema,
+  parseTemplateParameterList,
+  InferParamSchemaType,
+} from "../../utils";
+import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "../data-items/data-items.service";
 
-const AuthorParamMap = z
-  .object({
-    /** Line style variant. Option "wavy", "basic", "curved". Default "wavy" */
-    variant: z.enum(["wavy", "basic", "curved"]).catch("wavy"),
-    /** Vertical gap between child steps, in pixels. Default 82 */
-    vertical_spacing: z.string().transform(Number).catch(82),
-  })
-  .transform((data) => snakeToCamelKeys(data));
+const ParamSchema = defineAuthorParameterSchema((coerce) => ({
+  /** Line style variant. Option "wavy", "basic", "curved". Default "wavy" */
+  variant: coerce.allowedValues(["wavy", "basic", "curved"], "wavy"),
+  /** Vertical gap between child steps, in pixels. Default 82 */
+  vertical_spacing: coerce.number(82),
+}));
 
-type IProgressPathParams = z.infer<typeof AuthorParamMap>;
+type IProgressPathParams = InferParamSchemaType<typeof ParamSchema>;
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
@@ -35,7 +36,7 @@ const SIZING = {
   styleUrls: ["./progress-path.component.scss"],
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent {
-  public params = computed(() => AuthorParamMap.parse(this.parameterList()));
+  public params = computed(() => parseTemplateParameterList(this.parameterList(), ParamSchema));
 
   public svgPath = signal<string>("");
   public svgViewBox = signal<string>("");
