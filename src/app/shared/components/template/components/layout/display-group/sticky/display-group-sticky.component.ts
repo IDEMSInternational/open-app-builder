@@ -18,7 +18,7 @@ import {
  */
 export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy {
   position = input.required<"top" | "bottom">();
-  ignoreSafeArea = input<boolean>(true);
+  ignoreSafeArea = input<boolean>(false);
   height = signal(0);
   // use hostBinding to specify host top/bottom as signals do not nicely
   // map to hostAttribute https://github.com/angular/angular/issues/53888
