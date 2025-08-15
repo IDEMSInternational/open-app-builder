@@ -11,10 +11,10 @@ interface IProgressPathParams {
   /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
   variant: "basic" | "wavy" | "curved";
   /**
-   * TEMPLATE_PARAMETER: "gap_height".
+   * TEMPLATE_PARAMETER: "vertical_spacing".
    * The vertical gap between child steps, in pixels. E.g. to leave space for text. Default 82
    */
-  gapHeight: number;
+  verticalSpacing: number;
 }
 
 // HACK - hardcoded sizing values to make content fit reasonably well
@@ -33,9 +33,7 @@ const SIZING = {
   styleUrls: ["./progress-path.component.scss"],
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent {
-  public params: Signal<IProgressPathParams> = computed(() => {
-    return this.getParams(this.parameterList());
-  });
+  public params = computed(() => this.mapParams(this.parameterList()));
 
   public svgPath = signal<string>("");
   public svgViewBox = signal<string>("");
@@ -49,18 +47,19 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     super();
     effect(
       () => {
-        this.generateSVGPath(this.params().variant);
+        const { variant, verticalSpacing } = this.params();
+        this.generateSVGPath(variant, verticalSpacing);
       },
       { allowSignalWrites: true }
     );
   }
 
-  private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IProgressPathParams {
+  private mapParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IProgressPathParams {
     return {
-      variant: getStringParamFromTemplateRow(this._row, "variant", "wavy")
-        .split(",")
-        .join(" ") as IProgressPathParams["variant"],
-      gapHeight: getNumberParamFromTemplateRow(this._row, "gap_height", 82),
+      variant: (authorParams?.variant?.split(",").join(" ") ||
+        "wavy") as IProgressPathParams["variant"],
+      verticalSpacing: (Number(authorParams?.vertical_spacing) ||
+        82) as IProgressPathParams["verticalSpacing"],
     };
   }
 
@@ -74,7 +73,12 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) =>
+        this.dataItemsService.getItemsObservable(
+          row,
+          this.parentContainerComponentRef.templateRowMap
+        )
+      )
     )
   );
 
@@ -82,12 +86,15 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
    * Generate a base SVG segment used to connect 2 progress items together
    * Roughly a horizontal line and smooth bend, adjusted for sizing
    */
-  private generateSVGPath(variant: "basic" | "curved" | "wavy" = "wavy") {
+  private generateSVGPath(
+    variant: IProgressPathParams["variant"] = "wavy",
+    verticalSpacing: IProgressPathParams["verticalSpacing"] = 82
+  ) {
     // arbitrary values used to make base width/height fit
     const { widthPx, xOffset, yOffset } = SIZING;
 
     // adjust viewbox to include both title content and 100px card (+overlap)
-    const viewboxHeight = this.params().gapHeight + 128;
+    const viewboxHeight = verticalSpacing + 128;
 
     // SVG Generation (https://www.aleksandrhovhannisyan.com/blog/svg-tutorial/)
 
@@ -118,8 +125,8 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     const curved = () =>
       `
     M ${xOffset},${yOffset}
-    c 0,140 280,-80 252,160
-    v 80
+    c 0,140 260,-80 252,160
+    v ${viewboxHeight - yOffset - 32}
     `.trim();
 
     switch (variant) {
@@ -133,6 +140,6 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
         this.svgPath.set(wavy());
     }
     this.svgViewBox.set(`0 0 ${widthPx} ${viewboxHeight}`);
-    this.contentHeight.set(`${this.params().gapHeight}px`);
+    this.contentHeight.set(`${verticalSpacing}px`);
   }
 }
