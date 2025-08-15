@@ -109,6 +109,7 @@
     "swiper": "^8.4.7",
     "trusted-types": "^2.0.0",
     "uuid": "^11.0.3",
+    "zod": "^4.0.17",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {

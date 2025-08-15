@@ -168,6 +168,36 @@ export function mapToJson<T = any>(map: Map<string, any>) {
   return json;
 }
 
+// type inference to convert a key in snake_case to key in camelCase
+type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
+  ? `${T}${Capitalize<SnakeToCamel<U>>}`
+  : S;
+
+// type inference when converting all keys in an object from snake_case to camelCase
+type ISnakeToCamelKeys<T> =
+  T extends Array<infer U>
+    ? ISnakeToCamelKeys<U>[]
+    : T extends object
+      ? {
+          [K in keyof T as K extends string ? SnakeToCamel<K> : K]: ISnakeToCamelKeys<T[K]>;
+        }
+      : T;
+function snakeToCamel(str: string): string {
+  return str.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
+}
+
+/** Convert all keys in an object from snake_case to camelCase */
+export function snakeToCamelKeys<T>(obj: T): ISnakeToCamelKeys<T> {
+  if (Array.isArray(obj)) {
+    return obj.map((v) => snakeToCamelKeys(v)) as ISnakeToCamelKeys<T>;
+  } else if (obj && typeof obj === "object" && obj.constructor === Object) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [snakeToCamel(k), snakeToCamelKeys(v)])
+    ) as ISnakeToCamelKeys<T>;
+  }
+  return obj as ISnakeToCamelKeys<T>;
+}
+
 /**
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)
