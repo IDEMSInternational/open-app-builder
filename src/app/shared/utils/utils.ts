@@ -168,37 +168,11 @@ export function mapToJson<T = any>(map: Map<string, any>) {
   return json;
 }
 
-// type inference to convert a key in snake_case to key in camelCase
-type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
-  ? `${T}${Capitalize<SnakeToCamel<U>>}`
-  : S;
-
-// type inference when converting all keys in an object from snake_case to camelCase
-type ISnakeToCamelKeys<T> =
-  T extends Array<infer U>
-    ? ISnakeToCamelKeys<U>[]
-    : T extends object
-      ? {
-          [K in keyof T as K extends string ? SnakeToCamel<K> : K]: ISnakeToCamelKeys<T[K]>;
-        }
-      : T;
-function snakeToCamel(str: string): string {
-  return str.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
-}
-
-/** Convert all keys in an object from snake_case to camelCase */
-export function snakeToCamelKeys<T>(obj: T): ISnakeToCamelKeys<T> {
-  if (Array.isArray(obj)) {
-    return obj.map((v) => snakeToCamelKeys(v)) as ISnakeToCamelKeys<T>;
-  } else if (obj && typeof obj === "object" && obj.constructor === Object) {
-    return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => [snakeToCamel(k), snakeToCamelKeys(v)])
-    ) as ISnakeToCamelKeys<T>;
-  }
-  return obj as ISnakeToCamelKeys<T>;
-}
-
 /**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src\app\shared\components\template\utils\parameter-list.utils.ts
+ *
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)
  * */
@@ -210,6 +184,12 @@ export function getParamFromTemplateRow(
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] : _default;
 }
+
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src\app\shared\components\template\utils\parameter-list.utils.ts
+ */
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -219,7 +199,13 @@ export function getStringParamFromTemplateRow(
   return paramValue ? `${paramValue}` : paramValue;
 }
 
-/** Return a specific parameter, parsed as a number */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src\app\shared\components\template\utils\parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a number
+ **/
 export function getNumberParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -228,7 +214,12 @@ export function getNumberParamFromTemplateRow(
   return Number(getParamFromTemplateRow(row, name, `${_default}`));
 }
 
-/** Return a specific parameter, parsed as a boolean */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src\app\shared\components\template\utils\parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a boolean */
 export function getBooleanParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -238,6 +229,11 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src\app\shared\components\template\utils\parameter-list.utils.ts
+ */
 export function getAnswerListParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
