@@ -18,12 +18,17 @@ import {
  */
 export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy {
   position = input.required<"top" | "bottom">();
+  ignoreSafeArea = input<boolean>(true);
   height = signal(0);
   // use hostBinding to specify host top/bottom as signals do not nicely
   // map to hostAttribute https://github.com/angular/angular/issues/53888
   @HostBinding("attr.sticky-position")
   get stickyPosition() {
     return this.position();
+  }
+  @HostBinding("attr.ignore-safe-area")
+  get shouldIgnoreSafeArea() {
+    return this.ignoreSafeArea();
   }
 
   private resizeObserver = new ResizeObserver((entries) => this.handleSizeChange(entries));
