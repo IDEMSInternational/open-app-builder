@@ -1,11 +1,14 @@
-import { Component, computed, effect, signal, Signal } from "@angular/core";
+import { Component, computed, effect, signal } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
-import { FlowTypes } from "packages/data-models";
+
+interface IAuthorParams {
+  variant?: string;
+  vertical_spacing?: string;
+}
 
 interface IProgressPathParams {
   /** TEMPLATE_PARAMETER: "variant". Default "wavy" */
@@ -54,12 +57,11 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
     );
   }
 
-  private mapParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IProgressPathParams {
+  private mapParams(authorParams: IAuthorParams = {}): IProgressPathParams {
+    const { variant, vertical_spacing } = authorParams;
     return {
-      variant: (authorParams?.variant?.split(",").join(" ") ||
-        "wavy") as IProgressPathParams["variant"],
-      verticalSpacing: (Number(authorParams?.vertical_spacing) ||
-        82) as IProgressPathParams["verticalSpacing"],
+      variant: (variant as IProgressPathParams["variant"]) || "wavy",
+      verticalSpacing: Number(vertical_spacing || 82),
     };
   }
 
