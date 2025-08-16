@@ -171,7 +171,7 @@ export function mapToJson<T = any>(map: Map<string, any>) {
 /**
  * @deprecated from v0.22.0
  * Prefer to use `defineAuthorParameterSchema` method in
- * src\app\shared\components\template\utils\parameter-list.utils.ts
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
  *
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)
@@ -188,7 +188,7 @@ export function getParamFromTemplateRow(
 /**
  * @deprecated from v0.22.0
  * Prefer to use `defineAuthorParameterSchema` method in
- * src\app\shared\components\template\utils\parameter-list.utils.ts
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
  */
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
@@ -202,7 +202,7 @@ export function getStringParamFromTemplateRow(
 /**
  * @deprecated from v0.22.0
  * Prefer to use `defineAuthorParameterSchema` method in
- * src\app\shared\components\template\utils\parameter-list.utils.ts
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
  *
  * Return a specific parameter, parsed as a number
  **/
@@ -217,7 +217,7 @@ export function getNumberParamFromTemplateRow(
 /**
  * @deprecated from v0.22.0
  * Prefer to use `defineAuthorParameterSchema` method in
- * src\app\shared\components\template\utils\parameter-list.utils.ts
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
  *
  * Return a specific parameter, parsed as a boolean */
 export function getBooleanParamFromTemplateRow(
@@ -232,7 +232,7 @@ export function getBooleanParamFromTemplateRow(
 /**
  * @deprecated from v0.22.0
  * Prefer to use `defineAuthorParameterSchema` method in
- * src\app\shared\components\template\utils\parameter-list.utils.ts
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
  */
 export function getAnswerListParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
