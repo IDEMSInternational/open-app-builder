@@ -3,7 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
 
 import { TemplateTranslateService } from "../../services/template-translate.service";
-import { withAuthorParams, defineAuthorParameterSchema } from "../base";
+import { TemplateBaseComponentWithParams, defineAuthorParameterSchema } from "../base";
 import { DataItemsService } from "../data-items/data-items.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -31,7 +31,7 @@ const SIZING = {
   templateUrl: "./progress-path.component.html",
   styleUrls: ["./progress-path.component.scss"],
 })
-export class TmplProgressPathComponent extends withAuthorParams(AuthorSchema) {
+export class TmplProgressPathComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public svgPath = signal<string>("");
   public svgViewBox = signal<string>("");
   public contentHeight = signal<string>("");
