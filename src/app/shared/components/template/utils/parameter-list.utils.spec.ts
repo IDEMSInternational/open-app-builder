@@ -1,12 +1,15 @@
 import { defineAuthorParameterSchema, parseTemplateParameterList } from "./parameter-list.utils"; // adjust path
 
-const getTestSchema = () =>
+const MOCK_SCHEMA = () =>
   defineAuthorParameterSchema((coerce) => ({
     allowed_values_param: coerce.allowedValues(["v1", "v2"], "v1"),
     any_param: coerce.any({}),
     boolean_param: coerce.boolean(),
     comma_list_param: coerce.commaSeparatedList(),
-    custom_param: coerce.custom((v) => v.split("-").map(Number), []),
+    custom_param: coerce.custom<number[]>((v) => {
+      if (Array.isArray(v)) return v;
+      return v.split("-").map(Number);
+    }, []),
     number_param: coerce.number(-1),
     string_param: coerce.string("fallback"),
   }));
@@ -16,19 +19,16 @@ const getTestSchema = () =>
  * yarn ng test --include src/app/shared/components/template/utils/parameter-list.utils.spec.ts
  */
 describe("defineAuthorParameterSchema", () => {
-  let schema: ReturnType<typeof getTestSchema>;
-
-  beforeEach(() => {
-    schema = getTestSchema();
-  });
-
   it("coerce allowed_values", () => {
     const consoleSpy = spyOn(console, "warn");
-    const { allowed_values_param } = schema.parse({
+    const testSchema = MOCK_SCHEMA().pick({ allowed_values_param: true });
+    // from string (not allowed value)
+    const { allowed_values_param } = testSchema.parse({
       allowed_values_param: "not_allowed",
     });
     expect(allowed_values_param).toEqual("v1");
-    // console warning
+
+    // with console warning
     expect(consoleSpy).toHaveBeenCalledTimes(1);
     expect(consoleSpy.calls.first().args).toEqual([
       "[Parameter List] invalid value",
@@ -39,63 +39,79 @@ describe("defineAuthorParameterSchema", () => {
       },
     ]);
     // fallback
-    expect(schema.parse({}).allowed_values_param).toEqual("v1");
+    expect(testSchema.parse({}).allowed_values_param).toEqual("v1");
   });
 
   it("coerce boolean", () => {
-    expect(schema.parse({ boolean_param: " TrUe " }).boolean_param).toEqual(true);
-    expect(schema.parse({ boolean_param: 1 }).boolean_param).toEqual(false);
+    const testSchema = MOCK_SCHEMA().pick({ boolean_param: true });
+    // from string
+    expect(testSchema.parse({ boolean_param: " TrUe " }).boolean_param).toEqual(true);
+    expect(testSchema.parse({ boolean_param: "1" }).boolean_param).toEqual(false);
+    // pre-parsed
+    expect(testSchema.parse({ boolean_param: true }).boolean_param).toEqual(true);
     // fallback
-    expect(schema.parse({}).boolean_param).toEqual(false);
+    expect(testSchema.parse({}).boolean_param).toEqual(false);
   });
 
   it("coerce commaSeparatedList", () => {
-    const { comma_list_param } = schema.parse({
-      comma_list_param: "a, b , c",
-    });
-    expect(comma_list_param).toEqual(["a", "b", "c"]);
+    const testSchema = MOCK_SCHEMA().pick({ comma_list_param: true });
+    // from string
+    expect(
+      testSchema.parse({
+        comma_list_param: "a, b , c",
+      }).comma_list_param
+    ).toEqual(["a", "b", "c"]);
+    // pre-parsed
+    expect(testSchema.parse({ comma_list_param: ["a", "b"] }).comma_list_param).toEqual(["a", "b"]);
     // fallback
-    expect(schema.parse({}).comma_list_param).toEqual([]);
+    expect(testSchema.parse({}).comma_list_param).toEqual([]);
   });
 
   it("coerce custom", () => {
-    const customStr = "1-2-3-4";
-    const { custom_param } = schema.parse({
-      custom_param: customStr,
+    const testSchema = MOCK_SCHEMA().pick({ custom_param: true });
+    // from string
+    const { custom_param } = testSchema.parse({
+      custom_param: "1-2-3-4",
     });
     expect(custom_param).toEqual([1, 2, 3, 4]);
+    // pre-parsed
+    expect(testSchema.parse({ custom_param: [1, 2, 3, 4] }).custom_param).toEqual([1, 2, 3, 4]);
     // fallback
-    expect(schema.parse({}).custom_param).toEqual([]);
+    expect(testSchema.parse({}).custom_param).toEqual([]);
   });
 
   it("coerce number", () => {
-    const { number_param } = schema.parse({ number_param: "42" });
-    expect(number_param).toEqual(42);
+    const testSchema = MOCK_SCHEMA().pick({ number_param: true });
+    // from string
+    expect(testSchema.parse({ number_param: "42" }).number_param).toEqual(42);
+    // pre-parsed
+    expect(testSchema.parse({ number_param: 5 }).number_param).toEqual(5);
     // fallback
-    expect(schema.parse({}).number_param).toEqual(-1);
+    expect(testSchema.parse({}).number_param).toEqual(-1);
   });
 
   it("coerce string", () => {
-    const { string_param } = schema.parse({ string_param: "hello" });
-    expect(string_param).toEqual("hello");
+    const testSchema = MOCK_SCHEMA().pick({ string_param: true });
+    // from string
+    expect(testSchema.parse({ string_param: "hello" }).string_param).toEqual("hello");
     // fallback
-    expect(schema.parse({}).string_param).toEqual("fallback");
+    expect(testSchema.parse({}).string_param).toEqual("fallback");
   });
 
   it("coerce any", () => {
-    const obj = { a: 1 };
-    const { any_param } = schema.parse({ any_param: obj });
+    const testSchema = MOCK_SCHEMA().pick({ any_param: true });
+    const { any_param } = testSchema.parse({ any_param: { a: 1 } });
     expect(any_param).toEqual({ a: 1 });
     // fallback
-    expect(schema.parse({}).any_param).toEqual({});
+    expect(testSchema.parse({}).any_param).toEqual({});
   });
 });
 
 describe("parseTemplateParameterList", () => {
-  let schema: ReturnType<typeof getTestSchema>;
+  let schema: ReturnType<typeof MOCK_SCHEMA>;
 
   beforeEach(() => {
-    schema = getTestSchema();
+    schema = MOCK_SCHEMA();
   });
 
   it("converts snake_case to camelCase", () => {
