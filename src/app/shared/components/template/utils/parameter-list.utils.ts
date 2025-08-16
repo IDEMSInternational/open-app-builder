@@ -48,16 +48,18 @@ const coerceMethods = {
   /**
    *  Allow any value, e.g. could be inline string or parsed dynamic value ref.
    *  This is generally discouraged, ideally custom transformers should be used to handle
-   *  comple cases
+   *  comple cases.
+   *  NOTE - use `.default()` to ensure key populated as catch never triggered
    **/
-  any: () => z.any(),
+  any: (fallback: any) => z.any().default(fallback),
 
   // TODO - provide more options to handle data that may already be parsed from dynamic variables
   // These should only be added as use-cases are detected in specific components
 };
 
 /**
- * Specify allowed authoring parameter values, type coersion and default values
+ * Create zod object to define authoring parameter values, type coersion and default values
+ * This object can be used to parse incoming values from sheets
  *
  * @example
  * ```ts
@@ -65,17 +67,16 @@ const coerceMethods = {
  *    string_param: coerce.string(''),
  *    number_param: coerce.number(-1),
  *    allowedValues_param: coerce.allowedValues(['option_1','option_2'],'option_2'), *
- *    advanced_param: coerce.custom(v=>parseAnswerList(v),[])
+ *    custom_param: coerce.custom(v=>parseAnswerList(v),[])
  * })
+ * const parsedParams = parseTemplateParameterList(row.parameterList(),AuthorParams)
  * ```
  */
 export function defineAuthorParameterSchema<Shape extends z.ZodRawShape>(
   coerceValues: (coerce: typeof coerceMethods) => Shape
 ) {
   const coerced = coerceValues(coerceMethods);
-
-  // Transform snake_case to camelCase. This will keep type-safety following conversion
-  return z.object(coerced).transform((data) => snakeToCamelKeys(data));
+  return z.object(coerced);
 }
 
 /**
@@ -88,12 +89,14 @@ export function defineAuthorParameterSchema<Shape extends z.ZodRawShape>(
 export type InferParamSchemaType<T> = z.infer<T>;
 
 /** Parse author parameter list using type-safe schema **/
-export function parseTemplateParameterList<T extends z.ZodPipe<z.ZodObject<any, any>>>(
+export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
   parameterList: FlowTypes.TemplateRow["parameter_list"],
   schema: T
 ) {
   // NOTE - should not throw as all coerce methods include own catch
-  return schema.parse(parameterList || {});
+  const parsed = schema.parse(parameterList || {});
+  // Transform snake_case to camelCase. This will keep type-safety following conversion
+  return snakeToCamelKeys(parsed);
 }
 
 /** Convert all keys in an object from snake_case to camelCase */
