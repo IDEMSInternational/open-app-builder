@@ -11,14 +11,14 @@ import {
 import { TemplateBaseComponent } from "../base";
 import { DataItemsService } from "../data-items/data-items.service";
 
-const ParamSchema = defineAuthorParameterSchema((coerce) => ({
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Line style variant. Option "wavy", "basic", "curved". Default "wavy" */
   variant: coerce.allowedValues(["wavy", "basic", "curved"], "wavy"),
   /** Vertical gap between child steps, in pixels. Default 82 */
   vertical_spacing: coerce.number(82),
 }));
 
-type IProgressPathParams = InferParamSchemaType<typeof ParamSchema>;
+type IProgressPathParams = InferParamSchemaType<typeof AuthorSchema>;
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
@@ -36,7 +36,7 @@ const SIZING = {
   styleUrls: ["./progress-path.component.scss"],
 })
 export class TmplProgressPathComponent extends TemplateBaseComponent {
-  public params = computed(() => parseTemplateParameterList(this.parameterList(), ParamSchema));
+  public params = computed(() => parseTemplateParameterList(this.parameterList(), AuthorSchema));
 
   public svgPath = signal<string>("");
   public svgViewBox = signal<string>("");
