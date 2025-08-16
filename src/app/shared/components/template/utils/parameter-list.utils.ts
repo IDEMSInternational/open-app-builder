@@ -5,6 +5,9 @@ import type { FlowTypes } from "src/app/shared/model";
  * Custom utilities to convert string parameter_list values to custom type
  * All methods include a `fallback` which will be used if incoming data not
  * a string value (e.g. undefined), or in case of a `list` if value does not exist
+ *
+ * NOTE - zod's `z.coerce` methods not used in favor of custom implementation
+ * (e.g. support parsing boolean-string not just truthy/falsy values )
  */
 const coerceMethods = {
   /** Use authored string value with fallback if undefined */
@@ -79,15 +82,6 @@ export function defineAuthorParameterSchema<Shape extends z.ZodRawShape>(
   return z.object(coerced);
 }
 
-/**
- * Extract the type of a defined parameter list schema
- *
- * @example
- * const Schema = defineAuthorParameterSchema({...})
- * type ISchema = InferParamSchemaType<typeof Schema>
- */
-export type InferParamSchemaType<T> = z.infer<T>;
-
 /** Parse author parameter list using type-safe schema **/
 export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
   parameterList: FlowTypes.TemplateRow["parameter_list"],
@@ -114,6 +108,15 @@ function snakeToCamelKeys<T>(obj: T): ISnakeToCamelKeys<T> {
 function snakeToCamel(str: string): string {
   return str.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
 }
+
+/**
+ * Extract the type of a defined parameter list schema
+ *
+ * @example
+ * const Schema = defineAuthorParameterSchema({...})
+ * type ISchema = InferParamSchemaType<typeof Schema>
+ */
+export type InferParamSchemaType<T> = z.infer<T>;
 
 // type inference to convert a key in snake_case to key in camelCase
 type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
