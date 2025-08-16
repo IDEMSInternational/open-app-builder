@@ -23,10 +23,21 @@ describe("defineAuthorParameterSchema", () => {
   });
 
   it("coerce allowed_values", () => {
+    const consoleSpy = spyOn(console, "warn");
     const { allowed_values_param } = schema.parse({
       allowed_values_param: "not_allowed",
     });
     expect(allowed_values_param).toEqual("v1");
+    // console warning
+    expect(consoleSpy).toHaveBeenCalledTimes(1);
+    expect(consoleSpy.calls.first().args).toEqual([
+      "[Parameter List] invalid value",
+      {
+        value: "not_allowed",
+        allowed: ["v1", "v2"],
+        default: "v1",
+      },
+    ]);
     // fallback
     expect(schema.parse({}).allowed_values_param).toEqual("v1");
   });
