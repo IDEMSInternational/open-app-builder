@@ -85,9 +85,6 @@ const coerceMethods = {
    *  NOTE - use `.default()` to ensure key populated as catch never triggered
    **/
   any: <T>(fallback: T) => z.any().default(fallback),
-
-  // TODO - provide more options to handle data that may already be parsed from dynamic variables
-  // These should only be added as use-cases are detected in specific components
 };
 
 /**
