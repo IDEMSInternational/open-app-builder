@@ -3,12 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs";
 
 import { TemplateTranslateService } from "../../services/template-translate.service";
-import {
-  defineAuthorParameterSchema,
-  parseTemplateParameterList,
-  InferParamSchemaType,
-} from "../../utils";
-import { TemplateBaseComponent } from "../base";
+import { withAuthorParams, defineAuthorParameterSchema } from "../base";
 import { DataItemsService } from "../data-items/data-items.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -18,7 +13,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   vertical_spacing: coerce.number(82),
 }));
 
-type IProgressPathParams = InferParamSchemaType<typeof AuthorSchema>;
+// Extract Param type from component for easier reusability
+type Params = (typeof TmplProgressPathComponent)["Params"];
 
 // HACK - hardcoded sizing values to make content fit reasonably well
 const SIZING = {
@@ -35,9 +31,7 @@ const SIZING = {
   templateUrl: "./progress-path.component.html",
   styleUrls: ["./progress-path.component.scss"],
 })
-export class TmplProgressPathComponent extends TemplateBaseComponent {
-  public params = computed(() => parseTemplateParameterList(this.parameterList(), AuthorSchema));
-
+export class TmplProgressPathComponent extends withAuthorParams(AuthorSchema) {
   public svgPath = signal<string>("");
   public svgViewBox = signal<string>("");
   public contentHeight = signal<string>("");
@@ -80,7 +74,7 @@ export class TmplProgressPathComponent extends TemplateBaseComponent {
    * Generate a base SVG segment used to connect 2 progress items together
    * Roughly a horizontal line and smooth bend, adjusted for sizing
    */
-  private generateSVGPath(variant: IProgressPathParams["variant"], verticalSpacing: number) {
+  private generateSVGPath(variant: Params["variant"], verticalSpacing: number) {
     // arbitrary values used to make base width/height fit
     const { widthPx, xOffset, yOffset } = SIZING;
 
