@@ -35,7 +35,19 @@ const coerceMethods = {
 
   /*** Convert to value from allowed list, with fallback in case not in list  */
   allowedValues: <const T extends readonly string[]>(values: T, fallback: T[number]) =>
-    z.enum(values).catch(fallback),
+    z.enum(values).catch((v) => {
+      for (const issue of v.issues) {
+        // Provide console warning if incorrect value used
+        if (v.value) {
+          console.warn("[Parameter List] invalid value", {
+            value: v.value,
+            allowed: issue.values,
+            default: fallback,
+          });
+        }
+      }
+      return fallback;
+    }),
 
   /*** Convert to value from allowed list, with fallback in case not in list  */
   commaSeparatedList: () =>
