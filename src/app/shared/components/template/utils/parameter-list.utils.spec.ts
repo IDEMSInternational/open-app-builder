@@ -20,7 +20,7 @@ const MOCK_SCHEMA = () =>
  */
 describe("parameter_list utils - coerce", () => {
   it("coerce allowed_values", () => {
-    const consoleSpy = spyOn(console, "warn").and.callThrough();
+    const consoleSpy = spyOn(console, "warn");
     const testSchema = MOCK_SCHEMA().pick({ allowed_values_param: true });
     // from string (not allowed value)
     const { allowed_values_param } = testSchema.parse({
