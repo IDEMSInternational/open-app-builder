@@ -20,7 +20,7 @@ const MOCK_SCHEMA = () =>
  */
 describe("parameter_list utils - coerce", () => {
   it("coerce allowed_values", () => {
-    const consoleSpy = spyOn(console, "warn");
+    const consoleSpy = spyOn(console, "warn").and.callThrough();
     const testSchema = MOCK_SCHEMA().pick({ allowed_values_param: true });
     // from string (not allowed value)
     const { allowed_values_param } = testSchema.parse({
@@ -138,5 +138,25 @@ describe("parameter_list utils - parse", () => {
       numberParam: -1,
       stringParam: "fallback",
     });
+  });
+
+  it("warns if invalid keys passed from parameter_list", () => {
+    const consoleSpy = spyOn(console, "warn");
+    parseTemplateParameterList({ invalid_key: "value" }, schema);
+    expect(consoleSpy).toHaveBeenCalledTimes(1);
+    expect(consoleSpy.calls.first().args).toEqual([
+      '[Parameter List] Invalid Property: "invalid_key"',
+      {
+        allowedKeys: [
+          "allowed_values_param",
+          "any_param",
+          "boolean_param",
+          "comma_list_param",
+          "custom_param",
+          "number_param",
+          "string_param",
+        ],
+      },
+    ]);
   });
 });
