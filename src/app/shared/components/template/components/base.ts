@@ -140,7 +140,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
  * }
  * ```
  */
-export function withAuthorParams<
+export function TemplateBaseComponentWithParams<
   ParamSchema extends ReturnType<typeof defineAuthorParameterSchema>,
 >(schema: ParamSchema) {
   abstract class AuthorParamsBase extends TemplateBaseComponent {
