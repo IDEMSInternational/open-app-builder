@@ -18,7 +18,7 @@ const MOCK_SCHEMA = () =>
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/components/template/utils/parameter-list.utils.spec.ts
  */
-describe("defineAuthorParameterSchema", () => {
+describe("parameter_list utils - coerce", () => {
   it("coerce allowed_values", () => {
     const consoleSpy = spyOn(console, "warn");
     const testSchema = MOCK_SCHEMA().pick({ allowed_values_param: true });
@@ -107,7 +107,7 @@ describe("defineAuthorParameterSchema", () => {
   });
 });
 
-describe("parseTemplateParameterList", () => {
+describe("parameter_list utils - parse", () => {
   let schema: ReturnType<typeof MOCK_SCHEMA>;
 
   beforeEach(() => {
