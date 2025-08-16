@@ -132,7 +132,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
  *   stringParam: coerce.string('')
  * }))
  *
- * class MyComponent extends withAuthorParams(AuthorSchema){
+ * class MyComponent extends TemplateBaseComponentWithParams(AuthorSchema){
  *
  * effect(()=>{
  *   const { stringParam } = this.params()
