@@ -114,6 +114,15 @@ export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
   parameterList: FlowTypes.TemplateRow["parameter_list"],
   schema: T
 ) {
+  // Compare keys to notify authors if any parameter_list values not supported
+  const schemaKeys = new Set(Object.keys(schema.shape));
+  const inputKeys = Object.keys(parameterList);
+  const unknownKeys = inputKeys.filter((k) => !schemaKeys.has(k));
+  const allowedKeys = Array.from(schemaKeys);
+  unknownKeys.forEach((k) =>
+    console.warn(`[Parameter List] Invalid Property: "${unknownKeys}"`, { allowedKeys })
+  );
+
   // NOTE - should not throw as all coerce methods include own catch
   const parsed = schema.parse(parameterList || {});
   // Transform snake_case to camelCase. This will keep type-safety following conversion
