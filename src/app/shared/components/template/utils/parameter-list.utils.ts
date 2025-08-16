@@ -122,13 +122,14 @@ function snakeToCamel(str: string): string {
 }
 
 /**
- * Extract the type of a defined parameter list schema
+ * Extract the type of zod schema and convert
+ * snake_case to camelCase for corrected types after parsing
  *
  * @example
  * const Schema = defineAuthorParameterSchema({...})
  * type ISchema = InferParamSchemaType<typeof Schema>
  */
-export type InferParamSchemaType<T> = z.infer<T>;
+export type InferParamSchemaType<T> = ISnakeToCamelKeys<z.infer<T>>;
 
 // type inference to convert a key in snake_case to key in camelCase
 type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
