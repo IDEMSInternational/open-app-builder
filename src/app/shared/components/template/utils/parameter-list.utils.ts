@@ -111,7 +111,7 @@ export function defineAuthorParameterSchema<Shape extends z.ZodRawShape>(
 
 /** Parse author parameter list using type-safe schema **/
 export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
-  parameterList: FlowTypes.TemplateRow["parameter_list"],
+  parameterList: FlowTypes.TemplateRow["parameter_list"] = {},
   schema: T
 ) {
   // Compare keys to notify authors if any parameter_list values not supported
@@ -124,7 +124,7 @@ export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
   );
 
   // NOTE - should not throw as all coerce methods include own catch
-  const parsed = schema.parse(parameterList || {});
+  const parsed = schema.parse(parameterList);
   // Transform snake_case to camelCase. This will keep type-safety following conversion
   return snakeToCamelKeys(parsed);
 }
