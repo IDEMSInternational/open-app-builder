@@ -75,6 +75,10 @@ export interface IDeploymentRuntimeConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
+  remote_function?: {
+    provider: "firebase";
+  };
+
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
   shared_data?: {
     provider: "firebase";
