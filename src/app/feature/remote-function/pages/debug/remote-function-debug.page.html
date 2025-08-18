@@ -1,7 +1,7 @@
 <ion-content class="ion-padding">
   <h2>Remote Functions</h2>
 
-  <p>Input name of function to run</p>
+  <p>Trigger remote function with data parameters</p>
   <div style="display: flex; gap: 16px">
     <div>
       <h3>Target Function</h3>
@@ -57,12 +57,15 @@
   <h3>AppCheck Token</h3>
   <p>Firebase uses appcheck to ensure functions only invocated from trusted source</p>
 
-  @if(firebaseToken()){
-  <div>Token: {{firebaseToken()}}</div>
-  <ion-input disabled label="AppCheck Token"></ion-input>
-  <ion-button>Refresh</ion-button>
+  @if(firebaseToken(); as token){
+  <div>✅ Token Available</div>
+  <div style="font-size: small">
+    @if(token.expireTimeMillis; as expiry){ Expires: {{expiry}} } @else{ Expiry not Available on Web
+    }
+  </div>
+  <ion-button style="margin-top: 1em">Refresh</ion-button>
   } @if(firebaseTokenError()){
-  <div>Error getting firebase token</div>
+  <div>⚠️ Could Not Retrieve Token</div>
   } } }
 
   <!-- Default Provider -->
