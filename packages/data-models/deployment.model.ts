@@ -78,6 +78,10 @@ export interface IDeploymentRuntimeConfig {
        */
       recaptchaEnterpriseSiteKey?: string;
     };
+    functions?: {
+      /** Region where functions are deployed to. If not specified assumes "us-central1" */
+      region?: string;
+    };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
