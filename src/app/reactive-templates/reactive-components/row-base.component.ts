@@ -32,7 +32,6 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   public value: Signal<any>;
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
-  public actions; // todo: implement actions
 
   private dependantVariables: string[] = [];
 
