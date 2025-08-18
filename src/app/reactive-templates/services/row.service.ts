@@ -50,6 +50,16 @@ export class RowService {
     return this.evaluate(parameterValue, namespace);
   }
 
+  public evaluateActions(row: FlowTypes.TemplateRow, trigger: string, namespace: string) {
+    const actions = row.action_list.filter((a) => a.trigger === trigger);
+
+    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
+
+    return actions.map((a) => {
+      return { ...a, args: this.evaluateArgs(a.args, namespace) };
+    });
+  }
+
   private createExecutionContext(row: FlowTypes.TemplateRow, namespace: string): any {
     const context = { local: {} };
     const dependantVariables = this.getDependencies(row, "local");
@@ -61,6 +71,12 @@ export class RowService {
     });
 
     return context;
+  }
+
+  private evaluateArgs(args: any[], namespace: string): any {
+    return args.map((arg) =>
+      this.evaluator.evaluate(this.namespaceService.getNamespacedExpression(namespace, arg))
+    );
   }
 
   private evaluate(expression: string | number | boolean, namespace: string): string | boolean {

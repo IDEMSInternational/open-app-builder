@@ -2,7 +2,6 @@ import {
   Component,
   computed,
   HostBinding,
-  Inject,
   inject,
   InjectionToken,
   input,
@@ -16,6 +15,7 @@ import { VariableStore } from "../stores/variable-store";
 import { RowService } from "../services/row.service";
 import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
+import { ActionService } from "../services/action.service";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -31,7 +31,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   );
   public value: Signal<any>;
   public condition = signal(true);
-  public parameters: TParams;
+  public params = inject(ROW_PARAMETERS) as TParams;
   public actions; // todo: implement actions
 
   private dependantVariables: string[] = [];
@@ -39,16 +39,13 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
   protected namespaceService = inject(NamespaceService);
+  protected actionService = inject(ActionService);
 
   protected subscriptions = [];
 
   @HostBinding("style.display")
   get displayStyle() {
     return this.condition() ? "" : "none";
-  }
-
-  constructor(@Inject(ROW_PARAMETERS) parameters: TParams) {
-    this.parameters = parameters;
   }
 
   /**
@@ -61,7 +58,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
 
     // Initialize the evaluator with a context
-    this.setParameters();
+    this.setParams();
     this.setDependencies();
     this.watchDependencies();
 
@@ -80,16 +77,20 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     );
   }
 
-  private setParameters() {
-    if (!this.parameters) return;
+  public triggerActions(trigger: string) {
+    this.actionService.handleActions(this.row(), trigger, this.namespace());
+  }
+
+  private setParams() {
+    if (!this.params) return;
     const rowParams = this.row().parameter_list;
 
-    Object.keys(this.parameters).forEach((key) => {
-      const param = this.parameters[key];
+    Object.keys(this.params).forEach((key) => {
+      const param = this.params[key];
 
       if (rowParams && rowParams.hasOwnProperty(param.name)) {
         const value = this.rowService.evaluateParameter(this.row(), param.name, this.namespace());
-        this.parameters[key].setValue(value);
+        this.params[key].setValue(value);
       }
     });
   }
@@ -111,7 +112,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
       const subscribe = this.variableStore.watch(name).subscribe(() => {
         this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
         this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
-        this.setParameters();
+        this.setParams();
       });
 
       this.subscriptions.push(subscribe);

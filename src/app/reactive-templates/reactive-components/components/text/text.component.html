@@ -1,11 +1,11 @@
 @if (this.value()) {
   <div
     class="large standard normal"
-    [class]="parameters.style.value()"
+    [class]="params.style.value()"
     [ngStyle]="!hasTextValue ? { display: 'none' } : { display: 'block' }"
     [innerHTML]="this.value()?.toString() | markdown"
     [style]="row().style_list"
-    [style.textAlign]="parameters.textAlign.value()"
+    [style.textAlign]="params.textAlign.value()"
     [attr.data-test]="name()"
   ></div>
 }

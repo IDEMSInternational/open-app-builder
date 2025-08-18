@@ -1,0 +1,228 @@
+$background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+$background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
+
+:host {
+  width: 100%;
+  // ion-button {
+  //   height: 100%;
+  // }
+  span {
+    padding: var(--tiny-padding) 0;
+    display: contents;
+  }
+}
+// ensure relative position on parent if absolute position children nested inside
+[data-has-children] {
+  position: relative;
+}
+ion-button {
+  font-size: var(--buttons-font-size-small);
+  font-weight: var(--font-weight-standard);
+  color: var(--ion-color-primary-contrast);
+  text-transform: none;
+  white-space: pre-line;
+  min-height: var(--buttons-min-height);
+  padding: var(--regular-margin) var(--tiny-padding) 0;
+  --border-radius: var(--ion-border-radius-standard);
+  --box-shadow: var(--ion-default-box-shadow);
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+ion-button::part(native) {
+  height: auto;
+}
+
+ion-button:disabled,
+ion-button[disabled] {
+  filter: brightness(55%);
+}
+
+/// nested_color style applies semi-transparent background to match container
+ion-button[data-param-style~="nested_color"],
+ion-button[data-variant~="nested_color"] {
+  --background: linear-gradient(rgb(0 0 0 / 13%) 0%, rgb(0 0 0 / 20%) 100%);
+}
+
+ion-button[data-param-style~="card"],
+ion-button[data-variant~="card"] {
+  --background: white;
+  --background-activated: var(--ion-color-gray-light);
+  --padding-top: var(--tiny-padding);
+  --padding-bottom: var(--tiny-padding);
+  color: var(--ion-color-primary);
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--ion-color-gray-light);
+  border-radius: var(--ion-border-radius-secondary);
+  min-height: var(--buttons-short-height);
+
+  .text ::ng-deep {
+    p {
+      margin: var(--small-margin) 0;
+    }
+  }
+
+  ion-icon {
+    width: 32px;
+    font-size: 32px;
+  }
+
+  .children {
+    position: absolute;
+    align-self: flex-end;
+    right: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.button-container[data-variant~="card-portrait"] {
+  background-color: white;
+  color: var(--ion-color-primary);
+  font-size: var(--buttons-font-size-tiny);
+  font-weight: var(--font-weight-bold);
+  border: 1px solid var(--ion-color-gray-light);
+  border-radius: var(--ion-border-radius-standard);
+  min-height: var(--buttons-short-height);
+  box-shadow: var(--ion-default-box-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0.5rem 0.5rem;
+  // TODO: make a variable
+  width: 160px;
+
+  &[data-disabled="true"] {
+    opacity: 0.6;
+  }
+
+  &:not([data-disabled="true"]) {
+    &:active {
+      background-color: var(--ion-color-gray-light);
+    }
+  }
+
+  img {
+    width: 85%;
+  }
+
+  .button-text {
+    width: 100%;
+    padding: 1rem 0 0.5rem;
+    text-align: center;
+    &.right {
+      text-align: end;
+    }
+    &.left {
+      text-align: start;
+    }
+    &.center {
+      text-align: center;
+    }
+    &.centre {
+      text-align: center;
+    }
+  }
+  .children {
+    position: absolute;
+    align-self: flex-end;
+    inset-inline-end: -4px;
+    top: -12px;
+    display: flex;
+    align-items: center;
+    padding: -8px;
+  }
+}
+
+/// TODO CC-2021-12-19 - the code below should likely be refactored to param selectors and moved
+
+.navigation {
+  --background: #{$background-secondary};
+}
+
+.information {
+  --background: #{$background-primary};
+}
+
+.make_me_smile {
+  min-height: 80px !important;
+  max-width: fit-content;
+  --background: #{$background-primary};
+  color: var(--ion-color-primary-contrast);
+}
+
+.get_me_going {
+  min-height: 80px !important;
+  max-width: fit-content;
+  --background: #{$background-secondary};
+  color: var(--ion-color-primary-contrast);
+}
+
+.options {
+  --background: #{$background-primary};
+  color: var(--ion-color-primary-contrast);
+}
+
+.standard {
+  color: var(--ion-color-primary-contrast);
+}
+.alternative {
+  color: var(--ion-color-primary);
+}
+
+::ng-deep {
+  .left {
+    margin: 0 auto 0 2px;
+    text-align: start;
+    p {
+      margin: 0 0 0 2px;
+    }
+  }
+  .right {
+    margin: 0 2px 0 auto;
+    text-align: end;
+  }
+  .center {
+    text-align: center;
+  }
+}
+
+// width
+.full {
+  width: 100%;
+}
+.flexible {
+  width: fit-content;
+  max-width: 100%;
+}
+// height
+.medium {
+  min-height: var(--buttons-medium-height);
+}
+.short {
+  min-height: var(--buttons-short-height);
+  font-size: var(--buttons-font-size-small);
+}
+.tall {
+  min-height: var(--buttons-tall-height);
+}
+
+.medium_round {
+  --border-radius: var(--ion-border-radius-secondary);
+}
+.no_shadow {
+  --box-shadow: none;
+}
+.two_columns {
+  max-width: 12rem;
+  min-height: var(--buttons-min-height);
+  font-size: calc(var(--buttons-font-size) * var(--scale-factor-btn));
+  min-width: 5rem;
+  @media (max-width: 375px) {
+    max-width: 11rem;
+  }
+  @media (max-width: 320px) {
+    max-width: 10rem;
+  }
+}
