@@ -50,10 +50,15 @@
   } @if(response().error; as responseError){
   <h4>Error</h4>
   <div>{{responseError | json}}</div>
-  } @switch (config.provider) { @case('firebase'){
+  }
+
+  <hr style="background-color: #cacaca; height: 1px; width: 100%; margin: 2em 0" />
+
+  @switch (config.provider) { @case('firebase'){
 
   <!-- Firebase Provider-->
   @if(config.provider==='firebase'){
+  <h2>Firebase Provider</h2>
   <h3>AppCheck Token</h3>
   <p>Firebase uses appcheck to ensure functions only invocated from trusted source</p>
 
@@ -73,6 +78,7 @@
   <p>Debug page not configured for provider: {{config.provider}}</p>
   } }
 
+  <hr style="background-color: #cacaca; height: 1px; width: 100%; margin: 2em 0" />
   <h3>Deployment Config</h3>
   <div>{{config | json}}</div>
 </ion-content>
