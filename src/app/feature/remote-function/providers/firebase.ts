@@ -1,4 +1,4 @@
-import { Injector } from "@angular/core";
+import { Injector, signal } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { FirebaseAppCheck, GetTokenResult } from "@capacitor-firebase/app-check";
 import { FirebaseFunctions } from "@capacitor-firebase/functions";
@@ -15,7 +15,8 @@ import { environment } from "src/environments/environment";
  *
  */
 export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
-  private appCheckToken?: GetTokenResult;
+  private appCheckToken = signal<GetTokenResult | undefined>(undefined);
+  private appCheckTokenError = signal<boolean>(false);
 
   public async initialise(injector: Injector): Promise<void> {
     const firebaseService = injector.get(FirebaseService);
@@ -23,10 +24,19 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
     // TODO - app-check and function specific config from deployment config?
     // TODO - ensure enabled
     firebaseService.ready();
+    try {
+      await this.setupAppCheck();
+      const token = await FirebaseAppCheck.getToken({ forceRefresh: true });
+      this.appCheckToken.set(token);
+      // TODO - provide way to refresh token
+      // TODO -
+    } catch (error) {
+      console.error("[App check]", error);
+      this.appCheckTokenError.set(true);
+    }
   }
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
-    await this.setupAppCheck();
     const result = await FirebaseFunctions.callByName({
       name: functionName,
       data: params,
@@ -40,10 +50,6 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   // TODO - function streaming
 
   private async setupAppCheck() {
-    // TODO - decide if auto-refresh useful or manual refresh
-    // (calling http function would require manual header)
-    if (this.appCheckToken) return;
-
     // Native platform - provider configured
     if (Capacitor.isNativePlatform()) {
       await FirebaseAppCheck.initialize({ isTokenAutoRefreshEnabled: true });
@@ -54,6 +60,5 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
         debugToken: environment.production ? false : true,
       });
     }
-    this.appCheckToken = await FirebaseAppCheck.getToken({ forceRefresh: true });
   }
 }

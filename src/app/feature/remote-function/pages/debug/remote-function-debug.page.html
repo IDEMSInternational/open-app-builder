@@ -1,1 +1,32 @@
-<div>Remote Function Debug</div>
+<ion-content class="ion-padding">
+  <h2>Remote Functions</h2>
+  <p>Input name of function to run</p>
+  <div style="display: flex; gap: 16px">
+    <ion-input fill="outline" placeholder="Function Name"></ion-input>
+    <ion-textarea fill="outline" placeholder="Function Data" type="textarea"></ion-textarea>
+  </div>
+  <ion-button>Run</ion-button>
+
+  @switch (config.provider) { @case('firebase'){
+
+  <!-- Firebase Provider-->
+  @if(config.provider==='firebase'){
+  <h3>AppCheck Token</h3>
+  <p>Firebase uses appcheck to ensure functions only invocated from trusted source</p>
+
+  @if(firebaseToken()){
+  <div>Token: {{firebaseToken()}}</div>
+  <ion-input disabled label="AppCheck Token"></ion-input>
+  <ion-button>Refresh</ion-button>
+  } @if(firebaseTokenError()){
+  <div>Error getting firebase token</div>
+  } } }
+
+  <!-- Default Provider -->
+  @default {
+  <p>Debug page not configured for provider: {{config.provider}}</p>
+  } }
+
+  <h3>Deployment Config</h3>
+  <div>{{config | json}}</div>
+</ion-content>

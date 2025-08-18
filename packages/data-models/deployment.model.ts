@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250407.1;
+export const DEPLOYMENT_CONFIG_VERSION = 20250818.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -71,11 +71,19 @@ export interface IDeploymentRuntimeConfig {
     crashlytics?: {
       enabled: boolean;
     };
+    appCheck?: {
+      /**
+       * Site key used to validate appCheck against recaptcha v3 enterprise
+       * https://firebase.google.com/docs/app-check/web/recaptcha-provider
+       */
+      recaptchaEnterpriseSiteKey?: string;
+    };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
 
-  remote_function?: {
+  /** 3rd party integration for remote functions. Default enabled with firebase provider */
+  remote_functions?: {
     provider: "firebase";
   };
 
@@ -225,6 +233,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   auth: {},
   campaigns: {
     enabled: true,
+  },
+  remote_functions: {
+    provider: "firebase",
   },
   shared_data: {
     provider: "firebase",

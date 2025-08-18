@@ -23,7 +23,7 @@ export class RemoteFunctionService extends AsyncServiceBase {
   }
 
   private get config() {
-    return this.deploymentService.config.remote_function;
+    return this.deploymentService.config.remote_functions;
   }
 
   private async initialise() {
