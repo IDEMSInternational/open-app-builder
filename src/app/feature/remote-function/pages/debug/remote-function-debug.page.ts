@@ -5,6 +5,11 @@ import { JsonPipe } from "@angular/common";
 import { FirebaseFunctionProvider } from "../../providers/firebase";
 import { FormsModule } from "@angular/forms";
 
+interface ParamSignal {
+  key: ReturnType<typeof signal<string>>;
+  value: ReturnType<typeof signal<string>>;
+}
+
 @Component({
   templateUrl: "remote-function-debug.page.html",
   styleUrl: "remote-function-debug.page.scss",
@@ -16,7 +21,11 @@ export class RemoteFunctionDebugPage implements OnInit {
 
   public targetFunctionName = model<string>("rapidproUserData"); // TODO - change to empty
 
+  public paramPairs = signal<ParamSignal[]>([]);
+
   public response = signal({ error: undefined, data: undefined });
+
+  public requestPending = signal(false);
 
   private firebaseProvider = computed(() => {
     if (this.config.provider === "firebase") {
@@ -32,11 +41,37 @@ export class RemoteFunctionDebugPage implements OnInit {
 
   async ngOnInit() {
     await this.service.ready();
+    this.addParam("rapidpro_uuid", "700c4bd4-c7e5-4414-9ff2-2b1ff2571947");
   }
 
+  // --- Param management ---
+  public addParam(key: string = "", value: string = "") {
+    this.paramPairs.update((pairs) => [...pairs, { key: signal(key), value: signal(value) }]);
+  }
+  public removeParam(index: number) {
+    this.paramPairs.update((pairs) => pairs.filter((_, i) => i !== index));
+  }
+
+  private buildParams(): Record<string, any> {
+    const params: Record<string, any> = {};
+    for (const { key, value } of this.paramPairs()) {
+      const k = key().trim();
+      const v = value().trim();
+      if (k) {
+        params[k] = v;
+      }
+    }
+    return params;
+  }
+
+  // --- Function ---
   public async triggerFunction(name: string) {
+    this.requestPending.set(true);
     this.response.set({ error: undefined, data: undefined });
-    const res = await this.service.provider.invoke(name, {});
+    const params = this.buildParams();
+    console.log("[Remote Function] Run", { name, params });
+    const res = await this.service.provider.invoke(name, params);
     this.response.set(res);
+    this.requestPending.set(false);
   }
 }
