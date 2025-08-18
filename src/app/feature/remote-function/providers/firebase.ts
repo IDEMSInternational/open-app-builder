@@ -7,6 +7,7 @@ import { ReCaptchaEnterpriseProvider } from "firebase/app-check";
 import { RemoteFunctionInvokeParams, RemoteFunctionProviderBase } from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
 import { environment } from "src/environments/environment";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
 /**
  * Unified provider to support firestore functions
@@ -18,7 +19,14 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   private appCheckToken = signal<GetTokenResult | undefined>(undefined);
   private appCheckTokenError = signal<boolean>(false);
 
+  /** Functions region - if `undefined` firebase assumes "us-central1" */
+  private region?: string;
+
+  private deploymentService = inject(DeploymentService);
+
   public async initialise(injector: Injector): Promise<void> {
+    this.region = this.deploymentService.config.firebase?.functions?.region;
+
     const firebaseService = injector.get(FirebaseService);
 
     // TODO - app-check and function specific config from deployment config?

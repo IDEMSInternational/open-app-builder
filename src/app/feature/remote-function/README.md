@@ -1,9 +1,26 @@
 ## Overview
 
 
-
 ## Setup (Firebase Provider)
+1. Deploy test functions from [Open App Builder Functions](https://github.com/IDEMSInternational/open-app-builder-functions) Repo
 
+2a. Update deployment config to use firebase remote_functions provider
+```ts
+config.remote_functions={
+  provider:'firebase'
+}
+```
+
+2b. If functions are deployed to any region other than `us-central1` 
+```ts
+config.firebase={
+    functions:{
+        region: 'europe-west1'
+    }
+}
+```
+
+3. Follow steps below to enable App Check which is used to ensure functions can only be invocated from trusted sources
 
 ### App Check - Web
 
@@ -42,43 +59,33 @@ https://firebase.google.com/docs/app-check/ios/app-attest-provider
 ### Function Deployment
 
 
-### Debug Tokens
-
+## Testing
+Remote functions can be tested locally from a debug page, with support for whitelisted device tokens.
+See review notes in https://github.com/IDEMSInternational/open-app-builder/pull/3097
 
 ## PR Notes
 
 Closes? #3015
 
 ## TODO
+### Deployed Functions
+- [ ] Create and deploy test function for use in debug
 
-### Actions
+
+### Core
 - [ ] Handle storing response in field/list
 
+### Debug Page
+- [ ] Key-value pair boxes to specify payload data
+- [ ] Run from button click
+
+### Actions
+- [ ] Add support for triggering from action
+- [ ] Create feat template
+
 ### Firebase Provider
+- [ ] Configure region
 - [ ] Test on native; https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/app-check#android
 - [ ] Test on deployed debug
  
 
-## Review Notes
-Update debug deployment firebase config to include appCheck site key and enable 
-remote functions with firebase provider
-
-```ts
-config.firebase = {
-  ...
-  appCheck:{recaptchaEnterpriseSiteKey:'6LdLYakrAAAAAGW1eU7MAPdsMUIwxYk4y3LqxiVO'}
-}
-config.remote_functions={
-  provider:'firebase'
-}
-```
-
-```bash
-yarn workflow deployment set debug
-```
-
-## Author Notes
-- [ ] Technical dev uses term `invoke` to specify remote function execution, however authoring currently more simply referred to as `run`. Does the naming convention make sense and accurately inform author that they are executing defined code on a remote server?
-
-
-## Dev Notes
