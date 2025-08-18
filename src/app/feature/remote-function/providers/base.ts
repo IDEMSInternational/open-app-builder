@@ -5,11 +5,17 @@ export interface RemoteFunctionInvokeParams {
   [key: string]: string;
 }
 
+export interface RemoteFunctionErrorResponse {
+  code: string;
+  message: string;
+  details: string;
+}
+
 export class RemoteFunctionProviderBase {
   public async initialise(injector: Injector) {}
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
     console.error(`[Remote Function] Provider method not implemented: invoke`);
-    return;
+    return { data: undefined, error: undefined };
   }
 }

@@ -1,10 +1,14 @@
-import { Injector, signal } from "@angular/core";
+import { inject, Injector, signal } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { FirebaseAppCheck, GetTokenResult } from "@capacitor-firebase/app-check";
 import { FirebaseFunctions } from "@capacitor-firebase/functions";
 import { ReCaptchaEnterpriseProvider } from "firebase/app-check";
 
-import { RemoteFunctionInvokeParams, RemoteFunctionProviderBase } from "./base";
+import {
+  RemoteFunctionErrorResponse,
+  RemoteFunctionInvokeParams,
+  RemoteFunctionProviderBase,
+} from "./base";
 import { FirebaseService } from "src/app/shared/services/firebase/firebase.service";
 import { environment } from "src/environments/environment";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
@@ -45,13 +49,17 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   }
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
-    const result = await FirebaseFunctions.callByName({
+    let error: RemoteFunctionErrorResponse;
+    const data = await FirebaseFunctions.callByName({
       name: functionName,
       data: params,
-      region: "", // TODO - handle deployed region from config
-      // TODO - include app-check token
+      region: this.region,
+    }).catch((err) => {
+      const { code, message, details, ...rest } = err;
+      error = { code, message, details };
+      console.error(`[Firebase Functions] ${functionName} `, { ...error, ...rest });
     });
-    console.log({ result });
+    return { data, error };
   }
 
   // TODO - support for separate callable vs http function

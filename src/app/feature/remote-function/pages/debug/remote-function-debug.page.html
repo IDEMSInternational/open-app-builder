@@ -2,12 +2,24 @@
   <h2>Remote Functions</h2>
   <p>Input name of function to run</p>
   <div style="display: flex; gap: 16px">
-    <ion-input fill="outline" placeholder="Function Name"></ion-input>
+    <ion-input
+      fill="outline"
+      placeholder="Function Name"
+      [(ngModel)]="targetFunctionName"
+    ></ion-input>
     <ion-textarea fill="outline" placeholder="Function Data" type="textarea"></ion-textarea>
   </div>
-  <ion-button>Run</ion-button>
+  <ion-button [disabled]="!targetFunctionName()" (click)="triggerFunction(targetFunctionName())"
+    >Run</ion-button
+  >
 
-  @switch (config.provider) { @case('firebase'){
+  @if(response().data; as responseData){
+  <h4>Data</h4>
+  <div>{{responseData | json}}</div>
+  } @if(response().error; as responseError){
+  <h4>Error</h4>
+  <div>{{responseError | json}}</div>
+  } @switch (config.provider) { @case('firebase'){
 
   <!-- Firebase Provider-->
   @if(config.provider==='firebase'){
