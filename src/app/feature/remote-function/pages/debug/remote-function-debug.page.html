@@ -1,15 +1,46 @@
 <ion-content class="ion-padding">
   <h2>Remote Functions</h2>
+
   <p>Input name of function to run</p>
   <div style="display: flex; gap: 16px">
-    <ion-input
-      fill="outline"
-      placeholder="Function Name"
-      [(ngModel)]="targetFunctionName"
-    ></ion-input>
-    <ion-textarea fill="outline" placeholder="Function Data" type="textarea"></ion-textarea>
+    <div>
+      <h3>Target Function</h3>
+      <ion-input
+        fill="outline"
+        placeholder="Function Name"
+        [(ngModel)]="targetFunctionName"
+      ></ion-input>
+    </div>
+    <div>
+      <h3>Parameters</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        @for (pair of paramPairs(); track $index) {
+        <div style="display: flex; gap: 8px; align-items: center">
+          <ion-input
+            fill="outline"
+            placeholder="Key"
+            [value]="pair.key()"
+            (ionInput)="pair.key.set($any($event.target).value)"
+          ></ion-input>
+          <ion-input
+            fill="outline"
+            placeholder="Value"
+            [value]="pair.value()"
+            (ionInput)="pair.value.set($any($event.target).value)"
+          ></ion-input>
+          <ion-button fill="clear" (click)="removeParam($index)">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </div>
+        }
+        <ion-button fill="outline" (click)="addParam()">+ Add Param</ion-button>
+      </div>
+    </div>
   </div>
-  <ion-button [disabled]="!targetFunctionName()" (click)="triggerFunction(targetFunctionName())"
+
+  <ion-button
+    [disabled]="!targetFunctionName() || requestPending()"
+    (click)="triggerFunction(targetFunctionName())"
     >Run</ion-button
   >
 

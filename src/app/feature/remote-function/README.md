@@ -76,8 +76,7 @@ Closes? #3015
 - [ ] Handle storing response in field/list
 
 ### Debug Page
-- [ ] Key-value pair boxes to specify payload data
-- [ ] Run from button click
+- [ ] Token display and refresh
 
 ### Actions
 - [ ] Add support for triggering from action
@@ -87,5 +86,21 @@ Closes? #3015
 - [ ] Configure region
 - [ ] Test on native; https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/app-check#android
 - [ ] Test on deployed debug
+
+### Tests
+- [ ] Basic service/action tests
  
 
+## Troubleshooting
+
+### Access to fetch has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+By default firebase enables cors for all functions, so most likely this error is a false identification. Cors errors will also get displayed if no function matching the name has been deployed. This will likely coincide with separate internal error response from firebase
+
+```json
+{
+    "code": "functions/internal",
+    "message": "internal",
+    "name": "FirebaseError"
+}
+```
