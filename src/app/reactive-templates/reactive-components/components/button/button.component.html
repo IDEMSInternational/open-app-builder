@@ -32,16 +32,9 @@
       [innerHTML]="value() | markdown"
     >
     </span>
-    <span *ngIf="row().rows" class="children">
-      <p>TODO: implement this.</p>
-
-      <!-- <plh-template-component
-        
-        [row]="childRow"
-        [parent]="parent"
-        [attr.data-rowname]="_row.name"
-      ></plh-template-component> -->
-    </span>
+    @if (row().rows) {
+      <oab-row-list [rows]="row().rows" [namespace]="namespace()" class="children"></oab-row-list>
+    }
   </ion-button>
 
   <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
@@ -57,15 +50,8 @@
     <div *ngIf="value()" [class]="'button-text ' + params.textAlign.value()">
       {{ value() }}
     </div>
-    <span *ngIf="row().rows" class="children">
-      <p>TODO: implement this.</p>
-      <!-- <plh-template-component
-        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-        class="child"
-        [row]="childRow"
-        [parent]="parent"
-        [attr.data-rowname]="_row.name"
-      ></plh-template-component> -->
-    </span>
+    @if (row().rows) {
+      <oab-row-list [rows]="row().rows" [namespace]="namespace()" class="children"></oab-row-list>
+    }
   </div>
 </ng-container>

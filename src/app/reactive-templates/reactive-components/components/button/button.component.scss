@@ -1,16 +1,11 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 
-:host {
-  width: 100%;
-  // ion-button {
-  //   height: 100%;
-  // }
-  span {
-    padding: var(--tiny-padding) 0;
-    display: contents;
-  }
+span {
+  padding: var(--tiny-padding) 0;
+  display: contents;
 }
+
 // ensure relative position on parent if absolute position children nested inside
 [data-has-children] {
   position: relative;
@@ -213,16 +208,4 @@ ion-button[data-variant~="card"] {
 }
 .no_shadow {
   --box-shadow: none;
-}
-.two_columns {
-  max-width: 12rem;
-  min-height: var(--buttons-min-height);
-  font-size: calc(var(--buttons-font-size) * var(--scale-factor-btn));
-  min-width: 5rem;
-  @media (max-width: 375px) {
-    max-width: 11rem;
-  }
-  @media (max-width: 320px) {
-    max-width: 10rem;
-  }
 }
