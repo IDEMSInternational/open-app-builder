@@ -1,3 +1,1 @@
-@for (row of rows(); track row.name) {
-  <ng-container *ngComponentOutlet="getComponent(row); inputs: { row, namespace: namespace() }" />
-}
+<oab-row-list [rows]="rows()" [namespace]="namespace()"></oab-row-list>
