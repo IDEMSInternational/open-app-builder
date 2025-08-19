@@ -1,15 +1,20 @@
-<div class="title-wrapper" [class]="params.style" [attr.data-variant]="params.variant">
+<div
+  class="title-wrapper"
+  [class]="params.style.value()"
+  [attr.data-variant]="params.variant.value()"
+>
   <h1
-    [style.textAlign]="params.textAlign"
-    [class]="'tiny standard' + ' ' + params.style"
+    [style.textAlign]="params.textAlign.value()"
+    [class]="'tiny standard' + ' ' + params.style.value()"
     [innerHTML]="value() | markdown"
   ></h1>
-  <ion-icon
-    *ngIf="params.help"
-    name="help-circle-outline"
-    class="title-help"
-    [pTooltip]="params.help.value()"
-    [tooltipPosition]="params.tooltipPosition.value()"
-    tooltipEvent="click"
-  ></ion-icon>
+  @if (params.help.value()) {
+    <ion-icon
+      name="help-circle-outline"
+      class="title-help"
+      [pTooltip]="params.help.value()"
+      [tooltipPosition]="params.tooltipPosition.value()"
+      tooltipEvent="click"
+    ></ion-icon>
+  }
 </div>

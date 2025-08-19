@@ -11,5 +11,11 @@ describe("text box component", () => {
 
   it("can be disabled", () => {
     cy.getDataTest("disabledTextBox").find("input").should("have.attr", "disabled");
+
+    cy.getDataTest("dynamicallyDisabledTextBox").find("input").should("not.have.attr", "disabled");
+
+    cy.getDataTest("toggle_enabled").click();
+
+    cy.getDataTest("dynamicallyDisabledTextBox").find("input").should("have.attr", "disabled");
   });
 });

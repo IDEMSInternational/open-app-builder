@@ -13,13 +13,20 @@ export class RowService {
     private namespaceService: NamespaceService
   ) {}
 
+  // todo: we can amend the template parsing to make this friendlier
   public getDependencies(row: FlowTypes.TemplateRow, type: string): string[] {
     const dynamicDependencies = row._dynamicDependencies;
     if (!dynamicDependencies) return [];
 
     return Object.keys(dynamicDependencies)
-      .filter((reference) => reference.startsWith(`@${type}.`))
-      .map((reference) => reference.replace(`@${type}.`, ""));
+      .filter((reference) => reference.includes(`@${type}.`))
+      .map(
+        (reference) =>
+          reference
+            .replace(`@${type}.`, "")
+            .replace("parameter_list.", "")
+            .replace(/[#!&|,]/g, "") // Strip out # ! & | ,
+      );
   }
 
   public evaluateValue(row: FlowTypes.TemplateRow, namespace: string): any {
@@ -51,7 +58,9 @@ export class RowService {
   }
 
   public evaluateActions(row: FlowTypes.TemplateRow, trigger: string, namespace: string) {
-    const actions = row.action_list.filter((a) => a.trigger === trigger);
+    const actions = row.action_list?.filter((a) => a.trigger === trigger);
+
+    if (!actions || !actions.length) return [];
 
     this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
 

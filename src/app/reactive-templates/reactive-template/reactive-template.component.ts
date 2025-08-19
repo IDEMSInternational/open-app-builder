@@ -2,7 +2,6 @@ import { Component, computed, input, OnInit, signal } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { REACTIVE_COMPONENT_MAP } from "../reactive-components/components";
-import { NgComponentOutlet } from "@angular/common";
 import { RowListComponent } from "../reactive-components/row-list.component";
 
 @Component({
@@ -10,7 +9,7 @@ import { RowListComponent } from "../reactive-components/row-list.component";
   templateUrl: "./reactive-template.component.html",
   styleUrls: ["./reactive-template.component.scss"],
   standalone: true,
-  imports: [NgComponentOutlet, RowListComponent],
+  imports: [RowListComponent],
 })
 export class ReactiveTemplateComponent implements OnInit {
   public templateName = input.required<string>();

@@ -24,7 +24,7 @@ export class CoreActionsService {
 
   private registerHandlers() {
     this.templateActionRegistry.register({
-      reset_app: async (action) => {
+      reset_app: async () => {
         this.settingsService.resetApp();
       },
       set_local: async (action) => {
@@ -65,10 +65,6 @@ export class CoreActionsService {
       },
       trigger_actions: async (action) => {
         // todo: implement this?
-        throw new Error("Not Implemented");
-      },
-      process_template: async (action) => {
-        // todo: This should no longer be relevant
         throw new Error("Not Implemented");
       },
       emit: async (action) => {
