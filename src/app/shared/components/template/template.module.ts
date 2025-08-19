@@ -37,6 +37,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     SwiperModule,
     TemplatePipesModule,
     ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   exports: [
     ...TEMPLATE_COMPONENTS,
@@ -44,11 +45,11 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     ...DEMO_COMPONENTS,
     TemplateContainerComponent,
     ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
-    TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,
