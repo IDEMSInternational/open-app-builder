@@ -9,7 +9,7 @@
 
 // Top sticky positioning
 :host[sticky-position="top"] {
-  top: var(--pop-up-top-padding, 0);
+  top: var(--ion-safe-area-top, 0);
 }
 
 :host[sticky-position="top"][ignore-safe-area="true"] {
@@ -18,7 +18,7 @@
 
 // Bottom sticky positioning
 :host[sticky-position="bottom"] {
-  bottom: var(--pop-up-bottom-padding, 0);
+  bottom: var(--ion-safe-area-bottom, 0);
 }
 
 :host[sticky-position="bottom"][ignore-safe-area="true"] {
