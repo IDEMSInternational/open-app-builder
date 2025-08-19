@@ -20,7 +20,7 @@ export class Parameter<T> {
   }
 
   private cast(value: any): T {
-    const type = typeof this.value;
+    const type = typeof this.value();
     switch (type) {
       case "boolean":
         return (value === "true" || value === true) as T;
