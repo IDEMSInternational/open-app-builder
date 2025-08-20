@@ -146,8 +146,14 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
   private collectionToObservable(
     options: AddCollectionSnapshotListenerOptions
   ): Observable<ISharedDataCollection[]> {
+    // Timeout for server data to be received before falling back to cache
+    const TIMEOUT = 2000;
+
     return new Observable<ISharedDataCollection[]>((observer) => {
       let callbackId: CallbackId;
+      let hasEmittedServerData = false;
+      let cachedData: ISharedDataCollection[] | null = null;
+      let cacheTimeout: any;
 
       const registerListener = async () => {
         try {
@@ -159,14 +165,38 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event) {
-                // Ignore firestore cache and only emit data from server
                 const isFromCache = event.snapshots.some((doc) => doc.metadata?.fromCache);
-                if (isFromCache) {
-                  return;
-                }
                 const items = event.snapshots.map((doc) => doc.data as ISharedDataCollection);
-                console.log("items received", items);
-                observer.next(items);
+
+                if (isFromCache) {
+                  // Store cached data but don't emit immediately
+                  cachedData = items;
+
+                  // Set a timeout to emit cached data if server data doesn't arrive
+                  if (!hasEmittedServerData && !cacheTimeout) {
+                    cacheTimeout = setTimeout(() => {
+                      if (!hasEmittedServerData && cachedData) {
+                        console.log(
+                          "[FIREBASE DATA PROVIDER] - COLLECTION TO OBSERVABLE - Items from cache (fallback)",
+                          cachedData
+                        );
+                        observer.next(cachedData);
+                      }
+                    }, TIMEOUT); // Wait 2 seconds for server data before falling back to cache
+                  }
+                } else {
+                  // Server data received - emit immediately and clear cache timeout
+                  hasEmittedServerData = true;
+                  if (cacheTimeout) {
+                    clearTimeout(cacheTimeout);
+                    cacheTimeout = null;
+                  }
+                  console.log(
+                    "[FIREBASE DATA PROVIDER] - COLLECTION TO OBSERVABLE - Items from server",
+                    items
+                  );
+                  observer.next(items);
+                }
               }
             }
           );
@@ -181,13 +211,22 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
         if (callbackId) {
           FirebaseFirestore.removeSnapshotListener({ callbackId });
         }
+        if (cacheTimeout) {
+          clearTimeout(cacheTimeout);
+        }
       };
     });
   }
 
   private documentToObservable(path: string): Observable<ISharedDataCollection> {
+    // Timeout for server data to be received before falling back to cache
+    const TIMEOUT = 2000;
+
     return new Observable<ISharedDataCollection>((observer) => {
       let callbackId: CallbackId;
+      let hasEmittedServerData = false;
+      let cachedData: ISharedDataCollection | null = null;
+      let cacheTimeout: any;
 
       const registerListener = async () => {
         try {
@@ -199,14 +238,38 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
                 return;
               }
               if (event && event.snapshot.data) {
-                // Ignore firestore cache and only emit data from server
                 const isFromCache = event.snapshot.metadata?.fromCache;
-                if (isFromCache) {
-                  return;
-                }
-
                 const item = event.snapshot.data as ISharedDataCollection;
-                observer.next(item);
+
+                if (isFromCache) {
+                  // Store cached data but don't emit immediately
+                  cachedData = item;
+
+                  // Set a timeout to emit cached data if server data doesn't arrive
+                  if (!hasEmittedServerData && !cacheTimeout) {
+                    cacheTimeout = setTimeout(() => {
+                      if (!hasEmittedServerData && cachedData) {
+                        console.log(
+                          "[FIREBASE DATA PROVIDER] - DOCUMENT TO OBSERVABLE - Item from cache (fallback)",
+                          cachedData
+                        );
+                        observer.next(cachedData);
+                      }
+                    }, TIMEOUT); // Wait 2 seconds for server data before falling back to cache
+                  }
+                } else {
+                  // Server data received - emit immediately and clear cache timeout
+                  hasEmittedServerData = true;
+                  if (cacheTimeout) {
+                    clearTimeout(cacheTimeout);
+                    cacheTimeout = null;
+                  }
+                  console.log(
+                    "[FIREBASE DATA PROVIDER] - DOCUMENT TO OBSERVABLE - Item from server",
+                    item
+                  );
+                  observer.next(item);
+                }
               } else {
                 observer.next(undefined);
               }
@@ -222,6 +285,9 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
       return () => {
         if (callbackId) {
           FirebaseFirestore.removeSnapshotListener({ callbackId });
+        }
+        if (cacheTimeout) {
+          clearTimeout(cacheTimeout);
         }
       };
     });
