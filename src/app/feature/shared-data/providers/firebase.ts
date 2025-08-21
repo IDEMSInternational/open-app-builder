@@ -45,7 +45,9 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
     firebaseService.ready();
   }
 
-  public async querySingle(params: SharedDataQueryParams) {
+  public async querySingle(
+    params: SharedDataQueryParams
+  ): Promise<ISharedDataCollection | undefined> {
     const { id } = params;
     const reference = `${COLLECTION}/${id}`;
     const { snapshot } = await FirebaseFirestore.getDocument<ISharedDataCollection>({
