@@ -56,40 +56,24 @@ https://firebase.google.com/docs/app-check/ios/devicecheck-provider
 Follow instructions to integrate `App Attest` on newer devices (ios 14+)
 https://firebase.google.com/docs/app-check/ios/app-attest-provider
 
-### Function Deployment
-
-
 ## Testing
 Remote functions can be tested locally from a debug page, with support for whitelisted device tokens.
 See review notes in https://github.com/IDEMSInternational/open-app-builder/pull/3097
 
-## PR Notes
-
-Closes? #3015
-
 ## TODO
-### Deployed Functions
-- [ ] Create and deploy test function for use in debug
 
-
-### Core
-- [ ] Handle storing response in field/list
-
-### Debug Page
-- [ ] Token display and refresh
-
-### Actions
-- [ ] Add support for triggering from action
-- [ ] Create feat template
-
-### Firebase Provider
-- [ ] Configure region
-- [ ] Test on native; https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/app-check#android
-- [ ] Test on deployed debug
+### Functions
+- [ ] Create and deploy specific test function for use in debug
 
 ### Tests
-- [ ] Basic service/action tests
- 
+- [ ] Functional testing on native
+- [ ] Functional testing on web
+- [ ] Service and provider unit tests
+
+### Authoring Integration
+- [ ] Handle storing response in field/list for access
+- [ ] Add actions to trigger
+- [ ] Create feat template
 
 ## Troubleshooting
 

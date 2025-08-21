@@ -21,7 +21,7 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
  */
 export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   private appCheckToken = signal<GetTokenResult | undefined>(undefined);
-  private appCheckTokenError = signal<boolean>(false);
+  private appCheckTokenError = signal<string | undefined>(undefined);
 
   /** Functions region - if `undefined` firebase assumes "us-central1" */
   private region?: string;
@@ -40,11 +40,9 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
       await this.setupAppCheck();
       const token = await FirebaseAppCheck.getToken({ forceRefresh: true });
       this.appCheckToken.set(token);
-      // TODO - provide way to refresh token
-      // TODO -
     } catch (error) {
       console.error("[App check]", error);
-      this.appCheckTokenError.set(true);
+      this.appCheckTokenError.set(error.message);
     }
   }
 
