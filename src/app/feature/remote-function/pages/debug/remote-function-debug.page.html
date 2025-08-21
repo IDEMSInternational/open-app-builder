@@ -69,8 +69,13 @@
     }
   </div>
   <ion-button style="margin-top: 1em">Refresh</ion-button>
-  } @if(firebaseTokenError()){
+  } @if(firebaseTokenError(); as tokenError){
   <div>⚠️ Could Not Retrieve Token</div>
+  <div style="margin-top: 1em; font-size: small">{{tokenError}}<br /></div>
+  <div style="margin-top: 1em">
+    Ensure the current app, site or debug token is registered in the firebase console
+  </div>
+
   } } }
 
   <!-- Default Provider -->
