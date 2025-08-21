@@ -18,10 +18,10 @@ export class RemoteFunctionActionFactory {
     await this.service.ready();
     const [actionId] = args;
     const childActions = {
-      run: async () => {
-        console.log("create", args, params);
-        // TODO
-      },
+      // TODO
+      // run: async () => {
+      //   console.log("create", args, params);
+      // },
     };
     if (!(actionId in childActions)) {
       console.error(`[REMOTE_FUNCTION] - No action, "${actionId}"`);

@@ -19,7 +19,7 @@ interface ParamSignal {
 export class RemoteFunctionDebugPage implements OnInit {
   public service = inject(RemoteFunctionService);
 
-  public targetFunctionName = model<string>("rapidproUserData"); // TODO - change to empty
+  public targetFunctionName = model<string>("");
 
   public paramPairs = signal<ParamSignal[]>([]);
 
@@ -41,7 +41,6 @@ export class RemoteFunctionDebugPage implements OnInit {
 
   async ngOnInit() {
     await this.service.ready();
-    this.addParam("rapidpro_uuid", "700c4bd4-c7e5-4414-9ff2-2b1ff2571947");
   }
 
   // --- Param management ---

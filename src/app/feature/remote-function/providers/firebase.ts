@@ -30,11 +30,7 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
 
   public async initialise(injector: Injector): Promise<void> {
     this.region = this.deploymentService.config.firebase?.functions?.region;
-
     const firebaseService = injector.get(FirebaseService);
-
-    // TODO - app-check and function specific config from deployment config?
-    // TODO - ensure enabled
     firebaseService.ready();
     try {
       await this.setupAppCheck();
@@ -68,6 +64,10 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
     if (Capacitor.isNativePlatform()) {
       await FirebaseAppCheck.initialize({ isTokenAutoRefreshEnabled: true });
     } else {
+      const siteKey = this.deploymentService.config.firebase?.appCheck?.recaptchaEnterpriseSiteKey;
+      if (!siteKey) {
+        throw new Error("App Check: recaptchaEnterpriseSiteKey not configured for web.");
+      }
       await FirebaseAppCheck.initialize({
         isTokenAutoRefreshEnabled: true,
         provider: new ReCaptchaEnterpriseProvider("myKey"),
