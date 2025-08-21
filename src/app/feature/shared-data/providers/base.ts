@@ -17,12 +17,25 @@ export interface SharedDataQueryParams {
 export class SharedDataProviderBase {
   public async initialise(injector: Injector) {}
 
+  /** Retrieve a single document from server */
+  public async querySingle(params: SharedDataQueryParams) {
+    console.error(`[Shared Data] Provider method not implemented: querySingle`);
+    return {} as ISharedDataCollection;
+  }
+
   /** Provide a live-query to a single document and stream updates */
   public querySingle$(params: SharedDataQueryParams) {
     console.error(`[Shared Data] Provider method not implemented: querySingle$`);
     return of({} as ISharedDataCollection);
   }
-  /** Provide a live-query to all documents within    */
+
+  /** Retrieve documents within a collection with query */
+  public async queryMultiple(params: SharedDataQueryParams) {
+    console.error(`[Shared Data] Provider method not implemented: queryMultiple`);
+    return [] as ISharedDataCollection[];
+  }
+
+  /** Provide a live-query to all documents within a collection */
   public queryMultiple$(params: SharedDataQueryParams) {
     console.error(`[Shared Data] Provider method not implemented: queryMultiple$`);
     return of([] as ISharedDataCollection[]);
