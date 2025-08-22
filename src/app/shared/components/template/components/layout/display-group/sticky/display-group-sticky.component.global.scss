@@ -1,0 +1,11 @@
+// Styling must be globally scoped ('@use'd in src/theme/_components.scss), as the sticky display group
+// needs to style projected content from the parent display-group component
+
+// Sticky display group safe area padding
+tmpl-display-group-sticky[sticky-position="top"] .display-group-wrapper {
+  padding-top: var(--ion-safe-area-top, 0);
+}
+
+tmpl-display-group-sticky[sticky-position="bottom"] .display-group-wrapper {
+  padding-bottom: var(--ion-safe-area-bottom, 0);
+}
