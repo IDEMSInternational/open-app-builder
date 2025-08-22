@@ -3,7 +3,7 @@ $pop-up-padding: var(--pop-up-padding, 20px);
 
 // Set the background color var to the popup background color for any children
 :host {
-  --ion-background-color: $pop-up-background;
+  --ion-background-color: var(--pop-up-background, var(--ion-background-color));
 }
 
 .popup-backdrop {
