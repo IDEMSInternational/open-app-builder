@@ -13,4 +13,7 @@ ion-modal.template-popup-modal {
   &.hide-popup-on-template {
     z-index: -1 !important;
   }
+
+  // Sticky display group
+  @import "../app/shared/components/template/components/layout/display-group/sticky/display-group-sticky.component.global.scss";
 }
