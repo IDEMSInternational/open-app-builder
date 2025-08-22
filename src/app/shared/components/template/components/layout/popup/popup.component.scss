@@ -1,3 +1,10 @@
+$popup-background-color: var(--pop-up-background-color, var(--ion-background-color));
+
+// Set the background color var to the popup background color for any children
+:host {
+  --ion-background-color: $popup-background-color;
+}
+
 .popup-backdrop {
   // Ensure some padding applied even when --ion-safe-area-* is 0px
   --pop-up-top-padding: max(var(--ion-safe-area-top), 24px);
@@ -20,7 +27,7 @@
     padding-bottom: var(--pop-up-bottom-padding);
   }
   &[data-fullscreen] {
-    background: white;
+    background: $popup-background-color;
     .popup-container {
       height: 100%;
       max-height: unset;
@@ -33,7 +40,7 @@
   .popup-content {
     height: fit-content;
     max-height: 100%;
-    background: white;
+    background: $popup-background-color;
     border-radius: 20px;
     padding: 20px;
     overflow: auto;
