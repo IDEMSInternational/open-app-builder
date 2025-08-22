@@ -60,8 +60,13 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
 
   private getContentContainerTopPadding() {
     const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
-    const ionContentPaddingStart =
-      parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    return ionContentPaddingStart;
+    const ionContentPaddingTop = parseFloat(computedStyles.getPropertyValue("--padding-top")) || 0;
+
+    // Padding within a popup is not determined by the --padding-top property.
+    // HACK: Use inconsequential CSS property (scroll-margin-top) to force browser to compute the value of our CSS custom property.
+    // If we just get the property value, i.e. `--pop-up-top-padding`, it can return the raw calc value,
+    // e.g. `max(0px, 24px)`, which would still need to be computed.
+    const popupPadding = parseFloat(computedStyles.scrollMarginTop) || 0;
+    return ionContentPaddingTop + popupPadding;
   }
 }
