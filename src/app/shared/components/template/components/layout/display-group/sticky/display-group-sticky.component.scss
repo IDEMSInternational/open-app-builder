@@ -5,6 +5,8 @@
   left: 0;
   width: 100vw;
   z-index: 10;
+  // HACK: Use inconsequential CSS property to compute the value of var(--pop-up-top-padding) and re-expose
+  scroll-margin-top: var(--pop-up-top-padding);
 }
 
 // Top sticky positioning
