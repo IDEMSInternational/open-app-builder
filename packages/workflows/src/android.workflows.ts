@@ -29,7 +29,9 @@ const childWorkflows: IDeploymentWorkflows = {
       {
         name: "set_splash_image",
         function: async ({ tasks, config }) =>
-          tasks.android.set_splash_image(config.android.splash_asset_path),
+          tasks.android.set_splash_image({
+            splashAssetPath: config.android.splash_asset_path,
+          }),
       },
     ],
   },
