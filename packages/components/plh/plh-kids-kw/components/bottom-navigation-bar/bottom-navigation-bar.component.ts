@@ -5,7 +5,7 @@ import { getParamFromTemplateRow } from "src/app/shared/utils";
 interface IPlhBottomNavigationParams {
   /** TEMPLATE PARAMETER: button_list. A list of nav button items */
   buttonList: INavButton[];
-  /** TEMPLATE PARAMETER: hide_inactice_text. Hide text on inactive buttons */
+  /** TEMPLATE PARAMETER: hide_inactive_text. Hide text on inactive buttons */
   hideInactiveText?: boolean;
 }
 interface INavButton {
@@ -29,6 +29,6 @@ export class PlhBottomNavigationBarComponent extends TemplateBaseComponent imple
 
   getParams() {
     this.params.buttonList = getParamFromTemplateRow(this._row, "button_list", []);
-    this.params.hideInactiveText = getParamFromTemplateRow(this._row, "hide_inactive_text", false);
+    this.params.hideInactiveText = getParamFromTemplateRow(this._row, "hide_inactive_text", true);
   }
 }
