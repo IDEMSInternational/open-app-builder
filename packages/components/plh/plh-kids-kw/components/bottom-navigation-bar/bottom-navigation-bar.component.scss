@@ -1,0 +1,20 @@
+.nav-item {
+  flex: 1;
+  overflow: hidden; // text overflow will be wrapped in elipsis below
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+}
+// Hide inactive text buttons when set by param
+.label[data-isActive="false"][data-hideInactiveText="true"] {
+  visibility: hidden;
+}
+
+.label > p {
+  white-space: nowrap; /* don’t wrap */
+  overflow: hidden; /* hide overflow */
+  text-overflow: ellipsis; /* show "..." */
+  display: block; /* required for ellipsis to work reliably */
+}
