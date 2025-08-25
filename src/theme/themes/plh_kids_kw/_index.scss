@@ -157,9 +157,7 @@
     $s: $color-secondary,
     $bg: $page-background,
     $pv: $color-primary-variant,
-    $sv: $color-secondary-variant
+    $sv: $color-secondary-variant,
+    $theme-overrides: $variable-overrides
   );
-  @each $name, $value in $variable-overrides {
-    --#{$name}: #{$value};
-  }
 }
