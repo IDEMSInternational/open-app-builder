@@ -1,6 +1,14 @@
+.plh-bottom-nav-wrapper {
+  display: flex;
+}
 .nav-item {
-  flex: 1;
+  flex: 1 0 0;
   overflow: hidden; // text overflow will be wrapped in elipsis below
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .label {
