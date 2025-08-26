@@ -40,3 +40,55 @@ Once enabled, the app will use the new reactive template system for supported fl
 
 - See the `reactive-components` directory for available base and UI components.
 - Review the `parameters.ts` file for how to define and use parameters in templates.
+
+## TODO
+
+Functionality not yet supported by reactive templates:
+
+* Loops
+* Data items
+* Display Groups
+* Global Variables
+* Template debug mode
+* Modals and modal navigation e.g. nav stack
+* Clearing variable store when loading a new page?
+
+Components without reactive equivalents:
+
+* accordion
+* animated-slides
+* audio
+* button-apple-sign-in
+* button-google-sign-in
+* carousel
+* combo-box
+* dashed-box
+* data-items
+* date-time-picker
+* drawer
+* html
+* icon-banner
+* latex
+* layout
+* navigation-bar
+* number-selector
+* odk-form
+* pdf
+* progress-path
+* qr-code
+* radio-button-grid
+* radio-group
+* round-icon-button
+* select-text
+* shared-data
+* simple-checkbox
+* slider
+* square-icon-button
+* table
+* task-card
+* task-progress-bar
+* text-area
+* text-bubble
+* tile-component
+* timer
+* youtube
