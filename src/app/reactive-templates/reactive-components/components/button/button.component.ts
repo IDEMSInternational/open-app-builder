@@ -1,4 +1,4 @@
-import { Component, computed, inject } from "@angular/core";
+import { Component, computed, forwardRef, inject } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { CommonModule } from "@angular/common";
@@ -41,11 +41,16 @@ interface IVariantMap {
  * A general-purpose button component
  */
 @Component({
-  selector: "aob-button",
+  selector: "oab-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
   standalone: true,
-  imports: [CommonModule, IonicModule, TemplatePipesModule, RowListComponent], // todo: make pipes standalone
+  imports: [
+    CommonModule,
+    IonicModule,
+    TemplatePipesModule, // todo: make pipes standalone
+    [forwardRef(() => RowListComponent)],
+  ],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class ButtonComponent extends RowBaseComponent<ReturnType<typeof parameters>> {

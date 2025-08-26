@@ -2,7 +2,7 @@
   <ion-input
     #input
     class="text-box-input"
-    [inputmode]="params.isNumberInput.value() ? 'tel' : 'text'"
+    [inputmode]="params.numberInput.value() ? 'tel' : 'text'"
     (ionChange)="handleChange(input.value)"
     [value]="value()"
     [placeholder]="params.placeholder.value()"
