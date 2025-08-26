@@ -43,6 +43,10 @@ Once enabled, the app will use the new reactive template system for supported fl
 
 ## TODO
 
+Technical Tasks
+
+* Run end to end tests on pr
+
 Functionality not yet supported by reactive templates:
 
 * Loops
