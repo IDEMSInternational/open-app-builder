@@ -56,7 +56,6 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.value = this.variableStore.asSignal(this.name());
     this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
 
-    // Initialize the evaluator with a context
     this.setParams();
     this.setDependencies();
     this.watchDependencies();
