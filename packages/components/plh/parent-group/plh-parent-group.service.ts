@@ -412,11 +412,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const [parentGroupData] = await firstValueFrom(parentGroupQuery);
 
-    // HACK: currently the parent group name is used as the ID assigned to parents, so use this for the query
-    const parentGroupName = parentGroupData.name;
-
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
-      selector: { group_id: parentGroupName },
+      selector: {
+        // HACK: currently the parent group name is used as the ID assigned to parents in some cases, so get parent instances for both
+        $or: [{ group_id: parentGroupData.id }, { group_id: parentGroupData.name }],
+      },
     });
     const parentsData = await firstValueFrom(parentsQuery);
 
