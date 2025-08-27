@@ -17,8 +17,7 @@
 }
 // Hide inactive text buttons when set by param
 .label[data-isActive="false"][data-hideInactiveText="true"] {
-  // visibility: hidden;
-  display: none;
+  visibility: hidden;
 }
 
 .label[data-hideOverflowText="true"] > p {
