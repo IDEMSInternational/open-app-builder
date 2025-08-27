@@ -5,8 +5,10 @@ import { getParamFromTemplateRow } from "src/app/shared/utils";
 interface IPlhBottomNavigationParams {
   /** TEMPLATE PARAMETER: button_list. A list of nav button items */
   buttonList: INavButton[];
-  /** TEMPLATE PARAMETER: hide_inactive_text. Hide text on inactive buttons */
+  /** TEMPLATE PARAMETER: hide_inactive_text. Hide text on inactive buttons. Default `false` */
   hideInactiveText?: boolean;
+  /** TEMPLATE PARAMETER: hide_wrapping_text. For long text strings, hide overflowing text with ellipsis. Default `false` */
+  hideWrappingText?: boolean;
 }
 interface INavButton {
   icon: string | null;
@@ -29,6 +31,7 @@ export class PlhBottomNavigationBarComponent extends TemplateBaseComponent imple
 
   getParams() {
     this.params.buttonList = getParamFromTemplateRow(this._row, "button_list", []);
-    this.params.hideInactiveText = getParamFromTemplateRow(this._row, "hide_inactive_text", true);
+    this.params.hideInactiveText = getParamFromTemplateRow(this._row, "hide_inactive_text", false);
+    this.params.hideWrappingText = getParamFromTemplateRow(this._row, "hide_wrapping_text", false);
   }
 }
