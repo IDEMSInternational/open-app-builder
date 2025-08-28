@@ -10,7 +10,7 @@ import { RowService } from "./row.service";
 export class ActionService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
-    private coreActionsService: CoreActionsService, // Not used just force initialisation - todo: replace with individual action registers?
+    private coreActionsService: CoreActionsService, // Not used, just forces initialisation - todo: replace with individual action registers?
     private rowService: RowService
   ) {}
 

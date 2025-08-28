@@ -13,7 +13,7 @@ export class RowService {
     private namespaceService: NamespaceService
   ) {}
 
-  // todo: we can amend the template parsing to make this friendlier
+  // todo: we could amend the template parsing to make this friendlier
   public getDependencies(row: FlowTypes.TemplateRow, type: string): string[] {
     const dynamicDependencies = row._dynamicDependencies;
     if (!dynamicDependencies) return [];
