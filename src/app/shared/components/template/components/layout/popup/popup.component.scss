@@ -1,4 +1,5 @@
 $pop-up-background: var(--pop-up-background, var(--ion-background-color));
+$pop-up-padding: var(--pop-up-padding, 20px);
 
 // Set the background color var to the popup background color for any children
 :host {
@@ -42,7 +43,7 @@ $pop-up-background: var(--pop-up-background, var(--ion-background-color));
     max-height: 100%;
     background: $pop-up-background;
     border-radius: 20px;
-    padding: 20px;
+    padding: $pop-up-padding;
     overflow: auto;
   }
   .popup-content[data-fullscreen] {
@@ -51,6 +52,7 @@ $pop-up-background: var(--pop-up-background, var(--ion-background-color));
     max-height: 100vh;
     border-radius: 0;
     margin: 0;
+    padding: 0;
   }
   .popup-content::-webkit-scrollbar {
     display: none;
