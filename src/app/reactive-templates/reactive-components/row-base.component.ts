@@ -16,6 +16,7 @@ import { RowService } from "../services/row.service";
 import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
+import { Subscription } from "rxjs";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -40,7 +41,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
 
-  protected subscriptions = [];
+  protected subscriptions: Subscription[] = [];
 
   @HostBinding("style.display")
   get displayStyle() {
