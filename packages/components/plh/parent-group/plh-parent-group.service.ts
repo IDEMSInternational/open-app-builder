@@ -185,11 +185,11 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
-
     // In order to avoid overwriting parent fields added/updated from RapidPro,
     // merge parent group data with existing shared data before pushing
     parentGroup = await this.mergeParentGroupDataWithExistingSharedData(parentGroup);
+
+    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
 
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
@@ -412,11 +412,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const [parentGroupData] = await firstValueFrom(parentGroupQuery);
 
-    // HACK: currently the parent group name is used as the ID assigned to parents, so use this for the query
-    const parentGroupName = parentGroupData.name;
-
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
-      selector: { group_id: parentGroupName },
+      selector: {
+        // HACK: currently the parent group name is used as the ID assigned to parents in some cases, so get parent instances for both
+        $or: [{ group_id: parentGroupData.id }, { group_id: parentGroupData.name }],
+      },
     });
     const parentsData = await firstValueFrom(parentsQuery);
 
@@ -564,9 +564,19 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Save data from parent group to respective data lists
     const { parents, ...parentGroup } = parentGroupData;
 
-    for (const parent of parents) {
-      await this.dynamicDataService.upsert("data_list", parentsDataList, {
-        ...(parent as IParent),
+    for (const parent of parents as IParent[]) {
+      const localParentQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
+        selector: { id: parent.id },
+      });
+      const [localParent] = await firstValueFrom<IParent[]>(localParentQuery);
+
+      const mergedParent = {
+        ...localParent,
+        ...parent,
+      };
+
+      await this.dynamicDataService.upsert<IParent>("data_list", parentsDataList, {
+        ...mergedParent,
       });
     }
 
