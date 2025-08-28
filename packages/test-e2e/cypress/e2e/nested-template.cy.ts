@@ -11,7 +11,13 @@ describe("nested template component", () => {
     cy.getDataTest("childTemplate.grandchildTemplate").should("exist");
   });
 
-  it("passes values to the child template", () => {
+  it("passes static values to the child template", () => {
+    cy.getDataTest("childTemplate.childTextStatic").contains("Parent Static Value");
+  });
+
+  it("passes dynamic values to the child template", () => {
+    cy.getDataTest("childTemplate.childTextStatic").contains("Parent Static Value");
+
     cy.getDataTest("parentTextBox").find("input").clear().type("Parent Test Value").blur();
 
     cy.getDataTest("childTemplate.childText").contains("Parent Test Value");
