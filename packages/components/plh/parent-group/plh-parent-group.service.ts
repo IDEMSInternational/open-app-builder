@@ -185,11 +185,11 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
-
     // In order to avoid overwriting parent fields added/updated from RapidPro,
     // merge parent group data with existing shared data before pushing
     parentGroup = await this.mergeParentGroupDataWithExistingSharedData(parentGroup);
+
+    parentGroup = rapidproUtils.formatParentGroupDataForPush(parentGroup);
 
     await this.sharedDataService.updateSharedData(
       parentGroup.shared_id,
@@ -237,12 +237,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     }
     // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
     // since they are optimised to return a stream from the server and cache combined.
-    const sharedDataQuery = this.sharedDataService.provider.queryMultiple$({
+    const sharedData = await this.sharedDataService.provider.queryMultiple({
       id: "",
       since: undefined,
       auth_id: this.authId(),
     });
-    const sharedData = await firstValueFrom(sharedDataQuery);
     const sharedParentGroups = sharedData.filter((doc) => doc.data.type === "parent_group");
     console.log("[PLH PARENT GROUP] - PULL - Shared parent groups", sharedParentGroups);
 
@@ -294,14 +293,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     try {
       // Directly query the server provider: the main service query methods aren't suited to providing a snapshot,
       // since they are optimised to return a stream from the server and cache combined.
-      const sharedParentGroupDoc = await firstValueFrom(
-        this.sharedDataService.provider.querySingle$({
-          id: sharedId,
-          auth_id: this.authId(),
-          since: undefined,
-        })
-      );
-
+      const sharedParentGroupDoc = await this.sharedDataService.provider.querySingle({
+        id: sharedId,
+        auth_id: this.authId(),
+        since: undefined,
+      });
       if (!sharedParentGroupDoc) {
         console.error(`[PLH PARENT GROUP] - PULL - Shared parent group not found, id: ${sharedId}`);
         // TODO: remove parent group from local data?
@@ -416,11 +412,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
     const [parentGroupData] = await firstValueFrom(parentGroupQuery);
 
-    // HACK: currently the parent group name is used as the ID assigned to parents, so use this for the query
-    const parentGroupName = parentGroupData.name;
-
     const parentsQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
-      selector: { group_id: parentGroupName },
+      selector: {
+        // HACK: currently the parent group name is used as the ID assigned to parents in some cases, so get parent instances for both
+        $or: [{ group_id: parentGroupData.id }, { group_id: parentGroupData.name }],
+      },
     });
     const parentsData = await firstValueFrom(parentsQuery);
 
@@ -568,9 +564,19 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Save data from parent group to respective data lists
     const { parents, ...parentGroup } = parentGroupData;
 
-    for (const parent of parents) {
-      await this.dynamicDataService.upsert("data_list", parentsDataList, {
-        ...(parent as IParent),
+    for (const parent of parents as IParent[]) {
+      const localParentQuery = this.dynamicDataService.query$("data_list", parentsDataList, {
+        selector: { id: parent.id },
+      });
+      const [localParent] = await firstValueFrom<IParent[]>(localParentQuery);
+
+      const mergedParent = {
+        ...localParent,
+        ...parent,
+      };
+
+      await this.dynamicDataService.upsert<IParent>("data_list", parentsDataList, {
+        ...mergedParent,
       });
     }
 
@@ -619,12 +625,11 @@ export class PlhParentGroupService extends SyncServiceBase {
    * but preserves rapidpro_fields on parents from the existing parent group.
    */
   private async mergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
-    const sharedParentGroupQuery = this.sharedDataService.provider.querySingle$({
+    const existingSharedParentGroup = await this.sharedDataService.provider.querySingle({
       id: parentGroup.shared_id,
       auth_id: this.authId(),
       since: undefined,
     });
-    const existingSharedParentGroup = await firstValueFrom(sharedParentGroupQuery);
 
     if (existingSharedParentGroup) {
       parentGroup.parents = rapidproUtils.mergeParentsArraysPreservingRapidProData(
