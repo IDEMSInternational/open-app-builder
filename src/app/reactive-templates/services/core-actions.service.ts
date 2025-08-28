@@ -5,6 +5,12 @@ import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 import { AnalyticsService } from "src/app/shared/services/analytics";
 
+class ActionNotImplementedError extends Error {
+  constructor(action: string) {
+    super(`Action not implemented: ${action}`);
+  }
+}
+
 /*
  * Temporary holding place for existing actions.
 /**
@@ -66,7 +72,7 @@ export class CoreActionsService {
       },
       pop_up: async (action) => {
         // todo: Implement with reactive templates
-        throw new Error("Not Implemented");
+        throw new ActionNotImplementedError("pop_up");
       },
       track_event: async (action) => {
         const [key] = action.args;
@@ -75,12 +81,12 @@ export class CoreActionsService {
       },
       trigger_actions: async (action) => {
         // todo: implement this?
-        throw new Error("Not Implemented");
+        throw new ActionNotImplementedError("trigger_actions");
       },
       emit: async (action) => {
         // todo: Find out what this is and then implement it using reactive templates.
 
-        throw new Error("Not Implemented");
+        throw new ActionNotImplementedError("emit");
       },
     });
   }
