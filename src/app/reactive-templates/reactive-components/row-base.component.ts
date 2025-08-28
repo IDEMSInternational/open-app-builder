@@ -34,8 +34,6 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
 
-  private dependantVariables: string[] = [];
-
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
   protected namespaceService = inject(NamespaceService);
@@ -58,7 +56,6 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
 
     this.setParams();
-    this.setDependencies();
     this.watchDependencies();
 
     // Set default value
@@ -94,27 +91,14 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     });
   }
 
-  private setDependencies() {
-    this.dependantVariables = this.rowService.getDependencies(this.row(), "local");
-  }
-
   private watchDependencies() {
-    if (!this.dependantVariables || this.dependantVariables.length === 0) return;
-
-    this.dependantVariables.forEach((fieldName) => {
-      const row = this.row();
-      // if the field name already includes a namespace, we assume this is
-      // referring to a variable in a child template?
-      // todo: this is not actually an expression it's a fullname e.g. @local.something.something_else
-      const name = this.namespaceService.getFullName(this.namespace(), fieldName) as string;
-
-      const subscribe = this.variableStore.watch(name).subscribe(() => {
-        this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
-        this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
-        this.setParams();
-      });
-
-      this.subscriptions.push(subscribe);
+    this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
+      this.variableStore.set(
+        this.name(),
+        this.rowService.evaluateValue(this.row(), this.namespace())
+      );
+      this.condition.set(this.rowService.evaluateCondition(this.row(), this.namespace()));
+      this.setParams();
     });
   }
 

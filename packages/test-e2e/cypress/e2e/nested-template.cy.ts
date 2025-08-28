@@ -16,8 +16,6 @@ describe("nested template component", () => {
   });
 
   it("passes dynamic values to the child template", () => {
-    cy.getDataTest("childTemplate.childTextStatic").contains("Parent Static Value");
-
     cy.getDataTest("parentTextBox").find("input").clear().type("Parent Test Value").blur();
 
     cy.getDataTest("childTemplate.childText").contains("Parent Test Value");
@@ -33,7 +31,13 @@ describe("nested template component", () => {
     cy.getDataTest("parentChildText").contains("New child Value");
   });
 
-  it("passes values to the grandchild template", () => {
+  it("passes static values to the grandchild template", () => {
+    cy.getDataTest("childTemplate.grandchildTemplate.staticGrandchildText").contains(
+      "Static Grandchild Value"
+    );
+  });
+
+  it("passes dynamic values to the grandchild template", () => {
     cy.getDataTest("parentTextBox").find("input").clear().type("Parent Test Value").blur();
 
     cy.getDataTest("childTemplate.grandchildTemplate.grandchildText").contains("Parent Test Value");

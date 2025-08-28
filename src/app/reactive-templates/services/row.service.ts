@@ -3,6 +3,7 @@ import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
+import { Subscription } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class RowService {
@@ -14,19 +15,31 @@ export class RowService {
   ) {}
 
   // todo: we could amend the template parsing to make this friendlier
-  public getDependencies(row: FlowTypes.TemplateRow, type: string): string[] {
+  public getDependencies(row: FlowTypes.TemplateRow, type: string, namespace: string): string[] {
     const dynamicDependencies = row._dynamicDependencies;
     if (!dynamicDependencies) return [];
 
     return Object.keys(dynamicDependencies)
       .filter((reference) => reference.includes(`@${type}.`))
-      .map(
-        (reference) =>
-          reference
-            .replace(`@${type}.`, "")
-            .replace("parameter_list.", "")
-            .replace(/[#!&|,]/g, "") // Strip out # ! & | ,
-      );
+      .map((reference) => {
+        const name = reference
+          .replace(`@${type}.`, "")
+          .replace("parameter_list.", "")
+          .replace(/[#!&|,]/g, ""); // Strip out # ! & |
+
+        return this.namespaceService.getFullName(namespace, name);
+      });
+  }
+
+  public watchDependencies(
+    row: FlowTypes.TemplateRow,
+    type: string,
+    namespace: string,
+    fn: (dependencyName) => void
+  ): Subscription[] {
+    return this.getDependencies(row, type, namespace).map((name) =>
+      this.variableStore.watch(name).subscribe(() => fn(name))
+    );
   }
 
   public evaluateValue(row: FlowTypes.TemplateRow, namespace: string): any {
@@ -71,12 +84,10 @@ export class RowService {
 
   private createExecutionContext(row: FlowTypes.TemplateRow, namespace: string): any {
     const context = { local: {} };
-    const dependantVariables = this.getDependencies(row, "local");
+    const dependantVariables = this.getDependencies(row, "local", namespace);
 
-    dependantVariables.forEach((fieldName) => {
-      let fullName = this.namespaceService.getFullName(namespace, fieldName) as string;
-
-      context.local[fullName] = this.variableStore.get(fullName);
+    dependantVariables.forEach((dependencyName) => {
+      context.local[dependencyName] = this.variableStore.get(dependencyName);
     });
 
     return context;
