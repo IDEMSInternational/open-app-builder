@@ -39,6 +39,7 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
     .item-text {
       font-size: $text-size;
       color: $text-color;
+      width: 100%;
     }
   }
 
