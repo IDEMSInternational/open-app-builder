@@ -2,11 +2,13 @@
 @use "sass:color";
 
 @mixin theme-early_family_math {
-  [data-theme="early_family_math"] {
+  @include utils.theme-selectors("early_family_math") {
     /** Authoring variables **/
-    $color-primary: #1874ac;
-    $color-secondary: #b53f94;
+    $color-primary: hsl(203 76% 38%); // #1874ac
+    $color-secondary: hsl(317 48% 48%); //#b53f94
     $page-background: white;
+    $color-primary-variant: null;
+    $color-secondary-variant: null;
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -57,7 +59,13 @@
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
     );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @include utils.generateTheme(
+      $p: $color-primary,
+      $s: $color-secondary,
+      $bg: $page-background,
+      $pv: $color-primary-variant,
+      $sv: $color-secondary-variant
+    );
     @each $name, $value in $variable-overrides {
       --#{$name}: #{$value};
     }

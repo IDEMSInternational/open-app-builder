@@ -4,6 +4,9 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
+import { Device } from "@capacitor/device";
+import { StatusBar, Style } from "@capacitor/status-bar";
+import { EdgeToEdge } from "@capawesome/capacitor-android-edge-to-edge-support";
 import { DbService } from "./shared/services/db/db.service";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
@@ -143,6 +146,9 @@ export class AppComponent {
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
+
+      await this.handleEdgeToEdge();
+
       // Run app-specific launch tasks
 
       // Re-initialise default field and globals on init in case sheets have been updated
@@ -170,7 +176,8 @@ export class AppComponent {
     this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
     this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
     this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
-
+    const { operatingSystem } = await Device.getInfo();
+    this.localStorageService.setProtected("OPERATING_SYSTEM", operatingSystem);
     const appEnv = environment.production ? "production" : "development";
     this.localStorageService.setProtected("APP_ENVIRONMENT", appEnv);
     this.localStorageService.setProtected("APP_HOSTNAME", location.hostname);
@@ -307,6 +314,16 @@ export class AppComponent {
         }
       }
     });
+  }
+
+  // On Android, handle edge-to-edge support by effectively disabling it and enforcing consistent status-bar styling
+  // Installing `@capawesome/capacitor-android-edge-to-edge-support` plugin applies insets to webview without further configuration
+  // TODO: expose options to app config, and handle edge-to-edge display
+  private async handleEdgeToEdge() {
+    if (Capacitor.getPlatform() === "android") {
+      await EdgeToEdge.setBackgroundColor({ color: "#000000" });
+      await StatusBar.setStyle({ style: Style.Dark });
+    }
   }
 
   /** ensure localhost dev can see all non-user content */
