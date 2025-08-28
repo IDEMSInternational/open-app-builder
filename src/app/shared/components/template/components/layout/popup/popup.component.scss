@@ -1,3 +1,5 @@
+$pop-up-padding: var(--pop-up-padding, 20px);
+
 .popup-backdrop {
   // Ensure some padding applied even when --ion-safe-area-* is 0px
   --pop-up-top-padding: max(var(--ion-safe-area-top), 24px);
@@ -35,7 +37,7 @@
     max-height: 100%;
     background: white;
     border-radius: 20px;
-    padding: 20px;
+    padding: $pop-up-padding;
     overflow: auto;
   }
   .popup-content[data-fullscreen] {
@@ -44,6 +46,7 @@
     max-height: 100vh;
     border-radius: 0;
     margin: 0;
+    padding: 0;
   }
   .popup-content::-webkit-scrollbar {
     display: none;
