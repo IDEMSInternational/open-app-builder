@@ -68,7 +68,8 @@
       text-bubble-border-color-3: var(--ion-color-yellow-700),
       text-bubble-background-color-4: var(--gradient-yellow-vertical),
       text-bubble-border-color-4: var(--ion-color-secondary-700),
-      pop-up-background: white
+      pop-up-background: white,
+      // paragraph-spacing: var(--tiny-margin),
     );
     @include utils.generateTheme(
       $p: $color-primary,
