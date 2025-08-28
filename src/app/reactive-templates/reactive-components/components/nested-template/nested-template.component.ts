@@ -33,7 +33,6 @@ export class NestedTemplateComponent
   public ngAfterViewChecked(): void {
     if (this.initialised) return;
 
-    // Override variable values after all child rows in the nested template have been created
     for (const row of this.row().rows) {
       this.setTemplateVariable(row);
     }
