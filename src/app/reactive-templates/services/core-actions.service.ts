@@ -5,12 +5,22 @@ import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 import { AnalyticsService } from "src/app/shared/services/analytics";
 
+/*
+ * Temporary holding place for existing actions.
+/**
+ * CoreActionsService acts as a temporary registry for core template actions.
+ * 
+ * This service provides a centralized location for registering and handling
+ * actions used by reactive templates. It is intended as a transitional solution
+ * while actions are being migrated or refactored. In the future, actions may be
+ * relocated to more appropriate modules or services as the codebase evolves.
+ *
+ * @remarks
+ * Provided in the root injector; instantiated once for the application lifecycle.
+ */
 @Injectable({
   providedIn: "root",
 })
-/*
- * Temporary holding place for existing actions.
- */
 export class CoreActionsService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
