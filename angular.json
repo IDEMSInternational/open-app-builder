@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "plh",
+      "prefix": "oab",
       "schematics": {},
       "architect": {
         "build": {
