@@ -3,25 +3,17 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_kids_tz {
-  // Core theme configuration variables
-  $theme-name: "plh_kids_tz";
-  $color-primary: hsl(209, 64%, 25%); // #174168
-  $color-secondary: hsl(40, 97%, 49%); // #F6A504
-  $page-background: white;
-  $color-primary-variant: null;
-  $color-secondary-variant: null;
-  $color-red: null;
-  $color-green: #92cb44;
-
   @include utils.theme(
-    $theme-name: $theme-name,
-    $color-primary: $color-primary,
-    $color-secondary: $color-secondary,
-    $page-background: $page-background,
-    $color-primary-variant: $color-primary-variant,
-    $color-secondary-variant: $color-secondary-variant,
-    $color-red: $color-red,
-    $color-green: $color-green,
+    $theme-name: "plh_kids_tz",
+    $color-primary: hsl(209, 64%, 25%),
+    // #174168
+    $color-secondary: hsl(40, 97%, 49%),
+    // #F6A504
+    $page-background: white,
+    $color-primary-variant: null,
+    $color-secondary-variant: null,
+    $color-red: null,
+    $color-green: #92cb44,
     $variable-overrides: (
       // Custom palette
       color-accent-pink: #ee007b,

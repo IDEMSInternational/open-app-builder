@@ -2,25 +2,17 @@
 @use "sass:color";
 
 @mixin theme-early_family_math {
-  // Core theme configuration variables
-  $theme-name: "early_family_math";
-  $color-primary: hsl(203 76% 38%); // #1874ac
-  $color-secondary: hsl(317 48% 48%); //#b53f94
-  $page-background: white;
-  $color-primary-variant: null;
-  $color-secondary-variant: null;
-  $color-red: null;
-  $color-green: null;
-
   @include utils.theme(
-    $theme-name: $theme-name,
-    $color-primary: $color-primary,
-    $color-secondary: $color-secondary,
-    $page-background: $page-background,
-    $color-primary-variant: $color-primary-variant,
-    $color-secondary-variant: $color-secondary-variant,
-    $color-red: $color-red,
-    $color-green: $color-green,
+    $theme-name: "early_family_math",
+    $color-primary: hsl(203 76% 38%),
+    // #1874ac
+    $color-secondary: hsl(317 48% 48%),
+    //#b53f94
+    $page-background: white,
+    $color-primary-variant: null,
+    $color-secondary-variant: null,
+    $color-red: null,
+    $color-green: null,
     $variable-overrides: (
       // BORDERS
       // border-color-default: var(--ion-color-primary),
