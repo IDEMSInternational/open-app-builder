@@ -37,7 +37,7 @@ export class NestedTemplateComponent
       this.setTemplateVariable(row);
     }
 
-    this.initialised = false;
+    this.initialised = true;
   }
 
   /*
