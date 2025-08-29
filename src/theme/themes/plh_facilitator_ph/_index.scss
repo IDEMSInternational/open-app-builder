@@ -3,17 +3,25 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_facilitator_ph {
-  @include utils.theme-selectors("plh_facilitator_ph") {
-    @include overrides.overrides;
+  // Core theme configuration variables
+  $theme-name: "plh_facilitator_ph";
+  $color-primary: hsl(206 68% 22%); //#123d5d
+  $color-secondary: hsl(197 39% 60%); //#70aac0
+  $page-background: white;
+  $color-primary-variant: null;
+  $color-secondary-variant: null;
+  $color-red: null;
+  $color-green: null;
 
-    /** Authoring variables **/
-    $color-primary: hsl(206 68% 22%); //#123d5d
-    $color-secondary: hsl(197 39% 60%); //#70aac0
-    $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: $theme-name,
+    $color-primary: $color-primary,
+    $color-secondary: $color-secondary,
+    $page-background: $page-background,
+    $color-primary-variant: $color-primary-variant,
+    $color-secondary-variant: $color-secondary-variant,
+    $color-red: $color-red,
+    $color-green: $color-green,
     $variable-overrides: (
       font-weight-standard: 500,
       font-weight-medium: 600,
@@ -108,16 +116,8 @@
       box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
       box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
       box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
+    )
+  ) {
+    @include overrides.overrides;
   }
 }

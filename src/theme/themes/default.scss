@@ -2,15 +2,25 @@
 @use "sass:color";
 
 @mixin theme-default {
-  @include utils.theme-selectors("default") {
-    /** Authoring variables **/
-    $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-    $color-secondary: hsl(31, 100%, 57%); // #fa9529
-    $page-background: null;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
+  // Core theme configuration variables
+  $theme-name: "default";
+  $color-primary: hsl(203, 76%, 21%); // #0d3f5e
+  $color-secondary: hsl(31, 100%, 57%); // #fa9529
+  $page-background: null;
+  $color-primary-variant: null;
+  $color-secondary-variant: null;
+  $color-red: null;
+  $color-green: null;
 
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: $theme-name,
+    $color-primary: $color-primary,
+    $color-secondary: $color-secondary,
+    $page-background: $page-background,
+    $color-primary-variant: $color-primary-variant,
+    $color-secondary-variant: $color-secondary-variant,
+    $color-red: $color-red,
+    $color-green: $color-green,
     $variable-overrides: (
       // an example variable for illustration purposes
       demo-variable: red,
@@ -68,17 +78,7 @@
       text-bubble-border-color-3: var(--ion-color-yellow-700),
       text-bubble-background-color-4: var(--gradient-yellow-vertical),
       text-bubble-border-color-4: var(--ion-color-secondary-700),
-      pop-up-background: white
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
-  }
+      pop-up-background: white,
+    )
+  );
 }

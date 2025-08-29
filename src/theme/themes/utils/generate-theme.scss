@@ -2,6 +2,60 @@
 @use "sass:map";
 @use "sass:math";
 @use "./contrast-colour.scss";
+@use "./theme-selectors.scss";
+
+// Generate a new theme based on the properties provided
+// Supports additional CSS content via @content, e.g. explicit rule overrides, for complex themes
+@mixin theme(
+  $theme-name,
+  $color-primary,
+  $color-secondary,
+  $page-background: null,
+  $color-primary-variant: null,
+  $color-secondary-variant: null,
+  $color-red: null,
+  $color-green: null,
+  $variable-overrides: ()
+) {
+  @include theme-selectors.theme-selectors($theme-name) {
+    @content; // Allow additional rules to be passed through (e.g. theme rule overrides)
+    @include generate-theme-variables(
+      $color-primary: $color-primary,
+      $color-secondary: $color-secondary,
+      $page-background: $page-background,
+      $color-primary-variant: $color-primary-variant,
+      $color-secondary-variant: $color-secondary-variant,
+      $color-red: $color-red,
+      $color-green: $color-green,
+      $variable-overrides: $variable-overrides
+    );
+  }
+}
+
+// Generates color palettes and applies variable overrides
+@mixin generate-theme-variables(
+  $color-primary,
+  $color-secondary,
+  $page-background: null,
+  $color-primary-variant: null,
+  $color-secondary-variant: null,
+  $color-red: null,
+  $color-green: null,
+  $variable-overrides: ()
+) {
+  @include generateColorPalettes(
+    $color-primary,
+    $color-secondary,
+    $page-background,
+    $r: $color-red,
+    $g: $color-green,
+    $pv: $color-primary-variant,
+    $sv: $color-secondary-variant
+  );
+  @each $name, $value in $variable-overrides {
+    --#{$name}: #{$value};
+  }
+}
 
 @function wrap-hue($angle) {
   @return $angle % 360;
