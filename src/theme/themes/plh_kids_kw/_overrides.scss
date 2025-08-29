@@ -155,9 +155,9 @@
 
       .progress-block {
         ion-range {
-          --bar-background: var(--color-surface-white);
-          --bar-height: 12px;
-          --bar-border-radius: var(--ion-border-radius-standard);
+          --bar-background: var(--color-surface-white) !important;
+          --bar-height: 12px !important;
+          --bar-border-radius: var(--ion-border-radius-standard) !important;
         }
 
         .time-value {
