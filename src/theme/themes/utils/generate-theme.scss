@@ -271,23 +271,6 @@
   @include colorVariables($colorPalette, $gradientPalette);
 }
 
-// Combines color palettes + overrides
-@mixin generateTheme(
-  $p,
-  $s,
-  $bg: null,
-  $r: null,
-  $g: null,
-  $pv: null,
-  $sv: null,
-  $theme-overrides: ()
-) {
-  @include generateColorPalettes($p, $s, $bg, $r, $g, $pv, $sv);
-  @each $name, $value in $theme-overrides {
-    --#{$name}: #{$value};
-  }
-}
-
 @mixin colorVariables($sourceColorPalette, $sourceGradientPalette) {
   $colorPalette: $sourceColorPalette;
   $gradientPalette: $sourceGradientPalette;
