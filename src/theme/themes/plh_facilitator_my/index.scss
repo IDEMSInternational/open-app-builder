@@ -3,25 +3,15 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_facilitator_my {
-  // Core theme configuration variables
-  $theme-name: "plh_facilitator_my";
-  $color-primary: hsl(209, 64%, 25%);
-  $color-secondary: hsl(17, 100%, 44%);
-  $page-background: white;
-  $color-primary-variant: null;
-  $color-secondary-variant: null;
-  $color-red: null;
-  $color-green: null;
-
   @include utils.theme(
-    $theme-name: $theme-name,
-    $color-primary: $color-primary,
-    $color-secondary: $color-secondary,
-    $page-background: $page-background,
-    $color-primary-variant: $color-primary-variant,
-    $color-secondary-variant: $color-secondary-variant,
-    $color-red: $color-red,
-    $color-green: $color-green,
+    $theme-name: "plh_facilitator_my",
+    $color-primary: hsl(209, 64%, 25%),
+    $color-secondary: hsl(17, 100%, 44%),
+    $page-background: white,
+    $color-primary-variant: null,
+    $color-secondary-variant: null,
+    $color-red: null,
+    $color-green: null,
     $variable-overrides: (
       font-weight-standard: 500,
       font-weight-medium: 600,

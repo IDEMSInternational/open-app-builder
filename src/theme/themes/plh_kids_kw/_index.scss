@@ -4,25 +4,17 @@
 @use "./typography";
 
 @mixin theme-plh_kids_kw {
-  // Core theme configuration variables
-  $theme-name: "plh_kids_kw";
-  $color-primary: hsl(209 63.8% 24.9%); // #174168
-  $color-secondary: hsl(199 100% 41.6%); // #0092D4
-  $page-background: white;
-  $color-primary-variant: hsl(40 84% 57%);
-  $color-secondary-variant: hsl(17 100% 44%);
-  $color-red: null;
-  $color-green: null;
-
   @include utils.theme(
-    $theme-name: $theme-name,
-    $color-primary: $color-primary,
-    $color-secondary: $color-secondary,
-    $page-background: $page-background,
-    $color-primary-variant: $color-primary-variant,
-    $color-secondary-variant: $color-secondary-variant,
-    $color-red: $color-red,
-    $color-green: $color-green,
+    $theme-name: "plh_kids_kw",
+    $color-primary: hsl(209 63.8% 24.9%),
+    // #174168
+    $color-secondary: hsl(199 100% 41.6%),
+    // #0092D4
+    $page-background: white,
+    $color-primary-variant: hsl(40 84% 57%),
+    $color-secondary-variant: hsl(17 100% 44%),
+    $color-red: null,
+    $color-green: null,
     $variable-overrides: (
       ion-font-family: "Nunito",
       font-weight-standard: 500,
