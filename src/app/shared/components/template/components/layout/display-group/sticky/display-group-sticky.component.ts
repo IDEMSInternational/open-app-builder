@@ -57,6 +57,8 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
     const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
     const ionContentPaddingStart =
       parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    return ionContentPaddingStart;
+    const popUpStickyTopPadding =
+      parseFloat(computedStyles.getPropertyValue("--pop-up-safe-area-top")) || 0;
+    return ionContentPaddingStart + popUpStickyTopPadding;
   }
 }
