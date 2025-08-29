@@ -130,13 +130,14 @@
 
   // audio
   plh-audio {
-    .container-player {
+    .container-player[data-variant~="compact"],
+    .container-player[data-variant~="large"] {
       // Remove visible bounding box from container level and apply to second-row instead
-      border: unset !important;
-      border-radius: unset !important;
-      box-shadow: none !important;
-      background-color: unset !important;
-      padding: 0 !important;
+      border: unset;
+      border-radius: unset;
+      box-shadow: none;
+      background-color: unset;
+      padding: 0;
 
       .top-row {
         padding-bottom: 18px;
@@ -145,7 +146,6 @@
           color: var(--ion-color-gray-900) !important;
           max-width: 95%;
           font-weight: var(--font-weight-bold);
-          font-size: var(var(--font-size-text-medium) + 2);
         }
       }
 
@@ -154,11 +154,10 @@
       }
 
       .progress-block {
-        ion-range,
-        .audio-range {
-          --bar-background: var(--color-surface-white) !important;
-          --bar-height: 12px !important;
-          --bar-border-radius: var(--ion-border-radius-standard) !important;
+        ion-range {
+          --bar-background: var(--color-surface-white);
+          --bar-height: 12px;
+          --bar-border-radius: var(--ion-border-radius-standard);
         }
 
         .time-value {
