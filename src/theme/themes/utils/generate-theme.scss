@@ -43,7 +43,7 @@
   $color-green: null,
   $variable-overrides: ()
 ) {
-  @include generateColorPalettes(
+  @include generate-color-palettes(
     $color-primary,
     $color-secondary,
     $page-background,
@@ -63,7 +63,7 @@
 
 // Returns a map of colours based partly on Material Design's colour system
 // https://material.io/design/color/the-color-system.html
-@function getColorPalette(
+@function get-color-palette(
   $primary,
   $secondary,
   $page-background: null,
@@ -113,17 +113,17 @@
 
   // Generate variants of base colours based on given weights and add to map
   // E.g. '"color-primary-400": color.change($primary, $lightness: 60%)'
-  $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
-  $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
-  $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
-  $result: map.merge($result, generateColourVariants($gray, "gray", $weights));
+  $result: map.merge($result, generate-colour-variants($primary, "primary", $weights));
+  $result: map.merge($result, generate-colour-variants($secondary, "secondary", $weights));
+  $result: map.merge($result, generate-colour-variants($yellow, "yellow", $weights));
+  $result: map.merge($result, generate-colour-variants($gray, "gray", $weights));
   $result: map.merge(
     $result,
-    generateColourVariants($primary-variant, "primary-variant", $weights)
+    generate-colour-variants($primary-variant, "primary-variant", $weights)
   );
   $result: map.merge(
     $result,
-    generateColourVariants($secondary-variant, "secondary-variant", $weights)
+    generate-colour-variants($secondary-variant, "secondary-variant", $weights)
   );
 
   // Handle default values for optional params
@@ -139,7 +139,7 @@
   @return $result;
 }
 
-@function generateColourVariants($base, $baseName, $weights) {
+@function generate-colour-variants($base, $baseName, $weights) {
   $variants-map: ();
   $lightness-map: (
     50: 96%,
@@ -163,7 +163,7 @@
   @return $variants-map;
 }
 
-@function generateColourVariants($base, $baseName, $weights) {
+@function generate-colour-variants($base, $baseName, $weights) {
   $variants-map: ();
 
   // Extract base HSL values
@@ -207,7 +207,7 @@
   @return $variants-map;
 }
 
-@function getGradientPalette($colorPalette) {
+@function get-gradient-palette($colorPalette) {
   $baseColors: primary, secondary;
   $gradientDirections: (
     vertical: 175deg,
@@ -257,8 +257,8 @@
   @return $gradientPalette;
 }
 
-@mixin generateColorPalettes($p, $s, $bg: null, $r: null, $g: null, $pv: null, $sv: null) {
-  $colorPalette: getColorPalette(
+@mixin generate-color-palettes($p, $s, $bg: null, $r: null, $g: null, $pv: null, $sv: null) {
+  $colorPalette: get-color-palette(
     $p,
     $s,
     $bg,
@@ -267,11 +267,11 @@
     $primary-variant: $pv,
     $secondary-variant: $sv
   );
-  $gradientPalette: getGradientPalette($colorPalette);
-  @include colorVariables($colorPalette, $gradientPalette);
+  $gradientPalette: get-gradient-palette($colorPalette);
+  @include color-variables($colorPalette, $gradientPalette);
 }
 
-@mixin colorVariables($sourceColorPalette, $sourceGradientPalette) {
+@mixin color-variables($sourceColorPalette, $sourceGradientPalette) {
   $colorPalette: $sourceColorPalette;
   $gradientPalette: $sourceGradientPalette;
 
