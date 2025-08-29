@@ -8,6 +8,10 @@ const config: CapacitorConfig = {
   appName: "${APP_NAME}",
   webDir: "www",
   zoomEnabled: toBoolean("${ZOOM_ENABLED}"),
+  android: {
+    // Will become default in Capacitor 8, see https://capacitorjs.com/docs/config
+    adjustMarginsForEdgeToEdge: "auto",
+  },
   plugins: {
     SplashScreen: {
       launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
