@@ -2,15 +2,25 @@
 @use "sass:color";
 
 @mixin theme-professional {
-  @include utils.theme-selectors("professional") {
-    /** Authoring variables **/
-    $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-    $color-secondary: hsl(31, 100%, 57%); // #fa9529
-    $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
+  // Core theme configuration variables
+  $theme-name: "professional";
+  $color-primary: hsl(203, 76%, 21%); // #0d3f5e
+  $color-secondary: hsl(31, 100%, 57%); // #fa9529
+  $page-background: white;
+  $color-primary-variant: null;
+  $color-secondary-variant: null;
+  $color-red: null;
+  $color-green: null;
 
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: $theme-name,
+    $color-primary: $color-primary,
+    $color-secondary: $color-secondary,
+    $page-background: $page-background,
+    $color-primary-variant: $color-primary-variant,
+    $color-secondary-variant: $color-secondary-variant,
+    $color-red: $color-red,
+    $color-green: $color-green,
     $variable-overrides: (
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
@@ -56,17 +66,7 @@
       ion-item-background: var(--ion-color-gray-light),
       task-progress-bar-color: var(--ion-color-green),
       // checkbox-background-color: white,
-      progress-path-line-background: var(--ion-color-gray-100)
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
-  }
+      progress-path-line-background: var(--ion-color-gray-100),
+    )
+  );
 }

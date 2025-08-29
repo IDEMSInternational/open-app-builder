@@ -2,16 +2,25 @@
 @use "sass:color";
 
 @mixin theme-pfr {
-  @include utils.theme-selectors("pfr") {
-    /** Authoring variables **/
-    $color-primary: hsl(0 0% 0%);
-    $color-secondary: hsl(17 100% 44%); // #e24000
-    $page-background: white;
-    $green: hsl(139 59% 38%); //#289b4c
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
+  // Core theme configuration variables
+  $theme-name: "pfr";
+  $color-primary: hsl(0 0% 0%);
+  $color-secondary: hsl(17 100% 44%); // #e24000
+  $page-background: white;
+  $color-primary-variant: null;
+  $color-secondary-variant: null;
+  $color-red: null;
+  $color-green: hsl(139 59% 38%); //#289b4c
 
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: $theme-name,
+    $color-primary: $color-primary,
+    $color-secondary: $color-secondary,
+    $page-background: $page-background,
+    $color-primary-variant: $color-primary-variant,
+    $color-secondary-variant: $color-secondary-variant,
+    $color-red: $color-red,
+    $color-green: $color-green,
     $variable-overrides: (
       // BORDERS
       // border-color-default: var(--ion-color-primary),
@@ -58,17 +67,6 @@
       // task-progress-bar-color: var(--ion-color-primary),
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant,
-      $g: $green
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
-  }
+    )
+  );
 }
