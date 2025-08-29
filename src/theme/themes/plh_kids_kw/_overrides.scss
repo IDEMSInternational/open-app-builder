@@ -138,9 +138,9 @@
       background-color: unset;
       padding: 0;
       .top-row {
+        padding-bottom: 18px;
         h3 {
           margin: 0;
-          padding-bottom: var(--large-padding);
           color: var(--ion-color-gray-900) !important;
           max-width: 95%;
           font-weight: var(--font-weight-bold);
@@ -189,34 +189,37 @@
       }
     }
     .container-player[data-variant~="large"] {
-      background: var(--ion-color-primary-50);
-      border: 0.9px solid var(--ion-color-primary-100);
+      background-color: unset;
+      border: unset;
       box-sizing: border-box;
       box-shadow: none;
-      border-radius: var(--ion-border-radius-standard);
-      padding: 12px 16px;
+      border-radius: unset;
+      padding: 0;
       display: flex;
       position: relative;
       flex-direction: column;
-      margin-top: 20px;
       .top-row {
-        position: absolute;
-        top: -56px;
-        margin: 0 0 0 -14px;
+        padding-bottom: 18px;
         h3 {
           margin: 0;
-          margin-right: 0;
-          color: var(--ion-color-gray-900);
-          max-width: 85%;
+          color: var(--ion-color-gray-900) !important;
+          max-width: 95%;
           font-weight: var(--font-weight-bold);
           font-size: var(var(--font-size-text-medium) + 2);
         }
-        ion-button.action-button {
-          --padding-start: 2px;
-          --padding-end: 2px;
+        .info-icon-container {
+          ion-button.action-button {
+            --padding-start: 2px;
+            --padding-end: 2px;
+          }
         }
       }
       .second-row {
+        background: var(--ion-color-primary-50);
+        border: 0.9px solid var(--ion-color-primary-100);
+        border-radius: var(--ion-border-radius-standard);
+        box-shadow: none;
+        padding: 12px 16px;
         display: flex;
         flex-direction: column-reverse;
         .controls {
