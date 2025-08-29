@@ -4,10 +4,8 @@
 @mixin theme-early_family_math {
   @include utils.theme(
     $theme-name: "early_family_math",
-    $color-primary: hsl(203 76% 38%),
-    // #1874ac
-    $color-secondary: hsl(317 48% 48%),
-    //#b53f94
+    $color-primary: hsl(203 76% 38%), // #1874ac
+    $color-secondary: hsl(317 48% 48%), //#b53f94
     $page-background: white,
     $color-primary-variant: null,
     $color-secondary-variant: null,
