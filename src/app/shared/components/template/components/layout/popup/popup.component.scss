@@ -13,6 +13,11 @@ $pop-up-padding: var(--pop-up-padding, 20px);
   --pop-up-top-padding: max(var(--ion-safe-area-top), 24px);
   --pop-up-bottom-padding: max(var(--ion-safe-area-bottom), 24px);
 
+  // Expose pop-up specific vars to children
+  // e.g. used to calculate padding on sticky display groups that are inside a fullscreen popup
+  --pop-up-safe-area-top: var(--ion-safe-area-top, 0);
+  --pop-up-safe-area-bottom: var(--ion-safe-area-bottom, 0);
+
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
