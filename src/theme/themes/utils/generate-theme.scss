@@ -228,6 +228,8 @@
     --#{$label}: #{$color};
   }
 
+  --pop-up-background: #{map.get($colorPalette, "background-color")};
+
   --ion-item-background: #{map.get($colorPalette, "color-primary-50")};
 
   // BORDERS
