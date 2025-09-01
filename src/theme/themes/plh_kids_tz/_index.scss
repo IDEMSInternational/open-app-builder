@@ -42,13 +42,22 @@
       ion-border-radius-small: 8px,
       ion-border-radius-standard: 12px,
       ion-border-radius-secondary: 20px,
-      ion-border-radius-round: 50px,
+      ion-border-radius-rounded: 50px,
 
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
       border-width-default: 1px,
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
+      // SURFACE COLOUR PALETTE
+      color-surface-white: #ffffff,
+      color-surface-white-variant: #f9f9fa,
+      color-surface-black: #1b1c1d,
+      color-surface-black-variant: #44474a,
+      color-outline: #74777c,
+      color-outline-variant: #c4c7c9,
+
+      // COMPONENTS
       button-background-primary: var(--ion-color-primary-500),
       button-background-secondary: var(--ion-color-secondary),
       button-background-option: var(--ion-color-primary-800),
