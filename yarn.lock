@@ -3556,6 +3556,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/status-bar@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "@capacitor/status-bar@npm:7.0.2"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: a993b94e9f847313d572282a2ee45a15a48827c459bf0e024c6116ce349e67ad5234fcd353d0aac11ff7addf43ccbadf3e06c3c20bfad19e8ea215a2c210dc27
+  languageName: node
+  linkType: hard
+
 "@capacitor/synapse@npm:^1.0.3":
   version: 1.0.3
   resolution: "@capacitor/synapse@npm:1.0.3"
@@ -3569,6 +3578,15 @@ __metadata:
   peerDependencies:
     "@capacitor/core": ">=7.0.0"
   checksum: 51ef8c421d019c2bbff2c29e23f601241cdf0db1a67d70ad17cd780d0e730f1321b3516ffbb4ff8f3c75e77a99ed394f454fda7b62b33e2f45e0f27ead1b8bcd
+  languageName: node
+  linkType: hard
+
+"@capawesome/capacitor-android-edge-to-edge-support@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "@capawesome/capacitor-android-edge-to-edge-support@npm:7.2.3"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: fdcc87db022dafa12b8fc7168c4cf2831e14cdd6cfff732cf23d634c375c2492154a3cad8042f76137a57026707e1cfc369a30366764afd121204019c4210a29
   languageName: node
   linkType: hard
 
@@ -18116,7 +18134,9 @@ __metadata:
     "@capacitor/screen-orientation": ^7.0.0
     "@capacitor/share": ^7.0.0
     "@capacitor/splash-screen": ^7.0.0
+    "@capacitor/status-bar": ^7.0.2
     "@capacitor/toast": ^7.0.0
+    "@capawesome/capacitor-android-edge-to-edge-support": ^7.2.3
     "@capawesome/capacitor-app-update": ^7.0.1
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.5.3
