@@ -1,4 +1,13 @@
-import { AfterViewChecked, Component, forwardRef, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  effect,
+  forwardRef,
+  OnInit,
+  QueryList,
+  viewChild,
+  ViewChildren,
+} from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
@@ -11,11 +20,18 @@ import { FlowTypes } from "packages/data-models";
   imports: [forwardRef(() => ReactiveTemplateComponent)],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
-export class NestedTemplateComponent
-  extends RowBaseComponent<null>
-  implements AfterViewChecked, OnInit
-{
-  private initialised = false;
+export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit {
+  private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
+
+  constructor() {
+    super();
+
+    effect(() => {
+      if (this.reactiveTemplate().initialised()) {
+        this.onTemplateInitialized();
+      }
+    });
+  }
 
   public override ngOnInit(): void {
     super.ngOnInit();
@@ -23,27 +39,13 @@ export class NestedTemplateComponent
     this.watchChildDependencies();
   }
 
-  /*
-   * Lifecycle hook that is called after the view has been checked.
-   * This is where we can override variable values after all child rows
-   * in the nested template have been processed.
-   *
-   * 'this.initialised' ensures that this only executes once.
-   */
-  public ngAfterViewChecked(): void {
-    if (this.initialised) return;
-
+  private onTemplateInitialized() {
+    console.log("Reactive template initialized", this.name());
     for (const row of this.row().rows) {
       this.setTemplateVariable(row);
     }
-
-    this.initialised = true;
   }
 
-  /*
-   * Watches dependencies of all child rows and updates
-   * equivalent inner template variables when their values change
-   */
   private watchChildDependencies() {
     for (const row of this.row().rows) {
       const subs = this.rowService.watchDependencies(row, "local", this.namespace(), () => {

@@ -34,6 +34,9 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
 
+  private _initialised = signal(false);
+  public readonly initialised = this._initialised.asReadonly();
+
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
   protected namespaceService = inject(NamespaceService);
@@ -60,13 +63,17 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
 
     // Set default value
     this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
+
+    console.log("Row initialised:", this.name());
+
+    this._initialised.set(true);
   }
 
   /*
-   * Sets the rows value and updates the variable store.
+   * Sets the rows expression value and updates the variable store.
    */
-  public setValue(value: any): void {
-    this.row().value = value;
+  public setValue(expression: any): void {
+    this.row().value = expression;
     this.variableStore.set(
       this.name(),
       this.rowService.evaluateValue(this.row(), this.namespace())

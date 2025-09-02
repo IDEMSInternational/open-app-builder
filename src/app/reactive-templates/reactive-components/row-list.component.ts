@@ -1,7 +1,8 @@
 import { NgComponentOutlet } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { Component, computed, input, QueryList, viewChildren, ViewChildren } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { REACTIVE_COMPONENT_MAP } from "./components";
+import { RowBaseComponent } from "./row-base.component";
 
 @Component({
   selector: "oab-row-list",
@@ -18,6 +19,31 @@ import { REACTIVE_COMPONENT_MAP } from "./components";
 export class RowListComponent {
   public namespace = input("");
   public rows = input.required<FlowTypes.TemplateRow[]>();
+  private rowComponents = viewChildren(RowBaseComponent);
+
+  public readonly initialised = computed(() => {
+    const children = this.rowComponents();
+
+    console.log("Row list children:", children.length);
+
+    let initialised = children.every((child) => child.initialised());
+
+    if (initialised) {
+      console.log(
+        "Row list initialised:",
+        this.namespace(),
+        this.rows().map((r) => r.name)
+      );
+    } else {
+      console.log(
+        "Row list not initialised:",
+        this.namespace(),
+        this.rows().map((r) => r.name)
+      );
+    }
+
+    return initialised;
+  });
 
   constructor() {}
 
