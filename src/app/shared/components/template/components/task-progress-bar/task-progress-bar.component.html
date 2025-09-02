@@ -33,11 +33,11 @@
       </svg>
       <!-- Percentage Text -->
       <div class="progress-text">{{ progressPercentage() || 0 }}%</div>
-      @if (params().title) {
-        <div class="wheel-title">
-          <h4>{{ params().title }}</h4>
-        </div>
-      }
     </div>
+    @if (params().title) {
+      <div class="wheel-title">
+        <h4>{{ params().title }}</h4>
+      </div>
+    }
   </div>
 }
