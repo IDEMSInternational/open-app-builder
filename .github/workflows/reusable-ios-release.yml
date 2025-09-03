@@ -47,19 +47,19 @@ jobs:
   #         Build Deployment Web
   #############################################################################
 
-  build_web:
-    uses: ./.github/workflows/reusable-app-build.yml
-    with:
-      branch: ${{ inputs.branch }}
-      post-build-cmd: |
-        echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist 
-        yarn workflow ios configure
-        npx cap sync ios
-      # Upload ios directory as it includes configured template files and www content
-      additional-artifact: ios
-      # Ensure build also run on macos to allow npx cap sync to configure ios pods
-      workflow-runner: macos-latest
-    secrets: inherit
+  # build_web:
+  #   uses: ./.github/workflows/reusable-app-build.yml
+  #   with:
+  #     branch: ${{ inputs.branch }}
+  #     post-build-cmd: |
+  #       echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
+  #       yarn workflow ios configure
+  #       npx cap sync ios
+  #     # Upload ios directory as it includes configured template files and www content
+  #     additional-artifact: ios
+  #     # Ensure build also run on macos to allow npx cap sync to configure ios pods
+  #     workflow-runner: macos-latest
+  #   secrets: inherit
 
   #############################################################################
   #         Build IOS
@@ -67,7 +67,7 @@ jobs:
 
   build_ios:
     runs-on: macos-latest
-    needs: build_web
+    # needs: build_web
     steps:
       # Checkout builder repo and install node_modules so that they can be used in ios build
       # (e.g. capacitor plugins store podfiles in node_modules)
@@ -84,8 +84,8 @@ jobs:
           # and use the output from a previous run for quicker debugging. Requires github-token
           # https://github.com/actions/download-artifact/issues/320
 
-          # github-token: ${{ github.token }}
-          # run-id: 13743953801
+          github-token: ${{ github.token }}
+          run-id: 17446254066
 
       # Remove default ios folder and replace with artifact generated
       - name: Setup IOS folder
@@ -119,18 +119,27 @@ jobs:
 
       # Attempt to create an unsigned build for local testing
       # https://github.com/fastlane/fastlane/discussions/21996
-      # - name: Build IOS (simulator)
-      #   working-directory: ios/App
-      #   env:
-      #     # Common args used to create unsigned builds (simulator or xcarchive)
-      #     CODE_SIGNING_ARGS: --skip_codesigning true --skip_package_ipa true
-      #     # Args to create simulator build. Output format will be .app
-      #     SIMULATOR_BUILD_ARGS: --destination "generic/platform=iOS Simulator" --derived_data_path "./output/data" --skip_archive true
-
-      #   # Call fastlane build_ios_app track
-      #   # https://docs.fastlane.tools/actions/build_ios_app/
-      #   run: |
-      #     bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" ${{env.CODE_SIGNING_ARGS}} ${{env.SIMULATOR_BUILD_ARGS}}
+      - name: Setup Certs
+        working-directory: ios/App
+        env:
+          IOS_MATCH_GCS_BUCKET: ${{ vars.IOS_MATCH_GCS_BUCKET }}
+          IOS_MATCH_GCS_PROJECT: ${{ vars.IOS_MATCH_GCS_PROJECT }}
+          MATCH_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        # Call fastlane match for cert setup
+        # https://docs.fastlane.tools/actions/match
+        run: |
+          bundle exec fastlane match appstore \
+            --storage_mode google_cloud \
+            --google_cloud_bucket_name $IOS_MATCH_GCS_BUCKET \
+            --google_cloud_project_id $IOS_MATCH_GCS_PROJECT \
+            --api_key '{
+              "key_id": "'"$APP_STORE_CONNECT_API_KEY_ID"'",
+              "issuer_id": "'"$APP_STORE_CONNECT_API_ISSUER_ID"'",
+              "key": "'"$APP_STORE_CONNECT_API_KEY"'"
+            }'
 
       #############################################################################
       #         WiP Notes - IOS Deploy Testflight
