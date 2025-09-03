@@ -1,22 +1,45 @@
-<div class="plh-bottom-nav-wrapper">
-  @for (button of params.buttonList; track button.name) {
-    <a
-      class="nav-item"
-      routerLinkActive="active-link"
-      [routerLink]="'template/' + button.target_template"
-      [attr.data-name]="button.name"
-      #rla="routerLinkActive"
-    >
-      <div class="icon">
-        <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
-      </div>
-      <div
-        class="label"
-        [attr.data-isActive]="rla.isActive"
-        [attr.data-hideInactiveText]="params.hideInactiveText"
+<div class="plh-bottom-nav-wrapper" [attr.data-variant]="params.variant">
+  @if (params.variant !== "pill") {
+    @for (button of params.buttonList; track button.name) {
+      <a
+        class="nav-item"
+        routerLinkActive="active-link"
+        [routerLink]="'template/' + button.target_template"
+        [attr.data-name]="button.name"
+        #rla="routerLinkActive"
       >
-        <p>{{ button.label }}</p>
-      </div>
-    </a>
+        <div class="icon">
+          <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+        </div>
+        <div
+          class="label"
+          [attr.data-isActive]="rla.isActive"
+          [attr.data-hideInactiveText]="params.hideInactiveText"
+        >
+          <p>{{ button.label }}</p>
+        </div>
+      </a>
+    }
+  } @else {
+    @for (button of params.buttonList; track button.name) {
+      <a
+        class="nav-item pill-item"
+        routerLinkActive="active-pill"
+        [routerLink]="'template/' + button.target_template"
+        [attr.data-name]="button.name"
+        #rla="routerLinkActive"
+      >
+        <div class="pill-content" [attr.data-isActive]="rla.isActive">
+          <div class="icon">
+            <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+          </div>
+          @if (rla.isActive) {
+            <div class="label">
+              <p>{{ button.label }}</p>
+            </div>
+          }
+        </div>
+      </a>
+    }
   }
 </div>
