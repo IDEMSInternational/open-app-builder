@@ -13,9 +13,12 @@
 .label {
   width: 100%;
   text-align: center;
+  p {
+    white-space: nowrap;
+  }
 }
 
 // Hide inactive text buttons when set by param
 .label[data-isActive="false"][data-hideInactiveText="true"] {
-  visibility: hidden;
+  display: none;
 }
