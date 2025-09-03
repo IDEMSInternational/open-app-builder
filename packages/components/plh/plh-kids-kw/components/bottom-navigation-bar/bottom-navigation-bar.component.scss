@@ -44,11 +44,14 @@
   gap: 0;
   flex-wrap: nowrap;
   align-items: center;
+  overflow: hidden;
 
   .pill-item {
     flex: 0 1 auto;
     display: flex;
     justify-content: center;
+    min-width: 0;
+    overflow: visible;
 
     .pill-content {
       display: flex;
@@ -58,14 +61,14 @@
       border-radius: 28px;
       gap: 8px;
       transition: all 0.2s ease;
-      min-height: 56px;
+      height: 56px;
       box-sizing: border-box;
 
       &[data-isActive="true"] {
         background-color: #0066a1;
         color: white;
         flex: 1 1 auto;
-        max-width: 200px;
+        max-width: min(200px, calc(100vw - 200px));
         min-width: 120px;
 
         .icon img {
@@ -120,8 +123,9 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        word-break: normal;
+        overflow-wrap: normal;
+        hyphens: none;
       }
     }
   }
