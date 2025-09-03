@@ -1,8 +1,8 @@
 ##################################################################################
 #         About
 ##################################################################################
-# Reuseable workflow to be called from content repos. 
-# Allows for parent repo. 
+# Reuseable workflow to be called from content repos.
+# Allows for parent repo.
 # Must specify all below secrets and variables - see documentation for details
 #
 #         Version : 1.0
@@ -11,141 +11,144 @@
 #         Configuration
 ##################################################################################
 env:
-    DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
-    APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
-    PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
-    PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
-    PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
-    DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
-    FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
-    # Any secrets used by post-build-cmd need to be explicitly defined
-    GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
-  
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
+  PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
+  PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
+  PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  FIREBASE_CONFIG: ${{secrets.FIREBASE_CONFIG}}
+  # Any secrets used by post-build-cmd need to be explicitly defined
+  GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
+
   ##################################################################################
   #         Main Code
   ##################################################################################
-name: Build App
-  
+name:
+  Build App
+
   # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
 concurrency:
-    group: app-build-${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
-  
+  group: app-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
-    workflow_call:
-      inputs:
-        build-flags:
-          description: Additional flags to pass to build command (e.g. base-href)
-          type: string
-          default: ""
-        branch:
-          description: Name of branch to build (defaults to event trigger sha)
-          type: string
-          default: ""
-        lfs:
-          description: Enable git lfs asset download for content repos (if used by repo)
-          type: boolean
-          default: true
-        post-build-cmd:
-          description: Optional command to run postbuild
-          type: string
-          default: ""
-        additional-artifact:
-          description: Optional folder name to upload as additional artifact (e.g. ios/android folders)
-          type: string
-          default: ""
-        workflow-runner:
-          description: Optionally specify github runner to use for build action
-          type: string
-          default: ubuntu-latest
-      outputs:
-        GIT_SHA:
-          description: "Git SHA of build head"
-          value: ${{ jobs.build.outputs.GIT_SHA }}
+  workflow_call:
+    inputs:
+      build-flags:
+        description: Additional flags to pass to build command (e.g. base-href)
+        type: string
+        default: ""
+      branch:
+        description: Name of branch to build (defaults to event trigger sha)
+        type: string
+        default: ""
+      lfs:
+        description: Enable git lfs asset download for content repos (if used by repo)
+        type: boolean
+        default: true
+      post-build-cmd:
+        description: Optional command to run postbuild
+        type: string
+        default: ""
+      additional-artifact:
+        description: Optional folder name to upload as additional artifact (e.g. ios/android folders)
+        type: string
+        default: ""
+      workflow-runner:
+        description: Optionally specify github runner to use for build action
+        type: string
+        default: ubuntu-latest
+    outputs:
+      GIT_SHA:
+        description: "Git SHA of build head"
+        value: ${{ jobs.build.outputs.GIT_SHA }}
 jobs:
-    build:
-      outputs:
-        GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
-      env:
-        ARTIFACT: test
-      runs-on: ${{inputs.workflow-runner}}
+  build:
+    outputs:
+      GIT_SHA: ${{ steps.populate.outputs.GIT_SHA }}
+    env:
+      ARTIFACT: test
+    runs-on: ${{inputs.workflow-runner}}
 
-      steps:
-        - name: Check out app code
-          uses: actions/checkout@v4
-          with:
-            repository: "IDEMSInternational/open-app-builder.git"
-            ref: ${{env.APP_CODE_BRANCH}}
-  
-        - name: Checkout parent repo if needed
-          if: env.PARENT_DEPLOYMENT_REPO != ''
-          uses: actions/checkout@v4
-          with:
-            path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
-            repository: ${{env.PARENT_DEPLOYMENT_REPO}}
-            ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
-            # main repo does not use lfs so explicitly omit
-            lfs: false
-  
-        - name: Checkout deployment
-          uses: actions/checkout@v4
-          with:
-            ref: ${{inputs.branch}}
-            path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-            fetch-depth: 0
-            # content repo optionally includes lfs
-            lfs: ${{inputs.lfs}}
-            
-        - name: Populate Encryption key
-          if: env.DEPLOYMENT_PRIVATE_KEY != ''
-          run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
-  
-        - name: Setup Node
-          uses: actions/setup-node@v4
-          with:
-            node-version: 20.17.0
+    steps:
+      - name: Check out app code
+        uses: actions/checkout@v4
+        with:
+          repository: "IDEMSInternational/open-app-builder.git"
+          ref: ${{env.APP_CODE_BRANCH}}
 
-  
+      - name: Checkout parent repo if needed
+        if: env.PARENT_DEPLOYMENT_REPO != ''
+        uses: actions/checkout@v4
+        with:
+          path: ".idems_app/deployments/${{env.PARENT_DEPLOYMENT_NAME}}"
+          repository: ${{env.PARENT_DEPLOYMENT_REPO}}
+          ref: ${{env.PARENT_DEPLOYMENT_BRANCH}}
+          # main repo does not use lfs so explicitly omit
+          lfs: false
+
+      - name: Checkout deployment
+        uses: actions/checkout@v4
+        with:
+          ref: ${{inputs.branch}}
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
+          fetch-depth: 0
+          # content repo optionally includes lfs
+          lfs: ${{inputs.lfs}}
+
+      - name: Populate Encryption key
+        if: env.DEPLOYMENT_PRIVATE_KEY != ''
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.17.0
+
       #############################################################################
       #         Node Modules
       # Manually restore any previous cache to speed install
       # As immutable install will not change cache only save new cache if not hit
       # Uses fine-grained methods from https://github.com/actions/cache
       #############################################################################
-        - uses: actions/cache/restore@v4
-          id: cache
-          with:
-            path: ./.yarn/cache
-            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-node-modules-yarn-v1-
-        - name: Install node modules
-          run: yarn install --immutable
-        - uses: actions/cache/save@v4
-          if: steps.cache.outputs.cache-hit != 'true'
-          with:
-            path: ./.yarn/cache
-            key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
-    
-        - name: Set deployment
-          run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+      - name: Install node modules
+        run: yarn install --immutable
+      - uses: actions/cache/save@v4
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
 
-        - name: Build
-          run: yarn build ${{inputs.build-flags}}
+      - name: Set deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME --skip-refresh
 
-        - name: Post-Build
-          if: ${{inputs.post-build-cmd}}
-          run: ${{inputs.post-build-cmd}}
-  
-        - name: Upload www artifact
-          uses: actions/upload-pages-artifact@v3
-          with:
-            path: "www/"
-            name: www  
+      - name: Build
+        run: yarn build ${{inputs.build-flags}}
+        # Ensure sufficient memory
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
 
-        - name: Upload additional artifacts
-          if: ${{inputs.additional-artifact}}
-          uses: actions/upload-pages-artifact@v3
-          with:
-            path: "${{inputs.additional-artifact}}/"
-            name: ${{inputs.additional-artifact}}
+      - name: Post-Build
+        if: ${{inputs.post-build-cmd}}
+        run: ${{inputs.post-build-cmd}}
+
+      - name: Upload www artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "www/"
+          name: www
+
+      - name: Upload additional artifacts
+        if: ${{inputs.additional-artifact}}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "${{inputs.additional-artifact}}/"
+          name: ${{inputs.additional-artifact}}
