@@ -6,13 +6,13 @@
   justify-content: center;
   .progress-tracker {
     width: 100%;
-    padding: 0 12px;
+    padding: 12px 8px 0 8px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     .progress-bar-container {
-      width: 40%;
+      margin: 0 8px;
+      width: 90%;
       background-color: var(--ion-color-gray-200);
       height: 14px;
       border-radius: 50px;
@@ -27,9 +27,11 @@
       }
     }
     .countdown-text {
-      margin-left: 8px;
+      flex-shrink: 0;
+      margin-bottom: 8px;
       color: var(--ion-color-gray-600);
       font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-text-tiny);
     }
   }
   .image {
@@ -47,11 +49,16 @@
     align-items: center;
     justify-content: center;
     width: fit-content;
-    margin: 0 auto;
-    .title h4 {
-      text-align: center;
-      color: var(--ion-color-gray-600);
-      font-weight: var(--font-weight-bold);
+    margin: 8px auto;
+    .title {
+      flex-shrink: 0;
+      p {
+        margin: 8px auto;
+        font-size: var(--font-size-text-small);
+        text-align: center;
+        color: var(--ion-color-gray-600);
+        font-weight: var(--font-weight-bold);
+      }
     }
     .icon {
       display: flex;
@@ -64,12 +71,6 @@
   }
 }
 .activity-container[data-language-direction~="rtl"] {
-  .progress-tracker {
-    .progress-bar-container {
-      margin-right: 0;
-      margin-left: 6px;
-    }
-  }
   .image {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
