@@ -98,7 +98,12 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
     align-items: center;
     justify-content: center;
     color: var(--ion-color-gray-600);
-    h4 {
+    margin: 8px auto;
+    p {
+      margin: 8px auto;
+      font-size: var(--font-size-text-small);
+      text-align: center;
+      color: var(--ion-color-gray-600);
       font-weight: var(--font-weight-bold);
     }
   }
