@@ -94,7 +94,7 @@ jobs:
           tar -xf artifact.tar --directory ios
           echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
 
-      # Create a ruby gemfile declaring fastlane dep for install. This will be auto-installed
+      # Recreate a ruby gemfile declaring fastlane dep for install. This will be auto-installed
       # via the setup-ruby command. This file could also be created and committed to core repo is required
       - name: Add fastlane gem
         working-directory: ios/App
@@ -131,6 +131,8 @@ jobs:
         # https://docs.fastlane.tools/actions/build_ios_app/
         run: |
           bundle exec fastlane build_ios_app --configuration "Release" --scheme "App" ${{env.CODE_SIGNING_ARGS}} ${{env.SIMULATOR_BUILD_ARGS}}
+
+          # TODO - create debug lane
 
       #############################################################################
       #         Upload
