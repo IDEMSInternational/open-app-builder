@@ -2,7 +2,7 @@
   @for (button of params.buttonList; track button.name) {
     <a
       [class]="params.variant === 'pill' ? 'nav-item pill-item' : 'nav-item'"
-      [routerLinkActive]="params.variant === 'pill' ? 'active-pill' : 'active-link'"
+      routerLinkActive="active-link"
       [routerLink]="'template/' + button.target_template"
       [attr.data-name]="button.name"
       #rla="routerLinkActive"
