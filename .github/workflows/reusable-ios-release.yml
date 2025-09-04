@@ -84,19 +84,20 @@ jobs:
   #         Build Deployment Web
   #############################################################################
 
-  # build_web:
-  #   uses: ./.github/workflows/reusable-app-build.yml
-  #   with:
-  #     branch: ${{ inputs.branch }}
-  #     post-build-cmd: |
-  #       echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
-  #       yarn workflow ios configure
-  #       npx cap sync ios
-  #     # Upload ios directory as it includes configured template files and www content
-  #     additional-artifact: ios
-  #     # Ensure build also run on macos to allow npx cap sync to configure ios pods
-  #     workflow-runner: macos-latest
-  #   secrets: inherit
+  build_web:
+    uses: ./.github/workflows/reusable-app-build.yml
+    needs: validate_env
+    with:
+      branch: ${{ inputs.branch }}
+      post-build-cmd: |
+        echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
+        yarn workflow ios configure
+        npx cap sync ios
+      # Upload ios directory as it includes configured template files and www content
+      additional-artifact: ios
+      # Ensure build also run on macos to allow npx cap sync to configure ios pods
+      workflow-runner: macos-latest
+    secrets: inherit
 
   #############################################################################
   #         Build IOS
@@ -104,7 +105,7 @@ jobs:
 
   build_ios:
     runs-on: macos-latest
-    needs: validate_env
+    needs: build_web
     steps:
       # Checkout builder repo and install node_modules so that they can be used in ios build
       # (e.g. capacitor plugins store podfiles in node_modules)
@@ -117,12 +118,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ios
-          # DEBUG - uncomment lines below, `build_web` job and `needs: build_web` to skip build step
+          # DEBUG - uncomment lines below and update `needs` for all jobs to skip build step
           # and use the output from a previous run for quicker debugging. Requires github-token
           # https://github.com/actions/download-artifact/issues/320
 
-          github-token: ${{ github.token }}
-          run-id: 17446254066
+          # github-token: ${{ github.token }}
+          # run-id: 17446254066
 
       # Remove default ios folder and replace with artifact generated
       - name: Setup IOS folder
