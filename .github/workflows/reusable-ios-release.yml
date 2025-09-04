@@ -69,6 +69,24 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
+      - name: Validate required secrets
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
+          GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD}}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        run: |
+          set -euo pipefail
+          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing required secret: $var"
+              exit 1
+            else
+              echo "✅ $var is set"
+            fi
+          done
       # Checkout builder repo and install node_modules so that they can be used in ios build
       # (e.g. capacitor plugins store podfiles in node_modules)
       - uses: actions/checkout@v4
@@ -110,7 +128,8 @@ jobs:
           bundler-cache: true
           working-directory: ios/App
 
-      - name: Setup Certs
+      # Populate app store connect credentials to json file
+      - name: Setup App Store Connect
         working-directory: ios/App
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
@@ -126,9 +145,17 @@ jobs:
 
             cat api_key.json
 
+      # Populate service account key used to store signing credentials on Google Cloud Platform
+      - name: Setup GCP Storage Bucket
+        working-directory: ios/App
+        env:
+          GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
+        run: |
+          echo $GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY > gc_keys.json
+
       # Attempt to create an unsigned build for local testing
       # https://github.com/fastlane/fastlane/discussions/21996
-      - name: Setup Certs
+      - name: Build IOS Release App
         working-directory: ios/App
         env:
           IOS_MATCH_GCS_BUCKET: ${{ vars.IOS_MATCH_GCS_BUCKET }}
