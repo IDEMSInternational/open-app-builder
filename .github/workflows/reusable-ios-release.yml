@@ -60,7 +60,7 @@ jobs:
       - name: Validate required secrets
         run: |
           set -euo pipefail
-          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY; do
+          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
             if [ -z "$(printenv "$var")" ]; then
               echo "❌ Missing required secret: $var"
               exit 1
@@ -172,13 +172,12 @@ jobs:
       # https://github.com/fastlane/fastlane/discussions/21996
       - name: Build IOS Release App
         working-directory: ios/App
-        env:
-          # HACK - using json file but global env name conflicts with fastlane internal variable
-          # Set as null to prevent trying to load from key content (needs to be formatted as json in step above)
-          APP_STORE_CONNECT_API_KEY: null
         # Call fastlane match for cert setup
         # https://docs.fastlane.tools/actions/match
+        # HACK - using json file but global env name conflicts with fastlane internal variable
+        # Set as null to prevent trying to load from key content (needs to be formatted as json in step above)
         run: |
+          unset APP_STORE_CONNECT_API_KEY
           bundle exec fastlane match appstore \
             --storage_mode google_cloud \
             --google_cloud_bucket_name $GCP_IOS_CERTS_BUCKET_ID \
