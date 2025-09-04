@@ -5,6 +5,7 @@ import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 import { AnalyticsService } from "src/app/shared/services/analytics";
 import { RowRegistry } from "./row.registry";
+import { FlowTypes } from "src/app/shared/components/template/models";
 
 class ActionNotImplementedError extends Error {
   constructor(action: string) {
@@ -46,22 +47,10 @@ export class CoreActionsService {
         this.settingsService.resetApp();
       },
       set_local: async (action) => {
-        const [key, value] = action.args;
-        const [_, expression] = action.rawArgs;
-        const row = this.templateRegistry.get(key);
-
-        if (!row) {
-          console.warn(`set_local: no row found with name '${key}'`);
-          return;
-        }
-
-        row.setExpression(expression);
-        this.variableStore.set(key, value);
+        this.setVariable(action);
       },
       set_self: async (action) => {
-        const [key, value] = action.args;
-
-        this.variableStore.set(key, value);
+        this.setVariable(action);
       },
       go_to: async (action) => {
         return this.templateNavService.handleNavAction(action);
@@ -99,5 +88,19 @@ export class CoreActionsService {
         throw new ActionNotImplementedError("emit");
       },
     });
+  }
+
+  private setVariable(action: FlowTypes.TemplateRowAction<any>) {
+    const [key, value] = action.args;
+    const expression = action.rawArgs[1];
+    const row = this.templateRegistry.get(key);
+
+    if (!row) {
+      console.warn(`set_local: no row found with name '${key}'`);
+      return;
+    }
+
+    row.setExpression(expression);
+    this.variableStore.set(key, value);
   }
 }
