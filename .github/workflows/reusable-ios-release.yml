@@ -156,7 +156,7 @@ jobs:
             --arg key_id "$APP_STORE_CONNECT_API_KEY_ID" \
             --arg issuer_id "$APP_STORE_CONNECT_API_ISSUER_ID" \
             --arg key "$APP_STORE_CONNECT_API_KEY" \
-            '{key_id: $key_id, issuer_id: $issuer_id, key: $key}' \
+            '{key_id: $key_id, issuer_id: $issuer_id, key: $key, in_house: false}' \
             > api_key.json
 
             cat api_key.json
