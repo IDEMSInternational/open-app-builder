@@ -48,7 +48,7 @@
   overflow: hidden;
 
   .pill-item {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
     min-width: 0;
@@ -68,8 +68,7 @@
       &[data-isActive="true"] {
         background-color: var(--ion-color-primary);
         color: white;
-        flex: 1 1 auto;
-        max-width: min(200px, calc(100vw - 200px));
+        max-width: calc(100vw - 200px);
         min-width: 120px;
 
         .icon img {
@@ -86,7 +85,6 @@
       &[data-isActive="false"] {
         background-color: transparent;
         justify-content: center;
-        flex: 0 0 56px;
         width: 56px;
         height: 56px;
 
