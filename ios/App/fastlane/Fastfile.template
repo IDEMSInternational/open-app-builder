@@ -2,7 +2,6 @@ default_platform(:ios)
 
 # Utility function to populate credentials from env vars to file
 def setup_credentials
-  api_key_path = "api_key.json"
   api_key = app_store_connect_api_key(
     key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
     issuer_id: ENV["APP_STORE_CONNECT_API_ISSUER_ID"],
@@ -13,7 +12,7 @@ def setup_credentials
   gcp_key_path = "gc_keys.json"
   File.write(gcp_key_path, ENV["GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY"])
 
-  { api_key_path: api_key_path, gcp_key_path: gcp_key_path }
+  { api_key: api_key, gcp_key_path: gcp_key_path }
 end
 
 # Map explicit secret name to what fastlane expects
