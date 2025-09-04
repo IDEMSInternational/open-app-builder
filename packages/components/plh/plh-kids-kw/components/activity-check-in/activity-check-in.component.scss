@@ -52,13 +52,11 @@
     margin: 8px auto;
     .title {
       flex-shrink: 0;
-      p {
-        margin: 8px auto;
-        font-size: var(--font-size-text-small);
-        text-align: center;
-        color: var(--ion-color-gray-600);
-        font-weight: var(--font-weight-bold);
-      }
+      margin: 8px auto;
+      font-size: var(--font-size-text-small);
+      text-align: center;
+      color: var(--ion-color-gray-600);
+      font-weight: var(--font-weight-bold);
     }
     .icon {
       display: flex;
