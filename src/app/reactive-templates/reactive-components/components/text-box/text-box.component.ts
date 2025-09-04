@@ -23,6 +23,6 @@ const parameters = () =>
 })
 export class TextBoxComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   public async handleChange(value: any) {
-    this.setValue(value);
+    this.setExpression(value);
   }
 }

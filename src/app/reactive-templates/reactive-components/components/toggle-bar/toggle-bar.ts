@@ -51,7 +51,7 @@ export class ToggleBarComponent
   public handleClick(e: Event) {
     e.preventDefault();
     e.stopImmediatePropagation();
-    this.setValue(!this.value());
+    this.setExpression(!this.value());
     this.triggerActions("click");
   }
 

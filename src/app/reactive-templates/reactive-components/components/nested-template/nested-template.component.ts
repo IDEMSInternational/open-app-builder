@@ -1,13 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  effect,
-  forwardRef,
-  OnInit,
-  QueryList,
-  viewChild,
-  ViewChildren,
-} from "@angular/core";
+import { Component, effect, forwardRef, OnInit, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
@@ -60,7 +51,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   private setTemplateVariable(row: FlowTypes.TemplateRow) {
     this.variableStore.set(
       this.namespaceService.getFullName(this.name(), row.name),
-      this.rowService.evaluateValue(row, this.namespace())
+      this.evaluationService.evaluateExpression(row, row.value, this.namespace())
     );
   }
 }

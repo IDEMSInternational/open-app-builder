@@ -1,5 +1,4 @@
 import {
-  afterNextRender,
   Component,
   computed,
   HostBinding,
@@ -10,7 +9,7 @@ import {
   OnInit,
   signal,
   Signal,
-  untracked,
+  WritableSignal,
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
@@ -19,6 +18,7 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
+import { EvaluationService } from "../services/evaluation.service";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -33,12 +33,14 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.namespaceService.getFullName(this.namespace(), this.row().name)
   );
   public value: Signal<any>;
+  public expression: WritableSignal<string | number | boolean> = signal("");
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
+  protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
 
@@ -56,24 +58,28 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this.condition.set(this.rowService.evaluateCondition(row, this.namespace()));
+    this.expression = signal(row.value);
+    this.condition.set(this.evaluationService.evaluateCondition(row, this.namespace()));
 
     this.setParams();
     this.watchDependencies();
 
     // Set default value
-    this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
+    this.variableStore.set(
+      this.name(),
+      this.evaluationService.evaluateExpression(row, this.expression(), this.namespace())
+    );
     this.onInitialised()?.();
   }
 
   /*
    * Sets the rows expression value and updates the variable store.
    */
-  public setValue(expression: any): void {
-    this.row().value = expression;
+  public setExpression(expression: any): void {
+    this.expression.set(expression);
     this.variableStore.set(
       this.name(),
-      this.rowService.evaluateValue(this.row(), this.namespace())
+      this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
     );
   }
 
@@ -89,7 +95,11 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
       const param = this.params[key];
 
       if (rowParams && rowParams.hasOwnProperty(param.name)) {
-        const value = this.rowService.evaluateParameter(this.row(), param.name, this.namespace());
+        const value = this.evaluationService.evaluateParameter(
+          this.row(),
+          param.name,
+          this.namespace()
+        );
         this.params[key].setValue(value);
       }
     });
@@ -99,9 +109,9 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
       this.variableStore.set(
         this.name(),
-        this.rowService.evaluateValue(this.row(), this.namespace())
+        this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
       );
-      this.condition.set(this.rowService.evaluateCondition(this.row(), this.namespace()));
+      this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
       this.setParams();
     });
   }
