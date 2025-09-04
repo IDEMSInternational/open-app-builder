@@ -88,6 +88,7 @@ Store the following variables and secrets in the deployment repo github secrets
 | APP_STORE_CONNECT_API_KEY_ID  | Key ID listed in App Store Connect for generated key |
 | APP_STORE_CONNECT_API_ISSUER_ID  | Issuer ID listed in App Store connect |
 | APP_STORE_CONNECT_API_KEY  | Contents of App Store Connect p8 key   |
+| APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
 | IOS_APP_IDENTIFIER | App identifier used in App Store |
 ---
 
