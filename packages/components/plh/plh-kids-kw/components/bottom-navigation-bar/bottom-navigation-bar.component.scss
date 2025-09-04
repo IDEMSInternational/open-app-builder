@@ -39,6 +39,7 @@
   visibility: hidden;
 }
 
+// Pill variant
 .plh-bottom-nav-wrapper[data-variant="pill"] {
   justify-content: space-around;
   gap: 0;
@@ -65,13 +66,14 @@
       box-sizing: border-box;
 
       &[data-isActive="true"] {
-        background-color: #0066a1;
+        background-color: var(--ion-color-primary);
         color: white;
         flex: 1 1 auto;
         max-width: min(200px, calc(100vw - 200px));
         min-width: 120px;
 
         .icon img {
+          // Make icon white
           filter: brightness(0) invert(1);
         }
 
@@ -120,6 +122,7 @@
         text-align: left;
         overflow: hidden;
         text-overflow: ellipsis;
+        line-clamp: 2;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
