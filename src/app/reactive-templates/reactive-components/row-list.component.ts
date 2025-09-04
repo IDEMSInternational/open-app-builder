@@ -23,6 +23,8 @@ export class RowListComponent {
   public rows = input.required<FlowTypes.TemplateRow[]>();
 
   public readonly initialised = computed(() => {
+    // Initially zero rows will be reported we will
+    // assume that a list with no rows is not initialised
     if (this.rows().length === 0) {
       return false;
     }
