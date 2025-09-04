@@ -18,9 +18,10 @@ end
 # Map explicit secret name to what fastlane expects
 ENV["MATCH_PASSWORD"] ||= ENV["GCP_IOS_CERTS_ENCRYPTION_PASSWORD"]
 
+# Fastlane Methods
 platform :ios do
   desc "Build and upload to TestFlight"
-  lane :beta do
+  lane :testflight do
     # 0. Populate credentials from private lane
     creds = setup_credentials
 
@@ -38,7 +39,7 @@ platform :ios do
 
     # 2. Build the app (IPA)
     build_app(
-      scheme: "App", # ⚠️ replace with your actual Xcode scheme
+      scheme: "App",
       export_method: "app-store",
       output_directory: "build",
       output_name: "App.ipa"
@@ -49,5 +50,31 @@ platform :ios do
     #   api_key: creds[:api_key],
     #   skip_waiting_for_build_processing: true
     # )
+  end
+
+  desc "Build unsigned simulator build for Appetize"
+  lane :appetize do
+    # 1. Build simulator .app (unsigned)
+    build_ios_app(
+      scheme: "App",
+      configuration: "Release",
+      destination: "generic/platform=iOS Simulator",
+      derived_data_path: "output/data",
+      skip_archive: true,
+      skip_codesigning: true,
+      skip_package_ipa: true
+    )
+
+    # 2. Upload to Appetize (optional)
+    if ENV["APPETIZE_API_TOKEN"]
+      sh <<~BASH
+        curl https://api.appetize.io/v1/apps \
+          -u "#{ENV['APPETIZE_API_TOKEN']}:" \
+          -F "platform=ios" \
+          -F "file=@output/data/Build/Products/Release-iphonesimulator/App.app"
+      BASH
+    else
+      UI.message("⚠️ APPETIZE_API_TOKEN not set, skipping upload")
+    end
   end
 end
