@@ -105,8 +105,7 @@ jobs:
 
       - name: Write App Store Connect API key
         run: |
-          mkdir -p ~/.appstoreconnect
-          cat > ~/.appstoreconnect/api_key.json <<EOF
+          cat > api_key.json <<EOF
           {
             "key_id": "${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}",
             "issuer_id": "${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}",
@@ -139,7 +138,7 @@ jobs:
             --storage_mode google_cloud \
             --google_cloud_bucket_name $IOS_MATCH_GCS_BUCKET \
             --google_cloud_project_id $IOS_MATCH_GCS_PROJECT \
-            --api_key_path ~/.appstoreconnect/api_key.json
+            --api_key_path api_key.json
 
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
