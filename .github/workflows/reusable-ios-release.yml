@@ -28,6 +28,7 @@ env:
   GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
   GCP_IOS_CERTS_BUCKET_ID: ${{ vars.GCP_IOS_CERTS_BUCKET_ID }}
   GCP_IOS_CERTS_PROJECT_ID: ${{ vars.GCP_IOS_CERTS_PROJECT_ID }}
+  IOS_APP_IDENTIFIER: ${{vars.IOS_APP_IDENTIFIER}} # TODO - extract from deployment config
   MATCH_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
 
   ##################################################################################
@@ -71,7 +72,7 @@ jobs:
       - name: Validate required variables
         run: |
           set -euo pipefail
-          for var in GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID; do
+          for var in GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID IOS_APP_IDENTIFIER; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing required variable: $var"
               exit 1
@@ -180,6 +181,7 @@ jobs:
             --google_cloud_bucket_name $GCP_IOS_CERTS_BUCKET_ID \
             --google_cloud_project_id $GCP_IOS_CERTS_PROJECT_ID \
             --api_key_path api_key.json
+            --app_identifier $IOS_APP_IDENTIFIER
 
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
