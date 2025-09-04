@@ -104,6 +104,7 @@ jobs:
           cat Gemfile
 
       - name: Write App Store Connect API key
+        working-directory: ios/App
         run: |
           cat > api_key.json <<EOF
           {
