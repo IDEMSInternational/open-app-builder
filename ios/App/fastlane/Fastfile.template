@@ -66,15 +66,15 @@ platform :ios do
     )
 
     # 2. Upload to Appetize (optional)
-    if ENV["APPETIZE_API_TOKEN"]
+    if ENV["APPETIZE_TOKEN"]
       sh <<~BASH
         curl https://api.appetize.io/v1/apps \
-          -u "#{ENV['APPETIZE_API_TOKEN']}:" \
+          -u "#{ENV['APPETIZE_TOKEN']}:" \
           -F "platform=ios" \
           -F "file=@output/data/Build/Products/Release-iphonesimulator/App.app"
       BASH
     else
-      UI.message("⚠️ APPETIZE_API_TOKEN not set, skipping upload")
+      UI.message("⚠️ APPETIZE_TOKEN not set, skipping upload")
     end
   end
 end
