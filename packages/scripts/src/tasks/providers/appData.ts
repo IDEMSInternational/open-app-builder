@@ -81,6 +81,7 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   } = deploymentConfig;
 
   return {
@@ -97,6 +98,7 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   };
 }
 

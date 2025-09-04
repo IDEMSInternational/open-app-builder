@@ -4,6 +4,7 @@ import { ConnectedOverlayScrollHandler } from "./connectedoverlayscrollhandler";
 
 @Directive({
   selector: "[pTooltip]",
+  standalone: true,
 })
 export class TooltipDirective implements AfterViewInit, OnDestroy {
   @Input() tooltipPosition: string = "right";
@@ -67,7 +68,10 @@ export class TooltipDirective implements AfterViewInit, OnDestroy {
 
   resizeListener: any;
 
-  constructor(public el: ElementRef, public zone: NgZone) {}
+  constructor(
+    public el: ElementRef,
+    public zone: NgZone
+  ) {}
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {

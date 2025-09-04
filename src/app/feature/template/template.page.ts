@@ -5,6 +5,7 @@ import { FlowTypes, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
 @Component({
   selector: "plh-template-page",
@@ -19,11 +20,16 @@ export class TemplatePage implements OnInit, OnDestroy {
   appConfigChanges$: Subscription;
   shouldEmitScrollEvents: boolean = false;
 
+  public useReactiveTemplates: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private appDataService: AppDataService,
-    private appConfigService: AppConfigService
-  ) {}
+    private appConfigService: AppConfigService,
+    private deploymentService: DeploymentService
+  ) {
+    this.useReactiveTemplates = this.deploymentService.config.useReactiveTemplates ?? false;
+  }
 
   ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
