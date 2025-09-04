@@ -1,12 +1,11 @@
-# 🛠 One‑Time Local Setup for Fastlane Match + GCS
-
 ## TODO
-- Setup via local workflow (e.g. yarn workflow ios certs)
+- [ ] Setup via local workflow (e.g. yarn workflow ios certs)
+This could populate fastfile and matchfile and allow for variables from deployment config instead of gh repo
+- [ ] Include `yarn workflow ios` in prep scripts
 
 ### 1. Install prerequisites locally
 Make sure you have:
-- **Xcode** + Apple Developer account access
-- **Fastlane** installed (`gem install fastlane` or via Bundler)
+- **Apple Developer Account Access**
 - **Google Cloud SDK** (`gcloud`) installed and authenticated
 
 ---
