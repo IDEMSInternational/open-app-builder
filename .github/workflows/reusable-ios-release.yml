@@ -54,12 +54,25 @@ jobs:
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
           GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
           GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD}}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         run: |
           set -euo pipefail
-          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
+          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing required secret: $var"
+              exit 1
+            else
+              echo "✅ $var is set"
+            fi
+          done
+      - name: Validate required variables
+        env:
+          IOS_MATCH_GCS_BUCKET: ${{ secrets.IOS_MATCH_GCS_BUCKET }}
+          IOS_MATCH_GCS_PROJECT: ${{ secrets.IOS_MATCH_GCS_PROJECT }}
+        run: |
+          set -euo pipefail
+          for var in IOS_MATCH_GCS_BUCKET IOS_MATCH_GCS_PROJECT; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing required variable: $var"
               exit 1
             else
               echo "✅ $var is set"
