@@ -43,6 +43,28 @@ on:
         description: Provide private key if deployment uses encrypted config
 
 jobs:
+  # Ensure all required secrets are populated
+  validate_secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate required secrets
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
+          GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD}}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        run: |
+          set -euo pipefail
+          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing required secret: $var"
+              exit 1
+            else
+              echo "✅ $var is set"
+            fi
+          done
   #############################################################################
   #         Build Deployment Web
   #############################################################################
@@ -69,24 +91,6 @@ jobs:
     runs-on: macos-latest
     # needs: build_web
     steps:
-      - name: Validate required secrets
-        env:
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
-          GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
-          GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD}}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        run: |
-          set -euo pipefail
-          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
-            if [ -z "${!var}" ]; then
-              echo "❌ Missing required secret: $var"
-              exit 1
-            else
-              echo "✅ $var is set"
-            fi
-          done
       # Checkout builder repo and install node_modules so that they can be used in ios build
       # (e.g. capacitor plugins store podfiles in node_modules)
       - uses: actions/checkout@v4
