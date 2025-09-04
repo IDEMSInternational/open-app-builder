@@ -26,8 +26,8 @@ env:
   APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
   APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
   GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
-  GCP_IOS_CERTS_BUCKET_ID: ${{ secrets.GCP_IOS_CERTS_BUCKET_ID }}
-  GCP_IOS_CERTS_PROJECT_ID: ${{ secrets.GCP_IOS_CERTS_PROJECT_ID }}
+  GCP_IOS_CERTS_BUCKET_ID: ${{ vars.GCP_IOS_CERTS_BUCKET_ID }}
+  GCP_IOS_CERTS_PROJECT_ID: ${{ vars.GCP_IOS_CERTS_PROJECT_ID }}
   MATCH_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
 
   ##################################################################################
@@ -69,9 +69,6 @@ jobs:
             fi
           done
       - name: Validate required variables
-        env:
-          GCP_IOS_CERTS_BUCKET_ID: ${{ secrets.GCP_IOS_CERTS_BUCKET_ID }}
-          GCP_IOS_CERTS_PROJECT_ID: ${{ secrets.GCP_IOS_CERTS_PROJECT_ID }}
         run: |
           set -euo pipefail
           for var in GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID; do
