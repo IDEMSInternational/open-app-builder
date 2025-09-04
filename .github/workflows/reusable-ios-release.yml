@@ -103,17 +103,6 @@ jobs:
           echo 'gem "fastlane"' >> Gemfile
           cat Gemfile
 
-      - name: Write App Store Connect API key
-        working-directory: ios/App
-        run: |
-          cat > api_key.json <<EOF
-          {
-            "key_id": "${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}",
-            "issuer_id": "${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}",
-            "key": "${{ secrets.APP_STORE_CONNECT_API_KEY }}"
-          }
-          EOF
-
       # Setup ruby. Use bundler-cache to auto-install Gemfile in working directory
       - uses: ruby/setup-ruby@v1
         with:
@@ -135,6 +124,12 @@ jobs:
         # Call fastlane match for cert setup
         # https://docs.fastlane.tools/actions/match
         run: |
+          echo '{
+          "key_id": "'"$APP_STORE_CONNECT_API_KEY_ID"'",
+          "issuer_id": "'"$APP_STORE_CONNECT_API_ISSUER_ID"'",
+          "key": "'"$APP_STORE_CONNECT_API_KEY"'"
+          }' > api_key.json
+
           bundle exec fastlane match appstore \
             --storage_mode google_cloud \
             --google_cloud_bucket_name $IOS_MATCH_GCS_BUCKET \
