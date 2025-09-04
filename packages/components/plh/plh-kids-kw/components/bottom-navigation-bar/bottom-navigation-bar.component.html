@@ -12,11 +12,9 @@
           <div class="icon">
             <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
           </div>
-          @if (rla.isActive) {
-            <div class="label">
-              <p>{{ button.label }}</p>
-            </div>
-          }
+          <div class="label" [attr.data-isActive]="rla.isActive">
+            <p>{{ button.label }}</p>
+          </div>
         </div>
       } @else {
         <div class="icon">
