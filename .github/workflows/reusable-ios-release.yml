@@ -66,11 +66,11 @@ jobs:
           done
       - name: Validate required variables
         env:
-          IOS_MATCH_GCS_BUCKET: ${{ secrets.IOS_MATCH_GCS_BUCKET }}
-          IOS_MATCH_GCS_PROJECT: ${{ secrets.IOS_MATCH_GCS_PROJECT }}
+          GCP_IOS_CERTS_BUCKET_ID: ${{ secrets.GCP_IOS_CERTS_BUCKET_ID }}
+          GCP_IOS_CERTS_PROJECT_ID: ${{ secrets.GCP_IOS_CERTS_PROJECT_ID }}
         run: |
           set -euo pipefail
-          for var in IOS_MATCH_GCS_BUCKET IOS_MATCH_GCS_PROJECT; do
+          for var in GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing required variable: $var"
               exit 1
@@ -175,16 +175,16 @@ jobs:
       - name: Build IOS Release App
         working-directory: ios/App
         env:
-          IOS_MATCH_GCS_BUCKET: ${{ vars.IOS_MATCH_GCS_BUCKET }}
-          IOS_MATCH_GCS_PROJECT: ${{ vars.IOS_MATCH_GCS_PROJECT }}
+          GCP_IOS_CERTS_BUCKET_ID: ${{ vars.GCP_IOS_CERTS_BUCKET_ID }}
+          GCP_IOS_CERTS_PROJECT_ID: ${{ vars.GCP_IOS_CERTS_PROJECT_ID }}
           MATCH_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
         # Call fastlane match for cert setup
         # https://docs.fastlane.tools/actions/match
         run: |
           bundle exec fastlane match appstore \
             --storage_mode google_cloud \
-            --google_cloud_bucket_name $IOS_MATCH_GCS_BUCKET \
-            --google_cloud_project_id $IOS_MATCH_GCS_PROJECT \
+            --google_cloud_bucket_name $GCP_IOS_CERTS_BUCKET_ID \
+            --google_cloud_project_id $GCP_IOS_CERTS_PROJECT_ID \
             --api_key_path api_key.json
 
       # Install node_module dependencies (includes capacitor plugin pods required for build)
