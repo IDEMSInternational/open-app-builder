@@ -30,7 +30,6 @@ platform :ios do
       storage_mode: "google_cloud",
       google_cloud_bucket_name: ENV["GCP_IOS_CERTS_BUCKET_ID"],
       google_cloud_project_id: ENV["GCP_IOS_CERTS_PROJECT_ID"],
-      google_cloud_bucket_prefix: "ios", # 👈 all certs/profiles go under ios/
       api_key: creds[:api_key],
       # This will be populated locally, when running `yarn workflow ios`
       app_identifier: "${APP_ID}",
