@@ -127,7 +127,7 @@ jobs:
           echo '{
           "key_id": "'"$APP_STORE_CONNECT_API_KEY_ID"'",
           "issuer_id": "'"$APP_STORE_CONNECT_API_ISSUER_ID"'",
-          "key": "'"$APP_STORE_CONNECT_API_KEY"'"
+          "key_content": "'"$APP_STORE_CONNECT_API_KEY"'"
           }' > api_key.json
 
           bundle exec fastlane match appstore \
