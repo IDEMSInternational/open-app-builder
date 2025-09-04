@@ -180,8 +180,8 @@ jobs:
             --storage_mode google_cloud \
             --google_cloud_bucket_name $GCP_IOS_CERTS_BUCKET_ID \
             --google_cloud_project_id $GCP_IOS_CERTS_PROJECT_ID \
-            --api_key_path api_key.json \
-            --app_identifier $IOS_APP_IDENTIFIER
+            --app_identifier $IOS_APP_IDENTIFIER \
+            --api_key_path api_key.json
 
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
