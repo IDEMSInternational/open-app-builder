@@ -28,9 +28,8 @@ env:
   APP_STORE_TEAM_ID: ${{ vars.APP_STORE_TEAM_ID }}
   GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY: ${{secrets.GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY}}
   GCP_IOS_CERTS_BUCKET_ID: ${{ vars.GCP_IOS_CERTS_BUCKET_ID }}
+  GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
   GCP_IOS_CERTS_PROJECT_ID: ${{ vars.GCP_IOS_CERTS_PROJECT_ID }}
-  IOS_APP_IDENTIFIER: ${{vars.IOS_APP_IDENTIFIER}} # TODO - extract from deployment config
-  MATCH_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
 
   ##################################################################################
   #         Main Code
@@ -62,7 +61,7 @@ jobs:
       - name: Validate required secrets
         run: |
           set -euo pipefail
-          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY MATCH_PASSWORD; do
+          for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY; do
             if [ -z "$(printenv "$var")" ]; then
               echo "❌ Missing required secret: $var"
               exit 1
@@ -73,7 +72,7 @@ jobs:
       - name: Validate required variables
         run: |
           set -euo pipefail
-          for var in APP_STORE_TEAM_ID GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID IOS_APP_IDENTIFIER; do
+          for var in APP_STORE_TEAM_ID GCP_IOS_CERTS_BUCKET_ID GCP_IOS_CERTS_PROJECT_ID; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing required variable: $var"
               exit 1
@@ -132,15 +131,6 @@ jobs:
           tar -xf artifact.tar --directory ios
           echo $GOOGLE_SERVICES_PLIST > ios/App/App/GoogleService-Info.plist
 
-      # Create a ruby gemfile declaring fastlane dep for install. This will be auto-installed
-      # via the setup-ruby command. This file could also be created and committed to core repo is required
-      - name: Add fastlane gem
-        working-directory: ios/App
-        run: |
-          echo 'source "https://rubygems.org"' > Gemfile
-          echo 'gem "fastlane"' >> Gemfile
-          cat Gemfile
-
       # Setup ruby. Use bundler-cache to auto-install Gemfile in working directory
       - uses: ruby/setup-ruby@v1
         with:
@@ -148,46 +138,15 @@ jobs:
           bundler-cache: true
           working-directory: ios/App
 
-      # Populate app store connect credentials to json file
-      - name: Setup App Store Connect
-        working-directory: ios/App
-        run: |
-          jq -n \
-            --arg key_id "$APP_STORE_CONNECT_API_KEY_ID" \
-            --arg issuer_id "$APP_STORE_CONNECT_API_ISSUER_ID" \
-            --arg key "$APP_STORE_CONNECT_API_KEY" \
-            '{key_id: $key_id, issuer_id: $issuer_id, key: $key, in_house: false}' \
-            > api_key.json
-
-            cat api_key.json
-
-      # Populate service account key used to store signing credentials on Google Cloud Platform
-      - name: Setup GCP Storage Bucket
-        working-directory: ios/App
-        run: |
-          echo $GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY > gc_keys.json
-
-      # Attempt to create an unsigned build for local testing
-      # https://github.com/fastlane/fastlane/discussions/21996
-      - name: Build IOS Release App
-        working-directory: ios/App
-        # Call fastlane match for cert setup
-        # https://docs.fastlane.tools/actions/match
-        # HACK - using json file but global env name conflicts with fastlane internal variable
-        # Set as null to prevent trying to load from key content (needs to be formatted as json in step above)
-        run: |
-          unset APP_STORE_CONNECT_API_KEY
-          bundle exec fastlane match appstore \
-            --storage_mode google_cloud \
-            --google_cloud_bucket_name $GCP_IOS_CERTS_BUCKET_ID \
-            --google_cloud_project_id $GCP_IOS_CERTS_PROJECT_ID \
-            --app_identifier $IOS_APP_IDENTIFIER \
-            --team_id $APP_STORE_TEAM_ID \
-            --api_key_path api_key.json
-
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
         with:
           node-version: 20.17.0
           cache: yarn
       - run: yarn workspaces focus frontend --production
+
+      # Setup certs, build and upload to testflight
+      - name: Build IOS and Upload to Testflight
+        working-directory: ios/App
+        # Call workflow from generated fastfile
+        run: bundle exec fastlane beta

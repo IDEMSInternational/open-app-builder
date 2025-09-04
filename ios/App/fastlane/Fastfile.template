@@ -1,0 +1,51 @@
+default_platform(:ios)
+
+# Utility function to populate credentials from env vars to file
+def setup_credentials
+  api_key_path = "api_key.json"
+  File.write(api_key_path, {
+    key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+    issuer_id: ENV["APP_STORE_CONNECT_API_ISSUER_ID"],
+    key: ENV["APP_STORE_CONNECT_API_KEY"],
+    in_house: false
+  }.to_json)
+
+  gcp_key_path = "gc_keys.json"
+  File.write(gcp_key_path, ENV["GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY"])
+
+  { api_key_path: api_key_path, gcp_key_path: gcp_key_path }
+end
+
+platform :ios do
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    # 0. Populate credentials from private lane
+    creds = setup_credentials
+
+    # 1. Fetch signing certs & provisioning profiles from Google Cloud
+    match(
+      type: "appstore",
+      storage_mode: "google_cloud",
+      google_cloud_bucket_name: ENV["GCP_IOS_CERTS_BUCKET_ID"],
+      google_cloud_project_id: ENV["GCP_IOS_CERTS_PROJECT_ID"],
+      api_key_path: creds[:api_key_path],
+      # This will be populated locally, when running `yarn workflow ios`
+      app_identifier: "${APP_ID}",
+      team_id: ENV["APP_STORE_TEAM_ID"]
+    )
+
+    # 2. Build the app (IPA)
+    build_app(
+      scheme: "App", # ⚠️ replace with your actual Xcode scheme
+      export_method: "app-store",
+      output_directory: "build",
+      output_name: "App.ipa"
+    )
+
+    # 3. Upload to TestFlight
+    # upload_to_testflight(
+    #   api_key_path: creds[:api_key_path],
+    #   skip_waiting_for_build_processing: true
+    # )
+  end
+end

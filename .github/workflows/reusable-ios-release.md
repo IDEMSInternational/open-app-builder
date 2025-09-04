@@ -1,7 +1,6 @@
 ## TODO
-- [ ] Setup via local workflow (e.g. yarn workflow ios certs)
-This could populate fastfile and matchfile and allow for variables from deployment config instead of gh repo
-- [ ] Include `yarn workflow ios` in prep scripts
+- [ ] Intro (and link from yml)
+- [ ] Check this md with AI for potential improvements
 
 ### 1. Install prerequisites locally
 Make sure you have:
@@ -11,7 +10,10 @@ Make sure you have:
 ---
 
 ### 2. Create a GCS bucket
-This will be the storage backend for Match. If you don’t already have one, use interactive console at https://console.cloud.google.com/storage/create-bucket, or command line:
+All appstore apps need to be signed with credentials linked to an Apple Developer account. 
+Google Cloud Storage will be used to store Certificates generated for use across all apps added to the account, with per-app provisioning profiles stored in subfolders
+
+If you don’t already have one, use interactive console at https://console.cloud.google.com/storage/create-bucket, or command line:
 
 ```bash
 gcloud storage buckets create your-bucket-name \
@@ -21,9 +23,8 @@ gcloud storage buckets create your-bucket-name \
 ```
 
 Recommendations
-- Call the bucket something recognisable, such as `{org}-{deployment}-ios-certs`
-Use the `org` and `deployment` prefixes to help ensure globally unique (required for GCS buckets).
-If planning to use the same codesigning certs across multiple deployments within an org then you may want to name along the lines of `open-app-builder-{org}-ios-certs`
+- Call the bucket something recognisable, such as `{org}-open-app-builder-ios-certs`
+Use the `org` prefix to help ensure globally unique (required for GCS buckets). Remember that the same bucket can be be used across multiple apps (per-app buckets can also be created, although this will make it harder to update when certs are renewed or revoked)
 
 - When specifying a region, use US to store certs nearer github action runner, e.g. `us-central1`, or if organisation requires all sensitive data stored in specific location use that, e.g. `europe-west1`
 
@@ -53,10 +54,9 @@ gcloud iam service-accounts keys create open-app-builder-ci-key.json \
   --iam-account=open-app-builder-ci@your-gcp-project-id.iam.gserviceaccount.com
 ```
 
-Move to ios App directory for use in generating credentials
-```bash
-mv open-app-builder-ci-key.json ios/App/gc_keys.json 
-```
+The contents of this will be populated to github_actions. 
+
+DO NOT COMMIT - after populating secret it can be deleted locally
 
 ### 4. Generate App Store Connect API Key
 If not already created:
@@ -88,71 +88,17 @@ Store the following variables and secrets in the deployment repo github secrets
 | APP_STORE_CONNECT_API_ISSUER_ID  | Issuer ID listed in App Store connect |
 | APP_STORE_CONNECT_API_KEY  | Contents of App Store Connect p8 key   |
 | APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
-| IOS_APP_IDENTIFIER | App identifier used in App Store |
 ---
 
+### 6. Create workflow to trigger reusable action
+(TODO)
 
-### 6. Generate and Upload Signing Credentials
-In your iOS project folder:
 
-```bash
-cd ios/App
-
-bundle exec fastlane match appstore \
-  --storage_mode google_cloud \
-  --google_cloud_bucket_name your-bucket \
-  --google_cloud_project_id your-project-id \
-```
-
-TODO - maybe just use application credentials?
-When promoted sign in using your Apple Developer Account credentials (username/password)
-
-This will:
-- Create a new signing certificate + provisioning profile (if none exist)
-- Encrypt them with your `MATCH_PASSWORD`
-- Upload them to your GCS bucket
-
-You can also run for other types:
-```bash
-bundle exec fastlane match development
-bundle exec fastlane match adhoc
-```
+### 7. Run reusable workflow
 
 ---
 
-### 6. Verify in GCS
+### 7. Verify in GCS
 Check your bucket — you should see encrypted `.p12` and `.mobileprovision` files.
-
----
-
-### 7. CI/CD Usage
-Now in GitHub Actions, you just need:
-
-```yaml
-- name: Authenticate with Google Cloud
-  uses: google-github-actions/auth@v2
-  with:
-    credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-
-- name: Setup signing with Match
-  working-directory: ios/App
-  run: bundle exec fastlane match appstore --readonly
-  env:
-    MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-    MATCH_STORAGE_MODE: google_cloud
-    MATCH_GOOGLE_CLOUD_BUCKET_NAME: ${{ secrets.IOS_MATCH_GCS_BUCKET }}
-    MATCH_GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.IOS_MATCH_GCS_PROJECT }}
-```
-
-Fastlane will pull the certs/profiles from GCS and install them into the CI macOS runner.
-
----
-
-# ✅ Summary
-1. **Create GCS bucket**  
-2. **Create service account + JSON key** (upload to GitHub Secrets)  
-3. **Run `fastlane match init` locally** with GCS backend  
-4. **Run `fastlane match appstore` (and/or development/adhoc)** locally to upload certs/profiles  
-5. **In CI**, authenticate with GCP and run `fastlane match` → everything “just works”  
 
 ---
