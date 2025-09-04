@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Component,
   computed,
   HostBinding,
@@ -9,6 +10,7 @@ import {
   OnInit,
   signal,
   Signal,
+  untracked,
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
@@ -33,9 +35,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   public value: Signal<any>;
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
-
-  private _initialised = signal(false);
-  public readonly initialised = this._initialised.asReadonly();
+  public onInitialised = input<(() => void) | undefined>(undefined);
 
   protected variableStore = inject(VariableStore);
   protected rowService = inject(RowService);
@@ -63,10 +63,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
 
     // Set default value
     this.variableStore.set(this.name(), this.rowService.evaluateValue(row, this.namespace()));
-
-    console.log("Row initialised:", this.name());
-
-    this._initialised.set(true);
+    this.onInitialised()?.();
   }
 
   /*

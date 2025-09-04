@@ -26,11 +26,14 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   constructor() {
     super();
 
-    effect(() => {
-      if (this.reactiveTemplate().initialised()) {
-        this.onTemplateInitialized();
-      }
-    });
+    effect(
+      () => {
+        if (this.reactiveTemplate().initialised()) {
+          this.onTemplateInitialized();
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   public override ngOnInit(): void {
@@ -40,7 +43,6 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   }
 
   private onTemplateInitialized() {
-    console.log("Reactive template initialized", this.name());
     for (const row of this.row().rows) {
       this.setTemplateVariable(row);
     }

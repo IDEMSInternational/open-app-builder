@@ -1,15 +1,17 @@
 import { NgComponentOutlet } from "@angular/common";
-import { Component, computed, input, QueryList, viewChildren, ViewChildren } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { REACTIVE_COMPONENT_MAP } from "./components";
-import { RowBaseComponent } from "./row-base.component";
 
 @Component({
   selector: "oab-row-list",
   template: `
-    @for (row of rows(); track row.name) {
+    @for (row of rows(); track i; let i = $index) {
       <ng-container
-        *ngComponentOutlet="getComponent(row); inputs: { row, namespace: namespace() }"
+        *ngComponentOutlet="
+          getComponent(row);
+          inputs: { row, namespace: namespace(), onInitialised: onRowInit(i) }
+        "
       />
     }
   `,
@@ -19,35 +21,32 @@ import { RowBaseComponent } from "./row-base.component";
 export class RowListComponent {
   public namespace = input("");
   public rows = input.required<FlowTypes.TemplateRow[]>();
-  private rowComponents = viewChildren(RowBaseComponent);
 
   public readonly initialised = computed(() => {
-    const children = this.rowComponents();
-
-    console.log("Row list children:", children.length);
-
-    let initialised = children.every((child) => child.initialised());
-
-    if (initialised) {
-      console.log(
-        "Row list initialised:",
-        this.namespace(),
-        this.rows().map((r) => r.name)
-      );
-    } else {
-      console.log(
-        "Row list not initialised:",
-        this.namespace(),
-        this.rows().map((r) => r.name)
-      );
+    if (this.rows().length === 0) {
+      return false;
     }
 
-    return initialised;
+    return this.rowsInitialised.size === this.rows().length;
   });
 
-  constructor() {}
+  private rowsInitialised = new Set<number>();
 
   public getComponent(row: FlowTypes.TemplateRow) {
     return REACTIVE_COMPONENT_MAP[row.type];
+  }
+
+  /* 
+    Each row will call this method when it is finished initialising.
+    This allows us to override child variables after all rows are initialised.
+    So that override values take precedence.
+
+    Ideally this would be done by computing a signal 'initialised' field on each RowBaseComponent
+    however it's not easy to do that with ngComponentOutlet.
+
+    An alternative solution could be to create a 'RowHost' directive to expose the RowBaseComponent
+  */
+  public onRowInit(index: number) {
+    this.rowsInitialised.add(index);
   }
 }

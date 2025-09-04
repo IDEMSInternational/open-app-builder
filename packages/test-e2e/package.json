@@ -2,9 +2,8 @@
   "name": "test-e2e",
   "packageManager": "yarn@3.3.1",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "start": "yarn run cy:open"
+    "test": "cypress run",
+    "start": "cypress open"
   },
   "devDependencies": {
     "cypress": "^14.5.3"
