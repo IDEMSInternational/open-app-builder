@@ -19,14 +19,23 @@ import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
 import { EvaluationService } from "../services/evaluation.service";
+import { RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
+
+export interface IRow {
+  name: Signal<string>;
+  value: Signal<any>;
+  setExpression(expression: any): void;
+}
 
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
 })
-export abstract class RowBaseComponent<TParams extends Parameters> implements OnInit, OnDestroy {
+export abstract class RowBaseComponent<TParams extends Parameters>
+  implements OnInit, OnDestroy, IRow
+{
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
   public name = computed(() =>
@@ -43,6 +52,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
+  protected rowRegistry = inject(RowRegistry);
 
   protected subscriptions: Subscription[] = [];
 
@@ -64,6 +74,8 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
     this.setParams();
     this.watchDependencies();
 
+    this.rowRegistry.register(this);
+
     // Set default value
     this.variableStore.set(
       this.name(),
@@ -77,6 +89,8 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
    */
   public setExpression(expression: any): void {
     this.expression.set(expression);
+    // todo: update dependencies.
+
     this.variableStore.set(
       this.name(),
       this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
@@ -106,7 +120,7 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
   }
 
   private watchDependencies() {
-    this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
+    let subs = this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
       this.variableStore.set(
         this.name(),
         this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
@@ -114,11 +128,13 @@ export abstract class RowBaseComponent<TParams extends Parameters> implements On
       this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
       this.setParams();
     });
+    this.subscriptions.push(...subs);
   }
 
   public ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => {
       subscription.unsubscribe();
     });
+    this.rowRegistry.unregister(this.name());
   }
 }

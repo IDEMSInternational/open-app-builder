@@ -55,7 +55,7 @@ export class EvaluationService {
     this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
 
     return actions.map((a) => {
-      return { ...a, args: this.evaluateArgs(a.args, namespace) };
+      return { ...a, args: this.evaluateArgs(a.args, namespace), rawArgs: a.args };
     });
   }
 
