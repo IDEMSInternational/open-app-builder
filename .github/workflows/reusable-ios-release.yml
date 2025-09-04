@@ -10,15 +10,16 @@
 #         Configuration
 ##################################################################################
 env:
-  # DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
-  # DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
-  # APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
-  # PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
-  # PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
-  # PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
+  # Required for build
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_PRIVATE_KEY: ${{secrets.DEPLOYMENT_PRIVATE_KEY}}
+  APP_CODE_BRANCH: ${{vars.APP_CODE_BRANCH}}
+  PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
+  PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
+  PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
 
-  # GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
-  # GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
+  GOOGLE_SERVICES_JSON: ${{secrets.GOOGLE_SERVICES_JSON}}
+  GOOGLE_SERVICES_PLIST: ${{secrets.GOOGLE_SERVICES_PLIST}}
 
   # Required for this action
   APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
@@ -60,7 +61,7 @@ jobs:
         run: |
           set -euo pipefail
           for var in APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_API_ISSUER_ID APP_STORE_CONNECT_API_KEY GCP_IOS_CERTS_ENCRYPTION_PASSWORD GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY; do
-            if [ -z "${!var}" ]; then
+            if [ -z "$(printenv "$var")" ]; then
               echo "❌ Missing required secret: $var"
               exit 1
             else
