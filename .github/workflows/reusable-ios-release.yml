@@ -49,6 +49,10 @@ on:
         type: string
         description: "Specify branch for deployment"
         default: ""
+      target:
+        type: string
+        description: testflight / appetize
+        default: testflight
     secrets:
       DEPLOYMENT_PRIVATE_KEY:
         description: Provide private key if deployment uses encrypted config
@@ -80,6 +84,12 @@ jobs:
               echo "✅ $var is set"
             fi
           done
+      - name: Validate release target
+        run: |
+          case "${{ inputs.target }}" in
+            testflight|appetize) echo "✅ Valid target: ${{ inputs.target }}" ;;
+            *) echo "❌ Invalid target: ${{ inputs.target }}"; exit 1 ;;
+          esac
   #############################################################################
   #         Build Deployment Web
   #############################################################################
@@ -150,4 +160,4 @@ jobs:
       - name: Build IOS and Upload to Testflight
         working-directory: ios/App
         # Call workflow from generated fastfile
-        run: bundle exec fastlane beta
+        run: bundle exec fastlane ${{ inputs.target }}
