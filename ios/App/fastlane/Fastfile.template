@@ -45,7 +45,7 @@ platform :ios do
       # instead of default local keychain (used when template first created, or when running locally)
       update_code_signing_settings(
         use_automatic_signing: false,
-        path: "ios/App/App.xcodeproj",
+        path: "App.xcodeproj",
         targets: ["App"],
         code_sign_identity: "Apple Distribution",
         profile_name: "match AppStore ${APP_ID}",
