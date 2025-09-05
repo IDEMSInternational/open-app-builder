@@ -78,29 +78,68 @@ platform :ios do
 
   desc "Build and deploy unsigned simulator build for Appetize"
   lane :release_appetize do
+    tmp_path = "/tmp/fastlane_build"
+
     # 1. Build simulator .app (unsigned)
     build_ios_app(
       scheme: "App",
       configuration: "Release",
       destination: "generic/platform=iOS Simulator",
-      derived_data_path: "output/data",
+      derived_data_path: tmp_path,
       skip_archive: true,
       skip_codesigning: true,
       skip_package_ipa: true
     )
 
-    # 2. Upload to Appetize (optional)
-    if ENV["APPETIZE_TOKEN"]
-      response = sh <<~BASH, log: true
-        curl -sS https://api.appetize.io/v1/apps \
-          -u "#{ENV['APPETIZE_TOKEN']}:" \
-          -F "platform=ios" \
-          -F "file=@output/data/Build/Products/Release-iphonesimulator/App.app"
-      BASH
-      UI.success("Successfully uploaded to Appetize! Response:")
-      UI.message(response)
+    app_path = Dir[File.join(tmp_path, "**", "*.app")].last
+    zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, "app.zip"))
+    
+    base_name = "${APP_ID}"
+    public_key = get_appetize_public_key("ios", base_name)
+
+    response = appetize(
+      path: zipped_bundle,
+      api_token: ENV['APPETIZE_TOKEN'], 
+      public_key: public_key 
+    )
+   
+    if response && response["publicKey"]
+      UI.success("✅ Successfully uploaded to Appetize!")
+      UI.message("Public Key: #{response['publicKey']}")
+      UI.message("App URL:   https://appetize.io/app/#{response['publicKey']}")
     else
-      UI.message("⚠️ APPETIZE_TOKEN not set, skipping upload")
+      error_msg = response["error"] || response.to_s
+      UI.user_error!("❌ Failed to upload to Appetize: #{error_msg}")
     end
+
+  end
+end
+
+# Get appetize public key either from passed env var or from API
+# Public key is ID of app on appetize, so required if overwriting existing app
+def get_appetize_public_key(platform, base_name)
+  # Prefer environment variable override
+  return ENV['APPETIZE_APP_KEY'] if ENV['APPETIZE_APP_KEY']
+
+  fetch_appetize_public_key(platform, base_name)
+end
+
+def fetch_appetize_public_key(platform, base_name)
+  response = HTTParty.get(
+    "https://api.appetize.io/v1/apps",
+    basic_auth: { username: ENV['APPETIZE_TOKEN'], password: '' }
+  )
+
+  UI.user_error!("Failed to fetch Appetize apps: #{response.body}") unless response.success?
+
+  item = JSON.parse(response.body)['data'].find do |app|
+    app['note'] == base_name && app['platform'] == platform
+  end
+
+  if item
+    item['publicKey']
+  else
+    UI.important("No existing Appetize app found for #{base_name} (#{platform})")
+    nil
   end
 end
