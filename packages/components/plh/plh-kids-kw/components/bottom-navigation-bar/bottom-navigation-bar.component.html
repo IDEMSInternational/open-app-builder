@@ -4,29 +4,16 @@
       class="nav-item"
       routerLinkActive="active-link"
       [routerLink]="'template/' + button.target_template"
-      [attr.data-name]="button.name"
       #rla="routerLinkActive"
+      [attr.data-name]="button.name"
+      [attr.data-variant]="params.variant"
+      [attr.data-isActive]="rla.isActive"
+      [attr.data-hideInactiveText]="params.hideInactiveText"
     >
-      @if (params.variant === "pill") {
-        <div class="pill-content" [attr.data-isActive]="rla.isActive">
-          <ng-container *ngTemplateOutlet="navItemContent"></ng-container>
-        </div>
-      } @else {
-        <ng-container *ngTemplateOutlet="navItemContent"></ng-container>
-      }
-
-      <ng-template #navItemContent>
-        <div class="icon">
-          <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
-        </div>
-        <div
-          class="label"
-          [attr.data-isActive]="rla.isActive"
-          [attr.data-hideInactiveText]="params.hideInactiveText"
-        >
-          <p>{{ button.label }}</p>
-        </div>
-      </ng-template>
+      <img class="icon" [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      <div class="label" [attr.data-hideInactiveText]="params.hideInactiveText">
+        {{ button.label }}
+      </div>
     </a>
   }
 </div>
