@@ -1,3 +1,6 @@
+require "httparty"
+require "json"
+
 default_platform(:ios)
 
 # Utility function to populate credentials from env vars to file
