@@ -73,13 +73,13 @@
   &[data-isActive="true"] {
     min-width: 100px;
     background-color: var(--ion-color-primary);
-    color: white;
     padding: 10px 12px;
     border-radius: 28px;
     img {
       filter: brightness(0) invert(1); /* Make icon white */
     }
     .label {
+      color: white;
       max-width: 200px; /** Used for transition, ensure at least 4 icons fit on smaller screens **/
       opacity: 1;
     }
