@@ -1,7 +1,7 @@
 <div class="plh-bottom-nav-wrapper" [attr.data-variant]="params.variant">
   @for (button of params.buttonList; track button.name) {
     <a
-      [class]="params.variant === 'pill' ? 'nav-item pill-item' : 'nav-item'"
+      class="nav-item"
       routerLinkActive="active-link"
       [routerLink]="'template/' + button.target_template"
       [attr.data-name]="button.name"
@@ -9,14 +9,13 @@
     >
       @if (params.variant === "pill") {
         <div class="pill-content" [attr.data-isActive]="rla.isActive">
-          <div class="icon">
-            <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
-          </div>
-          <div class="label" [attr.data-isActive]="rla.isActive">
-            <p>{{ button.label }}</p>
-          </div>
+          <ng-container *ngTemplateOutlet="navItemContent"></ng-container>
         </div>
       } @else {
+        <ng-container *ngTemplateOutlet="navItemContent"></ng-container>
+      }
+
+      <ng-template #navItemContent>
         <div class="icon">
           <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
         </div>
@@ -27,7 +26,7 @@
         >
           <p>{{ button.label }}</p>
         </div>
-      }
+      </ng-template>
     </a>
   }
 </div>
