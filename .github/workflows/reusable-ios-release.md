@@ -1,7 +1,10 @@
-## TODO
-- [ ] Intro (and link from yml)
-- [ ] Check this md with AI for potential improvements
-- [ ] Tidy up reusable-ios-build to use Fastfile
+# iOS Reusable Release Workflow
+
+This document explains how to configure and use the reusable iOS GitHub Action
+for building and deploying apps to **TestFlight** or **Appetize**. 
+
+It covers prerequisites, Google Cloud setup, App Store Connect API keys, GitHub secrets,
+and how to trigger the workflow.
 
 ### 1. Install prerequisites locally
 Make sure you have:
@@ -11,10 +14,15 @@ Make sure you have:
 ---
 
 ### 2. Create a GCS bucket
-All appstore apps need to be signed with credentials linked to an Apple Developer account. 
-Google Cloud Storage will be used to store Certificates generated for use across all apps added to the account, with per-app provisioning profiles stored in subfolders
+All App Store apps need to be signed with credentials linked to an Apple
+Developer account. Google Cloud Storage will be used to store certificates
+generated for use across all apps in the account, with per‑app provisioning
+profiles stored in subfolders.
 
-If you don’t already have one, use interactive console at https://console.cloud.google.com/storage/create-bucket, or command line:
+If you don’t already have one, use interactive console:
+https://console.cloud.google.com/storage/create-bucket
+
+or via CLI:
 
 ```bash
 gcloud storage buckets create your-bucket-name \
@@ -23,11 +31,11 @@ gcloud storage buckets create your-bucket-name \
   --uniform-bucket-level-access
 ```
 
-Recommendations
-- Call the bucket something recognisable, such as `{org}-open-app-builder-ios-certs`
-Use the `org` prefix to help ensure globally unique (required for GCS buckets). Remember that the same bucket can be be used across multiple apps (per-app buckets can also be created, although this will make it harder to update when certs are renewed or revoked)
+****Recommendations**
+- Use a globally unique, lowercase name such as `{org}-open-app-builder-ios-certs`
 
-- When specifying a region, use US to store certs nearer github action runner, e.g. `us-central1`, or if organisation requires all sensitive data stored in specific location use that, e.g. `europe-west1`
+- Prefer `us-central1` for proximity to GitHub runners, unless your org requires
+  a specific region (e.g. `europe-west1`)
 
 ---
 
@@ -77,6 +85,7 @@ Store the following variables and secrets in the deployment repo github secrets
 |---    |---    |
 | GCP_IOS_CERTS_PROJECT_ID | Google Cloud Project ID where bucket stored       |
 | GCP_IOS_CERTS_BUCKET_ID  | Google cloud Bucket ID where certs stored         |
+| APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
 ---
 
 
@@ -88,7 +97,6 @@ Store the following variables and secrets in the deployment repo github secrets
 | APP_STORE_CONNECT_API_KEY_ID  | Key ID listed in App Store Connect for generated key |
 | APP_STORE_CONNECT_API_ISSUER_ID  | Issuer ID listed in App Store connect |
 | APP_STORE_CONNECT_API_KEY  | Contents of App Store Connect p8 key   |
-| APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
 | APPETIZE_TOKEN | API Token if deploying to appetize |
 ---
 
@@ -113,7 +121,7 @@ jobs:
   ios_build:
     uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@master
     with:
-      target: ${{ github.event.inputs.target }}
+      target: ${{ github.event.inputs.target }} # "appetize" or "testflight"
     secrets: inherit
 ```
 
@@ -125,4 +133,7 @@ Trigger the workflow from deployment repo, specifying either `appetize` or `test
 ### 8. Verify in GCS
 If deploying to `testflight`, you should see credentials populated in the GCS bucket
 
+Certificates will appear under certs/appstore/<TEAM_ID>/...
+
+Provisioning profiles will appear under profiles/appstore/<APP_IDENTIFIER>/...
 ---
