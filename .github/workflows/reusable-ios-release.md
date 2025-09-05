@@ -89,17 +89,40 @@ Store the following variables and secrets in the deployment repo github secrets
 | APP_STORE_CONNECT_API_ISSUER_ID  | Issuer ID listed in App Store connect |
 | APP_STORE_CONNECT_API_KEY  | Contents of App Store Connect p8 key   |
 | APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
+| APPETIZE_TOKEN | API Token if deploying to appetize |
 ---
 
 ### 6. Create workflow to trigger reusable action
-(TODO)
+From deployment repo, create action
+```yml
+name: IOS - Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Where to deploy"
+        required: true
+        default: appetize
+        type: choice
+        options:
+          - appetize
+          - testflight
+
+jobs:
+  ios_build:
+    uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@feat/ios-release-action
+    with:
+      target: ${{ github.event.inputs.target }}
+    secrets: inherit
+```
 
 
 ### 7. Run reusable workflow
-
+Trigger the workflow from deployment repo, specifying either `appetize` or `testflight` as target
 ---
 
-### 7. Verify in GCS
-Check your bucket — you should see encrypted `.p12` and `.mobileprovision` files.
+### 8. Verify in GCS
+If deploying to `testflight`, you should see credentials populated in the GCS bucket
 
 ---

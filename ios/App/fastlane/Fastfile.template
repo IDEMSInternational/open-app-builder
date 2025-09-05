@@ -20,8 +20,8 @@ ENV["MATCH_PASSWORD"] ||= ENV["GCP_IOS_CERTS_ENCRYPTION_PASSWORD"]
 
 # Fastlane Methods
 platform :ios do
-  desc "Build and upload to TestFlight"
-  lane :testflight do
+  desc "Build and deploy to TestFlight"
+  lane :deploy_testflight do
     # 0. Populate credentials from private lane
     creds = setup_credentials
 
@@ -52,8 +52,8 @@ platform :ios do
     )
   end
 
-  desc "Build unsigned simulator build for Appetize"
-  lane :appetize do
+  desc "Build and deploy unsigned simulator build for Appetize"
+  lane :deploy_appetize do
     # 1. Build simulator .app (unsigned)
     build_ios_app(
       scheme: "App",
