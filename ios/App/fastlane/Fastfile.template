@@ -21,39 +21,48 @@ ENV["MATCH_PASSWORD"] ||= ENV["GCP_IOS_CERTS_ENCRYPTION_PASSWORD"]
 # Fastlane Methods
 platform :ios do
   desc "Build and deploy to TestFlight"
-  lane :deploy_testflight do
-    # 0. Populate credentials from private lane
-    creds = setup_credentials
+  lane :release_testflight do
+    creds = nil
+    begin
+      # 0. Populate credentials from private lane
+      creds = setup_credentials
 
-    # 1. Fetch signing certs & provisioning profiles from Google Cloud
-    match(
-      type: "appstore",
-      storage_mode: "google_cloud",
-      google_cloud_bucket_name: ENV["GCP_IOS_CERTS_BUCKET_ID"],
-      google_cloud_project_id: ENV["GCP_IOS_CERTS_PROJECT_ID"],
-      api_key: creds[:api_key],
-      # This will be populated locally, when running `yarn workflow ios`
-      app_identifier: "${APP_ID}",
-      team_id: ENV["APP_STORE_TEAM_ID"]
-    )
+      # 1. Fetch signing certs & provisioning profiles from Google Cloud
+      match(
+        type: "appstore",
+        storage_mode: "google_cloud",
+        google_cloud_bucket_name: ENV["GCP_IOS_CERTS_BUCKET_ID"],
+        google_cloud_project_id: ENV["GCP_IOS_CERTS_PROJECT_ID"],
+        google_cloud_keyfile: creds[:gcp_key_path],
+        api_key: creds[:api_key],
+        # This will be populated locally, when running `yarn workflow ios`
+        app_identifier: "${APP_ID}",
+        team_id: ENV["APP_STORE_TEAM_ID"]
+      )
 
-    # 2. Build the app (IPA)
-    build_app(
-      scheme: "App",
-      export_method: "app-store",
-      output_directory: "build",
-      output_name: "App.ipa"
-    )
+      # 2. Build the app (IPA)
+      build_app(
+        scheme: "App",
+        export_method: "app-store",
+        output_directory: "build",
+        output_name: "App.ipa"
+      )
 
-    # 3. Upload to TestFlight
-    upload_to_testflight(
-      api_key: creds[:api_key],
-      skip_waiting_for_build_processing: true
-    )
+      # 3. Upload to TestFlight
+      upload_to_testflight(
+        api_key: creds[:api_key],
+        skip_waiting_for_build_processing: true
+      )
+    ensure
+      # 4. Clean up credentials file
+      if creds && creds[:gcp_key_path] && File.exist?(creds[:gcp_key_path])
+        File.delete(creds[:gcp_key_path])
+      end
+    end
   end
 
   desc "Build and deploy unsigned simulator build for Appetize"
-  lane :deploy_appetize do
+  lane :release_appetize do
     # 1. Build simulator .app (unsigned)
     build_ios_app(
       scheme: "App",
@@ -67,12 +76,14 @@ platform :ios do
 
     # 2. Upload to Appetize (optional)
     if ENV["APPETIZE_TOKEN"]
-      sh <<~BASH
-        curl https://api.appetize.io/v1/apps \
+      response = sh <<~BASH, log: true
+        curl -sS https://api.appetize.io/v1/apps \
           -u "#{ENV['APPETIZE_TOKEN']}:" \
           -F "platform=ios" \
           -F "file=@output/data/Build/Products/Release-iphonesimulator/App.app"
       BASH
+      UI.success("Successfully uploaded to Appetize! Response:")
+      UI.message(response)
     else
       UI.message("⚠️ APPETIZE_TOKEN not set, skipping upload")
     end
