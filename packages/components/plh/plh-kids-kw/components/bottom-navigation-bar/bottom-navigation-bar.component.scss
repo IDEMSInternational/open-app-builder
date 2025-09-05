@@ -1,153 +1,96 @@
 .plh-bottom-nav-wrapper {
   display: flex;
-  padding: 12px 16px 8px 16px;
+  padding: 8px;
+  gap: 8px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
 }
 
 .nav-item {
-  flex: 1 0 0;
-  overflow: hidden; // text overflow will be wrapped in elipsis below
+  flex: 1 1 0; // Force equal size regardless of content
+  min-width: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   text-decoration: none;
+}
+
+.nav-item[data-isActive="true"] {
+  font-weight: var(--font-weight-bold);
+}
+
+.nav-item[data-isActive="false"] .label[data-hideInactiveText="true"] {
+  visibility: hidden;
 }
 
 .label {
   width: 100%;
   text-align: center;
-
-  p {
-    font-weight: var(--font-weight-standard);
-    padding: 0;
-    margin: 0;
-    white-space: nowrap; /* don’t wrap */
-    overflow: hidden; /* hide overflow */
-    text-overflow: ellipsis; /* show "..." */
-    display: block; /* required for ellipsis to work reliably */
-  }
-
-  &[data-isActive="true"] {
-    p {
-      font-weight: var(--font-weight-bold);
-    }
-  }
-}
-
-// Hide inactive text buttons when set by param
-.label[data-isActive="false"][data-hideInactiveText="true"] {
-  visibility: hidden;
-}
-
-// Pill variant
-.plh-bottom-nav-wrapper[data-variant="pill"] {
-  justify-content: space-around;
-  gap: 0;
-  flex-wrap: nowrap;
-  align-items: center;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .nav-item {
-    flex: 0 0 auto; // Fixed size by default
-    display: flex;
-    justify-content: center;
-    min-width: 0;
-    overflow: visible;
+/********************** Pill Variant **********************/
+.nav-item[data-variant="pill"] {
+  flex: 1 1 auto; // Allow resize to content
+  padding: 8px;
+  min-width: 52px; // 36px icon + 2 * 8px padding
+  border-radius: 28px;
+  flex-direction: row;
+  justify-content: center;
+  background-color: transparent;
 
-    .pill-content {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 10px 12px;
-      border-radius: 28px;
-      gap: 8px;
-      transition:
-        min-width 0.3s ease,
-        max-width 0.3s ease,
-        background-color 0.3s ease,
-        padding 0.3s ease;
-      height: 56px;
-      box-sizing: border-box;
-      overflow: hidden;
-      min-width: 56px;
-      max-width: 56px;
+  transition: min-width 0.3s ease;
+  img {
+    transition: none; /* Instant filter change when deactivating */
+  }
 
-      &[data-isActive="true"] {
-        background-color: var(--ion-color-primary);
-        color: white;
-        // Minimum expanded width
-        min-width: 100px;
-        // Maximum allowed width (TODO: currently optimised for 4 buttons)
-        max-width: calc(100vw - 200px);
+  .label {
+    // Clamp label text to 2-lines
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    line-height: 1.2em;
+    max-height: calc(1.2em * 2);
+    text-align: left;
+    max-width: 200px; /* Ensure text beyond this size is clipped (will auto-size on smaller screens) */
 
-        .icon img {
-          // Make icon white
-          filter: brightness(0) invert(1);
-        }
-      }
+    margin-left: 4px;
+    transform: translateX(-4px); /* Use translate transform to trigger gpu-driven transformation */
+    opacity: 0;
+    transition: none; /* Instant hide when deactivating */
 
-      &[data-isActive="false"] {
-        background-color: transparent;
-        justify-content: center;
-        // Set both min and max width for sake of transition animation
-        min-width: 56px;
-        max-width: 56px;
-        height: 56px;
-        padding: 10px 12px;
+    width: 0; /* Ensure label hidden when not active */
+    overflow: hidden;
+  }
+}
 
-        .icon {
-          margin: 0;
-        }
-      }
-    }
+/* Active Pill styling */
+.nav-item[data-variant="pill"][data-isActive="true"] {
+  min-width: 100px;
+  background-color: var(--ion-color-primary);
 
-    .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+  }
 
-      img {
-        width: 32px;
-        height: 32px;
-        flex-shrink: 0;
-      }
-    }
+  .label {
+    color: white;
+    opacity: 1;
+    transform: translateX(0);
+    width: auto;
 
-    .label {
-      flex: 1;
-      min-width: 0;
-      overflow: hidden;
-
-      &[data-isActive="true"] {
-        p {
-          color: white;
-          font-weight: var(--font-weight-bold);
-          padding-inline-end: 8px;
-        }
-      }
-
-      &[data-isActive="false"] {
-        display: none;
-      }
-
-      p {
-        font-weight: var(--font-weight-bold);
-        white-space: normal;
-        margin: 0;
-        padding: 0;
-        line-height: 1.2;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-break: normal;
-        overflow-wrap: normal;
-        hyphens: none;
-        line-clamp: 2;
-        // Set webkit line clamp for older browser support
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-    }
+    transition:
+      opacity 0.3s ease 0.25s,
+      transform 0.3s ease;
   }
 }
