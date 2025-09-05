@@ -75,8 +75,10 @@
       &[data-isActive="true"] {
         background-color: var(--ion-color-primary);
         color: white;
-        min-width: 100px; // Minimum expanded width
-        max-width: calc(100vw - 200px); // Maximum allowed width
+        // Minimum expanded width
+        min-width: 100px;
+        // Maximum allowed width (TODO: currently optimised for 4 buttons)
+        max-width: calc(100vw - 200px);
 
         .icon img {
           // Make icon white
@@ -87,6 +89,7 @@
       &[data-isActive="false"] {
         background-color: transparent;
         justify-content: center;
+        // Set both min and max width for sake of transition animation
         min-width: 56px;
         max-width: 56px;
         height: 56px;
