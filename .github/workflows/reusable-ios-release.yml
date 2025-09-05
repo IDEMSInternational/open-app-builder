@@ -163,4 +163,14 @@ jobs:
       - name: Build IOS and Release
         working-directory: ios/App
         # Call workflow from generated fastfile
-        run: bundle exec fastlane release_${{ inputs.target }}
+        run: |
+          bundle exec pod install --repo-update
+          bundle exec fastlane release_${{ inputs.target }}
+
+      # Upload logs if the job fails
+      - name: Upload Xcode build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcode-build-logs
+          path: ~/Library/Logs/gym
