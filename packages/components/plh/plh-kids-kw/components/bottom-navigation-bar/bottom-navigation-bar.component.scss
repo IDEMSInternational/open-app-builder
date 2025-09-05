@@ -139,13 +139,14 @@
         text-align: left;
         overflow: hidden;
         text-overflow: ellipsis;
-        line-clamp: 2;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
         word-break: normal;
         overflow-wrap: normal;
         hyphens: none;
+        line-clamp: 2;
+        // Set webkit line clamp for older browser support
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
   }
