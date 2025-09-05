@@ -46,10 +46,10 @@ platform :ios do
     )
 
     # 3. Upload to TestFlight
-    # upload_to_testflight(
-    #   api_key: creds[:api_key],
-    #   skip_waiting_for_build_processing: true
-    # )
+    upload_to_testflight(
+      api_key: creds[:api_key],
+      skip_waiting_for_build_processing: true
+    )
   end
 
   desc "Build unsigned simulator build for Appetize"
