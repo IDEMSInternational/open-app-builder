@@ -414,6 +414,8 @@ export namespace FlowTypes {
     | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
+    | "notification_interacted"
+    | "notification_received"
     | "sent" // notification sent
     | "uncompleted";
 
