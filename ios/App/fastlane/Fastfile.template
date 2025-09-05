@@ -9,8 +9,9 @@ def setup_credentials
     in_house: false
   )
 
-  gcp_key_path = "gc_keys.json"
+  gcp_key_path = File.join(Dir.pwd, "gc_keys.json")
   File.write(gcp_key_path, ENV["GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY"])
+  UI.message("Writing GCP key to: #{gcp_key_path}")
 
   { api_key: api_key, gcp_key_path: gcp_key_path }
 end
