@@ -31,6 +31,9 @@ env:
   GCP_IOS_CERTS_ENCRYPTION_PASSWORD: ${{ secrets.GCP_IOS_CERTS_ENCRYPTION_PASSWORD }}
   GCP_IOS_CERTS_PROJECT_ID: ${{ vars.GCP_IOS_CERTS_PROJECT_ID }}
 
+  # Optional (if deploying to appetize)
+  APPETIZE_TOKEN: ${{secrets.APPETIZE_TOKEN}}
+
   ##################################################################################
   #         Main Code
   ##################################################################################
