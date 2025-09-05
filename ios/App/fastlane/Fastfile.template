@@ -45,6 +45,12 @@ platform :ios do
       build_app(
         scheme: "App",
         export_method: "app-store",
+        export_options: {
+          # Ensure AppStore provisioning profile available (default project.pbxproj specifies "iPhone Developer")
+          provisioningProfiles: {
+            "${APP_ID}" => "match AppStore ${APP_ID}"
+          }
+        },
         output_directory: "build",
         output_name: "App.ipa"
       )
