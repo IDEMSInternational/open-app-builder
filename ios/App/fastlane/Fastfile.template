@@ -100,19 +100,24 @@ platform :ios do
     base_name = "${APP_ID}"
     public_key = get_appetize_public_key("ios", base_name)
 
-    response = appetize(
+    appetize(
       path: zipped_bundle,
       api_token: ENV['APPETIZE_TOKEN'], 
       public_key: public_key 
     )
    
-    if response && response["publicKey"]
+    # Extract data from appetize action to notify
+    public_key = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_PUBLIC_KEY]
+    app_url    = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_APP_URL]
+    manage_url = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_MANAGE_URL]
+
+    if public_key
       UI.success("✅ Successfully uploaded to Appetize!")
-      UI.message("Public Key: #{response['publicKey']}")
-      UI.message("App URL:   https://appetize.io/app/#{response['publicKey']}")
+      UI.message("Public Key: #{public_key}")
+      UI.message("App URL:   #{app_url}")
+      UI.message("Manage URL: #{manage_url}")
     else
-      error_msg = response["error"] || response.to_s
-      UI.user_error!("❌ Failed to upload to Appetize: #{error_msg}")
+      UI.user_error!("❌ Failed to upload to Appetize (no public key returned)")
     end
 
   end
