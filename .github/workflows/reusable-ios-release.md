@@ -111,7 +111,7 @@ on:
 
 jobs:
   ios_build:
-    uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@feat/ios-release-action
+    uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@master
     with:
       target: ${{ github.event.inputs.target }}
     secrets: inherit
