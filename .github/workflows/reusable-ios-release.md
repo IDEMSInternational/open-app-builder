@@ -1,46 +1,56 @@
 # iOS Reusable Release Workflow
 
-This document explains how to configure and use the reusable iOS GitHub Action
-for building and deploying apps to **TestFlight** or **Appetize**. 
+This document explains how to configure and use the reusable iOS GitHub Action for building and deploying apps to **TestFlight** or **Appetize**.  
 
-It covers prerequisites, Google Cloud setup, App Store Connect API keys, GitHub secrets,
-and how to trigger the workflow.
+It covers:
+- Prerequisites  
+- Google Cloud setup (bucket + service account)  
+- App Store Connect API keys  
+- GitHub secrets and variables  
+- How to trigger the workflow  
+- How to verify credentials in Google Cloud Storage  
 
-### 1. Install prerequisites locally
+## 1. Install prerequisites locally
+
 Make sure you have:
-- **Apple Developer Account Access**
-- **Google Cloud SDK** (`gcloud`) installed and authenticated
+- **Apple Developer Account access**  
+- **Google Cloud SDK** (`gcloud`) installed and authenticated  
 
 ---
 
-### 2. Create a GCS bucket
-All App Store apps need to be signed with credentials linked to an Apple
-Developer account. Google Cloud Storage will be used to store certificates
-generated for use across all apps in the account, with per‑app provisioning
-profiles stored in subfolders.
+## 2. Create a GCS bucket
 
-If you don’t already have one, use interactive console:
-https://console.cloud.google.com/storage/create-bucket
+All App Store apps need to be signed with credentials linked to an Apple Developer account. Google Cloud Storage (GCS) will be used to store **certificates** (shared across apps in the account) and **provisioning profiles** (per‑app, stored in subfolders).
 
-or via CLI:
+If you don’t already have a bucket, create one via the console:  
+👉 https://console.cloud.google.com/storage/create-bucket  
+
+Or via CLI:
 
 ```bash
 gcloud storage buckets create your-bucket-name \
   --project your-gcp-project-id \
-  --location=your-bucket-location \
+  --location=us-central1 \
   --uniform-bucket-level-access
 ```
 
-****Recommendations**
-- Use a globally unique, lowercase name such as `{org}-open-app-builder-ios-certs`
-
-- Prefer `us-central1` for proximity to GitHub runners, unless your org requires
-  a specific region (e.g. `europe-west1`)
+**Recommendations**
+- Use a globally unique, lowercase name such as:  
+  ```
+  {org}-open-app-builder-ios-certs
+  ```
+  Example: `idems-open-app-builder-ios-certs`
+- Prefer `us-central1` for proximity to GitHub runners, unless your org requires a specific region (e.g. `europe-west1`).
+- One bucket can be shared across multiple apps. Per‑app buckets are possible but make cert renewal/revocation harder.
 
 ---
 
-### 3. Create a Service Account for CI
-Create a service account (if not already done). Use interactive console at https://console.cloud.google.com/iam-admin/serviceaccounts, or command line:
+## 3. Create a Service Account for CI
+
+Create a service account (if not already done).  
+👉 https://console.cloud.google.com/iam-admin/serviceaccounts  
+
+Or via CLI:
 
 ```bash
 gcloud iam service-accounts create open-app-builder-ci \
@@ -63,46 +73,51 @@ gcloud iam service-accounts keys create open-app-builder-ci-key.json \
   --iam-account=open-app-builder-ci@your-gcp-project-id.iam.gserviceaccount.com
 ```
 
-The contents of this will be populated to github_actions. 
+⚠️ **Do not commit this file.**  
+After uploading to GitHub secrets, delete it locally.
 
-DO NOT COMMIT - after populating secret it can be deleted locally
+---
 
-### 4. Generate App Store Connect API Key
+## 4. Generate an App Store Connect API Key
+
 If not already created:
 
-Log into the App Store Connect website and go to `Integrations` -> `App Store Connect`
-https://appstoreconnect.apple.com/access/integrations/api
+1. Log into [App Store Connect](https://appstoreconnect.apple.com/access/integrations/api)  
+2. Go to **Integrations → App Store Connect API**  
+3. Create a new key, e.g. `[Open App Builder] CI`  
+4. Note the **Issuer ID** and **Key ID**  
+5. Download the `.p8` key file  
 
-Create a new key, e.g. `[Open App Builder] CI`
-
-Note the issuer id and key id, and download the key contents
-
-### 5. Configure github actions
-Store the following variables and secrets in the deployment repo github secrets
-
-**Variables**
-| name | value |
-|---    |---    |
-| GCP_IOS_CERTS_PROJECT_ID | Google Cloud Project ID where bucket stored       |
-| GCP_IOS_CERTS_BUCKET_ID  | Google cloud Bucket ID where certs stored         |
-| APP_STORE_TEAM_ID | Team ID found in https://developer.apple.com/account under Membership Details |
 ---
 
+## 5. Configure GitHub Actions
 
-**Secrets**
-| name | value |
-|---    |---    |
-| GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY | Contents of exported service-account key |
-| GCP_IOS_CERTS_ENCRYPTION_PASSWORD | A custom password used by fastlane to encrypt data stored in google cloud |
-| APP_STORE_CONNECT_API_KEY_ID  | Key ID listed in App Store Connect for generated key |
-| APP_STORE_CONNECT_API_ISSUER_ID  | Issuer ID listed in App Store connect |
-| APP_STORE_CONNECT_API_KEY  | Contents of App Store Connect p8 key   |
-| APPETIZE_TOKEN | API Token if deploying to appetize |
+Store the following **variables** and **secrets** in your deployment repo.
+
+### Variables
+| Name | Value |
+|------|-------|
+| `GCP_IOS_CERTS_PROJECT_ID` | Google Cloud Project ID where bucket is stored |
+| `GCP_IOS_CERTS_BUCKET_ID`  | Google Cloud Bucket ID where certs are stored |
+| `APP_STORE_TEAM_ID`        | Apple Developer Team ID (from [Membership Details](https://developer.apple.com/account)) |
+
+### Secrets
+| Name | Value |
+|------|-------|
+| `GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY` | JSON contents of exported service account key |
+| `GCP_IOS_CERTS_ENCRYPTION_PASSWORD` | Custom password used by Fastlane to encrypt data in GCS |
+| `APP_STORE_CONNECT_API_KEY_ID`      | Key ID from App Store Connect |
+| `APP_STORE_CONNECT_API_ISSUER_ID`   | Issuer ID from App Store Connect |
+| `APP_STORE_CONNECT_API_KEY`         | Contents of the `.p8` key file |
+| `APPETIZE_TOKEN`                    | API token if deploying to Appetize |
+
 ---
 
-### 6. Create workflow to trigger reusable action
-From deployment repo, create action
-```yml
+## 6. Create a Workflow to Trigger the Reusable Action
+
+In your deployment repo, create a workflow file (e.g. `.github/workflows/ios-release.yml`):
+
+```yaml
 name: IOS - Release
 
 on:
@@ -119,21 +134,45 @@ on:
 
 jobs:
   ios_build:
+    # Calls the reusable workflow from the builder repo
     uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@master
     with:
       target: ${{ github.event.inputs.target }} # "appetize" or "testflight"
     secrets: inherit
 ```
 
-
-### 7. Run reusable workflow
-Trigger the workflow from deployment repo, specifying either `appetize` or `testflight` as target
 ---
 
-### 8. Verify in GCS
-If deploying to `testflight`, you should see credentials populated in the GCS bucket
+## 7. Run the Reusable Workflow
 
-Certificates will appear under certs/appstore/<TEAM_ID>/...
+Trigger the workflow manually from the deployment repo.  
+Choose either `appetize` or `testflight` as the target.
 
-Provisioning profiles will appear under profiles/appstore/<APP_IDENTIFIER>/...
+- `appetize` → builds an unsigned simulator `.app` and uploads to Appetize.io  
+- `testflight` → builds a signed `.ipa` and uploads to TestFlight  
+
+---
+
+## 8. Verify in GCS
+
+If deploying to **TestFlight**, Fastlane Match will populate credentials in your GCS bucket:
+
+```
+certs/
+  appstore/
+    <TEAM_ID>/
+      distribution.p12
+profiles/
+  appstore/
+    <APP_IDENTIFIER>/
+      AppStore_<APP_IDENTIFIER>.mobileprovision
+```
+
+- **Certificates** are stored under `certs/appstore/<TEAM_ID>/`  
+- **Provisioning profiles** are stored under `profiles/appstore/<APP_IDENTIFIER>/`  
+
+---
+
+✅ That’s it! You now have a reusable iOS workflow that can deploy to both **TestFlight** and **Appetize**, with credentials securely managed in Google Cloud Storage.  
+
 ---
