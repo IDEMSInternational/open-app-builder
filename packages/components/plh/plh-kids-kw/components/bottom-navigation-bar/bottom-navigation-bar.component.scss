@@ -10,7 +10,7 @@
 }
 
 .nav-item {
-  flex: 1 1 0;
+  flex: 1 1 0; // Force equal size regardless of content
   min-width: 36px;
   display: flex;
   flex-direction: column;
@@ -38,24 +38,21 @@
 
 /********************** Pill Variant **********************/
 .nav-item[data-variant="pill"] {
-  flex: 1 1 auto;
+  flex: 1 1 auto; // Allow resize to content
+  padding: 8px;
   min-width: 52px; // 36px icon + 2 * 8px padding
   border-radius: 28px;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   background-color: transparent;
-  position: relative;
-
-  padding: 8px;
 
   transition: min-width 0.3s ease;
-
   img {
     transition: none; /* Instant filter change when deactivating */
   }
 
   .label {
+    // Clamp label text to 2-lines
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -63,14 +60,15 @@
     white-space: normal;
     line-height: 1.2em;
     max-height: calc(1.2em * 2);
+    text-align: left;
+    max-width: 200px; /* Ensure text beyond this size is clipped (will auto-size on smaller screens) */
 
     margin-left: 4px;
+    transform: translateX(-4px); /* Use translate transform to trigger gpu-driven transformation */
     opacity: 0;
-    transform: translateX(-4px);
-
     transition: none; /* Instant hide when deactivating */
 
-    width: 0;
+    width: 0; /* Ensure label hidden when not active */
     overflow: hidden;
   }
 }
@@ -79,8 +77,6 @@
 .nav-item[data-variant="pill"][data-isActive="true"] {
   min-width: 100px;
   background-color: var(--ion-color-primary);
-
-  transition: min-width 0.3s ease;
 
   img {
     filter: brightness(0) invert(1);
@@ -92,8 +88,7 @@
     opacity: 1;
     transform: translateX(0);
     width: auto;
-    max-width: 120px;
-    text-align: left;
+
     transition:
       opacity 0.3s ease 0.25s,
       transform 0.3s ease;
