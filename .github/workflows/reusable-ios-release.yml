@@ -42,7 +42,7 @@ name:
 
   # Only keep one active build per ref (e.g. pr branch, push branch, triggering workflow ref)
 concurrency:
-  group: ios-release-${{ github.workflow }}-${{ github.ref }}
+  group: ios-release-${{ github.workflow }}-${{ github.ref }}-${{ inputs.target }}
   cancel-in-progress: true
 
 on:
