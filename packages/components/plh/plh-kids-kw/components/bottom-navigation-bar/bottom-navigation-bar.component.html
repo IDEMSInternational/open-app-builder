@@ -10,7 +10,11 @@
       <div class="icon">
         <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
       </div>
-      <div class="label">
+      <div
+        class="label"
+        [attr.data-isActive]="rla.isActive"
+        [attr.data-hideInactiveText]="params.hideInactiveText"
+      >
         <p>{{ button.label }}</p>
       </div>
     </a>
