@@ -10,8 +10,8 @@
 }
 
 .nav-item {
-  flex: 1 1 0; /* equal width, ignore content size */
-  min-width: 36px; /* just enough for icon */
+  flex: 1 1 0;
+  min-width: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,6 @@
   font-weight: var(--font-weight-bold);
 }
 
-// Hide inactive text buttons when set by param
 .nav-item[data-isActive="false"] .label[data-hideInactiveText="true"] {
   visibility: hidden;
 }
@@ -32,7 +31,6 @@
   text-align: center;
   padding: 0;
   margin: 0;
-  // Wrap in ellipsis
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -40,56 +38,64 @@
 
 /********************** Pill Variant **********************/
 .nav-item[data-variant="pill"] {
-  flex: 1 1 auto; /* allow growth and shrink */
-  min-width: fit-content; /* at least as wide as icon + label */
+  flex: 1 1 auto;
+  min-width: 52px; // 36px icon + 2 * 8px padding
+  border-radius: 28px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  position: relative;
 
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  padding: 8px;
 
-  // Label clamp on 2 lines and with width and opacity transition
+  transition: min-width 0.3s ease;
+
+  img {
+    transition: none; /* Instant filter change when deactivating */
+  }
+
   .label {
-    display: -webkit-box; /* enables flexbox-like layout for text */
-    -webkit-box-orient: vertical; /* vertical stacking of lines */
-    -webkit-line-clamp: 2; /* number of lines to show */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     line-clamp: 2;
-    white-space: normal; /* allow wrapping */
-    line-height: 1.2em; /* adjust for readability */
-    max-height: calc(1.2em * 2); /* ensure height matches 2 lines */
+    white-space: normal;
+    line-height: 1.2em;
+    max-height: calc(1.2em * 2);
 
-    // transition width and opacity
+    margin-left: 4px;
     opacity: 0;
-    max-width: 0;
-    transition:
-      max-width 0.3s ease,
-      opacity 0.25s ease 0.25s; /** Only show text as expansion completes **/
+    transform: translateX(-4px);
+
+    transition: none; /* Instant hide when deactivating */
+
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+/* Active Pill styling */
+.nav-item[data-variant="pill"][data-isActive="true"] {
+  min-width: 100px;
+  background-color: var(--ion-color-primary);
+
+  transition: min-width 0.3s ease;
+
+  img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
   }
 
-  // Active Pill styling
-  &[data-isActive="true"] {
-    min-width: 100px;
-    background-color: var(--ion-color-primary);
-    padding: 10px 12px;
-    border-radius: 28px;
-    img {
-      filter: brightness(0) invert(1); /* Make icon white */
-    }
-    .label {
-      color: white;
-      max-width: 200px; /** Used for transition, ensure at least 4 icons fit on smaller screens **/
-      opacity: 1;
-    }
-  }
-
-  // Hide text from inactive buttons
-  &[data-isActive="false"] .label {
-    max-width: 0;
+  .label {
+    color: white;
+    opacity: 1;
+    transform: translateX(0);
+    width: auto;
+    max-width: 120px;
+    text-align: left;
     transition:
-      max-width 0.3s ease,
-      opacity 0.25s ease 0s; /* Reset delay so fade-out happens immediately */
+      opacity 0.3s ease 0.25s,
+      transform 0.3s ease;
   }
 }
