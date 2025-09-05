@@ -160,7 +160,7 @@ jobs:
       - run: yarn workspaces focus frontend --production
 
       # Setup certs, build and upload to testflight
-      - name: Build IOS and Upload to Testflight
+      - name: Build IOS and Release
         working-directory: ios/App
         # Call workflow from generated fastfile
         run: bundle exec fastlane release_${{ inputs.target }}
