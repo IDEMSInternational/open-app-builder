@@ -25,7 +25,10 @@ platform :ios do
   lane :release_testflight do
     creds = nil
     begin
-      # 0. Populate credentials from private lane
+
+
+      # 0. Create keychain and populate credentials
+      setup_ci
       creds = setup_credentials
 
       # 1. Fetch signing certs & provisioning profiles from Google Cloud
