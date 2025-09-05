@@ -41,16 +41,21 @@ platform :ios do
         team_id: ENV["APP_STORE_TEAM_ID"]
       )
 
-      # 2. Build the app (IPA)
+      # 2. Override signing settings for Release build to use credentials from match
+      # instead of default local keychain (used when template first created, or when running locally)
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "ios/App/App.xcodeproj",
+        targets: ["App"],
+        code_sign_identity: "Apple Distribution",
+        profile_name: "match AppStore ${APP_ID}",
+        team_id: ENV["APP_STORE_TEAM_ID"]
+      )
+
+      # 3. Build the app (IPA)
       build_app(
         scheme: "App",
         export_method: "app-store",
-        export_options: {
-          # Ensure AppStore provisioning profile available (default project.pbxproj specifies "iPhone Developer")
-          provisioningProfiles: {
-            "${APP_ID}" => "match AppStore ${APP_ID}"
-          }
-        },
         output_directory: "build",
         output_name: "App.ipa"
       )
