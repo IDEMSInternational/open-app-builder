@@ -51,7 +51,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   private setTemplateVariable(row: FlowTypes.TemplateRow) {
     this.variableStore.set(
       this.namespaceService.getFullName(this.name(), row.name),
-      this.evaluationService.evaluateExpression(row, row.value, this.namespace())
+      this.evaluationService.evaluateExpression(row.value, this.namespace())
     );
   }
 }

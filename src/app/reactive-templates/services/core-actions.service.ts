@@ -33,7 +33,6 @@ export class CoreActionsService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private settingsService: SettingsService,
-    private variableStore: VariableStore,
     private templateNavService: TemplateNavService,
     private analyticsService: AnalyticsService,
     private templateRegistry: RowRegistry
@@ -101,6 +100,5 @@ export class CoreActionsService {
     }
 
     row.setExpression(expression);
-    this.variableStore.set(key, value);
   }
 }

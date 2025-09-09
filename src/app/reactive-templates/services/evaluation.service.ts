@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
 import { RowService } from "./row.service";
+import { extractDynamicEvaluators } from "packages/data-models/functions";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -11,21 +12,18 @@ export class EvaluationService {
 
   constructor(
     private variableStore: VariableStore,
-    private namespaceService: NamespaceService,
-    private rowService: RowService
+    private namespaceService: NamespaceService
   ) {}
 
   public evaluateExpression(
-    row: FlowTypes.TemplateRow,
     expression: string | number | boolean,
     namespace: string
   ): string | boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
+    this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
     return this.evaluate(expression, namespace);
   }
 
   public evaluateCondition(row: FlowTypes.TemplateRow, namespace: string): boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
     let condition = row.condition ?? true;
 
     return this.evaluate(condition, namespace) as boolean;
@@ -43,7 +41,6 @@ export class EvaluationService {
     const parameterValue = row.parameter_list[parameterName];
     if (!parameterValue) return null;
 
-    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
     return this.evaluate(parameterValue, namespace);
   }
 
@@ -52,18 +49,28 @@ export class EvaluationService {
 
     if (!actions || !actions.length) return [];
 
-    this.evaluator.setExecutionContext(this.createExecutionContext(row, namespace));
-
     return actions.map((a) => {
       return { ...a, args: this.evaluateArgs(a.args, namespace), rawArgs: a.args };
     });
   }
 
-  public createExecutionContext(row: FlowTypes.TemplateRow, namespace: string): any {
-    const context = { local: {} };
-    const dependantVariables = this.rowService.getDependencies(row, "local", namespace);
+  public getDependencies(expression: string | number | boolean, namespace: string): string[] {
+    if (typeof expression !== "string") return [];
 
-    dependantVariables.forEach((dependencyName) => {
+    // todo: Use extractDynamicFields for complex objects like arrays & json.
+    const dependencies = extractDynamicEvaluators(expression as string);
+
+    if (!dependencies || !dependencies.length) return [];
+
+    return dependencies
+      .filter((d) => d.type === "local") // just deal with @local dependencies for now
+      .map((dependency) => this.namespaceService.getFullName(namespace, dependency.fieldName));
+  }
+
+  private createExecutionContext(expression: string | number | boolean, namespace: string): any {
+    const context = { local: {} };
+
+    this.getDependencies(expression, namespace).forEach((dependencyName) => {
       context.local[dependencyName] = this.variableStore.get(dependencyName);
     });
 
@@ -77,6 +84,8 @@ export class EvaluationService {
   }
 
   private evaluate(expression: string | number | boolean, namespace: string): string | boolean {
+    this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
+
     return this.evaluator.evaluate(
       this.namespaceService.getNamespacedExpression(namespace, expression)
     );

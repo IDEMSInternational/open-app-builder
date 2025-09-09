@@ -79,7 +79,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     // Set default value
     this.variableStore.set(
       this.name(),
-      this.evaluationService.evaluateExpression(row, this.expression(), this.namespace())
+      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
     );
     this.onInitialised()?.();
   }
@@ -93,7 +93,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this.variableStore.set(
       this.name(),
-      this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
+      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
     );
   }
 
@@ -123,7 +123,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     let subs = this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
       this.variableStore.set(
         this.name(),
-        this.evaluationService.evaluateExpression(this.row(), this.expression(), this.namespace())
+        this.evaluationService.evaluateExpression(this.expression(), this.namespace())
       );
       this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
       this.setParams();
