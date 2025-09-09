@@ -1,6 +1,7 @@
 import { Injectable, Injector, Signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { IStore } from "./store";
 
@@ -39,6 +40,30 @@ export class VariableStore implements IStore {
       this.state[name] = new BehaviorSubject<any>(undefined);
     }
     return this.state[name].asObservable();
+  }
+
+  /**
+   * Watch multiple variables at once. Returns an observable that emits an object
+   * with the current values of all specified variables whenever any of them change.
+   * @param names Array of variable names to watch
+   * @returns Observable that emits an object with variable names as keys and their values
+   */
+  public watchMultiple(names: string[]): Observable<{ [key: string]: any }> {
+    if (names.length === 0) {
+      return new BehaviorSubject<{ [key: string]: any }>({}).asObservable();
+    }
+
+    const observables = names.map((name) => this.watch(name));
+
+    return combineLatest(observables).pipe(
+      map((values) => {
+        const result: { [key: string]: any } = {};
+        names.forEach((name, index) => {
+          result[name] = values[index];
+        });
+        return result;
+      })
+    );
   }
 
   public has(name: string): boolean {

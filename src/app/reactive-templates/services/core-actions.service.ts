@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
-import { VariableStore } from "../stores/variable-store";
 import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateNavService } from "src/app/shared/components/template/services/template-nav.service";
 import { AnalyticsService } from "src/app/shared/services/analytics";

@@ -3,7 +3,6 @@ import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
-import { RowService } from "./row.service";
 import { extractDynamicEvaluators } from "packages/data-models/functions";
 
 @Injectable({ providedIn: "root" })
@@ -15,6 +14,9 @@ export class EvaluationService {
     private namespaceService: NamespaceService
   ) {}
 
+  /** Each evaluation will now check it's dependencies which could be inefficient
+   *  as we already know them (could pass them in)
+   */
   public evaluateExpression(
     expression: string | number | boolean,
     namespace: string
@@ -27,21 +29,6 @@ export class EvaluationService {
     let condition = row.condition ?? true;
 
     return this.evaluate(condition, namespace) as boolean;
-  }
-
-  public evaluateParameter(
-    row: FlowTypes.TemplateRow,
-    parameterName: string,
-    namespace: string
-  ): any {
-    if (!row.parameter_list || !row.parameter_list[parameterName]) {
-      return null;
-    }
-
-    const parameterValue = row.parameter_list[parameterName];
-    if (!parameterValue) return null;
-
-    return this.evaluate(parameterValue, namespace);
   }
 
   public evaluateActions(row: FlowTypes.TemplateRow, trigger: string, namespace: string) {
@@ -64,7 +51,13 @@ export class EvaluationService {
 
     return dependencies
       .filter((d) => d.type === "local") // just deal with @local dependencies for now
-      .map((dependency) => this.namespaceService.getFullName(namespace, dependency.fieldName));
+      .map((dependency) =>
+        dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
+          .replace(`@${dependency.type}.`, "")
+          .replace("parameter_list.", "")
+          .replace(/[#!&|,]/g, "")
+      )
+      .map((dependency) => this.namespaceService.getFullName(namespace, dependency));
   }
 
   private createExecutionContext(expression: string | number | boolean, namespace: string): any {

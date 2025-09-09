@@ -20,6 +20,6 @@ describe("set_local action", () => {
 
     cy.getDataTest("updateDynamicValue").click();
 
-    cy.getDataTest("resultsText").contains("2");
+    cy.getDataTest("resultsText").contains("3");
   });
 });

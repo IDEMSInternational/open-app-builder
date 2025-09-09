@@ -13,7 +13,6 @@ import {
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { VariableStore } from "../stores/variable-store";
-import { RowService } from "../services/row.service";
 import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
@@ -48,13 +47,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public onInitialised = input<(() => void) | undefined>(undefined);
 
   protected variableStore = inject(VariableStore);
-  protected rowService = inject(RowService);
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
 
-  protected subscriptions: Subscription[] = [];
+  protected valueDependencySubscriptions: Subscription[] = [];
+  protected conditionDependencySubscriptions: Subscription[] = [];
+  protected paramsDependencySubscriptions: Subscription[] = [];
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -72,7 +72,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.condition.set(this.evaluationService.evaluateCondition(row, this.namespace()));
 
     this.setParams();
-    this.watchDependencies();
+    this.watchParamDependencies();
+    this.watchConditionDependencies();
+    this.watchValueDependencies();
 
     this.rowRegistry.register(this);
 
@@ -89,7 +91,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   public setExpression(expression: any): void {
     this.expression.set(expression);
-    // todo: update dependencies.
+    this.watchValueDependencies();
 
     this.variableStore.set(
       this.name(),
@@ -109,32 +111,77 @@ export abstract class RowBaseComponent<TParams extends Parameters>
       const param = this.params[key];
 
       if (rowParams && rowParams.hasOwnProperty(param.name)) {
-        const value = this.evaluationService.evaluateParameter(
-          this.row(),
-          param.name,
-          this.namespace()
-        );
+        const paramExpression = rowParams[param.name];
+        const value = this.evaluationService.evaluateExpression(paramExpression, this.namespace());
         this.params[key].setValue(value);
       }
     });
   }
 
-  private watchDependencies() {
-    let subs = this.rowService.watchDependencies(this.row(), "local", this.namespace(), (name) => {
-      this.variableStore.set(
-        this.name(),
-        this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-      );
-      this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
+  /** TODO: this now only deals with value dependencies, need to do parameter and condition ones  */
+  private watchValueDependencies() {
+    this.unsubscribeValueDependencies();
+    let sub = this.variableStore
+      .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
+      .subscribe(() => {
+        this.variableStore.set(
+          this.name(),
+          this.evaluationService.evaluateExpression(this.expression(), this.namespace())
+        );
+      });
+
+    this.valueDependencySubscriptions.push(sub);
+  }
+
+  private watchConditionDependencies() {
+    let sub = this.variableStore
+      .watchMultiple(
+        this.evaluationService.getDependencies(this.row().condition ?? true, this.namespace())
+      )
+      .subscribe(() => {
+        this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
+      });
+    this.conditionDependencySubscriptions.push(sub);
+  }
+
+  private watchParamDependencies() {
+    const rowParams = this.row().parameter_list;
+
+    if (!rowParams) return;
+
+    let dependencies = Object.keys(rowParams).flatMap((name) => {
+      return this.evaluationService.getDependencies(rowParams[name], this.namespace());
+    });
+
+    let sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
       this.setParams();
     });
-    this.subscriptions.push(...subs);
+    this.paramsDependencySubscriptions.push(sub);
+  }
+
+  private unsubscribeValueDependencies() {
+    this.valueDependencySubscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
+  }
+
+  private unsubscribeConditionDependencies() {
+    this.conditionDependencySubscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
+  }
+
+  private unsubscribeParamDependencies() {
+    this.paramsDependencySubscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
   }
 
   public ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
+    this.unsubscribeValueDependencies();
+    this.unsubscribeConditionDependencies();
+    this.unsubscribeParamDependencies();
+
     this.rowRegistry.unregister(this.name());
   }
 }

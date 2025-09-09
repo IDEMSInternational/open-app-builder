@@ -1,7 +1,8 @@
-import { Component, effect, forwardRef, OnInit, viewChild } from "@angular/core";
+import { Component, effect, forwardRef, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "oab-nested-template",
@@ -11,8 +12,9 @@ import { FlowTypes } from "packages/data-models";
   imports: [forwardRef(() => ReactiveTemplateComponent)],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
-export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit {
+export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
+  private childDependencySubscriptions: Subscription[] = [];
 
   constructor() {
     super();
@@ -39,12 +41,17 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     }
   }
 
+  /**
+   * TODO: Can these child dependencies change at runtime?
+   */
   private watchChildDependencies() {
     for (const row of this.row().rows) {
-      const subs = this.rowService.watchDependencies(row, "local", this.namespace(), () => {
-        this.setTemplateVariable(row);
-      });
-      this.subscriptions.push(...subs);
+      let sub = this.variableStore
+        .watchMultiple(this.evaluationService.getDependencies(row.value, this.namespace()))
+        .subscribe(() => {
+          this.setTemplateVariable(row);
+        });
+      this.childDependencySubscriptions.push(sub);
     }
   }
 
@@ -53,5 +60,16 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
       this.namespaceService.getFullName(this.name(), row.name),
       this.evaluationService.evaluateExpression(row.value, this.namespace())
     );
+  }
+
+  private unsubscribeChildDependencies() {
+    this.valueDependencySubscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
+  }
+
+  public ngOnDestroy(): void {
+    super.ngOnDestroy();
+    this.unsubscribeChildDependencies();
   }
 }
