@@ -1,5 +1,6 @@
 .plh-bottom-nav-wrapper {
   display: flex;
+  justify-content: space-between;
   padding: 8px;
   gap: 8px;
 }
@@ -38,15 +39,17 @@
 
 /********************** Pill Variant **********************/
 .nav-item[data-variant="pill"] {
-  flex: 1 1 auto; // Allow resize to content
+  flex: unset; // Allow resize to content
   padding: 8px;
   min-width: 52px; // 36px icon + 2 * 8px padding
+  max-width: 52px; // Transition on max-width for best animations
   border-radius: 28px;
   flex-direction: row;
   justify-content: center;
   background-color: transparent;
+  overflow: hidden;
 
-  transition: min-width 0.3s ease;
+  transition: max-width 0.3s ease;
   img {
     transition: none; /* Instant filter change when deactivating */
   }
@@ -63,7 +66,7 @@
     text-align: left;
     max-width: 200px; /* Ensure text beyond this size is clipped (will auto-size on smaller screens) */
 
-    margin-left: 4px;
+    margin: 0 4px;
     transform: translateX(-4px); /* Use translate transform to trigger gpu-driven transformation */
     opacity: 0;
     transition: none; /* Instant hide when deactivating */
@@ -75,7 +78,7 @@
 
 /* Active Pill styling */
 .nav-item[data-variant="pill"][data-isActive="true"] {
-  min-width: 100px;
+  max-width: 280px;
   background-color: var(--ion-color-primary);
 
   img {
