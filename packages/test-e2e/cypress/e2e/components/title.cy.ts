@@ -1,4 +1,4 @@
-describe("text component", () => {
+describe("title component", () => {
   beforeEach(() => {
     cy.visit("/template/test_title");
   });

@@ -1,4 +1,4 @@
-describe("text component", () => {
+describe("toggle-bar component", () => {
   beforeEach(() => {
     cy.visit("/template/test_toggle_bar");
   });

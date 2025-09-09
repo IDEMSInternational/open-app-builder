@@ -52,9 +52,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
 
-  protected valueDependencySubscriptions: Subscription[] = [];
-  protected conditionDependencySubscriptions: Subscription[] = [];
-  protected paramsDependencySubscriptions: Subscription[] = [];
+  private valueDependencySubscriptions: Subscription[] = [];
+  private conditionDependencySubscriptions: Subscription[] = [];
+  private paramsDependencySubscriptions: Subscription[] = [];
 
   @HostBinding("style.display")
   get displayStyle() {

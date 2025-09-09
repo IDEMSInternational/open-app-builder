@@ -63,7 +63,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   }
 
   private unsubscribeChildDependencies() {
-    this.valueDependencySubscriptions.forEach((subscription) => {
+    this.childDependencySubscriptions.forEach((subscription) => {
       subscription.unsubscribe();
     });
   }
