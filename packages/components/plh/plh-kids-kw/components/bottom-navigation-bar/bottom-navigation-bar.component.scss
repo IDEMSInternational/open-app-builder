@@ -61,6 +61,8 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
     line-height: 1.2em;
     max-height: calc(1.2em * 2);
     text-align: left;
