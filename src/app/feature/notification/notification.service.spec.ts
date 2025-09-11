@@ -12,6 +12,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { INotification, IDBNotification, INotificationInternal } from "./notification.types";
+import type { FlowTypes } from "data-models";
 import { IAppConfig } from "data-models/appConfig";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
@@ -78,6 +79,7 @@ describe("NotificationService", () => {
   let mockLocalStorageService: jasmine.SpyObj<LocalStorageService>;
   let mockAppConfigService: jasmine.SpyObj<AppConfigService>;
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
+  let mockTemplateActionRegistry: jasmine.SpyObj<TemplateActionRegistry>;
 
   let scheduleSpy: jasmine.Spy<(typeof LocalNotifications)["schedule"]>;
 
@@ -87,10 +89,15 @@ describe("NotificationService", () => {
     mockAppConfigService = jasmine.createSpyObj("AppConfigService", ["appConfig"]);
     mockDynamicDataService = jasmine.createSpyObj("DynamicDataService", [
       "upsert",
+      "bulkUpsert",
       "remove",
       "resetFlow",
       "query$",
       "ready",
+    ]);
+    mockTemplateActionRegistry = jasmine.createSpyObj("TemplateActionRegistry", [
+      "trigger",
+      "register",
     ]);
 
     // Setup default return values
@@ -103,7 +110,7 @@ describe("NotificationService", () => {
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
         { provide: CapacitorEventService, useValue: MockCapacitorEventService },
-        { provide: TemplateActionRegistry, useValue: { register: () => null } },
+        { provide: TemplateActionRegistry, useValue: mockTemplateActionRegistry },
       ],
     });
 
@@ -382,7 +389,7 @@ describe("NotificationService", () => {
       };
       mockDynamicDataService.query$.and.returnValue(of([pendingNotification]));
       // NOTE - hard to mock specific notification listener so just trigger
-      await service["handleNotificationAction"]("tap", validNotificationInternal);
+      await service["handleNotificationInteracted"]("tap", validNotificationInternal);
       expect(mockDynamicDataService.upsert).toHaveBeenCalledOnceWith(
         "data_list",
         "_notifications",
@@ -395,6 +402,53 @@ describe("NotificationService", () => {
           },
         })
       );
+    });
+  });
+
+  const action_list: FlowTypes.TemplateRowAction[] = [
+    {
+      action_id: "set_field",
+      args: ["test_received", "true"],
+      trigger: "notification_received",
+    },
+    {
+      action_id: "set_field",
+      args: ["test_interacted", "true"],
+      trigger: "notification_interacted",
+    },
+  ];
+
+  describe("notification triggered actions", () => {
+    it("should triggers actions when received", async () => {
+      const notification = { ...validNotification, action_list };
+      await service.scheduleNotification(notification);
+      mockDynamicDataService.query$.and.returnValue(of([notification]));
+      await service["handleNotificationReceived"]({
+        extra: { id: notification.id },
+      } as INotificationInternal);
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
+    });
+    it("should triggers actions when interacted", async () => {
+      const notification = { ...validNotification, action_list };
+      await service.scheduleNotification(notification);
+      mockDynamicDataService.query$.and.returnValue(of([notification]));
+      await service["handleNotificationInteracted"]("tap", {
+        extra: { id: notification.id },
+      } as INotificationInternal);
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[1]);
+    });
+    it("should triggers actions when ignored", async () => {
+      const pastDate = new Date(Date.now() - 60000).toISOString();
+      const dbNotification: IDBNotification = {
+        ...validNotification,
+        schedule_at: pastDate,
+        action_list,
+        status: "pending",
+        _internal_id: 12345,
+      };
+      mockDynamicDataService.query$.and.returnValue(of([dbNotification]));
+      await service["checkIgnoredNotifications"]();
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
     });
   });
 
