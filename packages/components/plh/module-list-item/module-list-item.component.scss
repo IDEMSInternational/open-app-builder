@@ -131,7 +131,8 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   .module-title {
     display: none;
   }
-  .nav-icon {
+  .nav-icon,
+  .completed-icon {
     display: none;
   }
   .icon-spacer {
