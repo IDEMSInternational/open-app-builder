@@ -1,4 +1,3 @@
-import { FlowTypes } from "packages/data-models/flowTypes";
 import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
@@ -14,33 +13,11 @@ export class EvaluationService {
     private namespaceService: NamespaceService
   ) {}
 
-  /** Each evaluation will now check it's dependencies which could be inefficient
-   *  as we already know them (could pass them in)
-   */
-  public evaluateExpression(
-    expression: string | number | boolean,
-    namespace: string
-  ): string | boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
-    return this.evaluate(expression, namespace);
+  public evaluateExpression<T>(expression: string | number | boolean, namespace: string): T {
+    return this.evaluate(expression, namespace) as T;
   }
 
-  public evaluateCondition(row: FlowTypes.TemplateRow, namespace: string): boolean {
-    let condition = row.condition ?? true;
-
-    return this.evaluate(condition, namespace) as boolean;
-  }
-
-  public evaluateActions(row: FlowTypes.TemplateRow, trigger: string, namespace: string) {
-    const actions = row.action_list?.filter((a) => a.trigger === trigger);
-
-    if (!actions || !actions.length) return [];
-
-    return actions.map((a) => {
-      return { ...a, args: this.evaluateArgs(a.args, namespace), rawArgs: a.args };
-    });
-  }
-
+  // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
   public getDependencies(expression: string | number | boolean, namespace: string): string[] {
     if (typeof expression !== "string") return [];
 
@@ -68,12 +45,6 @@ export class EvaluationService {
     });
 
     return context;
-  }
-
-  private evaluateArgs(args: any[], namespace: string): any {
-    return args.map((arg) =>
-      this.evaluator.evaluate(this.namespaceService.getNamespacedExpression(namespace, arg))
-    );
   }
 
   private evaluate(expression: string | number | boolean, namespace: string): string | boolean {

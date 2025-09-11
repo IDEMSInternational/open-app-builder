@@ -69,7 +69,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this.value = this.variableStore.asSignal(this.name());
     this.expression = signal(row.value);
-    this.condition.set(this.evaluationService.evaluateCondition(row, this.namespace()));
+    this.condition.set(
+      this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
+    );
 
     this.setParams();
     this.watchParamDependencies();
@@ -139,7 +141,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
         this.evaluationService.getDependencies(this.row().condition ?? true, this.namespace())
       )
       .subscribe(() => {
-        this.condition.set(this.evaluationService.evaluateCondition(this.row(), this.namespace()));
+        this.condition.set(
+          this.evaluationService.evaluateExpression(this.row().condition ?? true, this.namespace())
+        );
       });
     this.conditionDependencySubscriptions.push(sub);
   }
