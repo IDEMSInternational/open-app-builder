@@ -4,10 +4,8 @@
 @mixin theme-default {
   @include utils.theme(
     $theme-name: "default",
-    $color-primary: hsl(203, 76%, 21%),
-    // #0d3f5e
-    $color-secondary: hsl(31, 100%, 57%),
-    // #fa9529
+    $color-primary: hsl(203, 76%, 21%), // #0d3f5e
+    $color-secondary: hsl(31, 100%, 57%), // #fa9529
     $variable-overrides:
       (
         // an example variable for illustration purposes

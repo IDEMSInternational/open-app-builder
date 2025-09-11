@@ -5,11 +5,9 @@
   @include utils.theme(
     $theme-name: "pfr",
     $color-primary: hsl(0 0% 0%),
-    $color-secondary: hsl(17 100% 44%),
-    // #e24000
+    $color-secondary: hsl(17 100% 44%), // #e24000
     $page-background: white,
-    $color-green: hsl(139 59% 38%),
-    //#289b4c
+    $color-green: hsl(139 59% 38%), //#289b4c
     $variable-overrides:
       (
         // BORDERS
