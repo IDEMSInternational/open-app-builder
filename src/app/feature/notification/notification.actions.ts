@@ -6,6 +6,9 @@ interface INotificationRemoveParams {
   id: string;
 }
 
+// currently all notification types are exposed as authoring paramters
+type INotificationSetParams = INotification;
+
 export class NotificationActionFactory {
   constructor(private service: NotificationService) {}
 
@@ -13,7 +16,8 @@ export class NotificationActionFactory {
     const [actionId] = args;
     const childActions = {
       create: async () => {
-        return this.service.scheduleNotification(params as INotification);
+        const notification = this.parseNotificationCreateParams(params as INotificationSetParams);
+        return this.service.scheduleNotification(notification);
       },
       cancel: async () => {
         const { id } = params as INotificationRemoveParams;
@@ -32,4 +36,9 @@ export class NotificationActionFactory {
     }
     return childActions[actionId]();
   };
+
+  private parseNotificationCreateParams(params: INotificationSetParams): INotification {
+    // NOTE - currently no additional steps required to parse
+    return { ...params };
+  }
 }
