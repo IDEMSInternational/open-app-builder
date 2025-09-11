@@ -11,11 +11,11 @@ class ActionNotImplementedError extends Error {
   }
 }
 
-/*
- * Temporary holding place for existing actions.
 /**
+ * Temporary holding place for existing actions.
+ *
  * CoreActionsService acts as a temporary registry for core template actions.
- * 
+ *
  * This service provides a centralized location for registering and handling
  * actions used by reactive templates. It is intended as a transitional solution
  * while actions are being migrated or refactored. In the future, actions may be

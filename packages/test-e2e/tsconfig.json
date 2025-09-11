@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
+    "target": "es2015",
+    "lib": ["es2020", "dom"],
     "sourceMap": true,
     "types": ["cypress", "node"]
   },
