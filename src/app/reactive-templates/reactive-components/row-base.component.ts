@@ -120,7 +120,6 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
-  /** TODO: this now only deals with value dependencies, need to do parameter and condition ones  */
   private watchValueDependencies() {
     this.unsubscribeValueDependencies();
     let sub = this.variableStore
