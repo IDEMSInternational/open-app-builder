@@ -5,8 +5,10 @@
 @mixin theme-plh_kids_tz {
   @include utils.theme(
     $theme-name: "plh_kids_tz",
-    $color-primary: hsl(209, 64%, 25%), // #174168
-    $color-secondary: hsl(40, 97%, 49%), // #F6A504
+    $color-primary: hsl(209, 64%, 25%),
+    // #174168
+    $color-secondary: hsl(40, 97%, 49%),
+    // #F6A504
     $page-background: white,
     $color-green: #92cb44,
     $variable-overrides: (

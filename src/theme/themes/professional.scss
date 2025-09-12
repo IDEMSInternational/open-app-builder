@@ -4,8 +4,10 @@
 @mixin theme-professional {
   @include utils.theme(
     $theme-name: "professional",
-    $color-primary: hsl(203, 76%, 21%), // #0d3f5e
-    $color-secondary: hsl(31, 100%, 57%), // #fa9529
+    $color-primary: hsl(203, 76%, 21%),
+    // #0d3f5e
+    $color-secondary: hsl(31, 100%, 57%),
+    // #fa9529
     $page-background: white,
     $variable-overrides: (
       // BORDERS
