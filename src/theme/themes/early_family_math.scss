@@ -2,15 +2,11 @@
 @use "sass:color";
 
 @mixin theme-early_family_math {
-  @include utils.theme-selectors("early_family_math") {
-    /** Authoring variables **/
-    $color-primary: hsl(203 76% 38%); // #1874ac
-    $color-secondary: hsl(317 48% 48%); //#b53f94
-    $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: "early_family_math",
+    $color-primary: hsl(203 76% 38%), // #1874ac
+    $color-secondary: hsl(317 48% 48%), //#b53f94
+    $page-background: white,
     $variable-overrides: (
       // BORDERS
       // border-color-default: var(--ion-color-primary),
@@ -58,16 +54,6 @@
       task-progress-bar-color: var(--ion-color-green),
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
-  }
+    )
+  );
 }
