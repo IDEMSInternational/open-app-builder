@@ -1,0 +1,73 @@
+import { resolve, dirname } from "path";
+import * as fs from "fs";
+import { envReplace } from "@idemsInternational/env-replace";
+import { Logger, generateVersionCode } from "../../../utils";
+import { PATHS } from "shared";
+
+interface IAndroidBuildOptions {
+  appId: string;
+  appName: string;
+  versionName: string;
+  zoomEnabled: boolean;
+}
+
+/** Populate android template files with variables from deployment */
+const configure = async ({ appId, appName, versionName, zoomEnabled }: IAndroidBuildOptions) => {
+  // TODO - allow user to input and update config where variables not defined (?)
+  if (!appId)
+    Logger.error({
+      msg1: `No appId configured for deployment`,
+      msg2: `Please set [android.appId] in deployment config.ts`,
+    });
+  if (!appName)
+    Logger.error({
+      msg1: `No appName configured for deployment`,
+      msg2: `Please set [android.appName] in deployment config.ts`,
+    });
+  if (!versionName)
+    Logger.error({
+      msg1: `No content version set configured for deployment`,
+      msg2: `Please set [git.content_tag_latest] in deployment config.ts`,
+    });
+  const versionCode = generateVersionCode(versionName);
+
+  // Populate templated android files
+  await envReplace.replaceFiles({
+    cwd: PATHS.ROOT_DIR,
+    // include both android folder and root (capacitor.config.ts)
+    includeFolders: ["android/**", "."],
+    envAdditional: {
+      APP_ID: appId,
+      APP_NAME: appName,
+      VERSION_CODE: versionCode,
+      VERSION_NAME: versionName,
+      ZOOM_ENABLED: zoomEnabled,
+    },
+    // Only replace the following variables
+    includeVariables: ["APP_ID", "APP_NAME", "VERSION_CODE", "VERSION_NAME", "ZOOM_ENABLED"],
+  });
+
+  // Move files where template not already located in correct folder (various reasons below)
+  const androidTemplatesPath = resolve(PATHS.ANDROID_PATH, "templates");
+  const androidJavaPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "java");
+  const androidResPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "res");
+
+  const ops = [
+    // MainActivity.java needs to sit at nested /org/example/app folder derived from appId
+    {
+      src: resolve(androidTemplatesPath, "MainActivity.java"),
+      target: resolve(androidJavaPath, ...appId.split("."), "MainActivity.java"),
+    },
+    // strings.xml template outside android dir as will still be read by gradle build as conflict
+    {
+      src: resolve(androidTemplatesPath, "strings.xml"),
+      target: resolve(androidResPath, "values", "strings.xml"),
+    },
+  ];
+  for (const { src, target } of ops) {
+    fs.mkdirSync(dirname(target), { recursive: true });
+    fs.renameSync(src, target);
+  }
+};
+
+export { configure }; 
