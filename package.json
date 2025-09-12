@@ -128,6 +128,7 @@
     "@angular/compiler": "~18.2.5",
     "@angular/compiler-cli": "~18.2.5",
     "@angular/language-service": "~18.2.5",
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^7.0.0",
     "@compodoc/compodoc": "^1.1.23",
     "@ionic/angular-toolkit": "^11.0.1",
