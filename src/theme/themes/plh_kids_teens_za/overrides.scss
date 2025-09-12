@@ -1,8 +1,5 @@
 @use "../../mixins";
 
-$colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
-  var(--ion-color-secondary-200);
-
 @mixin overrides {
   // button
   plh-button {
@@ -526,7 +523,7 @@ $colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
           margin-bottom: 10px;
         }
         .checked {
-          border: 2px solid var(ion-color-primary-variant-400);
+          border: 2px solid var(--ion-color-primary-variant-400);
           // background: #f6fafe !important;
         }
       }
@@ -889,7 +886,7 @@ $colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
           padding: 6px 8px;
           h1 {
             padding: 0px;
-            font-size: var(--font-text-size-medium) !important;
+            font-size: var(--font-size-text-medium) !important;
             line-height: var(--line-height-text-small);
           }
         }
@@ -954,7 +951,8 @@ $colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
       margin: 20px -20px;
       background: linear-gradient(
         310deg,
-        var(--ion-color-primary-variantion-color-primary-variant-200color-primary-variant-200)
+        var(--ion-color-primary-500),
+        var(--ion-color-primary-200)
       );
       min-height: 80vh;
       max-width: 480px;
@@ -990,8 +988,8 @@ $colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
         .popup-content {
           background: linear-gradient(
             310deg,
-            var(--ion-color-primary-variant-500),
-            var(--ion-color-primary-variant-200)
+            var(--ion-color-primary-500),
+            var(--ion-color-primary-200)
           );
           border-radius: 40px;
           border: none !important;
@@ -1021,7 +1019,7 @@ $colors: var(--ion-color-primary-200), var(--ion-color-secondary-variant-200),
           }
         }
         .close-button {
-          border: 0.8px solid var(--ion-color-primary-variant-2000);
+          border: 0.8px solid var(--ion-color-primary-variant-200);
           color: var(--ion-color-primary-variant-500);
           top: 0px;
         }
