@@ -22,6 +22,8 @@ interface IModuleListItemParams {
   navImageAsset?: string;
   /* TEMPLATE PARAMETER: "variant" */
   variant?: "default" | "circle";
+  /* TEMPLATE PARAMETER: "background_color". This is used to define background colour of the item */
+  background?: string;
 }
 
 @Component({
@@ -54,6 +56,7 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent {
         "variant",
         "default"
       ) as IModuleListItemParams["variant"],
+      background: getStringParamFromTemplateRow(this._row, "background", null),
     };
   }
 }
