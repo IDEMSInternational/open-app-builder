@@ -45,7 +45,13 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   margin-bottom: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  .text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   .module-image {
     flex-shrink: 1;
