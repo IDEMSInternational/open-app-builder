@@ -119,6 +119,10 @@
       text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
       text-bubble-background-color-4: var(--ion-color-secondary-50),
       text-bubble-border-color-4: var(--ion-color-secondary-300),
+      // PLH module list item
+      plh-module-list-item-background-1: #a6e9ff,
+      plh-module-list-item-background-2: #ffa777,
+      plh-module-list-item-background-3: #ffd973,
     )
   ) {
     @include overrides.overrides;
