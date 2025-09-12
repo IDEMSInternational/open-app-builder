@@ -5,8 +5,10 @@
 @mixin theme-plh_facilitator_ph {
   @include utils.theme(
     $theme-name: "plh_facilitator_ph",
-    $color-primary: hsl(206 68% 22%), //#123d5d
-    $color-secondary: hsl(197 39% 60%), //#70aac0
+    $color-primary: hsl(206 68% 22%),
+    //#123d5d
+    $color-secondary: hsl(197 39% 60%),
+    //#70aac0
     $page-background: white,
     $variable-overrides: (
       font-weight-standard: 500,
