@@ -22,7 +22,7 @@ interface IModuleListItemParams {
   navImageAsset?: string;
   /* TEMPLATE PARAMETER: "variant" */
   variant?: "default" | "circle";
-  /* TEMPLATE PARAMETER: "background_color". This is used to define background colour of the item */
+  /* TEMPLATE PARAMETER: "background". This is used to define background colour of the item */
   background?: string;
 }
 
