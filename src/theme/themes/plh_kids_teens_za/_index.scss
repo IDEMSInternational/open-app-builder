@@ -4,17 +4,13 @@
 @use "./typography";
 
 @mixin theme-plh_kids_teens_za {
-  @include utils.theme-selectors("plh_kids_teens_za") {
-    @include overrides.overrides;
-
-    /** Authoring variables **/
-    $color-primary: hsl(206 100% 18.8%);
-    $color-secondary: hsl(40 100% 61%);
-    $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: "plh_kids_teens_za",
+    $color-primary: hsl(206 100% 18.8%),
+    $color-secondary: hsl(40 100% 61%),
+    $page-background: white,
+    $color-primary-variant: null,
+    $color-secondary-variant: null,
     $variable-overrides: (
       ion-font-family: "Nunito",
       font-weight-standard: 500,
@@ -123,16 +119,8 @@
       text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
       text-bubble-background-color-4: var(--ion-color-secondary-50),
       text-bubble-border-color-4: var(--ion-color-secondary-300),
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
+    )
+  ) {
+    @include overrides.overrides;
   }
 }
