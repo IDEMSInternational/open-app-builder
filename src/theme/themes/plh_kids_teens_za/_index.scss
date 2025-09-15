@@ -3,9 +3,9 @@
 @use "./overrides" as overrides;
 @use "./typography";
 
-@mixin theme-plh_kids_kw {
+@mixin theme-plh_kids_teens_za {
   @include utils.theme(
-    $theme-name: "plh_kids_kw",
+    $theme-name: "plh_kids_teens_za",
     $color-primary: hsl(209 63.8% 24.9%),
     // #174168
     $color-secondary: hsl(199 100% 41.6%),
@@ -145,6 +145,10 @@
       text-bubble-border-color-3: var(--color-accent-orange-70),
       text-bubble-background-color-4: var(--color-accent-yellow-95),
       text-bubble-border-color-4: var(--color-accent-yellow-70),
+      // PLH module list item
+      plh-module-list-item-background-1: #a6e9ff,
+      plh-module-list-item-background-2: #ffa777,
+      plh-module-list-item-background-3: #ffd973,
     )
   ) {
     @include overrides.overrides;
