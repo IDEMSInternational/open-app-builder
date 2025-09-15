@@ -22,7 +22,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     effect(
       () => {
         if (this.reactiveTemplate().initialised()) {
-          this.onTemplateInitialized();
+          this.onTemplateInitialised();
         }
       },
       { allowSignalWrites: true }
@@ -35,7 +35,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     this.watchChildDependencies();
   }
 
-  private onTemplateInitialized() {
+  private onTemplateInitialised() {
     for (const row of this.row().rows) {
       this.setTemplateVariable(row);
     }

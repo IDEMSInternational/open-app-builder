@@ -32,7 +32,7 @@ export class CoreActionsService {
     private templateActionRegistry: TemplateActionRegistry,
     private settingsService: SettingsService,
     private analyticsService: AnalyticsService,
-    private templateRegistry: RowRegistry
+    private rowRegistry: RowRegistry
   ) {
     this.registerHandlers();
   }
@@ -72,7 +72,7 @@ export class CoreActionsService {
   private setVariable(action: FlowTypes.TemplateRowAction<any>) {
     const [key, value] = action.args;
     const expression = action.rawArgs[1];
-    const row = this.templateRegistry.get(key);
+    const row = this.rowRegistry.get(key);
 
     if (!row) {
       console.warn(`set_local: no row found with name '${key}'`);

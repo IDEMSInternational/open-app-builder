@@ -40,8 +40,18 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public name = computed(() =>
     this.namespaceService.getFullName(this.namespace(), this.row().name)
   );
+
+  /**
+   * The current evaluated value of the row, as stored in the VariableStore.
+   */
   public value: Signal<any>;
-  public expression: WritableSignal<string | number | boolean> = signal("");
+
+  /**
+   * The current 'raw' expression of the row, used to calculate its value.
+   */
+  private _expression: WritableSignal<string | number | boolean> = signal("");
+  public expression = this._expression.asReadonly();
+
   public condition = signal(true);
   public params = inject(ROW_PARAMETERS) as TParams;
   public onInitialised = input<(() => void) | undefined>(undefined);
@@ -68,7 +78,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this.expression = signal(row.value);
+    this._expression.set(row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
     );
@@ -92,7 +102,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * Sets the rows expression value and updates the variable store.
    */
   public setExpression(expression: any): void {
-    this.expression.set(expression);
+    this._expression.set(expression);
     this.watchValueDependencies();
 
     this.variableStore.set(
@@ -135,19 +145,24 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   }
 
   private watchConditionDependencies() {
+    this.unsubscribeConditionDependencies();
+
+    const condition = this.row().condition;
+
+    if (condition === null || condition === undefined) {
+      return;
+    }
+
     let sub = this.variableStore
-      .watchMultiple(
-        this.evaluationService.getDependencies(this.row().condition ?? true, this.namespace())
-      )
+      .watchMultiple(this.evaluationService.getDependencies(condition, this.namespace()))
       .subscribe(() => {
-        this.condition.set(
-          this.evaluationService.evaluateExpression(this.row().condition ?? true, this.namespace())
-        );
+        this.condition.set(this.evaluationService.evaluateExpression(condition, this.namespace()));
       });
     this.conditionDependencySubscriptions.push(sub);
   }
 
   private watchParamDependencies() {
+    this.unsubscribeParamDependencies();
     const rowParams = this.row().parameter_list;
 
     if (!rowParams) return;
