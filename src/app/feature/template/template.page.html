@@ -1,9 +1,9 @@
 <ion-content [scrollEvents]="shouldEmitScrollEvents">
-  @if (templateName) { @if(useReactiveTemplates) {
+  @if (templateName && useReactiveTemplates) {
   <oab-reactive-template [templateName]="templateName"></oab-reactive-template>
-  } @else {
+  } @else if (templateName) {
   <plh-template-container [templatename]="templateName"></plh-template-container>
-  } } @else {
+  } @else {
   <div class="ion-padding">
     <h3>Select a Template</h3>
     <ion-searchbar [(ngModel)]="filterTerm" (ionInput)="search()"></ion-searchbar>
