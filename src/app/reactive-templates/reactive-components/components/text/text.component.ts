@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, Signal } from "@angular/core";
+import { Component, computed, OnInit, signal, Signal } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { defineParameters, Parameter } from "../../parameters";
 import { NgStyle } from "@angular/common";
@@ -25,17 +25,8 @@ const parameters = () =>
   ],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class TextComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements OnInit
-{
-  public hasTextValue: Signal<boolean>;
-
-  ngOnInit(): void {
-    super.ngOnInit();
-
-    this.hasTextValue = signal(
-      !["undefined", "NaN", "null", '""'].includes(this.row().value as string)
-    );
-  }
+export class TextComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+  public hasTextValue = computed(
+    () => !["undefined", "NaN", "null", '""'].includes(this.row().value as string)
+  );
 }
