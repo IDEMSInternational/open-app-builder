@@ -15,14 +15,16 @@ import { Subscription } from "rxjs";
 export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
   private childDependencySubscriptions: Subscription[] = [];
+  private templateInitialised = false;
 
   constructor() {
     super();
 
     effect(
       () => {
-        if (this.reactiveTemplate().initialised()) {
+        if (this.reactiveTemplate().initialised() && !this.templateInitialised) {
           this.onTemplateInitialised();
+          this.templateInitialised = true;
         }
       },
       { allowSignalWrites: true }
