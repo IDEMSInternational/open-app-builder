@@ -45,7 +45,13 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   margin-bottom: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  .text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   .module-image {
     flex-shrink: 1;
@@ -131,7 +137,8 @@ $highlighted-color: var(--module-list-item-color-highlighted, var(--ion-color-se
   .module-title {
     display: none;
   }
-  .nav-icon {
+  .nav-icon,
+  .completed-icon {
     display: none;
   }
   .icon-spacer {
