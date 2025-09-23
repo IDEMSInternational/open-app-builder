@@ -40,7 +40,7 @@
           "warn",
           {
             "type": "attribute",
-            "prefix": "plh",
+            "prefix": ["plh", "oab"],
             "style": "camelCase"
           }
         ],
