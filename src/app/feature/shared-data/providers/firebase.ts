@@ -45,10 +45,31 @@ export class FirebaseDataProvider implements SharedDataProviderBase {
     firebaseService.ready();
   }
 
+  public async querySingle(
+    params: SharedDataQueryParams
+  ): Promise<ISharedDataCollection | undefined> {
+    const { id } = params;
+    const reference = `${COLLECTION}/${id}`;
+    const { snapshot } = await FirebaseFirestore.getDocument<ISharedDataCollection>({
+      reference,
+    });
+    return snapshot.data;
+  }
+
   public querySingle$(params: SharedDataQueryParams): Observable<ISharedDataCollection> {
     const { id } = params;
     const docPath = `${COLLECTION}/${id}`;
     return this.documentToObservable(docPath);
+  }
+
+  public async queryMultiple(params: SharedDataQueryParams) {
+    const collectionPath = COLLECTION;
+    const { snapshots } = await FirebaseFirestore.getCollection<ISharedDataCollection>({
+      reference: collectionPath,
+      compositeFilter: { type: "and", queryConstraints: this.buildFilterConstraints(params) },
+      // queryConstraints would go here if we had orderBy or limit clauses
+    });
+    return snapshots.map((s) => s.data);
   }
 
   public queryMultiple$(params: SharedDataQueryParams): Observable<ISharedDataCollection[]> {
