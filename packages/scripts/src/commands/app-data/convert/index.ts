@@ -9,7 +9,6 @@ import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
-  generateFolderFlatMap,
   createChildFileLogger,
   getLogs,
   Logger,
@@ -18,6 +17,8 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { getFileStats, IContentsEntry } from "shared";
+import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
 
 /***************************************************************************************
  * CLI
@@ -60,7 +61,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20241104.0;
+  public version = 20241104.4;
 
   public activeDeployment = ActiveDeployment.get();
 
@@ -89,7 +90,6 @@ export class AppDataConverter {
 
   public async run() {
     const { inputFolders, outputFolder, cacheFolder } = this.options;
-    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
     const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
@@ -98,13 +98,19 @@ export class AppDataConverter {
     };
     // Processing Steps
     for (const inputFolder of inputFolders) {
+      // 0. Read metadata file populated by gdrive downloader and prepare as local contents
+      const gdriveEntries = await this.readDriveMetaEntries(inputFolder);
+      const localFileEntries = gdriveEntries.map((v) =>
+        this.mapDriveMetaToContents(inputFolder, v)
+      );
+
       // 1.1 Generate a list of xlsx files in data source and convert to json
       const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
       converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
-      const list = generateFolderFlatMap(inputFolder, { filterFn });
       const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
       xlsxConverter.logger = this.logger;
-      const data = await xlsxConverter.process(Object.values(list));
+      const data = await xlsxConverter.process(localFileEntries);
+
       // 1.2 Sort and filter output jsons
       const outputs = this.cleanFlowOutputs(data);
       // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
@@ -148,6 +154,36 @@ export class AppDataConverter {
       message: "Duplicate flow name",
       details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
     });
+  }
+
+  private async readDriveMetaEntries(inputFolder: string) {
+    const metadataPath = path.resolve(inputFolder, "_metadata.json");
+    if (!fs.existsSync(metadataPath)) {
+      throw new Error(
+        `[App Data Converter] _metadata.json file mssing for folder ${inputFolder}` +
+          `\nSync Google Drive data before processing`
+      );
+    }
+    const metadataContents = await fs.readJSON(metadataPath);
+    return GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(metadataContents).filter(({ relativePath }) =>
+      // Filter for xlsx files only (gsheet will have been converted during download)
+      relativePath.endsWith(".xlsx")
+    );
+  }
+
+  private mapDriveMetaToContents(inputFolder: string, metadata: IGdriveEntry): IContentsEntry {
+    const { lastModifyingUser, relativePath, modifiedTime } = metadata;
+
+    const localPath = path.resolve(inputFolder, relativePath);
+    const { md5Checksum, size_kb } = getFileStats(localPath);
+    return {
+      modifiedTime,
+      relativePath,
+      size_kb,
+      localPath,
+      md5Checksum,
+      modifiedBy: lastModifyingUser?.displayName,
+    };
   }
 
   /** Create log of total warnings and errors */
