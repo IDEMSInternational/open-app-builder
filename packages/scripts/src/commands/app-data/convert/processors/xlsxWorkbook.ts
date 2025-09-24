@@ -7,15 +7,18 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20250515.0;
+const cacheVersion = 20250923.0;
 const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
-export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
+export class XLSXWorkbookProcessor extends BaseProcessor<
+  IContentsEntry,
+  FlowTypes.FlowTypeWithData[]
+> {
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "xlsxWorkbookProcessor", cacheVersion });
   }
 
-  public async processInput(entry: IContentsEntry) {
+  public async processInput(entry: IContentsEntry): Promise<FlowTypes.FlowTypeWithData[]> {
     const { relativePath } = entry;
     const inputFolder = this.context.paths.SHEETS_INPUT_FOLDER;
     const xlsxPath = path.resolve(inputFolder, relativePath);
@@ -45,7 +48,7 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
    * (assumes header provided in top row)
    */
   private convertXLSXSheetsToJson(xlsxFilePath: string) {
-    const json = {};
+    const json: Record<string, any> = {};
     const workbook = xlsx.readFile(xlsxFilePath);
     const { Sheets } = workbook;
 
