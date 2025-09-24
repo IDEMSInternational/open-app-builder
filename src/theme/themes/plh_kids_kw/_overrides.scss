@@ -128,55 +128,6 @@
     }
   }
 
-  // apple-sign button
-  .apple-signin-btn {
-    background-color: white;
-    color: var(--ion-color-secondary-contrast);
-    padding: 20px 32px;
-    border-radius: var(--ion-border-radius-rounded);
-    font-size: var(--font-size-text-medium);
-    border: 1px solid var(--ion-color-secondary-contrast);
-    height: 100%;
-    width: 100%;
-    .apple-logo {
-      height: 20px !important;
-      margin-inline-end: 12px !important;
-      filter: invert(1);
-    }
-    &:hover {
-      background-color: var(--ion-color-gray-100) !important;
-    }
-    &:active {
-      background-color: var(--ion-color-gray-200) !important;
-    }
-  }
-
-  // google-sign button
-  .gsi-material-button {
-    border: 1px solid var(--ion-color-secondary-contrast);
-    -webkit-border-radius: var(--ion-border-radius-rounded);
-    border-radius: var(--ion-border-radius-rounded);
-    color: var(--ion-color-secondary-contrast);
-    font-size: var(--font-size-text-medium);
-    height: 100%;
-    padding: 20px 32px;
-    width: 100%;
-    overflow: unset !important;
-    &:hover {
-      background-color: var(--ion-color-gray-100) !important;
-    }
-    &:active {
-      background-color: var(--ion-color-gray-200) !important;
-    }
-    .gsi-material-button-contents {
-      overflow: unset !important;
-      flex-grow: 0 !important;
-    }
-    .gsi-material-button-content-wrapper {
-      justify-content: center !important;
-    }
-  }
-
   // audio
   plh-audio {
     .container-player[data-variant~="compact"],
