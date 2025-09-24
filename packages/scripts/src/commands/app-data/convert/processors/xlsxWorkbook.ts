@@ -14,6 +14,9 @@ export class XLSXWorkbookProcessor extends BaseProcessor<
   IContentsEntry,
   FlowTypes.FlowTypeWithData[]
 > {
+  /** Record of all converted sheets as JSON. For logging and audit purposes */
+  public convertedSheetJsons: Record<string, any> = {};
+
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "xlsxWorkbookProcessor", cacheVersion });
   }
@@ -28,6 +31,8 @@ export class XLSXWorkbookProcessor extends BaseProcessor<
     }
     // convert and merge contents sheet
     const json = this.convertXLSXSheetsToJson(xlsxPath);
+    this.convertedSheetJsons[relativePath] = JSON.parse(JSON.stringify(json));
+
     const merged = this.mergeContentsSheet([{ json, xlsxPath }]);
     // Ensure all paths use / to match HTTP style paths
     const { SHEETS_INPUT_FOLDER } = this.context.paths;

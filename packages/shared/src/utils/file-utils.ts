@@ -177,6 +177,7 @@ export interface IContentsEntry {
   md5Checksum: string;
   modifiedBy?: string;
   localPath?: string;
+  remoteUrl?: string;
 }
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
