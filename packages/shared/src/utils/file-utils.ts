@@ -175,6 +175,7 @@ export interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  modifiedBy?: string;
   localPath?: string;
 }
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
