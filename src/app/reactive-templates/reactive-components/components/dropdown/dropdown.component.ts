@@ -11,7 +11,6 @@ const parameters = () =>
     disabled: new Parameter("disabled", false),
     placeholder: new Parameter("placeholder", ""),
     style: new Parameter("style", ""),
-    textAlign: new Parameter("text_align", ""),
     showSearch: new Parameter("show_search", false),
     options: new Parameter("options", []),
     optionsKey: new Parameter("options_key", "key"),
