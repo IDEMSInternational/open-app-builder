@@ -6,20 +6,22 @@
     [disabled]="params.disabled.value()"
     [attr.data-test]="name()"
   >
-    <span class="text">{{ displayValue() | translate }}</span>
+    <span class="text" [class.placeholder]="!!params.placeholder.value()">{{
+      displayValue() | translate
+    }}</span>
     <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
   </button>
 } @else if (!params.showSearch.value()) {
   <div class="dropdown-container">
     <ion-select
       [class.hasValue]="!!value()"
-      [placeholder]="this.params.placeholder.value() | translate"
+      [placeholder]="params.placeholder.value() | translate"
       (ionChange)="onChange($event)"
       interface="popover"
       labelPlacement="stacked"
       [disabled]="params.disabled.value()"
       [attr.data-test]="name()"
-      [value]="this.value()"
+      [value]="value()"
     >
       @for (option of options(); track option[optionsKey()]) {
         <ion-select-option [value]="option[optionsKey()]">
