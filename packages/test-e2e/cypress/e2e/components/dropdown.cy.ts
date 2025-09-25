@@ -31,7 +31,7 @@ describe("dropdown component", () => {
     cy.getDataTest("placeholderDropdown").should("contain", "Placeholder Text");
   });
 
-  it("displays a search modal that acn be filtered", () => {
+  it("displays a search modal that can be filtered", () => {
     cy.getDataTest("searchDropdown")
       .should("contain", "This is value 2") // check initial value is selected
       .click();
@@ -46,6 +46,14 @@ describe("dropdown component", () => {
     cy.getDataTest("searchDropdown").should("contain", "This is value 3"); // check initial value is selected
 
     cy.get(".dropdown-search").should("not.exist"); // Check that the search modal closes on select
+  });
+
+  it("displays a search modal with a title", () => {
+    cy.getDataTest("searchTitleDropdown")
+      .should("contain", "This is value 2") // check initial value is selected
+      .click();
+
+    cy.get(".dropdown-search").should("be.visible").should("contain", "This is the title");
   });
 
   it("cancel dropdown modal", () => {
