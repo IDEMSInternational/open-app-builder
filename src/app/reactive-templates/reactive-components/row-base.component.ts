@@ -112,7 +112,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   }
 
   public triggerActions(trigger: string) {
-    this.actionService.handleActions(this.row(), trigger, this.namespace());
+    this.actionService.handleActions(this, trigger, this.namespace());
   }
 
   private setParams() {
