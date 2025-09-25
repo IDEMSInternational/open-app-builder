@@ -9,7 +9,6 @@ import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
-  generateFolderFlatMap,
   createChildFileLogger,
   getLogs,
   Logger,
@@ -18,6 +17,8 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { getFileStats, IContentsEntry } from "shared";
+import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
 
 /***************************************************************************************
  * CLI
@@ -60,13 +61,16 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20241104.0;
+  public version = 20241104.15;
 
   public activeDeployment = ActiveDeployment.get();
 
   public logger = createChildFileLogger({ source: "converter" });
 
   cache: JsonFileCache;
+
+  private intermediateJsons: { [folderId: string]: { [relativePath: string]: any } } = {};
+  private intermediateMeta: { [folderId: string]: IContentsEntry[] } = {};
 
   constructor(
     private options: IConverterOptions,
@@ -89,22 +93,28 @@ export class AppDataConverter {
 
   public async run() {
     const { inputFolders, outputFolder, cacheFolder } = this.options;
-    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
     const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
       SHEETS_INPUT_FOLDER: "",
       SHEETS_OUTPUT_FOLDER: outputFolder,
     };
+
     // Processing Steps
     for (const inputFolder of inputFolders) {
+      // 0.1 Read metadata file populated by gdrive downloader and prepare as local contents
+      const gdriveEntries = await this.readDriveMetaEntries(inputFolder);
+      const localFileEntries = gdriveEntries.map((v) =>
+        this.mapDriveMetaToContents(inputFolder, v)
+      );
+
       // 1.1 Generate a list of xlsx files in data source and convert to json
       const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
       converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
-      const list = generateFolderFlatMap(inputFolder, { filterFn });
       const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
       xlsxConverter.logger = this.logger;
-      const data = await xlsxConverter.process(Object.values(list));
+      const data = await xlsxConverter.process(localFileEntries);
+
       // 1.2 Sort and filter output jsons
       const outputs = this.cleanFlowOutputs(data);
       // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
@@ -123,12 +133,19 @@ export class AppDataConverter {
         combinedOutputsHashmap[hashName] = output;
       }
       this.logger.debug({ step: inputFolder, outputs });
+
+      // Store intermediate JSONs
+      const folderName = path.basename(inputFolder);
+      this.intermediateJsons[folderName] = xlsxConverter.convertedSheetJsons;
+      this.intermediateMeta[folderName] = localFileEntries.map(({ localPath, ...meta }) => meta);
     }
     // 2.1 - Convert all merged jsons to flow data using flow parsers
     const processor = new FlowParserProcessor(converterPaths);
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
+
+    await this.writeIntermediateJsons();
 
     // TODO - write to disk and log
     const { errors, warnings } = this.logOutputs(result);
@@ -148,6 +165,37 @@ export class AppDataConverter {
       message: "Duplicate flow name",
       details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
     });
+  }
+
+  private async readDriveMetaEntries(inputFolder: string) {
+    const metadataPath = path.resolve(inputFolder, "_metadata.json");
+    if (!fs.existsSync(metadataPath)) {
+      throw new Error(
+        `[App Data Converter] _metadata.json file mssing for folder ${inputFolder}` +
+          `\nSync Google Drive data before processing`
+      );
+    }
+    const metadataContents = await fs.readJSON(metadataPath);
+    return GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(metadataContents).filter(({ relativePath }) =>
+      // Filter for xlsx files only (gsheet will have been converted during download)
+      relativePath.endsWith(".xlsx")
+    );
+  }
+
+  private mapDriveMetaToContents(inputFolder: string, metadata: IGdriveEntry): IContentsEntry {
+    const { lastModifyingUser, relativePath, modifiedTime, id } = metadata;
+
+    const localPath = path.resolve(inputFolder, relativePath);
+    const { md5Checksum, size_kb } = getFileStats(localPath);
+    return {
+      relativePath,
+      size_kb,
+      modifiedTime,
+      modifiedBy: lastModifyingUser?.displayName,
+      md5Checksum,
+      localPath,
+      remoteUrl: `https://docs.google.com/spreadsheets/d/${id}`,
+    };
   }
 
   /** Create log of total warnings and errors */
@@ -211,5 +259,30 @@ export class AppDataConverter {
         fs.writeFileSync(flowOutputPath, standardiseNewlines(JSON.stringify(flow, null, 2)));
       });
     });
+  }
+
+  /**
+   * Populate raw json conversions of xlsx files to intermediates folder
+   * This is used by some deployments as part of git tracking, and in the future
+   * may be used directly as a 2-step conversion process
+   */
+  private async writeIntermediateJsons() {
+    const { outputFolder } = this.options;
+    const intermediatesFolder = path.resolve(outputFolder, "../", "intermediates");
+    // Write individual jsons
+    for (const [folderId, convertedSheets] of Object.entries(this.intermediateJsons)) {
+      for (const [relativePath, convertedContent] of Object.entries(convertedSheets)) {
+        const filePath = relativePath.replace(".xlsx", ".json");
+        const targetFile = path.join(intermediatesFolder, folderId, filePath);
+        await fs.ensureDir(path.dirname(targetFile));
+        const fileContents = standardiseNewlines(JSON.stringify(convertedContent, null, 2));
+        await fs.writeFile(targetFile, fileContents);
+      }
+    }
+    // Write metadata
+    const metaFile = path.join(intermediatesFolder, "_metadata.json");
+
+    const metaContents = standardiseNewlines(JSON.stringify(this.intermediateMeta, null, 2));
+    await fs.writeFile(metaFile, metaContents);
   }
 }

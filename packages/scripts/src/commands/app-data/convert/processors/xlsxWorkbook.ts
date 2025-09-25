@@ -7,15 +7,21 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20250515.0;
+const cacheVersion = 20250923.0;
 const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
-export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
+export class XLSXWorkbookProcessor extends BaseProcessor<
+  IContentsEntry,
+  FlowTypes.FlowTypeWithData[]
+> {
+  /** Record of all converted sheets as JSON. For logging and audit purposes */
+  public convertedSheetJsons: Record<string, any> = {};
+
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "xlsxWorkbookProcessor", cacheVersion });
   }
 
-  public async processInput(entry: IContentsEntry) {
+  public async processInput(entry: IContentsEntry): Promise<FlowTypes.FlowTypeWithData[]> {
     const { relativePath } = entry;
     const inputFolder = this.context.paths.SHEETS_INPUT_FOLDER;
     const xlsxPath = path.resolve(inputFolder, relativePath);
@@ -25,6 +31,8 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     }
     // convert and merge contents sheet
     const json = this.convertXLSXSheetsToJson(xlsxPath);
+    this.convertedSheetJsons[relativePath] = JSON.parse(JSON.stringify(json));
+
     const merged = this.mergeContentsSheet([{ json, xlsxPath }]);
     // Ensure all paths use / to match HTTP style paths
     const { SHEETS_INPUT_FOLDER } = this.context.paths;
@@ -45,7 +53,7 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
    * (assumes header provided in top row)
    */
   private convertXLSXSheetsToJson(xlsxFilePath: string) {
-    const json = {};
+    const json: Record<string, any> = {};
     const workbook = xlsx.readFile(xlsxFilePath);
     const { Sheets } = workbook;
 
