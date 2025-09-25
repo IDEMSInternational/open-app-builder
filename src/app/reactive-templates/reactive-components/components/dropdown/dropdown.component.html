@@ -1,0 +1,30 @@
+@if (params.showSearch.value()) {
+  <button
+    class="open-search-dropdown"
+    (click)="openSearch()"
+    [ngClass]="searchButtonClass()"
+    [disabled]="params.disabled.value()"
+    [attr.data-test]="name()"
+  >
+    <span class="text">{{ displayValue() | translate }}</span>
+    <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+  </button>
+} @else if (!params.showSearch.value()) {
+  <div class="dropdown-container">
+    <ion-select
+      [class.hasValue]="!!value()"
+      [placeholder]="this.params.placeholder.value() | translate"
+      (ionChange)="onChange($event)"
+      interface="popover"
+      labelPlacement="stacked"
+      [disabled]="params.disabled.value()"
+      [attr.data-test]="name()"
+    >
+      @for (option of options(); track option[optionsKey()]) {
+        <ion-select-option [value]="option[optionsKey()]">
+          {{ option[optionsValue()] }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </div>
+}

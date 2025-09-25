@@ -14,12 +14,11 @@ const TEMPLATE_PIPES = [
   PLHAssetPipe,
   NumberingPipe,
   StyleListPipe,
-  TranslatePipe,
 ];
 
 @NgModule({
   declarations: [...TEMPLATE_PIPES],
-  exports: [...TEMPLATE_PIPES],
-  imports: [CommonModule],
+  exports: [...TEMPLATE_PIPES, TranslatePipe],
+  imports: [CommonModule, TranslatePipe],
 })
 export class TemplatePipesModule {}

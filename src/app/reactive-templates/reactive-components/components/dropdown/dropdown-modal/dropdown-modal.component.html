@@ -1,0 +1,33 @@
+<ng-template #endButtons>
+  <ion-buttons slot="end">
+    <ion-button (click)="cancel()"><ion-icon name="close" size="large"></ion-icon></ion-button>
+  </ion-buttons>
+</ng-template>
+
+<ion-header>
+  @if (title()) {
+    <ion-toolbar>
+      <ion-title class="modal-title">{{ title() }}</ion-title>
+      <ng-container *ngTemplateOutlet="endButtons"></ng-container>
+    </ion-toolbar>
+  }
+  <ion-toolbar>
+    <ion-searchbar
+      (ionInput)="search($event.target.value)"
+      placeholder=""
+      class="searchbar"
+    ></ion-searchbar>
+    @if (!title()) {
+      <ng-container *ngTemplateOutlet="endButtons"></ng-container>
+    }
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    @for (option of filteredOptions(); track option[optionsKey()]) {
+      <ion-item (click)="select(option)" [class.selected]="isSelected(option)">
+        {{ option[optionsValue()] }}
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>
