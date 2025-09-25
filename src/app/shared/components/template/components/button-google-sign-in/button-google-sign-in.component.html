@@ -1,6 +1,6 @@
 <!-- HTML copied from https://developers.google.com/identity/branding-guidelines
  with Theme: Light; Shape: Pill -->
-<button class="gsi-material-button" (click)="handleClick()">
+<button class="gsi-material-button" (click)="handleClick()" [attr.data-variant]="params().variant">
   <div class="gsi-material-button-state"></div>
   <div class="gsi-material-button-content-wrapper">
     <div class="gsi-material-button-icon">
