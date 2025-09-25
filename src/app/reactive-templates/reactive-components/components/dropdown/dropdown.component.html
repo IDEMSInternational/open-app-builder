@@ -19,6 +19,7 @@
       labelPlacement="stacked"
       [disabled]="params.disabled.value()"
       [attr.data-test]="name()"
+      [value]="this.value()"
     >
       @for (option of options(); track option[optionsKey()]) {
         <ion-select-option [value]="option[optionsKey()]">

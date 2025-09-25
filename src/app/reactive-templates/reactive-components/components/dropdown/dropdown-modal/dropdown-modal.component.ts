@@ -10,11 +10,13 @@ import { IonicModule, ModalController } from "@ionic/angular";
   imports: [CommonModule, IonicModule],
 })
 export class DropdownModalComponent {
+  constructor(private modalController: ModalController) {}
+
   public options = input.required<any[]>();
   public optionsKey = input<string>("key");
   public optionsValue = input<string>("value");
   public title = input<string>();
-  public selectedOption = signal<any>(null);
+  public selectedOption: any = null;
   public searchTerm = signal("");
 
   public filteredOptions = computed(() =>
@@ -24,16 +26,14 @@ export class DropdownModalComponent {
   );
 
   public isSelected(item: any) {
-    if (!this.selectedOption()) return false;
+    if (!this.selectedOption) return false;
 
-    return this.selectedOption()[this.optionsKey()] === item[this.optionsKey()];
+    return this.selectedOption[this.optionsKey()] === item[this.optionsKey()];
   }
 
-  constructor(private modalController: ModalController) {}
-
   public select(item: any) {
-    this.selectedOption.set(item);
-    this.closeModal({ option: this.selectedOption() });
+    this.selectedOption = item;
+    this.closeModal({ option: this.selectedOption });
   }
 
   public search(searchTerm: string) {
@@ -41,7 +41,7 @@ export class DropdownModalComponent {
   }
 
   public cancel() {
-    this.closeModal({ option: this.selectedOption(), cancelled: true });
+    this.closeModal({ option: this.selectedOption, cancelled: true });
   }
 
   private closeModal(value) {

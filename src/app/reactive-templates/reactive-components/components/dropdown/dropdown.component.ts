@@ -1,4 +1,4 @@
-import { Component, computed, signal } from "@angular/core";
+import { Component, computed } from "@angular/core";
 import { IonicModule, ModalController } from "@ionic/angular";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { defineParameters, Parameter } from "../../parameters";
@@ -28,10 +28,16 @@ const parameters = () =>
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+  constructor(private modalController: ModalController) {
+    super();
+  }
+
   public options = this.params.options.value;
   public optionsKey = this.params.optionsKey.value;
   public optionsValue = this.params.optionsValue.value;
-  public selectedOption = signal<any>(null);
+  public selectedOption = computed(() => {
+    return this.options().find((option) => option[this.optionsKey()] === this.value());
+  });
 
   public displayValue = computed(() => {
     return this.selectedOption()
@@ -48,10 +54,6 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
     };
   });
 
-  constructor(private modalController: ModalController) {
-    super();
-  }
-
   public async openSearch() {
     const modal = await this.modalController.create({
       component: DropdownModalComponent,
@@ -59,7 +61,7 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
       componentProps: {
         options: this.options,
         title: this.params.title.value,
-        selectedOption: this.selectedOption,
+        selectedOption: this.selectedOption(),
         style: this.params.style.value(),
       },
     });
@@ -67,18 +69,17 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
     modal.onDidDismiss().then(async (data) => {
       let selectedOption = data?.data?.option;
       let selectedKey = selectedOption ? selectedOption[this.optionsKey()] : null;
-      this.selectOptionByKey(selectedKey);
+      this.changeValue(selectedKey);
     });
 
     await modal.present();
   }
 
   public async onChange(event: CustomEvent) {
-    this.selectOptionByKey(event.detail.value);
+    this.changeValue(event.detail.value);
   }
 
-  private selectOptionByKey(key: any) {
-    this.selectedOption.set(this.options().find((o) => o[this.optionsKey()] === key));
+  private changeValue(key: any) {
     this.setExpression(key);
     this.triggerActions("changed");
   }
