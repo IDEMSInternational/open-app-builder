@@ -34,12 +34,8 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
     authorParams: FlowTypes.TemplateRow["parameter_list"]
   ): IButtonGoogleSignInComponentParams {
     return {
-      variant: getStringParamFromTemplateRow(
-        this._row,
-        "variant",
-        null
-      ) as IButtonGoogleSignInComponentParams["variant"],
+      variant: getStringParamFromTemplateRow(this._row, "variant", null),
       disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-    };
+    } as IButtonGoogleSignInComponentParams;
   }
 }

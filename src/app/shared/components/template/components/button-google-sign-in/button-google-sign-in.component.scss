@@ -19,8 +19,6 @@ Native Google variant reflects the example styling exactly
   box-sizing: border-box;
   color: black;
   cursor: pointer;
-  font-family: "Roboto", arial, sans-serif;
-  font-size: var(--buttons-font-size-small);
   height: 100%;
   letter-spacing: 0px;
   outline: none;
@@ -65,8 +63,9 @@ Native Google variant reflects the example styling exactly
   .gsi-material-button-contents {
     -webkit-flex-grow: 0;
     flex-grow: 0;
-    font-family: "Roboto", arial, sans-serif;
-    font-weight: 500;
+    font-family: inherit;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--buttons-font-size-small);
     overflow: visible;
     text-overflow: ellipsis;
     vertical-align: top;
@@ -74,12 +73,11 @@ Native Google variant reflects the example styling exactly
 
   &:disabled {
     cursor: default;
-    background-color: #ffffff61;
-    border-color: #1f1f1f1f;
+    opacity: 0.4;
 
     .gsi-material-button-contents,
     .gsi-material-button-icon {
-      opacity: 0.4;
+      opacity: 1;
     }
   }
 
@@ -95,7 +93,6 @@ Native Google variant reflects the example styling exactly
   -webkit-border-radius: 20px;
   border-radius: 20px;
   color: #1f1f1f;
-  font-size: 14px;
   height: 40px;
   letter-spacing: 0.25px;
   padding: 0 12px;
@@ -107,6 +104,9 @@ Native Google variant reflects the example styling exactly
   }
 
   .gsi-material-button-contents {
+    font-family: "Roboto", arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
     -webkit-flex-grow: 1;
     flex-grow: 1;
     overflow: hidden;
@@ -125,6 +125,7 @@ Native Google variant reflects the example styling exactly
 
   &:disabled {
     cursor: default;
+    opacity: 1;
     background-color: #ffffff61;
     border-color: #1f1f1f1f;
   }

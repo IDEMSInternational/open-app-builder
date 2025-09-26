@@ -1,10 +1,43 @@
-// Button is styled in line with Apple's guidleines:
+// native_apple variant is styled precisely in line with Apple's guidleines:
 // https://developer.apple.com/documentation/sign_in_with_apple/displaying-sign-in-with-apple-buttons-on-the-web
 
+// Default variant
 .apple-signin-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  color: var(--ion-color-secondary-contrast);
+  padding: var(--regular-margin) var(--tiny-padding);
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  font-family: inherit;
+  border: 1px solid var(--ion-color-secondary-contrast);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  height: 100%;
+  width: 100%;
+  min-width: 140px;
+
+  .apple-logo {
+    height: 20px;
+    margin-inline-end: 12px;
+    filter: invert(1);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  &:not(:disabled):active {
+    background-color: var(--ion-color-gray-light);
+  }
+}
+
+// native_apple variant override styles
+.apple-signin-btn[data-variant="native_apple"] {
   background-color: black;
   color: white;
   padding: 10px 30px 14px;
@@ -13,21 +46,26 @@
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
   height: 40px;
-  min-width: 140px;
+  width: auto;
 
   .apple-logo {
     height: 14px;
     margin-inline-end: 10px;
+    filter: none;
   }
 
-  &:hover {
-    background-color: #333;
+  &:disabled {
+    cursor: default;
   }
 
-  &:active {
-    background-color: #555;
+  &:not(:disabled) {
+    &:hover {
+      background-color: #333;
+    }
+
+    &:active {
+      background-color: #555;
+    }
   }
 }
