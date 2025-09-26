@@ -2,10 +2,14 @@ import { Component, computed } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { FlowTypes } from "packages/data-models";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 interface IButtonGoogleSignInComponentParams {
   variant: null | "native_google";
+  disabled: boolean;
 }
 
 @Component({
@@ -35,6 +39,7 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
         "variant",
         null
       ) as IButtonGoogleSignInComponentParams["variant"],
+      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
     };
   }
 }
