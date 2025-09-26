@@ -1,3 +1,5 @@
+$border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
+
 /* 
 CSS adapted from https://developers.google.com/identity/branding-guidelines
 with Theme: Light; Shape: Pill.
@@ -13,8 +15,8 @@ Native Google variant reflects the example styling exactly
   background-color: white;
   background-image: none;
   border: 1px solid black;
-  -webkit-border-radius: var(--ion-border-radius-rounded);
-  border-radius: var(--ion-border-radius-rounded);
+  -webkit-border-radius: $border-radius;
+  border-radius: $border-radius;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: black;

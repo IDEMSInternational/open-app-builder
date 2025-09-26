@@ -1,3 +1,5 @@
+$border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
+
 // native_apple variant is styled precisely in line with Apple's guidleines:
 // https://developer.apple.com/documentation/sign_in_with_apple/displaying-sign-in-with-apple-buttons-on-the-web
 
@@ -7,13 +9,13 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  color: var(--ion-color-secondary-contrast);
+  color: black;
   padding: var(--regular-margin) var(--tiny-padding);
-  border-radius: 50px;
+  border-radius: $border-radius;
   font-size: 20px;
   font-weight: var(--font-weight-bold);
   font-family: inherit;
-  border: 1px solid var(--ion-color-secondary-contrast);
+  border: 1px solid black;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   height: 100%;
