@@ -1,4 +1,10 @@
-<button id="sign-in-apple" class="apple-signin-btn" (click)="handleClick()">
+<button
+  id="sign-in-apple"
+  class="apple-signin-btn"
+  (click)="handleClick()"
+  [disabled]="params().disabled"
+  [attr.data-variant]="params().variant"
+>
   <img src="assets/icon/shared/apple_logo_white.svg" class="apple-logo" />
   {{ value() }}
 </button>
