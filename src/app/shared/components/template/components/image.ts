@@ -8,15 +8,16 @@ interface IAuthorParams {
 }
 
 interface IComponentParams {
-  style: "no-padding";
+  style: "no-padding" | "rounded_corners";
 }
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
     <div class="tmpl-image-container" [attr.data-param-style]="params().style">
-      @if (assetSrc()) {}
-      <img [src]="assetSrc()" />
+      @if (assetSrc(); as src) {
+        <img [src]="src" />
+      }
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -52,7 +53,7 @@ export class TmplImageComponent extends TemplateBaseComponent {
   private mapParams(authorParams: IAuthorParams = {}): IComponentParams {
     const { style } = authorParams;
     return {
-      style: style === "no-padding" ? "no-padding" : null,
+      style: (style as IComponentParams["style"]) || null,
     };
   }
 }
