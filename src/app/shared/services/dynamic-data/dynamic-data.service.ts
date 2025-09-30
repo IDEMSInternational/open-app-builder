@@ -205,7 +205,6 @@ export class DynamicDataService extends AsyncServiceBase {
     row_id: string,
     data: Partial<T>
   ) {
-    console.log("upsertAndMerge", { flow_type, flow_name, row_id, data });
     if (data) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingRow = await this.db.getDoc<any>(collectionName, row_id);
