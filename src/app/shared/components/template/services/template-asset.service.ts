@@ -63,9 +63,11 @@ export class TemplateAssetService extends AsyncServiceBase {
       const assetBase = assetNameSignal();
       const theme = this.themeService.currentTheme();
       const language = this.translateService.appLanguage();
-      const translatedPath = this.getAssetWithOverride(assetBase, theme, language);
-      if (translatedPath) {
-        return this.sanitizer.bypassSecurityTrustUrl(translatedPath);
+      if (assetBase) {
+        const translatedPath = this.getAssetWithOverride(assetBase, theme, language);
+        if (translatedPath) {
+          return this.sanitizer.bypassSecurityTrustUrl(translatedPath);
+        }
       }
       return undefined;
     });
