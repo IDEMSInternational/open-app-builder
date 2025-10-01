@@ -78,7 +78,7 @@ export class EvaluationService {
         .map((line) => line.trim())
         .filter((line) => line);
       // Check if there are multiple lines that contain at least one ':'
-      const isArrayOfObjectsType = lines.length > 0 && lines.every((line) => line.includes(":"));
+      const isArrayOfObjectsType = lines.length > 1 && lines.every((line) => line.includes(":"));
       if (isArrayOfObjectsType) {
         return lines.map((line) => {
           const obj: { [key: string]: string } = {};
@@ -86,7 +86,10 @@ export class EvaluationService {
           line.split("|").forEach((part) => {
             const [key, ...rest] = part.split(":");
             if (key && rest.length > 0) {
-              obj[key.trim()] = rest.join(":").trim();
+              const value = rest.join(":").trim();
+              if (value !== "") {
+                obj[key.trim()] = value;
+              }
             }
           });
           return obj;
