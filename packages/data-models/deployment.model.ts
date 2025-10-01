@@ -230,11 +230,6 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   },
   app_config: {},
   auth: {},
-  remote_assets: {
-    provider: "supabase",
-    bucketName: "",
-    folderName: "",
-  },
   campaigns: {
     enabled: true,
   },
