@@ -115,7 +115,6 @@ describe("Template Parser PostProcessor", () => {
         action_id: "set_field",
         args: ["test_field", "hello"],
         _raw: "click | set_field : test_field : hello",
-        _cleaned: "click | set_field : test_field : hello",
       },
     ]);
   });
@@ -137,14 +136,12 @@ describe("Template Parser PostProcessor", () => {
     });
     expect(res.value).toEqual([
       {
-        _cleaned: "click | set_field : test : true",
         _raw: "click | set_field : test : true",
         action_id: "set_field",
         args: ["test", true],
         trigger: "click",
       },
       {
-        _cleaned: "click | go_to : example",
         _raw: "click | go_to : example",
         action_id: "go_to",
         args: ["example"],
