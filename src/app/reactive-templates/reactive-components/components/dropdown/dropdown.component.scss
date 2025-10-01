@@ -10,8 +10,10 @@ $background-with-value: var(
   opacity: 0.5;
 }
 
-.placeholder {
+.placeholder,
+ion-select::part(placeholder) {
   color: $placeholder-text;
+  opacity: 1;
 }
 
 .with-value {
