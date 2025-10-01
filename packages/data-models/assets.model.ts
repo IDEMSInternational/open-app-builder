@@ -21,7 +21,7 @@ export interface IAssetOverrideProps {
 
 export interface IAssetEntry extends IAssetContentsEntryMinimal {
   /** id field is required to convert asset contents to and from data_list format */
-  id: string;
+  id?: string;
   /** Used to indicate that the asset pack contains only overrides for the associated file, not the default asset file */
   overridesOnly?: boolean;
   overrides?: {
