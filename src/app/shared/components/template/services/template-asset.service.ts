@@ -5,7 +5,7 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, lastValueFrom } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { cleanAssetName } from "packages/shared/src/utils/string-utils";
 import { DomSanitizer } from "@angular/platform-browser";
 
