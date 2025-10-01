@@ -44,9 +44,7 @@ export class DropdownModalComponent {
     this.closeModal({ option: this.selectedOption, cancelled: true });
   }
 
-  private closeModal(value) {
-    setTimeout(async () => {
-      await this.modalController.dismiss(value);
-    }, 50);
+  private async closeModal(value) {
+    await this.modalController.dismiss(value);
   }
 }
