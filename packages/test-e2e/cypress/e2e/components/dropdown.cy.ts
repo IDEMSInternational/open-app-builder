@@ -28,7 +28,12 @@ describe("dropdown component", () => {
   });
 
   it("has a placeholder", () => {
-    cy.getDataTest("placeholderDropdown").should("contain", "Placeholder Text");
+    cy.getDataTest("placeholderDropdown")
+      .shadow()
+      .find(".select-placeholder") // or the correct class for the placeholder
+      .should("contain", "Placeholder Text");
+
+    cy.getDataTest("placeholderSearchDropdown").should("contain", "Placeholder Search Text");
   });
 
   it("displays a search modal that can be filtered", () => {
