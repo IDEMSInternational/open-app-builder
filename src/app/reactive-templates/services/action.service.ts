@@ -3,6 +3,7 @@ import { FlowTypes } from "packages/data-models";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { CoreActionsService } from "./core-actions.service";
 import { EvaluationService } from "./evaluation.service";
+import { RowBaseComponent } from "../reactive-components/row-base.component";
 
 @Injectable({
   providedIn: "root",
@@ -14,12 +15,25 @@ export class ActionService {
     private evaluationService: EvaluationService
   ) {}
 
-  public async handleActions(row: FlowTypes.TemplateRow, trigger: string, namespace: string) {
-    const actions = row.action_list?.filter((a) => a.trigger === trigger);
+  public async handleActions(
+    rowComponent: RowBaseComponent<any>,
+    trigger: string,
+    namespace: string
+  ) {
+    const actions = rowComponent.row().action_list?.filter((a) => a.trigger === trigger);
 
     if (!actions || !actions.length) return;
 
     actions
+      .map((a) => {
+        return {
+          ...a,
+          // We replace "this.value" with the actual field name, so that it can be evaluated in context
+          // this.value is a hack used in the old templates to refer to the current field value
+          //
+          args: a.args.map((arg) => arg.replace("this.value", `@local.${rowComponent.row().name}`)),
+        };
+      })
       .map((a) => {
         return {
           ...a,
