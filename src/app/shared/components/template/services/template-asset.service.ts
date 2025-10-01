@@ -1,11 +1,11 @@
-import { computed, Injectable, Signal } from "@angular/core";
+import { computed, Injectable, signal, Signal } from "@angular/core";
 import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, lastValueFrom } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { cleanAssetName } from "packages/shared/src/utils/string-utils";
 import { DomSanitizer } from "@angular/platform-browser";
 
@@ -18,7 +18,7 @@ const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentsList$ = new BehaviorSubject<IAssetContents>(ASSETS_CONTENTS_LIST);
+  public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
 
   constructor(
     private translateService: TemplateTranslateService,
@@ -98,7 +98,7 @@ export class TemplateAssetService extends AsyncServiceBase {
       return assetName;
     }
 
-    const assetEntry = this.assetsContentsList$.value[assetName];
+    const assetEntry = this.assetsContentsList()[assetName];
     if (!assetEntry) {
       console.error("Asset missing", assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
@@ -152,10 +152,6 @@ export class TemplateAssetService extends AsyncServiceBase {
       transformed = transformed.replace(`${ASSETS_BASE}/${ASSETS_BASE}`, ASSETS_BASE);
     }
     return transformed;
-  }
-
-  public updateContentsList(value: IAssetContents) {
-    this.assetsContentsList$.next(value);
   }
 }
 
