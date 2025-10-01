@@ -4,7 +4,11 @@
     [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
   >
     <div class="progress-path-child-wrapper" [style.width]="width">
-      <div class="progress-path-child-content-wrapper" [style.--container-width]="width">
+      <div
+        class="progress-path-child-content-wrapper"
+        [style.--container-width]="width"
+        [attr.data-module-count]="params.moduleCount"
+      >
         @for (
           childRow of progressRows() | filterDisplayComponent;
           track trackByRow($index, childRow)
