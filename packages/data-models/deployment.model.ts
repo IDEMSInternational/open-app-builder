@@ -80,8 +80,8 @@ export interface IDeploymentRuntimeConfig {
     /** Enable remote asset storage and sync by specifying provider */
     provider: "supabase";
     /** By convention, this should match the deployment name */
-    bucketName: "";
-    folderName: "asset_packs";
+    bucketName: string;
+    folderName: string;
   };
 
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
@@ -230,6 +230,11 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   },
   app_config: {},
   auth: {},
+  remote_assets: {
+    provider: "supabase",
+    bucketName: "",
+    folderName: "",
+  },
   campaigns: {
     enabled: true,
   },
