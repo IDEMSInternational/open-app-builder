@@ -1,8 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import { FileObject } from "@supabase/storage-js";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { FlowTypes, IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -16,6 +14,8 @@ import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
+import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
+import { getRemoteAssetProvider } from "./providers";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 
@@ -24,10 +24,7 @@ const CORE_ASSET_PACK_NAME = "core_assets";
 })
 export class RemoteAssetService extends AsyncServiceBase {
   remoteAssetsEnabled: boolean;
-  supabaseEnabled: boolean;
-  bucketName: string;
-  folderName: string;
-  supabase: SupabaseClient;
+  provider: IRemoteAssetProvider;
   downloading: boolean = false;
   downloadProgress: number;
   manifest: FlowTypes.AssetPack;
@@ -40,38 +37,48 @@ export class RemoteAssetService extends AsyncServiceBase {
     private templateAssetService: TemplateAssetService,
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
-    private deploymentService: DeploymentService
+    private deploymentService: DeploymentService,
+    private injector: Injector
   ) {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
   }
 
   private async initialise() {
+    // Initialize the remote asset provider
+    const remoteAssetsConfig = this.deploymentService.config.remote_assets;
+    if (remoteAssetsConfig?.provider) {
+      this.provider = getRemoteAssetProvider(remoteAssetsConfig.provider);
+      const providerConfig: IRemoteAssetConfig = {
+        bucketName: remoteAssetsConfig.bucketName,
+        folderName: remoteAssetsConfig.folderName,
+      };
+      await this.provider.initialise(this.injector, providerConfig);
+      this.remoteAssetsEnabled = true;
+    } else {
+      this.remoteAssetsEnabled = false;
+    }
+
     this.registerTemplateActionHandlers();
-    // require supabase to be configured to use remote asset service
-    const { enabled, publicApiKey, url } = this.deploymentService.config.supabase;
-    this.supabaseEnabled = enabled;
-    if (this.supabaseEnabled) {
+
+    if (this.remoteAssetsEnabled) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
       this.ensureSyncServicesReady([
         this.appConfigService,
         this.appDataService,
         this.fileManagerService,
       ]);
-      this.subscribeToAppConfigChanges();
-      if (this.remoteAssetsEnabled) {
-        this.supabase = createClient(url, publicApiKey);
-        const { flow_type, flow_name } = this.generateCoreAssetPack(
-          this.templateAssetService.assetsContentsList$.value
-        );
-        // Share updates to asset contents list with template asset service for lookup
-        // TODO?: only watch for nested changes rather than replacing whole list
-        const obs = this.dynamicDataService.query$(flow_type, flow_name);
-        obs.subscribe((dataRows) => {
-          const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
-          this.templateAssetService.updateContentsList(assetContentsHashmap);
-        });
-      }
+
+      const { flow_type, flow_name } = this.generateCoreAssetPack(
+        this.templateAssetService.assetsContentsList$.value
+      );
+      // Share updates to asset contents list with template asset service for lookup
+      // TODO?: only watch for nested changes rather than replacing whole list
+      const obs = this.dynamicDataService.query$(flow_type, flow_name);
+      obs.subscribe((dataRows) => {
+        const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+        this.templateAssetService.updateContentsList(assetContentsHashmap);
+      });
     }
   }
 
@@ -85,7 +92,7 @@ export class RemoteAssetService extends AsyncServiceBase {
         const [actionId, ...assetPackArgs] = args;
         const childActions = {
           download: async () => {
-            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+            if (this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
               if (assetPackName) {
                 try {
@@ -103,15 +110,15 @@ export class RemoteAssetService extends AsyncServiceBase {
               }
             } else
               console.error(
-                "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+                "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
               );
           },
           reset: async () => {
-            if (this.supabaseEnabled && this.remoteAssetsEnabled) {
+            if (this.remoteAssetsEnabled) {
               await this.reset();
             } else
               console.error(
-                "The 'asset_pack: reset' action is not available. To enable asset pack functionality, please ensure that supabase and ASSET_PACKS are enabled in the deployment config."
+                "The 'asset_pack: reset' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
               );
           },
         };
@@ -121,15 +128,6 @@ export class RemoteAssetService extends AsyncServiceBase {
         }
         return childActions[actionId]();
       },
-    });
-  }
-
-  private subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { enabled, bucketName, folderName } = appConfig.ASSET_PACKS;
-      this.remoteAssetsEnabled = enabled;
-      this.bucketName = bucketName;
-      this.folderName = folderName;
     });
   }
 
@@ -168,7 +166,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     }
 
     // On web, update contents list with asset's public URL for consumption by template asset service
-    // (files will be served remotely via supabse CDN)
+    // (files will be served remotely via provider CDN)
     else {
       for (const [index, assetEntry] of assetEntries.entries()) {
         console.log(
@@ -180,7 +178,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Download the asset pack manifest for a named asset pack from supabase and store the result in this.manifest
+   * Download the asset pack manifest for a named asset pack from the remote provider and store the result in this.manifest
    */
   private getAssetPackManifest(assetPackName: string) {
     let data: Blob;
@@ -295,7 +293,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   /**
    * Web platform only:
    * Update the contents list with the contents of an asset pack, including any overrides,
-   * updating filepath to be a public supabase CDN URL
+   * updating filepath to be a public remote provider CDN URL
    */
   public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
     // Update the contents entry for the top level asset, unless overridesOnly is specified
@@ -367,7 +365,7 @@ export class RemoteAssetService extends AsyncServiceBase {
 
   /**
    * Save updates to asset contents in dynamic data, including file path
-   * (filepath should be local storage on native platforms and supabase URL on web)
+   * (filepath should be local storage on native platforms and remote provider URL on web)
    * */
   private async updateAssetContents(
     assetEntry: IAssetEntry,
@@ -414,6 +412,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     responseType: "blob" | "base64" = "base64",
     headers = {}
   ) {
+    // Always use direct HTTP download since providers don't handle this directly
     // If downloading from local assets ignore cache
     if (!url.startsWith("http")) {
       headers = {
@@ -470,28 +469,27 @@ export class RemoteAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Download from a private supabase bucket using the SDK method. Not currently used.
+   * Download from a private bucket using the provider method. Not currently used.
    * NB this method does not support tracking download progress
    * */
   public async downloadFileFromPrivateBucket(filepath: string) {
-    let data: Blob;
+    if (!this.provider) {
+      console.error("[REMOTE ASSETS] No provider available for private bucket download");
+      return null;
+    }
+
     try {
       this.downloading = true;
-      const { data: blob, error } = await this.supabase.storage
-        .from(this.bucketName)
-        .download(filepath);
-      if (error) {
-        throw error;
-      }
-      if (blob) {
-        data = blob;
+      const data = await this.provider.downloadFileFromPrivateBucket(filepath);
+      if (data) {
         console.log("blob:", data);
       }
+      return data;
     } catch (error) {
-      console.error(error);
+      console.error("[REMOTE ASSETS] Error downloading from private bucket:", error);
+      return null;
     } finally {
       this.downloading = false;
-      return data;
     }
   }
 
@@ -507,40 +505,19 @@ export class RemoteAssetService extends AsyncServiceBase {
    *  Download method utils
    ************************************************************************************/
 
-  /** Get a file's public supabase URL */
+  /** Get a file's public URL from the remote provider */
   private getPublicUrl(relativePath: string) {
-    let url = "";
-    try {
-      const {
-        data: { publicUrl },
-      } = this.supabase.storage
-        .from(this.bucketName)
-        .getPublicUrl(this.getSupabaseFilepath(relativePath));
-      if (publicUrl) {
-        url = publicUrl;
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      return url;
+    if (this.provider) {
+      return this.provider.getPublicUrl(relativePath);
     }
+    return "";
   }
 
-  /** Fetch metadata for a specific file from supabase */
-  private async getRemoteFileMetadata(relativePath: string): Promise<FileObject> {
-    const pathSegments = relativePath.split("/");
-    const fileName = pathSegments.pop();
-    const dirname = pathSegments.join("/");
-
-    const { data } = await this.supabase.storage
-      .from(this.bucketName)
-      .list(`${this.folderName}/${dirname}`);
-    const fileObject = data.find((element) => element.name === fileName);
-    return fileObject;
-  }
-
-  /** Convert base filepath to match supabase storage folder structure */
-  private getSupabaseFilepath(relativePath: string) {
-    return `${this.folderName}/${relativePath}`;
+  /** Fetch metadata for a specific file from the remote provider */
+  private async getRemoteFileMetadata(relativePath: string) {
+    if (this.provider) {
+      return await this.provider.getRemoteFileMetadata(relativePath);
+    }
+    return null;
   }
 }
