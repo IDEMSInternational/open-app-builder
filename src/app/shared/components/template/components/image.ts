@@ -1,6 +1,5 @@
 import { Component, computed, inject } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
-import { TemplateAssetService } from "../services/template-asset.service";
 
 interface IAuthorParams {
   /** TEMPLATE_PARAMETER: "style". Default null */
@@ -15,9 +14,7 @@ interface IComponentParams {
   selector: "plh-tmpl-image",
   template: `
     <div class="tmpl-image-container" [attr.data-param-style]="params().style">
-      @if (assetSrc(); as src) {
-        <img [src]="src" />
-      }
+      <img [src]="value() | translatedAsset" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -43,11 +40,6 @@ interface IComponentParams {
   ],
 })
 export class TmplImageComponent extends TemplateBaseComponent {
-  private assetService = inject(TemplateAssetService);
-
-  /** SafeUrl to render */
-  public assetSrc = this.assetService.translatedAssetSignal(this.value);
-
   public params = computed(() => this.mapParams(this.parameterList()));
 
   private mapParams(authorParams: IAuthorParams = {}): IComponentParams {

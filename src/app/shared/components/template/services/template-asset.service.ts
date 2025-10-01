@@ -23,8 +23,7 @@ export class TemplateAssetService extends AsyncServiceBase {
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService,
-    private http: HttpClient,
-    private sanitizer: DomSanitizer
+    private http: HttpClient
   ) {
     super("TemplateAsset");
     this.registerInitFunction(this.initialise);
@@ -48,34 +47,32 @@ export class TemplateAssetService extends AsyncServiceBase {
   }
 
   /**
-   * Take an input asset as signal and return a computed signal to automatically
+   * Take an input asset path and return a computed signal to automatically
    * update the asset path to use translated variant when theme and language change
    * (if override assets exists)
    *
-   * @returns SafeUrl signal with path to translated asset
+   * @returns signal with path to translated asset that will update on theme or language change
    *
    * @param assetNameSignal Signal used to specify name of asset to pass,
    * e.g. `row.value`. Should pass full signal and not computed value (`row.value()`)
    * to support updating on asset name change
    */
-  public translatedAssetSignal(assetNameSignal: Signal<string>) {
+  public getTranslatedAssetSignal(assetPath: string) {
     return computed(() => {
-      const assetBase = assetNameSignal();
       const theme = this.themeService.currentTheme();
       const language = this.translateService.appLanguage();
-      if (assetBase) {
-        const translatedPath = this.getAssetWithOverride(assetBase, theme, language);
-        if (translatedPath) {
-          return this.sanitizer.bypassSecurityTrustUrl(translatedPath);
-        }
+      const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
+      if (translatedPath) {
+        return translatedPath;
       }
+
       return undefined;
     });
   }
 
   /**
    * @deprecated 2025-09
-   * Prefer to use `translatedAssetSignal`
+   * Prefer to use `getTranslatedAssetSignal`
    */
   getTranslatedAssetPath(value: string) {
     const currentThemeName = this.themeService.getCurrentTheme();
