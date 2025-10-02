@@ -20,6 +20,9 @@ const DEFAULT_THEME_NAME = "theme_default";
 export class TemplateAssetService extends AsyncServiceBase {
   public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
 
+  // Cache computed signals for translated asset paths globally to avoid duplicate signal creation
+  private translatedAssetSignalCache = new Map<string, Signal<string | undefined>>();
+
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService,
@@ -53,21 +56,23 @@ export class TemplateAssetService extends AsyncServiceBase {
    *
    * @returns signal with path to translated asset that will update on theme or language change
    *
-   * @param assetNameSignal Signal used to specify name of asset to pass,
-   * e.g. `row.value`. Should pass full signal and not computed value (`row.value()`)
-   * to support updating on asset name change
+   * @param assetPath Path to the asset (will be cached globally)
    */
   public getTranslatedAssetSignal(assetPath: string) {
-    return computed(() => {
-      const theme = this.themeService.currentTheme();
-      const language = this.translateService.appLanguage();
-      const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
-      if (translatedPath) {
-        return translatedPath;
-      }
+    if (!this.translatedAssetSignalCache.has(assetPath)) {
+      const computedSignal = computed(() => {
+        const theme = this.themeService.currentTheme();
+        const language = this.translateService.appLanguage();
+        const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
+        if (translatedPath) {
+          return translatedPath;
+        }
 
-      return undefined;
-    });
+        return undefined;
+      });
+      this.translatedAssetSignalCache.set(assetPath, computedSignal);
+    }
+    return this.translatedAssetSignalCache.get(assetPath)!;
   }
 
   /**
