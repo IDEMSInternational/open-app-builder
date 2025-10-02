@@ -2,7 +2,14 @@ import { AppDataConverter } from "./index";
 
 import { resolve } from "path";
 
-import { emptyDirSync, existsSync, readdirSync, readJSONSync, ensureDirSync } from "fs-extra";
+import {
+  emptyDirSync,
+  existsSync,
+  readdirSync,
+  readJSONSync,
+  ensureDirSync,
+  pathExistsSync,
+} from "fs-extra";
 import { clearLogs } from "shared";
 
 import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
@@ -11,6 +18,7 @@ import { IDeploymentConfigJson } from "data-models";
 
 const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, TEST_DATA_DIR } =
   TEST_DATA_PATHS;
+
 const paths = {
   inputFolders: [resolve(SHEETS_INPUT_FOLDER, "sheets")],
   outputFolder: resolve(SHEETS_OUTPUT_FOLDER, "sheets"),
@@ -48,6 +56,7 @@ describe("App Data Converter", () => {
   it("Uses child caches", async () => {
     await converter.run();
     const cacheFolders = readdirSync(paths.cacheFolder);
+    console.log("cacheFolders", cacheFolders);
     // expect contents file and cached conversions
     expect(cacheFolders.length).toBeGreaterThan(1);
   });
@@ -59,7 +68,9 @@ describe("App Data Converter", () => {
   });
   it("Processes test_input xlsx without error", async () => {
     const { errors, result } = await converter.run();
+    console.log("errors", errors);
     expect(errors).toHaveLength(0);
+    console.log("result", result);
     expect(Object.values(result).length).toBeGreaterThan(0);
   });
   it("Populates output to folder by data type", async () => {
@@ -82,6 +93,49 @@ describe("App Data Converter", () => {
     expect(existsSync(replaceDataListPath)).toBe(true);
     const flow = readJSONSync(replaceDataListPath);
     expect(flow.rows[0].value).toEqual("data from additional input");
+  });
+  it("Populates sheet_json representation", async () => {
+    await converter.run();
+    const sheetJsonPath = resolve(
+      paths.outputFolder,
+      "../",
+      "sheet_json",
+      "sheets",
+      "test_input.json"
+    );
+    expect(pathExistsSync(sheetJsonPath)).toEqual(true);
+    const sheetJson = readJSONSync(sheetJsonPath);
+    expect(Object.keys(sheetJson)).toEqual([
+      "==content_list==",
+      "test_data_list",
+      "test_template",
+      "test_draft",
+      "test_data_pipe",
+      "test_data_pipe_list",
+    ]);
+  });
+  it("Merges custom metadata from google drive downloader", async () => {
+    await converter.run();
+    const sheetJsonMetadataPath = resolve(
+      paths.outputFolder,
+      "../",
+      "sheet_json",
+      "_metadata.json"
+    );
+    expect(pathExistsSync(sheetJsonMetadataPath)).toEqual(true);
+    const sheetJsonMeta = readJSONSync(sheetJsonMetadataPath);
+    expect(sheetJsonMeta).toEqual({
+      sheets: [
+        {
+          relativePath: "test_input.xlsx",
+          size_kb: 215,
+          md5Checksum: "f06d85d016a02622869ec54c34df8d79",
+          modifiedTime: "2025-08-15T17:23:35.657Z",
+          modifiedBy: "Test User",
+          remoteUrl: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
+        },
+      ],
+    });
   });
 });
 
