@@ -98,7 +98,7 @@ export class RemoteAssetService extends AsyncServiceBase {
               const assetPackName = assetPackArgs[0];
               if (assetPackName) {
                 try {
-                  await lastValueFrom(this.getAssetPackManifest(assetPackName));
+                  await this.getAssetPackManifest(assetPackName);
                   await this.downloadAndIntegrateAssetPack(this.manifest);
                 } catch (e) {
                   console.error(e);
@@ -182,33 +182,26 @@ export class RemoteAssetService extends AsyncServiceBase {
   /**
    * Download the asset pack manifest for a named asset pack from the remote provider and store the result in this.manifest
    */
-  private getAssetPackManifest(assetPackName: string) {
-    let data: Blob;
-    let progress: number;
-    const url = this.getPublicUrl(`${assetPackName}/${assetPackName}.json`);
-    const progress$ = new Subject<number>();
-    this.downloadFileFromUrl(url, "blob").subscribe({
-      error: (err) => {
-        this.downloadProgress = undefined;
-        progress$.error(err);
-      },
-      next: async (res) => {
-        data = res.data as Blob;
-        progress = res.progress;
-        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
-        progress$.next(progress);
-      },
-      complete: async () => {
-        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPackName}`);
-        if (data) {
-          this.manifest = JSON.parse(await data.text());
-          console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
-        }
-        progress$.next(progress);
-        progress$.complete();
-      },
-    });
-    return progress$;
+  private async getAssetPackManifest(assetPackName: string) {
+    const relativePath = `${assetPackName}/${assetPackName}.json`;
+
+    try {
+      console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
+
+      // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
+      const jsonText = await this.provider.downloadFileAsText(relativePath);
+
+      if (jsonText) {
+        this.manifest = JSON.parse(jsonText);
+        console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
+      } else {
+        console.error(`[REMOTE ASSETS] Failed to download manifest for ${assetPackName}`);
+      }
+    } catch (error) {
+      console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
+    }
+
+    return this.manifest;
   }
 
   /**
@@ -253,15 +246,9 @@ export class RemoteAssetService extends AsyncServiceBase {
   ) {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
-      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
       try {
         await lastValueFrom(
-          this.downloadAssetAndUpdateContentsList(
-            topLevelAssetUrl,
-            assetEntry,
-            fileIndex,
-            totalFiles
-          )
+          this.downloadAssetAndUpdateContentsList(assetEntry.id, assetEntry, fileIndex, totalFiles)
         );
       } catch (error) {
         console.error(error);
@@ -272,12 +259,11 @@ export class RemoteAssetService extends AsyncServiceBase {
     if (overrides) {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
         for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
-          const assetUrl = this.getPublicUrl(assetContentsEntry.filePath);
           const overrideProps = { themeName, languageCode };
           try {
             await lastValueFrom(
               this.downloadAssetAndUpdateContentsList(
-                assetUrl,
+                assetContentsEntry.filePath,
                 assetEntry,
                 fileIndex,
                 totalFiles,
@@ -320,7 +306,7 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Download a single asset from an asset pack, save to local native storage and update the assets contents list
    * */
   private downloadAssetAndUpdateContentsList(
-    url: string,
+    relativePath: string,
     assetEntry: IAssetEntry,
     fileIndex: number,
     totalFiles?: number,
@@ -333,7 +319,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     let progress: number;
     // create a new subject to subscribe from inner observable
     const progress$ = new Subject<number>();
-    this.downloadFileFromUrl(url, "blob").subscribe({
+    this.downloadFileFromPath(relativePath, "blob").subscribe({
       error: (err) => {
         this.downloadProgress = undefined;
         progress$.error(err);
@@ -521,5 +507,58 @@ export class RemoteAssetService extends AsyncServiceBase {
       return await this.provider.getRemoteFileMetadata(relativePath);
     }
     return null;
+  }
+
+  /** Download a file from either HTTP URL or provider SDK based on URL availability */
+  private downloadFileFromPath(relativePath: string, responseType: "blob" | "base64" = "base64") {
+    const url = this.getPublicUrl(relativePath);
+
+    if (url) {
+      // Use direct HTTP download
+      return this.downloadFileFromUrl(url, responseType);
+    } else {
+      // Use provider's SDK
+      return this.downloadFileFromProvider(relativePath, responseType);
+    }
+  }
+
+  /** Download a file using the provider's SDK directly */
+  private downloadFileFromProvider(filePath: string, responseType: "blob" | "base64" = "base64") {
+    // Create a behavior subject to track progress
+    const progress$ = new BehaviorSubject<{
+      progress: number;
+      subscription: Subscription;
+      data?: Blob | string;
+    }>({
+      progress: 0,
+      subscription: new Subscription(),
+    });
+
+    // Use the provider's download method
+    this.provider
+      .downloadFile(filePath)
+      .then(async (blob) => {
+        if (blob) {
+          let finalData: string | Blob = blob;
+
+          if (responseType === "base64") {
+            finalData = await convertBlobToBase64(blob);
+          }
+
+          progress$.next({
+            progress: 100,
+            subscription: new Subscription(),
+            data: finalData,
+          });
+          progress$.complete();
+        } else {
+          progress$.error(new Error("Failed to download file from provider"));
+        }
+      })
+      .catch((error) => {
+        progress$.error(error);
+      });
+
+    return progress$;
   }
 }
