@@ -55,8 +55,10 @@ export class RemoteAssetService extends AsyncServiceBase {
       };
       await this.provider.initialise(this.injector, providerConfig);
       this.remoteAssetsEnabled = true;
+      console.log("[Remote Asset] Remote asset provider initialized:", remoteAssetsConfig.provider);
     } else {
       this.remoteAssetsEnabled = false;
+      console.log("[Remote Asset] Remote assets not enabled");
     }
 
     this.registerTemplateActionHandlers();

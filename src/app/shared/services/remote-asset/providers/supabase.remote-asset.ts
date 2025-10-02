@@ -1,7 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { SupabaseClient } from "@supabase/supabase-js";
 import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
-import { DeploymentService } from "../../deployment/deployment.service";
+import { SupabaseService } from "../../supabase/supabase.service";
 
 @Injectable({
   providedIn: "root",
@@ -9,15 +9,17 @@ import { DeploymentService } from "../../deployment/deployment.service";
 export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
   private supabase: SupabaseClient;
   private config: IRemoteAssetConfig;
-  private deploymentService: DeploymentService;
+  private supabaseService: SupabaseService;
 
   async initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void> {
     this.config = config;
-    this.deploymentService = injector.get(DeploymentService);
-
-    const supabaseConfig = this.deploymentService.config.supabase;
-    if (supabaseConfig?.enabled && supabaseConfig.url && supabaseConfig.publicApiKey) {
-      this.supabase = createClient(supabaseConfig.url, supabaseConfig.publicApiKey);
+    this.supabaseService = injector.get(SupabaseService);
+    this.supabaseService.ready();
+    if (this.supabaseService.client) {
+      this.supabase = this.supabaseService.client;
+    } else {
+      console.warn(`[Supabase Remote Asset] Supabase client not initialized`);
+      return;
     }
   }
 
