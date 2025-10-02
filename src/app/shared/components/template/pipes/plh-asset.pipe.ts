@@ -31,16 +31,10 @@ export class PLHAssetPipe implements PipeTransform {
 export class TranslatedAssetPipe implements PipeTransform {
   private templateAssetService = inject(TemplateAssetService);
 
-  // Cache computed signals per asset path
-  private cache = new Map<string, Signal<string | undefined>>();
-
   transform(assetPath: string) {
     if (!assetPath) return undefined;
 
-    if (!this.cache.has(assetPath)) {
-      const computedSignal = this.templateAssetService.getTranslatedAssetSignal(assetPath);
-      this.cache.set(assetPath, computedSignal);
-    }
-    return this.cache.get!(assetPath)();
+    const computedSignal = this.templateAssetService.getTranslatedAssetSignal(assetPath);
+    return computedSignal();
   }
 }
