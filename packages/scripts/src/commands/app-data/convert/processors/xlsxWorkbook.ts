@@ -7,7 +7,7 @@ import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
 import { IContentsEntry, parseAppDataCollectionString } from "../utils";
 
-const cacheVersion = 20250923.0;
+const cacheVersion = 20251001.0;
 const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
 
 export class XLSXWorkbookProcessor extends BaseProcessor<
