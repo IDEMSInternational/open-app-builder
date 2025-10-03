@@ -402,7 +402,9 @@ export class RemoteAssetService extends AsyncServiceBase {
           },
         },
       };
-      return deepMergeObjects(assetEntry, update);
+      // Deep clone to ensure mutable object before merging (RxDB objects are immutable)
+      const mutableAssetEntry = JSON.parse(JSON.stringify(assetEntry));
+      return deepMergeObjects(mutableAssetEntry, update);
     } else {
       return { ...assetEntry, filePath };
     }
