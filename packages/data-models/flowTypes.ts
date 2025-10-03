@@ -53,7 +53,8 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     _xlsxPath?: string; // debug info
-    _sheetsFolderUrl?: string; // debug info
+    _remoteUrl?: string; // debug info
+    _remoteFolder?: string;
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
@@ -227,7 +228,6 @@ export namespace FlowTypes {
     _satisfied?: boolean;
     /** debug info  */
     _raw?: string;
-    _cleaned?: string;
     _parsed?: string[][];
   }
   export interface Lifecycle_Action {
@@ -491,7 +491,6 @@ export namespace FlowTypes {
     _self_triggered?: boolean;
     // debug info
     _raw?: string;
-    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {
