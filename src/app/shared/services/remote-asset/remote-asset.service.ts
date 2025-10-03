@@ -377,7 +377,7 @@ export class RemoteAssetService extends AsyncServiceBase {
     const update = this.addFilePathToAssetEntry(assetEntry, filepath, overrideProps);
     // Update the core asset pack in dynamic data, adding an entry for the asset or
     // updating an existing entry if it already exists
-    await this.dynamicDataService.update<IAssetEntry>(
+    await this.dynamicDataService.upsertAndMerge<IAssetEntry & { id: string }>(
       "asset_pack",
       CORE_ASSET_PACK_NAME,
       assetEntry.id,
@@ -402,7 +402,9 @@ export class RemoteAssetService extends AsyncServiceBase {
           },
         },
       };
-      return deepMergeObjects(assetEntry, update);
+      // Deep clone to ensure mutable object before merging (RxDB objects are immutable)
+      const mutableAssetEntry = JSON.parse(JSON.stringify(assetEntry));
+      return deepMergeObjects(mutableAssetEntry, update);
     } else {
       return { ...assetEntry, filePath };
     }

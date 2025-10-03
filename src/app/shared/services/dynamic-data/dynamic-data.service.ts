@@ -194,6 +194,27 @@ export class DynamicDataService extends AsyncServiceBase {
     }
   }
 
+  /**
+   * Upsert a single row by merging partial data if the row exists, or inserting a new row if it doesn't.
+   * Unlike upsert(), this method merges data instead of replacing the entire row.
+   * Unlike update(), this method doesn't throw an error if the row doesn't exist.
+   */
+  public async upsertAndMerge<T extends { id: string }>(
+    flow_type: FlowTypes.FlowType,
+    flow_name: string,
+    row_id: string,
+    data: Partial<T>
+  ) {
+    if (!data || Object.keys(data).length === 0) {
+      return;
+    }
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    // Use updateDoc which atomically merges or inserts, handles final fields correctly
+    await this.db.updateDoc({ collectionName, id: row_id, data });
+    // Update the persisted cache. This will merge with existing data in the cache.
+    this.writeCache.update({ flow_name, flow_type, id: row_id, data });
+  }
+
   /** Remove user_generated data row */
   public async remove(flow_type: FlowTypes.FlowType, flow_name: string, ids: string[]) {
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
