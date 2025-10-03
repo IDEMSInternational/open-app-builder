@@ -62,14 +62,14 @@ export class RemoteAssetService extends AsyncServiceBase {
       if (this.remoteAssetsEnabled) {
         this.supabase = createClient(url, publicApiKey);
         const { flow_type, flow_name } = this.generateCoreAssetPack(
-          this.templateAssetService.assetsContentsList$.value
+          this.templateAssetService.assetsContentsList()
         );
         // Share updates to asset contents list with template asset service for lookup
         // TODO?: only watch for nested changes rather than replacing whole list
         const obs = this.dynamicDataService.query$(flow_type, flow_name);
         obs.subscribe((dataRows) => {
           const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
-          this.templateAssetService.updateContentsList(assetContentsHashmap);
+          this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
         });
       }
     }
