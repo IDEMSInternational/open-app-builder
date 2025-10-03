@@ -247,8 +247,11 @@ export class RemoteAssetService extends AsyncServiceBase {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
       try {
-        await lastValueFrom(
-          this.downloadAssetAndUpdateContentsList(assetEntry.id, assetEntry, fileIndex, totalFiles)
+        await this.downloadAssetAndUpdateContentsList(
+          assetEntry.id,
+          assetEntry,
+          fileIndex,
+          totalFiles
         );
       } catch (error) {
         console.error(error);
@@ -261,14 +264,12 @@ export class RemoteAssetService extends AsyncServiceBase {
         for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
           const overrideProps = { themeName, languageCode };
           try {
-            await lastValueFrom(
-              this.downloadAssetAndUpdateContentsList(
-                assetContentsEntry.filePath,
-                assetEntry,
-                fileIndex,
-                totalFiles,
-                overrideProps
-              )
+            await this.downloadAssetAndUpdateContentsList(
+              assetContentsEntry.filePath,
+              assetEntry,
+              fileIndex,
+              totalFiles,
+              overrideProps
             );
           } catch (error) {
             console.error(error);
@@ -305,50 +306,38 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Native platforms only:
    * Download a single asset from an asset pack, save to local native storage and update the assets contents list
    * */
-  private downloadAssetAndUpdateContentsList(
+  private async downloadAssetAndUpdateContentsList(
     relativePath: string,
     assetEntry: IAssetEntry,
     fileIndex: number,
     totalFiles?: number,
     overrideProps?: IAssetOverrideProps
   ) {
-    console.log(
-      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}: ${this.downloadProgress}%`
-    );
-    let data: Blob;
-    let progress: number;
-    // create a new subject to subscribe from inner observable
-    const progress$ = new Subject<number>();
-    this.downloadFileFromPath(relativePath, "blob").subscribe({
-      error: (err) => {
-        this.downloadProgress = undefined;
-        progress$.error(err);
-      },
-      next: async (res) => {
-        data = res.data as Blob;
-        progress = res.progress;
-        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
-        progress$.next(progress);
-      },
-      complete: async () => {
-        console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
-        if (data) {
-          let targetPath = assetEntry.id;
+    console.log(`[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}`);
 
-          // For overrides, use the nested override filepath as the path to save the file in local storage
-          if (overrideProps) {
-            const { themeName, languageCode } = overrideProps;
-            const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
-            targetPath = overrideAssetEntry.filePath;
-          }
-          const { src } = await this.fileManagerService.saveFile({ data, targetPath });
-          await this.updateAssetContents(assetEntry, src, overrideProps);
+    try {
+      // Use provider's direct download method
+      const blob = await this.provider.downloadFile(relativePath);
+
+      if (blob) {
+        let targetPath = assetEntry.id;
+
+        // For overrides, use the nested override filepath as the path to save the file in local storage
+        if (overrideProps) {
+          const { themeName, languageCode } = overrideProps;
+          const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
+          targetPath = overrideAssetEntry.filePath;
         }
-        progress$.next(progress);
-        progress$.complete();
-      },
-    });
-    return progress$;
+
+        const { src } = await this.fileManagerService.saveFile({ data: blob, targetPath });
+        await this.updateAssetContents(assetEntry, src, overrideProps);
+        console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
+      } else {
+        console.error(`[REMOTE ASSETS] Failed to download ${relativePath}`);
+      }
+    } catch (error) {
+      console.error(`[REMOTE ASSETS] Error downloading ${relativePath}:`, error);
+    }
   }
 
   /**
@@ -507,58 +496,5 @@ export class RemoteAssetService extends AsyncServiceBase {
       return await this.provider.getRemoteFileMetadata(relativePath);
     }
     return null;
-  }
-
-  /** Download a file from either HTTP URL or provider SDK based on URL availability */
-  private downloadFileFromPath(relativePath: string, responseType: "blob" | "base64" = "base64") {
-    const url = this.getPublicUrl(relativePath);
-
-    if (url) {
-      // Use direct HTTP download
-      return this.downloadFileFromUrl(url, responseType);
-    } else {
-      // Use provider's SDK
-      return this.downloadFileFromProvider(relativePath, responseType);
-    }
-  }
-
-  /** Download a file using the provider's SDK directly */
-  private downloadFileFromProvider(filePath: string, responseType: "blob" | "base64" = "base64") {
-    // Create a behavior subject to track progress
-    const progress$ = new BehaviorSubject<{
-      progress: number;
-      subscription: Subscription;
-      data?: Blob | string;
-    }>({
-      progress: 0,
-      subscription: new Subscription(),
-    });
-
-    // Use the provider's download method
-    this.provider
-      .downloadFile(filePath)
-      .then(async (blob) => {
-        if (blob) {
-          let finalData: string | Blob = blob;
-
-          if (responseType === "base64") {
-            finalData = await convertBlobToBase64(blob);
-          }
-
-          progress$.next({
-            progress: 100,
-            subscription: new Subscription(),
-            data: finalData,
-          });
-          progress$.complete();
-        } else {
-          progress$.error(new Error("Failed to download file from provider"));
-        }
-      })
-      .catch((error) => {
-        progress$.error(error);
-      });
-
-    return progress$;
   }
 }

@@ -60,40 +60,21 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
   }
 
   public async downloadFileAsText(relativePath: string): Promise<string | null> {
-    if (!this.firebaseService.app) {
-      return null;
-    }
-
     try {
-      const fullPath = `${this.config.folderName}/${relativePath}`;
+      const blob = await this.downloadFile(relativePath);
 
-      // Use Capacitor Firebase Storage to get the download URL
-      const result = await FirebaseStorage.getDownloadUrl({
-        path: fullPath,
-      });
-
-      if (result.downloadUrl) {
-        // Download the file using fetch
-        const response = await fetch(result.downloadUrl);
-
-        if (response.ok) {
-          const blob = await response.blob();
-
-          // Check if this is a data URL (Firebase's format sometimes)
-          const firstChunk = await blob.slice(0, 50).text();
-          if (firstChunk.includes("data:application/json;base64")) {
-            // Extract base64 content from data URL
-            const dataUrl = await blob.text();
-            const base64Content = dataUrl.split(",")[1];
-            const jsonContent = atob(base64Content);
-            return jsonContent;
-          } else {
-            // Regular blob, convert to text
-            return await blob.text();
-          }
+      if (blob) {
+        // Check if this is a data URL (Firebase's format sometimes)
+        const firstChunk = await blob.slice(0, 50).text();
+        if (firstChunk.includes("data:application/json;base64")) {
+          // Extract base64 content from data URL
+          const dataUrl = await blob.text();
+          const base64Content = dataUrl.split(",")[1];
+          const jsonContent = atob(base64Content);
+          return jsonContent;
         } else {
-          console.error(`[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`);
-          return null;
+          // Regular blob, convert to text
+          return await blob.text();
         }
       }
 
