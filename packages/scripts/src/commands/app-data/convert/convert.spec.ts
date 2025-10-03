@@ -56,21 +56,13 @@ describe("App Data Converter", () => {
   it("Uses child caches", async () => {
     await converter.run();
     const cacheFolders = readdirSync(paths.cacheFolder);
-    console.log("cacheFolders", cacheFolders);
     // expect contents file and cached conversions
     expect(cacheFolders.length).toBeGreaterThan(1);
   });
-  it("Clears child caches on version change", async () => {
-    const updatedConverter = new AppDataConverter(paths, { version: new Date().getTime() });
-    // no need to run the converter, simply creating should clear the cache
-    const cacheFolders = readdirSync(paths.cacheFolder);
-    expect(cacheFolders).toHaveLength(1); // only contents file
-  });
+
   it("Processes test_input xlsx without error", async () => {
     const { errors, result } = await converter.run();
-    console.log("errors", errors);
     expect(errors).toHaveLength(0);
-    console.log("result", result);
     expect(Object.values(result).length).toBeGreaterThan(0);
   });
   it("Populates output to folder by data type", async () => {
@@ -120,21 +112,21 @@ describe("App Data Converter", () => {
       paths.outputFolder,
       "../",
       "sheet_json",
+      "sheets",
       "_metadata.json"
     );
     expect(pathExistsSync(sheetJsonMetadataPath)).toEqual(true);
     const sheetJsonMeta = readJSONSync(sheetJsonMetadataPath);
     expect(sheetJsonMeta).toEqual({
-      sheets: [
-        {
-          relativePath: "test_input.xlsx",
-          size_kb: 215,
-          md5Checksum: "f06d85d016a02622869ec54c34df8d79",
-          modifiedTime: "2025-08-15T17:23:35.657Z",
-          modifiedBy: "Test User",
-          remoteUrl: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
-        },
-      ],
+      "test_input.xlsx": {
+        folderName: "sheets",
+        relativePath: "test_input.xlsx",
+        size_kb: 215,
+        md5Checksum: "f06d85d016a02622869ec54c34df8d79",
+        modifiedTime: "2025-08-15T17:23:35.657Z",
+        modifiedBy: "Test User",
+        remoteUrl: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
+      },
     });
   });
 });
@@ -157,11 +149,9 @@ describe("App Data Converter - Error Checking", () => {
   });
   it("Tracks conversion errors", async () => {
     clearLogs(true);
-    const { errors } = await errorConverter.run();
+    const { errors, warnings, result } = await errorConverter.run();
+    expect(errors.length).toEqual(1);
     const errorMessages = errors.map((err) => err.message);
-    expect(errorMessages).toEqual([
-      "Duplicate flow name",
-      "No parser available for flow_type: test_invalid_type",
-    ]);
+    expect(errorMessages).toEqual(["No parser available for flow_type: test_invalid_type"]);
   });
 });

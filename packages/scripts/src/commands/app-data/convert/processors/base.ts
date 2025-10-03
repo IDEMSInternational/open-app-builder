@@ -1,21 +1,20 @@
 import { TimeLike } from "fs-extra";
 import logUpdate from "log-update";
-import path from "path";
 import PQueue from "p-queue";
 import { Logger } from "winston";
-import { IConverterPaths } from "../types";
 import { IContentsEntry, createChildFileLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
 import chalk from "chalk";
+import { MockJsonFileCache } from "../cacheStrategy/jsonFile.mock";
 
-class BaseProcessor<T = any, V = any> {
+class BaseProcessor<InputType = any, OutputType = any> {
   public logger: Logger;
 
   public cache: JsonFileCache;
 
   public queue = new PQueue({ autoStart: false, concurrency: 1 });
 
-  public outputs: V[] = [];
+  public outputs: OutputType[] = [];
 
   public deferredCounter: { [id: string]: number } = {};
 
@@ -23,29 +22,16 @@ class BaseProcessor<T = any, V = any> {
    * Create a base processor instance. Sets up logging and cache
    * @param context.namespace - Name used as prefix for cache and logging
    */
-  constructor(public context: { namespace: string; paths: IConverterPaths; cacheVersion: number }) {
-    const { namespace } = context;
-    this.logger = createChildFileLogger({ source: namespace });
-    // HACK - support tests by avoiding setup if folderPath not provided
-    if (context.paths) {
-      this.setupCache();
-    }
-  }
-  /**
-   * Create a namespaced cache folder and populate a list of all files currently cached,
-   * included relative path, md5 checksum and modified time
-   */
-  private setupCache() {
-    const { paths, namespace, cacheVersion } = this.context;
-    const cacheFolder = path.resolve(paths.SHEETS_CACHE_FOLDER, namespace);
-    this.cache = new JsonFileCache(cacheFolder, cacheVersion);
+  constructor(private context: { namespace: string; cache?: JsonFileCache }) {
+    this.logger = createChildFileLogger({ source: context.namespace });
+    this.cache = context.cache || new MockJsonFileCache();
   }
 
   /**
    * Handle a list of inputs. By default this will loop through the inputs, attempt to load
    * from cache and proceed to process individual as required
    */
-  async process(inputs: T[] = []): Promise<V[]> {
+  async process(inputs: InputType[] = []): Promise<OutputType[]> {
     // add queue process update logs
     const total = inputs.length;
     this.queue.on("next", () => {
@@ -61,18 +47,18 @@ class BaseProcessor<T = any, V = any> {
   }
 
   /** Optional post-processing of combined outputs */
-  public postProcess(outputs: V[]): any {
+  public postProcess(outputs: OutputType[]): any {
     return outputs;
   }
 
   /** Override method to specify how to process a particular input */
-  public processInput(input: T): V | Promise<V> {
+  public processInput(input: InputType): OutputType | Promise<OutputType> {
     console.log("No process input method defined");
     return input as any;
   }
 
   /** Callback made after input either retrieved from cache or processed */
-  public notifyInputProcessed(input: T, source: "cache" | "processor") {
+  public notifyInputProcessed(input: InputType, source: "cache" | "processor") {
     // console.log("input processed", { input, source });
   }
 
@@ -80,7 +66,7 @@ class BaseProcessor<T = any, V = any> {
    * Use as part of processInput to defer processing until all other queued processes are complete
    * @param deferId unique process ID used with `deferMax` to prevent infinite loops
    **/
-  public deferInputProcess(input: T, deferId: string, deferMax = 5) {
+  public deferInputProcess(input: InputType, deferId: string, deferMax = 5) {
     this.handleDeferredInputProcess(input, deferId, deferMax);
   }
 
@@ -88,7 +74,7 @@ class BaseProcessor<T = any, V = any> {
    * Optional override handle how cache names are stored
    * By default will create an md5 hash of the data from the cacheHandler
    */
-  public generateCacheEntryName(input: T): string {
+  public generateCacheEntryName(input: InputType): string {
     return this.cache.generateCacheEntryName(input);
   }
 
@@ -102,7 +88,7 @@ class BaseProcessor<T = any, V = any> {
     return true;
   }
 
-  private addInputProcessesToQueue(inputs: T[] = [], autoStart = true, priority = 1) {
+  private addInputProcessesToQueue(inputs: InputType[] = [], autoStart = true, priority = 1) {
     this.queue.pause();
     for (const input of inputs) {
       if (input) {
@@ -123,7 +109,7 @@ class BaseProcessor<T = any, V = any> {
     }
   }
 
-  private handleDeferredInputProcess(input: T, deferId: string, deferMax = 5) {
+  private handleDeferredInputProcess(input: InputType, deferId: string, deferMax = 5) {
     if (!this.deferredCounter.hasOwnProperty(deferId)) {
       this.deferredCounter[deferId] = 0;
     }
@@ -136,7 +122,7 @@ class BaseProcessor<T = any, V = any> {
     this.addInputProcessesToQueue([input], true, priority);
   }
 
-  private async handleInputProcessing(input: T) {
+  private async handleInputProcessing(input: InputType) {
     const cacheEntryName = this.generateCacheEntryName(input);
     const cachedEntry = this.cache.get(cacheEntryName);
     // handle with cache

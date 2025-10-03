@@ -179,6 +179,10 @@ export interface IContentsEntry {
   localPath?: string;
   remoteUrl?: string;
 }
+export type IContentsEntryWithLocalPath = Omit<IContentsEntry, "localPath"> & {
+  localPath: string;
+};
+
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
 /** Generate md5 checksum for file */
