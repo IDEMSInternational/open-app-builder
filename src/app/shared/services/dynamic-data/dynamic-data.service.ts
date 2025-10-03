@@ -208,7 +208,6 @@ export class DynamicDataService extends AsyncServiceBase {
     if (data) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingRow = await this.db.getDoc<any>(collectionName, row_id);
-      console.log("existingRow", existingRow);
 
       if (existingRow) {
         await this.update(flow_type, flow_name, row_id, data);
