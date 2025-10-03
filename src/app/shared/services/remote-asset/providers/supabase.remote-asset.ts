@@ -1,0 +1,100 @@
+import { Injectable, Injector } from "@angular/core";
+import { SupabaseClient } from "@supabase/supabase-js";
+import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
+import { SupabaseService } from "../../supabase/supabase.service";
+
+@Injectable({
+  providedIn: "root",
+})
+export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
+  private supabase: SupabaseClient;
+  private config: IRemoteAssetConfig;
+  private supabaseService: SupabaseService;
+
+  async initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void> {
+    this.config = config;
+    this.supabaseService = injector.get(SupabaseService);
+    this.supabaseService.ready();
+    if (this.supabaseService.client) {
+      this.supabase = this.supabaseService.client;
+    } else {
+      console.warn(`[Supabase Remote Asset] Supabase client not initialized`);
+      return;
+    }
+  }
+
+  public getPublicUrl(relativePath: string): string {
+    if (!this.supabase) {
+      return "";
+    }
+
+    try {
+      const {
+        data: { publicUrl },
+      } = this.supabase.storage
+        .from(this.config.bucketName)
+        .getPublicUrl(this.getSupabaseFilepath(relativePath));
+      return publicUrl || "";
+    } catch (error) {
+      console.error("[Supabase Remote Asset] Error getting public URL:", error);
+      return "";
+    }
+  }
+
+  public async downloadFileFromPrivateBucket(filepath: string): Promise<Blob | null> {
+    if (!this.supabase) {
+      return null;
+    }
+
+    try {
+      const { data: blob, error } = await this.supabase.storage
+        .from(this.config.bucketName)
+        .download(filepath);
+
+      if (error) {
+        throw error;
+      }
+
+      return blob;
+    } catch (error) {
+      console.error("[Supabase Remote Asset] Error downloading from private bucket:", error);
+      return null;
+    }
+  }
+
+  public async getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null> {
+    if (!this.supabase) {
+      return null;
+    }
+
+    try {
+      const pathSegments = relativePath.split("/");
+      const fileName = pathSegments.pop();
+      const dirname = pathSegments.join("/");
+
+      const { data } = await this.supabase.storage
+        .from(this.config.bucketName)
+        .list(`${this.config.folderName}/${dirname}`);
+
+      const fileObject = data?.find((element) => element.name === fileName);
+
+      if (fileObject) {
+        return {
+          name: fileObject.name,
+          size: fileObject.metadata?.size,
+          lastModified: fileObject.updated_at,
+          contentType: fileObject.metadata?.mimetype,
+        };
+      }
+
+      return null;
+    } catch (error) {
+      console.error("[Supabase Remote Asset] Error getting file metadata:", error);
+      return null;
+    }
+  }
+
+  private getSupabaseFilepath(relativePath: string): string {
+    return `${this.config.folderName}/${relativePath}`;
+  }
+}
