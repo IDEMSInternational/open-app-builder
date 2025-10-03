@@ -76,22 +76,20 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
     try {
       const blob = await this.downloadFile(relativePath);
 
-      if (blob) {
-        // Check if this is a data URL (Firebase's format sometimes)
-        const firstChunk = await blob.slice(0, 50).text();
-        if (firstChunk.includes("data:application/json;base64")) {
-          // Extract base64 content from data URL
-          const dataUrl = await blob.text();
-          const base64Content = dataUrl.split(",")[1];
-          const jsonContent = atob(base64Content);
-          return jsonContent;
-        } else {
-          // Regular blob, convert to text
-          return await blob.text();
-        }
+      if (!blob) {
+        return null;
       }
 
-      return null;
+      const textContent = await blob.text();
+      // Check if the content is a data URL (Firebase's format sometimes)
+      if (textContent.startsWith("data:application/json;base64")) {
+        // Extract base64 content from data URL
+        const base64Content = textContent.split(",")[1];
+        return atob(base64Content);
+      }
+
+      // Regular text content
+      return textContent;
     } catch (error) {
       console.error("[Firebase Remote Asset] Error downloading file as text:", error);
       return null;
