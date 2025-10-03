@@ -216,29 +216,20 @@ describe("DynamicDataService", () => {
     // TODO - add methods that ignore rows from cached data if row id deleted from source data_list
   });
 
-  it("upsertAndMerge updates existing row by merging partial data", async () => {
-    // Test updating an existing row
-    await service.upsertAndMerge<ITestRow>("data_list", "test_flow", "id1", {
-      number: 999,
-      string: "updated",
-    });
-
-    const obs = service.query$<any>("data_list", "test_flow");
-    const data = await firstValueFrom(obs);
-    const updatedRow = data.find((row) => row.id === "id1");
-
-    expect(updatedRow.number).toEqual(999);
-    expect(updatedRow.string).toEqual("updated");
-    expect(updatedRow.boolean).toEqual(true); // Should preserve existing field
-  });
-
-  it("upsertAndMerge inserts new row when row doesn't exist", async () => {
+  it("update can create new row when upsert enabled", async () => {
     // Test inserting a new row
-    await service.upsertAndMerge<ITestRow>("data_list", "test_flow", "new_id", {
-      number: 42,
-      string: "new row",
-      boolean: true,
-    });
+    await service.update<ITestRow>(
+      "data_list",
+      "test_flow",
+      "new_id",
+      {
+        id: "new_id",
+        number: 42,
+        string: "new row",
+        boolean: true,
+      },
+      { upsert: true }
+    );
 
     const obs = service.query$<any>("data_list", "test_flow");
     const data = await firstValueFrom(obs);
@@ -250,9 +241,11 @@ describe("DynamicDataService", () => {
     expect(newRow.boolean).toEqual(true);
   });
 
-  it("upsertAndMerge handles empty data gracefully", async () => {
+  it("update ignores empty data when upsert enabled", async () => {
     // Test that empty data doesn't cause errors
-    await expectAsync(service.upsertAndMerge("data_list", "test_flow", "id1", {})).toBeResolved();
+    await expectAsync(
+      service.update("data_list", "test_flow", "id1", {}, { upsert: true })
+    ).toBeResolved();
 
     // Should not change existing data
     const obs = service.query$<any>("data_list", "test_flow");
