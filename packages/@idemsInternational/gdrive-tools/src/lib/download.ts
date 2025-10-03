@@ -276,16 +276,14 @@ export class GDriveDownloader {
     // Define recursive function
     const listRecursively = (folderId: string, folderPath = "") => {
       queue.add(async () => {
-        const folderContents: any[] = await listGdriveFolder(this.drive, folderId);
+        const folderContents: drive_v3.Schema$File[] = await listGdriveFolder(this.drive, folderId);
         // include folderPath with each entry and validate using zod schema
         const folderContentsWithFolderPath = folderContents.map((v) => ({ ...v, folderPath }));
         const parsedContents = GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(folderContentsWithFolderPath);
         const folderFiles = parsedContents.filter(
           (file) => file.mimeType !== GOOGLE_FOLDER_MIMETYPE
         );
-        folderFiles.forEach((f) => {
-          allFiles.push({ ...f, folderPath });
-        });
+        allFiles.push(...folderFiles);
         const subFolders = parsedContents.filter(
           (file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE
         );
