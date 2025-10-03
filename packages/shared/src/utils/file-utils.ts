@@ -160,7 +160,7 @@ export function generateFolderFlatMap(
   return flatMap;
 }
 
-function getFileStats(filePath: string) {
+export function getFileStats(filePath: string) {
   // generate size and md5 checksum stats
   const { size, mtime } = fs.statSync(filePath);
   const modifiedTime = mtime.toISOString();
@@ -175,7 +175,9 @@ export interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  modifiedBy?: string;
   localPath?: string;
+  remoteUrl?: string;
 }
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
