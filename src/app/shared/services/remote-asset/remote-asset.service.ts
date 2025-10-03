@@ -287,7 +287,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
     // Update the contents entry for the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
-      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
+      const topLevelAssetUrl = this.provider.getPublicUrl(assetEntry.id) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
     }
     const { overrides } = assetEntry;
@@ -295,7 +295,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
         for (const [languageCode, overrideAssetEntry] of Object.entries(languageOverrides)) {
           const overrideProps = { themeName, languageCode };
-          const filepath = this.getPublicUrl(overrideAssetEntry.filePath);
+          const filepath = this.provider.getPublicUrl(overrideAssetEntry.filePath) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
       }
@@ -476,25 +476,5 @@ export class RemoteAssetService extends AsyncServiceBase {
    * */
   private async reset() {
     await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
-  }
-
-  /************************************************************************************
-   *  Download method utils
-   ************************************************************************************/
-
-  /** Get a file's public URL from the remote provider */
-  private getPublicUrl(relativePath: string) {
-    if (this.provider) {
-      return this.provider.getPublicUrl(relativePath);
-    }
-    return "";
-  }
-
-  /** Fetch metadata for a specific file from the remote provider */
-  private async getRemoteFileMetadata(relativePath: string) {
-    if (this.provider) {
-      return await this.provider.getRemoteFileMetadata(relativePath);
-    }
-    return null;
   }
 }

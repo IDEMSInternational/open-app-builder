@@ -22,9 +22,22 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
   }
 
   public getPublicUrl(relativePath: string): string {
-    // Firebase Storage doesn't support simple public URLs through this interface
-    // Return empty string - the service will use downloadFile instead
-    return "";
+    if (!this.firebaseService.app || !this.firebaseService.app.options.storageBucket) {
+      return "";
+    }
+
+    try {
+      const filePath = `${this.config.folderName}/${relativePath}`;
+      const bucketName = this.firebaseService.app.options.storageBucket;
+
+      // Generate Firebase Storage public URL for CDN usage
+      // This assumes files are stored as public in Firebase Storage
+      const encodedPath = encodeURIComponent(filePath);
+      return `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodedPath}?alt=media`;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error getting public URL:", error);
+      return "";
+    }
   }
 
   public async downloadFile(relativePath: string): Promise<Blob | null> {
