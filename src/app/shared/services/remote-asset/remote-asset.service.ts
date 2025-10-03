@@ -1,12 +1,12 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector, effect, signal, OnDestroy } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { FlowTypes, IAppConfig } from "../../model";
+import { FlowTypes } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { IAssetContents } from "src/app/data";
-import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
@@ -22,12 +22,15 @@ const CORE_ASSET_PACK_NAME = "core_assets";
 @Injectable({
   providedIn: "root",
 })
-export class RemoteAssetService extends AsyncServiceBase {
-  remoteAssetsEnabled: boolean;
+export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
+  remoteAssetsEnabled = signal(false);
   provider: IRemoteAssetProvider;
   downloading: boolean = false;
   downloadProgress: number;
   manifest: FlowTypes.AssetPack;
+
+  private assetContentsSubscription: Subscription;
+  private coreAssetContentsData = signal<any[]>([]);
 
   constructor(
     private appConfigService: AppConfigService,
@@ -42,6 +45,19 @@ export class RemoteAssetService extends AsyncServiceBase {
   ) {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
+
+    effect(
+      () => {
+        if (this.remoteAssetsEnabled()) {
+          const dataRows = this.coreAssetContentsData();
+          if (dataRows && dataRows.length > 0) {
+            const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+            this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
+          }
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private async initialise() {
@@ -54,16 +70,16 @@ export class RemoteAssetService extends AsyncServiceBase {
         folderName: remoteAssetsConfig.folderName,
       };
       await this.provider.initialise(this.injector, providerConfig);
-      this.remoteAssetsEnabled = true;
+      this.remoteAssetsEnabled.set(true);
       console.log("[Remote Asset] Remote asset provider initialized:", remoteAssetsConfig.provider);
     } else {
-      this.remoteAssetsEnabled = false;
+      this.remoteAssetsEnabled.set(false);
       console.log("[Remote Asset] Remote assets not enabled");
     }
 
     this.registerTemplateActionHandlers();
 
-    if (this.remoteAssetsEnabled) {
+    if (this.remoteAssetsEnabled()) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
       this.ensureSyncServicesReady([
         this.appConfigService,
@@ -71,15 +87,15 @@ export class RemoteAssetService extends AsyncServiceBase {
         this.fileManagerService,
       ]);
 
+      // Update core asset contents signal via subscription to dynamic data
+      // (limitations of rxjs/signal interop utils mean we can't use toSignal here)
       const { flow_type, flow_name } = this.generateCoreAssetPack(
         this.templateAssetService.assetsContentsList()
       );
-      // Share updates to asset contents list with template asset service for lookup
-      // TODO?: only watch for nested changes rather than replacing whole list
-      const obs = this.dynamicDataService.query$(flow_type, flow_name);
-      obs.subscribe((dataRows) => {
-        const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
-        this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
+      const assetContentsData$ = this.dynamicDataService.query$(flow_type, flow_name);
+      this.assetContentsSubscription = assetContentsData$.subscribe({
+        next: (dataRows) => this.coreAssetContentsData.set(dataRows),
+        error: (error) => console.error("[Remote Asset] Error in asset contents stream:", error),
       });
     }
   }
@@ -478,5 +494,11 @@ export class RemoteAssetService extends AsyncServiceBase {
    * */
   private async reset() {
     await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
+  }
+
+  ngOnDestroy(): void {
+    if (this.assetContentsSubscription) {
+      this.assetContentsSubscription.unsubscribe();
+    }
   }
 }
