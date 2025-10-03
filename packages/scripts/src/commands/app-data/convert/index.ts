@@ -104,9 +104,6 @@ export class AppDataConverter {
         return { _metadata: { ..._metadata, folderName }, ...sheetData };
       });
       sheetJsons.forEach((json) => allSheetJsons.push(json));
-
-      // TODO - improve tests - use ai
-
       await this.writeSheetJsons(path.basename(inputFolder), sheetJsons);
     }
 
@@ -129,8 +126,7 @@ export class AppDataConverter {
    * App data sheets contain contents page with metadata that can be merged into regular data
    * Merge and collate with other existing data, warning in case of overwrites
    * @returns - array of all merged sheets (no grouping or collating)
-   * 
-
+   *
    */
   private mergeContentsSheet(json: ISheetJsonWithMeta) {
     const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
@@ -144,7 +140,9 @@ export class AppDataConverter {
             merged[flow_name] = {
               ...contents,
               rows: sheetData[flow_name],
-              _xlsxPath: `${_metadata.folderName}/${_metadata.relativePath}`,
+              _xlsxPath: _metadata.relativePath,
+              _remoteFolder: _metadata.folderName,
+              _remoteUrl: _metadata.remoteUrl,
             };
             // convert parameter list from string to object
             // TODO - handle converting in parser
