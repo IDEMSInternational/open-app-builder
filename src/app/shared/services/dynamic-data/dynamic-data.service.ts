@@ -205,16 +205,14 @@ export class DynamicDataService extends AsyncServiceBase {
     row_id: string,
     data: Partial<T>
   ) {
-    if (data) {
-      const { collectionName } = await this.ensureCollection(flow_type, flow_name);
-      const existingRow = await this.db.getDoc<any>(collectionName, row_id);
-
-      if (existingRow) {
-        await this.update(flow_type, flow_name, row_id, data);
-      } else {
-        await this.insert(flow_type, flow_name, { id: row_id, ...data });
-      }
+    if (!data || Object.keys(data).length === 0) {
+      return;
     }
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
+    // Use updateDoc which atomically merges or inserts, handles final fields correctly
+    await this.db.updateDoc({ collectionName, id: row_id, data });
+    // Update the persisted cache. This will merge with existing data in the cache.
+    this.writeCache.update({ flow_name, flow_type, id: row_id, data });
   }
 
   /** Remove user_generated data row */
