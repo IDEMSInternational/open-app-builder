@@ -62,19 +62,8 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
   }
 
   public async downloadFileAsText(relativePath: string): Promise<string | null> {
-    if (!this.supabase) {
-      return null;
-    }
-
     try {
-      const filepath = this.getSupabaseFilepath(relativePath);
-      const { data: blob, error } = await this.supabase.storage
-        .from(this.config.bucketName)
-        .download(filepath);
-
-      if (error) {
-        throw error;
-      }
+      const blob = await this.downloadFile(relativePath);
 
       if (blob) {
         return await blob.text();
