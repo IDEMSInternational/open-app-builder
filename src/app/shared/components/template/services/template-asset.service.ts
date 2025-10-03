@@ -1,12 +1,13 @@
-import { Injectable } from "@angular/core";
+import { computed, Injectable, signal, Signal } from "@angular/core";
 import { ASSETS_CONTENTS_LIST, IAssetContents } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IAssetEntry, IAssetContentsEntryMinimal } from "data-models";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, lastValueFrom } from "rxjs";
+import { lastValueFrom } from "rxjs";
 import { cleanAssetName } from "packages/shared/src/utils/string-utils";
+import { DomSanitizer } from "@angular/platform-browser";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -17,7 +18,13 @@ const DEFAULT_THEME_NAME = "theme_default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
-  public assetsContentsList$ = new BehaviorSubject<IAssetContents>(ASSETS_CONTENTS_LIST);
+  public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
+
+  /**
+   * Cache translated asset computed signals to avoid duplicate creation if same
+   * asset referenced in multiple templates or components
+   */
+  private translatedAssetSignalCache = new Map<string, Signal<string | undefined>>();
 
   constructor(
     private translateService: TemplateTranslateService,
@@ -46,6 +53,49 @@ export class TemplateAssetService extends AsyncServiceBase {
   }
 
   /**
+   * Take an input asset path and return a computed signal to automatically
+   * update the asset path to use translated variant when theme and language change
+   * (if override assets exists)
+   *
+   * @returns signal with path to translated asset that will update on theme or language change
+   * @param assetPath Path to the asset (will be cached globally)
+   */
+  public getTranslatedAssetSignal(assetPath: string) {
+    // Use cached signal if available, create if not
+    if (!this.translatedAssetSignalCache.has(assetPath)) {
+      const computedSignal = this.createTranslatedAssetSignal(assetPath);
+      this.translatedAssetSignalCache.set(assetPath, computedSignal);
+    }
+    return this.translatedAssetSignalCache.get(assetPath)!;
+  }
+
+  /**
+   * @deprecated 2025-09
+   * Prefer to use `getTranslatedAssetSignal`
+   */
+  getTranslatedAssetPath(value: string) {
+    const currentThemeName = this.themeService.getCurrentTheme();
+    const currentLanguageCode = this.translateService.app_language;
+    return this.getAssetWithOverride(value, currentThemeName, currentLanguageCode);
+  }
+
+  /**
+   * Create a signal for a given named asset that automatically updates when
+   * any override conditions update (e.g. language or theme change and asset variant)
+   */
+  private createTranslatedAssetSignal(assetPath: string) {
+    return computed(() => {
+      const theme = this.themeService.currentTheme();
+      const language = this.translateService.appLanguage();
+      const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
+      if (translatedPath) {
+        return translatedPath;
+      }
+      return undefined;
+    });
+  }
+
+  /**
    * Retrieve the path to a variation of an asset for the current language and theme.
    * It is possible that such a variation does not exist, in which case the path to a
    * different version of the asset will be returned as a fallback.
@@ -55,32 +105,28 @@ export class TemplateAssetService extends AsyncServiceBase {
    * 3. current theme, default language
    * 4. default theme, default language
    */
-  getTranslatedAssetPath(value: string) {
-    if (!value) return "";
+  private getAssetWithOverride(assetValue: string, theme: string, language: string) {
+    const assetName = cleanAssetName(assetValue);
+    if (!assetName) return "";
     // keep external links
-    if (value.startsWith("http")) {
-      return value;
+    if (assetName.startsWith("http")) {
+      return assetName;
     }
-    let assetName = cleanAssetName(value);
-    const assetEntry = this.assetsContentsList$.value[assetName];
+
+    const assetEntry = this.assetsContentsList()[assetName];
     if (!assetEntry) {
-      console.error("Asset missing", value, assetName);
+      console.error("Asset missing", assetName);
       return `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
     }
-
-    const currentThemeName = this.themeService.getCurrentTheme();
-    const currentLanguageCode = this.translateService.app_language;
-
-    const themeName = `theme_${currentThemeName}`;
-    const langName = currentLanguageCode;
+    const themeName = `theme_${theme}`;
 
     // 1. current theme, current language
-    const override1 = assetEntry.overrides?.[themeName]?.[langName];
+    const override1 = assetEntry.overrides?.[themeName]?.[language];
     if (override1) {
       return this.getAssetPath(assetName, override1);
     }
     // 2. default theme, current language
-    const override2 = assetEntry.overrides?.[DEFAULT_THEME_NAME]?.[langName];
+    const override2 = assetEntry.overrides?.[DEFAULT_THEME_NAME]?.[language];
     if (override2) {
       return this.getAssetPath(assetName, override2);
     }
@@ -121,10 +167,6 @@ export class TemplateAssetService extends AsyncServiceBase {
       transformed = transformed.replace(`${ASSETS_BASE}/${ASSETS_BASE}`, ASSETS_BASE);
     }
     return transformed;
-  }
-
-  public updateContentsList(value: IAssetContents) {
-    this.assetsContentsList$.next(value);
   }
 }
 
