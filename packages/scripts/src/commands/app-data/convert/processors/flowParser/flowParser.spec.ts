@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { clearLogs, getLogs } from "../../utils";
 import { FlowParserProcessor } from "./flowParser";
-import { TEST_DATA_PATHS } from "../../../../../../test/helpers/utils";
+import { MockJsonFileCache } from "../../cacheStrategy/jsonFile.mock";
 
 // NOTE - inputs are just to test general structure and not run actual parser code
 const testInputs: FlowTypes.FlowTypeWithData[] = [
@@ -40,17 +40,17 @@ const testInputs: FlowTypes.FlowTypeWithData[] = [
 ];
 
 let processor: FlowParserProcessor;
+
+// yarn workspace scripts test -t flowParser.spec.ts
 describe("FlowParser Processor", () => {
-  beforeAll(() => {
-    processor = new FlowParserProcessor(TEST_DATA_PATHS);
-    processor.cache.clear();
-  });
   beforeEach(() => {
+    processor = new FlowParserProcessor({ cache: new MockJsonFileCache() });
+    processor.cache.configure("FlowParserProcessor", 1);
+    processor.cache.clear();
+
     clearLogs();
   });
-  afterAll(() => {
-    processor.cache.clear();
-  });
+
   it("Logs error on invalid flow_type", async () => {
     const invalidFlow: FlowTypes.FlowTypeWithData = {
       ...testInputs[0],
@@ -74,7 +74,7 @@ describe("FlowParser Processor", () => {
     const errorLogs = getLogs("error").filter(({ message }) => message === "Template parse error");
     expect(errorLogs).toEqual([
       {
-        source: "flowParser",
+        source: "FlowParserProcessor",
         message: "Template parse error",
         details: {
           error: "Cannot read properties of null (reading 'length')",
@@ -99,8 +99,10 @@ describe("FlowParser Processor", () => {
     const processedDataListNames = Object.keys(processor.processedFlowHashmap.data_list);
     expect(processedDataListNames).toEqual(["test_data_list"]);
   });
-  it("Caches outputs for conversions", () => {
-    const cacheName = processor.cache.generateCacheEntryName(testInputs[0]);
+  it("Caches outputs for conversions", async () => {
+    const [testFlow] = testInputs;
+    await processor.process([testFlow]);
+    const cacheName = processor.generateCacheEntryName(testFlow);
     expect(processor.cache.get(cacheName)).toBeTruthy();
   });
 });
@@ -108,7 +110,7 @@ describe("FlowParser Processor", () => {
 /** Additional tests for data pipe integration */
 describe("FlowParser Processor - Data Pipes", () => {
   beforeAll(() => {
-    processor = new FlowParserProcessor(TEST_DATA_PATHS);
+    processor = new FlowParserProcessor({ cache: new MockJsonFileCache() });
     processor.cache.clear();
   });
   beforeEach(() => {

@@ -1,136 +1,37 @@
-import * as xlsx from "xlsx";
-import path from "path";
-import { FlowTypes } from "data-models";
-import { IConverterPaths } from "../types";
-import chalk from "chalk";
 import BaseProcessor from "./base";
-import { existsSync } from "fs-extra";
-import { IContentsEntry, parseAppDataCollectionString } from "../utils";
+import { readFile } from "fs-extra";
+import { basename, extname } from "path";
+import { xlsxToJson } from "../utils/xlsx.utils";
+import { JsonFileCache } from "../cacheStrategy/jsonFile";
 
 const cacheVersion = 20251001.0;
-const sheetsFolderBaseUrl = "https://drive.google.com/drive/u/0/folders";
+const namespace = "XLSXWorkbookProcessor";
 
-export class XLSXWorkbookProcessor extends BaseProcessor<
-  IContentsEntry,
-  FlowTypes.FlowTypeWithData[]
-> {
-  /** Record of all converted sheets as JSON. For logging and audit purposes */
-  public convertedSheetJsons: Record<string, any> = {};
+/** Path to xlsx file for conversion  */
+type InputType = { localPath: string; md5Checksum: string };
 
-  constructor(paths: IConverterPaths) {
-    super({ paths, namespace: "xlsxWorkbookProcessor", cacheVersion });
+type OutputType = { [sheetName: string]: Record<string, any> };
+
+/**
+ * The XLSXWorkbookProcessor handles converting xlsx files to json sheet representation
+ * It uses caching based on the md5 checksums of .xlsx file
+ */
+export class XLSXWorkbookProcessor extends BaseProcessor<InputType, OutputType> {
+  constructor(context: { cache: JsonFileCache }) {
+    super({ namespace, cache: context.cache });
+    this.cache.configure(namespace, cacheVersion);
   }
 
-  public async processInput(entry: IContentsEntry): Promise<FlowTypes.FlowTypeWithData[]> {
-    const { relativePath } = entry;
-    const inputFolder = this.context.paths.SHEETS_INPUT_FOLDER;
-    const xlsxPath = path.resolve(inputFolder, relativePath);
-    if (!existsSync(xlsxPath)) {
-      this.logger.error({ message: `Xlsx not found: ${relativePath}` });
-      return;
-    }
-    // convert and merge contents sheet
-    const json = this.convertXLSXSheetsToJson(xlsxPath);
-    this.convertedSheetJsons[relativePath] = JSON.parse(JSON.stringify(json));
-
-    const merged = this.mergeContentsSheet([{ json, xlsxPath }]);
-    // Ensure all paths use / to match HTTP style paths
-    const { SHEETS_INPUT_FOLDER } = this.context.paths;
-    const _xlsxPath = path.relative(SHEETS_INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
-    const sheetsFolderId = path.basename(SHEETS_INPUT_FOLDER);
-    const sheetsFolderUrl = `${sheetsFolderBaseUrl}/${sheetsFolderId}`;
-    const processed = merged.map((v) => {
-      v._xlsxPath = _xlsxPath;
-      v._sheetsFolderUrl = sheetsFolderUrl;
-      return v;
-    });
-    return processed;
+  public override async processInput(input: InputType) {
+    const { localPath } = input;
+    const xlsxData = await readFile(localPath);
+    return xlsxToJson(xlsxData);
   }
 
-  /**
-   * Parses an xlsx file, returning an object with sheet names as keys
-   * and a corresponding array of key-value pairs to represent the sheet data
-   * (assumes header provided in top row)
-   */
-  private convertXLSXSheetsToJson(xlsxFilePath: string) {
-    const json: Record<string, any> = {};
-    const workbook = xlsx.readFile(xlsxFilePath);
-    const { Sheets } = workbook;
-
-    for (const [sheetName, worksheet] of Object.entries(Sheets)) {
-      Object.values(worksheet).forEach(this.processCell);
-      json[sheetName] = xlsx.utils.sheet_to_json(worksheet);
-    }
-    return json;
-  }
-
-  /**
-   * Interpret cell formatting and update cell value
-   */
-  private processCell(cell: xlsx.CellObject) {
-    if (!cell) return;
-
-    // If bold or italics, include HTML in cell value
-    let html = cell.h;
-    if (
-      html !== undefined &&
-      typeof html === "string" &&
-      (html.includes("<b>") || html.includes("<em>") || html.includes("<i>"))
-    ) {
-      html = html.replace(/<span[^>]*>/g, "<span>"); // Remove span style
-      cell.v = html;
-    }
-
-    // If authored value was a percentage, override converted decimal value to preserve percentage representation
-    // xlsx library parser saves formatted text version of cell value in the .w field
-    // https://docs.sheetjs.com/docs/api/parse-options#parsing-options
-    const cellText = cell.w;
-    if (typeof cell.v === "number" && cellText?.includes("%")) {
-      cell.v = cellText;
-    }
-  }
-
-  /**
-   * App data sheets contain contents page with metadata that can be merged into regular data
-   * Merge and collate with other existing data, warning in case of overwrites
-   * @returns - array of all merged sheets (no grouping or collating)
-   */
-  private mergeContentsSheet(jsons: { json: any; xlsxPath: string }[]) {
-    const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
-    const releasedSummary = {};
-    const skippedSummary = {};
-    for (let el of jsons) {
-      const { json, xlsxPath } = el;
-      const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
-      if (contentList) {
-        for (const contents of contentList) {
-          const { flow_name, flow_type, module, parameter_list } = contents;
-          const filename = path.basename(xlsxPath, ".xlsx");
-          // only include flows marked as released in the contents
-          if (flow_name) {
-            releasedSummary[flow_name] = { flow_type, module, filename };
-            if (json.hasOwnProperty(flow_name)) {
-              if (merged.hasOwnProperty(flow_name)) {
-                this.logger.warn(chalk.yellow(`Duplicate flow: ${flow_name}`));
-              }
-              merged[flow_name] = { ...contents, rows: json[flow_name] };
-              // convert parameter list from string to object
-              if (parameter_list) {
-                merged[flow_name].parameter_list = parseAppDataCollectionString(
-                  parameter_list as any
-                );
-              }
-            } else {
-              this.logger.warn(chalk.yellow(`No Contents: ${flow_name}`));
-            }
-          } else {
-            skippedSummary[flow_name] = { flow_type, module, filename };
-          }
-        }
-      } else {
-        this.logger.warn(chalk.yellow(`No Content List: ${path.basename(xlsxPath)}`));
-      }
-    }
-    return Object.values(merged);
+  public override generateCacheEntryName(input: InputType): string {
+    const { localPath, md5Checksum } = input;
+    const filename = basename(localPath);
+    const extName = extname(localPath);
+    return filename.replace(`${extName}`, `.${md5Checksum}.json`);
   }
 }
