@@ -215,6 +215,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       }
     } catch (error) {
       console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
+      this.manifest = null;
     }
 
     return this.manifest;
