@@ -3418,6 +3418,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor-firebase/storage@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@capacitor-firebase/storage@npm:7.3.1"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+    firebase: ^11.2.0
+  peerDependenciesMeta:
+    firebase:
+      optional: true
+  checksum: 4bb2f2d13e9cc002fa54261f1816baa74ef4bb7762cf509329da2fb3bef3e238deb2dfa517d3cf308ed70ca92d16796742a0f2749d7d013d857fea0c51ca4df9
+  languageName: node
+  linkType: hard
+
 "@capacitor/android@npm:^7.0.0":
   version: 7.4.1
   resolution: "@capacitor/android@npm:7.4.1"
@@ -18156,6 +18169,7 @@ __metadata:
     "@capacitor-firebase/crashlytics": ^7.2.0
     "@capacitor-firebase/firestore": ^7.2.0
     "@capacitor-firebase/performance": ^7.2.0
+    "@capacitor-firebase/storage": ^7.3.1
     "@capacitor/android": ^7.0.0
     "@capacitor/app": ^7.0.0
     "@capacitor/cli": ^7.0.0
