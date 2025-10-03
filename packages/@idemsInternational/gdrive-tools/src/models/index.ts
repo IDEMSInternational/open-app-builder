@@ -9,7 +9,7 @@ export const GDRIVE_FILE_ENTRY_SCHEMA = z
     mimeType: z.string(),
     modifiedTime: z.string(),
     folderPath: z.string(),
-    lastModifyingUser: z.object({ displayName: z.string() }),
+    lastModifyingUser: z.object({ displayName: z.string() }).optional(),
     fileExtension: z.string().optional()
   })
   .transform((data) => ({
