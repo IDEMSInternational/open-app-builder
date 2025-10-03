@@ -239,9 +239,10 @@ export class AppDataConverter {
     const sorted = filtered.sort((a, b) => {
       if (a.flow_type === "data_pipe") return 1;
       if (b.flow_type === "data_pipe") return -1;
-      const aHash = `${a.flow_type}/${a.flow_name}/${a._xlsxPath}`;
-      const bHash = `${b.flow_type}/${b.flow_name}/${b._xlsxPath}`;
-      return aHash > bHash ? 1 : -1;
+      const aHash = `${a.flow_type}/${a.flow_name}`;
+      const bHash = `${b.flow_type}/${b.flow_name}`;
+      // if same name ensure override order from download order
+      return aHash >= bHash ? 1 : 1;
     });
     return sorted;
   }
