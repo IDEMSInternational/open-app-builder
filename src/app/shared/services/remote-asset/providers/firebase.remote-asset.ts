@@ -122,7 +122,7 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
         return {
           name: relativePath.split("/").pop() || relativePath,
           size: result.size,
-          lastModified: new Date(result.updatedAt || Date.now()).toISOString(),
+          lastModified: new Date(result.updatedAt).toISOString(),
           contentType: result.contentType,
         };
       }
