@@ -1,0 +1,81 @@
+$toggleHeight: 22px;
+$toggleWidth: 42px;
+$togglePadding: 12px;
+
+ion-toggle {
+  width: $toggleWidth;
+  height: $toggleHeight;
+}
+
+ion-toggle {
+  --track-background: var(--ion-color-gray-200);
+  --track-background-checked: var(--ion-color-primary-500);
+  --handle-background: var(--ion-item-background, white);
+  --padding-inline: $togglePadding;
+
+  &[data-mode~="ios"] {
+    --handle-background-checked: white;
+  }
+  &[data-mode~="md"] {
+    --handle-background-checked: var(--ion-color-primary);
+    --padding-inline: $togglePadding;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &[data-param-style~="in_button"],
+  &[data-variant~="in_button"] {
+    ion-toggle {
+      transform: translate(12px, -4px);
+    }
+    &[data-variant~="ios"] {
+      ion-toggle {
+        transform: translate(4px, 4px);
+      }
+    }
+  }
+
+  &[data-variant~="icon"] {
+    .icon-wrapper {
+      width: 24px;
+      margin: 12px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.label {
+  margin-left: var(--small-margin);
+  margin-right: var(--small-margin);
+  text-align: right;
+  line-height: 27px;
+}
+
+.center {
+  justify-content: center;
+}
+
+.center .label {
+  position: absolute;
+  right: 0;
+  max-width: calc(50% - 45px);
+}
+
+.right {
+  flex-direction: row-reverse;
+  .label {
+    text-align: left;
+  }
+}
+
+.toggle_wrapper {
+  align-self: baseline;
+  margin-top: 5px;
+}
