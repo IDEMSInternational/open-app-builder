@@ -451,6 +451,7 @@ export namespace FlowTypes {
     "open_external",
     "pop_up",
     "process_template",
+    "remote_function",
     "reset_app",
     "reset_data",
     "save_to_device",
