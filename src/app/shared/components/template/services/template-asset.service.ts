@@ -20,7 +20,10 @@ const DEFAULT_THEME_NAME = "theme_default";
 export class TemplateAssetService extends AsyncServiceBase {
   public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
 
-  // Cache computed signals for translated asset paths globally to avoid duplicate signal creation
+  /**
+   * Cache translated asset computed signals to avoid duplicate creation if same
+   * asset referenced in multiple templates or components
+   */
   private translatedAssetSignalCache = new Map<string, Signal<string | undefined>>();
 
   constructor(
@@ -55,21 +58,12 @@ export class TemplateAssetService extends AsyncServiceBase {
    * (if override assets exists)
    *
    * @returns signal with path to translated asset that will update on theme or language change
-   *
    * @param assetPath Path to the asset (will be cached globally)
    */
   public getTranslatedAssetSignal(assetPath: string) {
+    // Use cached signal if available, create if not
     if (!this.translatedAssetSignalCache.has(assetPath)) {
-      const computedSignal = computed(() => {
-        const theme = this.themeService.currentTheme();
-        const language = this.translateService.appLanguage();
-        const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
-        if (translatedPath) {
-          return translatedPath;
-        }
-
-        return undefined;
-      });
+      const computedSignal = this.createTranslatedAssetSignal(assetPath);
       this.translatedAssetSignalCache.set(assetPath, computedSignal);
     }
     return this.translatedAssetSignalCache.get(assetPath)!;
@@ -83,6 +77,22 @@ export class TemplateAssetService extends AsyncServiceBase {
     const currentThemeName = this.themeService.getCurrentTheme();
     const currentLanguageCode = this.translateService.app_language;
     return this.getAssetWithOverride(value, currentThemeName, currentLanguageCode);
+  }
+
+  /**
+   * Create a signal for a given named asset that automatically updates when
+   * any override conditions update (e.g. language or theme change and asset variant)
+   */
+  private createTranslatedAssetSignal(assetPath: string) {
+    return computed(() => {
+      const theme = this.themeService.currentTheme();
+      const language = this.translateService.appLanguage();
+      const translatedPath = this.getAssetWithOverride(assetPath, theme, language);
+      if (translatedPath) {
+        return translatedPath;
+      }
+      return undefined;
+    });
   }
 
   /**
