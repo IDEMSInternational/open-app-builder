@@ -273,7 +273,7 @@ export namespace FlowTypes {
   }
 
   /** Row types that do not display component but perform an action when processed */
-  type TemplateRowBaseType =
+  export type TemplateRowBaseType =
     | "items"
     | "nested_properties"
     | "set_default"
@@ -480,6 +480,7 @@ export namespace FlowTypes {
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
+    rawArgs?: any; // original args before evaluation
     params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;

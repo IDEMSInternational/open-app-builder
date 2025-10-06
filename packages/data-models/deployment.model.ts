@@ -89,6 +89,8 @@ export interface IDeploymentRuntimeConfig {
     /** Relative path of custom favicon asset to load from app_data assets */
     favicon_asset?: string;
   };
+
+  useReactiveTemplates?: boolean;
 }
 
 /** Deployment settings not available at runtime  */
@@ -229,6 +231,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: false,
   },
   web: {},
+  useReactiveTemplates: false,
 };
 
 /** Full example of just all config once merged with defaults */
