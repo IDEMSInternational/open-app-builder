@@ -84,8 +84,17 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
       // Check if the content is a data URL (Firebase's format sometimes)
       if (textContent.startsWith("data:application/json;base64")) {
         // Extract base64 content from data URL
-        const base64Content = textContent.split(",")[1];
-        return atob(base64Content);
+        const commaIndex = textContent.indexOf(",");
+        if (commaIndex !== -1 && commaIndex < textContent.length - 1) {
+          const base64Content = textContent.substring(commaIndex + 1);
+          return atob(base64Content);
+        } else {
+          console.warn(
+            "[Firebase Remote Asset] Invalid data URL format returned from firebase, missing base64 content. Requested asset path: " +
+              relativePath
+          );
+          return textContent;
+        }
       }
 
       // Regular text content
