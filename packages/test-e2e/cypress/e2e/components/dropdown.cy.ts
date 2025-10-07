@@ -72,4 +72,15 @@ describe("dropdown component", () => {
 
     cy.get(".dropdown-search").should("not.exist"); // Check that the search modal closes on select
   });
+
+  it("reacts to dynamic options changes", () => {
+    cy.getDataTest("dynamicDropdown").should("contain", "This is a dynamic value");
+
+    cy.getDataTest("dynamicValueButton").click();
+
+    cy.getDataTest("dynamicDropdown") // check initial value is selected
+      .click();
+
+    cy.getDataTest("dynamicDropdown").should("contain", "New Dynamic Value");
+  });
 });

@@ -65,6 +65,7 @@ export class EvaluationService {
    * todo: more expression types e.g. object/json and a more robust parsing system.
    * todo: Improve expressions by changing the syntax, maybe expressions can more closely
    *       resemble javascript string interpolation expressions.
+   * todo: This expression parser should happen in the template parsing process, not here.
    *
    * @param expression The expression to parse, which may represent an array of objects in a custom string format.
    * @returns
