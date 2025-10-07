@@ -56,7 +56,28 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
 
       return blob;
     } catch (error) {
-      console.error("[Supabase Remote Asset] Error downloading file:", error);
+      console.error(
+        "[Supabase Remote Asset] Error downloading file directly, falling back to public URL:",
+        error
+      );
+
+      // Fallback to public URL fetching
+      try {
+        const publicUrl = this.getPublicUrl(relativePath);
+        if (publicUrl) {
+          const response = await fetch(publicUrl);
+          if (response.ok) {
+            return await response.blob();
+          } else {
+            console.error(
+              `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
+            );
+          }
+        }
+      } catch (fallbackError) {
+        console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
+      }
+
       return null;
     }
   }
