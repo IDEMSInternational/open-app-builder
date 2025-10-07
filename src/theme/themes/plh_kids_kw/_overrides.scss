@@ -82,7 +82,7 @@
       border-radius: 0px;
       background-color: transparent;
       background: transparent;
-      color: var(--ion-color-secondary-contrast);
+      color: black;
       min-height: 64px;
       padding: 18px 24px;
       p {
@@ -316,13 +316,6 @@
           }
         }
       }
-    }
-  }
-
-  // Drawer
-  plh-drawer {
-    .drawer.secondary {
-      background-color: var(--ion-color-primary-variant);
     }
   }
 
