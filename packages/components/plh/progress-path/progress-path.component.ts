@@ -12,7 +12,7 @@ import { filter, map, switchMap } from "rxjs";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 import { DataItemsService } from "src/app/shared/components/template/components/data-items/data-items.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IPlhProgressPathParams {
   /** TEMPLATE_PARAMETER: "background_image_asset". Used to set the progress path background */
@@ -22,6 +22,11 @@ interface IPlhProgressPathParams {
    * and component will scroll to the bottom on page load. Default "bottom".
    * */
   startingPosition: "top" | "bottom";
+  /**
+   * TEMPLATE_PARAMETER: "module_count". The number of modules in the progress path. Default 9.
+   * TODO: extend to support other values
+   * */
+  moduleCount: 9 | 10;
 }
 
 @Component({
@@ -87,5 +92,10 @@ export class PlhProgressPathComponent
       "starting_position",
       "bottom"
     ) as IPlhProgressPathParams["startingPosition"];
+    this.params.moduleCount = getNumberParamFromTemplateRow(
+      this._row,
+      "module_count",
+      9
+    ) as IPlhProgressPathParams["moduleCount"];
   }
 }
