@@ -524,3 +524,41 @@ export function convertBlobToBase64(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
+
+/**
+ * Parse a string to an array of objects
+ * Expects string in the format:
+ * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'
+ * @param str string to parse
+ * @returns array of objects
+ */
+export function parseStringToObjectArray(str: string) {
+  // Detect array type expression: lines with 'key: ... | key2: ...;' format
+  if (typeof str === "string") {
+    // Split by semicolon, filter out empty lines
+    const lines = str
+      .split(";")
+      .map((line) => line.trim())
+      .filter((line) => line);
+    // Check if there are lines that contain at least one ':'
+    const isArrayOfObjectsType = lines.length > 0 && lines.every((line) => line.includes(":"));
+    if (isArrayOfObjectsType) {
+      return lines.map((line) => {
+        const obj: { [key: string]: string } = {};
+        // Split by '|', then parse each key-value pair
+        line.split("|").forEach((part) => {
+          const [key, ...rest] = part.split(":");
+          if (key && rest.length > 0) {
+            const value = rest.join(":").trim();
+            if (value !== "") {
+              obj[key.trim()] = value;
+            }
+          }
+        });
+        return obj;
+      });
+    }
+  }
+  // Fallback: return as-is for string, boolean, number
+  return str;
+}
