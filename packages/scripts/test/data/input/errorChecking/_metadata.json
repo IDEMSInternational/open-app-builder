@@ -1,0 +1,24 @@
+[
+  {
+    "id": "mock-gdrive-id-duplicate",
+    "name": "test_duplicate",
+    "mimeType": "application/vnd.google-apps.spreadsheet",
+    "modifiedTime": "2025-08-15T17:23:35.657Z",
+    "folderPath": "",
+    "lastModifyingUser": {
+      "displayName": "Test User"
+    },
+    "relativePath": "test_duplicate.xlsx"
+  },
+  {
+    "id": "mock-gdrive-id-duplicate",
+    "name": "test_errorChecking",
+    "mimeType": "application/vnd.google-apps.spreadsheet",
+    "modifiedTime": "2025-08-15T17:23:35.657Z",
+    "folderPath": "",
+    "lastModifyingUser": {
+      "displayName": "Test User"
+    },
+    "relativePath": "test_errorChecking.xlsx"
+  }
+]

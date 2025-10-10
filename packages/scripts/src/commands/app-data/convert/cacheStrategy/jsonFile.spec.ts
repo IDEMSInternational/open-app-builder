@@ -23,7 +23,8 @@ describe("Json File Cache", () => {
       rmdirSync(testCacheDir);
     }
     // Initialise cache
-    cache = new JsonFileCache(testCacheDir, 1);
+    cache = new JsonFileCache(testCacheDir);
+    cache.configure("test", 1);
     cache.clear();
   });
   afterAll(() => {
@@ -49,7 +50,7 @@ describe("Json File Cache", () => {
     expect(name).toEqual("5d41402abc4b2a76b9719d911017c592");
   });
   it("Throws error on invalid cache name", () => {
-    expect(() => cache.generateCacheEntryName(undefined)).toThrowError(
+    expect(() => cache.generateCacheEntryName(undefined)).toThrow(
       "Invalid cache entry name: undefined"
     );
   });
@@ -75,14 +76,12 @@ describe("Json File Cache", () => {
   });
 
   it("Gets cached entry", () => {
-    const newCache = new JsonFileCache(testCacheDir, 1);
-    const cachedEntry = newCache.get(testData.jsonEntry.expectedName);
+    const cachedEntry = cache.get(testData.jsonEntry.expectedName);
     expect(cachedEntry).toEqual(testData.jsonEntry.input);
   });
 
   it("Returns undefined on missing entry", () => {
-    const newCache = new JsonFileCache(testCacheDir, 1);
-    const cachedEntry = newCache.get("missing_data");
+    const cachedEntry = cache.get("missing_data");
     expect(cachedEntry).toBeUndefined();
   });
   it("Removes entry", () => {
@@ -99,7 +98,7 @@ describe("Json File Cache", () => {
 
   it("Invalidates cache on version update", () => {
     expect(readdirSync(cache.folderPath).length).toBeGreaterThan(1);
-    const updatedCache = new JsonFileCache(testCacheDir, 2);
+    cache.configure("test", 2);
     expect(readdirSync(cache.folderPath).length).toEqual(1);
   });
 });

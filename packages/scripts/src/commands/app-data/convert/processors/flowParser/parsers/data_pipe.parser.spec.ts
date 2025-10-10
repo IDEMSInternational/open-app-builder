@@ -12,9 +12,8 @@ const getTestData = () => ({
 describe("data_pipe Parser", () => {
   let parser: DataPipeParser;
   beforeEach(() => {
-    // HACK - setup parser with in-memory cache to avoid writing to disk
-    parser = new DataPipeParser(new FlowParserProcessor(null as any));
-    parser.flowProcessor.cache = new MockJsonFileCache();
+    const flowParser = new FlowParserProcessor({ cache: new MockJsonFileCache() });
+    parser = new DataPipeParser(flowParser);
     parser.flowProcessor.processedFlowHashmap = getTestData();
   });
   it("Populates generated data lists", async () => {

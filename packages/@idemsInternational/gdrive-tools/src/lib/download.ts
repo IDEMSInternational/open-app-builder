@@ -5,7 +5,7 @@ import logUpdate from "log-update";
 import path from "path";
 import PQueue from "p-queue";
 import { drive_v3 } from "googleapis";
-import { GaxiosResponse, GaxiosOptions } from "gaxios";
+import { GaxiosResponse, GaxiosOptions, GaxiosError } from "gaxios";
 import { PATHS } from "../paths";
 import {
   GDRIVE_OFFICE_MAPPING,
@@ -15,11 +15,15 @@ import {
   generateFolderFlatMapStats,
   ILocalFileWithStats,
   cleanupEmptyFolders,
+  getRelativeLocalPath,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
-import { IGdriveEntry } from "../models";
+import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "../models";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
+
+/** File to store file metadata returned by google drive api */
+const METADATA_FILENAME = "_metadata.json";
 
 export interface IDownloadOptions {
   folderId: string;
@@ -33,12 +37,11 @@ export interface IDownloadOptions {
 export class GDriveDownloader {
   private drive: drive_v3.Drive;
   private contentsPath: string;
-  private contentsData: IGDriveFileWithFolder[] = [];
-  private contentsFileName = "_contents.json";
+  private contentsData: IGdriveEntry[] = [];
 
   constructor(private options: IDownloadOptions) {
     const { outputPath } = this.options;
-    this.contentsPath = path.resolve(outputPath, this.contentsFileName);
+    this.contentsPath = path.resolve(outputPath, METADATA_FILENAME);
     // prepare folders
     fs.ensureDirSync(outputPath);
     fs.ensureDirSync(PATHS.LOGS_DIR);
@@ -71,17 +74,17 @@ export class GDriveDownloader {
       console.log(chalk.red("Full sync required before updating file", serverEntry.name));
       return;
     }
+    const { viewedByMeTime } = serverEntry;
     // HACK - gdrive ignores updates in quick succession, so ensure change detection whenever
     // viewedByMeTime changes (e.g. gsheet page reload)
-    if (serverEntry.viewedByMeTime) {
-      serverEntry.modifiedTime = serverEntry.viewedByMeTime;
+    if (viewedByMeTime) {
+      cachedEntry.modifiedTime = viewedByMeTime;
     }
     // we still call the main method used to download entire folder, just passing individual server file
-    const entryWithFolderPath = { ...serverEntry, folderPath: cachedEntry.folderPath };
     const actions = { ...SYNC_ACTIONS_EMPTY };
-    actions.updated.push(entryWithFolderPath);
+    actions.updated.push(cachedEntry);
     await this.processSyncActions(actions);
-    this.updateCacheContentsFile(entryWithFolderPath);
+    this.updateCacheContentsFile(cachedEntry);
   }
 
   public getCachedEntry(serverEntry: drive_v3.Schema$File) {
@@ -102,7 +105,7 @@ export class GDriveDownloader {
   }
 
   /** Download a full folder */
-  private async processDownloads(files: IGDriveFileWithFolder[]) {
+  private async processDownloads(files: IGdriveEntry[]) {
     // Generate list of files to download
     const actions = this.prepareSyncActionsList(files);
     await this.processSyncActions(actions);
@@ -111,25 +114,21 @@ export class GDriveDownloader {
   }
 
   /** Keep a local reference of all files in cache */
-  private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
+  private writeCacheContentsFile(files: IGdriveEntry[]) {
     const { outputPath } = this.options;
     // also add a relativePath for full path to local file
-    const filesWithRelativePath = files
-      .map((f) => ({
-        ...f,
-        relativePath: getRelativeLocalPath(f),
-      }))
+    const filtered = files
       // only include files downloaded in contents
       .filter((f) => fs.existsSync(path.resolve(outputPath, f.relativePath)))
       .sort((a, b) => (a.relativePath > b.relativePath ? 1 : -1));
-    const contents = JSON.stringify(filesWithRelativePath, null, 2);
-    const contentsPath = path.resolve(outputPath, this.contentsFileName);
+    const contents = JSON.stringify(filtered, null, 2);
+    const contentsPath = path.resolve(outputPath, METADATA_FILENAME);
     fs.writeFileSync(contentsPath, contents);
   }
-  private updateCacheContentsFile(file: IGDriveFileWithFolder) {
+  private updateCacheContentsFile(file: IGdriveEntry) {
     const { outputPath } = this.options;
-    const contentsPath = path.resolve(outputPath, this.contentsFileName);
-    const contents: IGDriveFileWithFolder[] = fs.readJSONSync(contentsPath);
+    const contentsPath = path.resolve(outputPath, METADATA_FILENAME);
+    const contents: IGdriveEntry[] = fs.readJSONSync(contentsPath);
     const updateIndex = contents.findIndex((entry) => entry.id === file.id);
     if (updateIndex > -1) {
       contents[updateIndex] = file;
@@ -187,14 +186,13 @@ export class GDriveDownloader {
   /**
    * Compare list of server files with local cache to determine new/updated/same/deleted
    */
-  private prepareSyncActionsList(serverFiles: IGDriveFileWithFolder[]) {
+  private prepareSyncActionsList(serverFiles: IGdriveEntry[]) {
     const { outputPath, filterFn } = this.options;
     const output: ISyncActions = { new: [], updated: [], same: [], deleted: [], ignored: [] };
 
     // generate hashmaps for easier lookup and compare of server and local files
     const localFilesHashmap = generateFolderFlatMapStats(outputPath);
-    const serverFilesHashmap: { [relative_path: string]: IGDriveFileWithFolder } = {};
-
+    const serverFilesHashmap = Object.fromEntries(serverFiles.map(v=>([v.relativePath,v])))
     // Compare server with local
     for (const serverFile of serverFiles) {
       (() => {
@@ -241,10 +239,7 @@ export class GDriveDownloader {
     }
     // compare local with server, mark for delete files no longer on server (except local contents file)
     Object.keys(localFilesHashmap).forEach((relativePath) => {
-      if (
-        !serverFilesHashmap[relativePath] &&
-        path.basename(relativePath) !== this.contentsFileName
-      ) {
+      if (!serverFilesHashmap[relativePath] && path.basename(relativePath) !== METADATA_FILENAME) {
         output.deleted.push({ folderPath: relativePath });
       }
     });
@@ -257,18 +252,11 @@ export class GDriveDownloader {
   }
 
   /**
-   * Compare google drive server and local files, using md5 checksums if exist or modified
-   * times if not (google sheets/docs don't retain md5 checksum)
+   * Compare google drive server and local files, using modified
+   * times as google-native formats (sheets/docs) don't retain md5 checksum
    */
-  private isServerFileSameAsLocalFile(
-    serverFile: IGDriveFileWithFolder,
-    localFile: ILocalFileWithStats
-  ) {
-    if (serverFile.md5Checksum) {
-      return serverFile.md5Checksum === localFile.checksum;
-    } else {
-      return serverFile.modifiedTime === localFile.mtime.toISOString();
-    }
+  private isServerFileSameAsLocalFile(serverFile: IGdriveEntry, localFile: ILocalFileWithStats) {
+    return serverFile.modifiedTime === localFile.mtime.toISOString();
   }
 
   /**
@@ -283,19 +271,20 @@ export class GDriveDownloader {
     // Create queue for processing requests in parallel
     const queue = new PQueue({ autoStart: false, concurrency: 10 });
     const allFolders = [];
-    const allFiles: IGDriveFileWithFolder[] = [];
+    const allFiles: IGdriveEntry[] = [];
     const [startTime] = process.hrtime();
     // Define recursive function
     const listRecursively = (folderId: string, folderPath = "") => {
       queue.add(async () => {
-        const folderContents = await listGdriveFolder(this.drive, folderId);
-        const folderFiles = folderContents.filter(
+        const folderContents: drive_v3.Schema$File[] = await listGdriveFolder(this.drive, folderId);
+        // include folderPath with each entry and validate using zod schema
+        const folderContentsWithFolderPath = folderContents.map((v) => ({ ...v, folderPath }));
+        const parsedContents = GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(folderContentsWithFolderPath);
+        const folderFiles = parsedContents.filter(
           (file) => file.mimeType !== GOOGLE_FOLDER_MIMETYPE
         );
-        folderFiles.forEach((f) => {
-          allFiles.push({ ...f, folderPath });
-        });
-        const subFolders = folderContents.filter(
+        allFiles.push(...folderFiles);
+        const subFolders = parsedContents.filter(
           (file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE
         );
         for (let subfolder of subFolders) {
@@ -319,32 +308,32 @@ export class GDriveDownloader {
   }
 
   /** Export a file from google drive, converting from drive files types to office where required */
-  private downloadGdriveFile(localTargetPath: string, file: IGDriveFileWithFolder) {
+  private downloadGdriveFile(localTargetPath: string, metadata: IGdriveEntry) {
     return new Promise<void>((resolve, reject) => {
+      const { modifiedTime, id, mimeType } = metadata;
       // Handle the export/download
       fs.createFileSync(localTargetPath);
       const dest = fs.createWriteStream(localTargetPath);
-      // assign mimetype for conversion from google file formats to office format
-      const mimeType = GDRIVE_OFFICE_MAPPING[file.mimeType] || file.mimeType;
       dest.on("close", () => {
         // assign the same modified time to the file as google drive file
-        const mtime = new Date(file.modifiedTime);
+        const mtime = new Date(modifiedTime);
         fs.utimesSync(localTargetPath, mtime, mtime);
         resolve();
       });
-      const params = { fileId: file.id, mimeType, alt: "media" };
+      const params = { fileId: id, mimeType, alt: "media" };
       const options: GaxiosOptions = { responseType: "stream", timeout: 30000 };
       // export gsheet/doc to office format
-      if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
+      if (GDRIVE_OFFICE_MAPPING[mimeType]) {
+        params.mimeType = GDRIVE_OFFICE_MAPPING[mimeType];
         this.drive.files.export(params, options, (err, res: GaxiosResponse) => {
-          if (err) handleFileDownloadError(err, file, localTargetPath);
+          if (err) handleFileDownloadError(err, metadata, localTargetPath);
           else res.data.pipe(dest);
         });
       }
       // download other files without conversion
       else {
         this.drive.files.get(params, options, (err, res: GaxiosResponse<any>) => {
-          if (err) handleFileDownloadError(err, file, localTargetPath);
+          if (err) handleFileDownloadError(err, metadata, localTargetPath);
           else res.data.pipe(dest);
         });
       }
@@ -352,61 +341,40 @@ export class GDriveDownloader {
   }
 }
 
-function getDownloader(options: IDownloadOptions) {
-  return new GDriveDownloader(options);
-}
-
-/**
- * Gdrive file meta only includes extensions if a native file type (not gsheet, gdoc etc.),
- * It also separates out relative parent folder path with file name prefix.
- * Generate a path that combines the relative path with file name and extension
- */
-function getRelativeLocalPath(entry: IGDriveFileWithFolder) {
-  const { folderPath, mimeType } = entry;
-  let targetFilename = entry.name;
-  // assign correct file extension if exporting
-  if (GDRIVE_OFFICE_MAPPING[mimeType]) {
-    targetFilename += `.${MIMETYPE_EXTENSIONS[mimeType]}`;
-  }
-  // add to hashmap for use in local-server comparison
-  return folderPath ? `${folderPath}/${targetFilename}` : targetFilename;
-}
-
-function handleFileDownloadError(err: Error, file: IGDriveFileWithFolder, localTargetPath: string) {
+function handleFileDownloadError(err: Error, metadata: IGdriveEntry, localTargetPath: string) {
+  console.error(err);
   fs.removeSync(localTargetPath);
-  let response = (err as any).response;
-  const msg2 = response?.statusText || err.message || "";
 
   // 403 usually critical (e.g. reached max limit)
-  if (response.status === 403 && response?.statusText === "Forbidden") {
+  if (err instanceof GaxiosError) {
     logError({
-      msg1: "Access to resource has been blocked, see more info at link below",
+      msg1: `Access to resource has been blocked ${metadata.relativePath}`,
+      msg2: err.message,
       logOnly: true,
     });
-    console.log(chalk.yellow(response.request.responseURL));
+    console.log(chalk.yellow(err.response.request.responseURL));
     // prevent further processing
     process.exit(1);
   }
+
   // Otherwise just log for now
   else {
+    let response = (err as any).response;
+    const msg2 = err.message || response?.statusText || "";
     logError({
-      msg1: `failed to download file: ${file.folderPath}/${file.name}`,
+      msg1: `failed to download file: ${metadata.folderPath}/${metadata.name}`,
       msg2,
       logOnly: true,
     });
   }
 }
 
-interface IGDriveFileWithFolder extends drive_v3.Schema$File {
-  /** list of parent folders to file */
-  folderPath: string;
-}
 interface ISyncActions {
-  new: IGDriveFileWithFolder[];
+  new: IGdriveEntry[];
   deleted: { folderPath: string }[];
-  updated: IGDriveFileWithFolder[];
-  same: IGDriveFileWithFolder[];
-  ignored: IGDriveFileWithFolder[];
+  updated: IGdriveEntry[];
+  same: IGdriveEntry[];
+  ignored: IGdriveEntry[];
   summary?: {
     new: number;
     updated: number;
@@ -421,8 +389,3 @@ const SYNC_ACTIONS_EMPTY: ISyncActions = {
   same: [],
   ignored: [],
 };
-
-interface IFileCompareItem {
-  file: IGDriveFileWithFolder;
-  cacheTargetPath: "";
-}

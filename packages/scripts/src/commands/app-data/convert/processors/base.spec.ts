@@ -1,46 +1,37 @@
 import BaseProcessor from "./base";
 
 import { clearLogs, getLogs } from "../utils";
-import { TEST_DATA_PATHS } from "../../../../../test/helpers/utils";
+import { MockJsonFileCache } from "../cacheStrategy/jsonFile.mock";
 
-const testData = [
-  {
-    input: "Hello",
-    output: { processed: "Hello" },
-  },
-];
+const testData = [{ string: "Hello" }];
 
-class TestProcessor extends BaseProcessor<string, any> {
+class TestProcessor extends BaseProcessor<any, any> {
   public async processInput(input: string) {
     return { processed: input };
   }
 }
 let processor: TestProcessor;
 
-/** yarn workspace scripts test -t base.spec.ts */
+// yarn workspace scripts test -t base.spec.ts
 describe("Base Processor", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     processor = new TestProcessor({
       namespace: "BaseProcessor",
-      paths: TEST_DATA_PATHS,
-      cacheVersion: new Date().getTime(),
+      cache: new MockJsonFileCache(),
     });
-    processor.cache.clear();
-  });
-  afterAll(() => {
-    processor.cache.clear();
+    processor.cache.configure("baseProcessor", 1);
   });
 
   it("Processes inputs", async () => {
-    const inputs = testData.map((t) => t.input);
-    const outputs = await processor.process(inputs);
-    expect(outputs).toEqual(testData.map((t) => t.output));
+    const outputs = await processor.process(testData);
+    expect(outputs.length).toEqual(1);
+    expect(outputs[0]).toEqual({ processed: { string: "Hello" } });
   });
 
-  it("Uses cache", () => {
-    const { input, output } = testData[0];
-    const cacheName = processor.cache.generateCacheEntryName(input);
-    expect(processor.cache.get(cacheName)).toEqual(output);
+  it("Uses cache", async () => {
+    const cacheName = processor.generateCacheEntryName(testData[0]);
+    await processor.process(testData);
+    expect(processor.cache.get(cacheName)).toBeTruthy();
   });
 });
 
@@ -59,8 +50,7 @@ describe("Deferred Processor", () => {
   beforeEach(() => {
     deferredProcessor = new DeferredProcessor({
       namespace: "BaseProcessor",
-      paths: TEST_DATA_PATHS,
-      cacheVersion: new Date().getTime(),
+      cache: new MockJsonFileCache(),
     });
     deferredProcessor.cache.clear();
   });
