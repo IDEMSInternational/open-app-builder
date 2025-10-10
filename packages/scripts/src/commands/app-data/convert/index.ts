@@ -9,7 +9,6 @@ import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
-  generateFolderFlatMap,
   createChildFileLogger,
   getLogs,
   Logger,
@@ -18,6 +17,10 @@ import {
   standardiseNewlines,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { generateFolderFlatMap, IContentsEntry } from "shared";
+import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
+
+const GRDIVE_METADATA_FILENAME = "_metadata.json";
 
 /***************************************************************************************
  * CLI
@@ -60,13 +63,16 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20241104.0;
+  public version = 20241104.15;
 
   public activeDeployment = ActiveDeployment.get();
 
   public logger = createChildFileLogger({ source: "converter" });
 
   cache: JsonFileCache;
+
+  private sheetJsons: { [folderId: string]: { [relativePath: string]: any } } = {};
+  private sheetJsonMeta: { [folderId: string]: IContentsEntry[] } = {};
 
   constructor(
     private options: IConverterOptions,
@@ -89,22 +95,25 @@ export class AppDataConverter {
 
   public async run() {
     const { inputFolders, outputFolder, cacheFolder } = this.options;
-    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
     const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
     const converterPaths: IConverterPaths = {
       SHEETS_CACHE_FOLDER: cacheFolder,
       SHEETS_INPUT_FOLDER: "",
       SHEETS_OUTPUT_FOLDER: outputFolder,
     };
+
     // Processing Steps
     for (const inputFolder of inputFolders) {
+      // 0. Extract list of files for conversion (with merged metadata)
+      const fileEntries = await this.listFilesForConversion(inputFolder);
+
       // 1.1 Generate a list of xlsx files in data source and convert to json
       const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
       converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
-      const list = generateFolderFlatMap(inputFolder, { filterFn });
       const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
       xlsxConverter.logger = this.logger;
-      const data = await xlsxConverter.process(Object.values(list));
+      const data = await xlsxConverter.process(fileEntries);
+
       // 1.2 Sort and filter output jsons
       const outputs = this.cleanFlowOutputs(data);
       // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
@@ -123,16 +132,38 @@ export class AppDataConverter {
         combinedOutputsHashmap[hashName] = output;
       }
       this.logger.debug({ step: inputFolder, outputs });
+
+      // Store intermediate sheet JSONs
+      const folderName = path.basename(inputFolder);
+      this.sheetJsons[folderName] = xlsxConverter.convertedSheetJsons;
+      this.sheetJsonMeta[folderName] = fileEntries.map(({ localPath, ...meta }) => meta);
     }
     // 2.1 - Convert all merged jsons to flow data using flow parsers
     const processor = new FlowParserProcessor(converterPaths);
     processor.logger = this.logger;
     const jsonFlows = Object.values(combinedOutputsHashmap);
     const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
+    await this.writeSheetJsons();
 
     // TODO - write to disk and log
     const { errors, warnings } = this.logOutputs(result);
     return { result, errors, warnings };
+  }
+
+  private async listFilesForConversion(baseFolder: string) {
+    // List all local xlsx files for conversion
+    const localFiles = generateFolderFlatMap(baseFolder, {
+      filterFn: (v) => v.endsWith(".xlsx"),
+      includeLocalPath: true,
+    });
+    // Merge custom meta populated from google drive downloader
+    const customMetadata = await this.readDriveMetaEntries(baseFolder);
+    for (const item of customMetadata) {
+      if (localFiles[item.relativePath]) {
+        localFiles[item.relativePath] = { ...localFiles[item.relativePath], ...item };
+      }
+    }
+    return Object.values(localFiles);
   }
 
   /**
@@ -148,6 +179,29 @@ export class AppDataConverter {
       message: "Duplicate flow name",
       details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
     });
+  }
+
+  private async readDriveMetaEntries(inputFolder: string) {
+    const metadataPath = path.resolve(inputFolder, GRDIVE_METADATA_FILENAME);
+    const metadataExists = await fs.pathExists(metadataPath);
+    if (metadataExists) {
+      const metadataContents = await fs.readJSON(metadataPath);
+      return GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(metadataContents).map((v) =>
+        this.mapDriveMetaToContents(v)
+      );
+    } else {
+      return [];
+    }
+  }
+
+  private mapDriveMetaToContents(metadata: IGdriveEntry): Partial<IContentsEntry> {
+    const { lastModifyingUser, relativePath, modifiedTime, id } = metadata;
+    return {
+      relativePath,
+      modifiedTime,
+      modifiedBy: lastModifyingUser?.displayName,
+      remoteUrl: `https://docs.google.com/spreadsheets/d/${id}`,
+    };
   }
 
   /** Create log of total warnings and errors */
@@ -211,5 +265,30 @@ export class AppDataConverter {
         fs.writeFileSync(flowOutputPath, standardiseNewlines(JSON.stringify(flow, null, 2)));
       });
     });
+  }
+
+  /**
+   * Populate raw json conversions of xlsx files to sheet_json folder
+   * This is used by some deployments as part of git tracking, and in the future
+   * may be used directly as a 2-step conversion process
+   */
+  private async writeSheetJsons() {
+    const { outputFolder } = this.options;
+    const sheetJsonFolder = path.resolve(outputFolder, "../", "sheet_json");
+    // Write individual jsons
+    for (const [folderId, convertedSheets] of Object.entries(this.sheetJsons)) {
+      for (const [relativePath, convertedContent] of Object.entries(convertedSheets)) {
+        const filePath = relativePath.replace(".xlsx", ".json");
+        const targetFile = path.join(sheetJsonFolder, folderId, filePath);
+        await fs.ensureDir(path.dirname(targetFile));
+        const fileContents = standardiseNewlines(JSON.stringify(convertedContent, null, 2));
+        await fs.writeFile(targetFile, fileContents);
+      }
+    }
+    // Write metadata
+    const metaFile = path.join(sheetJsonFolder, GRDIVE_METADATA_FILENAME);
+    const metaContents = standardiseNewlines(JSON.stringify(this.sheetJsonMeta, null, 2));
+    await fs.ensureDir(path.dirname(metaFile));
+    await fs.writeFile(metaFile, metaContents);
   }
 }
