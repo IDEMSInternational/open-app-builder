@@ -6,6 +6,7 @@ import { MarkdownPipe } from "./markdown.pipe";
 import { NumberingPipe } from "./numbering.pipe";
 import { PLHAssetPipe, TranslatedAssetPipe } from "./plh-asset.pipe";
 import { StyleListPipe } from "./styleList.pipe";
+import { TranslatePipe } from "./translate.pipe";
 
 const TEMPLATE_PIPES = [
   FilterDisplayComponentPipe,
@@ -14,7 +15,7 @@ const TEMPLATE_PIPES = [
   NumberingPipe,
   StyleListPipe,
 ];
-const STANDALONE_PIPES = [TranslatedAssetPipe];
+const STANDALONE_PIPES = [TranslatedAssetPipe, TranslatePipe];
 
 @NgModule({
   declarations: [...TEMPLATE_PIPES],
