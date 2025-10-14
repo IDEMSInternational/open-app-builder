@@ -1,12 +1,20 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
-import { getStringParamFromTemplateRow } from "../../../utils";
+
+interface IAuthorParams {
+  /** TEMPLATE_PARAMETER: "style". Default null */
+  style?: string;
+}
+
+interface IComponentParams {
+  style: "no-padding" | "rounded_corners";
+}
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [class]="style" [attr.data-param-style]="style">
-      <img *ngIf="_row.value" [src]="_row.value | plhAsset" />
+    <div class="tmpl-image-container" [attr.data-param-style]="params().style">
+      <img [src]="value() | translatedAsset" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -31,12 +39,13 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     `,
   ],
 })
-export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
-  style: "no-padding" = null;
+export class TmplImageComponent extends TemplateBaseComponent {
+  public params = computed(() => this.mapParams(this.parameterList()));
 
-  ngOnInit() {
-    if (this._row && this._row.parameter_list) {
-      this.style = getStringParamFromTemplateRow(this._row, "style", null) as any;
-    }
+  private mapParams(authorParams: IAuthorParams = {}): IComponentParams {
+    const { style } = authorParams;
+    return {
+      style: (style as IComponentParams["style"]) || null,
+    };
   }
 }
