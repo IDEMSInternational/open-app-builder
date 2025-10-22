@@ -8,7 +8,6 @@
       height: var(--buttons-full-height);
       width: var(--buttons-full-width);
       margin: 0 auto;
-      --border-radius: var(--ion-border-radius-rounded);
       --box-shadow: none;
 
       font-size: var(--buttons-font-size-large);
@@ -948,10 +947,10 @@
   plh-bottom-navigation-bar {
     .plh-bottom-nav-wrapper {
       border-top: 1px solid #e7e8e9;
-      .label p {
+      .label {
         color: #6686b1;
       }
-      .active-link .label p {
+      .active-link .label {
         color: #0066a1;
       }
     }

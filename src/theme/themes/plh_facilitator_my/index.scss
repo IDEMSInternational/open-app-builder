@@ -3,15 +3,11 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_facilitator_my {
-  @include utils.theme-selectors("plh_facilitator_my") {
-    @include overrides.overrides;
-
-    /** Authoring variables **/
-    $color-primary: hsl(209, 64%, 25%);
-    $color-secondary: hsl(17, 100%, 44%);
-    $page-background: white;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: "plh_facilitator_my",
+    $color-primary: hsl(209, 64%, 25%),
+    $color-secondary: hsl(17, 100%, 44%),
+    $page-background: white,
     $variable-overrides: (
       font-weight-standard: 500,
       font-weight-medium: 600,
@@ -45,6 +41,7 @@
       button-background-primary: var(--ion-color-primary-700),
       button-background-secondary: var(--ion-color-secondary-600),
       button-background-option: var(--ion-color-secondary-700),
+      button-border-radius: var(--ion-border-radius-rounded),
       buttons-full-height: 56px,
       buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
@@ -92,10 +89,8 @@
       // BOX SHADOW
       box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
       box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
-    );
-    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
+    )
+  ) {
+    @include overrides.overrides;
   }
 }

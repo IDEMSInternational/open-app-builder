@@ -214,7 +214,6 @@
       height: var(--buttons-full-height);
       width: var(--buttons-full-width);
       margin: 0 auto;
-      --border-radius: var(--ion-border-radius-rounded);
       --box-shadow: none;
 
       font-size: var(--buttons-font-size-large);
@@ -1112,14 +1111,14 @@
       a {
         color: unset;
       }
-      .label p {
+      .label {
         color: var(--ion-color-primary-200);
       }
       .icon img {
         color: var(--ion-color-primary-200);
       }
       .active-link {
-        .label p {
+        .label {
           color: var(--color-surface-white);
         }
         .icon img {

@@ -2,13 +2,16 @@
 @use "sass:color";
 
 @mixin theme-default {
-  @include utils.theme-selectors("default") {
-    /** Authoring variables **/
-    $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-    $color-secondary: hsl(31, 100%, 57%); // #fa9529
-    $page-background: null;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
+  @include utils.theme(
+    $theme-name: "default",
+    $color-primary: hsl(203, 76%, 21%),
+    // #0d3f5e
+    $color-secondary: hsl(31, 100%, 57%),
+    // #fa9529
+    $variable-overrides:
+      (
+        // an example variable for illustration purposes
+        demo-variable: red,
 
     /** Global and component variables **/
     $variable-overrides: (
@@ -27,6 +30,7 @@
       // button-background-primary: var(--gradient-primary-mid-vertical),
       // button-background-secondary: var(--gradient-secondary-mid-vertical),
       // button-background-option: var(--gradient-primary-dark-vertical),
+      // button-border-radius: var(--ion-border-radius-standard),
       round-button-background-secondary-light: var(--ion-color-yellow),
       // round-button-background-secondary-mid: #fa9529,
       // round-button-background-secondary-dark: #F87023,
