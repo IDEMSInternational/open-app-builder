@@ -1,5 +1,6 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
+$border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
 
 :host {
   width: 100%;
@@ -23,7 +24,7 @@ ion-button {
   white-space: pre-line;
   min-height: var(--buttons-min-height);
   padding: var(--regular-margin) var(--tiny-padding) 0;
-  --border-radius: var(--ion-border-radius-standard);
+  --border-radius: #{$border-radius};
   --box-shadow: var(--ion-default-box-shadow);
   display: flex;
   width: fit-content;
