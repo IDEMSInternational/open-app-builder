@@ -78,9 +78,11 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     firebase,
     git,
     name,
+    remote_assets,
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   } = deploymentConfig;
 
   return {
@@ -94,9 +96,11 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     error_logging,
     firebase,
     name,
+    remote_assets,
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   };
 }
 

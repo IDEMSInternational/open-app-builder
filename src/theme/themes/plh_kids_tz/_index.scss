@@ -3,18 +3,14 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_kids_tz {
-  @include utils.theme-selectors("plh_kids_tz") {
-    @include overrides.overrides;
-
-    /** Authoring variables **/
-    $color-primary: hsl(209, 64%, 25%); // #174168
-    $color-secondary: hsl(40, 97%, 49%); // #F6A504
-    $page-background: white;
-    $color-green: #92cb44;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: "plh_kids_tz",
+    $color-primary: hsl(209, 64%, 25%),
+    // #174168
+    $color-secondary: hsl(40, 97%, 49%),
+    // #F6A504
+    $page-background: white,
+    $color-green: #92cb44,
     $variable-overrides: (
       // Custom palette
       color-accent-pink: #ee007b,
@@ -113,18 +109,9 @@
       text-bubble-border-color-4: var(--ion-color-green),
       // BOX SHADOW
       box-shadow-primary: 0px 1.5px 8px rgba(36, 120, 199, 0.5),
-      box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6)
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $g: $color-green,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
+      box-shadow-secondary: 0px 1.5px 8px rgba(246, 207, 127, 0.6),
+    )
+  ) {
+    @include overrides.overrides;
   }
 }

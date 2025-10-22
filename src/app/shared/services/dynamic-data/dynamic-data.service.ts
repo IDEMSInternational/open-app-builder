@@ -7,7 +7,7 @@ import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { deepMergeObjects } from "../../utils";
-import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
+import { deepMergeArrays, isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
@@ -138,9 +138,11 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     row_id: string,
-    update: Partial<T>
+    update: Partial<T>,
+    /** Specify whether to allow new row creation (upsert) if no existing data */
+    options: { upsert?: boolean } = {}
   ) {
-    if (update) {
+    if (isObjectLiteral(update) && Object.keys(update).length > 0) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
@@ -151,6 +153,9 @@ export class DynamicDataService extends AsyncServiceBase {
         // update persisted db - only use partial update as will be merged
         this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
+        if (options.upsert) {
+          return this.insert(flow_type, flow_name, update);
+        }
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
         );

@@ -365,6 +365,23 @@ export class TemplateNavService extends SyncServiceBase {
    ****************************************************************************************************/
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
+      go_to: async (action) => {
+        return this.handleNavAction(action);
+      },
+      go_to_url: async ({ args }) => {
+        let [key, value] = args;
+        // because a normal url starts with https://, the ':' separates it into a key and a value and the value
+        // is sufficient for the url to launch.
+        console.log("[GO TO URL]", { key, value });
+        // if there is no http or https then there is no : to separate and we only have a key in the url. This
+        // case then adds '//' to the key so it recognises it as external and not local
+        // This removes the need to have http or https in the url.
+        if (!value) {
+          value = "//" + key;
+        }
+        return this.handleNavActionExternal(value);
+      },
+
       nav: async ({ args }) => {
         const [arg] = args;
         switch (arg) {

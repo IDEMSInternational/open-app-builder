@@ -196,13 +196,6 @@ const APP_UPDATES = {
   completeUpdateTemplate: "app_update_complete",
 };
 
-const ASSET_PACKS = {
-  enabled: false,
-  /** By convention, this should match the deployment name */
-  bucketName: "",
-  folderName: "asset_packs",
-};
-
 const TASKS = {
   enabled: false,
   // The name of the field that tracks the currently highlighted task group
@@ -224,7 +217,6 @@ const APP_CONFIG = {
   APP_SKINS,
   APP_THEMES,
   APP_UPDATES,
-  ASSET_PACKS,
   FEEDBACK_MODULE_DEFAULTS,
   LAYOUT,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
