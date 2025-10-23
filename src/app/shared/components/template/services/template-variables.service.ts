@@ -175,6 +175,17 @@ export class TemplateVariablesService extends AsyncServiceBase {
     context: FlowTypes.TemplateRowEvalContext
   ) {
     const fullExpression = evaluators[0].fullExpression;
+
+    // HACK: Expression should have already been translated, but ensure translation here to catch some edge cases
+    const translatedFullExpression = this.templateTranslateService.translateValue(fullExpression);
+
+    if (translatedFullExpression !== fullExpression) {
+      evaluators = evaluators.map((e) => ({
+        ...e,
+        fullExpression: translatedFullExpression,
+      }));
+    }
+
     log_group(fullExpression);
     // create a base context of variables and functions that will be available when evaluating javascript
     let calcContext = this.templateCalcService.getCalcContext();
@@ -230,8 +241,12 @@ export class TemplateVariablesService extends AsyncServiceBase {
       (a, b) => b.matchedExpression.length - a.matchedExpression.length
     );
 
-    const evaluated = await this.parseContextExpression(context, fullExpression, sortedEvaluators);
-    log("[evaluated]", fullExpression, { evaluated, evaluators, context });
+    const evaluated = await this.parseContextExpression(
+      context,
+      translatedFullExpression,
+      sortedEvaluators
+    );
+    log("[evaluated]", translatedFullExpression, { evaluated, evaluators, context });
     log_groupEnd();
     return evaluated;
   }
