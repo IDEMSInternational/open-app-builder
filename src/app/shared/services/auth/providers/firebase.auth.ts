@@ -5,6 +5,8 @@ import {
   User,
   SignInResult,
 } from "@capacitor-firebase/authentication";
+import { FirebaseError } from "firebase/app";
+import { AuthErrorCodes } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser, ISignInProvider } from "../types";
@@ -84,6 +86,35 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   }
 
   public override async deleteAccount() {
+    const currentUser = this.authUser();
+    if (!currentUser) {
+      console.error("[Firebase Auth] Delete account failed, no user logged in");
+      return this.authUser();
+    }
+
+    try {
+      await this.deleteUser();
+    } catch (error) {
+      if (
+        error instanceof FirebaseError &&
+        error.code === AuthErrorCodes.CREDENTIAL_TOO_OLD_LOGIN_AGAIN
+      ) {
+        try {
+          console.log("[Firebase Auth] re-authenticating user to delete account");
+          await this.reauthenticate();
+          await this.deleteUser();
+        } catch (reauthError) {
+          console.error("[Firebase Auth] re-authentication failed:", reauthError);
+        }
+      } else {
+        console.error("[Firebase Auth] error deleting user account:", error);
+      }
+    }
+
+    return this.authUser();
+  }
+
+  private async deleteUser() {
     await FirebaseAuthentication.deleteUser();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
@@ -127,6 +158,18 @@ export class FirebaseAuthProvider extends AuthProviderBase {
         const providerId = user.providerData?.[0]?.providerId;
         this.signIn(providerId as any);
       }
+    }
+  }
+
+  /**
+   * Re-authenticate the currently logged in user.
+   * Recent sign in is required before some sensitive actions (e.g. deleting account)
+   */
+  private async reauthenticate() {
+    const { user } = await FirebaseAuthentication.getCurrentUser();
+    if (user) {
+      const providerId = user.providerData?.[0]?.providerId;
+      await this.signIn(providerId as any);
     }
   }
 }

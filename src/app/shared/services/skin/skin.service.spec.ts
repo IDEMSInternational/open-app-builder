@@ -71,7 +71,7 @@ describe("SkinService", () => {
         },
         { provide: TemplateService, useValue: new MockTemplateService() },
         // TODO - create better mock and test methods
-        { provide: ThemeService, useValue: new MockThemeService() },
+        { provide: ThemeService, useClass: MockThemeService },
       ],
     });
     service = TestBed.inject(SkinService);
