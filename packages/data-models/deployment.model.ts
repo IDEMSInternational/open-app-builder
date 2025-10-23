@@ -75,6 +75,15 @@ export interface IDeploymentRuntimeConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
+  /** 3rd party integration for remote asset storage and sync */
+  remote_assets?: {
+    /** Enable remote asset storage and sync by specifying provider */
+    provider: "supabase";
+    /** By convention, this should match the deployment name */
+    bucketName: string;
+    folderName: string;
+  };
+
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
   shared_data?: {
     provider: "firebase";
@@ -89,6 +98,8 @@ export interface IDeploymentRuntimeConfig {
     /** Relative path of custom favicon asset to load from app_data assets */
     favicon_asset?: string;
   };
+
+  useReactiveTemplates?: boolean;
 }
 
 /** Deployment settings not available at runtime  */
@@ -229,6 +240,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: false,
   },
   web: {},
+  useReactiveTemplates: false,
 };
 
 /** Full example of just all config once merged with defaults */

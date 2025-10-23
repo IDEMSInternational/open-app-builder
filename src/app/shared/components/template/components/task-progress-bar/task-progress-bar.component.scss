@@ -51,11 +51,14 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
 
 // progress-wheel
 .task-progress-wheel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .progress-container {
     position: relative;
     max-width: 150px;
     height: 150px;
-    margin-bottom: 48px;
   }
 
   .progress-wheel {
@@ -91,14 +94,11 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
   }
 
   .wheel-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: -5px;
+    width: 100%;
+    margin: 16px auto;
+    font-size: var(--font-size-text-small);
+    text-align: center;
     color: var(--ion-color-gray-600);
-    h4 {
-      font-weight: var(--font-weight-bold);
-    }
+    font-weight: var(--font-weight-bold);
   }
 }
