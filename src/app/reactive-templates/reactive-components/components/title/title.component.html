@@ -1,0 +1,22 @@
+<div
+  class="title-wrapper"
+  [class]="params.style.value()"
+  [attr.data-variant]="params.variant.value()"
+>
+  <h1
+    [style.textAlign]="params.textAlign.value()"
+    [class]="'tiny standard' + ' ' + params.style.value()"
+    [innerHTML]="value() | markdown"
+    [attr.data-test]="name()"
+  ></h1>
+  @if (params.help.value()) {
+    <ion-icon
+      name="help-circle-outline"
+      class="title-help"
+      [pTooltip]="params.help.value()"
+      [tooltipPosition]="params.tooltipPosition.value()"
+      tooltipEvent="click"
+      [attr.data-test]="name() + 'Tooltip'"
+    ></ion-icon>
+  }
+</div>
