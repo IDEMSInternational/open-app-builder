@@ -8,7 +8,7 @@ h3 {
 }
 
 p {
-  margin: var(--margin-text, var(--paragraph-spacing, var(--tiny-margin))) 0;
+  margin: var(--margin-text, var(--paragraph-spacing, 0.75em)) 0;
 }
 
 .standard {
