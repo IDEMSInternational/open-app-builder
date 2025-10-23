@@ -151,7 +151,11 @@ describe("TemplateVariablesService", () => {
         provideHttpClientTesting(),
         {
           provide: TemplateTranslateService,
-          useValue: { ready: async () => true, translateRow: (row) => row },
+          useValue: {
+            ready: async () => true,
+            translateRow: (row) => row,
+            translateValue: (value) => value,
+          },
         },
       ],
     });
