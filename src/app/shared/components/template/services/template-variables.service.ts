@@ -176,7 +176,7 @@ export class TemplateVariablesService extends AsyncServiceBase {
   ) {
     const fullExpression = evaluators[0].fullExpression;
 
-    // HACK: Ensure expression is translated (evaluators may be created from untranslated strings in some cases)
+    // Ensure expression is translated (evaluators may be created from untranslated strings in some cases)
     const translatedFullExpression = this.templateTranslateService.translateValue(fullExpression);
 
     if (translatedFullExpression !== fullExpression) {
