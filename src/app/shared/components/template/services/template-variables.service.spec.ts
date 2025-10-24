@@ -10,6 +10,7 @@ import { TemplateCalcService } from "./template-calc.service";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MockTemplateCalcService } from "./template-calc.service.mock.spec";
 import { TemplateTranslateService } from "./template-translate.service";
+import { MockTemplateTranslateService } from "./template-translate.service.spec";
 import { FlowTypes } from "packages/data-models";
 
 const MOCK_APP_DATA = {};
@@ -151,11 +152,7 @@ describe("TemplateVariablesService", () => {
         provideHttpClientTesting(),
         {
           provide: TemplateTranslateService,
-          useValue: {
-            ready: async () => true,
-            translateRow: (row) => row,
-            translateValue: (value) => value,
-          },
+          useValue: new MockTemplateTranslateService(),
         },
       ],
     });
@@ -255,5 +252,69 @@ describe("TemplateVariablesService", () => {
       }
     );
     expect(res).toEqual({ _nested_name: `button_id_1` });
+  });
+
+  it("Translatable expression with dynamic fields gets translated before being evaluated", async () => {
+    const translationMap: Record<string, string> = {
+      "Hi @fields.string_field how are you feeling today?":
+        "Hola @fields.string_field ¿cómo te sientes hoy?",
+    };
+
+    // Reset TestBed and reconfigure with custom mock translate service
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      imports: [],
+      providers: [
+        {
+          provide: TemplateFieldService,
+          useValue: new MockTemplateFieldService(MOCK_FIELDS),
+        },
+        {
+          provide: AppDataService,
+          useValue: new MockAppDataService(MOCK_APP_DATA),
+        },
+        {
+          provide: TemplateCalcService,
+          useValue: new MockTemplateCalcService(),
+        },
+        {
+          provide: CampaignService,
+          useValue: {
+            ready: async () => true,
+            getNextCampaignRows: getNextCampaignRowsSpy,
+          },
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+        {
+          provide: TemplateTranslateService,
+          useValue: new MockTemplateTranslateService(translationMap),
+        },
+      ],
+    });
+    service = TestBed.inject(TemplateVariablesService);
+    await service.ready();
+
+    const originalFullExpression = "Hi @fields.string_field how are you feeling today?";
+    const context: FlowTypes.TemplateRowEvalContext = {
+      ...MOCK_CONTEXT_BASE,
+      row: {
+        ...MOCK_CONTEXT_BASE.row,
+        value: originalFullExpression,
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: originalFullExpression,
+              matchedExpression: "@fields.string_field",
+              type: "fields",
+              fieldName: "string_field",
+            },
+          ],
+        },
+      },
+    };
+
+    const result = await service.evaluatePLHData(context.row.value, context);
+    expect(result).toEqual("Hola test_string_value ¿cómo te sientes hoy?");
   });
 });
