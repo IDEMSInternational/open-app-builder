@@ -1,4 +1,5 @@
 import type { IDeploymentWorkflows } from "./workflow.model";
+import path from "path";
 
 const childWorkflows: IDeploymentWorkflows = {
   generate: {
@@ -6,18 +7,33 @@ const childWorkflows: IDeploymentWorkflows = {
     steps: [
       // Prompt folder path if not specified
       {
-        name: "folder path prompt",
+        name: "folder path",
         condition: async ({ args }) => !args[0],
         function: async ({ tasks, args }) => {
           const folderPath = await tasks.userInput.promptInput("Enter folder path:");
           args[0] = folderPath;
         },
       },
+      // Prompt asset pack name if not specified
+      {
+        name: "asset pack name",
+        condition: async ({ args }) => !args[1],
+        function: async ({ tasks, args }) => {
+          const folderPath = args[0];
+          const defaultName = path.basename(folderPath);
+          const assetPackName = await tasks.userInput.promptInput(
+            `Enter asset pack name:`,
+            defaultName
+          );
+          args[1] = assetPackName;
+        },
+      },
       {
         name: "generate",
         function: async ({ tasks, args, config }) => {
           const folderPath = args[0];
-          return tasks.assetPack.generate({ folderPath });
+          const assetPackName = args[1];
+          return tasks.assetPack.generate({ folderPath, assetPackName });
         },
       },
     ],
