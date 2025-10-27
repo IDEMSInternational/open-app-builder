@@ -4,11 +4,20 @@ const childWorkflows: IDeploymentWorkflows = {
   generate: {
     label: "Generate asset pack configuration",
     steps: [
+      // Prompt folder path if not specified
+      {
+        name: "folder path prompt",
+        condition: async ({ args }) => !args[0],
+        function: async ({ tasks, args }) => {
+          const folderPath = await tasks.userInput.promptInput("Enter folder path:");
+          args[0] = folderPath;
+        },
+      },
       {
         name: "generate",
-        function: async ({ tasks }) => {
-          // TODO: Add configuration options as needed
-          return tasks.assetPack.generate({});
+        function: async ({ tasks, args, config }) => {
+          const folderPath = args[0];
+          return tasks.assetPack.generate({ folderPath });
         },
       },
     ],
