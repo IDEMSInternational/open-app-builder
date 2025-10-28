@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
 import { extractDynamicEvaluators } from "packages/data-models/functions";
+import { ArrayOfObjectsParser } from "./type-parsers/array-of-objects.parser";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -10,7 +11,8 @@ export class EvaluationService {
 
   constructor(
     private variableStore: VariableStore,
-    private namespaceService: NamespaceService
+    private namespaceService: NamespaceService,
+    private arrayOfObjectsParser: ArrayOfObjectsParser
   ) {}
 
   public evaluateExpression<T>(expression: string | number | boolean, namespace: string): T {
@@ -51,7 +53,10 @@ export class EvaluationService {
     this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
 
     return this.evaluator.evaluate(
-      this.namespaceService.getNamespacedExpression(namespace, expression)
+      this.namespaceService.getNamespacedExpression(
+        namespace,
+        this.arrayOfObjectsParser.parseExpression(expression)
+      )
     );
   }
 }
