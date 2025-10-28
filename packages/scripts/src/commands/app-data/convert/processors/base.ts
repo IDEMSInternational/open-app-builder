@@ -33,8 +33,9 @@ class BaseProcessor<InputType = any, OutputType = any> {
    */
   async process(inputs: InputType[] = []): Promise<OutputType[]> {
     // add queue process update logs
-    const total = inputs.length;
+    const baseTotal = inputs.length;
     this.queue.on("next", () => {
+      const total = baseTotal + Object.keys(this.deferredCounter).length;
       const queueCounter = total - this.queue.size - this.queue.pending;
       const logCount = `${queueCounter}/${total} processed`;
       logUpdate(chalk.blue(`[ ${this.context.namespace} ] ${logCount}`));
