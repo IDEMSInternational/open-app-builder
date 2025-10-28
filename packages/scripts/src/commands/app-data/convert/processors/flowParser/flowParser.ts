@@ -6,7 +6,7 @@ import BaseProcessor from "../base";
 import { JsonFileCache } from "../../cacheStrategy/jsonFile";
 import { createHash } from "crypto";
 
-const cacheVersion = 20250729.0;
+const cacheVersion = 20251028.6;
 const namespace = "FlowParserProcessor";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
@@ -67,7 +67,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   }
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
-    const { flow_name, flow_type, _xlsxPath } = flow;
+    const { flow_name, flow_type } = flow;
     this.processedFlowHashmap[flow_type] ??= {};
     this.processedFlowHashmapWithMeta[flow_type] ??= {};
     // NOTE - duplicate flows are identified up during main converter
