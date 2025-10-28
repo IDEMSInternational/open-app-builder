@@ -39,7 +39,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private onTemplateInitialised() {
     for (const row of this.row().rows) {
-      this.setTemplateVariable(row);
+      this.setChildVariable(row);
     }
   }
 
@@ -51,13 +51,31 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
       let sub = this.variableStore
         .watchMultiple(this.evaluationService.getDependencies(row.value, this.namespace()))
         .subscribe(() => {
-          this.setTemplateVariable(row);
+          this.setChildVariable(row);
         });
       this.childDependencySubscriptions.push(sub);
     }
   }
 
-  private setTemplateVariable(row: FlowTypes.TemplateRow) {
+  private setChildVariable(row: FlowTypes.TemplateRow) {
+    const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
+    const isStaticValue = dependencies && dependencies.length === 0;
+
+    if (isStaticValue) {
+      this.setChildExpression(row);
+    } else {
+      this.setChildValue(row);
+    }
+  }
+
+  private setChildExpression(row: FlowTypes.TemplateRow) {
+    const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
+    if (this.rowRegistry.has(rowFullName)) {
+      this.rowRegistry.get(rowFullName)?.setExpression(row.value);
+    }
+  }
+
+  private setChildValue(row: FlowTypes.TemplateRow) {
     this.variableStore.set(
       this.namespaceService.getFullName(this.name(), row.name),
       this.evaluationService.evaluateExpression(row.value, this.namespace())

@@ -6,6 +6,7 @@ import { TextBoxComponent } from "./text-box/text-box.component";
 import { TextComponent } from "./text/text.component";
 import { TitleComponent } from "./title/title.component";
 import { ToggleBarComponent } from "./toggle-bar/toggle-bar";
+import { QueryComponent } from "./query/query.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   button: ButtonComponent,
@@ -16,4 +17,5 @@ export const REACTIVE_COMPONENT_MAP = {
   text_box: TextBoxComponent,
   title: TitleComponent,
   toggle_bar: ToggleBarComponent,
+  query: QueryComponent,
 };
