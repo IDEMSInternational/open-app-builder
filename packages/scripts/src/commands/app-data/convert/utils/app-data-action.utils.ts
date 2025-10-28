@@ -38,6 +38,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
   if (!Object.keys(actionTriggers).find((t) => actionString.startsWith(t))) {
     actionString = `click | ${actionString}`;
   }
+  const _cleaned = actionString;
   const parts = actionString.split("|").map((s) => s.trim());
   const trigger = parts[0] as any;
   const action: FlowTypes.TemplateRowAction = {
@@ -45,6 +46,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     action_id: null,
     args: [],
     _raw,
+    _cleaned,
   };
   if (parts[1]) {
     // e.g `completed | emit:completed`

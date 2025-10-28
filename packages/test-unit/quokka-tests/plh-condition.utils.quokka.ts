@@ -206,6 +206,7 @@ interface ICondition {
   _satisfied?: boolean;
   /** debug info  */
   _raw?: string;
+  _cleaned?: string;
   _parsed?: string[][];
 }
 function booleanStringToBoolean(str: string) {
