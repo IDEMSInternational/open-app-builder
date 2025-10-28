@@ -53,7 +53,7 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     /** flow source metdata */
-    _source: {
+    _source?: {
       path?: string;
       url?: string;
     };
