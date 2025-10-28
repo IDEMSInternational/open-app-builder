@@ -155,7 +155,6 @@ describe("RowProcessor - handleSpecialFieldTypes", () => {
           action_id: "set_field",
           args: ["test_field", true],
           _raw: "click | set_field : test_field : true",
-          _cleaned: "click | set_field : test_field : true",
         },
       ],
     });
