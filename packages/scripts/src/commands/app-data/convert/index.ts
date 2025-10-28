@@ -90,7 +90,6 @@ export class AppDataConverter {
   public async run() {
     // 1. XLSX -> Sheet JSON
     let allSheetJsons: ISheetJsonWithMeta[] = [];
-
     for (const inputFolder of this.options.inputFolders) {
       // Extract list of files for conversion
       const fileEntries = await this.listFilesForConversion(inputFolder);
@@ -107,14 +106,16 @@ export class AppDataConverter {
       await this.writeSheetJsons(path.basename(inputFolder), sheetJsons);
     }
 
-    // 2. Merge jsons with contents sheet, sort and filter
+    // 2. Merge jsons with contents sheet, filter, apply direct overrides and sort
     const mergedJsons = allSheetJsons.map((v) => this.mergeContentsSheet(v));
-    const filteredJsons = this.cleanFlowOutputs(mergedJsons.flat());
+    const allJsons = mergedJsons.flat();
+    const filteredJsons = this.applyFlowFilters(allJsons);
+    const sortedJsons = this.applyFlowSort(filteredJsons);
 
     // 3. Process Flow Data
     const processor = new FlowParserProcessor({ cache: this.cache });
     processor.logger = this.logger;
-    const result = (await processor.process(filteredJsons)) as IParsedWorkbookData;
+    const result = (await processor.process(sortedJsons)) as IParsedWorkbookData;
     this.writeOutputJsons(result);
 
     // 4. Extract Logs and return
@@ -140,9 +141,13 @@ export class AppDataConverter {
             merged[flow_name] = {
               ...contents,
               rows: sheetData[flow_name],
+              // HACK - temp hide properties to make it eaiser to review PR diffs
+              // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
+              // _remoteFolder: _metadata.folderName,
+              // _remoteUrl: _metadata.remoteUrl,
               _xlsxPath: _metadata.relativePath,
-              _remoteFolder: _metadata.folderName,
-              _remoteUrl: _metadata.remoteUrl,
+              // TODO - remove post https://github.com/IDEMSInternational/open-app-builder/pull/3166
+              _sheetsFolderUrl: `https://drive.google.com/drive/u/0/folders/${_metadata.folderName}`,
             };
             // convert parameter list from string to object
             // TODO - handle converting in parser
@@ -225,26 +230,26 @@ export class AppDataConverter {
     return { errors, warnings };
   }
 
-  /** Filter undefined, non-released and filter-fn excluded sheets, and apply custom sort ordering */
-  private cleanFlowOutputs(flows: FlowTypes.FlowTypeWithData[]) {
+  /** Filter undefined, non-released and filter-fn excluded sheets */
+  private applyFlowFilters(flows: FlowTypes.FlowTypeWithData[]) {
     // concat array of arrays to single array
     const { sheets_filter_function } = this.activeDeployment.app_data;
-    const filtered = flows
+    return flows
       .filter((flow) => flow.status === "released")
       .filter((flow) => sheets_filter_function(flow as any));
+  }
 
-    //
-
-    // sort by flow type and so that data pipes are processed last (depend on other lists)
-    const sorted = filtered.sort((a, b) => {
+  private applyFlowSort(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows.sort((a, b) => {
+      // ensure data pipes are processed last (depend on other lists)
       if (a.flow_type === "data_pipe") return 1;
       if (b.flow_type === "data_pipe") return -1;
       const aHash = `${a.flow_type}/${a.flow_name}`;
       const bHash = `${b.flow_type}/${b.flow_name}`;
       // if same name ensure override order from download order
-      return aHash >= bHash ? 1 : 1;
+      if (aHash === bHash) return 0;
+      return aHash > bHash ? 1 : -1;
     });
-    return sorted;
   }
 
   /** Write individual converted jsons to flow_type folders */
