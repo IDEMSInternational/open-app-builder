@@ -23,6 +23,18 @@
 export class JSEvaluator {
   private evaluationContextBase: string;
 
+  private readonly restrictedIdentifiers = [
+    "window",
+    "name",
+    "globalThis",
+    "self",
+    "document",
+    "parent",
+    "top",
+    "frames",
+    "global",
+  ];
+
   constructor() {
     this.setGlobalContext({});
   }
@@ -51,7 +63,15 @@ export class JSEvaluator {
     const functionString = Object.entries(context.functions ?? {})
       .map(([name, fn]) => `var ${name} = ${fn}`)
       .join(";");
-    this.evaluationContextBase = `"use strict"; ${constantString}; ${functionString}; return`;
+
+    // Prevent access to certain global identifiers by redefining them as strings
+    // Defined has strings instead of null in the case where a string is being 'tested' as a js expression
+    // This stops access to window, document etc
+    const restrictedString = this.restrictedIdentifiers
+      .map((name) => `var ${name} = "${name}"`)
+      .join(";");
+
+    this.evaluationContextBase = `"use strict"; ${restrictedString} ${constantString}; ${functionString}; return`;
 
     return this;
   }
