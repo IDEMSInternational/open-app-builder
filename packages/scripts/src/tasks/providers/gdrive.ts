@@ -34,10 +34,11 @@ const authorize = async () => {
  */
 const download = async (options: {
   folderId: string;
+  folderName?: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }) => {
-  const { folderId, filterFn } = options;
-  const outputPath = getOutputFolder(folderId);
+  const { folderId, folderName, filterFn } = options;
+  const outputPath = getOutputFolder(folderId, folderName);
   const dlOptions: IDownloadOptions = {
     ...getCommonOptions(),
     folderId,
@@ -50,9 +51,9 @@ const download = async (options: {
   return outputPath;
 };
 
-const getOutputFolder = (folderId: string) => {
+const getOutputFolder = (folderId: string, folderName?: string) => {
   const { _workspace_path } = WorkflowRunner.config;
-  return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
+  return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderName || folderId);
 };
 
 const getAuthTokenPath = () => {

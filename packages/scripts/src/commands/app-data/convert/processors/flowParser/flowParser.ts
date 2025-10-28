@@ -32,18 +32,18 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
 
   /**
    * Additional hashmap with full flow data (not just rows), for use in tracking flow duplicates
-   * (could use processedFlowHashmap but would require refactor to retain _xlsx path as well as rows)
+   * (could use processedFlowHashmap but would require refactor to retain _source path as well as rows)
    */
   public processedFlowHashmapWithMeta: {
     [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
 
   public override processInput(flow: FlowTypes.FlowTypeWithData) {
-    const { flow_name, flow_type, _xlsxPath } = flow;
+    const { flow_name, flow_type, _source } = flow;
     const parser = this.parsers[flow_type];
     if (!parser) {
       const message = `No parser available for flow_type: ${flow_type}`;
-      this.logger.error({ message, details: { _xlsxPath, flow_name, flow_type } });
+      this.logger.error({ message, details: { ..._source, flow_name, flow_type } });
       return null;
     }
     try {
