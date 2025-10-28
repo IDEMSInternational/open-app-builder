@@ -57,23 +57,33 @@ const workflows: IDeploymentWorkflows = {
         name: "sheets_dl",
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
-          let { sheets_folder_ids, sheets_folder_id, sheets_filter_function } = config.google_drive;
-          if (!sheets_folder_ids) {
+          let { sheets_folder_id, sheets_folder_ids, sheets_folders } = config.google_drive;
+          if (sheets_folder_id && !sheets_folders) {
             logWarning({
               msg1: "[sheets_folder_id] config property is deprecated",
-              msg2: "use [sheets_folder_ids] instead",
+              msg2: "use [sheets_folders] instead",
             });
-            sheets_folder_ids = [sheets_folder_id];
+            sheets_folders = [{ id: sheets_folder_id, name: sheets_folder_id }];
           }
+          if (sheets_folder_ids && !sheets_folders) {
+            logWarning({
+              msg1: "[sheets_folder_ids] config property is deprecated",
+              msg2: "use [sheets_folders] instead",
+            });
+            sheets_folders = sheets_folder_ids.map((id) => ({ id, name: id }));
+          }
+
           /** Return output of paths to downloaded sheets */
           let outputs: string[] = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            outputs = sheets_folder_ids.map((folder_id) => tasks.gdrive.getOutputFolder(folder_id));
+            outputs = sheets_folders.map(({ id, name }) => tasks.gdrive.getOutputFolder(id, name));
           } else {
-            for (const folderId of sheets_folder_ids) {
+            const { sheets_filter_function } = config.google_drive;
+            for (const { id: folderId, name: folderName } of sheets_folders) {
               const output = await tasks.gdrive.download({
                 folderId,
+                folderName,
                 filterFn: sheets_filter_function,
               });
               outputs.push(output);
@@ -93,7 +103,7 @@ const workflows: IDeploymentWorkflows = {
           // Store copy of intermediate sheet jsons to content repo
           const sheetsIntermediateDir = resolve(outputDir, "../sheet_json");
           const outputIntermediateDir = resolve(config._workspace_path, "raw_data", "sheet_json");
-          // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
+          // TODO - uncomment post...
           // tasks.file.replicate(sheetsIntermediateDir, outputIntermediateDir);
 
           // Return output dir to continue processing
