@@ -107,8 +107,10 @@ interface IDeploymentCoreConfig {
   google_drive: {
     /** @deprecated Use `sheets_folder_ids` array instead */
     sheets_folder_id?: string;
-    /** IDs of folders containing app sheets, as seen in end of url */
+    /** @deprecated Use `sheets_folders` array instead */
     sheets_folder_ids?: string[];
+    /** gdrive id from end of url and local name for download */
+    sheets_folders?: { id: string; name: string }[];
     /** @deprecated Use `assets_folder_ids` array instead */
     assets_folder_id?: string;
     /** IDs of folders containing app assets, as seen in end of url */
