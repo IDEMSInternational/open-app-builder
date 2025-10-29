@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs-extra";
 import { createHash } from "crypto";
+import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
 
 /************************************************************************
  * Helper functions for working with local files
@@ -107,3 +108,20 @@ export const cleanupEmptyFolders = (folder: string) => {
     fs.rmdirSync(folder);
   }
 };
+
+
+/**
+ * Gdrive file meta only includes extensions if a native file type (not gsheet, gdoc etc.),
+ * It also separates out relative parent folder path with file name prefix.
+ * Generate a path that combines the relative path with file name and extension
+ */
+export function getRelativeLocalPath(metadata:{folderPath:string,mimeType:string, name:string}) {
+  const {folderPath,mimeType,name} = metadata
+  let targetFilename = name;
+  // assign correct file extension if exporting
+  if (GDRIVE_OFFICE_MAPPING[mimeType]) {
+    targetFilename += `.${MIMETYPE_EXTENSIONS[mimeType]}`;
+  }
+  // add to hashmap for use in local-server comparison
+  return folderPath ? `${folderPath}/${targetFilename}` : targetFilename;
+}
