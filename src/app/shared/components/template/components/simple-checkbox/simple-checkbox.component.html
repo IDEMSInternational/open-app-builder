@@ -1,4 +1,9 @@
-<div class="checkbox-wrapper margin-t-large" [class]="params().style" [class]="params().position">
+<div
+  class="checkbox-wrapper margin-t-large"
+  [class]="params().style"
+  [class]="params().position"
+  [attr.data-disabled]="params().disabled"
+>
   <ion-checkbox
     #checkbox
     [checked]="_row.value"
