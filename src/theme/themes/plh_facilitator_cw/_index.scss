@@ -1,6 +1,7 @@
 @use "../utils";
 @use "sass:color";
 @use "./overrides" as overrides;
+@use "./typography";
 
 @mixin theme-plh_facilitator_cw {
   @include utils.theme(
@@ -11,6 +12,7 @@
     //#B14674,
     $page-background: white,
     $variable-overrides: (
+      ion-font-family: "Poppins",
       font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
@@ -92,9 +94,9 @@
       box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
       box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
       // PLH module list item
-      plh-module-list-item-background-1: #b14674,
-      plh-module-list-item-background-2: #e48a34,
-      plh-module-list-item-background-3: #48934c,
+      plh-module-list-item-background-1: hsl(334, 43%, 70%),
+      plh-module-list-item-background-2: hsl(29, 77%, 70%),
+      plh-module-list-item-background-3: hsl(123, 34%, 70%),
     )
   ) {
     @include overrides.overrides;
