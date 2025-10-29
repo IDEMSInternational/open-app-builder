@@ -12,6 +12,8 @@ interface ISimpleCheckboxParams {
   label_text?: string | null;
   /* TEMPLATE PARAMETER: "style". Additional style classes */
   style?: string;
+  /* TEMPLATE PARAMETER: "disabled". Disables the checkbox */
+  disabled?: boolean;
 }
 
 @Component({
@@ -36,6 +38,7 @@ export class TmplSimpleCheckboxComponent extends TemplateBaseComponent {
       position: getStringParamFromTemplateRow(this._row, "align", "center"),
       label_text: getStringParamFromTemplateRow(this._row, "label_text", null),
       style: getStringParamFromTemplateRow(this._row, "style", ""),
+      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
     };
   }
 }
