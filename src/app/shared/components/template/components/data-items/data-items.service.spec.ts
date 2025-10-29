@@ -255,6 +255,115 @@ describe("DataItemsService", () => {
     expect(translateDataListRowsSpy).toHaveBeenCalledTimes(1);
   });
 
+  it("filters items using .includes() on arrays", async () => {
+    const mockList: FlowTypes.Data_listRow[] = [
+      { id: "1", name: "Alice", tags: ["admin", "user"] },
+      { id: "2", name: "Bob", tags: ["user"] },
+      { id: "3", name: "Charlie", tags: ["admin", "moderator"] },
+    ];
+
+    // Create a new service instance with test data
+    const testService = new DataItemsService(
+      new MockDynamicDataService({ data_list: { test_list: mockList } }) as any,
+      TestBed.inject(Injector),
+      TestBed.inject(TemplateVariablesService),
+      TestBed.inject(TemplateTranslateService),
+      TestBed.inject(TemplateCalcService)
+    );
+    testService["hackProcessRows"] = rowProcessorSpy;
+    testService["templateTranslateService"]["translateDataListRows"] = translateDataListRowsSpy;
+
+    const itemsRow: FlowTypes.TemplateRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      value: "test_list",
+      parameter_list: {
+        filter: "this.item.tags.includes('admin')",
+      },
+    };
+
+    const obs = testService.getItemsObservable(itemsRow, {});
+    const data = await firstValueFrom(obs);
+    // Should have 2 items x 2 template rows = 4 rows
+    expect(data.length).toBe(4);
+    // Verify only admin users are included
+    expect(data[0]._evalContext.item.name).toBe("Alice");
+    expect(data[2]._evalContext.item.name).toBe("Charlie");
+  });
+
+  it("filters items using .includes() on strings", async () => {
+    const mockList: FlowTypes.Data_listRow[] = [
+      { id: "1", name: "Alice Smith" },
+      { id: "2", name: "Bob Jones" },
+      { id: "3", name: "Charlie Smith" },
+    ];
+
+    // Create a new service instance with test data
+    const testService = new DataItemsService(
+      new MockDynamicDataService({ data_list: { test_list: mockList } }) as any,
+      TestBed.inject(Injector),
+      TestBed.inject(TemplateVariablesService),
+      TestBed.inject(TemplateTranslateService),
+      TestBed.inject(TemplateCalcService)
+    );
+    testService["hackProcessRows"] = rowProcessorSpy;
+    testService["templateTranslateService"]["translateDataListRows"] = translateDataListRowsSpy;
+
+    const itemsRow: FlowTypes.TemplateRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      value: "test_list",
+      parameter_list: {
+        filter: "this.item.name.includes('Smith')",
+      },
+    };
+
+    const obs = testService.getItemsObservable(itemsRow, {});
+    const data = await firstValueFrom(obs);
+    // Should have 2 items x 2 template rows = 4 rows
+    expect(data.length).toBe(4);
+    expect(data[0]._evalContext.item.name).toBe("Alice Smith");
+    expect(data[2]._evalContext.item.name).toBe("Charlie Smith");
+  });
+
+  it("combines filter with .includes() and other operations", async () => {
+    const mockList: FlowTypes.Data_listRow[] = [
+      { id: "1", name: "Alice", tags: ["admin"], age: 30 },
+      { id: "2", name: "Bob", tags: ["user"], age: 25 },
+      { id: "3", name: "Charlie", tags: ["admin"], age: 35 },
+      { id: "4", name: "David", tags: ["admin"], age: 28 },
+    ];
+
+    // Create a new service instance with test data
+    const testService = new DataItemsService(
+      new MockDynamicDataService({ data_list: { test_list: mockList } }) as any,
+      TestBed.inject(Injector),
+      TestBed.inject(TemplateVariablesService),
+      TestBed.inject(TemplateTranslateService),
+      TestBed.inject(TemplateCalcService)
+    );
+    testService["hackProcessRows"] = rowProcessorSpy;
+    testService["templateTranslateService"]["translateDataListRows"] = translateDataListRowsSpy;
+
+    const itemsRow: FlowTypes.TemplateRow = {
+      ...MOCK_DATA_ITEMS_ROW(),
+      value: "test_list",
+      parameter_list: {
+        filter: "this.item.tags.includes('admin') && this.item.age >= 30",
+        sort: "age",
+        limit: "2",
+      },
+    };
+
+    const obs = testService.getItemsObservable(itemsRow, {});
+    const data = await firstValueFrom(obs);
+    // Should have 2 items (after limit) x 2 template rows = 4 rows
+    expect(data.length).toBe(4);
+    // Verify filtered by admin and age >= 30, sorted by age, limited to 2
+    expect(data[0]._evalContext.item.name).toBe("Alice");
+    expect(data[0]._evalContext.item.age).toBe(30);
+    expect(data[2]._evalContext.item.name).toBe("Charlie");
+    expect(data[2]._evalContext.item.age).toBe(35);
+  });
+
   // TODO - requires improvement to mocked dynamic data service
   // it("provides live update when data changes", async () => {
   //   const obs = service.getItemsObservable(MOCK_DATA_ITEMS_ROW, {});
