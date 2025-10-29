@@ -111,10 +111,3 @@ parameter_list:
   limit: 10
 ```
 
-<!-- TODO update docs -->
-See notes in https://docs.google.com/document/d/1Pk2gYNhtu68XJo-U-h6RY8ZD8gOPaCnLOlCft4IjLY4/edit#
-
-
-
-
-
