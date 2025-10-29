@@ -92,18 +92,17 @@ describe("App Data Converter", () => {
       paths.outputFolder,
       "../",
       "sheet_json",
-      "sheets",
-      "test_input.json"
+      "template",
+      "test_template.json"
     );
     expect(pathExistsSync(sheetJsonPath)).toEqual(true);
     const sheetJson = readJSONSync(sheetJsonPath);
     expect(Object.keys(sheetJson)).toEqual([
-      "==content_list==",
-      "test_data_list",
-      "test_template",
-      "test_draft",
-      "test_data_pipe",
-      "test_data_pipe_list",
+      "flow_type",
+      "flow_subtype",
+      "flow_name",
+      "status",
+      "rows",
     ]);
   });
   it("Merges custom metadata from google drive downloader", async () => {
@@ -112,21 +111,19 @@ describe("App Data Converter", () => {
       paths.outputFolder,
       "../",
       "sheet_json",
-      "sheets",
       "_metadata.json"
     );
     expect(pathExistsSync(sheetJsonMetadataPath)).toEqual(true);
     const sheetJsonMeta = readJSONSync(sheetJsonMetadataPath);
-    expect(sheetJsonMeta).toEqual({
-      "test_input.xlsx": {
-        folderName: "sheets",
-        relativePath: "test_input.xlsx",
-        size_kb: 215,
-        md5Checksum: "f06d85d016a02622869ec54c34df8d79",
-        modifiedTime: "2025-08-15T17:23:35.657Z",
-        modifiedBy: "Test User",
-        remoteUrl: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
+    expect(sheetJsonMeta.length).toEqual(4);
+    expect(sheetJsonMeta[0]).toEqual({
+      _source: {
+        path: "sheets/test_input.xlsx",
+        url: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
       },
+      flow_name: "test_data_list",
+      flow_subtype: "spec_test",
+      flow_type: "data_list",
     });
   });
 });
