@@ -36,6 +36,81 @@ We will render text and a button for each of the 3 items in the data list
 ## Sort, filter and limit data
 Looped data can also be piped with various operators to organise the final data output
 
+### Available operations
+
+#### Filter
+Filter items based on a condition. The filter supports JavaScript expressions including `.includes()` for checking if arrays or strings contain values.
+
+**Examples:**
+
+Filter by a simple field comparison:
+```
+parameter_list:
+  filter: this.item.age > 25
+```
+
+Filter using `.includes()` to check if an array contains a value:
+```
+parameter_list:
+  filter: this.item.tags.includes('admin')
+```
+
+Filter using `.includes()` to check if a string contains a substring:
+```
+parameter_list:
+  filter: this.item.name.includes('Smith')
+```
+
+Combine multiple conditions:
+```
+parameter_list:
+  filter: this.item.tags.includes('admin') && this.item.status === 'active'
+```
+
+Filter with external values (variables are evaluated before filtering):
+```
+parameter_list:
+  filter: @local.selected_tags.includes(@item.category)
+```
+
+#### Sort
+Sort items by a field in ascending order:
+```
+parameter_list:
+  sort: name
+```
+
+#### Reverse
+Reverse the order of items:
+```
+parameter_list:
+  reverse: true
+```
+
+#### Limit
+Limit the number of items returned:
+```
+parameter_list:
+  limit: 5
+```
+
+#### Shuffle
+Randomize the order of items:
+```
+parameter_list:
+  shuffle: true
+```
+
+### Combining operations
+Multiple operations can be combined and will be applied in the order specified:
+
+```
+parameter_list:
+  filter: this.item.status === 'active'
+  sort: name
+  limit: 10
+```
+
 <!-- TODO update docs -->
 See notes in https://docs.google.com/document/d/1Pk2gYNhtu68XJo-U-h6RY8ZD8gOPaCnLOlCft4IjLY4/edit#
 
