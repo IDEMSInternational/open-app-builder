@@ -5,6 +5,8 @@
     (ionChange)="handleChange(checkbox.checked)"
     color="primary"
     [labelPlacement]="params().reverse ? 'start' : 'end'"
-    >{{ params().label_text }}</ion-checkbox
+    [disabled]="params().disabled"
   >
+    {{ params().label_text }}
+  </ion-checkbox>
 </div>
