@@ -8,7 +8,6 @@
       height: var(--buttons-full-height);
       width: var(--buttons-full-width);
       margin: 0 auto;
-      --border-radius: var(--ion-border-radius-rounded);
       --box-shadow: none;
 
       font-size: var(--buttons-font-size-large);
@@ -82,8 +81,8 @@
       border-radius: 0px;
       background-color: transparent;
       background: transparent;
-      color: black;
-      min-height: 64px;
+      color: var(--color-surface-black);
+      // min-height: 64px;
       padding: 18px 24px;
       p {
         font-weight: var(--font-weight-standard);
