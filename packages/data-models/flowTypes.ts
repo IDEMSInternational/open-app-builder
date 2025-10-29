@@ -53,7 +53,9 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     _xlsxPath?: string; // debug info
-    _sheetsFolderUrl?: string; // debug info
+    _sheetsFolderUrl?: string; // TODO - removed post-merge https://github.com/IDEMSInternational/open-app-builder/pull/3166
+    _remoteUrl?: string; // debug info
+    _remoteFolder?: string;
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
