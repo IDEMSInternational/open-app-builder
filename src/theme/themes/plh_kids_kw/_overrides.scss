@@ -179,7 +179,7 @@
         padding-right: 24px;
         .controls {
           ion-button.btn-play {
-            --background: var(--ion-color-primary-variant-600) !important;
+            --background: var(--ion-color-primary-variant-700) !important;
             --border-radius: var(--ion-border-radius-rounded) !important;
             --box-shadow: none !important;
             height: 52px !important;
@@ -193,7 +193,7 @@
           ion-range {
             width: 100% !important;
             --knob-size: 20px !important;
-            --knob-background: var(--ion-color-primary-variant-600) !important;
+            --knob-background: var(--ion-color-primary-variant-700) !important;
           }
           .time .time-value {
             font-weight: var(--font-weight-medium) !important;
@@ -222,7 +222,7 @@
           .forward {
             ion-icon {
               font-size: var(--icon-size-extra-large) !important;
-              color: var(--ion-color-primary-variant-600) !important;
+              color: var(--ion-color-primary-variant-700) !important;
               border-radius: 2px !important;
             }
           }
@@ -235,7 +235,7 @@
             ion-icon {
               position: absolute !important;
               font-size: var(--icon-size-largest) !important;
-              color: var(--ion-color-primary-variant-600) !important;
+              color: var(--ion-color-primary-variant-700) !important;
             }
           }
         }
