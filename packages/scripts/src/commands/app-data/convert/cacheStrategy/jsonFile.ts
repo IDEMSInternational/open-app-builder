@@ -32,12 +32,14 @@ export class JsonFileCache {
 
   private contents: { [name: string]: IContentsEntryWithValue };
 
-  constructor(folderPath: string, version: number) {
+  constructor(private cacheDirectory: string) {}
+
+  public configure(cacheFolderName: string, version: number) {
     this.version = version;
-    // HACK - support tests by avoiding setup if folderPath not provided
-    if (folderPath) {
-      this.setup(folderPath);
-    }
+    this.folderPath = path.join(this.cacheDirectory, cacheFolderName);
+    ensureDirSync(this.folderPath);
+    this.contentsPath = path.resolve(this.folderPath, "_contents.json");
+    this.loadCache();
   }
 
   /**
@@ -133,13 +135,6 @@ export class JsonFileCache {
     contents._version = this.version as any;
     this.contents = contents as any;
     writeJSONSync(contentsPath, contents);
-  }
-
-  private setup(folderPath: string) {
-    ensureDirSync(folderPath);
-    this.folderPath = folderPath;
-    this.contentsPath = path.resolve(this.folderPath, "_contents.json");
-    this.loadCache();
   }
 
   /**

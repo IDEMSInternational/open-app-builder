@@ -1,12 +1,20 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "./parsers";
-import { IConverterPaths, IFlowHashmapByType, IParsedWorkbookData } from "../../types";
+import { IFlowHashmapByType, IParsedWorkbookData } from "../../types";
 import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
+import { JsonFileCache } from "../../cacheStrategy/jsonFile";
+import { createHash } from "crypto";
 
-const cacheVersion = 20250729.0;
+const cacheVersion = 20251028.6;
+const namespace = "FlowParserProcessor";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
+  constructor(context: { cache: JsonFileCache }) {
+    super({ namespace, cache: context.cache });
+    this.cache.configure(namespace, cacheVersion);
+  }
+
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     data_list: new Parsers.DataListParser(this),
     data_pipe: new Parsers.DataPipeParser(this),
@@ -29,10 +37,6 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   public processedFlowHashmapWithMeta: {
     [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
-
-  constructor(paths: IConverterPaths) {
-    super({ paths, namespace: "flowParser", cacheVersion });
-  }
 
   public override processInput(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _xlsxPath } = flow;
@@ -63,7 +67,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
   }
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
-    const { flow_name, flow_type, _xlsxPath } = flow;
+    const { flow_name, flow_type } = flow;
     this.processedFlowHashmap[flow_type] ??= {};
     this.processedFlowHashmapWithMeta[flow_type] ??= {};
     // NOTE - duplicate flows are identified up during main converter
@@ -114,5 +118,13 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
       return false;
     }
     return true;
+  }
+
+  public override generateCacheEntryName(input: FlowTypes.FlowTypeWithData): string {
+    const { flow_name } = input;
+    const hash = createHash("md5");
+    hash.update(JSON.stringify(input));
+    const checksum = hash.digest("hex");
+    return `${flow_name}.${checksum}.json`;
   }
 }
