@@ -19,7 +19,7 @@ const parameters = () =>
 export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   private dynamicDataService = inject(DynamicDataService);
 
-  protected async computeStoredValue(value) {
+  protected async computeStoredValue(value: any) {
     const queryString = `{${value as string}}`;
     const mangoQuery = value ? json5.parse(queryString) : {};
     const query = this.dynamicDataService.query$<any>(

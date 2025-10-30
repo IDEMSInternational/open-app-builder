@@ -65,7 +65,7 @@ export class JSEvaluator {
       .join(";");
 
     // Prevent access to certain global identifiers by redefining them as strings
-    // Defined has strings instead of null in the case where a string is being 'tested' as a js expression
+    // Defined as strings instead of null in the case where a string is being 'tested' as a js expression
     // This stops access to window, document etc
     const restrictedString = this.restrictedIdentifiers
       .map((name) => `var ${name} = "${name}"`)
