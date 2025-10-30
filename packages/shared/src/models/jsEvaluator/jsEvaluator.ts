@@ -71,7 +71,7 @@ export class JSEvaluator {
       .map((name) => `var ${name} = "${name}"`)
       .join(";");
 
-    this.evaluationContextBase = `"use strict"; ${restrictedString} ${constantString}; ${functionString}; return`;
+    this.evaluationContextBase = `"use strict"; ${restrictedString}; ${constantString}; ${functionString}; return`;
 
     return this;
   }
