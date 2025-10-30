@@ -1,10 +1,17 @@
-<div class="checkbox-wrapper margin-t-large" [class]="style" [class]="position">
+<div
+  class="checkbox-wrapper margin-t-large"
+  [class]="params().style"
+  [class]="params().position"
+  [attr.data-disabled]="params().disabled"
+>
   <ion-checkbox
     #checkbox
     [checked]="_row.value"
     (ionChange)="handleChange(checkbox.checked)"
     color="primary"
-    [labelPlacement]="reverse ? 'start' : 'end'"
-    >{{ label_text }}</ion-checkbox
+    [labelPlacement]="params().reverse ? 'start' : 'end'"
+    [disabled]="params().disabled"
   >
+    {{ params().label_text }}
+  </ion-checkbox>
 </div>

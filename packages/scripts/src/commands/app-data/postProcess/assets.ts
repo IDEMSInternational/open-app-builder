@@ -189,6 +189,8 @@ export class AssetsPostProcessor {
         return false;
       if (assetTheme && !filter_theme_names.includes(assetTheme)) return false;
       if (assets_filter_function && !assets_filter_function(entry)) return false;
+      // exclude metadata file populated by gdrive downloader
+      if (entry.relativePath === "_metadata.json") return false;
 
       return true;
     }
