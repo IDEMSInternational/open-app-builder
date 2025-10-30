@@ -1,4 +1,4 @@
-import { normalize } from "path";
+import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
 
@@ -84,8 +84,21 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "sheets_process",
-        function: async ({ tasks, workflow }) =>
-          tasks.template.process({ inputFolders: workflow.sheets_dl.output }),
+        function: async ({ tasks, workflow, config }) => {
+          // Process sheets
+          const outputDir = await tasks.template.process({
+            inputFolders: workflow.sheets_dl.output,
+          });
+
+          // Store copy of intermediate sheet jsons to content repo
+          const sheetsIntermediateDir = resolve(outputDir, "../sheet_json");
+          const outputIntermediateDir = resolve(config._workspace_path, "raw_data", "sheet_json");
+          // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
+          // tasks.file.replicate(sheetsIntermediateDir, outputIntermediateDir);
+
+          // Return output dir to continue processing
+          return outputDir;
+        },
       },
       {
         name: "translations_apply",

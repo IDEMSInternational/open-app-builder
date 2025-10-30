@@ -14,7 +14,12 @@ export class MockJsonFileCache extends JsonFileCache {
   private mockContents: Record<string, IContentsEntryWithValue> = {};
 
   constructor() {
-    super("", 0);
+    super("");
+    this.configure("mockJson", 0);
+  }
+
+  public configure(cacheFolderName: string, version: number) {
+    this.version = version;
   }
 
   public add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
