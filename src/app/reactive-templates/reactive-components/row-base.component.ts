@@ -92,8 +92,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.rowRegistry.register(this);
 
     // Set default value
-    this.storeValue();
-    this.onInitialised()?.();
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   /*
@@ -143,8 +144,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.unsubscribeValueDependencies();
     let sub = this.variableStore
       .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(() => {
-        this.storeValue();
+      .subscribe(async () => {
+        await this.storeValue();
       });
 
     this.valueDependencySubscriptions.push(sub);

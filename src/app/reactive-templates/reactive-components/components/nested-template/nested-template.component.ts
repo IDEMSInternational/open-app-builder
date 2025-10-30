@@ -1,15 +1,17 @@
-import { Component, effect, forwardRef, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, effect, forwardRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
 import { Subscription } from "rxjs";
+import { RowListComponent } from "../../row-list.component";
+import { RowRegistry } from "src/app/reactive-templates/services/row.registry";
 
 @Component({
   selector: "oab-nested-template",
   templateUrl: "./nested-template.component.html",
   styleUrls: ["./nested-template.component.scss"],
   standalone: true,
-  imports: [forwardRef(() => ReactiveTemplateComponent)],
+  imports: [forwardRef(() => ReactiveTemplateComponent), RowListComponent],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
 export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
@@ -58,10 +60,19 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   }
 
   private setTemplateVariable(row: FlowTypes.TemplateRow) {
-    this.variableStore.set(
-      this.namespaceService.getFullName(this.name(), row.name),
-      this.evaluationService.evaluateExpression(row.value, this.namespace())
-    );
+    const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
+
+    if (dependencies && dependencies.length === 0) {
+      const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
+      if (this.rowRegistry.has(rowFullName)) {
+        this.rowRegistry.get(rowFullName)?.setExpression(row.value);
+      }
+    } else {
+      this.variableStore.set(
+        this.namespaceService.getFullName(this.name(), row.name),
+        this.evaluationService.evaluateExpression(row.value, this.namespace())
+      );
+    }
   }
 
   private unsubscribeChildDependencies() {
