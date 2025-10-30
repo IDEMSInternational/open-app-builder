@@ -28,4 +28,9 @@
       color: var(--ion-color-primary);
     }
   }
+
+  // disabled state of ion-checkbox handles core functionality, but default visual styling is too subtle
+  &[data-disabled="true"] {
+    opacity: 0.5;
+  }
 }
