@@ -1,4 +1,13 @@
-import { Component, computed, forwardRef, input, OnInit, signal, viewChild } from "@angular/core";
+import {
+  Component,
+  computed,
+  effect,
+  forwardRef,
+  input,
+  OnInit,
+  signal,
+  viewChild,
+} from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { RowListComponent } from "../reactive-components/row-list.component";
@@ -10,7 +19,7 @@ import { RowListComponent } from "../reactive-components/row-list.component";
   standalone: true,
   imports: [forwardRef(() => RowListComponent)],
 })
-export class ReactiveTemplateComponent implements OnInit {
+export class ReactiveTemplateComponent {
   public templateName = input.required<string>();
   public namespace = input("");
 
@@ -23,10 +32,12 @@ export class ReactiveTemplateComponent implements OnInit {
     return this.rowListComponent().initialised();
   });
 
-  constructor(private templateService: TemplateService) {}
-
-  async ngOnInit() {
-    const template = await this.templateService.getTemplateByName(this.templateName(), false);
-    this.template.set(template);
+  constructor(private templateService: TemplateService) {
+    effect(async () => {
+      if (this.templateName()) {
+        const template = await this.templateService.getTemplateByName(this.templateName(), false);
+        this.template.set(template);
+      }
+    });
   }
 }
