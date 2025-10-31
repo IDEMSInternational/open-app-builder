@@ -23,7 +23,7 @@ const MOCK_DATA_LIST = (): FlowTypes.Data_list => ({
       additional: false,
     },
   ],
-  _xlsxPath: "/mock/data/path",
+  _source: { path: "/mock/data/path" },
 });
 
 /***********************************************************************
