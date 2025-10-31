@@ -61,7 +61,7 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
       const answerList = getParamFromTemplateRow(this.rowSignal(), "answer_list", []);
       if (!answerList) return [];
       // Convert hashmap to array if needed (similar to parseAnswerList)
-      if (answerList.constructor === {}.constructor) {
+      if (answerList?.constructor === Object) {
         return objectToArray(answerList);
       }
       return Array.isArray(answerList) ? answerList : [];
