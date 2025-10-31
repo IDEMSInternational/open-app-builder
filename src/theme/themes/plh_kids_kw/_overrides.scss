@@ -348,10 +348,6 @@
           font-size: var(--font-size-text-mid-size);
           color: var(--ion-color-gray-900);
         }
-
-        ol {
-          margin: var(--paragraph-margin-small) 0;
-        }
       }
 
       .speaker-name {
@@ -372,12 +368,6 @@
     .standard {
       color: var(--ion-color-secondary-contrast);
       font-size: var(--font-size-text-medium);
-      p {
-        margin: var(--paragraph-margin-small) 0;
-      }
-      ol {
-        margin: var(--paragraph-margin-small) 0;
-      }
     }
   }
 
@@ -385,7 +375,6 @@
   plh-tmpl-title {
     .title-wrapper h1 {
       font-size: var(--font-size-text-title);
-      margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
       color: var(--ion-color-secondary-contrast);
     }
