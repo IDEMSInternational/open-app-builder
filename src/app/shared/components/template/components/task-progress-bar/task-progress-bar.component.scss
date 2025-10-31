@@ -4,6 +4,7 @@
 // Within the task-card component, the progress bar colour is determined by the status of the task group, i.e.,
 // "notStarted" | "inProgress" | "completed" | "highlighted"
 $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
+$progress-wheel-foreground: var(--task-progress-wheel-color, var(--ion-color-secondary-600));
 
 .progress-bar-wrapper {
   @include mixins.flex-space-between;
@@ -75,7 +76,7 @@ $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
 
   .progress-foreground {
     fill: none;
-    stroke: var(--ion-color-secondary-600);
+    stroke: $progress-wheel-foreground;
     stroke-width: 3.6;
     stroke-linecap: square;
     transform-origin: center;
