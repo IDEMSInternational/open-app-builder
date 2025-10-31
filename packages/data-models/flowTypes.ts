@@ -229,7 +229,6 @@ export namespace FlowTypes {
     _satisfied?: boolean;
     /** debug info  */
     _raw?: string;
-    _cleaned?: string;
     _parsed?: string[][];
   }
   export interface Lifecycle_Action {
@@ -493,7 +492,6 @@ export namespace FlowTypes {
     _self_triggered?: boolean;
     // debug info
     _raw?: string;
-    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {
