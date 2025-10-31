@@ -32,9 +32,9 @@
       labelPlacement="stacked"
       [disabled]="disabled()"
     >
-      @for (answerOption of answerOptions(); track answerOption.name) {
-        <ion-select-option [value]="answerOption.name">
-          {{ answerOption.text }}
+      @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
+        <ion-select-option [value]="answerOption[params().optionsKey]">
+          {{ answerOption[params().optionsValue] }}
         </ion-select-option>
       }
     </ion-select>
