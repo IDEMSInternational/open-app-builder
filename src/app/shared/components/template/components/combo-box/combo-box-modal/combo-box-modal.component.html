@@ -7,7 +7,7 @@
       <div class="checkboxes">
         <div
           class="container-radio"
-          [class.checked-radio]="form.get('answer').value === radio[optionsKey]"
+          [class.checked-radio]="form.get('answer').value === radio[optionsKey()]"
           *ngFor="let radio of answerOptions()"
         >
           <label>
@@ -15,9 +15,9 @@
               type="radio"
               (click)="check(radio)"
               formControlName="answer"
-              [value]="radio[optionsKey]"
+              [value]="radio[optionsKey()]"
             />
-            {{ radio[optionsValue] | translate }}
+            {{ radio[optionsValue()] | translate }}
           </label>
         </div>
       </div>
