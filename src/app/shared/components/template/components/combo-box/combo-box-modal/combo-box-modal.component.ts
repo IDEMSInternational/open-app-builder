@@ -20,8 +20,8 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
-  @Input() optionsKey: string = "name";
-  @Input() optionsValue: string = "text";
+  public optionsKey = input<string>("name");
+  public optionsValue = input<string>("text");
   formData: FormGroup | null;
   valuesFromListAnswers: IAnswerListItem[];
   textTitle: string | null;
@@ -72,11 +72,11 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   check(el) {
-    if (this.form.get("answer").value === el[this.optionsKey]) {
+    if (this.form.get("answer").value === el[this.optionsKey()]) {
       this.form.get("answer").setValue(null);
       this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null });
     } else {
-      this.form.get("answer").setValue(el[this.optionsKey]);
+      this.form.get("answer").setValue(el[this.optionsKey()]);
       if (this.inputAllowed) {
         this.form.get("customAnswer").setValue(null);
       }
@@ -94,8 +94,8 @@ export class ComboBoxModalComponent implements OnInit {
   enterCustomAnswer() {
     if (this.form.get("customAnswer").value !== "") {
       const customAnswer: any = {};
-      customAnswer[this.optionsValue] = this.form.get("customAnswer").value;
-      customAnswer[this.optionsKey] = "other";
+      customAnswer[this.optionsValue()] = this.form.get("customAnswer").value;
+      customAnswer[this.optionsKey()] = "other";
       if (this.customAnswerSelected) {
         this.customAnswerSelected = true;
         this.closeModal({
