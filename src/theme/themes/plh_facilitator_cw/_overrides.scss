@@ -1145,6 +1145,10 @@
           color: var(--color-surface-white);
         }
       }
+
+      &[data-variant~="pill"] {
+        background-color: var(--ion-background-color);
+      }
     }
   }
 
