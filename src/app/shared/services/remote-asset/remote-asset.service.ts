@@ -1,12 +1,12 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Injector, effect, signal, OnDestroy } from "@angular/core";
 import { HttpClient, HttpEventType } from "@angular/common/http";
 import { Capacitor } from "@capacitor/core";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
-import { FlowTypes, IAppConfig } from "../../model";
+import { FlowTypes } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { IAssetContents } from "src/app/data";
-import { BehaviorSubject, Subject, Subscription, lastValueFrom } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
@@ -22,12 +22,15 @@ const CORE_ASSET_PACK_NAME = "core_assets";
 @Injectable({
   providedIn: "root",
 })
-export class RemoteAssetService extends AsyncServiceBase {
-  remoteAssetsEnabled: boolean;
+export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
+  remoteAssetsEnabled = signal(false);
   provider: IRemoteAssetProvider;
   downloading: boolean = false;
   downloadProgress: number;
   manifest: FlowTypes.AssetPack;
+
+  private assetContentsSubscription: Subscription;
+  private coreAssetContentsData = signal<any[]>([]);
 
   constructor(
     private appConfigService: AppConfigService,
@@ -42,6 +45,19 @@ export class RemoteAssetService extends AsyncServiceBase {
   ) {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
+
+    effect(
+      () => {
+        if (this.remoteAssetsEnabled()) {
+          const dataRows = this.coreAssetContentsData();
+          if (dataRows && dataRows.length > 0) {
+            const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+            this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
+          }
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private async initialise() {
@@ -54,16 +70,16 @@ export class RemoteAssetService extends AsyncServiceBase {
         folderName: remoteAssetsConfig.folderName,
       };
       await this.provider.initialise(this.injector, providerConfig);
-      this.remoteAssetsEnabled = true;
+      this.remoteAssetsEnabled.set(true);
       console.log("[Remote Asset] Remote asset provider initialized:", remoteAssetsConfig.provider);
     } else {
-      this.remoteAssetsEnabled = false;
+      this.remoteAssetsEnabled.set(false);
       console.log("[Remote Asset] Remote assets not enabled");
     }
 
     this.registerTemplateActionHandlers();
 
-    if (this.remoteAssetsEnabled) {
+    if (this.remoteAssetsEnabled()) {
       await this.ensureAsyncServicesReady([this.templateAssetService, this.dynamicDataService]);
       this.ensureSyncServicesReady([
         this.appConfigService,
@@ -71,15 +87,15 @@ export class RemoteAssetService extends AsyncServiceBase {
         this.fileManagerService,
       ]);
 
+      // Update core asset contents signal via subscription to dynamic data
+      // (limitations of rxjs/signal interop utils mean we can't use toSignal here)
       const { flow_type, flow_name } = this.generateCoreAssetPack(
         this.templateAssetService.assetsContentsList()
       );
-      // Share updates to asset contents list with template asset service for lookup
-      // TODO?: only watch for nested changes rather than replacing whole list
-      const obs = this.dynamicDataService.query$(flow_type, flow_name);
-      obs.subscribe((dataRows) => {
-        const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
-        this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
+      const assetContentsData$ = this.dynamicDataService.query$(flow_type, flow_name);
+      this.assetContentsSubscription = assetContentsData$.subscribe({
+        next: (dataRows) => this.coreAssetContentsData.set(dataRows),
+        error: (error) => console.error("[Remote Asset] Error in asset contents stream:", error),
       });
     }
   }
@@ -98,7 +114,7 @@ export class RemoteAssetService extends AsyncServiceBase {
               const assetPackName = assetPackArgs[0];
               if (assetPackName) {
                 try {
-                  await lastValueFrom(this.getAssetPackManifest(assetPackName));
+                  await this.getAssetPackManifest(assetPackName);
                   await this.downloadAndIntegrateAssetPack(this.manifest);
                 } catch (e) {
                   console.error(e);
@@ -182,33 +198,27 @@ export class RemoteAssetService extends AsyncServiceBase {
   /**
    * Download the asset pack manifest for a named asset pack from the remote provider and store the result in this.manifest
    */
-  private getAssetPackManifest(assetPackName: string) {
-    let data: Blob;
-    let progress: number;
-    const url = this.getPublicUrl(`${assetPackName}/${assetPackName}.json`);
-    const progress$ = new Subject<number>();
-    this.downloadFileFromUrl(url, "blob").subscribe({
-      error: (err) => {
-        this.downloadProgress = undefined;
-        progress$.error(err);
-      },
-      next: async (res) => {
-        data = res.data as Blob;
-        progress = res.progress;
-        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
-        progress$.next(progress);
-      },
-      complete: async () => {
-        console.log(`[REMOTE ASSETS] Manifest file downloaded for asset pack: ${assetPackName}`);
-        if (data) {
-          this.manifest = JSON.parse(await data.text());
-          console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
-        }
-        progress$.next(progress);
-        progress$.complete();
-      },
-    });
-    return progress$;
+  private async getAssetPackManifest(assetPackName: string) {
+    const relativePath = `${assetPackName}/${assetPackName}.json`;
+
+    try {
+      console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
+
+      // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
+      const jsonText = await this.provider.downloadFileAsText(relativePath);
+
+      if (jsonText) {
+        this.manifest = JSON.parse(jsonText);
+        console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
+      } else {
+        console.error(`[REMOTE ASSETS] Failed to download manifest for ${assetPackName}`);
+      }
+    } catch (error) {
+      console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
+      this.manifest = null;
+    }
+
+    return this.manifest;
   }
 
   /**
@@ -253,15 +263,12 @@ export class RemoteAssetService extends AsyncServiceBase {
   ) {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
-      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
       try {
-        await lastValueFrom(
-          this.downloadAssetAndUpdateContentsList(
-            topLevelAssetUrl,
-            assetEntry,
-            fileIndex,
-            totalFiles
-          )
+        await this.downloadAssetAndUpdateContentsList(
+          assetEntry.id,
+          assetEntry,
+          fileIndex,
+          totalFiles
         );
       } catch (error) {
         console.error(error);
@@ -272,17 +279,14 @@ export class RemoteAssetService extends AsyncServiceBase {
     if (overrides) {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
         for (const [languageCode, assetContentsEntry] of Object.entries(languageOverrides)) {
-          const assetUrl = this.getPublicUrl(assetContentsEntry.filePath);
           const overrideProps = { themeName, languageCode };
           try {
-            await lastValueFrom(
-              this.downloadAssetAndUpdateContentsList(
-                assetUrl,
-                assetEntry,
-                fileIndex,
-                totalFiles,
-                overrideProps
-              )
+            await this.downloadAssetAndUpdateContentsList(
+              assetContentsEntry.filePath,
+              assetEntry,
+              fileIndex,
+              totalFiles,
+              overrideProps
             );
           } catch (error) {
             console.error(error);
@@ -300,7 +304,7 @@ export class RemoteAssetService extends AsyncServiceBase {
   public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
     // Update the contents entry for the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
-      const topLevelAssetUrl = this.getPublicUrl(assetEntry.id);
+      const topLevelAssetUrl = this.provider.getPublicUrl(assetEntry.id) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
     }
     const { overrides } = assetEntry;
@@ -308,7 +312,7 @@ export class RemoteAssetService extends AsyncServiceBase {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
         for (const [languageCode, overrideAssetEntry] of Object.entries(languageOverrides)) {
           const overrideProps = { themeName, languageCode };
-          const filepath = this.getPublicUrl(overrideAssetEntry.filePath);
+          const filepath = this.provider.getPublicUrl(overrideAssetEntry.filePath) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
       }
@@ -319,50 +323,38 @@ export class RemoteAssetService extends AsyncServiceBase {
    * Native platforms only:
    * Download a single asset from an asset pack, save to local native storage and update the assets contents list
    * */
-  private downloadAssetAndUpdateContentsList(
-    url: string,
+  private async downloadAssetAndUpdateContentsList(
+    relativePath: string,
     assetEntry: IAssetEntry,
     fileIndex: number,
     totalFiles?: number,
     overrideProps?: IAssetOverrideProps
   ) {
-    console.log(
-      `[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}: ${this.downloadProgress}%`
-    );
-    let data: Blob;
-    let progress: number;
-    // create a new subject to subscribe from inner observable
-    const progress$ = new Subject<number>();
-    this.downloadFileFromUrl(url, "blob").subscribe({
-      error: (err) => {
-        this.downloadProgress = undefined;
-        progress$.error(err);
-      },
-      next: async (res) => {
-        data = res.data as Blob;
-        progress = res.progress;
-        console.log(`[REMOTE ASSETS] Downloading: ${progress}%`);
-        progress$.next(progress);
-      },
-      complete: async () => {
-        console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
-        if (data) {
-          let targetPath = assetEntry.id;
+    console.log(`[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}`);
 
-          // For overrides, use the nested override filepath as the path to save the file in local storage
-          if (overrideProps) {
-            const { themeName, languageCode } = overrideProps;
-            const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
-            targetPath = overrideAssetEntry.filePath;
-          }
-          const { src } = await this.fileManagerService.saveFile({ data, targetPath });
-          await this.updateAssetContents(assetEntry, src, overrideProps);
+    try {
+      // Use provider's direct download method
+      const blob = await this.provider.downloadFile(relativePath);
+
+      if (blob) {
+        let targetPath = assetEntry.id;
+
+        // For overrides, use the nested override filepath as the path to save the file in local storage
+        if (overrideProps) {
+          const { themeName, languageCode } = overrideProps;
+          const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
+          targetPath = overrideAssetEntry.filePath;
         }
-        progress$.next(progress);
-        progress$.complete();
-      },
-    });
-    return progress$;
+
+        const { src } = await this.fileManagerService.saveFile({ data: blob, targetPath });
+        await this.updateAssetContents(assetEntry, src, overrideProps);
+        console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
+      } else {
+        console.error(`[REMOTE ASSETS] Failed to download ${relativePath}`);
+      }
+    } catch (error) {
+      console.error(`[REMOTE ASSETS] Error downloading ${relativePath}:`, error);
+    }
   }
 
   /**
@@ -506,23 +498,9 @@ export class RemoteAssetService extends AsyncServiceBase {
     await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
   }
 
-  /************************************************************************************
-   *  Download method utils
-   ************************************************************************************/
-
-  /** Get a file's public URL from the remote provider */
-  private getPublicUrl(relativePath: string) {
-    if (this.provider) {
-      return this.provider.getPublicUrl(relativePath);
+  ngOnDestroy(): void {
+    if (this.assetContentsSubscription) {
+      this.assetContentsSubscription.unsubscribe();
     }
-    return "";
-  }
-
-  /** Fetch metadata for a specific file from the remote provider */
-  private async getRemoteFileMetadata(relativePath: string) {
-    if (this.provider) {
-      return await this.provider.getRemoteFileMetadata(relativePath);
-    }
-    return null;
   }
 }

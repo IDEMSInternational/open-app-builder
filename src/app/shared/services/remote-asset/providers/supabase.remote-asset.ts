@@ -41,6 +41,62 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
+  public async downloadFile(relativePath: string): Promise<Blob | null> {
+    // For Supabase, we can either use the public URL (for public files) or download directly
+    // If direct download fails, fall back to public URL fetching
+    try {
+      const filepath = this.getSupabaseFilepath(relativePath);
+      const { data: blob, error } = await this.supabase.storage
+        .from(this.config.bucketName)
+        .download(filepath);
+
+      if (error) {
+        throw error;
+      }
+
+      return blob;
+    } catch (error) {
+      console.error(
+        "[Supabase Remote Asset] Error downloading file directly, falling back to public URL:",
+        error
+      );
+
+      // Fallback to public URL fetching
+      try {
+        const publicUrl = this.getPublicUrl(relativePath);
+        if (publicUrl) {
+          const response = await fetch(publicUrl);
+          if (response.ok) {
+            return await response.blob();
+          } else {
+            console.error(
+              `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
+            );
+          }
+        }
+      } catch (fallbackError) {
+        console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
+      }
+
+      return null;
+    }
+  }
+
+  public async downloadFileAsText(relativePath: string): Promise<string | null> {
+    try {
+      const blob = await this.downloadFile(relativePath);
+
+      if (blob) {
+        return await blob.text();
+      }
+
+      return null;
+    } catch (error) {
+      console.error("[Supabase Remote Asset] Error downloading file as text:", error);
+      return null;
+    }
+  }
+
   public async downloadFileFromPrivateBucket(filepath: string): Promise<Blob | null> {
     if (!this.supabase) {
       return null;

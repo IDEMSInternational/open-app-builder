@@ -1194,6 +1194,9 @@ PODS:
   - CapacitorFirebasePerformance (7.2.0):
     - Capacitor
     - FirebasePerformance (~> 11.7.0)
+  - CapacitorFirebaseStorage (7.3.1):
+    - Capacitor
+    - FirebaseStorage (~> 11.7.0)
   - CapacitorLocalNotifications (7.0.1):
     - Capacitor
   - CapacitorPushNotifications (7.0.1):
@@ -1294,6 +1297,13 @@ PODS:
     - nanopb (~> 3.30910.0)
     - PromisesSwift (~> 2.1)
   - FirebaseSharedSwift (11.15.0)
+  - FirebaseStorage (11.7.0):
+    - FirebaseAppCheckInterop (~> 11.0)
+    - FirebaseAuthInterop (~> 11.0)
+    - FirebaseCore (~> 11.7.0)
+    - FirebaseCoreExtension (~> 11.7.0)
+    - GoogleUtilities/Environment (~> 8.0)
+    - GTMSessionFetcher/Core (< 5.0, >= 3.4)
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
@@ -1451,6 +1461,7 @@ DEPENDENCIES:
   - "CapacitorFirebaseCrashlytics (from `../../node_modules/@capacitor-firebase/crashlytics`)"
   - "CapacitorFirebaseFirestore (from `../../node_modules/@capacitor-firebase/firestore`)"
   - "CapacitorFirebasePerformance (from `../../node_modules/@capacitor-firebase/performance`)"
+  - "CapacitorFirebaseStorage (from `../../node_modules/@capacitor-firebase/storage`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
   - "CapacitorScreenOrientation (from `../../node_modules/@capacitor/screen-orientation`)"
@@ -1482,6 +1493,7 @@ SPEC REPOS:
     - FirebaseRemoteConfigInterop
     - FirebaseSessions
     - FirebaseSharedSwift
+    - FirebaseStorage
     - GCDWebServer
     - GoogleDataTransport
     - GoogleSignIn
@@ -1522,6 +1534,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor-firebase/firestore"
   CapacitorFirebasePerformance:
     :path: "../../node_modules/@capacitor-firebase/performance"
+  CapacitorFirebaseStorage:
+    :path: "../../node_modules/@capacitor-firebase/storage"
   CapacitorLocalNotifications:
     :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorPushNotifications:
@@ -1555,6 +1569,7 @@ SPEC CHECKSUMS:
   CapacitorFirebaseCrashlytics: 77d86d19ec6438934c5527ddd0c36f51585318e6
   CapacitorFirebaseFirestore: e4531c584fe95b63c2b398a018ee440c9ab33cbc
   CapacitorFirebasePerformance: b298f875866d612ec1ebe3edc248a6cc63c2b6b9
+  CapacitorFirebaseStorage: 4622602d777e2af1d270f3709ab7ddd482607677
   CapacitorLocalNotifications: c2212755b33d2513b8bb325096ce3a64d4039ae3
   CapacitorPushNotifications: 6a2794788c583dd89215f1805ca4bced1b13dbdf
   CapacitorScreenOrientation: 6d989dff97440c7bfa78deee13952d7fb03c27f3
@@ -1579,6 +1594,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
   FirebaseSessions: 32ed7a9387ae71efe3a35a7f20f3a7292950957b
   FirebaseSharedSwift: e17c654ef1f1a616b0b33054e663ad1035c8fd40
+  FirebaseStorage: d35da127dd49edcbd07b8c07cf651a70161558b2
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
@@ -1594,6 +1610,6 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 1c6d6a8b4b4d1effcd292cf8e3868f0a13b576de
+PODFILE CHECKSUM: 0e26829c81568394bf09630c82a61095c38ae47d
 
 COCOAPODS: 1.16.2

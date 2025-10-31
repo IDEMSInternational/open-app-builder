@@ -16,6 +16,9 @@ const ASSETS_BASE = `assets/app_data/assets`;
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 const DEFAULT_THEME_NAME = "theme_default";
 
+/** URL prefixes that indicate external or native file paths that should not be modified */
+const EXTERNAL_URL_PREFIXES = ["http", "file://", "content://", "capacitor://"];
+
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
   public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
@@ -109,7 +112,7 @@ export class TemplateAssetService extends AsyncServiceBase {
     const assetName = cleanAssetName(assetValue);
     if (!assetName) return "";
     // keep external links
-    if (assetName.startsWith("http")) {
+    if (EXTERNAL_URL_PREFIXES.some((prefix) => assetName.startsWith(prefix))) {
       return assetName;
     }
 
@@ -150,9 +153,9 @@ export class TemplateAssetService extends AsyncServiceBase {
    * google drive. Rewrite paths to add correct prefix, fixing common authoring mistakes
    */
   private convertGdriveRelativePathToAssetPath(value: string) {
-    // For remote assets, the filepath will be either an external URL (web) or an internal Android filepath (native).
+    // For remote assets, the filepath will be either an external URL (web) or an internal iOS/Android filepath (native).
     // These should be left unchanged
-    if (value.startsWith("http") || value.startsWith("file://") || value.startsWith("content://")) {
+    if (EXTERNAL_URL_PREFIXES.some((prefix) => value.startsWith(prefix))) {
       return value;
     }
 
