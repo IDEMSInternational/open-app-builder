@@ -69,7 +69,7 @@ export class DataListParser extends DefaultParser {
       }
       Logger.warning({
         msg1: `[${flow.flow_name}] Data List validation has (${warnings.length}) warnings`,
-        msg2: flow._xlsxPath,
+        msg2: flow._source?.path,
       });
     }
     return flow;

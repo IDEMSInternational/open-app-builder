@@ -109,18 +109,18 @@ class SheetsPostProcessor {
     existingContents: ISheetContents,
     sheetContents: FlowTypes.FlowTypeWithData
   ) {
-    const { flow_name, flow_type, _xlsxPath } = sheetContents;
+    const { flow_name, flow_type, _source } = sheetContents;
     if (!existingContents.hasOwnProperty(flow_type)) {
       Logger.error({
         msg1: `Unsupported flow_type: [${flow_type}]`,
-        msg2: `${_xlsxPath}`,
+        msg2: `${_source.path}`,
       });
     }
     if (existingContents[flow_type].hasOwnProperty(flow_name)) {
       const duplicateFlowContents = existingContents[flow_type][flow_name];
       Logger.error({
         msg1: `Duplicate flow_name found: [${flow_type}]`,
-        msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
+        msg2: `${_source.path}\n${duplicateFlowContents._source.path}`,
       });
     }
   }

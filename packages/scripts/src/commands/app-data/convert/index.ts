@@ -141,13 +141,10 @@ export class AppDataConverter {
             merged[flow_name] = {
               ...contents,
               rows: sheetData[flow_name],
-              // HACK - temp hide properties to make it eaiser to review PR diffs
-              // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              // _remoteFolder: _metadata.folderName,
-              // _remoteUrl: _metadata.remoteUrl,
-              _xlsxPath: _metadata.relativePath,
-              // TODO - remove post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              _sheetsFolderUrl: `https://drive.google.com/drive/u/0/folders/${_metadata.folderName}`,
+              _source: {
+                path: `${_metadata.folderName}/${_metadata.relativePath}`,
+                url: _metadata.remoteUrl,
+              },
             };
             // convert parameter list from string to object
             // TODO - handle converting in parser
