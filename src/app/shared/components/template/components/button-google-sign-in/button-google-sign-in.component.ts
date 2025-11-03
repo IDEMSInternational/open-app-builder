@@ -10,6 +10,7 @@ import {
 interface IButtonGoogleSignInComponentParams {
   variant: null | "native_google";
   disabled: boolean;
+  width: "full" | "centre";
 }
 
 @Component({
@@ -36,6 +37,7 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
     return {
       variant: getStringParamFromTemplateRow(this._row, "variant", null),
       disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
+      width: getStringParamFromTemplateRow(this._row, "width", "full"),
     } as IButtonGoogleSignInComponentParams;
   }
 }

@@ -38,13 +38,14 @@ Native Google variant reflects the example styling exactly
     box-shadow 0.218s;
   vertical-align: middle;
   width: 100%;
-  min-width: min-content;
+  min-width: 140px;
 
   .gsi-material-button-icon {
     height: 20px;
     margin-inline-end: 12px;
     min-width: 20px;
     width: 20px;
+    flex-shrink: 0;
   }
 
   .gsi-material-button-content-wrapper {
@@ -56,9 +57,17 @@ Native Google variant reflects the example styling exactly
     -webkit-flex-wrap: nowrap;
     flex-wrap: nowrap;
     height: 100%;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     width: 100%;
+
+    // Create an invisible spacer matching the icon width to balance the layout
+    // This centers the text content while keeping the icon at the start
+    &::after {
+      content: "";
+      width: 32px; // 20px icon + 12px margin
+      flex-shrink: 0;
+    }
   }
 
   .gsi-material-button-contents {
@@ -85,6 +94,18 @@ Native Google variant reflects the example styling exactly
   &:not(:disabled):active {
     background-color: var(--ion-color-gray-light);
   }
+
+  &[data-width="centre"],
+  &[data-width="center"] {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+
+    .gsi-material-button-content-wrapper::after {
+      width: 0px;
+    }
+  }
 }
 
 /* native_google variant override styles */
@@ -98,10 +119,16 @@ Native Google variant reflects the example styling exactly
   letter-spacing: 0.25px;
   padding: 0 12px;
   width: auto;
+  min-width: min-content;
   max-width: 400px;
 
   .gsi-material-button-content-wrapper {
     justify-content: space-between;
+
+    // Remove spacer for native variant
+    &::after {
+      width: 0px;
+    }
   }
 
   .gsi-material-button-contents {
