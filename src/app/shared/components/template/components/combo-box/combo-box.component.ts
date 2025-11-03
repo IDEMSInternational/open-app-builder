@@ -6,8 +6,8 @@ import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
   getParamFromTemplateRow,
+  normaliseAnswerListToArray,
 } from "src/app/shared/utils";
-import { objectToArray } from "../../utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes } from "../../models";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
@@ -49,25 +49,15 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
   );
 
   public answerOptions = computed(() => {
-    const dataItemRows = this.dataItemRows();
-    if (dataItemRows !== undefined) {
-      return dataItemRows || [];
-    }
     const params = this.params();
-    // If custom keys are being used, bypass the IAnswerListItem parsing
-    // which filters based on "name" property
-    const usesCustomKeys = params.optionsKey !== "name" || params.optionsValue !== "text";
-    if (usesCustomKeys) {
-      const answerList = getParamFromTemplateRow(this.rowSignal(), "answer_list", []);
-      if (!answerList) return [];
-      // Convert hashmap to array if needed (similar to parseAnswerList)
-      if (answerList?.constructor === Object) {
-        return objectToArray(answerList);
-      }
-      return Array.isArray(answerList) ? answerList : [];
-    }
-    return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
+    return this.getAnswerOptions(
+      this.dataItemRows(),
+      this.rowSignal(),
+      params.optionsKey,
+      params.optionsValue
+    );
   });
+
   public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
@@ -105,6 +95,42 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
       },
       { allowSignalWrites: true }
     );
+  }
+
+  /**
+   * Get answer options from either data_items rows or the answer_list parameter.
+   * When custom keys are used (options_key !== "name" or options_value !== "text"),
+   * this bypasses the IAnswerListItem parsing which filters based on the "name" property.
+   * This allows authors to use custom data structures with any column names.
+   *
+   * @param dataItemRows - optional array from data_items child row
+   * @param row - the template row to read parameters from
+   * @param optionsKey - the key column name (default: "name")
+   * @param optionsValue - the value/display column name (default: "text")
+   * @returns array of answer options
+   */
+  private getAnswerOptions(
+    dataItemRows: any[] | undefined,
+    row: FlowTypes.TemplateRow,
+    optionsKey: string,
+    optionsValue: string
+  ): any[] {
+    // Priority 1: Use data_items rows if available
+    if (dataItemRows !== undefined) {
+      return dataItemRows || [];
+    }
+
+    // Priority 2: Check if custom keys are being used
+    // If custom keys are specified, bypass IAnswerListItem parsing which filters
+    // based on hardcoded "name" property
+    const usesCustomKeys = optionsKey !== "name" || optionsValue !== "text";
+    if (usesCustomKeys) {
+      const answerList = getParamFromTemplateRow(row, "answer_list", []);
+      return normaliseAnswerListToArray(answerList);
+    }
+
+    // Priority 3: Use standard IAnswerListItem parsing (default behavior)
+    return getAnswerListParamFromTemplateRow(row, "answer_list", []);
   }
 
   private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IComboBoxParams {

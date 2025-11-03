@@ -225,16 +225,27 @@ export interface IAnswerListItem {
 }
 
 /**
+ * Normalise an answer list from either a hashmap or array format to an array.
+ * Handles conversion of hashmap objects (created with {}) to arrays.
+ * @param answerList an answer_list parameter, either an array or a hashmap object
+ * @returns an array representation of the answer list, or empty array if invalid
+ */
+export function normaliseAnswerListToArray(answerList: any): any[] {
+  if (!answerList) return [];
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (answerList?.constructor === Object) {
+    return objectToArray(answerList);
+  }
+  return Array.isArray(answerList) ? answerList : [];
+}
+
+/**
  * Parse an answer_list parameter and return an array of AnswerListItems
  * @param answerList an answer_list parameter, either an array of IAnswerListItems
  * or a data list (hashmap of IAnswerListItems)
  */
 function parseAnswerList(answerList: any) {
-  if (!answerList) return [];
-  // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
+  answerList = normaliseAnswerListToArray(answerList);
 
   // Remove any items from the list which only have a value for "name",
   // e.g. "image" and "text" are undefined because the list has been generated within a template
