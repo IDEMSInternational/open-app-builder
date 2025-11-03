@@ -6,7 +6,7 @@ import BaseProcessor from "../base";
 import { JsonFileCache } from "../../cacheStrategy/jsonFile";
 import { createHash } from "crypto";
 
-const cacheVersion = 20251028.6;
+const cacheVersion = 20251029.0;
 const namespace = "FlowParserProcessor";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
