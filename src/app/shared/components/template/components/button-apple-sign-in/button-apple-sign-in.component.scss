@@ -10,7 +10,7 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   justify-content: center;
   background-color: white;
   color: black;
-  padding: var(--regular-margin) var(--tiny-padding);
+  padding: var(--regular-margin);
   border-radius: $border-radius;
   font-size: 20px;
   font-weight: var(--font-weight-bold);
