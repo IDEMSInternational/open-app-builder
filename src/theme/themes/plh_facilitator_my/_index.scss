@@ -9,7 +9,6 @@
     $color-secondary: hsl(17, 100%, 44%),
     $page-background: white,
     $variable-overrides: (
-      font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
@@ -21,6 +20,7 @@
       font-size-text-large: 24px,
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
+      paragraph-spacing: 12px,
 
       line-height-text-tiny: 18px,
       line-height-text-small: 24px,
@@ -41,6 +41,7 @@
       button-background-primary: var(--ion-color-primary-700),
       button-background-secondary: var(--ion-color-secondary-600),
       button-background-option: var(--ion-color-secondary-700),
+      button-border-radius: var(--ion-border-radius-rounded),
       buttons-full-height: 56px,
       buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
