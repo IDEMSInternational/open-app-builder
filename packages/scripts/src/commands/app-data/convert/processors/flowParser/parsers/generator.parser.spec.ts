@@ -46,9 +46,8 @@ const generatorInput = (): FlowTypes.GeneratorFlow => ({
 describe("generator Parser", () => {
   let parser: GeneratorParser;
   beforeEach(() => {
-    // HACK - setup parser with in-memory cache to avoid writing to disk
-    parser = new GeneratorParser(new FlowParserProcessor(null as any));
-    parser.flowProcessor.cache = new MockJsonFileCache();
+    const flowParser = new FlowParserProcessor({ cache: new MockJsonFileCache() });
+    parser = new GeneratorParser(flowParser);
     parser.flowProcessor.processedFlowHashmap = {
       data_list: getTestData(),
     };
