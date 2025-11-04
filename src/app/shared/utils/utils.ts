@@ -8,6 +8,7 @@ import { objectToArray } from "../components/template/utils";
 import marked from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
 import { v4 as uuidV4 } from "uuid";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -233,7 +234,7 @@ export interface IAnswerListItem {
 export function normaliseAnswerListToArray(answerList: any): any[] {
   if (!answerList) return [];
   // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList?.constructor === Object) {
+  if (isObjectLiteral(answerList)) {
     return objectToArray(answerList);
   }
   return Array.isArray(answerList) ? answerList : [];
