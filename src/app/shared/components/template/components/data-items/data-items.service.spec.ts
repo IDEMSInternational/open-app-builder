@@ -45,7 +45,6 @@ const MOCK_BUTTON = (overrides: Partial<FlowTypes.TemplateRow> = {}): FlowTypes.
       action_id: "set_item",
       args: [],
       _raw: "click | set_item | completed: true",
-      _cleaned: "click | set_item | completed: true",
       params: {
         completed: true,
       },
