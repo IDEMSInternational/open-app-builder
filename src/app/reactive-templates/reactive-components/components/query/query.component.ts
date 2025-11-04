@@ -20,15 +20,19 @@ export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameter
   private dynamicDataService = inject(DynamicDataService);
 
   protected async computeStoredValue(value: any) {
-    const queryString = `{${value as string}}`;
-    const mangoQuery = value ? json5.parse(queryString) : {};
-    const query = this.dynamicDataService.query$<any>(
-      "data_list",
-      this.params.dataList.value(),
-      mangoQuery
-    );
-    const result = await firstValueFrom(query);
+    try {
+      const queryString = `{${value as string}}`;
+      const mangoQuery = value ? json5.parse(queryString) : {};
+      const query = this.dynamicDataService.query$<any>(
+        "data_list",
+        this.params.dataList.value(),
+        mangoQuery
+      );
 
-    return result;
+      return await firstValueFrom(query);
+    } catch (error) {
+      console.error(`Failed to parse query for ${this.name()}:`, error);
+      return [];
+    }
   }
 }
