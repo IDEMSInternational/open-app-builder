@@ -31,6 +31,7 @@ export interface IDownloadOptions {
   outputPath: string;
   credentialsPath: string;
   authTokenPath: string;
+  /** Custom text to include with logs. Default uses drive folder name */
   logPrefix?: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }
