@@ -1,4 +1,4 @@
-import { Component, effect, forwardRef, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, effect, forwardRef, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
