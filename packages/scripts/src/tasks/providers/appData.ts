@@ -12,7 +12,7 @@ import { AppDataOptimiser } from "../../commands/app-data/optimise";
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
   const { sourceAssetsFolders } = options;
-  let args = `--source-assets-folders ${sourceAssetsFolders.join(",")}`;
+  let args = `--source-assets-folders="${sourceAssetsFolders.join(",")}"`;
   let cmd = `app-data post-process assets ${args}`;
 
   await parseCommand(`${cmd}`);
@@ -24,7 +24,7 @@ const postProcessSheets = async (options: {
   sourceTranslationsFolder: string;
 }) => {
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
-  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
+  let args = `--source-sheets-folder="${sourceSheetsFolder}" --source-translations-folder="${sourceTranslationsFolder}"`;
   let cmd = `app-data post-process sheets ${args}`;
   await parseCommand(`${cmd}`);
 };
