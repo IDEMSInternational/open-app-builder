@@ -4,7 +4,6 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
 import { FlowTypes } from "packages/data-models";
 import { Subscription } from "rxjs";
 import { RowListComponent } from "../../row-list.component";
-import { RowRegistry } from "src/app/reactive-templates/services/row.registry";
 
 @Component({
   selector: "oab-nested-template",
@@ -61,18 +60,27 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private setTemplateVariable(row: FlowTypes.TemplateRow) {
     const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
+    const isStaticValue = dependencies && dependencies.length === 0;
 
-    if (dependencies && dependencies.length === 0) {
-      const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
-      if (this.rowRegistry.has(rowFullName)) {
-        this.rowRegistry.get(rowFullName)?.setExpression(row.value);
-      }
+    if (isStaticValue) {
+      this.setChildExpression(row);
     } else {
-      this.variableStore.set(
-        this.namespaceService.getFullName(this.name(), row.name),
-        this.evaluationService.evaluateExpression(row.value, this.namespace())
-      );
+      this.setChildValue(row);
     }
+  }
+
+  private setChildExpression(row: FlowTypes.TemplateRow) {
+    const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
+    if (this.rowRegistry.has(rowFullName)) {
+      this.rowRegistry.get(rowFullName)?.setExpression(row.value);
+    }
+  }
+
+  private setChildValue(row: FlowTypes.TemplateRow) {
+    this.variableStore.set(
+      this.namespaceService.getFullName(this.name(), row.name),
+      this.evaluationService.evaluateExpression(row.value, this.namespace())
+    );
   }
 
   private unsubscribeChildDependencies() {
