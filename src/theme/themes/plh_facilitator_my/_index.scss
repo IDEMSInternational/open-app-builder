@@ -9,7 +9,6 @@
     $color-secondary: hsl(17, 100%, 44%),
     $page-background: white,
     $variable-overrides: (
-      font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
@@ -21,6 +20,7 @@
       font-size-text-large: 24px,
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
+      paragraph-spacing: 12px,
 
       line-height-text-tiny: 18px,
       line-height-text-small: 24px,
