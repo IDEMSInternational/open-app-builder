@@ -12,8 +12,7 @@ const parameters = () =>
 
 @Component({
   selector: "oab-query",
-  templateUrl: "./query.component.html",
-  styleUrls: ["./query.component.scss"],
+  template: "", // template is not needed for this component
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
