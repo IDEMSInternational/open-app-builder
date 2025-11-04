@@ -31,7 +31,7 @@ export interface IDownloadOptions {
   outputPath: string;
   credentialsPath: string;
   authTokenPath: string;
-  logName: string;
+  logPrefix?: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }
 
@@ -55,14 +55,15 @@ export class GDriveDownloader {
    * Process entire folder download
    * @returns path to download folder
    **/
-  public async downloadFolder(folderId: string, logName?: string) {
+  public async downloadFolder(folderId: string) {
     await this.setup();
     // Extract folder name from id to show in logs
-    if (!logName) {
+    let {logPrefix} = this.options
+    if (!logPrefix) {
       const { name } = await getGDriveFileById(this.drive, this.options.folderId);
-      logName = name;
+      logPrefix = name;
     }
-    console.log(chalk.yellow("\n" + logName));
+    console.log(chalk.yellow("\n" + logPrefix));
     const serverFiles = await this.listGdriveFilesRecursively(folderId);
     if (Object.keys(serverFiles).length === 0) {
       logError({
@@ -191,7 +192,7 @@ export class GDriveDownloader {
     // Remove empty folders left after deletions
     cleanupEmptyFolders(this.options.outputPath);
     // Update logs
-    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
+    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.folderId}.json`);
     console.log(chalk.gray(actionsLogPath));
     fs.writeFileSync(actionsLogPath, JSON.stringify(actions, null, 2));
   }
