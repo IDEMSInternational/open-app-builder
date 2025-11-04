@@ -7,6 +7,7 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -16,10 +17,17 @@ import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
  */
 export class TemplateTranslateService extends AsyncServiceBase {
   /**
+   * @deprecated 2025-09
+   * Use `appLanguage` signal instead
+   *
    * Provide an observable so services can subscribe and respond to language changes
    * Formatted as country-language code, e.g. za-en
    **/
   app_language$ = new BehaviorSubject<string>(null);
+
+  /** Current app language */
+  public appLanguage = toSignal(this.app_language$);
+
   appLanguages: IAppConfig["APP_LANGUAGES"];
   appLanguagesMeta: IAppConfig["APP_LANGUAGES_META"];
   languageDirection: WritableSignal<"ltr" | "rtl"> = signal("ltr");

@@ -53,7 +53,9 @@ export namespace FlowTypes {
       [templatename: string]: any; // override condition
     };
     _xlsxPath?: string; // debug info
-    _sheetsFolderUrl?: string; // debug info
+    _sheetsFolderUrl?: string; // TODO - removed post-merge https://github.com/IDEMSInternational/open-app-builder/pull/3166
+    _remoteUrl?: string; // debug info
+    _remoteFolder?: string;
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
@@ -227,7 +229,6 @@ export namespace FlowTypes {
     _satisfied?: boolean;
     /** debug info  */
     _raw?: string;
-    _cleaned?: string;
     _parsed?: string[][];
   }
   export interface Lifecycle_Action {
@@ -273,7 +274,7 @@ export namespace FlowTypes {
   }
 
   /** Row types that do not display component but perform an action when processed */
-  type TemplateRowBaseType =
+  export type TemplateRowBaseType =
     | "items"
     | "nested_properties"
     | "set_default"
@@ -480,6 +481,7 @@ export namespace FlowTypes {
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
+    rawArgs?: any; // original args before evaluation
     params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
@@ -490,7 +492,6 @@ export namespace FlowTypes {
     _self_triggered?: boolean;
     // debug info
     _raw?: string;
-    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {
