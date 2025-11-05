@@ -43,7 +43,7 @@ const download = async (options: {
   const dlOptions: IDownloadOptions = {
     ...getCommonOptions(),
     folderId,
-    logName: `${folderId}.log`,
+    logPrefix: folderName,
     outputPath,
     filterFn,
   };

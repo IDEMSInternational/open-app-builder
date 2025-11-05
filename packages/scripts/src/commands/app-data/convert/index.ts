@@ -144,7 +144,8 @@ export class AppDataConverter {
               ...contents,
               rows: sheetData[flow_name],
               _source: {
-                path: `${_metadata.folderName}/${_metadata.relativePath}`,
+                name: _metadata.folderName,
+                path: _metadata.relativePath,
                 url: _metadata.remoteUrl,
               },
             };
