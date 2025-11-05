@@ -78,7 +78,7 @@ export interface IDeploymentRuntimeConfig {
   /** 3rd party integration for remote asset storage and sync */
   remote_assets?: {
     /** Enable remote asset storage and sync by specifying provider */
-    provider: "supabase";
+    provider: "supabase" | "firebase";
     /** By convention, this should match the deployment name */
     bucketName: string;
     folderName: string;
