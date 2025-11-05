@@ -26,8 +26,20 @@ const MOCK_DATA_LIST_ROWS = [
 
 /** Mock calls for field values from the template field service to return test data */
 export class MockTemplateTranslateService implements Partial<TemplateTranslateService> {
+  private translationMap: Record<string, string> = {};
+
+  constructor(translationMap?: Record<string, string>) {
+    if (translationMap) {
+      this.translationMap = translationMap;
+    }
+  }
+
   public translateValue(value: string) {
-    return value;
+    return this.translationMap[value] || value;
+  }
+
+  public translateRow(row: any) {
+    return row;
   }
 
   public async ready(timeoutValue?: number): Promise<boolean> {
