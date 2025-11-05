@@ -926,42 +926,47 @@
   plh-combo-box {
     .combo-box-container.dropdown {
       ion-select {
-        background-color: var(--ion-color-gray-50) !important;
-        border: 1px solid var(--ion-color-gray-300) !important;
+        background-color: var(--ion-color-primary-50) !important;
+        border: 1px solid var(--ion-color-primary-300) !important;
         padding-left: 16px !important;
         font-size: var(--font-size-text-mid-size);
-        &.hasValue {
-          background: var(--ion-color-gray-50) !important;
+        &.hasValue,
+        &.hasValue::part(container),
+        &.hasValue::part(icon) {
+          background-color: var(--ion-color-primary-100) !important;
+          color: var(--ion-color-primary-800) !important;
         }
       }
     }
     button.open-combobox {
-      background-color: var(--ion-color-gray-50) !important;
+      background-color: var(--ion-color-primary-50) !important;
       border-radius: var(--ion-border-radius-small);
       filter: none !important;
       min-height: 58px !important;
-      border: 1px solid var(--ion-color-gray-300) !important;
+      border: 1px solid var(--ion-color-primary-300) !important;
       &.placeholder-style {
-        color: var(--ion-color-gray-300);
+        color: var(--ion-color-gray-400);
         font-weight: var(--font-weight-standard);
       }
       &.with-value {
-        background-color: var(--ion-color-gray-100);
+        background-color: var(--ion-color-primary-100) !important;
+        color: var(--ion-color-primary-800) !important;
       }
     }
     button.open-search-combobox {
-      background-color: var(--ion-color-gray-50) !important;
+      background-color: var(--ion-color-primary-50) !important;
       border-radius: var(--ion-border-radius-small);
       filter: none !important;
       min-height: 58px !important;
-      border: 1px solid var(--ion-color-gray-300) !important;
+      border: 1px solid var(--ion-color-primary-300) !important;
       padding-left: 16px;
       &.placeholder-style {
-        color: var(--ion-color-gray-300);
+        color: var(--ion-color-gray-400);
         font-weight: var(--font-weight-standard);
       }
       &.with-value {
-        background-color: var(--ion-color-gray-100);
+        background-color: var(--ion-color-primary-100) !important;
+        color: var(--ion-color-primary-800) !important;
       }
     }
   }
@@ -980,22 +985,21 @@
     .container-radio {
       box-shadow: none !important;
       border-radius: var(--ion-border-radius-small) !important;
-      background: var(--ion-color-gray-50) !important;
-      border: 1px solid var(--ion-color-gray-200) !important;
+      background: var(--ion-color-primary-50) !important;
+      border: 1px solid var(--ion-color-primary-200) !important;
       label {
         padding: 8px !important;
         text-align: unset !important;
         font-size: var(--font-size-text-medium) !important;
-        color: var(--ion-color-gray-700) !important;
+        color: var(--ion-color-primary-700) !important;
         min-height: 56px !important;
         border-radius: var(--ion-border-radius-small) !important;
-        font-weight: var(--font-weight-medium) !important;
         text-align: center !important;
       }
     }
     .checked-radio {
-      background: var(--ion-color-gray-100) !important;
-      border: 2px solid var(--ion-color-gray-400) !important;
+      background: var(--ion-color-primary-100) !important;
+      border: 2px solid var(--ion-color-primary-400) !important;
     }
     .wrapper {
       .text-box-input {
@@ -1003,7 +1007,6 @@
         border: 1px solid var(--color-outline) !important;
         font-size: var(--font-size-text-medium) !important;
         color: var(--color-surface-black) !important;
-        font-weight: var(--font-weight-medium) !important;
         box-shadow: none !important;
         --padding-end: 16px !important;
         --padding-start: 16px !important;
@@ -1013,7 +1016,7 @@
         border-radius: var(--ion-border-radius-standard) !important;
       }
       .checked-radion {
-        border: 2px solid var(--ion-color-gray-400) !important;
+        border: 2px solid var(--ion-color-primary-400) !important;
       }
     }
   }
