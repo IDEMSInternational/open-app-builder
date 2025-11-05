@@ -204,10 +204,11 @@ export class RowProcessor {
             logOnly: true,
           });
         }
-        const { rows, _xlsxPath, ...parentMeta } = this.parent.flow;
+        const { rows, _source, ...parentMeta } = this.parent.flow;
         console.warn("Error in flow:", parentMeta);
         console.warn("Row:", this.row);
-        console.warn("XLSX:", _xlsxPath);
+        console.warn("XLSX:", _source.path);
+        console.warn("URL:", _source.url);
       }
     }
     // Can ignore as handled during subgroup extraction
