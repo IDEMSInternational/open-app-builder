@@ -118,7 +118,8 @@ describe("App Data Converter", () => {
     expect(sheetJsonMeta.length).toEqual(4);
     expect(sheetJsonMeta[0]).toEqual({
       _source: {
-        path: "sheets/test_input.xlsx",
+        name: "sheets",
+        path: "test_input.xlsx",
         url: "https://docs.google.com/spreadsheets/d/mock-gdrive-id",
       },
       flow_name: "test_data_list",
