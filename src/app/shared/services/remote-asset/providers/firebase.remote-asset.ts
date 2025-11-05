@@ -1,0 +1,143 @@
+import { Injectable, Injector } from "@angular/core";
+import { FirebaseService } from "../../firebase/firebase.service";
+import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
+import { FirebaseStorage } from "@capacitor-firebase/storage";
+
+@Injectable({
+  providedIn: "root",
+})
+export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
+  private firebaseService: FirebaseService;
+  private config: IRemoteAssetConfig;
+
+  async initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void> {
+    this.config = config;
+    this.firebaseService = injector.get(FirebaseService);
+
+    // Ensure Firebase app is initialized
+    if (!this.firebaseService.app) {
+      console.warn(`[Firebase Remote Asset] Firebase app not initialized`);
+      return;
+    }
+  }
+
+  public getPublicUrl(relativePath: string): string {
+    if (!this.firebaseService.app || !this.firebaseService.app.options.storageBucket) {
+      return "";
+    }
+
+    try {
+      const filePath = `${this.config.folderName}/${relativePath}`;
+      const bucketName = this.firebaseService.app.options.storageBucket;
+
+      // Generate Firebase Storage public URL for CDN usage
+      // This assumes files are stored as public in Firebase Storage
+      const encodedPath = encodeURIComponent(filePath);
+      return `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodedPath}?alt=media`;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error getting public URL:", error);
+      return "";
+    }
+  }
+
+  public async downloadFile(relativePath: string): Promise<Blob | null> {
+    if (!this.firebaseService.app) {
+      return null;
+    }
+
+    try {
+      const fullPath = `${this.config.folderName}/${relativePath}`;
+
+      // Use Capacitor Firebase Storage to get the download URL
+      const result = await FirebaseStorage.getDownloadUrl({
+        path: fullPath,
+      });
+
+      if (result.downloadUrl) {
+        // Download the file using fetch - response varies depending on platform
+        const response = await fetch(result.downloadUrl);
+
+        if (response.ok) {
+          return await response.blob();
+        } else {
+          console.error(`[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`);
+          return null;
+        }
+      }
+
+      return null;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error downloading file:", error);
+      return null;
+    }
+  }
+
+  public async downloadFileAsText(relativePath: string): Promise<string | null> {
+    try {
+      const blob = await this.downloadFile(relativePath);
+
+      if (!blob) {
+        return null;
+      }
+
+      const textContent = await blob.text();
+      // Check if the content is a data URL (Firebase's format sometimes)
+      if (textContent.startsWith("data:application/json;base64")) {
+        // Extract base64 content from data URL
+        const commaIndex = textContent.indexOf(",");
+        if (commaIndex !== -1 && commaIndex < textContent.length - 1) {
+          const base64Content = textContent.substring(commaIndex + 1);
+          return atob(base64Content);
+        } else {
+          console.warn(
+            "[Firebase Remote Asset] Invalid data URL format returned from firebase, missing base64 content. Requested asset path: " +
+              relativePath
+          );
+          return textContent;
+        }
+      }
+
+      // Regular text content
+      return textContent;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error downloading file as text:", error);
+      return null;
+    }
+  }
+
+  public async downloadFileFromPrivateBucket(filepath: string): Promise<Blob | null> {
+    // Legacy method - delegate to downloadFile
+    const relativePath = filepath.replace(`${this.config.folderName}/`, "");
+    return this.downloadFile(relativePath);
+  }
+
+  public async getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null> {
+    if (!this.firebaseService.app) {
+      return null;
+    }
+
+    try {
+      const fullPath = `${this.config.folderName}/${relativePath}`;
+
+      // Use Capacitor Firebase Storage to get file metadata
+      const result = await FirebaseStorage.getMetadata({
+        path: fullPath,
+      });
+
+      // The result contains metadata properties directly, not nested
+      if (result) {
+        return {
+          name: relativePath.split("/").pop() || relativePath,
+          size: result.size,
+          lastModified: new Date(result.updatedAt).toISOString(),
+          contentType: result.contentType,
+        };
+      }
+
+      return null;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error getting file metadata:", error);
+      return null;
+    }
+  }
+}
