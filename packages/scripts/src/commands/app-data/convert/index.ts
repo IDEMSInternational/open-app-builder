@@ -5,19 +5,29 @@ import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
 import { ActiveDeployment } from "../../deployment/get";
-import { IConverterPaths, IParsedWorkbookData } from "./types";
+import { IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
-import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import {
-  generateFolderFlatMap,
   createChildFileLogger,
   getLogs,
   Logger,
   getLogFiles,
   logWarning,
   standardiseNewlines,
+  parseAppDataCollectionString,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
+import { generateFolderFlatMap, IContentsEntry, IContentsEntryWithLocalPath } from "shared";
+import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
+import { JsonFileCache } from "./cacheStrategy/jsonFile";
+import { MockJsonFileCache } from "./cacheStrategy/jsonFile.mock";
+
+const METADATA_FILENAME = "_metadata.json";
+
+interface ISheetJsonWithMeta {
+  _metadata: IContentsEntry & { folderName: string };
+  [sheet_name: string]: any;
+}
 
 /***************************************************************************************
  * CLI
@@ -55,104 +65,148 @@ export default program
 /**
  * The AppDataConverter handles the process of converting xlsx workbooks to json
  * and then parsing as data flows
- *
- * TODO - can likely also be an extension of the base converter (?)
  */
 export class AppDataConverter {
-  /** Change version to invalidate all underlying caches */
-  public version = 20241104.0;
-
   public activeDeployment = ActiveDeployment.get();
 
+  /** Base logger used by child processors */
   public logger = createChildFileLogger({ source: "converter" });
 
-  cache: JsonFileCache;
+  /** Base cache used by child processors */
+  private cache: JsonFileCache;
 
-  constructor(
-    private options: IConverterOptions,
-    testOverrides: Partial<AppDataConverter> = {}
-  ) {
-    console.log(chalk.yellow("App Data Convert"));
-    // optional overrides, used for tests
-    if (testOverrides.version) this.version = testOverrides.version;
-    if (testOverrides.activeDeployment) this.activeDeployment = testOverrides.activeDeployment;
-
+  constructor(private options: IConverterOptions) {
     // Setup Folders
     const { outputFolder, cacheFolder } = options;
     [outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
+
+    this.cache = cacheFolder ? new JsonFileCache(cacheFolder) : new MockJsonFileCache();
+
     if (this.options.skipCache) {
       this.cache.clear();
     }
-    // Create a cache that can be used to invalidate all underlying processor caches
-    this.cache = new JsonFileCache(cacheFolder, this.version);
   }
 
   public async run() {
-    const { inputFolders, outputFolder, cacheFolder } = this.options;
-    const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-    const combinedOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
-    const converterPaths: IConverterPaths = {
-      SHEETS_CACHE_FOLDER: cacheFolder,
-      SHEETS_INPUT_FOLDER: "",
-      SHEETS_OUTPUT_FOLDER: outputFolder,
-    };
-    // Processing Steps
-    for (const inputFolder of inputFolders) {
-      // 1.1 Generate a list of xlsx files in data source and convert to json
-      const folderOutputsHashmap: Record<string, FlowTypes.FlowTypeWithData> = {};
-      converterPaths.SHEETS_INPUT_FOLDER = inputFolder;
-      const list = generateFolderFlatMap(inputFolder, { filterFn });
-      const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
-      xlsxConverter.logger = this.logger;
-      const data = await xlsxConverter.process(Object.values(list));
-      // 1.2 Sort and filter output jsons
-      const outputs = this.cleanFlowOutputs(data);
-      // 1.3 Merge jsons both within input sources (duplicate are errors) and across input sources (duplicates are overrrides)
-      for (const output of outputs) {
-        const hashName = `${output.flow_type}||${output.flow_name}`;
-        if (folderOutputsHashmap[hashName]) {
-          this.logDuplicateFlowError(folderOutputsHashmap[hashName], output);
-        }
-        folderOutputsHashmap[hashName] = output;
-        if (combinedOutputsHashmap[hashName]) {
-          this.logger.debug({
-            message: "flow_override",
-            details: { flow_type: output.flow_type, flow_name: output.flow_name, inputFolder },
-          });
-        }
-        combinedOutputsHashmap[hashName] = output;
-      }
-      this.logger.debug({ step: inputFolder, outputs });
+    // 1. XLSX -> Sheet JSON
+    let allSheetJsons: ISheetJsonWithMeta[] = [];
+    for (const inputFolder of this.options.inputFolders) {
+      // Extract list of files for conversion
+      const fileEntries = await this.listFilesForConversion(inputFolder);
+      const folderName = path.basename(inputFolder);
+      // Convert to xlsx sheet representation (with merged metadata)
+      const xlsxProcessor = new XLSXWorkbookProcessor({ cache: this.cache });
+      xlsxProcessor.logger = this.logger;
+      const converted = await xlsxProcessor.process(fileEntries);
+      const sheetJsons: ISheetJsonWithMeta[] = converted.map((sheetData, i) => {
+        const { localPath, ..._metadata } = fileEntries[i];
+        return { _metadata: { ..._metadata, folderName }, ...sheetData };
+      });
+      sheetJsons.forEach((json) => allSheetJsons.push(json));
+      await this.writeSheetJsons(path.basename(inputFolder), sheetJsons);
     }
-    // 2.1 - Convert all merged jsons to flow data using flow parsers
-    const processor = new FlowParserProcessor(converterPaths);
-    processor.logger = this.logger;
-    const jsonFlows = Object.values(combinedOutputsHashmap);
-    const result = (await processor.process(jsonFlows)) as IParsedWorkbookData;
 
-    // TODO - write to disk and log
-    const { errors, warnings } = this.logOutputs(result);
-    return { result, errors, warnings };
+    // 2. Merge jsons with contents sheet, filter, apply direct overrides and sort
+    const mergedJsons = allSheetJsons.map((v) => this.mergeContentsSheet(v));
+    const allJsons = mergedJsons.flat();
+    const filteredJsons = this.applyFlowFilters(allJsons);
+    const sortedJsons = this.applyFlowSort(filteredJsons);
+
+    // 3. Process Flow Data
+    const processor = new FlowParserProcessor({ cache: this.cache });
+    processor.logger = this.logger;
+    const result = (await processor.process(sortedJsons)) as IParsedWorkbookData;
+    this.writeOutputJsons(result);
+
+    // 4. Extract Logs and return
+    const { errors, warnings } = this.logOutputs();
+    return { errors, warnings, result };
   }
 
   /**
-   * Log error in case duplicate flows appear in the same folder
-   * Duplicate flows across input folders are assumed overrides
+   * App data sheets contain contents page with metadata that can be merged into regular data
+   * Merge and collate with other existing data, warning in case of overwrites
+   * @returns - array of all merged sheets (no grouping or collating)
+   *
    */
-  private logDuplicateFlowError(
-    initialFlow: FlowTypes.FlowTypeWithData,
-    duplicateFlow: FlowTypes.FlowTypeWithData
-  ) {
-    const { flow_name, flow_type, _xlsxPath } = initialFlow;
-    this.logger.error({
-      message: "Duplicate flow name",
-      details: { flow_name, flow_type, _xlsxPaths: [_xlsxPath, duplicateFlow._xlsxPath] },
+  private mergeContentsSheet(json: ISheetJsonWithMeta) {
+    const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
+    const { _metadata, ...sheetData } = json;
+    const contentList = sheetData["==content_list=="] as FlowTypes.FlowTypeWithData[];
+    if (contentList) {
+      for (const contents of contentList) {
+        const { flow_name, parameter_list } = contents;
+        if (flow_name) {
+          if (sheetData.hasOwnProperty(flow_name)) {
+            merged[flow_name] = {
+              ...contents,
+              rows: sheetData[flow_name],
+              _source: {
+                name: _metadata.folderName,
+                path: _metadata.relativePath,
+                url: _metadata.remoteUrl,
+              },
+            };
+            // convert parameter list from string to object
+            // TODO - handle converting in parser
+            if (parameter_list) {
+              merged[flow_name].parameter_list = parseAppDataCollectionString(
+                parameter_list as any
+              );
+            }
+          } else {
+            this.logger.warn(chalk.yellow(`No Contents: ${flow_name}`));
+          }
+        }
+      }
+    } else {
+      this.logger.warn(chalk.yellow(`No Content List: ${_metadata.relativePath}`));
+    }
+
+    return Object.values(merged);
+  }
+
+  private async listFilesForConversion(baseFolder: string) {
+    // List all local xlsx files for conversion
+    const localFiles = generateFolderFlatMap(baseFolder, {
+      filterFn: (v) => v.endsWith(".xlsx"),
+      includeLocalPath: true,
     });
+    // Merge custom meta populated from google drive downloader
+    const customMetadata = await this.readDriveMetaEntries(baseFolder);
+    for (const item of customMetadata) {
+      if (localFiles[item.relativePath]) {
+        localFiles[item.relativePath] = { ...localFiles[item.relativePath], ...item };
+      }
+    }
+    return Object.values(localFiles) as IContentsEntryWithLocalPath[];
+  }
+
+  private async readDriveMetaEntries(inputFolder: string) {
+    const metadataPath = path.resolve(inputFolder, METADATA_FILENAME);
+    const metadataExists = await fs.pathExists(metadataPath);
+    if (metadataExists) {
+      const metadataContents = await fs.readJSON(metadataPath);
+      return GDRIVE_FILE_ENTRY_ARRAY_SCHEMA.parse(metadataContents).map((v) =>
+        this.mapDriveMetaToContents(v)
+      );
+    } else {
+      return [];
+    }
+  }
+
+  private mapDriveMetaToContents(metadata: IGdriveEntry): Partial<IContentsEntry> {
+    const { lastModifyingUser, relativePath, modifiedTime, id } = metadata;
+    return {
+      relativePath,
+      modifiedTime,
+      modifiedBy: lastModifyingUser?.displayName,
+      remoteUrl: `https://docs.google.com/spreadsheets/d/${id}`,
+    };
   }
 
   /** Create log of total warnings and errors */
-  private logOutputs(result: IParsedWorkbookData) {
-    this.writeOutputJsons(result);
+  private logOutputs() {
     const warnings = getLogs("warn");
     if (warnings.length > 0) {
       const warningLogFile = getLogFiles().warn;
@@ -174,21 +228,26 @@ export class AppDataConverter {
     return { errors, warnings };
   }
 
-  /** Filter undefined, non-released and filter-fn excluded sheets, and apply custom sort ordering */
-  private cleanFlowOutputs(data: FlowTypes.FlowTypeWithData[][]) {
+  /** Filter undefined, non-released and filter-fn excluded sheets */
+  private applyFlowFilters(flows: FlowTypes.FlowTypeWithData[]) {
     // concat array of arrays to single array
-    const flattened: FlowTypes.FlowTypeWithData[] = [].concat.apply([], data);
     const { sheets_filter_function } = this.activeDeployment.app_data;
-    const filtered = flattened
+    return flows
       .filter((flow) => flow.status === "released")
       .filter((flow) => sheets_filter_function(flow as any));
-    // sort by flow type and so that data pipes are processed last (depend on other lists)
-    const sorted = filtered.sort((a, b) => {
+  }
+
+  private applyFlowSort(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows.sort((a, b) => {
+      // ensure data pipes are processed last (depend on other lists)
       if (a.flow_type === "data_pipe") return 1;
       if (b.flow_type === "data_pipe") return -1;
-      return a.flow_type > b.flow_type ? 1 : -1;
+      const aHash = `${a.flow_type}/${a.flow_name}`;
+      const bHash = `${b.flow_type}/${b.flow_name}`;
+      // if same name ensure override order from download order
+      if (aHash === bHash) return 0;
+      return aHash > bHash ? 1 : -1;
     });
-    return sorted;
   }
 
   /** Write individual converted jsons to flow_type folders */
@@ -211,5 +270,27 @@ export class AppDataConverter {
         fs.writeFileSync(flowOutputPath, standardiseNewlines(JSON.stringify(flow, null, 2)));
       });
     });
+  }
+
+  /** Populate raw json conversions of xlsx files to sheet_json folder */
+  private async writeSheetJsons(folderName: string, jsons: ISheetJsonWithMeta[]) {
+    const { outputFolder } = this.options;
+    const sheetJsonFolder = path.resolve(outputFolder, "../", "sheet_json");
+    const mergedMetadata: Record<string, any> = {};
+    // Write individual jsons
+    for (const { _metadata, ...jsonData } of jsons) {
+      const { relativePath } = _metadata;
+      mergedMetadata[relativePath] = _metadata;
+      const filePath = relativePath.replace(".xlsx", ".json");
+      const targetFile = path.join(sheetJsonFolder, folderName, filePath);
+      await fs.ensureDir(path.dirname(targetFile));
+      const fileContents = standardiseNewlines(JSON.stringify(jsonData, null, 2));
+      await fs.writeFile(targetFile, fileContents);
+    }
+    // Write metadata
+    const metaFile = path.join(sheetJsonFolder, folderName, METADATA_FILENAME);
+    const metaContents = standardiseNewlines(JSON.stringify(mergedMetadata, null, 2));
+    await fs.ensureDir(path.dirname(metaFile));
+    await fs.writeFile(metaFile, metaContents);
   }
 }

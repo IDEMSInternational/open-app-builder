@@ -1,6 +1,7 @@
-import { normalize } from "path";
+import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
+import type { IDeploymentConfigJson } from "data-models";
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -57,23 +58,22 @@ const workflows: IDeploymentWorkflows = {
         name: "sheets_dl",
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
-          let { sheets_folder_ids, sheets_folder_id, sheets_filter_function } = config.google_drive;
-          if (!sheets_folder_ids) {
-            logWarning({
-              msg1: "[sheets_folder_id] config property is deprecated",
-              msg2: "use [sheets_folder_ids] instead",
-            });
-            sheets_folder_ids = [sheets_folder_id];
-          }
+          const { sheets_folders } = migrateLegacyGdriveConfig(config.google_drive);
+
           /** Return output of paths to downloaded sheets */
           let outputs: string[] = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            outputs = sheets_folder_ids.map((folder_id) => tasks.gdrive.getOutputFolder(folder_id));
+            outputs = sheets_folders.map(({ id, name }) =>
+              tasks.gdrive.getOutputFolder("sheets", id, name)
+            );
           } else {
-            for (const folderId of sheets_folder_ids) {
+            const { sheets_filter_function } = config.google_drive;
+            for (const { id: folderId, name: folderName } of sheets_folders) {
               const output = await tasks.gdrive.download({
+                type: "sheets",
                 folderId,
+                folderName,
                 filterFn: sheets_filter_function,
               });
               outputs.push(output);
@@ -84,8 +84,21 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "sheets_process",
-        function: async ({ tasks, workflow }) =>
-          tasks.template.process({ inputFolders: workflow.sheets_dl.output }),
+        function: async ({ tasks, workflow, config }) => {
+          // Process sheets
+          const outputDir = await tasks.template.process({
+            inputFolders: workflow.sheets_dl.output,
+          });
+
+          // Store copy of intermediate sheet jsons to content repo
+          const sheetsIntermediateDir = resolve(outputDir, "../sheet_json");
+          const outputIntermediateDir = resolve(config._workspace_path, "raw_data", "sheet_json");
+          // TODO - uncomment post...
+          // tasks.file.replicate(sheetsIntermediateDir, outputIntermediateDir);
+
+          // Return output dir to continue processing
+          return outputDir;
+        },
       },
       {
         name: "translations_apply",
@@ -115,23 +128,21 @@ const workflows: IDeploymentWorkflows = {
         name: "assets_dl",
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
-          let { assets_folder_ids, assets_folder_id, assets_filter_function } = config.google_drive;
-          if (!assets_folder_ids) {
-            logWarning({
-              msg1: "[assets_folder_id] config property is deprecated",
-              msg2: "use [assets_folder_ids] instead",
-            });
-            assets_folder_ids = [assets_folder_id];
-          }
+          const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
           /** Return output of paths to downloaded assets */
           let outputs: string[] = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            outputs = assets_folder_ids.map((folder_id) => tasks.gdrive.getOutputFolder(folder_id));
+            outputs = assets_folders.map(({ id, name }) =>
+              tasks.gdrive.getOutputFolder("assets", id, name)
+            );
           } else {
-            for (const folderId of assets_folder_ids) {
+            const { assets_filter_function } = config.google_drive;
+            for (const { id: folderId, name: folderName } of assets_folders) {
               const output = await tasks.gdrive.download({
+                type: "assets",
                 folderId,
+                folderName,
                 filterFn: assets_filter_function,
               });
               outputs.push(output);
@@ -177,13 +188,12 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "sync_watch",
         function: async ({ tasks, config, workflow }) => {
-          let { sheets_folder_ids, sheets_folder_id } = config.google_drive;
-          if (!sheets_folder_ids) {
-            sheets_folder_ids = [sheets_folder_id];
-          }
-          for (const folderId of sheets_folder_ids) {
+          const { sheets_folders } = migrateLegacyGdriveConfig(config.google_drive);
+          for (const { id: folderId, name: folderName } of sheets_folders) {
             tasks.gdrive.liveReload({
+              type: "sheets",
               folderId,
+              folderName,
               onUpdate: async (filepath) => {
                 // only respond to xlsx file changes
                 if (filepath.endsWith(".xlsx")) {
@@ -237,9 +247,13 @@ const processLocalFiles = async (
   options: { only_assets?: boolean; only_sheets?: boolean } = {}
 ) => {
   // HACK - copy local files to expected gdrive folder so can continue as if downloaded
-  const { assets_folder_id, sheets_folder_id } = config.google_drive;
-  replicateDir(config.local_drive.sheets_path, tasks.gdrive.getOutputFolder(sheets_folder_id));
-  replicateDir(config.local_drive.assets_path, tasks.gdrive.getOutputFolder(assets_folder_id));
+  const { assets_folders, sheets_folders } = migrateLegacyGdriveConfig(config.google_drive);
+  for (const { id, name } of assets_folders) {
+    replicateDir(config.local_drive.assets_path, tasks.gdrive.getOutputFolder("assets", id, name));
+  }
+  for (const { id, name } of sheets_folders) {
+    replicateDir(config.local_drive.sheets_path, tasks.gdrive.getOutputFolder("sheets", id, name));
+  }
 
   // Run rest of standard sync workflow
   const { only_assets, only_sheets } = options;
@@ -260,3 +274,38 @@ const processLocalFiles = async (
 
   await tasks.appData.copyDeploymentDataToApp();
 };
+
+/** Migrate deprecated asset and sheet folder id formats */
+function migrateLegacyGdriveConfig(config: IDeploymentConfigJson["google_drive"]) {
+  let { assets_folder_id, assets_folder_ids, assets_folders } = config;
+  if (assets_folder_id && !assets_folders) {
+    logWarning({
+      msg1: "[assets_folder_id] config property is deprecated",
+      msg2: "use [assets_folders] instead",
+    });
+    assets_folders = [{ id: assets_folder_id, name: assets_folder_id }];
+  }
+  if (assets_folder_ids && !assets_folders) {
+    logWarning({
+      msg1: "[assets_folder_ids] config property is deprecated",
+      msg2: "use [assets_folders] instead",
+    });
+    assets_folders = assets_folder_ids.map((id) => ({ id, name: id }));
+  }
+  let { sheets_folder_id, sheets_folder_ids, sheets_folders } = config;
+  if (sheets_folder_id && !sheets_folders) {
+    logWarning({
+      msg1: "[sheets_folder_id] config property is deprecated",
+      msg2: "use [sheets_folders] instead",
+    });
+    sheets_folders = [{ id: sheets_folder_id, name: sheets_folder_id }];
+  }
+  if (sheets_folder_ids && !sheets_folders) {
+    logWarning({
+      msg1: "[sheets_folder_ids] config property is deprecated",
+      msg2: "use [sheets_folders] instead",
+    });
+    sheets_folders = sheets_folder_ids.map((id) => ({ id, name: id }));
+  }
+  return { assets_folders, sheets_folders };
+}
