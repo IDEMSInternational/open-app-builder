@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { DataListParser } from ".";
-import { TEST_DATA_PATHS } from "../../../../../../../test/helpers/utils";
 import { FlowParserProcessor } from "../flowParser";
+import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
 const MOCK_DATA_LIST = (): FlowTypes.Data_list => ({
   flow_type: "data_list",
@@ -23,7 +23,7 @@ const MOCK_DATA_LIST = (): FlowTypes.Data_list => ({
       additional: false,
     },
   ],
-  _xlsxPath: "/mock/data/path",
+  _source: { path: "/mock/data/path" },
 });
 
 /***********************************************************************
@@ -136,13 +136,11 @@ describe("data_list Parser (single)", () => {
 });
 
 describe("data_list Parser (multiple)", () => {
-  const parser = new FlowParserProcessor(TEST_DATA_PATHS);
-  beforeAll(() => {
-    parser.cache.clear();
+  let parser: FlowParserProcessor;
+  beforeEach(() => {
+    parser = new FlowParserProcessor({ cache: new MockJsonFileCache() });
   });
-  afterAll(() => {
-    parser.cache.clear();
-  });
+
   it("Adds override targets to flows", async () => {
     await parser.process([
       { flow_type: "data_list", flow_name: "list_1", rows: [] },

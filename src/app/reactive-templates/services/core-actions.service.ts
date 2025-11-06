@@ -46,6 +46,7 @@ export class CoreActionsService {
         this.setVariable(action);
       },
       set_self: async (action) => {
+        // todo: Why does set_self exist as an action?
         this.setVariable(action);
       },
       pop_up: async (action) => {
