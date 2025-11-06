@@ -45,7 +45,94 @@ const workflows: IDeploymentWorkflows = {
     ],
   },
   sync_sheets: {
-    label: "Sync Latest Sheets",
+    label: "Sync Latest Sheets (Two-Step Process)",
+    options: [
+      {
+        flags: "-s, --skip-download",
+        description: "Skip download and just process local sheets",
+      },
+    ],
+    steps: [
+      {
+        name: "sheets_dl",
+        function: async ({ tasks, config, options }) => {
+          // HACK - ensure drive id provided as array (can be removed once deprecation removed)
+          let { sheets_folder_ids, sheets_folder_id, sheets_filter_function } = config.google_drive;
+          if (!sheets_folder_ids) {
+            logWarning({
+              msg1: "[sheets_folder_id] config property is deprecated",
+              msg2: "use [sheets_folder_ids] instead",
+            });
+            sheets_folder_ids = [sheets_folder_id];
+          }
+          /** Return output of paths to downloaded sheets */
+          let outputs: string[] = [];
+          // If skipping download still need to return download folder for next step
+          if (options.skipDownload) {
+            outputs = sheets_folder_ids.map((folder_id) => tasks.gdrive.getOutputFolder(folder_id));
+          } else {
+            for (const folderId of sheets_folder_ids) {
+              const output = await tasks.gdrive.download({
+                folderId,
+                filterFn: sheets_filter_function,
+              });
+              outputs.push(output);
+            }
+          }
+          return outputs;
+        },
+      },
+      {
+        name: "sheets_sync_raw",
+        function: async ({ tasks, workflow, config }) => {
+          // Step 1: Convert XLSX to raw JSON format
+          const { app_data } = config;
+          const rawOutputDir = await tasks.rawSheets.syncRaw({
+            inputFolders: workflow.sheets_dl.output,
+            outputFolder: resolve(app_data.output_path, "raw_data"),
+          });
+
+          return rawOutputDir;
+        },
+      },
+      {
+        name: "sheets_process_raw",
+        function: async ({ tasks, workflow, config }) => {
+          // Step 2: Process raw JSON into final format from raw_data
+          const { app_data } = config;
+          const rawDataDir = resolve(app_data.output_path, "raw_data", "raw_sheets");
+
+          // Get all subfolders within raw_sheets directory (these contain the actual JSON files)
+          const fs = require("fs-extra");
+          const subfolders = fs
+            .readdirSync(rawDataDir)
+            .filter((item: string) => fs.statSync(resolve(rawDataDir, item)).isDirectory())
+            .map((subfolder: string) => resolve(rawDataDir, subfolder));
+
+          const outputDir = await tasks.rawSheets.processRaw({
+            inputFolders: subfolders,
+          });
+
+          return outputDir;
+        },
+      },
+      {
+        name: "translations_apply",
+        function: async ({ tasks, workflow }) =>
+          tasks.translate.apply({ inputFolder: workflow.sheets_process_raw.output }),
+      },
+      {
+        name: "sheets_post_process",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.postProcessSheets({
+            sourceSheetsFolder: workflow.translations_apply.output.sheets,
+            sourceTranslationsFolder: workflow.translations_apply.output.strings,
+          }),
+      },
+    ],
+  },
+  sync_sheets_legacy: {
+    label: "Sync Latest Sheets (Legacy Single-Step)",
     options: [
       {
         flags: "-s, --skip-download",

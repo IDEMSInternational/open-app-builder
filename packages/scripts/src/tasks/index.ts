@@ -7,6 +7,7 @@ import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import git from "./providers/git";
 import ios from "./providers/ios";
+import rawSheets from "./providers/rawSheets";
 import subtitles from "./providers/subtitles";
 import template from "./providers/template";
 import translate from "./providers/translate";
@@ -29,6 +30,7 @@ const ALL_TASKS = {
   gdrive,
   git,
   ios,
+  rawSheets,
   subtitles,
   template,
   translate,
