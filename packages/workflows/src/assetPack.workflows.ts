@@ -1,39 +1,63 @@
 import type { IDeploymentWorkflows } from "./workflow.model";
+import { writeFileSync } from "fs-extra";
 import path from "path";
+import { sortJsonKeys } from "shared";
 
 const childWorkflows: IDeploymentWorkflows = {
   generate: {
     label: "Generate asset pack configuration",
     steps: [
-      // Prompt folder path if not specified
       {
-        name: "folder path",
-        condition: async ({ args }) => !args[0],
-        function: async ({ tasks, args }) => {
-          const folderPath = await tasks.userInput.promptInput("Enter folder path:");
-          args[0] = folderPath;
+        name: "asset_pack_dl",
+        function: async ({ tasks, config }) => {
+          const { remote_assets_folders } = config.google_drive || {};
+          if (!remote_assets_folders || remote_assets_folders.length === 0) {
+            throw new Error(
+              "No remote_assets_folders configured in deployment config. Please add remote_assets_folders to config.google_drive"
+            );
+          }
+
+          const { assets_filter_function } = config.google_drive || {};
+          const outputs: string[] = [];
+
+          for (const { id: folderId, name: assetPackName } of remote_assets_folders) {
+            const output = await tasks.assetPack.generate({
+              folderId,
+              assetPackName,
+              filterFn: assets_filter_function,
+            });
+            outputs.push(output);
+          }
+
+          return outputs;
         },
       },
-      // Prompt asset pack name if not specified
       {
-        name: "asset pack name",
-        condition: async ({ args }) => !args[1],
-        function: async ({ tasks, args }) => {
-          const folderPath = args[0];
-          const defaultName = path.basename(folderPath);
-          const assetPackName = await tasks.userInput.promptInput(
-            `Enter asset pack name:`,
-            defaultName
-          );
-          args[1] = assetPackName;
+        name: "asset_pack_process",
+        function: async ({ tasks, workflow }) => {
+          const processedEntries: Array<{ path: string; entries: any }> = [];
+
+          for (const outputPath of workflow.asset_pack_dl.output) {
+            // Process assets to generate nested override entries using the same logic as regular asset processing
+            const tracked = await tasks.appData.generateProcessedAssetEntries({
+              sourceAssetsFolder: outputPath,
+            });
+            processedEntries.push({ path: outputPath, entries: tracked });
+          }
+
+          return processedEntries;
         },
       },
       {
-        name: "generate",
-        function: async ({ tasks, args, config }) => {
-          const folderPath = args[0];
-          const assetPackName = args[1];
-          return tasks.assetPack.generate({ folderPath, assetPackName });
+        name: "asset_pack_manifest",
+        function: async ({ workflow }) => {
+          for (const { path: outputPath, entries } of workflow.asset_pack_process.output) {
+            // Write manifest.json with same format as contents.json (includes nested overrides)
+            const manifestPath = path.resolve(outputPath, "manifest.json");
+            writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(entries), null, 2));
+          }
+
+          return workflow.asset_pack_dl.output;
         },
       },
     ],
@@ -47,7 +71,7 @@ const defaultWorkflows: IDeploymentWorkflows = {
     // default workflow runs all child workflows
     steps: [
       {
-        name: "Generate Asset Pack",
+        name: "Generate Asset Packs",
         function: async ({ tasks, workflow }) =>
           await tasks.workflow.runWorkflow({ name: "asset_pack generate", parent: workflow }),
       },
