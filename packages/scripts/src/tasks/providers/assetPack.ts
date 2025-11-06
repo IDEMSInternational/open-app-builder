@@ -1,50 +1,45 @@
-import { generateFolderFlatMap, Logger, logOutput } from "../../utils";
+import { logOutput, replicateDir } from "../../utils";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import path from "path";
-import { existsSync, ensureDirSync } from "fs-extra";
+import { ensureDirSync } from "fs-extra";
+import type { IGdriveEntry } from "@idemsInternational/gdrive-tools";
+import gdrive from "./gdrive";
 
 /**
- * Generate asset pack
+ * Download and copy asset pack from remote Google Drive folder
+ * Returns the output path where assets are copied
  */
-const generate = async (options: { folderPath: string; assetPackName: string }) => {
-  // Source folder path
-  const sourcePath = path.resolve(
-    WorkflowRunner.config.app_data.output_path,
-    "assets",
-    options.folderPath
-  );
+const generate = async (options: {
+  folderId: string;
+  assetPackName: string;
+  filterFn?: (entry: IGdriveEntry) => boolean;
+}) => {
+  const { folderId, assetPackName, filterFn } = options;
+  const config = WorkflowRunner.config;
 
-  // Output folder path for the asset pack
-  const outputPath = path.resolve(
-    WorkflowRunner.config.app_data.output_path,
-    "asset_packs",
-    options.assetPackName
-  );
-
-  logOutput({
-    msg1: "Asset pack generation",
-    msg2: `Source: ${sourcePath}\nOutput: ${outputPath}`,
+  // Download assets from Google Drive (similar to sync_assets workflow)
+  const downloadPath = await gdrive.download({
+    type: "assets",
+    folderId,
+    folderName: assetPackName,
+    filterFn,
   });
 
-  console.log("Asset pack generation");
-  console.log(`Source path: ${sourcePath}`);
-  console.log(`Asset pack name: ${options.assetPackName}`);
-  console.log(`Output path: ${outputPath}`);
+  // Output folder path for the asset pack
+  const outputPath = path.resolve(config.app_data.output_path, "remote_assets", assetPackName);
 
-  // Check if source folder exists
-  if (!existsSync(sourcePath)) {
-    Logger.error({ msg1: `Source folder does not exist: ${sourcePath}` });
-    return Promise.reject(new Error(`Source folder does not exist: ${sourcePath}`));
-  }
+  logOutput({
+    msg1: "Asset pack download",
+    msg2: `Downloaded from: ${downloadPath}\nOutput: ${outputPath}`,
+  });
 
   // Ensure output directory exists (creates if it doesn't exist)
   ensureDirSync(outputPath);
-  console.log(`Created/ensured output directory: ${outputPath}`);
 
-  const assetPack = generateFolderFlatMap(sourcePath);
-  console.log(assetPack);
-  // TODO: Implement asset pack generation logic
-  return Promise.resolve();
+  // Copy downloaded files to output directory
+  replicateDir(downloadPath, outputPath);
+
+  return outputPath;
 };
 
 export default {
