@@ -33,7 +33,7 @@ const childWorkflows: IDeploymentWorkflows = {
       {
         name: "asset_pack_process",
         function: async ({ tasks, workflow }) => {
-          // Process assets in parallel to generate nested override entries
+          // Process assets to generate nested override entries
           const promises = workflow.asset_pack_dl.output.map(async (outputPath) => {
             const tracked = await tasks.appData.generateProcessedAssetEntries({
               sourceAssetsFolder: outputPath,
@@ -46,9 +46,9 @@ const childWorkflows: IDeploymentWorkflows = {
       },
       {
         name: "asset_pack_manifest",
-        function: async ({ workflow }) => {
+        function: ({ workflow }) => {
           for (const { path: outputPath, entries } of workflow.asset_pack_process.output) {
-            // Write manifest.json with same format as contents.json (includes nested overrides)
+            // Write manifest.json with same format as contents.json for core assets (includes nested overrides)
             const manifestPath = path.resolve(outputPath, "manifest.json");
             writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(entries), null, 2));
           }
@@ -68,8 +68,8 @@ const defaultWorkflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "Generate Asset Packs",
-        function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "asset_pack generate", parent: workflow }),
+        function: ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "asset_pack generate", parent: workflow }),
       },
     ],
     children: childWorkflows,
