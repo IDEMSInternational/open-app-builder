@@ -18,34 +18,30 @@ const childWorkflows: IDeploymentWorkflows = {
           }
 
           const { assets_filter_function } = config.google_drive || {};
-          const outputs: string[] = [];
 
-          for (const { id: folderId, name: assetPackName } of remote_assets_folders) {
-            const output = await tasks.assetPack.generate({
+          const promises = remote_assets_folders.map(({ id: folderId, name: assetPackName }) =>
+            tasks.assetPack.generate({
               folderId,
               assetPackName,
               filterFn: assets_filter_function,
-            });
-            outputs.push(output);
-          }
+            })
+          );
 
-          return outputs;
+          return Promise.all(promises);
         },
       },
       {
         name: "asset_pack_process",
         function: async ({ tasks, workflow }) => {
-          const processedEntries: Array<{ path: string; entries: any }> = [];
-
-          for (const outputPath of workflow.asset_pack_dl.output) {
-            // Process assets to generate nested override entries using the same logic as regular asset processing
+          // Process assets in parallel to generate nested override entries
+          const promises = workflow.asset_pack_dl.output.map(async (outputPath) => {
             const tracked = await tasks.appData.generateProcessedAssetEntries({
               sourceAssetsFolder: outputPath,
             });
-            processedEntries.push({ path: outputPath, entries: tracked });
-          }
+            return { path: outputPath, entries: tracked };
+          });
 
-          return processedEntries;
+          return Promise.all(promises);
         },
       },
       {
