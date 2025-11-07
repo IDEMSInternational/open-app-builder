@@ -105,14 +105,18 @@ export interface IDeploymentRuntimeConfig {
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
   google_drive: {
-    /** @deprecated Use `sheets_folder_ids` array instead */
+    /** @deprecated Use `sheets_folders` array instead */
     sheets_folder_id?: string;
-    /** IDs of folders containing app sheets, as seen in end of url */
+    /** @deprecated Use `sheets_folders` array instead */
     sheets_folder_ids?: string[];
-    /** @deprecated Use `assets_folder_ids` array instead */
+    /** gdrive id from end of url and local name for download */
+    sheets_folders?: { id: string; name: string }[];
+    /** @deprecated Use `assets_folders` array instead */
     assets_folder_id?: string;
-    /** IDs of folders containing app assets, as seen in end of url */
+    /** @deprecated Use `assets_folders` array instead */
     assets_folder_ids?: string[];
+    /** gdrive id from end of url and local name for download */
+    assets_folders?: { id: string; name: string }[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
