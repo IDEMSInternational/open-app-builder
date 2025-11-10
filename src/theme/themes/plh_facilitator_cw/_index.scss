@@ -6,10 +6,10 @@
 @mixin theme-plh_facilitator_cw {
   @include utils.theme(
     $theme-name: "plh_facilitator_cw",
-    $color-primary: #3d1700,
-    //hsl(189, 100%, 30%),
-    $color-secondary: #0097b2,
-    //#B14674,
+    $color-primary: hsl(23 100% 12%),
+    //#3d1700
+    $color-secondary: hsl(189 100% 34.9%),
+    // #0097b2
     $page-background: white,
     $variable-overrides: (
       ion-font-family: "Poppins",
@@ -65,14 +65,12 @@
       display-group-background-home-light: var(--ion-color-primary-300),
       display-group-background-home-mid: var(--ion-color-primary-600),
       display-group-background-home-dark: var(--ion-color-primary-800),
-      combo-box-background-no-value: var(--ion-color-gray-50),
-      combo-box-background-with-value: var(--ion-color-primary-700),
-      combo-box-selected-value-text: var(--ion-color-primary-50),
       accordion-background-highlight: var(--ion-color-primary-600),
       tour-next-button-background: var(--ion-color-primary),
       radio-group-background-selected: var(--ion-color-primary-300),
       radio-group-background-selected-secondary: var(--ion-color-secondary-300),
-      ion-item-background: var(--ion-color-gray-light),
+      ion-item-background: white,
+      combo-box-font-size-standard: 18px,
       task-progress-bar-color: var(--ion-color-secondary-600),
       progress-path-line-background: var(--ion-color-gray-100),
       // ICONS
