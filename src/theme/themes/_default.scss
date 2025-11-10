@@ -15,6 +15,7 @@
         demo-variable: red,
 
         // BORDERS
+        modal-border-color: var(--ion-color-gray-300),
         border-color-default: var(--ion-color-primary),
         border-width-default: 2px,
         border-standard: var(--border-width-default) solid var(--border-color-default),
@@ -50,16 +51,13 @@
         display-group-background-home-mid: linear-gradient(85deg, #1c87ca 30%, #044974),
         // display-group-background-home-dark: var(--gradient-primary-dark-horizontal),
         // timer-button-background: #1985d2,
-        // combo-box-placeholder-text: rgba(13, 64, 96, 0.5),
-        // combo-box-background-no-value: transparent,
-        // combo-box-background-with-value: var(--gradient-primary-light-vertical),
         // slider-ui-color: #096e90,
         // accordion-background-highlight: var(--gradient-primary-light-vertical),
         // tour-next-button-background: var(--gradient-secondary-mid-vertical),
         // radio-group-background-selected: var(--gradient-primary-light-vertical),
         // radio-button-font-size: 1.25rem,
         // radio-button-font-color: var(--ion-color-primary),
-        ion-item-background: var(--ion-color-gray-light),
+        ion-item-background: white,
         // task-progress-bar-color: var(--ion-color-primary),
         // checkbox-background-color: white,
         // progress-path-line-background, var(--ion-color-gray-100),
@@ -70,6 +68,11 @@
         text-bubble-border-color-4: var(--ion-color-secondary-700),
         pop-up-background: white,
         // paragraph-spacing: var(--tiny-margin),
+        combo-box-background-with-value: var(--gradient-primary-light-vertical),
+        combo-box-background-no-value: transparent,
+        combo-box-placeholder-text: rgba(13, 64, 96, 0.5),
+        combo-box-border-with-value: var(--ion-color-primary),
+        combo-box-selected-value-text: var(--ion-color-primary),
       )
   );
 }
