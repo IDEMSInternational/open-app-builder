@@ -13,7 +13,7 @@ import {
 import { clearLogs } from "shared";
 
 import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import { IDeploymentConfigJson } from "data-models";
 
 const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, TEST_DATA_DIR } =
