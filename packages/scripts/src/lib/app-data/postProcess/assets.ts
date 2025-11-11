@@ -1,7 +1,6 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
-import { Command } from "commander";
 import {
   generateFolderFlatMap,
   Logger,
@@ -17,7 +16,7 @@ import {
   getNestedProperty,
   copyFileWithTimestamp,
 } from "../../../utils";
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import type { IAssetEntryHashmap, IAssetContentsEntryMinimal } from "data-models";
 import { resolve } from "path";
 
@@ -35,29 +34,9 @@ const APP_CORE_SIZE_KB = {
   total: APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB,
 };
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-interface IProgramOptions {
-  sourceAssetsFolders: string; // comma-separated string
-}
 interface IAssetPostProcessorOptions {
   sourceAssetsFolders: string[];
 }
-const program = new Command("assets");
-export default program
-  .description("Copy app data")
-  .requiredOption(
-    "--source-assets-folders <string>",
-    "comma-separated paths to source assets folders"
-  )
-  .action(async (options: IProgramOptions) => {
-    const mappedOptions: IAssetPostProcessorOptions = {
-      sourceAssetsFolders: options.sourceAssetsFolders.split(",").map((s) => s.trim()),
-    };
-    new AssetsPostProcessor(mappedOptions).run();
-  });
 
 /***************************************************************************************
  * Main Methods
