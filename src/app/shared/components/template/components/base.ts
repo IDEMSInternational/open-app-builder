@@ -1,5 +1,13 @@
 import { Component, computed, effect, Input, signal } from "@angular/core";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import {
+  parseTemplateParameterList,
+  defineAuthorParameterSchema,
+  InferParamSchemaType,
+} from "../utils";
+// re-export for simplified imports
+export { defineAuthorParameterSchema } from "../utils";
+
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 import type { TemplateComponent } from "../template-component";
@@ -110,4 +118,36 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /** @ignore */
   trackByRow = (index: number, row: FlowTypes.TemplateRow) => this.parent.trackByRow(index, row);
+}
+
+/**
+ * Utility function that handles extending the TemplateBaseComponent and automatically parsing
+ * parameter_list using provided schema, and exposing as type-safe `this.params()` computed signal
+ *
+ * @param schema - author parameter_list schema, created using `defineAuthorParameterSchema`
+ *
+ * @example
+ * ```
+ * const AuthorSchema = defineAuthorParameterSchema((c)=>({
+ *   stringParam: coerce.string('')
+ * }))
+ *
+ * class MyComponent extends TemplateBaseComponentWithParams(AuthorSchema){
+ *
+ * effect(()=>{
+ *   const { stringParam } = this.params()
+ * })
+ * }
+ * ```
+ */
+export function TemplateBaseComponentWithParams<
+  ParamSchema extends ReturnType<typeof defineAuthorParameterSchema>,
+>(schema: ParamSchema) {
+  abstract class AuthorParamsBase extends TemplateBaseComponent {
+    public params = computed(() => parseTemplateParameterList(this.parameterList(), schema));
+
+    // declare static type to allow extracting type via `typeof MyComponent.Params` (not used at runtime)
+    declare static Params: InferParamSchemaType<ParamSchema>;
+  }
+  return AuthorParamsBase;
 }

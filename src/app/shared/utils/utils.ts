@@ -170,6 +170,10 @@ export function mapToJson<T = any>(map: Map<string, any>) {
 }
 
 /**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)
  * */
@@ -181,6 +185,12 @@ export function getParamFromTemplateRow(
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] : _default;
 }
+
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ */
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -190,7 +200,13 @@ export function getStringParamFromTemplateRow(
   return paramValue ? `${paramValue}` : paramValue;
 }
 
-/** Return a specific parameter, parsed as a number */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a number
+ **/
 export function getNumberParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -199,7 +215,12 @@ export function getNumberParamFromTemplateRow(
   return Number(getParamFromTemplateRow(row, name, `${_default}`));
 }
 
-/** Return a specific parameter, parsed as a boolean */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a boolean */
 export function getBooleanParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -209,6 +230,11 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ */
 export function getAnswerListParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
