@@ -9,28 +9,6 @@
     }
   }
 
-  //Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--color-surface-black);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      background-color: var(--ion-color-primary-100);
-      border-bottom: 1px solid var(--ion-color-primary-300);
-      h1 {
-        padding: 18px;
-        border: none;
-        font-size: var(--font-size-text-medium) !important;
-        font-weight: var(--font-weight-medium) !important;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
-    }
-  }
-
   // Task Card
   plh-task-card {
     .card-wrapper {
