@@ -36,8 +36,7 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
     width: 32px; // 20px icon + 12px margin
     flex-shrink: 0;
   }
-  &[data-width="centre"],
-  &[data-width="center"] {
+  &[data-style="width_auto"] {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;

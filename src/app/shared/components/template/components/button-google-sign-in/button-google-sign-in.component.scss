@@ -95,8 +95,7 @@ Native Google variant reflects the example styling exactly
     background-color: var(--ion-color-gray-light);
   }
 
-  &[data-width="centre"],
-  &[data-width="center"] {
+  &[data-style="width_auto"] {
     display: block;
     width: fit-content;
     margin-left: auto;
