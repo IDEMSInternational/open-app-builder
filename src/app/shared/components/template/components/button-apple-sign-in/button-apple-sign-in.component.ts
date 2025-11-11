@@ -10,7 +10,7 @@ import {
 interface IButtonAppleSignInComponentParams {
   variant: null | "native_apple";
   disabled: boolean;
-  style: "width_full" | "width_auto";
+  style: "width_full" | "width_content";
 }
 
 @Component({

@@ -10,7 +10,7 @@ import {
 interface IButtonGoogleSignInComponentParams {
   variant: null | "native_google";
   disabled: boolean;
-  style: "width_full" | "width_auto";
+  style: "width_full" | "width_content";
 }
 
 @Component({
