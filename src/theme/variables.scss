@@ -30,18 +30,18 @@
 
   // Margins //
   --row-margin-top: 1em; // used in downstream calculations, e.g. sticky display-group
-  --tiny-margin: 5px;
+  --tiny-margin: 4px;
   --small-margin: 10px;
-  --regular-margin: 15px;
+  --regular-margin: 16px;
   --large-margin: 24px;
   --largest-margin: 30px;
   --huge-margin: 40px;
 
   // Paddings //
-  --tiny-padding: 5px;
-  --small-padding: 10px;
-  --regular-padding: 15px;
-  --large-padding: 25px;
+  --tiny-padding: 6px;
+  --small-padding: 12px;
+  --regular-padding: 18px;
+  --large-padding: 24px;
   --largest-padding: 30px;
   --huge-padding: 40px;
   --main-container-padding: 0 var(--large-margin);
@@ -66,30 +66,35 @@
   // Title //
   --font-size-title-small-device: 20px;
   --font-size-title-tiny: 24px;
-  --font-size-title-small: 26px;
-  --font-size-title-medium: 30px;
-  --font-size-title-large: 34px;
-  --font-size-title-largest: 36px;
+  --font-size-title-small: 28px;
+  --font-size-title-medium: 32px;
+  --font-size-title-large: 36px;
+  --font-size-title-largest: 40px;
 
   // Subtitle //
-  --font-size-subtitle-small-device: 17px;
+  --font-size-subtitle-small-device: 16px;
   --font-size-subtitle-small: 18px;
   --font-size-subtitle-medium: 20px;
-  --font-size-subtitle-large: 22px;
+  --font-size-subtitle-large: 24px;
 
-  // Text //
+  // Font Size //
   --font-size-text-tiny: 14px;
   --font-size-text-small: 16px;
   --font-size-text-medium: 18px;
   --font-size-text-large: 20px;
-  --line-height-text-tiny: 15px;
-  --line-height-text-small: 20px;
-  --line-height-text: 22px;
-  --line-height-text-large: 22px;
-  --line-height-text-largest: 25px;
+  --font-size-text-larger: 24px;
+  --font-size-text-largest: 28px;
+
+  // Line Height //
+  --line-height-text-tiny: 18px;
+  --line-height-text-small: 24px;
+  --line-height-text: 28px;
+  --line-height-text-large: 32px;
+  --line-height-text-largest: 40px;
 
   // Font Weight //
   --font-weight-standard: 400;
+  --font-weight-medium: 600;
   --font-weight-bold: 700;
 
   // Text box //
