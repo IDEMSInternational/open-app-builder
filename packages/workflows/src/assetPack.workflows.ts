@@ -2,6 +2,7 @@ import type { IDeploymentWorkflows } from "./workflow.model";
 import { writeFileSync } from "fs-extra";
 import path from "path";
 import { sortJsonKeys } from "shared";
+import { AssetsPostProcessor } from "../../scripts/src/commands/app-data/postProcess/assets";
 
 const childWorkflows: IDeploymentWorkflows = {
   generate: {
@@ -32,12 +33,13 @@ const childWorkflows: IDeploymentWorkflows = {
       },
       {
         name: "asset_pack_process",
-        function: async ({ tasks, workflow }) => {
+        function: async ({ workflow }) => {
           // Process assets to generate nested override entries
+          const processor = new AssetsPostProcessor({
+            sourceAssetsFolders: [],
+          });
           const promises = workflow.asset_pack_dl.output.map(async (outputPath) => {
-            const tracked = await tasks.appData.generateProcessedAssetEntries({
-              sourceAssetsFolder: outputPath,
-            });
+            const tracked = await processor.generateProcessedAssetEntries(outputPath);
             return { path: outputPath, entries: tracked };
           });
 
