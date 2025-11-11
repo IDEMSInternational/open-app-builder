@@ -8,7 +8,6 @@ import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
 import { AppDataOptimiser } from "../../commands/app-data/optimise";
-import { AssetsPostProcessor } from "../../commands/app-data/postProcess/assets";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
@@ -68,19 +67,6 @@ const copyDeploymentDataToApp = async () => {
 };
 const optimiseBuild = async () => new AppDataOptimiser(WorkflowRunner.config).run();
 
-/**
- * Generate processed asset entries with nested override structure
- * Used for generating manifest files for asset packs
- * @param sourceAssetsFolder Single folder path to process
- * @returns Processed asset entries with nested overrides (same format as contents.json)
- */
-const generateProcessedAssetEntries = async (options: { sourceAssetsFolder: string }) => {
-  const processor = new AssetsPostProcessor({
-    sourceAssetsFolders: [],
-  });
-  return processor.generateProcessedAssetEntries(options.sourceAssetsFolder);
-};
-
 function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
   const {
     analytics,
@@ -124,5 +110,4 @@ export default {
   postProcessSheets,
   copyDeploymentDataToApp,
   optimiseBuild,
-  generateProcessedAssetEntries,
 };
