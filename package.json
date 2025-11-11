@@ -48,6 +48,7 @@
     "@capacitor-firebase/crashlytics": "^7.2.0",
     "@capacitor-firebase/firestore": "^7.2.0",
     "@capacitor-firebase/performance": "^7.2.0",
+    "@capacitor-firebase/storage": "^7.3.1",
     "@capacitor/android": "^7.0.0",
     "@capacitor/app": "^7.0.0",
     "@capacitor/clipboard": "^7.0.0",
@@ -111,6 +112,7 @@
     "swiper": "^8.4.7",
     "trusted-types": "^2.0.0",
     "uuid": "^11.0.3",
+    "zod": "^4.0.17",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
