@@ -20,7 +20,7 @@ const childWorkflows: IDeploymentWorkflows = {
           const { assets_filter_function } = config.google_drive || {};
 
           const promises = remote_assets_folders.map(({ id: folderId, name: assetPackName }) =>
-            tasks.assetPack.generate({
+            tasks.assetPack.download({
               folderId,
               assetPackName,
               filterFn: assets_filter_function,

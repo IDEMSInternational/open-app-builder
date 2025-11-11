@@ -9,7 +9,7 @@ import gdrive from "./gdrive";
  * Download and copy asset pack from remote Google Drive folder
  * Returns the output path where assets are copied
  */
-const generate = async (options: {
+const download = async (options: {
   folderId: string;
   assetPackName: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
@@ -42,6 +42,8 @@ const generate = async (options: {
   return outputPath;
 };
 
+// TODO - Implement upload
+
 export default {
-  generate,
+  download,
 };
