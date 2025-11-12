@@ -7,7 +7,7 @@ import {
   parseAppDataActionString,
   parseAppDateValue,
 } from "../../../utils";
-import { ActiveDeployment } from "../../../../../deployment/get";
+import { ActiveDeployment } from "../../../../../../commands/deployment/get";
 import { FlowParserProcessor } from "../flowParser";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };

@@ -2,7 +2,6 @@
 import { Command } from "commander";
 
 // Commands
-import appDataCmd from "./app-data";
 import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import deploymentCmd from "./deployment";
@@ -16,7 +15,6 @@ const program = new Command();
 program.version(version).description(`IDEMS App Scripts ${version}`);
 
 /** add sub-commands from child folders */
-program.addCommand(appDataCmd);
 program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(deploymentCmd);
@@ -35,8 +33,6 @@ const handleError = (e) => {
 };
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
-
-checkLegacyCommandMappings();
 
 // export program to be called via bin
 export { program };
@@ -58,20 +54,4 @@ export { extendDeploymentConfig, generateDeploymentConfig, loadEncryptedConfig }
 // Run the program directly when called via ts-node (e.g. start script)
 if (isTsNode) {
   callProgramWithHelp(program);
-}
-
-function checkLegacyCommandMappings() {
-  // Handle legacy command renames so can still run `yarn scripts gdrive-download`
-  const legacyCommandMappings = {
-    "legacy-command": ["new-command", "arg"],
-  };
-  const cmdName = process.argv[2] || "";
-  const mapping = legacyCommandMappings[cmdName];
-  if (mapping) {
-    logWarning({
-      msg1: "NOTE - Script has been renamed and will be deprecated",
-      msg2: `"${cmdName}" -> "${mapping.join(" ")}"`,
-    });
-    process.argv.splice(2, 1, ...mapping);
-  }
 }
