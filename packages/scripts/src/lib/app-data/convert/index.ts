@@ -36,6 +36,12 @@ interface IConverterOptions {
   skipCache?: boolean;
 }
 
+/** Entry format for minimal flow metadata stored */
+type FlowMetaEntry = Pick<
+  FlowTypes.FlowTypeBase,
+  "flow_type" | "flow_subtype" | "flow_name" | "_source"
+>;
+
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
@@ -258,15 +264,12 @@ export class AppDataConverter {
     const sheetJsonFolder = path.resolve(outputFolder, "../", "sheet_json");
     await fs.ensureDir(sheetJsonFolder);
     await fs.emptyDir(sheetJsonFolder);
-    const mergedMetadata: any[] = [];
+    const mergedMetadata: FlowMetaEntry[] = [];
     // Write individual jsons, keeping source metadata in top-level file
     // and contents in individual jsons by {flow_type}/{flow_name}
     for (const { _source, ...jsonData } of jsons) {
       const { flow_type, flow_subtype, flow_name } = jsonData;
       const metaEntry = { flow_type, ...(flow_subtype && { flow_subtype }), flow_name, _source };
-      if (!flow_subtype) {
-        delete metaEntry[flow_subtype];
-      }
       mergedMetadata.push(metaEntry);
       const targetFile = path.join(sheetJsonFolder, flow_type, `${flow_name}.json`);
       await fs.ensureDir(path.dirname(targetFile));
