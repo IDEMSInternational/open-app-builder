@@ -262,17 +262,13 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
-      background: var(--ion-color-primary-600);
-
       border: none;
-      border-radius: var(--ion-border-radius-small);
       box-shadow: none;
       .accordion-section-title {
         color: white;
 
         font-size: var(--font-size-text-medium);
         font-weight: var(--font-weight-bold);
-        line-height: var(--line-height-text-small);
       }
     }
     ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
@@ -299,7 +295,6 @@
           ul,
           ol {
             font-size: var(--font-size-text-medium) !important;
-            line-height: var(--line-height-text-medium) !important;
             font-weight: var(--font-weight-standard) !important;
             margin-top: 8px;
             a {

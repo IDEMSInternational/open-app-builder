@@ -480,8 +480,7 @@
         color: var(--color-surface-white);
 
         font-size: var(--font-size-text-mid-size);
-        font-weight: var(--font-weight-bold);
-        line-height: var(--line-height-text-small);
+        font-weight: var(--font-weight-medium);
       }
     }
     ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
@@ -510,7 +509,6 @@
           ul,
           ol {
             font-size: var(--font-size-text-small) !important;
-            line-height: var(--line-height-text-small) !important;
             font-weight: var(--font-weight-standard) !important;
             margin-top: 8px;
             a {
