@@ -686,7 +686,6 @@
         width: 100% !important;
         h1 {
           margin: 0;
-          line-height: var(--line-height-text-largest);
           font-weight: var(--font-weight-bold);
           @media (max-width: 375px) {
             font-size: var(--font-size-title-small) !important;
@@ -719,10 +718,6 @@
       .content-wrapper {
         .text-wrapper {
           width: 100% !important;
-          h1 {
-            font-size: var(--font-size-subtitle-medium) !important;
-            line-height: var(--line-height-text-medium) !important;
-          }
           .subtitle-wrapper {
             p {
               margin: 0px !important;
@@ -753,7 +748,6 @@
           h1 {
             padding: 0px;
             font-size: var(--font-text-size-medium) !important;
-            line-height: var(--line-height-text-small);
           }
         }
         .button-content {

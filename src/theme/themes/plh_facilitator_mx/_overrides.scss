@@ -28,7 +28,6 @@
         width: 100% !important;
         h1 {
           margin: 0;
-          line-height: var(--line-height-text-largest);
           font-weight: var(--font-weight-bold);
           color: var(--color-surface-black) !important;
           @media (max-width: 375px) {
@@ -61,10 +60,6 @@
       .content-wrapper {
         .text-wrapper {
           width: 100% !important;
-          h1 {
-            font-size: var(--font-size-text-medium) !important;
-            line-height: var(--line-height-text-medium) !important;
-          }
           .subtitle-wrapper {
             p {
               margin: 0px !important;
@@ -94,8 +89,7 @@
           padding: 6px 8px;
           h1 {
             padding: 0px;
-            font-size: var(--font-size-text-mid-size) !important;
-            line-height: var(--line-height-text-medium);
+            font-size: var(--font-size-text-medium) !important;
           }
         }
         .button-content {
@@ -139,7 +133,6 @@
           padding: 0px 16px !important;
           h1 {
             font-size: var(--font-size-text-medium) !important;
-            line-height: 24px !important;
             color: var(--color-surface-black) !important;
           }
         }
