@@ -59,6 +59,22 @@ on:
     secrets:
       DEPLOYMENT_PRIVATE_KEY:
         description: Provide private key if deployment uses encrypted config
+      GOOGLE_SERVICES_JSON:
+        description: Google Services JSON configuration file
+      GOOGLE_SERVICES_PLIST:
+        description: Google Services PLIST configuration file
+      APP_STORE_CONNECT_API_KEY_ID:
+        description: App Store Connect API Key ID
+      APP_STORE_CONNECT_API_ISSUER_ID:
+        description: App Store Connect API Issuer ID
+      APP_STORE_CONNECT_API_KEY:
+        description: App Store Connect API Key (private key content)
+      GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY:
+        description: GCP service account key for iOS certificates bucket access
+      GCP_IOS_CERTS_ENCRYPTION_PASSWORD:
+        description: Password for encrypting/decrypting iOS certificates
+      APPETIZE_TOKEN:
+        description: Appetize API token (optional, required if target is appetize)
 
 jobs:
   # Ensure all required secrets are populated
