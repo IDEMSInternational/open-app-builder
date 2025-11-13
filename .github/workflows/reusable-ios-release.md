@@ -135,10 +135,11 @@ on:
 jobs:
   ios_build:
     # Calls the reusable workflow from the builder repo
-    uses: IDEMSInternational/open-app-builder/.github/workflows/reusable-ios-release.yml@master
+    uses: IDEMSInternational/open-app-builder-actions/.github/workflows/ios-release.yml@main
     with:
       target: ${{ github.event.inputs.target }} # "appetize" or "testflight"
     secrets: inherit
+    # NB: secrets will need to passed explicitly if content repo is under a different org. See ../content_repository_actions/ios-release.yml for real world example
 ```
 
 ---
