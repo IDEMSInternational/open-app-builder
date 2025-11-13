@@ -1,29 +1,15 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
-import { Command } from "commander";
 import { Logger, recursiveFindByExtension } from "../../../utils";
 
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import { FlowTypes } from "data-models";
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-interface IProgramOptions {
+interface ISheetsPostProcessorOptions {
   sourceSheetsFolder: string;
   sourceTranslationsFolder: string;
 }
-const program = new Command("sheets");
-export default program
-  .description("Copy app data")
-  .requiredOption("--source-sheets-folder <string>", "path to source sheets folder")
-  .requiredOption("--source-translations-folder <string>", "path to source translations folder")
-  .action(async (options: IProgramOptions) => {
-    // console.table(options);
-    new SheetsPostProcessor(options).run();
-  });
 
 /***************************************************************************************
  * Main Methods
@@ -31,9 +17,9 @@ export default program
 /**
  *
  **/
-class SheetsPostProcessor {
+export class SheetsPostProcessor {
   private activeDeployment = ActiveDeployment.get();
-  constructor(private options: IProgramOptions) {}
+  constructor(private options: ISheetsPostProcessorOptions) {}
 
   public run() {
     const { app_data } = this.activeDeployment;
@@ -109,18 +95,18 @@ class SheetsPostProcessor {
     existingContents: ISheetContents,
     sheetContents: FlowTypes.FlowTypeWithData
   ) {
-    const { flow_name, flow_type, _xlsxPath } = sheetContents;
+    const { flow_name, flow_type, _source } = sheetContents;
     if (!existingContents.hasOwnProperty(flow_type)) {
       Logger.error({
         msg1: `Unsupported flow_type: [${flow_type}]`,
-        msg2: `${_xlsxPath}`,
+        msg2: `${_source.path}`,
       });
     }
     if (existingContents[flow_type].hasOwnProperty(flow_name)) {
       const duplicateFlowContents = existingContents[flow_type][flow_name];
       Logger.error({
         msg1: `Duplicate flow_name found: [${flow_type}]`,
-        msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
+        msg2: `${_source.path}\n${duplicateFlowContents._source.path}`,
       });
     }
   }

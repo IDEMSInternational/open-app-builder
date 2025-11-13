@@ -1,10 +1,9 @@
 import * as fs from "fs-extra";
-import { Command } from "commander";
 
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import { IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import {
@@ -29,34 +28,13 @@ interface ISheetJsonWithMeta {
   [sheet_name: string]: any;
 }
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-const program = new Command("convert");
-interface IProgramOptions {
+interface IConverterOptions {
   cacheFolder: string;
   /** comma-separated list in case of multiple folders */
-  inputFolder: string;
+  inputFolders: string[];
   outputFolder: string;
   skipCache?: boolean;
 }
-export interface IConverterOptions extends Omit<IProgramOptions, "inputFolder"> {
-  inputFolders: string[];
-}
-export default program
-  .description("Convert app data")
-  .requiredOption("-i --input-folders <string>", "")
-  .requiredOption("-c --cache-folder <string>", "")
-  .requiredOption("-o --output-folder <string>", "")
-  .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .action(async (options: IProgramOptions) => {
-    const mappedOptions: IConverterOptions = {
-      ...options,
-      inputFolders: options.inputFolder.split(",").map((f) => f.trim()),
-    };
-    await new AppDataConverter(mappedOptions).run();
-  });
 
 /***************************************************************************************
  * Main Methods
@@ -141,13 +119,11 @@ export class AppDataConverter {
             merged[flow_name] = {
               ...contents,
               rows: sheetData[flow_name],
-              // HACK - temp hide properties to make it eaiser to review PR diffs
-              // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              // _remoteFolder: _metadata.folderName,
-              // _remoteUrl: _metadata.remoteUrl,
-              _xlsxPath: _metadata.relativePath,
-              // TODO - remove post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              _sheetsFolderUrl: `https://drive.google.com/drive/u/0/folders/${_metadata.folderName}`,
+              _source: {
+                name: _metadata.folderName,
+                path: _metadata.relativePath,
+                url: _metadata.remoteUrl,
+              },
             };
             // convert parameter list from string to object
             // TODO - handle converting in parser

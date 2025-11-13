@@ -1,21 +1,21 @@
 import { writeFileSync } from "fs-extra";
 import path from "path";
 import packageJSON from "../../../../../package.json";
-import { parseCommand } from "../../commands";
-import { ReportGenerator } from "../../commands/app-data/report/report";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
-import { AppDataOptimiser } from "../../commands/app-data/optimise";
+import {
+  AssetsPostProcessor,
+  AppDataOptimiser,
+  ReportGenerator,
+  SheetsPostProcessor,
+} from "../../lib/app-data";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
   const { sourceAssetsFolders } = options;
-  let args = `--source-assets-folders ${sourceAssetsFolders.join(",")}`;
-  let cmd = `app-data post-process assets ${args}`;
-
-  await parseCommand(`${cmd}`);
+  return new AssetsPostProcessor({ sourceAssetsFolders }).run();
 };
 
 /** Prepare sourcely cached seets for population to app */
@@ -24,9 +24,7 @@ const postProcessSheets = async (options: {
   sourceTranslationsFolder: string;
 }) => {
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
-  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
-  let cmd = `app-data post-process sheets ${args}`;
-  await parseCommand(`${cmd}`);
+  return new SheetsPostProcessor({ sourceSheetsFolder, sourceTranslationsFolder }).run();
 };
 
 const generateReports = async () => {
