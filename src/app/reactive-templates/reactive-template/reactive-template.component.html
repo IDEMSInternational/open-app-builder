@@ -1,1 +1,9 @@
 <oab-row-list [rows]="rows()" [namespace]="namespace()"></oab-row-list>
+
+@if (!namespace()) {
+  <ul>
+    @for (item of variableStore.getAllList(); track $index) {
+      <li>{{ item.name }} : {{ item.value }}</li>
+    }
+  </ul>
+}

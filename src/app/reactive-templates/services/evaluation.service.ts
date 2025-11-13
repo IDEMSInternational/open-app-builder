@@ -3,20 +3,34 @@ import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
 import { extractDynamicEvaluators } from "packages/data-models/functions";
-import { ArrayOfObjectsParser } from "./type-parsers/array-of-objects.parser";
+import { ListEvaluator } from "./evaluators/list.evaluator";
+import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
+import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
-  private evaluator = new AppDataEvaluator();
+  private appDataEvaluator = new AppDataEvaluator();
 
   constructor(
     private variableStore: VariableStore,
     private namespaceService: NamespaceService,
-    private arrayOfObjectsParser: ArrayOfObjectsParser
+    private listEvaluator: ListEvaluator,
+    private itemEvaluator: LoopItemEvaluator,
+    private namespaceEvaluator: NamespaceEvaluator
   ) {}
 
   public evaluateExpression<T>(expression: string | number | boolean, namespace: string): T {
-    return this.evaluate(expression, namespace) as T;
+    let evaluatedExpression = expression;
+
+    // todo: replace appDataEvaluator with more evaluators e.g. localEvaluator, javascriptEvaluator, jsonEvaluator etc.
+    // todo: instead of setting execution context here, pass it into all evaluator.evaluate as a parameter, or is context simply the variableStore?
+    this.appDataEvaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
+
+    evaluatedExpression = this.itemEvaluator.evaluate(evaluatedExpression, namespace);
+    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
+
+    return this.appDataEvaluator.evaluate(evaluatedExpression) as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
@@ -47,16 +61,5 @@ export class EvaluationService {
     });
 
     return context;
-  }
-
-  private evaluate(expression: string | number | boolean, namespace: string): string | boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
-
-    return this.evaluator.evaluate(
-      this.namespaceService.getNamespacedExpression(
-        namespace,
-        this.arrayOfObjectsParser.parseExpression(expression)
-      )
-    );
   }
 }

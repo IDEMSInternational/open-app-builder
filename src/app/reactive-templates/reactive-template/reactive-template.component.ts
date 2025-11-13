@@ -3,14 +3,15 @@ import {
   computed,
   effect,
   forwardRef,
+  inject,
   input,
-  OnInit,
   signal,
   viewChild,
 } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { RowListComponent } from "../reactive-components/row-list.component";
+import { VariableStore } from "../stores/variable-store";
 
 @Component({
   selector: "oab-reactive-template",
@@ -22,6 +23,7 @@ import { RowListComponent } from "../reactive-components/row-list.component";
 export class ReactiveTemplateComponent {
   public templateName = input.required<string>();
   public namespace = input("");
+  public variableStore = inject(VariableStore);
 
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
