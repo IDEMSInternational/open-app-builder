@@ -10,6 +10,7 @@ import {
 interface IButtonAppleSignInComponentParams {
   variant: null | "native_apple";
   disabled: boolean;
+  style: "width_full" | "width_content";
 }
 
 @Component({
@@ -36,6 +37,7 @@ export class TmplButtonAppleSignInComponent extends TemplateBaseComponent {
     return {
       variant: getStringParamFromTemplateRow(this._row, "variant", null),
       disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
+      style: getStringParamFromTemplateRow(this._row, "style", "width_full"),
     } as IButtonAppleSignInComponentParams;
   }
 }
