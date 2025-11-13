@@ -187,3 +187,38 @@ $tour-next-button-background: var(
     border: none;
   }
 }
+
+// POPOVER
+ion-popover {
+  --backdrop-opacity: 0.01;
+  --background: white;
+}
+ion-popover::part(content) {
+  border-radius: var(--ion-border-radius-small, 4px);
+  background: white;
+  margin-top: 6px;
+  border: 1px solid var(--ion-color-gray-50);
+  box-shadow: 1px 2px 12px rgba(32, 32, 32, 0.15);
+}
+ion-popover::part(arrow) {
+  display: none;
+}
+ion-popover ion-select-popover {
+  .radio-group-wrapper {
+    ion-item {
+      --background: var(--ion-item-background, #fff);
+      --background-activated: var(--ion-color-primary-50);
+      --background-focused: var(--ion-color-primary-50);
+      --background-hover: var(--ion-color-primary-50, var(--ion-color-gray-50));
+      --background-activated-opacity: 1;
+      --background-focused-opacity: 1;
+      --background-hover-opacity: 1;
+      --border-color: var(--ion-color-gray-100);
+      --color: var(--ion-text-color, var(--ion-color-gray-900));
+      --color-focused: var(--ion-color-primary-800);
+      --color-activated: var(--ion-color-primary-800);
+      --color-hover: var(--ion-color-primary-800);
+      font-size: var(--combo-box-font-size-standard, 16px);
+    }
+  }
+}
