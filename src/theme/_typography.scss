@@ -9,6 +9,7 @@ h3 {
 
 p {
   margin: var(--margin-text, var(--paragraph-spacing, 0.75em)) 0;
+  line-height: var(--line-height-text-base, 1.5);
 }
 
 .standard {
