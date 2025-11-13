@@ -117,6 +117,8 @@ interface IDeploymentCoreConfig {
     assets_folder_ids?: string[];
     /** gdrive id from end of url and local name for download */
     assets_folders?: { id: string; name: string }[];
+    /** gdrive id from end of url and local name for remote asset pack downloads */
+    remote_assets_folders?: { id: string; name: string }[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
