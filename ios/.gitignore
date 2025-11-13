@@ -8,3 +8,6 @@ App.xcscheme
 
 # Cordova plugins for Capacitor
 capacitor-cordova-ios-plugins
+
+App/fastlane/*
+!App/fastlane/*.template
