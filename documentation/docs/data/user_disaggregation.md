@@ -29,6 +29,6 @@ In the App Users tables, several variables across the device information and con
 | Web preview opened on Windows computer (regular screen settings)   | web      | windows         | FALSE     | 338b36xx-b598-427b-8782 |
 | Web preview opened on Windows computer with screen set to Android device | web      | android         | FALSE     | 4a10bcxx-5a3d-47c9-87bd |
 | Web preview opened on Android phone                          | web      | android         | FALSE     | f0087cxx-2b93-43ff-86bd |
-| Web preview opened on Windows computer with screen set to Apple device   | web      | ios             | FALSE     | a273b5xx-d92f-4efb-a07d |
+| Web preview opened on Windows computer with screen set to iPhone  | web      | ios             | FALSE     | a273b5xx-d92f-4efb-a07d |
 | Web preview opened on iPhone                                  | web      | ios             | FALSE     | 136ea2xx-4f2d-430b-8b7a |
 | Web preview opened on Mac computer                                   | web      | mac             | FALSE     | 05b6b3xx-af52-4af8-bed6 |
