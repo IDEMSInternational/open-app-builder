@@ -13,9 +13,12 @@ import {
 } from "../../lib/app-data";
 
 /** Prepare sourcely cached assets for population to app */
-const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
-  const { sourceAssetsFolders } = options;
-  return new AssetsPostProcessor({ sourceAssetsFolders }).run();
+const postProcessAssets = async (options: {
+  sourceAssetsFolders: string[];
+  folderMetadata?: Map<string, { remote?: boolean; folderName?: string }>;
+}) => {
+  const { sourceAssetsFolders, folderMetadata } = options;
+  return new AssetsPostProcessor({ sourceAssetsFolders, folderMetadata }).run();
 };
 
 /** Prepare sourcely cached seets for population to app */

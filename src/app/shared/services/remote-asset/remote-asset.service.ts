@@ -199,7 +199,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Download the asset pack manifest for a named asset pack from the remote provider and store the result in this.manifest
    */
   private async getAssetPackManifest(assetPackName: string) {
-    const relativePath = `${assetPackName}/${assetPackName}.json`;
+    const relativePath = `${assetPackName}/contents.json`;
 
     try {
       console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
