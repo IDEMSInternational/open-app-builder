@@ -37,7 +37,12 @@ function mockLocalAssets(assets: Record<string, any> = {}) {
 
 function createMockFile(size_kb: number = 1024) {
   const file = Buffer.alloc(1 * 1024 * size_kb);
-  const entry = { size_kb, md5Checksum: createHash("md5").update(file).digest("hex") };
+  const entry = {
+    size_kb,
+    md5Checksum: createHash("md5")
+      .update(file as any)
+      .digest("hex"),
+  };
   return { file, entry };
 }
 
@@ -83,11 +88,11 @@ describe("Assets PostProcess", () => {
       },
     });
     stubDeploymentConfig();
+    const sourceA = resolve(mockDirs.localAssets, "source_a");
+    const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [
-        resolve(mockDirs.localAssets, "source_a"),
-        resolve(mockDirs.localAssets, "source_b"),
-      ],
+      sourceAssetsFolders: [sourceA, sourceB],
+      folderMetadata: new Map(), // No remote assets in tests
     });
     processor.run();
     // test merged file outputs
@@ -323,7 +328,10 @@ describe("Assets PostProcess", () => {
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
-  const processor = new AssetsPostProcessor({ sourceAssetsFolders: [localAssets] });
+  const processor = new AssetsPostProcessor({
+    sourceAssetsFolders: [localAssets],
+    folderMetadata: new Map(), // No remote assets in tests
+  });
   processor.run();
 }
 
