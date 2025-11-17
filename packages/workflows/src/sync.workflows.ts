@@ -279,7 +279,7 @@ const processLocalFiles = async (
 };
 
 /** Migrate deprecated asset and sheet folder id formats */
-function migrateLegacyGdriveConfig(config: IDeploymentConfigJson["google_drive"]) {
+export function migrateLegacyGdriveConfig(config: IDeploymentConfigJson["google_drive"]) {
   let { assets_folder_id, assets_folder_ids, assets_folders } = config;
   if (assets_folder_id && !assets_folders) {
     logWarning({

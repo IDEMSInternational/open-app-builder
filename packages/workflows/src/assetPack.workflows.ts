@@ -3,6 +3,7 @@ import { writeFileSync } from "fs-extra";
 import path from "path";
 import { sortJsonKeys } from "shared";
 import { AssetsPostProcessor } from "../../scripts/src/lib/app-data";
+import { migrateLegacyGdriveConfig } from "./sync.workflows";
 
 const childWorkflows: IDeploymentWorkflows = {
   generate: {
@@ -11,16 +12,19 @@ const childWorkflows: IDeploymentWorkflows = {
       {
         name: "asset_pack_dl",
         function: async ({ tasks, config }) => {
-          const { remote_assets_folders } = config.google_drive || {};
-          if (!remote_assets_folders || remote_assets_folders.length === 0) {
-            throw new Error(
-              "No remote_assets_folders configured in deployment config. Please add remote_assets_folders to config.google_drive"
-            );
+          // Use migrateLegacyGdriveConfig to get assets_folders (consistent with sync workflow)
+          const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
+
+          // Filter for folders with remote flag set
+          const remoteAssetsFolders = assets_folders?.filter((folder) => folder.remote) || [];
+
+          if (remoteAssetsFolders.length === 0) {
+            return console.warn("No remote asset folders configured");
           }
 
           const { assets_filter_function } = config.google_drive || {};
 
-          const promises = remote_assets_folders.map(({ id: folderId, name: assetPackName }) =>
+          const promises = remoteAssetsFolders.map(({ id: folderId, name: assetPackName }) =>
             tasks.assetPack.download({
               folderId,
               assetPackName,
