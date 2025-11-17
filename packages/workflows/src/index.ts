@@ -1,7 +1,6 @@
 import type { IDeploymentWorkflows } from "./workflow.model";
 
 import ANDROID_WORKFLOWS from "./android.workflows";
-import ASSET_PACK_WORKFLOWS from "./assetPack.workflows";
 import IOS_WORKFLOWS from "./ios.workflows";
 import REPO_WORKFLOWS from "./repo.workflows";
 import DEPLOYMENT_WORKFLOWS from "./deployment.workflows";
@@ -11,7 +10,6 @@ import SYNC_WORKFLOWS from "./sync.workflows";
 /** Default workflows made available to all deployments */
 const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
   ...ANDROID_WORKFLOWS,
-  ...ASSET_PACK_WORKFLOWS,
   ...IOS_WORKFLOWS,
   ...REPO_WORKFLOWS,
   ...DEPLOYMENT_WORKFLOWS,
