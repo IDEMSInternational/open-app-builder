@@ -308,6 +308,28 @@ export class AssetsPostProcessor {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
   }
+
+  /**
+   * Generate processed asset entries with nested override structure
+   * This can be used to generate manifest files for asset packs
+   * @param sourceAssetsFolder Single folder path to process
+   * @returns Processed asset entries with nested overrides (same format as contents.json)
+   */
+  public generateProcessedAssetEntries(sourceAssetsFolder: string): IAssetEntryHashmap {
+    // Generate flat map of all assets, excluding manifest.json (which will be generated)
+    const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, {
+      includeLocalPath: true,
+      filterFn: (relativePath) => relativePath !== "manifest.json",
+    });
+
+    // Filter assets using the same logic as regular asset processing
+    const filteredAssets = this.filterAppAssets(sourceAssets);
+
+    // Process asset overrides to create nested structure
+    const { tracked } = this.handleAssetOverrides(filteredAssets);
+
+    return tracked;
+  }
 }
 
 /**
