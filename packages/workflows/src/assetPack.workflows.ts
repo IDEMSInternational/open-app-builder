@@ -2,7 +2,7 @@ import type { IDeploymentWorkflows } from "./workflow.model";
 import { writeFileSync } from "fs-extra";
 import path from "path";
 import { sortJsonKeys } from "shared";
-import { AssetsPostProcessor } from "../../scripts/src/commands/app-data/postProcess/assets";
+import { AssetsPostProcessor } from "../../scripts/src/lib/app-data";
 
 const childWorkflows: IDeploymentWorkflows = {
   generate: {
