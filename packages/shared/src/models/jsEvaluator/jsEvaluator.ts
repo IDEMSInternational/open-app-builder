@@ -23,16 +23,19 @@
 export class JSEvaluator {
   private evaluationContextBase: string;
 
+  // Identifiers that should be restricted from access within evaluated expressions
+  // Some global identifiers may conflict with common expression / data column names e.g. name and parent
+  // The commented items are potential candidates for restriction but are left accessible for now
   private readonly restrictedIdentifiers = [
-    "window",
+    // "window",
     "name",
-    "globalThis",
-    "self",
-    "document",
+    // "globalThis",
+    // "self",
+    // "document",
     "parent",
-    "top",
-    "frames",
-    "global",
+    // "top",
+    // "frames",
+    // "global",
   ];
 
   constructor() {
