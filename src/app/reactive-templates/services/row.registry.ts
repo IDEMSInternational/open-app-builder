@@ -30,6 +30,10 @@ export class RowRegistry {
     return row;
   }
 
+  has(name: string): boolean {
+    return this.rows.has(name);
+  }
+
   unregister(name: string) {
     this.rows.delete(name);
   }
