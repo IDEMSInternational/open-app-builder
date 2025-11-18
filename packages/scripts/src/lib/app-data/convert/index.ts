@@ -1,10 +1,9 @@
 import * as fs from "fs-extra";
-import { Command } from "commander";
 
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import { IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import {
@@ -29,34 +28,19 @@ interface ISheetJsonWithMeta {
   [sheet_name: string]: any;
 }
 
-/***************************************************************************************
- * CLI
- * @example yarn
- *************************************************************************************/
-const program = new Command("convert");
-interface IProgramOptions {
+interface IConverterOptions {
   cacheFolder: string;
   /** comma-separated list in case of multiple folders */
-  inputFolder: string;
+  inputFolders: string[];
   outputFolder: string;
   skipCache?: boolean;
 }
-export interface IConverterOptions extends Omit<IProgramOptions, "inputFolder"> {
-  inputFolders: string[];
-}
-export default program
-  .description("Convert app data")
-  .requiredOption("-i --input-folders <string>", "")
-  .requiredOption("-c --cache-folder <string>", "")
-  .requiredOption("-o --output-folder <string>", "")
-  .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .action(async (options: IProgramOptions) => {
-    const mappedOptions: IConverterOptions = {
-      ...options,
-      inputFolders: options.inputFolder.split(",").map((f) => f.trim()),
-    };
-    await new AppDataConverter(mappedOptions).run();
-  });
+
+/** Entry format for minimal flow metadata stored */
+type FlowMetaEntry = Pick<
+  FlowTypes.FlowTypeBase,
+  "flow_type" | "flow_subtype" | "flow_name" | "_source"
+>;
 
 /***************************************************************************************
  * Main Methods
@@ -103,7 +87,6 @@ export class AppDataConverter {
         return { _metadata: { ..._metadata, folderName }, ...sheetData };
       });
       sheetJsons.forEach((json) => allSheetJsons.push(json));
-      await this.writeSheetJsons(path.basename(inputFolder), sheetJsons);
     }
 
     // 2. Merge jsons with contents sheet, filter, apply direct overrides and sort
@@ -112,13 +95,16 @@ export class AppDataConverter {
     const filteredJsons = this.applyFlowFilters(allJsons);
     const sortedJsons = this.applyFlowSort(filteredJsons);
 
-    // 3. Process Flow Data
+    // 3. Write intermediate to file
+    await this.writeSheetJsons(sortedJsons);
+
+    // 4. Process Flow Data
     const processor = new FlowParserProcessor({ cache: this.cache });
     processor.logger = this.logger;
     const result = (await processor.process(sortedJsons)) as IParsedWorkbookData;
     this.writeOutputJsons(result);
 
-    // 4. Extract Logs and return
+    // 5. Extract Logs and return
     const { errors, warnings } = this.logOutputs();
     return { errors, warnings, result };
   }
@@ -141,13 +127,11 @@ export class AppDataConverter {
             merged[flow_name] = {
               ...contents,
               rows: sheetData[flow_name],
-              // HACK - temp hide properties to make it eaiser to review PR diffs
-              // TODO - uncomment post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              // _remoteFolder: _metadata.folderName,
-              // _remoteUrl: _metadata.remoteUrl,
-              _xlsxPath: _metadata.relativePath,
-              // TODO - remove post https://github.com/IDEMSInternational/open-app-builder/pull/3166
-              _sheetsFolderUrl: `https://drive.google.com/drive/u/0/folders/${_metadata.folderName}`,
+              _source: {
+                name: _metadata.folderName,
+                path: _metadata.relativePath,
+                url: _metadata.remoteUrl,
+              },
             };
             // convert parameter list from string to object
             // TODO - handle converting in parser
@@ -275,24 +259,26 @@ export class AppDataConverter {
   }
 
   /** Populate raw json conversions of xlsx files to sheet_json folder */
-  private async writeSheetJsons(folderName: string, jsons: ISheetJsonWithMeta[]) {
+  private async writeSheetJsons(jsons: FlowTypes.FlowTypeWithData[]) {
     const { outputFolder } = this.options;
     const sheetJsonFolder = path.resolve(outputFolder, "../", "sheet_json");
-    const mergedMetadata: Record<string, any> = {};
-    // Write individual jsons
-    for (const { _metadata, ...jsonData } of jsons) {
-      const { relativePath } = _metadata;
-      mergedMetadata[relativePath] = _metadata;
-      const filePath = relativePath.replace(".xlsx", ".json");
-      const targetFile = path.join(sheetJsonFolder, folderName, filePath);
+    await fs.ensureDir(sheetJsonFolder);
+    await fs.emptyDir(sheetJsonFolder);
+    const mergedMetadata: FlowMetaEntry[] = [];
+    // Write individual jsons, keeping source metadata in top-level file
+    // and contents in individual jsons by {flow_type}/{flow_name}
+    for (const { _source, ...jsonData } of jsons) {
+      const { flow_type, flow_subtype, flow_name } = jsonData;
+      const metaEntry = { flow_type, ...(flow_subtype && { flow_subtype }), flow_name, _source };
+      mergedMetadata.push(metaEntry);
+      const targetFile = path.join(sheetJsonFolder, flow_type, `${flow_name}.json`);
       await fs.ensureDir(path.dirname(targetFile));
       const fileContents = standardiseNewlines(JSON.stringify(jsonData, null, 2));
       await fs.writeFile(targetFile, fileContents);
     }
     // Write metadata
-    const metaFile = path.join(sheetJsonFolder, folderName, METADATA_FILENAME);
+    const metaFile = path.join(sheetJsonFolder, METADATA_FILENAME);
     const metaContents = standardiseNewlines(JSON.stringify(mergedMetadata, null, 2));
-    await fs.ensureDir(path.dirname(metaFile));
     await fs.writeFile(metaFile, metaContents);
   }
 }

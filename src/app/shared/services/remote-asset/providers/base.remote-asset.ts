@@ -4,10 +4,16 @@ export interface IRemoteAssetProvider {
   /** Initialize the provider with configuration */
   initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void>;
 
-  /** Get public URL for a file */
+  /** Get public URL for a file (legacy method, used only when direct HTTP downloads possible) */
   getPublicUrl(relativePath: string): string;
 
-  /** Download file from private bucket (if supported) */
+  /** Download file using provider's own SDK/methods (preferred) */
+  downloadFile(relativePath: string): Promise<Blob | null>;
+
+  /** Download file and return as text string (for JSON/XML files) */
+  downloadFileAsText(relativePath: string): Promise<string | null>;
+
+  /** Download file from private bucket (legacy method) */
   downloadFileFromPrivateBucket(filepath: string): Promise<Blob | null>;
 
   /** Get file metadata */

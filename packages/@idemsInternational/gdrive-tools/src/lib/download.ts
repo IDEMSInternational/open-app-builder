@@ -16,6 +16,7 @@ import {
   ILocalFileWithStats,
   cleanupEmptyFolders,
   getRelativeLocalPath,
+  getGDriveFileById,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
 import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "../models";
@@ -30,28 +31,40 @@ export interface IDownloadOptions {
   outputPath: string;
   credentialsPath: string;
   authTokenPath: string;
-  logName: string;
+  /** Custom text to include with logs. Default uses drive folder name */
+  logPrefix?: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }
 
 export class GDriveDownloader {
   private drive: drive_v3.Drive;
-  private contentsPath: string;
   private contentsData: IGdriveEntry[] = [];
 
-  constructor(private options: IDownloadOptions) {
-    const { outputPath } = this.options;
-    this.contentsPath = path.resolve(outputPath, METADATA_FILENAME);
+  constructor(private options: IDownloadOptions) {}
+
+  private async setup() {
+    // avoid duplicate setup
+    if (this.drive) return;
+    this.drive = await this.setupGdrive();
     // prepare folders
-    fs.ensureDirSync(outputPath);
+    fs.ensureDirSync(this.options.outputPath);
     fs.ensureDirSync(PATHS.LOGS_DIR);
-    this.loadCacheContents();
+    this.contentsData = this.loadCacheContents();
   }
 
-  /** Process entire folder download */
+  /**
+   * Process entire folder download
+   * @returns path to download folder
+   **/
   public async downloadFolder(folderId: string) {
-    await this.setupGdrive();
-    console.log(chalk.yellow("Retrieving list of files"));
+    await this.setup();
+    // Extract folder name from id to show in logs
+    let {logPrefix} = this.options
+    if (!logPrefix) {
+      const { name } = await getGDriveFileById(this.drive, this.options.folderId);
+      logPrefix = name;
+    }
+    console.log(chalk.yellow("\n" + logPrefix));
     const serverFiles = await this.listGdriveFilesRecursively(folderId);
     if (Object.keys(serverFiles).length === 0) {
       logError({
@@ -60,7 +73,8 @@ export class GDriveDownloader {
         logOnly: true,
       });
     }
-    return this.processDownloads(serverFiles);
+    await this.processDownloads(serverFiles);
+    return this.options.outputPath;
   }
 
   /**
@@ -68,7 +82,7 @@ export class GDriveDownloader {
    * NOTE - file must already exist in cache to know nested folder structure to output file to
    */
   public async updateFileEntry(serverEntry: drive_v3.Schema$File) {
-    await this.setupGdrive();
+    await this.setup();
     const cachedEntry = this.getCachedEntry(serverEntry);
     if (!cachedEntry) {
       console.log(chalk.red("Full sync required before updating file", serverEntry.name));
@@ -94,14 +108,15 @@ export class GDriveDownloader {
   private async setupGdrive() {
     const { authTokenPath, credentialsPath } = this.options;
     const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
-    this.drive = drive;
+    return drive;
   }
 
   private loadCacheContents() {
-    if (!fs.existsSync(this.contentsPath)) {
-      fs.writeJSONSync(this.contentsPath, []);
+    const contentsPath = path.resolve(this.options.outputPath, METADATA_FILENAME);
+    if (!fs.existsSync(contentsPath)) {
+      fs.writeJSONSync(contentsPath, []);
     }
-    this.contentsData = fs.readJSONSync(this.contentsPath);
+    return fs.readJSONSync(contentsPath);
   }
 
   /** Download a full folder */
@@ -178,7 +193,7 @@ export class GDriveDownloader {
     // Remove empty folders left after deletions
     cleanupEmptyFolders(this.options.outputPath);
     // Update logs
-    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
+    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.folderId}.json`);
     console.log(chalk.gray(actionsLogPath));
     fs.writeFileSync(actionsLogPath, JSON.stringify(actions, null, 2));
   }
@@ -192,7 +207,7 @@ export class GDriveDownloader {
 
     // generate hashmaps for easier lookup and compare of server and local files
     const localFilesHashmap = generateFolderFlatMapStats(outputPath);
-    const serverFilesHashmap = Object.fromEntries(serverFiles.map(v=>([v.relativePath,v])))
+    const serverFilesHashmap = Object.fromEntries(serverFiles.map((v) => [v.relativePath, v]));
     // Compare server with local
     for (const serverFile of serverFiles) {
       (() => {

@@ -1,14 +1,14 @@
 import { createHash } from "crypto";
 
 import { AssetsPostProcessor } from "./assets";
-import type { IDeploymentConfigJson } from "../../deployment/common";
+import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { type RecursivePartial } from "shared/src/types";
 
 import { readJsonSync, readdirSync, statSync, existsSync } from "fs-extra";
 import { vol } from "memfs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
-import { ActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../../commands/deployment/get";
 import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/assets.model";
 import { useMockLogger } from "../../../../test/helpers/utils";

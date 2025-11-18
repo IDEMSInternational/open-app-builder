@@ -7,12 +7,12 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
 .apple-signin-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   color: black;
-  padding: var(--regular-margin) var(--tiny-padding);
+  padding: var(--regular-margin);
   border-radius: $border-radius;
-  font-size: 20px;
+  font-size: var(--buttons-font-size);
   font-weight: var(--font-weight-bold);
   font-family: inherit;
   border: 1px solid black;
@@ -26,6 +26,23 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
     height: 20px;
     margin-inline-end: 12px;
     filter: invert(1);
+    flex-shrink: 0;
+  }
+
+  // Create an invisible spacer matching the icon width to balance the layout
+  // This centers the text content while keeping the icon at the start
+  &::after {
+    content: "";
+    width: 32px; // 20px icon + 12px margin
+    flex-shrink: 0;
+  }
+  &[data-style="width_content"] {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    &::after {
+      width: 0px;
+    }
   }
 
   &:disabled {
@@ -50,11 +67,17 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   border: none;
   height: 40px;
   width: auto;
+  justify-content: space-between;
 
   .apple-logo {
     height: 14px;
     margin-inline-end: 10px;
     filter: none;
+  }
+
+  // Remove spacer
+  &::after {
+    width: 0px;
   }
 
   &:disabled {

@@ -7,7 +7,7 @@ import {
   parseAppDataActionString,
   parseAppDateValue,
 } from "../../../utils";
-import { ActiveDeployment } from "../../../../../deployment/get";
+import { ActiveDeployment } from "../../../../../../commands/deployment/get";
 import { FlowParserProcessor } from "../flowParser";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
@@ -204,10 +204,11 @@ export class RowProcessor {
             logOnly: true,
           });
         }
-        const { rows, _xlsxPath, ...parentMeta } = this.parent.flow;
+        const { rows, _source, ...parentMeta } = this.parent.flow;
         console.warn("Error in flow:", parentMeta);
         console.warn("Row:", this.row);
-        console.warn("XLSX:", _xlsxPath);
+        console.warn("XLSX:", _source.path);
+        console.warn("URL:", _source.url);
       }
     }
     // Can ignore as handled during subgroup extraction
