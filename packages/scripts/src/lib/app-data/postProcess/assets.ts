@@ -144,10 +144,32 @@ export class AssetsPostProcessor {
     }
 
     // Process and write remote assets (one folder per asset pack)
+    const currentRemoteAssetFolders = new Set<string>();
     for (const [folderName, remoteAssets] of remoteAssetsByFolder.entries()) {
       const remoteAssetsFolder = path.resolve(app_data.output_path, "remote_assets", folderName);
       fs.ensureDirSync(remoteAssetsFolder);
       this.processAndWriteAssets(remoteAssets, remoteAssetsFolder);
+      currentRemoteAssetFolders.add(folderName);
+    }
+
+    // Clean up old asset pack folders that are no longer in the config
+    const remoteAssetsBasePath = path.resolve(app_data.output_path, "remote_assets");
+    if (fs.existsSync(remoteAssetsBasePath)) {
+      const existingFolders = fs
+        .readdirSync(remoteAssetsBasePath, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .map((dirent) => dirent.name);
+
+      for (const folderName of existingFolders) {
+        if (!currentRemoteAssetFolders.has(folderName)) {
+          const oldFolderPath = path.resolve(remoteAssetsBasePath, folderName);
+          fs.removeSync(oldFolderPath);
+          logOutput({
+            msg1: "Removed unused asset pack",
+            msg2: `remote_assets/${folderName}`,
+          });
+        }
+      }
     }
 
     fs.removeSync(this.stagingDir);
