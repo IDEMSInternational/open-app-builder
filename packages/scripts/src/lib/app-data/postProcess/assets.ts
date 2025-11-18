@@ -17,7 +17,8 @@ import {
   copyFileWithTimestamp,
 } from "../../../utils";
 import { ActiveDeployment } from "../../../commands/deployment/get";
-import type { IAssetEntryHashmap, IAssetContentsEntryMinimal } from "data-models";
+import type { IAssetEntryHashmap, IAssetContentsEntryMinimal, IAssetEntry } from "data-models";
+import type { FlowTypes } from "data-models";
 import { resolve } from "path";
 
 /**
@@ -52,7 +53,6 @@ interface IAssetPostProcessorOptions {
  *************************************************************************************/
 export class AssetsPostProcessor {
   private activeDeployment = ActiveDeployment.get();
-  private stagingDir: string;
   constructor(private options: IAssetPostProcessorOptions) {}
 
   public run() {
@@ -61,11 +61,6 @@ export class AssetsPostProcessor {
     const { _parent_config } = this.activeDeployment;
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");
     fs.ensureDirSync(appAssetsFolder);
-    // Populate merged assets staging to run quality control checks and generate full contents lists
-    this.stagingDir = createTempDir();
-    const mergedAssetsHashmap: IContentsEntryHashmap = {};
-    // Track which source folder each asset came from (for branching remote assets)
-    const assetSourceFolder = new Map<string, string>();
 
     // Include parent config in list of source assets
     // TODO - may want to reconsider this functionality in the future given ability to use
@@ -76,65 +71,26 @@ export class AssetsPostProcessor {
       sourceAssetsFolders.unshift(parentAssetsFolder);
     }
 
-    // Generate a list of all deployment assets, merged across input sources
-    // Note: Remote assets should not overwrite core assets or other remote assets
+    // Separate core assets and remote assets for separate processing
+    const coreAssetsHashmap: IContentsEntryHashmap = {};
+    const remoteAssetsBySourceFolder = new Map<string, IContentsEntryHashmap>();
+
     for (const sourceAssetsFolder of sourceAssetsFolders) {
       const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
       const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
       const sourceMetadata = folderMetadata.get(sourceAssetsFolder);
       const isSourceRemote = sourceMetadata?.remote === true;
 
-      Object.entries(sourceAssetsFiltered).forEach(([relativePath, entry]) => {
-        const existingSourceFolder = assetSourceFolder.get(relativePath);
-
-        // Remote assets should not overwrite any existing assets (core or remote)
-        if (isSourceRemote && existingSourceFolder) {
-          return;
+      if (isSourceRemote) {
+        // Track remote assets by source folder
+        if (!remoteAssetsBySourceFolder.has(sourceAssetsFolder)) {
+          remoteAssetsBySourceFolder.set(sourceAssetsFolder, {});
         }
-
-        // Core assets can overwrite other core assets (and parent config assets)
-        if (mergedAssetsHashmap.hasOwnProperty(relativePath)) {
-          //  TODO - log override
-        }
-        mergedAssetsHashmap[relativePath] = entry;
-        // Track which folder this asset came from
-        assetSourceFolder.set(relativePath, sourceAssetsFolder);
-      });
-    }
-
-    // Copy all assets to staging directory, preserving timestamps
-    for (const entry of Object.values(mergedAssetsHashmap)) {
-      const targetPath = resolve(this.stagingDir, entry.relativePath);
-      copyFileWithTimestamp(entry.localPath, targetPath, entry.modifiedTime);
-    }
-
-    this.assetsQualityCheck(this.stagingDir);
-    const assetsByType = this.handleAssetOverrides(mergedAssetsHashmap);
-    const { tracked, untracked } = assetsByType;
-    this.checkTotalAssetSize(assetsByType);
-
-    // Branch assets: core assets to app_data/assets, remote assets to app_data/remote_assets/{folderName}
-    const coreAssetsHashmap: IContentsEntryHashmap = {};
-    const remoteAssetsByFolder = new Map<string, IContentsEntryHashmap>();
-
-    // Separate assets by their source folder metadata
-    for (const [relativePath, entry] of Object.entries(mergedAssetsHashmap)) {
-      const sourceFolder = assetSourceFolder.get(relativePath);
-      if (!sourceFolder) continue;
-
-      const metadata = folderMetadata.get(sourceFolder);
-      const isRemote = metadata?.remote === true;
-
-      if (isRemote && metadata?.folderName) {
-        // Track remote assets by folder name
-        if (!remoteAssetsByFolder.has(metadata.folderName)) {
-          remoteAssetsByFolder.set(metadata.folderName, {});
-        }
-        const remoteFolderAssets = remoteAssetsByFolder.get(metadata.folderName)!;
-        remoteFolderAssets[relativePath] = entry;
+        const remoteAssets = remoteAssetsBySourceFolder.get(sourceAssetsFolder)!;
+        Object.assign(remoteAssets, sourceAssetsFiltered);
       } else {
-        // Core assets
-        coreAssetsHashmap[relativePath] = entry;
+        // Core assets - merge into coreAssetsHashmap (later folders can overwrite earlier ones)
+        Object.assign(coreAssetsHashmap, sourceAssetsFiltered);
       }
     }
 
@@ -145,57 +101,140 @@ export class AssetsPostProcessor {
 
     // Process and write remote assets (one folder per asset pack)
     const currentRemoteAssetFolders = new Set<string>();
-    for (const [folderName, remoteAssets] of remoteAssetsByFolder.entries()) {
-      const remoteAssetsFolder = path.resolve(app_data.output_path, "remote_assets", folderName);
+    for (const [sourceFolder, remoteAssets] of remoteAssetsBySourceFolder.entries()) {
+      const metadata = folderMetadata.get(sourceFolder);
+      if (!metadata?.folderName) continue;
+
+      const remoteAssetsFolder = path.resolve(
+        app_data.output_path,
+        "remote_assets",
+        metadata.folderName
+      );
       fs.ensureDirSync(remoteAssetsFolder);
-      this.processAndWriteAssets(remoteAssets, remoteAssetsFolder);
-      currentRemoteAssetFolders.add(folderName);
+      this.processAndWriteAssets(remoteAssets, remoteAssetsFolder, metadata.folderName);
+      currentRemoteAssetFolders.add(metadata.folderName);
     }
 
     // Clean up old asset pack folders that are no longer in the config
-    const remoteAssetsBasePath = path.resolve(app_data.output_path, "remote_assets");
-    if (fs.existsSync(remoteAssetsBasePath)) {
-      const existingFolders = fs
-        .readdirSync(remoteAssetsBasePath, { withFileTypes: true })
-        .filter((dirent) => dirent.isDirectory())
-        .map((dirent) => dirent.name);
+    this.cleanupOldRemoteAssetFolders(app_data.output_path, currentRemoteAssetFolders);
 
-      for (const folderName of existingFolders) {
-        if (!currentRemoteAssetFolders.has(folderName)) {
-          const oldFolderPath = path.resolve(remoteAssetsBasePath, folderName);
-          fs.removeSync(oldFolderPath);
-          logOutput({
-            msg1: "Removed unused asset pack",
-            msg2: `remote_assets/${folderName}`,
-          });
-        }
-      }
-    }
-
-    fs.removeSync(this.stagingDir);
     console.log(chalk.green("Asset Process Complete"));
   }
 
   /**
    * Process assets and write them to the target folder
    * Handles asset overrides, copying files, and writing contents files
+   * @param assetPackName If provided, writes AssetPack format manifest instead of contents.json
    */
-  private processAndWriteAssets(assetsHashmap: IContentsEntryHashmap, targetFolder: string) {
-    const assetsByType = this.handleAssetOverrides(assetsHashmap);
-    const stagingDir = createTempDir();
-
+  private processAndWriteAssets(
+    assetsHashmap: IContentsEntryHashmap,
+    targetFolder: string,
+    assetPackName?: string
+  ) {
     // Copy all assets to staging directory, preserving timestamps
+    const stagingDir = createTempDir();
     for (const entry of Object.values(assetsHashmap)) {
       const targetPath = resolve(stagingDir, entry.relativePath);
       copyFileWithTimestamp(entry.localPath, targetPath, entry.modifiedTime);
+    }
+
+    // Run quality checks on staging directory
+    this.assetsQualityCheck(stagingDir);
+
+    // Process asset overrides
+    const assetsByType = this.handleAssetOverrides(assetsHashmap);
+
+    // Check total asset size (only for core assets)
+    if (!assetPackName) {
+      this.checkTotalAssetSize(assetsByType);
     }
 
     // Copy staging directory to target folder
     replicateDir(stagingDir, targetFolder);
     fs.removeSync(stagingDir);
 
-    // Write contents.json and untracked-assets.json files
-    this.writeAssetsContentsFiles(targetFolder, assetsByType.tracked, assetsByType.untracked);
+    // Write manifest files
+    if (assetPackName) {
+      // Write AssetPack format manifest for remote asset packs
+      this.writeAssetPackManifest(
+        targetFolder,
+        assetsByType.tracked,
+        assetsByType.untracked,
+        assetPackName
+      );
+    } else {
+      // Write contents.json for core assets
+      this.writeAssetsContentsFiles(targetFolder, assetsByType.tracked, assetsByType.untracked);
+    }
+  }
+
+  /**
+   * Write AssetPack format manifest for remote asset packs
+   * @param targetFolder Target folder to write manifest to
+   * @param assetEntries Tracked asset entries
+   * @param missingEntries Untracked asset entries (treated as overridesOnly)
+   * @param assetPackName Name of the asset pack (used as flow_name and for prefixing paths)
+   */
+  private writeAssetPackManifest(
+    targetFolder: string,
+    assetEntries: IAssetEntryHashmap,
+    missingEntries: IAssetEntryHashmap,
+    assetPackName: string
+  ) {
+    if (!fs.existsSync(targetFolder)) {
+      return;
+    }
+
+    // Convert hashmap to array
+    const rows: FlowTypes.Data_listRow<IAssetEntry>[] = [
+      ...this.convertAssetEntriesToRows(assetEntries, assetPackName, false),
+      ...this.convertAssetEntriesToRows(missingEntries, assetPackName, true),
+    ];
+
+    // Create AssetPack format manifest
+    const assetPack: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: assetPackName,
+      rows: rows,
+    };
+
+    // Write manifest file with asset pack name
+    const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
+    fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPack), null, 2));
+  }
+
+  /**
+   * Convert asset entries hashmap to array of rows
+   * @param entries Asset entries hashmap
+   * @param overridesOnly Whether these entries are overridesOnly
+   */
+  private convertAssetEntriesToRows(
+    entries: IAssetEntryHashmap,
+    overridesOnly: boolean
+  ): FlowTypes.Data_listRow<IAssetEntry>[] {
+    return Object.entries(entries).map(([assetPath, entry]) => {
+      // For overridesOnly entries, use values from first override
+      let md5Checksum = entry.md5Checksum;
+      let size_kb = entry.size_kb;
+      if (overridesOnly && entry.overrides) {
+        const firstTheme = Object.keys(entry.overrides)[0];
+        const firstLang = Object.keys(entry.overrides[firstTheme])[0];
+        const firstOverride = entry.overrides[firstTheme][firstLang];
+        md5Checksum = firstOverride.md5Checksum;
+        size_kb = firstOverride.size_kb;
+      }
+
+      const row: FlowTypes.Data_listRow<IAssetEntry> = {
+        id: assetPath,
+        md5Checksum,
+        size_kb,
+        ...(overridesOnly && { overridesOnly: true }),
+        ...(entry.filePath && { filePath: entry.filePath }),
+        ...(entry.overrides && { overrides: entry.overrides }),
+      };
+
+      return row;
+    });
   }
 
   /**
@@ -226,23 +265,30 @@ export class AssetsPostProcessor {
     }
   }
 
-  private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
-    const { _parent_config } = this.activeDeployment;
-    const mergedAssets = { ...sourceAssets };
-
-    // If parent config exists also include any parent files that would not be overwritten by source
-    if (_parent_config) {
-      const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
-      fs.ensureDirSync(parentAssetsFolder);
-      const parentAssets = generateFolderFlatMap(parentAssetsFolder, { includeLocalPath: true });
-      const filteredParentAssets = this.filterAppAssets(parentAssets);
-      Object.keys(filteredParentAssets).forEach((relativePath) => {
-        if (!mergedAssets.hasOwnProperty(relativePath)) {
-          mergedAssets[relativePath] = { ...parentAssets[relativePath] };
-        }
-      });
+  /**
+   * Clean up old remote asset pack folders that are no longer in the config
+   */
+  private cleanupOldRemoteAssetFolders(outputPath: string, currentFolders: Set<string>) {
+    const remoteAssetsBasePath = path.resolve(outputPath, "remote_assets");
+    if (!fs.existsSync(remoteAssetsBasePath)) {
+      return;
     }
-    return mergedAssets;
+
+    const existingFolders = fs
+      .readdirSync(remoteAssetsBasePath, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
+
+    for (const folderName of existingFolders) {
+      if (!currentFolders.has(folderName)) {
+        const oldFolderPath = path.resolve(remoteAssetsBasePath, folderName);
+        fs.removeSync(oldFolderPath);
+        logOutput({
+          msg1: "Removed unused asset pack",
+          msg2: `remote_assets/${folderName}`,
+        });
+      }
+    }
   }
 
   /**
@@ -411,28 +457,6 @@ export class AssetsPostProcessor {
   private contentsToAssetEntry(entry: IContentsEntry): IAssetContentsEntryMinimal {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
-  }
-
-  /**
-   * Generate processed asset entries with nested override structure
-   * This can be used to generate manifest files for asset packs
-   * @param sourceAssetsFolder Single folder path to process
-   * @returns Processed asset entries with nested overrides (same format as contents.json)
-   */
-  public generateProcessedAssetEntries(sourceAssetsFolder: string): IAssetEntryHashmap {
-    // Generate flat map of all assets, excluding manifest.json (which will be generated)
-    const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, {
-      includeLocalPath: true,
-      filterFn: (relativePath) => relativePath !== "manifest.json",
-    });
-
-    // Filter assets using the same logic as core asset processing
-    const filteredAssets = this.filterAppAssets(sourceAssets);
-
-    // Process asset overrides to create nested structure
-    const { tracked } = this.handleAssetOverrides(filteredAssets);
-
-    return tracked;
   }
 }
 
