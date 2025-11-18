@@ -1,10 +1,10 @@
 import { ListEvaluator } from "./list.evaluator";
 
 describe("ListEvaluator", () => {
-  let parser: ListEvaluator;
+  let subject: ListEvaluator;
 
   beforeEach(() => {
-    parser = new ListEvaluator();
+    subject = new ListEvaluator();
   });
 
   describe("parseExpression", () => {
@@ -15,7 +15,7 @@ describe("ListEvaluator", () => {
 				key: name_3 | value: Value 3;
 			`;
 
-      const result = parser.evaluate(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value 1" },
@@ -29,7 +29,7 @@ describe("ListEvaluator", () => {
 				key: name_1 | value: Value 1 | description: This is description 1;
 			`;
 
-      const result = parser.evaluate(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value 1", description: "This is description 1" },
@@ -43,7 +43,7 @@ describe("ListEvaluator", () => {
 				key: name_3 | description: Something else | value: Another: colon;
 			`;
 
-      const result = parser.evaluate(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value with: colon" },
@@ -55,18 +55,18 @@ describe("ListEvaluator", () => {
     it("returns the original string when the format is not array of object syntax", () => {
       const expression = "Plain string value";
 
-      expect(parser.evaluate(expression)).toBe(expression);
+      expect(subject.evaluate(expression)).toBe(expression);
     });
 
     it("returns the original string when string contains :", () => {
       const expression = "Plain string value: with colon";
 
-      expect(parser.evaluate(expression)).toBe(expression);
+      expect(subject.evaluate(expression)).toBe(expression);
     });
 
     it("returns primitives as-is when expression is not a string", () => {
-      expect(parser.evaluate(42)).toBe(42);
-      expect(parser.evaluate(true)).toBe(true);
+      expect(subject.evaluate(42)).toBe(42);
+      expect(subject.evaluate(true)).toBe(true);
     });
   });
 });
