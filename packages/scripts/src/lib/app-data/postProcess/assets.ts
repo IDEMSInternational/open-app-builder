@@ -187,8 +187,8 @@ export class AssetsPostProcessor {
 
     // Convert hashmap to array
     const rows: FlowTypes.Data_listRow<IAssetEntry>[] = [
-      ...this.convertAssetEntriesToRows(assetEntries, assetPackName, false),
-      ...this.convertAssetEntriesToRows(missingEntries, assetPackName, true),
+      ...this.convertAssetEntriesToRows(assetEntries, false),
+      ...this.convertAssetEntriesToRows(missingEntries, true),
     ];
 
     // Create AssetPack format manifest
