@@ -73,6 +73,13 @@ export class SheetsPostProcessor {
       const filePath = path.resolve(baseFolder, sheetPath);
       const sheetContents: FlowTypes.FlowTypeWithData = fs.readJsonSync(filePath);
       const { flow_type, flow_name } = sheetContents;
+
+      // Skip files that don't have flow_type and flow_name (e.g., contents.json)
+      if (!flow_type || !flow_name) {
+        console.log(`DEBUG: Skipping file ${sheetPath} - not a flow definition`);
+        continue;
+      }
+
       this.qualityCheckSheets(contents, sheetContents);
       contents[flow_type][flow_name] = this.extractContentsData(sheetContents);
     }

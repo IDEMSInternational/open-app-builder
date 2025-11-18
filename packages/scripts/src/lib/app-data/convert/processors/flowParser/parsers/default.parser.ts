@@ -259,7 +259,9 @@ export class RowProcessor {
       if (field.endsWith("action_list")) {
         // do not parse action lists that are populated from variable reference
         if (value.startsWith("@")) return value;
-        const entries = parseAppDataListString(value);
+        // Normalize newlines and other whitespace in action_list strings
+        const normalizedValue = value.replace(/[\r\n]+/g, "").trim();
+        const entries = parseAppDataListString(normalizedValue);
         return entries.map((actionString) => parseAppDataActionString(actionString));
       }
       if (field.endsWith("_list") || field?.includes("_list_")) {

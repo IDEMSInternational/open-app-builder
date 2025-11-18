@@ -9,7 +9,6 @@
     "module": "CommonJS",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    // Global type definitions.
     "typeRoots": ["./node_modules/@types"],
     "pretty": true
   },

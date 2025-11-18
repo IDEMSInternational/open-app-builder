@@ -95,6 +95,17 @@ export class TemplateActionService extends SyncServiceBase {
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
+    // Defensive check: ensure actions is an array
+    if (!Array.isArray(actions)) {
+      console.error("[TemplateActionService] actions is not an array:", typeof actions, actions);
+      // Try to convert to array if it's a single action object
+      if (actions && typeof actions === "object") {
+        actions = [actions as FlowTypes.TemplateRowAction];
+      } else {
+        actions = [];
+      }
+    }
+
     // Track action trigger source
     // Will be undefined if triggered from service instead of row component
     actions = actions.map((a) => {

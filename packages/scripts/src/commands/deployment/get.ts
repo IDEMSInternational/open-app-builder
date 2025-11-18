@@ -52,7 +52,14 @@ function get(
   if (options.skipRecompileCheck) {
     return deploymentJson;
   }
-  const { _config_ts_path, _workspace_path, name } = deploymentJson;
+  const { _config_ts_path, _workspace_path, name, isExternal } = deploymentJson;
+
+  // For external deployments, return the config directly since they don't have config.ts files
+  if (isExternal) {
+    return deploymentJson;
+  }
+
+  // For regular deployments, check if config.ts file exists
   if (!fs.existsSync(_config_ts_path)) {
     fs.removeSync(defaultJsonPath);
     Logger.error({

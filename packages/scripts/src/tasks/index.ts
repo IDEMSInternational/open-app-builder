@@ -3,6 +3,7 @@ import android from "./providers/android";
 import appData from "./providers/appData";
 import deployment from "./providers/deployment";
 import encryption from "./providers/encryption";
+import externalRawData from "./providers/externalRawData";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import git from "./providers/git";
@@ -25,6 +26,7 @@ const ALL_TASKS = {
   appData,
   deployment,
   encryption,
+  externalRawData,
   file,
   gdrive,
   git,

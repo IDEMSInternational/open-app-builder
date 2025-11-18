@@ -3,6 +3,8 @@ import {
   assignFlowOverrides,
   extractConditionList,
   parseAppDataCollectionString,
+  parseAppDataListString,
+  parseAppDataActionString,
   setNestedProperty,
 } from "../../../utils";
 import { DefaultParser } from "./default.parser";
@@ -11,6 +13,17 @@ import { isEmptyObjectDeep, isObjectLiteral, Logger } from "shared";
 export class DataListParser extends DefaultParser {
   postProcessRow(row: FlowTypes.Data_listRow) {
     Object.keys(row).forEach((field) => {
+      // handle action_list processing (same as DefaultParser)
+      if (field.endsWith("action_list") && typeof row[field] === "string") {
+        const value = row[field] as string;
+        // do not parse action lists that are populated from variable reference
+        if (!value.startsWith("@")) {
+          // Normalize newlines and other whitespace in action_list strings
+          const normalizedValue = value.replace(/[\r\n]+/g, "").trim();
+          const entries = parseAppDataListString(normalizedValue);
+          row[field] = entries.map((actionString) => parseAppDataActionString(actionString));
+        }
+      }
       // handle other data structures
       if (field.endsWith("_condition_list")) {
         row[field] = row[field].map((value) => extractConditionList(value));

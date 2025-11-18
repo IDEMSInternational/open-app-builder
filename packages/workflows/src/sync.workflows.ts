@@ -2,6 +2,32 @@ import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
 import type { IDeploymentConfigJson } from "data-models";
+import * as fs from "fs-extra";
+import * as path from "path";
+
+/**
+ * Get external source path for a deployment from deployments.json
+ */
+function getExternalSourcePath(deploymentName: string, workspacePath: string): string {
+  const deploymentsJsonPath = resolve(workspacePath, "..", "deployments.json");
+
+  if (!fs.existsSync(deploymentsJsonPath)) {
+    throw new Error(`deployments.json not found at: ${deploymentsJsonPath}`);
+  }
+
+  try {
+    const deploymentsConfig = fs.readJsonSync(deploymentsJsonPath);
+    const deployment = deploymentsConfig.deployments?.find((d: any) => d.id === deploymentName);
+
+    if (!deployment) {
+      throw new Error(`Deployment "${deploymentName}" not found in deployments.json`);
+    }
+
+    return deployment.file_location;
+  } catch (error) {
+    throw new Error(`Failed to read deployments.json: ${error.message}`);
+  }
+}
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -233,6 +259,119 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "Report",
         function: async ({ tasks }) => tasks.appData.generateReports(),
+      },
+    ],
+  },
+  sync_external: {
+    label: "Sync External Content",
+    options: [
+      {
+        flags: "-nw, --no-watch",
+        description: "Disable live reload watching of external files",
+      },
+    ],
+    steps: [
+      {
+        name: "sync_assets",
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
+      },
+      {
+        name: "sync_external_sheets",
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_external_sheets", parent: workflow }),
+      },
+      {
+        name: "copy_to_app",
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+      },
+      {
+        name: "sync_external_watch",
+        condition: async ({ options }) => options.noWatch !== true,
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_external_watch", parent: workflow }),
+      },
+      {
+        name: "report",
+        function: async ({ tasks }) => tasks.appData.generateReports(),
+      },
+    ],
+  },
+  sync_external_sheets: {
+    label: "Sync External JSON Sheets",
+    steps: [
+      {
+        name: "external_sheets_process",
+        function: async ({ tasks, config }) => {
+          // Get external source folder from deployments.json
+          const externalSourcePath = getExternalSourcePath(config.name, config._workspace_path);
+          const externalAppDataPath = resolve(externalSourcePath, "app_data");
+
+          // Process external JSON files directly (no download step needed)
+          return await tasks.externalRawData.processExternalRawData({
+            sourceFolder: externalAppDataPath,
+            outputFolder: config.app_data.output_path,
+          });
+        },
+      },
+
+      {
+        name: "template_process",
+        function: async ({ tasks, workflow }) => {
+          // Process templates to convert action_list strings to arrays and handle other parsing
+          return await tasks.template.process({
+            inputFolders: [workflow.external_sheets_process.output],
+          });
+        },
+      },
+
+      {
+        name: "translations_apply",
+        function: async ({ tasks, workflow }) =>
+          tasks.translate.apply({ inputFolder: workflow.template_process.output }),
+      },
+      {
+        name: "sheets_post_process",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.postProcessSheets({
+            sourceSheetsFolder: workflow.translations_apply.output.sheets,
+            sourceTranslationsFolder: workflow.translations_apply.output.strings,
+          }),
+      },
+    ],
+  },
+  sync_external_watch: {
+    label: "Watch external JSON files for changes",
+    steps: [
+      {
+        name: "external_watch",
+        function: async ({ tasks, config, workflow }) => {
+          // Get external source folder from deployments.json
+          const externalSourcePath = getExternalSourcePath(config.name, config._workspace_path);
+          const externalAppDataPath = resolve(externalSourcePath, "app_data");
+
+          // Watch the external app_data folder for JSON file changes
+          tasks.file.watchFolder({
+            src: externalAppDataPath,
+            onUpdate: async (filepath) => {
+              // Only respond to JSON file changes
+              if (filepath.endsWith(".json")) {
+                console.log(`External JSON file changed: ${filepath}`);
+
+                // Re-run the external sheets sync workflow
+                await tasks.workflow.runWorkflow({
+                  name: "sync_external_sheets",
+                  parent: workflow,
+                });
+
+                // Copy updated data to app
+                await tasks.appData.copyDeploymentDataToApp();
+
+                console.log("External sync completed due to file change");
+              }
+            },
+          });
+        },
       },
     ],
   },
