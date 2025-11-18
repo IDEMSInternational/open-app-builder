@@ -289,7 +289,8 @@ describe("Assets PostProcess", () => {
       filter_language_codes: ["tz_sw"],
       app_themes_available: ["test"],
     });
-    expect(mockLogger.error).toHaveBeenCalledTimes(1);
+    // handleAssetOverrides is called twice: once for merged assets (quality checks) and once for core assets processing
+    expect(mockLogger.error).toHaveBeenCalledTimes(2);
     expect(mockLogger.error).toHaveBeenCalledWith({
       msg1: "Duplicate overrides detected",
       msg2: "test.jpg [theme_test] [tz_sw]",
