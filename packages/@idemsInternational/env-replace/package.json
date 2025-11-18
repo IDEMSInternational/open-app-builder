@@ -8,7 +8,7 @@
     "test": "ts-mocha -p tsconfig.spec.json src/**/*.spec.ts"
   },
   "dependencies": {
-    "glob": "^10.3.10"
+    "glob": "^9.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",
