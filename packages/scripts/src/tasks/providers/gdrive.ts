@@ -4,6 +4,9 @@ import {
   authorizeGDrive,
   GDriveWatcher,
   IGdriveEntry,
+  createGoogleSheet,
+  readGoogleSheet,
+  authorizeGoogleSheets,
 } from "@idemsInternational/gdrive-tools";
 import chokidar from "chokidar";
 import { existsSync, removeSync } from "fs-extra";
@@ -23,7 +26,8 @@ const authorize = async () => {
   if (existsSync(authTokenPath)) {
     removeSync(authTokenPath);
   }
-  return authorizeGDrive(getCommonOptions());
+  // Use Google Sheets authorization to get expanded permissions
+  return authorizeGoogleSheets(getCommonOptions());
 };
 
 /**
@@ -135,4 +139,36 @@ interface IWatchCommand {
   command: () => Promise<void>;
 }
 
-export default { authorize, download, liveReload, getOutputFolder };
+/**
+ * Create a Google Sheet with authentication using existing gdrive credentials
+ */
+const createSheet = async (options: {
+  title: string;
+  data: { [sheetName: string]: string[][] };
+}) => {
+  const { title, data } = options;
+
+  const result = await createGoogleSheet({
+    ...getCommonOptions(),
+    title,
+    data,
+  });
+
+  console.log(`Google Sheet created: ${result.sheetUrl}`);
+  return result;
+};
+
+/**
+ * Read data from an existing Google Sheet
+ */
+const readSheet = async (options: { spreadsheetId: string; ranges?: string[] }) => {
+  const { spreadsheetId, ranges = [] } = options;
+
+  return await readGoogleSheet({
+    ...getCommonOptions(),
+    spreadsheetId,
+    ranges,
+  });
+};
+
+export default { authorize, download, liveReload, getOutputFolder, createSheet, readSheet };

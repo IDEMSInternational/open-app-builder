@@ -62,6 +62,32 @@ export function authorizeGDriveActivity(
   });
 }
 
+/** Authorize access to Google Sheets API with write permissions */
+export function authorizeGoogleSheets(
+  options: IAuthorizeOptions,
+  driveOptions?: drive_v3.Options
+): Promise<{ drive: drive_v3.Drive; auth: any }> {
+  const { authTokenPath, credentialsPath } = options;
+  const authScopes = [
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/drive.metadata.readonly",
+    "https://www.googleapis.com/auth/spreadsheets", // Add full Google Sheets access
+    "https://www.googleapis.com/auth/drive.file", // Add permission to create files in Drive
+  ];
+  return new Promise((resolve, reject) => {
+    try {
+      const credentials = getAuthCredentials(credentialsPath);
+      authorize(credentials, authTokenPath, authScopes, (auth) => {
+        const drive = google.drive({ version: "v3", auth, ...driveOptions });
+        resolve({ drive, auth });
+      });
+    } catch (ex) {
+      console.warn("Error authorizing google drive access", ex);
+      reject(ex);
+    }
+  });
+}
+
 /** Verify application auth credentials exist and return */
 function getAuthCredentials(credentialsPath: string) {
   if (!fs.existsSync(credentialsPath)) {
