@@ -427,6 +427,49 @@ describe("Assets PostProcess", () => {
     expect(existsSync(resolve(pack2Path, "asset2.jpg"))).toEqual(true);
   });
 
+  it("Removes old assets when remote asset pack is reprocessed", () => {
+    const { vol } = require("memfs");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const packPath = resolve("mock/app_data/remote_assets/test_pack");
+
+    // First run: create pack with old_asset.jpg
+    mockLocalAssets({
+      remote: { "old_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const folderMetadata1 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor1 = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata: folderMetadata1,
+    });
+    processor1.run();
+
+    // Verify old asset exists
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(true);
+
+    // Create an extra file that shouldn't be there (simulating old asset)
+    vol.writeFileSync(resolve(packPath, "orphaned_asset.jpg"), mockFile);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(true);
+
+    // Second run: pack now only has new_asset.jpg
+    vol.reset();
+    mockLocalAssets({
+      remote: { "new_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const folderMetadata2 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor2 = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata: folderMetadata2,
+    });
+    processor2.run();
+
+    // Old assets should be removed, only new asset should exist
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "new_asset.jpg"))).toEqual(true);
+  });
+
   /**
   
   it("Warns if overrides have no source target",()=>{

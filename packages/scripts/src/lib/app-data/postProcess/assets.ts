@@ -110,6 +110,10 @@ export class AssetsPostProcessor {
         "remote_assets",
         metadata.folderName
       );
+      // Delete any existing folder to ensure clean state
+      if (fs.existsSync(remoteAssetsFolder)) {
+        fs.removeSync(remoteAssetsFolder);
+      }
       fs.ensureDirSync(remoteAssetsFolder);
       this.processAndWriteAssets(remoteAssets, remoteAssetsFolder, metadata.folderName);
       currentRemoteAssetFolders.add(metadata.folderName);
