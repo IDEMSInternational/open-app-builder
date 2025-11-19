@@ -218,10 +218,14 @@ export class AssetsPostProcessor {
       let size_kb = entry.size_kb;
       if (overridesOnly && entry.overrides) {
         const firstTheme = Object.keys(entry.overrides)[0];
-        const firstLang = Object.keys(entry.overrides[firstTheme])[0];
-        const firstOverride = entry.overrides[firstTheme][firstLang];
-        md5Checksum = firstOverride.md5Checksum;
-        size_kb = firstOverride.size_kb;
+        const firstLang = firstTheme ? Object.keys(entry.overrides[firstTheme])[0] : undefined;
+        const firstOverride =
+          firstTheme && firstLang ? entry.overrides[firstTheme][firstLang] : undefined;
+
+        if (firstOverride) {
+          md5Checksum = firstOverride.md5Checksum;
+          size_kb = firstOverride.size_kb;
+        }
       }
 
       const row: FlowTypes.Data_listRow<IAssetEntry> = {
