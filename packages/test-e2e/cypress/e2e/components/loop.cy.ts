@@ -129,7 +129,7 @@ describe("Loop Component", () => {
       });
   });
 
-  it("Loops includes @first, @last, @item & @count", () => {
+  it("Loop includes @first, @last, @item & @count", () => {
     cy.getDataTest("firstLastLoop.key_1")
       .should("exist")
       .within(() => {

@@ -149,7 +149,7 @@ describe("LoopItemEvaluator", () => {
       expect(result).toBe("The item is [object Object]");
     });
 
-    it("replaces @first.name  with custom index", () => {
+    it("replaces @first.name with custom index", () => {
       const result = subject.evaluate("The item name is @first.name", "loop.1");
       expect(result).toBe("The item name is Alpha");
     });

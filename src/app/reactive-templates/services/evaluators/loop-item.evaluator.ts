@@ -9,7 +9,6 @@ export class LoopItemEvaluator {
   private rowRegistry = inject(RowRegistry);
 
   public evaluate(expression: string | number | boolean, namespace: string): any {
-    // todo: add @first & @last (@length?)
     if (
       typeof expression !== "string" ||
       !this.tokens.some((token) => expression.includes(token))
@@ -43,7 +42,7 @@ export class LoopItemEvaluator {
     const index = loopRow.params.index.value();
 
     const itemValue = index
-      ? loopValues.filter((item) => item[index] === loopInfo.index)[0]
+      ? loopValues.find((item) => item[index] === loopInfo.index)
       : loopValues[loopInfo.index];
 
     let result = expression;
@@ -90,7 +89,7 @@ export class LoopItemEvaluator {
   }
 
   private replaceToken(token: string, expression: string, itemValue: any): string {
-    const regexWithAccessor = new RegExp(`${token}\\.([a-zA-Z0-9_]+)`, "g");
+    const regexWithAccessor = new RegExp(`${token}\\.([a-zA-Z_$][a-zA-Z0-9_$]*)`, "g");
     const regexWithoutAccessor = new RegExp(`${token}\\b`, "g");
 
     let returnValue = expression;
