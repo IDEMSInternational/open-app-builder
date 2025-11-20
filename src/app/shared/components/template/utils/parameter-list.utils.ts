@@ -89,7 +89,7 @@ const coerceMethods = {
             .map((line) => line.trim())
             .filter((line) => line);
 
-          // Check if there are lines that contain at least one ':'
+          // Check if lines contain at least one ':'
           const isArrayOfObjectsType =
             lines.length > 0 && lines.every((line) => line.includes(":"));
 
@@ -111,7 +111,6 @@ const coerceMethods = {
           }
         }
 
-        // Fallback if parsing fails
         return fallback;
       })
       .catch(fallback),
