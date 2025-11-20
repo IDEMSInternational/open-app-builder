@@ -100,6 +100,8 @@ describe("Loop Component", () => {
         cy.getDataTest("nestedLoop.0.loopTemplate.templateText")
           .should("exist")
           .should("contain", "value: This is value 1");
+
+        cy.getDataTest("nestedLoop.0.countText").should("exist").should("contain", "0 of 3");
       });
 
     cy.getDataTest("nestedLoop.1")
@@ -110,6 +112,8 @@ describe("Loop Component", () => {
         cy.getDataTest("nestedLoop.1.loopTemplate.templateText")
           .should("exist")
           .should("contain", "value: This is value 2");
+
+        cy.getDataTest("nestedLoop.1.countText").should("exist").should("contain", "1 of 3");
       });
 
     cy.getDataTest("nestedLoop.2")
@@ -120,10 +124,12 @@ describe("Loop Component", () => {
         cy.getDataTest("nestedLoop.2.loopTemplate.templateText")
           .should("exist")
           .should("contain", "value: This is value 3");
+
+        cy.getDataTest("nestedLoop.2.countText").should("exist").should("contain", "2 of 3");
       });
   });
 
-  it("Loops includes @first, @last, and @item", () => {
+  it("Loops includes @first, @last, @item & @count", () => {
     cy.getDataTest("firstLastLoop.key_1")
       .should("exist")
       .within(() => {
@@ -138,6 +144,10 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_1.lastText")
           .should("exist")
           .should("contain", "This is value 3");
+
+        cy.getDataTest("firstLastLoop.key_1.countText")
+          .should("exist")
+          .should("contain", "key_1 of 3");
       });
 
     cy.getDataTest("firstLastLoop.key_2")
@@ -154,6 +164,10 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_2.lastText")
           .should("exist")
           .should("contain", "This is value 3");
+
+        cy.getDataTest("firstLastLoop.key_2.countText")
+          .should("exist")
+          .should("contain", "key_2 of 3");
       });
 
     cy.getDataTest("firstLastLoop.key_3")
@@ -170,6 +184,10 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_3.lastText")
           .should("exist")
           .should("contain", "This is value 3");
+
+        cy.getDataTest("firstLastLoop.key_3.countText")
+          .should("exist")
+          .should("contain", "key_3 of 3");
       });
   });
 });

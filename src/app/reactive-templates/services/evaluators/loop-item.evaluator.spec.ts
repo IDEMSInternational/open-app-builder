@@ -89,6 +89,11 @@ describe("LoopItemEvaluator", () => {
       const result = subject.evaluate("The item name is @last.name", "loop.1");
       expect(result).toBe("The item name is Beta");
     });
+
+    it("replaces @count", () => {
+      const result = subject.evaluate("The count is @count", "loop.1");
+      expect(result).toBe("The count is 2");
+    });
   });
 
   describe("with custom index", () => {
@@ -158,6 +163,11 @@ describe("LoopItemEvaluator", () => {
       const result = subject.evaluate("The item name is @last.name", "loop.1");
       expect(result).toBe("The item name is Beta");
     });
+
+    it("replaces @count with custom index", () => {
+      const result = subject.evaluate("The count is @count", "loop.1");
+      expect(result).toBe("The count is 2");
+    });
   });
 
   describe("without custom index, with array of values", () => {
@@ -211,6 +221,11 @@ describe("LoopItemEvaluator", () => {
     it("replaces @last.name with primitive array", () => {
       const result = subject.evaluate("The item name is @last.name", "loop.1");
       expect(result).toBe("The item name is 30.name");
+    });
+
+    it("replaces @count with primitive array", () => {
+      const result = subject.evaluate("The count is @count", "loop.1");
+      expect(result).toBe("The count is 3");
     });
   });
 });

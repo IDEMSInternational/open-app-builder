@@ -4,6 +4,7 @@ import { RowRegistry } from "../row.registry";
 
 @Injectable({ providedIn: "root" })
 export class LoopItemEvaluator {
+  private tokens = ["@item", "@index", "@first", "@last", "@count"];
   private variableStore = inject(VariableStore);
   private rowRegistry = inject(RowRegistry);
 
@@ -11,10 +12,7 @@ export class LoopItemEvaluator {
     // todo: add @first & @last (@length?)
     if (
       typeof expression !== "string" ||
-      (!expression.includes("@item") &&
-        !expression.includes("@index") &&
-        !expression.includes("@first") &&
-        !expression.includes("@last"))
+      !this.tokens.some((token) => expression.includes(token))
     ) {
       return expression;
     }
@@ -52,7 +50,12 @@ export class LoopItemEvaluator {
 
     // Replace all @index with the actual index value
     if (expression.includes("@index")) {
-      result = expression.replace(/@index\b/g, String(loopInfo.index));
+      result = result.replace(/@index\b/g, String(loopInfo.index));
+    }
+
+    // Replace all @count with the amount of items in the loop
+    if (expression.includes("@count")) {
+      result = result.replace(/@count\b/g, String(loopValues.length));
     }
 
     // Replace all @first with first item.
