@@ -9,7 +9,9 @@ interface INavigationBarButton {
 }
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  button_list: coerce.objectArray([{ image: "", name: "", target_template: "", text: "" }]),
+  button_list: coerce.objectArray<INavigationBarButton>([
+    { image: null, name: null, target_template: null, text: null },
+  ]),
   variant: coerce.allowedValues(["text_primary_contrast", "text_primary"], "text_primary_contrast"),
 }));
 

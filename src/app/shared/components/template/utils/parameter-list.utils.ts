@@ -72,14 +72,14 @@ const coerceMethods = {
    * Expects string in the format:
    * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'
    * @param fallback fallback array of objects if parsing fails
-   * @returns array of objects
+   * @returns array of objects with specified type
    */
-  objectArray: (fallback: Array<{ [key: string]: string }>) =>
+  objectArray: <T extends Record<string, any>>(fallback: T[]) =>
     z
-      .union([z.array(z.record(z.string(), z.string())), z.string()])
-      .transform((v) => {
+      .union([z.array(z.record(z.string(), z.any())), z.string()])
+      .transform((v): T[] => {
         // If already an array of objects, return as-is
-        if (Array.isArray(v)) return v;
+        if (Array.isArray(v)) return v as T[];
 
         // Parse string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
         if (typeof v === "string") {
@@ -95,7 +95,7 @@ const coerceMethods = {
 
           if (isArrayOfObjectsType) {
             return lines.map((line) => {
-              const obj: { [key: string]: string } = {};
+              const obj: Record<string, string> = {};
               // Split by '|', then parse each key-value pair
               line.split("|").forEach((part) => {
                 const [key, ...rest] = part.split(":");
@@ -106,7 +106,7 @@ const coerceMethods = {
                   }
                 }
               });
-              return obj;
+              return obj as T;
             });
           }
         }
