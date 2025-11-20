@@ -14,9 +14,8 @@ const TEMPLATE_PIPES = [
   PLHAssetPipe,
   NumberingPipe,
   StyleListPipe,
-  TranslatePipe,
 ];
-const STANDALONE_PIPES = [TranslatedAssetPipe];
+const STANDALONE_PIPES = [TranslatedAssetPipe, TranslatePipe];
 
 @NgModule({
   declarations: [...TEMPLATE_PIPES],

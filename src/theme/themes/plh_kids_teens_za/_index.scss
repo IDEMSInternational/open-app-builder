@@ -30,6 +30,8 @@
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
 
+      paragraph-spacing: 12px,
+
       line-height-text-tiny: 18px,
       line-height-text-small: 24px,
       line-height-text-medium: 28px,
@@ -42,18 +44,12 @@
       icon-size-extra-large: 40px,
       icon-size-largest: 48px,
 
-      paragraph-margin-small: 4px,
-      paragraph-margin-medium: 8px,
-      paragraph-margin-large: 12px,
-
       buttons-min-height: 60px,
       buttons-short-height: 48px,
       buttons-medium-height: 60px,
       buttons-tall-height: 80px,
       buttons-font-size-small: 16px,
-      buttons-font-size-medium: 18px,
-      buttons-font-size-large: 20px,
-      buttons-font-size: 24px,
+      buttons-font-size: 20px,
       buttons-size: 64px,
       buttons-full-width: 100%,
       buttons-full-height: 100%,
@@ -73,6 +69,7 @@
       button-background-option: var(--ion-color-primary-800),
       button-background-primary: var(--ion-color-primary-500),
       button-background-secondary: var(--ion-color-secondary),
+      button-border-radius: var(--ion-border-radius-rounded),
       combo-box-background-with-value: var(--ion-color-primary-300),
       display-group-background-banner-primary: var(--ion-color-primary-200),
       display-group-background-banner-secondary: var(--ion-color-secondary-300),

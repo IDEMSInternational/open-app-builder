@@ -42,7 +42,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   );
 
   /**
-   * The current evaluated value of the row, as stored in the VariableStore.
+   * The current evaluated value of the row, based on its expression with tokens replaced.
+   * This may not be the same as the value stored in the variable store if further processing is needed (e.g. executing a data query).
    */
   public value: Signal<any>;
 
@@ -91,11 +92,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.rowRegistry.register(this);
 
     // Set default value
-    this.variableStore.set(
-      this.name(),
-      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-    );
-    this.onInitialised()?.();
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   /*
@@ -105,14 +104,25 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.variableStore.set(
-      this.name(),
-      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-    );
+    this.storeValue();
   }
 
   public triggerActions(trigger: string) {
-    this.actionService.handleActions(this.row(), trigger, this.namespace());
+    this.actionService.handleActions(this, trigger, this.namespace());
+  }
+
+  // Override to transform the value before storing in variable store.
+  // e.g. To execute a data query and store the results as the value
+  protected async computeStoredValue(value: any): Promise<any> {
+    return value;
+  }
+
+  // Store the evaluated value of the row in the variable store.
+  private async storeValue() {
+    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+    const computedValue = await this.computeStoredValue(value);
+
+    this.variableStore.set(this.name(), computedValue);
   }
 
   private setParams() {
@@ -134,11 +144,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.unsubscribeValueDependencies();
     let sub = this.variableStore
       .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(() => {
-        this.variableStore.set(
-          this.name(),
-          this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-        );
+      .subscribe(async () => {
+        await this.storeValue();
       });
 
     this.valueDependencySubscriptions.push(sub);

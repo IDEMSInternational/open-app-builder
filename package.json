@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.23.0",
+  "version": "0.24.1",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -48,6 +48,7 @@
     "@capacitor-firebase/crashlytics": "^7.2.0",
     "@capacitor-firebase/firestore": "^7.2.0",
     "@capacitor-firebase/performance": "^7.2.0",
+    "@capacitor-firebase/storage": "^7.3.1",
     "@capacitor/android": "^7.0.0",
     "@capacitor/app": "^7.0.0",
     "@capacitor/clipboard": "^7.0.0",
@@ -91,6 +92,7 @@
     "intro.js": "^3.4.0",
     "jquery": "^3.7.1",
     "jquery-touchswipe": "^1.6.19",
+    "json5": "^2.2.3",
     "katex": "^0.16.21",
     "lottie-web": "^5.12.2",
     "marked": "^2.1.3",

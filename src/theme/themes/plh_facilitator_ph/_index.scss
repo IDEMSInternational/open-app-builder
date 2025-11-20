@@ -11,7 +11,6 @@
     //#70aac0
     $page-background: white,
     $variable-overrides: (
-      font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
@@ -23,6 +22,8 @@
       font-size-text-large: 24px,
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
+
+      paragraph-spacing: 12px,
 
       line-height-text-tiny: 18px,
       line-height-text-small: 24px,
@@ -43,6 +44,7 @@
       button-background-primary: var(--ion-color-primary-700),
       button-background-secondary: var(--color-accent-orange-60),
       button-background-option: var(--color-accent-orange-40),
+      button-border-radius: var(--ion-border-radius-rounded),
       buttons-full-height: 56px,
       buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
@@ -78,10 +80,6 @@
       icon-size-large: 32px,
       icon-size-extra-large: 40px,
       icon-size-largest: 48px,
-
-      paragraph-margin-small: 8px,
-      paragraph-margin-medium: 12px,
-      paragraph-margin-large: 16px,
 
       // SURFACE COLOUR PALETTE
       color-surface-white: #ffffff,
