@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { parseStringToObjectArray } from "src/app/shared/utils";
 
 interface INavigationBarButton {
   image: string | null;
@@ -10,10 +9,7 @@ interface INavigationBarButton {
 }
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  button_list: coerce.custom<INavigationBarButton[]>((v) => {
-    if (Array.isArray(v)) return v as INavigationBarButton[];
-    return parseStringToObjectArray(v) as unknown as INavigationBarButton[];
-  }, []),
+  button_list: coerce.objectArray([{ image: "", name: "", target_template: "", text: "" }]),
   variant: coerce.allowedValues(["text_primary_contrast", "text_primary"], "text_primary_contrast"),
 }));
 
