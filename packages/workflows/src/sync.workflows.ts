@@ -132,23 +132,24 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
           const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
-          /** Return output of paths to downloaded assets */
-          let outputs: string[] = [];
+          /** Return output of paths to downloaded assets and folder metadata */
+          let outputs: Array<{ path: string; folderConfig: (typeof assets_folders)[0] }> = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            outputs = assets_folders.map(({ id, name }) =>
-              tasks.gdrive.getOutputFolder("assets", id, name)
-            );
+            outputs = assets_folders.map((folderConfig) => ({
+              path: tasks.gdrive.getOutputFolder("assets", folderConfig.id, folderConfig.name),
+              folderConfig,
+            }));
           } else {
             const { assets_filter_function } = config.google_drive;
-            for (const { id: folderId, name: folderName } of assets_folders) {
+            for (const folderConfig of assets_folders) {
               const output = await tasks.gdrive.download({
                 type: "assets",
-                folderId,
-                folderName,
+                folderId: folderConfig.id,
+                folderName: folderConfig.name,
                 filterFn: assets_filter_function,
               });
-              outputs.push(output);
+              outputs.push({ path: output, folderConfig });
             }
           }
           return outputs;
@@ -156,10 +157,26 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "assets_post_process",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.postProcessAssets({
-            sourceAssetsFolders: workflow.assets_dl.output,
-          }),
+        function: async ({ tasks, workflow }) => {
+          // Build folder metadata map from download results
+          const folderMetadata = new Map<string, { remote?: boolean; folderName?: string }>();
+          const sourceAssetsFolders: string[] = [];
+
+          for (const { path, folderConfig } of workflow.assets_dl.output) {
+            sourceAssetsFolders.push(path);
+            if (folderConfig.remote) {
+              folderMetadata.set(path, {
+                remote: true,
+                folderName: folderConfig.name,
+              });
+            }
+          }
+
+          return tasks.appData.postProcessAssets({
+            sourceAssetsFolders,
+            folderMetadata,
+          });
+        },
       },
     ],
   },
