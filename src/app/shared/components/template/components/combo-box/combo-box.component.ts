@@ -2,10 +2,11 @@ import { Component, computed, effect, OnDestroy, Signal, signal } from "@angular
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
-  IAnswerListItem,
   getAnswerListParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
+  getParamFromTemplateRow,
+  normaliseAnswerListToArray,
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes } from "../../models";
@@ -21,6 +22,8 @@ interface IComboBoxParams {
   prioritisePlaceholder: boolean;
   style: string;
   variant: "modal" | "dropdown";
+  optionsKey: string;
+  optionsValue: string;
 }
 
 @Component({
@@ -46,12 +49,15 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
   );
 
   public answerOptions = computed(() => {
-    const dataItemRows = this.dataItemRows();
-    if (dataItemRows !== undefined) {
-      return (dataItemRows as IAnswerListItem[]) || [];
-    }
-    return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
+    const params = this.params();
+    return this.getAnswerOptions(
+      this.dataItemRows(),
+      this.rowSignal(),
+      params.optionsKey,
+      params.optionsValue
+    );
   });
+
   public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
@@ -75,18 +81,56 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
     effect(
       () => {
         if (this.answerOptions().length > 0 && this._row.value) {
+          const optionsKey = this.params().optionsKey;
+          const optionsValue = this.params().optionsValue;
           const selectedAnswer = this.answerOptions().find(
-            (x) => String(x.name) === String(this._row.value)
+            (x) => String(x[optionsKey]) === String(this._row.value)
           );
           if (!selectedAnswer) {
             this.customAnswerSelected.set(true);
           } else {
-            this.answerText.set(selectedAnswer?.text || "");
+            this.answerText.set(selectedAnswer?.[optionsValue] || "");
           }
         }
       },
       { allowSignalWrites: true }
     );
+  }
+
+  /**
+   * Get answer options from either data_items rows or the answer_list parameter.
+   * When custom keys are used (options_key !== "name" or options_value !== "text"),
+   * this bypasses the IAnswerListItem parsing which filters based on the "name" property.
+   * This allows authors to use custom data structures with any column names.
+   *
+   * @param dataItemRows - optional array from data_items child row
+   * @param row - the template row to read parameters from
+   * @param optionsKey - the key column name (default: "name")
+   * @param optionsValue - the value/display column name (default: "text")
+   * @returns array of answer options
+   */
+  private getAnswerOptions(
+    dataItemRows: any[] | undefined,
+    row: FlowTypes.TemplateRow,
+    optionsKey: string,
+    optionsValue: string
+  ): any[] {
+    // Priority 1: Use data_items rows if available
+    if (dataItemRows !== undefined) {
+      return dataItemRows || [];
+    }
+
+    // Priority 2: Check if custom keys are being used
+    // If custom keys are specified, bypass IAnswerListItem parsing which filters
+    // based on hardcoded "name" property
+    const usesCustomKeys = optionsKey !== "name" || optionsValue !== "text";
+    if (usesCustomKeys) {
+      const answerList = getParamFromTemplateRow(row, "answer_list", []);
+      return normaliseAnswerListToArray(answerList);
+    }
+
+    // Priority 3: Use standard IAnswerListItem parsing (default behavior)
+    return getAnswerListParamFromTemplateRow(row, "answer_list", []);
   }
 
   private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IComboBoxParams {
@@ -105,6 +149,8 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
         "variant",
         "modal"
       ) as IComboBoxParams["variant"],
+      optionsKey: getStringParamFromTemplateRow(this._row, "options_key", "name"),
+      optionsValue: getStringParamFromTemplateRow(this._row, "options_value", "text"),
     };
   }
 
@@ -114,6 +160,8 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
 
   public async openModal() {
     if (this.disabled()) return;
+    const optionsKey = this.params().optionsKey;
+    const optionsValue = this.params().optionsValue;
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
@@ -123,20 +171,25 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
         selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
+        optionsKey: optionsKey,
+        optionsValue: optionsValue,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.params().prioritisePlaceholder = false;
-      this.answerText.set(data?.data?.answer?.text);
+      const answer = data?.data?.answer;
+      this.answerText.set(answer?.[optionsValue] || "");
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
-      this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
-      await this.setValue(data?.data?.answer?.name);
+      this.customAnswerText = this.customAnswerSelected() ? answer?.[optionsValue] || "" : "";
+      await this.setValue(answer?.[optionsKey] || null);
     });
     await modal.present();
   }
 
   async openSearch() {
+    const optionsKey = this.params().optionsKey;
+    const optionsValue = this.params().optionsValue;
     const modal = await this.modalController.create({
       component: ComboBoxSearchComponent,
       cssClass: "combo-box-search",
@@ -146,13 +199,16 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
         selectedValue: this.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
+        optionsKey: optionsKey,
+        optionsValue: optionsValue,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.params().prioritisePlaceholder = false;
-      this.answerText.set(data?.data?.answer?.text);
-      await this.setValue(data?.data?.answer?.name);
+      const answer = data?.data?.answer;
+      this.answerText.set(answer?.[optionsValue] || "");
+      await this.setValue(answer?.[optionsKey] || null);
     });
     await modal.present();
   }
