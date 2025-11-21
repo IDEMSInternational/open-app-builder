@@ -9,15 +9,4 @@ export class NamespaceService {
   public getFullName(namespace: string, name: string): string {
     return namespace ? `${namespace}.${name}` : name;
   }
-
-  public getNamespacedExpression(
-    namespace: string,
-    expression: string | number | boolean
-  ): string | number | boolean {
-    if (typeof expression === "string" && namespace) {
-      return expression.replaceAll("@local.", `@local.${namespace}.`);
-    }
-
-    return expression;
-  }
 }
