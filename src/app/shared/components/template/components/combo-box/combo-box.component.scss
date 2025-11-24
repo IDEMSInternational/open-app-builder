@@ -21,7 +21,7 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     min-width: var(--combo-box-min-width, 328px);
   }
   &.no-value {
-    background-color: inherit;
+    background: inherit;
     border: 1px solid var(--ion-color-gray-500);
     opacity: 0.9;
   }
@@ -48,7 +48,7 @@ ion-select::part(placeholder) {
   display: flex;
   justify-content: center;
   ion-select {
-    background-color: white;
+    background: white;
     font-size: var(--combo-box-font-size-standard, 18px);
     border: 1px solid var(--ion-color-gray-400);
     border-radius: var(--ion-border-radius-standard, 8px);
@@ -58,16 +58,17 @@ ion-select::part(placeholder) {
       color: var(--ion-color-gray-500);
     }
     &.hasValue {
-      background: var(--combo-box-background-with-value, var(--ion-color-gray-50));
+      background: var(--combo-box-background-with-value, var(--ion-color-primary-100));
+      border: 1px solid var(--combo-box-border-with-value, var(--ion-color-primary-300));
       &::part(container) {
-        color: var(--combo-box-selected-value-text, var(--ion-color-gray-800));
+        color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
       }
       &::part(icon) {
-        color: var(--combo-box-selected-value-text, var(--ion-color-gray-800));
+        color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
       }
     }
     &.select-expanded {
-      border: 1.5px solid var(--ion-color-primary-500);
+      border: 1.5px solid var(--combo-box-border-with-value, var(--ion-color-primary-400));
       background: white;
       color: var(--ion-color-gray-800);
     }
@@ -82,7 +83,7 @@ ion-select::part(placeholder) {
   min-height: var(--combo-box-min-height, 58px);
   font-size: var(--combo-box-font-size-standard, 18px);
   border-radius: var(--ion-border-radius-standard, 8px);
-  background-color: white;
+  background: white;
   padding-left: var(--small-padding, 10px);
   padding-right: var(--small-padding, 10px);
 
@@ -103,7 +104,7 @@ ion-select::part(placeholder) {
   }
 
   &.no-value {
-    background-color: inherit;
+    background: inherit;
     border: 1px solid var(--ion-color-gray-500);
     color: var(--ion-color-gray-400);
   }
