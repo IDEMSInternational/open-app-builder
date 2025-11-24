@@ -36,6 +36,12 @@ interface IConverterOptions {
   skipCache?: boolean;
 }
 
+/** Entry format for minimal flow metadata stored */
+type FlowMetaEntry = Pick<
+  FlowTypes.FlowTypeBase,
+  "flow_type" | "flow_subtype" | "flow_name" | "_source"
+>;
+
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
@@ -81,7 +87,6 @@ export class AppDataConverter {
         return { _metadata: { ..._metadata, folderName }, ...sheetData };
       });
       sheetJsons.forEach((json) => allSheetJsons.push(json));
-      await this.writeSheetJsons(path.basename(inputFolder), sheetJsons);
     }
 
     // 2. Merge jsons with contents sheet, filter, apply direct overrides and sort
@@ -90,13 +95,16 @@ export class AppDataConverter {
     const filteredJsons = this.applyFlowFilters(allJsons);
     const sortedJsons = this.applyFlowSort(filteredJsons);
 
-    // 3. Process Flow Data
+    // 3. Write intermediate to file
+    await this.writeSheetJsons(sortedJsons);
+
+    // 4. Process Flow Data
     const processor = new FlowParserProcessor({ cache: this.cache });
     processor.logger = this.logger;
     const result = (await processor.process(sortedJsons)) as IParsedWorkbookData;
     this.writeOutputJsons(result);
 
-    // 4. Extract Logs and return
+    // 5. Extract Logs and return
     const { errors, warnings } = this.logOutputs();
     return { errors, warnings, result };
   }
@@ -251,24 +259,26 @@ export class AppDataConverter {
   }
 
   /** Populate raw json conversions of xlsx files to sheet_json folder */
-  private async writeSheetJsons(folderName: string, jsons: ISheetJsonWithMeta[]) {
+  private async writeSheetJsons(jsons: FlowTypes.FlowTypeWithData[]) {
     const { outputFolder } = this.options;
     const sheetJsonFolder = path.resolve(outputFolder, "../", "sheet_json");
-    const mergedMetadata: Record<string, any> = {};
-    // Write individual jsons
-    for (const { _metadata, ...jsonData } of jsons) {
-      const { relativePath } = _metadata;
-      mergedMetadata[relativePath] = _metadata;
-      const filePath = relativePath.replace(".xlsx", ".json");
-      const targetFile = path.join(sheetJsonFolder, folderName, filePath);
+    await fs.ensureDir(sheetJsonFolder);
+    await fs.emptyDir(sheetJsonFolder);
+    const mergedMetadata: FlowMetaEntry[] = [];
+    // Write individual jsons, keeping source metadata in top-level file
+    // and contents in individual jsons by {flow_type}/{flow_name}
+    for (const { _source, ...jsonData } of jsons) {
+      const { flow_type, flow_subtype, flow_name } = jsonData;
+      const metaEntry = { flow_type, ...(flow_subtype && { flow_subtype }), flow_name, _source };
+      mergedMetadata.push(metaEntry);
+      const targetFile = path.join(sheetJsonFolder, flow_type, `${flow_name}.json`);
       await fs.ensureDir(path.dirname(targetFile));
       const fileContents = standardiseNewlines(JSON.stringify(jsonData, null, 2));
       await fs.writeFile(targetFile, fileContents);
     }
     // Write metadata
-    const metaFile = path.join(sheetJsonFolder, folderName, METADATA_FILENAME);
+    const metaFile = path.join(sheetJsonFolder, METADATA_FILENAME);
     const metaContents = standardiseNewlines(JSON.stringify(mergedMetadata, null, 2));
-    await fs.ensureDir(path.dirname(metaFile));
     await fs.writeFile(metaFile, metaContents);
   }
 }

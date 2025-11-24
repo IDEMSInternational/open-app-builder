@@ -92,9 +92,12 @@ const workflows: IDeploymentWorkflows = {
 
           // Store copy of intermediate sheet jsons to content repo
           const sheetsIntermediateDir = resolve(outputDir, "../sheet_json");
-          const outputIntermediateDir = resolve(config._workspace_path, "raw_data", "sheet_json");
-          // TODO - uncomment post...
-          // tasks.file.replicate(sheetsIntermediateDir, outputIntermediateDir);
+          const outputIntermediateDir = resolve(
+            config._workspace_path,
+            "source_data",
+            "sheet_json"
+          );
+          tasks.file.replicate(sheetsIntermediateDir, outputIntermediateDir);
 
           // Return output dir to continue processing
           return outputDir;
