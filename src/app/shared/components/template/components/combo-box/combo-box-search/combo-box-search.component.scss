@@ -26,11 +26,11 @@ ion-radio {
 }
 
 ion-list {
-  background-color: white;
+  background-color: var(--ion-list-item-background, white);
 }
 
 ion-item {
-  --background: white;
+  --background: var(--ion-item-background, white);
   --background-hover: var(--ion-color-primary-50);
   --border-color: var(--ion-color-gray-200);
   --color: var(--ion-color-gray-700);
