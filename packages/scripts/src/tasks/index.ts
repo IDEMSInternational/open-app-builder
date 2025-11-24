@@ -5,6 +5,7 @@ import deployment from "./providers/deployment";
 import encryption from "./providers/encryption";
 import externalRawData from "./providers/externalRawData";
 import file from "./providers/file";
+import gcs from "./providers/gcs";
 import gdrive from "./providers/gdrive";
 import git from "./providers/git";
 import ios from "./providers/ios";
@@ -29,6 +30,7 @@ const ALL_TASKS = {
   encryption,
   externalRawData,
   file,
+  gcs,
   gdrive,
   git,
   ios,

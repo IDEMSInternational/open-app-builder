@@ -7,6 +7,7 @@ import DEPLOYMENT_WORKFLOWS from "./deployment.workflows";
 import MISC_WORKFLOWS from "./misc.workflows";
 import SYNC_WORKFLOWS from "./sync.workflows";
 import SHEET_EDITOR_WORKFLOWS from "./sheet-editor.workflows";
+import BUCKET_WORKFLOWS from "./bucket.workflows";
 
 /** Default workflows made available to all deployments */
 const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
@@ -17,6 +18,7 @@ const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
   ...MISC_WORKFLOWS,
   ...SYNC_WORKFLOWS,
   ...SHEET_EDITOR_WORKFLOWS,
+  ...BUCKET_WORKFLOWS,
 };
 
 export { WORKFLOW_DEFAULTS };

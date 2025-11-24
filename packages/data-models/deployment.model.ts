@@ -116,7 +116,14 @@ interface IDeploymentCoreConfig {
     /** @deprecated Use `assets_folders` array instead */
     assets_folder_ids?: string[];
     /** gdrive id from end of url and local name for download */
-    assets_folders?: { id: string; name: string }[];
+    assets_folders?: {
+      id: string;
+      name: string;
+      bucket_name?: string;
+      bucket_url?: string;
+      service_account_key_path?: string;
+      version?: string;
+    }[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -171,12 +178,19 @@ interface IDeploymentCoreConfig {
       implicit?: string[];
     };
   };
+  /** Google Cloud Storage configuration for asset management */
+  gcs?: {
+    /** Path to Google Cloud Service Account key file. Default `packages/scripts/config/gcs-key.json` */
+    service_account_key_path?: string;
+    /** Google Cloud Project ID */
+    project_id?: string;
+  };
   translations: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
     /** generated output of list of strings to translate. Default `./app_data/translations_source/source_strings` */
     source_strings_path?: string;
-    /** translated string for import. Default `./app_data/translations_source/translated_strings */
+    /** translated string for import. Default `./app_data/translations_source/translated_strings` */
     translated_strings_path?: string;
   };
   workflows: {
@@ -271,6 +285,9 @@ export const DEPLOYMENT_CONFIG_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   ios: {},
+  gcs: {
+    service_account_key_path: "packages/scripts/config/gcs-key.json",
+  },
   optimisation: {},
   translations: {
     filter_language_codes: null,
