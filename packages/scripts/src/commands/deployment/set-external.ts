@@ -56,6 +56,14 @@ export class ExternalDeploymentSet {
   private deploymentsConfigPath = path.resolve(DEPLOYMENTS_PATH, "deployments.json");
 
   /**
+   * Prompt user to select from available external deployments
+   */
+  public async promptDeploymentSelect(): Promise<string> {
+    const deploymentsConfig = this.loadDeploymentsConfig();
+    return await this.promptDeploymentSelectInternal(deploymentsConfig);
+  }
+
+  /**
    * Load external deployments from deployments.json and set the specified one as active
    */
   public async setActiveDeployment(deploymentId?: string) {
@@ -70,7 +78,7 @@ export class ExternalDeploymentSet {
 
     // Prompt selection from list if no ID provided
     if (!deploymentId) {
-      deploymentId = await this.promptDeploymentSelect(deploymentsConfig);
+      deploymentId = await this.promptDeploymentSelectInternal(deploymentsConfig);
       return this.setActiveDeployment(deploymentId);
     }
 
@@ -176,7 +184,9 @@ export class ExternalDeploymentSet {
     }
   }
 
-  private async promptDeploymentSelect(deploymentsConfig: IDeploymentsConfig): Promise<string> {
+  private async promptDeploymentSelectInternal(
+    deploymentsConfig: IDeploymentsConfig
+  ): Promise<string> {
     // Get available deployment IDs
     const deploymentIds = deploymentsConfig.deployments
       .filter((d) => fs.existsSync(d.file_location))

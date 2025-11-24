@@ -102,6 +102,64 @@ class GitProvider {
     // open PR
   }
 
+  public async createExternalContentRelease(deploymentName: string) {
+    // Load external deployment configuration
+    const deploymentsConfig = this.loadExternalDeploymentsConfig();
+    const deployment = deploymentsConfig.deployments.find((d) => d.id === deploymentName);
+
+    if (!deployment) {
+      Logger.error({ msg1: `External deployment not found: ${deploymentName}` });
+    }
+
+    // Initialize git for the external deployment's workspace (using existing .git folder)
+    await this.initialiseExternalGitProvider(deployment);
+
+    console.log("Preparing files...");
+    await this.promptChangesReview();
+
+    // Load git config from external deployment config.ts
+    const currentConfig = await this.loadExternalDeploymentConfig(deployment);
+    const revertTagName = currentConfig.git?.content_tag_latest || "1.0.0";
+    const tagName = await this.promptReleaseTagForExternal(revertTagName);
+
+    // Update the content_tag_latest in the external deployment config
+    await this.updateExternalGitConfigTs(deployment, { content_tag_latest: tagName });
+
+    const branchName = `content/${tagName}`;
+
+    // Get remote origin URL to construct compare link
+    const remotes = await this.git.getRemotes(true);
+    const originRemote = remotes.find((r) => r.name === "origin");
+    let compareLink = "";
+    if (originRemote) {
+      const repoUrl = originRemote.refs.fetch.replace(".git", "");
+      compareLink = `${repoUrl}/compare/main...${branchName}`;
+    }
+    await this.prepareReleaseBranch(branchName, compareLink);
+    await this.git.add("./*");
+    await this.git.commit(`content: ${tagName}`);
+    await this.git.addTag(tagName);
+    console.log("pushing changes");
+    try {
+      await this.git.push("origin", branchName);
+      logOutput({
+        msg1: "Content uploaded successfully",
+        msg2: "Use browser to complete Pull Request",
+      });
+      console.log(chalk.gray(compareLink));
+      await openUrl(compareLink);
+    } catch (error) {
+      Logger.error({ msg1: "Failed to push to repo", msg2: error.message, logOnly: true });
+      console.log("reverting changes");
+      // Rollback changes
+      await this.git.reset(ResetMode.SOFT, ["HEAD~1"]);
+      await this.updateExternalGitConfigTs(deployment, { content_tag_latest: revertTagName });
+      await this.git.reset(["--"]);
+      await this.git.checkout("main");
+      await this.git.tag(["--delete", tagName]);
+    }
+  }
+
   /**
    * TODO - Octokit api requires auth, so will need to come up with appropriate handling
    * TODO - Alt could use github actions and assume link should go valid
@@ -277,6 +335,196 @@ class GitProvider {
     // TODO - handle case where local changes exist that would conflict with checkout
     // TODO - likely remove any app-data changes
     // await this.git.reset([ResetMode.SOFT]);
+  }
+
+  /**
+   * Load external deployments configuration from deployments.json
+   */
+  private loadExternalDeploymentsConfig() {
+    const deploymentsPath = path.resolve(PATHS.DEPLOYMENTS_PATH, "deployments.json");
+    if (!fs.existsSync(deploymentsPath)) {
+      Logger.error({
+        msg1: "No deployments.json found",
+        msg2: deploymentsPath,
+      });
+    }
+    return fs.readJsonSync(deploymentsPath);
+  }
+
+  /**
+   * Load external deployment's config.ts file
+   */
+  private loadExternalDeploymentConfig(deployment: any) {
+    const configPath = path.join(deployment.file_location, "config.ts");
+    if (!fs.existsSync(configPath)) {
+      Logger.error({
+        msg1: "Config.ts not found for external deployment",
+        msg2: configPath,
+      });
+    }
+
+    // For external deployments we need to evaluate the config.ts file
+    // This is a simplified approach - in production you'd want proper TS compilation
+    try {
+      const configContent = fs.readFileSync(configPath, "utf8");
+
+      // Look for git configuration in the config content
+      const gitMatch = configContent.match(/git\s*:\s*\{[^}]*\}/s);
+      if (!gitMatch) {
+        return { git: null };
+      }
+
+      // Extract content_repo and content_tag_latest from the git block
+      const gitBlock = gitMatch[0];
+      const repoMatch = gitBlock.match(/content_repo\s*:\s*["']([^"']+)["']/);
+      const tagMatch = gitBlock.match(/content_tag_latest\s*:\s*["']([^"']+)["']/);
+
+      return {
+        git: {
+          content_repo: repoMatch ? repoMatch[1] : null,
+          content_tag_latest: tagMatch ? tagMatch[1] : "1.0.0",
+        },
+      };
+    } catch (error) {
+      Logger.error({
+        msg1: "Failed to parse external deployment config",
+        msg2: `${configPath}: ${error.message}`,
+      });
+    }
+  }
+
+  /**
+   * Initialize git provider for external deployment using existing .git folder
+   */
+  private async initialiseExternalGitProvider(deployment: any) {
+    const { file_location } = deployment;
+
+    if (!file_location) {
+      Logger.error({
+        msg1: "No file location specified for external deployment",
+        msg2: deployment.id,
+      });
+    }
+
+    // Set up git for the external deployment workspace
+    this.git = simpleGit(file_location);
+
+    // Check if .git exists - it should for external deployments
+    if (!fs.existsSync(path.join(file_location, ".git"))) {
+      Logger.error({
+        msg1: "No .git repository found in external deployment",
+        msg2: `Expected at: ${path.join(file_location, ".git")}`,
+      });
+    }
+
+    // Fetch latest changes if we have remotes
+    try {
+      await this.git.fetch();
+    } catch (error) {
+      console.log(chalk.yellow("Warning: Could not fetch from remote:"), error.message);
+    }
+  }
+
+  /**
+   * Update the git config in external deployment's config.ts file
+   */
+  private async updateExternalGitConfigTs(
+    deployment: any,
+    update: Partial<{ content_tag_latest: string }>
+  ) {
+    const configTsPath = path.join(deployment.file_location, "config.ts");
+
+    if (!fs.existsSync(configTsPath)) {
+      Logger.error({
+        msg1: "Config.ts not found for external deployment",
+        msg2: configTsPath,
+      });
+    }
+
+    if (!update.content_tag_latest) {
+      return;
+    }
+
+    try {
+      // Read the config file
+      let configContent = fs.readFileSync(configTsPath, "utf8");
+
+      // Replace content_tag_latest value using regex
+      const regex = /(content_tag_latest\s*:\s*)["']([^"']+)["']/g;
+      const replacement = `$1"${update.content_tag_latest}"`;
+
+      if (regex.test(configContent)) {
+        configContent = configContent.replace(regex, replacement);
+        fs.writeFileSync(configTsPath, configContent);
+        console.log(
+          chalk.green(
+            `Updated content_tag_latest to ${update.content_tag_latest} in ${configTsPath}`
+          )
+        );
+      } else {
+        console.log(
+          chalk.yellow(`Warning: Could not find content_tag_latest to update in ${configTsPath}`)
+        );
+      }
+    } catch (error) {
+      Logger.error({
+        msg1: "Failed to update external deployment config",
+        msg2: `${configTsPath}: ${error.message}`,
+      });
+    }
+  }
+
+  /**
+   * Load external deployment config.ts file and parse git configuration
+   */
+  private async loadExternalDeploymentConfig(deployment: any) {
+    const configTsPath = path.join(deployment.file_location, "config.ts");
+
+    if (!fs.existsSync(configTsPath)) {
+      // Return default config if no config.ts exists
+      return { git: { content_tag_latest: "1.0.0" } };
+    }
+
+    try {
+      // Read and parse the config.ts file to extract git.content_tag_latest
+      const configContent = fs.readFileSync(configTsPath, "utf8");
+
+      // Look for git configuration block
+      const gitMatch = configContent.match(/config\.git\s*=\s*\{[^}]*\}/s);
+      if (gitMatch) {
+        const gitBlock = gitMatch[0];
+        const tagMatch = gitBlock.match(/content_tag_latest\s*:\s*["']([^"']+)["']/);
+        if (tagMatch) {
+          return { git: { content_tag_latest: tagMatch[1] } };
+        }
+      }
+
+      // Fallback: look for any content_tag_latest assignment
+      const directMatch = configContent.match(/content_tag_latest\s*[:=]\s*["']([^"']+)["']/);
+      if (directMatch) {
+        return { git: { content_tag_latest: directMatch[1] } };
+      }
+
+      return { git: { content_tag_latest: "1.0.0" } };
+    } catch (error) {
+      console.log(
+        chalk.yellow(`Warning: Could not parse config from ${configTsPath}:`, error.message)
+      );
+      return { git: { content_tag_latest: "1.0.0" } };
+    }
+  }
+
+  /**
+   * Prompt for release tag for external deployment
+   */
+  private async promptReleaseTagForExternal(currentVersion: string) {
+    const releaseTypes: semver.ReleaseType[] = ["patch", "minor", "major"];
+    const options = releaseTypes.map((releaseType) => {
+      const version = semver.inc(currentVersion, releaseType);
+      return { name: `${releaseType} (${version})`, value: version };
+    });
+    const nextTag = await promptOptions<string>(options, "Specify a version tag");
+    return nextTag;
   }
 }
 // Export class without initialisation to avoid constructor call until required

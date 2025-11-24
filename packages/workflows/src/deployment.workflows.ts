@@ -160,6 +160,27 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      "publish-external": {
+        label: "Create github release for external deployment",
+        steps: [
+          // Prompt deployment name if not specified
+          {
+            name: "deployment prompt",
+            condition: async ({ args }) => !args[0],
+            function: async ({ args }) => {
+              const deploymentName = await new ExternalDeploymentSet().promptDeploymentSelect();
+              args[0] = deploymentName;
+            },
+          },
+          {
+            name: "publish external",
+            function: async ({ tasks, args }) => {
+              const deploymentName = args[0];
+              await tasks.git().createExternalContentRelease(deploymentName);
+            },
+          },
+        ],
+      },
       encrypt: {
         label: "Encrypt deployment config",
         steps: [
