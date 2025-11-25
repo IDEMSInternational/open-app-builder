@@ -101,6 +101,15 @@
         }
       }
     }
+
+    ion-button[data-variant~="tab"] {
+      --background: none;
+      color: var(--ion-color-primary);
+      &:hover {
+        --background: unset;
+      }
+    }
+
     ion-button[data-language-direction~="rtl"] .children {
       position: unset !important;
       align-self: unset !important;

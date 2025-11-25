@@ -18,11 +18,14 @@ interface IButtonParams {
     | "navigation"
     | "short"
     | "standard"
+    | "tab"
     | "tall";
   /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
   style: string;
   /** TEMPLATE PARAMETER: "disabled". If true, button is disabled and greyed out */
   disabled: boolean;
+  /** TEMPLATE PARAMETER: "highlighted". Currently only used for the "tab" variant, but implementation could be extended */
+  highlighted: boolean;
   /** TEMPLATE PARAMETER: "text_align" */
   textAlign: "left" | "centre" | "right";
   /** TEMPLATE PARAMETER: "button_align" */
@@ -73,6 +76,7 @@ export class TmplButtonComponent extends TemplateBaseComponent {
   private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): IButtonParams {
     return {
       disabled: parseBoolean(this.parameterList().disabled),
+      highlighted: parseBoolean(this.parameterList().highlighted),
       style: `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
         this.isTwoColumns() ? "two_columns" : ""
       }` as any,
