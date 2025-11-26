@@ -11,17 +11,22 @@ export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();
   public title = input<string>();
   public selectedValue = input<string>();
+  public optionsKey = input<string>("name");
+  public optionsValue = input<string>("text");
 
   public searchTerm = signal("");
 
-  public filteredOptions = computed(() =>
-    this.answerOptions().filter((options) =>
-      options.text.toLowerCase().includes(this.searchTerm().toLowerCase())
-    )
-  );
+  public filteredOptions = computed(() => {
+    const optionsValue = this.optionsValue();
+    return this.answerOptions().filter((options) =>
+      String(options[optionsValue] || "")
+        .toLowerCase()
+        .includes(this.searchTerm().toLowerCase())
+    );
+  });
 
   public isSelected(item: IAnswerListItem) {
-    return this.selectedValue() === item.name;
+    return this.selectedValue() === item[this.optionsKey()];
   }
 
   constructor(private modalController: ModalController) {}
@@ -35,7 +40,10 @@ export class ComboBoxSearchComponent {
   }
 
   public cancel() {
-    let selectedItem = this.answerOptions().find((item) => item.name === this.selectedValue());
+    const optionsKey = this.optionsKey();
+    let selectedItem = this.answerOptions().find(
+      (item) => item[optionsKey] === this.selectedValue()
+    );
     this.closeModal({ answer: selectedItem });
   }
 
