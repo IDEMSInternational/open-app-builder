@@ -67,6 +67,54 @@ const coerceMethods = {
       })
       .catch([]),
 
+  /**
+   * Parse a string to an array of objects
+   * Expects string in the format:
+   * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'
+   * @param fallback fallback array of objects if parsing fails
+   * @returns array of objects with specified type
+   */
+  objectArray: <T extends Record<string, any>>(fallback: T[]) =>
+    z
+      .union([z.array(z.record(z.string(), z.any())), z.string()])
+      .transform((v): T[] => {
+        // If already an array of objects, return as-is
+        if (Array.isArray(v)) return v as T[];
+
+        // Parse string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
+        if (typeof v === "string") {
+          // Split by semicolon, filter out empty lines
+          const lines = v
+            .split(";")
+            .map((line) => line.trim())
+            .filter((line) => line);
+
+          // Check if lines contain at least one ':'
+          const isArrayOfObjectsType =
+            lines.length > 0 && lines.every((line) => line.includes(":"));
+
+          if (isArrayOfObjectsType) {
+            return lines.map((line) => {
+              const obj: Record<string, string> = {};
+              // Split by '|', then parse each key-value pair
+              line.split("|").forEach((part) => {
+                const [key, ...rest] = part.split(":");
+                if (key && rest.length > 0) {
+                  const value = rest.join(":").trim();
+                  if (value !== "") {
+                    obj[key.trim()] = value;
+                  }
+                }
+              });
+              return obj as T;
+            });
+          }
+        }
+
+        return fallback;
+      })
+      .catch(fallback),
+
   /** Provide custom value conversion method */
   custom: <T>(transformer: (v: string | T) => T, fallback: T) =>
     z.any().transform((value) => {
