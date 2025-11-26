@@ -36,7 +36,12 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) =>
+        this.dataItemsService.getItemsObservable(
+          row,
+          this.parentContainerComponentRef.templateRowMap
+        )
+      )
     )
   );
 }
