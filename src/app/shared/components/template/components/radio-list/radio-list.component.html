@@ -1,0 +1,10 @@
+<ion-radio-group [value]="value()" (ionChange)="handleItemClick($event.detail.value)">
+  @for (item of params().answerList; track item.name) {
+    <ion-item lines="none">
+      <ion-radio labelPlacement="end" justify="start" [value]="item.name">
+        <plh-tmpl-text [row]="{ _nested_name: '', name: '', type: 'text', value: item.text }">
+        </plh-tmpl-text>
+      </ion-radio>
+    </ion-item>
+  }
+</ion-radio-group>
