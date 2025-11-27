@@ -1,0 +1,8 @@
+@for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
+  <plh-template-component
+    [row]="childRow"
+    [parent]="parentContainerComponentRef"
+    [attr.data-rowname]="childRow.name"
+  >
+  </plh-template-component>
+}
