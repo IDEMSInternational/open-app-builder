@@ -37,7 +37,12 @@ function mockLocalAssets(assets: Record<string, any> = {}) {
 
 function createMockFile(size_kb: number = 1024) {
   const file = Buffer.alloc(1 * 1024 * size_kb);
-  const entry = { size_kb, md5Checksum: createHash("md5").update(file).digest("hex") };
+  const entry = {
+    size_kb,
+    md5Checksum: createHash("md5")
+      .update(file as any)
+      .digest("hex"),
+  };
   return { file, entry };
 }
 
@@ -83,11 +88,11 @@ describe("Assets PostProcess", () => {
       },
     });
     stubDeploymentConfig();
+    const sourceA = resolve(mockDirs.localAssets, "source_a");
+    const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [
-        resolve(mockDirs.localAssets, "source_a"),
-        resolve(mockDirs.localAssets, "source_b"),
-      ],
+      sourceAssetsFolders: [sourceA, sourceB],
+      folderMetadata: new Map(), // No remote assets in tests
     });
     processor.run();
     // test merged file outputs
@@ -292,6 +297,179 @@ describe("Assets PostProcess", () => {
     });
   });
 
+  /** Remote asset pack tests */
+  it("Processes remote assets separately from core assets", () => {
+    mockLocalAssets({
+      core: { "core_asset.jpg": mockFile },
+      remote: { "remote_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const coreFolder = resolve(mockDirs.localAssets, "core");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [coreFolder, remoteFolder],
+      folderMetadata,
+    });
+    processor.run();
+
+    // Core assets should be in app_data/assets
+    const coreAssetPath = resolve(mockDirs.appAssets, "core_asset.jpg");
+    expect(existsSync(coreAssetPath)).toEqual(true);
+
+    // Remote assets should be in app_data/remote_assets/test_pack
+    const remoteAssetsPath = resolve("mock/app_data/remote_assets/test_pack");
+    const remoteAssetPath = resolve(remoteAssetsPath, "remote_asset.jpg");
+    expect(existsSync(remoteAssetPath)).toEqual(true);
+  });
+
+  it("Generates AssetPack manifest for remote asset packs", () => {
+    mockLocalAssets({
+      remote: { "test.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata,
+    });
+    processor.run();
+
+    // Check that manifest file exists
+    const manifestPath = resolve("mock/app_data/remote_assets/test_pack/test_pack.json");
+    expect(existsSync(manifestPath)).toEqual(true);
+
+    // Check manifest format
+    const manifest = readJsonSync(manifestPath);
+    expect(manifest.flow_type).toEqual("asset_pack");
+    expect(manifest.flow_name).toEqual("test_pack");
+    expect(Array.isArray(manifest.rows)).toEqual(true);
+    expect(manifest.rows.length).toBeGreaterThan(0);
+    expect(manifest.rows[0]).toHaveProperty("id");
+    expect(manifest.rows[0]).toHaveProperty("md5Checksum");
+    expect(manifest.rows[0]).toHaveProperty("size_kb");
+  });
+
+  it("Handles remote assets with same paths as core assets", () => {
+    mockLocalAssets({
+      core: { "shared_asset.jpg": mockFile },
+      remote: { "shared_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const coreFolder = resolve(mockDirs.localAssets, "core");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [coreFolder, remoteFolder],
+      folderMetadata,
+    });
+    processor.run();
+
+    // Both should exist in their respective folders
+    const coreAssetPath = resolve(mockDirs.appAssets, "shared_asset.jpg");
+    const remoteAssetPath = resolve("mock/app_data/remote_assets/test_pack/shared_asset.jpg");
+    expect(existsSync(coreAssetPath)).toEqual(true);
+    expect(existsSync(remoteAssetPath)).toEqual(true);
+  });
+
+  it("Cleans up old remote asset pack folders", () => {
+    mockLocalAssets({
+      remote: { "test.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "new_pack" }]]);
+
+    // Create an old folder that should be cleaned up
+    const oldPackPath = resolve("mock/app_data/remote_assets/old_pack");
+    const { vol } = require("memfs");
+    vol.mkdirSync(oldPackPath, { recursive: true });
+    vol.writeFileSync(resolve(oldPackPath, "old_file.jpg"), mockFile);
+
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata,
+    });
+    processor.run();
+
+    // Old pack should be removed
+    expect(existsSync(oldPackPath)).toEqual(false);
+    // New pack should exist
+    const newPackPath = resolve("mock/app_data/remote_assets/new_pack");
+    expect(existsSync(newPackPath)).toEqual(true);
+  });
+
+  it("Processes multiple remote asset packs", () => {
+    mockLocalAssets({
+      remote1: { "asset1.jpg": mockFile },
+      remote2: { "asset2.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const remoteFolder1 = resolve(mockDirs.localAssets, "remote1");
+    const remoteFolder2 = resolve(mockDirs.localAssets, "remote2");
+    const folderMetadata = new Map([
+      [remoteFolder1, { remote: true, folderName: "pack1" }],
+      [remoteFolder2, { remote: true, folderName: "pack2" }],
+    ]);
+    const processor = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder1, remoteFolder2],
+      folderMetadata,
+    });
+    processor.run();
+
+    // Both packs should exist
+    const pack1Path = resolve("mock/app_data/remote_assets/pack1");
+    const pack2Path = resolve("mock/app_data/remote_assets/pack2");
+    expect(existsSync(pack1Path)).toEqual(true);
+    expect(existsSync(pack2Path)).toEqual(true);
+    expect(existsSync(resolve(pack1Path, "asset1.jpg"))).toEqual(true);
+    expect(existsSync(resolve(pack2Path, "asset2.jpg"))).toEqual(true);
+  });
+
+  it("Removes old assets when remote asset pack is reprocessed", () => {
+    const { vol } = require("memfs");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const packPath = resolve("mock/app_data/remote_assets/test_pack");
+
+    // First run: create pack with old_asset.jpg
+    mockLocalAssets({
+      remote: { "old_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const folderMetadata1 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor1 = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata: folderMetadata1,
+    });
+    processor1.run();
+
+    // Verify old asset exists
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(true);
+
+    // Create an extra file that shouldn't be there (simulating old asset)
+    vol.writeFileSync(resolve(packPath, "orphaned_asset.jpg"), mockFile);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(true);
+
+    // Second run: pack now only has new_asset.jpg
+    vol.reset();
+    mockLocalAssets({
+      remote: { "new_asset.jpg": mockFile },
+    });
+    stubDeploymentConfig();
+    const folderMetadata2 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
+    const processor2 = new AssetsPostProcessor({
+      sourceAssetsFolders: [remoteFolder],
+      folderMetadata: folderMetadata2,
+    });
+    processor2.run();
+
+    // Old assets should be removed, only new asset should exist
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "new_asset.jpg"))).toEqual(true);
+  });
+
   /**
   
   it("Warns if overrides have no source target",()=>{
@@ -323,7 +501,10 @@ describe("Assets PostProcess", () => {
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
-  const processor = new AssetsPostProcessor({ sourceAssetsFolders: [localAssets] });
+  const processor = new AssetsPostProcessor({
+    sourceAssetsFolders: [localAssets],
+    folderMetadata: new Map(), // No remote assets in tests
+  });
   processor.run();
 }
 
