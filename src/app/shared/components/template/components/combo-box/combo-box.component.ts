@@ -12,6 +12,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   answer_list: coerce.objectArray<IAnswerListItem>([]),
   disabled: coerce.boolean(),
   disabled_text: coerce.string(""),
+  modal_title: coerce.string(""),
   placeholder: coerce.string(""),
   prioritise_placeholder: coerce.boolean(),
   style: coerce.string(""),
@@ -132,7 +133,7 @@ export class TmplComboBoxComponent
       cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
-        title: signal(this.params().placeholder),
+        title: signal(this.params().modalTitle),
         selectedValue: this.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
