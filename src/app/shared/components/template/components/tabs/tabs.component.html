@@ -1,5 +1,5 @@
 <mat-tab-group
-  [mat-stretch-tabs]="params().stretchTabButtons"
+  [mat-stretch-tabs]="!params().compactButtons"
   [animationDuration]="animationDuration()"
 >
   @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {

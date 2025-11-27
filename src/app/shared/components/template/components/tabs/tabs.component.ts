@@ -3,7 +3,7 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   animation_duration_ms: coerce.number(200),
-  stretch_tab_buttons: coerce.boolean(),
+  compact_buttons: coerce.boolean(),
 }));
 
 @Component({
