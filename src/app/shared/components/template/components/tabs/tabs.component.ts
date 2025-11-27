@@ -2,6 +2,7 @@ import { Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  animation_duration_ms: coerce.number(200),
   stretch_tab_buttons: coerce.boolean(),
 }));
 
@@ -11,7 +12,9 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./tabs.component.scss"],
 })
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
-  // Get label from child tab row's value
+  animationDuration = computed(() => `${this.params().animationDurationMs}ms`);
+
+  // Get label for button from child tab row's value
   getTabLabel(childRow: any): string {
     if (childRow.type !== "tab") {
       console.error(

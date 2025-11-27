@@ -1,4 +1,7 @@
-<mat-tab-group [mat-stretch-tabs]="params().stretchTabButtons">
+<mat-tab-group
+  [mat-stretch-tabs]="params().stretchTabButtons"
+  [animationDuration]="animationDuration()"
+>
   @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
     <mat-tab [label]="getTabLabel(childRow)" [attr.data-rowname]="childRow.name">
       <plh-template-component
