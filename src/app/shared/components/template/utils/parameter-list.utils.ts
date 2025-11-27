@@ -1,6 +1,5 @@
 import * as z from "zod";
 import type { FlowTypes } from "src/app/shared/model";
-import { objectToArray } from "./template-utils";
 
 /**
  * Custom utilities to convert string parameter_list values to custom type
@@ -77,15 +76,10 @@ const coerceMethods = {
    */
   objectArray: <T extends Record<string, any>>(fallback: T[]) =>
     z
-      .union([z.array(z.record(z.string(), z.any())), z.record(z.string(), z.any()), z.string()])
+      .union([z.array(z.record(z.string(), z.any())), z.string()])
       .transform((v): T[] => {
         // If already an array of objects, return as-is
         if (Array.isArray(v)) return v as T[];
-
-        // If object literal (hashmap), convert to array
-        if (typeof v === "object" && v !== null) {
-          return objectToArray(v) as T[];
-        }
 
         // Parse string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
         if (typeof v === "string") {
