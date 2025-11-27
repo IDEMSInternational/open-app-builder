@@ -1,3 +1,23 @@
+@use "@angular/material" as mat;
+
 mat-tab-group {
   width: 100%;
+
+  ::ng-deep .mat-mdc-tab-header {
+    margin-bottom: var(--large-margin);
+  }
+
+  // Use mixin and token pattern for overriding tab styles, see: https://material.angular.dev/components/tabs/styling
+  @include mat.tabs-overrides(
+    (
+      active-focus-indicator-color: var(--ion-color-primary),
+      active-focus-label-text-color: var(--ion-color-primary),
+      active-label-text-color: var(--ion-color-primary),
+      inactive-label-text-color: var(--ion-color-primary),
+      divider-color: var(--ion-color-primary),
+      label-text-weight: var(--font-weight-bold),
+      label-text-size: var(--font-size-text-small),
+      active-indicator-height: 3px,
+    )
+  );
 }
