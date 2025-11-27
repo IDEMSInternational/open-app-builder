@@ -9,9 +9,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  answer_list: coerce.objectArray<IAnswerListItem>([
-    { name: null, text: null, image: null, image_checked: null },
-  ]),
+  answer_list: coerce.objectArray<IAnswerListItem>([]),
   disabled: coerce.boolean(),
   disabled_text: coerce.string(""),
   placeholder: coerce.string(""),
