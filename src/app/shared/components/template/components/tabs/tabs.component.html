@@ -1,0 +1,21 @@
+<mat-tab-group
+  [animationDuration]="animationDuration()"
+  [dynamicHeight]="params().animateHeight"
+  [mat-stretch-tabs]="!params().compactButtons"
+  [preserveContent]="params().preserveContent"
+  [selectedIndex]="params().selectedIndex"
+>
+  @for (tabRow of tabRows(); track tabRow.name) {
+    <mat-tab [label]="tabRow.label" [attr.data-rowname]="tabRow.name">
+      @for (
+        childRow of tabRow.childRows | filterDisplayComponent;
+        track trackByRow($index, childRow)
+      ) {
+        <plh-template-component
+          [row]="childRow"
+          [parent]="parentContainerComponentRef"
+        ></plh-template-component>
+      }
+    </mat-tab>
+  }
+</mat-tab-group>
