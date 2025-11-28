@@ -25,6 +25,7 @@ export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 export interface IRow {
   name: Signal<string>;
   value: Signal<any>;
+  params: Parameters;
   setExpression(expression: any): void;
 }
 
