@@ -1,6 +1,9 @@
 <mat-tab-group
-  [mat-stretch-tabs]="!params().compactButtons"
   [animationDuration]="animationDuration()"
+  [dynamicHeight]="params().animateHeight"
+  [mat-stretch-tabs]="!params().compactButtons"
+  [preserveContent]="params().preserveContent"
+  [selectedIndex]="params().selectedIndex"
 >
   @for (tabRow of tabRows(); track tabRow.name) {
     <mat-tab [label]="tabRow.label" [attr.data-rowname]="tabRow.name">
