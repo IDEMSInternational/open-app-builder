@@ -2,12 +2,17 @@
   [mat-stretch-tabs]="!params().compactButtons"
   [animationDuration]="animationDuration()"
 >
-  @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
-    <mat-tab [label]="getTabLabel(childRow)" [attr.data-rowname]="childRow.name">
-      <plh-template-component
-        [row]="childRow"
-        [parent]="parentContainerComponentRef"
-      ></plh-template-component>
+  @for (tabRow of tabRows(); track tabRow.name) {
+    <mat-tab [label]="tabRow.label" [attr.data-rowname]="tabRow.name">
+      @for (
+        childRow of tabRow.childRows | filterDisplayComponent;
+        track trackByRow($index, childRow)
+      ) {
+        <plh-template-component
+          [row]="childRow"
+          [parent]="parentContainerComponentRef"
+        ></plh-template-component>
+      }
     </mat-tab>
   }
 </mat-tab-group>

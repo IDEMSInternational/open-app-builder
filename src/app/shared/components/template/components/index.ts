@@ -41,7 +41,6 @@ import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
-import { TmplTabComponent } from "./tabs/tab/tab.component";
 import { TmplTabsComponent } from "./tabs/tabs.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
@@ -128,7 +127,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
-  TmplTabComponent,
   TmplTabsComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
@@ -207,7 +205,6 @@ const COMMON_COMPONENT_MAPPING = {
   slider: TmplSliderComponent,
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
-  tab: TmplTabComponent,
   table: TmplTableComponent,
   tabs: TmplTabsComponent,
   task_card: TmplTaskCardComponent,

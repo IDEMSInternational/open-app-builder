@@ -1,5 +1,6 @@
 import { Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { FlowTypes } from "data-models";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   animation_duration_ms: coerce.number(200),
@@ -14,14 +15,13 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   animationDuration = computed(() => `${this.params().animationDurationMs}ms`);
 
-  // Get label for button from child tab row's value
-  getTabLabel(childRow: any): string {
-    if (childRow.type !== "tab") {
-      console.error(
-        `[Tabs Component] Unexpected row type "${childRow.type}" in tabs component. Only "tab" rows are allowed as direct children of "tabs". Row name: ${childRow.name}`
-      );
-      return "";
-    }
-    return childRow.value || "";
-  }
+  public tabRows = computed(() => {
+    return this.rows()
+      .filter((row) => row.type === "tab")
+      .map((tabRow) => ({
+        label: tabRow.parameter_list?.label || tabRow.value || tabRow.name,
+        childRows: tabRow.rows || [],
+        name: tabRow.name,
+      }));
+  });
 }
