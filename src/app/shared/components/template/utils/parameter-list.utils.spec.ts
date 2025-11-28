@@ -11,6 +11,9 @@ const MOCK_SCHEMA = () =>
       return v.split("-").map(Number);
     }, []),
     number_param: coerce.number(-1),
+    object_array_param: coerce.objectArray<{ key1: string; key2: string }>([
+      { key1: "default1", key2: "default2" },
+    ]),
     string_param: coerce.string("fallback"),
   }));
 
@@ -105,6 +108,52 @@ describe("parameter_list utils - coerce", () => {
     // fallback
     expect(testSchema.parse({}).any_param).toEqual({});
   });
+
+  it("coerce objectArray", () => {
+    const testSchema = MOCK_SCHEMA().pick({ object_array_param: true });
+    const fallback = [{ key1: "default1", key2: "default2" }];
+
+    // from string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
+    const { object_array_param: parsed1 } = testSchema.parse({
+      object_array_param: "key1: value1_a | key2: value2_a; key1: value1_b | key2: value2_b",
+    });
+    expect(parsed1).toEqual([
+      { key1: "value1_a", key2: "value2_a" },
+      { key1: "value1_b", key2: "value2_b" },
+    ]);
+
+    // from string with whitespace trimming
+    const { object_array_param: parsed2 } = testSchema.parse({
+      object_array_param: " key1 : value1 | key2 : value2 ",
+    });
+    expect(parsed2).toEqual([{ key1: "value1", key2: "value2" }]);
+
+    // from string with values containing colons
+    const { object_array_param: parsed3 } = testSchema.parse({
+      object_array_param: "key1: value:with:colons | key2: normal_value",
+    });
+    expect(parsed3).toEqual([{ key1: "value:with:colons", key2: "normal_value" }]);
+
+    // pre-parsed array
+    const preParsed = [
+      { key1: "pre1", key2: "pre2" },
+      { key1: "pre3", key2: "pre4" },
+    ];
+    expect(testSchema.parse({ object_array_param: preParsed }).object_array_param).toEqual(
+      preParsed
+    );
+
+    // fallback when undefined
+    expect(testSchema.parse({}).object_array_param).toEqual(fallback);
+
+    // fallback when string doesn't match format (no colons)
+    expect(testSchema.parse({ object_array_param: "invalid format" }).object_array_param).toEqual(
+      fallback
+    );
+
+    // fallback when empty string
+    expect(testSchema.parse({ object_array_param: "" }).object_array_param).toEqual(fallback);
+  });
 });
 
 describe("parameter_list utils - parse", () => {
@@ -123,6 +172,7 @@ describe("parameter_list utils - parse", () => {
       "commaListParam",
       "customParam",
       "numberParam",
+      "objectArrayParam",
       "stringParam",
     ]);
   });
@@ -136,6 +186,7 @@ describe("parameter_list utils - parse", () => {
       commaListParam: [],
       customParam: [],
       numberParam: -1,
+      objectArrayParam: [{ key1: "default1", key2: "default2" }],
       stringParam: "fallback",
     });
   });
@@ -154,6 +205,7 @@ describe("parameter_list utils - parse", () => {
           "comma_list_param",
           "custom_param",
           "number_param",
+          "object_array_param",
           "string_param",
         ],
       },
