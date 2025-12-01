@@ -14,11 +14,14 @@ import {
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = async (options: {
-  sourceAssetsFolders: string[];
-  folderMetadata?: Map<string, { remote?: boolean; folderName?: string }>;
+  sources: {
+    path: string;
+    name?: string;
+    remote?: boolean;
+  }[];
 }) => {
-  const { sourceAssetsFolders, folderMetadata } = options;
-  return new AssetsPostProcessor({ sourceAssetsFolders, folderMetadata }).run();
+  const { sources } = options;
+  return new AssetsPostProcessor({ sources }).run();
 };
 
 /** Prepare sourcely cached seets for population to app */
@@ -105,10 +108,22 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
   };
 }
 
+/**
+ * Sync remote assets to external provider (e.g. Supabase/Firebase)
+ * Currently a placeholder for future implementation
+ */
+const syncRemoteAssets = async () => {
+  // TODO: Implement actual sync logic, including:
+  // - Upload asset packs to remote provider
+  // - Delete old asset packs from remote provider (TBC how to handle, legacy app users may still require previous versions)
+  console.log("[Not implemented] Syncing remote assets...");
+};
+
 export default {
   generateReports,
   postProcessAssets,
   postProcessSheets,
   copyDeploymentDataToApp,
   optimiseBuild,
+  syncRemoteAssets,
 };

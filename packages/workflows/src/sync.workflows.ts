@@ -158,25 +158,19 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "assets_post_process",
         function: async ({ tasks, workflow }) => {
-          // Build folder metadata map from download results
-          const folderMetadata = new Map<string, { remote?: boolean; folderName?: string }>();
-          const sourceAssetsFolders: string[] = [];
-
-          for (const { path, folderConfig } of workflow.assets_dl.output) {
-            sourceAssetsFolders.push(path);
-            if (folderConfig.remote) {
-              folderMetadata.set(path, {
-                remote: true,
-                folderName: folderConfig.name,
-              });
-            }
-          }
-
           return tasks.appData.postProcessAssets({
-            sourceAssetsFolders,
-            folderMetadata,
+            sources: workflow.assets_dl.output.map(({ path, folderConfig }) => ({
+              path,
+              name: folderConfig.name,
+              remote: folderConfig.remote,
+            })),
           });
         },
+      },
+      {
+        name: "sync_remote_assets",
+        condition: async ({ config }) => config.remote_assets !== undefined,
+        function: async ({ tasks }) => tasks.appData.syncRemoteAssets(),
       },
     ],
   },

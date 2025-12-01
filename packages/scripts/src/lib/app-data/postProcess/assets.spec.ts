@@ -91,8 +91,7 @@ describe("Assets PostProcess", () => {
     const sourceA = resolve(mockDirs.localAssets, "source_a");
     const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [sourceA, sourceB],
-      folderMetadata: new Map(), // No remote assets in tests
+      sources: [{ path: sourceA }, { path: sourceB }],
     });
     processor.run();
     // test merged file outputs
@@ -306,10 +305,15 @@ describe("Assets PostProcess", () => {
     stubDeploymentConfig();
     const coreFolder = resolve(mockDirs.localAssets, "core");
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
-    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [coreFolder, remoteFolder],
-      folderMetadata,
+      sources: [
+        { path: coreFolder },
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
     processor.run();
 
@@ -329,16 +333,24 @@ describe("Assets PostProcess", () => {
     });
     stubDeploymentConfig();
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
-    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [remoteFolder],
-      folderMetadata,
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
     processor.run();
 
     // Check that manifest file exists
     const manifestPath = resolve("mock/app_data/remote_assets/test_pack/test_pack.json");
     expect(existsSync(manifestPath)).toEqual(true);
+
+    // Check that standard contents.json also exists
+    const contentsPath = resolve("mock/app_data/remote_assets/test_pack/contents.json");
+    expect(existsSync(contentsPath)).toEqual(true);
 
     // Check manifest format
     const manifest = readJsonSync(manifestPath);
@@ -359,10 +371,15 @@ describe("Assets PostProcess", () => {
     stubDeploymentConfig();
     const coreFolder = resolve(mockDirs.localAssets, "core");
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
-    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [coreFolder, remoteFolder],
-      folderMetadata,
+      sources: [
+        { path: coreFolder },
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
     processor.run();
 
@@ -379,7 +396,6 @@ describe("Assets PostProcess", () => {
     });
     stubDeploymentConfig();
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
-    const folderMetadata = new Map([[remoteFolder, { remote: true, folderName: "new_pack" }]]);
 
     // Create an old folder that should be cleaned up
     const oldPackPath = resolve("mock/app_data/remote_assets/old_pack");
@@ -388,8 +404,13 @@ describe("Assets PostProcess", () => {
     vol.writeFileSync(resolve(oldPackPath, "old_file.jpg"), mockFile);
 
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [remoteFolder],
-      folderMetadata,
+      sources: [
+        {
+          path: remoteFolder,
+          name: "new_pack",
+          remote: true,
+        },
+      ],
     });
     processor.run();
 
@@ -408,13 +429,19 @@ describe("Assets PostProcess", () => {
     stubDeploymentConfig();
     const remoteFolder1 = resolve(mockDirs.localAssets, "remote1");
     const remoteFolder2 = resolve(mockDirs.localAssets, "remote2");
-    const folderMetadata = new Map([
-      [remoteFolder1, { remote: true, folderName: "pack1" }],
-      [remoteFolder2, { remote: true, folderName: "pack2" }],
-    ]);
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [remoteFolder1, remoteFolder2],
-      folderMetadata,
+      sources: [
+        {
+          path: remoteFolder1,
+          name: "pack1",
+          remote: true,
+        },
+        {
+          path: remoteFolder2,
+          name: "pack2",
+          remote: true,
+        },
+      ],
     });
     processor.run();
 
@@ -437,10 +464,14 @@ describe("Assets PostProcess", () => {
       remote: { "old_asset.jpg": mockFile },
     });
     stubDeploymentConfig();
-    const folderMetadata1 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
     const processor1 = new AssetsPostProcessor({
-      sourceAssetsFolders: [remoteFolder],
-      folderMetadata: folderMetadata1,
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
     processor1.run();
 
@@ -457,10 +488,14 @@ describe("Assets PostProcess", () => {
       remote: { "new_asset.jpg": mockFile },
     });
     stubDeploymentConfig();
-    const folderMetadata2 = new Map([[remoteFolder, { remote: true, folderName: "test_pack" }]]);
     const processor2 = new AssetsPostProcessor({
-      sourceAssetsFolders: [remoteFolder],
-      folderMetadata: folderMetadata2,
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
     processor2.run();
 
@@ -502,8 +537,7 @@ function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({
-    sourceAssetsFolders: [localAssets],
-    folderMetadata: new Map(), // No remote assets in tests
+    sources: [{ path: localAssets }],
   });
   processor.run();
 }
