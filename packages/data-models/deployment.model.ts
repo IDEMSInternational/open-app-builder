@@ -102,6 +102,15 @@ export interface IDeploymentRuntimeConfig {
   useReactiveTemplates?: boolean;
 }
 
+interface IAssetSource {
+  /** gdrive id from end of url */
+  id: string;
+  /** local name for download */
+  name: string;
+  /** if true, the assets from this folder are treated as an asset pack to be uploaded to remote storage */
+  remote?: boolean;
+}
+
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
   google_drive: {
@@ -116,14 +125,7 @@ interface IDeploymentCoreConfig {
     /** @deprecated Use `assets_folders` array instead */
     assets_folder_ids?: string[];
     /** gdrive id from end of url and local name for download */
-    assets_folders?: {
-      /** gdrive id from end of url */
-      id: string;
-      /** local name for download */
-      name: string;
-      /** if true, the assets from this folder are treated as an asset pack to be uploaded to remote storage */
-      remote?: boolean;
-    }[];
+    assets_folders?: IAssetSource[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */

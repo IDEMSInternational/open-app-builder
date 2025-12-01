@@ -21,6 +21,9 @@ import type { IAssetEntryHashmap, IAssetContentsEntryMinimal, IAssetEntry } from
 import type { FlowTypes } from "data-models";
 import { resolve } from "path";
 
+/** Unique value to be used internally as name for core asset pack */
+const CORE_ASSETS_PACK = Symbol("CORE_ASSETS");
+
 /**
  * Legacy folder used to differentiate language assets
  * Any assets placed in this folder will be treated as parent-level
@@ -35,7 +38,11 @@ const APP_CORE_SIZE_KB = {
   total: APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB,
 };
 
-interface IAssetSource {
+/**
+ * Mirrors the structure of the IAssetSource type in the deployment config,
+ * with a property to track the local path to the downloaded assets instead of the gdrive id
+ * */
+interface IDownloadedAssetSource {
   /** Local path to the downloaded assets */
   path: string;
   /** Name from deployment config (used for remote pack name if remote=true) */
@@ -45,7 +52,7 @@ interface IAssetSource {
 }
 
 interface IAssetPostProcessorOptions {
-  sources: IAssetSource[];
+  sources: IDownloadedAssetSource[];
 }
 
 /***************************************************************************************
@@ -73,8 +80,9 @@ export class AssetsPostProcessor {
     }
 
     // Map to track assets by their output destination
-    // Core assets use empty string as key, remote assets use their pack name
-    const assetsByPack = new Map<string, IContentsEntryHashmap>();
+    // Core assets use special symbol as key, remote assets use their pack name
+    // Use a Map to allow merging multiple input sources into the same output pack
+    const assetsByPack = new Map<string | symbol, IContentsEntryHashmap>();
     // Helper to track which remote packs we are currently processing (for cleanup)
     const currentRemotePacks = new Set<string>();
 
@@ -82,10 +90,10 @@ export class AssetsPostProcessor {
       const sourceAssets = generateFolderFlatMap(source.path, { includeLocalPath: true });
       const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
 
-      // If remote is true, use the name as the pack name. Otherwise treat as core assets (empty pack name)
-      const packName = source.remote && source.name ? source.name : "";
+      // If remote is true, use the name as the pack name. Otherwise treat as core assets
+      const packName = source.remote && source.name ? source.name : CORE_ASSETS_PACK;
 
-      if (packName) {
+      if (packName !== CORE_ASSETS_PACK) {
         currentRemotePacks.add(packName);
       }
 
@@ -101,18 +109,22 @@ export class AssetsPostProcessor {
 
     // Process and write all asset packs
     for (const [packName, assets] of assetsByPack.entries()) {
-      if (packName === "") {
+      if (packName === CORE_ASSETS_PACK) {
         // Core assets
         this.processAndWriteAssets(assets, appAssetsFolder);
       } else {
         // Remote assets
-        const remoteAssetsFolder = path.resolve(app_data.output_path, "remote_assets", packName);
+        const remoteAssetsFolder = path.resolve(
+          app_data.output_path,
+          "remote_assets",
+          packName as string
+        );
         // Delete any existing folder to ensure clean state
         if (fs.existsSync(remoteAssetsFolder)) {
           fs.removeSync(remoteAssetsFolder);
         }
         fs.ensureDirSync(remoteAssetsFolder);
-        this.processAndWriteAssets(assets, remoteAssetsFolder, packName);
+        this.processAndWriteAssets(assets, remoteAssetsFolder, packName as string);
       }
     }
 
