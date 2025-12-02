@@ -4,7 +4,7 @@ import { RowRegistry } from "../row.registry";
 
 @Injectable({ providedIn: "root" })
 export class LoopItemEvaluator {
-  private tokens = ["@item", "@index", "@first", "@last", "@count"];
+  private tokens = ["@item", "@index", "@first", "@last", "@count", "@is_first", "@is_last"];
   private variableStore = inject(VariableStore);
   private rowRegistry = inject(RowRegistry);
 
@@ -41,9 +41,11 @@ export class LoopItemEvaluator {
     const loopRow = this.rowRegistry.get(loopInfo.loop);
     const index = loopRow.params.index.value();
 
-    const itemValue = index
-      ? loopValues.find((item) => item[index] === loopInfo.index)
-      : loopValues[loopInfo.index];
+    const numericIndex = index
+      ? loopValues.findIndex((item) => item[index] === loopInfo.index)
+      : Number(loopInfo.index);
+
+    const itemValue = loopValues[numericIndex];
 
     let result = expression;
 
@@ -55,6 +57,16 @@ export class LoopItemEvaluator {
     // Replace all @count with the amount of items in the loop
     if (expression.includes("@count")) {
       result = result.replace(/@count\b/g, String(loopValues.length));
+    }
+
+    // Replace all @is_first with boolean
+    if (expression.includes("@is_first")) {
+      result = result.replace(/@is_first\b/g, String(numericIndex === 0));
+    }
+
+    // Replace all @is_last with boolean
+    if (expression.includes("@is_last")) {
+      result = result.replace(/@is_last\b/g, String(numericIndex === loopValues.length - 1));
     }
 
     // Replace all @first with first item.

@@ -94,6 +94,26 @@ describe("LoopItemEvaluator", () => {
       const result = subject.evaluate("The count is @count", "loop.1");
       expect(result).toBe("The count is 2");
     });
+
+    it("replaces @is_first with true for first item", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.0");
+      expect(result).toBe("Is first: true");
+    });
+
+    it("replaces @is_first with false for second item", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.1");
+      expect(result).toBe("Is first: false");
+    });
+
+    it("replaces @is_last with false for first item", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.0");
+      expect(result).toBe("Is last: false");
+    });
+
+    it("replaces @is_last with true for last item", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.1");
+      expect(result).toBe("Is last: true");
+    });
   });
 
   describe("with custom index", () => {
@@ -168,6 +188,26 @@ describe("LoopItemEvaluator", () => {
       const result = subject.evaluate("The count is @count", "loop.1");
       expect(result).toBe("The count is 2");
     });
+
+    it("replaces @is_first with true for first item (custom index)", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.Alpha");
+      expect(result).toBe("Is first: true");
+    });
+
+    it("replaces @is_first with false for second item (custom index)", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.Beta");
+      expect(result).toBe("Is first: false");
+    });
+
+    it("replaces @is_last with false for first item (custom index)", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.Alpha");
+      expect(result).toBe("Is last: false");
+    });
+
+    it("replaces @is_last with true for last item (custom index)", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.Beta");
+      expect(result).toBe("Is last: true");
+    });
   });
 
   describe("without custom index, with array of values", () => {
@@ -226,6 +266,26 @@ describe("LoopItemEvaluator", () => {
     it("replaces @count with primitive array", () => {
       const result = subject.evaluate("The count is @count", "loop.1");
       expect(result).toBe("The count is 3");
+    });
+
+    it("replaces @is_first with true for first item (primitive)", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.0");
+      expect(result).toBe("Is first: true");
+    });
+
+    it("replaces @is_first with false for middle item (primitive)", () => {
+      const result = subject.evaluate("Is first: @is_first", "loop.1");
+      expect(result).toBe("Is first: false");
+    });
+
+    it("replaces @is_last with false for middle item (primitive)", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.1");
+      expect(result).toBe("Is last: false");
+    });
+
+    it("replaces @is_last with true for last item (primitive)", () => {
+      const result = subject.evaluate("Is last: @is_last", "loop.2");
+      expect(result).toBe("Is last: true");
     });
   });
 });

@@ -129,7 +129,7 @@ describe("Loop Component", () => {
       });
   });
 
-  it("Loop includes @first, @last, @item & @count", () => {
+  it("Loop includes @first, @last, @item, @count, @is_first, @is_last", () => {
     cy.getDataTest("firstLastLoop.key_1")
       .should("exist")
       .within(() => {
@@ -148,6 +148,14 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_1.countText")
           .should("exist")
           .should("contain", "key_1 of 3");
+
+        cy.getDataTest("firstLastLoop.key_1.isFirstText")
+          .should("exist")
+          .should("contain", "Is first: true");
+
+        cy.getDataTest("firstLastLoop.key_1.isLastText")
+          .should("exist")
+          .should("contain", "Is last: false");
       });
 
     cy.getDataTest("firstLastLoop.key_2")
@@ -168,6 +176,14 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_2.countText")
           .should("exist")
           .should("contain", "key_2 of 3");
+
+        cy.getDataTest("firstLastLoop.key_2.isFirstText")
+          .should("exist")
+          .should("contain", "Is first: false");
+
+        cy.getDataTest("firstLastLoop.key_2.isLastText")
+          .should("exist")
+          .should("contain", "Is last: false");
       });
 
     cy.getDataTest("firstLastLoop.key_3")
@@ -188,6 +204,14 @@ describe("Loop Component", () => {
         cy.getDataTest("firstLastLoop.key_3.countText")
           .should("exist")
           .should("contain", "key_3 of 3");
+
+        cy.getDataTest("firstLastLoop.key_3.isFirstText")
+          .should("exist")
+          .should("contain", "Is first: false");
+
+        cy.getDataTest("firstLastLoop.key_3.isLastText")
+          .should("exist")
+          .should("contain", "Is last: true");
       });
   });
 });
