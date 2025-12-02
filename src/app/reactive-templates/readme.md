@@ -60,6 +60,7 @@ Functionality not yet supported by reactive templates:
 * Template debug mode
 * Modals and modal navigation e.g. nav stack
 * Clearing variable store when loading a new page?
+* Translations
 
 Components without reactive equivalents:
 
