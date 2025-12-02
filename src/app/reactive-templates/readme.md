@@ -49,7 +49,7 @@ Technical Tasks
 
 Features
 
-* update component (dat list update)
+* update component (data list update)
 * action component
 * navigation component
 
