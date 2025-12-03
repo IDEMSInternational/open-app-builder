@@ -1,0 +1,46 @@
+import { Component, signal } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { RemoteAssetService } from "src/app/shared/services/remote-asset/remote-asset.service";
+
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  asset_pack: coerce.string("debug_asset_pack_1"),
+  default_text: coerce.string("Download asset pack"),
+  progress_text: coerce.string("Downloading..."),
+  success_text: coerce.string("Success"),
+  error_text: coerce.string("Error"),
+}));
+
+@Component({
+  selector: "tmpl-button-asset-pack-download",
+  templateUrl: "./button-asset-pack-download.component.html",
+  styleUrls: ["./button-asset-pack-download.component.scss"],
+})
+export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentWithParams(
+  AuthorSchema
+) {
+  public status = signal<"initial" | "downloading" | "success" | "error">("initial");
+
+  constructor(private remoteAssetService: RemoteAssetService) {
+    super();
+  }
+
+  public async handleClick(event: Event) {
+    console.log("Asset pack download clicked");
+    this.status.set("downloading");
+    const result = await this.downloadAssetPack();
+    this.status.set(result as "success" | "error");
+
+    // Allow for additional actions to be authored (will run after the download is complete)
+    this.triggerActions("click");
+  }
+
+  private async downloadAssetPack() {
+    // Logic to follow
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("success");
+      }, 1000);
+    });
+    this.remoteAssetService.downloadAssetPackByName(this.params().assetPack);
+  }
+}
