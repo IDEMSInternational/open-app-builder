@@ -1,7 +1,7 @@
 import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
-import type { IDeploymentConfigJson } from "data-models";
+import type { IAssetSource, IDeploymentConfigJson } from "data-models";
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -133,7 +133,7 @@ const workflows: IDeploymentWorkflows = {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
           const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
           /** Return output of paths to downloaded assets and folder metadata */
-          let outputs: Array<{ path: string; folderConfig: (typeof assets_folders)[0] }> = [];
+          let outputs: Array<{ path: string; folderConfig: IAssetSource }> = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
             outputs = assets_folders.map((folderConfig) => ({

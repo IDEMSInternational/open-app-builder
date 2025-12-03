@@ -102,7 +102,7 @@ export interface IDeploymentRuntimeConfig {
   useReactiveTemplates?: boolean;
 }
 
-interface IAssetSource {
+export interface IAssetSource {
   /** gdrive id from end of url */
   id: string;
   /** local name for download */
