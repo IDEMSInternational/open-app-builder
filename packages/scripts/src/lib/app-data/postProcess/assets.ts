@@ -64,20 +64,11 @@ export class AssetsPostProcessor {
 
   public run() {
     const { app_data } = this.activeDeployment;
-    const { sources } = this.options;
-    const { _parent_config } = this.activeDeployment;
+
+    const sources = this.prepareAssetSources();
+
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");
     fs.ensureDirSync(appAssetsFolder);
-
-    // Include parent config in list of source assets
-    // TODO - may want to reconsider this functionality in the future given ability to use
-    // multiple input sources instead
-    if (_parent_config) {
-      const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
-      fs.ensureDirSync(parentAssetsFolder);
-      // Parent assets are always treated as core assets (no config)
-      sources.unshift({ path: parentAssetsFolder });
-    }
 
     // Map to track assets by their output destination
     // Core assets use special symbol as key, remote assets use their pack name
@@ -132,6 +123,23 @@ export class AssetsPostProcessor {
     this.cleanupOldRemoteAssetFolders(app_data.output_path, currentRemotePacks);
 
     console.log(chalk.green("Asset Process Complete"));
+  }
+
+  private prepareAssetSources(): IDownloadedAssetSource[] {
+    const sources = [...this.options.sources];
+    // Include parent config in list of source assets
+    // TODO - may want to reconsider this functionality in the future given ability to use
+    // multiple input sources instead
+    if (this.activeDeployment._parent_config) {
+      const parentAssetsFolder = path.resolve(
+        this.activeDeployment._parent_config._workspace_path,
+        "app_data",
+        "assets"
+      );
+      fs.ensureDirSync(parentAssetsFolder);
+      sources.unshift({ path: parentAssetsFolder });
+    }
+    return sources;
   }
 
   /**
