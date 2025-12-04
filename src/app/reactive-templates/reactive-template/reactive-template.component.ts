@@ -1,13 +1,4 @@
-import {
-  Component,
-  computed,
-  effect,
-  forwardRef,
-  input,
-  OnInit,
-  signal,
-  viewChild,
-} from "@angular/core";
+import { Component, computed, effect, forwardRef, input, signal, viewChild } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { RowListComponent } from "../reactive-components/row-list.component";
