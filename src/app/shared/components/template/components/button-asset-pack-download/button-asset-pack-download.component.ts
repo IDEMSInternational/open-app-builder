@@ -27,11 +27,15 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
   public async handleClick(event: Event) {
     this.status.set("downloading");
 
+    // Uncomment this to simulate slow download or a download error
+    // await new Promise(resolve => setTimeout(resolve, 3000));
+    // return this.status.set("error");
+
     const success = await this.remoteAssetService.downloadAssetPackByName(this.params().assetPack);
 
     this.status.set(success ? "success" : "error");
 
-    // Allow for additional actions to be authored (will run after the download is complete)
+    // Allow for additional actions to be authored (will run after the download attempt is complete)
     this.triggerActions("click");
   }
 }
