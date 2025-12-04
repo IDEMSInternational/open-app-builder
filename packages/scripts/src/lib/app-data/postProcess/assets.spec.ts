@@ -90,7 +90,10 @@ describe("Assets PostProcess", () => {
     const sourceA = resolve(mockDirs.localAssets, "source_a");
     const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
-      sources: [{ path: sourceA }, { path: sourceB }],
+      sources: [
+        { path: sourceA, name: "source_a" },
+        { path: sourceB, name: "source_b" },
+      ],
     });
     processor.run();
     // test merged file outputs
@@ -120,7 +123,7 @@ describe("Assets PostProcess", () => {
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
     const processor = new AssetsPostProcessor({
       sources: [
-        { path: coreFolder },
+        { path: coreFolder, name: "core" },
         {
           path: remoteFolder,
           name: "test_pack",
@@ -186,7 +189,7 @@ describe("Assets PostProcess", () => {
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
     const processor = new AssetsPostProcessor({
       sources: [
-        { path: coreFolder },
+        { path: coreFolder, name: "core" },
         {
           path: remoteFolder,
           name: "test_pack",
@@ -350,7 +353,7 @@ function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({
-    sources: [{ path: localAssets }],
+    sources: [{ path: localAssets, name: "mock" }],
   });
   processor.run();
 }

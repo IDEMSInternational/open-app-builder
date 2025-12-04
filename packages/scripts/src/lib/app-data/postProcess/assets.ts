@@ -12,7 +12,7 @@ import {
   copyFileWithTimestamp,
 } from "../../../utils";
 import { ActiveDeployment } from "../../../commands/deployment/get";
-import type { IAssetEntryHashmap, IAssetEntry } from "data-models";
+import type { IAssetEntryHashmap, IAssetEntry, IAssetSource } from "data-models";
 import type { FlowTypes } from "data-models";
 import { resolve } from "path";
 import {
@@ -29,13 +29,9 @@ const CORE_ASSETS_PACK = Symbol("CORE_ASSETS");
  * Mirrors the structure of the IAssetSource type in the deployment config,
  * with a property to track the local path to the downloaded assets instead of the gdrive id
  * */
-interface IDownloadedAssetSource {
+export interface IDownloadedAssetSource extends Omit<IAssetSource, "id"> {
   /** Local path to the downloaded assets */
   path: string;
-  /** Name from deployment config (used for remote pack name if remote=true) */
-  name?: string;
-  /** Whether this folder contains remote assets (asset pack) */
-  remote?: boolean;
 }
 
 interface IAssetPostProcessorOptions {
@@ -124,7 +120,7 @@ export class AssetsPostProcessor {
         "assets"
       );
       fs.ensureDirSync(parentAssetsFolder);
-      sources.unshift({ path: parentAssetsFolder });
+      sources.unshift({ path: parentAssetsFolder, name: "", remote: false });
     }
     return sources;
   }

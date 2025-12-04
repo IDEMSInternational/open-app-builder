@@ -10,16 +10,11 @@ import {
   AppDataOptimiser,
   ReportGenerator,
   SheetsPostProcessor,
+  IDownloadedAssetSource,
 } from "../../lib/app-data";
 
 /** Prepare sourcely cached assets for population to app */
-const postProcessAssets = async (options: {
-  sources: {
-    path: string;
-    name?: string;
-    remote?: boolean;
-  }[];
-}) => {
+const postProcessAssets = async (options: { sources: IDownloadedAssetSource[] }) => {
   const { sources } = options;
   return new AssetsPostProcessor({ sources }).run();
 };
