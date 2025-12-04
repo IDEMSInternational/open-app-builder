@@ -19,16 +19,9 @@ import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
-import { RowRegistry } from "../services/row.registry";
+import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
-
-export interface IRow {
-  name: Signal<string>;
-  value: Signal<any>;
-  params: Parameters;
-  setExpression(expression: any): void;
-}
 
 @Component({
   selector: "oab-row-base",
