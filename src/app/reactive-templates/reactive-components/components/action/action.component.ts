@@ -30,7 +30,6 @@ export class ActionComponent
   private readonly componentRefs: ComponentRef<any>[] = [];
 
   public execute(): void {
-    alert(`Executing action: ${this.name()}`);
     for (const action of this.actions.values()) {
       action.execute();
     }
