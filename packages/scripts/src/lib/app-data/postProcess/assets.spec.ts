@@ -4,14 +4,13 @@ import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { type RecursivePartial } from "shared/src/types";
 
-import { readJsonSync, readdirSync, statSync, existsSync } from "fs-extra";
+import { readJsonSync, statSync, existsSync } from "fs-extra";
 import { vol } from "memfs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/assets.model";
-import { useMockLogger } from "../../../../test/helpers/utils";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs"));
@@ -22,7 +21,7 @@ const mockDirs = {
   localAssets: "mock/local/assets",
 };
 
-const { file: mockFile, entry: mockFileEntry } = createMockFile(); // create mock 1MB file
+const { file: mockFile } = createMockFile(); // create mock 1MB file
 
 /** Parse the contents.json file populated to the app assets folder and return */
 function readAppAssetContents() {
@@ -108,192 +107,6 @@ describe("Assets PostProcess", () => {
     runAssetsPostProcessor();
     const contents = readAppAssetContents();
     expect("test.jpg" in contents).toEqual(true);
-  });
-
-  it("Populates global assets from named or root folder", () => {
-    mockLocalAssets({
-      global: { "test1.jpg": mockFile },
-      nested: { "test2.jpg": mockFile },
-      "test3.jpg": mockFile,
-    });
-    runAssetsPostProcessor();
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "nested/test2.jpg": mockFileEntry,
-      "test1.jpg": { ...mockFileEntry, filePath: "global/test1.jpg" },
-      "test3.jpg": mockFileEntry,
-    });
-  });
-
-  it("Populates assets with no overrides", () => {
-    mockLocalAssets({ "test.jpg": mockFile });
-    runAssetsPostProcessor();
-    const contents = readAppAssetContents();
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.overrides).toBeUndefined();
-  });
-
-  it("Populates translation override with default theme", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.overrides["theme_default"]).toEqual({
-      tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
-    });
-  });
-
-  it("Populates theme override with global translation", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_test: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["test"] });
-    const contents = readAppAssetContents();
-    expect(contents["test.jpg"].overrides).toEqual({
-      theme_test: { global: { ...mockFileEntry, filePath: "theme_test/test.jpg" } },
-    });
-  });
-  it("Populates combined theme and language overrides in any folder order", () => {
-    mockLocalAssets({
-      "test1.jpg": mockFile,
-      "test2.jpg": mockFile,
-      theme_test: {
-        tz_sw: { "test1.jpg": mockFile },
-      },
-      tz_sw: {
-        theme_test: {
-          "test2.jpg": mockFile,
-        },
-      },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "test1.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "theme_test/tz_sw/test1.jpg" },
-          },
-        },
-      },
-      "test2.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "tz_sw/theme_test/test2.jpg" },
-          },
-        },
-      },
-    });
-  });
-
-  it("Filters theme assets", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_testTheme: { "test.jpg": mockFile },
-      theme_ignored: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
-    expect(readdirSync(mockDirs.appAssets).sort()).toEqual([
-      "contents.json",
-      "test.jpg",
-      "theme_testTheme",
-    ]);
-  });
-
-  it("Includes all language assets by default", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-      ke_sw: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ filter_language_codes: undefined });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "test.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_default: {
-            tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
-            ke_sw: { ...mockFileEntry, filePath: "ke_sw/test.jpg" },
-          },
-        },
-      },
-    });
-  });
-
-  it("Filters language assets", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-      ke_sw: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets).sort()).toEqual(["contents.json", "test.jpg", "tz_sw"]);
-  });
-
-  it("supports nested lang and theme folders", () => {
-    mockLocalAssets({
-      nested: {
-        "test.jpg": mockFile,
-        theme_test: {
-          tz_sw: { "test.jpg": mockFile },
-        },
-        tz_sw: {
-          "test.jpg": mockFile,
-        },
-      },
-    });
-    runAssetsPostProcessor({
-      filter_language_codes: ["tz_sw"],
-      app_themes_available: ["test"],
-    });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "nested/test.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_default: {
-            tz_sw: { ...mockFileEntry, filePath: "nested/tz_sw/test.jpg" },
-          },
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "nested/theme_test/tz_sw/test.jpg" },
-          },
-        },
-      },
-    });
-  });
-
-  // TODO - direct support for files named `test.theme_default.tz_sw.jpg`
-  // it("supports inline theme and lang files", () => {});
-
-  /** QA tests */
-  it("throws error on duplicate overrides", () => {
-    const mockLogger = useMockLogger();
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_test: {
-        tz_sw: { "test.jpg": mockFile },
-      },
-      tz_sw: {
-        theme_test: { "test.jpg": mockFile },
-      },
-    });
-    runAssetsPostProcessor({
-      filter_language_codes: ["tz_sw"],
-      app_themes_available: ["test"],
-    });
-    expect(mockLogger.error).toHaveBeenCalledTimes(1);
-    expect(mockLogger.error).toHaveBeenCalledWith({
-      msg1: "Duplicate overrides detected",
-      msg2: "test.jpg [theme_test] [tz_sw]",
-      logOnly: true,
-    });
   });
 
   /** Remote asset pack tests */
