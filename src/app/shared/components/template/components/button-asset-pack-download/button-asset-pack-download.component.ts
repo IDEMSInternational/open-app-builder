@@ -25,17 +25,13 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
   }
 
   public async handleClick(event: Event) {
-    console.log("Asset pack download clicked");
     this.status.set("downloading");
-    const result = await this.downloadAssetPack();
-    this.status.set(result);
+
+    const success = await this.remoteAssetService.downloadAssetPackByName(this.params().assetPack);
+
+    this.status.set(success ? "success" : "error");
 
     // Allow for additional actions to be authored (will run after the download is complete)
     this.triggerActions("click");
-  }
-
-  private async downloadAssetPack() {
-    const result = await this.remoteAssetService.downloadAssetPackByName(this.params().assetPack);
-    return result ? "success" : "error";
   }
 }
