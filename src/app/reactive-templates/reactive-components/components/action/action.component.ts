@@ -31,6 +31,7 @@ export class ActionComponent
 
   public execute(): void {
     for (const action of this.actions.values()) {
+      // todo: pass parameters (which are any child set_variable rows?)
       action.execute();
     }
   }
