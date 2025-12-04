@@ -19,8 +19,7 @@ const parameters = () =>
 
 @Component({
   selector: "oab-action",
-  templateUrl: "./action.component.html",
-  styleUrls: ["./action.component.scss"],
+  template: "", // no template needed
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class ActionComponent
@@ -34,6 +33,7 @@ export class ActionComponent
   private readonly componentRefs: ComponentRef<any>[] = [];
 
   public execute(): void {
+    alert(`Executing action: ${this.name()}`);
     for (const action of this.actions.values()) {
       action.execute();
     }
@@ -41,6 +41,8 @@ export class ActionComponent
 
   public ngOnInit(): void {
     super.ngOnInit();
+    this.actionRegistry.register(this);
+    this.setExpression(this.name()); // An action's expression should be it's name
 
     for (const row of this.row().rows) {
       const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];

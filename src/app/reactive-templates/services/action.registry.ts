@@ -18,7 +18,6 @@ export class ActionRegistry {
       throw new Error("ActionRegistry.register: action.name() is empty");
     }
 
-    // Last write wins; warn if replacing a different instance
     const existing = this.actions.get(name);
     if (existing && existing !== action) {
       console.warn(`ActionRegistry.register: replacing existing action '${name}'`);
