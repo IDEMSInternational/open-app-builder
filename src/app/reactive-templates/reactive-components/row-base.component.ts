@@ -80,6 +80,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
+
+    // todo: if there is a query param that matches this row's name, use that to override the expression
+
     this._expression.set(row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())

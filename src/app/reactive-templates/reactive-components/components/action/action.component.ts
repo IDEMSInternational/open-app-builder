@@ -7,15 +7,12 @@ import {
   OnDestroy,
   OnInit,
 } from "@angular/core";
-import { defineParameters, Parameter } from "../../parameters";
+import { defineParameters } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ActionRegistry, IAction } from "src/app/reactive-templates/services/action.registry";
 import { REACTIVE_COMPONENT_MAP } from "..";
 
-const parameters = () =>
-  defineParameters({
-    index: new Parameter<string>("index", null),
-  });
+const parameters = () => defineParameters({});
 
 @Component({
   selector: "oab-action",
@@ -41,7 +38,6 @@ export class ActionComponent
 
   public ngOnInit(): void {
     super.ngOnInit();
-    this.actionRegistry.register(this);
     this.setExpression(this.name()); // An action's expression should be it's name
 
     for (const row of this.row().rows) {
@@ -63,6 +59,8 @@ export class ActionComponent
         }
       }
     }
+
+    this.actionRegistry.register(this); // todo: Maybe should't register if this is a nested action?
   }
 
   private isAction(instance: any): instance is IAction {
