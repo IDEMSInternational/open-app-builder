@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, effect, signal } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { RemoteAssetService } from "src/app/shared/services/remote-asset/remote-asset.service";
 
@@ -22,6 +22,12 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
 
   constructor(private remoteAssetService: RemoteAssetService) {
     super();
+    effect(
+      () => {
+        this.setValue(this.status());
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   public async handleClick(event: Event) {
