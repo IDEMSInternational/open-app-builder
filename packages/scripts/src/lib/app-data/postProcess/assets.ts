@@ -148,28 +148,37 @@ export class AssetsPostProcessor {
     // Process asset overrides to generate the standard app data structure (the core assets contents.json format)
     const { tracked: contentsData, untracked: untrackedData } = handleAssetOverrides(assetsHashmap);
 
-    // Check total asset size (only for core assets)
-    if (!assetPackName) {
-      checkTotalAssetSize({ tracked: contentsData, untracked: untrackedData });
-    }
-
     // Copy staging directory to target folder
     replicateDir(stagingDir, targetFolder);
     fs.removeSync(stagingDir);
 
-    // Always write standard contents files (contents.json and untracked-assets.json)
-    this.writeAssetsContentsFiles(targetFolder, contentsData, untrackedData);
+    // Always write standard contents files (contents.json)
+    this.writeAssetsContentsFile(targetFolder, contentsData);
 
-    // For remote assets, additionally write the asset pack manifest
+    // For remote assets, write the asset pack manifest
     if (assetPackName) {
-      const assetPackManifest = this.createAssetPackManifest(
-        contentsData,
-        untrackedData,
-        assetPackName
-      );
-      const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
-      fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
+      this.writeRemoteAssetsManifest(targetFolder, assetPackName, contentsData, untrackedData);
     }
+    // For core assets, check total asset size and write the untracked assets file
+    else {
+      checkTotalAssetSize({ tracked: contentsData, untracked: untrackedData });
+      this.writeUntrackedAssetsFile(targetFolder, untrackedData);
+    }
+  }
+
+  private writeRemoteAssetsManifest(
+    targetFolder: string,
+    assetPackName: string,
+    contentsData: IAssetEntryHashmap,
+    untrackedData: IAssetEntryHashmap
+  ) {
+    const assetPackManifest = this.createAssetPackManifest(
+      contentsData,
+      untrackedData,
+      assetPackName
+    );
+    const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
+    fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
   }
 
   /**
@@ -236,20 +245,24 @@ export class AssetsPostProcessor {
   }
 
   /**
-   * Write asset contents files to the target folder
+   * Write asset contents file to the target folder
    * @param targetFolder Target folder to write files to
    * @param assetEntries Tracked asset entries to write
-   * @param missingEntries Untracked asset entries (only written if entries exist)
    */
-  private writeAssetsContentsFiles(
-    targetFolder: string,
-    assetEntries: IAssetEntryHashmap,
-    missingEntries: IAssetEntryHashmap
-  ) {
+  private writeAssetsContentsFile(targetFolder: string, assetEntries: IAssetEntryHashmap) {
     if (fs.existsSync(targetFolder)) {
       const contentsTarget = path.resolve(targetFolder, "contents.json");
       fs.writeFileSync(contentsTarget, JSON.stringify(sortJsonKeys(assetEntries), null, 2));
+    }
+  }
 
+  /**
+   * Write untracked assets file to the target folder
+   * @param targetFolder Target folder to write files to
+   * @param missingEntries Untracked asset entries
+   */
+  private writeUntrackedAssetsFile(targetFolder: string, missingEntries: IAssetEntryHashmap) {
+    if (fs.existsSync(targetFolder)) {
       // Write untracked file if there are untracked entries
       const missingTarget = path.resolve(targetFolder, "untracked-assets.json");
       if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
