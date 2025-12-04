@@ -39,7 +39,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private onTemplateInitialised() {
     for (const row of this.row().rows) {
-      this.setChildVariable(row);
+      this.setChildExpression(row);
     }
   }
 
@@ -51,35 +51,20 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
       let sub = this.variableStore
         .watchMultiple(this.evaluationService.getDependencies(row.value, this.namespace()))
         .subscribe(() => {
-          this.setChildVariable(row);
+          this.setChildExpression(row);
         });
       this.childDependencySubscriptions.push(sub);
     }
   }
 
-  private setChildVariable(row: FlowTypes.TemplateRow) {
-    const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
-    const isStaticValue = dependencies && dependencies.length === 0;
-
-    if (isStaticValue) {
-      this.setChildExpression(row);
-    } else {
-      this.setChildValue(row);
-    }
-  }
-
+  // For nested variables we always replace the expression because they depend on parent variables
+  // So in this context they are dynamic but in the child context they are static.
   private setChildExpression(row: FlowTypes.TemplateRow) {
     const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
     if (this.rowRegistry.has(rowFullName)) {
-      this.rowRegistry.get(rowFullName)?.setExpression(row.value);
+      const value = this.evaluationService.evaluateExpression(row.value, this.namespace());
+      this.rowRegistry.get(rowFullName)?.setExpression(value);
     }
-  }
-
-  private setChildValue(row: FlowTypes.TemplateRow) {
-    this.variableStore.set(
-      this.namespaceService.getFullName(this.name(), row.name),
-      this.evaluationService.evaluateExpression(row.value, this.namespace())
-    );
   }
 
   private unsubscribeChildDependencies() {
