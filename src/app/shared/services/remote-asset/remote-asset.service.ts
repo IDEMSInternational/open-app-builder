@@ -28,6 +28,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   downloading: boolean = false;
   downloadProgress: number;
   manifest: FlowTypes.AssetPack;
+  private currentAssetPackName: string | null = null;
 
   private assetContentsSubscription: Subscription;
   private coreAssetContentsData = signal<any[]>([]);
@@ -175,27 +176,44 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
   }
 
+  /**
+   * Construct full path for remote storage, prepending asset pack name if processing an asset pack
+   * Keeping the asset pack name out of the relative path allows for referencing a file in authoring to be agnostic about its origin (e.g. core or remote)
+   * @param relativePath Relative path to the file
+   * @returns Full path including asset pack name if applicable
+   */
+  private getFullRemotePath(relativePath: string): string {
+    return this.currentAssetPackName
+      ? `${this.currentAssetPackName}/${relativePath}`
+      : relativePath;
+  }
+
   private async downloadAndIntegrateAssetPack(assetPackManifest: FlowTypes.AssetPack) {
-    const assetEntries = assetPackManifest.rows as IAssetEntry[];
+    try {
+      this.currentAssetPackName = assetPackManifest.flow_name;
+      const assetEntries = assetPackManifest.rows as IAssetEntry[];
 
-    // If running on native device, download assets and populate to filesystem, adding local
-    // filesystem path to asset entry in contents list for consumption by template asset service
-    if (Capacitor.isNativePlatform()) {
-      // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
-      for (const [index, assetEntry] of assetEntries.entries()) {
-        await this.handleAssetDownload(assetEntry, index, assetEntries.length);
+      // If running on native device, download assets and populate to filesystem, adding local
+      // filesystem path to asset entry in contents list for consumption by template asset service
+      if (Capacitor.isNativePlatform()) {
+        // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
+        for (const [index, assetEntry] of assetEntries.entries()) {
+          await this.handleAssetDownload(assetEntry, index, assetEntries.length);
+        }
       }
-    }
 
-    // On web, update contents list with asset's public URL for consumption by template asset service
-    // (files will be served remotely via provider CDN)
-    else {
-      for (const [index, assetEntry] of assetEntries.entries()) {
-        console.log(
-          `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
-        );
-        await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
+      // On web, update contents list with asset's public URL for consumption by template asset service
+      // (files will be served remotely via provider CDN)
+      else {
+        for (const [index, assetEntry] of assetEntries.entries()) {
+          console.log(
+            `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
+          );
+          await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
+        }
       }
+    } finally {
+      this.currentAssetPackName = null;
     }
   }
 
@@ -308,7 +326,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
     // Update the contents entry for the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
-      const topLevelAssetUrl = this.provider.getPublicUrl(assetEntry.id) || "";
+      const topLevelAssetUrl =
+        this.provider.getPublicUrl(this.getFullRemotePath(assetEntry.id)) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
     }
     const { overrides } = assetEntry;
@@ -316,7 +335,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       for (const [themeName, languageOverrides] of Object.entries(overrides)) {
         for (const [languageCode, overrideAssetEntry] of Object.entries(languageOverrides)) {
           const overrideProps = { themeName, languageCode };
-          const filepath = this.provider.getPublicUrl(overrideAssetEntry.filePath) || "";
+          const filepath =
+            this.provider.getPublicUrl(this.getFullRemotePath(overrideAssetEntry.filePath)) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
         }
       }
@@ -338,7 +358,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     try {
       // Use provider's direct download method
-      const blob = await this.provider.downloadFile(relativePath);
+      const blob = await this.provider.downloadFile(this.getFullRemotePath(relativePath));
 
       if (blob) {
         let targetPath = assetEntry.id;
@@ -481,7 +501,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     try {
       this.downloading = true;
-      const data = await this.provider.downloadFileFromPrivateBucket(filepath);
+      const data = await this.provider.downloadFileFromPrivateBucket(
+        this.getFullRemotePath(filepath)
+      );
       if (data) {
         console.log("blob:", data);
       }
