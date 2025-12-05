@@ -711,9 +711,7 @@
   plh-module-list-item {
     .container {
       border: none;
-      padding: 5px 16px 0 16px !important;
-      display: flex !important;
-      align-items: stretch !important;
+      padding: 6px 16px !important;
       box-shadow: none !important;
       min-height: 90px;
       background-color: var(--ion-color-primary-100);
@@ -727,7 +725,7 @@
         padding: 0 16px !important;
       }
       &[data-completed~="true"] {
-        border: none;
+        border: 1px solid var(--ion-color-gray-50);
       }
       &[data-variant~="default"] {
         .module-title {
