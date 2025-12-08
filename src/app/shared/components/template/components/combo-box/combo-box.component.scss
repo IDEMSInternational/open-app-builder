@@ -54,6 +54,8 @@ ion-select::part(placeholder) {
     border-radius: var(--ion-border-radius-standard, 8px);
     padding-left: var(--small-padding, 10px);
     padding-right: var(--small-padding, 10px);
+    --highlight-color-focused: none;
+    --highlight-color: none;
     &::part(icon) {
       color: var(--ion-color-gray-500);
     }
