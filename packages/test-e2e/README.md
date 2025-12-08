@@ -29,13 +29,15 @@ https://drive.google.com/drive/u/0/folders/1EpRmiR2zTpU17EndofUHFUyca85IDyLV
 **Open the Cypress UI:**
 
 ```sh
-yarn cy:open
+cd ./packages/test-e2e
+yarn start
 ```
 
 **Run all tests in headless mode:**
 
 ```sh
-yarn cy:run
+cd ./packages/test-e2e
+yarn run test
 ```
 
 > These scripts are defined in this package's `package.json`.

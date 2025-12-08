@@ -7,10 +7,12 @@ import { TextComponent } from "./text/text.component";
 import { TitleComponent } from "./title/title.component";
 import { ToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { QueryComponent } from "./query/query.component";
+import { LoopComponent } from "./loop/loop.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   button: ButtonComponent,
   dropdown: DropdownComponent,
+  loop: LoopComponent,
   set_variable: SetVariableComponent,
   template: NestedTemplateComponent,
   text: TextComponent,

@@ -47,15 +47,20 @@ Technical Tasks
 
 * Run end to end tests on pr
 
+Features
+
+* update component (data list update)
+* action component
+* navigation component
+
 Functionality not yet supported by reactive templates:
 
-* Loops
-* Data items
 * Display Groups
 * Global Variables
 * Template debug mode
 * Modals and modal navigation e.g. nav stack
 * Clearing variable store when loading a new page?
+* Translations
 
 Components without reactive equivalents:
 
