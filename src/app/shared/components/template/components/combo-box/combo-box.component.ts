@@ -9,16 +9,32 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** List of answer options to display. */
   answer_list: coerce.objectArray<IAnswerListItem>([]),
+  /** When true, the combo box is disabled. */
   disabled: coerce.boolean(),
+  /** Text to display when the component is disabled. */
   disabled_text: coerce.string(""),
+  /** Title to display in the modal header. */
   modal_title: coerce.string(""),
+  /** Text to display when no option is selected. */
   placeholder: coerce.string(""),
+  /** When true, prioritizes showing the placeholder over the selected value. */
   prioritise_placeholder: coerce.boolean(),
+  /** Custom style class to apply. */
   style: coerce.string(""),
+  /** The display variant of the combo box. Default 'modal'. */
   variant: coerce.allowedValues(["modal", "dropdown"], "modal"),
+  /** The property key to use for the option value. Default 'name'. */
   options_key: coerce.string("name"),
+  /** The property key to use for the option display text. Default 'text'. */
   options_value: coerce.string("text"),
+  /** When true, allows users to enter a custom answer. Modal variant only. */
+  input_allowed: coerce.boolean(),
+  /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
+  input_position: coerce.string("bottom"),
+  /** Placeholder text for the answer input field. Modal variant only. */
+  answer_placeholder: coerce.string(""),
 }));
 
 @Component({
