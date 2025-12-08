@@ -72,15 +72,21 @@ const coerceMethods = {
    * Parse a string to an array of objects
    * Expects string in the format:
    * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'
+   * Also accepts an existing array of objects or a hashmap of objects (which will be converted to an array)
    * @param fallback fallback array of objects if parsing fails
    * @returns array of objects with specified type
    */
   objectArray: <T extends Record<string, any>>(fallback: T[]) =>
     z
-      .union([z.array(z.record(z.string(), z.any())), z.string()])
+      .union([z.array(z.any()), z.record(z.string(), z.any()), z.string()])
       .transform((v): T[] => {
         // If already an array of objects, return as-is
         if (Array.isArray(v)) return v as T[];
+
+        // If object (hashmap), convert to array
+        if (v && typeof v === "object") {
+          return Object.values(v) as T[];
+        }
 
         // Parse string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
         if (typeof v === "string") {

@@ -143,6 +143,16 @@ describe("parameter_list utils - coerce", () => {
       preParsed
     );
 
+    // hashmap object
+    const hashmap = {
+      id1: { key1: "h1", key2: "h2" },
+      id2: { key1: "h3", key2: "h4" },
+    };
+    expect(testSchema.parse({ object_array_param: hashmap }).object_array_param).toEqual([
+      { key1: "h1", key2: "h2" },
+      { key1: "h3", key2: "h4" },
+    ]);
+
     // fallback when undefined
     expect(testSchema.parse({}).object_array_param).toEqual(fallback);
 
