@@ -41,6 +41,7 @@ import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplNumberComponent } from "./number-selector/number-selector.component";
+import { TmplTabsComponent } from "./tabs/tabs.component";
 import { TmplOdkFormComponent } from "./odk-form/odk-form.component";
 import { TmplPdfComponent } from "./pdf/pdf.component";
 import { TmplProgressPathComponent } from "./progress-path/progress-path.component";
@@ -126,6 +127,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplSimpleCheckboxComponent,
   TmplSliderComponent,
   TmplSubtitleComponent,
+  TmplTabsComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
   TmplTextAreaComponent,
@@ -204,6 +206,7 @@ const COMMON_COMPONENT_MAPPING = {
   square_button: SquareIconButtonComponent,
   subtitle: TmplSubtitleComponent,
   table: TmplTableComponent,
+  tabs: TmplTabsComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
   text_area: TmplTextAreaComponent,
