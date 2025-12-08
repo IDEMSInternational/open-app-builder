@@ -220,5 +220,8 @@ ion-popover ion-select-popover {
       --color-hover: var(--ion-color-primary-800);
       font-size: var(--combo-box-font-size-standard, 16px);
     }
+    ion-item::part(native)::after {
+      background: inherit;
+    }
   }
 }
