@@ -34,6 +34,6 @@ ion-item {
 }
 
 ion-item.selected {
-  --background-color: var(--combo-box-background-with-value, var(--ion-color-primary-700));
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-700));
   --color: var(--combo-box-selected-value-text, var(--ion-color-primary-50));
 }
