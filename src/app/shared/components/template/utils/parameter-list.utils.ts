@@ -30,16 +30,17 @@ const coerceMethods = {
 
   /**
    * Convert to boolean. Treats boolean and string representation of "true" as true,
-   * otherwise will return false
+   * otherwise will return false or the specified fallback value.
+   * @param fallback Optional fallback value to use if invalid or undefined. Defaults to false.
    */
-  boolean: () =>
+  boolean: (fallback: boolean = false) =>
     z
       .union([z.boolean(), z.string()])
       .transform((v) => {
         if (typeof v === "boolean") return v;
         return v.toLowerCase().trim() === "true";
       })
-      .catch(false),
+      .catch(fallback),
 
   /*** Convert to value from allowed list, with fallback in case not in list  */
   allowedValues: <const T extends readonly string[]>(values: T, fallback: T[number]) =>

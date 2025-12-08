@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { MatTabsModule } from "@angular/material/tabs";
 import { NouisliderModule } from "ng2-nouislider";
 import { RouterModule } from "@angular/router";
 import { SwiperModule } from "swiper/angular";
@@ -29,6 +30,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     FormsModule,
     IonicModule,
     LottieComponent,
+    MatTabsModule,
     NgxExtendedPdfViewerModule,
     NouisliderModule,
     ReactiveFormsModule,
