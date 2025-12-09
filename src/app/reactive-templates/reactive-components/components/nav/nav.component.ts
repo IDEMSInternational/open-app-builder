@@ -18,7 +18,7 @@ export class NavComponent
   private router = inject(Router);
 
   public execute(): void {
-    const templateName = this.value();
+    const templateName = this.row().value;
 
     const rows = this.row().rows;
     const queryParams: any = {};

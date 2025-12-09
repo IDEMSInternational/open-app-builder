@@ -4,7 +4,6 @@ import { TemplateActionRegistry } from "src/app/shared/components/template/servi
 import { CoreActionsService } from "./core-actions.service";
 import { EvaluationService } from "./evaluation.service";
 import { RowBaseComponent } from "../reactive-components/row-base.component";
-import { Action } from "rxjs/internal/scheduler/Action";
 import { ActionHandler } from "./action.handler";
 
 @Injectable({

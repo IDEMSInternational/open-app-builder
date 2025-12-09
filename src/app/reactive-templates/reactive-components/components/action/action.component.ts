@@ -49,7 +49,6 @@ export class ActionComponent
         });
         componentRef.setInput("row", row);
         componentRef.setInput("namespace", this.namespace());
-        componentRef.changeDetectorRef.detectChanges();
 
         this.componentRefs.push(componentRef);
 
