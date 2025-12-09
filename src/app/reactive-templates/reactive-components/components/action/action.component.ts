@@ -9,7 +9,11 @@ import {
 } from "@angular/core";
 import { defineParameters } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { ActionRegistry, IAction } from "src/app/reactive-templates/services/action.registry";
+import {
+  ActionRegistry,
+  IAction,
+  isAction,
+} from "src/app/reactive-templates/services/action.registry";
 import { REACTIVE_COMPONENT_MAP } from "..";
 
 const parameters = () => defineParameters({});
@@ -53,7 +57,7 @@ export class ActionComponent
         this.componentRefs.push(componentRef);
 
         const instance = componentRef.instance;
-        if (this.isAction(instance)) {
+        if (isAction(instance)) {
           this.actions.set(instance.name(), instance);
         }
       }

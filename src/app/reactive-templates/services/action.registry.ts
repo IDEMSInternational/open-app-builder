@@ -5,6 +5,10 @@ export interface IAction {
   execute(): void;
 }
 
+export function isAction(obj: any): obj is IAction {
+  return obj && typeof obj.name === "function" && typeof obj.execute === "function";
+}
+
 @Injectable({
   providedIn: "root",
 })
