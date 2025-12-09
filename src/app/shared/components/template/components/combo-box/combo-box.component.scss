@@ -48,7 +48,6 @@ ion-select::part(placeholder) {
   display: flex;
   justify-content: center;
   ion-select {
-    background: white;
     font-size: var(--combo-box-font-size-standard, 18px);
     border: 1px solid var(--ion-color-gray-400);
     border-radius: var(--ion-border-radius-standard, 8px);
