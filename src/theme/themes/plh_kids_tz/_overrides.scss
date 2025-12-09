@@ -297,11 +297,25 @@
       }
     }
   }
+
   // Task Progress Bar
   plh-task-progress-bar {
     .progress-bar-wrapper {
       .progress-bar {
         height: 12px !important;
+      }
+    }
+  }
+
+  // Combo-box
+  plh-combo-box {
+    button.open-combobox {
+      border-radius: var(--ion-border-radius-small);
+    }
+    .combo-box-container.dropdown {
+      ion-select {
+        padding-left: 16px !important;
+        font-size: var(--combo-box-font-size-standard);
       }
     }
   }
