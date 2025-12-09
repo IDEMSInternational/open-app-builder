@@ -12,7 +12,7 @@
 .modal-title {
   font-size: 20px;
   text-align: center;
-  color: var(--ion-color-primary);
+  color: var(--ion-color-primary-800);
   margin-top: 8px;
   margin-bottom: 8px;
   position: relative;
@@ -26,14 +26,14 @@ ion-radio {
 }
 
 ion-list {
-  background-color: var(--background);
+  background-color: white;
 }
 
 ion-item {
-  --background: var(--ion-background-color, #fff);
+  --background: white;
 }
 
 ion-item.selected {
-  --background: var(--combo-box-background-with-value, var(--ion-color-primary-200));
-  --color: var(--combo-box-selected-value-text, var(--ion-color-primary));
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-700));
+  --color: var(--combo-box-selected-value-text, var(--ion-color-primary-50));
 }
