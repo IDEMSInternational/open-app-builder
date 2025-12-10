@@ -21,6 +21,7 @@ export type FirebaseAuthUser = User;
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
   private isAuthenticating = false;
+  private authStateReadyPromise: Promise<void> | null = null;
 
   /** Sign in methods to call depending on provider */
   private providerMapping: Record<ISignInProvider, () => Promise<SignInResult>> = {
@@ -34,33 +35,43 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-    // Add listener to ensure previously signed in user is updated
-    // when auth layer settles (native)
+
+    // Create a promise that resolves when the first authStateChange event fires
+    // This indicates Firebase has finished initializing and we have the definitive auth state
+    let resolveAuthReady: (() => void) | null = null;
+    this.authStateReadyPromise = new Promise<void>((resolve) => {
+      resolveAuthReady = resolve;
+    });
+
+    // Add listener to ensure previously signed in user is updated when auth layer settles (native)
     FirebaseAuthentication.addListener("authStateChange", async (e) => {
+      // Resolve the promise on first event (auth state is now ready)
+      if (resolveAuthReady) {
+        resolveAuthReady();
+        resolveAuthReady = null;
+      }
       await this.handleAutomatedLogin();
     });
+
     // Attempt to immediately load any previously signed in user
     // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
   }
 
-  private waitForAuthInit(timeoutMs = 2000): Promise<void> {
-    return new Promise((resolve) => {
-      const interval = setInterval(() => {
-        if (this.authUser()) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 50);
+  private async waitForAuthStateReady(timeoutMs = 2000): Promise<void> {
+    if (!this.authStateReadyPromise) return;
 
+    // Race between the auth state event and a timeout to prevent hanging forever
+    const timeoutPromise = new Promise<void>((resolve) => {
       setTimeout(() => {
-        clearInterval(interval);
-        if (!this.authUser()) {
-          console.warn("[Firebase Auth] Timed out waiting for auth user");
-        }
+        console.warn(
+          "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway"
+        );
         resolve();
       }, timeoutMs);
     });
+
+    await Promise.race([this.authStateReadyPromise, timeoutPromise]);
   }
 
   public override async signIn(providerId: ISignInProvider) {
@@ -162,37 +173,34 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    */
   private async handleAutomatedLogin() {
     let { user } = await FirebaseAuthentication.getCurrentUser();
+    const hasStoredProfile = !!localStorage.getItem(AUTH_METADATA_FIELD);
+    const currentAuthUser = this.authUser();
 
-    // If we have a stored profile (indicating a user was logged in) but no user is set yet,
-    // wait for a short period to allow auth state to settle/listener to fire.
+    // If we have a stored profile but no user yet, wait for authStateChange event to fire.
     // This handles race condition where getCurrentUser() returns null initially but authStateChange fires shortly after
-    if (!user && localStorage.getItem(AUTH_METADATA_FIELD) && !this.authUser()) {
-      console.log("[Firebase Auth] Stored profile found, waiting for auth state...");
-      await this.waitForAuthInit();
+    if (!user && hasStoredProfile && !currentAuthUser) {
+      console.log("[Firebase Auth] Stored profile found, waiting for auth state to initialize...");
+      await this.waitForAuthStateReady();
       // If auth user is now set (by listener), we can return early
-      if (this.authUser()) {
-        return;
-      }
-      // Re-fetch user
-      const result = await FirebaseAuthentication.getCurrentUser();
-      user = result.user;
+      if (this.authUser()) return;
+      // Re-fetch user after auth state is ready
+      ({ user } = await FirebaseAuthentication.getCurrentUser());
     }
 
-    // Avoid setting the same author if native layer has already loaded user when called
-    if (user?.uid === this.authUser()?.uid) {
-      return;
-    }
+    // Avoid setting the same user if already loaded
+    if (user?.uid === currentAuthUser?.uid) return;
+
+    if (!user) return;
+
     console.log("[Firebase Auth] user", user);
-    if (user) {
-      const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
-      if (storedProfile) {
-        this.setAuthUser(user, JSON.parse(storedProfile));
-        console.log("[Firebase Auth] Automated login successful with stored profile");
-      } else {
-        // trigger automated login depending on provider
-        const providerId = user.providerData?.[0]?.providerId;
-        await this.signIn(providerId as any);
-      }
+    const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
+    if (storedProfile) {
+      this.setAuthUser(user, JSON.parse(storedProfile));
+      console.log("[Firebase Auth] Automated login successful with stored profile");
+    } else {
+      // Trigger automated login depending on provider
+      const providerId = user.providerData?.[0]?.providerId;
+      await this.signIn(providerId as any);
     }
   }
 
