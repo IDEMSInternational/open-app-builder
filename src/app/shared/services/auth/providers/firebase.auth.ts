@@ -207,9 +207,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     } else {
       // Trigger automated login depending on provider
       const providerId = user.providerData?.[0]?.providerId;
-      if (providerId) {
-        await this.signIn(providerId as ISignInProvider);
-      }
+      await this.signIn(providerId as any);
     }
   }
 
@@ -221,9 +219,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const { user } = await FirebaseAuthentication.getCurrentUser();
     if (user) {
       const providerId = user.providerData?.[0]?.providerId;
-      if (providerId) {
-        await this.signIn(providerId as ISignInProvider);
-      }
+      await this.signIn(providerId as any);
     }
   }
 }
