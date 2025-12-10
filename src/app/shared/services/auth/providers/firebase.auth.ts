@@ -62,8 +62,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!this.authStateReadyPromise) return;
 
     // Race between the auth state event and a timeout to prevent hanging forever
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const timeoutPromise = new Promise<void>((resolve) => {
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         console.warn(
           "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway"
         );
@@ -71,7 +72,13 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       }, timeoutMs);
     });
 
-    await Promise.race([this.authStateReadyPromise, timeoutPromise]);
+    try {
+      await Promise.race([this.authStateReadyPromise, timeoutPromise]);
+    } finally {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    }
   }
 
   public override async signIn(providerId: ISignInProvider) {
@@ -200,7 +207,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     } else {
       // Trigger automated login depending on provider
       const providerId = user.providerData?.[0]?.providerId;
-      await this.signIn(providerId as any);
+      if (providerId) {
+        await this.signIn(providerId as ISignInProvider);
+      }
     }
   }
 
@@ -212,7 +221,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const { user } = await FirebaseAuthentication.getCurrentUser();
     if (user) {
       const providerId = user.providerData?.[0]?.providerId;
-      await this.signIn(providerId as any);
+      if (providerId) {
+        await this.signIn(providerId as ISignInProvider);
+      }
     }
   }
 }
