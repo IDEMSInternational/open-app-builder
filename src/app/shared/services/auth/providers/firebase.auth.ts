@@ -42,6 +42,33 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     // Attempt to immediately load any previously signed in user
     // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
+
+    // If we have a stored profile (indicating a user was logged in) but no user is set yet,
+    // wait for a short period to allow auth state to settle/listener to fire.
+    // This handles race condition where getCurrentUser() returns null initially but authStateChange fires shortly after
+    if (!this.authUser() && localStorage.getItem(AUTH_METADATA_FIELD)) {
+      console.log("[Firebase Auth] Stored profile found, waiting for auth state...");
+      await this.waitForAuthInit();
+    }
+  }
+
+  private waitForAuthInit(timeoutMs = 2000): Promise<void> {
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (this.authUser()) {
+          clearInterval(interval);
+          resolve();
+        }
+      }, 50);
+
+      setTimeout(() => {
+        clearInterval(interval);
+        if (!this.authUser()) {
+          console.warn("[Firebase Auth] Timed out waiting for auth user");
+        }
+        resolve();
+      }, timeoutMs);
+    });
   }
 
   public override async signIn(providerId: ISignInProvider) {
@@ -156,7 +183,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       } else {
         // trigger automated login depending on provider
         const providerId = user.providerData?.[0]?.providerId;
-        this.signIn(providerId as any);
+        await this.signIn(providerId as any);
       }
     }
   }
