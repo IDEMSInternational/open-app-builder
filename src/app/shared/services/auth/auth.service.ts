@@ -72,6 +72,13 @@ export class AuthService extends AsyncServiceBase {
   private async initialise() {
     await this.provider.initialise(this.injector);
     this.registerTemplateActionHandlers();
+
+    // Explicitly set storage entry on init to ensure available for initial render
+    const authUser = this.provider.authUser();
+    if (authUser) {
+      this.addStorageEntry(authUser);
+    }
+
     if (this.config.enforceLoginTemplate) {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
       this.enforceLogin(this.config.enforceLoginTemplate);
