@@ -42,14 +42,6 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     // Attempt to immediately load any previously signed in user
     // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
-
-    // If we have a stored profile (indicating a user was logged in) but no user is set yet,
-    // wait for a short period to allow auth state to settle/listener to fire.
-    // This handles race condition where getCurrentUser() returns null initially but authStateChange fires shortly after
-    if (!this.authUser() && localStorage.getItem(AUTH_METADATA_FIELD)) {
-      console.log("[Firebase Auth] Stored profile found, waiting for auth state...");
-      await this.waitForAuthInit();
-    }
   }
 
   private waitForAuthInit(timeoutMs = 2000): Promise<void> {
@@ -169,7 +161,23 @@ export class FirebaseAuthProvider extends AuthProviderBase {
    * As such use localStorage to persist and retrieve openID profile information
    */
   private async handleAutomatedLogin() {
-    const { user } = await FirebaseAuthentication.getCurrentUser();
+    let { user } = await FirebaseAuthentication.getCurrentUser();
+
+    // If we have a stored profile (indicating a user was logged in) but no user is set yet,
+    // wait for a short period to allow auth state to settle/listener to fire.
+    // This handles race condition where getCurrentUser() returns null initially but authStateChange fires shortly after
+    if (!user && localStorage.getItem(AUTH_METADATA_FIELD) && !this.authUser()) {
+      console.log("[Firebase Auth] Stored profile found, waiting for auth state...");
+      await this.waitForAuthInit();
+      // If auth user is now set (by listener), we can return early
+      if (this.authUser()) {
+        return;
+      }
+      // Re-fetch user
+      const result = await FirebaseAuthentication.getCurrentUser();
+      user = result.user;
+    }
+
     // Avoid setting the same author if native layer has already loaded user when called
     if (user?.uid === this.authUser()?.uid) {
       return;
