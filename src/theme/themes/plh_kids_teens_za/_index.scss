@@ -22,21 +22,11 @@
       font-letter-spacing: -0.2px,
       font-letter-spacing-large: -0.5px,
 
-      font-size-text-tiny: 14px,
-      font-size-text-small: 16px,
       font-size-text-mid-size: 18px,
       font-size-text-medium: 20px,
       font-size-text-large: 24px,
-      font-size-text-title: 28px,
-      font-size-text-extra-large: 32px,
 
       paragraph-spacing: 12px,
-
-      line-height-text-tiny: 18px,
-      line-height-text-small: 24px,
-      line-height-text-medium: 28px,
-      line-height-text-large: 32px,
-      line-height-text-extra-large: 40px,
 
       icon-size-small: 16px,
       icon-size-medium: 24px,
@@ -54,10 +44,10 @@
       buttons-full-width: 100%,
       buttons-full-height: 100%,
 
+      title-text-color: var(--ion-color-primary-shade),
+      audio-control-background: var(--ion-color-secondary-600),
+      accordion-background-color: var(--ion-color-primary-600),
       // BORDERS
-      ion-border-radius-small: 8px,
-      ion-border-radius-standard: 12px,
-      ion-border-radius-secondary: 20px,
       ion-border-radius-rounded: 50px,
 
       border-color-default: var(--ion-color-gray-200),

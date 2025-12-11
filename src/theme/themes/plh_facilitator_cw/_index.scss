@@ -6,10 +6,10 @@
 @mixin theme-plh_facilitator_cw {
   @include utils.theme(
     $theme-name: "plh_facilitator_cw",
-    $color-primary: hsl(23 100% 12%),
-    //#3d1700
-    $color-secondary: hsl(189 100% 34.9%),
-    // #0097b2
+    $color-primary: hsl(23, 100%, 12%),
+    //#3D1700,
+    $color-secondary: hsl(189, 100%, 35%),
+    //#B14674,
     $page-background: white,
     $variable-overrides: (
       ion-font-family: "Poppins",
@@ -17,26 +17,16 @@
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
 
-      font-size-text-tiny: 14px,
-      font-size-text-small: 16px,
       font-size-text-mid-size: 18px,
       font-size-text-medium: 20px,
       font-size-text-large: 24px,
-      font-size-text-title: 28px,
-      font-size-text-extra-large: 32px,
       paragraph-spacing: 12px,
 
-      line-height-text-tiny: 18px,
-      line-height-text-small: 24px,
-      line-height-text-medium: 28px,
-      line-height-text-large: 32px,
-      line-height-text-extra-large: 40px,
-
-      ion-border-radius-small: 8px,
-      ion-border-radius-standard: 12px,
-      ion-border-radius-secondary: 20px,
       ion-border-radius-rounded: 50px,
 
+      title-text-color: var(--ion-color-primary-shade),
+      audio-control-background: var(--ion-color-secondary-600),
+      accordion-background-color: var(--ion-color-primary-600),
       // BORDERS
       border-color-default: var(--ion-color-gray-200),
       border-width-default: 1px,
