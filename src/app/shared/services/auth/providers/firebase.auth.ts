@@ -66,7 +66,8 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const timeoutPromise = new Promise<void>((resolve) => {
       timeoutId = setTimeout(() => {
         console.warn(
-          "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway"
+          "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway.",
+          "This may indicate a slow network or Firebase initialization issue."
         );
         resolve();
       }, timeoutMs);
@@ -119,6 +120,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await FirebaseAuthentication.signOut();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
+    this.authStateReadyPromise = null;
     return this.authUser();
   }
 
@@ -176,9 +178,10 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   /**
    * When a user signs in for the first time a full profile is retrieved which includes openID profile data.
    * However, when automated sign-in happens on app reload, only firebase-specific profile information is available.
-   * As such use localStorage to persist and retrieve openID profile information
+   * As such use localStorage to persist and retrieve openID profile information.
+   * @returns The authenticated user if login was successful, null otherwise
    */
-  private async handleAutomatedLogin() {
+  private async handleAutomatedLogin(): Promise<IAuthUser | null> {
     let { user } = await FirebaseAuthentication.getCurrentUser();
     const hasStoredProfile = !!localStorage.getItem(AUTH_METADATA_FIELD);
     const currentAuthUser = this.authUser();
@@ -188,16 +191,17 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!user && hasStoredProfile && !currentAuthUser) {
       console.log("[Firebase Auth] Stored profile found, waiting for auth state to initialize...");
       await this.waitForAuthStateReady();
-      // If auth user is now set (by listener), we can return early
-      if (this.authUser()) return;
+      // If auth user is now set (by listener), return early
+      const authUserAfterWait = this.authUser();
+      if (authUserAfterWait) return authUserAfterWait;
       // Re-fetch user after auth state is ready
       ({ user } = await FirebaseAuthentication.getCurrentUser());
     }
 
     // Avoid setting the same user if already loaded
-    if (user?.uid === currentAuthUser?.uid) return;
+    if (user?.uid === currentAuthUser?.uid) return currentAuthUser;
 
-    if (!user) return;
+    if (!user) return null;
 
     console.log("[Firebase Auth] user", user);
     const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
@@ -209,6 +213,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       const providerId = user.providerData?.[0]?.providerId;
       await this.signIn(providerId as any);
     }
+    return this.authUser();
   }
 
   /**
