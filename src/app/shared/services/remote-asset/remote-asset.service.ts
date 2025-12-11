@@ -113,24 +113,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           download: async () => {
             if (this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
-              if (assetPackName) {
-                try {
-                  await this.getAssetPackManifest(assetPackName);
-                  await this.downloadAndIntegrateAssetPack(this.manifest);
-                } catch (e) {
-                  console.error(e);
-                }
-              } else {
-                console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
-                // TODO: Implement default behaviour of generating a manifest of files to download in case of no named asset pack
-                // (e.g. look at what files are available locally vs required in accordance with current app config)
-                // const assetPackManifest = this.generateManifest()
-                // await this.downloadAndIntegrateAssetPack(assetPackManifest)
-              }
-            } else
+              await this.downloadAssetPackByName(assetPackName);
+            } else {
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
               );
+            }
           },
           reset: async () => {
             if (this.remoteAssetsEnabled) {
@@ -172,6 +160,22 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
+  public async downloadAssetPackByName(assetPackName: string) {
+    if (assetPackName) {
+      try {
+        await this.getAssetPackManifest(assetPackName);
+        await this.downloadAndIntegrateAssetPack(this.manifest);
+        return true;
+      } catch (e) {
+        console.error(e);
+        return false;
+      }
+    } else {
+      console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
+      return false;
+    }
+  }
+
   /**
    * Construct full path for remote storage, prepending asset pack name if processing an asset pack
    * Keeping the asset pack name out of the relative path allows for referencing a file in authoring to be agnostic about its origin (e.g. core or remote)
