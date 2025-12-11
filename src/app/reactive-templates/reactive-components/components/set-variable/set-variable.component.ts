@@ -9,7 +9,8 @@ import { IAction } from "src/app/reactive-templates/services/action.registry";
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
 export class SetVariableComponent extends RowBaseComponent<null> implements IAction {
-  execute(): void {
+  async execute(): Promise<void> {
     this.setExpression(this.row().value);
+    return Promise.resolve();
   }
 }

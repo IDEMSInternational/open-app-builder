@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 export interface IAction {
   name(): string; // name: Signal<string>;
-  execute(): void;
+  execute(): Promise<void>;
 }
 
 export function isAction(obj: any): obj is IAction {
@@ -33,7 +33,7 @@ export class ActionRegistry {
   get(name: string): IAction {
     const action = this.actions.get(name);
     if (!action) {
-      throw new Error(`RowRegistry.get: no action registered with name '${name}'`);
+      throw new Error(`ActionRegistry.get: no action registered with name '${name}'`);
     }
     return action;
   }

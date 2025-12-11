@@ -1,4 +1,4 @@
-describe("button component", () => {
+describe("action component", () => {
   beforeEach(() => {
     cy.visit("/template/test_action");
   });

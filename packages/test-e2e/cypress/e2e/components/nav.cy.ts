@@ -1,4 +1,4 @@
-describe("button component", () => {
+describe("nav component", () => {
   beforeEach(() => {
     cy.visit("/template/test_nav");
   });

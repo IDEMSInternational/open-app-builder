@@ -17,10 +17,10 @@ export class NavComponent
 {
   private router = inject(Router);
 
-  public execute(): void {
+  public async execute(): Promise<void> {
     const templateName = this.row().value;
 
-    const rows = this.row().rows;
+    const rows = this.row().rows ?? [];
     const queryParams: any = {};
 
     for (const row of rows) {
@@ -30,6 +30,6 @@ export class NavComponent
       );
     }
 
-    this.router.navigate([`/template/${templateName}`], { queryParams });
+    await this.router.navigate([`/template/${templateName}`], { queryParams });
   }
 }

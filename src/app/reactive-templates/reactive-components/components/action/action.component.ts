@@ -33,18 +33,18 @@ export class ActionComponent
   private readonly actions = new Map<string, IAction>();
   private readonly componentRefs: ComponentRef<any>[] = [];
 
-  public execute(): void {
+  public async execute(): Promise<void> {
     for (const action of this.actions.values()) {
       // todo: pass parameters (which are any child set_variable rows?)
-      action.execute();
+      await action.execute();
     }
   }
 
   public ngOnInit(): void {
     super.ngOnInit();
-    this.setExpression(this.name()); // An action's expression should be it's name
+    this.setExpression(this.name()); // An action's expression should be its name
 
-    for (const row of this.row().rows) {
+    for (const row of this.row().rows ?? []) {
       const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];
 
       if (componentType) {
@@ -63,11 +63,7 @@ export class ActionComponent
       }
     }
 
-    this.actionRegistry.register(this); // todo: Maybe should't register if this is a nested action?
-  }
-
-  private isAction(instance: any): instance is IAction {
-    return typeof instance.execute === "function";
+    this.actionRegistry.register(this); // todo: Maybe shouldn't register if this is a nested action?
   }
 
   public ngOnDestroy(): void {
