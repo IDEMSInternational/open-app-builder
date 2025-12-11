@@ -179,7 +179,7 @@
         padding-right: 24px;
         .controls {
           ion-button.btn-play {
-            --background: var(--ion-color-secondary-600) !important;
+            --background: var(--ion-color-primary-variant-600) !important;
             --border-radius: var(--ion-border-radius-rounded) !important;
             --box-shadow: none !important;
             height: 52px !important;
@@ -193,7 +193,7 @@
           ion-range {
             width: 100% !important;
             --knob-size: 20px !important;
-            --knob-background: var(--ion-color-secondary-600) !important;
+            --knob-background: var(--ion-color-primary-variant-600) !important;
           }
           .time .time-value {
             font-weight: var(--font-weight-medium) !important;
@@ -222,7 +222,7 @@
           .forward {
             ion-icon {
               font-size: var(--icon-size-extra-large) !important;
-              color: var(--ion-color-secondary-600) !important;
+              color: var(--ion-color-primary-variant-600) !important;
               border-radius: 2px !important;
             }
           }
@@ -235,7 +235,7 @@
             ion-icon {
               position: absolute !important;
               font-size: var(--icon-size-largest) !important;
-              color: var(--ion-color-secondary-600) !important;
+              color: var(--ion-color-primary-variant-600) !important;
             }
           }
         }
@@ -382,7 +382,7 @@
       font-size: var(--font-size-text-large) !important;
       font-weight: var(--font-weight-medium) !important;
       background-color: #e7f2fd;
-      border-bottom: 1px solid var(--color-secondary-blue-80);
+      border-bottom: 1px solid var(--ion-color-primary-variant-200);
       h1 {
         padding: 18px;
         border: none;
@@ -439,7 +439,7 @@
       padding: 0;
       border-radius: 12px !important;
       .text {
-        border: 1px solid var(--color-accent-yellow-80);
+        border: 1px solid var(--ion-color-secondary-200);
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
 
@@ -465,7 +465,7 @@
         border-top-right-radius: 12px;
         border-bottom-right-radius: 12px;
 
-        background-color: var(--color-accent-yellow-40);
+        background-color: var(--ion-color-secondary-600);
         color: var(--color-surface-white);
         font-size: var(--font-size-text-small) !important;
         font-weight: var(--font-weight-bold);
@@ -477,7 +477,7 @@
         max-width: 32px !important;
       }
       &[data-toggled="true"] {
-        background-color: var(--color-accent-yellow-95) !important;
+        background-color: var(--ion-color-secondary-50) !important;
       }
     }
     .box-wrapper[data-language-direction~="rtl"] {
@@ -506,12 +506,12 @@
           box-shadow: none;
 
           border-radius: var(--ion-border-radius-small);
-          border: 1px solid var(--color-secondary-blue-60);
+          border: 1px solid var(--ion-color-primary-variant-400);
           padding: 24px;
           margin-bottom: 10px;
         }
         .checked {
-          border: 2px solid var(--color-secondary-blue-60);
+          border: 2px solid var(--ion-color-primary-variant-400);
           // background: #f6fafe !important;
         }
       }
@@ -532,7 +532,7 @@
       }
     }
     .standard-label {
-      background-color: var(--color-accent-orange-90);
+      background-color: var(--ion-color-secondary-100);
       border-radius: var(--ion-border-radius-small);
       max-width: unset;
       box-shadow: none;
@@ -542,8 +542,8 @@
       margin: 12px !important;
     }
     .checked {
-      background: var(--color-accent-orange-80);
-      border: 2px solid #ff6f3a;
+      background: var(--ion-color-secondary-200);
+      border: 2px solid var(--ion-color-secondary-variant-100);
       transition: 0.3s linear;
     }
     img {
@@ -561,12 +561,12 @@
     &[data-variant~="box_primary"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;
-      border-inline-start: 6px solid var(--color-accent-yellow-60);
+      border-inline-start: 6px solid var(--ion-color-secondary-400);
     }
     &[data-variant~="box_secondary"] {
       --background-color: var(--ion-color-gray-100) !important;
       border: none;
-      border-inline-start: 6px solid var(--ion-color-secondary-600);
+      border-inline-start: 6px solid var(--ion-color-primary-variant-600);
     }
     &[data-variant~="box_gray"] {
       --background-color: var(--ion-color-gray-100) !important;
@@ -585,23 +585,24 @@
     .module-header {
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
-      background-color: #9ecbf5;
+      background-color: var(--ion-color-primary-200);
+      margin-bottom: 20px;
     }
     .image {
       .module-illustration {
-        height: 380px;
+        height: 450px;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 320px;
+        background-size: 400px;
 
         display: flex;
         justify-content: center;
         align-items: center;
       }
       img.module-image {
-        max-width: 190px;
-        min-width: 190px;
-        margin-top: -30px;
+        max-width: 220px;
+        min-width: 220px;
+        margin-top: -35px;
         border-radius: 50%;
       }
     }
@@ -692,24 +693,18 @@
       box-shadow: none !important;
     }
     &[data-variant~="module"] {
-      background: var(--color-secondary-blue-40) !important;
+      background: var(--ion-color-primary-variant-600) !important;
       border-radius: var(--ion-border-radius-rounded);
       box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
-      border: 1px solid var(--color-secondary-blue-60);
+      border: 1px solid var(--ion-color-primary-variant-500);
       min-width: 68px;
       min-height: 64px;
     }
-    &[data-variant~="orange"] {
-      background: var(--color-accent-orange-70);
-    }
     &[data-variant~="yellow"] {
-      background: var(--color-accent-yellow-70);
-    }
-    &[data-variant~="dark-orange"] {
-      background: var(--color-accent-orange-40);
+      background: var(--ion-color-secondary-300);
     }
     &[data-variant~="information"] {
-      background: var(--color-secondary-blue-40);
+      background: var(--ion-color-primary-variant-600);
     }
   }
 
@@ -821,7 +816,7 @@
           padding: 6px 8px;
           h1 {
             padding: 0px;
-            font-size: var(--font-text-size-medium) !important;
+            font-size: var(--font-size-text-medium) !important;
             line-height: var(--line-height-text-small);
           }
         }
@@ -865,7 +860,7 @@
           }
         }
         .circle-wrapper.completed {
-          border: 4px solid var(--ion-color-secondary-200) !important;
+          border: 4px solid var(--ion-color-primary-variant-200) !important;
           box-shadow: none !important;
           img {
             opacity: 1 !important;
@@ -886,8 +881,8 @@
       margin: 20px -20px;
       background: linear-gradient(
         310deg,
-        var(--color-secondary-blue-50),
-        var(--color-secondary-blue-80)
+        var(--ion-color-primary-500),
+        var(--ion-color-primary-200)
       );
       min-height: 80vh;
       max-width: 480px;
@@ -914,19 +909,6 @@
     }
   }
 
-  // bottom_nav
-  plh-bottom-navigation-bar {
-    .plh-bottom-nav-wrapper {
-      border-top: 1px solid #e7e8e9;
-      .label {
-        color: #6686b1;
-      }
-      .active-link .label {
-        color: #0066a1;
-      }
-    }
-  }
-
   // Pop Up
   .popup-backdrop {
     &[data-variant~="plh_completion"] {
@@ -936,8 +918,8 @@
         .popup-content {
           background: linear-gradient(
             310deg,
-            var(--color-secondary-blue-50),
-            var(--color-secondary-blue-80)
+            var(--ion-color-primary-500),
+            var(--ion-color-primary-200)
           );
           border-radius: 40px;
           border: none !important;
@@ -967,8 +949,8 @@
           }
         }
         .close-button {
-          border: 0.8px solid var(--color-secondary-blue-80);
-          color: var(--color-secondary-blue-50);
+          border: 0.8px solid var(--ion-color-primary-variant-200);
+          color: var(--ion-color-primary-variant-500);
           top: 0px;
         }
       }
