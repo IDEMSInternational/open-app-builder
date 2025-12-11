@@ -1,10 +1,11 @@
-@if (tabRows().length > 0) {
+@if (shouldRenderTabs()) {
   <mat-tab-group
     [animationDuration]="animationDuration()"
     [dynamicHeight]="params().animateHeight"
     [mat-stretch-tabs]="!params().compactButtons"
     [preserveContent]="params().preserveContent"
     [selectedIndex]="params().selectedIndex"
+    [disableRipple]="true"
   >
     @for (tabRow of tabRows(); track tabRow.name) {
       <mat-tab [label]="tabRow.label" [attr.data-rowname]="tabRow.name">
