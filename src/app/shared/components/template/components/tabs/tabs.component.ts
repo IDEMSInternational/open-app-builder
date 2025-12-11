@@ -1,4 +1,4 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, signal, afterNextRender } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -35,4 +35,17 @@ export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSch
         name: tabRow.name,
       }));
   });
+
+  private viewReady = signal(false);
+
+  public shouldRenderTabs = computed(() => {
+    return this.viewReady() && this.tabRows().length > 0;
+  });
+
+  constructor() {
+    super();
+    // Defer rendering until after Angular's first render cycle completes
+    // MatTabGroup can fail to initialise properly if it is created before the DOM is ready
+    afterNextRender(() => this.viewReady.set(true));
+  }
 }

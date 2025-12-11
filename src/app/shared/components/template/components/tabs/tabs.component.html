@@ -1,4 +1,4 @@
-@if (tabRows().length > 0) {
+@if (shouldRenderTabs()) {
   <mat-tab-group
     [animationDuration]="animationDuration()"
     [dynamicHeight]="params().animateHeight"
