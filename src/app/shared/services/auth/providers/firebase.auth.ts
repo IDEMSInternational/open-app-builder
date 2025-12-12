@@ -10,9 +10,13 @@ import { AuthErrorCodes } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser, ISignInProvider } from "../types";
+import { firstValueFrom, ReplaySubject, timeout } from "rxjs";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
+
+/** Amount of time to wait for auth init before resolving as unauthenticated */
+const AUTH_INIT_TIMEOUT = 2000;
 
 export type FirebaseAuthUser = User;
 
@@ -21,7 +25,9 @@ export type FirebaseAuthUser = User;
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
   private isAuthenticating = false;
-  private authStateReadyPromise: Promise<void> | null = null;
+
+  // Emit the most recent auth state for tracking native api init
+  private authState$ = new ReplaySubject<User | null>(1);
 
   /** Sign in methods to call depending on provider */
   private providerMapping: Record<ISignInProvider, () => Promise<SignInResult>> = {
@@ -35,49 +41,28 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-
-    // Create a promise that resolves when the first authStateChange event fires
-    // This indicates Firebase has finished initializing and we have the definitive auth state
-    let resolveAuthReady: (() => void) | null = null;
-    this.authStateReadyPromise = new Promise<void>((resolve) => {
-      resolveAuthReady = resolve;
-    });
-
-    // Add listener to ensure previously signed in user is updated when auth layer settles (native)
-    FirebaseAuthentication.addListener("authStateChange", async (e) => {
-      // Resolve the promise on first event (auth state is now ready)
-      if (resolveAuthReady) {
-        resolveAuthReady();
-        resolveAuthReady = null;
-      }
-      await this.handleAutomatedLogin();
-    });
+    this.subscribeToAuthStateChanges();
 
     // Attempt to immediately load any previously signed in user
     // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
   }
 
-  private async waitForAuthStateReady(timeoutMs = 2000): Promise<void> {
-    if (!this.authStateReadyPromise) return;
+  private subscribeToAuthStateChanges() {
+    FirebaseAuthentication.addListener("authStateChange", async (e) => {
+      this.authState$.next(e.user);
+    });
+  }
 
-    // Race between the auth state event and a timeout to prevent hanging forever
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    const timeoutPromise = new Promise<void>((resolve) => {
-      timeoutId = setTimeout(() => {
+  private async waitForAuthStateReady(): Promise<void> {
+    try {
+      await firstValueFrom(this.authState$.pipe(timeout(AUTH_INIT_TIMEOUT)));
+    } catch (error) {
+      if (error.name === "TimeoutError") {
         console.warn(
           "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway.",
           "This may indicate a slow network or Firebase initialization issue."
         );
-        resolve();
-      }, timeoutMs);
-    });
-
-    try {
-      await Promise.race([this.authStateReadyPromise, timeoutPromise]);
-    } finally {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
       }
     }
   }
@@ -120,7 +105,6 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     await FirebaseAuthentication.signOut();
     this.authUser.set(undefined);
     localStorage.removeItem(AUTH_METADATA_FIELD);
-    this.authStateReadyPromise = null;
     return this.authUser();
   }
 
