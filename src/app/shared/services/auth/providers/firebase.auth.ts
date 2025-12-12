@@ -63,6 +63,8 @@ export class FirebaseAuthProvider extends AuthProviderBase {
           "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway.",
           "This may indicate a slow network or Firebase initialization issue."
         );
+      } else {
+        throw error;
       }
     }
   }
@@ -175,9 +177,6 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!user && hasStoredProfile && !currentAuthUser) {
       console.log("[Firebase Auth] Stored profile found, waiting for auth state to initialize...");
       await this.waitForAuthStateReady();
-      // If auth user is now set (by listener), return early
-      const authUserAfterWait = this.authUser();
-      if (authUserAfterWait) return authUserAfterWait;
       // Re-fetch user after auth state is ready
       ({ user } = await FirebaseAuthentication.getCurrentUser());
     }
