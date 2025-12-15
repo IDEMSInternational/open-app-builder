@@ -31,6 +31,13 @@ ion-button {
   margin: 0 auto;
 }
 
+ion-button[data-variant~="compact"] {
+  font-size: var(--buttons-font-size-tiny);
+  min-height: auto;
+  --padding-top: var(--small-padding);
+  --padding-bottom: var(--small-padding);
+}
+
 ion-button::part(native) {
   height: auto;
 }
