@@ -78,13 +78,7 @@ const coerceMethods = {
       .union([z.string(), z.array(z.string())])
       .transform((v) => {
         // Normalize to array of strings
-        const parts = Array.isArray(v)
-          ? v
-          : typeof v === "string"
-            ? v.includes(",")
-              ? v.split(",")
-              : v.split(/\s+/)
-            : [String(v || fallback)];
+        const parts = Array.isArray(v) ? v : v.includes(",") ? v.split(",") : v.split(/\s+/);
 
         // Trim, filter empty, and join with space
         return (
