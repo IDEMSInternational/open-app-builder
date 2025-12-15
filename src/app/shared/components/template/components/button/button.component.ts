@@ -1,44 +1,38 @@
-import { Component, computed, effect, ElementRef } from "@angular/core";
-import { getStringParamFromTemplateRow, parseBoolean } from "src/app/shared/utils";
-import { TemplateBaseComponent } from "../base";
+import { Component, computed, ElementRef } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TemplateTranslateService } from "../../services/template-translate.service";
-import { FlowTypes } from "packages/data-models";
 
-interface IButtonParams {
-  /** TEMPLATE PARAMETER: "variant" */
-  variant:
-    | "default"
-    | "alternative"
-    | "card"
-    | "card-portrait"
-    | "flexible"
-    | "full"
-    | "information"
-    | "medium"
-    | "navigation"
-    | "short"
-    | "standard"
-    | "tall";
-  /** TEMPLATE PARAMETER: "style". Legacy, use "variant" instead. */
-  style: string;
-  /** TEMPLATE PARAMETER: "disabled". If true, button is disabled and greyed out */
-  disabled: boolean;
-  /** TEMPLATE PARAMETER: "text_align" */
-  textAlign: "left" | "centre" | "right";
-  /** TEMPLATE PARAMETER: "button_align" */
-  buttonAlign: "left" | "centre" | "right";
-  /** TEMPLATE PARAMETER: "icon". The path to an icon asset. This will be displayed in the 'start' slot (left for LTR languages) */
-  icon: string;
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** The display variant of the button. Can be comma-separated for multiple variants. Default 'default'. */
+  variant: coerce.custom<string>((v) => {
+    if (typeof v === "string") {
+      return v
+        .split(",")
+        .map((s) => s.trim())
+        .join(" ");
+    }
+    return String(v || "default");
+  }, "default"),
+  /** Legacy style parameter. Use "variant" instead. Default 'information'. */
+  style: coerce.string("information"),
+  /** When true, button is disabled and greyed out. */
+  disabled: coerce.boolean(false),
+  /** Text alignment within the button. */
+  text_align: coerce.allowedValues(["left", "centre", "right"], null),
+  /** Button alignment within its container. */
+  button_align: coerce.allowedValues(["left", "centre", "right"], "centre"),
+  /** The path to an icon asset. This will be displayed in the 'start' slot (left for LTR languages). */
+  icon: coerce.string(""),
   /**
-   * TEMPLATE PARAMETER: "icon_secondary_asset". The path to a secondary icon asset,
-   * which will be displayed in the 'end' slot (right for LTR languages)
-   * */
-  iconSecondary: string;
-  /** TEMPLATE PARAMETER: "image_asset". The path to an image asset */
-  image: string;
-  /** TEMPLATE PARAMETER: "icon_align". Aligns the Primary icon to the left or right */
-  iconAlign: "left" | "right";
-}
+   * The path to a secondary icon asset,
+   * which will be displayed in the 'end' slot (right for LTR languages).
+   */
+  icon_secondary_asset: coerce.string(""),
+  /** The path to an image asset. */
+  image_asset: coerce.string(""),
+  /** Aligns the primary icon to the left or right. */
+  icon_align: coerce.allowedValues(["left", "right"], "left"),
+}));
 
 interface IVariantMap {
   cardPortrait?: boolean;
@@ -52,8 +46,19 @@ interface IVariantMap {
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
 })
-export class TmplButtonComponent extends TemplateBaseComponent {
-  params = computed(() => this.getParams(this.parameterList()));
+export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+  /** Style with two_columns logic applied */
+  style = computed(() => {
+    const baseStyle = this.params().style;
+    return `${baseStyle}${this.isTwoColumns() ? " two_columns" : ""}`.trim();
+  });
+
+  /** Secondary icon asset (alias for iconSecondaryAsset) */
+  iconSecondary = computed(() => this.params().iconSecondaryAsset || "");
+
+  /** Image asset (alias for imageAsset) */
+  image = computed(() => this.params().imageAsset || "");
+
   /** @ignore */
   variantMap = computed(() => this.populateVariantMap(this.params().variant));
 
@@ -70,24 +75,6 @@ export class TmplButtonComponent extends TemplateBaseComponent {
     this.triggerActions("click");
   }
 
-  private getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): IButtonParams {
-    return {
-      disabled: parseBoolean(this.parameterList().disabled),
-      style: `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
-        this.isTwoColumns() ? "two_columns" : ""
-      }` as any,
-      variant: getStringParamFromTemplateRow(this._row, "variant", "default")
-        .split(",")
-        .join(" ") as IButtonParams["variant"],
-      image: getStringParamFromTemplateRow(this._row, "image_asset", null),
-      textAlign: getStringParamFromTemplateRow(this._row, "text_align", null) as any,
-      buttonAlign: getStringParamFromTemplateRow(this._row, "button_align", "center") as any,
-      icon: getStringParamFromTemplateRow(this._row, "icon", null),
-      iconSecondary: getStringParamFromTemplateRow(this._row, "icon_secondary_asset", null),
-      iconAlign: getStringParamFromTemplateRow(this._row, "icon_align", "left") as any,
-    };
-  }
-
   /** Determine if the button is inside a display group with the style "two_columns" */
   private isTwoColumns(): boolean {
     const displayGroupElement = this.elRef.nativeElement.closest(".display-group-wrapper");
@@ -98,7 +85,7 @@ export class TmplButtonComponent extends TemplateBaseComponent {
     }
   }
 
-  private populateVariantMap(variant: IButtonParams["variant"] = "default"): IVariantMap {
+  private populateVariantMap(variant: string = "default"): IVariantMap {
     const variantArray = variant.split(" ");
     return {
       cardPortrait: variantArray.includes("card-portrait"),
