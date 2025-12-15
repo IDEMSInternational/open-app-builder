@@ -126,7 +126,6 @@
 
         .time-value {
           font-size: var(--font-size-text-small) !important;
-          line-height: var(--line-height-text-tiny) !important;
           color: var(--ion-color-gray-700) !important;
         }
       }
@@ -225,28 +224,7 @@
       }
     }
   }
-  // Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      margin: 8px 0;
-      line-height: var(--font-size-title-large);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      font-size: var(--font-size-text-large) !important;
-      font-weight: var(--font-weight-bold) !important;
-      background-color: var(--ion-color-primary-50);
-      border-bottom: 1px solid var(--ion-color-primary-300);
-      h1 {
-        padding: 18px 24px;
-        border: none;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-title-large) !important;
-      padding: 10px 0;
-    }
-  }
+
   // Progress Path
   plh-progress-path {
     // Fine-tune the position of the child steps to reflect theme image

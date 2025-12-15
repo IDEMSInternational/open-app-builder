@@ -9,28 +9,6 @@
     }
   }
 
-  //Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--color-surface-black);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      background-color: var(--ion-color-primary-100);
-      border-bottom: 1px solid var(--ion-color-primary-300);
-      h1 {
-        padding: 18px;
-        border: none;
-        font-size: var(--font-size-text-medium) !important;
-        font-weight: var(--font-weight-medium) !important;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
-    }
-  }
-
   // Task Card
   plh-task-card {
     .card-wrapper {
@@ -49,7 +27,6 @@
         width: 100% !important;
         h1 {
           margin: 0;
-          line-height: var(--line-height-text-largest);
           font-weight: var(--font-weight-bold);
           color: var(--color-surface-black) !important;
           @media (max-width: 375px) {
@@ -82,10 +59,6 @@
       .content-wrapper {
         .text-wrapper {
           width: 100% !important;
-          h1 {
-            font-size: var(--font-size-text-medium) !important;
-            line-height: var(--line-height-text-medium) !important;
-          }
           .subtitle-wrapper {
             p {
               margin: 0px !important;
@@ -116,7 +89,6 @@
           h1 {
             padding: 0px;
             font-size: var(--font-size-text-mid-size) !important;
-            line-height: var(--line-height-text-medium);
           }
         }
         .button-content {
@@ -164,7 +136,6 @@
           padding: 10px 12px !important;
           h1 {
             font-size: var(--font-size-text-mid-size) !important;
-            line-height: var(--line-height-text-small) !important;
             color: var(--ion-color-primary-700) !important;
           }
         }
@@ -182,8 +153,6 @@
           .text-wrapper {
             padding: 18px 14px !important;
             h1 {
-              font-size: var(--font-size-text-medium) !important;
-              line-height: var(--line-height-text-small) !important;
               color: var(--color-surface-white) !important;
             }
           }
@@ -213,7 +182,6 @@
       font-size: var(--buttons-font-size-small);
       font-weight: var(--font-weight-bold);
       letter-spacing: var(--font-letter-spacing);
-      line-height: var(--line-height-text);
       text-transform: none;
     }
     ion-button:disabled,
@@ -329,7 +297,6 @@
           margin-inline-end: auto;
           text-align: start !important;
           width: auto !important;
-          line-height: var(--line-height-text-small);
           font-weight: var(--font-weight-medium);
           color: var(--color-surface-black);
         }
@@ -396,7 +363,6 @@
 
         .time-value {
           font-size: var(--font-size-text-small) !important;
-          line-height: var(--line-height-text-tiny) !important;
           color: var(--ion-color-gray-700) !important;
         }
       }
@@ -499,17 +465,13 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
-      background: var(--ion-color-primary-700);
-
       border: none;
-      border-radius: var(--ion-border-radius-small);
       box-shadow: none;
       .accordion-section-title {
         color: var(--color-surface-white);
 
         font-size: var(--font-size-text-mid-size);
         font-weight: var(--font-weight-bold);
-        line-height: var(--line-height-text-small);
       }
     }
     ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
@@ -538,7 +500,6 @@
           ul,
           ol {
             font-size: var(--font-size-text-small) !important;
-            line-height: var(--line-height-text-small) !important;
             font-weight: var(--font-weight-standard) !important;
             margin-top: 8px;
             a {
