@@ -1,84 +1,73 @@
-@switch (variantMap().cardPortrait) {
-  <!-- Default variant -->
-  @case (false) {
-    <ion-button
-      [class]="'full standard medium' + ' ' + style() + ' ' + params().buttonAlign"
-      [disabled]="params().disabled"
-      (click)="triggerActions('click')"
-      [attr.data-param-style]="style()"
-      [attr.data-variant]="params().variant"
-      [attr.data-has-children]="_row.rows ? true : null"
-      [attr.data-language-direction]="templateTranslateService.languageDirection()"
-      [attr.data-icon-align]="params().iconAlign"
-    >
-      @if (params().icon && params().iconAlign === "left") {
-        <ion-icon slot="start" [src]="params().icon | plhAsset"></ion-icon>
-      }
-      @if (params().icon && params().iconAlign === "right") {
-        <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
-      }
-      @if (params().iconSecondaryAsset) {
-        <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
-        @if (params().iconSecondaryAsset.includes(".")) {
-          <ion-icon slot="end" [src]="params().iconSecondaryAsset | plhAsset"></ion-icon>
-        } @else {
-          <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
-        }
-      }
-      @if (_row.value) {
-        <span [class]="'left text ' + params().textAlign" [innerHTML]="_row.value | markdown">
-        </span>
-      }
-      @if (_row.rows) {
-        <span class="children">
-          @for (
-            childRow of _row.rows | filterDisplayComponent;
-            track trackByRow($index, childRow)
-          ) {
-            <plh-template-component
-              class="child"
-              [row]="childRow"
-              [parent]="parent"
-              [attr.data-rowname]="_row.name"
-            ></plh-template-component>
-          }
-        </span>
-      }
-    </ion-button>
-  }
-
+@if (variantMap().cardPortrait) {
   <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
-  @case (true) {
-    <div
-      class="button-container"
-      (click)="handleClick()"
-      [attr.data-variant]="params().variant"
-      [attr.data-has-children]="_row.rows ? true : null"
-      [attr.data-disabled]="params().disabled"
-    >
-      @if (params().imageAsset) {
-        <img src="{{ params().imageAsset | plhAsset }}" />
+  <div
+    class="button-container"
+    (click)="handleClick()"
+    [attr.data-variant]="params().variant"
+    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-disabled]="params().disabled"
+  >
+    @if (params().imageAsset) {
+      <img src="{{ params().imageAsset | plhAsset }}" />
+    }
+    @if (_row.value) {
+      <div [class]="'button-text ' + params().textAlign">
+        {{ _row.value }}
+      </div>
+    }
+    @if (_row.rows) {
+      <span class="children">
+        @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+          <plh-template-component
+            class="child"
+            [row]="childRow"
+            [parent]="parent"
+            [attr.data-rowname]="_row.name"
+          ></plh-template-component>
+        }
+      </span>
+    }
+  </div>
+} @else {
+  <!-- Default variant -->
+  <ion-button
+    [class]="'full standard medium' + ' ' + style() + ' ' + params().buttonAlign"
+    [disabled]="params().disabled"
+    (click)="triggerActions('click')"
+    [attr.data-param-style]="style()"
+    [attr.data-variant]="params().variant"
+    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-language-direction]="templateTranslateService.languageDirection()"
+    [attr.data-icon-align]="params().iconAlign"
+  >
+    @if (params().icon && params().iconAlign === "left") {
+      <ion-icon slot="start" [src]="params().icon | plhAsset"></ion-icon>
+    }
+    @if (params().icon && params().iconAlign === "right") {
+      <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
+    }
+    @if (params().iconSecondaryAsset) {
+      <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
+      @if (params().iconSecondaryAsset.includes(".")) {
+        <ion-icon slot="end" [src]="params().iconSecondaryAsset | plhAsset"></ion-icon>
+      } @else {
+        <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
       }
-      @if (_row.value) {
-        <div [class]="'button-text ' + params().textAlign">
-          {{ _row.value }}
-        </div>
-      }
-      @if (_row.rows) {
-        <span class="children">
-          @for (
-            childRow of _row.rows | filterDisplayComponent;
-            track trackByRow($index, childRow)
-          ) {
-            <plh-template-component
-              class="child"
-              [row]="childRow"
-              [parent]="parent"
-              [attr.data-rowname]="_row.name"
-            ></plh-template-component>
-          }
-        </span>
-      }
-    </div>
-  }
+    }
+    @if (_row.value) {
+      <span [class]="'left text ' + params().textAlign" [innerHTML]="_row.value | markdown"> </span>
+    }
+    @if (_row.rows) {
+      <span class="children">
+        @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+          <plh-template-component
+            class="child"
+            [row]="childRow"
+            [parent]="parent"
+            [attr.data-rowname]="_row.name"
+          ></plh-template-component>
+        }
+      </span>
+    }
+  </ion-button>
 }

@@ -27,7 +27,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 }));
 
 interface IVariantMap {
-  cardPortrait?: boolean;
+  cardPortrait: boolean;
 }
 
 /**
