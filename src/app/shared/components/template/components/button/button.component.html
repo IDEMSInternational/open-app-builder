@@ -17,12 +17,12 @@
     @if (params().icon && params().iconAlign === "right") {
       <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
     }
-    @if (iconSecondary()) {
+    @if (params().iconSecondaryAsset) {
       <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
-      @if (iconSecondary().includes(".")) {
-        <ion-icon slot="end" [src]="iconSecondary() | plhAsset"></ion-icon>
+      @if (params().iconSecondaryAsset.includes(".")) {
+        <ion-icon slot="end" [src]="params().iconSecondaryAsset | plhAsset"></ion-icon>
       } @else {
-        <ion-icon slot="end" [name]="iconSecondary()"></ion-icon>
+        <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
       }
     }
     <span
@@ -51,7 +51,7 @@
     [attr.data-has-children]="_row.rows ? true : null"
     [attr.data-disabled]="params().disabled"
   >
-    <img *ngIf="image()" src="{{ image() | plhAsset }}" />
+    <img *ngIf="params().imageAsset" src="{{ params().imageAsset | plhAsset }}" />
     <div *ngIf="_row.value" [class]="'button-text ' + params().textAlign">
       {{ _row.value }}
     </div>

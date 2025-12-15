@@ -45,12 +45,6 @@ export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorS
     return `${baseStyle}${this.isTwoColumns() ? " two_columns" : ""}`.trim();
   });
 
-  /** Secondary icon asset (alias for iconSecondaryAsset) */
-  iconSecondary = computed(() => this.params().iconSecondaryAsset || "");
-
-  /** Image asset (alias for imageAsset) */
-  image = computed(() => this.params().imageAsset || "");
-
   /** @ignore */
   variantMap = computed(() => this.populateVariantMap(this.params().variant));
 
