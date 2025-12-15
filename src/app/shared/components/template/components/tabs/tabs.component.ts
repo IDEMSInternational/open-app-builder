@@ -1,4 +1,10 @@
-import { Component, computed, signal, afterNextRender } from "@angular/core";
+import {
+  Component,
+  computed,
+  signal,
+  afterNextRender,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -22,6 +28,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-tabs",
   templateUrl: "./tabs.component.html",
   styleUrls: ["./tabs.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   animationDuration = computed(() => `${this.params().animationDurationMs}ms`);
@@ -36,6 +43,23 @@ export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSch
       }));
   });
 
+  // ============================================================================
+  // WORKAROUND: MatTabGroup initialization timing issue
+  // ============================================================================
+  // TODO: Workaround added in https://github.com/IDEMSInternational/open-app-builder/pull/3248
+  //       Consider removing this workaround when core Angular and/or Angular Material/related
+  //       libraries are updated. See https://github.com/IDEMSInternational/open-app-builder/issues/3234
+  //       Issue: MatTabGroup can fail to initialize properly if created before DOM elements
+  //       are available, attempting to add handlers to non-existent elements.
+  //       See: https://github.com/IDEMSInternational/open-app-builder/issues/3256
+  //
+  // To remove:
+  // 1. Delete the viewReady signal and shouldRenderTabs computed below
+  // 2. Remove the afterNextRender call from constructor
+  // 3. Remove the @if (shouldRenderTabs()) wrapper in tabs.component.html (replace with @if (tabRows().length > 0))
+  // 4. Remove [disableRipple]="true" from mat-tab-group in tabs.component.html
+  // 5. Test according to instructions in https://github.com/IDEMSInternational/open-app-builder/issues/3256
+  // ============================================================================
   private viewReady = signal(false);
 
   public shouldRenderTabs = computed(() => {
@@ -45,7 +69,9 @@ export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSch
   constructor() {
     super();
     // Defer rendering until after Angular's first render cycle completes
-    // MatTabGroup can fail to initialise properly if it is created before the DOM is ready
     afterNextRender(() => this.viewReady.set(true));
   }
+  // ============================================================================
+  // END WORKAROUND
+  // ============================================================================
 }
