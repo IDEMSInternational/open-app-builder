@@ -14,6 +14,7 @@ const MOCK_SCHEMA = () =>
     object_array_param: coerce.objectArray<{ key1: string; key2: string }>([
       { key1: "default1", key2: "default2" },
     ]),
+    space_separated_list_param: coerce.spaceSeparatedList("default"),
     string_param: coerce.string("fallback"),
   }));
 
@@ -68,6 +69,44 @@ describe("parameter_list utils - coerce", () => {
     expect(testSchema.parse({ comma_list_param: ["a", "b"] }).comma_list_param).toEqual(["a", "b"]);
     // fallback
     expect(testSchema.parse({}).comma_list_param).toEqual([]);
+  });
+
+  it("coerce spaceSeparatedList", () => {
+    const testSchema = MOCK_SCHEMA().pick({ space_separated_list_param: true });
+    // from comma-separated string
+    expect(
+      testSchema.parse({
+        space_separated_list_param: "a, b , c",
+      }).space_separated_list_param
+    ).toEqual("a b c");
+    // from space-separated string
+    expect(
+      testSchema.parse({
+        space_separated_list_param: "a  b   c",
+      }).space_separated_list_param
+    ).toEqual("a b c");
+    // from string with mixed separators (comma takes precedence)
+    expect(
+      testSchema.parse({
+        space_separated_list_param: "a, b c",
+      }).space_separated_list_param
+    ).toEqual("a b c");
+    // from array
+    expect(
+      testSchema.parse({ space_separated_list_param: ["a", "b", "c"] }).space_separated_list_param
+    ).toEqual("a b c");
+    // with extra whitespace
+    expect(
+      testSchema.parse({
+        space_separated_list_param: "  a  ,  b  ,  c  ",
+      }).space_separated_list_param
+    ).toEqual("a b c");
+    // empty string
+    expect(testSchema.parse({ space_separated_list_param: "" }).space_separated_list_param).toEqual(
+      "default"
+    );
+    // fallback
+    expect(testSchema.parse({}).space_separated_list_param).toEqual("default");
   });
 
   it("coerce custom", () => {
@@ -183,6 +222,7 @@ describe("parameter_list utils - parse", () => {
       "customParam",
       "numberParam",
       "objectArrayParam",
+      "spaceSeparatedListParam",
       "stringParam",
     ]);
   });
@@ -197,6 +237,7 @@ describe("parameter_list utils - parse", () => {
       customParam: [],
       numberParam: -1,
       objectArrayParam: [{ key1: "default1", key2: "default2" }],
+      spaceSeparatedListParam: "default",
       stringParam: "fallback",
     });
   });
@@ -216,6 +257,7 @@ describe("parameter_list utils - parse", () => {
           "custom_param",
           "number_param",
           "object_array_param",
+          "space_separated_list_param",
           "string_param",
         ],
       },

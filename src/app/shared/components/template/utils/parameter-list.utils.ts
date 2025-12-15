@@ -69,6 +69,34 @@ const coerceMethods = {
       .catch([]),
 
   /**
+   * Convert comma-separated or space-separated list to space-separated string.
+   * Handles both formats: "a,b,c" or "a b c" -> "a b c"
+   * @param fallback Fallback value if parsing fails
+   */
+  spaceSeparatedList: (fallback: string) =>
+    z
+      .union([z.string(), z.array(z.string())])
+      .transform((v) => {
+        // Normalize to array of strings
+        const parts = Array.isArray(v)
+          ? v
+          : typeof v === "string"
+            ? v.includes(",")
+              ? v.split(",")
+              : v.split(/\s+/)
+            : [String(v || fallback)];
+
+        // Trim, filter empty, and join with space
+        return (
+          parts
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0)
+            .join(" ") || fallback
+        );
+      })
+      .catch(fallback),
+
+  /**
    * Parse a string to an array of objects
    * Expects string in the format:
    * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'

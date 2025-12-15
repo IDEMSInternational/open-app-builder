@@ -3,16 +3,8 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  /** The display variant of the button. Can be comma-separated for multiple variants. Default 'default'. */
-  variant: coerce.custom<string>((v) => {
-    if (typeof v === "string") {
-      return v
-        .split(",")
-        .map((s) => s.trim())
-        .join(" ");
-    }
-    return String(v || "default");
-  }, "default"),
+  /** The display variant of the button. Can be comma-separated or space-separated for multiple variants. Default 'default'. */
+  variant: coerce.spaceSeparatedList("default"),
   /** Legacy style parameter. Use "variant" instead. Default 'information'. */
   style: coerce.string("information"),
   /** When true, button is disabled and greyed out. */
