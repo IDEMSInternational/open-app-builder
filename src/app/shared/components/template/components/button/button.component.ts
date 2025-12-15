@@ -27,7 +27,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** When true, button is disabled and greyed out. */
   disabled: coerce.boolean(false),
   /** Text alignment within the button. */
-  text_align: coerce.allowedValues(["left", "centre", "right", ""], ""),
+  text_align: coerce.allowedValues(["left", "centre", "right", null], null),
   /** Button alignment within its container. */
   button_align: coerce.allowedValues(["left", "centre", "right"], "centre"),
   /** The path to an icon asset. This will be displayed in the 'start' slot (left for LTR languages). */
