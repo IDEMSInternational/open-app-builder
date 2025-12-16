@@ -1,5 +1,6 @@
-@use "./utils";
+@use "../utils";
 @use "sass:color";
+@use "./overrides" as overrides;
 
 @mixin theme-early_family_math {
   @include utils.theme(
@@ -56,5 +57,7 @@
       // checkbox-background-color: white,
       // progress-path-line-background, var(--ion-color-gray-100),
     )
-  );
+  ) {
+    @include overrides.overrides;
+  }
 }
