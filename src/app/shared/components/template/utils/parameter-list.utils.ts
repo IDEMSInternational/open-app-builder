@@ -81,12 +81,9 @@ const coerceMethods = {
         const parts = Array.isArray(v) ? v : v.includes(",") ? v.split(",") : v.split(/\s+/);
 
         // Trim, filter empty, and join with space
-        return (
-          parts
-            .map((s) => s.trim())
-            .filter((s) => s.length > 0)
-            .join(" ") || fallback
-        );
+        const filtered = parts.map((s) => s.trim()).filter((s) => s.length > 0);
+
+        return filtered.length > 0 ? filtered.join(" ") : fallback;
       })
       .catch(fallback),
 
