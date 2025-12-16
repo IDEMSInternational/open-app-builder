@@ -36,6 +36,8 @@ ion-button[data-variant~="compact"] {
   min-height: auto;
   --padding-top: var(--small-padding);
   --padding-bottom: var(--small-padding);
+  --padding-start: var(--small-padding);
+  --padding-end: var(--small-padding);
 }
 
 ion-button::part(native) {
