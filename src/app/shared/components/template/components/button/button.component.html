@@ -1,10 +1,10 @@
-@if (variantMap().cardPortrait) {
-  <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
-  <!-- TODO: Refactor the "card-portrait" variant to be a separate component instantiated here, leaving authoring unchanged -->
+<!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
+<!-- TODO: Refactor the "card-portrait" variant to be a separate component instantiated here, leaving authoring unchanged -->
+@if (params().variant.includes("card-portrait")) {
   <div
     class="button-container"
     (click)="handleClick()"
-    [attr.data-variant]="params().variant"
+    [attr.data-variant]="variantList()"
     [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-disabled]="params().disabled"
   >
@@ -36,7 +36,7 @@
     [disabled]="params().disabled"
     (click)="triggerActions('click')"
     [attr.data-param-style]="style()"
-    [attr.data-variant]="params().variant"
+    [attr.data-variant]="variantList()"
     [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
     [attr.data-icon-align]="params().iconAlign"

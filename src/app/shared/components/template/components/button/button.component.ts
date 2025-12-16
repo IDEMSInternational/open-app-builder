@@ -2,6 +2,21 @@ import { Component, computed, ElementRef } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
+const ALLOWED_VARIANTS = [
+  "default",
+  "alternative",
+  "card",
+  "card-portrait",
+  "flexible",
+  "full",
+  "information",
+  "medium",
+  "navigation",
+  "short",
+  "standard",
+  "tall",
+];
+
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /**
    * The display variant of the button. Can be comma-separated or space-separated for multiple variants.
@@ -20,7 +35,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "tall"
    * Default: "default"
    */
-  variant: coerce.spaceSeparatedList("default"),
+  variant: coerce.allowedValuesList(ALLOWED_VARIANTS, ["default"]),
   /** Legacy style parameter. Use "variant" instead. Default 'information'. */
   style: coerce.string("information"),
   /** When true, button is disabled and greyed out. */
@@ -42,10 +57,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   icon_align: coerce.allowedValues(["left", "right"], "left"),
 }));
 
-interface IVariantMap {
-  cardPortrait: boolean;
-}
-
 /**
  * A general-purpose button component
  */
@@ -61,8 +72,8 @@ export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorS
     return `${baseStyle}${this.isTwoColumns() ? " two_columns" : ""}`.trim();
   });
 
-  /** @ignore */
-  variantMap = computed(() => this.populateVariantMap(this.params().variant));
+  /** Space-separated string of variants for template use */
+  variantList = computed(() => this.params().variant.join(" "));
 
   /** @ignore */
   constructor(
@@ -85,12 +96,5 @@ export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorS
     } else {
       return false;
     }
-  }
-
-  private populateVariantMap(variant: string = "default"): IVariantMap {
-    const variantArray = variant.split(" ");
-    return {
-      cardPortrait: variantArray.includes("card-portrait"),
-    };
   }
 }
