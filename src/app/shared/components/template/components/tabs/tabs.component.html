@@ -1,6 +1,14 @@
 @if (tabRows().length > 0) {
+  <!--
+    TODO: Workaround added to disable ripple effect to resolve
+    https://github.com/IDEMSInternational/open-app-builder/issues/3256
+
+    Consider removing this workaround when core Angular and/or Angular Material/related
+    libraries are updated. See https://github.com/IDEMSInternational/open-app-builder/issues/3234
+  -->
   <mat-tab-group
     [animationDuration]="animationDuration()"
+    [disableRipple]="true"
     [dynamicHeight]="params().animateHeight"
     [mat-stretch-tabs]="!params().compactButtons"
     [preserveContent]="params().preserveContent"
