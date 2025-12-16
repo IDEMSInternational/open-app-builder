@@ -4,25 +4,25 @@
     class="button-container"
     (click)="handleClick()"
     [attr.data-variant]="params().variant"
-    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-disabled]="params().disabled"
   >
     @if (params().imageAsset) {
       <img src="{{ params().imageAsset | plhAsset }}" />
     }
-    @if (_row.value) {
+    @if (value()) {
       <div [class]="'button-text ' + params().textAlign">
-        {{ _row.value }}
+        {{ value() }}
       </div>
     }
-    @if (_row.rows) {
+    @if (rows().length > 0) {
       <span class="children">
-        @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+        @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
           <plh-template-component
             class="child"
             [row]="childRow"
-            [parent]="parent"
-            [attr.data-rowname]="_row.name"
+            [parent]="parentContainerComponentRef"
+            [attr.data-rowname]="rowSignal().name"
           ></plh-template-component>
         }
       </span>
@@ -36,7 +36,7 @@
     (click)="triggerActions('click')"
     [attr.data-param-style]="style()"
     [attr.data-variant]="params().variant"
-    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
     [attr.data-icon-align]="params().iconAlign"
   >
@@ -54,17 +54,17 @@
         <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
       }
     }
-    @if (_row.value) {
-      <span [class]="'left text ' + params().textAlign" [innerHTML]="_row.value | markdown"> </span>
+    @if (value()) {
+      <span [class]="'left text ' + params().textAlign" [innerHTML]="value() | markdown"> </span>
     }
-    @if (_row.rows) {
+    @if (rows().length > 0) {
       <span class="children">
-        @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+        @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
           <plh-template-component
             class="child"
             [row]="childRow"
-            [parent]="parent"
-            [attr.data-rowname]="_row.name"
+            [parent]="parentContainerComponentRef"
+            [attr.data-rowname]="rowSignal().name"
           ></plh-template-component>
         }
       </span>
