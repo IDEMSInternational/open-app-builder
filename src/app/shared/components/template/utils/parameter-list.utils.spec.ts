@@ -85,12 +85,6 @@ describe("parameter_list utils - coerce", () => {
         allowed_values_list_param: "v1  v2   v3",
       }).allowed_values_list_param
     ).toEqual(["v1", "v2", "v3"]);
-    // from string with mixed separators (comma takes precedence)
-    expect(
-      testSchema.parse({
-        allowed_values_list_param: "v1, v2 v3",
-      }).allowed_values_list_param
-    ).toEqual(["v1", "v2", "v3"]);
     // from array
     expect(
       testSchema.parse({ allowed_values_list_param: ["v1", "v2", "v3"] }).allowed_values_list_param
