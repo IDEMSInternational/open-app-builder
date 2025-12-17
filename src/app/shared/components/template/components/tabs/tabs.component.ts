@@ -1,4 +1,4 @@
-import { Component, computed, signal, afterNextRender } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -22,6 +22,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-tabs",
   templateUrl: "./tabs.component.html",
   styleUrls: ["./tabs.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   animationDuration = computed(() => `${this.params().animationDurationMs}ms`);
@@ -35,17 +36,4 @@ export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSch
         name: tabRow.name,
       }));
   });
-
-  private viewReady = signal(false);
-
-  public shouldRenderTabs = computed(() => {
-    return this.viewReady() && this.tabRows().length > 0;
-  });
-
-  constructor() {
-    super();
-    // Defer rendering until after Angular's first render cycle completes
-    // MatTabGroup can fail to initialise properly if it is created before the DOM is ready
-    afterNextRender(() => this.viewReady.set(true));
-  }
 }
