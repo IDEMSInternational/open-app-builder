@@ -4,7 +4,7 @@
   <div
     class="button-container"
     (click)="handleClick()"
-    [attr.data-variant]="variantList()"
+    [attr.data-variant]="variantsString()"
     [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-disabled]="params().disabled"
   >
@@ -36,7 +36,7 @@
     [disabled]="params().disabled"
     (click)="triggerActions('click')"
     [attr.data-param-style]="style()"
-    [attr.data-variant]="variantList()"
+    [attr.data-variant]="variantsString()"
     [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
     [attr.data-icon-align]="params().iconAlign"
