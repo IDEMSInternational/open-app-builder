@@ -3,6 +3,7 @@ import android from "./providers/android";
 import appData from "./providers/appData";
 import deployment from "./providers/deployment";
 import encryption from "./providers/encryption";
+import external from "./providers/external";
 import externalRawData from "./providers/externalRawData";
 import file from "./providers/file";
 import gcs from "./providers/gcs";
@@ -28,6 +29,7 @@ const ALL_TASKS = {
   appData,
   deployment,
   encryption,
+  external,
   externalRawData,
   file,
   gcs,

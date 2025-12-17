@@ -154,47 +154,82 @@ export default {
       );
     }
 
-    // Read data from Google Sheet
-    const sheetData = await gdriveTask.readSheet({
-      spreadsheetId: sheetInfo.sheetId,
-    });
-
     // Get the external deployment path from deployments.json
     const externalSourcePath = this.getExternalSourcePath(config.name, config._workspace_path);
-    const baseAppDataPath = path.resolve(externalSourcePath, "app_data");
 
+    await this.updateJsonFromSheetId(sheetInfo.sheetId, gdriveTask, externalSourcePath, pathParam);
+
+    console.log(`JSON files updated from Google Sheet: ${sheetInfo.sheetUrl}`);
+  },
+
+  findJsonFile(baseDir: string, filename: string): string | null {
+    if (!fs.existsSync(baseDir)) return null;
+    const files = fs.readdirSync(baseDir);
+    for (const file of files) {
+      const fullPath = path.join(baseDir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const found = this.findJsonFile(fullPath, filename);
+        if (found) return found;
+      } else if (file === filename) {
+        return fullPath;
+      }
+    }
+    return null;
+  },
+
+  /**
+   * Update JSON files from a specific Google Sheet ID
+   */
+  async updateJsonFromSheetId(
+    sheetId: string,
+    gdriveTask: any,
+    externalSourcePath: string,
+    sheetName?: string
+  ): Promise<void> {
+    // Read data from Google Sheet
+    const sheetData = await gdriveTask.readSheet({
+      spreadsheetId: sheetId,
+    });
+
+    const baseAppDataPath = path.resolve(externalSourcePath, "app_data");
+    await this.updateJsonFromSheetData(sheetData, baseAppDataPath, sheetName || sheetId);
+  },
+
+  /**
+   * Core logic to update JSON files from sheet data
+   */
+  async updateJsonFromSheetData(
+    sheetData: any,
+    baseAppDataPath: string,
+    sheetName: string
+  ): Promise<void> {
     // Parse content_list data first
     const contentListArray = sheetData["==content_list=="] || [];
     const contentListData = this.parseContentListData(contentListArray);
 
     // Process each sheet (excluding content_list)
-    for (const [sheetName, sheetValues] of Object.entries(sheetData)) {
-      if (sheetName === "==content_list==") continue;
+    for (const [tabName, sheetValues] of Object.entries(sheetData)) {
+      if (tabName === "==content_list==") continue;
 
       // Parse rows data from sheet
       const rowsData = this.parseRowsData(sheetValues);
 
       // Find corresponding content list entry
-      const contentEntry = contentListData.find((entry) => entry.flow_name === sheetName);
+      const contentEntry = contentListData.find((entry) => entry.flow_name === tabName);
 
-      // Determine output file path
-      let outputPath: string;
+      let targetFilename: string;
       if (contentEntry && contentEntry.file) {
-        // Use file from content_list
-        if (pathParam.endsWith(".json")) {
-          // Single file case
-          outputPath = path.resolve(baseAppDataPath, pathParam);
-        } else {
-          // Directory case
-          outputPath = path.resolve(baseAppDataPath, pathParam, contentEntry.file);
-        }
+        targetFilename = contentEntry.file;
+      } else if (contentEntry && contentEntry.flow_name) {
+        targetFilename = `${contentEntry.flow_name}.json`;
       } else {
-        // Fallback to original logic
-        if (pathParam.endsWith(".json")) {
-          outputPath = path.resolve(baseAppDataPath, pathParam);
-        } else {
-          outputPath = path.resolve(baseAppDataPath, pathParam, `${sheetName}.json`);
-        }
+        targetFilename = sheetName.endsWith(".json") ? sheetName : `${sheetName}.json`;
+      }
+
+      let outputPath = this.findJsonFile(baseAppDataPath, targetFilename);
+      if (!outputPath) {
+        outputPath = path.join(baseAppDataPath, targetFilename);
       }
 
       // Read existing JSON file to preserve other properties
@@ -203,18 +238,36 @@ export default {
         existingData = fs.readJsonSync(outputPath);
       }
 
+      // Prepare data from content list
+      const contentData = { ...contentEntry };
+      delete contentData.file; // Remove internal file property
+
+      // Remove empty fields from contentData
+      Object.keys(contentData).forEach((key) => {
+        if (
+          contentData[key] === "" ||
+          contentData[key] === null ||
+          contentData[key] === undefined
+        ) {
+          delete contentData[key];
+        }
+      });
+
       // Update only the rows while preserving other fields
+      // Ensure rows is the last property
       const updatedData = {
         ...existingData,
-        rows: rowsData,
+        ...contentData,
       };
+
+      // Force rows to be at the end
+      delete updatedData.rows;
+      updatedData.rows = rowsData;
 
       fs.writeJsonSync(outputPath, updatedData, { spaces: 2 });
 
       console.log(`Updated JSON file: ${outputPath}`);
     }
-
-    console.log(`JSON files updated from Google Sheet: ${sheetInfo.sheetUrl}`);
   },
 
   /**
@@ -353,21 +406,31 @@ export default {
     for (let i = 1; i < data.length; i++) {
       const rowData = data[i];
       const row: any = {};
+      let hasData = false;
 
       headers.forEach((header, index) => {
         const value = rowData[index] || "";
+        if (value === "") return; // Skip empty values
+
+        hasData = true;
         if (value.startsWith("{") || value.startsWith("[")) {
           try {
             row[header] = JSON.parse(value);
           } catch {
             row[header] = value;
           }
+        } else if (value === "TRUE") {
+          row[header] = true;
+        } else if (value === "FALSE") {
+          row[header] = false;
         } else {
           row[header] = value;
         }
       });
 
-      rows.push(row);
+      if (hasData) {
+        rows.push(row);
+      }
     }
 
     return rows;

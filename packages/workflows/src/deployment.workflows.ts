@@ -1,5 +1,4 @@
 import { DeploymentSet } from "../../scripts/src/commands/deployment/set";
-import { ExternalDeploymentSet } from "../../scripts/src/commands/deployment/set-external";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -121,63 +120,6 @@ const workflows: IDeploymentWorkflows = {
           {
             name: "copy_to_app",
             function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
-          },
-        ],
-      },
-      "set-external": {
-        label: "Set active deployment from external deployments.json",
-        steps: [
-          // Prompt deployment ID if not specified
-          {
-            name: "deployment prompt external",
-            condition: async ({ args }) => !args[0],
-            function: async ({ args, tasks }) => {
-              const deploymentId = await tasks.deployment.setExternal();
-              args[0] = deploymentId;
-            },
-          },
-          {
-            name: "deployment set external",
-            function: async ({ tasks, args }) => {
-              await tasks.deployment.setExternal(args[0]);
-            },
-          },
-          {
-            name: "sync_external_app_data",
-            function: async ({ tasks, config }) => {
-              // Sync app_data from external source (treats JSON files as direct sheet replacements)
-              if (config.app_data?.raw_data_source) {
-                await tasks.externalRawData.syncFromExternalAppData({
-                  sourceFolder: config.app_data.raw_data_source,
-                  outputFolder: config.app_data.output_path,
-                });
-              }
-            },
-          },
-          {
-            name: "copy_to_app",
-            function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
-          },
-        ],
-      },
-      "publish-external": {
-        label: "Create github release for external deployment",
-        steps: [
-          // Prompt deployment name if not specified
-          {
-            name: "deployment prompt",
-            condition: async ({ args }) => !args[0],
-            function: async ({ args }) => {
-              const deploymentName = await new ExternalDeploymentSet().promptDeploymentSelect();
-              args[0] = deploymentName;
-            },
-          },
-          {
-            name: "publish external",
-            function: async ({ tasks, args }) => {
-              const deploymentName = args[0];
-              await tasks.git().createExternalContentRelease(deploymentName);
-            },
           },
         ],
       },
