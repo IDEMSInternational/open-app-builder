@@ -20,33 +20,50 @@ const childWorkflows: IDeploymentWorkflows = {
       },
     ],
   },
-  // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
-  // Icon images should be at least 1024×1024px, splash image should be at least 2732×2732px
-  // Assets are generated using @capacitor/assets – see Capacitor docs for up-to-date guidance.
-  generate_splash: {
-    label: "Generate splash screen assets from splash.png",
+  /**
+   * Generate Android launcher assets (icon + splash).
+   * Two approaches are supported – asset-based takes precedence if both are configured:
+   * 1. Asset-based: provide icon_asset_path + splash_asset_path (+ optional foreground/background)
+   * 2. Logo-based: provide logo_asset_path + background colors (generates everything from one logo)
+   */
+  generate_assets: {
+    label: "Generate launcher assets (icon + splash) from configured source images",
     steps: [
       {
-        name: "generate_splash",
-        function: async ({ tasks, config }) =>
-          tasks.android.generate_splash({
-            splashAssetPath: config.android.splash_asset_path,
-          }),
-      },
-    ],
-  },
-  generate_icon: {
-    label:
-      "Generate launcher icon assets from icon.png (and adaptive icon if foreground/background provided)",
-    steps: [
-      {
-        name: "generate_icon",
-        function: async ({ tasks, config }) =>
-          tasks.android.generate_icon({
-            iconAssetPath: config.android.icon_asset_path,
-            iconAssetForegroundPath: config.android.icon_asset_foreground_path,
-            iconAssetBackgroundPath: config.android.icon_asset_background_path,
-          }),
+        name: "generate_assets",
+        function: async ({ tasks, config }) => {
+          const { android } = config;
+          const hasAssetConfig = android.icon_asset_path || android.splash_asset_path;
+          const hasLogoConfig = android.logo_asset_path;
+
+          if (hasAssetConfig) {
+            // Asset-based approach: separate icon and splash images
+            if (android.splash_asset_path) {
+              await tasks.android.generate_splash({
+                splashAssetPath: android.splash_asset_path,
+              });
+            }
+            if (android.icon_asset_path) {
+              await tasks.android.generate_icon({
+                iconAssetPath: android.icon_asset_path,
+                iconAssetForegroundPath: android.icon_asset_foreground_path,
+                iconAssetBackgroundPath: android.icon_asset_background_path,
+              });
+            }
+          } else if (hasLogoConfig) {
+            // Logo-based approach: generate everything from a single logo
+            await tasks.android.generate_from_logo({
+              logoPath: android.logo_asset_path,
+              iconBackgroundColor: android.icon_background_color,
+              splashBackgroundColor: android.splash_background_color,
+            });
+          } else {
+            console.log(
+              "[android generate_assets] No asset config found. " +
+                "Provide icon_asset_path + splash_asset_path, or logo_asset_path."
+            );
+          }
+        },
       },
     ],
   },
@@ -64,14 +81,9 @@ const defaultWorkflows: IDeploymentWorkflows = {
           await tasks.workflow.runWorkflow({ name: "android configure", parent: workflow }),
       },
       {
-        name: "Generate Splash",
+        name: "Generate Assets",
         function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android generate_splash", parent: workflow }),
-      },
-      {
-        name: "Generate Icon",
-        function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android generate_icon", parent: workflow }),
+          await tasks.workflow.runWorkflow({ name: "android generate_assets", parent: workflow }),
       },
     ],
     children: childWorkflows,

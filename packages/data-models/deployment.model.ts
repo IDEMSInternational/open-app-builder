@@ -149,6 +149,12 @@ interface IDeploymentCoreConfig {
     splash_asset_path?: string;
     icon_asset_foreground_path?: string;
     icon_asset_background_path?: string;
+    /** Alternative to separate icon/splash: single logo to generate all assets from */
+    logo_asset_path?: string;
+    /** Background color for generated icons (used with logo_asset_path) */
+    icon_background_color?: string;
+    /** Background color for generated splash screens (used with logo_asset_path) */
+    splash_background_color?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
   };

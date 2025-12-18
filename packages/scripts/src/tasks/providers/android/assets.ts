@@ -10,37 +10,58 @@ import { Project } from "@capacitor/assets/dist/project";
 /**
  * Android launcher assets generation using @capacitor/assets (app icon and splash screen).
  *
- * Workflows currently only pass basic options (icon paths, splash path).
- * Dark-mode variants, background colours, and logo scaling options are supported but not yet wired from config.
+ * Two modes are available:
+ * 1. Full control: use generate_icon() and generate_splash() with separate image assets
+ * 2. Logo mode: use generate_from_logo() with a single logo – icons and splash auto-generated
  */
 
-export interface AndroidLauncherIconOptions {
+export interface AndroidIconOptions {
   iconAssetPath: string;
   iconAssetForegroundPath?: string;
-  iconAssetForegroundPathDark?: string; // not yet used
+  iconAssetForegroundPathDark?: string; // not yet supported by Android
   iconAssetBackgroundPath?: string;
-  iconBackgroundColour?: string;
-  iconBackgroundColourDark?: string; // not yet used
+  iconAssetBackgroundPathDark?: string; // not yet supported by Android
 }
 
-export interface AndroidSplashImageOptions {
+export interface AndroidSplashOptions {
   splashAssetPath: string;
-  splashAssetPathDark?: string; // not yet used
+  splashAssetPathDark?: string;
+}
+
+/** Options for logo mode – generates all icons and splash from a single logo image. */
+export interface AndroidLogoOptions {
+  logoPath: string;
+  logoPathDark?: string;
+  iconBackgroundColor?: string;
+  iconBackgroundColorDark?: string;
   splashBackgroundColor?: string;
   splashBackgroundColorDark?: string;
+  /** Scale of logo on splash screen (0.0-1.0, default 0.2 = 20% of screen width) */
   logoSplashScale?: number;
+  /** Fixed width for logo on splash screen (overrides logoSplashScale if set) */
   logoSplashTargetWidth?: number;
 }
 
+/** Load and validate the Android project with Capacitor assets */
+async function loadAndroidProject() {
+  const projectConfig = { android: { path: "android" } };
+  const project = new Project(ROOT_DIR, projectConfig, "resources");
+  await project.load();
+
+  if (!(await project.androidExists())) {
+    Logger.error({
+      msg1: "Android project not found",
+      msg2: `Android project not found at ${projectConfig.android.path}`,
+    });
+    return null;
+  }
+
+  return project;
+}
+
 /** Generate Android launcher icons. Supports adaptive icons when foreground+background are provided. */
-export const generate_icon = async (options: AndroidLauncherIconOptions) => {
-  const {
-    iconAssetPath,
-    iconAssetForegroundPath,
-    iconAssetBackgroundPath,
-    iconBackgroundColour,
-    iconBackgroundColourDark,
-  } = options;
+export const generate_icon = async (options: AndroidIconOptions) => {
+  const { iconAssetPath, iconAssetForegroundPath, iconAssetBackgroundPath } = options;
 
   if (!fs.existsSync(iconAssetPath)) {
     return Logger.error({
@@ -50,26 +71,10 @@ export const generate_icon = async (options: AndroidLauncherIconOptions) => {
   }
 
   try {
-    const projectConfig = { android: { path: "android" } };
-    const project = new Project(ROOT_DIR, projectConfig, "resources");
-    await project.load();
+    const project = await loadAndroidProject();
+    if (!project) return;
 
-    if (!(await project.androidExists())) {
-      return Logger.error({
-        msg1: "Android project not found",
-        msg2: `Android project not found at ${projectConfig.android.path}`,
-      });
-    }
-
-    const generatorOptions: Record<string, unknown> = {
-      iconBackgroundColor: iconBackgroundColour || "#ffffff",
-      androidFlavor: "main",
-    };
-    if (iconBackgroundColourDark) {
-      generatorOptions.iconBackgroundColorDark = iconBackgroundColourDark;
-    }
-
-    const generator = new AndroidAssetGenerator(generatorOptions);
+    const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
     const assets: InputAsset[] = [];
 
     const mainIconAsset = new InputAsset(iconAssetPath, "icon" as any, "android" as any);
@@ -130,16 +135,9 @@ export const generate_icon = async (options: AndroidLauncherIconOptions) => {
   }
 };
 
-/** Generate Android splash screen assets. */
-export const generate_splash = async (options: AndroidSplashImageOptions) => {
-  const {
-    splashAssetPath,
-    splashAssetPathDark,
-    splashBackgroundColor,
-    splashBackgroundColorDark,
-    logoSplashScale,
-    logoSplashTargetWidth,
-  } = options;
+/** Generate Android splash screen assets from full splash images. */
+export const generate_splash = async (options: AndroidSplashOptions) => {
+  const { splashAssetPath, splashAssetPathDark } = options;
 
   if (!fs.existsSync(splashAssetPath)) {
     return Logger.error({
@@ -149,26 +147,10 @@ export const generate_splash = async (options: AndroidSplashImageOptions) => {
   }
 
   try {
-    const projectConfig = { android: { path: "android" } };
-    const project = new Project(ROOT_DIR, projectConfig, "resources");
-    await project.load();
+    const project = await loadAndroidProject();
+    if (!project) return;
 
-    if (!(await project.androidExists())) {
-      return Logger.error({
-        msg1: "Android project not found",
-        msg2: `Android project not found at ${projectConfig.android.path}`,
-      });
-    }
-
-    const generatorOptions = {
-      splashBackgroundColor: splashBackgroundColor || "#ffffff",
-      splashBackgroundColorDark: splashBackgroundColorDark || "#111111",
-      logoSplashScale: logoSplashScale || 0.2,
-      logoSplashTargetWidth,
-      androidFlavor: "main",
-    };
-
-    const generator = new AndroidAssetGenerator(generatorOptions);
+    const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
     const assets: InputAsset[] = [];
 
     const mainSplashAsset = new InputAsset(splashAssetPath, "splash" as any, "android" as any);
@@ -191,8 +173,7 @@ export const generate_splash = async (options: AndroidSplashImageOptions) => {
       generatedAssets.push(...generated);
     }
 
-    const darkModeInfo =
-      splashAssetPathDark || splashBackgroundColorDark ? " (including dark mode)" : "";
+    const darkModeInfo = splashAssetPathDark ? " (including dark mode)" : "";
 
     logOutput({
       msg1: "Android splash screens generated",
@@ -203,6 +184,80 @@ export const generate_splash = async (options: AndroidSplashImageOptions) => {
   } catch (error) {
     return Logger.error({
       msg1: "Failed to generate Android splash screens",
+      msg2: `Error: ${error.message}`,
+    });
+  }
+};
+
+/**
+ * Generate all Android assets (icons + splash) from a single logo image.
+ * The logo is centered on coloured backgrounds to create icons and splash screens.
+ */
+export const generate_from_logo = async (options: AndroidLogoOptions) => {
+  const {
+    logoPath,
+    logoPathDark,
+    iconBackgroundColor = "#ffffff",
+    iconBackgroundColorDark = "#111111",
+    splashBackgroundColor = "#ffffff",
+    splashBackgroundColorDark = "#111111",
+    logoSplashScale = 0.2,
+    logoSplashTargetWidth,
+  } = options;
+
+  if (!fs.existsSync(logoPath)) {
+    return Logger.error({
+      msg1: "Logo source image not found",
+      msg2: `No asset found at: ${logoPath}`,
+    });
+  }
+
+  try {
+    const project = await loadAndroidProject();
+    if (!project) return;
+
+    const generatorOptions = {
+      iconBackgroundColor,
+      iconBackgroundColorDark,
+      splashBackgroundColor,
+      splashBackgroundColorDark,
+      logoSplashScale,
+      logoSplashTargetWidth,
+      androidFlavor: "main",
+    };
+
+    const generator = new AndroidAssetGenerator(generatorOptions);
+    const assets: InputAsset[] = [];
+
+    // Light mode logo generates icons + splash
+    const logoAsset = new InputAsset(logoPath, "logo" as any, "android" as any);
+    await logoAsset.load();
+    assets.push(logoAsset);
+
+    // Dark mode logo (optional) generates dark splash
+    if (logoPathDark && fs.existsSync(logoPathDark)) {
+      const logoDarkAsset = new InputAsset(logoPathDark, "logo-dark" as any, "android" as any);
+      await logoDarkAsset.load();
+      assets.push(logoDarkAsset);
+    }
+
+    const generatedAssets = [];
+    for (const asset of assets) {
+      const generated = await generator.generate(asset, project);
+      generatedAssets.push(...generated);
+    }
+
+    const darkModeInfo = logoPathDark ? " (including dark mode)" : "";
+
+    logOutput({
+      msg1: "Android assets generated from logo",
+      msg2: `Generated ${generatedAssets.length} assets${darkModeInfo}`,
+    });
+
+    return generatedAssets;
+  } catch (error) {
+    return Logger.error({
+      msg1: "Failed to generate Android assets from logo",
       msg2: `Error: ${error.message}`,
     });
   }
