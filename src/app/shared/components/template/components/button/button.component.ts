@@ -2,6 +2,21 @@ import { Component, computed, ElementRef } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 
+const VARIANTS = [
+  "default",
+  "alternative",
+  "card",
+  "card-portrait",
+  "flexible",
+  "full",
+  "information",
+  "medium",
+  "navigation",
+  "short",
+  "standard",
+  "tall",
+];
+
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /**
    * The display variant of the button. Can be comma-separated or space-separated for multiple variants.
@@ -21,7 +36,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "tall"
    * Default: "default"
    */
-  variant: coerce.spaceSeparatedList("default"),
+  variant: coerce.allowedValuesList(VARIANTS, ["default"]),
   /** Legacy style parameter. Use "variant" instead. Default 'information'. */
   style: coerce.string("information"),
   /** When true, button is disabled and greyed out. */
@@ -43,10 +58,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   icon_align: coerce.allowedValues(["left", "right"], "left"),
 }));
 
-interface IVariantMap {
-  cardPortrait: boolean;
-}
-
 /**
  * A general-purpose button component
  */
@@ -57,15 +68,14 @@ interface IVariantMap {
 })
 export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** Style with two_columns logic applied */
-  style = computed(() => {
+  public style = computed(() => {
     const baseStyle = this.params().style;
     return `${baseStyle}${this.isTwoColumns() ? " two_columns" : ""}`.trim();
   });
 
-  /** @ignore */
-  variantMap = computed(() => this.populateVariantMap(this.params().variant));
+  /** Space-separated string of variants for template use */
+  public variantsString = computed(() => this.params().variant.join(" "));
 
-  /** @ignore */
   constructor(
     private elRef: ElementRef,
     public templateTranslateService: TemplateTranslateService
@@ -86,12 +96,5 @@ export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorS
     } else {
       return false;
     }
-  }
-
-  private populateVariantMap(variant: string = "default"): IVariantMap {
-    const variantArray = variant.split(" ");
-    return {
-      cardPortrait: variantArray.includes("card-portrait"),
-    };
   }
 }
