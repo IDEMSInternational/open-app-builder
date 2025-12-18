@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { ROOT_DIR } from "../../../paths";
 import { Logger, logOutput } from "../../../utils";
 
-// @capacitor/assets has no public programmatic API, so we import internal modules directly
+// @capacitor/assets has no public programmatic API, so import internal modules directly
 import { AndroidAssetGenerator } from "@capacitor/assets/dist/platforms/android";
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
@@ -10,8 +10,8 @@ import { Project } from "@capacitor/assets/dist/project";
 /**
  * Android asset generation using @capacitor/assets.
  *
- * Workflows currently only pass basic options (icon paths, splash path). Dark-mode variants,
- * background colours, and logo scaling options are supported but not yet wired from config.
+ * Workflows currently only pass basic options (icon paths, splash path).
+ * Dark-mode variants, background colours, and logo scaling options are supported but not yet wired from config.
  */
 
 export interface AndroidLauncherIconOptions {
