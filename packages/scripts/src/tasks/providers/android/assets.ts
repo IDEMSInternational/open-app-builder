@@ -4,6 +4,7 @@ import { Logger, logOutput } from "../../../utils";
 
 // @capacitor/assets has no public programmatic API, so import internal modules directly
 import { AndroidAssetGenerator } from "@capacitor/assets/dist/platforms/android";
+import { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
@@ -60,7 +61,7 @@ async function loadAndroidProject() {
 }
 
 /** Generate Android launcher icons. Supports adaptive icons when foreground+background are provided. */
-export const generate_icon = async (options: AndroidIconOptions) => {
+export const generateIcon = async (options: AndroidIconOptions) => {
   const { iconAssetPath, iconAssetForegroundPath, iconAssetBackgroundPath } = options;
 
   if (!fs.existsSync(iconAssetPath)) {
@@ -77,7 +78,7 @@ export const generate_icon = async (options: AndroidIconOptions) => {
     const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
     const assets: InputAsset[] = [];
 
-    const mainIconAsset = new InputAsset(iconAssetPath, "icon" as any, "android" as any);
+    const mainIconAsset = new InputAsset(iconAssetPath, AssetKind.Icon, Platform.Android);
     await mainIconAsset.load();
     assets.push(mainIconAsset);
 
@@ -90,16 +91,16 @@ export const generate_icon = async (options: AndroidIconOptions) => {
     ) {
       const foregroundAsset = new InputAsset(
         iconAssetForegroundPath,
-        "icon-foreground" as any,
-        "android" as any,
+        AssetKind.IconForeground,
+        Platform.Android,
       );
       await foregroundAsset.load();
       assets.push(foregroundAsset);
 
       const backgroundAsset = new InputAsset(
         iconAssetBackgroundPath,
-        "icon-background" as any,
-        "android" as any,
+        AssetKind.IconBackground,
+        Platform.Android,
       );
       await backgroundAsset.load();
       assets.push(backgroundAsset);
@@ -117,7 +118,7 @@ export const generate_icon = async (options: AndroidIconOptions) => {
     }
 
     const hasAdaptiveIcons = assets.some(
-      (asset) => asset.kind === "icon-foreground" || asset.kind === "icon-background",
+      (asset) => asset.kind === AssetKind.IconForeground || asset.kind === AssetKind.IconBackground,
     );
     const iconType = hasAdaptiveIcons ? "adaptive launcher icons" : "launcher icons";
 
@@ -136,7 +137,7 @@ export const generate_icon = async (options: AndroidIconOptions) => {
 };
 
 /** Generate Android splash screen assets from full splash images. */
-export const generate_splash = async (options: AndroidSplashOptions) => {
+export const generateSplash = async (options: AndroidSplashOptions) => {
   const { splashAssetPath, splashAssetPathDark } = options;
 
   if (!fs.existsSync(splashAssetPath)) {
@@ -153,15 +154,15 @@ export const generate_splash = async (options: AndroidSplashOptions) => {
     const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
     const assets: InputAsset[] = [];
 
-    const mainSplashAsset = new InputAsset(splashAssetPath, "splash" as any, "android" as any);
+    const mainSplashAsset = new InputAsset(splashAssetPath, AssetKind.Splash, Platform.Android);
     await mainSplashAsset.load();
     assets.push(mainSplashAsset);
 
     if (splashAssetPathDark && fs.existsSync(splashAssetPathDark)) {
       const darkSplashAsset = new InputAsset(
         splashAssetPathDark,
-        "splash-dark" as any,
-        "android" as any,
+        AssetKind.SplashDark,
+        Platform.Android,
       );
       await darkSplashAsset.load();
       assets.push(darkSplashAsset);
@@ -193,7 +194,7 @@ export const generate_splash = async (options: AndroidSplashOptions) => {
  * Generate all Android assets (icons + splash) from a single logo image.
  * The logo is centered on coloured backgrounds to create icons and splash screens.
  */
-export const generate_from_logo = async (options: AndroidLogoOptions) => {
+export const generateFromLogo = async (options: AndroidLogoOptions) => {
   const {
     logoPath,
     logoPathDark,
@@ -230,13 +231,13 @@ export const generate_from_logo = async (options: AndroidLogoOptions) => {
     const assets: InputAsset[] = [];
 
     // Light mode logo generates icons + splash
-    const logoAsset = new InputAsset(logoPath, "logo" as any, "android" as any);
+    const logoAsset = new InputAsset(logoPath, AssetKind.Logo, Platform.Android);
     await logoAsset.load();
     assets.push(logoAsset);
 
     // Dark mode logo (optional) generates dark splash
     if (logoPathDark && fs.existsSync(logoPathDark)) {
-      const logoDarkAsset = new InputAsset(logoPathDark, "logo-dark" as any, "android" as any);
+      const logoDarkAsset = new InputAsset(logoPathDark, AssetKind.LogoDark, Platform.Android);
       await logoDarkAsset.load();
       assets.push(logoDarkAsset);
     }

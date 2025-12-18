@@ -39,12 +39,12 @@ const childWorkflows: IDeploymentWorkflows = {
           if (hasAssetConfig) {
             // Asset-based approach: separate icon and splash images
             if (android.splash_asset_path) {
-              await tasks.android.generate_splash({
+              await tasks.android.generateSplash({
                 splashAssetPath: android.splash_asset_path,
               });
             }
             if (android.icon_asset_path) {
-              await tasks.android.generate_icon({
+              await tasks.android.generateIcon({
                 iconAssetPath: android.icon_asset_path,
                 iconAssetForegroundPath: android.icon_asset_foreground_path,
                 iconAssetBackgroundPath: android.icon_asset_background_path,
@@ -52,7 +52,7 @@ const childWorkflows: IDeploymentWorkflows = {
             }
           } else if (hasLogoConfig) {
             // Logo-based approach: generate everything from a single logo
-            await tasks.android.generate_from_logo({
+            await tasks.android.generateFromLogo({
               logoPath: android.logo_asset_path,
               iconBackgroundColor: android.icon_background_color,
               splashBackgroundColor: android.splash_background_color,

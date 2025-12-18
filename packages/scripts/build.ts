@@ -54,7 +54,7 @@ function createBuildBundle() {
     // TODO - test statement above and document
 
     // Additionally exclude pnpapi as directed by build warning output
-    external: ["pnpapi"],
+    external: ["sharp", "pnpapi"],
   };
 
   // TODO - prod build changes
