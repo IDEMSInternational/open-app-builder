@@ -10,9 +10,13 @@ import { AuthErrorCodes } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
 import { AuthProviderBase } from "./base.auth";
 import { IAuthUser, ISignInProvider } from "../types";
+import { firstValueFrom, ReplaySubject, timeout } from "rxjs";
 
 /** LocalStorage field used to store temporary auth profile data */
 const AUTH_METADATA_FIELD = "firebase_auth_openid_profile";
+
+/** Amount of time to wait for auth init before resolving as unauthenticated */
+const AUTH_INIT_TIMEOUT = 2000;
 
 export type FirebaseAuthUser = User;
 
@@ -21,6 +25,9 @@ export type FirebaseAuthUser = User;
 })
 export class FirebaseAuthProvider extends AuthProviderBase {
   private isAuthenticating = false;
+
+  // Emit the most recent auth state for tracking native api init
+  private authState$ = new ReplaySubject<User | null>(1);
 
   /** Sign in methods to call depending on provider */
   private providerMapping: Record<ISignInProvider, () => Promise<SignInResult>> = {
@@ -34,14 +41,32 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     if (!firebaseService.app) {
       throw new Error("[Firebase Auth] app not configured");
     }
-    // Add listener to ensure previously signed in user is updated
-    // when auth layer settles (native)
-    FirebaseAuthentication.addListener("authStateChange", async (e) => {
-      await this.handleAutomatedLogin();
-    });
+    this.subscribeToAuthStateChanges();
+
     // Attempt to immediately load any previously signed in user
     // (web and native app following web-layer force_reload action)
     await this.handleAutomatedLogin();
+  }
+
+  private subscribeToAuthStateChanges() {
+    FirebaseAuthentication.addListener("authStateChange", async (e) => {
+      this.authState$.next(e.user);
+    });
+  }
+
+  private async waitForAuthStateReady(): Promise<void> {
+    try {
+      await firstValueFrom(this.authState$.pipe(timeout(AUTH_INIT_TIMEOUT)));
+    } catch (error) {
+      if (error.name === "TimeoutError") {
+        console.warn(
+          "[Firebase Auth] Timeout waiting for authStateChange event, proceeding anyway.",
+          "This may indicate a slow network or Firebase initialization issue."
+        );
+      } else {
+        throw error;
+      }
+    }
   }
 
   public override async signIn(providerId: ISignInProvider) {
@@ -139,26 +164,39 @@ export class FirebaseAuthProvider extends AuthProviderBase {
   /**
    * When a user signs in for the first time a full profile is retrieved which includes openID profile data.
    * However, when automated sign-in happens on app reload, only firebase-specific profile information is available.
-   * As such use localStorage to persist and retrieve openID profile information
+   * As such use localStorage to persist and retrieve openID profile information.
+   * @returns The authenticated user if login was successful, null otherwise
    */
-  private async handleAutomatedLogin() {
-    const { user } = await FirebaseAuthentication.getCurrentUser();
-    // Avoid setting the same author if native layer has already loaded user when called
-    if (user?.uid === this.authUser()?.uid) {
-      return;
+  private async handleAutomatedLogin(): Promise<IAuthUser | null> {
+    let { user } = await FirebaseAuthentication.getCurrentUser();
+    const hasStoredProfile = !!localStorage.getItem(AUTH_METADATA_FIELD);
+    const currentAuthUser = this.authUser();
+
+    // If we have a stored profile but no user yet, wait for authStateChange event to fire.
+    // This handles race condition where getCurrentUser() returns null initially but authStateChange fires shortly after
+    if (!user && hasStoredProfile && !currentAuthUser) {
+      console.log("[Firebase Auth] Stored profile found, waiting for auth state to initialize...");
+      await this.waitForAuthStateReady();
+      // Re-fetch user after auth state is ready
+      ({ user } = await FirebaseAuthentication.getCurrentUser());
     }
+
+    // Avoid setting the same user if already loaded
+    if (user?.uid === currentAuthUser?.uid) return currentAuthUser;
+
+    if (!user) return null;
+
     console.log("[Firebase Auth] user", user);
-    if (user) {
-      const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
-      if (storedProfile) {
-        this.setAuthUser(user, JSON.parse(storedProfile));
-        console.log("[Firebase Auth] Automated login successful with stored profile");
-      } else {
-        // trigger automated login depending on provider
-        const providerId = user.providerData?.[0]?.providerId;
-        this.signIn(providerId as any);
-      }
+    const storedProfile = localStorage.getItem(AUTH_METADATA_FIELD);
+    if (storedProfile) {
+      this.setAuthUser(user, JSON.parse(storedProfile));
+      console.log("[Firebase Auth] Automated login successful with stored profile");
+    } else {
+      // Trigger automated login depending on provider
+      const providerId = user.providerData?.[0]?.providerId;
+      await this.signIn(providerId as any);
     }
+    return this.authUser();
   }
 
   /**
