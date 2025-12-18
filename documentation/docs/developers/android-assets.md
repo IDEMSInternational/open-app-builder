@@ -1,26 +1,42 @@
 # Android Assets
 
-Generating an Android launcher icon (aka "app icon") and splash screen image from source images. More information about each can be found in Google's official docs for [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) and [splash screens](https://developer.android.com/guide/topics/ui/splash-screen).
+Generate Android launcher icon and splash screen assets from source images. See Google's official docs for [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) and [splash screens](https://developer.android.com/guide/topics/ui/splash-screen).
 
-## Source image specification
-Source images must be supplied in `.png` format. Splash screen generation requires a single source image (`splash.png` by convention). App icon generation requires a source image of the complete icon (`icon.png` by convention). Additionally, two images (`icon-background.png` and `icon-foreground.png` by convention) can be supplied that will be combined dynamically to generate various [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) of different shapes, so that the icon displays differently across different device models and settings. Older devices do not support adaptive icons, so the static icon image must be provided to be used as a fallback in these cases.
+## Two approaches
 
-The splash image must be at least 2732×2732px. The static icon image must be at least 1024×1024px, while the foreground and background images must be at least 432×432px. If the source images are smaller than these sizes, the workflow will fail and the Android assets will not be generated.
+There are two ways to generate Android assets:
 
-## Example source files
-| splash.png             | icon.png             | icon-background.png             |icon-foreground.png |
-| ---------------------- | -------------------- | ------------------------------- |------------------- |
+1. **Asset-based** (full control): Provide separate icon and splash images, with optional adaptive icon foreground/background
+2. **Logo-based** (simple): Provide a single logo image and background colours – all assets are auto-generated
+
+If both are configured, the asset-based approach takes precedence.
+
+---
+
+## Option 1: Asset-based
+
+Provide separate source images for icon and splash screen. This gives full control over how each asset looks.
+
+### Source images
+
+| Asset | Filename (convention) | Minimum size | Required |
+|-------|----------------------|--------------|----------|
+| Splash screen | `splash.png` | 2732×2732px | Yes |
+| App icon | `icon.png` | 1024×1024px | Yes |
+| Adaptive icon foreground | `icon-foreground.png` | 432×432px | Optional |
+| Adaptive icon background | `icon-background.png` | 432×432px | Optional |
+
+The adaptive icon images (`icon-foreground.png` and `icon-background.png`) are combined dynamically to generate [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) of different shapes. The static `icon.png` is used as a fallback for older devices.
+
+### Example source files
+
+| splash.png | icon.png | icon-background.png | icon-foreground.png |
+|------------|----------|---------------------|---------------------|
 |![](./images/splash.png)|![](./images/icon.png)|![](./images/icon-background.png)|![](./images/icon-foreground.png)|
 
-
-## Configuring splash screens and app icons
-With `.png` files provided from which to generate the splash screen and app icons, their paths must be provided in the deployment `config` defined in the `.config.ts` file (see [Deployment Configuration](../deployments/) for a specification of this file). These paths are relative the root directory.
-
-For example:
+### Configuration
 
 ```ts title=".idems_app/deployments/plh/global.config.ts"
-...
-
 const config: IDeploymentConfig = {
   ...
   android: {
@@ -31,32 +47,62 @@ const config: IDeploymentConfig = {
   },
   ...
 };
-...
 ```
-## Generating Android assets through Github
-With the assets correctly configured as above, the splash screen and launch icon will automatically be generated when the `Android - Release to Google Play` action is run.
 
-## Generating Android assets locally
-To generate the android assets locally, run
+---
+
+## Option 2: Logo-based
+
+Provide a single logo image and background colours. The logo is centered on the background colour to generate all icons and splash screens automatically.
+
+### Source images
+
+| Asset | Filename (convention) | Minimum size | Required |
+|-------|----------------------|--------------|----------|
+| Logo | `logo.png` | 1024×1024px | Yes |
+
+### Configuration
+
+```ts title=".idems_app/deployments/plh/global.config.ts"
+const config: IDeploymentConfig = {
+  ...
+  android: {
+    logo_asset_path: "packages/app-data/assets/global/android/logo.png",
+    icon_background_color: "#ffffff",
+    splash_background_color: "#3498db",
+  },
+  ...
+};
+```
+
+---
+
+## Running the workflow
+
+### Locally
+
+To generate Android assets and configure the Android project:
 ```sh
 yarn workflow android
 ```
-This will also populate the Android configuration files with the values of `app_id` and `app_name` as specified in the [deployment config](./deployments.md#android-app-management).
 
-Alternatively, to generate just the splash screens or just the app icons, run
+This runs both `configure` (populates `app_id`, `app_name`, etc.) and `generate_assets` (creates icons and splash screens).
+
+To generate just the launcher assets:
 ```sh
-yarn workflow android generate_splash
+yarn workflow android generate_assets
 ```
-or
-```sh
-yarn workflow android generate_icon
-```
-respectively.
 
-## Example generated files
-The following files should be generated, depending on the configuration:
+### Via GitHub Actions
 
-| Splash screens  | App icons  |
-| ---- | ---- |
+The assets are automatically generated when the `Android - Release to Google Play` action is run.
+
+---
+
+## Generated files
+
+The following files are generated in the Android project:
+
+| Splash screens | App icons |
+|----------------|-----------|
 |![](./images/generated-splash-files.png)|![](./images/generated-icon-files.png)|
-
