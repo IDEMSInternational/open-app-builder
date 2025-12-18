@@ -33,7 +33,7 @@ const childWorkflows: IDeploymentWorkflows = {
         name: "generate_assets",
         function: async ({ tasks, config }) => {
           const { android } = config;
-          const hasAssetConfig = android.icon_asset_path || android.splash_asset_path;
+          const hasAssetConfig = android.icon_asset_path && android.splash_asset_path;
           const hasLogoConfig = android.logo_asset_path;
 
           if (hasAssetConfig) {
