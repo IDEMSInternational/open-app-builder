@@ -8,7 +8,7 @@ import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
 /**
- * Android asset generation using @capacitor/assets.
+ * Android launcher assets generation using @capacitor/assets (app icon and splash screen).
  *
  * Workflows currently only pass basic options (icon paths, splash path).
  * Dark-mode variants, background colours, and logo scaling options are supported but not yet wired from config.

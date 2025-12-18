@@ -1,5 +1,5 @@
 import { configure } from "./configure";
-import { generate_icon, generate_splash } from "./capacitor-assets";
+import { generate_icon, generate_splash } from "./assets";
 
 export default {
   configure,
