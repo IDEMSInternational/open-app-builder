@@ -45,11 +45,11 @@ This will also populate the Android configuration files with the values of `app_
 
 Alternatively, to generate just the splash screens or just the app icons, run
 ```sh
-yarn workflow android set_splash_image
+yarn workflow android generate_splash
 ```
 or
 ```sh
-yarn workflow android set_launcher_icon
+yarn workflow android generate_icon
 ```
 respectively.
 

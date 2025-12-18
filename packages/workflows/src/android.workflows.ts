@@ -23,26 +23,26 @@ const childWorkflows: IDeploymentWorkflows = {
   // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
   // Icon images should be at least 1024×1024px, splash image should be at least 2732×2732px
   // Assets are generated using @capacitor/assets – see Capacitor docs for up-to-date guidance.
-  set_splash_image: {
-    label: "Generate splash screen image from splash.png asset and copy to relevant folders",
+  generate_splash: {
+    label: "Generate splash screen assets from splash.png",
     steps: [
       {
-        name: "set_splash_image",
+        name: "generate_splash",
         function: async ({ tasks, config }) =>
-          tasks.android.set_splash_image({
+          tasks.android.generate_splash({
             splashAssetPath: config.android.splash_asset_path,
           }),
       },
     ],
   },
-  set_launcher_icon: {
+  generate_icon: {
     label:
-      "Generate app launcher icon from icon.png asset and, if provided, generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders",
+      "Generate launcher icon assets from icon.png (and adaptive icon if foreground/background provided)",
     steps: [
       {
-        name: "set_launcher_icon",
+        name: "generate_icon",
         function: async ({ tasks, config }) =>
-          tasks.android.set_launcher_icon({
+          tasks.android.generate_icon({
             iconAssetPath: config.android.icon_asset_path,
             iconAssetForegroundPath: config.android.icon_asset_foreground_path,
             iconAssetBackgroundPath: config.android.icon_asset_background_path,
@@ -54,25 +54,24 @@ const childWorkflows: IDeploymentWorkflows = {
 
 /** Default workflows made available to all deployments */
 const defaultWorkflows: IDeploymentWorkflows = {
-  // TODO - add git notes about namespace change
   android: {
     label: `Run android workflows: ${Object.keys(childWorkflows).join(",")}`,
     // default workflow runs all child workflows
     steps: [
       {
-        name: "Configure Core",
+        name: "Configure",
         function: async ({ tasks, workflow }) =>
           await tasks.workflow.runWorkflow({ name: "android configure", parent: workflow }),
       },
       {
-        name: "Set Splash Image",
+        name: "Generate Splash",
         function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_splash_image", parent: workflow }),
+          await tasks.workflow.runWorkflow({ name: "android generate_splash", parent: workflow }),
       },
       {
-        name: "Set Launcher Icon",
+        name: "Generate Icon",
         function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_launcher_icon", parent: workflow }),
+          await tasks.workflow.runWorkflow({ name: "android generate_icon", parent: workflow }),
       },
     ],
     children: childWorkflows,
