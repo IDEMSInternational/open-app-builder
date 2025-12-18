@@ -94,42 +94,61 @@
   }
   // Audio
   plh-audio {
-    border: 1px solid transparent;
-    .container-player[data-variant~="compact"] {
-      width: var(--buttons-full-width);
-
-      border: 0.9px solid var(--ion-color-primary-100);
-      border-radius: var(--ion-border-radius-round);
+    .container-player[data-variant~="compact"],
+    .container-player[data-variant~="large"] {
+      // Remove visible bounding box from container level and apply to second-row instead
+      border: unset;
+      border-radius: unset;
       box-shadow: none;
-
-      background-color: var(--ion-color-primary-50);
-      padding: 8px 16px;
-      padding-right: 24px;
-      margin-top: 30px;
+      background-color: unset;
+      padding: 0;
 
       .top-row {
-        min-height: 0 !important;
-        position: absolute;
-        top: -52px;
-        margin: 0 0 0 -14px;
-        // padding-top: 30px;
+        padding-bottom: 18px;
         h3 {
           margin: 0;
           color: var(--ion-color-gray-900) !important;
           max-width: 95%;
           font-weight: var(--font-weight-bold);
-          font-size: var(var(--font-size-text-medium) + 2);
-          // margin-top: 20px !important;
         }
       }
+
       .second-row {
+        box-shadow: none;
+      }
+
+      .progress-block {
+        ion-range {
+          --bar-background: var(--color-surface-white) !important;
+          --bar-height: 12px !important;
+          --bar-border-radius: var(--ion-border-radius-standard) !important;
+        }
+
+        .time-value {
+          font-size: var(--font-size-text-small) !important;
+          line-height: var(--line-height-text-tiny) !important;
+          color: var(--ion-color-gray-700) !important;
+        }
+      }
+    }
+
+    // Compact variant
+    .container-player[data-variant~="compact"] {
+      width: 100%;
+      .second-row {
+        width: 100%;
+        border: 0.9px solid var(--ion-color-primary-100);
+        border-radius: var(--ion-border-radius-rounded);
+        background: var(--ion-color-primary-50);
+        padding: 8px 16px;
+        padding-right: 24px;
         .controls {
           ion-button.btn-play {
-            --background: var(--ion-color-primary-600) !important;
-            --border-radius: var(--ion-border-radius-round) !important;
+            --background: var(--ion-color-secondary-600) !important;
+            --border-radius: var(--ion-border-radius-rounded) !important;
             --box-shadow: none !important;
-            height: 56px !important;
-            width: 56px !important;
+            height: 52px !important;
+            width: 52px !important;
             ion-icon {
               font-size: var(--icon-size-large) !important;
             }
@@ -138,53 +157,28 @@
         .progress-block {
           ion-range {
             width: 100% !important;
-            --bar-background: var(--ion-color-danger-contrast) !important;
-            --bar-height: 12px !important;
-            --knob-size: 16px !important;
-            --knob-background: var(--ion-color-primary-600) !important;
-            --bar-border-radius: var(--ion-border-radius-standard) !important;
-            --knob-box-shadow: none !important;
+            --knob-size: 20px !important;
+            --knob-background: var(--ion-color-secondary-600) !important;
           }
-          .time {
-            .time-value {
-              font-size: var(--font-size-text-small) !important;
-              font-weight: var(--font-weight-medium) !important;
-              line-height: var(--line-height-text-tiny) !important;
-              color: var(--ion-color-gray-700) !important;
-            }
+          .time .time-value {
+            font-weight: var(--font-weight-medium) !important;
           }
         }
       }
     }
+
+    // Large variant
     .container-player[data-variant~="large"] {
-      background: var(--ion-color-primary-50);
-      border: 0.9px solid var(--ion-color-primary-100);
       box-sizing: border-box;
-      box-shadow: none;
-      border-radius: var(--ion-border-radius-standard);
-      padding: 12px 16px;
       display: flex;
       position: relative;
       flex-direction: column;
-      margin-top: 20px;
-      .top-row {
-        position: absolute;
-        top: -56px;
-        margin: 0 0 0 -14px;
-        h3 {
-          margin: 0;
-          margin-right: 0;
-          color: var(--ion-color-gray-900);
-          max-width: 85%;
-          font-weight: var(--font-weight-bold);
-          font-size: var(var(--font-size-text-medium) + 2);
-        }
-        ion-button.action-button {
-          --padding-start: 2px;
-          --padding-end: 2px;
-        }
-      }
+
       .second-row {
+        border: 0.9px solid var(--ion-color-primary-100);
+        border-radius: var(--ion-border-radius-standard);
+        background: var(--ion-color-primary-50);
+        padding: 12px 16px;
         display: flex;
         flex-direction: column-reverse;
         .controls {
@@ -193,29 +187,26 @@
           .forward {
             ion-icon {
               font-size: var(--icon-size-extra-large) !important;
-              color: var(--ion-color-primary-600) !important;
+              color: var(--ion-color-secondary-600) !important;
               border-radius: 2px !important;
             }
           }
           .btn-play {
             @include mixins.large-square;
             --background: var(--ion-color-primary-50) !important;
-            --border-radius: var(--ion-border-radius-round) !important;
+            --border-radius: var(--ion-border-radius-rounded) !important;
             --padding: 0 !important;
             --box-shadow: none !important;
             ion-icon {
               position: absolute !important;
               font-size: var(--icon-size-largest) !important;
-              color: var(--ion-color-primary-600) !important;
+              color: var(--ion-color-secondary-600) !important;
             }
           }
         }
         .progress-block {
           .audio-range {
-            --bar-background-active: var(--ion-color-primary-600) !important;
-            --bar-background: var(--ion-color-danger-contrast) !important;
-            --bar-height: 12px !important;
-            --bar-border-radius: var(--ion-border-radius-standard) !important;
+            --bar-background-active: var(--ion-color-primary-400) !important;
             --knob-size: 0px !important;
             --pin-background: var(--ion-color-primary-300) !important;
             --knob-background: var(--ion-color-primary-300) !important;
@@ -229,13 +220,6 @@
           ion-range::part(bar-active) {
             top: -1.5px !important;
             margin-left: 0 !important;
-          }
-          .time {
-            &-value {
-              font-size: var(--font-size-text-small) !important;
-              line-height: var(--line-height-text-tiny) !important;
-              color: var(--ion-color-gray-700) !important;
-            }
           }
         }
       }
@@ -313,11 +297,25 @@
       }
     }
   }
+
   // Task Progress Bar
   plh-task-progress-bar {
     .progress-bar-wrapper {
       .progress-bar {
         height: 12px !important;
+      }
+    }
+  }
+
+  // Combo-box
+  plh-combo-box {
+    button.open-combobox {
+      border-radius: var(--ion-border-radius-small);
+    }
+    .combo-box-container.dropdown {
+      ion-select {
+        padding-left: 16px !important;
+        font-size: var(--combo-box-font-size-standard);
       }
     }
   }

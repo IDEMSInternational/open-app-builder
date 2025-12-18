@@ -20,6 +20,8 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
+  @Input() optionsKey: string = "name";
+  @Input() optionsValue: string = "text";
   formData: FormGroup | null;
   valuesFromListAnswers: IAnswerListItem[];
   textTitle: string | null;
@@ -39,7 +41,7 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   getParams() {
-    this.textTitle = getStringParamFromTemplateRow(this.row, "text", null);
+    this.textTitle = getStringParamFromTemplateRow(this.row, "modal_title", null);
     this.inputAllowed = getBooleanParamFromTemplateRow(this.row, "input_allowed", false);
     this.inputPosition =
       getStringParamFromTemplateRow(this.row, "input_position", "bottom") === "top";
@@ -70,11 +72,11 @@ export class ComboBoxModalComponent implements OnInit {
   }
 
   check(el) {
-    if (this.form.get("answer").value === el.name) {
+    if (this.form.get("answer").value === el[this.optionsKey]) {
       this.form.get("answer").setValue(null);
       this.closeModal({ customAnswerSelected: this.customAnswerSelected, answer: null });
     } else {
-      this.form.get("answer").setValue(el);
+      this.form.get("answer").setValue(el[this.optionsKey]);
       if (this.inputAllowed) {
         this.form.get("customAnswer").setValue(null);
       }
@@ -91,18 +93,21 @@ export class ComboBoxModalComponent implements OnInit {
 
   enterCustomAnswer() {
     if (this.form.get("customAnswer").value !== "") {
+      const customAnswer: any = {};
+      customAnswer[this.optionsValue] = this.form.get("customAnswer").value;
+      customAnswer[this.optionsKey] = "other";
       if (this.customAnswerSelected) {
         this.customAnswerSelected = true;
         this.closeModal({
           customAnswerSelected: this.customAnswerSelected,
-          answer: { text: this.form.get("customAnswer").value, name: "other" },
+          answer: customAnswer,
         });
       } else {
         this.form.get("answer").setValue(null);
         this.customAnswerSelected = true;
         this.closeModal({
           customAnswerSelected: this.customAnswerSelected,
-          answer: { text: this.form.get("customAnswer").value, name: "other" },
+          answer: customAnswer,
         });
       }
     }

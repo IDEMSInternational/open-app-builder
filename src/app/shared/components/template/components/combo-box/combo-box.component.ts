@@ -1,36 +1,51 @@
-import { Component, computed, effect, OnDestroy, Signal, signal } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
-import {
-  IAnswerListItem,
-  getAnswerListParamFromTemplateRow,
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "src/app/shared/utils";
-import { TemplateBaseComponent } from "../base";
-import { FlowTypes } from "../../models";
+import { IAnswerListItem } from "src/app/shared/utils";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
-interface IComboBoxParams {
-  disabled: boolean;
-  disabledText: string;
-  placeholder: string;
-  prioritisePlaceholder: boolean;
-  style: string;
-  variant: "modal" | "dropdown";
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** List of answer options to display. */
+  answer_list: coerce.objectArray<IAnswerListItem>([]),
+  /** When true, the combo box is disabled. */
+  disabled: coerce.boolean(),
+  /** Text to display when the component is disabled. */
+  disabled_text: coerce.string(""),
+  /** Title to display in the modal header. */
+  modal_title: coerce.string(""),
+  /** Text to display when no option is selected. */
+  placeholder: coerce.string(""),
+  /** When true, prioritizes showing the placeholder over the selected value. */
+  prioritise_placeholder: coerce.boolean(),
+  /** Custom style class to apply. */
+  style: coerce.string(""),
+  /** The display variant of the combo box. Default 'modal'. */
+  variant: coerce.allowedValues(["modal", "dropdown"], "modal"),
+  /** The property key to use for the option value. Default 'name'. */
+  options_key: coerce.string("name"),
+  /** The property key to use for the option display text. Default 'text'. */
+  options_value: coerce.string("text"),
+  /** When true, allows users to enter a custom answer. Modal variant only. */
+  input_allowed: coerce.boolean(),
+  /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
+  input_position: coerce.string("bottom"),
+  /** Placeholder text for the answer input field. Modal variant only. */
+  answer_placeholder: coerce.string(""),
+}));
 
 @Component({
   selector: "plh-combo-box",
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
 })
-export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDestroy {
-  public params: Signal<IComboBoxParams> = computed(() => this.getParams(this.parameterList()));
-
+export class TmplComboBoxComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements OnDestroy
+{
   public answerText = signal("");
   private customAnswerSelected = signal(false);
   private customAnswerText: string;
@@ -41,17 +56,19 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) =>
+        this.dataItemsService.getItemsObservable(
+          row,
+          this.parentContainerComponentRef.templateRowMap
+        )
+      )
     )
   );
 
   public answerOptions = computed(() => {
-    const dataItemRows = this.dataItemRows();
-    if (dataItemRows !== undefined) {
-      return (dataItemRows as IAnswerListItem[]) || [];
-    }
-    return getAnswerListParamFromTemplateRow(this.rowSignal(), "answer_list", []);
+    return this.dataItemRows() ?? this.params().answerList;
   });
+
   public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
@@ -75,37 +92,20 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
     effect(
       () => {
         if (this.answerOptions().length > 0 && this._row.value) {
+          const optionsKey = this.params().optionsKey;
+          const optionsValue = this.params().optionsValue;
           const selectedAnswer = this.answerOptions().find(
-            (x) => String(x.name) === String(this._row.value)
+            (x) => String(x[optionsKey]) === String(this._row.value)
           );
           if (!selectedAnswer) {
             this.customAnswerSelected.set(true);
           } else {
-            this.answerText.set(selectedAnswer?.text || "");
+            this.answerText.set(selectedAnswer?.[optionsValue] || "");
           }
         }
       },
       { allowSignalWrites: true }
     );
-  }
-
-  private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IComboBoxParams {
-    return {
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-      disabledText: getStringParamFromTemplateRow(this._row, "disabled_text", ""),
-      placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
-      prioritisePlaceholder: getBooleanParamFromTemplateRow(
-        this._row,
-        "prioritise_placeholder",
-        false
-      ),
-      style: getStringParamFromTemplateRow(this._row, "style", ""),
-      variant: getStringParamFromTemplateRow(
-        this._row,
-        "variant",
-        "modal"
-      ) as IComboBoxParams["variant"],
-    };
   }
 
   public async handleDropdownChange(value) {
@@ -114,6 +114,8 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
 
   public async openModal() {
     if (this.disabled()) return;
+    const optionsKey = this.params().optionsKey;
+    const optionsValue = this.params().optionsValue;
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
@@ -123,36 +125,44 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
         selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
+        optionsKey: optionsKey,
+        optionsValue: optionsValue,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.params().prioritisePlaceholder = false;
-      this.answerText.set(data?.data?.answer?.text);
+      const answer = data?.data?.answer;
+      this.answerText.set(answer?.[optionsValue] || "");
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
-      this.customAnswerText = this.customAnswerSelected() ? data?.data?.answer?.text : "";
-      await this.setValue(data?.data?.answer?.name);
+      this.customAnswerText = this.customAnswerSelected() ? answer?.[optionsValue] || "" : "";
+      await this.setValue(answer?.[optionsKey] || null);
     });
     await modal.present();
   }
 
   async openSearch() {
+    const optionsKey = this.params().optionsKey;
+    const optionsValue = this.params().optionsValue;
     const modal = await this.modalController.create({
       component: ComboBoxSearchComponent,
       cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
-        title: signal(getStringParamFromTemplateRow(this._row, "text")),
+        title: signal(this.params().modalTitle),
         selectedValue: this.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
+        optionsKey: optionsKey,
+        optionsValue: optionsValue,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
       this.params().prioritisePlaceholder = false;
-      this.answerText.set(data?.data?.answer?.text);
-      await this.setValue(data?.data?.answer?.name);
+      const answer = data?.data?.answer;
+      this.answerText.set(answer?.[optionsValue] || "");
+      await this.setValue(answer?.[optionsKey] || null);
     });
     await modal.present();
   }

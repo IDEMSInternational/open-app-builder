@@ -18,6 +18,8 @@
 @include themes.theme-plh_kids_kw;
 @include themes.theme-plh_facilitator_ph;
 @include themes.theme-plh_facilitator_my;
+@include themes.theme-plh_kids_teens_za;
+@include themes.theme-plh_facilitator_cw;
 
 /** Ionic CSS Variables **/
 :root {
@@ -88,6 +90,8 @@
 
   // Font Weight //
   --font-weight-standard: 400;
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
   --font-weight-bold: 700;
 
   // Text box //
@@ -175,7 +179,7 @@
   --buttons-tall-height: 80px;
   --buttons-font-size-tiny: 18px;
   --buttons-font-size-small: 20px;
-  --buttons-font-size: 25px;
+  --buttons-font-size: 20px;
   --buttons-size: 64px;
 
   // Round button //

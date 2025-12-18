@@ -3,7 +3,7 @@ import { logError } from ".";
 
 /** List of fields to retrieve when receiving file metadata via get/list apis */
 const FILE_META_FIELD_LIST =
-  "id, name, mimeType, modifiedTime, md5Checksum, size, fileExtension, fullFileExtension";
+  "id, name, mimeType, modifiedTime, fileExtension, lastModifyingUser(displayName)";
 
 /** Gets the name and id of a google drive folder */
 export async function getGDriveFolderByName(
@@ -86,3 +86,4 @@ export async function listGdriveFolder(drive: drive_v3.Drive, folderId: string) 
   }
   return files || [];
 }
+

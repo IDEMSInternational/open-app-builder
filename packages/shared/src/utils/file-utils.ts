@@ -160,7 +160,7 @@ export function generateFolderFlatMap(
   return flatMap;
 }
 
-function getFileStats(filePath: string) {
+export function getFileStats(filePath: string) {
   // generate size and md5 checksum stats
   const { size, mtime } = fs.statSync(filePath);
   const modifiedTime = mtime.toISOString();
@@ -175,15 +175,21 @@ export interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  modifiedBy?: string;
   localPath?: string;
+  remoteUrl?: string;
 }
+export type IContentsEntryWithLocalPath = Omit<IContentsEntry, "localPath"> & {
+  localPath: string;
+};
+
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
 /** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
-  hash.update(fileBuffer);
+  hash.update(fileBuffer as any);
   const checksum = hash.digest("hex");
   return checksum;
 }

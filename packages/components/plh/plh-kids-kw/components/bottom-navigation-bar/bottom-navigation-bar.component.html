@@ -1,17 +1,18 @@
-<div class="plh-bottom-nav-wrapper">
+<div class="plh-bottom-nav-wrapper" [attr.data-variant]="params.variant">
   @for (button of params.buttonList; track button.name) {
     <a
       class="nav-item"
       routerLinkActive="active-link"
       [routerLink]="'template/' + button.target_template"
-      [attr.data-name]="button.name"
       #rla="routerLinkActive"
+      [attr.data-name]="button.name"
+      [attr.data-variant]="params.variant"
+      [attr.data-isActive]="rla.isActive"
+      [attr.data-hideInactiveText]="params.hideInactiveText"
     >
-      <div class="icon">
-        <img [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
-      </div>
-      <div class="label">
-        <p>{{ button.label }}</p>
+      <img class="icon" [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      <div class="label" [attr.data-hideInactiveText]="params.hideInactiveText">
+        {{ button.label }}
       </div>
     </a>
   }

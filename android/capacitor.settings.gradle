@@ -17,6 +17,9 @@ project(':capacitor-firebase-firestore').projectDir = new File('../node_modules/
 include ':capacitor-firebase-performance'
 project(':capacitor-firebase-performance').projectDir = new File('../node_modules/@capacitor-firebase/performance/android')
 
+include ':capacitor-firebase-storage'
+project(':capacitor-firebase-storage').projectDir = new File('../node_modules/@capacitor-firebase/storage/android')
+
 include ':capacitor-app'
 project(':capacitor-app').projectDir = new File('../node_modules/@capacitor/app/android')
 
@@ -44,8 +47,14 @@ project(':capacitor-share').projectDir = new File('../node_modules/@capacitor/sh
 include ':capacitor-splash-screen'
 project(':capacitor-splash-screen').projectDir = new File('../node_modules/@capacitor/splash-screen/android')
 
+include ':capacitor-status-bar'
+project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
+
 include ':capacitor-toast'
 project(':capacitor-toast').projectDir = new File('../node_modules/@capacitor/toast/android')
+
+include ':capawesome-capacitor-android-edge-to-edge-support'
+project(':capawesome-capacitor-android-edge-to-edge-support').projectDir = new File('../node_modules/@capawesome/capacitor-android-edge-to-edge-support/android')
 
 include ':capawesome-capacitor-app-update'
 project(':capawesome-capacitor-app-update').projectDir = new File('../node_modules/@capawesome/capacitor-app-update/android')

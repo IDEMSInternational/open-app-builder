@@ -8,6 +8,7 @@ import { objectToArray } from "../components/template/utils";
 import marked from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
 import { v4 as uuidV4 } from "uuid";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -169,6 +170,10 @@ export function mapToJson<T = any>(map: Map<string, any>) {
 }
 
 /**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
  * Return a specific parameter from the row, as default type
  * (params ending in _list will be arrays, others will be strings)
  * */
@@ -180,6 +185,12 @@ export function getParamFromTemplateRow(
   const params = row.parameter_list || {};
   return params.hasOwnProperty(name) ? params[name] : _default;
 }
+
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ */
 export function getStringParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -189,7 +200,13 @@ export function getStringParamFromTemplateRow(
   return paramValue ? `${paramValue}` : paramValue;
 }
 
-/** Return a specific parameter, parsed as a number */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a number
+ **/
 export function getNumberParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -198,7 +215,12 @@ export function getNumberParamFromTemplateRow(
   return Number(getParamFromTemplateRow(row, name, `${_default}`));
 }
 
-/** Return a specific parameter, parsed as a boolean */
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ *
+ * Return a specific parameter, parsed as a boolean */
 export function getBooleanParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -208,6 +230,11 @@ export function getBooleanParamFromTemplateRow(
   return params.hasOwnProperty(name) ? parseBoolean(params[name]) : _default;
 }
 
+/**
+ * @deprecated from v0.22.0
+ * Prefer to use `defineAuthorParameterSchema` method in
+ * src/app/shared/components/template/utils/parameter-list.utils.ts
+ */
 export function getAnswerListParamFromTemplateRow(
   row: FlowTypes.TemplateRow,
   name: string,
@@ -225,16 +252,27 @@ export interface IAnswerListItem {
 }
 
 /**
+ * Normalise an answer list from either a hashmap or array format to an array.
+ * Handles conversion of hashmap objects (created with {}) to arrays.
+ * @param answerList an answer_list parameter, either an array or a hashmap object
+ * @returns an array representation of the answer list, or empty array if invalid
+ */
+export function normaliseAnswerListToArray(answerList: any): any[] {
+  if (!answerList) return [];
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (isObjectLiteral(answerList)) {
+    return objectToArray(answerList);
+  }
+  return Array.isArray(answerList) ? answerList : [];
+}
+
+/**
  * Parse an answer_list parameter and return an array of AnswerListItems
  * @param answerList an answer_list parameter, either an array of IAnswerListItems
  * or a data list (hashmap of IAnswerListItems)
  */
 function parseAnswerList(answerList: any) {
-  if (!answerList) return [];
-  // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
+  answerList = normaliseAnswerListToArray(answerList);
 
   // Remove any items from the list which only have a value for "name",
   // e.g. "image" and "text" are undefined because the list has been generated within a template

@@ -1,0 +1,104 @@
+.plh-bottom-nav-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  gap: 8px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+}
+
+.nav-item {
+  flex: 1 1 0; // Force equal size regardless of content
+  min-width: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-item[data-isActive="true"] {
+  font-weight: var(--font-weight-bold);
+}
+
+.nav-item[data-isActive="false"] .label[data-hideInactiveText="true"] {
+  visibility: hidden;
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/********************** Pill Variant **********************/
+.nav-item[data-variant="pill"] {
+  flex: unset; // Allow resize to content
+  padding: 8px 2px;
+  height: 52px; // 36px icon + 2*8px padding
+  min-width: 40px; // 36px icon + 2*2px padding
+  max-width: 40px; // Transition on max-width for best animations
+  border-radius: 28px;
+  flex-direction: row;
+  justify-content: center;
+  background-color: transparent;
+  overflow: hidden;
+
+  transition: max-width 0.3s ease;
+  img {
+    transition: none; /* Instant filter change when deactivating */
+  }
+
+  .label {
+    // Clamp label text to 2-lines
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    line-height: 1.2em;
+    max-height: calc(1.2em * 2);
+    text-align: left;
+    max-width: 200px; /* Ensure text beyond this size is clipped (will auto-size on smaller screens) */
+
+    margin: 0;
+    transform: translateX(-4px); /* Use translate transform to trigger gpu-driven transformation */
+    opacity: 0;
+    transition: none; /* Instant hide when deactivating */
+
+    width: 0; /* Ensure label hidden when not active */
+    overflow: hidden;
+  }
+}
+
+/* Active Pill styling */
+.nav-item[data-variant="pill"][data-isActive="true"] {
+  max-width: 280px;
+  background-color: var(--ion-color-primary);
+  padding: 8px;
+
+  img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+  }
+
+  .label {
+    color: white;
+    opacity: 1;
+    transform: translateX(0);
+    width: auto;
+    margin: 0 4px;
+
+    transition:
+      opacity 0.3s ease 0.3s,
+      transform 0.3s ease;
+  }
+}

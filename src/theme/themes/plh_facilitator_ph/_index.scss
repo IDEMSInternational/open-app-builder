@@ -3,19 +3,14 @@
 @use "./overrides" as overrides;
 
 @mixin theme-plh_facilitator_ph {
-  @include utils.theme-selectors("plh_facilitator_ph") {
-    @include overrides.overrides;
-
-    /** Authoring variables **/
-    $color-primary: hsl(206 68% 22%); //#123d5d
-    $color-secondary: hsl(197 39% 60%); //#70aac0
-    $page-background: white;
-    $color-primary-variant: null;
-    $color-secondary-variant: null;
-
-    /** Global and component variables **/
+  @include utils.theme(
+    $theme-name: "plh_facilitator_ph",
+    $color-primary: hsl(206 68% 22%),
+    //#123d5d
+    $color-secondary: hsl(197 39% 60%),
+    //#70aac0
+    $page-background: white,
     $variable-overrides: (
-      font-weight-standard: 500,
       font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,
@@ -27,6 +22,8 @@
       font-size-text-large: 24px,
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
+
+      paragraph-spacing: 12px,
 
       line-height-text-tiny: 18px,
       line-height-text-small: 24px,
@@ -47,6 +44,7 @@
       button-background-primary: var(--ion-color-primary-700),
       button-background-secondary: var(--color-accent-orange-60),
       button-background-option: var(--color-accent-orange-40),
+      button-border-radius: var(--ion-border-radius-rounded),
       buttons-full-height: 56px,
       buttons-medium-height: 48px,
       round-button-background-secondary-light: var(--ion-color-yellow),
@@ -66,14 +64,15 @@
       display-group-background-home-light: var(--ion-color-primary-300),
       display-group-background-home-mid: var(--ion-color-primary-600),
       display-group-background-home-dark: var(--ion-color-primary-800),
-      combo-box-background-no-value: var(--ion-color-primary-50),
-      combo-box-background-with-value: var(--ion-color-primary-600),
-      combo-box-selected-value-text: white,
       accordion-background-highlight: var(--ion-color-primary-600),
       tour-next-button-background: var(--ion-color-primary),
       radio-group-background-selected: var(--ion-color-primary-300),
       radio-group-background-selected-secondary: var(--ion-color-secondary-300),
-      ion-item-background: var(--ion-color-gray-light),
+      ion-item-background: white,
+      combo-box-font-size-standard: 18px,
+      combo-box-background-with-value: var(--ion-color-gray-50),
+      combo-box-selected-value-text: var(--ion-color-gray-800),
+      combo-box-border-with-value: var(--ion-color-gray-500),
       task-progress-bar-color: var(--ion-color-primary-700),
       progress-path-line-background: var(--ion-color-gray-100),
       // ICONS
@@ -82,10 +81,6 @@
       icon-size-large: 32px,
       icon-size-extra-large: 40px,
       icon-size-largest: 48px,
-
-      paragraph-margin-small: 8px,
-      paragraph-margin-medium: 12px,
-      paragraph-margin-large: 16px,
 
       // SURFACE COLOUR PALETTE
       color-surface-white: #ffffff,
@@ -108,16 +103,8 @@
       box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
       box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
       box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
-    );
-    @include utils.generateTheme(
-      $p: $color-primary,
-      $s: $color-secondary,
-      $bg: $page-background,
-      $pv: $color-primary-variant,
-      $sv: $color-secondary-variant
-    );
-    @each $name, $value in $variable-overrides {
-      --#{$name}: #{$value};
-    }
+    )
+  ) {
+    @include overrides.overrides;
   }
 }

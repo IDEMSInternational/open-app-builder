@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { MatTabsModule } from "@angular/material/tabs";
 import { NouisliderModule } from "ng2-nouislider";
 import { RouterModule } from "@angular/router";
 import { SwiperModule } from "swiper/angular";
@@ -21,6 +22,7 @@ import { TemplatePipesModule } from "./pipes";
 import { PLH_COMPONENTS } from "packages/components/plh";
 import { DEMO_COMPONENTS } from "packages/components/demo";
 import { LottieComponent } from "ngx-lottie";
+import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
 @NgModule({
   imports: [
@@ -28,6 +30,7 @@ import { LottieComponent } from "ngx-lottie";
     FormsModule,
     IonicModule,
     LottieComponent,
+    MatTabsModule,
     NgxExtendedPdfViewerModule,
     NouisliderModule,
     ReactiveFormsModule,
@@ -35,17 +38,20 @@ import { LottieComponent } from "ngx-lottie";
     SharedPipesModule,
     SwiperModule,
     TemplatePipesModule,
+    ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   exports: [
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,
     TemplateContainerComponent,
+    ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
-    TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,

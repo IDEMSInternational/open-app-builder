@@ -75,6 +75,15 @@ export interface IDeploymentRuntimeConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
+  /** 3rd party integration for remote asset storage and sync */
+  remote_assets?: {
+    /** Enable remote asset storage and sync by specifying provider */
+    provider: "supabase" | "firebase";
+    /** By convention, this should match the deployment name */
+    bucketName: string;
+    folderName: string;
+  };
+
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
   shared_data?: {
     provider: "firebase";
@@ -89,19 +98,34 @@ export interface IDeploymentRuntimeConfig {
     /** Relative path of custom favicon asset to load from app_data assets */
     favicon_asset?: string;
   };
+
+  useReactiveTemplates?: boolean;
+}
+
+export interface IAssetSource {
+  /** gdrive id from end of url */
+  id: string;
+  /** local name for download */
+  name: string;
+  /** if true, the assets from this folder are treated as an asset pack to be uploaded to remote storage */
+  remote?: boolean;
 }
 
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
   google_drive: {
-    /** @deprecated Use `sheets_folder_ids` array instead */
+    /** @deprecated Use `sheets_folders` array instead */
     sheets_folder_id?: string;
-    /** IDs of folders containing app sheets, as seen in end of url */
+    /** @deprecated Use `sheets_folders` array instead */
     sheets_folder_ids?: string[];
-    /** @deprecated Use `assets_folder_ids` array instead */
+    /** gdrive id from end of url and local name for download */
+    sheets_folders?: { id: string; name: string }[];
+    /** @deprecated Use `assets_folders` array instead */
     assets_folder_id?: string;
-    /** IDs of folders containing app assets, as seen in end of url */
+    /** @deprecated Use `assets_folders` array instead */
     assets_folder_ids?: string[];
+    /** gdrive id from end of url and local name for download */
+    assets_folders?: IAssetSource[];
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -229,6 +253,7 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
     enabled: false,
   },
   web: {},
+  useReactiveTemplates: false,
 };
 
 /** Full example of just all config once merged with defaults */

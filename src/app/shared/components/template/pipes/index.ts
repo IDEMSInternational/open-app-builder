@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { FilterDisplayComponentPipe } from "./filter-display-component.pipe";
 import { MarkdownPipe } from "./markdown.pipe";
 import { NumberingPipe } from "./numbering.pipe";
-import { PLHAssetPipe } from "./plh-asset.pipe";
+import { PLHAssetPipe, TranslatedAssetPipe } from "./plh-asset.pipe";
 import { StyleListPipe } from "./styleList.pipe";
 import { TranslatePipe } from "./translate.pipe";
 
@@ -14,12 +14,12 @@ const TEMPLATE_PIPES = [
   PLHAssetPipe,
   NumberingPipe,
   StyleListPipe,
-  TranslatePipe,
 ];
+const STANDALONE_PIPES = [TranslatedAssetPipe, TranslatePipe];
 
 @NgModule({
   declarations: [...TEMPLATE_PIPES],
-  exports: [...TEMPLATE_PIPES],
-  imports: [CommonModule],
+  imports: [CommonModule, ...STANDALONE_PIPES],
+  exports: [...TEMPLATE_PIPES, ...STANDALONE_PIPES],
 })
 export class TemplatePipesModule {}

@@ -1,0 +1,105 @@
+@use "../utils";
+@use "sass:color";
+@use "./overrides" as overrides;
+@use "./typography";
+
+@mixin theme-plh_facilitator_cw {
+  @include utils.theme(
+    $theme-name: "plh_facilitator_cw",
+    $color-primary: hsl(23 100% 12%),
+    //#3d1700
+    $color-secondary: hsl(189 100% 34.9%),
+    // #0097b2
+    $page-background: white,
+    $variable-overrides: (
+      ion-font-family: "Poppins",
+      font-weight-medium: 600,
+      font-weight-bold: 700,
+      font-weight-extra-bold: 800,
+
+      font-size-text-tiny: 14px,
+      font-size-text-small: 16px,
+      font-size-text-mid-size: 18px,
+      font-size-text-medium: 20px,
+      font-size-text-large: 24px,
+      font-size-text-title: 28px,
+      font-size-text-extra-large: 32px,
+      paragraph-spacing: 12px,
+
+      line-height-text-tiny: 18px,
+      line-height-text-small: 24px,
+      line-height-text-medium: 28px,
+      line-height-text-large: 32px,
+      line-height-text-extra-large: 40px,
+
+      ion-border-radius-small: 8px,
+      ion-border-radius-standard: 12px,
+      ion-border-radius-secondary: 20px,
+      ion-border-radius-rounded: 50px,
+
+      // BORDERS
+      border-color-default: var(--ion-color-gray-200),
+      border-width-default: 1px,
+      border-standard: var(--border-width-default) solid var(--border-color-default),
+      border-thin-standard: 1px solid var(--border-color-default),
+      button-background-primary: var(--ion-color-primary-700),
+      button-background-secondary: var(--ion-color-secondary-600),
+      button-background-option: var(--ion-color-secondary-700),
+      button-border-radius: var(--ion-border-radius-rounded),
+      buttons-full-height: 56px,
+      buttons-medium-height: 48px,
+      round-button-background-secondary-light: var(--ion-color-yellow),
+      round-button-background-secondary-mid: var(--ion-color-secondary-500),
+      round-button-background-secondary-dark: var(--ion-color-primary-200),
+      round-button-min-height: 48px,
+      round-button-width: 48px,
+      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-primary-light: var(--ion-color-primary-300),
+      tile-button-background-secondary: var(--ion-color-secondary),
+      tile-button-background-secondary-light: var(--ion-color-yellow),
+      points-item-background: var(--ion-background-color),
+      points-item-background-complete: var(--ion-color-primary-200),
+      points-item-border: rgba(black, 0.07),
+      display-group-background-banner-primary: var(--ion-color-primary-200),
+      display-group-background-banner-secondary: var(--ion-color-secondary-300),
+      display-group-background-home-light: var(--ion-color-primary-300),
+      display-group-background-home-mid: var(--ion-color-primary-600),
+      display-group-background-home-dark: var(--ion-color-primary-800),
+      accordion-background-highlight: var(--ion-color-primary-600),
+      tour-next-button-background: var(--ion-color-primary),
+      radio-group-background-selected: var(--ion-color-primary-300),
+      radio-group-background-selected-secondary: var(--ion-color-secondary-300),
+      ion-item-background: white,
+      combo-box-font-size-standard: 18px,
+      combo-box-background-with-value: var(--ion-color-gray-50),
+      combo-box-selected-value-text: var(--ion-color-gray-800),
+      combo-box-border-with-value: var(--ion-color-gray-500),
+      task-progress-bar-color: var(--ion-color-secondary-600),
+      progress-path-line-background: var(--ion-color-gray-100),
+      // ICONS
+      icon-size-small: 16px,
+      icon-size-medium: 24px,
+      icon-size-large: 32px,
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
+
+      // SURFACE COLOUR PALETTE
+      color-surface-white: #ffffff,
+      color-surface-white-variant: #f9f9fa,
+      color-surface-black: #1b1c1d,
+      color-surface-black-variant: #44474a,
+      color-outline: #74777c,
+      color-outline-variant: #c4c7c9,
+
+      // BOX SHADOW
+      box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
+      box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
+      // PLH module list item
+      plh-module-list-item-background-1: hsl(334, 43%, 70%),
+      plh-module-list-item-background-2: hsl(29, 77%, 70%),
+      plh-module-list-item-background-3: hsl(123, 34%, 70%),
+    )
+  ) {
+    @include overrides.overrides;
+  }
+}
