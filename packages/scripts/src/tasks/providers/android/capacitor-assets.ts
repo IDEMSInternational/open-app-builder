@@ -33,7 +33,7 @@ export interface AndroidSplashImageOptions {
 }
 
 /** Generate Android launcher icons. Supports adaptive icons when foreground+background are provided. */
-export const set_launcher_icon_beta = async (options: AndroidLauncherIconOptions) => {
+export const set_launcher_icon = async (options: AndroidLauncherIconOptions) => {
   const {
     iconAssetPath,
     iconAssetForegroundPath,
@@ -131,7 +131,7 @@ export const set_launcher_icon_beta = async (options: AndroidLauncherIconOptions
 };
 
 /** Generate Android splash screen assets. */
-export const set_splash_image_beta = async (options: AndroidSplashImageOptions) => {
+export const set_splash_image = async (options: AndroidSplashImageOptions) => {
   const {
     splashAssetPath,
     splashAssetPathDark,
