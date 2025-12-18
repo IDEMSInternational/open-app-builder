@@ -5,6 +5,45 @@ import { AndroidAssetGenerator } from "@capacitor/assets/dist/platforms/android"
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
+/**
+ * Android asset generation helpers built on top of @capacitor/assets.
+ *
+ * NOTE:
+ * - Current deployment workflows only pass the "basic" options (single light icon and splash).
+ * - Dark-mode variants and additional colouring / sizing options are implemented here but
+ *   are not yet exposed via workflows. They are safe defaults for now and are intended to
+ *   be wired in from deployment config in a future iteration.
+ */
+
+/** Public options for generating launcher icons.
+ *
+ * Only `iconAssetPath`, `iconAssetForegroundPath` and `iconAssetBackgroundPath` are currently
+ * provided by workflows. The dark-mode and colour options are intentionally unused for now but
+ * are fully wired through to the underlying generator so they can be enabled later.
+ */
+export interface AndroidLauncherIconOptions {
+  iconAssetPath: string;
+  iconAssetForegroundPath?: string;
+  iconAssetForegroundPathDark?: string;
+  iconAssetBackgroundPath?: string;
+  iconBackgroundColour?: string;
+  iconBackgroundColourDark?: string;
+}
+
+/** Public options for generating splash images.
+ *
+ * Only `splashAssetPath` is currently provided by workflows. All other fields are optional
+ * enhancements (dark-mode splash, background colours, logo scaling) ready for future use.
+ */
+export interface AndroidSplashImageOptions {
+  splashAssetPath: string;
+  splashAssetPathDark?: string;
+  splashBackgroundColor?: string;
+  splashBackgroundColorDark?: string;
+  logoSplashScale?: number;
+  logoSplashTargetWidth?: number;
+}
+
 // // Basic usage with just an icon
 // await androidProvider.set_launcher_icon_beta({
 //   iconAssetPath: "./resources/icon.png",
@@ -33,25 +72,26 @@ import { Project } from "@capacitor/assets/dist/project";
 // notes that "Current versions of Android don't appear to support night mode icons (13+ might?)"
 // but the functionality is implemented for future compatibility. Dark mode assets may
 // not generate any output files on current Android versions.
-export const set_launcher_icon_beta = async (options: {
-  iconAssetPath: string;
-  iconAssetForegroundPath?: string;
-  iconAssetForegroundPathDark?: string;
-  iconAssetBackgroundPath?: string;
-  iconBackgroundColour?: string;
-  iconBackgroundColourDark?: string;
-}) => {
+/**
+ * Generate Android launcher icons for the current project using @capacitor/assets.
+ *
+ * Workflows currently only pass:
+ * - iconAssetPath
+ * - iconAssetForegroundPath
+ * - iconAssetBackgroundPath
+ *
+ * The remaining fields are intentionally "future" options that can be wired in from
+ * deployment config later without changing this function's behaviour.
+ */
+export const set_launcher_icon_beta = async (options: AndroidLauncherIconOptions) => {
   const {
     iconAssetPath,
     iconAssetForegroundPath,
-    iconAssetForegroundPathDark,
     iconAssetBackgroundPath,
     iconBackgroundColour,
     iconBackgroundColourDark,
+    // iconAssetForegroundPathDark - available in interface but not yet implemented
   } = options;
-
-  
-  
 
   // Validate that the main icon asset exists
   if (!fs.existsSync(iconAssetPath)) {
@@ -62,14 +102,8 @@ export const set_launcher_icon_beta = async (options: {
   }
 
   try {
-    // Create project configuration
-    const projectConfig = {
-      android: {
-        path: "android",
-      },
-    };
-
     // Create project instance
+    const projectConfig = { android: { path: "android" } };
     const project = new Project(ROOT_DIR, projectConfig, "resources");
     await project.load();
 
@@ -82,18 +116,15 @@ export const set_launcher_icon_beta = async (options: {
     }
 
     // Create generator options
-    const generatorOptions = {
+    // NOTE: iconBackgroundColourDark is wired through for future use but not yet passed by workflows
+    const generatorOptions: Record<string, unknown> = {
       iconBackgroundColor: iconBackgroundColour || "#ffffff",
-      // iconBackgroundColorDark: iconBackgroundColourDark || "#111111", // Dark mode support - see note above
       androidFlavor: "main",
     };
+    if (iconBackgroundColourDark) {
+      generatorOptions.iconBackgroundColorDark = iconBackgroundColourDark;
+    }
 
-    // Dark mode support - currently limited on Android
-    // if (iconBackgroundColourDark) {
-    //   console.log(`Using dark mode background color: ${iconBackgroundColourDark}`);
-    // }
-
-    // Create Android asset generator
     const generator = new AndroidAssetGenerator(generatorOptions);
 
     // Determine which assets to generate based on available files
@@ -129,12 +160,14 @@ export const set_launcher_icon_beta = async (options: {
     }
 
     // Determine what types of icons were generated for the success message
-    const hasAdaptiveIcons = assets.some(asset => asset.kind === 'icon-foreground' || asset.kind === 'icon-background');
-    const iconType = hasAdaptiveIcons ? 'adaptive launcher icons' : 'launcher icons';
-    
+    const hasAdaptiveIcons = assets.some(
+      (asset) => asset.kind === "icon-foreground" || asset.kind === "icon-background",
+    );
+    const iconType = hasAdaptiveIcons ? "adaptive launcher icons" : "launcher icons";
+
     logOutput({
       msg1: "Android launcher icons generated",
-      msg2: `Generated ${generatedAssets.length} assets`,
+      msg2: `Generated ${generatedAssets.length} ${iconType}`,
     });
 
     return generatedAssets;
@@ -171,15 +204,24 @@ export const set_launcher_icon_beta = async (options: {
 // NOTE: Dark mode splash screens are fully supported on Android and will generate
 // actual output files. The limitation mentioned in the library only applies to
 // launcher icons, not splash screens.
-export const set_splash_image_beta = async (options: {
-  splashAssetPath: string;
-  splashAssetPathDark?: string;
-  splashBackgroundColor?: string;
-  splashBackgroundColorDark?: string;
-  logoSplashScale?: number;
-  logoSplashTargetWidth?: number;
-}) => {
-  const { splashAssetPath, splashAssetPathDark, splashBackgroundColor, splashBackgroundColorDark, logoSplashScale, logoSplashTargetWidth } = options;
+/**
+ * Generate Android splash assets for the current project using @capacitor/assets.
+ *
+ * Workflows currently only pass:
+ * - splashAssetPath
+ *
+ * Remaining options (dark-mode splash, background colours, logo scaling) are prepared
+ * for future workflow support but are not yet provided from deployment config.
+ */
+export const set_splash_image_beta = async (options: AndroidSplashImageOptions) => {
+  const {
+    splashAssetPath,
+    splashAssetPathDark,
+    splashBackgroundColor,
+    splashBackgroundColorDark,
+    logoSplashScale,
+    logoSplashTargetWidth,
+  } = options;
 
   // Validate that the main splash asset exists
   if (!fs.existsSync(splashAssetPath)) {
@@ -258,11 +300,12 @@ export const set_splash_image_beta = async (options: {
       generatedAssets.push(...generated);
     }
 
-    const darkModeInfo = splashAssetPathDark || splashBackgroundColorDark ? " (including dark mode support)" : "";
+    const darkModeInfo =
+      splashAssetPathDark || splashBackgroundColorDark ? " (including dark mode support)" : "";
 
     logOutput({
       msg1: "Android splash screens generated",
-      msg2: `Generated ${generatedAssets.length} assets`,
+      msg2: `Generated ${generatedAssets.length} assets${darkModeInfo}`,
     });
 
     return generatedAssets;

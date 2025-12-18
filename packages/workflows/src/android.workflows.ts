@@ -21,8 +21,8 @@ const childWorkflows: IDeploymentWorkflows = {
     ],
   },
   // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
-  // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
-  // Further specifications provided here: https://www.npmjs.com/package/cordova-res
+  // Icon images should be at least 1024×1024px, splash image should be at least 2732×2732px
+  // Assets are generated using @capacitor/assets – see Capacitor docs for up-to-date guidance.
   set_splash_image: {
     label: "Generate splash screen image from splash.png asset and copy to relevant folders",
     steps: [
