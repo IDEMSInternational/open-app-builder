@@ -220,6 +220,9 @@ export class AppComponent {
         this.dbSyncService,
         this.dynamicDataService,
         this.userMetaService,
+        // Auth service made blocking to ensure auth state is available for initial render
+        // See https://github.com/IDEMSInternational/open-app-builder/pull/3246
+        // Can be removed as blocking init after move to reactive template architecture
         this.authService,
         this.tourService,
         this.taskService,
