@@ -37,9 +37,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
 
   public override async initialise(injector: Injector) {
     const firebaseService = injector.get(FirebaseService);
-    // TODO - is service required here?
     if (!firebaseService.app) {
-      throw new Error("[Firebase Auth] app not configured");
+      console.warn("[Firebase Auth] Firebase not configured, auth features will be unavailable");
+      return;
     }
     this.subscribeToAuthStateChanges();
 
