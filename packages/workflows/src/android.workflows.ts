@@ -41,6 +41,7 @@ const childWorkflows: IDeploymentWorkflows = {
             if (android.splash_asset_path) {
               await tasks.android.generateSplash({
                 splashAssetPath: android.splash_asset_path,
+                splashAssetPathDark: android.splash_asset_path_dark,
               });
             }
             if (android.icon_asset_path) {
@@ -54,8 +55,10 @@ const childWorkflows: IDeploymentWorkflows = {
             // Logo-based approach: generate everything from a single logo
             await tasks.android.generateFromLogo({
               logoPath: android.logo_asset_path,
+              logoPathDark: android.logo_asset_path_dark,
               iconBackgroundColor: android.icon_background_color,
               splashBackgroundColor: android.splash_background_color,
+              splashBackgroundColorDark: android.splash_background_color_dark,
             });
           } else {
             console.log(

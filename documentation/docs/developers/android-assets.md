@@ -22,11 +22,14 @@ Provide separate source images for icon and splash screen. This gives full contr
 | Asset | Filename (convention) | Minimum size | Required |
 |-------|----------------------|--------------|----------|
 | Splash screen | `splash.png` | 2732×2732px | Yes |
+| Splash screen (dark mode) | `splash-dark.png` | 2732×2732px | Optional |
 | App icon | `icon.png` | 1024×1024px | Yes |
 | Adaptive icon foreground | `icon-foreground.png` | 432×432px | Optional |
 | Adaptive icon background | `icon-background.png` | 432×432px | Optional |
 
 The adaptive icon images (`icon-foreground.png` and `icon-background.png`) are combined dynamically to generate [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) of different shapes. The static `icon.png` is used as a fallback for older devices.
+
+Dark mode icons are not yet supported by Android, but dark mode splash screens are fully supported.
 
 ### Example source files
 
@@ -41,6 +44,7 @@ const config: IDeploymentConfig = {
   ...
   android: {
     splash_asset_path: "packages/app-data/assets/global/android/splash.png",
+    splash_asset_path_dark: "packages/app-data/assets/global/android/splash-dark.png", // optional
     icon_asset_path: "packages/app-data/assets/global/android/icon.png",
     icon_asset_foreground_path: "packages/app-data/assets/global/android/icon-foreground.png",
     icon_asset_background_path: "packages/app-data/assets/global/android/icon-background.png",
@@ -60,6 +64,7 @@ Provide a single logo image and background colours. The logo is centred on the b
 | Asset | Filename (convention) | Minimum size | Required |
 |-------|----------------------|--------------|----------|
 | Logo | `logo.png` | 1024×1024px | Yes |
+| Logo (dark mode) | `logo-dark.png` | 1024×1024px | Optional |
 
 ### Configuration
 
@@ -68,8 +73,10 @@ const config: IDeploymentConfig = {
   ...
   android: {
     logo_asset_path: "packages/app-data/assets/global/android/logo.png",
+    logo_asset_path_dark: "packages/app-data/assets/global/android/logo-dark.png", // optional
     icon_background_color: "#ffffff",
     splash_background_color: "#3498db",
+    splash_background_color_dark: "#1a1a2e", // optional
   },
   ...
 };
