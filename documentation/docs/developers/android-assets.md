@@ -53,7 +53,7 @@ const config: IDeploymentConfig = {
 
 ## Option 2: Logo-based
 
-Provide a single logo image and background colours. The logo is centered on the background colour to generate all icons and splash screens automatically.
+Provide a single logo image and background colours. The logo is centred on the background colour to generate all icons and splash screens automatically.
 
 ### Source images
 
