@@ -135,7 +135,7 @@
     "@compodoc/compodoc": "^1.1.23",
     "@ionic/angular-toolkit": "^12.3.0",
     "@ionic/cli": "^7.2.1",
-    "@schematics/angular": "~17.0.3",
+    "@schematics/angular": "~19",
     "@swc/helpers": "^0.5.1",
     "@types/clone": "^2.1.1",
     "@types/howler": "^2.2.2",
@@ -179,8 +179,7 @@
     "typescript": "5.5.4"
   },
   "resolutions": {
-    "@supabase/gotrue-js": "2.61.0",
-    "eslint@^8.54.0": "patch:eslint@npm%3A8.56.0#./.yarn/patches/eslint-npm-8.56.0-6eec398a41.patch"
+    "@supabase/gotrue-js": "2.61.0"
   },
   "lint-staged": {
     "*.{ts,scss,html}": [
