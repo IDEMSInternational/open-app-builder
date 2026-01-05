@@ -67,7 +67,7 @@
     "@capawesome/capacitor-app-update": "^7.0.1",
     "@ionic/angular": "^8.7.4",
     "@ionic/pwa-elements": "^3.3.0",
-    "@sentry/angular-ivy": "^7.102.1",
+    "@sentry/angular": "^8",
     "@supabase/supabase-js": "^2.39.0",
     "@types/file-saver": "^2.0.7",
     "bootstrap-datepicker": "^1.10.0",
