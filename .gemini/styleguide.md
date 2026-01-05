@@ -14,6 +14,18 @@ This guide promotes the use of modern Angular features, including:
 * **Built-in Control Flow**: (`@if`, `@for`, `@switch`) in templates.
 * **ESLint and Prettier**: For code linting and formatting.
 
+## Angular 19+ Standalone Default Behavior (Section can likely be removed when upgrading to later Angular versions, or after refactoring to use standalone components more generally)
+
+**IMPORTANT**: In Angular 19+, `standalone: true` is the **default** for all components, directives, and pipes. This means:
+
+- Components **without** `standalone: false` are automatically standalone
+- Components with `imports: [...]` in their decorator ARE standalone (only standalone components can have imports)
+- The absence of `standalone: true` does NOT mean the component is part of an NgModule
+- Only components with explicit `standalone: false` are non-standalone and must be declared in an NgModule
+
+**Do NOT suggest removing `imports` from components that don't have `standalone: false`** - these components are standalone by default and need their imports.
+
+
 ## Guiding Principles
 
 * **Consistency**: A consistent codebase is easier to read and understand.
