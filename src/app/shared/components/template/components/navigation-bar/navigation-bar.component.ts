@@ -19,5 +19,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-navigation-bar",
   templateUrl: "./navigation-bar.component.html",
   styleUrls: ["./navigation-bar.component.scss"],
+  standalone: false,
 })
 export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(AuthorSchema) {}

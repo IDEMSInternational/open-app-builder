@@ -7,6 +7,7 @@ import { TemplateTranslateService } from "../../../services/template-translate.s
 @Component({
   templateUrl: "./popup.component.html",
   styleUrl: "./popup.component.scss",
+  standalone: false,
 })
 /**
  * When opening a template as a popup, provide a minimal interface and load

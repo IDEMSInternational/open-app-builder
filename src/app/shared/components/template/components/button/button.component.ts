@@ -51,6 +51,7 @@ interface IVariantMap {
   selector: "plh-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
+  standalone: false,
 })
 export class TmplButtonComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));

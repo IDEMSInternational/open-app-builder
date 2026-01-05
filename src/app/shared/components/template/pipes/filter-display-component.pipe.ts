@@ -12,7 +12,10 @@ import { TEMPLATE_COMPONENT_MAPPING } from "../components";
  * ```
  */
 
-@Pipe({ name: "filterDisplayComponent" })
+@Pipe({
+  name: "filterDisplayComponent",
+  standalone: false,
+})
 export class FilterDisplayComponentPipe implements PipeTransform {
   transform(value: FlowTypes.TemplateRow[] = []): FlowTypes.TemplateRow[] {
     const filtered = value.filter((v) => v.type && TEMPLATE_COMPONENT_MAPPING[v.type]);

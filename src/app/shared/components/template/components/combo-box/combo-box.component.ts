@@ -41,6 +41,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-combo-box",
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
+  standalone: false,
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponentWithParams(AuthorSchema)

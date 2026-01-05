@@ -6,5 +6,6 @@ import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
   template: "",
   styles: "",
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
+  standalone: false,
 })
 export class SetVariableComponent extends RowBaseComponent<null> {}
