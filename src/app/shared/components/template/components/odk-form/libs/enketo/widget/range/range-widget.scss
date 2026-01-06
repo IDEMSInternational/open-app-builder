@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Many thanks to https://css-tricks.com/sliding-nightmare-understanding-range-input/
 $track-w: 100%;
 $track-h: 1px;
@@ -137,8 +139,8 @@ $left: -85px;
   &__current {
     padding-bottom: $pad;
     vertical-align: middle;
-    line-height: ($height - (3 * $track-h)) / 2;
-    min-height: 10px + ($height - (3 * $track-h)) / 2;
+    line-height: math.div($height - (3 * $track-h), 2);
+    min-height: 10px + math.div($height - (3 * $track-h), 2);
   }
 
   &__ticks {
@@ -330,8 +332,8 @@ $green: rgb(60, 182, 67);
     }
 
     &__bg {
-      width: $bulb-w / 2;
-      border-radius: $bulb-w / 4;
+      width: math.div($bulb-w, 2);
+      border-radius: math.div($bulb-w, 4);
       border: $border;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -353,7 +355,7 @@ $green: rgb(60, 182, 67);
       width: $bulb-w;
       height: $bulb-w;
       border: $border;
-      border-radius: $bulb-w / 2;
+      border-radius: math.div($bulb-w, 2);
       margin: -7px auto 10px auto;
       background: $green;
       position: relative;
@@ -361,18 +363,18 @@ $green: rgb(60, 182, 67);
       &__inner {
         width: $inner-width;
         height: $inner-width;
-        border-radius: $inner-width / 2;
+        border-radius: math.div($inner-width, 2);
         background: $ds-thumb-color;
-        margin: ($bulb-w - $inner-width - 2px) / 2;
+        margin: math.div($bulb-w - $inner-width - 2px, 2);
       }
 
       &__mercury {
         position: absolute;
-        left: calc(50% - #{$ds-track-h} / 2);
-        right: calc(50% - #{$ds-track-h} / 2);
-        bottom: $bulb-w / 2;
+        left: calc(50% - #{math.div($ds-track-h, 2)});
+        right: calc(50% - #{math.div($ds-track-h, 2)});
+        bottom: math.div($bulb-w, 2);
         background: $ds-thumb-color;
-        min-height: ($bulb-w / 2) - 5px;
+        min-height: math.div($bulb-w, 2) - 5px;
         width: $ds-track-h;
         z-index: 100;
       }
