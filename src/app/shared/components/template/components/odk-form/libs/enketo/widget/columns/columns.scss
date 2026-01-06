@@ -140,7 +140,7 @@
     }
 
     label {
-      width: calc(#{math.div(100%, $total)} - 20px);
+      width: calc(math.div(100%, $total) - 20px);
 
       img.active {
         // Use natural image size, but reduce to fit cell if necessary

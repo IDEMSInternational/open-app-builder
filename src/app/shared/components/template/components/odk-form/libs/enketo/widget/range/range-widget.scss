@@ -370,8 +370,8 @@ $green: rgb(60, 182, 67);
 
       &__mercury {
         position: absolute;
-        left: calc(50% - #{math.div($ds-track-h, 2)});
-        right: calc(50% - #{math.div($ds-track-h, 2)});
+        left: calc(50% - math.div($ds-track-h, 2));
+        right: calc(50% - math.div($ds-track-h, 2));
         bottom: math.div($bulb-w, 2);
         background: $ds-thumb-color;
         min-height: math.div($bulb-w, 2) - 5px;
