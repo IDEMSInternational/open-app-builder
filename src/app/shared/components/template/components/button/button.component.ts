@@ -15,7 +15,7 @@ const VARIANTS = [
   "short",
   "standard",
   "tall",
-];
+] as const;
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /**
