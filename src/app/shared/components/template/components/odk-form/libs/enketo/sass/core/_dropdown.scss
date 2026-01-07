@@ -3,6 +3,8 @@
 //
 // Dropdown menus
 // --------------------------------------------------
+@use "sass:math";
+
 $caret-width-base: 4px !default;
 $zindex-dropdown: 1000 !default;
 $dropdown-divider-bg: #e5e5e5 !default;
@@ -21,7 +23,7 @@ $dropdown-link-disabled-color: $gray-light !default;
 
 @mixin nav-divider($color: #e5e5e5) {
   height: 1px;
-  margin: $line-height-computed / 2 - 1 0;
+  margin: math.div($line-height-computed, 2) - 1 0;
   overflow: hidden;
   background-color: $color;
 }
