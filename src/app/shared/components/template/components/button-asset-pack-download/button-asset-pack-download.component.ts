@@ -1,4 +1,4 @@
-import { Component, effect, signal } from "@angular/core";
+import { Component, computed, effect, signal } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { RemoteAssetService } from "src/app/shared/services/remote-asset/remote-asset.service";
 
@@ -8,6 +8,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   progress_text: coerce.string("Downloading..."),
   success_text: coerce.string("Success"),
   error_text: coerce.string("Error"),
+  progress_display: coerce.allowedValues(["spinner", "count"], "count"),
 }));
 
 @Component({
@@ -19,6 +20,12 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
   AuthorSchema
 ) {
   public status = signal<"initial" | "downloading" | "success" | "error">("initial");
+  public progressCountText = computed(() => {
+    const progress = this.remoteAssetService.downloadProgressCount();
+    if (this.params().progressDisplay !== "count") return "";
+    if (!progress?.total) return "";
+    return `(${progress.completed}/${progress.total})`;
+  });
 
   constructor(private remoteAssetService: RemoteAssetService) {
     super();
@@ -33,8 +40,19 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
   public async handleClick(event: Event) {
     this.status.set("downloading");
 
-    // Uncomment this to simulate slow download or a download error
-    // await new Promise(resolve => setTimeout(resolve, 3000));
+    // Uncomment this block to fake a slow download for visual testing
+    // const total = 5;
+    // this.remoteAssetService.downloadProgressCount.set({ completed: 0, total });
+    // for (let i = 1; i <= total; i++) {
+    //   await new Promise((resolve) => setTimeout(resolve, 700));
+    //   this.remoteAssetService.downloadProgressCount.update((p) =>
+    //     p ? { ...p, completed: i } : p
+    //   );
+    // }
+    // this.status.set("success");
+    // return;
+
+    // Uncomment this block to fake a download error
     // return this.status.set("error");
 
     const success = await this.remoteAssetService.downloadAssetPackByName(this.params().assetPack);

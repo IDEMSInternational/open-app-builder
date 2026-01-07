@@ -1,7 +1,15 @@
 @if (status() !== "initial") {
   <div class="status-message-container">
     @if (status() === "downloading") {
-      <ion-spinner color="primary"></ion-spinner>
+      @if (params().progressDisplay === "spinner") {
+        <ion-spinner color="primary"></ion-spinner>
+      }
+      @if (params().progressDisplay === "count" && progressCountText()) {
+        <plh-tmpl-text
+          [row]="{ _nested_name: '', name: '', type: 'text', value: progressCountText() }"
+          [parentContainerComponentRef]="parentContainerComponentRef"
+        ></plh-tmpl-text>
+      }
       <plh-tmpl-text
         [row]="{ _nested_name: '', name: '', type: 'text', value: params().progressText }"
         [parentContainerComponentRef]="parentContainerComponentRef"
