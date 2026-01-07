@@ -66,7 +66,7 @@ export class TmplComboBoxComponent
   );
 
   public answerOptions = computed(() => {
-    return this.dataItemRows() ?? this.params().answerList;
+    return this.cleanAnswerOptions(this.dataItemRows() ?? this.params().answerList);
   });
 
   public showSearch = computed(() => this.answerOptions().length > 8);
@@ -182,4 +182,13 @@ export class TmplComboBoxComponent
       "no-value": value ? undefined : true,
     };
   });
+
+  private cleanAnswerOptions(options: IAnswerListItem[]) {
+    return options.filter((option) => {
+      return (
+        option[this.params().optionsKey] !== undefined &&
+        option[this.params().optionsValue] !== undefined
+      );
+    });
+  }
 }
