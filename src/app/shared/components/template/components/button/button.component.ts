@@ -7,6 +7,7 @@ const VARIANTS = [
   "alternative",
   "card",
   "card-portrait",
+  "compact",
   "flexible",
   "full",
   "information",
