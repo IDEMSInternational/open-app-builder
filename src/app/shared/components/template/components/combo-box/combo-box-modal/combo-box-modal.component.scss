@@ -1,7 +1,5 @@
 @use "/src/theme/mixins";
 
-$background-with-value: var(--combo-box-background-with-value, var(--ion-color-primary-100));
-
 :host {
   display: contents;
 }
@@ -60,8 +58,8 @@ $background-with-value: var(--combo-box-background-with-value, var(--ion-color-p
       margin-bottom: 14px;
       min-height: 55px;
       width: 100%;
-      background: var(--ion-color-gray-50);
-      border: 1px solid var(--ion-color-gray-200);
+      background: var(--ion-color-primary-50);
+      border: 1px solid var(--ion-color-primary-200);
       border-radius: var(--ion-border-radius-small);
       @include mixins.flex-centered;
       input {
@@ -73,15 +71,18 @@ $background-with-value: var(--combo-box-background-with-value, var(--ion-color-p
         @include mixins.flex-centered;
         font-weight: var(--font-weight-standard);
         font-size: var(--combo-box-font-size-standard, 18px);
-        color: var(--ion-color-gray-700);
+        color: var(--ion-color-gray-800);
         min-height: 56px;
         border-radius: var(--ion-border-radius-small);
       }
     }
     .checked-radio {
-      background: $background-with-value;
-      border: 1px solid var(--ion-color-primary-400);
-      color: var(--ion-color-primary-700);
+      background: var(--ion-color-primary-100);
+      border: 1.5px solid var(--ion-color-primary-400);
+      label {
+        font-weight: var(--font-weight-normal);
+        color: var(--ion-color-primary-800);
+      }
     }
   }
 }

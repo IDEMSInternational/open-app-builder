@@ -26,14 +26,18 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     opacity: 0.9;
   }
   &.with-value {
-    background: $background-with-value;
-    color: $selected-value-text;
-    border: 1px solid $border-with-value;
+    background: var(--ion-color-primary-100);
+    color: var(--ion-color-primary-800);
+    border: 1.5px solid var(--ion-color-primary-300);
+    font-weight: var(--font-weight-normal);
   }
 }
 
 .disabled {
-  opacity: 0.5;
+  &.no-value {
+    opacity: 0.5;
+    border-color: var(--ion-color-gray-200);
+  }
 }
 
 .placeholder,
