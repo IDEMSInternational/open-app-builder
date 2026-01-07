@@ -47,6 +47,7 @@ import { ClipboardService } from "./shared/services/clipboard/clipboard.service"
 import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
 import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
+import { AuthService } from "./shared/services/auth/auth.service";
 
 @Component({
   selector: "app-root",
@@ -129,7 +130,8 @@ export class AppComponent {
     private clipboardService: ClipboardService,
     private scrollService: ScrollService,
     private toastService: ToastService,
-    private capacitorEventService: CapacitorEventService
+    private capacitorEventService: CapacitorEventService,
+    private authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -218,6 +220,10 @@ export class AppComponent {
         this.dbSyncService,
         this.dynamicDataService,
         this.userMetaService,
+        // Auth service made blocking to ensure auth state is available for initial render
+        // See https://github.com/IDEMSInternational/open-app-builder/pull/3246
+        // Can be removed as blocking init after move to reactive template architecture
+        this.authService,
         this.tourService,
         this.taskService,
         this.taskActions,

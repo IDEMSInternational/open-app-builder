@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "mixins";
 
 $printBaseFontSize: 10px;
@@ -189,7 +190,7 @@ $printBaseFontSize: 10px;
         @if $total>=$default-grid-width {
           width: 100%;
         } @else {
-          width: $total / 4 * 100%;
+          width: math.div($total, 4) * 100%;
         }
       }
 
@@ -197,7 +198,7 @@ $printBaseFontSize: 10px;
         .or-appearance-w#{$width} {
           @include display-inline-flex;
 
-          width: $width / $total * 100%;
+          width: math.div($width, $total) * 100%;
         }
       }
     }

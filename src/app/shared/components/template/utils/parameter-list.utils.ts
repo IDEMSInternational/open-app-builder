@@ -30,16 +30,17 @@ const coerceMethods = {
 
   /**
    * Convert to boolean. Treats boolean and string representation of "true" as true,
-   * otherwise will return false
+   * otherwise will return false or the specified fallback value.
+   * @param fallback Optional fallback value to use if invalid or undefined. Defaults to false.
    */
-  boolean: () =>
+  boolean: (fallback: boolean = false) =>
     z
       .union([z.boolean(), z.string()])
       .transform((v) => {
         if (typeof v === "boolean") return v;
         return v.toLowerCase().trim() === "true";
       })
-      .catch(false),
+      .catch(fallback),
 
   /*** Convert to value from allowed list, with fallback in case not in list  */
   allowedValues: <const T extends readonly string[]>(values: T, fallback: T[number]) =>
@@ -57,6 +58,38 @@ const coerceMethods = {
       return fallback;
     }),
 
+  /**
+   * Convert comma-separated or space-separated list to array of allowed values.
+   * Handles both formats: "a,b,c" or "a b c" -> ["a", "b", "c"]
+   * Validates each value against the allowed list and filters out invalid values.
+   * @param values Const array of allowed string values
+   * @param fallback Fallback array if parsing fails or no valid values found
+   * @returns Array of validated values from the allowed list
+   */
+  allowedValuesList: <const T extends readonly string[]>(values: T, fallback: T[number][]) =>
+    z
+      .union([z.array(z.string()), z.string()])
+      .transform((v): T[number][] => {
+        // Normalize to array of strings
+        let parts: string[];
+        if (Array.isArray(v)) {
+          parts = v;
+        } else if (typeof v === "string") {
+          parts = v.includes(",") ? v.split(",") : v.split(/\s+/);
+        } else {
+          return fallback;
+        }
+
+        // Trim, filter empty, and validate against allowed values
+        const filtered = parts
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0)
+          .filter((s) => values.includes(s as T[number])) as T[number][];
+
+        return filtered.length > 0 ? filtered : fallback;
+      })
+      .catch(fallback),
+
   /*** Convert to value from allowed list, with fallback in case not in list  */
   commaSeparatedList: () =>
     z
@@ -71,15 +104,21 @@ const coerceMethods = {
    * Parse a string to an array of objects
    * Expects string in the format:
    * 'key_1: value_1_a | key_2: value_2_a | key_3: value_3_a; key_1: value_1_b | key_2: value_2_b | key_3: value_3_b'
+   * Also accepts an existing array of objects or a hashmap of objects (which will be converted to an array)
    * @param fallback fallback array of objects if parsing fails
    * @returns array of objects with specified type
    */
   objectArray: <T extends Record<string, any>>(fallback: T[]) =>
     z
-      .union([z.array(z.record(z.string(), z.any())), z.string()])
+      .union([z.array(z.any()), z.record(z.string(), z.any()), z.string()])
       .transform((v): T[] => {
         // If already an array of objects, return as-is
         if (Array.isArray(v)) return v as T[];
+
+        // If object (hashmap), convert to array
+        if (v && typeof v === "object") {
+          return Object.values(v) as T[];
+        }
 
         // Parse string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
         if (typeof v === "string") {

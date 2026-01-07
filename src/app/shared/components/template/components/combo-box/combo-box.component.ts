@@ -1,39 +1,51 @@
-import { Component, computed, effect, OnDestroy, Signal, signal } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
-import {
-  getAnswerListParamFromTemplateRow,
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-  getParamFromTemplateRow,
-  normaliseAnswerListToArray,
-} from "src/app/shared/utils";
-import { TemplateBaseComponent } from "../base";
-import { FlowTypes } from "../../models";
+import { IAnswerListItem } from "src/app/shared/utils";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
 
-interface IComboBoxParams {
-  disabled: boolean;
-  disabledText: string;
-  placeholder: string;
-  prioritisePlaceholder: boolean;
-  style: string;
-  variant: "modal" | "dropdown";
-  optionsKey: string;
-  optionsValue: string;
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** List of answer options to display. */
+  answer_list: coerce.objectArray<IAnswerListItem>([]),
+  /** When true, the combo box is disabled. */
+  disabled: coerce.boolean(),
+  /** Text to display when the component is disabled. */
+  disabled_text: coerce.string(""),
+  /** Title to display in the modal header. */
+  modal_title: coerce.string(""),
+  /** Text to display when no option is selected. */
+  placeholder: coerce.string(""),
+  /** When true, prioritizes showing the placeholder over the selected value. */
+  prioritise_placeholder: coerce.boolean(),
+  /** Custom style class to apply. */
+  style: coerce.string(""),
+  /** The display variant of the combo box. Default 'modal'. */
+  variant: coerce.allowedValues(["modal", "dropdown"], "modal"),
+  /** The property key to use for the option value. Default 'name'. */
+  options_key: coerce.string("name"),
+  /** The property key to use for the option display text. Default 'text'. */
+  options_value: coerce.string("text"),
+  /** When true, allows users to enter a custom answer. Modal variant only. */
+  input_allowed: coerce.boolean(),
+  /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
+  input_position: coerce.string("bottom"),
+  /** Placeholder text for the answer input field. Modal variant only. */
+  answer_placeholder: coerce.string(""),
+}));
 
 @Component({
   selector: "plh-combo-box",
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
 })
-export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDestroy {
-  public params: Signal<IComboBoxParams> = computed(() => this.getParams(this.parameterList()));
-
+export class TmplComboBoxComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements OnDestroy
+{
   public answerText = signal("");
   private customAnswerSelected = signal(false);
   private customAnswerText: string;
@@ -44,18 +56,17 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),
       filter((row) => row !== undefined),
-      switchMap((row) => this.dataItemsService.getItemsObservable(row, this.parent.templateRowMap))
+      switchMap((row) =>
+        this.dataItemsService.getItemsObservable(
+          row,
+          this.parentContainerComponentRef.templateRowMap
+        )
+      )
     )
   );
 
   public answerOptions = computed(() => {
-    const params = this.params();
-    return this.getAnswerOptions(
-      this.dataItemRows(),
-      this.rowSignal(),
-      params.optionsKey,
-      params.optionsValue
-    );
+    return this.cleanAnswerOptions(this.dataItemRows() ?? this.params().answerList);
   });
 
   public showSearch = computed(() => this.answerOptions().length > 8);
@@ -95,63 +106,6 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
       },
       { allowSignalWrites: true }
     );
-  }
-
-  /**
-   * Get answer options from either data_items rows or the answer_list parameter.
-   * When custom keys are used (options_key !== "name" or options_value !== "text"),
-   * this bypasses the IAnswerListItem parsing which filters based on the "name" property.
-   * This allows authors to use custom data structures with any column names.
-   *
-   * @param dataItemRows - optional array from data_items child row
-   * @param row - the template row to read parameters from
-   * @param optionsKey - the key column name (default: "name")
-   * @param optionsValue - the value/display column name (default: "text")
-   * @returns array of answer options
-   */
-  private getAnswerOptions(
-    dataItemRows: any[] | undefined,
-    row: FlowTypes.TemplateRow,
-    optionsKey: string,
-    optionsValue: string
-  ): any[] {
-    // Priority 1: Use data_items rows if available
-    if (dataItemRows !== undefined) {
-      return dataItemRows || [];
-    }
-
-    // Priority 2: Check if custom keys are being used
-    // If custom keys are specified, bypass IAnswerListItem parsing which filters
-    // based on hardcoded "name" property
-    const usesCustomKeys = optionsKey !== "name" || optionsValue !== "text";
-    if (usesCustomKeys) {
-      const answerList = getParamFromTemplateRow(row, "answer_list", []);
-      return normaliseAnswerListToArray(answerList);
-    }
-
-    // Priority 3: Use standard IAnswerListItem parsing (default behavior)
-    return getAnswerListParamFromTemplateRow(row, "answer_list", []);
-  }
-
-  private getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): IComboBoxParams {
-    return {
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-      disabledText: getStringParamFromTemplateRow(this._row, "disabled_text", ""),
-      placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
-      prioritisePlaceholder: getBooleanParamFromTemplateRow(
-        this._row,
-        "prioritise_placeholder",
-        false
-      ),
-      style: getStringParamFromTemplateRow(this._row, "style", ""),
-      variant: getStringParamFromTemplateRow(
-        this._row,
-        "variant",
-        "modal"
-      ) as IComboBoxParams["variant"],
-      optionsKey: getStringParamFromTemplateRow(this._row, "options_key", "name"),
-      optionsValue: getStringParamFromTemplateRow(this._row, "options_value", "text"),
-    };
   }
 
   public async handleDropdownChange(value) {
@@ -195,7 +149,7 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
       cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
-        title: signal(getStringParamFromTemplateRow(this._row, "text")),
+        title: signal(this.params().modalTitle),
         selectedValue: this.value,
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
@@ -228,4 +182,13 @@ export class TmplComboBoxComponent extends TemplateBaseComponent implements OnDe
       "no-value": value ? undefined : true,
     };
   });
+
+  private cleanAnswerOptions(options: IAnswerListItem[]) {
+    return options.filter((option) => {
+      return (
+        option[this.params().optionsKey] !== undefined &&
+        option[this.params().optionsValue] !== undefined
+      );
+    });
+  }
 }

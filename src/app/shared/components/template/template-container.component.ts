@@ -140,7 +140,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     if (shouldProcess) {
       if (full) {
         console.log("[Force Reload]", this.name);
-        // allow time for other pending ops to finish
+        // Tear down service state to simulate full reload
+        this.templateRowService.clearRenderedState();
+        // allow time for other pending ops to finish and view to update
         await _wait(50);
         await this.renderTemplate(this.templatename());
       } else {
