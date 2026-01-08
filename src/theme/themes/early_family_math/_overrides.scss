@@ -1,0 +1,9 @@
+@mixin overrides {
+  // Component-specific style overrides for early_family_math theme
+  plh-button {
+    ion-button[data-variant~="compact"] {
+      --padding-start: var(--tiny-padding);
+      --padding-end: var(--tiny-padding);
+    }
+  }
+}
