@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Parameters } from "../reactive-components/parameters";
+import { FlowTypes } from "packages/data-models/flowTypes";
 
 export interface IRow {
   name(): string;
   value(): any;
   params: Parameters;
   setExpression(expression: any): void;
+  row(): FlowTypes.TemplateRow;
 }
 
 @Injectable({

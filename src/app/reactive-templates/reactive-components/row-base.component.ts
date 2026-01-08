@@ -142,11 +142,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   private watchValueDependencies() {
     this.unsubscribeValueDependencies();
-    let sub = this.variableStore
-      .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(async () => {
-        await this.storeValue();
-      });
+
+    const dependencies = this.evaluationService
+      .getDependencies(this.expression(), this.namespace())
+      .filter((d) => d !== this.name()); // avoid self-dependency
+
+    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+      await this.storeValue();
+    });
 
     this.valueDependencySubscriptions.push(sub);
   }

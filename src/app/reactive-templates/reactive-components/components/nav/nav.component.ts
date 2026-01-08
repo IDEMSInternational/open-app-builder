@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { defineParameters } from "../../parameters";
-import { IAction } from "src/app/reactive-templates/services/action.registry";
+import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 import { Router } from "@angular/router";
 
 const parameters = () => defineParameters({});
@@ -17,17 +17,15 @@ export class NavComponent
 {
   private router = inject(Router);
 
-  public async execute(): Promise<void> {
+  public async execute(params?: IActionParameter[]): Promise<void> {
     const templateName = this.row().value;
 
     const rows = this.row().rows ?? [];
     const queryParams: any = {};
 
     for (const row of rows) {
-      queryParams[row.name] = this.evaluationService.evaluateExpression(
-        row.value,
-        this.namespace()
-      );
+      const value = params?.find((p) => p.name === row.name)?.value ?? row.value;
+      queryParams[row.name] = this.evaluationService.evaluateExpression(value, this.namespace());
     }
 
     await this.router.navigate([`/template/${templateName}`], { queryParams });

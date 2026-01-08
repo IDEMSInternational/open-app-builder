@@ -12,9 +12,11 @@ import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import {
   ActionRegistry,
   IAction,
+  IActionParameter,
   isAction,
 } from "src/app/reactive-templates/services/action.registry";
 import { REACTIVE_COMPONENT_MAP } from "..";
+import { SetVariableComponent } from "../set-variable/set-variable.component";
 
 const parameters = () => defineParameters({});
 
@@ -31,18 +33,49 @@ export class ActionComponent
   private injector = inject(EnvironmentInjector);
 
   private readonly actions = new Map<string, IAction>();
+  private readonly setVariableRows = new Map<string, SetVariableComponent>();
   private readonly componentRefs: ComponentRef<any>[] = [];
 
-  public async execute(): Promise<void> {
+  public actionParameters(): IActionParameter[] {
+    return Array.from(this.setVariableRows.values()).map((row) => {
+      const templateRow = row.row();
+      return {
+        name: templateRow.name,
+        value: templateRow.value,
+      } as IActionParameter;
+    });
+  }
+
+  public async execute(params?: IActionParameter[]): Promise<void> {
+    const value = this.value();
+    const name = this.name();
+
+    // Any row with a name that matches a param should be updated with the param value
+    for (const param of params ?? []) {
+      const row = this.setVariableRows.get(param.name);
+      if (row) {
+        row.value = param.value;
+      }
+    }
+
+    const newParams = this.actionParameters().map((p) => {
+      const param = params?.find((i) => i.name === p.name);
+      return param ? { ...p, value: param.value } : { ...p };
+    });
+
     for (const action of this.actions.values()) {
-      // todo: pass parameters (which are any child set_variable rows?)
-      await action.execute();
+      await action.execute(newParams);
     }
   }
 
   public ngOnInit(): void {
     super.ngOnInit();
-    this.setExpression(this.name()); // An action's expression should be its name
+
+    // An action's expression should be its own name if not already set.
+    // e.g it is will execute itself by default otherwise its a reference to another action.
+    if (!this.expression()) {
+      this.setExpression(this.name());
+    }
 
     for (const row of this.row().rows ?? []) {
       const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];
@@ -57,6 +90,11 @@ export class ActionComponent
         this.componentRefs.push(componentRef);
 
         const instance = componentRef.instance;
+
+        if (row.type === "set_variable") {
+          this.setVariableRows.set(row.name, instance as SetVariableComponent);
+        }
+
         if (isAction(instance)) {
           this.actions.set(instance.name(), instance);
         }

@@ -1,8 +1,14 @@
 import { Injectable } from "@angular/core";
+import { IRow } from "./row.registry";
 
-export interface IAction {
+export interface IAction extends IRow {
   name(): string; // name: Signal<string>;
-  execute(): Promise<void>;
+  execute(params?: IActionParameter[]): Promise<void>;
+}
+
+export interface IActionParameter {
+  name: string;
+  value: any;
 }
 
 export function isAction(obj: any): obj is IAction {
