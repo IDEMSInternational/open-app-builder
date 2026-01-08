@@ -126,6 +126,13 @@ describe("LoopItemEvaluator", () => {
         value: signal(() => undefined),
         setExpression: () => {},
         params: { index: new Parameter("index", "name") },
+        row: () => ({
+          name: "mockRow",
+          value: "",
+          type: "loop",
+          rows: [],
+          _nested_name: "mockRow",
+        }),
       });
       mockVariableStore.get.and.returnValue([
         { name: "Alpha", value: 10 },
@@ -219,6 +226,13 @@ describe("LoopItemEvaluator", () => {
         value: signal(() => undefined),
         setExpression: () => {},
         params: { index: new Parameter("index", null) },
+        row: () => ({
+          name: "mockRow",
+          value: "",
+          type: "loop",
+          rows: [],
+          _nested_name: "mockRow",
+        }),
       });
       mockVariableStore.get.and.returnValue([10, 20, 30]);
     });
