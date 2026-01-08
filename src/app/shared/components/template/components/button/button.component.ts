@@ -7,6 +7,7 @@ const VARIANTS = [
   "alternative",
   "card",
   "card-portrait",
+  "compact",
   "flexible",
   "full",
   "information",
@@ -25,6 +26,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "alternative"
    * - "card"
    * - "card-portrait"
+   * - "compact"
    * - "flexible"
    * - "full"
    * - "information"
