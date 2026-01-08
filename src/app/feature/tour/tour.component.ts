@@ -13,6 +13,7 @@ import { TourService } from "./tour.service";
       </ion-item>
     </ion-list>
   </ion-content>`,
+  standalone: false,
 })
 export class TourComponent {
   constructor(public tourService: TourService) {}

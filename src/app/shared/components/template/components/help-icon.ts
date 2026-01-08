@@ -20,6 +20,7 @@ import { TemplateBaseComponent } from "./base";
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplHelpIconComponent extends TemplateBaseComponent implements OnInit {
   public icon_src: string | null;
