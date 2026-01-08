@@ -31,7 +31,7 @@ export interface IRow {
 
 @Component({
   selector: "oab-row-base",
-  template: ``,
+  template: ``, // template is empty, to be overridden by child components
   standalone: false,
 })
 export abstract class RowBaseComponent<TParams extends Parameters>
