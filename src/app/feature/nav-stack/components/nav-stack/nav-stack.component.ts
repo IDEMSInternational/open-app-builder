@@ -13,6 +13,7 @@ export interface INavStackConfig {
 @Component({
   selector: "tmpl-nav-stack",
   templateUrl: "./nav-stack.component.html",
+  standalone: false,
 })
 export class NavStackComponent {
   @Input() config: INavStackConfig;

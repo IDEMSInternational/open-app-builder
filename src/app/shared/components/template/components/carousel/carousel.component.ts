@@ -16,6 +16,7 @@ import { DataItemsService } from "../data-items/data-items.service";
   templateUrl: "./carousel.component.html",
   styleUrls: ["./carousel.component.scss"],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TmplCarouselComponent extends TemplateBaseComponent implements OnInit {
   config: SwiperOptions = {};

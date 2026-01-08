@@ -8,7 +8,6 @@ import { Subscription } from "rxjs";
   selector: "oab-nested-template",
   templateUrl: "./nested-template.component.html",
   styleUrls: ["./nested-template.component.scss"],
-  standalone: true,
   imports: [forwardRef(() => ReactiveTemplateComponent)],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })

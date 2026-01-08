@@ -44,7 +44,6 @@ interface IVariantMap {
   selector: "oab-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
-  standalone: true,
   imports: [
     CommonModule,
     IonicModule,

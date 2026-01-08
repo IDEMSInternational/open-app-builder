@@ -21,6 +21,7 @@ import { ReplaySubject } from "rxjs";
   selector: "plh-radio-group",
   templateUrl: "./radio-group.component.html",
   styleUrls: ["./radio-group.component.scss"],
+  standalone: false,
 })
 export class TmplRadioGroupComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
   @Input() changeTheme: EventEmitter<boolean>;

@@ -5,6 +5,7 @@ import { TemplateBaseComponent } from "../base";
 @Component({
   template: ``,
   styleUrls: ["../tmpl-components-common.scss"],
+  standalone: false,
 })
 /**
  * Layout components such as a display_group, nav_group or animated section add a layer between

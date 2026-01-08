@@ -30,6 +30,7 @@ const SIZING = {
   selector: "plh-progress-path",
   templateUrl: "./progress-path.component.html",
   styleUrls: ["./progress-path.component.scss"],
+  standalone: false,
 })
 export class TmplProgressPathComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public svgPath = signal<string>("");
