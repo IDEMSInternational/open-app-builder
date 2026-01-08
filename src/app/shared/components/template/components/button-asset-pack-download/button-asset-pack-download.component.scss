@@ -1,0 +1,11 @@
+.button-container {
+  width: 100%;
+  height: auto;
+}
+
+.status-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--small-padding);
+}
