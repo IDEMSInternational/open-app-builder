@@ -29,8 +29,9 @@ export class EvaluationService {
     evaluatedExpression = this.itemEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
+    evaluatedExpression = this.appDataEvaluator.evaluate(evaluatedExpression);
 
-    return this.appDataEvaluator.evaluate(evaluatedExpression) as T;
+    return evaluatedExpression as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.

@@ -17,17 +17,11 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
-import { RowRegistry } from "../services/row.registry";
+import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
-
-export interface IRow {
-  name: Signal<string>;
-  value: Signal<any>;
-  params: Parameters;
-  setExpression(expression: any): void;
-}
 
 @Component({
   selector: "oab-row-base",
@@ -64,6 +58,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
+  protected route = inject(ActivatedRoute);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -81,7 +76,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this._expression.set(row.value);
+
+    // If there is a query param that matches this row's name, use that to override the expression
+    const queryParam = this.route.snapshot.queryParamMap.get(this.name());
+
+    this._expression.set(queryParam ?? row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
     );
@@ -144,11 +143,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   private watchValueDependencies() {
     this.unsubscribeValueDependencies();
-    let sub = this.variableStore
-      .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(async () => {
-        await this.storeValue();
-      });
+
+    const dependencies = this.evaluationService
+      .getDependencies(this.expression(), this.namespace())
+      .filter((d) => d !== this.name()); // avoid self-dependency
+
+    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+      await this.storeValue();
+    });
 
     this.valueDependencySubscriptions.push(sub);
   }
