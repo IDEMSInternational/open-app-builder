@@ -1,6 +1,6 @@
 import { INestApplication } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
-import * as request from "supertest";
+import request from "supertest";
 import { AppModule } from "src/app.module";
 import { generateTestID, testDBBootstrap, testDBQuery, testDBTeardown } from "test/test.utils";
 import { Attributes } from "sequelize";
@@ -64,6 +64,36 @@ describe("app_user (e2e)", () => {
     expect(record.app_user_id).toBeTruthy();
   });
 
+  it("[Delete] delete user", async () => {
+    // First verify user exists
+    const getResponse = await request(app.getHttpServer()).get(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(getResponse.status).toEqual(200);
+
+    // Delete the user
+    const { status, body } = await request(app.getHttpServer()).delete(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(status).toEqual(200);
+    expect(body.deleted).toEqual(true);
+
+    // Verify user no longer exists
+    const verifyResponse = await request(app.getHttpServer()).get(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(verifyResponse.body).toBeNull();
+  });
+
+  it("[Delete] delete non-existent user", async () => {
+    const nonExistentId = randomUUID();
+    const { status, body } = await request(app.getHttpServer()).delete(
+      `${ENDPOINT_BASE}/${nonExistentId}`,
+    );
+    expect(status).toEqual(200);
+    expect(body.deleted).toEqual(false);
+  });
+
   it("[Post] create on deployment DB", async () => {
     const deploymentDBName = `test_e2e_${generateTestID()}`;
     const app_user_id = randomUUID();
@@ -80,7 +110,7 @@ describe("app_user (e2e)", () => {
   });
 });
 
-const mockUser = (app_user_id: string): Attributes<AppUser> => ({
+const mockUser = (app_user_id: string): Partial<Attributes<AppUser>> => ({
   app_deployment_name: "test",
   app_user_id,
   app_version: "0.0.0",

@@ -1,4 +1,13 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+} from "@nestjs/common";
 import { UserDataPostDTO } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
@@ -44,6 +53,23 @@ export class AppUsersController {
     try {
       const res = await this.appUsersService.setUserData(params.app_user_id, data);
       return res;
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Delete(":app_user_id")
+  @ApiParam({ name: "app_user_id", type: String })
+  @ApiOperation({ summary: "Delete user profile" })
+  @ApiResponse({
+    status: 200,
+    description: "User Deleted",
+  })
+  @DeploymentHeaders()
+  async deleteUser(@Param("app_user_id") app_user_id: string) {
+    try {
+      const deletedCount = await this.appUsersService.deleteUser(app_user_id);
+      return { deleted: deletedCount > 0 };
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
