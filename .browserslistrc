@@ -5,26 +5,17 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-# Minimum browser supported
-
-#                          NOTE - Open App Builder
-# Versions specified will determine which polyfills angular includes when generating bundles
-# Increasing version will result in smaller bundle size, but lose compatibility with older devices
+# Angular 21 supported targets (see https://angular.dev/reference/versions#support)
 # Any changes here should be reflected in user prompt `android\app\src\main\java\utils\WebViewChecker.java`
 
-Chrome >= 89
-ChromeAndroid >= 89
-Firefox >= 75
-Edge >= 89
-Safari >= 15
-iOS >= 15
-
-# Also include recent and widely-used browsers
-last 2 versions
-> 0.5%
-not dead
+last 2 Chrome versions
+last 2 ChromeAndroid versions
+last 2 Edge versions
+last 2 Firefox versions
+Firefox ESR
+last 2 Safari versions
+last 2 iOS versions
 
 # Explicitly unsupported browsers
 not op_mini all
 not IE 9-11
-not KaiOS > 0

@@ -14,7 +14,9 @@ import android.webkit.WebView;
 
 public class WebViewChecker {
 
-    public static final int TARGET_WEBVIEW_MAJOR_VERSION = 89;
+    // Keep in sync with minimum supported Chrome/WebView from `.browserslistrc`
+    // (Angular 21 requires an evergreen baseline; last 2 Chrome versions at time of release ~120+)
+    public static final int TARGET_WEBVIEW_MAJOR_VERSION = 120;
 
     private static final String TAG = "WebViewChecker";
 
