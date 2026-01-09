@@ -3,7 +3,7 @@
   @if (params.sticky === "top") {
     <div [style.height.px]="sticky.height()"></div>
   }
-  <tmpl-display-group-sticky [position]="params.sticky" #sticky>
+  <tmpl-display-group-sticky [position]="params.sticky" #sticky="tmplDisplayGroupSticky">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </tmpl-display-group-sticky>
   @if (params.sticky === "bottom") {
