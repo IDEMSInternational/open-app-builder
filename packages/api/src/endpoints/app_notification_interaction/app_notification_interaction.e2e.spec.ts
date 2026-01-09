@@ -1,6 +1,6 @@
 import { INestApplication } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
-import * as request from "supertest";
+import request from "supertest";
 import { AppModule } from "src/app.module";
 import { generateTestID, testDBBootstrap, testDBQuery, testDBTeardown } from "test/test.utils";
 import { AppNotificationInteraction } from "./app_notification_interaction.model";
