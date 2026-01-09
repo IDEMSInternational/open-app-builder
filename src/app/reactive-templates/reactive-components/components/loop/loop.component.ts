@@ -12,7 +12,6 @@ const parameters = () =>
   selector: "oab-loop",
   templateUrl: "./loop.component.html",
   styleUrls: ["./loop.component.scss"],
-  standalone: true,
   imports: [forwardRef(() => RowListComponent)],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })

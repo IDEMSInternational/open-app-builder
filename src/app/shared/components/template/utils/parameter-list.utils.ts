@@ -58,6 +58,38 @@ const coerceMethods = {
       return fallback;
     }),
 
+  /**
+   * Convert comma-separated or space-separated list to array of allowed values.
+   * Handles both formats: "a,b,c" or "a b c" -> ["a", "b", "c"]
+   * Validates each value against the allowed list and filters out invalid values.
+   * @param values Const array of allowed string values
+   * @param fallback Fallback array if parsing fails or no valid values found
+   * @returns Array of validated values from the allowed list
+   */
+  allowedValuesList: <const T extends readonly string[]>(values: T, fallback: T[number][]) =>
+    z
+      .union([z.array(z.string()), z.string()])
+      .transform((v): T[number][] => {
+        // Normalize to array of strings
+        let parts: string[];
+        if (Array.isArray(v)) {
+          parts = v;
+        } else if (typeof v === "string") {
+          parts = v.includes(",") ? v.split(",") : v.split(/\s+/);
+        } else {
+          return fallback;
+        }
+
+        // Trim, filter empty, and validate against allowed values
+        const filtered = parts
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0)
+          .filter((s) => values.includes(s as T[number])) as T[number][];
+
+        return filtered.length > 0 ? filtered : fallback;
+      })
+      .catch(fallback),
+
   /*** Convert to value from allowed list, with fallback in case not in list  */
   commaSeparatedList: () =>
     z

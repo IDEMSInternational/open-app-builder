@@ -20,6 +20,7 @@ import { Device } from "@capacitor/device";
     <ion-button (click)="submit()">{{ button_text }}</ion-button>
   </div>`,
   styleUrls: ["./form.scss"],
+  standalone: false,
 })
 export class FormComponent extends TemplateBaseComponent implements OnInit {
   @Input() inputRow: FlowTypes.TemplateRow;

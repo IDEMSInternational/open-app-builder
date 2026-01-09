@@ -20,6 +20,7 @@ interface ISimpleCheckboxParams {
   selector: "plh-simple-checkbox",
   templateUrl: "./simple-checkbox.component.html",
   styleUrls: ["./simple-checkbox.component.scss"],
+  standalone: false,
 })
 export class TmplSimpleCheckboxComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));

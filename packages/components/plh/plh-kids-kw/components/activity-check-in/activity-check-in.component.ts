@@ -31,6 +31,7 @@ interface IActivityCheckInParams {
   selector: "plh-activity-check-in",
   templateUrl: "./activity-check-in.component.html",
   styleUrls: ["./activity-check-in.component.scss"],
+  standalone: false,
 })
 export class PlhActivityCheckInComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IActivityCheckInParams> = {};

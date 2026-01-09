@@ -5,6 +5,7 @@ import { FeedbackService } from "../../feedback.service";
   selector: "plh-feedback-toolbar",
   templateUrl: "./feedback-toolbar.component.html",
   styleUrls: ["./feedback-toolbar.component.scss"],
+  standalone: false,
 })
 export class FeedbackToolbarComponent implements AfterViewInit, OnDestroy {
   constructor(public feedbackService: FeedbackService) {}
