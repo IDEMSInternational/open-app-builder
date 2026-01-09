@@ -5,6 +5,7 @@ import { Command } from "commander";
 import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import deploymentCmd from "./deployment";
+import externalCmd from "./external";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
 import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
@@ -18,6 +19,7 @@ program.version(version).description(`IDEMS App Scripts ${version}`);
 program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(deploymentCmd);
+program.addCommand(externalCmd);
 program.addCommand(versionCmd);
 program.addCommand(workflowCmd);
 
