@@ -24,7 +24,7 @@
           [templatename]="props.templatename"
           [parent]="props.parent"
           [row]="props.row"
-          (emittedValue)="handleEmittedValue($event)"
+          (emittedValue)="handleEmittedValue($any($event))"
         ></plh-template-container>
       }
     </div>

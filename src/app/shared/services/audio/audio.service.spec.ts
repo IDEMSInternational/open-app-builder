@@ -6,7 +6,7 @@ describe("AudioService", () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it("should be created", () => {
-    const service: AudioService = TestBed.get(AudioService);
+    const service: AudioService = TestBed.inject(AudioService);
     expect(service).toBeTruthy();
   });
 });

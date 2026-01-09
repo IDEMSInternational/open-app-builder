@@ -13,7 +13,6 @@ export class TmplTileComponent extends TemplateBaseComponent implements OnInit {
   second_line_text: string | null;
   icon_src: string | null;
   left_icon_src: string | null;
-  value: any;
   style: string | null;
   icon_result: string;
   is_play_icon: boolean;

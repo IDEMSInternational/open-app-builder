@@ -6,7 +6,7 @@
 
 This style guide provides a set of conventions for developing in this Angular monorepo. The goal is to enhance readability, maintainability, and collaboration among developers. By adhering to these guidelines, we can ensure a consistent and high-quality codebase. This guide is a living document and will evolve as our project and best practices change.
 
-This guide assumes Angular v19+ (for signals, built-in control flow, and signal inputs).
+This guide assumes Angular v21+ (for signals, built-in control flow, and signal inputs).
 
 This guide promotes the use of modern Angular features, including:
 * **Signals**: For reactive state management (`signal`, `computed`, `effect`).

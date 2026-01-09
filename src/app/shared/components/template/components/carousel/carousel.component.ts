@@ -1,6 +1,6 @@
 import { Component, computed, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { SwiperOptions, Swiper } from "swiper";
+import Swiper, { SwiperOptions } from "swiper";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,

@@ -1,5 +1,12 @@
 import { Location } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  Signal,
+} from "@angular/core";
 import { computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { NavigationStart, Router } from "@angular/router";
@@ -40,7 +47,7 @@ export class headerComponent implements OnInit, OnDestroy {
    * Listen to router events to handle route change effects
    * NOTE - use events instead of route as header sits outside ion-router (limited access)
    **/
-  private routeChanges = toSignal(this.router.events);
+  private routeChanges!: Signal<any>;
 
   /** listen to hardware back button presses (on android device only) */
   private hardwareBackButton$: PluginListenerHandle;
@@ -61,6 +68,7 @@ export class headerComponent implements OnInit, OnDestroy {
     private location: Location,
     private appConfigService: AppConfigService
   ) {
+    this.routeChanges = toSignal(this.router.events);
     effect(
       () => {
         // when header config changes set the height and collapse properties
