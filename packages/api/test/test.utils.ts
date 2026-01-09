@@ -17,15 +17,10 @@ export async function testDBQuery(sql: string, database?: string) {
 
 /** Create database and users for a `test_e2e` database */
 export async function testDBBootstrap() {
-  // Set a longer timeout for setup (default 5s)
-  jest.setTimeout(30000);
-  jest.useFakeTimers();
   // Ensure any previous data wiped
   await testDBTeardown();
   // Run full setup with db migrations
   await new DBInstance().setup();
-  jest.setTimeout(5000);
-  jest.useRealTimers();
 }
 
 /** Drop all database tables prefixed with `test_e2e` */
