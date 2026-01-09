@@ -11094,12 +11094,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.18.13":
-  version: 18.19.15
-  resolution: "@types/node@npm:18.19.15"
+"@types/node@npm:^20.11.25":
+  version: 20.19.27
+  resolution: "@types/node@npm:20.19.27"
   dependencies:
-    undici-types: ~5.26.4
-  checksum: 8ebad6b0a010ff01a841c2d99a464993ee22348aff476e95276c17a9a72f336f4a395940c59c4f21e10ef50ed79a7811a60d562099a87c476d241e8b37e3cdd5
+    undici-types: ~6.21.0
+  checksum: d19cf59bc6de483d25d822c7a0c99ccff58eba7ff36331e71c0aad78b817faa69781dcac1b70e6b6b037de2c6d08aca7c543140087482f50a4a72423c0c18de8
   languageName: node
   linkType: hard
 
@@ -19209,7 +19209,7 @@ __metadata:
     "@types/jasmine": ~4.3.0
     "@types/lokijs": ^1.5.7
     "@types/marked": ^2.0.3
-    "@types/node": ^18.18.13
+    "@types/node": ^20.11.25
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
     "@types/swiper": ~4.2.0
@@ -31884,6 +31884,13 @@ __metadata:
   version: 6.20.0
   resolution: "undici-types@npm:6.20.0"
   checksum: b7bc50f012dc6afbcce56c9fd62d7e86b20a62ff21f12b7b5cbf1973b9578d90f22a9c7fe50e638e96905d33893bf2f9f16d98929c4673c2480de05c6c96ea8b
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
   languageName: node
   linkType: hard
 
