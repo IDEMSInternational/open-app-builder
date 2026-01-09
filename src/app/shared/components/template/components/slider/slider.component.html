@@ -13,7 +13,7 @@
   <div class="slider-container">
     <nouislider
       #slider
-      (change)="changeValue($event)"
+      (change)="changeValue($any($event))"
       [class.hide-handle]="_row.value === 'no_value' || _row.value === undefined"
       [config]="sliderConfig"
       [style.width.%]="100"

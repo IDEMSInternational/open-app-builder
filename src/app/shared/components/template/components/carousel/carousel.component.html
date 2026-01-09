@@ -1,5 +1,5 @@
 <div class="carousel-wrapper">
-  <swiper (swiper)="handleSwiperInitialised($event)" [config]="config">
+  <swiper (swiper)="handleSwiperInitialised($any($event))" [config]="config">
     @for (row of carouselRows(); track row._nested_name) {
       <ng-template swiperSlide>
         <plh-template-component
