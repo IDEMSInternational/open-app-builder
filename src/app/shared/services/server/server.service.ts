@@ -132,4 +132,27 @@ export class ServerService extends SyncServiceBase {
     await this.dbSyncService.ready();
     return this.dbSyncService.syncDBTables();
   }
+
+  /**
+   * Delete user data from the server.
+   */
+  public async deleteUserData(): Promise<{ success: boolean; error?: any }> {
+    if (!this.app_user_id) {
+      const { identifier: uuid } = await Device.getId();
+      this.app_user_id = uuid;
+    }
+    console.log("[SERVER] deleting user data for", this.app_user_id);
+    return new Promise((resolve) => {
+      this.http.delete(`/app_users/${this.app_user_id}`).subscribe({
+        next: () => {
+          console.log("[SERVER] user data deleted successfully");
+          resolve({ success: true });
+        },
+        error: (err) => {
+          console.error("[SERVER] failed to delete user data:", err);
+          resolve({ success: false, error: err });
+        },
+      });
+    });
+  }
 }

@@ -40,4 +40,10 @@ export class AppUsersService {
     // await this.model.upsert({ ...user, ...data, app_user_id });
     return user.update({ ...data, app_user_id });
   }
+
+  async deleteUser(app_user_id: string): Promise<number> {
+    return this.model.destroy({
+      where: { app_user_id },
+    });
+  }
 }
