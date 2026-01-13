@@ -19260,13 +19260,13 @@ __metadata:
     karma-json-result-reporter: ^1.0.0
     katex: ^0.16.21
     lint-staged: ^15.2.2
-    lottie-web: ^5.12.2
+    lottie-web: ^5.13.0
     marked: ^11
     marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
     ngx-extended-pdf-viewer: ^25.6.4
-    ngx-lottie: ^12.0.0
+    ngx-lottie: ^20.0.0
     ngx-matomo-client: ^7.1.0
     nouislider: ^15.7.1
     prettier: ^3.2.5
@@ -23637,10 +23637,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.12.2":
-  version: 5.12.2
-  resolution: "lottie-web@npm:5.12.2"
-  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
+"lottie-web@npm:^5.13.0":
+  version: 5.13.0
+  resolution: "lottie-web@npm:5.13.0"
+  checksum: f634eddbfc49a243af598c8c3b5b2bc347c6980cb85ef3e17a394aa52e2d4d1d04ef565d9cf1581727eec598717932abf5e0e0aba111b4d64f2a9dadaeaa98e2
   languageName: node
   linkType: hard
 
@@ -24959,16 +24959,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-lottie@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "ngx-lottie@npm:12.0.0"
+"ngx-lottie@npm:^20.0.0":
+  version: 20.0.0
+  resolution: "ngx-lottie@npm:20.0.0"
   dependencies:
     "@scarf/scarf": ^1.1.1
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=18"
+    "@angular/core": ">=20"
     lottie-web: ">=5.9.2"
-  checksum: a8b6897cd806b3b95d303395fe884fe7af1148bfbc9b73fdfd922c2bc584a95a56cad7bcc29f123518fc1f60129a572c98dc1b9a3dd1a4c9516115034e17a502
+  checksum: 2f7e691722e27cac49fbb7e33ab70ded5fe250b2c165c58841371489a3271d648ccf65dcc9916c94a362e4be8bc98411ab08ae93201cde5ecd996d852a68bee0
   languageName: node
   linkType: hard
 
