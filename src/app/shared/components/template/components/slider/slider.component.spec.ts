@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
-import { NouisliderModule } from "ng2-nouislider";
 
 import { TmplSliderComponent } from "./slider.component";
 import { FlowTypes } from "packages/data-models";
@@ -14,7 +13,7 @@ describe("SliderComponent", () => {
   beforeEach(waitForAsync(async () => {
     TestBed.configureTestingModule({
       declarations: [TmplSliderComponent],
-      imports: [IonicModule.forRoot(), NouisliderModule],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplSliderComponent);
