@@ -11,7 +11,7 @@ import { FlowTypes } from "packages/data-models";
         [row]="childRow"
         [parent]="parent"
         [id]="idx.toString()"
-        (toggleState)="toggleState($any($event))"
+        (toggleState)="toggleState($event)"
       >
       </plh-tmpl-accordion-section>
     </div>

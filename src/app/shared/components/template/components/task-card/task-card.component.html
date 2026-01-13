@@ -67,7 +67,7 @@
                 [progressUnitsName]="progressUnitsName"
                 [showText]="showProgressText"
                 [(progressStatus)]="progressStatus"
-                (newlyCompleted)="handleNewlyCompleted($any($event))"
+                (newlyCompleted)="handleNewlyCompleted($event)"
               ></plh-task-progress-bar>
             </div>
           }
@@ -94,7 +94,7 @@
             [progressUnitsName]="progressUnitsName"
             [showText]="false"
             [(progressStatus)]="progressStatus"
-            (newlyCompleted)="handleNewlyCompleted($any($event))"
+            (newlyCompleted)="handleNewlyCompleted($event)"
           ></plh-task-progress-bar>
         </div>
       }
