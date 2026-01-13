@@ -69,6 +69,7 @@ export class ActionComponent
       if (this.actionRegistry.has(value)) {
         const action = this.actionRegistry.get(value);
         await action.execute(newParams);
+        return; // this action should not define any actions of its own, but removing this return would enable that.
       } else {
         console.error(`[ACTION] No action registered with name: ${expression}`);
         return;
@@ -81,7 +82,11 @@ export class ActionComponent
   }
 
   public ngOnInit(): void {
-    super.ngOnInit();
+    this.init();
+  }
+
+  public init(): void {
+    super.init();
 
     // An action's expression should be its own name if not already set.
     // e.g it is will execute itself by default otherwise its a reference to another action.
@@ -108,6 +113,12 @@ export class ActionComponent
         }
 
         if (isAction(instance)) {
+          // Action components need to be manually initialised as ngOnInit is not called automatically
+          if (instance instanceof ActionComponent) {
+            instance.init();
+            this.actions.set(instance.name(), instance);
+          }
+
           this.actions.set(instance.name(), instance);
         }
       }

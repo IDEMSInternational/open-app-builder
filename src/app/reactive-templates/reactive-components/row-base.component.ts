@@ -72,6 +72,10 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
    */
   ngOnInit(): void {
+    this.init();
+  }
+
+  public init(): void {
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
