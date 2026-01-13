@@ -36,17 +36,10 @@ export class ActionHandler {
       return console.error(`[ACTION] No action registered with name: ${params.name}`);
     }
 
-    const action = this.actionRegistry.get(params.name);
-    let actionParams: IActionParameter[] = [];
+    const action = this.actionRegistry.get(baseName);
 
     try {
-      // if we are accessing a reference action.
-      if (baseName !== params.name) {
-        const baseAction = this.actionRegistry.get(baseName) as ActionComponent;
-        actionParams = baseAction.actionParameters();
-      }
-
-      await action.execute(actionParams);
+      await action.execute();
     } catch (error) {
       console.error(`[ACTION] Error executing action: ${params.name}`, error);
     }

@@ -47,8 +47,9 @@ export class ActionComponent
   }
 
   public async execute(params?: IActionParameter[]): Promise<void> {
-    const value = this.value();
     const name = this.name();
+    const expression = this.expression();
+    const value = this.value();
 
     // Any row with a name that matches a param should be updated with the param value
     for (const param of params ?? []) {
@@ -62,6 +63,17 @@ export class ActionComponent
       const param = params?.find((i) => i.name === p.name);
       return param ? { ...p, value: param.value } : { ...p };
     });
+
+    // if this is a reference to another action, execute that instead
+    if (expression && expression !== name) {
+      if (this.actionRegistry.has(value)) {
+        const action = this.actionRegistry.get(value);
+        await action.execute(newParams);
+      } else {
+        console.error(`[ACTION] No action registered with name: ${expression}`);
+        return;
+      }
+    }
 
     for (const action of this.actions.values()) {
       await action.execute(newParams);
@@ -101,7 +113,7 @@ export class ActionComponent
       }
     }
 
-    this.actionRegistry.register(this); // todo: Maybe shouldn't register if this is a nested action?
+    this.actionRegistry.register(this);
   }
 
   public ngOnDestroy(): void {
