@@ -36,7 +36,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24.13.0
-      - uses: actions/cache/restore@v3
+      - uses: actions/cache/restore@v5
         id: cache
         with:
           path: ./.yarn/cache
@@ -45,7 +45,7 @@ jobs:
             ${{ runner.os }}-node-modules-yarn-v1-
       - name: Install node modules
         run: yarn install --immutable
-      - uses: actions/cache/save@v3
+      - uses: actions/cache/save@v5
         if: steps.cache.outputs.cache-hit != 'true'
         with:
           path: ./.yarn/cache
