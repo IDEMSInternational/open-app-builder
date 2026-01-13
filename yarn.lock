@@ -11094,15 +11094,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.11.25":
-  version: 20.19.27
-  resolution: "@types/node@npm:20.19.27"
-  dependencies:
-    undici-types: ~6.21.0
-  checksum: d19cf59bc6de483d25d822c7a0c99ccff58eba7ff36331e71c0aad78b817faa69781dcac1b70e6b6b037de2c6d08aca7c543140087482f50a4a72423c0c18de8
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:^22.13.0":
   version: 22.13.0
   resolution: "@types/node@npm:22.13.0"
@@ -11118,6 +11109,15 @@ __metadata:
   dependencies:
     undici-types: ~6.20.0
   checksum: df4afd23fee6f75f9ae6558794ca7b9fb92e5ff817e9ffcd26c67cd9a366dcb4f34f83184513b66646a54e2659adbd46cd4839d3268be11e2d74fde2d09c5f66
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^24":
+  version: 24.10.8
+  resolution: "@types/node@npm:24.10.8"
+  dependencies:
+    undici-types: ~7.16.0
+  checksum: f0fe13ba80f252cbd66b6b74dbc6ef656d9dc8eb09fa06267a854cb3edb3dd267de7ac1821325db44adcb2163c63b894c232f8bb2e5b0c97641fe5f36cdf52f4
   languageName: node
   linkType: hard
 
@@ -19209,7 +19209,7 @@ __metadata:
     "@types/jasmine": ~4.3.0
     "@types/lokijs": ^1.5.7
     "@types/marked": ^2.0.3
-    "@types/node": ^20.11.25
+    "@types/node": ^24
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
     "@types/swiper": ~4.2.0
@@ -31887,10 +31887,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.21.0":
-  version: 6.21.0
-  resolution: "undici-types@npm:6.21.0"
-  checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
+"undici-types@npm:~7.16.0":
+  version: 7.16.0
+  resolution: "undici-types@npm:7.16.0"
+  checksum: 1ef68fc6c5bad200c8b6f17de8e5bc5cfdcadc164ba8d7208cd087cfa8583d922d8316a7fd76c9a658c22b4123d3ff847429185094484fbc65377d695c905857
   languageName: node
   linkType: hard
 

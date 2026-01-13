@@ -143,7 +143,7 @@
     "@types/jasmine": "~4.3.0",
     "@types/lokijs": "^1.5.7",
     "@types/marked": "^2.0.3",
-    "@types/node": "^20.11.25",
+    "@types/node": "^24",
     "@types/nouislider": "^15.0.0",
     "@types/qrcode": "^1.5.5",
     "@types/swiper": "~4.2.0",
@@ -186,7 +186,7 @@
     "fs": false
   },
   "engines": {
-    "node": ">=18.x"
+    "node": ">=22.x"
   },
   "packageManager": "yarn@3.3.1"
 }
