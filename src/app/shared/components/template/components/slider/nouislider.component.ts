@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-output-native */
 import * as noUiSlider from "nouislider";
 import {
   Component,
