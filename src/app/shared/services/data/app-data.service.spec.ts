@@ -12,7 +12,7 @@ import { MockDbService } from "../db/db.service.mock.spec";
 import { Injectable } from "@angular/core";
 import { ISheetContents } from "src/app/data";
 import { _wait } from "packages/shared/src/utils/async-utils";
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi, HttpClient } from "@angular/common/http";
 
 /** Base mock data for use with any services calling mock app-data handlers */
 const DATA_CACHE_CLEAN: IAppDataCache = {
@@ -102,6 +102,14 @@ class AppDataServiceExtended extends AppDataService {
   protected sheetContents = CONTENTS_MOCK;
   protected translationContents = {};
   public appDataCache = { ...DATA_CACHE_CLEAN, ...SPEC_MOCK_DATA };
+
+  constructor(
+    http: HttpClient,
+    errorHandler: ErrorHandlerService,
+    variableService: AppDataVariableService
+  ) {
+    super(http, errorHandler, variableService);
+  }
 }
 
 /********************************************************************************
@@ -118,7 +126,6 @@ describe("AppDataService", () => {
         { provide: AppDataVariableService, useValue: new MockAppDataVariableService() },
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: DbService, useValue: new MockDbService() },
-        AppDataServiceExtended,
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
@@ -126,7 +133,6 @@ describe("AppDataService", () => {
 
     service = TestBed.inject(AppDataServiceExtended);
     TestBed.inject(AppDataServiceExtended);
-    service.ready();
   });
 
   it("should be created", () => {
