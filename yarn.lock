@@ -19267,7 +19267,7 @@ __metadata:
     ng2-nouislider: ^2.0.0
     ngx-extended-pdf-viewer: ^25.6.4
     ngx-lottie: ^20.0.0
-    ngx-matomo-client: ^7.1.0
+    ngx-matomo-client: ^9.0.1
     nouislider: ^15.7.1
     prettier: ^3.2.5
     qrcode: ^1.5.3
@@ -24972,15 +24972,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-matomo-client@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "ngx-matomo-client@npm:7.1.0"
+"ngx-matomo-client@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "ngx-matomo-client@npm:9.0.1"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ^19.0.0
-    "@angular/core": ^19.0.0
-  checksum: 7edff971d605b4b964d04dcd9417ef07fddc5768264f66f7f8dcbdf0ffb268605f8b328a75f220dd0c8ba366618f313cc08d8a8c3d3b612dcfc025a117948654
+    "@angular/common": ^21.0.0
+    "@angular/core": ^21.0.0
+  checksum: c8135c53a5ad664e99aa4012d6a52b2962ea39e63b60bde442732efac7707d2955df4071939f02f398ccc332d522e86f75b33c06dae572df2791c25de3c9070c
   languageName: node
   linkType: hard
 
