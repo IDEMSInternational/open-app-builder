@@ -19265,7 +19265,7 @@ __metadata:
     marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
-    ngx-extended-pdf-viewer: ^23.1.1
+    ngx-extended-pdf-viewer: ^25.6.4
     ngx-lottie: ^12.0.0
     ngx-matomo-client: ^7.1.0
     nouislider: ^15.7.1
@@ -24947,15 +24947,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-extended-pdf-viewer@npm:^23.1.1":
-  version: 23.1.1
-  resolution: "ngx-extended-pdf-viewer@npm:23.1.1"
+"ngx-extended-pdf-viewer@npm:^25.6.4":
+  version: 25.6.4
+  resolution: "ngx-extended-pdf-viewer@npm:25.6.4"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ">=17.0.0 <21.0.0"
-    "@angular/core": ">=17.0.0 <21.0.0"
-  checksum: 4ed4fbd6a2465a72aa58b025dbc012fa3579a2f016c5143a3e015d97e8132b939da7a63f45db8593729f6f3531c2e66ff5dc60829ab5c8571af2179fe2403174
+    "@angular/common": ">=17.0.0 <22.0.0"
+    "@angular/core": ">=17.0.0 <22.0.0"
+  checksum: dfeb9132ce9e483d2f5d1d40717b3bc94069c2e1c4e3996ad2a4d2ac5833296037133ce85ccad1e44179daeeb1970cd1ba8fcbfaecaa443a4769a1f02813bffa
   languageName: node
   linkType: hard
 
