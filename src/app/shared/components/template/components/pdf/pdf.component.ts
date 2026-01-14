@@ -13,8 +13,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   ),
   /** Text for the "Open with..." button. Default "Open with...". */
   open_external_text: coerce.string("Open with..."),
-  /** Show full screen button. Default true. */
-  allow_fullscreen: coerce.boolean(true),
+  /** Show full screen button. Default false. */
+  allow_fullscreen: coerce.boolean(false),
 }));
 
 @Component({
