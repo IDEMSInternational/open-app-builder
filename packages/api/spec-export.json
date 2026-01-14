@@ -106,37 +106,6 @@
         "tags": [
           "Users"
         ]
-      },
-      "delete": {
-        "operationId": "AppUsersController_deleteUser",
-        "parameters": [
-          {
-            "name": "app_user_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-deployment-db-name",
-            "in": "header",
-            "description": "Name of db for deployment to populate",
-            "schema": {
-              "type": "string",
-              "default": "plh"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "User Deleted"
-          }
-        },
-        "summary": "Delete user profile",
-        "tags": [
-          "Users"
-        ]
       }
     },
     "/auth_users/{auth_user_id}": {
