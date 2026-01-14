@@ -1,26 +1,21 @@
 import { AfterViewInit, Component, computed, ViewEncapsulation } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { PDFViewerService } from "./pdf.service";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { booleanStringToBoolean } from "src/app/shared/utils";
 
-interface IAuthorParams {
-  starting_page?: string;
-  /** Message displayed when legacy browser detected */
-  compatibility_error_message?: string;
-  /** Open external text. Default "Open with..." */
-  open_external_text?: string;
-  /** Show full screen button. Default false. Can be boolean or string "true"/"false" */
-  allow_fullscreen?: boolean | string;
-}
-
-const DEFAULT_PARAMS: IAuthorParams = {
-  compatibility_error_message:
-    "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app",
-  open_external_text: "Open with...",
-  allow_fullscreen: true,
-};
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** The page to display when the component is initially rendered. Default 1. */
+  starting_page: coerce.number(1),
+  /** Message displayed when legacy browser detected. */
+  compatibility_error_message: coerce.string(
+    "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app"
+  ),
+  /** Text for the "Open with..." button. Default "Open with...". */
+  open_external_text: coerce.string("Open with..."),
+  /** Show full screen button. Default true. */
+  allow_fullscreen: coerce.boolean(true),
+}));
 
 @Component({
   selector: "plh-pdf",
@@ -30,22 +25,11 @@ const DEFAULT_PARAMS: IAuthorParams = {
   encapsulation: ViewEncapsulation.None,
   standalone: false,
 })
-export class TmplPdfComponent extends TemplateBaseComponent implements AfterViewInit {
+export class TmplPdfComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements AfterViewInit
+{
   public pdfSrc = computed(() => this.value());
-
-  public params = computed(() => {
-    const merged: IAuthorParams = { ...DEFAULT_PARAMS, ...this.parameterList() };
-    const { compatibility_error_message, starting_page, open_external_text, allow_fullscreen } =
-      merged;
-
-    return {
-      // Default is true, so only false or "false" should disable
-      allowFullScreen: booleanStringToBoolean(allow_fullscreen) !== false,
-      compatErrorMessage: compatibility_error_message,
-      openExternalText: open_external_text,
-      startingPage: Number(starting_page || 1),
-    };
-  });
 
   public serviceReady = toSignal(this.service["initialised$"]);
 
