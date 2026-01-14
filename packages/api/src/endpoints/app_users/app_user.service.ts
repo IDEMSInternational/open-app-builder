@@ -41,9 +41,14 @@ export class AppUsersService {
     return user.update({ ...data, app_user_id });
   }
 
-  async deleteUser(app_user_id: string): Promise<number> {
-    return this.model.destroy({
-      where: { app_user_id },
-    });
+  /**
+   * Mark a user for deletion (soft delete).
+   * Sets deletion_requested_at timestamp for later review/processing.
+   */
+  async markForDeletion(app_user_id: string): Promise<[affectedCount: number]> {
+    return this.model.update(
+      { deletion_requested_at: new Date() },
+      { where: { app_user_id } }
+    );
   }
 }
