@@ -65,34 +65,37 @@ describe("app_user (e2e)", () => {
     expect(record.app_user_id).toBeTruthy();
   });
 
-  it("[Delete] delete user", async () => {
+  it("[Delete] mark user for deletion (soft delete)", async () => {
     // First verify user exists
     const getResponse = await request(app.getHttpServer()).get(
       `${ENDPOINT_BASE}/${app_user_id}`,
     );
     expect(getResponse.status).toEqual(200);
+    expect(getResponse.body.deletion_requested_at).toBeNull();
 
-    // Delete the user
+    // Request deletion (soft delete)
     const { status, body } = await request(app.getHttpServer()).delete(
       `${ENDPOINT_BASE}/${app_user_id}`,
     );
     expect(status).toEqual(200);
-    expect(body.deleted).toEqual(true);
+    expect(body.marked_for_deletion).toEqual(true);
 
-    // Verify user no longer exists
+    // Verify user still exists but is marked for deletion
     const verifyResponse = await request(app.getHttpServer()).get(
       `${ENDPOINT_BASE}/${app_user_id}`,
     );
-    expect(verifyResponse.body?.app_user_id).toBeFalsy();
+    expect(verifyResponse.status).toEqual(200);
+    expect(verifyResponse.body.app_user_id).toEqual(app_user_id);
+    expect(verifyResponse.body.deletion_requested_at).toBeTruthy();
   });
 
-  it("[Delete] delete non-existent user", async () => {
+  it("[Delete] mark non-existent user for deletion", async () => {
     const nonExistentId = randomUUID();
     const { status, body } = await request(app.getHttpServer()).delete(
       `${ENDPOINT_BASE}/${nonExistentId}`,
     );
     expect(status).toEqual(200);
-    expect(body.deleted).toEqual(false);
+    expect(body.marked_for_deletion).toEqual(false);
   });
 
   it("[Post] create on deployment DB", async () => {

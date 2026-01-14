@@ -165,13 +165,18 @@ export class AuthService extends AsyncServiceBase {
   }
 
   /**
-   * Delete user account including server data and auth account.
+   * Delete user account.
+   * Requests server data deletion (soft delete for review) then deletes auth account.
    */
   private async deleteAccount() {
-    // Delete user data from server first (while we still have auth context)
-    const { success, error } = await this.serverService.deleteUserData();
+    // Request server data deletion first (while we still have auth context)
+    // This marks the user for deletion rather than immediately removing data
+    const { success, error } = await this.serverService.requestUserDataDeletion();
     if (!success) {
-      console.warn("[Auth] Server data deletion failed, proceeding with auth deletion:", error);
+      console.warn(
+        "[Auth] Server data deletion request failed, proceeding with auth deletion:",
+        error
+      );
     }
     // Delete the auth account (e.g. Firebase user)
     return await this.provider.deleteAccount();

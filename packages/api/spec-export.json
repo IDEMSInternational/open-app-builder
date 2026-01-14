@@ -130,10 +130,10 @@
         ],
         "responses": {
           "200": {
-            "description": "User Deleted"
+            "description": "User marked for deletion"
           }
         },
-        "summary": "Delete user profile",
+        "summary": "Request user deletion (soft delete)",
         "tags": [
           "Users"
         ]
