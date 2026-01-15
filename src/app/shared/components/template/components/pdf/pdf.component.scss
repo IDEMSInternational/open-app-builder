@@ -1,3 +1,7 @@
+.pdf-viewer {
+  margin-bottom: var(--large-margin);
+}
+
 ngx-extended-pdf-viewer {
   #toolbarViewer {
     background-color: var(--ion-color-primary);
@@ -7,6 +11,20 @@ ngx-extended-pdf-viewer {
   }
   .toolbarButton {
     color: var(--ion-color-primary-contrast) !important;
+  }
+
+  // Ensure presentation mode button is visible (if enabled)
+  #presentationMode,
+  pdf-presentation-mode {
+    display: inline-block !important;
+
+    // Tweak default styling to centrally align icon vertically
+    button,
+    .toolbarButton {
+      .pdf-margin-top--2px {
+        margin-top: -1px !important;
+      }
+    }
   }
 }
 

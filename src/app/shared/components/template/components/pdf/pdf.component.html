@@ -8,6 +8,7 @@
         [showBorders]="false"
         [mobileFriendlyZoom]="'1.3'"
         [height]="'80%'"
+        [minHeight]="'400px'"
         [textLayer]="false"
         [backgroundColor]="'var(--ion-color-gray-light)'"
         [zoom]="'page-width'"
@@ -16,7 +17,7 @@
       </ngx-extended-pdf-viewer>
     } @else {
       <div class="error-message">
-        {{ params().compatErrorMessage }}
+        {{ params().compatibilityErrorMessage }}
       </div>
       <ion-button (click)="openExternal()" fill="outline" style="margin-top: 1rem">
         <ion-icon name="open-outline" slot="start"></ion-icon>{{ params().openExternalText }}
@@ -33,6 +34,9 @@
     <div [class.invisible]="false" id="toolbarViewerMiddle">
       <pdf-zoom-out id="zoomOut"></pdf-zoom-out>
       <pdf-zoom-in id="zoomIn"></pdf-zoom-in>
+      @if (params().allowFullscreen) {
+        <pdf-presentation-mode></pdf-presentation-mode>
+      }
     </div>
   </div>
 </ng-template>
