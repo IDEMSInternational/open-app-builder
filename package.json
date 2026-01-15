@@ -33,16 +33,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^19.2.17",
-    "@angular/cdk-experimental": "^19.2.19",
-    "@angular/common": "~19.2.17",
-    "@angular/core": "~19.2.17",
-    "@angular/elements": "^19.2.17",
-    "@angular/forms": "~19.2.17",
-    "@angular/material": "^19.2.19",
-    "@angular/platform-browser": "~19.2.17",
-    "@angular/platform-browser-dynamic": "~19.2.17",
-    "@angular/router": "~19.2.17",
+    "@angular/animations": "^21.0.0",
+    "@angular/cdk-experimental": "^21.0.0",
+    "@angular/common": "~21.0.0",
+    "@angular/core": "~21.0.0",
+    "@angular/elements": "^21.0.0",
+    "@angular/forms": "~21.0.0",
+    "@angular/material": "^21.0.0",
+    "@angular/platform-browser": "~21.0.0",
+    "@angular/platform-browser-dynamic": "~21.0.0",
+    "@angular/router": "~21.0.0",
     "@capacitor-community/file-opener": "^7.0.1",
     "@capacitor-firebase/authentication": "^7.2.0",
     "@capacitor-firebase/crashlytics": "^7.2.0",
@@ -117,25 +117,25 @@
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "0.1902.19",
-    "@angular-devkit/build-angular": "~19.2.19",
-    "@angular-devkit/core": "~19.2.19",
-    "@angular-devkit/schematics": "~19.2.19",
+    "@angular-devkit/architect": "0.2100.5",
+    "@angular-devkit/build-angular": "~21.0.5",
+    "@angular-devkit/core": "~21.0.5",
+    "@angular-devkit/schematics": "~21.0.5",
     "@angular-eslint/builder": "19.8.1",
     "@angular-eslint/eslint-plugin": "19.8.1",
     "@angular-eslint/eslint-plugin-template": "19.8.1",
     "@angular-eslint/schematics": "19.8.1",
     "@angular-eslint/template-parser": "19.8.1",
-    "@angular/cdk": "^19.2.19",
-    "@angular/cli": "~19.2.19",
-    "@angular/compiler": "~19.2.17",
-    "@angular/compiler-cli": "~19.2.17",
-    "@angular/language-service": "~19.2.17",
+    "@angular/cdk": "^21.0.0",
+    "@angular/cli": "~21.0.5",
+    "@angular/compiler": "~21.0.0",
+    "@angular/compiler-cli": "~21.0.0",
+    "@angular/language-service": "~21.0.0",
     "@capacitor/cli": "^7.0.0",
     "@compodoc/compodoc": "^1.1.23",
     "@ionic/angular-toolkit": "^12.3.0",
     "@ionic/cli": "^7.2.1",
-    "@schematics/angular": "~19",
+    "@schematics/angular": "~21",
     "@swc/helpers": "^0.5.1",
     "@types/clone": "^2.1.1",
     "@types/howler": "^2.2.2",
@@ -143,7 +143,7 @@
     "@types/jasmine": "~4.3.0",
     "@types/lokijs": "^1.5.7",
     "@types/marked": "^2.0.3",
-    "@types/node": "^18.18.13",
+    "@types/node": "^24",
     "@types/nouislider": "^15.0.0",
     "@types/qrcode": "^1.5.5",
     "@types/swiper": "~4.2.0",
@@ -171,7 +171,7 @@
     "karma-json-result-reporter": "^1.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "typescript": "5.5.4"
+    "typescript": "5.9.3"
   },
   "resolutions": {
     "@supabase/gotrue-js": "2.61.0"
@@ -186,7 +186,7 @@
     "fs": false
   },
   "engines": {
-    "node": ">=18.x"
+    "node": ">=22.x"
   },
   "packageManager": "yarn@3.3.1"
 }

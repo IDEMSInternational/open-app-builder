@@ -42,9 +42,9 @@ jobs:
         if: env.FIREBASE_CONFIG != ''
         run: echo 'export const firebaseConfig = ${{env.FIREBASE_CONFIG}}' > src/environments/firebaseConfig.ts
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 20.17.0
+          node-version: 24.13.0
       - name: Cache node modules
         uses: actions/cache@v3
         with:
