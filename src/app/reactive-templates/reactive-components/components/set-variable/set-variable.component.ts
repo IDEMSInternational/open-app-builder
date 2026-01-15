@@ -12,6 +12,5 @@ import { IAction } from "src/app/reactive-templates/services/action.registry";
 export class SetVariableComponent extends RowBaseComponent<null> implements IAction {
   async execute(): Promise<void> {
     this.setExpression(this.row().value);
-    return Promise.resolve();
   }
 }

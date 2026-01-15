@@ -55,7 +55,7 @@ export class ActionComponent
     for (const param of params ?? []) {
       const row = this.setVariableRows.get(param.name);
       if (row) {
-        row.value = param.value;
+        row.setExpression(param.value);
       }
     }
 
@@ -89,7 +89,7 @@ export class ActionComponent
     super.init();
 
     // An action's expression should be its own name if not already set.
-    // e.g it is will execute itself by default otherwise its a reference to another action.
+    // e.g it will execute itself by default otherwise it's a reference to another action.
     if (!this.expression()) {
       this.setExpression(this.name());
     }
@@ -116,7 +116,6 @@ export class ActionComponent
           // Action components need to be manually initialised as ngOnInit is not called automatically
           if (instance instanceof ActionComponent) {
             instance.init();
-            this.actions.set(instance.name(), instance);
           }
 
           this.actions.set(instance.name(), instance);

@@ -1,7 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
-import { ActionRegistry, IActionParameter } from "./action.registry";
-import { ActionComponent } from "../reactive-components/components/action/action.component";
+import { ActionRegistry } from "./action.registry";
 
 interface IActionParameters {
   name: string;
@@ -32,16 +31,18 @@ export class ActionHandler {
   }
 
   private async handle(params: IActionParameters, baseName: string) {
-    if (!this.actionRegistry.has(params.name)) {
-      return console.error(`[ACTION] No action registered with name: ${params.name}`);
+    const actionName = baseName ?? params.name;
+
+    if (!this.actionRegistry.has(actionName)) {
+      return console.error(`[ACTION] No action registered with name: ${actionName}`);
     }
 
-    const action = this.actionRegistry.get(baseName);
+    const action = this.actionRegistry.get(actionName);
 
     try {
       await action.execute();
     } catch (error) {
-      console.error(`[ACTION] Error executing action: ${params.name}`, error);
+      console.error(`[ACTION] Error executing action: ${actionName}`, error);
     }
   }
 }
