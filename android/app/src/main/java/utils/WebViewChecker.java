@@ -14,6 +14,7 @@ import android.webkit.WebView;
 
 public class WebViewChecker {
 
+    // Keep in sync with minimum supported Chrome/WebView from `.browserslistrc`
     public static final int TARGET_WEBVIEW_MAJOR_VERSION = 89;
 
     private static final String TAG = "WebViewChecker";

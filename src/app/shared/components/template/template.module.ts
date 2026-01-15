@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { MatTabsModule } from "@angular/material/tabs";
 import { RouterModule } from "@angular/router";
-import { SwiperModule } from "swiper/angular";
+// TEMP: Disabled for Angular 21 - Swiper 8 Angular module only supports Angular 12-14
+// import { SwiperModule } from "swiper/angular";
 import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 
 import { SharedPipesModule } from "../../pipes";
@@ -34,7 +35,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     ReactiveFormsModule,
     RouterModule,
     SharedPipesModule,
-    SwiperModule,
+    // SwiperModule, // TEMP: Disabled for Angular 21
     TemplatePipesModule,
     ReactiveTemplateComponent,
     TooltipDirective,
