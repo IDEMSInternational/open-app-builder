@@ -83,7 +83,6 @@ export class ErrorHandlerService extends ErrorHandler {
       dsn: error_logging?.dsn,
       environment: environment.production ? "production" : "development",
       release: `${name}-${_app_builder_version}-${GIT_SHA}`,
-      autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,
       tracesSampleRate: 0, // ensure performance traces not sent (not installed)
