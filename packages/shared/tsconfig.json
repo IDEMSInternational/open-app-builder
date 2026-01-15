@@ -7,11 +7,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     // Global type definitions.
-    "typeRoots": ["./node_modules/@types"],
-    // HACK - fix "Cannot find module 'danfojs' or its corresponding type declarations" error
-    "paths": {
-      "danfojs": ["./node_modules/danfojs/dist/danfojs-browser/src/index.d.ts"]
-    }
+    "typeRoots": ["./node_modules/@types"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist"]
