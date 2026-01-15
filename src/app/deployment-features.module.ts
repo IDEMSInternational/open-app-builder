@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { AnalyticsModule } from "./shared/services/analytics";
 import { NavStackModule } from "./feature/nav-stack/nav-stack.module";
+import { DataDownloadModule } from "./feature/data-download/data-download.module";
 import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
 import { NotificationsModule } from "./feature/notification/notification.module";
@@ -25,6 +26,7 @@ import { PLH_FEATURE_MODULES } from "packages/components/plh";
     AuthModule,
     AnalyticsModule,
     CampaignModule,
+    DataDownloadModule,
     NavStackModule,
     NotificationsModule,
     ...PLH_FEATURE_MODULES,

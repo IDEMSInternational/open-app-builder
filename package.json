@@ -94,6 +94,7 @@
     "jquery-touchswipe": "^1.6.19",
     "json5": "^2.2.3",
     "katex": "^0.16.21",
+    "ky": "^1.7.5",
     "lottie-web": "^5.12.2",
     "marked": "^11",
     "marked-smartypants-lite": "^1.0.2",
