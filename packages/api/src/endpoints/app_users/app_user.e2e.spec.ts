@@ -98,6 +98,31 @@ describe("app_user (e2e)", () => {
     expect(body.marked_for_deletion).toEqual(false);
   });
 
+  it("[Delete] mark user for deletion on deployment DB", async () => {
+    const deploymentDBName = `test_e2e_${generateTestID()}`;
+    const app_user_id = randomUUID();
+    const endpoint = `/app_users/${app_user_id}`;
+
+    const { status: createStatus } = await request(app.getHttpServer())
+      .post(endpoint)
+      .set("x-deployment-db-name", deploymentDBName)
+      .send(mockUser(app_user_id));
+    expect(createStatus).toEqual(201);
+
+    const { status: deleteStatus, body } = await request(app.getHttpServer())
+      .delete(endpoint)
+      .set("x-deployment-db-name", deploymentDBName);
+    expect(deleteStatus).toEqual(200);
+    expect(body.marked_for_deletion).toEqual(true);
+
+    const { rows, rowCount } = await testDBQuery(
+      `SELECT deletion_requested_at FROM app_users WHERE app_user_id = '${app_user_id}'`,
+      deploymentDBName,
+    );
+    expect(rowCount).toEqual(1);
+    expect(rows[0].deletion_requested_at).toBeTruthy();
+  });
+
   it("[Post] create on deployment DB", async () => {
     const deploymentDBName = `test_e2e_${generateTestID()}`;
     const app_user_id = randomUUID();
