@@ -9778,77 +9778,77 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry-internal/browser-utils@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry-internal/browser-utils@npm:8.55.0"
+"@sentry-internal/browser-utils@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry-internal/browser-utils@npm:10.33.0"
   dependencies:
-    "@sentry/core": 8.55.0
-  checksum: 813d36dc70bd25ee3903c812610f06187eb3bd7bb76160e75b490697a60435a34cd6b13fe358a7273153504d673e80c4263acc26f66b6b9a8eaa06a5dc73052c
+    "@sentry/core": 10.33.0
+  checksum: 46c548a35baedc111b7f199d495ea717037b0e0f67ba9182d6e00fe1cb73d98d93df0ada4f14e9589c4aff3bf285473039e33cc0b6c444c8d6136a77d935d1c6
   languageName: node
   linkType: hard
 
-"@sentry-internal/feedback@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry-internal/feedback@npm:8.55.0"
+"@sentry-internal/feedback@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry-internal/feedback@npm:10.33.0"
   dependencies:
-    "@sentry/core": 8.55.0
-  checksum: 0f079debae0efdcf7e596cf20defd5dea5ff86e87f5e18946adca878c6a3fca8bc9ef885959e9ca5f2ca9cfb200374f2492394284ae736d3f95c994170888a79
+    "@sentry/core": 10.33.0
+  checksum: 6bb34af60344b109ec001f709af0f7332d84a4cf3bab9edfb9c3113deea03035156eb44e62c372a5bd6a3430edfdee19370dc7e37a030c26ca1c3e16dfde5e8a
   languageName: node
   linkType: hard
 
-"@sentry-internal/replay-canvas@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry-internal/replay-canvas@npm:8.55.0"
+"@sentry-internal/replay-canvas@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry-internal/replay-canvas@npm:10.33.0"
   dependencies:
-    "@sentry-internal/replay": 8.55.0
-    "@sentry/core": 8.55.0
-  checksum: 5fb270fa99a62c5497724e87b3f49b8333f03b9d53cf63b4f0156e95c7650323cae37888ebca28632127ae5c22fd14008bb80e73953c0d68a0667b595fb94b82
+    "@sentry-internal/replay": 10.33.0
+    "@sentry/core": 10.33.0
+  checksum: c17acfd2b950641acbe3e841a9013d6ceb3ee2ed6c1f93b05424479d1b9b61c19e0063decf006d391d341ff4344d2e90754a2999c3fb816b073b967831bcce73
   languageName: node
   linkType: hard
 
-"@sentry-internal/replay@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry-internal/replay@npm:8.55.0"
+"@sentry-internal/replay@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry-internal/replay@npm:10.33.0"
   dependencies:
-    "@sentry-internal/browser-utils": 8.55.0
-    "@sentry/core": 8.55.0
-  checksum: 8328aa2caf51ad7f7dbdfd527f78bd047dc62ca79a3380eceb781c6d848a3395118645c7df3245cc9389e0dd850b38a98f8341561e411425f843f053df84230e
+    "@sentry-internal/browser-utils": 10.33.0
+    "@sentry/core": 10.33.0
+  checksum: eace75ce40fc5d917a5bf436625340fc2b5d5143ff6669edd46f90f1e64e6838846f2488a4246aeb8542ce976a65329ed5e38afc573e20d951cf4be5837ed245
   languageName: node
   linkType: hard
 
-"@sentry/angular@npm:^8":
-  version: 8.55.0
-  resolution: "@sentry/angular@npm:8.55.0"
+"@sentry/angular@npm:^10.33.0":
+  version: 10.33.0
+  resolution: "@sentry/angular@npm:10.33.0"
   dependencies:
-    "@sentry/browser": 8.55.0
-    "@sentry/core": 8.55.0
+    "@sentry/browser": 10.33.0
+    "@sentry/core": 10.33.0
     tslib: ^2.4.1
   peerDependencies:
-    "@angular/common": ">= 14.x <= 19.x"
-    "@angular/core": ">= 14.x <= 19.x"
-    "@angular/router": ">= 14.x <= 19.x"
+    "@angular/common": ">= 14.x <= 21.x"
+    "@angular/core": ">= 14.x <= 21.x"
+    "@angular/router": ">= 14.x <= 21.x"
     rxjs: ^6.5.5 || ^7.x
-  checksum: 36becfe06a03efc909356d08b15dcecae170915776a72f5b4f570ae95ce60b794384c45a90eb6ff22b3bb30aad9dad847b63ea33bfff444ed580e1d1d3c366f3
+  checksum: 5b24bdcf4687857bd2111c7cbb5cb440b94cc662cbe35ec25b1caf34dfcef4963a8346a1f675a1b37a1ae81a275fbb120b9a5c327b0ec0c7a0c554446af69f07
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry/browser@npm:8.55.0"
+"@sentry/browser@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry/browser@npm:10.33.0"
   dependencies:
-    "@sentry-internal/browser-utils": 8.55.0
-    "@sentry-internal/feedback": 8.55.0
-    "@sentry-internal/replay": 8.55.0
-    "@sentry-internal/replay-canvas": 8.55.0
-    "@sentry/core": 8.55.0
-  checksum: a89b2ca8ecc4d2c1713f1e77360e7a9a1ebaf9e9c8627e54538a7131ab15273e99be5236ce0c46c392d29cdbb7a7cd2ed0e0ff456bae16617b47db9c0b7049b4
+    "@sentry-internal/browser-utils": 10.33.0
+    "@sentry-internal/feedback": 10.33.0
+    "@sentry-internal/replay": 10.33.0
+    "@sentry-internal/replay-canvas": 10.33.0
+    "@sentry/core": 10.33.0
+  checksum: 92d9c98671fc7783b8a787f22706a36545166871b752704df2be4fbb0161dd7025567ccd0f510b592f77162b4f26b51b519bd3a3aa40ffe5d4b8197d5aab7d33
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:8.55.0":
-  version: 8.55.0
-  resolution: "@sentry/core@npm:8.55.0"
-  checksum: 2600d4e8858d00ba0e3bfe01d8048212add8df9fe9f8ed32af1f08bc0b3fe0b9e8db273e746a1985d95a9668e8bcc838cedbbd315824ce30183a17052ab8c5cc
+"@sentry/core@npm:10.33.0":
+  version: 10.33.0
+  resolution: "@sentry/core@npm:10.33.0"
+  checksum: 25eb49f6f4277889e2823e1a09c5ae1a4c6d1361365d31fecc7ead630dd9304fab80c71aad46ac001158cfdbd11852668f75384b86186fd0b0431b3ff00ace95
   languageName: node
   linkType: hard
 
@@ -19249,7 +19249,7 @@ __metadata:
     "@ionic/cli": ^7.2.1
     "@ionic/pwa-elements": ^3.3.0
     "@schematics/angular": ~21
-    "@sentry/angular": ^8
+    "@sentry/angular": ^10.33.0
     "@supabase/supabase-js": ^2.39.0
     "@swc/helpers": ^0.5.1
     "@types/clone": ^2.1.1
@@ -19310,14 +19310,14 @@ __metadata:
     karma-json-result-reporter: ^1.0.0
     katex: ^0.16.21
     lint-staged: ^15.2.2
-    lottie-web: ^5.12.2
+    lottie-web: ^5.13.0
     marked: ^11
     marked-smartypants-lite: ^1.0.2
     mergexml: ^1.2.3
     ng2-nouislider: ^2.0.0
-    ngx-extended-pdf-viewer: ^23.1.1
-    ngx-lottie: ^12.0.0
-    ngx-matomo-client: ^7.1.0
+    ngx-extended-pdf-viewer: ^25.6.4
+    ngx-lottie: ^20.0.0
+    ngx-matomo-client: ^9.0.1
     nouislider: ^15.7.1
     prettier: ^3.2.5
     qrcode: ^1.5.3
@@ -23687,10 +23687,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-web@npm:^5.12.2":
-  version: 5.12.2
-  resolution: "lottie-web@npm:5.12.2"
-  checksum: af5bc3bc405fd760de8b17a36158d5a8c3e8c586c711d0c63681ddf056b65bc6b54ea36b1fcad782fb02dbe12e696a40e0ba72daf41b8f10ab5b5d1113793636
+"lottie-web@npm:^5.13.0":
+  version: 5.13.0
+  resolution: "lottie-web@npm:5.13.0"
+  checksum: f634eddbfc49a243af598c8c3b5b2bc347c6980cb85ef3e17a394aa52e2d4d1d04ef565d9cf1581727eec598717932abf5e0e0aba111b4d64f2a9dadaeaa98e2
   languageName: node
   linkType: hard
 
@@ -24997,40 +24997,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-extended-pdf-viewer@npm:^23.1.1":
-  version: 23.1.1
-  resolution: "ngx-extended-pdf-viewer@npm:23.1.1"
+"ngx-extended-pdf-viewer@npm:^25.6.4":
+  version: 25.6.4
+  resolution: "ngx-extended-pdf-viewer@npm:25.6.4"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ">=17.0.0 <21.0.0"
-    "@angular/core": ">=17.0.0 <21.0.0"
-  checksum: 4ed4fbd6a2465a72aa58b025dbc012fa3579a2f016c5143a3e015d97e8132b939da7a63f45db8593729f6f3531c2e66ff5dc60829ab5c8571af2179fe2403174
+    "@angular/common": ">=17.0.0 <22.0.0"
+    "@angular/core": ">=17.0.0 <22.0.0"
+  checksum: dfeb9132ce9e483d2f5d1d40717b3bc94069c2e1c4e3996ad2a4d2ac5833296037133ce85ccad1e44179daeeb1970cd1ba8fcbfaecaa443a4769a1f02813bffa
   languageName: node
   linkType: hard
 
-"ngx-lottie@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "ngx-lottie@npm:12.0.0"
+"ngx-lottie@npm:^20.0.0":
+  version: 20.0.0
+  resolution: "ngx-lottie@npm:20.0.0"
   dependencies:
     "@scarf/scarf": ^1.1.1
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/core": ">=18"
+    "@angular/core": ">=20"
     lottie-web: ">=5.9.2"
-  checksum: a8b6897cd806b3b95d303395fe884fe7af1148bfbc9b73fdfd922c2bc584a95a56cad7bcc29f123518fc1f60129a572c98dc1b9a3dd1a4c9516115034e17a502
+  checksum: 2f7e691722e27cac49fbb7e33ab70ded5fe250b2c165c58841371489a3271d648ccf65dcc9916c94a362e4be8bc98411ab08ae93201cde5ecd996d852a68bee0
   languageName: node
   linkType: hard
 
-"ngx-matomo-client@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "ngx-matomo-client@npm:7.1.0"
+"ngx-matomo-client@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "ngx-matomo-client@npm:9.0.1"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/common": ^19.0.0
-    "@angular/core": ^19.0.0
-  checksum: 7edff971d605b4b964d04dcd9417ef07fddc5768264f66f7f8dcbdf0ffb268605f8b328a75f220dd0c8ba366618f313cc08d8a8c3d3b612dcfc025a117948654
+    "@angular/common": ^21.0.0
+    "@angular/core": ^21.0.0
+  checksum: c8135c53a5ad664e99aa4012d6a52b2962ea39e63b60bde442732efac7707d2955df4071939f02f398ccc332d522e86f75b33c06dae572df2791c25de3c9070c
   languageName: node
   linkType: hard
 
