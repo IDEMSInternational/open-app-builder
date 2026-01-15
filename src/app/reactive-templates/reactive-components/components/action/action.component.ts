@@ -61,7 +61,7 @@ export class ActionComponent
 
     const newParams = this.actionParameters().map((p) => {
       const param = params?.find((i) => i.name === p.name);
-      return param ? { ...p, value: param.value } : { ...p };
+      return param ? { ...p, value: param.value } : p;
     });
 
     // if this is a reference to another action, execute that instead
