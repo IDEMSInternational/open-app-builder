@@ -4,7 +4,8 @@ import { PLH_COMPONENT_MANIFEST } from "components/plh/manifest";
 
 /** Manifest declaration of component dependencies (for use in optimisation) */
 const COMMON_COMPONENT_MANIFEST: IComponentManifest<ICommonComponentName> = {
-  carousel: { module: "SwiperModule" },
+  // TEMP: Disabled for Angular 21 - Swiper 8 doesn't support Angular 21
+  // carousel: { module: "SwiperModule" },
   display_group: {
     implicit: ["advanced_dashed_box", "display_group_sticky", "form"],
   },
