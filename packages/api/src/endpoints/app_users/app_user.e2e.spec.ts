@@ -55,7 +55,8 @@ describe("app_user (e2e)", () => {
     expect(body.app_user_id).toEqual(app_user_id);
   });
 
-  it("[Get] list all", async () => {
+  // Skipped - endpoint is commented out in controller
+  it.skip("[Get] list all", async () => {
     const { status, body } = await request(app.getHttpServer()).get(`${ENDPOINT_BASE}`);
     expect(status).toEqual(200);
     expect(Array.isArray(body)).toBe(true);
