@@ -17,6 +17,7 @@ interface IButtonGoogleSignInComponentParams {
   selector: "tmpl-button-google-sign-in",
   templateUrl: "./button-google-sign-in.component.html",
   styleUrls: ["./button-google-sign-in.component.scss"],
+  standalone: false,
 })
 export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));

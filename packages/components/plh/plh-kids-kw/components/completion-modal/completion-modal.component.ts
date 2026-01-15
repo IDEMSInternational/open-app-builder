@@ -11,6 +11,7 @@ interface IModalParams {
   selector: "plh-completion-modal",
   templateUrl: "./completion-modal.component.html",
   styleUrls: ["./completion-modal.component.scss"],
+  standalone: false,
 })
 export class PlhCompletionModalComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IModalParams> = {};

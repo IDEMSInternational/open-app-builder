@@ -6,6 +6,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
   selector: "plh-tile-component",
   templateUrl: "./tile-component.component.html",
   styleUrls: ["./tile-component.component.scss"],
+  standalone: false,
 })
 export class TmplTileComponent extends TemplateBaseComponent implements OnInit {
   first_line_text: string | null;

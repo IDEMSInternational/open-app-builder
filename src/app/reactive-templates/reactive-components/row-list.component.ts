@@ -15,7 +15,6 @@ import { REACTIVE_COMPONENT_MAP } from "./components";
       />
     }
   `,
-  standalone: true,
   imports: [NgComponentOutlet],
 })
 export class RowListComponent {

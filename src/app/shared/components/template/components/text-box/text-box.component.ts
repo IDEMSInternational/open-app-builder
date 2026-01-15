@@ -21,6 +21,7 @@ interface ITextBoxParams {
   selector: "plh-text-box",
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
+  standalone: false,
 })
 export class TmplTextBoxComponent extends TemplateBaseComponent {
   public params: Signal<ITextBoxParams> = computed(() => this.getParams(this.parameterList()));

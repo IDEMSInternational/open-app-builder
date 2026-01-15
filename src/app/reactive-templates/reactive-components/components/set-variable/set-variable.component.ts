@@ -7,6 +7,7 @@ import { IAction } from "src/app/reactive-templates/services/action.registry";
   template: "",
   styles: "",
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
+  standalone: false,
 })
 export class SetVariableComponent extends RowBaseComponent<null> implements IAction {
   async execute(): Promise<void> {

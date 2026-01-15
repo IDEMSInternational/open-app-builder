@@ -74,6 +74,7 @@ import { TemplateFieldService } from "../../services/template-field.service";
       }
     `,
   ],
+  standalone: false,
 })
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];

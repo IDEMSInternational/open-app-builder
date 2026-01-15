@@ -26,6 +26,7 @@ export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
+  standalone: false,
 })
 export abstract class RowBaseComponent<TParams extends Parameters>
   implements OnInit, OnDestroy, IRow

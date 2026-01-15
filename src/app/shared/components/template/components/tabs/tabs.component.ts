@@ -1,4 +1,4 @@
-import { Component, computed } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -22,6 +22,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-tabs",
   templateUrl: "./tabs.component.html",
   styleUrls: ["./tabs.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   animationDuration = computed(() => `${this.params().animationDurationMs}ms`);

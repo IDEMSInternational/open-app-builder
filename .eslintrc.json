@@ -87,6 +87,7 @@
         "@typescript-eslint/no-unused-expressions": "warn",
         "@typescript-eslint/no-shadow": "warn",
         "@angular-eslint/no-output-on-prefix": "warn",
+        "@angular-eslint/prefer-standalone": "off",
         "arrow-parens": ["off", "always"],
         "curly": "off",
         "import/order": "off",

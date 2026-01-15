@@ -11,7 +11,10 @@ import { TemplateAssetService } from "../services/template-asset.service";
  * Usage @example <img src="images/my_icon.svg | plhAsset" />
  */
 
-@Pipe({ name: "plhAsset" })
+@Pipe({
+  name: "plhAsset",
+  standalone: false,
+})
 export class PLHAssetPipe implements PipeTransform {
   constructor(private templateAssetService: TemplateAssetService) {}
 

@@ -56,6 +56,7 @@ import {
     </ion-item>`,
   // Notification  interacted
   styleUrls: ["./notification-debug-row.scss"],
+  standalone: false,
 })
 export class NotificationDebugRowComponent {
   public previewCountdown: number;

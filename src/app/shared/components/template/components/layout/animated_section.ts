@@ -25,6 +25,7 @@ import { TemplateLayoutComponent } from "./layout";
     ]),
   ],
   styleUrls: ["./animated-section.scss"],
+  standalone: false,
 })
 export class AnimatedSectionComponent extends TemplateLayoutComponent implements OnInit {
   ngOnInit() {

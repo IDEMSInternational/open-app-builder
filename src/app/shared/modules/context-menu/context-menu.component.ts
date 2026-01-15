@@ -19,6 +19,7 @@ import { IContextMenuAction, IContextMenuActionData } from "./context-menu.types
     </ion-content>
   `,
   styleUrls: ["./context-menu.component.scss"],
+  standalone: false,
 })
 /** Component rendered when context menu launched (e.g. right-click event). Displays list of buttons
  * for any registered context-menuactions

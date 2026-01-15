@@ -17,7 +17,6 @@ const parameters = () =>
   selector: "oab-text-box",
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
-  standalone: true,
   imports: [IonicModule], // todo: ionic standalone does not seem to work.
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
