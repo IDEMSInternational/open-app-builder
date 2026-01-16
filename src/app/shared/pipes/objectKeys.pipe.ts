@@ -12,9 +12,9 @@ import { Pipe, PipeTransform } from "@angular/core";
  * const someObject = {a:{key:'someKey',value:1}, b:{key:'anotherKey',value:1}}
  * ```
  * ```
- * <div *ngFor="let key of someObject | objectKeys">
- *  <div>{{key}}</div>
- * </div>
+ * @for (key of someObject | objectKeys; track key) {
+ *   <div>{{key}}</div>
+ * }
  * ```
  */
 export class ObjectKeysPipe implements PipeTransform {
