@@ -8,13 +8,11 @@ import { IContextMenuAction, IContextMenuActionData } from "./context-menu.types
     <ion-content class="no-padding ">
       <ion-list class="context-menu-content">
         <ion-list-header>Menu</ion-list-header>
-        <ion-item
-          class="context-menu-button"
-          button
-          *ngFor="let action of actions"
-          (click)="handleActionButtonClick(action)"
-          >{{ action.menuButtonText }}</ion-item
-        >
+        @for (action of actions; track action) {
+          <ion-item class="context-menu-button" button (click)="handleActionButtonClick(action)">{{
+            action.menuButtonText
+          }}</ion-item>
+        }
       </ion-list>
     </ion-content>
   `,

@@ -20,9 +20,11 @@ import { ILocalNotificationInteractionDB } from "src/app/shared/services/notific
               {{ notification.schedule_timestamp | date: "MMM d h:mm a" }}
             </div>
             <div style="margin-top:0.5em; text-align:right">
-              <span class="tag action" *ngIf="notification.action_id">
-                {{ notification.action_id }}
-              </span>
+              @if (notification.action_id) {
+                <span class="tag action">
+                  {{ notification.action_id }}
+                </span>
+              }
             </div>
             <div class="info-text" style="color:grey">DB: {{ notification._sync_status }}</div>
           </div>

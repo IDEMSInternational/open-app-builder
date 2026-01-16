@@ -43,8 +43,12 @@ import {
                 !localNotificationService.permissionGranted || previewCountdown ? true : false
               "
             >
-              <span *ngIf="previewCountdown">Send in {{ previewCountdown }}</span>
-              <span *ngIf="!previewCountdown">Send Now</span>
+              @if (previewCountdown) {
+                <span>Send in {{ previewCountdown }}</span>
+              }
+              @if (!previewCountdown) {
+                <span>Send Now</span>
+              }
             </ion-button>
           </div>
         </div>
