@@ -1,5 +1,5 @@
 import fs from "fs-extra";
-import { DB_TABLES, DB_VERSION } from "data-models/db.model";
+import { DB_VERSION, DB_TABLES } from "data-models";
 import { TEMPLATE_CONTENTS_PATH } from "./index";
 
 /**
