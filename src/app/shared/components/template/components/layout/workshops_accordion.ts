@@ -6,14 +6,15 @@ import { FlowTypes } from "packages/data-models";
   selector: "plh-tmpl-workshops-accordion",
   template: `<div class="workshops-accordion">
     <div>
-      <plh-tmpl-accordion-section
-        *ngFor="let childRow of accordionRows; let idx = index"
-        [row]="childRow"
-        [parent]="parent"
-        [id]="idx.toString()"
-        (toggleState)="toggleState($event)"
-      >
-      </plh-tmpl-accordion-section>
+      @for (childRow of accordionRows; track childRow; let idx = $index) {
+        <plh-tmpl-accordion-section
+          [row]="childRow"
+          [parent]="parent"
+          [id]="idx.toString()"
+          (toggleState)="toggleState($event)"
+        >
+        </plh-tmpl-accordion-section>
+      }
     </div>
   </div>`,
   styleUrls: ["./workshops_accordion.scss"],

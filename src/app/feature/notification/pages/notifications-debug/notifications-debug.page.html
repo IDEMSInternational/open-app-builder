@@ -1,30 +1,33 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Pending Notifications</h2>
-    <ion-button *ngIf="localNotificationService.permissionGranted" fill="clear">
+    @if (localNotificationService.permissionGranted) {
+    <ion-button fill="clear">
       <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
     </ion-button>
-    <ion-button
-      *ngIf="!localNotificationService.permissionGranted"
-      fill="outline"
-      (click)="localNotificationService.requestPermission()"
-    >
+    } @if (!localNotificationService.permissionGranted) {
+    <ion-button fill="outline" (click)="localNotificationService.requestPermission()">
       <ion-icon name="notifications-off" slot="start"></ion-icon> Enable
     </ion-button>
+    }
   </div>
 
   <!-- Pending Notifications -->
   <ion-list>
+    @for (notification of localNotificationService.pendingNotifications$ | async; track
+    notification) {
     <notification-debug-row
-      *ngFor="let notification of localNotificationService.pendingNotifications$ | async"
       [notification]="notification"
       (showNotificationScheduleClicked)="showCustomNotificationSchedule($event)"
     ></notification-debug-row>
+    }
   </ion-list>
 
-  <ion-card *ngIf="(localNotificationService.pendingNotifications$ | async).length===0">
+  @if ((localNotificationService.pendingNotifications$ | async).length===0) {
+  <ion-card>
     <ion-card-header>No Scheduled Notifications</ion-card-header>
   </ion-card>
+  }
 
   <!-- Sent Notifications -->
   <div style="display: flex; align-items: center">
@@ -32,10 +35,11 @@
     <ion-button (click)="syncInteractedNotifications()">Sync</ion-button>
   </div>
   <ion-list>
+    @for (notification of dbEntries$ | async; track notification) {
     <notification-debug-interacted-row
-      *ngFor="let notification of dbEntries$ | async"
       [notification]="notification"
     ></notification-debug-interacted-row>
+    }
   </ion-list>
 
   <!-- Hidden picker used when creating custom datetime -->
