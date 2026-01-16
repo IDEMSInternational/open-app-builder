@@ -23,28 +23,32 @@
     <h3 style="flex: 1">Database Pending ({{feedbackPending.length}})</h3>
     <ion-button (click)="syncFeedback()">Sync</ion-button>
   </div>
-  <ion-card *ngFor="let feedback of feedbackPending" style="padding: 1em">
+  @for (feedback of feedbackPending; track feedback) {
+  <ion-card style="padding: 1em">
     <ng-container
       [ngTemplateOutlet]="feedbackItem"
       [ngTemplateOutletContext]="{feedback}"
     ></ng-container>
   </ion-card>
+  }
 
   <h3>Database Sent ({{feedbackSent.length}})</h3>
-  <ion-card *ngFor="let feedback of feedbackSent" style="padding: 1em">
+  @for (feedback of feedbackSent; track feedback) {
+  <ion-card style="padding: 1em">
     <ng-container
       [ngTemplateOutlet]="feedbackItem"
       [ngTemplateOutletContext]="{feedback}"
     ></ng-container
   ></ion-card>
+  }
 
   <!-- Shorthand method to create reusable feedback item template insted of component -->
   <ng-template #feedbackItem let-feedback="feedback">
     <div style="flex: 1">{{feedback.user_feedback}}</div>
     <div style="font-size: small">{{feedback._created}}</div>
-    <div *ngIf="feedback.additional" style="flex: 1; margin-top: 1em">
-      {{feedback.additional | json}}
-    </div>
+    @if (feedback.additional) {
+    <div style="flex: 1; margin-top: 1em">{{feedback.additional | json}}</div>
+    }
     <div style="display: flex">
       <ion-button
         fill="clear"

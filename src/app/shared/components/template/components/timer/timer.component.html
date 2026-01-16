@@ -4,14 +4,15 @@
 >
   <div class="timer-row" #timerRow>
     <h2 class="timer-title">{{ title }}</h2>
-    <ion-icon
-      *ngIf="help"
-      name="help-circle-outline"
-      class="timer-help"
-      [pTooltip]="help"
-      tooltipPosition="right"
-      tooltipEvent="click"
-    ></ion-icon>
+    @if (help) {
+      <ion-icon
+        name="help-circle-outline"
+        class="timer-help"
+        [pTooltip]="help"
+        tooltipPosition="right"
+        tooltipEvent="click"
+      ></ion-icon>
+    }
   </div>
   <div class="timer-content">
     <ion-button class="btn" (click)="clickLeftButton()">
@@ -35,7 +36,9 @@
         [name]="timerStarted ? 'none' : resetIcon"
         [src]="timerStarted ? '' : resetIcon"
       ></ion-icon>
-      <span class="time-rewind-value" *ngIf="timerStarted">+{{ timerDurationExtension / 60 }}</span>
+      @if (timerStarted) {
+        <span class="time-rewind-value">+{{ timerDurationExtension / 60 }}</span>
+      }
     </ion-button>
   </div>
 </div>

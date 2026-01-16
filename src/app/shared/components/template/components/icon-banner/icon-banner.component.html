@@ -5,7 +5,9 @@
   <div class="text">
     {{ text }}
   </div>
-  <div class="image" *ngIf="image_src">
-    <img [src]="image_src | plhAsset" alt="" />
-  </div>
+  @if (image_src) {
+    <div class="image">
+      <img [src]="image_src | plhAsset" alt="" />
+    </div>
+  }
 </div>
