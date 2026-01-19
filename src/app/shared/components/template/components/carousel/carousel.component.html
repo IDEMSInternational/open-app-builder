@@ -1,12 +1,13 @@
 <div class="carousel-wrapper">
+  <!-- Bind to attributes of Swiper WebComponent https://swiperjs.com/element -->
   <swiper-container
-    (swiper)="handleSwiperInitialised($event)"
-    [attr.slides-per-view]="config.slidesPerView"
-    [attr.space-between]="config.spaceBetween"
-    [attr.loop]="config.loop ? true : null"
-    [attr.loop-additional-slides]="config.loopAdditionalSlides"
-    [attr.centered-slides]="config.centeredSlides ? true : null"
-    [attr.initial-slide]="config.initialSlide"
+    (swiperinit)="handleSwiperInitialised($event)"
+    [attr.slides-per-view]="params().slidesPerView"
+    [attr.space-between]="params().spaceBetween"
+    [attr.loop]="params().loop || null"
+    [attr.loop-additional-slides]="loopAdditionalSlides()"
+    [attr.centered-slides]="params().centredSlides || null"
+    [attr.initial-slide]="params().initialSlideIndex"
   >
     @for (row of carouselRows(); track row._nested_name) {
       <swiper-slide>
