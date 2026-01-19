@@ -9743,13 +9743,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/swiper@npm:~4.2.0":
-  version: 4.2.4
-  resolution: "@types/swiper@npm:4.2.4"
-  checksum: 4fd538887bc0510ad1f6b127c19d84ca7d6f9ecd1f63374e7c174b4a0ff8081d295aabae72f5ed442a5bf582c1b72129954a6a340586a3b8eebaeb5a4232b995
-  languageName: node
-  linkType: hard
-
 "@types/through@npm:*":
   version: 0.0.33
   resolution: "@types/through@npm:0.0.33"
@@ -14130,15 +14123,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom7@npm:^4.0.4":
-  version: 4.0.6
-  resolution: "dom7@npm:4.0.6"
-  dependencies:
-    ssr-window: ^4.0.0
-  checksum: 616a68cbae59eaea2e717ada5855346f0ffa4ac10ab96713bb42b90efabce367213c3c491c4bf5502d177b0865c63d8abd298cc8e12bdda171340c853d6b515a
-  languageName: node
-  linkType: hard
-
 "domelementtype@npm:^2.3.0":
   version: 2.3.0
   resolution: "domelementtype@npm:2.3.0"
@@ -16737,7 +16721,6 @@ __metadata:
     "@types/node": ^24
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
-    "@types/swiper": ~4.2.0
     "@types/uuid": ^10.0.0
     "@typescript-eslint/eslint-plugin": ^8.53.0
     "@typescript-eslint/parser": ^8.53.0
@@ -16802,7 +16785,7 @@ __metadata:
     shared: "workspace:*"
     signature_pad: ^4.1.7
     stacktrace-js: ^2.0.2
-    swiper: ^8.4.7
+    swiper: ^12.0.3
     trusted-types: ^2.0.0
     typescript: 5.9.3
     typescript-eslint: ^8.53.0
@@ -26365,13 +26348,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "ssr-window@npm:4.0.2"
-  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
-  languageName: node
-  linkType: hard
-
 "ssri@npm:^12.0.0":
   version: 12.0.0
   resolution: "ssri@npm:12.0.0"
@@ -26919,13 +26895,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^8.4.7":
-  version: 8.4.7
-  resolution: "swiper@npm:8.4.7"
-  dependencies:
-    dom7: ^4.0.4
-    ssr-window: ^4.0.2
-  checksum: c52be6105e12984ba024f8cb4c0627919d4069172c0021ed7c5743c3709b5a814dd50d134813ea4f7019048be6ff9dda96db8f1adf38e317c8bb285574fcd006
+"swiper@npm:^12.0.3":
+  version: 12.0.3
+  resolution: "swiper@npm:12.0.3"
+  checksum: 0686e81ca3cad14e38654d32761c079393d6a90b3df97c34e77d625313f3c70a4f4690e1290a03bcf0414f5e5c8958fa5ec97c8d3c48744c326ae720c60e3770
   languageName: node
   linkType: hard
 

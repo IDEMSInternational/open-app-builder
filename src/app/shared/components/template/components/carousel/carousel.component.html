@@ -1,14 +1,22 @@
 <div class="carousel-wrapper">
-  <swiper (swiper)="handleSwiperInitialised($event)" [config]="config">
+  <swiper-container
+    (swiper)="handleSwiperInitialised($event)"
+    [attr.slides-per-view]="config.slidesPerView"
+    [attr.space-between]="config.spaceBetween"
+    [attr.loop]="config.loop ? true : null"
+    [attr.loop-additional-slides]="config.loopAdditionalSlides"
+    [attr.centered-slides]="config.centeredSlides ? true : null"
+    [attr.initial-slide]="config.initialSlide"
+  >
     @for (row of carouselRows(); track row._nested_name) {
-      <ng-template swiperSlide>
+      <swiper-slide>
         <plh-template-component
           [row]="row"
           [parent]="parent"
           [attr.data-rowname]="row._nested_name"
         >
         </plh-template-component>
-      </ng-template>
+      </swiper-slide>
     }
-  </swiper>
+  </swiper-container>
 </div>

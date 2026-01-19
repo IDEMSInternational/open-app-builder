@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Injector, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -57,6 +57,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container

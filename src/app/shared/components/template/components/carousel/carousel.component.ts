@@ -1,6 +1,7 @@
 import { Component, computed, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import Swiper, { SwiperOptions } from "swiper";
+import type { Swiper, SwiperOptions } from "swiper/types";
+import { register } from "swiper/element/bundle";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -20,7 +21,7 @@ import { DataItemsService } from "../data-items/data-items.service";
 })
 export class TmplCarouselComponent extends TemplateBaseComponent implements OnInit {
   config: SwiperOptions = {};
-  swiper: Swiper;
+  swiper?: Swiper;
   initialSlide: number;
   taskGroupsListName: string;
 
@@ -46,6 +47,9 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
   }
 
   async ngOnInit() {
+    if (!customElements.get("swiper-container")) {
+      register();
+    }
     await this.getParams();
     // When using carousel within task group context, set initial slide based on highlighted task
     if (this.taskGroupsListName) {
@@ -58,18 +62,20 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       getNumberParamFromTemplateRow(this._row, "slides_per_view", null) || "auto";
     this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "space_between", 10);
     this.config.loop = getBooleanParamFromTemplateRow(this._row, "loop", false);
-    // "loopedSlides" is required in the Slider config iff "loop" is true
+    // "loopAdditionalSlides" is required in the Slider config iff "loop" is true
     if (this.config.loop) {
-      this.config.loopedSlides = this._row.rows.length;
+      this.config.loopAdditionalSlides = this._row.rows.length;
     }
     this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centred_slides", true);
     this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
     this.taskGroupsListName = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+    this.config.initialSlide = this.initialSlide;
   }
 
   /** Event emitter called when swiper initialised */
-  public handleSwiperInitialised(swiper: Swiper) {
-    this.swiper = swiper;
+  public handleSwiperInitialised(event: Event) {
+    const swiperEvent = event as CustomEvent<Swiper>;
+    this.swiper = swiperEvent.detail;
     this.swiper.slideTo(this.initialSlide, 0, false);
   }
 
