@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, computed, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import type { Swiper, SwiperOptions } from "swiper/types";
 import { register } from "swiper/element/bundle";
@@ -16,7 +16,6 @@ import { DataItemsService } from "../data-items/data-items.service";
   selector: "plh-carousel",
   templateUrl: "./carousel.component.html",
   styleUrls: ["./carousel.component.scss"],
-  encapsulation: ViewEncapsulation.None,
   standalone: false,
 })
 export class TmplCarouselComponent extends TemplateBaseComponent implements OnInit {
