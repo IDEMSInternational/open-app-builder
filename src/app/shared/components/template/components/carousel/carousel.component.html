@@ -4,9 +4,9 @@
     (swiperinit)="handleSwiperInitialised($event)"
     [attr.slides-per-view]="params().slidesPerView"
     [attr.space-between]="params().spaceBetween"
-    [attr.loop]="params().loop || null"
+    [attr.loop]="params().loop ? true : null"
     [attr.loop-additional-slides]="loopAdditionalSlides()"
-    [attr.centered-slides]="params().centredSlides || null"
+    [attr.centered-slides]="params().centredSlides ? true : null"
     [attr.initial-slide]="params().initialSlideIndex"
   >
     @for (row of carouselRows(); track row._nested_name) {

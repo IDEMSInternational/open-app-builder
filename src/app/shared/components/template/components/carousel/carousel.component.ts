@@ -31,9 +31,7 @@ export class TmplCarouselComponent
   implements OnInit
 {
   /** Required in the Swiper config if loop is true */
-  public loopAdditionalSlides = computed(() =>
-    this.params().loop ? this.rows().length : undefined
-  );
+  public loopAdditionalSlides = computed(() => (this.params().loop ? this.rows().length : null));
   private swiperInstance = signal<Swiper | undefined>(undefined);
   /** track swiper component updates to trigger effect */
   private swiperUpdatedTick = signal(0);

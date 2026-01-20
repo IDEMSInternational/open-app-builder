@@ -27,7 +27,6 @@ describe("CarouselComponent", () => {
         { provide: AppDataService, useValue: new MockAppDataService() },
         { provide: DynamicDataService, useValue: {} },
         { provide: TaskService, useValue: {} },
-        { provide: DynamicDataService, useValue: {} },
         { provide: DataItemsService, useValue: {} },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
