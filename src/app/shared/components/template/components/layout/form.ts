@@ -11,12 +11,9 @@ import { Device } from "@capacitor/device";
 @Component({
   selector: "plh-tmpl-form",
   template: ` <div>
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      [row]="childRow"
-      [parent]="parent"
-    >
-    </plh-template-component>
+    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+      <plh-template-component [row]="childRow" [parent]="parent"> </plh-template-component>
+    }
     <ion-button (click)="submit()">{{ button_text }}</ion-button>
   </div>`,
   styleUrls: ["./form.scss"],

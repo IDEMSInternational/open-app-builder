@@ -1,4 +1,4 @@
-<ng-template [ngIf]="debugMode && !parent" [ngIfElse]="noDebugger">
+@if (debugMode && !parent) {
   <!-- Debugger Mode -->
   <div class="debug-name">
     <div>template: {{ templatename() || "(undefined)" }}</div>
@@ -15,10 +15,7 @@
       data-debug-mode
     ></plh-template-component>
   }
-</ng-template>
-
-<!-- Normal Mode -->
-<ng-template #noDebugger>
+} @else {
   @for (row of templateRowService.renderedRows() | filterDisplayComponent; track row._nested_name) {
     <plh-template-component
       class="row"
@@ -28,4 +25,6 @@
       [attr.data-type]="row.type"
     ></plh-template-component>
   }
-</ng-template>
+}
+
+<!-- Normal Mode -->

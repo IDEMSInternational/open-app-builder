@@ -1,7 +1,9 @@
 <div class="wrapper-point">
-  <div *ngIf="showCelebrationAnimation" class="celebrationAnim">
-    <ng-lottie [options]="animCelebrationOptions"></ng-lottie>
-  </div>
+  @if (showCelebrationAnimation) {
+    <div class="celebrationAnim">
+      <ng-lottie [options]="animCelebrationOptions"></ng-lottie>
+    </div>
+  }
   <div class="item" #item (click)="clickPointItem()">
     <div class="star" #star>
       <img [src]="'plh_images/icons/star.svg' | plhAsset" alt="" />
@@ -9,23 +11,27 @@
         {{ _row.value }}
       </div>
     </div>
-    <div *ngIf="info_icon_src" class="info-button" (click)="clickInfo($event)">
-      <img [src]="info_icon_src | plhAsset" alt="" />
-    </div>
+    @if (info_icon_src) {
+      <div class="info-button" (click)="clickInfo($event)">
+        <img [src]="info_icon_src | plhAsset" alt="" />
+      </div>
+    }
     <div class="image">
       <!-- order of preference - video, lottie, img -->
-      <video
-        *ngIf="video_src"
-        style="width: 100%; height: 100%"
-        [src]="video_src | plhAsset"
-        autoplay
-        loop
-      ></video>
-      <ng-lottie *ngIf="lottie_src && !video_src" [options]="animOptions"></ng-lottie>
-      <img *ngIf="icon_src && !lottie_src && !video_src" [src]="icon_src | plhAsset" alt="" />
+      @if (video_src) {
+        <video style="width: 100%; height: 100%" [src]="video_src | plhAsset" autoplay loop></video>
+      }
+      @if (lottie_src && !video_src) {
+        <ng-lottie [options]="animOptions"></ng-lottie>
+      }
+      @if (icon_src && !lottie_src && !video_src) {
+        <img [src]="icon_src | plhAsset" alt="" />
+      }
     </div>
-    <div class="text" *ngIf="text">
-      {{ text }}
-    </div>
+    @if (text) {
+      <div class="text">
+        {{ text }}
+      </div>
+    }
   </div>
 </div>

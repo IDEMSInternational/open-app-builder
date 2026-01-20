@@ -31,6 +31,7 @@ export class PDFViewerService extends AsyncServiceBase {
 
     // This is currently known to be resolved as of chrome 119
     // See testing notes in https://github.com/IDEMSInternational/open-app-builder/pull/2904
+    // Legacy chrome browsers for test: https://vikyd.github.io/download-chromium-history-version
 
     // Use inline scripts. Note if Using CSP security should set to false and include
     // `op-chaining-support.js` in list of assets copied to run compatibility checks from js file instead of inline
