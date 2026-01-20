@@ -115,3 +115,18 @@ export function objectToArray(obj: any) {
   }
   return [];
 }
+
+/**
+ * Extract the template name from a router URL path
+ * @param url - The router URL (e.g., "/template/home", "/template/home/subpage", or "/template/home?queryParam=true")
+ * @returns The template name (e.g., "home") or null if not a template route
+ * @example
+ * extractTemplateNameFromUrl("/template/home") // returns "home"
+ * extractTemplateNameFromUrl("/template/home/subpage") // returns "home"
+ * extractTemplateNameFromUrl("/template/home?queryParam=true") // returns "home"
+ * extractTemplateNameFromUrl("/other/path") // returns null
+ */
+export function extractTemplateNameFromUrl(url: string): string | null {
+  const match = url.match(/^\/template\/([^\/?#]+)/);
+  return match ? match[1] : null;
+}
