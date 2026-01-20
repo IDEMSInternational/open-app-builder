@@ -39,20 +39,14 @@ describe("action component", () => {
   it("click triggers an external action with params which navigates", () => {
     cy.getDataTest("callExternalActionWithParams").click();
 
-    cy.url().should(
-      "include",
-      "/template/test_action_nav_target?theTitle=%23%20Navigated%20by%20external%20action%20with%20param"
-    );
+    cy.url().should("include", "/template/test_action_nav_target");
     cy.getDataTest("theTitle").contains("Navigated by external action with param");
   });
 
   it("click triggers an external action via a sub action with params which navigates", () => {
     cy.getDataTest("callExternalActionWithParams2").click();
 
-    cy.url().should(
-      "include",
-      "/template/test_action_nav_target?theTitle=%23%20Navigated%20by%20external%20action%20with%20param%20via%20a%20sub%20action"
-    );
+    cy.url().should("include", "/template/test_action_nav_target");
     cy.getDataTest("theTitle").contains("Navigated by external action with param via a sub action");
   });
 });

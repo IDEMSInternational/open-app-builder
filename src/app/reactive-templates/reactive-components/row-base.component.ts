@@ -17,7 +17,7 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
 
@@ -59,6 +59,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
   protected route = inject(ActivatedRoute);
+  protected router = inject(Router);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -81,10 +82,15 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this.value = this.variableStore.asSignal(this.name());
 
-    // If there is a query param that matches this row's name, use that to override the expression
-    const queryParam = this.route.snapshot.queryParamMap.get(this.name());
+    // If there is a value in session storage that matches this row's name, use that to override the expression
+    let url = this.router.url.split("?")[0];
+    if (url.endsWith("/")) {
+      url = url.slice(0, -1);
+    }
+    const paramKey = `navParam_${url}_${this.name()}`;
+    const sessionValue = sessionStorage.getItem(paramKey);
 
-    this._expression.set(queryParam ?? row.value);
+    this._expression.set(sessionValue ?? row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
     );
