@@ -14,7 +14,7 @@
     "chalk": "^4.1.0",
     "character-parser": "^4.0.0",
     "commander": "^8.3.0",
-    "danfojs": "^1.1.1",
+    "danfojs": "1.1.2",
     "fs-extra": "^9.0.1",
     "glob": "^9.0.0",
     "inquirer": "^7.3.3",

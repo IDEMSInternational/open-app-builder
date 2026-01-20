@@ -1,8 +1,12 @@
 <div class="point_wrapper margin-t-regular">
   <div class="container">
     <div class="icon">
-      <img *ngIf="icon_src" [src]="icon_src | plhAsset" />
-      <div *ngIf="count && count >= 0" class="count">{{ count }}</div>
+      @if (icon_src) {
+        <img [src]="icon_src | plhAsset" />
+      }
+      @if (count && count >= 0) {
+        <div class="count">{{ count }}</div>
+      }
     </div>
     <div class="text">{{ _row.value }}</div>
   </div>

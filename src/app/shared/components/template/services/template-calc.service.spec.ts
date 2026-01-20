@@ -1,5 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { TemplateCalcService } from "./template-calc.service";
+import { Device } from "@capacitor/device";
 import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.mock.spec";
 import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.mock.spec";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
@@ -15,6 +16,17 @@ describe("TemplateCalcService", () => {
   let service: TemplateCalcService;
 
   beforeEach(async () => {
+    spyOn(Device, "getInfo").and.returnValue(
+      Promise.resolve({
+        model: "test",
+        platform: "web",
+        operatingSystem: "windows",
+        osVersion: "10",
+        manufacturer: "test",
+        isVirtual: true,
+        webViewVersion: "1.0",
+      } as any)
+    );
     TestBed.configureTestingModule({
       providers: [
         {

@@ -1,4 +1,4 @@
-import { Component, computed, effect, Injector, OnInit, signal } from "@angular/core";
+import { Component, computed, effect, inject, Injector, OnInit, signal } from "@angular/core";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
 import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
 import { toSignal } from "@angular/core/rxjs-interop";
@@ -53,6 +53,7 @@ export class UserDebugPage implements OnInit {
   /** List of all flow names where dynamic data has been set */
   public dynamicDataSelectOptions = computed(() => [...Object.keys(this.dynamicDataState() || {})]);
 
+  private injector = inject(Injector);
   private actionService = new TemplateActionService(this.injector);
 
   constructor(
@@ -61,8 +62,7 @@ export class UserDebugPage implements OnInit {
     private dynamicDataService: DynamicDataService,
     private localStorageService: LocalStorageService,
     public authService: AuthService,
-    private alertCtrl: AlertController,
-    private injector: Injector
+    private alertCtrl: AlertController
   ) {
     // load first dynamic data option by default
     effect(

@@ -1,75 +1,79 @@
 <div class="wrapper-radio-group margin-t-large">
-  <div class="container" [ngSwitch]="radioButtonType">
-    <div class="btn_triangle dse" *ngSwitchCase="'btn_text'">
-      <div
-        class="btn_triangle_container center"
-        [style.flex]="flexWidth"
-        [class]="style"
-        *ngFor="let item of arrayOfBtn"
-      >
-        <label class="center standard-label" [class.checked]="item.name === _row.value">
-          <input
-            #el
-            type="radio"
-            [value]="item.name"
-            [checked]="el.value === _row.value"
-            (click)="handleRadioButtonClick(el.value)"
-            [name]="groupName"
-            [disabled]="_row.disabled"
-          />
-          <span>{{ item.text | translate }}</span>
-        </label>
-      </div>
-    </div>
-    <div class="btn_square dse" *ngSwitchCase="'btn_both'">
-      <div
-        class="btn_square_container center"
-        [class]="style"
-        *ngFor="let item of arrayOfBtn"
-        [style.flex]="flexWidth"
-      >
-        <label class="center standard-label" [class.checked]="item.name === _row.value">
-          <img
-            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"
-          />
-
-          <input
-            #el
-            type="radio"
-            [value]="item.name"
-            [checked]="el.value === _row.value"
-            (click)="handleRadioButtonClick(el.value)"
-            [name]="groupName"
-            [disabled]="_row.disabled"
-          />
-          <span>{{ item.text | translate }}</span>
-        </label>
-      </div>
-    </div>
-    <div class="btn_image dse" *ngSwitchCase="'btn_image'">
-      <div
-        class="btn_image_container center"
-        [class]="style"
-        *ngFor="let item of arrayOfBtn"
-        [style.flex]="flexWidth"
-      >
-        <label class="center standard-label" [class.checked]="item.name === _row.value">
-          <img
-            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"
-          />
-          <input
-            #el
-            type="radio"
-            [value]="item.name"
-            [checked]="el.value === _row.value"
-            (click)="handleRadioButtonClick(el.value)"
-            [name]="groupName"
-            [disabled]="_row.disabled"
-          />
-          <span> {{ item.text | translate }} </span>
-        </label>
-      </div>
-    </div>
-    <div *ngSwitchDefault>Invalid type button</div>
+  <div class="container">
+    @switch (radioButtonType) {
+      @case ("btn_text") {
+        <div class="btn_triangle dse">
+          @for (item of arrayOfBtn; track item) {
+            <div class="btn_triangle_container center" [style.flex]="flexWidth" [class]="style">
+              <label class="center standard-label" [class.checked]="item.name === _row.value">
+                <input
+                  #el
+                  type="radio"
+                  [value]="item.name"
+                  [checked]="el.value === _row.value"
+                  (click)="handleRadioButtonClick(el.value)"
+                  [name]="groupName"
+                  [disabled]="_row.disabled"
+                />
+                <span>{{ item.text | translate }}</span>
+              </label>
+            </div>
+          }
+        </div>
+      }
+      @case ("btn_both") {
+        <div class="btn_square dse">
+          @for (item of arrayOfBtn; track item) {
+            <div class="btn_square_container center" [class]="style" [style.flex]="flexWidth">
+              <label class="center standard-label" [class.checked]="item.name === _row.value">
+                <img
+                  [src]="
+                    (el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset
+                  "
+                />
+                <input
+                  #el
+                  type="radio"
+                  [value]="item.name"
+                  [checked]="el.value === _row.value"
+                  (click)="handleRadioButtonClick(el.value)"
+                  [name]="groupName"
+                  [disabled]="_row.disabled"
+                />
+                <span>{{ item.text | translate }}</span>
+              </label>
+            </div>
+          }
+        </div>
+      }
+      @case ("btn_image") {
+        <div class="btn_image dse">
+          @for (item of arrayOfBtn; track item) {
+            <div class="btn_image_container center" [class]="style" [style.flex]="flexWidth">
+              <label class="center standard-label" [class.checked]="item.name === _row.value">
+                <img
+                  [src]="
+                    (el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset
+                  "
+                />
+                <input
+                  #el
+                  type="radio"
+                  [value]="item.name"
+                  [checked]="el.value === _row.value"
+                  (click)="handleRadioButtonClick(el.value)"
+                  [name]="groupName"
+                  [disabled]="_row.disabled"
+                />
+                <span> {{ item.text | translate }} </span>
+              </label>
+            </div>
+          }
+        </div>
+      }
+      @default {
+        <div>Invalid type button</div>
+      }
+    }
   </div>
 </div>

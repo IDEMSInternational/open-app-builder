@@ -8,21 +8,24 @@
     }"
     class="accordion-status"
   >
-    <ion-icon
-      *ngIf="completed && !_row.disabled"
-      name="checkmark-outline"
-      [src]="completedIcon ? (completedIcon | plhAsset) : ''"
-    ></ion-icon>
-    <ion-icon
-      *ngIf="_row.disabled"
-      name="lock-closed-outline"
-      [src]="disabledIcon ? (disabledIcon | plhAsset) : ''"
-    ></ion-icon>
-    <ion-icon
-      *ngIf="!completed && !_row.disabled"
-      name="timer-outline"
-      [src]="inProgressIcon ? (inProgressIcon | plhAsset) : ''"
-    ></ion-icon>
+    @if (completed && !_row.disabled) {
+      <ion-icon
+        name="checkmark-outline"
+        [src]="completedIcon ? (completedIcon | plhAsset) : ''"
+      ></ion-icon>
+    }
+    @if (_row.disabled) {
+      <ion-icon
+        name="lock-closed-outline"
+        [src]="disabledIcon ? (disabledIcon | plhAsset) : ''"
+      ></ion-icon>
+    }
+    @if (!completed && !_row.disabled) {
+      <ion-icon
+        name="timer-outline"
+        [src]="inProgressIcon ? (inProgressIcon | plhAsset) : ''"
+      ></ion-icon>
+    }
   </div>
   <div
     class="accordion-section"
@@ -41,13 +44,10 @@
         openSection: _row.parameter_list?.state === 'open'
       }"
     >
-      <plh-template-component
-        style="z-index: 2"
-        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-        [row]="childRow"
-        [parent]="parent"
-      >
-      </plh-template-component>
+      @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+        <plh-template-component style="z-index: 2" [row]="childRow" [parent]="parent">
+        </plh-template-component>
+      }
     </div>
   </div>
 </div>

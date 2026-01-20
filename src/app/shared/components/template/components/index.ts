@@ -26,7 +26,8 @@ import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
 import { TmplButtonAppleSignInComponent } from "./button-apple-sign-in/button-apple-sign-in.component";
 import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
-import { TmplCarouselComponent } from "./carousel/carousel.component";
+// TEMP: Disabled for Angular 21 - Swiper 8 doesn't support Angular 21
+// import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplDataItemsComponent } from "./data-items/data-items.component";
@@ -75,6 +76,7 @@ import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
+  TmplSliderComponent,
   TmplTableComponent,
 ];
 
@@ -103,7 +105,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplButtonComponent,
   TmplButtonAppleSignInComponent,
   TmplButtonGoogleSignInComponent,
-  TmplCarouselComponent,
+  // TmplCarouselComponent, // TEMP: Disabled for Angular 21
   TmplComboBoxComponent,
   TmplDashedBoxComponent,
   TmplDataItemsComponent,
@@ -127,7 +129,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplRadioListComponent,
   TmplSharedDataComponent,
   TmplSimpleCheckboxComponent,
-  TmplSliderComponent,
   TmplSubtitleComponent,
   TmplTabsComponent,
   TmplTaskCardComponent,
@@ -173,7 +174,7 @@ const COMMON_COMPONENT_MAPPING = {
   apple_sign_in_button: TmplButtonAppleSignInComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
-  carousel: TmplCarouselComponent,
+  // carousel: TmplCarouselComponent, // TEMP: Disabled for Angular 21
   combo_box: TmplComboBoxComponent,
   dashed_box: TmplDashedBoxComponent,
   date_time_picker: TmplDateTimePickerComponent,

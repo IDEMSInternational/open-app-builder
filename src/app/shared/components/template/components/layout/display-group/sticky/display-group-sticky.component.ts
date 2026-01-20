@@ -11,7 +11,8 @@ import {
 @Component({
   selector: "tmpl-display-group-sticky",
   templateUrl: "display-group-sticky.component.html",
-  styleUrl: "display-group-sticky.component.scss",
+  styleUrls: ["display-group-sticky.component.scss"],
+  exportAs: "tmplDisplayGroupSticky",
   standalone: false,
 })
 /**
