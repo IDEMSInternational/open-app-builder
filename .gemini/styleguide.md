@@ -176,6 +176,7 @@ describe('MyComponent', () => {
 * **Files**: Use kebab-case (e.g., `user-profile.component.ts`).
 * **Classes**: Use PascalCase (e.g., `UserProfileComponent`).
 * **Variables and Functions**: Use camelCase (e.g., `userName`, `getUserData`).
+  * An exception is when the params in question are exposed to authors, in which case they should be in snake_case
 * **Signals**: Treat them as reactive state; naming should reflect the data they hold (e.g., `currentUser`, `products`).
 * **`@Output()`**: Name event handlers based on the event they emit (e.g., `@Output() userSaved = new EventEmitter<User>();`).
 
