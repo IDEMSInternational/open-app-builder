@@ -1,9 +1,6 @@
-import { Component, Signal, computed } from "@angular/core";
-import { NavigationEnd, Router } from "@angular/router";
-import { filter, map, scan } from "rxjs";
-import { toSignal } from "@angular/core/rxjs-interop";
-import { extractTemplateNameFromUrl } from "../../utils/template-utils";
+import { Component, Signal, signal, effect } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { TemplateNavService } from "../../services/template-nav.service";
 
 interface INavigationBarButton {
   image: string | null;
@@ -29,52 +26,23 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 })
 export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** The target template of the last active button (used when persist_highlight is enabled) */
-  lastActiveButton: Signal<string | null>;
+  lastActiveButton = signal<string | null>(null);
 
-  constructor(private router: Router) {
+  constructor(private templateNavService: TemplateNavService) {
     super();
 
-    // Track active button template from navigation events using scan to accumulate state
-    const activeButtonFromNavigation$ = this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map(() => extractTemplateNameFromUrl(this.router.url)),
-      scan<string | null, string | null>((lastActive, currentTemplate) => {
-        const params = this.params();
-        if (params.persistHighlight && currentTemplate) {
-          return this.findMatchingButtonTemplate(params.buttonList, currentTemplate);
-        }
-        return lastActive;
-      }, null)
-    );
-
-    // Convert navigation-based updates to signal
-    const activeButtonFromNavigation = toSignal(activeButtonFromNavigation$, {
-      initialValue: null,
-    });
-
-    // Combine with initial state check using computed
-    // This ensures we check the initial URL after component is fully initialized
-    this.lastActiveButton = computed(() => {
-      const fromNavigation = activeButtonFromNavigation();
-      if (fromNavigation !== null) {
-        return fromNavigation;
-      }
-      // Check current URL for initial state
-      const currentTemplate = extractTemplateNameFromUrl(this.router.url);
+    // Update lastActiveButton when template changes and matches a button
+    effect(() => {
+      const template = this.templateNavService.currentTemplateName();
       const params = this.params();
-      if (params.persistHighlight && currentTemplate) {
-        return this.findMatchingButtonTemplate(params.buttonList, currentTemplate);
+      if (params.persistHighlight && template) {
+        const matchingButton = params.buttonList.find(
+          (button) => button.targetTemplate === template
+        );
+        if (matchingButton) {
+          this.lastActiveButton.set(matchingButton.targetTemplate);
+        }
       }
-      return null;
     });
-  }
-
-  /** Find the targetTemplate of a button that matches the given template name */
-  private findMatchingButtonTemplate(
-    buttonList: INavigationBarButton[],
-    templateName: string
-  ): string | null {
-    const matchingButton = buttonList.find((button) => button.targetTemplate === templateName);
-    return matchingButton?.targetTemplate ?? null;
   }
 }

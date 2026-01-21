@@ -1,17 +1,20 @@
 import { Location } from "@angular/common";
-import { Injectable } from "@angular/core";
+import { computed, Injectable, Signal } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
+import { toSignal } from "@angular/core/rxjs-interop";
+import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
 import {
   ITemplatePopupComponentProps,
   TemplatePopupComponent,
 } from "../components/layout/popup/popup.component";
 import { TemplateContainerComponent } from "../template-container.component";
 import { TemplateActionRegistry } from "./instance/template-action.registry";
+import { TemplateService } from "./template.service";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
 const SHOW_DEBUG_LOGS = false;
@@ -25,15 +28,30 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService extends SyncServiceBase {
+  /** Name of current template - from standalone template (fullscreen popup) or route params */
+  public readonly currentTemplateName: Signal<string | undefined>;
+
   constructor(
     private modalCtrl: ModalController,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private templateService: TemplateService
   ) {
     super("TemplateNav");
     this.registerTemplateActionHandlers();
+
+    // Track current template name from router snapshot
+    const snapshot = toSignal(ngRouterMergedSnapshot$(this.router), {
+      initialValue: { params: {} } as any,
+    });
+    const routeTemplateName = computed(() => snapshot().params.templateName as string | undefined);
+
+    // Use standalone template if exists, otherwise use route template
+    this.currentTemplateName = computed(
+      () => this.templateService.standaloneTemplateName() || routeTemplateName()
+    );
   }
 
   /**
