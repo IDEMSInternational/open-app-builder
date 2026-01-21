@@ -6,7 +6,7 @@
       [attr.data-name]="button.name"
       routerLinkActive
       #rla="routerLinkActive"
-      [class.active-link]="rla.isActive || isPersistedActive(button, lastActiveButton())"
+      [class.active-link]="rla.isActive || lastActiveButton() === button.targetTemplate"
     >
       <div class="image-wrapper">
         <img [src]="button.image | plhAsset" />

@@ -1,6 +1,6 @@
-import { Component, effect, signal } from "@angular/core";
+import { Component, Signal, computed } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
-import { filter, map } from "rxjs/operators";
+import { filter, map, scan } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { extractTemplateNameFromUrl } from "../../utils/template-utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
@@ -29,46 +29,52 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 })
 export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** The target template of the last active button (used when persist_highlight is enabled) */
-  lastActiveButton = signal<string | null>(null);
-  /** Signal tracking the current template name from router navigation events (used when persist_highlight is enabled) */
-  private currentTemplateSignal: ReturnType<typeof toSignal<string | null>> | null = null;
+  lastActiveButton: Signal<string | null>;
 
   constructor(private router: Router) {
     super();
 
-    const initialTemplate = extractTemplateNameFromUrl(this.router.url);
-    this.currentTemplateSignal = toSignal(
-      this.router.events.pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(() => extractTemplateNameFromUrl(this.router.url))
-      ),
-      { initialValue: initialTemplate }
+    // Track active button template from navigation events using scan to accumulate state
+    const activeButtonFromNavigation$ = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => extractTemplateNameFromUrl(this.router.url)),
+      scan<string | null, string | null>((lastActive, currentTemplate) => {
+        const params = this.params();
+        if (params.persistHighlight && currentTemplate) {
+          return this.findMatchingButtonTemplate(params.buttonList, currentTemplate);
+        }
+        return lastActive;
+      }, null)
     );
 
-    // Track route changes when persist_highlight is enabled
-    effect(() => {
-      if (this.params().persistHighlight) {
-        // Update active button on navigation
-        const currentTemplate = this.currentTemplateSignal();
-        if (currentTemplate) {
-          this.updateActiveButton(currentTemplate);
-        }
+    // Convert navigation-based updates to signal
+    const activeButtonFromNavigation = toSignal(activeButtonFromNavigation$, {
+      initialValue: null,
+    });
+
+    // Combine with initial state check using computed
+    // This ensures we check the initial URL after component is fully initialized
+    this.lastActiveButton = computed(() => {
+      const fromNavigation = activeButtonFromNavigation();
+      if (fromNavigation !== null) {
+        return fromNavigation;
       }
+      // Check current URL for initial state
+      const currentTemplate = extractTemplateNameFromUrl(this.router.url);
+      const params = this.params();
+      if (params.persistHighlight && currentTemplate) {
+        return this.findMatchingButtonTemplate(params.buttonList, currentTemplate);
+      }
+      return null;
     });
   }
 
-  private updateActiveButton(currentTemplate: string) {
-    for (const button of this.params().buttonList) {
-      if (button.targetTemplate === currentTemplate) {
-        this.lastActiveButton.set(button.targetTemplate);
-        return;
-      }
-    }
-  }
-
-  isPersistedActive(button: INavigationBarButton, lastActive: string | null): boolean {
-    return (
-      this.params().persistHighlight && lastActive !== null && button.targetTemplate === lastActive
-    );
+  /** Find the targetTemplate of a button that matches the given template name */
+  private findMatchingButtonTemplate(
+    buttonList: INavigationBarButton[],
+    templateName: string
+  ): string | null {
+    const matchingButton = buttonList.find((button) => button.targetTemplate === templateName);
+    return matchingButton?.targetTemplate ?? null;
   }
 }
