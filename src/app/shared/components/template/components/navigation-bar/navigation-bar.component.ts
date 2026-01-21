@@ -5,13 +5,13 @@ import { TemplateNavService } from "../../services/template-nav.service";
 interface INavigationBarButton {
   image: string | null;
   name?: string | null;
-  targetTemplate: string | null;
+  target_template: string | null;
   text?: string | null;
 }
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   button_list: coerce.objectArray<INavigationBarButton>([
-    { image: null, name: null, targetTemplate: null, text: null },
+    { image: null, name: null, target_template: null, text: null },
   ]),
   variant: coerce.allowedValues(["text_primary_contrast", "text_primary"], "text_primary_contrast"),
   /** When true, the highlighting of the last active button is persisted when the user navigates away from the page. */

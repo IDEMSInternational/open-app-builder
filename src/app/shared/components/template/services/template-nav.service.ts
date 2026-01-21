@@ -43,9 +43,7 @@ export class TemplateNavService extends SyncServiceBase {
     this.registerTemplateActionHandlers();
 
     // Track current template name from router snapshot
-    const snapshot = toSignal(ngRouterMergedSnapshot$(this.router), {
-      initialValue: { params: {} } as any,
-    });
+    const snapshot = toSignal(ngRouterMergedSnapshot$(this.router), { requireSync: true });
     const routeTemplateName = computed(() => snapshot().params.templateName as string | undefined);
 
     // Use standalone template if exists, otherwise use route template

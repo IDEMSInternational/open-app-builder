@@ -1,5 +1,10 @@
 import type { FlowTypes } from "packages/data-models";
-import { extractTemplateNameFromUrl, updateRowPropertyRecursively } from "./template-utils";
+import {
+  extractTemplateNameFromUrl,
+  mergeTemplateRows,
+  objectToArray,
+  updateRowPropertyRecursively,
+} from "./template-utils";
 
 const MOCK_ROW = (): FlowTypes.TemplateRow => ({
   _nested_name: "",
