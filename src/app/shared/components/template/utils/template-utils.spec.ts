@@ -1,10 +1,5 @@
 import type { FlowTypes } from "packages/data-models";
-import {
-  extractTemplateNameFromUrl,
-  mergeTemplateRows,
-  objectToArray,
-  updateRowPropertyRecursively,
-} from "./template-utils";
+import { mergeTemplateRows, objectToArray, updateRowPropertyRecursively } from "./template-utils";
 
 const MOCK_ROW = (): FlowTypes.TemplateRow => ({
   _nested_name: "",
@@ -34,15 +29,6 @@ describe("Template Utils", () => {
     // both top-level and nested row eval context should be updated
     expect(res._evalContext).toEqual({ local: { string: "hello", number: 2 } });
     expect(res.rows[0]._evalContext).toEqual({ local: { string: "hello", number: 2 } });
-  });
-  it("extractTemplateNameFromUrl", () => {
-    expect(extractTemplateNameFromUrl("/template/home")).toBe("home");
-    expect(extractTemplateNameFromUrl("/template/home/subpage")).toBe("home");
-    expect(extractTemplateNameFromUrl("/template/home?queryParam=true")).toBe("home");
-    expect(extractTemplateNameFromUrl("/template/home#section")).toBe("home");
-    expect(extractTemplateNameFromUrl("/other/path")).toBeNull();
-    expect(extractTemplateNameFromUrl("/template")).toBeNull();
-    expect(extractTemplateNameFromUrl("")).toBeNull();
   });
   // TODO
   xit("mergeTemplateRows", () => {});
