@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery } from "rxdb";
 import { firstValueFrom, lastValueFrom, AsyncSubject } from "rxjs";
 
@@ -14,6 +14,8 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { DynamicDataActionFactory } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
 import { Observable, defer, switchMap } from "rxjs";
+import { MigrationService } from "../migration/migration.service";
+import { DYNAMIC_DATA_MIGRATIONS } from "./migrations";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -45,6 +47,8 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Hashmap to track pending collection creation and avoid duplicate requests */
   private collectionCreators: Record<string, AsyncSubject<string>> = {};
 
+  private migrationService = inject(MigrationService);
+
   constructor(
     private appDataService: AppDataService,
     private templateActionRegistry: TemplateActionRegistry,
@@ -71,6 +75,13 @@ export class DynamicDataService extends AsyncServiceBase {
         addRxPlugin(module.RxDBDevModePlugin);
       });
     }
+    // Handle one-time data migrations
+    await this.migrationService.handleMigrations(
+      DYNAMIC_DATA_MIGRATIONS,
+      { service: this, deployment: this.deploymentService.config },
+      "DynamicData"
+    );
+    // Setup db adapters
     this.writeCache = await new PersistedMemoryAdapter(name).create();
     this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
