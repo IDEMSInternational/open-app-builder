@@ -20,7 +20,7 @@ export interface Migration<T = any> {
   run(context: T): Promise<void>;
 }
 
-interface MigrationHistoryItem {
+export interface MigrationHistoryItem {
   status: "RUN" | "SKIPPED" | "FAILED";
   timestamp: number;
 }
