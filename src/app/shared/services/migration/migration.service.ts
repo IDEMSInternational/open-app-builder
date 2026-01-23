@@ -15,8 +15,8 @@ export class MigrationService {
       throw new Error("Migration source must be provided");
     }
 
-    // Get execution history
     const history = this.getMigrationHistory();
+    let hasHistoryChanges = false;
 
     for (const migration of migrations) {
       // Create a namespaced ID to ensure uniqueness across different services
@@ -36,7 +36,8 @@ export class MigrationService {
           const shouldRun = await migration.preconditions(context);
           if (!shouldRun) {
             console.log(`[Migration] Skipped: ${fullId}`);
-            this.updateMigrationStatus(fullId, "SKIPPED");
+            history[fullId] = { status: "SKIPPED", timestamp: Date.now() };
+            hasHistoryChanges = true;
             continue;
           }
         }
@@ -46,14 +47,20 @@ export class MigrationService {
         await migration.run(context);
 
         // 3. Mark Complete
-        this.updateMigrationStatus(fullId, "RUN");
+        history[fullId] = { status: "RUN", timestamp: Date.now() };
+        hasHistoryChanges = true;
         console.log(`[Migration] Completed: ${fullId}`);
       } catch (e) {
         console.error(`[Migration] FATAL: ${fullId}`, e);
-        this.updateMigrationStatus(fullId, "FAILED");
+        history[fullId] = { status: "FAILED", timestamp: Date.now() };
+        this.saveMigrationHistory(history);
         await this.showErrorAlert(fullId, e);
         throw e;
       }
+    }
+
+    if (hasHistoryChanges) {
+      this.saveMigrationHistory(history);
     }
   }
 
@@ -69,9 +76,7 @@ export class MigrationService {
     }
   }
 
-  private updateMigrationStatus(id: string, status: "RUN" | "SKIPPED" | "FAILED") {
-    const history = this.getMigrationHistory();
-    history[id] = { status, timestamp: Date.now() };
+  private saveMigrationHistory(history: MigrationHistory) {
     this.localStorage.setProtected("MIGRATION_HISTORY", JSON.stringify(history));
   }
 
