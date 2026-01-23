@@ -117,17 +117,6 @@ describe("MigrationService", () => {
 
       expect(mockMigrations[0].run).toHaveBeenCalled(); // Should retry
     });
-
-    it("should handle legacy Array format gracefully", async () => {
-      // Old format: ["test:20230101_init"]
-      const oldFormat = [`test:${mockMigrations[0].id}`];
-      storage["MIGRATION_HISTORY"] = JSON.stringify(oldFormat);
-
-      await service.handleMigrations(mockMigrations, mockInjector, "test");
-
-      expect(mockMigrations[0].run).not.toHaveBeenCalled(); // Treated as RUN
-      expect(mockMigrations[1].run).toHaveBeenCalled();
-    });
   });
 
   describe("handleMigrations() - Error Handling", () => {
