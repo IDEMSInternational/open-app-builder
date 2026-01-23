@@ -53,6 +53,19 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   required: ["id"],
   indexes: ["row_index"],
 };
+const MIGRATIONS: MigrationStrategies = {
+  1: (oldDoc) => {
+    const newDoc = { ...oldDoc, row_index: 0 };
+    return newDoc;
+  },
+  2: (oldDoc) => {
+    const newDoc = {
+      ...oldDoc,
+      APP_META: oldDoc.APP_META ?? {},
+    };
+    return newDoc;
+  },
+};
 
 interface IDataUpdate {
   collectionName: string;
@@ -116,7 +129,7 @@ export class ReactiveMemoryAdapter {
    */
   public async createCollection(name: string, schema: RxJsonSchema<any>) {
     const collections: { [x: string]: RxCollectionCreator<any> } = {};
-    collections[name] = { schema, migrationStrategies: [] };
+    collections[name] = { schema, migrationStrategies: MIGRATIONS };
     await this.db.addCollections(collections);
     const collection = this.db.collections[name];
     // HACK - sometimes rxdb keeps data in memory during repeated create/delete cycles
