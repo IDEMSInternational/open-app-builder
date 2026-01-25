@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { TestBed, waitForAsync } from "@angular/core/testing";
-import { signal } from "@angular/core";
 
 import { ModalController, Platform } from "@ionic/angular";
 import { SplashScreen } from "@capacitor/splash-screen";
@@ -14,7 +13,6 @@ import { SkinService } from "./shared/services/skin/skin.service";
 import { AnalyticsService } from "./shared/services/analytics";
 import { FeedbackService } from "./feature/feedback/feedback.service";
 import { AppUpdateService } from "./shared/services/app-update/app-update.service";
-import { TemplateNavService } from "./shared/components/template/services/template-nav.service";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 
@@ -41,12 +39,6 @@ describe("AppComponent", () => {
         { provide: AnalyticsService, useValue: {} },
         { provide: FeedbackService, useValue: {} },
         { provide: AppUpdateService, useValue: {} },
-        {
-          provide: TemplateNavService,
-          useValue: {
-            currentTemplateName: signal(undefined),
-          },
-        },
       ],
     }).compileComponents();
   }));

@@ -1,5 +1,5 @@
 import { Location } from "@angular/common";
-import { inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { first } from "rxjs/operators";
@@ -25,13 +25,13 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService extends SyncServiceBase {
-  private router = inject(Router);
-  private modalCtrl = inject(ModalController);
-  private location = inject(Location);
-  private route = inject(ActivatedRoute);
-  private templateActionRegistry = inject(TemplateActionRegistry);
-
-  constructor() {
+  constructor(
+    private modalCtrl: ModalController,
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute,
+    private templateActionRegistry: TemplateActionRegistry
+  ) {
     super("TemplateNav");
     this.registerTemplateActionHandlers();
   }
