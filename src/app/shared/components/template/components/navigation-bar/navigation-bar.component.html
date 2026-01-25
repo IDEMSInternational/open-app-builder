@@ -4,9 +4,7 @@
       class="button-wrapper"
       [routerLink]="'template/' + button.targetTemplate"
       [attr.data-name]="button.name"
-      routerLinkActive
-      #rla="routerLinkActive"
-      [class.active-link]="rla.isActive || lastActiveButton() === button.targetTemplate"
+      [class.active-link]="$index === activeLinkIndex()"
     >
       <div class="image-wrapper">
         <img [src]="button.image | plhAsset" />

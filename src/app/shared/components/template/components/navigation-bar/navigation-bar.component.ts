@@ -1,6 +1,6 @@
-import { Component, Signal, signal, effect } from "@angular/core";
+import { Component, signal, effect, inject, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { TemplateNavService } from "../../services/template-nav.service";
+import { TemplateMetadataService } from "../../services/template-metadata.service";
 
 interface INavigationBarButton {
   image: string | null;
@@ -14,8 +14,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
     { image: null, name: null, target_template: null, text: null },
   ]),
   variant: coerce.allowedValues(["text_primary_contrast", "text_primary"], "text_primary_contrast"),
-  /** When true, the highlighting of the last active button is persisted when the user navigates away from the page. */
-  persist_highlight: coerce.boolean(false),
 }));
 
 @Component({
@@ -25,23 +23,24 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   standalone: false,
 })
 export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
-  /** The target template of the last active button (used when persist_highlight is enabled) */
-  lastActiveButton = signal<string | null>(null);
+  /** Index of link to highlight within navigation bar */
+  public activeLinkIndex = signal(0);
 
-  constructor(private templateNavService: TemplateNavService) {
+  private templateMetaService = inject(TemplateMetadataService);
+
+  private targetTemplates = computed(() => this.params().buttonList.map((v) => v.targetTemplate));
+
+  constructor() {
     super();
 
-    // Update lastActiveButton when template changes and matches a button
     effect(() => {
-      const template = this.templateNavService.currentTemplateName();
-      const params = this.params();
-      if (params.persistHighlight && template) {
-        const matchingButton = params.buttonList.find(
-          (button) => button.targetTemplate === template
-        );
-        if (matchingButton) {
-          this.lastActiveButton.set(matchingButton.targetTemplate);
-        }
+      // When user navigates to a section matching the nav button target
+      // set as the current highlighted section
+      const templateName = this.templateMetaService.templateName();
+      const targetTemplates = this.targetTemplates();
+      const updatedSection = targetTemplates.findIndex((name) => name === templateName);
+      if (updatedSection > -1) {
+        this.activeLinkIndex.set(updatedSection);
       }
     });
   }

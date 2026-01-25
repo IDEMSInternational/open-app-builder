@@ -3,8 +3,8 @@ import { IonicModule } from "@ionic/angular";
 import { signal } from "@angular/core";
 
 import { TmplNavigationBarComponent } from "./navigation-bar.component";
-import { TemplateNavService } from "../../services/template-nav.service";
 import { FlowTypes } from "packages/data-models";
+import { TemplateMetadataService } from "../../services/template-metadata.service";
 
 const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "navigation_bar" };
 
@@ -18,9 +18,9 @@ describe("NavigationBarComponent", () => {
       imports: [IonicModule.forRoot()],
       providers: [
         {
-          provide: TemplateNavService,
+          provide: TemplateMetadataService,
           useValue: {
-            currentTemplateName: signal(undefined),
+            templateName: signal(undefined),
           },
         },
       ],

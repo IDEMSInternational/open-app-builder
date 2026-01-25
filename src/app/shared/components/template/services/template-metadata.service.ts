@@ -1,10 +1,12 @@
-import { effect, Injectable, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateService } from "./template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { TemplateNavService } from "./template-nav.service";
+import { toSignal } from "@angular/core/rxjs-interop";
+import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
+import { Router } from "@angular/router";
 
 /**
  * Service responsible for handling metadata of the current top-level template,
@@ -14,27 +16,31 @@ import { TemplateNavService } from "./template-nav.service";
   providedIn: "root",
 })
 export class TemplateMetadataService extends SyncServiceBase {
+  /** Utility snapshot used to get router snapshot from service (outside render context) */
+  private router = inject(Router);
+  private snapshot = toSignal(ngRouterMergedSnapshot$(this.router));
+
+  /** Name of current template provide by route param */
+  public templateName = computed<string | undefined>(() => this.snapshot().params.templateName);
+
   /** List of parameterList provided with current template */
   public parameterList = signal<FlowTypes.Template["parameter_list"]>({}, { equal: isEqual });
 
   constructor(
     private templateService: TemplateService,
-    private appConfigService: AppConfigService,
-    private templateNavService: TemplateNavService
+    private appConfigService: AppConfigService
   ) {
     super("TemplateMetadata");
 
     // subscribe to template name changes and load corresponding template parameter list on change
-    effect(
-      async () => {
-        const templateName = this.templateNavService.currentTemplateName();
-        const parameterList = templateName
-          ? await this.templateService.getTemplateMetadata(templateName)
-          : {};
-        this.parameterList.set(parameterList);
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => {
+      // use full screen popup template if exists, or current template page if not
+      const templateName = this.templateService.standaloneTemplateName() || this.templateName();
+      const parameterList = templateName
+        ? await this.templateService.getTemplateMetadata(templateName)
+        : {};
+      this.parameterList.set(parameterList);
+    });
     // apply any template-specific appConfig overrides on change
     effect(
       () => {

@@ -21,12 +21,6 @@ describe("TemplateMetadataService", () => {
           },
         },
         { provide: AppConfigService, useValue: new MockAppConfigService() },
-        {
-          provide: TemplateNavService,
-          useValue: {
-            currentTemplateName: signal(undefined),
-          },
-        },
       ],
     });
     service = TestBed.inject(TemplateMetadataService);
