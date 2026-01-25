@@ -75,7 +75,7 @@ export class TmplCarouselComponent
     });
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     if (!customElements.get("swiper-container")) {
       register();
     }
@@ -94,7 +94,7 @@ export class TmplCarouselComponent
     });
   }
 
-  private async slideToIndex(swiper: Swiper, targetIndex: number) {
+  private slideToIndex(swiper: Swiper, targetIndex: number) {
     if (this.params().loop) {
       swiper.slideToLoop(targetIndex, 0, false);
     } else {
