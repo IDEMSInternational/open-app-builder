@@ -27,6 +27,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   provider: IRemoteAssetProvider;
   downloading: boolean = false;
   downloadProgress: number;
+  downloadProgressCount = signal<{ completed: number; total: number } | null>(null);
   manifest: FlowTypes.AssetPack;
   private currentAssetPackName: string | null = null;
 
@@ -110,24 +111,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           download: async () => {
             if (this.remoteAssetsEnabled) {
               const assetPackName = assetPackArgs[0];
-              if (assetPackName) {
-                try {
-                  await this.getAssetPackManifest(assetPackName);
-                  await this.downloadAndIntegrateAssetPack(this.manifest);
-                } catch (e) {
-                  console.error(e);
-                }
-              } else {
-                console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
-                // TODO: Implement default behaviour of generating a manifest of files to download in case of no named asset pack
-                // (e.g. look at what files are available locally vs required in accordance with current app config)
-                // const assetPackManifest = this.generateManifest()
-                // await this.downloadAndIntegrateAssetPack(assetPackManifest)
-              }
-            } else
+              await this.downloadAssetPackByName(assetPackName);
+            } else {
               console.error(
                 "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
               );
+            }
           },
           reset: async () => {
             if (this.remoteAssetsEnabled) {
@@ -169,6 +158,26 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
+  public async downloadAssetPackByName(assetPackName: string) {
+    if (!assetPackName) {
+      console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
+      return false;
+    }
+
+    try {
+      await this.getAssetPackManifest(assetPackName);
+      const total = this.countDownloadFiles(this.manifest?.rows as IAssetEntry[]);
+      this.downloadProgressCount.set(total ? { completed: 0, total } : null);
+      await this.downloadAndIntegrateAssetPack(this.manifest);
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    } finally {
+      this.downloadProgressCount.set(null);
+    }
+  }
+
   /**
    * Construct full path for remote storage, prepending asset pack name if processing an asset pack
    * Keeping the asset pack name out of the relative path allows for referencing a file in authoring to be agnostic about its origin (e.g. core or remote)
@@ -200,7 +209,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       else {
         for (const [index, assetEntry] of assetEntries.entries()) {
           console.log(
-            `[REMOTE ASSETS] Fetching remote URL for ${index + 1} of ${assetEntries.length} files.`
+            `[REMOTE ASSETS] Processing asset entry ${index + 1} of ${assetEntries.length}.`
           );
           await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
         }
@@ -322,6 +331,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const topLevelAssetUrl =
         this.provider.getPublicUrl(this.getFullRemotePath(assetEntry.id)) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
+      this.incrementDownloadProgress();
     }
     const { overrides } = assetEntry;
     if (overrides) {
@@ -331,6 +341,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           const filepath =
             this.provider.getPublicUrl(this.getFullRemotePath(overrideAssetEntry.filePath)) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
+          this.incrementDownloadProgress();
         }
       }
     }
@@ -366,6 +377,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         const { src } = await this.fileManagerService.saveFile({ data: blob, targetPath });
         await this.updateAssetContents(assetEntry, src, overrideProps);
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
+        this.incrementDownloadProgress();
       } else {
         console.error(`[REMOTE ASSETS] Failed to download ${relativePath}`);
       }
@@ -521,5 +533,29 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     if (this.assetContentsSubscription) {
       this.assetContentsSubscription.unsubscribe();
     }
+  }
+
+  private incrementDownloadProgress() {
+    const progress = this.downloadProgressCount();
+    if (!progress) return;
+    const completed = Math.min(progress.completed + 1, progress.total);
+    this.downloadProgressCount.set({ ...progress, completed });
+  }
+
+  private countDownloadFiles(assetEntries: IAssetEntry[] = []) {
+    let total = 0;
+    for (const assetEntry of assetEntries) {
+      // Count base entry unless marked overridesOnly
+      if (!assetEntry.overridesOnly) {
+        total += 1;
+      }
+      const { overrides } = assetEntry;
+      if (overrides) {
+        for (const themeOverrides of Object.values(overrides)) {
+          total += Object.keys(themeOverrides).length;
+        }
+      }
+    }
+    return total;
   }
 }
