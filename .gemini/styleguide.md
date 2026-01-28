@@ -199,6 +199,12 @@ describe('MyComponent', () => {
 * **Files**: Use kebab-case (e.g., `user-profile.component.ts`).
 * **Classes**: Use PascalCase (e.g., `UserProfileComponent`).
 * **Variables and Functions**: Use camelCase (e.g., `userName`, `getUserData`).
+    * **Exception**: snake_case is allowed when defining properties exposed to the template authoring schema.
+    ```typescript
+    const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+      snake_case_property: coerce.string(),
+    }));
+    ```
 * **Signals**: Treat them as reactive state; naming should reflect the data they hold (e.g., `currentUser`, `products`).
 * **`@Output()`**: Name event handlers based on the event they emit (e.g., `@Output() userSaved = new EventEmitter<User>();`).
 

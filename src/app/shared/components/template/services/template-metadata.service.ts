@@ -21,7 +21,7 @@ export class TemplateMetadataService extends SyncServiceBase {
   private snapshot = toSignal(ngRouterMergedSnapshot$(this.router));
 
   /** Name of current template provide by route param */
-  private templateName = computed<string | undefined>(() => this.snapshot().params.templateName);
+  public templateName = computed<string | undefined>(() => this.snapshot().params.templateName);
 
   /** List of parameterList provided with current template */
   public parameterList = signal<FlowTypes.Template["parameter_list"]>({}, { equal: isEqual });
