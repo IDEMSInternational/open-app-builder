@@ -9,7 +9,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { RxDocument } from "rxdb";
-import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistedMemory";
+import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistence/indexeddb.strategy";
 import { AlertController } from "@ionic/angular";
 
 /** Snapshot of persisted memory state for data_list type */
