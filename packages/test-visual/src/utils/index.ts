@@ -96,3 +96,11 @@ export function logProgramHelp(program: Command) {
   console.log("\n");
   process.exit(0);
 }
+
+export function _wait(ms: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}

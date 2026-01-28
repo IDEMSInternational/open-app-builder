@@ -1,5 +1,6 @@
 import fs from "fs-extra";
-import { DB_TABLES, DB_VERSION } from "data-models/db.model";
+import DataModels from "data-models";
+const { DB_TABLES, DB_VERSION } = DataModels;
 import { TEMPLATE_CONTENTS_PATH } from "./index";
 
 /**
