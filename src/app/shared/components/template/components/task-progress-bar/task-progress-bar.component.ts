@@ -83,6 +83,7 @@ interface ITaskProgressBarParams {
   templateUrl: "./task-progress-bar.component.html",
   styleUrls: ["./task-progress-bar.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TmplTaskProgressBarComponent
   extends TemplateBaseComponent

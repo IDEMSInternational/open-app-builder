@@ -6,7 +6,7 @@
 
 This style guide provides a set of conventions for developing in this Angular monorepo. The goal is to enhance readability, maintainability, and collaboration among developers. By adhering to these guidelines, we can ensure a consistent and high-quality codebase. This guide is a living document and will evolve as our project and best practices change.
 
-This guide assumes Angular v18+ (for signals, built-in control flow, and signal inputs).
+This guide assumes Angular v21+ (for signals, built-in control flow, and signal inputs).
 
 This guide promotes the use of modern Angular features, including:
 * **Signals**: For reactive state management (`signal`, `computed`, `effect`).
@@ -37,7 +37,8 @@ user-profile/
 
 ### Signals for State Management
 
-Signals are the preferred way to manage component state.
+Signals are the primary tool for state.
+
 
 * **`signal`**: Use for mutable state.
 
@@ -53,33 +54,55 @@ Signals are the preferred way to manage component state.
     }
     ```
 
-* **`computed`**: Use for deriving state from other signals. Computed signals are read-only and memoized.
+ Follow these priorities for deriving state:
 
-    ```typescript
-    import { signal, computed } from '@angular/core';
+  1. `computed`: First choice for synchronous derivations.
 
-    export class MyComponent {
-      price = signal(10);
-      quantity = signal(5);
-      total = computed(() => this.price() * this.quantity());
-    }
-    ```
+```typescript
+import { signal, computed } from '@angular/core';
 
-* **`effect`**: Use for side effects that should run when a signal's value changes. Use effects sparingly and primarily for rendering, logging, or synchronization with browser APIs. Avoid using effects to update other signals.
+export class MyComponent {
+  price = signal(10);
+  quantity = signal(5);
+  total = computed(() => this.price() * this.quantity());
+}
+```
 
-    ```typescript
-    import { effect, signal } from '@angular/core';
+  2. `linkedSignal` (Angular v19+): First choice for state that has a "default" value based on another signal but must remain locally mutable.
 
-    export class MyComponent {
-      name = signal('John Doe');
+```typescript
+// ✅ Preferred: highlightedTaskGroupIndex resets/updates when params change
+highlightedTaskGroupIndex = linkedSignal({
+  source: () => this.params().taskGroupData,
+  computation: (data) => this.calculateDefaultIndex(data)
+});
+```
 
-      constructor() {
-        effect(() => {
-          console.log(`Name changed to: ${this.name()}`);
-        });
-      }
-    }
-    ```
+  3. `effect`: Reserved for side effects and complex state synchronization that cannot be handled by the above.
+
+```typescript
+// ✅ Acceptable: Using an effect for an async operation that updates state
+effect(() => {
+  const data = this.params().taskGroupData;
+  
+  // Direct, readable async flow
+  this.taskService.getHighlightedTaskGroupIndex(data).then(index => {
+    this.highlightedTaskGroupIndex.set(index === -1 ? 0 : index);
+  });
+});
+```
+
+**When to Update Signals in Effects**
+
+While the general rule is to avoid updating signals inside effect, this is permissible (and often preferred over complex RxJS chains) in the following scenarios:
+
+Asynchronous Synchronization: When a signal change must trigger an async call (e.g., a service request) whose result updates another signal.
+
+External API Integration: Synchronizing signal state with non-signal-based APIs (e.g., Chart.js, Google Maps, or complex legacy services).
+
+Pragmatic Complexity: If the RxJS alternative (using toObservable and toSignal) requires more than 3-4 operators or significantly obscures the intent of the code, a simple effect with an update is acceptable.   
+
+
 
 ### Signal Inputs
 

@@ -22,7 +22,6 @@ const parameters = () =>
   selector: "oab-toggle-bar",
   templateUrl: "./toggle-bar.html",
   styleUrls: ["./toggle-bar.scss"],
-  standalone: true,
   imports: [IonicModule, TemplatePipesModule], // todo: ionic standalone does not seem to work.
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })

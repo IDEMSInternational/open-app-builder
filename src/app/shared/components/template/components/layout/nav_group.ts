@@ -11,29 +11,29 @@ import { TemplateFieldService } from "../../services/template-field.service";
   animations: PLHAnimations.fadeEntryExit,
   template: `
     <div class="nav-progress">
-      <div
-        *ngFor="let templateName of templateNames; index as i"
-        class="nav-progress-part"
-        [attr.data-seen]="i <= sectionIndex ? true : null"
-        (click)="goToSection(i)"
-      ></div>
+      @for (templateName of templateNames; track templateName; let i = $index) {
+        <div
+          class="nav-progress-part"
+          [attr.data-seen]="i <= sectionIndex ? true : null"
+          (click)="goToSection(i)"
+        ></div>
+      }
     </div>
     <!-- Render placeholders for each section but omit content -->
-    <div
-      *ngFor="let templateName of templateNames; index as i"
-      class="nav-section"
-      [attr.data-selected]="sectionIndex === i ? true : null"
-    >
-      <plh-template-container
-        *ngIf="sectionIndex === i"
-        [name]="templateName"
-        [templatename]="templateName"
-        [parent]="parent"
-        [row]="containerRow"
-        @fadeEntryExit
-      >
-      </plh-template-container>
-    </div>
+    @for (templateName of templateNames; track templateName; let i = $index) {
+      <div class="nav-section" [attr.data-selected]="sectionIndex === i ? true : null">
+        @if (sectionIndex === i) {
+          <plh-template-container
+            [name]="templateName"
+            [templatename]="templateName"
+            [parent]="parent"
+            [row]="containerRow"
+            @fadeEntryExit
+          >
+          </plh-template-container>
+        }
+      </div>
+    }
   `,
   styles: [
     `
@@ -74,6 +74,7 @@ import { TemplateFieldService } from "../../services/template-field.service";
       }
     `,
   ],
+  standalone: false,
 })
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];

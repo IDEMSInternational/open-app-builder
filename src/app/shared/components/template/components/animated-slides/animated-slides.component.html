@@ -4,12 +4,13 @@
     {{ skipText }}
   </ion-button>
   <div class="section-container">
-    <section
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; let idx = index"
-      [@fadeInOut]="slideParams[idx].animation === 'fade' ? fadeSection[idx] : null"
-      [@noFade]="slideParams[idx].animation === 'none' ? fadeSection[idx] : null"
-    >
-      <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
-    </section>
+    @for (childRow of _row.rows | filterDisplayComponent; track childRow; let idx = $index) {
+      <section
+        [@fadeInOut]="slideParams[idx].animation === 'fade' ? fadeSection[idx] : null"
+        [@noFade]="slideParams[idx].animation === 'none' ? fadeSection[idx] : null"
+      >
+        <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
+      </section>
+    }
   </div>
 </div>

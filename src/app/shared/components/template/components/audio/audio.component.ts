@@ -58,6 +58,7 @@ interface IAudioParams {
   selector: "plh-audio",
   templateUrl: "./audio.component.html",
   styleUrls: ["./audio.component.scss"],
+  standalone: false,
 })
 export class TmplAudioComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
   params: Partial<IAudioParams> = {};

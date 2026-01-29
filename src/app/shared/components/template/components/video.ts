@@ -6,7 +6,9 @@ import { TemplateBaseComponent } from "./base";
   selector: "plh-tmpl-video",
   template: `<div class="tmpl-video-container margin-t-large" [class]="style">
     <video [src]="_row.value | plhAsset" controls>
-      <track *ngIf="subtitles_src" [src]="subtitles_src | plhAsset" default label="Subtitles" />
+      @if (subtitles_src) {
+        <track [src]="subtitles_src | plhAsset" default label="Subtitles" />
+      }
     </video>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -17,6 +19,7 @@ import { TemplateBaseComponent } from "./base";
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplVideoComponent extends TemplateBaseComponent implements OnInit {
   style: string;

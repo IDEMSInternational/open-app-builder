@@ -15,10 +15,10 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 20.17.0
-          cache: 'yarn'      
+          node-version: 24.13.0
+          cache: "yarn"
       - run: yarn install --immutable
       - name: Spellcheck
         run: yarn lint:docs

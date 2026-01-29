@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from "@angular/core";
+import { ErrorHandler, NgModule, provideZoneChangeDetection } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { provideAnimations } from "@angular/platform-browser/animations";
@@ -48,6 +48,7 @@ export function lottiePlayerFactory() {
     { provide: ErrorHandler, useClass: ErrorHandlerService },
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
+    provideZoneChangeDetection(),
     provideLottieOptions({
       player: lottiePlayerFactory,
     }),

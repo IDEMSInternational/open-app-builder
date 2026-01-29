@@ -40,6 +40,7 @@ interface YouTubeUrlQueryParamValues {
   selector: "youtube",
   templateUrl: "./youtube.component.html",
   styleUrls: ["./youtube.component.scss"],
+  standalone: false,
 })
 export class YoutubeComponent extends TemplateBaseComponent {
   constructor(

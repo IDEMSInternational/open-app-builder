@@ -1,12 +1,16 @@
 ngx-extended-pdf-viewer {
   #toolbarViewer {
     background-color: var(--ion-color-primary);
+    padding-inline-start: 4px;
+    padding-inline-end: 4px;
   }
   #mainContainer {
     min-width: 250px !important;
   }
   .toolbarButton {
-    color: var(--ion-color-primary-contrast) !important;
+    svg {
+      color: var(--ion-color-primary-contrast) !important;
+    }
   }
 }
 

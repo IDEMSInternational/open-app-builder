@@ -7,7 +7,6 @@ import { RowListComponent } from "../reactive-components/row-list.component";
   selector: "oab-reactive-template",
   templateUrl: "./reactive-template.component.html",
   styleUrls: ["./reactive-template.component.scss"],
-  standalone: true,
   imports: [forwardRef(() => RowListComponent)],
 })
 export class ReactiveTemplateComponent {

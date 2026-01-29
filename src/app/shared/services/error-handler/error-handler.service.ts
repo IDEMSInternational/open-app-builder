@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable, Injector } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
-import * as Sentry from "@sentry/angular-ivy";
+import * as Sentry from "@sentry/angular";
 import { environment } from "src/environments/environment";
 import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
@@ -83,7 +83,6 @@ export class ErrorHandlerService extends ErrorHandler {
       dsn: error_logging?.dsn,
       environment: environment.production ? "production" : "development",
       release: `${name}-${_app_builder_version}-${GIT_SHA}`,
-      autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,
       tracesSampleRate: 0, // ensure performance traces not sent (not installed)

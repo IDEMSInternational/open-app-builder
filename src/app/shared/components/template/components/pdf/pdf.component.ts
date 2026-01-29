@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, Component, computed, Signal, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { PDFViewerService } from "./pdf.service";
@@ -24,6 +24,7 @@ const DEFAULT_PARAMS: IAuthorParams = {
   styleUrls: ["./pdf.component.scss"],
   // Allow override of global pdf viewer styles
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class TmplPdfComponent extends TemplateBaseComponent implements AfterViewInit {
   public pdfSrc = computed(() => this.value());
@@ -38,13 +39,14 @@ export class TmplPdfComponent extends TemplateBaseComponent implements AfterView
     };
   });
 
-  public serviceReady = toSignal(this.service["initialised$"]);
+  public serviceReady!: Signal<unknown>;
 
   // Additional locales are currently excluded from main build to reduce bundle sizes
   public locale = "en-US";
 
   constructor(public service: PDFViewerService) {
     super();
+    this.serviceReady = toSignal(this.service["initialised$"]);
     // name of folder pdf viewer assets copied to as declared in `angular.json`
     pdfDefaultOptions.assetsFolder = "assets/comp-pdf";
   }

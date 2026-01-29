@@ -5,6 +5,7 @@ import { TemplateBaseComponent } from "../base";
 @Component({
   template: ``,
   styleUrls: ["../tmpl-components-common.scss"],
+  standalone: false,
 })
 /**
  * Layout components such as a display_group, nav_group or animated section add a layer between
@@ -19,7 +20,9 @@ import { TemplateBaseComponent } from "../base";
  *
  * @example template (rendering child rows with reference to this parent container)
  * ```
- *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
+ *  @for (childRow of _row.rows; track trackByRow($index, childRow)) {
+ *    <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
+ *  }
  * ```
  */
 export class TemplateLayoutComponent extends TemplateBaseComponent implements OnInit {

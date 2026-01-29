@@ -66,6 +66,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
+  standalone: false,
 })
 export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** Style with two_columns logic applied */

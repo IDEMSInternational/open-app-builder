@@ -8,7 +8,6 @@ import { Subscription } from "rxjs";
   selector: "oab-nested-template",
   templateUrl: "./nested-template.component.html",
   styleUrls: ["./nested-template.component.scss"],
-  standalone: true,
   imports: [forwardRef(() => ReactiveTemplateComponent)],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
@@ -20,15 +19,12 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   constructor() {
     super();
 
-    effect(
-      () => {
-        if (this.reactiveTemplate().initialised() && !this.templateInitialised) {
-          this.onTemplateInitialised();
-          this.templateInitialised = true;
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      if (this.reactiveTemplate().initialised() && !this.templateInitialised) {
+        this.onTemplateInitialised();
+        this.templateInitialised = true;
+      }
+    });
   }
 
   public override ngOnInit(): void {
