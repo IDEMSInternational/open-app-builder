@@ -4,7 +4,7 @@ import { Logger, logOutput } from "../../../utils";
 
 // @capacitor/assets has no public programmatic API, so import internal modules directly
 import { IosAssetGenerator } from "@capacitor/assets/dist/platforms/ios";
-import { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
+import type { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
@@ -72,7 +72,7 @@ export const generateAssets = async (options: IOSGenerateAssetsOptions) => {
     };
 
     const generator = new IosAssetGenerator(generatorOptions);
-    const logoAsset = new InputAsset(logoPath, AssetKind.Logo, Platform.Ios);
+    const logoAsset = new InputAsset(logoPath, "logo" as AssetKind, "ios" as Platform);
     await logoAsset.load();
 
     const generatedAssets = await generator.generate(logoAsset, project);

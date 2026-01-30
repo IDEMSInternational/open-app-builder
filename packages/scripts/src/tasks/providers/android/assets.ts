@@ -4,7 +4,7 @@ import { Logger, logOutput } from "../../../utils";
 
 // @capacitor/assets has no public programmatic API, so import internal modules directly
 import { AndroidAssetGenerator } from "@capacitor/assets/dist/platforms/android";
-import { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
+import type { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
@@ -70,7 +70,7 @@ export const generateIcon = async (options: AndroidIconOptions) => {
     const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
     const assets: InputAsset[] = [];
 
-    const mainIconAsset = new InputAsset(iconAssetPath, AssetKind.Icon, Platform.Android);
+    const mainIconAsset = new InputAsset(iconAssetPath, "icon" as AssetKind, "android" as Platform);
     await mainIconAsset.load();
     assets.push(mainIconAsset);
 
@@ -83,16 +83,16 @@ export const generateIcon = async (options: AndroidIconOptions) => {
     ) {
       const foregroundAsset = new InputAsset(
         iconAssetForegroundPath,
-        AssetKind.IconForeground,
-        Platform.Android,
+        "icon-foreground" as AssetKind,
+        "android" as Platform,
       );
       await foregroundAsset.load();
       assets.push(foregroundAsset);
 
       const backgroundAsset = new InputAsset(
         iconAssetBackgroundPath,
-        AssetKind.IconBackground,
-        Platform.Android,
+        "icon-background" as AssetKind,
+        "android" as Platform,
       );
       await backgroundAsset.load();
       assets.push(backgroundAsset);
@@ -110,7 +110,8 @@ export const generateIcon = async (options: AndroidIconOptions) => {
     }
 
     const hasAdaptiveIcons = assets.some(
-      (asset) => asset.kind === AssetKind.IconForeground || asset.kind === AssetKind.IconBackground,
+      (asset) =>
+        asset.kind === "icon-foreground" || asset.kind === "icon-background",
     );
     const iconType = hasAdaptiveIcons ? "adaptive launcher icons" : "launcher icons";
 
@@ -144,7 +145,11 @@ export const generateSplash = async (options: AndroidSplashOptions) => {
     if (!project) return;
 
     const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
-    const mainSplashAsset = new InputAsset(splashAssetPath, AssetKind.Splash, Platform.Android);
+    const mainSplashAsset = new InputAsset(
+      splashAssetPath,
+      "splash" as AssetKind,
+      "android" as Platform,
+    );
     await mainSplashAsset.load();
 
     const generatedAssets = await generator.generate(mainSplashAsset, project);
@@ -199,7 +204,7 @@ export const generateAssets = async (options: AndroidGenerateAssetsOptions) => {
     };
 
     const generator = new AndroidAssetGenerator(generatorOptions);
-    const logoAsset = new InputAsset(logoPath, AssetKind.Logo, Platform.Android);
+    const logoAsset = new InputAsset(logoPath, "logo" as AssetKind, "android" as Platform);
     await logoAsset.load();
 
     const generatedAssets = await generator.generate(logoAsset, project);
