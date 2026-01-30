@@ -95,7 +95,7 @@ Generated assets are written into the native project folders (`android/`, `ios/A
 
 | Android | iOS |
 |---------|-----|
-| App icon (adaptive + legacy), splash drawables | App icon, launch screen assets |
+| App icon (adaptive + legacy), splash screen assets | App icon, launch screen assets |
 
 ---
 
