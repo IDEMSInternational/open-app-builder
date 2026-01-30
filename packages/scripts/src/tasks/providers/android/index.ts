@@ -1,9 +1,9 @@
 import { configure } from "./configure";
-import { generateIcon, generateSplash, generateFromLogo } from "./assets";
+import { generateAssets, generateIcon, generateSplash } from "./assets";
 
 export default {
   configure,
+  generateAssets,
   generateIcon,
   generateSplash,
-  generateFromLogo,
 };

@@ -22,9 +22,8 @@ const childWorkflows: IDeploymentWorkflows = {
   },
   /**
    * Generate Android launcher assets (icon + splash).
-   * Two approaches are supported – asset-based takes precedence if both are configured:
-   * 1. Asset-based: provide icon_asset_path + splash_asset_path (+ optional foreground/background)
-   * 2. Logo-based: provide logo_asset_path + background colors (generates everything from one logo)
+   * Canonical: logo_asset_path + logo_background_color (optional; default white with warning).
+   * Legacy (deprecated): icon_asset_path + splash_asset_path (+ optional foreground/background).
    */
   generate_assets: {
     label: "Generate launcher assets (icon + splash) from configured source images",
@@ -33,37 +32,27 @@ const childWorkflows: IDeploymentWorkflows = {
         name: "generate_assets",
         function: async ({ tasks, config }) => {
           const { android } = config;
-          const hasAssetConfig = android.icon_asset_path && android.splash_asset_path;
           const hasLogoConfig = android.logo_asset_path;
+          const hasLegacyConfig = android.icon_asset_path && android.splash_asset_path;
 
-          if (hasAssetConfig) {
-            // Asset-based approach: separate icon and splash images
-            if (android.splash_asset_path) {
-              await tasks.android.generateSplash({
-                splashAssetPath: android.splash_asset_path,
-                splashAssetPathDark: android.splash_asset_path_dark,
-              });
-            }
-            if (android.icon_asset_path) {
-              await tasks.android.generateIcon({
-                iconAssetPath: android.icon_asset_path,
-                iconAssetForegroundPath: android.icon_asset_foreground_path,
-                iconAssetBackgroundPath: android.icon_asset_background_path,
-              });
-            }
-          } else if (hasLogoConfig) {
-            // Logo-based approach: generate everything from a single logo
-            await tasks.android.generateFromLogo({
+          if (hasLogoConfig) {
+            await tasks.android.generateAssets({
               logoPath: android.logo_asset_path,
-              logoPathDark: android.logo_asset_path_dark,
-              iconBackgroundColor: android.icon_background_color,
-              splashBackgroundColor: android.splash_background_color,
-              splashBackgroundColorDark: android.splash_background_color_dark,
+              backgroundColor: android.logo_background_color ?? "",
+            });
+          } else if (hasLegacyConfig) {
+            await tasks.android.generateSplash({
+              splashAssetPath: android.splash_asset_path,
+            });
+            await tasks.android.generateIcon({
+              iconAssetPath: android.icon_asset_path,
+              iconAssetForegroundPath: android.icon_asset_foreground_path,
+              iconAssetBackgroundPath: android.icon_asset_background_path,
             });
           } else {
             console.log(
               "[android generate_assets] No asset config found. " +
-                "Provide icon_asset_path + splash_asset_path, or logo_asset_path."
+                "Set logo_asset_path and logo_background_color."
             );
           }
         },

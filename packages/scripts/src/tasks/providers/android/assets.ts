@@ -8,12 +8,13 @@ import { AssetKind, Platform } from "@capacitor/assets/dist/definitions";
 import { InputAsset } from "@capacitor/assets/dist/input-asset";
 import { Project } from "@capacitor/assets/dist/project";
 
+const DEFAULT_BACKGROUND_COLOR = "#ffffff";
+
 /**
  * Android launcher assets generation using @capacitor/assets (app icon and splash screen).
  *
- * Two modes are available:
- * 1. Full control: use generate_icon() and generate_splash() with separate image assets
- * 2. Logo mode: use generate_from_logo() with a single logo – icons and splash auto-generated
+ * Canonical: use generateAssets(logoPath, backgroundColor) for logo + single background colour.
+ * Legacy: use generateIcon and generateSplash with separate icon/splash images (deprecated config).
  */
 
 export interface AndroidIconOptions {
@@ -26,21 +27,12 @@ export interface AndroidIconOptions {
 
 export interface AndroidSplashOptions {
   splashAssetPath: string;
-  splashAssetPathDark?: string;
 }
 
-/** Options for logo mode – generates all icons and splash from a single logo image. */
-export interface AndroidLogoOptions {
+/** Options for canonical logo mode – single logo + background colour. */
+export interface AndroidGenerateAssetsOptions {
   logoPath: string;
-  logoPathDark?: string;
-  iconBackgroundColor?: string;
-  iconBackgroundColorDark?: string;
-  splashBackgroundColor?: string;
-  splashBackgroundColorDark?: string;
-  /** Scale of logo on splash screen (0.0-1.0, default 0.2 = 20% of screen width) */
-  logoSplashScale?: number;
-  /** Fixed width for logo on splash screen (overrides logoSplashScale if set) */
-  logoSplashTargetWidth?: number;
+  backgroundColor: string;
 }
 
 /** Load and validate the Android project with Capacitor assets */
@@ -136,9 +128,9 @@ export const generateIcon = async (options: AndroidIconOptions) => {
   }
 };
 
-/** Generate Android splash screen assets from full splash images. */
+/** Generate Android splash screen assets from full splash image (legacy). */
 export const generateSplash = async (options: AndroidSplashOptions) => {
-  const { splashAssetPath, splashAssetPathDark } = options;
+  const { splashAssetPath } = options;
 
   if (!fs.existsSync(splashAssetPath)) {
     return Logger.error({
@@ -152,33 +144,14 @@ export const generateSplash = async (options: AndroidSplashOptions) => {
     if (!project) return;
 
     const generator = new AndroidAssetGenerator({ androidFlavor: "main" });
-    const assets: InputAsset[] = [];
-
     const mainSplashAsset = new InputAsset(splashAssetPath, AssetKind.Splash, Platform.Android);
     await mainSplashAsset.load();
-    assets.push(mainSplashAsset);
 
-    if (splashAssetPathDark && fs.existsSync(splashAssetPathDark)) {
-      const darkSplashAsset = new InputAsset(
-        splashAssetPathDark,
-        AssetKind.SplashDark,
-        Platform.Android,
-      );
-      await darkSplashAsset.load();
-      assets.push(darkSplashAsset);
-    }
-
-    const generatedAssets = [];
-    for (const asset of assets) {
-      const generated = await generator.generate(asset, project);
-      generatedAssets.push(...generated);
-    }
-
-    const darkModeInfo = splashAssetPathDark ? " (including dark mode)" : "";
+    const generatedAssets = await generator.generate(mainSplashAsset, project);
 
     logOutput({
       msg1: "Android splash screens generated",
-      msg2: `Generated ${generatedAssets.length} assets${darkModeInfo}`,
+      msg2: `Generated ${generatedAssets.length} assets`,
     });
 
     return generatedAssets;
@@ -191,20 +164,18 @@ export const generateSplash = async (options: AndroidSplashOptions) => {
 };
 
 /**
- * Generate all Android assets (icons + splash) from a single logo image.
- * The logo is centered on coloured backgrounds to create icons and splash screens.
+ * Generate all Android assets (icon + splash) from a single logo and background colour (canonical).
+ * If backgroundColor is omitted, logs a warning and uses default white.
  */
-export const generateFromLogo = async (options: AndroidLogoOptions) => {
-  const {
-    logoPath,
-    logoPathDark,
-    iconBackgroundColor = "#ffffff",
-    iconBackgroundColorDark = "#111111",
-    splashBackgroundColor = "#ffffff",
-    splashBackgroundColorDark = "#111111",
-    logoSplashScale = 0.2,
-    logoSplashTargetWidth,
-  } = options;
+export const generateAssets = async (options: AndroidGenerateAssetsOptions) => {
+  let { logoPath, backgroundColor } = options;
+  if (!backgroundColor || backgroundColor.trim() === "") {
+    Logger.warning({
+      msg1: "logo_background_color not set",
+      msg2: `Using default white (${DEFAULT_BACKGROUND_COLOR}). Set logo_background_color in deployment config to suppress this warning.`,
+    });
+    backgroundColor = DEFAULT_BACKGROUND_COLOR;
+  }
 
   if (!fs.existsSync(logoPath)) {
     return Logger.error({
@@ -218,41 +189,24 @@ export const generateFromLogo = async (options: AndroidLogoOptions) => {
     if (!project) return;
 
     const generatorOptions = {
-      iconBackgroundColor,
-      iconBackgroundColorDark,
-      splashBackgroundColor,
-      splashBackgroundColorDark,
-      logoSplashScale,
-      logoSplashTargetWidth,
+      iconBackgroundColor: backgroundColor,
+      iconBackgroundColorDark: backgroundColor,
+      splashBackgroundColor: backgroundColor,
+      splashBackgroundColorDark: backgroundColor,
+      // @capacitor/assets default: logo scaled to ~20% of splash dimension
+      logoSplashScale: 0.2,
       androidFlavor: "main",
     };
 
     const generator = new AndroidAssetGenerator(generatorOptions);
-    const assets: InputAsset[] = [];
-
-    // Light mode logo generates icons + splash
     const logoAsset = new InputAsset(logoPath, AssetKind.Logo, Platform.Android);
     await logoAsset.load();
-    assets.push(logoAsset);
 
-    // Dark mode logo (optional) generates dark splash
-    if (logoPathDark && fs.existsSync(logoPathDark)) {
-      const logoDarkAsset = new InputAsset(logoPathDark, AssetKind.LogoDark, Platform.Android);
-      await logoDarkAsset.load();
-      assets.push(logoDarkAsset);
-    }
-
-    const generatedAssets = [];
-    for (const asset of assets) {
-      const generated = await generator.generate(asset, project);
-      generatedAssets.push(...generated);
-    }
-
-    const darkModeInfo = logoPathDark ? " (including dark mode)" : "";
+    const generatedAssets = await generator.generate(logoAsset, project);
 
     logOutput({
       msg1: "Android assets generated from logo",
-      msg2: `Generated ${generatedAssets.length} assets${darkModeInfo}`,
+      msg2: `Generated ${generatedAssets.length} assets`,
     });
 
     return generatedAssets;
