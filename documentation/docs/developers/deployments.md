@@ -172,7 +172,7 @@ yarn scripts version --content (--auto-patch)
 Connecting to Firebase is currently required by all native apps. Follow the instructions for [Firebase management](#firebase-management) for native platforms in order to set this up for a new deployment.
 
 ### Generating an app icon and splash screen
-For generating Android assets, see [Android Assets](./android-assets.md).
+For generating Android assets, see [Native Assets (Android & iOS)](./native-assets.md).
 
 For generating iOS assets, it is recommended to use [xcode directly](https://developer.apple.com/documentation/xcode/configuring-your-app-icon), or the [capacitor-assets](https://github.com/ionic-team/capacitor-assets) package. This process should be streamlined in the future.
 
