@@ -4,8 +4,6 @@ Generate app icon and splash/launch screen assets for Android and iOS from a sin
 
 See Google's docs for [adaptive icons](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) and [splash screens](https://developer.android.com/guide/topics/ui/splash-screen), and Apple's [launch screen](https://developer.apple.com/documentation/xcode/specifying-your-apps-launch-screen) guidance.
 
----
-
 ## Canonical approach: logo + background colour
 
 Provide one logo image and one background colour (hex). The logo is centred on the background to generate:
@@ -42,8 +40,6 @@ const config: IDeploymentConfig = {
 };
 ```
 
----
-
 ## Deprecated: legacy asset-based config
 
 The following properties are **deprecated** but still supported for existing deployments. They use a separate icon image and splash image (asset-based path), not the logo approach above.
@@ -56,8 +52,6 @@ The following properties are **deprecated** but still supported for existing dep
 | `icon_asset_background_path` | Optional adaptive icon background (legacy).      |
 
 If you use these, the workflow still runs the legacy path: separate icon and splash assets are generated. Prefer migrating to `logo_asset_path` and `logo_background_color` for new or updated deployments.
-
----
 
 ## Running the workflow
 
@@ -87,8 +81,6 @@ To run only asset generation:
 yarn workflow ios generate_assets
 ```
 
----
-
 ## Generated files
 
 Generated assets are written into the native project folders (`android/`, `ios/App/`). The exact files depend on the platform; see the Android and iOS project structure for app icon and splash/launch screen assets.
@@ -96,8 +88,6 @@ Generated assets are written into the native project folders (`android/`, `ios/A
 | Android | iOS |
 |---------|-----|
 | App icon (adaptive + legacy), splash screen assets | App icon, launch screen assets |
-
----
 
 ## Future customisation
 
