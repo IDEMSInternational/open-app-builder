@@ -1,4 +1,4 @@
-import { computed, effect, Injectable, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateService } from "./template.service";
 import { FlowTypes } from "src/app/shared/model";
@@ -17,6 +17,7 @@ import { AppConfigService } from "src/app/shared/services/app-config/app-config.
 })
 export class TemplateMetadataService extends SyncServiceBase {
   /** Utility snapshot used to get router snapshot from service (outside render context) */
+  private router = inject(Router);
   private snapshot = toSignal(ngRouterMergedSnapshot$(this.router));
 
   /** Name of current template provide by route param */
@@ -27,30 +28,23 @@ export class TemplateMetadataService extends SyncServiceBase {
 
   constructor(
     private templateService: TemplateService,
-    private appConfigService: AppConfigService,
-    private router: Router
+    private appConfigService: AppConfigService
   ) {
     super("TemplateMetadata");
 
     // subscribe to template name changes and load corresponding template parameter list on change
-    effect(
-      async () => {
-        // use full screen popup template if exists, or current template page if not
-        const templateName = this.templateService.standaloneTemplateName() || this.templateName();
-        const parameterList = templateName
-          ? await this.templateService.getTemplateMetadata(templateName)
-          : {};
-        this.parameterList.set(parameterList);
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => {
+      // use full screen popup template if exists, or current template page if not
+      const templateName = this.templateService.standaloneTemplateName() || this.templateName();
+      const parameterList = templateName
+        ? await this.templateService.getTemplateMetadata(templateName)
+        : {};
+      this.parameterList.set(parameterList);
+    });
     // apply any template-specific appConfig overrides on change
-    effect(
-      () => {
-        const templateAppConfig = this.parameterList().app_config;
-        this.appConfigService.setAppConfig(templateAppConfig, "template");
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      const templateAppConfig = this.parameterList().app_config;
+      this.appConfigService.setAppConfig(templateAppConfig, "template");
+    });
   }
 }

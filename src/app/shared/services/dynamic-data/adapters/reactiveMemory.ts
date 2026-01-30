@@ -15,7 +15,7 @@ import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import type {
   MemoryStorageInternals,
   RxStorageMemoryInstanceCreationOptions,
-} from "rxdb/dist/types/plugins/storage-memory";
+} from "rxdb/plugins/storage-memory";
 import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";

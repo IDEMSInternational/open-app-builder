@@ -90,23 +90,20 @@ export class TmplComboBoxComponent
     // If an initial value is authored, check if this corresponds to an answer option entry.
     // Handle in effect as answer options may not be available on init
     // TODO: Refactor base component to use value() signal and use this to compute displayText
-    effect(
-      () => {
-        if (this.answerOptions().length > 0 && this._row.value) {
-          const optionsKey = this.params().optionsKey;
-          const optionsValue = this.params().optionsValue;
-          const selectedAnswer = this.answerOptions().find(
-            (x) => String(x[optionsKey]) === String(this._row.value)
-          );
-          if (!selectedAnswer) {
-            this.customAnswerSelected.set(true);
-          } else {
-            this.answerText.set(selectedAnswer?.[optionsValue] || "");
-          }
+    effect(() => {
+      if (this.answerOptions().length > 0 && this._row.value) {
+        const optionsKey = this.params().optionsKey;
+        const optionsValue = this.params().optionsValue;
+        const selectedAnswer = this.answerOptions().find(
+          (x) => String(x[optionsKey]) === String(this._row.value)
+        );
+        if (!selectedAnswer) {
+          this.customAnswerSelected.set(true);
+        } else {
+          this.answerText.set(selectedAnswer?.[optionsValue] || "");
         }
-      },
-      { allowSignalWrites: true }
-    );
+      }
+    });
   }
 
   public async handleDropdownChange(value) {
