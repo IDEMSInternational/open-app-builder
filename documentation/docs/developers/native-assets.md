@@ -99,8 +99,6 @@ Generated assets are written into the native project folders (`android/`, `ios/A
 
 ---
 
-## Optional: future customisation
-
-Additional options (e.g. `logoSplashScale` or similar) may be exposed later for tuning logo size on splash/launch screens. Any such scale is constrained by platform requirements rather than a free multiplier.
+## Future customisation
 
 Dark mode is not currently supported (e.g. separate logo or background colour for dark theme).

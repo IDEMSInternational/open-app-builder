@@ -199,6 +199,7 @@ export const generateAssets = async (options: AndroidGenerateAssetsOptions) => {
       splashBackgroundColor: backgroundColor,
       splashBackgroundColorDark: backgroundColor,
       // @capacitor/assets default: logo scaled to ~20% of splash dimension
+      // Android: scale is applied relative to splash dimension; 0.2 gives ~20% of screen.
       logoSplashScale: 0.2,
       androidFlavor: "main",
     };

@@ -67,8 +67,9 @@ export const generateAssets = async (options: IOSGenerateAssetsOptions) => {
       iconBackgroundColorDark: backgroundColor,
       splashBackgroundColor: backgroundColor,
       splashBackgroundColorDark: backgroundColor,
-      // @capacitor/assets default: logo scaled to ~20% of splash/launch dimension
-      logoSplashScale: 0.2,
+      // On iOS, @capacitor/assets applies logoSplashScale to the source logo width, not the
+      // splash width. Use ~0.55 so the logo appears at roughly 20% of the screen to match Android.
+      logoSplashScale: 0.55,
     };
 
     const generator = new IosAssetGenerator(generatorOptions);
