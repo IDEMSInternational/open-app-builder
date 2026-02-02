@@ -9,11 +9,7 @@ import { PersistedState } from "./persistence.interface";
  */
 describe("FilePersistenceStrategy", () => {
   let strategy: FilePersistenceStrategy;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    strategy = new FilePersistenceStrategy();
-  });
+  let mockFilesystem: jasmine.SpyObj<any>; // Using any to avoid complex typing of Capacitor plugin for mock
 
   const MOCK_STATE: PersistedState = {
     data_list: {
@@ -23,41 +19,59 @@ describe("FilePersistenceStrategy", () => {
     },
   };
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+
+    // Create a mock Filesystem object
+    mockFilesystem = jasmine.createSpyObj("Filesystem", ["writeFile", "readFile", "deleteFile"]);
+    mockFilesystem.writeFile.and.resolveTo({ uri: "mock-uri" });
+    mockFilesystem.readFile.and.resolveTo({ data: JSON.stringify(MOCK_STATE) });
+    mockFilesystem.deleteFile.and.resolveTo();
+
+    // Inject the mock into the strategy
+    strategy = new FilePersistenceStrategy(mockFilesystem, Directory.Data, Encoding.UTF8);
+  });
+
+  it("should have Capacitor dependencies available", () => {
+    // These checks ensure the environment has valid Enum values even if we mock the implementation logic
+    expect(Filesystem).toBeDefined();
+    expect(Directory).toBeDefined();
+    expect(Directory.Data).toBeTruthy();
+  });
+
   it("should be created", () => {
     expect(strategy).toBeTruthy();
   });
 
   it("should save state to filesystem", async () => {
-    const writeFileSpy = spyOn(Filesystem, "writeFile").and.resolveTo({ uri: "" });
-
     await strategy.save(MOCK_STATE);
 
-    expect(writeFileSpy).toHaveBeenCalledWith({
-      path: "open-app-builder-user-data.json",
-      data: JSON.stringify(MOCK_STATE),
-      directory: Directory.Data,
-      encoding: Encoding.UTF8,
-    });
+    expect(mockFilesystem.writeFile).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        path: "oab-dynamic-data.json",
+        data: JSON.stringify(MOCK_STATE),
+        directory: Directory.Data,
+        encoding: Encoding.UTF8,
+      })
+    );
   });
 
   it("should load state from filesystem", async () => {
-    const readFileSpy = spyOn(Filesystem, "readFile").and.resolveTo({
-      data: JSON.stringify(MOCK_STATE),
-    });
-
     const loadedState = await strategy.load();
 
-    expect(readFileSpy).toHaveBeenCalledWith({
-      path: "open-app-builder-user-data.json",
-      directory: Directory.Data,
-      encoding: Encoding.UTF8,
-    });
+    expect(mockFilesystem.readFile).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        path: "oab-dynamic-data.json",
+        directory: Directory.Data,
+        encoding: Encoding.UTF8,
+      })
+    );
     expect(loadedState).toEqual(MOCK_STATE);
   });
 
   it("should return empty object if file does not exist", async () => {
     // Mock failure (e.g. file not found)
-    spyOn(Filesystem, "readFile").and.rejectWith(new Error("File not found"));
+    mockFilesystem.readFile.and.rejectWith(new Error("File not found"));
 
     const loadedState = await strategy.load();
 
@@ -65,13 +79,13 @@ describe("FilePersistenceStrategy", () => {
   });
 
   it("should clear state from filesystem", async () => {
-    const deleteFileSpy = spyOn(Filesystem, "deleteFile").and.resolveTo();
-
     await strategy.clear();
 
-    expect(deleteFileSpy).toHaveBeenCalledWith({
-      path: "open-app-builder-user-data.json",
-      directory: Directory.Data,
-    });
+    expect(mockFilesystem.deleteFile).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        path: "oab-dynamic-data.json",
+        directory: Directory.Data,
+      })
+    );
   });
 });

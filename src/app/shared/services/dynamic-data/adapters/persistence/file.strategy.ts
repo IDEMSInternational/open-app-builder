@@ -9,9 +9,12 @@ import { IPersistenceStrategy, PersistedState } from "./persistence.interface";
  */
 export class FilePersistenceStrategy implements IPersistenceStrategy {
   private readonly FILENAME = `oab-dynamic-data.json`;
-  private readonly DIRECTORY = Directory.Data;
 
-  constructor() {}
+  constructor(
+    private readonly filesystem = Filesystem,
+    private readonly directory = Directory.Data,
+    private readonly encoding = Encoding.UTF8
+  ) {}
 
   async init() {
     // No specific initialization needed for Filesystem, but could check permissions here
@@ -20,10 +23,10 @@ export class FilePersistenceStrategy implements IPersistenceStrategy {
 
   async load(): Promise<PersistedState> {
     try {
-      const { data } = await Filesystem.readFile({
+      const { data } = await this.filesystem.readFile({
         path: this.FILENAME,
-        directory: this.DIRECTORY,
-        encoding: Encoding.UTF8,
+        directory: this.directory,
+        encoding: this.encoding,
       });
 
       const rawState = JSON.parse(data as string);
@@ -35,19 +38,19 @@ export class FilePersistenceStrategy implements IPersistenceStrategy {
   }
 
   async save(state: PersistedState): Promise<void> {
-    await Filesystem.writeFile({
+    await this.filesystem.writeFile({
       path: this.FILENAME,
       data: JSON.stringify(state),
-      directory: this.DIRECTORY,
-      encoding: Encoding.UTF8,
+      directory: this.directory,
+      encoding: this.encoding,
     });
   }
 
   async clear(): Promise<void> {
     try {
-      await Filesystem.deleteFile({
+      await this.filesystem.deleteFile({
         path: this.FILENAME,
-        directory: this.DIRECTORY,
+        directory: this.directory,
       });
     } catch (ignore) {
       // Ignore if file doesn't exist

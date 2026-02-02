@@ -52,7 +52,7 @@ sequenceDiagram
 
 ### 2. Native (iOS/Android): `FilePersistenceStrategy`
 - **Backing Store:** Filesystem (JSON file in `Directory.Data`).
-- **Filename:** `open-app-builder-user-data.json`.
+- **Filename:** `oab-dynamic-data.json`.
 - **Use Case:** Native iOS and Android apps.
 - **Rationale:** Native OSs often clear IndexedDB/WebStorage data when device memory is low. Files stored in the application's Data directory are persistent and safe from OS cleaning.
 - **Performance:** Reads/writes the entire state as a single JSON blob. Efficient for the expected data size (<50MB) and access patterns (batch read on load, debounced batch write).
@@ -62,12 +62,12 @@ sequenceDiagram
 A one-time migration is implemented to transitions existing native users from RxDB to File storage.
 
 **Logic:**
-1. On app launch (Native only), check if `open-app-builder-user-data.json` exists.
+1. On app launch (Native only), check if `oab-dynamic-data.json` exists.
 2. **If Exists:** specific strategy is `FilePersistenceStrategy`. Load data from file.
 3. **If Missing:**
     - Check if data exists in RxDB (legacy persistence).
     - **If RxDB has data:**
         - Load data from RxDB.
-        - Save data to `FilePersistenceStrategy` (`open-app-builder-user-data.json`).
+        - Save data to `FilePersistenceStrategy` (`oab-dynamic-data.json`).
         - Switch to File strategy.
     - **If no RxDB data:** Initialize empty `FilePersistenceStrategy`.

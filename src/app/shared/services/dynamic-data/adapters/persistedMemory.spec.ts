@@ -5,6 +5,11 @@ import { PersistedMemoryAdapter } from "./persistedMemory";
 import { FilePersistenceStrategy } from "./persistence/file.strategy";
 import { IndexedDBPersistenceStrategy } from "./persistence/indexeddb.strategy";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/dynamic-data/adapters/persistedMemory.spec.ts
+ */
+
 describe("PersistedMemoryAdapter", () => {
   let adapter: PersistedMemoryAdapter;
   const dbName = "test-db";
