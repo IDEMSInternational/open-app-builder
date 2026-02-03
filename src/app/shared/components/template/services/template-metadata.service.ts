@@ -33,24 +33,18 @@ export class TemplateMetadataService extends SyncServiceBase {
     super("TemplateMetadata");
 
     // subscribe to template name changes and load corresponding template parameter list on change
-    effect(
-      async () => {
-        // use full screen popup template if exists, or current template page if not
-        const templateName = this.templateService.standaloneTemplateName() || this.templateName();
-        const parameterList = templateName
-          ? await this.templateService.getTemplateMetadata(templateName)
-          : {};
-        this.parameterList.set(parameterList);
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => {
+      // use full screen popup template if exists, or current template page if not
+      const templateName = this.templateService.standaloneTemplateName() || this.templateName();
+      const parameterList = templateName
+        ? await this.templateService.getTemplateMetadata(templateName)
+        : {};
+      this.parameterList.set(parameterList);
+    });
     // apply any template-specific appConfig overrides on change
-    effect(
-      () => {
-        const templateAppConfig = this.parameterList().app_config;
-        this.appConfigService.setAppConfig(templateAppConfig, "template");
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      const templateAppConfig = this.parameterList().app_config;
+      this.appConfigService.setAppConfig(templateAppConfig, "template");
+    });
   }
 }
