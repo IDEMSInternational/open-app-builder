@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { navPrefix, ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { navParamPrefix, ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { defineParameters } from "../../parameters";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 
@@ -21,7 +21,7 @@ export class NavComponent
 
     // Clear out any nav params in local session storage that begin with this url
     Object.keys(sessionStorage).forEach((key) => {
-      if (key.startsWith(navPrefix(url))) {
+      if (key.startsWith(navParamPrefix(url))) {
         sessionStorage.removeItem(key);
       }
     });
@@ -29,7 +29,7 @@ export class NavComponent
     // Store nav parameters in session storage so that they can be picked up by the target template
     for (const row of rows) {
       const value = params?.find((p) => p.name === row.name)?.value ?? row.value;
-      sessionStorage.setItem(`${navPrefix(url)}${row.name}`, value.toString());
+      sessionStorage.setItem(`${navParamPrefix(url)}${row.name}`, value.toString());
     }
 
     await this.router.navigate([url]);

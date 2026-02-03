@@ -23,7 +23,7 @@ import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
-export function navPrefix(url: string): string {
+export function navParamPrefix(url: string): string {
   return `navParam_${url}_`;
 }
 
@@ -91,7 +91,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     if (url.endsWith("/")) {
       url = url.slice(0, -1);
     }
-    const paramKey = `${navPrefix(url)}${this.name()}`;
+    const paramKey = `${navParamPrefix(url)}${this.name()}`;
     const sessionValue = sessionStorage.getItem(paramKey);
 
     this._expression.set(sessionValue ?? row.value);
