@@ -33,7 +33,10 @@ export class ActionComponent
   private injector = inject(EnvironmentInjector);
 
   private readonly actions = new Map<string, IAction>();
+
+  /** Holds a dictionary of 'set_variable' type rows keyed by their name */
   private readonly setVariableRows = new Map<string, SetVariableComponent>();
+
   private readonly componentRefs: ComponentRef<any>[] = [];
 
   public actionParameters(): IActionParameter[] {
@@ -59,7 +62,8 @@ export class ActionComponent
       }
     }
 
-    const newParams = this.actionParameters().map((p) => {
+    // Params passed to execute() override this action's setVariableRow values where names match
+    const mergedParams = this.actionParameters().map((p) => {
       const param = params?.find((i) => i.name === p.name);
       return param ? { ...p, value: param.value } : p;
     });
@@ -68,7 +72,7 @@ export class ActionComponent
     if (expression && expression !== name) {
       if (this.actionRegistry.has(value)) {
         const action = this.actionRegistry.get(value);
-        await action.execute(newParams);
+        await action.execute(mergedParams);
         return; // this action should not define any actions of its own, but removing this return would enable that.
       } else {
         console.error(`[ACTION] No action registered with name: ${expression}`);
@@ -77,10 +81,11 @@ export class ActionComponent
     }
 
     for (const action of this.actions.values()) {
-      await action.execute(newParams);
+      await action.execute(mergedParams);
     }
   }
 
+  /** ngOnInit lifecycle hook will only be executed when the action is used as a top-level component */
   public ngOnInit(): void {
     this.init();
   }
