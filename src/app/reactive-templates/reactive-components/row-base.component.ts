@@ -17,16 +17,14 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
-import { RowRegistry } from "../services/row.registry";
+import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
-export interface IRow {
-  name: Signal<string>;
-  value: Signal<any>;
-  params: Parameters;
-  setExpression(expression: any): void;
+export function navParamPrefix(url: string): string {
+  return `navParam_${url}_`;
 }
 
 @Component({
@@ -64,6 +62,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
+  protected route = inject(ActivatedRoute);
+  protected router = inject(Router);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -78,10 +78,23 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
    */
   ngOnInit(): void {
+    this.init();
+  }
+
+  public init(): void {
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this._expression.set(row.value);
+
+    // If there is a value in session storage that matches this row's name, use that to override the expression
+    let url = this.router.url.split("?")[0];
+    if (url.endsWith("/")) {
+      url = url.slice(0, -1);
+    }
+    const paramKey = `${navParamPrefix(url)}${this.name()}`;
+    const sessionValue = sessionStorage.getItem(paramKey);
+
+    this._expression.set(sessionValue ?? row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
     );
@@ -144,11 +157,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   private watchValueDependencies() {
     this.unsubscribeValueDependencies();
-    let sub = this.variableStore
-      .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(async () => {
-        await this.storeValue();
-      });
+
+    const dependencies = this.evaluationService
+      .getDependencies(this.expression(), this.namespace())
+      .filter((d) => d !== this.name()); // avoid self-dependency
+
+    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+      await this.storeValue();
+    });
 
     this.valueDependencySubscriptions.push(sub);
   }

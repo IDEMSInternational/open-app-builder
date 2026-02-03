@@ -4,6 +4,7 @@ import { TemplateActionRegistry } from "src/app/shared/components/template/servi
 import { CoreActionsService } from "./core-actions.service";
 import { EvaluationService } from "./evaluation.service";
 import { RowBaseComponent } from "../reactive-components/row-base.component";
+import { ActionHandler } from "./action.handler";
 
 @Injectable({
   providedIn: "root",
@@ -11,8 +12,9 @@ import { RowBaseComponent } from "../reactive-components/row-base.component";
 export class ActionService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
+    private evaluationService: EvaluationService,
     private coreActionsService: CoreActionsService, // Not used, just forces initialisation - todo: replace with individual action registers & use APP_INITIALIZER
-    private evaluationService: EvaluationService
+    private actionHandler: ActionHandler // Also just to force initialisation - todo: as above
   ) {}
 
   public async handleActions(
