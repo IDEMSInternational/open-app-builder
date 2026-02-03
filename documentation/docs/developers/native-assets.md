@@ -6,7 +6,7 @@ See Google's docs for [adaptive icons](https://developer.android.com/guide/pract
 
 ## Canonical approach: logo + background colour
 
-Provide one logo image and one background colour (hex). The logo is centred on the background to generate:
+Provide one logo image and one background colour (any CSS color, e.g. hex, named colours like "yellow", rgb). The logo is centred on the background to generate:
 
 - **Android:** App icon (adaptive) and splash assets. On Android 12+ the system shows a splash derived from the icon and background colour; generated splash files are used on older devices and match the same look (logo on background).
 - **iOS:** App icon and launch screen (logo on background). Apple expects the launch screen to be simple and to resemble the first screen.
@@ -29,11 +29,11 @@ If `logo_background_color` is omitted, a default white (`#ffffff`).
 const config: IDeploymentConfig = {
   ...
   android: {
-    logo_asset_path: "packages/app-data/assets/global/android/logo.png",
+    logo_asset_path: "./app-data/assets/global/android/logo.png",
     logo_background_color: "#3498db",
   },
   ios: {
-    logo_asset_path: "packages/app-data/assets/global/android/logo.png",
+    logo_asset_path: "./app-data/assets/global/android/logo.png",
     logo_background_color: "#3498db",
   },
   ...

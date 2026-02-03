@@ -146,7 +146,7 @@ interface IDeploymentCoreConfig {
     app_name?: string;
     /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and splash. */
     logo_asset_path?: string;
-    /** Background colour (hex) for icon and splash. If omitted, default white is used. */
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
     logo_background_color?: string;
     /**
      * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: separate splash image for asset-based generation.
@@ -188,7 +188,7 @@ interface IDeploymentCoreConfig {
     app_name?: string;
     /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and launch screen. */
     logo_asset_path?: string;
-    /** Background colour (hex) for icon and launch screen. If omitted, default white is used. */
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
     logo_background_color?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
