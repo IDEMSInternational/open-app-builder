@@ -23,6 +23,10 @@ import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
+export function navPrefix(url: string): string {
+  return `navParam_${url}_`;
+}
+
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
@@ -87,7 +91,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     if (url.endsWith("/")) {
       url = url.slice(0, -1);
     }
-    const paramKey = `navParam_${url}_${this.name()}`;
+    const paramKey = `${navPrefix(url)}${this.name()}`;
     const sessionValue = sessionStorage.getItem(paramKey);
 
     this._expression.set(sessionValue ?? row.value);
