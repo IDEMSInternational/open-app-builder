@@ -1157,61 +1157,61 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.36):
     - BoringSSL-GRPC/Interface (= 0.0.36)
   - BoringSSL-GRPC/Interface (0.0.36)
-  - Capacitor (7.4.1):
+  - Capacitor (7.4.5):
     - CapacitorCordova
-  - CapacitorApp (7.0.1):
+  - CapacitorApp (7.1.1):
     - Capacitor
   - CapacitorBlobWriter (0.0.1):
     - Capacitor
     - GCDWebServer (~> 3.0)
-  - CapacitorClipboard (7.0.1):
+  - CapacitorClipboard (7.0.3):
     - Capacitor
   - CapacitorCommunityFileOpener (7.0.1):
     - Capacitor
-  - CapacitorCordova (7.4.1)
-  - CapacitorDevice (7.0.1):
+  - CapacitorCordova (7.4.5)
+  - CapacitorDevice (7.0.3):
     - Capacitor
-  - CapacitorFilesystem (7.1.2):
+  - CapacitorFilesystem (7.1.6):
     - Capacitor
-    - IONFilesystemLib (~> 1.0)
-  - CapacitorFirebaseAuthentication (7.2.0):
+    - IONFilesystemLib (~> 1.0.1)
+  - CapacitorFirebaseAuthentication (7.5.0):
     - Capacitor
-    - CapacitorFirebaseAuthentication/Lite (= 7.2.0)
+    - CapacitorFirebaseAuthentication/Lite (= 7.5.0)
     - FirebaseAuth (~> 11.7.0)
-  - CapacitorFirebaseAuthentication/Google (7.2.0):
+  - CapacitorFirebaseAuthentication/Google (7.5.0):
     - Capacitor
     - FirebaseAuth (~> 11.7.0)
     - GoogleSignIn (= 7.1.0)
-  - CapacitorFirebaseAuthentication/Lite (7.2.0):
+  - CapacitorFirebaseAuthentication/Lite (7.5.0):
     - Capacitor
     - FirebaseAuth (~> 11.7.0)
-  - CapacitorFirebaseCrashlytics (7.2.0):
+  - CapacitorFirebaseCrashlytics (7.5.0):
     - Capacitor
     - FirebaseCrashlytics (~> 11.7.0)
-  - CapacitorFirebaseFirestore (7.2.0):
+  - CapacitorFirebaseFirestore (7.5.0):
     - Capacitor
     - FirebaseFirestore (~> 11.7.0)
-  - CapacitorFirebasePerformance (7.2.0):
+  - CapacitorFirebasePerformance (7.5.0):
     - Capacitor
     - FirebasePerformance (~> 11.7.0)
-  - CapacitorFirebaseStorage (7.3.1):
+  - CapacitorFirebaseStorage (7.5.0):
     - Capacitor
     - FirebaseStorage (~> 11.7.0)
-  - CapacitorLocalNotifications (7.0.1):
+  - CapacitorLocalNotifications (7.0.4):
     - Capacitor
-  - CapacitorPushNotifications (7.0.1):
+  - CapacitorPushNotifications (7.0.4):
     - Capacitor
-  - CapacitorScreenOrientation (7.0.1):
+  - CapacitorScreenOrientation (7.0.3):
     - Capacitor
-  - CapacitorShare (7.0.1):
+  - CapacitorShare (7.0.3):
     - Capacitor
-  - CapacitorSplashScreen (7.0.1):
+  - CapacitorSplashScreen (7.0.4):
     - Capacitor
-  - CapacitorStatusBar (7.0.2):
+  - CapacitorStatusBar (7.0.4):
     - Capacitor
-  - CapacitorToast (7.0.1):
+  - CapacitorToast (7.0.3):
     - Capacitor
-  - CapawesomeCapacitorAppUpdate (7.0.1):
+  - CapawesomeCapacitorAppUpdate (7.2.0):
     - Capacitor
   - FirebaseABTesting (11.7.0):
     - FirebaseCore (~> 11.7.0)
@@ -1435,7 +1435,7 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
-  - IONFilesystemLib (1.0.0)
+  - IONFilesystemLib (1.0.1)
   - leveldb-library (1.22.6)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
@@ -1557,27 +1557,27 @@ SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   BoringSSL-GRPC: ca6a8e5d04812fce8ffd6437810c2d46f925eaeb
-  Capacitor: 78ad32d4b0d9dfa25402eb8b0ac46c2b8a4696b8
-  CapacitorApp: febecbb9582cb353aed037e18ec765141f880fe9
+  Capacitor: 12914e6f1b7835e161a74ebd19cb361efa37a7dd
+  CapacitorApp: 63b237168fc869e758481dba283315a85743ee78
   CapacitorBlobWriter: d709e5d22ab9989afd730eb4773873d1ded5fd08
-  CapacitorClipboard: 70bfdb42b877b320a6e511ab94fa7a6a55d57ecb
+  CapacitorClipboard: 2a282bc14e8f47d430f2f9698ed95fbe25dcc21c
   CapacitorCommunityFileOpener: 97362898506cf0a4194639f6fc05276af607191c
-  CapacitorCordova: 34618fa1b14b6b091fd60a7658f7654044ae8d8a
-  CapacitorDevice: c6f6d587dd310527f8a48bf09c4e7b4a4cf14329
-  CapacitorFilesystem: 337eeaf16a9fa5a44d2329df411523fa3a9a6ee9
-  CapacitorFirebaseAuthentication: 99646ed67e49b21cf4cf55911ed53c7dc32c3e53
-  CapacitorFirebaseCrashlytics: 77d86d19ec6438934c5527ddd0c36f51585318e6
-  CapacitorFirebaseFirestore: e4531c584fe95b63c2b398a018ee440c9ab33cbc
-  CapacitorFirebasePerformance: b298f875866d612ec1ebe3edc248a6cc63c2b6b9
-  CapacitorFirebaseStorage: 4622602d777e2af1d270f3709ab7ddd482607677
-  CapacitorLocalNotifications: c2212755b33d2513b8bb325096ce3a64d4039ae3
-  CapacitorPushNotifications: 6a2794788c583dd89215f1805ca4bced1b13dbdf
-  CapacitorScreenOrientation: 6d989dff97440c7bfa78deee13952d7fb03c27f3
-  CapacitorShare: e573823f511f260f598d0423c33b1e3d7bbe5fd1
-  CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
-  CapacitorStatusBar: e04d05e121d5a5979c29eb4249186a4e4a84cacb
-  CapacitorToast: ddfc4b36080dbe3634c9faf510b20f6ddcff9330
-  CapawesomeCapacitorAppUpdate: d1f04c1c870388248889908cf2ca960c7fdbf0ef
+  CapacitorCordova: 31bbe4466000c6b86d9b7f1181ee286cff0205aa
+  CapacitorDevice: b64654eb4d404373e733c01d835055ba59286e5c
+  CapacitorFilesystem: 66f05ee0d8b1ccdc00d509091273a9b3b57c4a0b
+  CapacitorFirebaseAuthentication: c5d02225dc97a1192f3b615f8c0df2ef910c40b7
+  CapacitorFirebaseCrashlytics: 50fb67e9c1955c49132164e02c8c5164ad811473
+  CapacitorFirebaseFirestore: 1dc166ceb6157e2ce0680ac94e4f5af6bd31f249
+  CapacitorFirebasePerformance: 1bf76afbcd257644218c3569eebc595ca0668a46
+  CapacitorFirebaseStorage: 4b438b83cb6ce20679b9ad97c2f25f894c1e0a01
+  CapacitorLocalNotifications: ba2a08bd92887b08f352e6b2db430575cef0cea3
+  CapacitorPushNotifications: 7604512af53bbfdf1dd8fb2256b9ef1e8a69cdc2
+  CapacitorScreenOrientation: dbc5cb20775d43a8184830792808c71116b12d56
+  CapacitorShare: a4f4f86eabd4b3ff52ba6a11b754713c6926a8d1
+  CapacitorSplashScreen: 000f7591d546907dda5cbb514bd6b6d9e6048cf8
+  CapacitorStatusBar: d0e0151c89c001a9c7125bac59ddedf76b664768
+  CapacitorToast: 827b4c977b062f39268188250c980d5b61927a4c
+  CapawesomeCapacitorAppUpdate: 9fb16b07faaa1c86468c794e39bfedb822a1a446
   FirebaseABTesting: 08b3e19b28504632a9cd03e7a796b355c5d39b27
   FirebaseAppCheckInterop: 06fe5a3799278ae4667e6c432edd86b1030fa3df
   FirebaseAuth: 77e25aa24f3e1c626c5babd3338551fc1669ee0e
@@ -1603,7 +1603,7 @@ SPEC CHECKSUMS:
   gRPC-Core: a27c294d6149e1c39a7d173527119cfbc3375ce4
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  IONFilesystemLib: ceacae793975039530458eabab0c495c70515a0d
+  IONFilesystemLib: 89258b8e3e85465da93127d25d7ce37f977e8a6f
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
