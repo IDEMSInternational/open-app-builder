@@ -134,7 +134,7 @@ export class TmplComboBoxComponent
       this.answerText.set(answer?.[optionsValue] || "");
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
       this.customAnswerText = this.customAnswerSelected() ? answer?.[optionsValue] || "" : "";
-      await this.setValue(answer?.[optionsKey] || null);
+      await this.setValue(answer?.[optionsKey] || undefined);
     });
     await modal.present();
   }
@@ -160,7 +160,7 @@ export class TmplComboBoxComponent
       this.params().prioritisePlaceholder = false;
       const answer = data?.data?.answer;
       this.answerText.set(answer?.[optionsValue] || "");
-      await this.setValue(answer?.[optionsKey] || null);
+      await this.setValue(answer?.[optionsKey] || undefined);
     });
     await modal.present();
   }
