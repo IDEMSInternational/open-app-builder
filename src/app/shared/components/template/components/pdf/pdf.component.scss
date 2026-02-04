@@ -11,6 +11,12 @@ ngx-extended-pdf-viewer {
     svg {
       color: var(--ion-color-primary-contrast) !important;
     }
+    &:hover {
+      background-color: transparent !important;
+    }
+    &:focus {
+      border: none !important;
+    }
   }
 }
 
