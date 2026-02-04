@@ -35,5 +35,12 @@
       <pdf-zoom-out id="zoomOut"></pdf-zoom-out>
       <pdf-zoom-in id="zoomIn"></pdf-zoom-in>
     </div>
+    <div [class.invisible]="false" id="toolbarViewerRight">
+      @if (params().showOpenExternalButton) {
+        <button class="toolbarButton" (click)="openExternal()" fill="outline">
+          <ion-icon name="open-outline" slot="start"></ion-icon>
+        </button>
+      }
+    </div>
   </div>
 </ng-template>

@@ -13,6 +13,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   open_external_text: coerce.string("Open with..."),
   /** Page number to start viewing from. Default 1. */
   starting_page: coerce.number(1),
+  /** Show open external button. Default false. */
+  show_open_external_button: coerce.boolean(false),
 }));
 
 @Component({
