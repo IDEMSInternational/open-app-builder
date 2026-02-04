@@ -1,0 +1,153 @@
+require "httparty"
+require "json"
+
+default_platform(:ios)
+
+# Utility function to populate credentials from env vars to file
+def setup_credentials
+  api_key = app_store_connect_api_key(
+    key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+    issuer_id: ENV["APP_STORE_CONNECT_API_ISSUER_ID"],
+    key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+    in_house: false
+  )
+
+  gcp_key_path = File.join(Dir.pwd, "gc_keys.json")
+  File.write(gcp_key_path, ENV["GCP_IOS_CERTS_SERVICE_ACCOUNT_KEY"])
+  UI.message("Writing GCP key to: #{gcp_key_path}")
+
+  { api_key: api_key, gcp_key_path: gcp_key_path }
+end
+
+# Map explicit secret name to what fastlane expects
+ENV["MATCH_PASSWORD"] ||= ENV["GCP_IOS_CERTS_ENCRYPTION_PASSWORD"]
+
+# Fastlane Methods
+platform :ios do
+  desc "Build and deploy to TestFlight"
+  lane :release_testflight do
+    creds = nil
+    begin
+
+
+      # 0. Create keychain and populate credentials
+      setup_ci
+      creds = setup_credentials
+
+      # 1. Fetch signing certs & provisioning profiles from Google Cloud
+      match(
+        type: "appstore",
+        storage_mode: "google_cloud",
+        google_cloud_bucket_name: ENV["GCP_IOS_CERTS_BUCKET_ID"],
+        google_cloud_project_id: ENV["GCP_IOS_CERTS_PROJECT_ID"],
+        google_cloud_keys_file: creds[:gcp_key_path],
+        api_key: creds[:api_key],
+        # This will be populated locally, when running `yarn workflow ios`
+        app_identifier: "${APP_ID}",
+        team_id: ENV["APP_STORE_TEAM_ID"]
+      )
+
+      # 2. Override signing settings for Release build to use credentials from match
+      # instead of default local keychain (used when template first created, or when running locally)
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "App.xcodeproj",
+        targets: ["App"],
+        code_sign_identity: "Apple Distribution",
+        profile_name: "match AppStore ${APP_ID}",
+        team_id: ENV["APP_STORE_TEAM_ID"]
+      )
+
+      # 3. Build the app (IPA)
+      build_app(
+        scheme: "App",
+        export_method: "app-store",
+        output_directory: "build",
+        output_name: "App.ipa"
+      )
+
+      # 3. Upload to TestFlight
+      upload_to_testflight(
+        api_key: creds[:api_key],
+        skip_waiting_for_build_processing: true
+      )
+    ensure
+      # 4. Clean up credentials file
+      if creds && creds[:gcp_key_path] && File.exist?(creds[:gcp_key_path])
+        File.delete(creds[:gcp_key_path])
+      end
+    end
+  end
+
+  desc "Build and deploy unsigned simulator build for Appetize"
+  lane :release_appetize do
+    tmp_path = "/tmp/fastlane_build"
+
+    # 1. Build simulator .app (unsigned)
+    build_ios_app(
+      scheme: "App",
+      configuration: "Release",
+      destination: "generic/platform=iOS Simulator",
+      derived_data_path: tmp_path,
+      skip_archive: true,
+      skip_codesigning: true,
+      skip_package_ipa: true
+    )
+
+    app_path = Dir[File.join(tmp_path, "**", "*.app")].last
+    zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, "app.zip"))
+    
+    base_name = "${APP_ID}"
+    public_key = get_appetize_public_key("ios", base_name)
+
+    appetize(
+      path: zipped_bundle,
+      api_token: ENV['APPETIZE_TOKEN'], 
+      public_key: public_key 
+    )
+   
+    # Extract data from appetize action to notify
+    public_key = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_PUBLIC_KEY]
+    app_url    = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_APP_URL]
+    manage_url = Actions.lane_context[Fastlane::Actions::SharedValues::APPETIZE_MANAGE_URL]
+
+    if public_key
+      UI.success("✅ Successfully uploaded to Appetize!")
+      UI.message("Public Key: #{public_key}")
+      UI.message("App URL:   #{app_url}")
+      UI.message("Manage URL: #{manage_url}")
+    else
+      UI.user_error!("❌ Failed to upload to Appetize (no public key returned)")
+    end
+
+  end
+end
+
+# Get appetize public key either from passed env var or from API
+# Public key is ID of app on appetize, so required if overwriting existing app
+def get_appetize_public_key(platform, base_name)
+  # Prefer environment variable override
+  return ENV['APPETIZE_APP_KEY'] if ENV['APPETIZE_APP_KEY']
+
+  fetch_appetize_public_key(platform, base_name)
+end
+
+def fetch_appetize_public_key(platform, base_name)
+  response = HTTParty.get(
+    "https://api.appetize.io/v1/apps",
+    basic_auth: { username: ENV['APPETIZE_TOKEN'], password: '' }
+  )
+
+  UI.user_error!("Failed to fetch Appetize apps: #{response.body}") unless response.success?
+
+  item = JSON.parse(response.body)['data'].find do |app|
+    app['note'] == base_name && app['platform'] == platform
+  end
+
+  if item
+    item['publicKey']
+  else
+    UI.important("No existing Appetize app found for #{base_name} (#{platform})")
+    nil
+  end
+end
