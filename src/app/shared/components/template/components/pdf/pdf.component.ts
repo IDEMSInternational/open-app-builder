@@ -1,22 +1,19 @@
 import { AfterViewInit, Component, computed, Signal, ViewEncapsulation } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { pdfDefaultOptions } from "ngx-extended-pdf-viewer";
 import { PDFViewerService } from "./pdf.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 
-interface IAuthorParams {
-  starting_page?: string;
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Message displayed when legacy browser detected */
-  compatibility_error_message?: string;
+  compatibility_error_message: coerce.string(
+    "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app"
+  ),
   /** Open external text. Default "Open with..." */
-  open_external_text?: string;
-}
-
-const DEFAULT_PARAMS: IAuthorParams = {
-  compatibility_error_message:
-    "Embedded PDFs are not supported in this browser, please use an up-to-date version of Google Chrome to view or open in external app",
-  open_external_text: "Open with...",
-};
+  open_external_text: coerce.string("Open with..."),
+  /** Page number to start viewing from. Default 1. */
+  starting_page: coerce.number(1),
+}));
 
 @Component({
   selector: "plh-pdf",
@@ -26,18 +23,11 @@ const DEFAULT_PARAMS: IAuthorParams = {
   encapsulation: ViewEncapsulation.None,
   standalone: false,
 })
-export class TmplPdfComponent extends TemplateBaseComponent implements AfterViewInit {
+export class TmplPdfComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements AfterViewInit
+{
   public pdfSrc = computed(() => this.value());
-
-  public params = computed(() => {
-    const merged: IAuthorParams = { ...DEFAULT_PARAMS, ...this.params };
-    const { compatibility_error_message, starting_page, open_external_text } = merged;
-    return {
-      startingPage: Number(starting_page || 1),
-      compatErrorMessage: compatibility_error_message,
-      openExternalText: open_external_text,
-    };
-  });
 
   public serviceReady!: Signal<unknown>;
 

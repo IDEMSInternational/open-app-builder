@@ -17,7 +17,7 @@
       </ngx-extended-pdf-viewer>
     } @else {
       <div class="error-message">
-        {{ params().compatErrorMessage }}
+        {{ params().compatibilityErrorMessage }}
       </div>
       <ion-button (click)="openExternal()" fill="outline" style="margin-top: 1rem">
         <ion-icon name="open-outline" slot="start"></ion-icon>{{ params().openExternalText }}
