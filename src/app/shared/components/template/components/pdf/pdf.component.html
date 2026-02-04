@@ -41,6 +41,11 @@
           <ion-icon name="open-outline" slot="start"></ion-icon>
         </button>
       }
+      @if (params().showDownloadButton) {
+        <button class="toolbarButton" (click)="download()" fill="outline">
+          <ion-icon name="download-outline" slot="start"></ion-icon>
+        </button>
+      }
     </div>
   </div>
 </ng-template>

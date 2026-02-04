@@ -15,6 +15,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   starting_page: coerce.number(1),
   /** Show open external button. Default false. */
   show_open_external_button: coerce.boolean(false),
+  /** Show download button. Default false. */
+  show_download_button: coerce.boolean(false),
 }));
 
 @Component({
@@ -47,8 +49,15 @@ export class TmplPdfComponent
   }
 
   public openExternal() {
-    this.parent.handleActions(
+    this.parentContainerComponentRef.handleActions(
       [{ action_id: "open_external", args: [this.value()], trigger: "click" }],
+      this.rowSignal()
+    );
+  }
+
+  public download() {
+    this.parentContainerComponentRef.handleActions(
+      [{ action_id: "save_to_device", args: [this.value()], trigger: "click" }],
       this.rowSignal()
     );
   }
