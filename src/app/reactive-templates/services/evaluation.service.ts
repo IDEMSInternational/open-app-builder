@@ -24,11 +24,12 @@ export class EvaluationService {
 
     // todo: replace appDataEvaluator with more evaluators e.g. localEvaluator, javascriptEvaluator, jsonEvaluator etc.
     // todo: instead of setting execution context here, pass it into all evaluator.evaluate as a parameter, or is context simply the variableStore?
-    this.appDataEvaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
+    const context = this.createExecutionContext(expression, namespace);
+    this.appDataEvaluator.setExecutionContext(context);
 
+    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.itemEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
-    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.appDataEvaluator.evaluate(evaluatedExpression);
 
     return evaluatedExpression as T;
