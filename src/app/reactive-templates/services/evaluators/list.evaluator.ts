@@ -1,7 +1,9 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
+import { VariableStore } from "../../stores/variable-store";
 
 @Injectable({ providedIn: "root" })
 export class ListEvaluator {
+  private variableStore = inject(VariableStore);
   /**
    * Parses the given expression into a structured format.
    * e.g. array format:
@@ -17,6 +19,16 @@ export class ListEvaluator {
    * @returns
    */
   public evaluate(expression: string | number | boolean | any): any {
+    // if the expression is a variable reference e.g. @local.myList, attempt to resolve it from the variable store
+    // first before trying to parse it as a list expression because it will have already been parsed.
+    if (typeof expression === "string" && expression.startsWith("@local.")) {
+      const variableName = expression.replace("@local.", "");
+      const variableValue = this.variableStore.get(variableName);
+      if (variableValue !== undefined) {
+        return variableValue;
+      }
+    }
+
     // Detect array type expression: lines with 'key: ... | key2: ...;' format
     if (typeof expression === "string") {
       // Only attempt structured parsing when the author used ';' as entry separators
