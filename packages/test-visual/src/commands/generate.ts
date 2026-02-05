@@ -8,9 +8,8 @@ import http from "http";
 import logUpdate from "log-update";
 import type { Dexie } from "dexie";
 import { DEXIE_SRC_PATH, paths } from "../config";
-import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
+import { _wait, outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 import { VISUAL_TEST_CONFIG } from "../config/test";
-import { _wait } from "../../../shared/src/utils/async-utils";
 
 type IPageConfig = (typeof VISUAL_TEST_CONFIG)["pageList"][number];
 type IDexieConfig = (typeof VISUAL_TEST_CONFIG)["dexieConfig"];
