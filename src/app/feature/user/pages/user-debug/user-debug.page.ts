@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, Injector, OnInit, signal } from "@angular/core";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
-import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
+import { map, debounceTime, switchMap, startWith, tap, of, from } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
@@ -9,7 +9,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { RxDocument } from "rxdb";
-import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistedMemory";
+import { IPersistedDoc } from "src/app/shared/services/dynamic-data/adapters/persistence/indexeddb.strategy";
 import { AlertController } from "@ionic/angular";
 
 /** Snapshot of persisted memory state for data_list type */
@@ -30,6 +30,8 @@ export class UserDebugPage implements OnInit {
   public contactFields = signal<{ key: string; value: string }[]>([]);
   /** List of protected user contact fields */
   public protectedFields = signal<{ key: string; value: string }[]>([]);
+
+  private dynamicDataService = inject(DynamicDataService);
 
   /** Live state of all dynamic data stored */
   private dynamicDataState = toSignal(this.subscribeToDynamicDataState());
@@ -59,7 +61,6 @@ export class UserDebugPage implements OnInit {
   constructor(
     private fieldService: TemplateFieldService,
     private appDataService: AppDataService,
-    private dynamicDataService: DynamicDataService,
     private localStorageService: LocalStorageService,
     public authService: AuthService,
     private alertCtrl: AlertController
@@ -175,25 +176,46 @@ export class UserDebugPage implements OnInit {
 
   /** Create a subscription that updates with any writeCache db changes and returns full state of cache */
   private subscribeToDynamicDataState() {
-    const writeCache = this.dynamicDataService["writeCache"];
-    const collection = writeCache["collection"];
-    // subscribe to db change event stream to capture changes from multiple tabs
-    return writeCache["db"].$.pipe(
-      debounceTime(50),
-      startWith({}),
-      switchMap(() => collection.find().exec()),
-      map((docs: RxDocument<IPersistedDoc>[]) => {
-        // recreate a snapshot of the entire dynamic db state from saved docs
-        // NOTE - not using existing service state value as that is not kept in sync
-        // when using multiple tabs
-        const state: IDynamicDataState = {};
-        for (const doc of docs) {
-          const { data, flow_name, row_id } = doc;
-          state[flow_name] ??= {};
-          state[flow_name][row_id] = data;
+    // Wait for service to be ready before accessing writeCache
+    return from(this.dynamicDataService.ready()).pipe(
+      switchMap(() => {
+        const writeCache = this.dynamicDataService["writeCache"];
+        if (!writeCache) return of({} as IDynamicDataState);
+
+        const strategy = writeCache["strategy"];
+
+        // Use RxDB strategy if available to capture changes from multiple tabs
+        if (strategy && strategy["collection"] && strategy["db"]) {
+          const collection = strategy["collection"];
+          return strategy["db"].$.pipe(
+            debounceTime(50),
+            startWith({}),
+            switchMap(() => collection.find().exec()),
+            map((docs: RxDocument<IPersistedDoc>[]) => {
+              // recreate a snapshot of the entire dynamic db state from saved docs
+              const state: IDynamicDataState = {};
+              for (const doc of docs) {
+                const { data, flow_name, row_id } = doc;
+                state[flow_name] ??= {};
+                state[flow_name][row_id] = data;
+              }
+              return state;
+            })
+          );
         }
-        return state;
-      })
+
+        // Fallback for other strategies (e.g. native file persistence)
+        // Returns current memory state but won't sync across tabs
+        const state: IDynamicDataState = {};
+        const storedState = writeCache.state || {}; // PersistedState
+        Object.values(storedState).forEach((flowTypeData: any) => {
+          Object.entries(flowTypeData).forEach(([flowName, rows]: [string, any]) => {
+            state[flowName] = rows;
+          });
+        });
+        return of(state);
+      }),
+      startWith({} as IDynamicDataState)
     );
   }
 }
