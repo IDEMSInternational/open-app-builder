@@ -31,11 +31,11 @@
 <!-- Custom toolbar examples here: https://pdfviewer.net/extended-pdf-viewer/custom-toolbar -->
 <ng-template #customToolbar>
   <div id="toolbarViewer">
-    <div [class.invisible]="false" id="toolbarViewerMiddle">
+    <div id="toolbarViewerMiddle">
       <pdf-zoom-out id="zoomOut"></pdf-zoom-out>
       <pdf-zoom-in id="zoomIn"></pdf-zoom-in>
     </div>
-    <div [class.invisible]="false" id="toolbarViewerRight">
+    <div id="toolbarViewerRight">
       @if (params().showOpenExternalButton) {
         <button class="toolbarButton" (click)="openExternal()" fill="outline">
           <ion-icon name="open-outline" slot="start"></ion-icon>
