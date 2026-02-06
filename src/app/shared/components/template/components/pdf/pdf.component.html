@@ -17,7 +17,7 @@
       </ngx-extended-pdf-viewer>
     } @else {
       <div class="error-message">
-        {{ params().compatErrorMessage }}
+        {{ params().compatibilityErrorMessage }}
       </div>
       <ion-button (click)="openExternal()" fill="outline" style="margin-top: 1rem">
         <ion-icon name="open-outline" slot="start"></ion-icon>{{ params().openExternalText }}
@@ -31,9 +31,21 @@
 <!-- Custom toolbar examples here: https://pdfviewer.net/extended-pdf-viewer/custom-toolbar -->
 <ng-template #customToolbar>
   <div id="toolbarViewer">
-    <div [class.invisible]="false" id="toolbarViewerMiddle">
+    <div id="toolbarViewerMiddle">
       <pdf-zoom-out id="zoomOut"></pdf-zoom-out>
       <pdf-zoom-in id="zoomIn"></pdf-zoom-in>
+    </div>
+    <div id="toolbarViewerRight">
+      @if (params().showOpenExternalButton) {
+        <button class="toolbarButton" (click)="openExternal()" fill="outline">
+          <ion-icon name="open-outline" slot="start"></ion-icon>
+        </button>
+      }
+      @if (params().showDownloadButton) {
+        <button class="toolbarButton" (click)="download()" fill="outline">
+          <ion-icon name="download-outline" slot="start"></ion-icon>
+        </button>
+      }
     </div>
   </div>
 </ng-template>

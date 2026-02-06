@@ -8,8 +8,22 @@ ngx-extended-pdf-viewer {
     min-width: 250px !important;
   }
   .toolbarButton {
-    svg {
+    svg,
+    ion-icon {
       color: var(--ion-color-primary-contrast) !important;
+    }
+
+    ion-icon {
+      height: 20px;
+      width: 20px;
+    }
+
+    // Remove default styling for hover and focus
+    &:hover {
+      background-color: transparent !important;
+    }
+    &:focus {
+      border: none !important;
     }
   }
 }
