@@ -21,9 +21,14 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     min-width: var(--combo-box-min-width, 328px);
   }
   &.no-value {
-    background: inherit;
-    border: 1px solid var(--ion-color-gray-500);
+    background: var(--ion-color-primary-50);
+    border: 1px solid var(--ion-color-primary-300);
     opacity: 0.9;
+
+    &.placeholder-style {
+      color: var(--ion-color-primary-300);
+      font-weight: var(--font-weight-medium);
+    }
   }
   &.with-value {
     background: var(--ion-color-primary-100);
