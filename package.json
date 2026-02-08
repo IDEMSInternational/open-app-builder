@@ -13,6 +13,7 @@
     "ng": "ng",
     "start": "yarn prepare && ng serve --open",
     "start:local": "yarn prepare && concurrently --kill-others --raw  \"ng serve --open\" \"yarn workflow sync_local\"",
+    "start:docker": "yarn prepare && ng serve --host 0.0.0.0 --disable-host-check",
     "prepare": "node .husky/prepare.js && yarn workflow populate_src_assets",
     "build": "yarn prepare && yarn workflow optimise_build && ng build --configuration=production",
     "compodoc:generate": "compodoc --tsconfig tsconfig.docs.json --theme material --assetsFolder 'documentation/docs/assets' --output documentation/docs/generated --disablePrivate --disableLifeCycleHooks",
