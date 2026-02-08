@@ -30,7 +30,7 @@ export default program
  * Main Methods
  *************************************************************************************/
 
-export async function importRepo(remoteTarget: string) {
+export async function importRepo(remoteTarget: string, options: { yes?: boolean } = {}) {
   // Clone to temp dir for analysis
   console.log(chalk.gray("Checking Repo..."));
   // const tmpDir = resolve(DEPLOYMENTS_PATH, );
@@ -47,8 +47,15 @@ export async function importRepo(remoteTarget: string) {
     rmSync(tmpDir, { recursive: true, force: true });
     process.exit(0);
   }
-  const nameInput = await promptInput("Specify a name for the deployment", name);
-  const deploymentName = nameInput.replace(/ /g, "_").toLowerCase();
+
+  let deploymentName = name.replace(/ /g, "_").toLowerCase();
+
+  if (options.yes) {
+    console.log(chalk.gray(`Using default name: ${deploymentName}`));
+  } else {
+    const nameInput = await promptInput("Specify a name for the deployment", name);
+    deploymentName = nameInput.replace(/ /g, "_").toLowerCase();
+  }
 
   const targetDir = resolve(DEPLOYMENTS_PATH, deploymentName);
   if (fs.existsSync(targetDir)) {
