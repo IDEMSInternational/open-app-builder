@@ -49,12 +49,14 @@ export async function importRepo(remoteTarget: string, options: { yes?: boolean 
   }
 
   let deploymentName = name.replace(/ /g, "_").toLowerCase();
+  // Sanitize deploymentName to prevent path traversal
+  deploymentName = deploymentName.replace(/[^a-z0-9_]/g, "");
 
   if (options.yes) {
     console.log(chalk.gray(`Using default name: ${deploymentName}`));
   } else {
     const nameInput = await promptInput("Specify a name for the deployment", name);
-    deploymentName = nameInput.replace(/ /g, "_").toLowerCase();
+    deploymentName = nameInput.replace(/ /g, "_").toLowerCase().replace(/[^a-z0-9_]/g, "");
   }
 
   const targetDir = resolve(DEPLOYMENTS_PATH, deploymentName);
