@@ -14,7 +14,7 @@ class DeploymentProvider {
     return new DeploymentSet().setActiveDeployment(name);
   }
 
-  async import(options: { yes?: boolean } = {}, remoteRepo?: string) {
+  async import(options: { acceptDefaults?: boolean } = {}, remoteRepo?: string) {
     if (!remoteRepo) {
       remoteRepo = await promptInput("Specify url to remote git repo");
     }

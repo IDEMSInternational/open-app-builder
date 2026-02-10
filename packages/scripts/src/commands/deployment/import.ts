@@ -30,7 +30,7 @@ export default program
  * Main Methods
  *************************************************************************************/
 
-export async function importRepo(remoteTarget: string, options: { yes?: boolean } = {}) {
+export async function importRepo(remoteTarget: string, options: { acceptDefaults?: boolean } = {}) {
   // Clone to temp dir for analysis
   console.log(chalk.gray("Checking Repo..."));
   // const tmpDir = resolve(DEPLOYMENTS_PATH, );
@@ -52,7 +52,7 @@ export async function importRepo(remoteTarget: string, options: { yes?: boolean 
   // Sanitize deploymentName to prevent path traversal
   deploymentName = deploymentName.replace(/[^a-z0-9_]/g, "");
 
-  if (options.yes) {
+  if (options.acceptDefaults) {
     console.log(chalk.gray(`Using default name: ${deploymentName}`));
   } else {
     const nameInput = await promptInput("Specify a name for the deployment", name);

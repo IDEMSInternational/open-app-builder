@@ -60,7 +60,7 @@ const workflows: IDeploymentWorkflows = {
             description: "Private key for decryption",
           },
           {
-            flags: "-y, --yes",
+            flags: "-y, --acceptDefaults",
             description: "Automatically confirm prompts using defaults",
           },
         ],
@@ -72,14 +72,14 @@ const workflows: IDeploymentWorkflows = {
               if (options.privateKey) {
                 process.env.DEPLOYMENT_PRIVATE_KEY = options.privateKey;
               }
-              // Pass options (including yes flag) to the task
+              // Pass options (including acceptDefaults flag) to the task
               return tasks.deployment.import(options, args[0]);
             },
           },
           {
             name: "set deployment",
             function: async ({ tasks, workflow, options }) => {
-              let shouldSet = options.yes;
+              let shouldSet = options.acceptDefaults;
               // Only prompt if -y was not provided
               if (shouldSet === undefined) {
                 shouldSet = await tasks.userInput.promptConfirmation(
