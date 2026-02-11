@@ -1,0 +1,46 @@
+.row-debugger {
+  --color-debug: #888888;
+  position: relative;
+  outline-color: var(--color-debug);
+  outline-style: dashed;
+  outline-width: 1px;
+  min-height: 44px;
+  padding-top: 16px;
+
+  .info-summary {
+    z-index: 999;
+    color: var(--color-debug);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 12px;
+
+    .type {
+      font-weight: bold;
+    }
+
+    .toggle-info {
+      color: var(--color-debug);
+      background-color: inherit;
+      border: none;
+      padding: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
+  .info {
+    color: var(--color-debug);
+    padding: 4px;
+
+    table {
+      width: 100%;
+      text-align: left;
+    }
+  }
+}
