@@ -59,15 +59,20 @@ export class TmplAudioComponent
    * @ignore
    * */
   progress = signal(0);
+  /** Duration in seconds, set when Howl has loaded the audio file */
+  durationSeconds = signal(0);
   /**
    * Progress in seconds
    * @ignore
    * */
   progressSeconds = computed(() => {
-    return (this.progress() / 100) * this.player?.duration();
+    const duration = this.durationSeconds() || 0;
+    return (this.progress() / 100) * duration;
   });
   /** @ignore */
   hasStarted: boolean = false;
+  /** True when playback has reached the end (so we show duration instead of 00:00). */
+  hasEnded = signal(false);
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
   /** Track any opened transcript modal to close on destroy */
@@ -132,7 +137,11 @@ export class TmplAudioComponent
     if (src) {
       this.player = new Howl({
         src: [src],
+        onload: () => {
+          this.durationSeconds.set(this.player.duration());
+        },
         onplay: () => {
+          this.hasEnded.set(false);
           this.startProgressTracker();
           if (!this.hasStarted) {
             this.hasStarted = true;
@@ -142,6 +151,7 @@ export class TmplAudioComponent
         },
         onend: () => {
           this.isPlaying = false;
+          this.hasEnded.set(true);
           this.progress.set(0);
           this.startProgressTracker();
           this.triggerActions("audio_end");

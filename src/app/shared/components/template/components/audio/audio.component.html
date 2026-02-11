@@ -44,14 +44,13 @@
             {{ progressSeconds() * 1000 | date: "mm:ss" }}
           </div>
           <div class="time-value">
-            {{ !player ? "00:00" : (player?.duration() * 1000 | date: "mm:ss") }}
+            {{ durationSeconds() * 1000 | date: "mm:ss" }}
           </div>
         } @else {
           <div class="time-value">
             {{
-              hasStarted
-                ? (progressSeconds() * 1000 | date: "mm:ss")
-                : (player?.duration() * 1000 | date: "mm:ss")
+              (hasEnded() || !hasStarted ? durationSeconds() : progressSeconds()) * 1000
+                | date: "mm:ss"
             }}
           </div>
         }
