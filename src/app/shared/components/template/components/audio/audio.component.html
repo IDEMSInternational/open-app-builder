@@ -1,12 +1,12 @@
-<div class="container-player" [attr.data-variant]="params.variant">
-  @if (params.title) {
+<div class="container-player" [attr.data-variant]="params().variant">
+  @if (params().title) {
     <div class="top-row">
-      <h3>{{ params.title }}</h3>
-      @if (params.variant.includes("large") && params.showInfoButton) {
+      <h3>{{ params().title }}</h3>
+      @if (params().variant.includes("large") && showInfoButton()) {
         <div class="info-icon-container">
           <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
-            @if (params.infoIconAsset) {
-              <ion-icon slot="icon-only" [src]="params.infoIconAsset | plhAsset"></ion-icon>
+            @if (params().infoIconAsset) {
+              <ion-icon slot="icon-only" [src]="params().infoIconAsset | plhAsset"></ion-icon>
             } @else {
               <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
             }
@@ -17,16 +17,16 @@
   }
   <!-- Enforce LTR language direction for player controls,see https://github.com/IDEMSInternational/open-app-builder/issues/2617 -->
   <div class="second-row" dir="ltr">
-    @if (params.variant.includes("compact") && params.showInfoButton) {
+    @if (params().variant.includes("compact") && showInfoButton()) {
       <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
-        @if (params.infoIconAsset) {
-          <ion-icon slot="icon-only" [src]="params.infoIconAsset | plhAsset"></ion-icon>
+        @if (params().infoIconAsset) {
+          <ion-icon slot="icon-only" [src]="params().infoIconAsset | plhAsset"></ion-icon>
         } @else {
           <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
         }
       </ion-button>
     }
-    <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">
+    <div class="progress-block" [class.disabled]="params().rangeBarDisabled || !player">
       <ion-range
         #range
         class="audio-range"
@@ -39,7 +39,7 @@
         (touchend)="this.isPlaying ? player.play() : player.pause()"
       ></ion-range>
       <div class="time">
-        @if (params.variant.includes("large")) {
+        @if (params().variant.includes("large")) {
           <div class="time-value">
             {{ progressSeconds() * 1000 | date: "mm:ss" }}
           </div>
@@ -60,22 +60,22 @@
     <div class="controls">
       <div class="rewind">
         <ion-icon
-          [name]="params.forwardIconAsset"
-          [src]="params.forwardIconAsset"
+          [name]="resolvedForwardIconAsset()"
+          [src]="resolvedForwardIconAsset()"
           (click)="skipBackward()"
         ></ion-icon>
       </div>
       <ion-button class="btn-play" (click)="togglePlaying()" [disabled]="!player">
         <ion-icon
-          [name]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
-          [src]="!isPlaying ? params.playIconAsset : params.pauseIconAsset"
+          [name]="!isPlaying ? resolvedPlayIconAsset() : resolvedPauseIconAsset()"
+          [src]="!isPlaying ? resolvedPlayIconAsset() : resolvedPauseIconAsset()"
           [class.play-icon]="!isPlaying"
         ></ion-icon>
       </ion-button>
       <div class="forward">
         <ion-icon
-          [name]="params.forwardIconAsset"
-          [src]="params.forwardIconAsset"
+          [name]="resolvedForwardIconAsset()"
+          [src]="resolvedForwardIconAsset()"
           (click)="skipForward()"
         ></ion-icon>
       </div>
