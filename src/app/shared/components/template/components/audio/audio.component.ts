@@ -69,9 +69,9 @@ export class TmplAudioComponent
     const duration = this.durationSeconds() || 0;
     return (this.progress() / 100) * duration;
   });
-  /** @ignore */
-  hasStarted: boolean = false;
-  /** True when playback has reached the end (so we show duration instead of 00:00). */
+  /** True once playback has started at least once */
+  hasStarted = signal(false);
+  /** True when playback has reached the end */
   hasEnded = signal(false);
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
@@ -143,8 +143,8 @@ export class TmplAudioComponent
         onplay: () => {
           this.hasEnded.set(false);
           this.startProgressTracker();
-          if (!this.hasStarted) {
-            this.hasStarted = true;
+          if (!this.hasStarted()) {
+            this.hasStarted.set(true);
             this.triggerActions("audio_first_start");
           }
           this.triggerActions("audio_play");

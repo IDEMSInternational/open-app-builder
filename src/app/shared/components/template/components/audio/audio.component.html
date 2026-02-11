@@ -49,7 +49,7 @@
         } @else {
           <div class="time-value">
             {{
-              (hasEnded() || !hasStarted ? durationSeconds() : progressSeconds()) * 1000
+              (hasEnded() || !hasStarted() ? durationSeconds() : progressSeconds()) * 1000
                 | date: "mm:ss"
             }}
           </div>
