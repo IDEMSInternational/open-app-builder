@@ -82,12 +82,8 @@ export class EvaluationService {
           return;
         }
 
-        if (cursor[segment] === null) {
+        if (!cursor[segment] || typeof cursor[segment] !== "object") {
           cursor[segment] = {};
-        } else if (typeof cursor[segment] !== "object") {
-          // Existing value is a non-object (primitive, string, array, etc.).
-          // Do not overwrite it; stop processing this dependency path.
-          return;
         }
 
         cursor = cursor[segment];
