@@ -15,7 +15,7 @@ export class EvaluationService {
     private variableStore: VariableStore,
     private namespaceService: NamespaceService,
     private listEvaluator: ListEvaluator,
-    private itemEvaluator: LoopItemEvaluator,
+    private loopItemEvaluator: LoopItemEvaluator,
     private namespaceEvaluator: NamespaceEvaluator
   ) {}
 
@@ -28,7 +28,7 @@ export class EvaluationService {
     this.appDataEvaluator.setExecutionContext(context);
 
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.itemEvaluator.evaluate(evaluatedExpression, namespace);
+    evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
     evaluatedExpression = this.appDataEvaluator.evaluate(evaluatedExpression);
 
@@ -55,11 +55,39 @@ export class EvaluationService {
       .map((dependency) => this.namespaceService.getFullName(namespace, dependency));
   }
 
+  // Adds dependencies to the execution context by breaking down the dot notation
+  // e.g. outerLoop.key_1.innerLoopData becomes
+  // context = {
+  //   local: {
+  //     outerLoop: {
+  //       key_1: {
+  //         innerLoopData: value
+  //       }
+  //     }
+  //   }
+  // }
   private createExecutionContext(expression: string | number | boolean, namespace: string): any {
     const context = { local: {} };
 
     this.getDependencies(expression, namespace).forEach((dependencyName) => {
-      context.local[dependencyName] = this.variableStore.get(dependencyName);
+      const value = this.variableStore.get(dependencyName);
+      const path = dependencyName.split(".");
+      let cursor = context.local as Record<string, any>;
+
+      path.forEach((segment, index) => {
+        const isLeaf = index === path.length - 1;
+
+        if (isLeaf) {
+          cursor[segment] = value;
+          return;
+        }
+
+        if (!cursor[segment] || typeof cursor[segment] !== "object") {
+          cursor[segment] = {};
+        }
+
+        cursor = cursor[segment];
+      });
     });
 
     return context;
