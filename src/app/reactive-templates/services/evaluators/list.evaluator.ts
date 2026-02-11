@@ -1,9 +1,7 @@
-import { inject, Injectable } from "@angular/core";
-import { VariableStore } from "../../stores/variable-store";
+import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: "root" })
 export class ListEvaluator {
-  private variableStore = inject(VariableStore);
   /**
    * Parses the given expression into a structured format.
    * e.g. array format:
