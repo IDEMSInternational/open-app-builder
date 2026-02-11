@@ -82,7 +82,7 @@ export class EvaluationService {
           return;
         }
 
-        if (cursor[segment] == null) {
+        if (cursor[segment] === null) {
           cursor[segment] = {};
         } else if (typeof cursor[segment] !== "object") {
           // Existing value is a non-object (primitive, string, array, etc.).
