@@ -1,7 +1,7 @@
-import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
+import { ContextCreatorService } from "./context-creator.service";
 import { extractDynamicEvaluators } from "packages/data-models/functions";
 import { ListEvaluator } from "./evaluators/list.evaluator";
 import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
@@ -12,8 +12,8 @@ export class EvaluationService {
   private appDataEvaluator = new AppDataEvaluator();
 
   constructor(
-    private variableStore: VariableStore,
     private namespaceService: NamespaceService,
+    private contextCreator: ContextCreatorService,
     private listEvaluator: ListEvaluator,
     private loopItemEvaluator: LoopItemEvaluator,
     private namespaceEvaluator: NamespaceEvaluator
@@ -67,29 +67,6 @@ export class EvaluationService {
   //   }
   // }
   private createExecutionContext(expression: string | number | boolean, namespace: string): any {
-    const context = { local: {} };
-
-    this.getDependencies(expression, namespace).forEach((dependencyName) => {
-      const value = this.variableStore.get(dependencyName);
-      const path = dependencyName.split(".");
-      let cursor = context.local as Record<string, any>;
-
-      path.forEach((segment, index) => {
-        const isLeaf = index === path.length - 1;
-
-        if (isLeaf) {
-          cursor[segment] = value;
-          return;
-        }
-
-        if (!cursor[segment] || typeof cursor[segment] !== "object") {
-          cursor[segment] = {};
-        }
-
-        cursor = cursor[segment];
-      });
-    });
-
-    return context;
+    return this.contextCreator.createContext(this.getDependencies(expression, namespace));
   }
 }
