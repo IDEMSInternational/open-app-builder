@@ -4,7 +4,7 @@
   <h3>Auth</h3>
   @if(authService.provider.authUser(); as authUser){
 
-  <ion-button (click)="authService.provider.signOut()"> Sign out </ion-button>
+  <ion-button (click)="authService.signOut()"> Sign out </ion-button>
   <code style="margin-left: 1rem">{{authUser.uid}}</code>
 
   <!-- Multiple query -->
@@ -158,6 +158,6 @@
 
   } @else{
   <p>Users need to be signed in to firebase to use shared data</p>
-  <ion-button (click)="authService.provider.signIn('google.com')"> Sign in </ion-button>
+  <ion-button (click)="authService.signIn('google.com')"> Sign in </ion-button>
   }
 </ion-content>

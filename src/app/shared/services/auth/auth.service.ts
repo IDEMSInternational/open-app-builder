@@ -5,7 +5,7 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { AuthProviderBase } from "./providers/base.auth";
 import { AsyncServiceBase } from "../asyncService.base";
 import { getAuthProvider } from "./providers";
-import { IAuthUser } from "./types";
+import { IAuthUser, ISignInProvider } from "./types";
 import { filter, firstValueFrom, map } from "rxjs";
 import { TemplateService } from "../../components/template/services/template.service";
 import { toObservable } from "@angular/core/rxjs-interop";
@@ -60,6 +60,30 @@ export class AuthService extends AsyncServiceBase {
         console.log("[Auth] Restore Profiles", profiles);
       }
     });
+  }
+
+  /**
+   * Sign in with the given sign in provider (e.g. "google.com" or "apple.com").
+   * Wraps the auth provider's (e.g. Firebase) signIn method and syncs auth state to storage
+   * */
+  public async signIn(providerId: ISignInProvider) {
+    const result = await this.provider.signIn(providerId);
+    this.syncStorageToAuthState();
+    return result;
+  }
+
+  /** Sign out. Wraps the provider's signOut and syncs auth state to storage */
+  public async signOut() {
+    const result = await this.provider.signOut();
+    this.syncStorageToAuthState();
+    return result;
+  }
+
+  /** Delete the current account. Wraps the provider's deleteAccount and syncs auth state to storage */
+  public async deleteAccount() {
+    const result = await this.provider.deleteAccount();
+    this.syncStorageToAuthState();
+    return result;
   }
 
   private get config() {
@@ -123,10 +147,10 @@ export class AuthService extends AsyncServiceBase {
       auth: async ({ args }) => {
         const [actionId] = args;
         const childActions = {
-          sign_in_google: async () => await this.provider.signIn("google.com"),
-          sign_in_apple: async () => await this.provider.signIn("apple.com"),
-          sign_out: async () => await this.provider.signOut(),
-          delete_account: async () => await this.provider.deleteAccount(),
+          sign_in_google: () => this.signIn("google.com"),
+          sign_in_apple: () => this.signIn("apple.com"),
+          sign_out: () => this.signOut(),
+          delete_account: () => this.deleteAccount(),
         };
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
@@ -138,9 +162,7 @@ export class AuthService extends AsyncServiceBase {
        * @deprecated since v0.16.27
        * Use `auth: sign_in_google` instead
        * */
-      google_auth: async () => {
-        return await this.provider.signIn("google.com");
-      },
+      google_auth: () => this.signIn("google.com"),
     });
   }
 
@@ -151,6 +173,21 @@ export class AuthService extends AsyncServiceBase {
     this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
     this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
     this.localStorageService.setProtected("AUTH_USER_PICTURE", auth_user.picture || "");
+  }
+
+  /**
+   * Sync localStorage auth fields to current provider auth state. Used internally by
+   * signIn() and signOut() so that following logic (e.g. emit: force_reprocess) sees
+   * updated @fields._auth_user_id in the same turn. Public for edge cases that need to
+   * sync without calling signIn/signOut (e.g. after provider state changes elsewhere).
+   */
+  public syncStorageToAuthState() {
+    const authUser = this.provider.authUser();
+    if (authUser) {
+      this.addStorageEntry(authUser);
+    } else {
+      this.clearUserData();
+    }
   }
 
   private clearUserData() {
