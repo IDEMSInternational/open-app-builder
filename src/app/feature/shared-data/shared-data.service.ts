@@ -106,7 +106,7 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   public async createSharedCollection(config: ISharedDataCollectionConfig = {}) {
-    const _created_by = this.authService.provider.authUser()?.uid;
+    const _created_by = this.authService.authUser()?.uid;
     const id = generateUUID();
     const meta: ISharedDataCollectionMetadata = {
       _created_by,
@@ -124,7 +124,7 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   public async deleteSharedCollection(id: string) {
-    const auth_id = this.authService.provider.authUser()?.uid;
+    const auth_id = this.authService.authUser()?.uid;
     // TODO - handle case where changes need to be synced to users
     const latest = await firstValueFrom(
       this.provider.querySingle$({ auth_id, id, since: undefined })
@@ -163,7 +163,7 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   public async addCollectionMember(id: string, memberId: string, role: "member" | "admin") {
-    const auth_id = this.authService.provider.authUser()?.uid;
+    const auth_id = this.authService.authUser()?.uid;
     const currentDocQuery = this.provider.querySingle$({ auth_id, id, since: undefined });
     const currentDoc = await firstValueFrom(currentDocQuery);
     if (!currentDoc.members.includes(memberId)) {
@@ -178,7 +178,7 @@ export class SharedDataService extends AsyncServiceBase {
   }
 
   public async removeCollectionMember(id: string, memberId: string, role: "member" | "admin") {
-    const auth_id = this.authService.provider.authUser()?.uid;
+    const auth_id = this.authService.authUser()?.uid;
     const currentDocQuery = this.provider.querySingle$({ auth_id, id, since: undefined });
     const currentDoc = await firstValueFrom(currentDocQuery);
     if (currentDoc.members.includes(memberId) && memberId !== currentDoc._created_by) {
@@ -262,7 +262,7 @@ export class SharedDataService extends AsyncServiceBase {
         // 2. With the initial cache docs retrieved create server query for newer
         const lastUpdate = cacheDocs[0]?._updated_at;
 
-        const auth_id = this.authService.provider.authUser()?.uid;
+        const auth_id = this.authService.authUser()?.uid;
         const queryParams: SharedDataQueryParams = { id, since: lastUpdate, auth_id };
 
         // 3. create a server query either for a specific doc or for all docs in a collection

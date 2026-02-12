@@ -2,7 +2,7 @@
   <h2>Shared Data</h2>
 
   <h3>Auth</h3>
-  @if(authService.provider.authUser(); as authUser){
+  @if(authService.authUser(); as authUser){
 
   <ion-button (click)="authService.signOut()"> Sign out </ion-button>
   <code style="margin-left: 1rem">{{authUser.uid}}</code>

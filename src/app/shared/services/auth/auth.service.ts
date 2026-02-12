@@ -18,8 +18,10 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
   providedIn: "root",
 })
 export class AuthService extends AsyncServiceBase {
-  /** Auth provider used */
-  public provider: AuthProviderBase;
+  private provider: AuthProviderBase;
+
+  /** Current auth user (mirrors provider’s signal so callers don’t need the provider). */
+  public authUser: AuthProviderBase["authUser"];
 
   /** List of profiles with same auth id for restore (first device login only) */
   public restoreProfiles = signal<IServerUser[]>([]);
@@ -36,6 +38,7 @@ export class AuthService extends AsyncServiceBase {
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
+    this.authUser = this.provider.authUser;
     this.registerInitFunction(this.initialise);
     effect(async () => {
       const authUser = this.provider.authUser();
