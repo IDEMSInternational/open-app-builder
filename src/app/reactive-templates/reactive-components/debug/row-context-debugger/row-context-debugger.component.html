@@ -1,0 +1,14 @@
+<div class="debugger">
+  <div class="header">
+    <span>context</span>
+    <button class="toggle-button" (click)="toggle()">+</button>
+  </div>
+  @if (show()) {
+    <div class="info">
+      <p>dependencies</p>
+      <pre>{{ dependencies() | json }}</pre>
+      <p>context</p>
+      <pre>{{ context() | json }}</pre>
+    </div>
+  }
+</div>

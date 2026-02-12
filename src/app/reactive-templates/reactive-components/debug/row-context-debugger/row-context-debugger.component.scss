@@ -1,0 +1,27 @@
+.debugger {
+  --color-debug: #888888;
+  color: var(--color-debug);
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+
+  .header {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  .toggle-button {
+    margin-left: auto;
+    background-color: inherit;
+    color: var(--template-debug-color);
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .info {
+    width: 100%;
+  }
+}
