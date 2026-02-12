@@ -24,12 +24,15 @@ export class RowDebuggerComponent {
 
   public params = computed(() => {
     const params = this.row()?.params as Parameters | undefined;
-    if (!params) return [];
+    if (!params) return {} as Record<string, unknown>;
 
-    return (Object.values(params) as Parameter<any>[]).map((param) => ({
-      name: param.name,
-      value: param.value(),
-    }));
+    return (Object.values(params) as Parameter<any>[]).reduce<Record<string, unknown>>(
+      (acc, param) => {
+        acc[param.name] = param.value();
+        return acc;
+      },
+      {}
+    );
   });
 
   public toggleInfo() {
