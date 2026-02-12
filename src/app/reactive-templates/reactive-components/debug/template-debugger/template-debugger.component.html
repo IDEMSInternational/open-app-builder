@@ -1,5 +1,20 @@
 <div class="template-debugger">
-  <span class="name">{{ templateName() }}</span>
-  <a class="path" [href]="template()._source.url">{{ template()._source.url }}</a>
-  <button class="toggle-all-info" (click)="debug.toggleAllInfo()">+</button>
+  <div class="template-summary">
+    <span class="name">{{ templateName() }}</span>
+    <a class="path" [href]="template()._source.url">{{ template()._source.url }}</a>
+    <button class="toggle-button toggle-all-info" (click)="debug.toggleAllInfo()">+</button>
+  </div>
+
+  <div class="variable-store-info">
+    <div class="header">
+      <span>variable store</span>
+      <button class="toggle-button toggle-variable-store" (click)="toggleVariableStore()">+</button>
+    </div>
+    @if (showVariableStore()) {
+      <pre>
+                {{ variableStore.getAll() | json }}
+            </pre
+      >
+    }
+  </div>
 </div>

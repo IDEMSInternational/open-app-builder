@@ -2,7 +2,7 @@
   --template-debug-color: #888888;
   color: var(--template-debug-color);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 4px;
   font-size: 16px;
   min-height: 44px;
@@ -12,11 +12,29 @@
   outline-color: #888888;
   padding: 4px;
 
-  .name {
-    font-weight: bold;
+  .template-summary {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    .name {
+      font-weight: bold;
+    }
   }
 
-  .toggle-all-info {
+  .variable-store-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    .header {
+      margin-left: auto;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+  }
+
+  .toggle-button {
     font-size: 16px;
     margin-left: auto;
     background-color: inherit;
