@@ -144,10 +144,25 @@ interface IDeploymentCoreConfig {
     app_id?: string;
     /** Play store app name, e.g. "Example App" */
     app_name?: string;
-    /** Location of source android assets (splash and launcher source images). */
-    icon_asset_path?: string;
+    /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and splash. */
+    logo_asset_path?: string;
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
+    logo_background_color?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: separate splash image for asset-based generation.
+     */
     splash_asset_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: separate icon image for asset-based generation.
+     */
+    icon_asset_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: adaptive icon foreground (asset-based only).
+     */
     icon_asset_foreground_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: adaptive icon background (asset-based only).
+     */
     icon_asset_background_path?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
@@ -171,6 +186,10 @@ interface IDeploymentCoreConfig {
     app_id?: string;
     /** App Store app name, e.g. "Example App" */
     app_name?: string;
+    /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and launch screen. */
+    logo_asset_path?: string;
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
+    logo_background_color?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
   };
