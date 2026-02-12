@@ -42,15 +42,13 @@ export class AuthService extends AsyncServiceBase {
     this.registerInitFunction(this.initialise);
     effect(async () => {
       const authUser = this.provider.authUser();
+      this.syncStorageToAuthState();
       if (authUser) {
-        this.addStorageEntry(authUser);
         // perform immediate sync if user signed in to ensure data backed up
         await this.serverService.syncUserData();
         await this.checkForUserRestore(authUser);
       } else {
-        // If signed out or no auth user reset previous data and return
         this.restoreProfiles.set([]);
-        this.clearUserData();
       }
     });
     // expose restore profile data to authoring via `app_auth_profiles` internal collection
@@ -101,11 +99,7 @@ export class AuthService extends AsyncServiceBase {
     }
     this.registerTemplateActionHandlers();
 
-    // Explicitly set storage entry to ensure available for initial render by end of init
-    const authUser = this.provider.authUser();
-    if (authUser) {
-      this.addStorageEntry(authUser);
-    }
+    this.syncStorageToAuthState();
 
     if (this.config.enforceLoginTemplate) {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
@@ -179,10 +173,9 @@ export class AuthService extends AsyncServiceBase {
   }
 
   /**
-   * Sync localStorage auth fields to current provider auth state. Used internally by
-   * signIn() and signOut() so that following logic (e.g. emit: force_reprocess) sees
-   * updated @fields._auth_user_id in the same turn. Public for edge cases that need to
-   * sync without calling signIn/signOut (e.g. after provider state changes elsewhere).
+   * Sync localStorage auth fields to current provider auth state. Used explicitly as well as in effect
+   * to avoid race conditions between action list and auth state change.
+   * See https://github.com/IDEMSInternational/open-app-builder/pull/3328
    */
   public syncStorageToAuthState() {
     const authUser = this.provider.authUser();
