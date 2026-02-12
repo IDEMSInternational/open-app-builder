@@ -150,22 +150,22 @@ export class AuthService extends AsyncServiceBase {
       auth: async ({ args }) => {
         const [actionId] = args;
         const childActions = {
-          sign_in_google: async () => await this.signIn("google.com"),
-          sign_in_apple: async () => await this.signIn("apple.com"),
-          sign_out: async () => await this.signOut(),
-          delete_account: async () => await this.deleteAccount(),
+          sign_in_google: () => this.signIn("google.com"),
+          sign_in_apple: () => this.signIn("apple.com"),
+          sign_out: () => this.signOut(),
+          delete_account: () => this.deleteAccount(),
         };
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
           return;
         }
-        return await childActions[actionId]();
+        return childActions[actionId]();
       },
       /**
        * @deprecated since v0.16.27
        * Use `auth: sign_in_google` instead
        * */
-      google_auth: () => this.signIn("google.com"),
+      google_auth: async () => await this.signIn("google.com"),
     });
   }
 
