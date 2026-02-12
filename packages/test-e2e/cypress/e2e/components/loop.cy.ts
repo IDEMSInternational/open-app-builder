@@ -214,4 +214,54 @@ describe("Loop Component", () => {
           .should("contain", "Is last: true");
       });
   });
+
+  it("Loop includes a nested loop", () => {
+    cy.getDataTest("outerLoop.key_1")
+      .should("exist")
+      .within(() => {
+        cy.getDataTest("outerLoop.key_1.outerKeyText")
+          .should("exist")
+          .should("contain", "key: key_1");
+
+        cy.getDataTest("outerLoop.key_1.innerLoop.inner_key_1.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_1");
+
+        cy.getDataTest("outerLoop.key_1.innerLoop.inner_key_2.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_2");
+      });
+
+    cy.getDataTest("outerLoop.key_2")
+      .should("exist")
+      .within(() => {
+        cy.getDataTest("outerLoop.key_2.outerKeyText")
+          .should("exist")
+          .should("contain", "key: key_2");
+
+        cy.getDataTest("outerLoop.key_2.innerLoop.inner_key_1.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_1");
+
+        cy.getDataTest("outerLoop.key_2.innerLoop.inner_key_2.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_2");
+      });
+
+    cy.getDataTest("outerLoop.key_3")
+      .should("exist")
+      .within(() => {
+        cy.getDataTest("outerLoop.key_3.outerKeyText")
+          .should("exist")
+          .should("contain", "key: key_3");
+
+        cy.getDataTest("outerLoop.key_3.innerLoop.inner_key_1.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_1");
+
+        cy.getDataTest("outerLoop.key_3.innerLoop.inner_key_2.innerKeyText")
+          .should("exist")
+          .should("contain", "key: inner_key_2");
+      });
+  });
 });
