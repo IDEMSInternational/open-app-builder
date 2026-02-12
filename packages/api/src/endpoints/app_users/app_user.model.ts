@@ -24,4 +24,7 @@ export class AppUser extends Model<InferAttributes<AppUser>, InferCreationAttrib
 
   @Column({ type: DataType.JSONB })
   dynamic_data: any;
+
+  @Column({ type: DataType.DATE })
+  deletion_requested_at: Date;
 }
