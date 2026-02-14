@@ -10,12 +10,12 @@ on:
     - cron: '38 11 * * *'
   push:
     branches: 
-      - "main"
+      - "master"
       - "staging"
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -72,7 +72,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # Tag with "latest" only when pushing to main
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/master' }}
             
             # Tag with "staging" when pushing to the staging branch
             type=raw,value=staging,enable=${{ github.ref == 'refs/heads/staging' }}
