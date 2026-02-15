@@ -12,11 +12,12 @@ WORKDIR /app
 # Enable Corepack for Yarn Berry support
 RUN corepack enable
 
-# Copy the entire project context into the container
-COPY . .
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY packages/ ./packages/
+COPY .yarn/ ./.yarn/
 
-# Install all dependencies (including devDependencies for ts-node/building)
 RUN yarn install --immutable
 
-# Expose the standard development ports
+COPY . .
+
 EXPOSE 4200 8100
