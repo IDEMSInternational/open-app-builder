@@ -23,7 +23,7 @@ export class AuthActionFactory {
       console.error(`[AUTH] - No action, "${actionId}"`);
       return;
     }
-    return childActions[actionId]();
+    return await childActions[actionId]();
   };
 
   /**
