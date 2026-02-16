@@ -1,5 +1,4 @@
 import { effect, Injectable, Injector, signal } from "@angular/core";
-import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { AuthProviderBase } from "./providers/base.auth";
@@ -27,7 +26,6 @@ export class AuthService extends AsyncServiceBase {
   public restoreProfiles = signal<IServerUser[]>([]);
 
   constructor(
-    private templateActionRegistry: TemplateActionRegistry,
     private localStorageService: LocalStorageService,
     private deploymentService: DeploymentService,
     private injector: Injector,
@@ -97,7 +95,6 @@ export class AuthService extends AsyncServiceBase {
     } catch (error) {
       console.error("[Auth] Provider initialisation failed:", error);
     }
-    this.registerTemplateActionHandlers();
 
     this.syncStorageToAuthState();
 
@@ -137,30 +134,6 @@ export class AuthService extends AsyncServiceBase {
     const authUser$ = toObservable(this.provider.authUser, { injector: this.injector });
     await firstValueFrom(authUser$.pipe(filter((value: IAuthUser | null) => !!value)));
     await modal.dismiss();
-  }
-
-  private registerTemplateActionHandlers() {
-    this.templateActionRegistry.register({
-      auth: async ({ args }) => {
-        const [actionId] = args;
-        const childActions = {
-          sign_in_google: () => this.signIn("google.com"),
-          sign_in_apple: () => this.signIn("apple.com"),
-          sign_out: () => this.signOut(),
-          delete_account: () => this.deleteAccount(),
-        };
-        if (!(actionId in childActions)) {
-          console.error(`[AUTH] - No action, "${actionId}"`);
-          return;
-        }
-        return childActions[actionId]();
-      },
-      /**
-       * @deprecated since v0.16.27
-       * Use `auth: sign_in_google` instead
-       * */
-      google_auth: async () => await this.signIn("google.com"),
-    });
   }
 
   /** Keep id of auth user info in contact fields for db lookup*/
