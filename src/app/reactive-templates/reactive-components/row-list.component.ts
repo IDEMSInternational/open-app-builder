@@ -9,26 +9,16 @@ import { RowBaseComponent } from "./row-base.component";
 @Component({
   selector: "oab-row-list",
   template: `
-    @if (debug.isEnabled()) {
-      @for (row of rows(); track i; let i = $index) {
-        @let component = getComponent(row);
+    @for (row of rows(); track i; let i = $index) {
+      @let component = getComponent(row);
+      @let outletInputs = { row, namespace: namespace(), onInitialised: onRowInit(i) };
+
+      @if (debug.isEnabled()) {
         <oab-row-debugger>
-          <ng-container
-            *ngComponentOutlet="
-              component;
-              inputs: { row, namespace: namespace(), onInitialised: onRowInit(i) }
-            "
-          />
+          <ng-container *ngComponentOutlet="component; inputs: outletInputs" />
         </oab-row-debugger>
-      }
-    } @else {
-      @for (row of rows(); track i; let i = $index) {
-        <ng-container
-          *ngComponentOutlet="
-            getComponent(row);
-            inputs: { row, namespace: namespace(), onInitialised: onRowInit(i) }
-          "
-        />
+      } @else {
+        <ng-container *ngComponentOutlet="component; inputs: outletInputs" />
       }
     }
   `,
