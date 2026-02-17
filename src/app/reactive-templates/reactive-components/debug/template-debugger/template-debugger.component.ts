@@ -15,7 +15,6 @@ import { VariableStoreDebuggerComponent } from "../variable-store-debugger/varia
   templateUrl: "./template-debugger.component.html",
   styleUrls: ["./template-debugger.component.scss"],
   imports: [
-    JsonPipe,
     DebuggerBaseComponent,
     DebuggerInfoDirective,
     DebuggerTitleDirective,

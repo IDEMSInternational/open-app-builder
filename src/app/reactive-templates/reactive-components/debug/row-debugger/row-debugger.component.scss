@@ -2,7 +2,7 @@
   display: block;
   outline-style: dashed;
   outline-width: 1px;
-  outline-color: var(--color-debug);
+  outline-color: var(--color-debug, #888);
   min-height: 44px;
 }
 
