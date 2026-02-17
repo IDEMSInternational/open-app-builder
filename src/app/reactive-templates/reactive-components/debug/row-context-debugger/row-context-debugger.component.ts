@@ -1,14 +1,19 @@
-import { Component, computed, inject, input, signal } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { ContextCreatorService } from "src/app/reactive-templates/services/context-creator.service";
 import { EvaluationService } from "src/app/reactive-templates/services/evaluation.service";
 import { RowBaseComponent } from "../../row-base.component";
 import { JsonPipe } from "@angular/common";
+import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
+import {
+  DebuggerInfoDirective,
+  DebuggerTitleDirective,
+} from "../debugger-base/debugger-slots.directive";
 
 @Component({
   selector: "oab-row-context-debugger",
   templateUrl: "./row-context-debugger.component.html",
   styleUrls: ["./row-context-debugger.component.scss"],
-  imports: [JsonPipe],
+  imports: [JsonPipe, DebuggerBaseComponent, DebuggerTitleDirective, DebuggerInfoDirective],
 })
 export class RowContextDebuggerComponent {
   private evaluationService = inject(EvaluationService);
@@ -22,10 +27,4 @@ export class RowContextDebuggerComponent {
   public context = computed(() => {
     return this.contextCreator.createContext(this.dependencies());
   });
-
-  public show = signal(false);
-
-  public toggle() {
-    this.show.update((value) => !value);
-  }
 }

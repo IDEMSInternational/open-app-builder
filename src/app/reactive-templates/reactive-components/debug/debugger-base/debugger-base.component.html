@@ -1,0 +1,18 @@
+<div class="debugger">
+  <div class="header">
+    <ng-content select="oab-debugger-title"></ng-content>
+    @if (!expanded()) {}
+    <button class="toggle-button" (click)="toggle()">
+      @if (expanded()) {
+        -
+      } @else {
+        +
+      }
+    </button>
+  </div>
+  @if (expanded()) {
+    <div class="info">
+      <ng-content select="oab-debugger-info"></ng-content>
+    </div>
+  }
+</div>

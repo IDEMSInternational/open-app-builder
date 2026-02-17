@@ -1,20 +1,27 @@
-<div class="template-debugger">
-  <div class="template-summary">
+<oab-debugger-base>
+  <oab-debugger-title>
     <span class="name">{{ templateName() }}</span>
-    <a class="path" [href]="template()._source.url">{{ template()._source.url }}</a>
-    <button class="toggle-button toggle-all-info" (click)="debug.toggleAllInfo()">+</button>
-  </div>
+  </oab-debugger-title>
+  <oab-debugger-info>
+    <table>
+      <tbody>
+        <tr>
+          <th>Url</th>
+          <td>
+            <a class="path" [href]="template()?._source?.url">{{ template()?._source?.url }}</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Path</th>
+          <td>{{ template()?._source?.path }}</td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td>{{ template()?._source?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </oab-debugger-info>
+</oab-debugger-base>
 
-  <div class="variable-store-info">
-    <div class="header">
-      <span>variable store</span>
-      <button class="toggle-button toggle-variable-store" (click)="toggleVariableStore()">+</button>
-    </div>
-    @if (showVariableStore()) {
-      <pre>
-                {{ variableStore.getAll() | json }}
-            </pre
-      >
-    }
-  </div>
-</div>
+<oab-variable-store-debugger></oab-variable-store-debugger>

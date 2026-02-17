@@ -1,14 +1,9 @@
-<div class="debugger">
-  <div class="header">
+<oab-debugger-base>
+  <oab-debugger-title>context</oab-debugger-title>
+  <oab-debugger-info>
+    <span>dependencies</span>
+    <pre>{{ dependencies() | json }}</pre>
     <span>context</span>
-    <button class="toggle-button" (click)="toggle()">+</button>
-  </div>
-  @if (show()) {
-    <div class="info">
-      <p>dependencies</p>
-      <pre>{{ dependencies() | json }}</pre>
-      <p>context</p>
-      <pre>{{ context() | json }}</pre>
-    </div>
-  }
-</div>
+    <pre>{{ context() | json }}</pre>
+  </oab-debugger-info>
+</oab-debugger-base>

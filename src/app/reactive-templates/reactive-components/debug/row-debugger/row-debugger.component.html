@@ -1,59 +1,55 @@
-<div class="row-debugger">
-  <div class="info-summary">
-    <span class="type">{{ row()?.row().type }}</span>
+<oab-debugger-base>
+  <oab-debugger-title>
     <span class="name">{{ row()?.row().name }}</span>
-    <button class="toggle-info" (click)="toggleInfo()">+</button>
-  </div>
+    <span class="type">{{ row()?.row().type }}</span>
+  </oab-debugger-title>
+  <oab-debugger-info>
+    <table>
+      <thead>
+        <tr>
+          <th>type</th>
+          <th>name</th>
+          <th>value</th>
+          <th>action_list</th>
+          <th>parameter_list</th>
+          <th>condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ row()?.row().type }}</td>
+          <td>{{ row()?.row().name }}</td>
+          <td>{{ row()?.row().value }}</td>
+          <td>
+            <pre>{{ row()?.row().action_list | json }}</pre>
+          </td>
+          <td>
+            <pre>{{ row()?.row().parameter_list | json }}</pre>
+          </td>
+          <td>{{ row()?.row().condition }}</td>
+        </tr>
+        <tr>
+          <td>{{ row()?.row().type }}</td>
+          <td>{{ row()?.name() }}</td>
+          <td>
+            <pre>{{ row()?.value() | json }}</pre>
+          </td>
+          <td>
+            <pre>
+              {{ row()?.row().action_list }}
+            </pre>
+          </td>
 
-  @if (showInfo()) {
-    <div class="info">
-      <table class="row-debugger__table">
-        <thead>
-          <tr>
-            <th>type</th>
-            <th>name</th>
-            <th>value</th>
-            <th>action_list</th>
-            <th>parameter_list</th>
-            <th>condition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ row()?.row().type }}</td>
-            <td>{{ row()?.row().name }}</td>
-            <td>{{ row()?.row().value }}</td>
-            <td>
-              <pre>{{ row()?.row().action_list | json }}</pre>
-            </td>
-            <td>
-              <pre>{{ row()?.row().parameter_list | json }}</pre>
-            </td>
-            <td>{{ row()?.row().condition }}</td>
-          </tr>
-          <tr>
-            <td>{{ row()?.row().type }}</td>
-            <td>{{ row()?.name() }}</td>
-            <td>
-              <pre>{{ row()?.value() | json }}</pre>
-            </td>
-            <td>
-              <pre>
-                {{ row()?.row().action_list }}
-              </pre>
-            </td>
+          <td>
+            <pre>{{ params() | json }}</pre>
+          </td>
+          <td>{{ row()?.condition() }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </oab-debugger-info>
+</oab-debugger-base>
 
-            <td>
-              <pre>{{ params() | json }}</pre>
-            </td>
-            <td>{{ row()?.condition() }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  }
+<oab-row-context-debugger [row]="row()"></oab-row-context-debugger>
 
-  <oab-row-context-debugger [row]="row()"></oab-row-context-debugger>
-
-  <ng-content></ng-content>
-</div>
+<ng-content></ng-content>

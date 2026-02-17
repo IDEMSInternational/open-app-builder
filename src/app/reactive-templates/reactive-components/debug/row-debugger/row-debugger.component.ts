@@ -4,12 +4,23 @@ import { RowBaseComponent } from "../../row-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { DebugService } from "src/app/reactive-templates/services/debug.service";
 import { RowContextDebuggerComponent } from "../row-context-debugger/row-context-debugger.component";
+import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
+import {
+  DebuggerInfoDirective,
+  DebuggerTitleDirective,
+} from "../debugger-base/debugger-slots.directive";
 
 @Component({
   selector: "oab-row-debugger",
   templateUrl: "./row-debugger.component.html",
   styleUrls: ["./row-debugger.component.scss"],
-  imports: [JsonPipe, RowContextDebuggerComponent],
+  imports: [
+    JsonPipe,
+    RowContextDebuggerComponent,
+    DebuggerBaseComponent,
+    DebuggerTitleDirective,
+    DebuggerInfoDirective,
+  ],
 })
 export class RowDebuggerComponent {
   private debug = inject(DebugService);

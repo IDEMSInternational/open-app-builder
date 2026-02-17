@@ -1,46 +1,4 @@
-.template-debugger {
-  --template-debug-color: #888888;
-  color: var(--template-debug-color);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 16px;
-  min-height: 44px;
-  z-index: 999;
-  outline-style: dashed;
-  outline-width: 1px;
-  outline-color: #888888;
-  padding: 4px;
-
-  .template-summary {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    .name {
-      font-weight: bold;
-    }
-  }
-
-  .variable-store-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    .header {
-      margin-left: auto;
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-  }
-
-  .toggle-button {
-    font-size: 16px;
-    margin-left: auto;
-    background-color: inherit;
-    color: var(--template-debug-color);
-    border: none;
-    padding: 4px;
-    cursor: pointer;
-  }
+table {
+  width: 100%;
+  text-align: left;
 }
