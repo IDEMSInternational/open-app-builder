@@ -1,12 +1,6 @@
-import { Component, computed, Input, OnDestroy, OnInit, signal } from "@angular/core";
-import { FlowTypes } from "../../../../model";
-import {
-  getBooleanParamFromTemplateRow,
-  getNumberParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "../../../../utils";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { Howl } from "howler";
-import { TemplateBaseComponent } from "../base";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
@@ -17,42 +11,30 @@ const PLAY_ICON_DEFAULT = "play-outline";
 const PAUSE_ICON_DEFAULT = "pause-outline";
 const FORWARD_ICON_DEFAULT = "play-forward";
 
-interface IAudioParams {
-  /** TEMPLATE PARAMETER: "variant". Default "large". */
-  variant: "large" | "compact";
-  /** TEMPLATE PARAMETER: "src". Will be overridden by a value passed as "value" to the component. */
-  src: string;
-  /** TEMPLATE PARAMETER: "title" */
-  title: string;
-  /** TEMPLATE PARAMETER: "play_icon_asset". The path to an svg to override the default play icon. Default icon is ion's "play-outline" */
-  playIconAsset: string;
-  /** TEMPLATE PARAMETER: "pause_icon_asset". The path to an svg to override the default pause icon. Default icon is ion's "pause-outline" */
-  pauseIconAsset: string;
-  /**
-   * TEMPLATE PARAMETER: "forward_icon_asset". The path to an svg to override the default forward icon.
-   * Will be mirrored to be used as the reqind icon. Default icon is ion's "play-forward"
-   * */
-  forwardIconAsset: string;
-  /** TEMPLATE PARAMETER: "show_info_button". Should show the info button. Default false (unless info_icon_asset is provided) */
-  showInfoButton: boolean;
-  /** TEMPLATE PARAMETER: "info_icon_asset". The path to an svg to override the default info icon. The default is an icon indicating a transcript */
-  infoIconAsset: string;
-  /**
-   * TEMPLATE PARAMETER: "transcript_text". A string representing the transcript of the audio.
-   * If provided, the transcript button will be shown and will launch a popup containing the this text
-   */
-  transcriptText: string;
-  /**
-   * TEMPLATE PARAMETER: "range_bar_disabled". If true, the use cannot scrub through the audio using the range bar.
-   * Default false.
-   */
-  rangeBarDisabled: boolean;
-  /**
-   * TEMPLATE PARAMETER: "time_to_skip". The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
-   * Default 15.
-   */
-  timeToSkip: number;
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** Display variant. Default "compact". */
+  variant: coerce.string("compact"),
+  /** Audio source path. May be overridden by row value. */
+  src: coerce.string(""),
+  /** Title displayed above the player. */
+  title: coerce.string(""),
+  /** Path to svg to override the default play icon. Default ion "play-outline". */
+  play_icon_asset: coerce.string(""),
+  /** Path to svg to override the default pause icon. Default ion "pause-outline". */
+  pause_icon_asset: coerce.string(""),
+  /** Path to svg to override the default forward icon (mirrored for rewind). Default ion "play-forward". */
+  forward_icon_asset: coerce.string(""),
+  /** When true, show the info button. Also true if info_icon_asset or transcript_text are set. */
+  show_info_button: coerce.boolean(false),
+  /** Path to svg to override the default info icon. */
+  info_icon_asset: coerce.string(""),
+  /** Transcript text; if set, info button shows and opens a popup with this text. */
+  transcript_text: coerce.string(""),
+  /** When true, the range bar cannot be used to scrub. Default false. */
+  range_bar_disabled: coerce.boolean(false),
+  /** Seconds to skip forward/backward when using skip buttons. Default 15. */
+  time_to_skip: coerce.number(15),
+}));
 
 @Component({
   selector: "plh-audio",
@@ -60,9 +42,10 @@ interface IAudioParams {
   styleUrls: ["./audio.component.scss"],
   standalone: false,
 })
-export class TmplAudioComponent extends TemplateBaseComponent implements OnInit, OnDestroy {
-  params: Partial<IAudioParams> = {};
-
+export class TmplAudioComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements OnDestroy
+{
   /** @ignore */
   player: Howl = null;
   /**
@@ -76,93 +59,99 @@ export class TmplAudioComponent extends TemplateBaseComponent implements OnInit,
    * @ignore
    * */
   progress = signal(0);
+  /** Duration in seconds, set when Howl has loaded the audio file */
+  durationSeconds = signal(0);
   /**
    * Progress in seconds
    * @ignore
    * */
   progressSeconds = computed(() => {
-    return (this.progress() / 100) * this.player?.duration();
+    const duration = this.durationSeconds() || 0;
+    return (this.progress() / 100) * duration;
   });
-  /** @ignore */
-  hasStarted: boolean = false;
+  /** True once playback has started at least once */
+  hasStarted = signal(false);
+  /** True when playback has reached the end */
+  hasEnded = signal(false);
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
   /** Track any opened transcript modal to close on destroy */
   private transcriptModal: HTMLIonModalElement;
+
+  /** Resolved audio src: row value or authored src, translated. */
+  resolvedSrc = computed(() => {
+    const raw = (this.value() as string) || this.params().src || "";
+    if (!raw) return "";
+    return this.templateAssetService.getTranslatedAssetSignal(raw)() ?? "";
+  });
+
+  resolvedPlayIconAsset = computed(() => {
+    const p = this.params().playIconAsset;
+    if (!p) return PLAY_ICON_DEFAULT;
+    return this.templateAssetService.getTranslatedAssetSignal(p)() ?? PLAY_ICON_DEFAULT;
+  });
+
+  resolvedPauseIconAsset = computed(() => {
+    const p = this.params().pauseIconAsset;
+    if (!p) return PAUSE_ICON_DEFAULT;
+    return this.templateAssetService.getTranslatedAssetSignal(p)() ?? PAUSE_ICON_DEFAULT;
+  });
+
+  resolvedForwardIconAsset = computed(() => {
+    const p = this.params().forwardIconAsset;
+    if (!p) return FORWARD_ICON_DEFAULT;
+    return this.templateAssetService.getTranslatedAssetSignal(p)() ?? FORWARD_ICON_DEFAULT;
+  });
+
+  /** True when info button should be shown (authored flag or info/transcript content). */
+  showInfoButton = computed(
+    () =>
+      !!this.params().infoIconAsset ||
+      !!this.params().transcriptText ||
+      this.params().showInfoButton
+  );
 
   constructor(
     private templateAssetService: TemplateAssetService,
     private modalCtrl: ModalController
   ) {
     super();
-  }
-
-  ngOnInit() {
-    this.getParams();
-    this.initPlayer();
+    effect(() => {
+      const src = this.resolvedSrc();
+      if (src && !this.player) {
+        this.initPlayer();
+      }
+    });
   }
 
   public async handleActionButtonClick() {
-    if (this.params.transcriptText) {
+    if (this.params().transcriptText) {
       await this.openTranscriptPopup();
     } else {
       await this.triggerActions("info_click");
     }
   }
 
-  private getParams() {
-    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "compact")
-      .split(",")
-      .join(" ") as IAudioParams["variant"];
-    this.params.src = this.templateAssetService.getTranslatedAssetPath(
-      (this._row.value as string) || getStringParamFromTemplateRow(this._row, "src", null)
-    );
-    this.params.playIconAsset = this.getAssetParamFromTemplateRow(
-      "play_icon_asset",
-      PLAY_ICON_DEFAULT
-    );
-    this.params.pauseIconAsset = this.getAssetParamFromTemplateRow(
-      "pause_icon_asset",
-      PAUSE_ICON_DEFAULT
-    );
-    this.params.forwardIconAsset = this.getAssetParamFromTemplateRow(
-      "forward_icon_asset",
-      FORWARD_ICON_DEFAULT
-    );
-    this.params.title = getStringParamFromTemplateRow(this._row, "title", "");
-    this.params.infoIconAsset = getStringParamFromTemplateRow(this._row, "info_icon_asset", null);
-    this.params.transcriptText = getStringParamFromTemplateRow(this._row, "transcript_text", null);
-    this.params.showInfoButton =
-      !!this.params.infoIconAsset ||
-      !!this.params.transcriptText ||
-      getBooleanParamFromTemplateRow(this._row, "show_info_button", false);
-    this.params.rangeBarDisabled = getBooleanParamFromTemplateRow(
-      this._row,
-      "range_bar_disabled",
-      false
-    );
-    this.params.timeToSkip = getNumberParamFromTemplateRow(this._row, "time_to_skip", 15);
-  }
-
-  private getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
-    const value = getStringParamFromTemplateRow(this._row, parameterName, null);
-    return value ? this.templateAssetService.getTranslatedAssetPath(value) : _default;
-  }
-
   private initPlayer() {
-    if (this.params.src) {
+    const src = this.resolvedSrc();
+    if (src) {
       this.player = new Howl({
-        src: [this.params.src],
+        src: [src],
+        onload: () => {
+          this.durationSeconds.set(this.player.duration());
+        },
         onplay: () => {
+          this.hasEnded.set(false);
           this.startProgressTracker();
-          if (!this.hasStarted) {
-            this.hasStarted = true;
+          if (!this.hasStarted()) {
+            this.hasStarted.set(true);
             this.triggerActions("audio_first_start");
           }
           this.triggerActions("audio_play");
         },
         onend: () => {
           this.isPlaying = false;
+          this.hasEnded.set(true);
           this.progress.set(0);
           this.startProgressTracker();
           this.triggerActions("audio_end");
@@ -210,11 +199,11 @@ export class TmplAudioComponent extends TemplateBaseComponent implements OnInit,
   }
 
   public skipForward() {
-    this.skip(this.params.timeToSkip);
+    this.skip(this.params().timeToSkip);
   }
 
   public skipBackward() {
-    this.skip(-this.params.timeToSkip);
+    this.skip(-this.params().timeToSkip);
   }
 
   /**
@@ -256,7 +245,7 @@ export class TmplAudioComponent extends TemplateBaseComponent implements OnInit,
       component: TemplatePopupComponent,
       componentProps: {
         props: {
-          popupText: this.params.transcriptText,
+          popupText: this.params().transcriptText,
           fullscreen: false,
           showCloseButton: true,
         },
