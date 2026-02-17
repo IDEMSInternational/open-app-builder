@@ -3,11 +3,7 @@
     <ng-content select="oab-debugger-title"></ng-content>
     @if (!expanded()) {}
     <button class="toggle-button" (click)="toggle()">
-      @if (expanded()) {
-        -
-      } @else {
-        +
-      }
+      {{ expanded() ? "−" : "+" }}
     </button>
   </div>
   @if (expanded()) {
