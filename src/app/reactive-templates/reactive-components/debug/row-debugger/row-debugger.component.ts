@@ -1,8 +1,7 @@
 import { JsonPipe, NgComponentOutlet } from "@angular/common";
-import { Component, computed, contentChild, inject, signal } from "@angular/core";
+import { Component, computed, contentChild, signal } from "@angular/core";
 import { RowBaseComponent } from "../../row-base.component";
 import { Parameter, Parameters } from "../../parameters";
-import { DebugService } from "src/app/reactive-templates/services/debug.service";
 import { RowContextDebuggerComponent } from "../row-context-debugger/row-context-debugger.component";
 import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
 import {
@@ -23,16 +22,12 @@ import {
   ],
 })
 export class RowDebuggerComponent {
-  private debug = inject(DebugService);
   private outlet = contentChild(NgComponentOutlet);
-  private _showInfo = signal(false);
 
   public row = computed(() => {
     const instance = this.outlet()?.componentInstance as RowBaseComponent<any> | undefined;
     return instance;
   });
-
-  public showInfo = computed(() => this.debug.showAllInfo() || this._showInfo());
 
   public params = computed(() => {
     const params = this.row()?.params as Parameters | undefined;
@@ -46,8 +41,4 @@ export class RowDebuggerComponent {
       {}
     );
   });
-
-  public toggleInfo() {
-    this._showInfo.update((value) => !value);
-  }
 }

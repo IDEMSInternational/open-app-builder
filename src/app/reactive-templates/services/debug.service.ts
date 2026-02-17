@@ -13,17 +13,10 @@ export class DebugService {
   private _isEnabled = signal(false);
   public isEnabled = this._isEnabled.asReadonly();
 
-  public _showAllInfo = signal(false);
-  public showAllInfo = this._showAllInfo.asReadonly();
-
   constructor() {
     effect(() => {
       const debugMode = this.snapshot().queryParams.debugMode === "true";
       this._isEnabled.set(debugMode);
     });
-  }
-
-  public toggleAllInfo() {
-    this._showAllInfo.update((value) => !value);
   }
 }
