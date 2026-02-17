@@ -1,7 +1,7 @@
 import { Injectable, Injector, Signal } from "@angular/core";
-import { toSignal } from "@angular/core/rxjs-interop";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest } from "rxjs";
-import { map, startWith } from "rxjs/operators";
+import { distinctUntilChanged, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { IStore } from "./store";
 
@@ -80,6 +80,20 @@ export class VariableStore implements IStore {
         });
         return result;
       })
+    );
+  }
+
+  public watchMultipleSignal(names: Signal<string[]>): Signal<{ [key: string]: any }> {
+    return toSignal(
+      toObservable(names, { injector: this.injector }).pipe(
+        distinctUntilChanged((previous, current) => isEqual(previous, current)),
+        switchMap((dependencyNames) => this.watchMultiple(dependencyNames))
+      ),
+      {
+        initialValue: {},
+        equal: isEqual,
+        injector: this.injector,
+      }
     );
   }
 
