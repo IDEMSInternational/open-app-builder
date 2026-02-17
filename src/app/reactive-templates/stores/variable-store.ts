@@ -23,7 +23,6 @@ export class VariableStore implements IStore {
         map(() => this.getAll())
       ),
       {
-        equal: isEqual,
         injector: this.injector,
       }
     );
