@@ -4,11 +4,11 @@ import { EvaluationService } from "src/app/reactive-templates/services/evaluatio
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { RowBaseComponent } from "../../row-base.component";
 import { JsonPipe } from "@angular/common";
-import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
 import {
+  DebuggerBaseComponent,
   DebuggerInfoDirective,
   DebuggerTitleDirective,
-} from "../debugger-base/debugger-slots.directive";
+} from "../debugger-base/debugger-base.component";
 
 @Component({
   selector: "oab-row-context-debugger",

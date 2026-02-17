@@ -1,13 +1,13 @@
 import { JsonPipe, NgComponentOutlet } from "@angular/common";
-import { Component, computed, contentChild, signal } from "@angular/core";
+import { Component, computed, contentChild } from "@angular/core";
 import { RowBaseComponent } from "../../row-base.component";
 import { Parameter, Parameters } from "../../parameters";
 import { RowContextDebuggerComponent } from "../row-context-debugger/row-context-debugger.component";
-import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
 import {
-  DebuggerInfoDirective,
+  DebuggerBaseComponent,
   DebuggerTitleDirective,
-} from "../debugger-base/debugger-slots.directive";
+  DebuggerInfoDirective,
+} from "../debugger-base/debugger-base.component";
 
 @Component({
   selector: "oab-row-debugger",

@@ -1,9 +1,9 @@
 import { Component, inject } from "@angular/core";
-import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
 import {
-  DebuggerInfoDirective,
+  DebuggerBaseComponent,
   DebuggerTitleDirective,
-} from "../debugger-base/debugger-slots.directive";
+  DebuggerInfoDirective,
+} from "../debugger-base/debugger-base.component";
 import { JsonPipe } from "@angular/common";
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 

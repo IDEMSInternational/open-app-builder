@@ -1,10 +1,10 @@
 import { Component, input } from "@angular/core";
 import { FlowTypes } from "src/app/shared/components/template/models";
-import { DebuggerBaseComponent } from "../debugger-base/debugger-base.component";
 import {
+  DebuggerBaseComponent,
   DebuggerInfoDirective,
   DebuggerTitleDirective,
-} from "../debugger-base/debugger-slots.directive";
+} from "../debugger-base/debugger-base.component";
 import { VariableStoreDebuggerComponent } from "../variable-store-debugger/variable-store-debugger.component";
 
 @Component({
