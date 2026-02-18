@@ -1,7 +1,8 @@
 import { Component, computed, effect, inject, Injector, OnInit, signal } from "@angular/core";
-import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
-import { map, debounceTime, switchMap, startWith, tap } from "rxjs/operators";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
+import { defer, from, timer } from "rxjs";
+import { map, debounceTime, switchMap, startWith } from "rxjs/operators";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
@@ -32,7 +33,7 @@ export class UserDebugPage implements OnInit {
   public protectedFields = signal<{ key: string; value: string }[]>([]);
 
   /** Live state of all dynamic data stored */
-  private dynamicDataState = toSignal(this.subscribeToDynamicDataState());
+  private dynamicDataState = toSignal(this.getDynamicDataState$());
 
   /** Name of flow selected to display dynamic data */
   public dynamicDataSelected = signal("");
@@ -173,27 +174,36 @@ export class UserDebugPage implements OnInit {
     this.protectedFields.set(contactFields.filter((v) => v.key.startsWith("_")));
   }
 
-  /** Create a subscription that updates with any writeCache db changes and returns full state of cache */
-  private subscribeToDynamicDataState() {
-    const writeCache = this.dynamicDataService["writeCache"];
-    const collection = writeCache["collection"];
-    // subscribe to db change event stream to capture changes from multiple tabs
-    return writeCache["db"].$.pipe(
-      debounceTime(50),
-      startWith({}),
-      switchMap(() => collection.find().exec()),
-      map((docs: RxDocument<IPersistedDoc>[]) => {
-        // recreate a snapshot of the entire dynamic db state from saved docs
-        // NOTE - not using existing service state value as that is not kept in sync
-        // when using multiple tabs
-        const state: IDynamicDataState = {};
-        for (const doc of docs) {
-          const { data, flow_name, row_id } = doc;
-          state[flow_name] ??= {};
-          state[flow_name][row_id] = data;
-        }
-        return state;
-      })
+  /**
+   * Observable that updates with any writeCache db changes and returns full state of cache.
+   * Deferred so we only run after constructor (dynamicDataService set and ready()).
+   */
+  private getDynamicDataState$() {
+    return defer(() =>
+      timer(0).pipe(
+        switchMap(() => from(this.dynamicDataService.ready())),
+        switchMap(() => {
+          const writeCache = this.dynamicDataService["writeCache"];
+          const collection = writeCache["collection"];
+          // subscribe to db change event stream to capture changes from multiple tabs
+          return writeCache["db"].$.pipe(
+            debounceTime(50),
+            startWith({}),
+            switchMap(() => collection.find().exec()),
+            map((docs: RxDocument<IPersistedDoc>[]) => {
+              // recreate a snapshot of the entire dynamic db state from saved docs
+              // NOTE - not using existing service state value as that is not kept in sync when using multiple tabs
+              const state: IDynamicDataState = {};
+              for (const doc of docs) {
+                const { data, flow_name, row_id } = doc;
+                state[flow_name] ??= {};
+                state[flow_name][row_id] = data;
+              }
+              return state;
+            })
+          );
+        })
+      )
     );
   }
 }
