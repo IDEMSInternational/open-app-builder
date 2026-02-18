@@ -39,6 +39,14 @@ export class PlhCourseAccordionComponent
   );
   public courseTitle = computed(() => this.courseRow()?.title);
 
+  public lessonTotal = computed(() => this.lessonDataRows().length);
+  public lessonCompleted = computed(
+    () => this.lessonDataRows().filter((row) => row.completed).length
+  );
+  public progressPercent = computed(() => {
+    return Math.round((this.lessonCompleted() / this.lessonTotal()) * 100);
+  });
+
   constructor(
     public templateTranslateService: TemplateTranslateService,
     private dynamicDataService: DynamicDataService

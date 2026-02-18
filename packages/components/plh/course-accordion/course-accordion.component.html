@@ -1,5 +1,19 @@
-<p>{{ courseTitle() }}</p>
+<div class="course-accordion-container">
+  <p class="course-title">{{ courseTitle() }}</p>
 
-@for (lessonRow of lessonDataRows(); track lessonRow.id) {
-  <p>{{ lessonRow.title }}</p>
-}
+  <div class="progress-bar-container">
+    <plh-task-progress-bar
+      [showText]="false"
+      [inputProgressPercent]="progressPercent()"
+    ></plh-task-progress-bar>
+    <div class="progress-bar-text">
+      <p>{{ `${lessonCompleted()}/${lessonTotal()} lessons` }}</p>
+    </div>
+  </div>
+
+  @for (lessonRow of lessonDataRows(); track lessonRow.id) {
+    <div>
+      <p>{{ lessonRow.title + ` (${lessonRow.completed ? "✅" : "❌"})` }}</p>
+    </div>
+  }
+</div>
