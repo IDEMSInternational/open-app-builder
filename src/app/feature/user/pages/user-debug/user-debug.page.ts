@@ -40,7 +40,7 @@ export class UserDebugPage implements OnInit {
   /** List of protected user contact fields */
   public protectedFields = signal<{ key: string; value: string }[]>([]);
 
-  /** Live state of all dynamic data stored (subscription started in ngOnInit after DynamicDataService.ready()) */
+  /** Live state of all dynamic data stored */
   private dynamicDataState = signal<IDynamicDataState | undefined>(undefined);
 
   /** Name of flow selected to display dynamic data */
