@@ -54,18 +54,40 @@ const workflows: IDeploymentWorkflows = {
       },
       import: {
         label: "Import a remote deployment repository",
+        options: [
+          {
+            flags: "-k, --private-key <string>",
+            description: "Private key for decryption",
+          },
+          {
+            flags: "-y, --acceptDefaults",
+            description: "Automatically confirm prompts using defaults",
+          },
+        ],
         steps: [
           {
             name: "deployment import",
-            function: async ({ tasks, args }) => tasks.deployment.import(args[0]),
+            function: async ({ tasks, args, options }) => {
+              // Set Env var for encryption provider to pick up later
+              if (options.privateKey) {
+                process.env.DEPLOYMENT_PRIVATE_KEY = options.privateKey;
+              }
+              // Pass options (including acceptDefaults flag) to the task
+              return tasks.deployment.import(options, args[0]);
+            },
           },
           {
             name: "set deployment",
-            function: async ({ tasks, workflow }) => {
-              const shouldSet = await tasks.userInput.promptConfirmation(
-                "Would you like to set the deployment as active?",
-                true
-              );
+            function: async ({ tasks, workflow, options }) => {
+              let shouldSet = options.acceptDefaults;
+              // Only prompt if -y was not provided
+              if (shouldSet === undefined) {
+                shouldSet = await tasks.userInput.promptConfirmation(
+                  "Would you like to set the deployment as active?",
+                  true
+                );
+              }
+
               if (shouldSet) {
                 const deploymentName = workflow["deployment import"].output;
                 await tasks.workflow.runWorkflow({
