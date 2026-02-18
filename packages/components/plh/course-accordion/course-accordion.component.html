@@ -1,1 +1,5 @@
-<p>{{ params().title }}</p>
+<p>{{ courseTitle() }}</p>
+
+@for (lessonRow of lessonDataRows(); track lessonRow.id) {
+  <p>{{ lessonRow.title }}</p>
+}
