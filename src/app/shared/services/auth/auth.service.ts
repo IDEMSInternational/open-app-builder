@@ -126,7 +126,7 @@ export class AuthService extends AsyncServiceBase {
           sign_in_google: async () => await this.provider.signIn("google.com"),
           sign_in_apple: async () => await this.provider.signIn("apple.com"),
           sign_out: async () => await this.provider.signOut(),
-          delete_account: async () => await this.provider.deleteAccount(),
+          delete_account: async () => await this.deleteAccount(),
         };
         if (!(actionId in childActions)) {
           console.error(`[AUTH] - No action, "${actionId}"`);
@@ -159,5 +159,23 @@ export class AuthService extends AsyncServiceBase {
     this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
     this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
     this.localStorageService.removeProtected("AUTH_USER_PICTURE");
+  }
+
+  /**
+   * Delete user account.
+   * Requests server data deletion (soft delete for review) then deletes auth account.
+   */
+  private async deleteAccount() {
+    // Request server data deletion first (while we still have auth context)
+    // This marks the user for deletion rather than immediately removing data
+    const { success, error } = await this.serverService.requestUserDataDeletion();
+    if (!success) {
+      console.warn(
+        "[Auth] Server data deletion request failed, proceeding with auth deletion:",
+        error
+      );
+    }
+    // Delete the auth account (e.g. Firebase user)
+    return await this.provider.deleteAccount();
   }
 }
