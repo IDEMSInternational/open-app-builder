@@ -36,12 +36,10 @@ export class PlhCourseAccordionComponent
   public lessonDataRows = computed(() =>
     this.rawLessonDataRows().filter((row) => row.course_id === this.params().courseId)
   );
-
   public courseRow = computed(() =>
     this.courseDataRows().find((row) => row.id === this.params().courseId)
   );
   public courseTitle = computed(() => this.courseRow()?.title);
-
   public lessonTotal = computed(() => this.lessonDataRows().length);
   public lessonCompleted = computed(
     () => this.lessonDataRows().filter((row) => row.completed).length
@@ -49,6 +47,8 @@ export class PlhCourseAccordionComponent
   public progressPercent = computed(() => {
     return Math.round((this.lessonCompleted() / this.lessonTotal()) * 100);
   });
+
+  public isOpen = signal(true);
 
   constructor(
     public templateTranslateService: TemplateTranslateService,

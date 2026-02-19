@@ -12,6 +12,17 @@
         </div>
       </div>
     </div>
+    <div class="course-button-icon">
+      @if (params().locked) {
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      } @else {
+        @if (isOpen()) {
+          <ion-icon name="chevron-up-circle-outline"></ion-icon>
+        } @else {
+          <ion-icon name="chevron-down-circle-outline"></ion-icon>
+        }
+      }
+    </div>
   </div>
 
   <div class="lessons-container">

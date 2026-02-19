@@ -9,7 +9,9 @@
   align-items: center;
   text-align: left;
   padding: var(--small-padding);
-  border: var(--border-thin-standard);
+  border: var(--border-standard);
+  border-width: 2px;
+  border-color: var(--ion-color-primary-variant-600);
   border-radius: var(--ion-border-radius-small);
   background-color: var(--ion-color-primary-50);
   color: var(--ion-color-primary);
@@ -20,10 +22,8 @@
     font-size: var(--font-size-text);
   }
 
-  .icon-container {
-    ion-icon {
-      font-size: var(--icon-size-tiny);
-    }
+  ion-icon {
+    font-size: var(--icon-size-tiny);
   }
 
   &[data-state="highlighted"] {
