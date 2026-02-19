@@ -102,7 +102,6 @@ export class headerComponent implements OnInit, OnDestroy {
   }
 
   public handleBackButtonClick() {
-    console.log("handleBackButtonClick", this.hasBackHistory);
     if (this.hasBackHistory) {
       this.location.back();
     } else {
