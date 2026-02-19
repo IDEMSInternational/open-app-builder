@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--color-debug, #888);
+  min-height: 44px;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}

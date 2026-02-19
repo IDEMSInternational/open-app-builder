@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  outline-style: dashed;
+  outline-width: 1px;
+  outline-color: var(--color-debug, #888);
+  min-height: 44px;
+}
+
+.type {
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 4px;
+  min-width: 12em;
+  text-align: end;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}

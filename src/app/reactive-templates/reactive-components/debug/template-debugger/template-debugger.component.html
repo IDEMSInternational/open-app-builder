@@ -1,0 +1,27 @@
+<oab-debugger-base>
+  <oab-debugger-title>
+    <span class="name">{{ templateName() }}</span>
+  </oab-debugger-title>
+  <oab-debugger-info>
+    <table>
+      <tbody>
+        <tr>
+          <th>Url</th>
+          <td>
+            <a class="path" [href]="template()?._source?.url">{{ template()?._source?.url }}</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Path</th>
+          <td>{{ template()?._source?.path }}</td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td>{{ template()?._source?.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </oab-debugger-info>
+</oab-debugger-base>
+
+<oab-variable-store-debugger></oab-variable-store-debugger>

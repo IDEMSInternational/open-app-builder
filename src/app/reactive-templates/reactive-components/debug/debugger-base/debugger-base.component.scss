@@ -1,0 +1,28 @@
+.debugger {
+  color: var(--color-debug, #888);
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+
+  .header {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  .toggle-button {
+    margin-left: auto;
+    background-color: inherit;
+    color: var(--color-debug, #888);
+    border: none;
+    padding: 4px;
+    min-width: 16px;
+    cursor: pointer;
+  }
+
+  .info {
+    width: 100%;
+    padding: 4px;
+  }
+}
