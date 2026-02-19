@@ -53,6 +53,7 @@ export class headerComponent implements OnInit, OnDestroy {
   private hardwareBackButton$: PluginListenerHandle;
   /** track if navigation has been used to handle back button click behaviour */
   private hasBackHistory = false;
+  private routerEventsSubscription: Subscription | undefined;
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
@@ -69,6 +70,11 @@ export class headerComponent implements OnInit, OnDestroy {
     private appConfigService: AppConfigService
   ) {
     this.routeChanges = toSignal(this.router.events);
+    this.routerEventsSubscription = this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        this.hasBackHistory = true;
+      }
+    });
     effect(() => {
       // when header config changes set the height and collapse properties
       const { collapse, variant } = this.headerConfig();
@@ -79,11 +85,8 @@ export class headerComponent implements OnInit, OnDestroy {
     });
     effect(() => {
       // when route changes handle side-effects
-      const e = this.routeChanges();
+      this.routeChanges();
       this.handleRouteChange();
-      if (e instanceof NavigationStart) {
-        this.hasBackHistory = true;
-      }
     });
   }
 
@@ -185,6 +188,7 @@ export class headerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.routerEventsSubscription?.unsubscribe();
     this.removeScrollEventListeners();
     if (this.hardwareBackButton$) {
       this.hardwareBackButton$.remove();
