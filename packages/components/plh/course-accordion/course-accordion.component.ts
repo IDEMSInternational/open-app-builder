@@ -11,6 +11,9 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   course_id: coerce.string(""),
   course_data: coerce.string(""),
   lesson_data: coerce.string(""),
+  lessons_title: coerce.string("Lessons"),
+  locked: coerce.boolean(false),
+  locked_image_asset: coerce.string(""),
 }));
 
 @Component({

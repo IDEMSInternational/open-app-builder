@@ -4,7 +4,6 @@
 }
 
 .course-accordion-container {
-  padding: var(--small-padding);
   border: var(--border-thin-standard);
   border-radius: var(--ion-border-radius-small);
   background-color: var(--ion-color-primary-50);
@@ -12,24 +11,48 @@
   width: 100%;
   height: 100%;
 
-  .course-title {
-    font-size: var(--font-size-text-large);
-    font-weight: var(--font-weight-bold);
-    color: var(--ion-color-primary);
-    margin: 0;
-    padding: 0;
+  &[data-locked~="true"] {
+    opacity: 0.3;
+    pointer-events: none;
   }
 
-  .progress-bar-container {
-    display: flex;
-    gap: var(--tiny-padding);
-    align-items: center;
-    justify-content: space-between;
-    plh-task-progress-bar {
-      width: 100%;
+  .course-button {
+    border: var(--border-thin-standard);
+    border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
+    padding: var(--small-padding);
+
+    .course-title {
+      font-size: var(--font-size-text-large);
+      font-weight: var(--font-weight-bold);
+      color: var(--ion-color-primary);
+      margin: 0;
+      padding: 0;
     }
-    .progress-bar-text {
-      width: 100%;
+
+    .progress-bar-container {
+      display: flex;
+      gap: var(--tiny-padding);
+      align-items: center;
+      justify-content: space-between;
+      plh-task-progress-bar {
+        width: 100%;
+      }
+      .progress-bar-text {
+        width: 100%;
+        font-size: var(--font-size-text-tiny);
+        color: var(--ion-color-primary);
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  .lessons-container {
+    border: var(--border-thin-standard);
+    border-radius: 0 0 var(--ion-border-radius-small) var(--ion-border-radius-small);
+    padding: var(--small-padding);
+
+    .lessons-header {
       font-size: var(--font-size-text-tiny);
       color: var(--ion-color-primary);
       margin: 0;

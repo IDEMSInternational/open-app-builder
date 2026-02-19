@@ -1,19 +1,25 @@
-<div class="course-accordion-container">
-  <p class="course-title">{{ courseTitle() }}</p>
-
-  <div class="progress-bar-container">
-    <plh-task-progress-bar
-      [showText]="false"
-      [inputProgressPercent]="progressPercent()"
-    ></plh-task-progress-bar>
-    <div class="progress-bar-text">
-      <p>{{ `${lessonCompleted()}/${lessonTotal()} lessons` }}</p>
+<div class="course-accordion-container" [attr.data-locked]="params().locked">
+  <div class="course-button">
+    <div class="course-title-and-progress-bar">
+      <p class="course-title">{{ courseTitle() }}</p>
+      <div class="progress-bar-container">
+        <plh-task-progress-bar
+          [showText]="false"
+          [inputProgressPercent]="progressPercent()"
+        ></plh-task-progress-bar>
+        <div class="progress-bar-text">
+          <p>{{ `${lessonCompleted()}/${lessonTotal()} lessons` }}</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  @for (lessonRow of lessonDataRows(); track lessonRow.id) {
-    <div>
-      <p>{{ lessonRow.title + ` (${lessonRow.completed ? "✅" : "❌"})` }}</p>
-    </div>
-  }
+  <div class="lessons-container">
+    <p class="lessons-header">{{ params().lessonsTitle }}</p>
+    @for (lessonRow of lessonDataRows(); track lessonRow.id) {
+      <div class="lesson-row">
+        <p>{{ lessonRow.title + ` (${lessonRow.completed ? "✅" : "❌"})` }}</p>
+      </div>
+    }
+  </div>
 </div>
