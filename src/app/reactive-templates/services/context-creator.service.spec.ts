@@ -57,4 +57,28 @@ describe("ContextCreatorService", () => {
 
     expect(context).toEqual({ local: {} });
   });
+
+  it("dependency includes numbers", () => {
+    variableStore.set("button_text", "Click Here");
+
+    const context = service.createContext(["parameter_loop.2.options_loop.0.button_text"]);
+
+    expect(context).toEqual({
+      local: { parameter_loop: { 2: { options_loop: { 0: { button_text: "Click Here" } } } } },
+    });
+  });
+
+  it("dependency is at root namespace", () => {
+    variableStore.set("button_text", "Click Here");
+
+    const context = service.createContext([
+      "parameter_loop.index2.options_loop.index0.button_text",
+    ]);
+
+    expect(context).toEqual({
+      local: {
+        parameter_loop: { index2: { options_loop: { index0: { button_text: "Click Here" } } } },
+      },
+    });
+  });
 });
