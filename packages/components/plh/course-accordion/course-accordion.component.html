@@ -16,9 +16,14 @@
 
   <div class="lessons-container">
     <p class="lessons-header">{{ params().lessonsTitle }}</p>
-    @for (lessonRow of lessonDataRows(); track lessonRow.id) {
+    @for (lesson of lessonDataRows(); track lesson.id) {
       <div class="lesson-row">
-        <p>{{ lessonRow.title + ` (${lessonRow.completed ? "✅" : "❌"})` }}</p>
+        <plh-lesson-button
+          [completed]="lesson.completed"
+          [highlighted]="lesson.highlighted"
+          [title]="lesson.title"
+          [locked]="lesson.locked"
+        ></plh-lesson-button>
       </div>
     }
   </div>

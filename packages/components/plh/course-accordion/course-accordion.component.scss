@@ -4,7 +4,6 @@
 }
 
 .course-accordion-container {
-  border: var(--border-thin-standard);
   border-radius: var(--ion-border-radius-small);
   background-color: var(--ion-color-primary-50);
   color: var(--ion-color-primary);
@@ -17,9 +16,12 @@
   }
 
   .course-button {
-    border: var(--border-thin-standard);
+    border: var(--border-standard);
+    border-width: 2px;
+    border-color: var(--ion-color-primary-400);
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
     padding: var(--small-padding);
+    background-color: var(--ion-color-primary-100);
 
     .course-title {
       font-size: var(--font-size-text-large);
@@ -48,7 +50,9 @@
   }
 
   .lessons-container {
-    border: var(--border-thin-standard);
+    border: var(--border-standard);
+    border-width: 2px;
+    border-color: var(--ion-color-primary-100);
     border-radius: 0 0 var(--ion-border-radius-small) var(--ion-border-radius-small);
     padding: var(--small-padding);
 

@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.lesson-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: var(--small-padding);
+  border: var(--border-thin-standard);
+  border-radius: var(--ion-border-radius-small);
+  background-color: var(--ion-color-primary-50);
+  color: var(--ion-color-primary);
+  cursor: pointer;
+  margin-top: var(--tiny-padding);
+
+  .lesson-button-title {
+    font-size: var(--font-size-text);
+  }
+
+  .icon-container {
+    ion-icon {
+      font-size: var(--icon-size-tiny);
+    }
+  }
+
+  &[data-state="highlighted"] {
+    background-color: var(--ion-color-green);
+    color: white;
+    border-color: var(--ion-color-green);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &[data-state="completed"] {
+    background-color: var(--ion-color-primary-100);
+  }
+
+  &[data-state="locked"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: var(--ion-color-gray-100);
+    color: var(--ion-color-gray-800);
+    border-color: var(--ion-color-gray-800);
+  }
+}

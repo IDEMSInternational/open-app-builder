@@ -2,6 +2,7 @@ import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-po
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
 import { PlhCourseAccordionComponent } from "./course-accordion/course-accordion.component";
+import { LessonButtonComponent } from "./course-accordion/lesson-button/lesson-button.component";
 import { PlhActivityCheckInComponent } from "./plh-kids-kw/components/activity-check-in/activity-check-in.component";
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
@@ -14,6 +15,7 @@ export {
   PlhParentPointBoxComponent,
   PlhModuleListItemComponent,
   PlhCourseAccordionComponent,
+  LessonButtonComponent,
   PlhActivityCheckInComponent,
   PlhCompletionModalComponent,
   PlhModuleDetailsHeaderComponent,
@@ -29,6 +31,7 @@ export const PLH_COMPONENTS = [
   PlhParentPointBoxComponent,
   PlhModuleListItemComponent,
   PlhCourseAccordionComponent,
+  LessonButtonComponent,
   PlhActivityCheckInComponent,
   PlhCompletionModalComponent,
   PlhModuleDetailsHeaderComponent,
