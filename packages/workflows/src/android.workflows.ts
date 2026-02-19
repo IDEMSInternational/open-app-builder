@@ -20,31 +20,42 @@ const childWorkflows: IDeploymentWorkflows = {
       },
     ],
   },
-  // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
-  // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
-  // Further specifications provided here: https://www.npmjs.com/package/cordova-res
-  set_splash_image: {
-    label: "Generate splash screen image from splash.png asset and copy to relevant folders",
+  /**
+   * Generate Android launcher assets (icon + splash).
+   * Canonical: logo_asset_path + logo_background_color (optional; default white with warning).
+   * Legacy (deprecated): icon_asset_path + splash_asset_path (+ optional foreground/background).
+   */
+  generate_assets: {
+    label: "Generate launcher assets (icon + splash) from configured source images",
     steps: [
       {
-        name: "set_splash_image",
-        function: async ({ tasks, config }) =>
-          tasks.android.set_splash_image(config.android.splash_asset_path),
-      },
-    ],
-  },
-  set_launcher_icon: {
-    label:
-      "Generate app launcher icon from icon.png asset and, if provided, generate adaptive icon from icon-foreground.png and icon-background.png. Copy generated files to relevant folders",
-    steps: [
-      {
-        name: "set_launcher_icon",
-        function: async ({ tasks, config }) =>
-          tasks.android.set_launcher_icon({
-            iconAssetPath: config.android.icon_asset_path,
-            iconAssetForegroundPath: config.android.icon_asset_foreground_path,
-            iconAssetBackgroundPath: config.android.icon_asset_background_path,
-          }),
+        name: "generate_assets",
+        function: async ({ tasks, config }) => {
+          const { android } = config;
+          const hasLogoConfig = android.logo_asset_path;
+          const hasLegacyConfig = android.icon_asset_path && android.splash_asset_path;
+
+          if (hasLogoConfig) {
+            await tasks.android.generateAssets({
+              logoPath: android.logo_asset_path,
+              backgroundColor: android.logo_background_color ?? "",
+            });
+          } else if (hasLegacyConfig) {
+            await tasks.android.generateSplash({
+              splashAssetPath: android.splash_asset_path,
+            });
+            await tasks.android.generateIcon({
+              iconAssetPath: android.icon_asset_path,
+              iconAssetForegroundPath: android.icon_asset_foreground_path,
+              iconAssetBackgroundPath: android.icon_asset_background_path,
+            });
+          } else {
+            console.log(
+              "[android generate_assets] No asset config found. " +
+                "Set logo_asset_path and logo_background_color."
+            );
+          }
+        },
       },
     ],
   },
@@ -52,25 +63,19 @@ const childWorkflows: IDeploymentWorkflows = {
 
 /** Default workflows made available to all deployments */
 const defaultWorkflows: IDeploymentWorkflows = {
-  // TODO - add git notes about namespace change
   android: {
     label: `Run android workflows: ${Object.keys(childWorkflows).join(",")}`,
     // default workflow runs all child workflows
     steps: [
       {
-        name: "Configure Core",
+        name: "Configure",
         function: async ({ tasks, workflow }) =>
           await tasks.workflow.runWorkflow({ name: "android configure", parent: workflow }),
       },
       {
-        name: "Set Splash Image",
+        name: "Generate Assets",
         function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_splash_image", parent: workflow }),
-      },
-      {
-        name: "Set Launcher Icon",
-        function: async ({ tasks, workflow }) =>
-          await tasks.workflow.runWorkflow({ name: "android set_launcher_icon", parent: workflow }),
+          await tasks.workflow.runWorkflow({ name: "android generate_assets", parent: workflow }),
       },
     ],
     children: childWorkflows,
