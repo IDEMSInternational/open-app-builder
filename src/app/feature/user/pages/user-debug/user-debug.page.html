@@ -7,12 +7,12 @@
   </div>
   <!-- Sign In Debug -->
   <div style="display: flex; align-items: center; gap: 8px">
-    @if(authService.provider.authUser(); as user){
+    @if(authService.authUser(); as user){
     <span style="margin-right: auto">App Auth ID: {{user.uid}} </span>
-    <ion-button (click)="authService.provider.signOut()">Sign Out</ion-button>
+    <ion-button (click)="authService.signOut()">Sign Out</ion-button>
     } @else {
     <span style="margin-right: auto">Anonymous User </span>
-    <ion-button (click)="authService.provider.signIn('google.com')">Sign In</ion-button>
+    <ion-button (click)="authService.signIn('google.com')">Sign In</ion-button>
     }
   </div>
   <!-- Auth Profile Restore -->

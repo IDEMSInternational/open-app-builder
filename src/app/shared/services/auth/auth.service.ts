@@ -1,11 +1,10 @@
 import { effect, Injectable, Injector, signal } from "@angular/core";
-import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { AuthProviderBase } from "./providers/base.auth";
 import { AsyncServiceBase } from "../asyncService.base";
 import { getAuthProvider } from "./providers";
-import { IAuthUser } from "./types";
+import { IAuthUser, ISignInProvider } from "./types";
 import { filter, firstValueFrom, map } from "rxjs";
 import { TemplateService } from "../../components/template/services/template.service";
 import { toObservable } from "@angular/core/rxjs-interop";
@@ -18,14 +17,15 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
   providedIn: "root",
 })
 export class AuthService extends AsyncServiceBase {
-  /** Auth provider used */
-  public provider: AuthProviderBase;
+  private provider: AuthProviderBase;
+
+  /** Current auth user (mirrors provider’s signal so callers don’t need the provider). */
+  public authUser: AuthProviderBase["authUser"];
 
   /** List of profiles with same auth id for restore (first device login only) */
   public restoreProfiles = signal<IServerUser[]>([]);
 
   constructor(
-    private templateActionRegistry: TemplateActionRegistry,
     private localStorageService: LocalStorageService,
     private deploymentService: DeploymentService,
     private injector: Injector,
@@ -36,18 +36,17 @@ export class AuthService extends AsyncServiceBase {
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
+    this.authUser = this.provider.authUser;
     this.registerInitFunction(this.initialise);
     effect(async () => {
       const authUser = this.provider.authUser();
+      this.syncStorageToAuthState();
       if (authUser) {
-        this.addStorageEntry(authUser);
         // perform immediate sync if user signed in to ensure data backed up
         await this.serverService.syncUserData();
         await this.checkForUserRestore(authUser);
       } else {
-        // If signed out or no auth user reset previous data and return
         this.restoreProfiles.set([]);
-        this.clearUserData();
       }
     });
     // expose restore profile data to authoring via `app_auth_profiles` internal collection
@@ -62,6 +61,30 @@ export class AuthService extends AsyncServiceBase {
     });
   }
 
+  /**
+   * Sign in with the given sign in provider (e.g. "google.com" or "apple.com").
+   * Wraps the auth provider's (e.g. Firebase) signIn method and syncs auth state to storage
+   * */
+  public async signIn(providerId: ISignInProvider) {
+    const result = await this.provider.signIn(providerId);
+    this.syncStorageToAuthState();
+    return result;
+  }
+
+  /** Sign out. Wraps the provider's signOut and syncs auth state to storage */
+  public async signOut() {
+    const result = await this.provider.signOut();
+    this.syncStorageToAuthState();
+    return result;
+  }
+
+  /** Delete the current account. Wraps the provider's deleteAccount and syncs auth state to storage */
+  public async deleteAccount() {
+    const result = await this.provider.deleteAccount();
+    this.syncStorageToAuthState();
+    return result;
+  }
+
   private get config() {
     return this.deploymentService.config.auth || {};
   }
@@ -72,13 +95,8 @@ export class AuthService extends AsyncServiceBase {
     } catch (error) {
       console.error("[Auth] Provider initialisation failed:", error);
     }
-    this.registerTemplateActionHandlers();
 
-    // Explicitly set storage entry to ensure available for initial render by end of init
-    const authUser = this.provider.authUser();
-    if (authUser) {
-      this.addStorageEntry(authUser);
-    }
+    this.syncStorageToAuthState();
 
     if (this.config.enforceLoginTemplate) {
       // NOTE - Do not await the enforce login to allow other services to initialise in background
@@ -118,32 +136,6 @@ export class AuthService extends AsyncServiceBase {
     await modal.dismiss();
   }
 
-  private registerTemplateActionHandlers() {
-    this.templateActionRegistry.register({
-      auth: async ({ args }) => {
-        const [actionId] = args;
-        const childActions = {
-          sign_in_google: async () => await this.provider.signIn("google.com"),
-          sign_in_apple: async () => await this.provider.signIn("apple.com"),
-          sign_out: async () => await this.provider.signOut(),
-          delete_account: async () => await this.provider.deleteAccount(),
-        };
-        if (!(actionId in childActions)) {
-          console.error(`[AUTH] - No action, "${actionId}"`);
-          return;
-        }
-        return childActions[actionId]();
-      },
-      /**
-       * @deprecated since v0.16.27
-       * Use `auth: sign_in_google` instead
-       * */
-      google_auth: async () => {
-        return await this.provider.signIn("google.com");
-      },
-    });
-  }
-
   /** Keep id of auth user info in contact fields for db lookup*/
   private addStorageEntry(auth_user: IAuthUser) {
     this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
@@ -151,6 +143,20 @@ export class AuthService extends AsyncServiceBase {
     this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
     this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
     this.localStorageService.setProtected("AUTH_USER_PICTURE", auth_user.picture || "");
+  }
+
+  /**
+   * Sync localStorage auth fields to current provider auth state. Used explicitly as well as in effect
+   * to avoid race conditions between action list and auth state change.
+   * See https://github.com/IDEMSInternational/open-app-builder/pull/3328
+   */
+  public syncStorageToAuthState() {
+    const authUser = this.provider.authUser();
+    if (authUser) {
+      this.addStorageEntry(authUser);
+    } else {
+      this.clearUserData();
+    }
   }
 
   private clearUserData() {
