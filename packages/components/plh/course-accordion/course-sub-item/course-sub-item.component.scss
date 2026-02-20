@@ -2,7 +2,7 @@
   display: block;
 }
 
-.lesson-button {
+.course-sub-item {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@
   cursor: pointer;
   margin-top: var(--tiny-padding);
 
-  .lesson-button-title {
+  .course-sub-item-title {
     font-size: var(--font-size-text);
   }
 

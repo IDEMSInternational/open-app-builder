@@ -1,0 +1,4 @@
+<div class="course-sub-item" [attr.data-state]="state()" (click)="handleClick()">
+  <span class="course-sub-item-title">{{ value() || params().title }}</span>
+  <ion-icon [name]="iconName()"></ion-icon>
+</div>
