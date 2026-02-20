@@ -1,5 +1,10 @@
 <div class="course-accordion-container" [attr.data-locked]="params().locked">
   <div class="course-button">
+    @if (params().imageAsset) {
+      <div class="course-image">
+        <img [src]="params().imageAsset | plhAsset" />
+      </div>
+    }
     <div class="course-title-and-progress-bar">
       <p class="course-title">{{ value() || params().title }}</p>
       <div class="progress-bar-container">
