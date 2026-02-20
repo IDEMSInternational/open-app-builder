@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   EventEmitter,
+  input,
   Input,
   OnDestroy,
   OnInit,
@@ -89,9 +90,12 @@ export class TmplTaskProgressBarComponent
   extends TemplateBaseComponent
   implements OnInit, OnDestroy
 {
-  public params: Signal<ITaskProgressBarParams> = computed(() =>
-    this.getParams(this.inputParameterList || this.parameterList())
-  );
+  public params: Signal<ITaskProgressBarParams> = computed(() => {
+    this.inputProgressPercent(); // reactive dependency when used from parent
+    return this.getParams(
+      this.inputParameterList ?? (this._row != null ? this.parameterList() : undefined)
+    );
+  });
 
   @Input() dataListName: string | null;
   @Input() completedField: string | null;
@@ -100,6 +104,8 @@ export class TmplTaskProgressBarComponent
   @Input() progressStatus: IProgressStatus;
   @Input() progressUnitsName: string;
   @Input() showText: boolean;
+  /** When set by a parent, overrides any calculated progress (e.g. [inputProgressPercent]="progressPercent()"). */
+  inputProgressPercent = input<number | null>(null);
   // Pass whole parameter list from parent component to extract any item row operations
   @Input() inputParameterList: any;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
@@ -196,7 +202,7 @@ export class TmplTaskProgressBarComponent
     }
     // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
     else {
-      this.configureItemProcessor(this.inputParameterList);
+      this.configureItemProcessor(this.inputParameterList ?? {});
       return {
         dataListName: this.dataListName,
         completedField: this.completedField,
@@ -205,7 +211,7 @@ export class TmplTaskProgressBarComponent
         completedColumnName: this.completedColumnName || "completed",
         completedFieldColumnName: "completed_field",
         variant: "bar",
-        progressPercent: null,
+        progressPercent: this.inputProgressPercent() ?? null,
       };
     }
   }

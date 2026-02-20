@@ -1,0 +1,44 @@
+<div class="course-accordion-container" [attr.data-locked]="params().locked">
+  <div class="course-button">
+    @if (params().imageAsset) {
+      <div class="course-image">
+        <img [src]="params().imageAsset | plhAsset" />
+      </div>
+    }
+    <div class="course-title-and-progress-bar">
+      <p class="course-title">{{ value() || params().title }}</p>
+      <div class="progress-bar-container">
+        <plh-task-progress-bar
+          [showText]="false"
+          [inputProgressPercent]="progressPercent()"
+        ></plh-task-progress-bar>
+        <div class="progress-bar-text">
+          <p>{{ `${lessonCompleted()}/${lessonTotal()} lessons` }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="course-button-icon">
+      @if (params().locked) {
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      } @else {
+        @if (isOpen()) {
+          <ion-icon name="chevron-up-circle-outline"></ion-icon>
+        } @else {
+          <ion-icon name="chevron-down-circle-outline"></ion-icon>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="lessons-container">
+    <p class="lessons-header">Lessons</p>
+    @for (lesson of lessonDataRows(); track lesson.name) {
+      <div class="lesson-row">
+        <plh-course-sub-item
+          [row]="lesson"
+          [parent]="parentContainerComponentRef"
+        ></plh-course-sub-item>
+      </div>
+    }
+  </div>
+</div>
