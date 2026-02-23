@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { NavigationStart, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription, fromEvent, map } from "rxjs";
@@ -51,8 +51,11 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** listen to hardware back button presses (on android device only) */
   private hardwareBackButton$: PluginListenerHandle;
+
   /** track if navigation has been used to handle back button click behaviour */
-  private hasBackHistory = false;
+  private get hasBackHistory() {
+    return this.router.navigated;
+  }
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
@@ -79,11 +82,8 @@ export class headerComponent implements OnInit, OnDestroy {
     });
     effect(() => {
       // when route changes handle side-effects
-      const e = this.routeChanges();
+      const changes = this.routeChanges();
       this.handleRouteChange();
-      if (e instanceof NavigationStart) {
-        this.hasBackHistory = true;
-      }
     });
   }
 
