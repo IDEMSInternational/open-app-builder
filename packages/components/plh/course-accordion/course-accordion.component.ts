@@ -8,6 +8,7 @@ import {
 } from "src/app/shared/components/template/components/base";
 import { DataItemsService } from "src/app/shared/components/template/components/data-items/data-items.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
+import { parseBoolean } from "src/app/shared/utils";
 
 const COURSE_SUB_ITEM_ROW_TYPE = "plh_course_sub_item";
 
@@ -32,7 +33,9 @@ export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams
   );
   public lessonTotal = computed(() => this.lessonDataRows()?.length);
   public lessonCompleted = computed(
-    () => this.lessonDataRows()?.filter((row) => row.parameter_list?.completed).length
+    () =>
+      this.lessonDataRows()?.filter((row) => parseBoolean(row.parameter_list?.completed))?.length ??
+      0
   );
   public progressPercent = computed(() => {
     return Math.round((this.lessonCompleted() / this.lessonTotal()) * 100);
