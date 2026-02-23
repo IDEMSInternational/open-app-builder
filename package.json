@@ -153,7 +153,7 @@
     "angular-eslint": "^21.1.0",
     "concurrently": "^6.2.0",
     "cspell": "^6.20.1",
-    "eslint": "^9.39.2",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jasmine": "^4.2.2",
     "eslint-plugin-n": "^15.7.0",
