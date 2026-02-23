@@ -16,6 +16,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   title: coerce.string(""),
   locked: coerce.boolean(false),
   image_asset: coerce.string(""),
+  open: coerce.boolean(true),
 }));
 
 @Component({
@@ -43,6 +44,23 @@ export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams
 
   public isOpen = signal(true);
 
+  constructor(
+    public templateTranslateService: TemplateTranslateService,
+    private dataItemsService: DataItemsService
+  ) {
+    super();
+    /** Effect to update the open state when the open parameter changes */
+    effect(() => {
+      const open = this.params().open;
+      if (this._lastOpenFromParams !== open) {
+        this._lastOpenFromParams = open;
+        this.isOpen.set(open);
+      }
+    });
+  }
+
+  private _lastOpenFromParams: boolean | undefined;
+
   toggleOpen(): void {
     if (!this.params().locked) {
       this.isOpen.update((open) => !open);
@@ -61,16 +79,4 @@ export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams
       )
     )
   );
-
-  constructor(
-    public templateTranslateService: TemplateTranslateService,
-    private dataItemsService: DataItemsService
-  ) {
-    super();
-
-    effect(() => {
-      console.log("rows", this.rows());
-      console.log("dataItemRows", this.dataItemRows());
-    });
-  }
 }
