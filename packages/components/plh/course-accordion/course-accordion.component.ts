@@ -16,7 +16,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   title: coerce.string(""),
   locked: coerce.boolean(false),
   image_asset: coerce.string(""),
-  open: coerce.boolean(true),
+  open: coerce.boolean(false),
 }));
 
 @Component({
