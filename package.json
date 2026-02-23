@@ -110,7 +110,7 @@
     "shared": "workspace:*",
     "signature_pad": "^4.1.7",
     "stacktrace-js": "^2.0.2",
-    "swiper": "^12.0.3",
+    "swiper": "^12.1.2",
     "trusted-types": "^2.0.0",
     "uuid": "^11.0.3",
     "zod": "^4.0.17",
