@@ -16785,7 +16785,7 @@ __metadata:
     shared: "workspace:*"
     signature_pad: ^4.1.7
     stacktrace-js: ^2.0.2
-    swiper: ^12.0.3
+    swiper: ^12.1.2
     trusted-types: ^2.0.0
     typescript: 5.9.3
     typescript-eslint: ^8.53.0
@@ -26895,10 +26895,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^12.0.3":
-  version: 12.0.3
-  resolution: "swiper@npm:12.0.3"
-  checksum: 0686e81ca3cad14e38654d32761c079393d6a90b3df97c34e77d625313f3c70a4f4690e1290a03bcf0414f5e5c8958fa5ec97c8d3c48744c326ae720c60e3770
+"swiper@npm:^12.1.2":
+  version: 12.1.2
+  resolution: "swiper@npm:12.1.2"
+  checksum: 1b7fcc647573f7c58cb67a48265ad7a1667e991b66a9859295bf9ab8696c7427f39b34ba2b5e043bf828389b0f363bca1cba0bfbf10d5f459d26a7329352675a
   languageName: node
   linkType: hard
 
