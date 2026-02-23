@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
   Signal,
+  inject,
 } from "@angular/core";
 import { computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
@@ -52,10 +53,7 @@ export class headerComponent implements OnInit, OnDestroy {
   /** listen to hardware back button presses (on android device only) */
   private hardwareBackButton$: PluginListenerHandle;
 
-  /** track if navigation has been used to handle back button click behaviour */
-  private get hasBackHistory() {
-    return this.router.navigated;
-  }
+  private router = inject(Router);
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
@@ -67,7 +65,6 @@ export class headerComponent implements OnInit, OnDestroy {
   private isHomeRoute = true;
 
   constructor(
-    private router: Router,
     private location: Location,
     private appConfigService: AppConfigService
   ) {
@@ -99,7 +96,12 @@ export class headerComponent implements OnInit, OnDestroy {
   }
 
   public handleBackButtonClick() {
-    if (this.hasBackHistory) {
+    // Uses Angular's `navigationId` from `history.state` to determine
+    // if there is prior in-app history. The initial page load is always
+    // `1`, so a higher value means location.back() is safe
+    const historyState = this.location.getState() as { navigationId?: number };
+
+    if (historyState?.navigationId && historyState.navigationId > 1) {
       this.location.back();
     } else {
       this.router.navigateByUrl("/");
