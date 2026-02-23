@@ -6,7 +6,7 @@
 .course-accordion-container {
   border-radius: var(--ion-border-radius-small);
   background-color: var(--ion-color-primary-50);
-  color: var(--ion-color-primary);
+  color: var(--ion-color-primary-800);
   width: 100%;
   height: 100%;
 
@@ -52,11 +52,12 @@
 
       .course-title {
         font-size: var(--font-size-text-medium);
-        color: var(--ion-color-primary-700);
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
         text-align: start;
+        margin: 0 4px;
       }
+
       .progress-bar-container {
         flex-shrink: 1;
         width: 100%;
@@ -70,7 +71,6 @@
         .progress-bar-text {
           flex-shrink: 0;
           font-size: var(--font-size-text-tiny);
-          color: var(--ion-color-primary);
           margin: 0;
           padding: 0;
         }
@@ -80,8 +80,7 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      font-size: var(--icon-size-large);
-      color: var(--ion-color-primary);
+      font-size: var(--icon-size-medium);
       font-weight: var(--font-weight-bold);
       margin: 0 6px;
     }
@@ -96,7 +95,6 @@
 
     .lessons-header {
       font-size: var(--font-size-text-tiny);
-      color: var(--ion-color-primary);
       margin: 0;
       padding: 0;
     }
