@@ -15,8 +15,14 @@
     pointer-events: none;
   }
 
+  /* When closed, button has rounded corners on all sides */
+  &.accordion-closed .course-button {
+    border-radius: var(--ion-border-radius-small);
+  }
+
   /* Course button styling adapted from plh-module-list-item component */
   .course-button {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;

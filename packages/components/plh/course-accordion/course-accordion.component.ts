@@ -43,6 +43,12 @@ export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams
 
   public isOpen = signal(true);
 
+  toggleOpen(): void {
+    if (!this.params().locked) {
+      this.isOpen.update((open) => !open);
+    }
+  }
+
   private dataItemRows = toSignal(
     toObservable(this.rows).pipe(
       map((rows) => rows.find((r) => r.type === "data_items")),

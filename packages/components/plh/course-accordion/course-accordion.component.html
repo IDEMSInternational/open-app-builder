@@ -1,5 +1,9 @@
-<div class="course-accordion-container" [attr.data-locked]="params().locked">
-  <div class="course-button">
+<div
+  class="course-accordion-container"
+  [class.accordion-closed]="!isOpen()"
+  [attr.data-locked]="params().locked"
+>
+  <div class="course-button" (click)="toggleOpen()">
     @if (params().imageAsset) {
       <div class="course-image">
         <img [src]="params().imageAsset | plhAsset" />
@@ -30,15 +34,17 @@
     </div>
   </div>
 
-  <div class="lessons-container">
-    <p class="lessons-header">Lessons</p>
-    @for (lesson of lessonDataRows(); track lesson.name) {
-      <div class="lesson-row">
-        <plh-course-sub-item
-          [row]="lesson"
-          [parent]="parentContainerComponentRef"
-        ></plh-course-sub-item>
-      </div>
-    }
-  </div>
+  @if (isOpen()) {
+    <div class="lessons-container">
+      <p class="lessons-header">Lessons</p>
+      @for (lesson of lessonDataRows(); track lesson.name) {
+        <div class="lesson-row">
+          <plh-course-sub-item
+            [row]="lesson"
+            [parent]="parentContainerComponentRef"
+          ></plh-course-sub-item>
+        </div>
+      }
+    </div>
+  }
 </div>
