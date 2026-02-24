@@ -13,10 +13,11 @@ import { parseBoolean } from "src/app/shared/utils";
 const COURSE_SUB_ITEM_ROW_TYPE = "plh_course_sub_item";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  title: coerce.string(""),
-  locked: coerce.boolean(false),
+  completed: coerce.boolean(false),
   image_asset: coerce.string(""),
+  locked: coerce.boolean(false),
   open: coerce.boolean(false),
+  title: coerce.string(""),
 }));
 
 @Component({
@@ -40,6 +41,14 @@ export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams
   );
   public progressPercent = computed(() => {
     return Math.round((this.lessonCompleted() / this.lessonTotal()) * 100);
+  });
+
+  /** Mutually exclusive state: locked > completed > default */
+  public state = computed<"locked" | "completed" | "default">(() => {
+    const p = this.params();
+    if (p.locked) return "locked";
+    if (p.completed) return "completed";
+    return "default";
   });
 
   public isOpen = signal(true);

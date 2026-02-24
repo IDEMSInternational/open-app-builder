@@ -1,7 +1,7 @@
 <div
   class="course-accordion-container"
   [class.accordion-closed]="!isOpen()"
-  [attr.data-locked]="params().locked"
+  [attr.data-state]="state()"
 >
   <div class="course-button" (click)="toggleOpen()">
     @if (params().imageAsset) {
