@@ -54,6 +54,8 @@ export class headerComponent implements OnInit, OnDestroy {
   private hardwareBackButton$: PluginListenerHandle;
 
   private router = inject(Router);
+  private location = inject(Location);
+  private appConfigService = inject(AppConfigService);
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
