@@ -44,11 +44,11 @@ export class headerComponent implements OnInit, OnDestroy {
   showBackButton = signal(false);
   headerConfig = computed(() => this.appConfigService.appConfig().APP_HEADER_DEFAULTS);
 
-  /** listen to hardware back button presses (on android device only) */
-  private hardwareBackButton$: PluginListenerHandle;
-
   private location = inject(Location);
   private router = inject(Router);
+
+  /** listen to hardware back button presses (on android device only) */
+  private hardwareBackButton$: PluginListenerHandle;
 
   /**
    * Listen to router events to handle route change effects
@@ -78,7 +78,7 @@ export class headerComponent implements OnInit, OnDestroy {
     });
     effect(() => {
       // when route changes handle side-effects
-      const changes = this.routeChanges();
+      const e = this.routeChanges();
       this.handleRouteChange();
     });
   }
