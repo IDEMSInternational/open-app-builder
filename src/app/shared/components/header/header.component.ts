@@ -44,17 +44,18 @@ export class headerComponent implements OnInit, OnDestroy {
   showBackButton = signal(false);
   headerConfig = computed(() => this.appConfigService.appConfig().APP_HEADER_DEFAULTS);
 
+  /** listen to hardware back button presses (on android device only) */
+  private hardwareBackButton$: PluginListenerHandle;
+
+  private location = inject(Location);
+  private router = inject(Router);
+
   /**
    * Listen to router events to handle route change effects
    * NOTE - use events instead of route as header sits outside ion-router (limited access)
    **/
-  private routeChanges!: Signal<any>;
+  private routeChanges = toSignal(this.router.events);
 
-  /** listen to hardware back button presses (on android device only) */
-  private hardwareBackButton$: PluginListenerHandle;
-
-  private router = inject(Router);
-  private location = inject(Location);
   private appConfigService = inject(AppConfigService);
 
   /** Modify margin to move off-screen when using collapsed mode */
@@ -66,11 +67,7 @@ export class headerComponent implements OnInit, OnDestroy {
   /** Track whether on home route for back button and menu button side-effects */
   private isHomeRoute = true;
 
-  constructor(
-    private location: Location,
-    private appConfigService: AppConfigService
-  ) {
-    this.routeChanges = toSignal(this.router.events);
+  constructor() {
     effect(() => {
       // when header config changes set the height and collapse properties
       const { collapse, variant } = this.headerConfig();
