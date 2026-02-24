@@ -26,8 +26,6 @@ export interface VariablePointer {
 })
 export class VariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
-  private readonly definedNames = new Set<string>();
-  private readonly leafIndex = new Map<string, Set<string>>();
   private readonly stateChanged$ = new Subject<void>();
   private readonly stateStructureChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
@@ -42,30 +40,18 @@ export class VariableStore implements IStore {
    *
    * Behavior:
    * - Creates a new variable if it does not exist.
-   * - Marks first defined values for keys that were previously only placeholder subscriptions.
-   * - Emits structural-change events when a key becomes defined.
-   * - Emits value-change events only when the value actually changed (deep-equality aware),
-   *   except first-definition which always emits.
+   * - Emits structural-change events when a new key is added.
+   * - Emits value-change events only when the value actually changed (deep-equality aware).
    */
   public set(name: string, value: any): void {
     const currentState = this.state.get(name);
 
     if (!currentState) {
       this.state.set(name, new BehaviorSubject<any>(value));
-      this.definedNames.add(name);
-      const leafKey = this.addToLeafIndex(name);
-      this.stateStructureChanged$.next(leafKey);
+      this.stateStructureChanged$.next(name);
       this.stateChanged$.next();
     } else {
-      const isFirstDefinedValue = !this.definedNames.has(name);
-
-      if (isFirstDefinedValue) {
-        this.definedNames.add(name);
-        const leafKey = this.addToLeafIndex(name);
-        this.stateStructureChanged$.next(leafKey);
-      }
-
-      if (isFirstDefinedValue || !isEqual(value, currentState.value)) {
+      if (!isEqual(value, currentState.value)) {
         currentState.next(value);
         this.stateChanged$.next();
       }
@@ -200,7 +186,7 @@ export class VariableStore implements IStore {
   }
 
   /**
-   * Clears all variables, completes all per-key subjects, and resets resolution indexes.
+   * Clears all variables and completes all per-key subjects.
    * Emits both structure and state change events so subscribers can re-evaluate cleanly.
    */
   public clear(): void {
@@ -208,8 +194,6 @@ export class VariableStore implements IStore {
       state.complete();
     });
     this.state.clear();
-    this.definedNames.clear();
-    this.leafIndex.clear();
     this.stateStructureChanged$.next(undefined);
     this.stateChanged$.next();
   }
@@ -240,11 +224,11 @@ export class VariableStore implements IStore {
   private watchPointer(
     pointer: VariablePointer
   ): Observable<{ resolvedName: string | undefined; value: any }> {
-    const pointerLeafKeys = this.getPointerLeafKeys(pointer);
+    const pointerCandidates = new Set(pointer.candidates);
 
     return this.stateStructureChanged$.pipe(
       startWith(undefined),
-      filter((changedLeaf) => changedLeaf === undefined || pointerLeafKeys.has(changedLeaf)),
+      filter((changedName) => changedName === undefined || pointerCandidates.has(changedName)),
       map(() => this.resolvePointer(pointer)),
       distinctUntilChanged(),
       switchMap((resolvedName) => {
@@ -264,10 +248,7 @@ export class VariableStore implements IStore {
     const fallbackCandidates = pointer.candidates;
 
     for (const candidate of fallbackCandidates) {
-      const leafKey = this.getLeafKey(candidate);
-      const candidatesByLeaf = this.leafIndex.get(leafKey);
-
-      if (candidatesByLeaf?.has(candidate) || this.definedNames.has(candidate)) {
+      if (this.state.has(candidate)) {
         return candidate;
       }
     }
@@ -318,38 +299,5 @@ export class VariableStore implements IStore {
     }
 
     return candidates;
-  }
-
-  /**
-   * Adds a defined key to the leaf index used for debugging/introspection.
-   */
-  private addToLeafIndex(name: string): string {
-    const leafKey = this.getLeafKey(name);
-    const existingLeafSet = this.leafIndex.get(leafKey) ?? new Set<string>();
-    existingLeafSet.add(name);
-    this.leafIndex.set(leafKey, existingLeafSet);
-
-    return leafKey;
-  }
-
-  /**
-   * Returns all leaf keys that can affect pointer resolution for this pointer.
-   */
-  private getPointerLeafKeys(pointer: VariablePointer): Set<string> {
-    const pointerLeafKeys = new Set<string>();
-
-    pointer.candidates.forEach((candidate) => {
-      pointerLeafKeys.add(this.getLeafKey(candidate));
-    });
-
-    return pointerLeafKeys;
-  }
-
-  /**
-   * Returns the leaf segment (last token) of a dotted key.
-   */
-  private getLeafKey(name: string): string {
-    const segments = name.split(".");
-    return segments[segments.length - 1] ?? name;
   }
 }
