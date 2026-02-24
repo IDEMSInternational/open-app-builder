@@ -58,7 +58,7 @@ describe("ContextCreatorService", () => {
     expect(context).toEqual({ local: {} });
   });
 
-  it("dependency includes numbers", () => {
+  it("namespace includes numbers", () => {
     variableStore.set("button_text", "Click Here");
 
     const context = service.createContext(["parameter_loop.2.options_loop.0.button_text"]);
@@ -68,7 +68,7 @@ describe("ContextCreatorService", () => {
     });
   });
 
-  it("dependency is at root namespace", () => {
+  it("falls back to root-scope variable when scoped path segments are non-numeric", () => {
     variableStore.set("button_text", "Click Here");
 
     const context = service.createContext([
