@@ -9,6 +9,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   title: coerce.string(""),
   locked: coerce.boolean(false),
   highlighted: coerce.boolean(false),
+  completed_text: coerce.string("Completed"),
+  locked_text: coerce.string("Locked"),
 }));
 
 @Component({

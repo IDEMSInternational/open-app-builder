@@ -22,8 +22,24 @@
     font-size: var(--font-size-text);
   }
 
-  ion-icon {
-    font-size: var(--icon-size-small);
+  .state-container {
+    display: flex;
+    align-items: center;
+    gap: var(--tiny-padding);
+    .state-badge {
+      font-size: 10px;
+      font-weight: var(--font-weight-bold);
+      padding: 2px 4px;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: var(--ion-border-radius-rounded);
+      p {
+        margin: 0;
+      }
+    }
+    ion-icon {
+      font-size: var(--icon-size-small);
+    }
   }
 
   &[data-state="highlighted"] {
