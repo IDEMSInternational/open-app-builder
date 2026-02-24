@@ -25,7 +25,7 @@ export interface VariablePointer {
   providedIn: "root",
 })
 export class VariableStore implements IStore {
-  private readonly state: { [key: string]: BehaviorSubject<any> } = {};
+  private readonly state = new Map<string, BehaviorSubject<any>>();
   private readonly definedNames = new Set<string>();
   private readonly leafIndex = new Map<string, Set<string>>();
   private readonly stateChanged$ = new Subject<void>();
@@ -58,8 +58,10 @@ export class VariableStore implements IStore {
    *   except first-definition which always emits.
    */
   public set(name: string, value: any): void {
-    if (!this.state[name]) {
-      this.state[name] = new BehaviorSubject<any>(value);
+    const currentState = this.state.get(name);
+
+    if (!currentState) {
+      this.state.set(name, new BehaviorSubject<any>(value));
       this.definedNames.add(name);
       const leafKey = this.addToLeafIndex(name);
       this.stateStructureChanged$.next(leafKey);
@@ -73,8 +75,8 @@ export class VariableStore implements IStore {
         this.stateStructureChanged$.next(leafKey);
       }
 
-      if (isFirstDefinedValue || !isEqual(value, this.state[name].value)) {
-        this.state[name].next(value);
+      if (isFirstDefinedValue || !isEqual(value, currentState.value)) {
+        currentState.next(value);
         this.stateChanged$.next();
       }
     }
@@ -162,7 +164,7 @@ export class VariableStore implements IStore {
    * Note: this checks exact key presence, not fallback resolution.
    */
   public has(name: string): boolean {
-    return this.state.hasOwnProperty(name);
+    return this.state.has(name);
   }
 
   /**
@@ -171,8 +173,8 @@ export class VariableStore implements IStore {
    */
   public getAll(): { [name: string]: any } {
     const result: { [name: string]: any } = {};
-    Object.keys(this.state).forEach((name) => {
-      result[name] = this.state[name].value;
+    this.state.forEach((state, name) => {
+      result[name] = state.value;
     });
     return result;
   }
@@ -189,9 +191,9 @@ export class VariableStore implements IStore {
    * Primarily intended for debug UIs.
    */
   public getAllList(): { name: string; value: any }[] {
-    return Object.keys(this.state)
-      .sort()
-      .map((name) => ({ name, value: this.state[name].value }));
+    return Array.from(this.state.entries())
+      .map(([name, state]) => ({ name, value: state.value }))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**
@@ -199,10 +201,10 @@ export class VariableStore implements IStore {
    * Emits both structure and state change events so subscribers can re-evaluate cleanly.
    */
   public clear(): void {
-    Object.keys(this.state).forEach((name) => {
-      this.state[name].complete();
-      delete this.state[name];
+    this.state.forEach((state) => {
+      state.complete();
     });
+    this.state.clear();
     this.definedNames.clear();
     this.leafIndex.clear();
     this.stateStructureChanged$.next(undefined);
@@ -213,11 +215,7 @@ export class VariableStore implements IStore {
    * Gets the current value for an exact key without fallback logic.
    */
   private getExact(name: string): any {
-    if (!this.state[name]) {
-      return undefined;
-    }
-
-    return this.state[name].value;
+    return this.state.get(name)?.value;
   }
 
   /**
@@ -227,10 +225,14 @@ export class VariableStore implements IStore {
    * so callers can still subscribe immediately.
    */
   private watchExact(name: string): Observable<any> {
-    if (!this.state[name]) {
-      this.state[name] = new BehaviorSubject<any>(undefined);
+    let state = this.state.get(name);
+
+    if (!state) {
+      state = new BehaviorSubject<any>(undefined);
+      this.state.set(name, state);
     }
-    return this.state[name].asObservable();
+
+    return state.asObservable();
   }
 
   /**
