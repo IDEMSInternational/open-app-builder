@@ -28,9 +28,9 @@ describe("Variable scope", () => {
     cy.getDataTest("outerLoop2.key_2.innnerLoop.1.loopButton").contains("Root Text");
     cy.getDataTest("outerLoop2.key_2.innnerLoop.2.loopButton").contains("Root Text");
 
-    cy.getDataTest("outerLoop2.key_2.innnerLoop.0.loopButton").contains("Root Text");
-    cy.getDataTest("outerLoop2.key_2.innnerLoop.1.loopButton").contains("Root Text");
-    cy.getDataTest("outerLoop2.key_2.innnerLoop.2.loopButton").contains("Root Text");
+    cy.getDataTest("outerLoop2.key_3.innnerLoop.0.loopButton").contains("Root Text");
+    cy.getDataTest("outerLoop2.key_3.innnerLoop.1.loopButton").contains("Root Text");
+    cy.getDataTest("outerLoop2.key_3.innnerLoop.2.loopButton").contains("Root Text");
 
     cy.getDataTest("buttonText").find("input").clear().type("Something Different").blur();
 
