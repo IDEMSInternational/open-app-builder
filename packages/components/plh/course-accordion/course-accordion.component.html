@@ -17,7 +17,9 @@
           [inputProgressPercent]="progressPercent()"
         ></plh-task-progress-bar>
         <div class="progress-bar-text">
-          <p>{{ `${lessonCompleted()}/${lessonTotal()} lessons` }}</p>
+          <p>
+            {{ `${subItemsCompleted()}/${subItemsTotal()} ${(params().subItemsName | lowercase)}` }}
+          </p>
         </div>
       </div>
     </div>
@@ -35,12 +37,12 @@
   </div>
 
   @if (isOpen()) {
-    <div class="lessons-container">
-      <p class="lessons-header">Lessons</p>
-      @for (lesson of lessonDataRows(); track lesson.name) {
-        <div class="lesson-row">
+    <div class="sub-items-container">
+      <p class="sub-items-header">{{ params().subItemsName }}</p>
+      @for (subItem of subItemDataRows(); track subItem.name) {
+        <div class="sub-item-row">
           <plh-course-sub-item
-            [row]="lesson"
+            [row]="subItem"
             [parent]="parentContainerComponentRef"
           ></plh-course-sub-item>
         </div>

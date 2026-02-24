@@ -18,6 +18,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   locked: coerce.boolean(false),
   open: coerce.boolean(false),
   title: coerce.string(""),
+  sub_items_name: coerce.string("Lessons"),
 }));
 
 @Component({
@@ -27,20 +28,20 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   standalone: false,
 })
 export class PlhCourseAccordionComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
-  /** The raw lesson data rows, will include lessons for all courses */
-  public rawLessonDataRows = signal<any[]>([]);
-  /** The lesson data rows for the current course */
-  public lessonDataRows = computed(() =>
+  /** The raw sub-item data rows, will include sub-items for all courses */
+  public rawSubItemDataRows = signal<any[]>([]);
+  /** The sub-item data rows for the current course */
+  public subItemDataRows = computed(() =>
     this.dataItemRows()?.filter((row) => row.type === COURSE_SUB_ITEM_ROW_TYPE)
   );
-  public lessonTotal = computed(() => this.lessonDataRows()?.length);
-  public lessonCompleted = computed(
+  public subItemsTotal = computed(() => this.subItemDataRows()?.length);
+  public subItemsCompleted = computed(
     () =>
-      this.lessonDataRows()?.filter((row) => parseBoolean(row.parameter_list?.completed))?.length ??
-      0
+      this.subItemDataRows()?.filter((row) => parseBoolean(row.parameter_list?.completed))
+        ?.length ?? 0
   );
   public progressPercent = computed(() => {
-    return Math.round((this.lessonCompleted() / this.lessonTotal()) * 100);
+    return Math.round((this.subItemsCompleted() / this.subItemsTotal()) * 100);
   });
 
   /** Mutually exclusive state: locked > completed > default */

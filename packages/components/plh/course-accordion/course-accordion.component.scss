@@ -96,14 +96,14 @@
     }
   }
 
-  .lessons-container {
+  .sub-items-container {
     border: var(--border-standard);
     border-width: 2px;
     border-color: var(--ion-color-primary-100);
     border-radius: 0 0 var(--ion-border-radius-small) var(--ion-border-radius-small);
     padding: var(--small-padding);
 
-    .lessons-header {
+    .sub-items-header {
       font-size: var(--font-size-text-tiny);
       margin: 0;
       padding: 0;
