@@ -47,18 +47,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     super("RemoteAsset");
     this.registerInitFunction(this.initialise);
 
-    effect(
-      () => {
-        if (this.remoteAssetsEnabled()) {
-          const dataRows = this.coreAssetContentsData();
-          if (dataRows && dataRows.length > 0) {
-            const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
-            this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
-          }
+    effect(() => {
+      if (this.remoteAssetsEnabled()) {
+        const dataRows = this.coreAssetContentsData();
+        if (dataRows && dataRows.length > 0) {
+          const assetContentsHashmap = arrayToHashmap(dataRows, "id") as IAssetContents;
+          this.templateAssetService.assetsContentsList.set(assetContentsHashmap);
         }
-      },
-      { allowSignalWrites: true }
-    );
+      }
+    });
   }
 
   private async initialise() {

@@ -9743,13 +9743,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/swiper@npm:~4.2.0":
-  version: 4.2.4
-  resolution: "@types/swiper@npm:4.2.4"
-  checksum: 4fd538887bc0510ad1f6b127c19d84ca7d6f9ecd1f63374e7c174b4a0ff8081d295aabae72f5ed442a5bf582c1b72129954a6a340586a3b8eebaeb5a4232b995
-  languageName: node
-  linkType: hard
-
 "@types/through@npm:*":
   version: 0.0.33
   resolution: "@types/through@npm:0.0.33"
@@ -14130,15 +14123,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom7@npm:^4.0.4":
-  version: 4.0.6
-  resolution: "dom7@npm:4.0.6"
-  dependencies:
-    ssr-window: ^4.0.0
-  checksum: 616a68cbae59eaea2e717ada5855346f0ffa4ac10ab96713bb42b90efabce367213c3c491c4bf5502d177b0865c63d8abd298cc8e12bdda171340c853d6b515a
-  languageName: node
-  linkType: hard
-
 "domelementtype@npm:^2.3.0":
   version: 2.3.0
   resolution: "domelementtype@npm:2.3.0"
@@ -16737,7 +16721,6 @@ __metadata:
     "@types/node": ^24
     "@types/nouislider": ^15.0.0
     "@types/qrcode": ^1.5.5
-    "@types/swiper": ~4.2.0
     "@types/uuid": ^10.0.0
     "@typescript-eslint/eslint-plugin": ^8.53.0
     "@typescript-eslint/parser": ^8.53.0
@@ -16802,7 +16785,7 @@ __metadata:
     shared: "workspace:*"
     signature_pad: ^4.1.7
     stacktrace-js: ^2.0.2
-    swiper: ^8.4.7
+    swiper: ^12.1.2
     trusted-types: ^2.0.0
     typescript: 5.9.3
     typescript-eslint: ^8.53.0
@@ -24294,11 +24277,11 @@ __metadata:
   linkType: hard
 
 "qs@npm:^6.11.0, qs@npm:^6.14.0, qs@npm:^6.14.1, qs@npm:^6.6.0, qs@npm:^6.7.0, qs@npm:~6.14.0, qs@npm:~6.14.1":
-  version: 6.14.1
-  resolution: "qs@npm:6.14.1"
+  version: 6.14.2
+  resolution: "qs@npm:6.14.2"
   dependencies:
     side-channel: ^1.1.0
-  checksum: 7fffab0344fd75bfb6b8c94b8ba17f3d3e823d25b615900f68b473c3a078e497de8eaa08f709eaaa170eedfcee50638a7159b98abef7d8c89c2ede79291522f2
+  checksum: e613d0b8d02cec33c20d1a6015ec2a5db614bf3dd2ffd9bde08bc34a76419213f291c91fb00519a3d8a74e4727f565b350f8394f9d381bc64e6da663d9e031d4
   languageName: node
   linkType: hard
 
@@ -26365,13 +26348,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "ssr-window@npm:4.0.2"
-  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
-  languageName: node
-  linkType: hard
-
 "ssri@npm:^12.0.0":
   version: 12.0.0
   resolution: "ssri@npm:12.0.0"
@@ -26919,13 +26895,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swiper@npm:^8.4.7":
-  version: 8.4.7
-  resolution: "swiper@npm:8.4.7"
-  dependencies:
-    dom7: ^4.0.4
-    ssr-window: ^4.0.2
-  checksum: c52be6105e12984ba024f8cb4c0627919d4069172c0021ed7c5743c3709b5a814dd50d134813ea4f7019048be6ff9dda96db8f1adf38e317c8bb285574fcd006
+"swiper@npm:^12.1.2":
+  version: 12.1.2
+  resolution: "swiper@npm:12.1.2"
+  checksum: 1b7fcc647573f7c58cb67a48265ad7a1667e991b66a9859295bf9ab8696c7427f39b34ba2b5e043bf828389b0f363bca1cba0bfbf10d5f459d26a7329352675a
   languageName: node
   linkType: hard
 
