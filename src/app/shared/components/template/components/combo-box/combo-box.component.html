@@ -25,6 +25,7 @@
 } @else if (params().variant === "dropdown" && !showSearch()) {
   <div class="combo-box-container dropdown">
     <ion-select
+      [value]="value()"
       [class.hasValue]="!!_row.value"
       [placeholder]="displayText() | translate"
       (ionChange)="handleDropdownChange($event.detail.value)"
