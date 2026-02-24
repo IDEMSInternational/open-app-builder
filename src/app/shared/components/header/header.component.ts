@@ -46,6 +46,7 @@ export class headerComponent implements OnInit, OnDestroy {
 
   private location = inject(Location);
   private router = inject(Router);
+  private appConfigService = inject(AppConfigService);
 
   /** listen to hardware back button presses (on android device only) */
   private hardwareBackButton$: PluginListenerHandle;
@@ -55,8 +56,6 @@ export class headerComponent implements OnInit, OnDestroy {
    * NOTE - use events instead of route as header sits outside ion-router (limited access)
    **/
   private routeChanges = toSignal(this.router.events);
-
-  private appConfigService = inject(AppConfigService);
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
