@@ -77,4 +77,34 @@ describe("VariableStore", () => {
 
     subscription.unsubscribe();
   });
+
+  it("supports reserved object property names as variable keys", () => {
+    store.set("__proto__", "proto-value");
+    store.set("constructor", "constructor-value");
+    store.set("hasOwnProperty", "has-own-property-value");
+
+    expect(store.has("__proto__")).toBeTrue();
+    expect(store.has("constructor")).toBeTrue();
+    expect(store.has("hasOwnProperty")).toBeTrue();
+    expect(store.get("__proto__")).toBe("proto-value");
+    expect(store.get("constructor")).toBe("constructor-value");
+    expect(store.get("hasOwnProperty")).toBe("has-own-property-value");
+  });
+
+  it("getAllSignal tracks defined keys only when watching unresolved dependencies", () => {
+    const allSignal = store.getAllSignal();
+    const emissions: any[] = [];
+    const subscription = store.watch("root.scope.myVar").subscribe((value) => {
+      emissions.push(value);
+    });
+
+    expect(emissions).toEqual([undefined]);
+    expect(allSignal()).toEqual({});
+
+    store.set("root.scope.myVar", 123);
+
+    expect(allSignal()).toEqual({ "root.scope.myVar": 123 });
+
+    subscription.unsubscribe();
+  });
 });

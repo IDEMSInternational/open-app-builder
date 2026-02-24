@@ -30,22 +30,12 @@ export class VariableStore implements IStore {
   private readonly leafIndex = new Map<string, Set<string>>();
   private readonly stateChanged$ = new Subject<void>();
   private readonly stateStructureChanged$ = new Subject<string | undefined>();
-  private readonly allSignal: Signal<{ [name: string]: any }>;
+  private allSignal: Signal<{ [name: string]: any }> | undefined;
 
   /**
-   * Builds a live signal of all currently stored values, updated whenever state changes.
+   * Initializes the store.
    */
-  constructor(private injector: Injector) {
-    this.allSignal = toSignal(
-      this.stateChanged$.pipe(
-        startWith(undefined),
-        map(() => this.getAll())
-      ),
-      {
-        injector: this.injector,
-      }
-    );
-  }
+  constructor(private injector: Injector) {}
 
   /**
    * Sets or updates a variable value.
@@ -181,8 +171,21 @@ export class VariableStore implements IStore {
 
   /**
    * Returns a live signal of the entire store snapshot.
+   * The signal is created lazily on first access.
    */
   public getAllSignal(): Signal<{ [name: string]: any }> {
+    if (!this.allSignal) {
+      this.allSignal = toSignal(
+        this.stateChanged$.pipe(
+          startWith(undefined),
+          map(() => this.getAll())
+        ),
+        {
+          injector: this.injector,
+        }
+      );
+    }
+
     return this.allSignal;
   }
 
@@ -221,18 +224,11 @@ export class VariableStore implements IStore {
   /**
    * Watches one exact key without applying scope fallback.
    *
-   * If the key does not exist yet, a placeholder 'BehaviorSubject(undefined)' is created
-   * so callers can still subscribe immediately.
+   * If the key does not exist yet, returns an observable that emits 'undefined'.
    */
   private watchExact(name: string): Observable<any> {
-    let state = this.state.get(name);
-
-    if (!state) {
-      state = new BehaviorSubject<any>(undefined);
-      this.state.set(name, state);
-    }
-
-    return state.asObservable();
+    const state = this.state.get(name);
+    return state ? state.asObservable() : of(undefined);
   }
 
   /**
