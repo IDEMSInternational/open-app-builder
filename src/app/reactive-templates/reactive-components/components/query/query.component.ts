@@ -7,7 +7,7 @@ import { firstValueFrom } from "rxjs";
 
 const parameters = () =>
   defineParameters({
-    dataList: new Parameter("data_list", ""),
+    dataList: new Parameter<string>("data_list", undefined),
   });
 
 @Component({
@@ -23,11 +23,13 @@ export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameter
     try {
       const queryString = `{${value as string}}`;
       const mangoQuery = value ? json5.parse(queryString) : {};
-      const query = this.dynamicDataService.query$<any>(
-        "data_list",
-        this.params.dataList.value(),
-        mangoQuery
-      );
+      const dataList = this.params.dataList.value();
+
+      if (!dataList || dataList === "undefined") {
+        return [];
+      }
+
+      const query = this.dynamicDataService.query$<any>("data_list", dataList, mangoQuery);
 
       return await firstValueFrom(query);
     } catch (error) {
