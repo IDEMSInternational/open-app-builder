@@ -1,5 +1,6 @@
 <div
   class="lesson-cta-container"
+  (click)="triggerActions('click')"
   [style.backgroundImage]="'url(' + (params().backgroundImageAsset | plhAsset) + ')'"
 >
   <div class="badge">
