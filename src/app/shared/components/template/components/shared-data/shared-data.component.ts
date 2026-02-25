@@ -29,7 +29,7 @@ export class TmplSharedDataComponent extends TemplateBaseComponent {
     () => {
       const id = this.value();
       const authorParams = this.parameterList() as IAuthorParams;
-      const authId = this.authService.provider.authUser()?.uid;
+      const authId = this.authService.authUser()?.uid;
       return { id, ...authorParams, authId };
     },
     { equal: isEqual }
