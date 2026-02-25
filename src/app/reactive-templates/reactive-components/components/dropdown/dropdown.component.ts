@@ -22,7 +22,6 @@ const parameters = () =>
   selector: "oab-dropdown",
   templateUrl: "./dropdown.component.html",
   styleUrls: ["./dropdown.component.scss"],
-  standalone: true,
   imports: [IonicModule, NgClass, TranslatePipe],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })

@@ -23,6 +23,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   templateUrl: "./tabs.component.html",
   styleUrls: ["./tabs.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TmplTabsComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   animationDuration = computed(() => `${this.params().animationDurationMs}ms`);

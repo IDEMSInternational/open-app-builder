@@ -9,9 +9,9 @@ import { TemplateBaseComponent } from "./base";
       <summary style="display:flex" (click)="handleSummaryClick($event)">
         <span class="debug-row-type">{{ _row.type }}</span>
         <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
-        <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
-          ><ion-icon name="eye-off"></ion-icon
-        ></span>
+        @if (_row.hidden === "true") {
+          <span class="debug-row-hidden"><ion-icon name="eye-off"></ion-icon></span>
+        }
       </summary>
     </details>
     <ion-popover [isOpen]="details.open" class="debugger-popover">
@@ -20,12 +20,16 @@ import { TemplateBaseComponent } from "./base";
           <table>
             <th></th>
             <th></th>
-            <div *ngFor="let key of _row | objectKeys" style="display:contents">
-              <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">
-                <td>{{ key }}</td>
-                <td>{{ _row[key] | json }}</td>
-              </tr>
-            </div>
+            @for (key of _row | objectKeys; track key) {
+              <div style="display:contents">
+                @if (!debugFieldExclusions.includes(key) && _row[key]) {
+                  <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ _row[key] | json }}</td>
+                  </tr>
+                }
+              </div>
+            }
           </table>
           <ion-button fill="clear" size="small" (click)="logDebugInfo()">
             (log full details)
@@ -76,6 +80,7 @@ import { TemplateBaseComponent } from "./base";
       }
     `,
   ],
+  standalone: false,
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
   constructor(private templateFieldService: TemplateFieldService) {

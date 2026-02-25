@@ -48,7 +48,7 @@ export class TemplateCalcService extends AsyncServiceBase {
     return window as any as IWindowWithCalc;
   }
 
-  private async initialise() {
+  protected async initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([this.dataEvaluationService]);
     await this.setUserMetaData();
@@ -100,7 +100,7 @@ export class TemplateCalcService extends AsyncServiceBase {
     };
   }
 
-  private async setUserMetaData() {
+  protected async setUserMetaData() {
     if (!this.device_info) {
       this.device_info = await Device.getInfo();
     }

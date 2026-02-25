@@ -5,11 +5,13 @@
   </tr>
 
   <tbody>
-    <tr *ngFor="let customVal of customStyleVariables">
-      <td>{{ customVal.name }}</td>
-      <td [style]="customVal.tableDisplayStyles">
-        {{ customVal.value }}
-      </td>
-    </tr>
+    @for (customVal of customStyleVariables; track customVal) {
+      <tr>
+        <td>{{ customVal.name }}</td>
+        <td [style]="customVal.tableDisplayStyles">
+          {{ customVal.value }}
+        </td>
+      </tr>
+    }
   </tbody>
 </table>

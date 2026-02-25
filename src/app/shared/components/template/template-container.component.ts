@@ -32,6 +32,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   selector: "plh-template-container",
   templateUrl: "./template-container.component.html",
   styleUrls: ["./template-container.component.scss"],
+  standalone: false,
 })
 /**
  * TODOs

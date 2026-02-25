@@ -14,6 +14,7 @@ const parameters = () =>
   selector: "oab-query",
   template: "", // template is not needed for this component
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
+  standalone: false,
 })
 export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   private dynamicDataService = inject(DynamicDataService);

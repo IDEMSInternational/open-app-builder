@@ -54,6 +54,7 @@ import { AuthService } from "./shared/services/auth/auth.service";
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AppComponent {
   footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);

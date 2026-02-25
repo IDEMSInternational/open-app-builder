@@ -17,6 +17,7 @@ interface IButtonAppleSignInComponentParams {
   selector: "tmpl-button-apple-sign-in",
   templateUrl: "./button-apple-sign-in.component.html",
   styleUrls: ["./button-apple-sign-in.component.scss"],
+  standalone: false,
 })
 export class TmplButtonAppleSignInComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));
@@ -27,7 +28,7 @@ export class TmplButtonAppleSignInComponent extends TemplateBaseComponent {
   }
 
   public async handleClick() {
-    await this.authService.provider.signIn("apple.com");
+    await this.authService.signIn("apple.com");
     this.triggerActions("click");
   }
 

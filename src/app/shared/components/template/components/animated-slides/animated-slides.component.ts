@@ -8,6 +8,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "template-animated-slides",
   templateUrl: "./animated-slides.component.html",
   styleUrls: ["./animated-slides.component.scss"],
+  standalone: false,
 })
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
   skipText = "";

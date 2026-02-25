@@ -22,13 +22,14 @@ interface IAuthorParams {
   templateUrl: "./shared-data.component.html",
   styleUrls: ["./shared-data.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TmplSharedDataComponent extends TemplateBaseComponent {
   private params = computed<Params>(
     () => {
       const id = this.value();
       const authorParams = this.parameterList() as IAuthorParams;
-      const authId = this.authService.provider.authUser()?.uid;
+      const authId = this.authService.authUser()?.uid;
       return { id, ...authorParams, authId };
     },
     { equal: isEqual }

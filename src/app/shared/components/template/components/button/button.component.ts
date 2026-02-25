@@ -7,6 +7,7 @@ const VARIANTS = [
   "alternative",
   "card",
   "card-portrait",
+  "compact",
   "flexible",
   "full",
   "information",
@@ -25,6 +26,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "alternative"
    * - "card"
    * - "card-portrait"
+   * - "compact"
    * - "flexible"
    * - "full"
    * - "information"
@@ -64,6 +66,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
+  standalone: false,
 })
 export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** Style with two_columns logic applied */

@@ -23,56 +23,60 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
         <ion-title>{{ campaignId }}</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding background-primary-lighter" *ngIf="dbData">
-      <h4>DB Variables</h4>
-      <ion-item>
-        <ion-label>
-          <span>First Launch</span>
-          <span style="margin-left:8px">
-            ({{ dbData.first_app_launch | calcDaysDiff }} days ago)
-          </span>
-        </ion-label>
-        <ion-datetime
-          #firstLaunch
-          (ionChange)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
-          [value]="dbData.first_app_launch"
-        ></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          #appDay
-          type="number"
-          label="App Day"
-          labelPlacement="start"
-          [value]="dbData.app_day"
-          style="text-align: right"
-          (ionBlur)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
-        ></ion-input>
-      </ion-item>
-      <h4>Field Variables</h4>
-      <ion-item *ngFor="let row of editorRows">
-        <ion-label>{{ row.field }}</ion-label>
-        <ion-datetime
-          [style.display]="row.condition_type === 'db_lookup' ? 'initial' : 'none'"
-          #fieldFirst
-          placeholder="Set First"
-          [value]="row.current_value_first"
-          (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
-        ></ion-datetime>
-        <ion-select
-          #select
-          [value]="row.current_value"
-          (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
-          [compareWith]="compareFieldValue"
-          placeholder="Set Value"
-        >
-          <ion-select-option *ngFor="let value of row.condition_values">{{
-            value
-          }}</ion-select-option>
-          <ion-select-option value="">(null)</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-content>`,
+    @if (dbData) {
+      <ion-content class="ion-padding background-primary-lighter">
+        <h4>DB Variables</h4>
+        <ion-item>
+          <ion-label>
+            <span>First Launch</span>
+            <span style="margin-left:8px">
+              ({{ dbData.first_app_launch | calcDaysDiff }} days ago)
+            </span>
+          </ion-label>
+          <ion-datetime
+            #firstLaunch
+            (ionChange)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
+            [value]="dbData.first_app_launch"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            #appDay
+            type="number"
+            label="App Day"
+            labelPlacement="start"
+            [value]="dbData.app_day"
+            style="text-align: right"
+            (ionBlur)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
+          ></ion-input>
+        </ion-item>
+        <h4>Field Variables</h4>
+        @for (row of editorRows; track row) {
+          <ion-item>
+            <ion-label>{{ row.field }}</ion-label>
+            <ion-datetime
+              [style.display]="row.condition_type === 'db_lookup' ? 'initial' : 'none'"
+              #fieldFirst
+              placeholder="Set First"
+              [value]="row.current_value_first"
+              (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
+            ></ion-datetime>
+            <ion-select
+              #select
+              [value]="row.current_value"
+              (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
+              [compareWith]="compareFieldValue"
+              placeholder="Set Value"
+            >
+              @for (value of row.condition_values; track value) {
+                <ion-select-option>{{ value }}</ion-select-option>
+              }
+              <ion-select-option value="">(null)</ion-select-option>
+            </ion-select>
+          </ion-item>
+        }
+      </ion-content>
+    }`,
   styles: [
     `
       ion-item {
@@ -80,6 +84,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
       }
     `,
   ],
+  standalone: false,
 })
 export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
   @Input() campaignId: string = "";

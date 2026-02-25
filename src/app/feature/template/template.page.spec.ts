@@ -12,7 +12,11 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
 import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS } from "packages/data-models";
 
 // HACK - mock child `<plh-template-container>` component to bypass imports
-@Component({ selector: "plh-template-container", template: "<div></div>" })
+@Component({
+  selector: "plh-template-container",
+  template: "<div></div>",
+  standalone: false,
+})
 class MockTemplateContainerComponent {
   templatename = input<string>();
 }

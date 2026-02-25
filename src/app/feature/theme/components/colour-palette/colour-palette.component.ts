@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
   selector: "plh-colour-palette",
   templateUrl: "./colour-palette.component.html",
   styleUrls: ["./colour-palette.component.scss"],
+  standalone: false,
 })
 export class ColourPaletteComponent {
   themeColours = ["primary", "primary-variant", "secondary", "secondary-variant"];

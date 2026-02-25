@@ -21,6 +21,7 @@ interface INavButton {
   selector: "plh-bottom-navigation-bar",
   templateUrl: "./bottom-navigation-bar.component.html",
   styleUrls: ["./bottom-navigation-bar.component.scss"],
+  standalone: false,
 })
 export class PlhBottomNavigationBarComponent extends TemplateBaseComponent implements OnInit {
   params: Partial<IPlhBottomNavigationParams> = {};

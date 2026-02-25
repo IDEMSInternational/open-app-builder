@@ -3,40 +3,42 @@
   [value]="openSections"
   #accordionGroup
 >
-  <ion-accordion
-    [value]="childRow.name"
-    *ngFor="let childRow of _row.rows | filterDisplayComponent; index as i"
-    toggle-icon="arrow-down-circle"
-    [style.z-index]="_row.rows.length - i"
-  >
-    <ion-item slot="header" class="accordion-header clear" lines="none">
-      <ion-label class="accordion-section-title ion-text-wrap">{{
-        childRow.value || ""
-      }}</ion-label>
-      <!-- If custom icon supplied override. Otherwise default will be arrow -->
-      <ng-template [ngIf]="_row.parameter_list?.open_icon_src" let-open_icon_src="ngIf">
-        <ng-container
-          [ngTemplateOutlet]="customIcon"
-          [ngTemplateOutletContext]="{open_icon_src,  childRow }"
-        ></ng-container>
-      </ng-template>
-    </ion-item>
-    <!-- Accordion section Content -->
-    <ion-item slot="content" class="accordion-content clear" lines="none">
-      <plh-template-component
-        *ngFor="let contentRow of childRow.rows | filterDisplayComponent"
-        [row]="contentRow"
-        [parent]="parent"
-        [attr.data-rowname]="contentRow.name"
-      >
-      </plh-template-component>
-    </ion-item>
-  </ion-accordion>
+  @for (childRow of _row.rows | filterDisplayComponent; track childRow; let i = $index) {
+    <ion-accordion
+      [value]="childRow.name"
+      toggle-icon="arrow-down-circle"
+      [style.z-index]="_row.rows.length - i"
+    >
+      <ion-item slot="header" class="accordion-header clear" lines="none">
+        <ion-label class="accordion-section-title ion-text-wrap">{{
+          childRow.value || ""
+        }}</ion-label>
+        <!-- If custom icon supplied override. Otherwise default will be arrow -->
+        @if (_row.parameter_list?.open_icon_src; as open_icon_src) {
+          <ng-container
+            [ngTemplateOutlet]="customIcon"
+            [ngTemplateOutletContext]="{ open_icon_src, childRow }"
+          ></ng-container>
+        }
+      </ion-item>
+      <!-- Accordion section Content -->
+      <ion-item slot="content" class="accordion-content clear" lines="none">
+        @for (contentRow of childRow.rows | filterDisplayComponent; track contentRow) {
+          <plh-template-component
+            [row]="contentRow"
+            [parent]="parent"
+            [attr.data-rowname]="contentRow.name"
+          >
+          </plh-template-component>
+        }
+      </ion-item>
+    </ion-accordion>
+  }
 </ion-accordion-group>
 
-<!-- 
-    Template for custom icon - extracted from main inline block as a bit messy 
-    override default icon to replace with empty class and toggle depending on open state 
+<!--
+Template for custom icon - extracted from main inline block as a bit messy
+override default icon to replace with empty class and toggle depending on open state
 -->
 <ng-template #customIcon let-open_icon_src="open_icon_src" let-childRow="childRow">
   <div class="ion-accordion-toggle-icon"></div>
