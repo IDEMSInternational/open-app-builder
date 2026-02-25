@@ -1,8 +1,13 @@
+:host {
+  margin-bottom: var(--small-margin);
+}
+
 .lesson-cta-container {
   border-radius: var(--ion-border-radius-small);
   border: 1px solid var(--ion-color-green-900);
   background-color: var(--ion-color-green-700);
   color: white;
+  letter-spacing: var(--font-letter-spacing);
   width: 100%;
   padding: var(--large-padding) var(--regular-padding);
   display: flex;
@@ -10,6 +15,7 @@
   align-items: center;
   gap: var(--small-padding);
   position: relative;
+  cursor: pointer;
 
   .badge {
     position: absolute;
@@ -33,8 +39,10 @@
 
   .content {
     width: 100%;
+    padding-bottom: var(--small-padding);
+
     .title {
-      font-size: var(--font-size-text-medium);
+      font-size: var(--font-size-text-large);
       font-weight: var(--font-weight-bold);
       line-height: var(--line-height-text-medium);
       margin: 0;
@@ -63,14 +71,17 @@
     align-items: center;
     justify-content: center;
 
-    .cta-button {
+    ion-button.cta-button {
+      margin: 2px;
       --background: white;
       --border-color: var(--ion-color-green-900);
       --color: var(--ion-color-green-900);
+      --border-style: solid;
+      --border-width: 1px;
     }
 
     .cta-text {
-      font-size: var(--font-size-text-small);
+      font-size: var(--font-size-text-tiny);
       font-weight: var(--font-weight-medium);
       margin: 0;
     }
