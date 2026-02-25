@@ -1,10 +1,18 @@
-<div class="lesson-cta-container">
+<div
+  class="lesson-cta-container"
+  [style.backgroundImage]="'url(' + (params().backgroundImageAsset | plhAsset) + ')'"
+>
   <div class="badge">
     <p class="badge-text">{{ params().badgeText }}</p>
   </div>
   <div class="content">
     <p class="title">{{ value() || params().title }}</p>
     <p class="subtitle">{{ params().subtitle }}</p>
+    @if (progressBarRow()) {
+      <div class="progress-bar-container">
+        <plh-task-progress-bar [row]="progressBarRow()!"></plh-task-progress-bar>
+      </div>
+    }
   </div>
   <div class="cta">
     <ion-button class="cta-button" shape="round">

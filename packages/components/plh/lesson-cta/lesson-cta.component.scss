@@ -1,9 +1,10 @@
 .lesson-cta-container {
   border-radius: var(--ion-border-radius-small);
-  background-color: var(--ion-color-primary-50);
-  color: var(--ion-color-primary-800);
+  border: 1px solid var(--ion-color-green-900);
+  background-color: var(--ion-color-green-700);
+  color: white;
   width: 100%;
-  padding: var(--regular-padding);
+  padding: var(--large-padding) var(--regular-padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,9 +16,10 @@
     top: -12px;
     left: -10px;
     background-color: var(--ion-background-color);
+    color: var(--ion-color-green-900);
     border-style: solid;
     border-width: 1px;
-    border-color: var(--ion-color-green);
+    border-color: var(--ion-color-green-900);
     border-radius: var(--ion-border-radius-rounded);
     padding: 4px 16px;
     font-size: var(--font-size-text-small);
@@ -29,18 +31,26 @@
     }
   }
 
-  .title {
-    font-size: var(--font-size-text-medium);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-text-medium);
-    margin: 0;
-  }
+  .content {
+    width: 100%;
+    .title {
+      font-size: var(--font-size-text-medium);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-text-medium);
+      margin: 0;
+    }
 
-  .subtitle {
-    font-size: var(--font-size-text-small);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-text-small);
-    margin: 0;
+    .subtitle {
+      font-size: var(--font-size-text-small);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--line-height-text-small);
+      margin: 0;
+    }
+
+    .progress-bar-container {
+      width: 80%;
+      margin-top: var(--small-padding);
+    }
   }
 
   .cta {
@@ -48,6 +58,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .cta-button {
+      --background: white;
+      --border-color: var(--ion-color-green-900);
+      --color: var(--ion-color-green-900);
+    }
 
     .cta-text {
       font-size: var(--font-size-text-small);
