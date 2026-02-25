@@ -56,10 +56,7 @@ export async function importRepo(remoteTarget: string, options: { acceptDefaults
     console.log(chalk.gray(`Using default name: ${deploymentName}`));
   } else {
     const nameInput = await promptInput("Specify a name for the deployment", name);
-    deploymentName = nameInput
-      .replace(/ /g, "_")
-      .toLowerCase()
-      .replace(/[^a-z0-9_]/g, "");
+    deploymentName = nameInput.replace(/ /g, "_").toLowerCase().replace(/[^a-z0-9_]/g, "");
   }
 
   const targetDir = resolve(DEPLOYMENTS_PATH, deploymentName);
