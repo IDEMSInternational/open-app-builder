@@ -1,0 +1,15 @@
+<div class="lesson-cta-container">
+  <div class="badge">
+    <p class="badge-text">{{ params().badgeText }}</p>
+  </div>
+  <div class="content">
+    <p class="title">{{ value() || params().title }}</p>
+    <p class="subtitle">{{ params().subtitle }}</p>
+  </div>
+  <div class="cta">
+    <ion-button class="cta-button" shape="round">
+      <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
+    </ion-button>
+    <p class="cta-text">{{ params().ctaText }}</p>
+  </div>
+</div>

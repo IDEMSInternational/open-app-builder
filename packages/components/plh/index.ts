@@ -6,41 +6,45 @@ import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
 import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component";
 import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
+import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
 import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 
 export {
-  PlhParentPointCounterComponent,
-  PlhParentPointBoxComponent,
-  PlhModuleListItemComponent,
   PlhActivityCheckInComponent,
-  PlhCompletionModalComponent,
-  PlhModuleDetailsHeaderComponent,
   PlhBottomNavigationBarComponent,
-  PlhProgressPathComponent,
+  PlhCompletionModalComponent,
+  PlhLessonCtaComponent,
+  PlhModuleDetailsHeaderComponent,
+  PlhModuleListItemComponent,
   PlhParentGroupModule,
+  PlhParentPointBoxComponent,
+  PlhParentPointCounterComponent,
+  PlhProgressPathComponent,
 };
 
 export const PLH_FEATURE_MODULES = [PlhParentGroupModule];
 
 export const PLH_COMPONENTS = [
-  PlhParentPointCounterComponent,
-  PlhParentPointBoxComponent,
-  PlhModuleListItemComponent,
   PlhActivityCheckInComponent,
-  PlhCompletionModalComponent,
-  PlhModuleDetailsHeaderComponent,
   PlhBottomNavigationBarComponent,
+  PlhCompletionModalComponent,
+  PlhLessonCtaComponent,
+  PlhModuleDetailsHeaderComponent,
+  PlhModuleListItemComponent,
+  PlhParentPointBoxComponent,
+  PlhParentPointCounterComponent,
   PlhProgressPathComponent,
 ];
 
 export const PLH_COMPONENT_MAPPING = {
-  parent_point_counter: PlhParentPointCounterComponent,
   parent_point_box: PlhParentPointBoxComponent,
+  parent_point_counter: PlhParentPointCounterComponent,
+  plh_activity_check_in: PlhActivityCheckInComponent,
+  plh_bottom_nav: PlhBottomNavigationBarComponent,
+  plh_completion_modal: PlhCompletionModalComponent,
+  plh_lesson_cta: PlhLessonCtaComponent,
   plh_module_details_header: PlhModuleDetailsHeaderComponent,
   plh_module_list_item: PlhModuleListItemComponent,
-  plh_activity_check_in: PlhActivityCheckInComponent,
-  plh_completion_modal: PlhCompletionModalComponent,
-  plh_bottom_nav: PlhBottomNavigationBarComponent,
   plh_progress_path: PlhProgressPathComponent,
 };
 
