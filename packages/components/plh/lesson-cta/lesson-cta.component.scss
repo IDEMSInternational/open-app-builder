@@ -50,6 +50,10 @@
     .progress-bar-container {
       width: 80%;
       margin-top: var(--small-padding);
+      // Override the default task progress bar styles for the lesson CTA using theme variables
+      --task-progress-bar-color: var(--ion-color-green-900);
+      --task-progress-bar-background-color: white;
+      --task-progress-bar-height: 5px;
     }
   }
 
