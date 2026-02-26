@@ -4,7 +4,6 @@ import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion
 import { PlhCourseAccordionComponent } from "./course-accordion/course-accordion.component";
 import { PlhCourseSubItemComponent } from "./course-accordion/course-sub-item/course-sub-item.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
-import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component";
 import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
 import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
