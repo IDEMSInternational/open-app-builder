@@ -1,4 +1,4 @@
-import { Component, effect, forwardRef, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, effect, forwardRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
@@ -14,15 +14,15 @@ import { Subscription } from "rxjs";
 export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
   private childDependencySubscriptions: Subscription[] = [];
-  private templateInitialised = false;
+  private templateInitialised = signal(false);
 
   constructor() {
     super();
 
     effect(() => {
-      if (this.reactiveTemplate().initialised() && !this.templateInitialised) {
+      if (this.reactiveTemplate().initialised() && !this.templateInitialised()) {
         this.onTemplateInitialised();
-        this.templateInitialised = true;
+        this.templateInitialised.set(true);
       }
     });
   }
@@ -57,6 +57,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
   // So in this context they are dynamic but in the child context they are static.
   private setChildExpression(row: FlowTypes.TemplateRow) {
     const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
+
     if (this.rowRegistry.has(rowFullName)) {
       const value = this.evaluationService.evaluateExpression(row.value, this.namespace());
       this.rowRegistry.get(rowFullName)?.setExpression(value);

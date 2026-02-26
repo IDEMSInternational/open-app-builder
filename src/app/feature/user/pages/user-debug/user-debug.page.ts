@@ -1,7 +1,16 @@
-import { Component, computed, effect, inject, Injector, OnInit, signal } from "@angular/core";
+import {
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  Injector,
+  OnInit,
+  signal,
+} from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { isEqual, uniqueObjectArrayKeys } from "packages/shared/src/utils/object-utils";
-import { map, debounceTime, switchMap, startWith, tap, of, from } from "rxjs";
-import { toSignal } from "@angular/core/rxjs-interop";
+import { map, debounceTime, switchMap, startWith, of, from } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
@@ -34,7 +43,7 @@ export class UserDebugPage implements OnInit {
   private dynamicDataService = inject(DynamicDataService);
 
   /** Live state of all dynamic data stored */
-  private dynamicDataState = toSignal(this.subscribeToDynamicDataState());
+  private dynamicDataState = signal<IDynamicDataState | undefined>(undefined);
 
   /** Name of flow selected to display dynamic data */
   public dynamicDataSelected = signal("");
@@ -42,7 +51,7 @@ export class UserDebugPage implements OnInit {
   /** Live state of selected flow dynamic data sub-state */
   private dynamicDataSelectedState = computed(
     () => {
-      const state = this.dynamicDataState() || ({} as any);
+      const state = this.dynamicDataState() ?? ({} as IDynamicDataState);
       const selected = this.dynamicDataSelected();
       return { ...state?.[selected] };
     },
@@ -53,9 +62,10 @@ export class UserDebugPage implements OnInit {
   public dynamicDataTableData = signal({ headers: [], rows: [] });
 
   /** List of all flow names where dynamic data has been set */
-  public dynamicDataSelectOptions = computed(() => [...Object.keys(this.dynamicDataState() || {})]);
+  public dynamicDataSelectOptions = computed(() => [...Object.keys(this.dynamicDataState() ?? {})]);
 
   private injector = inject(Injector);
+  private destroyRef = inject(DestroyRef);
   private actionService = new TemplateActionService(this.injector);
 
   constructor(
@@ -90,6 +100,7 @@ export class UserDebugPage implements OnInit {
     await this.fieldService.ready();
     await this.dynamicDataService.ready();
     this.actionService.ready();
+    this.subscribeToDynamicDataState();
     await this.loadUserData();
   }
 
@@ -174,48 +185,54 @@ export class UserDebugPage implements OnInit {
     this.protectedFields.set(contactFields.filter((v) => v.key.startsWith("_")));
   }
 
-  /** Create a subscription that updates with any writeCache db changes and returns full state of cache */
+  /**
+   * Subscribe to writeCache db changes and push into dynamicDataState.
+   * Call only from ngOnInit after DynamicDataService.ready() so writeCache is set.
+   */
   private subscribeToDynamicDataState() {
     // Wait for service to be ready before accessing writeCache
-    return from(this.dynamicDataService.ready()).pipe(
-      switchMap(() => {
-        const writeCache = this.dynamicDataService["writeCache"];
-        if (!writeCache) return of({} as IDynamicDataState);
+    from(this.dynamicDataService.ready())
+      .pipe(
+        switchMap(() => {
+          const writeCache = this.dynamicDataService["writeCache"];
+          if (!writeCache) return of({} as IDynamicDataState);
 
-        const strategy = writeCache["strategy"];
+          const strategy = writeCache["strategy"];
 
-        // Use RxDB strategy if available to capture changes from multiple tabs
-        if (strategy && strategy["collection"] && strategy["db"]) {
-          const collection = strategy["collection"];
-          return strategy["db"].$.pipe(
-            debounceTime(50),
-            startWith({}),
-            switchMap(() => collection.find().exec()),
-            map((docs: RxDocument<IPersistedDoc>[]) => {
-              // recreate a snapshot of the entire dynamic db state from saved docs
-              const state: IDynamicDataState = {};
-              for (const doc of docs) {
-                const { data, flow_name, row_id } = doc;
-                state[flow_name] ??= {};
-                state[flow_name][row_id] = data;
-              }
-              return state;
-            })
-          );
-        }
+          // Use RxDB strategy if available to capture changes from multiple tabs
+          if (strategy && strategy["collection"] && strategy["db"]) {
+            const collection = strategy["collection"];
+            return strategy["db"].$.pipe(
+              debounceTime(50),
+              startWith({}),
+              switchMap(() => collection.find().exec()),
+              map((docs: RxDocument<IPersistedDoc>[]) => {
+                // recreate a snapshot of the entire dynamic db state from saved docs
+                const state: IDynamicDataState = {};
+                for (const doc of docs) {
+                  const { data, flow_name, row_id } = doc;
+                  state[flow_name] ??= {};
+                  state[flow_name][row_id] = data;
+                }
+                return state;
+              })
+            );
+          }
 
-        // Fallback for other strategies (e.g. native file persistence)
-        // Returns current memory state but won't sync across tabs
-        const state: IDynamicDataState = {};
-        const storedState = writeCache.state || {}; // PersistedState
-        Object.values(storedState).forEach((flowTypeData: any) => {
-          Object.entries(flowTypeData).forEach(([flowName, rows]: [string, any]) => {
-            state[flowName] = rows;
+          // Fallback for other strategies (e.g. native file persistence)
+          // Returns current memory state but won't sync across tabs
+          const state: IDynamicDataState = {};
+          const storedState = writeCache.state || {}; // PersistedState
+          Object.values(storedState).forEach((flowTypeData: any) => {
+            Object.entries(flowTypeData).forEach(([flowName, rows]: [string, any]) => {
+              state[flowName] = rows;
+            });
           });
-        });
-        return of(state);
-      }),
-      startWith({} as IDynamicDataState)
-    );
+          return of(state);
+        }),
+        startWith({} as IDynamicDataState),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe((state) => this.dynamicDataState.set(state));
   }
 }
