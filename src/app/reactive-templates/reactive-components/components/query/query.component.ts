@@ -25,7 +25,7 @@ export class QueryComponent extends RowBaseComponent<ReturnType<typeof parameter
       const mangoQuery = value ? json5.parse(queryString) : {};
       const dataList = this.params.dataList.value();
 
-      if (!dataList || dataList === "undefined") {
+      if (!dataList) {
         return [];
       }
 
