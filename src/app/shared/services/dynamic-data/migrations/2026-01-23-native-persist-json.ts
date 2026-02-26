@@ -1,10 +1,10 @@
 import { Capacitor } from "@capacitor/core";
-import { Directory, Filesystem } from "@capacitor/filesystem";
+import { Directory } from "@capacitor/filesystem";
 import { Migration } from "../../migration/migration.types";
 import type { DynamicDataService } from "../dynamic-data.service";
 import { FilePersistenceStrategy } from "../adapters/persistence/file.strategy";
 import type { IDeploymentRuntimeConfig } from "packages/data-models";
-import { readIndexedDBDocs } from "src/app/shared/utils";
+import { fileExists, readIndexedDBDocs } from "src/app/shared/utils";
 import { PersistedState } from "../adapters/persistence/persistence.interface";
 
 /**
@@ -17,15 +17,8 @@ const migration: Migration<{ service: DynamicDataService; deployment: IDeploymen
     preconditions: async () => {
       if (!Capacitor.isNativePlatform()) return false;
       // If persist file already created assume migration has been previously run and skip
-      try {
-        const { files } = await Filesystem.readdir({ directory: Directory.Data, path: "" });
-        const targetFilename = "oab-dynamic-data.json";
-        const fileAlreadyExists = files.some((f) => f.name === targetFilename);
-        return !fileAlreadyExists;
-      } catch {
-        // Can't read directory (e.g. first launch) → assume file doesn't exist, run migration
-        return true;
-      }
+      const targetFilename = "oab-dynamic-data.json";
+      return !(await fileExists(targetFilename, Directory.Data));
     },
     run: async ({ deployment }) => {
       const legacyData = await loadLegacyData(deployment.name);
