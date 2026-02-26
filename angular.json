@@ -11,13 +11,14 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "aot": true,
-            "outputPath": "www",
+            "outputPath": {
+              "base": "www"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "optimization": { "scripts": false, "fonts": false, "styles": false },
             "assets": [
@@ -41,13 +42,15 @@
               { "input": "src/theme/variables.scss", "inject": true }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": ["*"]
+            "allowedCommonJsDependencies": ["*"],
+            "browser": "src/main.ts",
+            "stylePreprocessorOptions": {
+              "includePaths": ["."]
+            }
           },
           "configurations": {
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -64,8 +67,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "optimization": {
                 "scripts": true,
                 "styles": { "minify": true, "inlineCritical": false },
