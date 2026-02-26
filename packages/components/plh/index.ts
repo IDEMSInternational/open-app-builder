@@ -11,7 +11,6 @@ import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.
 import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
-import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 
 export {
   PlhActivityCheckInComponent,
