@@ -17,6 +17,7 @@
             "outputPath": {
               "base": "www"
             },
+            "preserveSymlinks": true,
             "index": "src/index.html",
             "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",

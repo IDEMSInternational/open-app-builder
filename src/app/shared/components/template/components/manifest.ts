@@ -1,4 +1,4 @@
-import type { ICommonComponentName, IComponentManifest } from "packages/components/types";
+import type { ICommonComponentName, IComponentManifest } from "components/types";
 
 import { PLH_COMPONENT_MANIFEST } from "components/plh/manifest";
 
