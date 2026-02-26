@@ -68,9 +68,7 @@
     }
     .information {
       --background: var(--ion-color-primary-600);
-      &:hover {
-        --background: var(--ion-color-primary-500);
-      }
+      --background-hover: var(--ion-color-primary-500);
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
