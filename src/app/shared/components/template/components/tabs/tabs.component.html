@@ -7,7 +7,7 @@
     [selectedIndex]="params().selectedIndex"
   >
     @for (tabRow of tabRows(); track tabRow.name) {
-      <mat-tab [label]="tabRow.label" [attr.data-rowname]="tabRow.name">
+      <mat-tab [label]="tabRow.label | translate" [attr.data-rowname]="tabRow.name">
         @for (
           childRow of tabRow.childRows | filterDisplayComponent;
           track trackByRow($index, childRow)

@@ -6,42 +6,37 @@
 >
   <div class="text">{{ _row?.value }}</div>
   <div class="copy-button">
-    <ng-container *ngIf="_row?.parameter_list?.copy_text && _row?.parameter_list.copied_text">
-      <ng-container *ngIf="!toggle; else copy_text_replace">{{
-        _row.parameter_list.copy_text
-      }}</ng-container>
-      <ng-template #copy_text_replace>{{ _row.parameter_list.copied_text }}</ng-template>
-    </ng-container>
+    @if (_row?.parameter_list?.copy_text && _row?.parameter_list.copied_text) {
+      @if (!toggle) {
+        {{ _row.parameter_list.copy_text }}
+      } @else {
+        {{ _row.parameter_list.copied_text }}
+      }
+    }
 
-    <ng-container *ngIf="_row.parameter_list?.copy_icon && _row.parameter_list.copied_text">
-      <ng-container *ngIf="!toggle; else copy_icon_replace">
+    @if (_row.parameter_list?.copy_icon && _row.parameter_list.copied_text) {
+      @if (!toggle) {
         <ion-icon name="{{ _row.parameter_list?.copy_icon }}"></ion-icon>
-      </ng-container>
-
-      <ng-template #copy_icon_replace>
+      } @else {
         <span class="copy_text">{{ _row?.parameter_list.copied_text }}</span>
-      </ng-template>
-    </ng-container>
+      }
+    }
 
-    <ng-container *ngIf="_row.parameter_list?.copy_text && _row.parameter_list.copied_icon">
-      <ng-container *ngIf="!toggle; else copy_text_replace">
+    @if (_row.parameter_list?.copy_text && _row.parameter_list.copied_icon) {
+      @if (!toggle) {
         {{ _row.parameter_list?.copy_text }}
-      </ng-container>
-
-      <ng-template #copy_text_replace>
+      } @else {
         <ion-icon name="{{ _row.parameter_list?.copied_icon }}"></ion-icon>
-      </ng-template>
-    </ng-container>
+      }
+    }
 
-    <ng-container *ngIf="_row.parameter_list?.copy_icon && _row.parameter_list?.copied_icon">
-      <ng-container *ngIf="!toggle; else copy_img_replace">
+    @if (_row.parameter_list?.copy_icon && _row.parameter_list?.copied_icon) {
+      @if (!toggle) {
         <ion-icon name="{{ _row.parameter_list?.copy_icon }}"></ion-icon>
-      </ng-container>
-
-      <ng-template #copy_img_replace>
+      } @else {
         <img class="image-based-icon" [src]="_row.parameter_list.copied_icon | plhAsset" />
-      </ng-template>
-    </ng-container>
+      }
+    }
   </div>
   <span></span>
 </div>

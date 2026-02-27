@@ -15,6 +15,7 @@
   $color-secondary-variant: null,
   $color-red: null,
   $color-green: null,
+  $color-yellow: null,
   $variable-overrides: ()
 ) {
   @include theme-selectors.theme-selectors($theme-name) {
@@ -27,6 +28,7 @@
       $color-secondary-variant: $color-secondary-variant,
       $color-red: $color-red,
       $color-green: $color-green,
+      $color-yellow: $color-yellow,
       $variable-overrides: $variable-overrides
     );
   }
@@ -41,6 +43,7 @@
   $color-secondary-variant: null,
   $color-red: null,
   $color-green: null,
+  $color-yellow: null,
   $variable-overrides: ()
 ) {
   @include generate-color-palettes(
@@ -49,6 +52,7 @@
     $page-background,
     $r: $color-red,
     $g: $color-green,
+    $y: $color-yellow,
     $pv: $color-primary-variant,
     $sv: $color-secondary-variant
   );
@@ -70,7 +74,7 @@
   $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
   $green: null,
   $red: null,
-  $yellow: hsl(45, 100%, 50%),
+  $yellow: null,
   $gray: hsl(0, 0%, 10%),
   $primary-variant: null,
   $secondary-variant: null
@@ -92,6 +96,17 @@
     );
   }
 
+  // Handle default values for optional hardcoded colours
+  @if ($green == null) {
+    $green: hsl(120, 100%, 35%);
+  }
+  @if ($red == null) {
+    $red: hsl(0, 100%, 50%);
+  }
+  @if ($yellow == null) {
+    $yellow: hsl(45, 100%, 50%);
+  }
+
   $result: (
     "color-primary": $primary,
     "color-primary-variant": $primary-variant,
@@ -101,8 +116,8 @@
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "background-color": color.change($primary, $lightness: 98%),
     "color-yellow": $yellow,
-    "color-red": hsl(0, 100%, 50%),
-    "color-green": hsl(120, 100%, 35%),
+    "color-red": $red,
+    "color-green": $green,
     "color-gray-light": color.change($gray, $lightness: 90%),
     "default-box-shadow": 0 2px 8px rgba(0, 0, 0, 0.2),
     // Used for activated/focused/hover states of ion-button – may only be visible in web preview
@@ -117,6 +132,7 @@
   $result: map.merge($result, generate-colour-variants($secondary, "secondary", $weights));
   $result: map.merge($result, generate-colour-variants($yellow, "yellow", $weights));
   $result: map.merge($result, generate-colour-variants($gray, "gray", $weights));
+  $result: map.merge($result, generate-colour-variants($green, "green", $weights));
   $result: map.merge(
     $result,
     generate-colour-variants($primary-variant, "primary-variant", $weights)
@@ -226,25 +242,21 @@
       $gradientPalette: map.merge(
         $gradientPalette,
         (
-          "gradient-#{$baseColor}-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-#{$dirName}": linear-gradient(
               $dirAngle,
               color.adjust($main, $lightness: 12%) 30%,
               color.adjust($main, $lightness: -12%)
             ),
           // Light gradient: 200 → 500
-          "gradient-#{$baseColor}-light-#{$dirName}":
-            linear-gradient($dirAngle, $light 30%, $mid),
+          "gradient-#{$baseColor}-light-#{$dirName}": linear-gradient($dirAngle, $light 30%, $mid),
           // Mid gradient: 400 → 700
-          "gradient-#{$baseColor}-mid-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-mid-#{$dirName}": linear-gradient(
               $dirAngle,
               map.get($colorPalette, "color-#{$baseColor}-400") 30%,
               map.get($colorPalette, "color-#{$baseColor}-700")
             ),
           // Dark gradient: 700 → 900
-          "gradient-#{$baseColor}-dark-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-dark-#{$dirName}": linear-gradient(
               $dirAngle,
               map.get($colorPalette, "color-#{$baseColor}-700") 30%,
               map.get($colorPalette, "color-#{$baseColor}-900")
@@ -257,13 +269,23 @@
   @return $gradientPalette;
 }
 
-@mixin generate-color-palettes($p, $s, $bg: null, $r: null, $g: null, $pv: null, $sv: null) {
+@mixin generate-color-palettes(
+  $p,
+  $s,
+  $bg: null,
+  $r: null,
+  $g: null,
+  $y: null,
+  $pv: null,
+  $sv: null
+) {
   $colorPalette: get-color-palette(
     $p,
     $s,
     $bg,
     $red: $r,
     $green: $g,
+    $yellow: $y,
     $primary-variant: $pv,
     $secondary-variant: $sv
   );

@@ -76,6 +76,7 @@ import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
+  TmplSliderComponent,
   TmplTableComponent,
 ];
 
@@ -129,7 +130,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplRadioListComponent,
   TmplSharedDataComponent,
   TmplSimpleCheckboxComponent,
-  TmplSliderComponent,
   TmplSubtitleComponent,
   TmplTabsComponent,
   TmplTaskCardComponent,
