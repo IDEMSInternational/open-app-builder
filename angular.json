@@ -15,7 +15,8 @@
           "options": {
             "aot": true,
             "outputPath": {
-              "base": "www"
+              "base": "www",
+              "browser": ""
             },
             "preserveSymlinks": true,
             "index": "src/index.html",
