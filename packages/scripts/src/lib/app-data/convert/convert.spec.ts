@@ -12,7 +12,7 @@ import {
 } from "fs-extra";
 import { clearLogs } from "shared";
 
-import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
+import { TEST_DATA_PATHS, useMockLogger } from "../../../../test/helpers/utils";
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import { IDeploymentConfigJson } from "data-models";
 
@@ -147,6 +147,7 @@ describe("App Data Converter - Error Checking", () => {
   });
   it("Tracks conversion errors", async () => {
     clearLogs(true);
+    const loggerSpy = useMockLogger(false);
     const { errors, warnings, result } = await errorConverter.run();
     expect(errors.length).toEqual(1);
     const errorMessages = errors.map((err) => err.message);
