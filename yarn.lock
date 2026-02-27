@@ -25322,9 +25322,8 @@ __metadata:
     subtitles-parser-vtt: ^0.1.0
     ts-jest: ^29.2.5
     ts-morph: ^15.0.0
-    ts-node: ^10.8.0
-    ts-node-dev: ^2.0.0
     tsup: ^7.2.0
+    tsx: ^4.21.0
     typescript: 5.5.4
     winston: ^3.10.0
     workflows: "workspace:*"
@@ -27630,33 +27629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node-dev@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ts-node-dev@npm:2.0.0"
-  dependencies:
-    chokidar: ^3.5.1
-    dynamic-dedupe: ^0.3.0
-    minimist: ^1.2.6
-    mkdirp: ^1.0.4
-    resolve: ^1.0.0
-    rimraf: ^2.6.1
-    source-map-support: ^0.5.12
-    tree-kill: ^1.2.2
-    ts-node: ^10.4.0
-    tsconfig: ^7.0.0
-  peerDependencies:
-    node-notifier: "*"
-    typescript: "*"
-  peerDependenciesMeta:
-    node-notifier:
-      optional: true
-  bin:
-    ts-node-dev: lib/bin.js
-    tsnd: lib/bin.js
-  checksum: d654b401de3d13c167981481be2a375229f6bfd2aeedf43bc0b6816e57676fcbfba3afdcf209c7a06fb6bd8768ca548c2eb0a0c9d38fa42246be3f50df1b28fb
-  languageName: node
-  linkType: hard
-
 "ts-node@npm:7.0.1":
   version: 7.0.1
   resolution: "ts-node@npm:7.0.1"
@@ -27675,7 +27647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.4.0, ts-node@npm:^10.8.0, ts-node@npm:^10.9.2":
+"ts-node@npm:^10.8.0, ts-node@npm:^10.9.2":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
   dependencies:
@@ -27838,7 +27810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.19.2":
+"tsx@npm:^4.19.2, tsx@npm:^4.21.0":
   version: 4.21.0
   resolution: "tsx@npm:4.21.0"
   dependencies:

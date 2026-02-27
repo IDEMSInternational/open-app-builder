@@ -8,9 +8,8 @@
   },
   "main": "src/commands/index.ts",
   "scripts": {
-    "start": "ts-node src/commands/index.ts",
-    "build": "ts-node build.ts",
-    "dev": "ts-node-dev --transpile-only --respawn --watch src src/commands/index.ts",
+    "start": "tsx src/commands/index.ts",
+    "build": "tsx build.ts",
     "test": "jest --runInBand --",
     "test:watch": "jest --runInBand --watchAll --"
   },
@@ -38,6 +37,7 @@
     "simple-git": "^3.7.1",
     "subtitles-parser-vtt": "^0.1.0",
     "ts-morph": "^15.0.0",
+    "tsx": "^4.21.0",
     "typescript": "5.5.4",
     "winston": "^3.10.0",
     "workflows": "workspace:*",
@@ -56,8 +56,6 @@
     "memfs": "^4.11.1",
     "plist": "^3.1.0",
     "ts-jest": "^29.2.5",
-    "ts-node": "^10.8.0",
-    "ts-node-dev": "^2.0.0",
     "tsup": "^7.2.0"
   }
 }

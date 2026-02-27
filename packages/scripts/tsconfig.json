@@ -11,10 +11,12 @@
     "esModuleInterop": true,
     // Global type definitions.
     "typeRoots": ["./node_modules/@types"],
-    "pretty": true
+    "pretty": true,
+    // HACK - optimisation script needs to understand
+    // component path namespace
+    "paths": {
+      "@components/*": ["../../packages/components/*"]
+    }
   },
-  "include": ["src/**/*.ts"],
-  "ts-node": {
-    "swc": true
-  }
+  "include": ["src/**/*.ts"]
 }

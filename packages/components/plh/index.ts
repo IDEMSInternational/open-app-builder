@@ -42,12 +42,3 @@ export const PLH_COMPONENT_MAPPING = {
 };
 
 export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
-
-import { NgModule } from "@angular/core";
-
-@NgModule({
-  imports: [],
-  exports: PLH_COMPONENTS,
-  declarations: PLH_COMPONENTS,
-})
-export class PLH_COMPONENTS_MODULE {}
