@@ -4,6 +4,8 @@ module.exports = {
   transform: {
     "^.+.tsx?$": ["ts-jest", {}],
   },
-  globalSetup: "<rootDir>/test/setup.ts",
+  // Global setup runs outside of test suite context
+  globalSetup: "<rootDir>/test/globalSetup.ts",
+  // File setup runs per test file
+  setupFiles: ["<rootDir>/test/testSetup.ts"],
 };
-

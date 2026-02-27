@@ -1,10 +1,6 @@
 import { FlowTypes } from "data-models";
 import { TemplateParser } from "./template.parser";
 
-import { ActiveDeployment } from "../../../../../../commands/deployment/get";
-
-jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
-
 const ROW_BASE: FlowTypes.TemplateRow = {
   _nested_name: "",
   name: "",

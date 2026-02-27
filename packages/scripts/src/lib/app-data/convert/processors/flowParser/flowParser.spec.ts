@@ -3,10 +3,6 @@ import { clearLogs, getLogs } from "../../utils";
 import { FlowParserProcessor } from "./flowParser";
 import { MockJsonFileCache } from "../../cacheStrategy/jsonFile.mock";
 
-import { ActiveDeployment } from "../../../../../commands/deployment/get";
-
-jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
-
 // NOTE - inputs are just to test general structure and not run actual parser code
 const testInputs: FlowTypes.FlowTypeWithData[] = [
   {

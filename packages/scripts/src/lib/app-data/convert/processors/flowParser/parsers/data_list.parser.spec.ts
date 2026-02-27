@@ -3,10 +3,6 @@ import { DataListParser } from ".";
 import { FlowParserProcessor } from "../flowParser";
 import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
-import { ActiveDeployment } from "../../../../../../commands/deployment/get";
-
-jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
-
 const MOCK_DATA_LIST = (): FlowTypes.Data_list => ({
   flow_type: "data_list",
   flow_name: "mock_data_list",

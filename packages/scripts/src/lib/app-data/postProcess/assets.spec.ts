@@ -1,14 +1,10 @@
 import { createHash } from "crypto";
 
 import { AssetsPostProcessor } from "./assets";
-import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
-import { type RecursivePartial } from "shared/src/types";
 
 import { readJsonSync, statSync, existsSync } from "fs-extra";
 import { vol } from "memfs";
 
-// Use default imports to allow spying on functions and replacing with mock methods
-import { ActiveDeployment } from "../../../commands/deployment/get";
 import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/assets.model";
 
@@ -86,7 +82,6 @@ describe("Assets PostProcess", () => {
         folder: { "file_b.jpg": mockFileOverride, "file_c.jpg": mockFile },
       },
     });
-    stubDeploymentConfig();
     const sourceA = resolve(mockDirs.localAssets, "source_a");
     const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
@@ -118,7 +113,6 @@ describe("Assets PostProcess", () => {
       core: { "core_asset.jpg": mockFile },
       remote: { "remote_asset.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const coreFolder = resolve(mockDirs.localAssets, "core");
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
     const processor = new AssetsPostProcessor({
@@ -147,7 +141,6 @@ describe("Assets PostProcess", () => {
     mockLocalAssets({
       remote: { "test.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
     const processor = new AssetsPostProcessor({
       sources: [
@@ -184,7 +177,6 @@ describe("Assets PostProcess", () => {
       core: { "shared_asset.jpg": mockFile },
       remote: { "shared_asset.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const coreFolder = resolve(mockDirs.localAssets, "core");
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
     const processor = new AssetsPostProcessor({
@@ -210,7 +202,6 @@ describe("Assets PostProcess", () => {
     mockLocalAssets({
       remote: { "test.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const remoteFolder = resolve(mockDirs.localAssets, "remote");
 
     // Create an old folder that should be cleaned up
@@ -242,7 +233,6 @@ describe("Assets PostProcess", () => {
       remote1: { "asset1.jpg": mockFile },
       remote2: { "asset2.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const remoteFolder1 = resolve(mockDirs.localAssets, "remote1");
     const remoteFolder2 = resolve(mockDirs.localAssets, "remote2");
     const processor = new AssetsPostProcessor({
@@ -279,7 +269,6 @@ describe("Assets PostProcess", () => {
     mockLocalAssets({
       remote: { "old_asset.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const processor1 = new AssetsPostProcessor({
       sources: [
         {
@@ -303,7 +292,6 @@ describe("Assets PostProcess", () => {
     mockLocalAssets({
       remote: { "new_asset.jpg": mockFile },
     });
-    stubDeploymentConfig();
     const processor2 = new AssetsPostProcessor({
       sources: [
         {
@@ -349,8 +337,7 @@ describe("Assets PostProcess", () => {
    */
 });
 
-function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
-  stubDeploymentConfig(deploymentConfig);
+function runAssetsPostProcessor() {
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({
     sources: [{ path: localAssets, name: "mock" }],
@@ -359,32 +346,3 @@ function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
 }
 
 /** Test Utilities */
-
-type IAssetsFilterFunction = IDeploymentConfigJson["app_data"]["assets_filter_function"];
-
-interface IDeploymentConfigStub {
-  filter_language_codes?: string[];
-  assets_filter_function?: IAssetsFilterFunction;
-  app_themes_available?: string[];
-}
-/**
- * Populated mock values when getActiveDeployment method called from main command
- * Limited to just values referenced in the copy method
- **/
-function stubDeploymentConfig(stub: IDeploymentConfigStub = {}) {
-  const filter_language_codes = stub.filter_language_codes;
-  const assets_filter_function = stub.assets_filter_function
-    ? stub.assets_filter_function
-    : () => true;
-  const app_themes_available = stub.app_themes_available ?? [];
-
-  const stubDeployment: RecursivePartial<IDeploymentConfigJson> = {
-    _workspace_path: "mock",
-    app_data: { assets_filter_function, output_path: "mock/app_data" },
-    translations: { filter_language_codes },
-    app_config: {
-      APP_THEMES: { available: app_themes_available },
-    } as any,
-  };
-  jest.spyOn(ActiveDeployment, "get").mockReturnValue(stubDeployment as IDeploymentConfigJson);
-}

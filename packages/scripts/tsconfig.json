@@ -18,5 +18,5 @@
       "@components/*": ["../../packages/components/*"]
     }
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }
