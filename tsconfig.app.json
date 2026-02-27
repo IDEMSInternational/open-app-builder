@@ -12,8 +12,9 @@
     }
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
+  // Include modules that have js files. Also need to include ts
+  // as default behaviour stops on the js files
   "include": [
-    "src/**/*.d.ts",
     "src/app/shared/components/template/components/odk-form/libs/**/*.js",
     "src/app/shared/components/template/components/odk-form/libs/**/*.ts"
   ],

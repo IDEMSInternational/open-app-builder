@@ -5797,10 +5797,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/pwa-elements@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@ionic/pwa-elements@npm:3.3.0"
-  checksum: 8b128e5663e5a7fea8522d1ad967ae83ad7a25db592adf8d09ab2cb904298ab1b151ed0040a00663f637a462898dd3d02c33b62efe8a9433943c81727c5c2ad4
+"@ionic/pwa-elements@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@ionic/pwa-elements@npm:3.4.0"
+  checksum: 1caa7a969efb91bd5f2b97a5c60a09be59bb236dc9eacf7a317ddbe4592987ee4010f76ac5e0126ca44082cbce3eeefd7cde5e9014e0ba9c99a7ae053aab5999
   languageName: node
   linkType: hard
 
@@ -16694,7 +16694,7 @@ __metadata:
     "@ionic/angular": ^8.7.4
     "@ionic/angular-toolkit": ^12.3.0
     "@ionic/cli": ^7.2.1
-    "@ionic/pwa-elements": ^3.3.0
+    "@ionic/pwa-elements": ^3.4.0
     "@schematics/angular": ~21
     "@sentry/angular": ^10.33.0
     "@supabase/supabase-js": ^2.39.0
@@ -16771,6 +16771,7 @@ __metadata:
     stacktrace-js: ^2.0.2
     swiper: ^12.1.2
     trusted-types: ^2.0.0
+    tslib: ^2.8.1
     typescript: 5.9.3
     typescript-eslint: ^8.53.0
     uuid: ^11.0.3

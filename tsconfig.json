@@ -14,6 +14,7 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "DOM"],
     "skipLibCheck": true,
+    "isolatedModules": true,
     "resolveJsonModule": true,
     "paths": {
       "@components/*": ["packages/components/*"],
