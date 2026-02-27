@@ -12759,12 +12759,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"components@workspace:packages/components":
-  version: 0.0.0-use.local
-  resolution: "components@workspace:packages/components"
-  languageName: unknown
-  linkType: soft
-
 "compress-commons@npm:^6.0.2":
   version: 6.0.2
   resolution: "compress-commons@npm:6.0.2"
@@ -13499,6 +13493,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
+    "@idemsInternational/gdrive-tools": "workspace:*"
     "@types/clone": ^2.1.1
     "@types/node": ^16.18.9
     clone: ^2.1.2
@@ -16725,7 +16720,6 @@ __metadata:
     concurrently: ^6.2.0
     core-js: ^3.33.3
     cspell: ^6.20.1
-    data-models: "workspace:*"
     date-fns: ^2.30.0
     deep-object-diff: ^1.1.9
     dexie: ^3.2.4
@@ -16773,8 +16767,6 @@ __metadata:
     qrcode: ^1.5.3
     rxdb: ^14.17.1
     rxjs: ^7.8.1
-    scripts: "workspace:*"
-    shared: "workspace:*"
     signature_pad: ^4.1.7
     stacktrace-js: ^2.0.2
     swiper: ^12.1.2
@@ -25285,7 +25277,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scripts@workspace:*, scripts@workspace:packages/scripts":
+"scripts@workspace:packages/scripts":
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
