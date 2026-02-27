@@ -24,6 +24,7 @@
       "shared/*": ["packages/shared/*"]
     }
   },
+  "files": [".idems_app/deployments/**/*.ts"],
 
   "angularCompilerOptions": {
     "strictTemplates": true,
