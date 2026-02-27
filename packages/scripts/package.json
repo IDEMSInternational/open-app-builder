@@ -8,6 +8,7 @@
   },
   "main": "src/commands/index.ts",
   "scripts": {
+    "lint": "eslint .",
     "start": "tsx src/commands/index.ts",
     "build": "tsx build.ts",
     "test": "jest --runInBand --verbose --",
@@ -51,7 +52,9 @@
     "@types/node-rsa": "^1.1.1",
     "@types/plist": "^3.0.5",
     "@types/semver": "^7.3.9",
-    "eslint-plugin-jest": "^28.8.0",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "9",
+    "eslint-plugin-jest": "^29.15.0",
     "jest": "^29.7.0",
     "memfs": "^4.56.10",
     "plist": "^3.1.0",

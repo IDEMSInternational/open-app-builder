@@ -207,9 +207,9 @@ describe("Assets PostProcess", () => {
 
     // Create an old folder that should be cleaned up
     const oldPackPath = resolve("mock/app_data/remote_assets/old_pack");
-    const { vol } = require("memfs");
-    vol.mkdirSync(oldPackPath, { recursive: true });
-    vol.writeFileSync(resolve(oldPackPath, "old_file.jpg"), mockFile);
+    const { vol: testVol } = require("memfs");
+    testVol.mkdirSync(oldPackPath, { recursive: true });
+    testVol.writeFileSync(resolve(oldPackPath, "old_file.jpg"), mockFile);
 
     const processor = new AssetsPostProcessor({
       sources: [

@@ -3,7 +3,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH, ROOT_DIR } from "../../paths";
-import { promptOptions, logOutput, logWarning } from "../../utils";
+import { promptOptions, logOutput, logWarning } from "@shared/utils";
 import { ActiveDeployment } from "./get";
 import { loadDeploymentJson } from "./utils";
 

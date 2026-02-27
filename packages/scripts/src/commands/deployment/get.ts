@@ -4,7 +4,7 @@ import { IDeploymentConfig } from "data-models";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { Logger } from "../../utils";
+import { Logger } from "@shared/utils";
 import type { IDeploymentConfigJson } from "./common";
 import { loadTSFileDefaultExport } from "./compile";
 import { loadDeploymentJson } from "./utils";

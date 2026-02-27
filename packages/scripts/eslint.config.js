@@ -5,6 +5,9 @@ const jestPlugin = require("eslint-plugin-jest");
 module.exports = tseslint.config(
   ...rootConfig,
   {
+    ignores: ["build.ts", "bin/**"],
+  },
+  {
     files: ["**/*.ts"],
     languageOptions: {
       parserOptions: {

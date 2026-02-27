@@ -6,7 +6,7 @@ import fs from "fs-extra";
 import { pathToFileURL } from "node:url";
 import path from "path";
 import { ROOT_DIR } from "../../paths";
-import { Logger } from "../../utils";
+import { Logger } from "@shared/utils/logging.utils";
 import { IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
 import { cleanEmptyObject } from "shared/src/utils/object-utils";

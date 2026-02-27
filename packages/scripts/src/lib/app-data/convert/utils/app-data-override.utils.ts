@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import { arrayToHashmap, Logger } from "../../../../utils";
+import { arrayToHashmap, Logger } from "@shared/utils";
 
 /**
  * Check all flows for specified overrides and link to override_target row where exists

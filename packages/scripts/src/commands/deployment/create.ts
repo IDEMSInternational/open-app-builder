@@ -3,7 +3,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
+import { Logger, logOutput, logWarning, promptInput, promptOptions } from "@shared/utils";
 import type { IDeploymentConfigJson } from "./common";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";

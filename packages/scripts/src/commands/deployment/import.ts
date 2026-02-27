@@ -5,7 +5,7 @@ import fs, { moveSync, rmSync } from "fs-extra";
 import { resolve } from "path";
 import GitProvider from "../../tasks/providers/git";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "../../utils";
+import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "@shared/utils";
 import { loadDeploymentJson } from "./utils";
 import { existsSync } from "fs";
 
@@ -56,7 +56,10 @@ export async function importRepo(remoteTarget: string, options: { acceptDefaults
     console.log(chalk.gray(`Using default name: ${deploymentName}`));
   } else {
     const nameInput = await promptInput("Specify a name for the deployment", name);
-    deploymentName = nameInput.replace(/ /g, "_").toLowerCase().replace(/[^a-z0-9_]/g, "");
+    deploymentName = nameInput
+      .replace(/ /g, "_")
+      .toLowerCase()
+      .replace(/[^a-z0-9_]/g, "");
   }
 
   const targetDir = resolve(DEPLOYMENTS_PATH, deploymentName);
