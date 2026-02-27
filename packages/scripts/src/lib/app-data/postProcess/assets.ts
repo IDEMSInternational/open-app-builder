@@ -51,13 +51,10 @@ export class AssetsPostProcessor {
 
   public run() {
     const { app_data } = this.activeDeployment;
-    console.log("active deployment", this.activeDeployment);
     const sources = this.prepareAssetSources();
 
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");
     fs.ensureDirSync(appAssetsFolder);
-
-    console.log({ appAssetsFolder });
 
     // Map to track assets by their output destination
     // Core assets use special symbol as key, remote assets use their pack name
