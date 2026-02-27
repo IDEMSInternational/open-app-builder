@@ -4,6 +4,10 @@ import { DataPipeParser } from "./data_pipe.parser";
 import { FlowParserProcessor } from "../flowParser";
 import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
+import { ActiveDeployment } from "../../../../../../commands/deployment/get";
+
+jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
+
 const getTestData = () => ({
   data_list: { test_data_list: [{ id: 1 }, { id: 2 }, { id: 3 }] },
 });

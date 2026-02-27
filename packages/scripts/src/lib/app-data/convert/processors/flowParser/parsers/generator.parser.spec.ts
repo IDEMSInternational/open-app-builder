@@ -3,6 +3,10 @@ import { GeneratorParser } from "./generator.parser";
 import { FlowParserProcessor } from "../flowParser";
 import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";
 
+import { ActiveDeployment } from "../../../../../../commands/deployment/get";
+
+jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
+
 const getTestData = () => ({
   test_data_list: [
     {
