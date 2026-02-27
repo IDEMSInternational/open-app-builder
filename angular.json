@@ -39,8 +39,7 @@
             "styles": [
               "./node_modules/intro.js/introjs.css",
               "./node_modules/katex/dist/katex.min.css",
-              { "input": "src/global.scss", "inject": true },
-              { "input": "src/theme/variables.scss", "inject": true }
+              { "input": "src/global.scss", "inject": true }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
             "allowedCommonJsDependencies": ["*"],
@@ -91,7 +90,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "app:build:development"
+            "buildTarget": "app:build:development",
+            "hmr": true
           },
           "configurations": {
             "production": {
