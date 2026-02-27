@@ -15,6 +15,12 @@ import { IAssetEntryHashmap } from "data-models/assets.model";
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs"));
 
+// Mock Logger.error to prevent it from calling process.exit(1) and crashing Jest
+import { Logger } from "shared/src/utils/logging/console-logger";
+jest.spyOn(Logger, "error").mockImplementation((opts) => {
+  console.error("Mocked Logger.error:", opts);
+});
+
 /** Mock file system folders for use in tests */
 const mockDirs = {
   appAssets: "mock/app_data/assets",
