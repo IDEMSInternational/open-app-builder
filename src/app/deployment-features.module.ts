@@ -6,7 +6,7 @@ import { AuthModule } from "./shared/services/auth/auth.module";
 import { CampaignModule } from "./feature/campaign/campaign.module";
 import { NotificationsModule } from "./feature/notification/notification.module";
 import { provideSharedData } from "./feature/shared-data";
-import { PLH_FEATURE_MODULES } from "components/plh";
+import { PLH_FEATURE_MODULES } from "@components/plh";
 
 /**
  * Module imports required for specific deployment features

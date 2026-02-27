@@ -17,8 +17,8 @@ import { createCustomElement } from "@angular/elements";
 import { TemplatePipesModule } from "./pipes";
 
 // Components from external packages
-import { PLH_COMPONENTS } from "components/plh";
-import { DEMO_COMPONENTS } from "components/demo";
+import { PLH_COMPONENTS } from "@components/plh";
+import { DEMO_COMPONENTS } from "@components/demo";
 import { LottieComponent } from "ngx-lottie";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 

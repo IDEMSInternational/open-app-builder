@@ -14,11 +14,12 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "DOM"],
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@components/*": ["packages/components/*"]
+    }
   },
-  "paths": {
-    "tslib": ["node_modules/tslib/tslib.d.ts"]
-  },
+
   "angularCompilerOptions": {
     "strictTemplates": true,
     "strictInjectionParameters": true

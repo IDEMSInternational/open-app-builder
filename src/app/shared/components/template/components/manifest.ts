@@ -1,6 +1,6 @@
-import type { ICommonComponentName, IComponentManifest } from "components/types";
+import type { ICommonComponentName, IComponentManifest } from "@components/types";
 
-import { PLH_COMPONENT_MANIFEST } from "components/plh/manifest";
+import { PLH_COMPONENT_MANIFEST } from "@components/plh/manifest";
 
 /** Manifest declaration of component dependencies (for use in optimisation) */
 const COMMON_COMPONENT_MANIFEST: IComponentManifest<ICommonComponentName> = {

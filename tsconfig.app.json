@@ -2,7 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@components/*": ["packages/components/*"]
+    }
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": [
@@ -13,7 +16,8 @@
     // to allow import/live-reload within angular compiler
     "packages/data-models/index.ts",
     "packages/data-models/db.model.ts",
-    "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts"
+    "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts",
+    "packages/components/*"
   ],
   "exclude": ["**/*.spec.ts"]
 }

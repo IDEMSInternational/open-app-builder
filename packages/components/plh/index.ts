@@ -11,21 +11,6 @@ import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 
-export {
-  PlhActivityCheckInComponent,
-  PlhBottomNavigationBarComponent,
-  PlhCompletionModalComponent,
-  PlhLessonCtaComponent,
-  PlhCourseAccordionComponent,
-  PlhCourseSubItemComponent,
-  PlhModuleDetailsHeaderComponent,
-  PlhModuleListItemComponent,
-  PlhParentGroupModule,
-  PlhParentPointBoxComponent,
-  PlhParentPointCounterComponent,
-  PlhProgressPathComponent,
-};
-
 export const PLH_FEATURE_MODULES = [PlhParentGroupModule];
 
 export const PLH_COMPONENTS = [
@@ -57,3 +42,12 @@ export const PLH_COMPONENT_MAPPING = {
 };
 
 export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
+
+import { NgModule } from "@angular/core";
+
+@NgModule({
+  imports: [],
+  exports: PLH_COMPONENTS,
+  declarations: PLH_COMPONENTS,
+})
+export class PLH_COMPONENTS_MODULE {}
