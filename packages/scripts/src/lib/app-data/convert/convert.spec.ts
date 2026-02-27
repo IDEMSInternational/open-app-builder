@@ -44,6 +44,7 @@ describe("App Data Converter", () => {
   let converter: AppDataConverter;
 
   beforeEach(() => {
+    const loggerSpy = useMockLogger(false);
     ensureDirSync(paths.outputFolder);
     emptyDirSync(paths.outputFolder);
     ensureDirSync(paths.cacheFolder);
@@ -138,6 +139,7 @@ const errorPaths = {
 describe("App Data Converter - Error Checking", () => {
   let errorConverter: AppDataConverter;
   beforeAll(() => {
+    const loggerSpy = useMockLogger(false);
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
     }
@@ -147,7 +149,6 @@ describe("App Data Converter - Error Checking", () => {
   });
   it("Tracks conversion errors", async () => {
     clearLogs(true);
-    const loggerSpy = useMockLogger(false);
     const { errors, warnings, result } = await errorConverter.run();
     expect(errors.length).toEqual(1);
     const errorMessages = errors.map((err) => err.message);
