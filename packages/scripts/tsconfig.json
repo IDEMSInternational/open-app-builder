@@ -15,7 +15,8 @@
     // HACK - optimisation script needs to understand
     // component path namespace
     "paths": {
-      "@components/*": ["../../packages/components/*"]
+      "@components/*": ["../../packages/components/*"],
+      "@shared/*": ["../../packages/shared/src/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]

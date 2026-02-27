@@ -1,9 +1,6 @@
 import { Command } from "commander";
 import open from "open";
 
-// re-export shared utils for ease of import
-export * from "shared/src/utils";
-
 import { logProgramHelp } from "shared";
 
 /**

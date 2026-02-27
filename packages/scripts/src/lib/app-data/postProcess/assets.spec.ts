@@ -2,19 +2,19 @@ import { createHash } from "crypto";
 
 import { AssetsPostProcessor } from "./assets";
 
-import { readJsonSync, statSync, existsSync } from "fs-extra";
+import { readJsonSync, statSync, existsSync, readdirSync } from "fs-extra";
 import { vol } from "memfs";
 
 import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/assets.model";
 
 // Mock all fs calls to use memfs implementation
-jest.mock("fs", () => require("memfs"));
+jest.mock("fs", () => require("memfs").fs);
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
-  appAssets: "mock/app_data/assets",
-  localAssets: "mock/local/assets",
+  appAssets: resolve("mock/app_data/assets"),
+  localAssets: resolve("mock/local/assets"),
 };
 
 const { file: mockFile } = createMockFile(); // create mock 1MB file
@@ -56,15 +56,16 @@ describe("Assets PostProcess", () => {
   it("mocks file system for testing", () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
     const testFilePath = resolve(mockDirs.localAssets, "folder", "file.jpg");
-    console.log({ testFilePath });
-    console.log(existsSync(testFilePath));
     expect(existsSync(testFilePath)).toEqual(true);
     expect(statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
   });
 
   /** Main tests */
-  it("Copies assets from local to app", () => {
+  it.only("Copies assets from local to app", () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
+    console.log("vol", vol.readdirSync("mock"));
+    console.log("mock", readdirSync("mock"));
+    console.log("mock/local", readdirSync("mock/local"));
     runAssetsPostProcessor();
     const testFilePath = resolve(mockDirs.appAssets, "folder", "file.jpg");
     expect(statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
