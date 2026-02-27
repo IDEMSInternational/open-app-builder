@@ -61,7 +61,7 @@ describe("Assets PostProcess", () => {
   });
 
   /** Main tests */
-  it.only("Copies assets from local to app", () => {
+  it("Copies assets from local to app", () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
     console.log("vol", vol.readdirSync("mock"));
     console.log("mock", readdirSync("mock"));
