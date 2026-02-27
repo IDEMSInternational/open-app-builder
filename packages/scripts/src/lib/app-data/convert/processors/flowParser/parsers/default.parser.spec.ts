@@ -2,6 +2,10 @@ import { useMockLogger } from "../../../../../../../test/helpers/utils";
 import { DefaultParser, RowProcessor } from "./default.parser";
 import { FlowTypes } from "data-models";
 
+import { ActiveDeployment } from "../../../../../../commands/deployment/get";
+
+jest.spyOn(ActiveDeployment, "get").mockReturnValue({} as any);
+
 /**
  * yarn workspace scripts test -t default.parser.spec.ts
  *
