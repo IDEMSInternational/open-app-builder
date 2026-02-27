@@ -10,7 +10,7 @@ import { logProgramHelp } from "shared";
  * Invoke the commander CLI with current process args,
  * displaying help if no args defined.
  * This is typically only used in the context of direct execution,
- * e.g. ts-node environments
+ * e.g. ts-node/tsx environments
  * @example
  * ```ts
  * if(isRunningTs){

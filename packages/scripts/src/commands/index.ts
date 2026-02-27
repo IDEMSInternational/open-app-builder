@@ -51,7 +51,7 @@ import {
 } from "./deployment/common";
 export { extendDeploymentConfig, generateDeploymentConfig, loadEncryptedConfig };
 
-// Run the program directly when called via ts-node (e.g. start script)
+// Run the program directly when called via ts-node/tsx (e.g. start script)
 if (isRunningTs) {
   callProgramWithHelp(program);
 }
