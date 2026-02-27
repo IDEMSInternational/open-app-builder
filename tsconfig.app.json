@@ -2,14 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": [],
-    "paths": {
-      "@components/*": ["packages/components/*"],
-      "data-models": ["packages/data-models"],
-      "data-models/*": ["packages/data-models/*"],
-      "shared": ["packages/shared"],
-      "shared/*": ["packages/shared/*"]
-    }
+    "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   // Include modules that have js files. Also need to include ts
