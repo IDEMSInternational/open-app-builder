@@ -12,7 +12,7 @@ import NodeRSA from "node-rsa";
 import { basename, resolve } from "path";
 import { ActiveDeployment } from "../../commands/deployment/get";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
+import { logOutput, promptConfirmation, promptEditorInput } from "@shared/utils";
 
 /** Suffix added to all encrypted files to distinguish from originals */
 const ENCRYPTED_SUFFIX = "crypt";

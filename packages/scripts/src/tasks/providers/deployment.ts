@@ -1,4 +1,4 @@
-import { promptInput } from "../../utils";
+import { promptInput } from "@shared/utils";
 
 import { createDeployment } from "../../commands/deployment/create";
 import { importRepo } from "../../commands/deployment/import";

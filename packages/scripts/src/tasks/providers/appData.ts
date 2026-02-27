@@ -3,7 +3,7 @@ import path from "path";
 import packageJSON from "../../../../../package.json";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
-import { IContentsEntry, replicateDir } from "../../utils";
+import { IContentsEntry, replicateDir } from "@shared/utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
 import {
   AssetsPostProcessor,

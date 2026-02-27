@@ -3,7 +3,8 @@ import { Options, run } from "cordova-res";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
 import { ROOT_DIR } from "../../paths";
-import { Logger, generateVersionCode } from "../../utils";
+import { Logger } from "@shared/utils";
+import { generateVersionCode } from "../../utils";
 import { PATHS } from "shared";
 
 interface IAndroidBuildOptions {

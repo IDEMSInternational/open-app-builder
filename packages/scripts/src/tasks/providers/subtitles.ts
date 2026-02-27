@@ -3,7 +3,7 @@ import fs from "fs";
 import * as path from "path";
 import parser from "subtitles-parser-vtt";
 import { ROOT_DIR } from "../../paths";
-import { recursiveFindByExtension, Logger, logOutput, promptOptions } from "../../utils";
+import { recursiveFindByExtension, Logger, logOutput, promptOptions } from "@shared/utils";
 
 // This is an interim solution for manually generating translated .vtt files,
 // to be used pending reworking the translations repo/pipeline to handle assets more generally
