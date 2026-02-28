@@ -10,7 +10,7 @@ import {
   ensureDirSync,
   pathExistsSync,
 } from "fs-extra";
-import { clearLogs } from "shared";
+import { clearLogs } from "shared/utils";
 
 import { TEST_DATA_PATHS, useMockLogger } from "../../../../test/helpers/utils";
 import { IDeploymentConfigJson } from "data-models";

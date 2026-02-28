@@ -6,7 +6,7 @@ import {
   setNestedProperty,
 } from "../../../utils";
 import { DefaultParser } from "./default.parser";
-import { isEmptyObjectDeep, isObjectLiteral, Logger } from "shared";
+import { isEmptyObjectDeep, isObjectLiteral, Logger } from "shared/utils";
 
 export class DataListParser extends DefaultParser {
   postProcessRow(row: FlowTypes.Data_listRow) {

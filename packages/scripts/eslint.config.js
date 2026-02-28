@@ -5,7 +5,7 @@ const jestPlugin = require("eslint-plugin-jest");
 module.exports = tseslint.config(
   ...rootConfig,
   {
-    ignores: ["build.ts", "bin/**"],
+    ignores: ["build.ts", "bin/**", "build/**", "dist/**"],
   },
   {
     files: ["**/*.ts"],

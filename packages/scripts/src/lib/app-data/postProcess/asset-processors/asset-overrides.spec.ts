@@ -1,10 +1,10 @@
 import { handleAssetOverrides } from "./asset-overrides";
-import { Logger } from "shared";
-import type { IContentsEntry, IContentsEntryHashmap } from "shared";
+import { Logger } from "shared/utils";
+import type { IContentsEntry, IContentsEntryHashmap } from "shared/utils";
 
 // Mock Logger
-jest.mock("shared", () => {
-  const actual = jest.requireActual("shared");
+jest.mock("shared/utils", () => {
+  const actual = jest.requireActual("shared/utils");
   return {
     ...actual,
     Logger: {

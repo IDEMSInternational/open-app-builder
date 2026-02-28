@@ -2,10 +2,10 @@ import { resolve, dirname, join } from "path";
 import { Options, run } from "cordova-res";
 import fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
-import { ROOT_DIR } from "../../paths";
-import { Logger } from "@shared/utils";
+import { ROOT_DIR } from "shared/paths";
+import { Logger } from "shared/utils";
 import { generateVersionCode } from "../../utils";
-import { PATHS } from "shared";
+import { PATHS } from "shared/utils";
 
 interface IAndroidBuildOptions {
   appId: string;

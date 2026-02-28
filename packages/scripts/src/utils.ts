@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import open from "open";
 
-import { logProgramHelp } from "shared";
+import { logProgramHelp } from "shared/utils";
 
 /**
  * Invoke the commander CLI with current process args,

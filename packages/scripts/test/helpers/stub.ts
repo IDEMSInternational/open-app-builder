@@ -1,6 +1,6 @@
 import type { IDeploymentConfigJson } from "data-models";
-import { deepMergeObjects } from "@shared/utils/object-utils";
-import type { RecursivePartial } from "@shared/types";
+import { deepMergeObjects } from "shared/utils/object-utils";
+import type { RecursivePartial } from "shared/types";
 import { ActiveDeployment } from "../../src/commands/deployment/get";
 
 type IDeploymentConfigStub = RecursivePartial<IDeploymentConfigJson>;

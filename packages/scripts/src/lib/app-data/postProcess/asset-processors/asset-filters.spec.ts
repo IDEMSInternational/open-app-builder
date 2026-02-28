@@ -1,6 +1,6 @@
 import { filterAppAssets } from "./asset-filters";
 import type { IDeploymentConfigJson } from "data-models";
-import type { IContentsEntry } from "shared";
+import type { IContentsEntry } from "shared/utils";
 
 const mockFileEntry: IContentsEntry = {
   size_kb: 100,

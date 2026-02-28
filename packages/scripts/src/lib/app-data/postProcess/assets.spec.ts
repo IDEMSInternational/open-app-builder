@@ -6,7 +6,7 @@ import { readJsonSync, statSync, existsSync, readdirSync } from "fs-extra";
 import { vol } from "memfs";
 
 import { resolve } from "path";
-import { IAssetEntryHashmap } from "data-models/assets.model";
+import type { IAssetEntryHashmap } from "data-models";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs").fs);
@@ -63,9 +63,6 @@ describe("Assets PostProcess", () => {
   /** Main tests */
   it("Copies assets from local to app", () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
-    console.log("vol", vol.readdirSync("mock"));
-    console.log("mock", readdirSync("mock"));
-    console.log("mock/local", readdirSync("mock/local"));
     runAssetsPostProcessor();
     const testFilePath = resolve(mockDirs.appAssets, "folder", "file.jpg");
     expect(statSync(testFilePath).size).toEqual(1 * 1024 * 1024);

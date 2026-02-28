@@ -10866,7 +10866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"actions@workspace:*, actions@workspace:packages/actions":
+"actions@workspace:packages/actions":
   version: 0.0.0-use.local
   resolution: "actions@workspace:packages/actions"
   dependencies:
@@ -13978,7 +13978,6 @@ __metadata:
     "@types/clone": ^2.1.1
     "@types/node": ^16.18.9
     clone: ^2.1.2
-    shared: "workspace:*"
     typescript: 5.5.4
   languageName: unknown
   linkType: soft
@@ -25980,13 +25979,11 @@ __metadata:
     "@types/plist": ^3.0.5
     "@types/semver": ^7.3.9
     "@typescript-eslint/parser": ^8.56.1
-    actions: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.0
     chokidar: ^3.5.3
     commander: ^8.3.0
     cordova-res: ^0.15.4
-    data-models: "workspace:*"
     eslint: 9
     eslint-plugin-jest: ^29.15.0
     fs-extra: ^9.0.1
@@ -25999,7 +25996,6 @@ __metadata:
     p-queue: ^6.6.2
     plist: ^3.1.0
     semver: ^7.5.2
-    shared: "workspace:*"
     simple-git: ^3.7.1
     subtitles-parser-vtt: ^0.1.0
     ts-jest: ^29.2.5
@@ -26008,7 +26004,6 @@ __metadata:
     tsx: ^4.21.0
     typescript: 5.5.4
     winston: ^3.10.0
-    workflows: "workspace:*"
     xlsx: ^0.18.5
   bin:
     app-scripts: ./bin/app-scripts
@@ -29971,7 +29966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workflows@workspace:*, workflows@workspace:packages/workflows":
+"workflows@workspace:packages/workflows":
   version: 0.0.0-use.local
   resolution: "workflows@workspace:packages/workflows"
   dependencies:

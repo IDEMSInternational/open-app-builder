@@ -1,5 +1,6 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} **/
-module.exports = {
+/** @type {import('jest').Config} */
+const config = {
+  preset: "ts-jest",
   testEnvironment: "node",
   transform: {
     "^.+.tsx?$": ["ts-jest", {}],
@@ -10,7 +11,10 @@ module.exports = {
   setupFiles: ["<rootDir>/test/testSetup.ts"],
   // ts paths also need to be mapped for jest resolution
   moduleNameMapper: {
-    "^@shared/(.*)$": "<rootDir>/../shared/src/$1",
-    "^@components/(.*)$": "<rootDir>/../components/$1",
+    "^shared/(.*)$": "<rootDir>/../../packages/shared/src/$1",
+    "^actions$": "<rootDir>/../../packages/actions",
+    "^data-models$": "<rootDir>/../../packages/data-models",
+    "^workflows$": "<rootDir>/../../packages/workflows",
   },
 };
+export default config;

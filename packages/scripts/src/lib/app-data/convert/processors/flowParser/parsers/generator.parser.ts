@@ -1,6 +1,6 @@
 import { FlowTypes } from "data-models";
 import { DefaultParser } from "./default.parser";
-import { TemplatedData } from "shared";
+import { TemplatedData } from "shared/models";
 
 export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
   /** local hashmap of generated outputs. Used for tests  */

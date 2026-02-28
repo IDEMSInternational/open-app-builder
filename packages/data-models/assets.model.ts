@@ -1,5 +1,6 @@
 // TODO - can likely refactor to here instead and refactor other imports
-import type { IContentsEntry } from "shared";
+
+import type { IContentsEntry } from "shared/utils";
 
 /** Extend to include fields for front-end features */
 interface IAssetContentsEntry extends IContentsEntry {

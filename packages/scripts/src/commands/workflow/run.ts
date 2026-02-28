@@ -6,7 +6,7 @@ import path from "path";
 import { Command } from "commander";
 import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "workflows";
 import ALL_TASKS from "../../tasks";
-import { Logger, logProgramHelp, pad, promptOptions } from "@shared/utils";
+import { Logger, logProgramHelp, pad, promptOptions } from "shared/utils";
 import { ActiveDeployment } from "../deployment/get";
 import type { IDeploymentConfigJson } from "../deployment/common";
 
