@@ -1,4 +1,4 @@
-import type { IContentsEntry } from "shared";
+import type { IContentsEntry } from "shared/utils";
 import type { IGdriveEntry } from "@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 

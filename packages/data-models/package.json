@@ -11,7 +11,6 @@
     "@idemsInternational/gdrive-tools": "workspace:*",
     "@types/clone": "^2.1.1",
     "@types/node": "^16.18.9",
-    "shared": "workspace:*",
     "typescript": "5.5.4"
   }
 }
