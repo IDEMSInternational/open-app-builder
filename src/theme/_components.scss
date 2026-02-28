@@ -1,6 +1,8 @@
 // Some components require styling to be defined at the global scope E.g. pop-ups and nav-stacks,
 // which make use fo the ion-modal component which is injected dynamically into the DOM
 
+@use "sass:meta";
+
 // Nav-stack modal
 @use "../app/feature/nav-stack/components/nav-stack/nav-stack.component.global.scss";
 
@@ -15,5 +17,7 @@ ion-modal.template-popup-modal {
   }
 
   // Sticky display group inside a popup
-  @import "../app/shared/components/template/components/layout/display-group/sticky/display-group-sticky.component.global.scss";
+  @include meta.load-css(
+    "../app/shared/components/template/components/layout/display-group/sticky/display-group-sticky.component.global.scss"
+  );
 }

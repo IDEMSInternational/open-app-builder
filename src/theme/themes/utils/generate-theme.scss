@@ -61,10 +61,6 @@
   }
 }
 
-@function wrap-hue($angle) {
-  @return $angle % 360;
-}
-
 // Returns a map of colours based partly on Material Design's colour system
 // https://material.io/design/color/the-color-system.html
 @function get-color-palette(
@@ -81,19 +77,11 @@
 ) {
   // Alternative values derived from HSL transformations, following the analogous colour harmony
   @if ($primary-variant == null) {
-    $primary-variant: hsl(
-      wrap-hue(hue($primary) + 20),
-      saturation($primary) - 12,
-      lightness($primary) + 10
-    );
+    $primary-variant: color.adjust($primary, $hue: 20, $saturation: -12%, $lightness: 10%);
   }
 
   @if ($secondary-variant == null) {
-    $secondary-variant: hsl(
-      wrap-hue(hue($secondary) - 23),
-      saturation($secondary) + 16,
-      lightness($secondary) + 5
-    );
+    $secondary-variant: color.adjust($secondary, $hue: -23, $saturation: 16%, $lightness: 5%);
   }
 
   // Handle default values for optional hardcoded colours
@@ -153,30 +141,6 @@
     $result: map.set($result, "color-red", $red);
   }
   @return $result;
-}
-
-@function generate-colour-variants($base, $baseName, $weights) {
-  $variants-map: ();
-  $lightness-map: (
-    50: 96%,
-    100: 90%,
-    200: 80%,
-    300: 70%,
-    400: 60%,
-    500: 50%,
-    600: 40%,
-    700: 30%,
-    800: 20%,
-    900: 10%,
-  );
-  @each $weight in $weights {
-    $lightness: map.get($lightness-map, $weight);
-    $color: hsl(hue($base), saturation($base), $lightness);
-    $map: (color-#{$baseName}-#{$weight}: $color);
-    $variants-map: map.merge($variants-map, $map);
-  }
-  $transparent: (color-#{$baseName}-transparent: rgba($base, 0.5));
-  @return $variants-map;
 }
 
 @function generate-colour-variants($base, $baseName, $weights) {
