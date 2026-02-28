@@ -4,7 +4,8 @@ import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
 import { format } from "prettier";
-import { Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared/utils";
+import { Logger, setNestedProperty } from "shared/utils";
+import { ROOT_DIR } from "shared/paths";
 
 import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.json";
 import type { IReportOutput } from "../report/report.types";
@@ -12,7 +13,7 @@ import type { IReportOutput } from "../report/report.types";
 import { ComponentOptimiser } from "./optimisers/components";
 import { TEMPLATE_COMPONENT_MANIFEST } from "../../../../../../src/app/shared/components/template/components/manifest";
 
-const APP_DIR = resolve(PATHS.ROOT_DIR, "src", "app");
+const APP_DIR = resolve(ROOT_DIR, "src", "app");
 
 export class AppDataOptimiser {
   private report: IReportOutput;

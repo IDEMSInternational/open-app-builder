@@ -6,7 +6,7 @@ import { readJsonSync, statSync, existsSync, readdirSync } from "fs-extra";
 import { vol } from "memfs";
 
 import { resolve } from "path";
-import { IAssetEntryHashmap } from "data-models/assets.model";
+import type { IAssetEntryHashmap } from "data-models";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs").fs);

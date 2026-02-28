@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import type { IDataPipeOperation } from "shared/utils";
+import type { IDataPipeOperation } from "shared/models";
 import { DataPipeParser } from "./data_pipe.parser";
 import { FlowParserProcessor } from "../flowParser";
 import { MockJsonFileCache } from "../../../cacheStrategy/jsonFile.mock";

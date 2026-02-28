@@ -1,4 +1,6 @@
-import { getGlobalFileLogger } from "shared/utils/logging/file-logger";
+// Ensure imports are relative and not namespaced "shared" as
+// imports are resolved before jest moduleNameMapper processed
+import { getGlobalFileLogger } from "../../shared/src/utils/logging/file-logger";
 import { TEST_DATA_PATHS } from "./helpers/utils";
 import { ensureDirSync, emptyDirSync } from "fs-extra";
 

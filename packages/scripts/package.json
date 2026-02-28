@@ -20,13 +20,11 @@
     "@idemsInternational/env-replace": "workspace:*",
     "@idemsInternational/gdrive-tools": "workspace:*",
     "@idemsInternational/rapidpro-excel": "workspace:*",
-    "actions": "workspace:*",
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
     "chokidar": "^3.5.3",
     "commander": "^8.3.0",
     "cordova-res": "^0.15.4",
-    "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
     "log-update": "^4.0.0",
@@ -40,7 +38,6 @@
     "tsx": "^4.21.0",
     "typescript": "5.5.4",
     "winston": "^3.10.0",
-    "workflows": "workspace:*",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
