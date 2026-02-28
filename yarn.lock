@@ -13978,7 +13978,6 @@ __metadata:
     "@types/clone": ^2.1.1
     "@types/node": ^16.18.9
     clone: ^2.1.2
-    shared: "workspace:*"
     typescript: 5.5.4
   languageName: unknown
   linkType: soft
