@@ -15,6 +15,9 @@
     // HACK - optimisation script needs to understand
     // component path namespace
     "paths": {
+      // Used by optimise script via manifest import
+      "@components/*": ["../../packages/components/*"],
+      // Used by scripts
       "shared/*": ["../../packages/shared/src/*"],
       "actions": ["../../packages/actions"],
       "data-models": ["../../packages/data-models"],
