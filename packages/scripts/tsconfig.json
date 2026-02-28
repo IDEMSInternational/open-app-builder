@@ -16,7 +16,7 @@
     // component path namespace
     "paths": {
       "@components/*": ["../../packages/components/*"],
-      "@shared/*": ["../../packages/shared/src/*"]
+      "shared/*": ["../../packages/shared/src/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts", "build.ts", "types/*.ts"]

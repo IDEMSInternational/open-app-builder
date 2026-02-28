@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
 import { writeFile, ensureDir, emptyDir } from "fs-extra";
 import { resolve, dirname } from "path";
-import { logOutput } from "shared";
+import { logOutput } from "shared/utils";
 
 import type { IReport } from "./report.types";
 import { generateReportMarkdown } from "./report.utils";

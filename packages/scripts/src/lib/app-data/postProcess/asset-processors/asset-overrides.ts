@@ -4,7 +4,7 @@ import {
   IContentsEntryHashmap,
   Logger,
   setNestedProperty,
-} from "shared";
+} from "shared/utils";
 import { isCountryLanguageCode, isThemeAssetsFolderName } from "./utils";
 import { IAssetContentsEntryMinimal } from "data-models";
 import { IAssetEntriesByType } from "./types";

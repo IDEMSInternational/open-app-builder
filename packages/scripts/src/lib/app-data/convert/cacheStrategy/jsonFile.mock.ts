@@ -1,6 +1,6 @@
 import { TimeLike } from "fs";
 import { JsonFileCache } from "./jsonFile";
-import type { IContentsEntry } from "shared";
+import type { IContentsEntry } from "shared/utils";
 
 interface IContentsEntryWithValue extends IContentsEntry {
   value?: any;

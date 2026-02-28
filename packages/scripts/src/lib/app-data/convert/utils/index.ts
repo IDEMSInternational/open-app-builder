@@ -17,6 +17,6 @@ export {
   clearLogs,
   getLogFiles,
   getLogs,
-} from "shared";
+} from "shared/utils";
 
-export type { IContentsEntry } from "shared";
+export type { IContentsEntry } from "shared/utils";

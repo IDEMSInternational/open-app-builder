@@ -1,6 +1,6 @@
 import { resolve } from "path";
-import { SCRIPTS_WORKSPACE_PATH } from "shared";
-import { Logger } from "shared/src/utils/logging/console-logger";
+import { SCRIPTS_WORKSPACE_PATH } from "shared/utils";
+import { Logger } from "shared/utils/logging/console-logger";
 
 /*************************************************************
  * Test utilities

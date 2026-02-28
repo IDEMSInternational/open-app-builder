@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import chokidar from "chokidar";
-import { generateFolderFlatMap, replicateDir } from "@shared/utils";
+import { generateFolderFlatMap, replicateDir } from "shared/utils";
 import { resolve } from "path";
 
 const remove = (options: { src: string }) => fs.removeSync(options.src);

@@ -7,10 +7,10 @@ import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
-import { Logger, logOutput, promptOptions } from "@shared/utils";
+import { Logger, logOutput, promptOptions } from "shared/utils";
 import { openUrl } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
-import { pad, PATHS } from "shared";
+import { pad, PATHS } from "shared/utils";
 
 class GitProvider {
   private git: SimpleGit;

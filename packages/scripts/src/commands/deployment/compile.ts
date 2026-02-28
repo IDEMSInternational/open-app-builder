@@ -5,11 +5,11 @@ import { IDeploymentConfig, DEPLOYMENT_CONFIG_VERSION } from "data-models";
 import fs from "fs-extra";
 import { pathToFileURL } from "node:url";
 import path from "path";
-import { ROOT_DIR } from "../../paths";
-import { Logger } from "@shared/utils/logging.utils";
+import { ROOT_DIR } from "shared/paths";
+import { Logger } from "shared/utils/logging.utils";
 import { IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
-import { cleanEmptyObject } from "shared/src/utils/object-utils";
+import { cleanEmptyObject } from "shared/utils/object-utils";
 
 const program = new Command("compile");
 interface IOptions {

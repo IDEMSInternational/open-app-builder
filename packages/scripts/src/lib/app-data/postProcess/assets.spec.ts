@@ -63,9 +63,6 @@ describe("Assets PostProcess", () => {
   /** Main tests */
   it("Copies assets from local to app", () => {
     mockLocalAssets({ folder: { "file.jpg": mockFile } });
-    console.log("vol", vol.readdirSync("mock"));
-    console.log("mock", readdirSync("mock"));
-    console.log("mock/local", readdirSync("mock/local"));
     runAssetsPostProcessor();
     const testFilePath = resolve(mockDirs.appAssets, "folder", "file.jpg");
     expect(statSync(testFilePath).size).toEqual(1 * 1024 * 1024);

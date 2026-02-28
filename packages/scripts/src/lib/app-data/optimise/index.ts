@@ -4,7 +4,7 @@ import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
 import { format } from "prettier";
-import { Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared";
+import { Logger, PATHS, ROOT_DIR, setNestedProperty } from "shared/utils";
 
 import ANGULAR_JSON_TEMPLATE from "../../../../../../angular.json";
 import type { IReportOutput } from "../report/report.types";
@@ -50,7 +50,7 @@ export class AppDataOptimiser {
    * declaring only components used and modules required by those components
    */
   private async optimiseComponents() {
-    const templatesDir = resolve(APP_DIR, "shared", "components", "template");
+    const templatesDir = resolve(APP_DIR, "shared/utils", "components", "template");
 
     // Read default component indexTs and moduleTs files
     const indexTsPath = resolve(templatesDir, "components", "index.ts");

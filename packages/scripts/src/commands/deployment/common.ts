@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { logWarning } from "shared";
+import { logWarning } from "shared/utils/logging.utils";
 import { readJSONSync } from "fs-extra";
 import path from "path";
 
@@ -10,9 +10,9 @@ import type {
   IDeploymentConfigJson,
 } from "data-models";
 
-import { DEPLOYMENTS_PATH } from "../../paths";
+import { DEPLOYMENTS_PATH } from "shared/paths";
 import { getStackFileNames, loadDeploymentJson } from "./utils";
-import { toEmptyObject } from "shared/src/utils/object-utils";
+import { toEmptyObject } from "shared/utils/object-utils";
 
 // re-export of type for convenience
 export type { IDeploymentConfigJson };

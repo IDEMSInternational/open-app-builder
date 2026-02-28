@@ -1,7 +1,7 @@
 import path from "path";
 import { spawnSync } from "child_process";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { Logger } from "@shared/utils";
+import { Logger } from "shared/utils";
 
 /**
  * Apply translations to sheets

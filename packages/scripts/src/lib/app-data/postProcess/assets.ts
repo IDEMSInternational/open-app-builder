@@ -9,9 +9,9 @@ import {
   IContentsEntryHashmap,
   replicateDir,
   copyFileWithTimestamp,
-} from "@shared/utils/file-utils";
-import { logOutput, logWarning } from "@shared/utils/logging.utils";
-import { sortJsonKeys } from "@shared/utils/object-utils";
+} from "shared/utils/file-utils";
+import { logOutput, logWarning } from "shared/utils/logging.utils";
+import { sortJsonKeys } from "shared/utils/object-utils";
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import type { IAssetEntryHashmap, IAssetEntry, IAssetSource } from "data-models";
 import type { FlowTypes } from "data-models";

@@ -1,4 +1,4 @@
-import { IContentsEntry } from "shared";
+import { IContentsEntry } from "shared/utils";
 import { isCountryLanguageCode, isThemeAssetsFolderName } from "./utils";
 import { IDeploymentConfigJson } from "data-models";
 

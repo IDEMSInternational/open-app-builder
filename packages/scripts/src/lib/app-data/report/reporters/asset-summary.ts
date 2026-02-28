@@ -1,6 +1,6 @@
 import { FlowTypes, IAssetEntryHashmap } from "data-models";
 import { IReportTable } from "../report.types";
-import { cleanAssetName, isObjectLiteral, kbToMB, sortJsonKeys } from "shared";
+import { cleanAssetName, isObjectLiteral, kbToMB, sortJsonKeys } from "shared/utils";
 import { IParsedWorkbookData } from "../../convert/types";
 
 interface IReportData {
