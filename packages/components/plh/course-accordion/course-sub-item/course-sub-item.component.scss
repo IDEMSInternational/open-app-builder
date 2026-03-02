@@ -21,8 +21,8 @@
   .course-sub-item-title {
     font-size: var(--font-size-text-medium, 18px);
     font-weight: 500;
-    max-width: 208px;
     letter-spacing: var(--font-letter-spacing, 0);
+    margin-inline-end: 6px;
   }
 
   .state-container {
