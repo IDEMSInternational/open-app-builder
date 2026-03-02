@@ -6,7 +6,7 @@
 @mixin theme-plh_kids_teens_pa {
   @include utils.theme(
     $theme-name: "plh_kids_teens_pa",
-    $color-primary: hsl(205, 90%, 30%),
+    $color-primary: hsl(202, 98%, 32%),
     $color-primary-variant: hsl(78, 53%, 55%),
     $color-secondary: hsl(9, 85%, 48%),
     $page-background: white,
@@ -19,7 +19,11 @@
       font-letter-spacing: -0.2px,
       font-letter-spacing-large: -0.5px,
 
-      font-size-text-large: 22px,
+      font-size-text-tiny: 14px,
+      font-size-text-small: 16px,
+      font-size-text-mid-size: 18px,
+      font-size-text-medium: 20px,
+      font-size-text-large: 24px,
       font-size-text-title: 28px,
       font-size-text-extra-large: 32px,
 

@@ -4,16 +4,18 @@ import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion
 import { PlhCourseAccordionComponent } from "./course-accordion/course-accordion.component";
 import { PlhCourseSubItemComponent } from "./course-accordion/course-sub-item/course-sub-item.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
+import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
+import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
 import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
 import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
-import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 
 export {
   PlhActivityCheckInComponent,
   PlhBottomNavigationBarComponent,
   PlhCompletionModalComponent,
+  PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
@@ -30,6 +32,7 @@ export const PLH_COMPONENTS = [
   PlhActivityCheckInComponent,
   PlhBottomNavigationBarComponent,
   PlhCompletionModalComponent,
+  PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
@@ -45,6 +48,7 @@ export const PLH_COMPONENT_MAPPING = {
   plh_activity_check_in: PlhActivityCheckInComponent,
   plh_bottom_nav: PlhBottomNavigationBarComponent,
   plh_completion_modal: PlhCompletionModalComponent,
+  plh_lesson_cta: PlhLessonCtaComponent,
   plh_course_accordion: PlhCourseAccordionComponent,
   plh_course_sub_item: PlhCourseSubItemComponent,
   plh_module_details_header: PlhModuleDetailsHeaderComponent,
