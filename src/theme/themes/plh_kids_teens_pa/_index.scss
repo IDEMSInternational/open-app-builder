@@ -19,9 +19,8 @@
       font-letter-spacing: -0.2px,
       font-letter-spacing-large: -0.5px,
 
-      font-size-text-tiny: 14px,
-      font-size-text-small: 16px,
-      font-size-text-mid-size: 18px,
+      font-size-text-tiny: 12px,
+      font-size-text-small: 14px,
       font-size-text-medium: 20px,
       font-size-text-large: 24px,
       font-size-text-title: 28px,
@@ -57,10 +56,11 @@
       ion-border-radius-secondary: 20px,
       ion-border-radius-rounded: 50px,
 
-      border-color-default: var(--ion-color-gray-200),
+      border-color-default: var(--ion-color-gray-500),
       border-width-default: 1px,
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 0.5px solid var(--border-color-default),
+      row-margin-top: 10px,
       // COMPONENT VARIABLES
       accordion-background-highlight: var(--ion-color-primary-300),
       combo-box-font-size-standard: 20px,
