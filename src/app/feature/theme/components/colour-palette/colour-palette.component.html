@@ -1,6 +1,10 @@
-<div class="palette-container" *ngFor="let colour of themeColours">
-  <div class="swatch-container" *ngFor="let weight of colourWeights">
-    <div [ngClass]="'swatch color-' + colour + '-' + weight"></div>
-    <div class="label">color-{{ colour }}-{{ weight }}</div>
+@for (colour of themeColours; track colour) {
+  <div class="palette-container">
+    @for (weight of colourWeights; track weight) {
+      <div class="swatch-container">
+        <div [ngClass]="'swatch color-' + colour + '-' + weight"></div>
+        <div class="label">color-{{ colour }}-{{ weight }}</div>
+      </div>
+    }
   </div>
-</div>
+}

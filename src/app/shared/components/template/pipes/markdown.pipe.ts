@@ -3,6 +3,7 @@ import { parseMarkdown } from "src/app/shared/utils";
 
 @Pipe({
   name: "markdown",
+  standalone: false,
 })
 export class MarkdownPipe implements PipeTransform {
   transform(value: any, args?: any[]): any {

@@ -4,14 +4,13 @@ import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { type RecursivePartial } from "shared/src/types";
 
-import { readJsonSync, readdirSync, statSync, existsSync } from "fs-extra";
+import { readJsonSync, statSync, existsSync } from "fs-extra";
 import { vol } from "memfs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import { resolve } from "path";
 import { IAssetEntryHashmap } from "data-models/assets.model";
-import { useMockLogger } from "../../../../test/helpers/utils";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs"));
@@ -22,7 +21,7 @@ const mockDirs = {
   localAssets: "mock/local/assets",
 };
 
-const { file: mockFile, entry: mockFileEntry } = createMockFile(); // create mock 1MB file
+const { file: mockFile } = createMockFile(); // create mock 1MB file
 
 /** Parse the contents.json file populated to the app assets folder and return */
 function readAppAssetContents() {
@@ -37,7 +36,12 @@ function mockLocalAssets(assets: Record<string, any> = {}) {
 
 function createMockFile(size_kb: number = 1024) {
   const file = Buffer.alloc(1 * 1024 * size_kb);
-  const entry = { size_kb, md5Checksum: createHash("md5").update(file).digest("hex") };
+  const entry = {
+    size_kb,
+    md5Checksum: createHash("md5")
+      .update(file as any)
+      .digest("hex"),
+  };
   return { file, entry };
 }
 
@@ -83,10 +87,12 @@ describe("Assets PostProcess", () => {
       },
     });
     stubDeploymentConfig();
+    const sourceA = resolve(mockDirs.localAssets, "source_a");
+    const sourceB = resolve(mockDirs.localAssets, "source_b");
     const processor = new AssetsPostProcessor({
-      sourceAssetsFolders: [
-        resolve(mockDirs.localAssets, "source_a"),
-        resolve(mockDirs.localAssets, "source_b"),
+      sources: [
+        { path: sourceA, name: "source_a" },
+        { path: sourceB, name: "source_b" },
       ],
     });
     processor.run();
@@ -106,190 +112,213 @@ describe("Assets PostProcess", () => {
     expect("test.jpg" in contents).toEqual(true);
   });
 
-  it("Populates global assets from named or root folder", () => {
+  /** Remote asset pack tests */
+  it("Processes remote assets separately from core assets", () => {
     mockLocalAssets({
-      global: { "test1.jpg": mockFile },
-      nested: { "test2.jpg": mockFile },
-      "test3.jpg": mockFile,
+      core: { "core_asset.jpg": mockFile },
+      remote: { "remote_asset.jpg": mockFile },
     });
-    runAssetsPostProcessor();
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "nested/test2.jpg": mockFileEntry,
-      "test1.jpg": { ...mockFileEntry, filePath: "global/test1.jpg" },
-      "test3.jpg": mockFileEntry,
-    });
-  });
-
-  it("Populates assets with no overrides", () => {
-    mockLocalAssets({ "test.jpg": mockFile });
-    runAssetsPostProcessor();
-    const contents = readAppAssetContents();
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.overrides).toBeUndefined();
-  });
-
-  it("Populates translation override with default theme", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
-    const assetEntry = contents["test.jpg"];
-    expect(assetEntry.overrides["theme_default"]).toEqual({
-      tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
-    });
-  });
-
-  it("Populates theme override with global translation", () => {
-    mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_test: { "test.jpg": mockFile },
-    });
-    runAssetsPostProcessor({ app_themes_available: ["test"] });
-    const contents = readAppAssetContents();
-    expect(contents["test.jpg"].overrides).toEqual({
-      theme_test: { global: { ...mockFileEntry, filePath: "theme_test/test.jpg" } },
-    });
-  });
-  it("Populates combined theme and language overrides in any folder order", () => {
-    mockLocalAssets({
-      "test1.jpg": mockFile,
-      "test2.jpg": mockFile,
-      theme_test: {
-        tz_sw: { "test1.jpg": mockFile },
-      },
-      tz_sw: {
-        theme_test: {
-          "test2.jpg": mockFile,
+    stubDeploymentConfig();
+    const coreFolder = resolve(mockDirs.localAssets, "core");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const processor = new AssetsPostProcessor({
+      sources: [
+        { path: coreFolder, name: "core" },
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
         },
-      },
+      ],
     });
-    runAssetsPostProcessor({ app_themes_available: ["test"], filter_language_codes: ["tz_sw"] });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "test1.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "theme_test/tz_sw/test1.jpg" },
-          },
-        },
-      },
-      "test2.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "tz_sw/theme_test/test2.jpg" },
-          },
-        },
-      },
-    });
+    processor.run();
+
+    // Core assets should be in app_data/assets
+    const coreAssetPath = resolve(mockDirs.appAssets, "core_asset.jpg");
+    expect(existsSync(coreAssetPath)).toEqual(true);
+
+    // Remote assets should be in app_data/remote_assets/test_pack
+    const remoteAssetsPath = resolve("mock/app_data/remote_assets/test_pack");
+    const remoteAssetPath = resolve(remoteAssetsPath, "remote_asset.jpg");
+    expect(existsSync(remoteAssetPath)).toEqual(true);
   });
 
-  it("Filters theme assets", () => {
+  it("Generates AssetPack manifest for remote asset packs", () => {
     mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_testTheme: { "test.jpg": mockFile },
-      theme_ignored: { "test.jpg": mockFile },
+      remote: { "test.jpg": mockFile },
     });
-    runAssetsPostProcessor({ app_themes_available: ["testTheme"] });
-    expect(readdirSync(mockDirs.appAssets).sort()).toEqual([
-      "contents.json",
-      "test.jpg",
-      "theme_testTheme",
-    ]);
+    stubDeploymentConfig();
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const processor = new AssetsPostProcessor({
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
+    });
+    processor.run();
+
+    // Check that manifest file exists
+    const manifestPath = resolve("mock/app_data/remote_assets/test_pack/test_pack.json");
+    expect(existsSync(manifestPath)).toEqual(true);
+
+    // Check that standard contents.json also exists
+    const contentsPath = resolve("mock/app_data/remote_assets/test_pack/contents.json");
+    expect(existsSync(contentsPath)).toEqual(true);
+
+    // Check manifest format
+    const manifest = readJsonSync(manifestPath);
+    expect(manifest.flow_type).toEqual("asset_pack");
+    expect(manifest.flow_name).toEqual("test_pack");
+    expect(Array.isArray(manifest.rows)).toEqual(true);
+    expect(manifest.rows.length).toBeGreaterThan(0);
+    expect(manifest.rows[0]).toHaveProperty("id");
+    expect(manifest.rows[0]).toHaveProperty("md5Checksum");
+    expect(manifest.rows[0]).toHaveProperty("size_kb");
   });
 
-  it("Includes all language assets by default", () => {
+  it("Handles remote assets with same paths as core assets", () => {
     mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-      ke_sw: { "test.jpg": mockFile },
+      core: { "shared_asset.jpg": mockFile },
+      remote: { "shared_asset.jpg": mockFile },
     });
-    runAssetsPostProcessor({ filter_language_codes: undefined });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "test.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_default: {
-            tz_sw: { ...mockFileEntry, filePath: "tz_sw/test.jpg" },
-            ke_sw: { ...mockFileEntry, filePath: "ke_sw/test.jpg" },
-          },
+    stubDeploymentConfig();
+    const coreFolder = resolve(mockDirs.localAssets, "core");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const processor = new AssetsPostProcessor({
+      sources: [
+        { path: coreFolder, name: "core" },
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
         },
-      },
+      ],
     });
+    processor.run();
+
+    // Both should exist in their respective folders
+    const coreAssetPath = resolve(mockDirs.appAssets, "shared_asset.jpg");
+    const remoteAssetPath = resolve("mock/app_data/remote_assets/test_pack/shared_asset.jpg");
+    expect(existsSync(coreAssetPath)).toEqual(true);
+    expect(existsSync(remoteAssetPath)).toEqual(true);
   });
 
-  it("Filters language assets", () => {
+  it("Cleans up old remote asset pack folders", () => {
     mockLocalAssets({
-      "test.jpg": mockFile,
-      tz_sw: { "test.jpg": mockFile },
-      ke_sw: { "test.jpg": mockFile },
+      remote: { "test.jpg": mockFile },
     });
-    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
-    expect(readdirSync(mockDirs.appAssets).sort()).toEqual(["contents.json", "test.jpg", "tz_sw"]);
+    stubDeploymentConfig();
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+
+    // Create an old folder that should be cleaned up
+    const oldPackPath = resolve("mock/app_data/remote_assets/old_pack");
+    const { vol } = require("memfs");
+    vol.mkdirSync(oldPackPath, { recursive: true });
+    vol.writeFileSync(resolve(oldPackPath, "old_file.jpg"), mockFile);
+
+    const processor = new AssetsPostProcessor({
+      sources: [
+        {
+          path: remoteFolder,
+          name: "new_pack",
+          remote: true,
+        },
+      ],
+    });
+    processor.run();
+
+    // Old pack should be removed
+    expect(existsSync(oldPackPath)).toEqual(false);
+    // New pack should exist
+    const newPackPath = resolve("mock/app_data/remote_assets/new_pack");
+    expect(existsSync(newPackPath)).toEqual(true);
   });
 
-  it("supports nested lang and theme folders", () => {
+  it("Processes multiple remote asset packs", () => {
     mockLocalAssets({
-      nested: {
-        "test.jpg": mockFile,
-        theme_test: {
-          tz_sw: { "test.jpg": mockFile },
-        },
-        tz_sw: {
-          "test.jpg": mockFile,
-        },
-      },
+      remote1: { "asset1.jpg": mockFile },
+      remote2: { "asset2.jpg": mockFile },
     });
-    runAssetsPostProcessor({
-      filter_language_codes: ["tz_sw"],
-      app_themes_available: ["test"],
-    });
-    const contents = readAppAssetContents();
-    expect(contents).toEqual({
-      "nested/test.jpg": {
-        ...mockFileEntry,
-        overrides: {
-          theme_default: {
-            tz_sw: { ...mockFileEntry, filePath: "nested/tz_sw/test.jpg" },
-          },
-          theme_test: {
-            tz_sw: { ...mockFileEntry, filePath: "nested/theme_test/tz_sw/test.jpg" },
-          },
+    stubDeploymentConfig();
+    const remoteFolder1 = resolve(mockDirs.localAssets, "remote1");
+    const remoteFolder2 = resolve(mockDirs.localAssets, "remote2");
+    const processor = new AssetsPostProcessor({
+      sources: [
+        {
+          path: remoteFolder1,
+          name: "pack1",
+          remote: true,
         },
-      },
+        {
+          path: remoteFolder2,
+          name: "pack2",
+          remote: true,
+        },
+      ],
     });
+    processor.run();
+
+    // Both packs should exist
+    const pack1Path = resolve("mock/app_data/remote_assets/pack1");
+    const pack2Path = resolve("mock/app_data/remote_assets/pack2");
+    expect(existsSync(pack1Path)).toEqual(true);
+    expect(existsSync(pack2Path)).toEqual(true);
+    expect(existsSync(resolve(pack1Path, "asset1.jpg"))).toEqual(true);
+    expect(existsSync(resolve(pack2Path, "asset2.jpg"))).toEqual(true);
   });
 
-  // TODO - direct support for files named `test.theme_default.tz_sw.jpg`
-  // it("supports inline theme and lang files", () => {});
+  it("Removes old assets when remote asset pack is reprocessed", () => {
+    const { vol } = require("memfs");
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const packPath = resolve("mock/app_data/remote_assets/test_pack");
 
-  /** QA tests */
-  it("throws error on duplicate overrides", () => {
-    const mockLogger = useMockLogger();
+    // First run: create pack with old_asset.jpg
     mockLocalAssets({
-      "test.jpg": mockFile,
-      theme_test: {
-        tz_sw: { "test.jpg": mockFile },
-      },
-      tz_sw: {
-        theme_test: { "test.jpg": mockFile },
-      },
+      remote: { "old_asset.jpg": mockFile },
     });
-    runAssetsPostProcessor({
-      filter_language_codes: ["tz_sw"],
-      app_themes_available: ["test"],
+    stubDeploymentConfig();
+    const processor1 = new AssetsPostProcessor({
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
     });
-    expect(mockLogger.error).toHaveBeenCalledTimes(1);
-    expect(mockLogger.error).toHaveBeenCalledWith({
-      msg1: "Duplicate overrides detected",
-      msg2: "test.jpg [theme_test] [tz_sw]",
-      logOnly: true,
+    processor1.run();
+
+    // Verify old asset exists
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(true);
+
+    // Create an extra file that shouldn't be there (simulating old asset)
+    vol.writeFileSync(resolve(packPath, "orphaned_asset.jpg"), mockFile);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(true);
+
+    // Second run: pack now only has new_asset.jpg
+    vol.reset();
+    mockLocalAssets({
+      remote: { "new_asset.jpg": mockFile },
     });
+    stubDeploymentConfig();
+    const processor2 = new AssetsPostProcessor({
+      sources: [
+        {
+          path: remoteFolder,
+          name: "test_pack",
+          remote: true,
+        },
+      ],
+    });
+    processor2.run();
+
+    // Old assets should be removed, only new asset should exist
+    expect(existsSync(resolve(packPath, "old_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "orphaned_asset.jpg"))).toEqual(false);
+    expect(existsSync(resolve(packPath, "new_asset.jpg"))).toEqual(true);
   });
 
   /**
@@ -323,7 +352,9 @@ describe("Assets PostProcess", () => {
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
-  const processor = new AssetsPostProcessor({ sourceAssetsFolders: [localAssets] });
+  const processor = new AssetsPostProcessor({
+    sources: [{ path: localAssets, name: "mock" }],
+  });
   processor.run();
 }
 

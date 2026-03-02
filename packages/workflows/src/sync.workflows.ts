@@ -1,7 +1,7 @@
 import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
-import type { IDeploymentConfigJson } from "data-models";
+import type { IAssetSource, IDeploymentConfigJson } from "data-models";
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -132,23 +132,24 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
           const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
-          /** Return output of paths to downloaded assets */
-          let outputs: string[] = [];
+          /** Return output of paths to downloaded assets and folder metadata */
+          let outputs: Array<{ path: string; folderConfig: IAssetSource }> = [];
           // If skipping download still need to return download folder for next step
           if (options.skipDownload) {
-            outputs = assets_folders.map(({ id, name }) =>
-              tasks.gdrive.getOutputFolder("assets", id, name)
-            );
+            outputs = assets_folders.map((folderConfig) => ({
+              path: tasks.gdrive.getOutputFolder("assets", folderConfig.id, folderConfig.name),
+              folderConfig,
+            }));
           } else {
             const { assets_filter_function } = config.google_drive;
-            for (const { id: folderId, name: folderName } of assets_folders) {
+            for (const folderConfig of assets_folders) {
               const output = await tasks.gdrive.download({
                 type: "assets",
-                folderId,
-                folderName,
+                folderId: folderConfig.id,
+                folderName: folderConfig.name,
                 filterFn: assets_filter_function,
               });
-              outputs.push(output);
+              outputs.push({ path: output, folderConfig });
             }
           }
           return outputs;
@@ -156,10 +157,20 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "assets_post_process",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.postProcessAssets({
-            sourceAssetsFolders: workflow.assets_dl.output,
-          }),
+        function: async ({ tasks, workflow }) => {
+          return tasks.appData.postProcessAssets({
+            sources: workflow.assets_dl.output.map(({ path, folderConfig }) => ({
+              path,
+              name: folderConfig.name,
+              remote: folderConfig.remote,
+            })),
+          });
+        },
+      },
+      {
+        name: "sync_remote_assets",
+        condition: async ({ config }) => config.remote_assets !== undefined,
+        function: async ({ tasks }) => tasks.appData.syncRemoteAssets(),
       },
     ],
   },

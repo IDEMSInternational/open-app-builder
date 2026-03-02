@@ -2,12 +2,13 @@ import { format } from "date-fns";
 import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
-import * as Sentry from "@sentry/angular-ivy";
+import * as Sentry from "@sentry/angular";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
-import marked from "marked";
+import { marked, MarkedOptions } from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
 import { v4 as uuidV4 } from "uuid";
+import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 
 /**
  * Generate a random string of characters in base-36 (a-z and 0-9 characters)
@@ -251,16 +252,27 @@ export interface IAnswerListItem {
 }
 
 /**
+ * Normalise an answer list from either a hashmap or array format to an array.
+ * Handles conversion of hashmap objects (created with {}) to arrays.
+ * @param answerList an answer_list parameter, either an array or a hashmap object
+ * @returns an array representation of the answer list, or empty array if invalid
+ */
+export function normaliseAnswerListToArray(answerList: any): any[] {
+  if (!answerList) return [];
+  // If a data_list (hashmap) is provided as input, convert to an array
+  if (isObjectLiteral(answerList)) {
+    return objectToArray(answerList);
+  }
+  return Array.isArray(answerList) ? answerList : [];
+}
+
+/**
  * Parse an answer_list parameter and return an array of AnswerListItems
  * @param answerList an answer_list parameter, either an array of IAnswerListItems
  * or a data list (hashmap of IAnswerListItems)
  */
 function parseAnswerList(answerList: any) {
-  if (!answerList) return [];
-  // If a data_list (hashmap) is provided as input, convert to an array
-  if (answerList.constructor === {}.constructor) {
-    answerList = objectToArray(answerList);
-  }
+  answerList = normaliseAnswerListToArray(answerList);
 
   // Remove any items from the list which only have a value for "name",
   // e.g. "image" and "text" are undefined because the list has been generated within a template
@@ -489,7 +501,7 @@ export function isNonEmptyArray(value: unknown): value is any[] {
  * Extends the renderer of "marked" plugin to ensure that links open in new tags.
  * Code from https://github.com/markedjs/marked/pull/1371#issuecomment-434320596
  */
-export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
+export function parseMarkdown(src: string, options?: MarkedOptions) {
   const renderer = new marked.Renderer();
   renderer.link = function (href, title, text) {
     const link = marked.Renderer.prototype.link.apply(this, arguments);
@@ -513,7 +525,7 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
    */
   marked.use(markedSmartypantsLite());
 
-  return marked(src, options);
+  return marked.parse(src, options) as string;
 }
 
 export function convertBlobToBase64(blob: Blob): Promise<string> {

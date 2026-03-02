@@ -1,10 +1,10 @@
-import { ArrayOfObjectsParser } from "./array-of-objects.parser";
+import { ListEvaluator } from "./list.evaluator";
 
-describe("ArrayOfObjectsParser", () => {
-  let parser: ArrayOfObjectsParser;
+describe("ListEvaluator", () => {
+  let subject: ListEvaluator;
 
   beforeEach(() => {
-    parser = new ArrayOfObjectsParser();
+    subject = new ListEvaluator();
   });
 
   describe("parseExpression", () => {
@@ -15,7 +15,7 @@ describe("ArrayOfObjectsParser", () => {
 				key: name_3 | value: Value 3;
 			`;
 
-      const result = parser.parseExpression(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value 1" },
@@ -29,7 +29,7 @@ describe("ArrayOfObjectsParser", () => {
 				key: name_1 | value: Value 1 | description: This is description 1;
 			`;
 
-      const result = parser.parseExpression(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value 1", description: "This is description 1" },
@@ -43,7 +43,7 @@ describe("ArrayOfObjectsParser", () => {
 				key: name_3 | description: Something else | value: Another: colon;
 			`;
 
-      const result = parser.parseExpression(expression);
+      const result = subject.evaluate(expression);
 
       expect(result).toEqual([
         { key: "name_1", value: "Value with: colon" },
@@ -55,18 +55,18 @@ describe("ArrayOfObjectsParser", () => {
     it("returns the original string when the format is not array of object syntax", () => {
       const expression = "Plain string value";
 
-      expect(parser.parseExpression(expression)).toBe(expression);
+      expect(subject.evaluate(expression)).toBe(expression);
     });
 
     it("returns the original string when string contains :", () => {
       const expression = "Plain string value: with colon";
 
-      expect(parser.parseExpression(expression)).toBe(expression);
+      expect(subject.evaluate(expression)).toBe(expression);
     });
 
     it("returns primitives as-is when expression is not a string", () => {
-      expect(parser.parseExpression(42)).toBe(42);
-      expect(parser.parseExpression(true)).toBe(true);
+      expect(subject.evaluate(42)).toBe(42);
+      expect(subject.evaluate(true)).toBe(true);
     });
   });
 });

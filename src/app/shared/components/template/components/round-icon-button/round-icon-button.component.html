@@ -12,6 +12,8 @@
       [style.margin-top]="params.text ? '5px' : '0'"
       [src]="isCustomIcon ? (params.icon_src | plhAsset) : params.icon_src"
     ></ion-icon>
-    <div *ngIf="params.text">{{ params.text }}</div>
+    @if (params.text) {
+      <div>{{ params.text }}</div>
+    }
   </ion-tab-button>
 </div>

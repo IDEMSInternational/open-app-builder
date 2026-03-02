@@ -1,5 +1,14 @@
 import { Injectable } from "@angular/core";
-import { IRow } from "../reactive-components/row-base.component";
+import { Parameters } from "../reactive-components/parameters";
+import { FlowTypes } from "packages/data-models/flowTypes";
+
+export interface IRow {
+  name(): string;
+  value(): any;
+  params: Parameters;
+  setExpression(expression: any): void;
+  row(): FlowTypes.TemplateRow;
+}
 
 @Injectable({
   providedIn: "root",
@@ -28,6 +37,10 @@ export class RowRegistry {
       throw new Error(`RowRegistry.get: no row registered with name '${name}'`);
     }
     return row;
+  }
+
+  has(name: string): boolean {
+    return this.rows.has(name);
   }
 
   unregister(name: string) {

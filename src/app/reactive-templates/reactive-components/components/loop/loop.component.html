@@ -1,0 +1,7 @@
+@for (item of value(); track getLoopIndex(item, $index)) {
+  <oab-row-list
+    [namespace]="getName(item, $index)"
+    [rows]="rows()"
+    [attr.data-test]="getName(item, $index)"
+  ></oab-row-list>
+}

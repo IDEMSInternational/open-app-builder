@@ -15,12 +15,11 @@ import { REACTIVE_COMPONENT_MAP } from "./components";
       />
     }
   `,
-  standalone: true,
   imports: [NgComponentOutlet],
 })
 export class RowListComponent {
   public namespace = input("");
-  public rows = input.required<FlowTypes.TemplateRow[]>();
+  public rows = input<FlowTypes.TemplateRow[]>([]);
 
   public readonly initialised = computed(() => {
     // Initially zero rows will be reported we will

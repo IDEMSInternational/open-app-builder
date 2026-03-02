@@ -11,6 +11,7 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
   selector: "plh-template-page",
   templateUrl: "./template.page.html",
   styleUrls: ["./template.page.scss"],
+  standalone: false,
 })
 export class TemplatePage implements OnInit, OnDestroy {
   templateName: string;

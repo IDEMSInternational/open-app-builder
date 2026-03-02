@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: "root" })
-export class ArrayOfObjectsParser {
+export class ListEvaluator {
   /**
    * Parses the given expression into a structured format.
    * e.g. array format:
@@ -9,7 +9,6 @@ export class ArrayOfObjectsParser {
    *   key: name_2 | value: This is value 2 | description: This is description 2;
    *   key: name_3 | value: This is value 3 | description: This is description 3;
    *
-   * todo: more expression types e.g. object/json and a more robust parsing system.
    * todo: Improve expressions by changing the syntax, maybe expressions can more closely
    *       resemble javascript string interpolation expressions.
    * todo: This expression parser should probably happen in the template parsing process, not here.
@@ -17,7 +16,7 @@ export class ArrayOfObjectsParser {
    * @param expression The expression to parse, which may represent an array of objects in a custom string format.
    * @returns
    */
-  public parseExpression(expression: string | number | boolean | any) {
+  public evaluate(expression: string | number | boolean | any): any {
     // Detect array type expression: lines with 'key: ... | key2: ...;' format
     if (typeof expression === "string") {
       // Only attempt structured parsing when the author used ';' as entry separators

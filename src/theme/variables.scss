@@ -20,6 +20,7 @@
 @include themes.theme-plh_facilitator_my;
 @include themes.theme-plh_kids_teens_za;
 @include themes.theme-plh_facilitator_cw;
+@include themes.theme-plh_kids_teens_pa;
 
 /** Ionic CSS Variables **/
 :root {
@@ -90,6 +91,8 @@
 
   // Font Weight //
   --font-weight-standard: 400;
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
   --font-weight-bold: 700;
 
   // Text box //

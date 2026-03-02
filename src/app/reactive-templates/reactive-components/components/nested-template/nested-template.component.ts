@@ -1,4 +1,4 @@
-import { Component, effect, forwardRef, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, effect, forwardRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
@@ -8,27 +8,23 @@ import { Subscription } from "rxjs";
   selector: "oab-nested-template",
   templateUrl: "./nested-template.component.html",
   styleUrls: ["./nested-template.component.scss"],
-  standalone: true,
   imports: [forwardRef(() => ReactiveTemplateComponent)],
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
 export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
   private childDependencySubscriptions: Subscription[] = [];
-  private templateInitialised = false;
+  private templateInitialised = signal(false);
 
   constructor() {
     super();
 
-    effect(
-      () => {
-        if (this.reactiveTemplate().initialised() && !this.templateInitialised) {
-          this.onTemplateInitialised();
-          this.templateInitialised = true;
-        }
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      if (this.reactiveTemplate().initialised() && !this.templateInitialised()) {
+        this.onTemplateInitialised();
+        this.templateInitialised.set(true);
+      }
+    });
   }
 
   public override ngOnInit(): void {
@@ -39,7 +35,7 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private onTemplateInitialised() {
     for (const row of this.row().rows) {
-      this.setTemplateVariable(row);
+      this.setChildExpression(row);
     }
   }
 
@@ -51,17 +47,21 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
       let sub = this.variableStore
         .watchMultiple(this.evaluationService.getDependencies(row.value, this.namespace()))
         .subscribe(() => {
-          this.setTemplateVariable(row);
+          this.setChildExpression(row);
         });
       this.childDependencySubscriptions.push(sub);
     }
   }
 
-  private setTemplateVariable(row: FlowTypes.TemplateRow) {
-    this.variableStore.set(
-      this.namespaceService.getFullName(this.name(), row.name),
-      this.evaluationService.evaluateExpression(row.value, this.namespace())
-    );
+  // For nested variables we always replace the expression because they depend on parent variables
+  // So in this context they are dynamic but in the child context they are static.
+  private setChildExpression(row: FlowTypes.TemplateRow) {
+    const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
+
+    if (this.rowRegistry.has(rowFullName)) {
+      const value = this.evaluationService.evaluateExpression(row.value, this.namespace());
+      this.rowRegistry.get(rowFullName)?.setExpression(value);
+    }
   }
 
   private unsubscribeChildDependencies() {

@@ -1,10 +1,10 @@
 <div class="navigation-bar-wrapper" [attr.data-variant]="params().variant">
-  @for (button of params().buttonList; track button.target_template) {
+  @for (button of params().buttonList; track button.targetTemplate) {
     <a
       class="button-wrapper"
-      routerLinkActive="active-link"
-      [routerLink]="'template/' + button.target_template"
+      [routerLink]="'template/' + button.targetTemplate"
       [attr.data-name]="button.name"
+      [class.active-link]="$index === activeLinkIndex()"
     >
       <div class="image-wrapper">
         <img [src]="button.image | plhAsset" />

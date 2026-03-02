@@ -9,6 +9,7 @@ import { latexToHtml } from "./latex.utils";
 @Component({
   selector: "template-latex-component",
   template: ` <span [innerHTML]="parsedLatex()"> </span> `,
+  standalone: false,
 })
 /** Render text that includes LaTeX equations **/
 export class TmplLatexComponent extends TemplateBaseComponent {

@@ -189,7 +189,7 @@ export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
-  hash.update(fileBuffer);
+  hash.update(fileBuffer as any);
   const checksum = hash.digest("hex");
   return checksum;
 }

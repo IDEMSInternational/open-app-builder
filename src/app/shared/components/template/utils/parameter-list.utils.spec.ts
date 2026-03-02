@@ -3,6 +3,7 @@ import { defineAuthorParameterSchema, parseTemplateParameterList } from "./param
 const MOCK_SCHEMA = () =>
   defineAuthorParameterSchema((coerce) => ({
     allowed_values_param: coerce.allowedValues(["v1", "v2"], "v1"),
+    allowed_values_list_param: coerce.allowedValuesList(["v1", "v2", "v3"], ["v1"]),
     any_param: coerce.any({}),
     boolean_param: coerce.boolean(),
     comma_list_param: coerce.commaSeparatedList(),
@@ -11,6 +12,9 @@ const MOCK_SCHEMA = () =>
       return v.split("-").map(Number);
     }, []),
     number_param: coerce.number(-1),
+    object_array_param: coerce.objectArray<{ key1: string; key2: string }>([
+      { key1: "default1", key2: "default2" },
+    ]),
     string_param: coerce.string("fallback"),
   }));
 
@@ -67,6 +71,50 @@ describe("parameter_list utils - coerce", () => {
     expect(testSchema.parse({}).comma_list_param).toEqual([]);
   });
 
+  it("coerce allowedValuesList", () => {
+    const testSchema = MOCK_SCHEMA().pick({ allowed_values_list_param: true });
+    // from comma-separated string
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1, v2 , v3",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // from space-separated string
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1  v2   v3",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // from array
+    expect(
+      testSchema.parse({ allowed_values_list_param: ["v1", "v2", "v3"] }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // with extra whitespace
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "  v1  ,  v2  ,  v3  ",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // filters out invalid values
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1, invalid, v2, also_invalid",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2"]);
+    // empty string falls back
+    expect(testSchema.parse({ allowed_values_list_param: "" }).allowed_values_list_param).toEqual([
+      "v1",
+    ]);
+    // all invalid values falls back
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "invalid1, invalid2",
+      }).allowed_values_list_param
+    ).toEqual(["v1"]);
+    // fallback when undefined
+    expect(testSchema.parse({}).allowed_values_list_param).toEqual(["v1"]);
+  });
+
   it("coerce custom", () => {
     const testSchema = MOCK_SCHEMA().pick({ custom_param: true });
     // from string
@@ -105,6 +153,62 @@ describe("parameter_list utils - coerce", () => {
     // fallback
     expect(testSchema.parse({}).any_param).toEqual({});
   });
+
+  it("coerce objectArray", () => {
+    const testSchema = MOCK_SCHEMA().pick({ object_array_param: true });
+    const fallback = [{ key1: "default1", key2: "default2" }];
+
+    // from string format: 'key_1: value_1_a | key_2: value_2_a; key_1: value_1_b | key_2: value_2_b'
+    const { object_array_param: parsed1 } = testSchema.parse({
+      object_array_param: "key1: value1_a | key2: value2_a; key1: value1_b | key2: value2_b",
+    });
+    expect(parsed1).toEqual([
+      { key1: "value1_a", key2: "value2_a" },
+      { key1: "value1_b", key2: "value2_b" },
+    ]);
+
+    // from string with whitespace trimming
+    const { object_array_param: parsed2 } = testSchema.parse({
+      object_array_param: " key1 : value1 | key2 : value2 ",
+    });
+    expect(parsed2).toEqual([{ key1: "value1", key2: "value2" }]);
+
+    // from string with values containing colons
+    const { object_array_param: parsed3 } = testSchema.parse({
+      object_array_param: "key1: value:with:colons | key2: normal_value",
+    });
+    expect(parsed3).toEqual([{ key1: "value:with:colons", key2: "normal_value" }]);
+
+    // pre-parsed array
+    const preParsed = [
+      { key1: "pre1", key2: "pre2" },
+      { key1: "pre3", key2: "pre4" },
+    ];
+    expect(testSchema.parse({ object_array_param: preParsed }).object_array_param).toEqual(
+      preParsed
+    );
+
+    // hashmap object
+    const hashmap = {
+      id1: { key1: "h1", key2: "h2" },
+      id2: { key1: "h3", key2: "h4" },
+    };
+    expect(testSchema.parse({ object_array_param: hashmap }).object_array_param).toEqual([
+      { key1: "h1", key2: "h2" },
+      { key1: "h3", key2: "h4" },
+    ]);
+
+    // fallback when undefined
+    expect(testSchema.parse({}).object_array_param).toEqual(fallback);
+
+    // fallback when string doesn't match format (no colons)
+    expect(testSchema.parse({ object_array_param: "invalid format" }).object_array_param).toEqual(
+      fallback
+    );
+
+    // fallback when empty string
+    expect(testSchema.parse({ object_array_param: "" }).object_array_param).toEqual(fallback);
+  });
 });
 
 describe("parameter_list utils - parse", () => {
@@ -118,11 +222,13 @@ describe("parameter_list utils - parse", () => {
     const result = parseTemplateParameterList(undefined, schema);
     expect(Object.keys(result)).toEqual([
       "allowedValuesParam",
+      "allowedValuesListParam",
       "anyParam",
       "booleanParam",
       "commaListParam",
       "customParam",
       "numberParam",
+      "objectArrayParam",
       "stringParam",
     ]);
   });
@@ -131,11 +237,13 @@ describe("parameter_list utils - parse", () => {
     const result = parseTemplateParameterList(undefined, schema);
     expect(result).toEqual({
       allowedValuesParam: "v1",
+      allowedValuesListParam: ["v1"],
       anyParam: {},
       booleanParam: false,
       commaListParam: [],
       customParam: [],
       numberParam: -1,
+      objectArrayParam: [{ key1: "default1", key2: "default2" }],
       stringParam: "fallback",
     });
   });
@@ -149,11 +257,13 @@ describe("parameter_list utils - parse", () => {
       {
         allowedKeys: [
           "allowed_values_param",
+          "allowed_values_list_param",
           "any_param",
           "boolean_param",
           "comma_list_param",
           "custom_param",
           "number_param",
+          "object_array_param",
           "string_param",
         ],
       },

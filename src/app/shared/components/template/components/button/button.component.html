@@ -1,13 +1,43 @@
-<ng-container [ngSwitch]="variantMap().cardPortrait">
+<!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
+<!-- TODO: Refactor the "card-portrait" variant to be a separate component instantiated here, leaving authoring unchanged -->
+@if (params().variant.includes("card-portrait")) {
+  <div
+    class="button-container"
+    (click)="handleClick()"
+    [attr.data-variant]="variantsString()"
+    [attr.data-has-children]="rows().length > 0 ? true : null"
+    [attr.data-disabled]="params().disabled"
+  >
+    @if (params().imageAsset) {
+      <img src="{{ params().imageAsset | plhAsset }}" />
+    }
+    @if (value()) {
+      <div [class]="'button-text ' + params().textAlign">
+        {{ value() }}
+      </div>
+    }
+    @if (rows().length > 0) {
+      <span class="children">
+        @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
+          <plh-template-component
+            class="child"
+            [row]="childRow"
+            [parent]="parentContainerComponentRef"
+            [attr.data-rowname]="rowSignal().name"
+          ></plh-template-component>
+        }
+      </span>
+    }
+  </div>
+} @else {
   <!-- Default variant -->
   <ion-button
-    *ngSwitchDefault
-    [class]="'full standard medium' + ' ' + params().style + ' ' + params().buttonAlign"
+    [class]="'full standard medium' + ' ' + style() + ' ' + params().buttonAlign"
     [disabled]="params().disabled"
     (click)="triggerActions('click')"
-    [attr.data-param-style]="params().style"
-    [attr.data-variant]="params().variant"
-    [attr.data-has-children]="_row.rows ? true : null"
+    [attr.data-param-style]="style()"
+    [attr.data-variant]="variantsString()"
+    [attr.data-has-children]="rows().length > 0 ? true : null"
     [attr.data-language-direction]="templateTranslateService.languageDirection()"
     [attr.data-icon-align]="params().iconAlign"
   >
@@ -17,52 +47,28 @@
     @if (params().icon && params().iconAlign === "right") {
       <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
     }
-    @if (params().iconSecondary) {
+    @if (params().iconSecondaryAsset) {
       <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
-      @if (params().iconSecondary.includes(".")) {
-        <ion-icon slot="end" [src]="params().iconSecondary | plhAsset"></ion-icon>
+      @if (params().iconSecondaryAsset.includes(".")) {
+        <ion-icon slot="end" [src]="params().iconSecondaryAsset | plhAsset"></ion-icon>
       } @else {
-        <ion-icon slot="end" [name]="params().iconSecondary"></ion-icon>
+        <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
       }
     }
-    <span
-      *ngIf="_row.value"
-      [class]="'left text ' + params().textAlign"
-      [innerHTML]="_row.value | markdown"
-    >
-    </span>
-    <span *ngIf="_row.rows" class="children">
-      <plh-template-component
-        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-        class="child"
-        [row]="childRow"
-        [parent]="parent"
-        [attr.data-rowname]="_row.name"
-      ></plh-template-component>
-    </span>
+    @if (value()) {
+      <span [class]="'left text ' + params().textAlign" [innerHTML]="value() | markdown"> </span>
+    }
+    @if (rows().length > 0) {
+      <span class="children">
+        @for (childRow of rows() | filterDisplayComponent; track trackByRow($index, childRow)) {
+          <plh-template-component
+            class="child"
+            [row]="childRow"
+            [parent]="parentContainerComponentRef"
+            [attr.data-rowname]="rowSignal().name"
+          ></plh-template-component>
+        }
+      </span>
+    }
   </ion-button>
-
-  <!-- "card-portrait" variant. This variant is not achievable using an ion-button -->
-  <div
-    *ngSwitchCase="true"
-    class="button-container"
-    (click)="handleClick()"
-    [attr.data-variant]="params().variant"
-    [attr.data-has-children]="_row.rows ? true : null"
-    [attr.data-disabled]="params().disabled"
-  >
-    <img *ngIf="params().image" src="{{ params().image | plhAsset }}" />
-    <div *ngIf="_row.value" [class]="'button-text ' + params().textAlign">
-      {{ _row.value }}
-    </div>
-    <span *ngIf="_row.rows" class="children">
-      <plh-template-component
-        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-        class="child"
-        [row]="childRow"
-        [parent]="parent"
-        [attr.data-rowname]="_row.name"
-      ></plh-template-component>
-    </span>
-  </div>
-</ng-container>
+}

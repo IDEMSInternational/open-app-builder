@@ -6,6 +6,7 @@ import { TemplateBaseComponent } from "src/app/shared/components/template/compon
   selector: "plh-parent-point-counter",
   templateUrl: "./parent-point-counter.component.html",
   styleUrls: ["./parent-point-counter.component.scss"],
+  standalone: false,
 })
 export class PlhParentPointCounterComponent
   extends TemplateBaseComponent

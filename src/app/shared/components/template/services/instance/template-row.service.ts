@@ -425,4 +425,15 @@ export class TemplateRowService extends SyncServiceBase {
     log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
     log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   }
+
+  /**
+   * Clear the rendered state to force component destruction and enable a clean rebuild.
+   * Used for force reload scenarios to simulate a full template re-initialization.
+   */
+  public clearRenderedState() {
+    this.templateRowMap = {};
+    this.templateRowMapValues = {};
+    // clear rendered rows to force change detection and component destruction
+    this.renderedRows.set([]);
+  }
 }

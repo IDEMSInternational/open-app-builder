@@ -124,7 +124,14 @@ class EncryptionProvider {
     // Check private key (required for decryption)
     this.privateKeyPath = resolve(folderPath, "private.key");
     if (!existsSync(this.privateKeyPath) && operation === "decrypt") {
-      await this.promptPrivateKeyInput();
+      if (process.env.DEPLOYMENT_PRIVATE_KEY) {
+        // If env var exists, write it to file immediately to bypass prompt
+        writeFileSync(this.privateKeyPath, process.env.DEPLOYMENT_PRIVATE_KEY.trim());
+        console.log(chalk.green("Private key created from environment variable"));
+      } else {
+        // Otherwise fallback to manual prompt
+        await this.promptPrivateKeyInput();
+      }
     }
     // Check public key (required for encryption)
     this.publicKeyPath = resolve(folderPath, "public.key");

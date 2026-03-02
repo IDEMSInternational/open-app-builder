@@ -105,7 +105,7 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     try {
       const { data: blob, error } = await this.supabase.storage
         .from(this.config.bucketName)
-        .download(filepath);
+        .download(this.getSupabaseFilepath(filepath));
 
       if (error) {
         throw error;

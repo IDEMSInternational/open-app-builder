@@ -12,6 +12,7 @@ import { TemplateAssetService } from "src/app/shared/components/template/service
   selector: "plh-parent-point-box",
   templateUrl: "./parent-point-box.component.html",
   styleUrls: ["./parent-point-box.component.scss"],
+  standalone: false,
 })
 export class PlhParentPointBoxComponent extends TemplateBaseComponent implements OnInit {
   @Input() template: FlowTypes.Template;

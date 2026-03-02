@@ -1,22 +1,38 @@
-import { VariableStore } from "../stores/variable-store";
 import { Injectable } from "@angular/core";
 import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
 import { NamespaceService } from "./namespace.service";
+import { ContextCreatorService } from "./context-creator.service";
 import { extractDynamicEvaluators } from "packages/data-models/functions";
-import { ArrayOfObjectsParser } from "./type-parsers/array-of-objects.parser";
+import { ListEvaluator } from "./evaluators/list.evaluator";
+import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
+import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
-  private evaluator = new AppDataEvaluator();
+  private appDataEvaluator = new AppDataEvaluator();
 
   constructor(
-    private variableStore: VariableStore,
     private namespaceService: NamespaceService,
-    private arrayOfObjectsParser: ArrayOfObjectsParser
+    private contextCreator: ContextCreatorService,
+    private listEvaluator: ListEvaluator,
+    private loopItemEvaluator: LoopItemEvaluator,
+    private namespaceEvaluator: NamespaceEvaluator
   ) {}
 
   public evaluateExpression<T>(expression: string | number | boolean, namespace: string): T {
-    return this.evaluate(expression, namespace) as T;
+    let evaluatedExpression = expression;
+
+    // todo: replace appDataEvaluator with more evaluators e.g. localEvaluator, javascriptEvaluator, jsonEvaluator etc.
+    // todo: instead of setting execution context here, pass it into all evaluator.evaluate as a parameter, or is context simply the variableStore?
+    const context = this.createExecutionContext(expression, namespace);
+    this.appDataEvaluator.setExecutionContext(context);
+
+    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
+    evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
+    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+    evaluatedExpression = this.appDataEvaluator.evaluate(evaluatedExpression);
+
+    return evaluatedExpression as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
@@ -39,24 +55,18 @@ export class EvaluationService {
       .map((dependency) => this.namespaceService.getFullName(namespace, dependency));
   }
 
+  // Adds dependencies to the execution context by breaking down the dot notation
+  // e.g. outerLoop.key_1.innerLoopData becomes
+  // context = {
+  //   local: {
+  //     outerLoop: {
+  //       key_1: {
+  //         innerLoopData: value
+  //       }
+  //     }
+  //   }
+  // }
   private createExecutionContext(expression: string | number | boolean, namespace: string): any {
-    const context = { local: {} };
-
-    this.getDependencies(expression, namespace).forEach((dependencyName) => {
-      context.local[dependencyName] = this.variableStore.get(dependencyName);
-    });
-
-    return context;
-  }
-
-  private evaluate(expression: string | number | boolean, namespace: string): string | boolean {
-    this.evaluator.setExecutionContext(this.createExecutionContext(expression, namespace));
-
-    return this.evaluator.evaluate(
-      this.namespaceService.getNamespacedExpression(
-        namespace,
-        this.arrayOfObjectsParser.parseExpression(expression)
-      )
-    );
+    return this.contextCreator.createContext(this.getDependencies(expression, namespace));
   }
 }

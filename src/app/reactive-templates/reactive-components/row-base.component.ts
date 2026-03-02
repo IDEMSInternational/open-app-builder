@@ -17,20 +17,20 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
-import { RowRegistry } from "../services/row.registry";
+import { IRow, RowRegistry } from "../services/row.registry";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
-export interface IRow {
-  name: Signal<string>;
-  value: Signal<any>;
-  setExpression(expression: any): void;
+export function navParamPrefix(url: string): string {
+  return `navParam_${url}_`;
 }
 
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
+  standalone: false,
 })
 export abstract class RowBaseComponent<TParams extends Parameters>
   implements OnInit, OnDestroy, IRow
@@ -42,7 +42,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   );
 
   /**
-   * The current evaluated value of the row, as stored in the VariableStore.
+   * The current evaluated value of the row, based on its expression with tokens replaced.
+   * This may not be the same as the value stored in the variable store if further processing is needed (e.g. executing a data query).
    */
   public value: Signal<any>;
 
@@ -61,6 +62,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
+  protected route = inject(ActivatedRoute);
+  protected router = inject(Router);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -75,10 +78,23 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
    */
   ngOnInit(): void {
+    this.init();
+  }
+
+  public init(): void {
     const row = this.row();
 
     this.value = this.variableStore.asSignal(this.name());
-    this._expression.set(row.value);
+
+    // If there is a value in session storage that matches this row's name, use that to override the expression
+    let url = this.router.url.split("?")[0];
+    if (url.endsWith("/")) {
+      url = url.slice(0, -1);
+    }
+    const paramKey = `${navParamPrefix(url)}${this.name()}`;
+    const sessionValue = sessionStorage.getItem(paramKey);
+
+    this._expression.set(sessionValue ?? row.value);
     this.condition.set(
       this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
     );
@@ -91,11 +107,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.rowRegistry.register(this);
 
     // Set default value
-    this.variableStore.set(
-      this.name(),
-      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-    );
-    this.onInitialised()?.();
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   /*
@@ -105,14 +119,25 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.variableStore.set(
-      this.name(),
-      this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-    );
+    this.storeValue();
   }
 
   public triggerActions(trigger: string) {
     this.actionService.handleActions(this, trigger, this.namespace());
+  }
+
+  // Override to transform the value before storing in variable store.
+  // e.g. To execute a data query and store the results as the value
+  protected async computeStoredValue(value: any): Promise<any> {
+    return value;
+  }
+
+  // Store the evaluated value of the row in the variable store.
+  private async storeValue() {
+    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+    const computedValue = await this.computeStoredValue(value);
+
+    this.variableStore.set(this.name(), computedValue);
   }
 
   private setParams() {
@@ -132,14 +157,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   private watchValueDependencies() {
     this.unsubscribeValueDependencies();
-    let sub = this.variableStore
-      .watchMultiple(this.evaluationService.getDependencies(this.expression(), this.namespace()))
-      .subscribe(() => {
-        this.variableStore.set(
-          this.name(),
-          this.evaluationService.evaluateExpression(this.expression(), this.namespace())
-        );
-      });
+
+    const dependencies = this.evaluationService
+      .getDependencies(this.expression(), this.namespace())
+      .filter((d) => d !== this.name()); // avoid self-dependency
+
+    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+      await this.storeValue();
+    });
 
     this.valueDependencySubscriptions.push(sub);
   }
