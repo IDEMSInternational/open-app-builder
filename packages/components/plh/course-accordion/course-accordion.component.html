@@ -1,0 +1,52 @@
+<div
+  class="course-accordion-container"
+  [class.accordion-closed]="!isOpen()"
+  [attr.data-state]="state()"
+>
+  <div class="course-button" (click)="toggleOpen()">
+    @if (params().imageAsset) {
+      <div class="course-image">
+        <img [src]="params().imageAsset | plhAsset" />
+      </div>
+    }
+    <div class="course-title-and-progress-bar">
+      <p class="course-title">{{ value() || params().title }}</p>
+      <div class="progress-bar-container">
+        <plh-task-progress-bar
+          [showText]="false"
+          [inputProgressPercent]="progressPercent()"
+        ></plh-task-progress-bar>
+        <div class="progress-bar-text">
+          <p>
+            {{ `${subItemsCompleted()}/${subItemsTotal()} ${(params().subItemsName | lowercase)}` }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="course-button-icon">
+      @if (params().locked) {
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      } @else {
+        @if (isOpen()) {
+          <ion-icon name="chevron-up-circle-outline"></ion-icon>
+        } @else {
+          <ion-icon name="chevron-down-circle-outline"></ion-icon>
+        }
+      }
+    </div>
+  </div>
+
+  @if (isOpen()) {
+    <div class="sub-items-container">
+      <p class="sub-items-header">{{ params().subItemsName }}</p>
+      @for (subItem of subItemDataRows(); track subItem.name) {
+        <div class="sub-item-row">
+          <plh-course-sub-item
+            [row]="subItem"
+            [parent]="parentContainerComponentRef"
+          ></plh-course-sub-item>
+        </div>
+      }
+    </div>
+  }
+</div>
