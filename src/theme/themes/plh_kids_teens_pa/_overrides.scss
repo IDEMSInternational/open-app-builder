@@ -608,11 +608,10 @@
     }
     .module-title {
       margin-top: -70px;
-      padding-bottom: 30px;
-      padding-left: 16px;
+      padding: 0 16px 30px 16px;
       h2 {
         font-weight: var(--font-weight-bold);
-        font-size: 28px;
+        font-size: 24px;
       }
     }
     .wrapper[data-language-direction~="rtl"] {
