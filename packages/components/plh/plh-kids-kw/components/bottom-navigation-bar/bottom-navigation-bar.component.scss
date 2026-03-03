@@ -14,11 +14,6 @@
 .icon {
   width: 36px;
   height: 36px;
-
-  // Dim only when using single icon (no active_icon) and link is inactive
-  &[data-dim-when-inactive="true"]:not([data-active="true"]) {
-    filter: opacity(0.5);
-  }
 }
 
 .nav-item {
@@ -28,6 +23,11 @@
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+}
+
+// Dim button when using a single icon (no active_icon) and link is inactive
+.nav-item[data-dim-when-inactive="true"]:not([data-isActive="true"]) {
+  opacity: 0.5;
 }
 
 .nav-item[data-isActive="true"] {
