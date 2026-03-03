@@ -10,7 +10,11 @@
       [attr.data-isActive]="rla.isActive"
       [attr.data-hideInactiveText]="params.hideInactiveText"
     >
-      <img class="icon" [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      @if (button.active_icon) {
+        <img class="icon" [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      } @else {
+        <img class="icon" [src]="button.icon | plhAsset" [attr.data-active]="rla.isActive" />
+      }
       <div class="label" [attr.data-hideInactiveText]="params.hideInactiveText">
         {{ button.label }}
       </div>
