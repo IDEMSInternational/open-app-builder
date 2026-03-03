@@ -15,6 +15,7 @@ const COURSE_SUB_ITEM_ROW_TYPE = "plh_course_sub_item";
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   completed: coerce.boolean(false),
   image_asset: coerce.string(""),
+  image_alignment: coerce.allowedValues(["", "bottom"], "bottom"),
   locked: coerce.boolean(false),
   open: coerce.boolean(false),
   title: coerce.string(""),
