@@ -1,23 +1,32 @@
 import { NgComponentOutlet } from "@angular/common";
-import { Component, computed, input } from "@angular/core";
+import { Component, computed, inject, input, Type } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { REACTIVE_COMPONENT_MAP } from "./components";
+import { DebugService } from "../services/debug.service";
+import { RowDebuggerComponent } from "./debug/row-debugger/row-debugger.component";
+import { RowBaseComponent } from "./row-base.component";
 
 @Component({
   selector: "oab-row-list",
   template: `
     @for (row of rows(); track i; let i = $index) {
-      <ng-container
-        *ngComponentOutlet="
-          getComponent(row);
-          inputs: { row, namespace: namespace(), onInitialised: onRowInit(i) }
-        "
-      />
+      @let component = getComponent(row);
+      @let outletInputs = { row, namespace: namespace(), onInitialised: onRowInit(i) };
+
+      @if (debug.isEnabled()) {
+        <oab-row-debugger>
+          <ng-container *ngComponentOutlet="component; inputs: outletInputs" />
+        </oab-row-debugger>
+      } @else {
+        <ng-container *ngComponentOutlet="component; inputs: outletInputs" />
+      }
     }
   `,
-  imports: [NgComponentOutlet],
+  imports: [NgComponentOutlet, RowDebuggerComponent],
 })
 export class RowListComponent {
+  public debug = inject(DebugService);
+
   public namespace = input("");
   public rows = input<FlowTypes.TemplateRow[]>([]);
 
@@ -33,8 +42,8 @@ export class RowListComponent {
 
   private rowsInitialised = new Set<number>();
 
-  public getComponent(row: FlowTypes.TemplateRow) {
-    return REACTIVE_COMPONENT_MAP[row.type];
+  public getComponent(row: FlowTypes.TemplateRow): Type<RowBaseComponent<any>> {
+    return REACTIVE_COMPONENT_MAP[row.type] as Type<RowBaseComponent<any>>;
   }
 
   /* 
