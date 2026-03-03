@@ -15,8 +15,8 @@
   width: 36px;
   height: 36px;
 
-  // Will only apply to icons when no active_icon is provided
-  &:not([data-active="true"]) {
+  // Dim only when using single icon (no active_icon) and link is inactive
+  &[data-dim-when-inactive="true"]:not([data-active="true"]) {
     filter: opacity(0.5);
   }
 }
