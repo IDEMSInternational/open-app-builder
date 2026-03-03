@@ -53,30 +53,34 @@
     align-items: stretch;
     height: auto;
     min-height: 90px;
-    padding: var(--regular-padding);
+    padding: 0 12px;
     background-color: var(--ion-color-primary-100);
     border: 1px solid var(--ion-color-primary-500);
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
 
     .course-image {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       flex-shrink: 0;
-
       min-width: 40px;
-      width: 56px;
+      width: 62px;
       max-width: 66px;
-
+      padding: var(--regular-padding) 0;
       img {
         width: 100%;
+      }
+
+      &[data-image-alignment="bottom"] {
+        padding-bottom: 0;
+        align-items: flex-end;
       }
     }
     .course-title-and-progress-bar {
       width: 100%;
       flex-shrink: 10;
-      margin: 0 8px;
+      margin: 0 4px;
       margin-inline-end: auto;
-      padding: 0 8px;
+      padding: var(--regular-padding) 8px;
 
       .course-title {
         font-size: var(--font-size-text-medium, 20px);
@@ -93,6 +97,8 @@
         gap: var(--tiny-padding, 6px);
         align-items: center;
         justify-content: space-between;
+        margin-top: 12px;
+        margin-bottom: 4px;
         --task-progress-bar-color: var(--ion-color-primary-700);
         --task-progress-bar-background-color: white;
         --task-progress-bar-height: 5px;
@@ -106,6 +112,9 @@
           color: var(--ion-color-primary-700);
           margin: 0;
           padding: 0;
+          p {
+            margin: 0;
+          }
         }
       }
     }
@@ -116,6 +125,7 @@
       font-size: var(--icon-size-large, 32px);
       font-weight: var(--font-weight-bold);
       margin: 0 6px;
+      padding: var(--regular-padding) 0;
       ion-icon {
         --ionicon-stroke-width: 48px;
       }
