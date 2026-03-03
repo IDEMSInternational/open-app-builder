@@ -1,0 +1,18 @@
+<div class="debugger">
+  <div class="header">
+    <ng-content select="oab-debugger-title"></ng-content>
+    <button
+      class="toggle-button"
+      (click)="toggle()"
+      [attr.aria-expanded]="expanded()"
+      [attr.aria-label]="expanded() ? 'Collapse debugger details' : 'Expand debugger details'"
+    >
+      {{ expanded() ? "−" : "+" }}
+    </button>
+  </div>
+  @if (expanded()) {
+    <div class="info">
+      <ng-content select="oab-debugger-info"></ng-content>
+    </div>
+  }
+</div>
