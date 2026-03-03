@@ -1,8 +1,26 @@
-import * as fs from "fs-extra";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmdirSync,
+  rmSync,
+  statSync,
+  utimesSync,
+} from "fs";
+
+// Alt to fs-extra functions to improve cross-compatibility
+export const ensureDirSync = (dirPath: string) => mkdirSync(dirPath, { recursive: true });
+export const emptyDirSync = (dirPath: string) => {
+  rmSync(dirPath, { recursive: true, force: true });
+  mkdirSync(dirPath, { recursive: true });
+};
+
 import * as path from "path";
 import * as os from "os";
 import { createHash, randomUUID } from "crypto";
-import { Logger, logWarning } from "./logging.utils";
+import { Logger } from "./logging.utils";
 import { tmpdir } from "os";
 
 /**
@@ -62,12 +80,12 @@ export function recursiveFindByExtension(
   files?: string[],
   result?: string[]
 ) {
-  files = files || fs.readdirSync(base);
+  files = files || readdirSync(base);
   result = result || [];
   for (const file of files) {
     const newbase = path.join(base, file);
-    if (fs.statSync(newbase).isDirectory()) {
-      const newFiles = fs.readdirSync(newbase);
+    if (statSync(newbase).isDirectory()) {
+      const newFiles = readdirSync(newbase);
       result = recursiveFindByExtension(newbase, ext, newFiles, result);
     } else {
       if (ext) {
@@ -109,12 +127,12 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
     const siblingJson = getNestedProperty(treeMap, jsonDirname) || {};
     if (includeStats) {
       // generate size and md5 checksum stats
-      const { size } = fs.statSync(filePath);
+      const { size } = statSync(filePath);
       const checksum = getFileMD5Checksum(filePath);
       const filepath = path.relative(folderPath, filePath).split(path.sep).join("/");
       siblingJson[path.basename(filePath)] = { size, checksum, filepath };
     } else {
-      siblingJson[path.basename(filePath)] = fs.statSync(filePath);
+      siblingJson[path.basename(filePath)] = statSync(filePath);
     }
     treeMap = setNestedProperty(jsonDirname, siblingJson, treeMap);
   }
@@ -162,7 +180,7 @@ export function generateFolderFlatMap(
 
 export function getFileStats(filePath: string) {
   // generate size and md5 checksum stats
-  const { size, mtime } = fs.statSync(filePath);
+  const { size, mtime } = statSync(filePath);
   const modifiedTime = mtime.toISOString();
   // write size in kb to 1 dpclear
   const size_kb = Math.round(size / 102.4) / 10;
@@ -188,7 +206,7 @@ export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 /** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
-  const fileBuffer = fs.readFileSync(filePath);
+  const fileBuffer = readFileSync(filePath);
   hash.update(fileBuffer as any);
   const checksum = hash.digest("hex");
   return checksum;
@@ -254,121 +272,12 @@ export function groupJsonByMultipleKeys<T>(json: T[], keys: string[], joinCharac
 }
 
 export function listFolderNames(folderPath: string) {
-  if (!fs.existsSync(folderPath)) {
+  if (!existsSync(folderPath)) {
     return [];
   }
-  return fs
-    .readdirSync(folderPath, { withFileTypes: true })
+  return readdirSync(folderPath, { withFileTypes: true })
     .filter((v) => v.isDirectory())
     .map((v) => v.name);
-}
-
-/**
- * Function to simplify process of converting .json files to .ts, with addtional export
- * and index file options
- */
-export function convertJsonToTs(
-  filepaths: string[],
-  config: {
-    indexFile?: {
-      /** Provide a specific const name for index file to export as, e.g. export const index = [...] */
-      namedExport?: string;
-      /** Specify type definition for individual files, e.g. `string[] => export const index:string[] = [...] */
-      namedExportType?: string;
-    };
-    /** Specify type definition for individual files, e.g. `any` => export const data:any = [...] */
-    defaultExportType?: string;
-    outputDir?: string;
-    /** TODO */
-    _wip_importStatements?: string[];
-  }
-) {
-  let { defaultExportType, indexFile, _wip_importStatements, outputDir } = config;
-  if (outputDir) {
-    fs.ensureDirSync(outputDir);
-    fs.emptyDirSync(outputDir);
-  }
-  const indexFilePath = outputDir && indexFile ? path.resolve(outputDir, "index.ts") : null;
-  if (indexFilePath) {
-    fs.createFileSync(indexFilePath);
-  }
-  for (const filepath of filepaths) {
-    outputDir = outputDir || path.dirname(filepath);
-    const filename = path.basename(filepath).replace(".json", ".ts");
-    const jsonData = fs.readJSONSync(filepath);
-    let defaultExportName = "data";
-    if (defaultExportType) {
-      defaultExportName += `:${defaultExportType}`;
-    }
-    const defaultExportData = JSON.stringify(jsonData, null, 2);
-    const tsData = `const ${defaultExportName} = ${defaultExportData}; export default data`;
-    fs.writeFileSync(path.resolve(outputDir, filename), tsData);
-    if (indexFilePath) {
-      const importName = path.basename(filename, ".ts");
-      if (indexFile.namedExport) {
-        fs.appendFileSync(indexFilePath, `import ${importName} from "./${importName}";\r\n`);
-      } else {
-        fs.appendFileSync(indexFilePath, `export * from "./${importName}";\r\n`);
-      }
-    }
-  }
-  // Create single export, e.g. ```export const NAMED_EXPORT = {import_1,import_2}```
-  if (indexFilePath && indexFile.namedExport) {
-    const namedExports = filepaths.map((filepath) => path.basename(filepath, ".json")).join(",");
-    let exportName = indexFile.namedExport;
-    if (indexFile.namedExportType) {
-      exportName += `:${indexFile.namedExportType}`;
-    }
-    fs.appendFileSync(indexFilePath, `export const ${exportName} = { ${namedExports} }`);
-  }
-}
-
-/** Search a folder for a file ending _contents and return parsed json  */
-export function readContentsFile(folderPath: string) {
-  if (!fs.existsSync(folderPath)) {
-    logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
-    return [];
-  }
-
-  const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
-  if (!contentsFilePath) {
-    logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
-    return [];
-  }
-  const contentsJson = fs.readJsonSync(path.resolve(folderPath, contentsFilePath));
-  return contentsJson as IContentsEntry[];
-}
-
-/**
- * Search a folder for a file ending _contents, parse json and convert to hashmap
- * Requires one of hashKey or hashKeyfn
- * @param options.hashkey named key to use for hashmap entries
- * @param options.hashKeyFn function to generate hahamap key from entry
- */
-export function readContentsFileAsHashmap(
-  folderPath: string,
-  options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
-) {
-  const contentsJson = readContentsFile(folderPath);
-  const hashmap: { [key: string]: IContentsEntry } = {};
-  const { hashKey, hashKeyFn } = options;
-  for (const entry of contentsJson) {
-    if (hashKey) {
-      if (entry.hasOwnProperty(hashKey)) {
-        const entryKey = entry[hashKey];
-        if (entryKey) {
-          hashmap[entryKey] = entry;
-        }
-      }
-    }
-    if (hashKeyFn) {
-      const entryKey = hashKeyFn(entry);
-      if (entryKey) {
-        hashmap[entryKey] = entry;
-      }
-    }
-  }
-  return hashmap;
 }
 
 /**
@@ -383,8 +292,8 @@ export function replicateDir(
     cleanEmpty: true,
   }
 ) {
-  fs.ensureDirSync(src);
-  fs.ensureDirSync(target);
+  ensureDirSync(src);
+  ensureDirSync(target);
   const srcFiles = generateFolderFlatMap(src);
   const targetFiles = generateFolderFlatMap(target);
   // omit src files via filter
@@ -421,16 +330,16 @@ export function replicateDir(
   // process operations
   ops.delete.forEach((filepath) => {
     const targetPath = path.resolve(target, filepath);
-    fs.removeSync(targetPath);
+    rmSync(targetPath);
   });
   ops.copy.forEach((entry) => {
     const { relativePath, modifiedTime } = entry as IContentsEntry;
     const srcPath = path.resolve(src, relativePath);
     const targetPath = path.resolve(target, relativePath);
     const mtime = new Date(modifiedTime);
-    fs.ensureDirSync(path.dirname(targetPath));
-    fs.copyFileSync(srcPath, targetPath);
-    fs.utimesSync(targetPath, mtime, mtime);
+    ensureDirSync(path.dirname(targetPath));
+    copyFileSync(srcPath, targetPath);
+    utimesSync(targetPath, mtime, mtime);
   });
   // remove hanging directories]
   if (opts.cleanEmpty) {
@@ -441,20 +350,20 @@ export function replicateDir(
 
 /** Copy a file from src to target, only replacing if unchanged */
 export function replicateFile(src: string, target: string) {
-  const srcExists = fs.pathExistsSync(src);
+  const srcExists = existsSync(src);
   if (!srcExists) return Logger.error({ msg1: "File not found", msg2: src });
   const srcStats = getFileStats(src);
   // skip if target file same contents as src
-  if (fs.pathExistsSync(target)) {
+  if (existsSync(target)) {
     const targetStats = getFileStats(target);
     if (srcStats.md5Checksum === targetStats.md5Checksum) {
       return;
     }
   }
-  fs.ensureDirSync(path.dirname(target));
-  fs.copyFileSync(src, target);
+  ensureDirSync(path.dirname(target));
+  copyFileSync(src, target);
   const mtime = new Date(srcStats.modifiedTime);
-  fs.utimesSync(target, mtime, mtime);
+  utimesSync(target, mtime, mtime);
 }
 
 /**
@@ -466,8 +375,8 @@ export function mergeFoldersRecursively(
   target: string,
   options = { conflictStrategy: "keepSrc" }
 ) {
-  fs.ensureDirSync(src);
-  fs.ensureDirSync(target);
+  ensureDirSync(src);
+  ensureDirSync(target);
   const srcFiles = generateFolderFlatMap(src);
   const targetFiles = generateFolderFlatMap(target);
   // Copy function
@@ -491,16 +400,16 @@ export function mergeFoldersRecursively(
 
 export function copyFileWithTimestamp(srcPath: string, targetPath: string, modifiedTime: string) {
   const mtime = new Date(modifiedTime);
-  fs.ensureDirSync(path.dirname(targetPath));
-  fs.copyFileSync(srcPath, targetPath);
-  fs.utimesSync(targetPath, mtime, mtime);
+  ensureDirSync(path.dirname(targetPath));
+  copyFileSync(srcPath, targetPath);
+  utimesSync(targetPath, mtime, mtime);
 }
 
 export function createTempDir() {
   const dirName = randomUUID();
   const dirPath = path.join(os.tmpdir(), dirName);
-  fs.ensureDirSync(dirPath);
-  fs.emptyDirSync(dirPath);
+  ensureDirSync(dirPath);
+  emptyDirSync(dirPath);
   return dirPath;
 }
 
@@ -508,7 +417,7 @@ export function createTempDir() {
 export function createTemporaryFolder() {
   const folderName = randomUUID();
   const folderPath = path.resolve(tmpdir(), folderName);
-  fs.ensureDirSync(folderPath);
+  ensureDirSync(folderPath);
   return folderPath;
 }
 
@@ -517,18 +426,18 @@ export function createTemporaryFolder() {
  * https://gist.github.com/arnoson/3237697e8c61dfaf0356f814b1500d7b
  */
 export const cleanupEmptyFolders = (folder: string) => {
-  if (!fs.existsSync(folder)) return;
-  if (!fs.statSync(folder).isDirectory()) return;
-  let files = fs.readdirSync(folder);
+  if (!existsSync(folder)) return;
+  if (!statSync(folder).isDirectory()) return;
+  let files = readdirSync(folder);
 
   if (files.length > 0) {
     files.forEach((file) => cleanupEmptyFolders(path.join(folder, file)));
     // Re-evaluate files; after deleting subfolders we may have an empty parent
     // folder now.
-    files = fs.readdirSync(folder);
+    files = readdirSync(folder);
   }
 
   if (files.length === 0) {
-    fs.rmdirSync(folder);
+    rmdirSync(folder);
   }
 };

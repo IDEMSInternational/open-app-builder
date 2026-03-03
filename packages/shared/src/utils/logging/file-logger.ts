@@ -1,8 +1,7 @@
 import winston from "winston";
 import path from "path";
-import { truncateSync } from "fs-extra";
 import { _wait } from "../async-utils";
-import { existsSync } from "fs";
+import { existsSync, truncateSync } from "fs";
 import { SCRIPTS_LOGS_DIR } from "../../paths";
 import { getGlobalMemoryLoggerTransport } from "./memory-logger";
 

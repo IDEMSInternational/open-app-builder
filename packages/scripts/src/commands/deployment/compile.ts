@@ -3,12 +3,13 @@ import { spawnSync } from "child_process";
 import { Command } from "commander";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_VERSION } from "data-models";
 import fs from "fs-extra";
+import { pathToFileURL } from "node:url";
 import path from "path";
-import { ROOT_DIR } from "../../paths";
-import { Logger } from "../../utils";
+import { ROOT_DIR } from "shared/paths";
+import { Logger } from "shared/utils/logging.utils";
 import { IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
-import { cleanEmptyObject } from "shared/src/utils/object-utils";
+import { cleanEmptyObject } from "shared/utils/object-utils";
 
 const program = new Command("compile");
 interface IOptions {
@@ -62,7 +63,9 @@ export function compileDeploymentTSSync(options: IOptions) {
 /** Load a .ts file and return the default export */
 export async function loadTSFileDefaultExport(input: string) {
   try {
-    const res = await import(input);
+    // convert to file:// prefix for use in tsx's esm loader
+    const importPath = pathToFileURL(input).href;
+    const res = await import(importPath);
     return res.default;
   } catch (error) {
     console.error(error);

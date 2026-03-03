@@ -27,9 +27,9 @@ function createBuildBundle() {
     splitting: false,
     sourcemap: true,
     clean: true,
-    entry: ["build/commands/index.js"],
+    entry: ["build/packages/scripts/src/commands/index.js"],
     format: ["cjs"],
-    target: "node18",
+    target: "node24",
 
     // NOTE - this is the default outDir, but important to ensure it sits
     // at the same level of nesting as 'src' so file paths relative to __dirname

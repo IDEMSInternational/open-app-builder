@@ -11,6 +11,7 @@ import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 
+// Export symbols for use in `src\app\shared\components\template\template.module.ts`
 export {
   PlhActivityCheckInComponent,
   PlhBottomNavigationBarComponent,

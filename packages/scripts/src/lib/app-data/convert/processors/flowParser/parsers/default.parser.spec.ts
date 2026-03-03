@@ -1,3 +1,4 @@
+import { useMockLogger } from "../../../../../../../test/helpers/utils";
 import { DefaultParser, RowProcessor } from "./default.parser";
 import { FlowTypes } from "data-models";
 
@@ -8,6 +9,7 @@ import { FlowTypes } from "data-models";
  * nested group extract, special field types, `@row` self-reference, metadata fields etc.
  */
 describe("Default Parser", () => {
+  const loggerSpy = useMockLogger(false);
   const parser = new DefaultParser({ processedFlowHashmap: {} } as any);
   it("Cleans field values - handles strings consisting only of whitespace", () => {
     const output = parser.run({

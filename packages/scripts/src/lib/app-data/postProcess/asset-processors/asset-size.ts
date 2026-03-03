@@ -1,4 +1,4 @@
-import { kbToMB, logOutput, logWarning } from "shared";
+import { kbToMB, logOutput, logWarning } from "shared/utils";
 import { IAssetEntriesByType } from "./types";
 
 /** Approximate size of core build as populated to www folder (excluding assets) */

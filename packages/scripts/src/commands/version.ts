@@ -3,10 +3,10 @@ import chalk from "chalk";
 import { Command } from "commander";
 import * as fs from "fs-extra";
 import inquirer from "inquirer";
-import { MAIN_PACKAGE_PATH } from "../paths";
+import { MAIN_PACKAGE_PATH } from "shared/paths";
 import { ActiveDeployment } from "./deployment/get";
 import { readFileSync, writeFileSync } from "fs";
-import { Logger } from "shared";
+import { Logger } from "shared/utils";
 
 interface IProgramOptions {
   /** Set package.json version  */

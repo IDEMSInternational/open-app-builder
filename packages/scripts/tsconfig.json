@@ -11,10 +11,19 @@
     "esModuleInterop": true,
     // Global type definitions.
     "typeRoots": ["./node_modules/@types"],
-    "pretty": true
+    "pretty": true,
+    // HACK - optimisation script needs to understand
+    // component path namespace
+    "paths": {
+      // Used by optimise script via manifest import
+      "@components/*": ["../../packages/components/*"],
+      // Used by scripts
+      "shared/*": ["../../packages/shared/src/*"],
+      "actions": ["../../packages/actions"],
+      "data-models": ["../../packages/data-models"],
+      "workflows": ["../../packages/workflows"]
+    }
   },
-  "include": ["src/**/*.ts"],
-  "ts-node": {
-    "swc": true
-  }
+  "include": ["src/**/*.ts", "test/**/*.ts", "build.ts", "types/*.ts"],
+  "exclude": ["build", "dist"]
 }

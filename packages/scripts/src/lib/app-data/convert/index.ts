@@ -16,7 +16,7 @@ import {
   parseAppDataCollectionString,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
-import { generateFolderFlatMap, IContentsEntry, IContentsEntryWithLocalPath } from "shared";
+import { generateFolderFlatMap, IContentsEntry, IContentsEntryWithLocalPath } from "shared/utils";
 import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import { MockJsonFileCache } from "./cacheStrategy/jsonFile.mock";
