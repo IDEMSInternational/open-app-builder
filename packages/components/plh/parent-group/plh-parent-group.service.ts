@@ -23,7 +23,7 @@ import { rapidproUtils } from "./utils/rapidpro.utils";
 })
 export class PlhParentGroupService extends SyncServiceBase {
   /** The auth_id of the logged in user */
-  private authId = computed(() => this.authService.provider.authUser()?.uid);
+  private authId = computed(() => this.authService.authUser()?.uid);
 
   constructor(
     private authService: AuthService,

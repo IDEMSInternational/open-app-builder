@@ -1,7 +1,7 @@
 import { Component, computed, forwardRef, inject } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { CommonModule } from "@angular/common";
+
 import { IonicModule } from "@ionic/angular";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
@@ -44,12 +44,7 @@ interface IVariantMap {
   selector: "oab-button",
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
-  imports: [
-    CommonModule,
-    IonicModule,
-    TemplatePipesModule, // todo: make pipes standalone
-    [forwardRef(() => RowListComponent)],
-  ],
+  imports: [IonicModule, TemplatePipesModule, [forwardRef(() => RowListComponent)]],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class ButtonComponent extends RowBaseComponent<ReturnType<typeof parameters>> {

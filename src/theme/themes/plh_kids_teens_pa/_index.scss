@@ -1,0 +1,119 @@
+@use "../utils";
+@use "sass:color";
+@use "./overrides" as overrides;
+@use "./typography";
+
+@mixin theme-plh_kids_teens_pa {
+  @include utils.theme(
+    $theme-name: "plh_kids_teens_pa",
+    $color-primary: hsl(202, 98%, 32%),
+    $color-primary-variant: hsl(78, 53%, 55%),
+    $color-secondary: hsl(9, 85%, 48%),
+    $page-background: white,
+    $variable-overrides: (
+      ion-font-family: "Quicksand",
+      font-weight-normal: 400,
+      font-weight-standard: 500,
+      font-weight-medium: 600,
+      font-weight-bold: 700,
+      font-letter-spacing: -0.2px,
+      font-letter-spacing-large: -0.5px,
+
+      font-size-text-tiny: 14px,
+      font-size-text-small: 16px,
+      font-size-text-mid-size: 18px,
+      font-size-text-medium: 20px,
+      font-size-text-large: 24px,
+      font-size-text-title: 28px,
+      font-size-text-extra-large: 32px,
+
+      paragraph-spacing: 12px,
+
+      line-height-text-tiny: 18px,
+      line-height-text-small: 24px,
+      line-height-text-medium: 28px,
+      line-height-text-large: 32px,
+      line-height-text-extra-large: 40px,
+
+      icon-size-small: 16px,
+      icon-size-medium: 24px,
+      icon-size-large: 32px,
+      icon-size-extra-large: 40px,
+      icon-size-largest: 48px,
+
+      buttons-min-height: 60px,
+      buttons-short-height: 48px,
+      buttons-medium-height: 60px,
+      buttons-tall-height: 80px,
+      buttons-font-size-small: 16px,
+      buttons-font-size: 20px,
+      buttons-size: 64px,
+      buttons-full-width: 100%,
+      buttons-full-height: 100%,
+
+      // BORDERS
+      ion-border-radius-small: 8px,
+      ion-border-radius-standard: 12px,
+      ion-border-radius-secondary: 20px,
+      ion-border-radius-rounded: 50px,
+
+      border-color-default: var(--ion-color-gray-200),
+      border-width-default: 1px,
+      border-standard: var(--border-width-default) solid var(--border-color-default),
+      border-thin-standard: 0.5px solid var(--border-color-default),
+      // COMPONENT VARIABLES
+      accordion-background-highlight: var(--ion-color-primary-300),
+      combo-box-font-size-standard: 20px,
+      button-background-option: var(--ion-color-primary-800),
+      button-background-primary: var(--ion-color-primary-500),
+      button-background-secondary: var(--ion-color-primary-variant),
+      button-border-radius: var(--ion-border-radius-rounded),
+      display-group-background-banner-primary: var(--ion-color-primary-200),
+      display-group-background-banner-secondary: var(--ion-color-primary-variant-300),
+      display-group-background-home-dark: var(--ion-color-primary-800),
+      display-group-background-home-light: var(--ion-color-primary-300),
+      display-group-background-home-mid: var(--ion-color-primary-600),
+      ion-item-background: white,
+      module-list-item-color-default: var(--ion-color-primary-300),
+      module-list-item-color-highlighted: var(--ion-color-secondary-300),
+      points-item-background-complete: var(--ion-color-primary-200),
+      points-item-background: var(--ion-background-color),
+      points-item-border: var(--ion-color-gray-900),
+      progress-path-line-background: var(--ion-color-primary-variant),
+      radio-group-background-secondary: var(--ion-color-secondary-variant-100),
+      radio-group-background-selected-secondary: var(--ion-color-secondary-variant-200),
+      radio-group-background-selected: var(--ion-color-primary-300),
+      radio-group-border-radius: var(--ion-border-radius-small),
+      radio-group-border-secondary: 2px solid transparent,
+      radio-group-border-selected-secondary: 2px solid var(--ion-color-secondary-variant-300),
+      radio-group-border-selected: 1px solid var(--ion-color-primary-400),
+      radio-group-border: 1px solid var(--ion-color-gray-100),
+      radio-group-box-shadow: none,
+      round-button-background-secondary-light: var(--ion-color-secondary-100),
+      task-progress-bar-color: var(--ion-color-primary-variant-600),
+      task-progress-wheel-color: var(--ion-color-primary-variant-700),
+      tile-button-background-primary-light: var(--ion-color-primary-300),
+      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-secondary-light: var(--ion-color-secondary-100),
+      tile-button-background-secondary: var(--ion-color-primary-variant-600),
+      tour-next-button-background: var(--ion-color-primary-variant),
+      // TEXT BUBBLE COLOURS
+      text-bubble-background-color-gray: var(--ion-color-gray-50),
+      text-bubble-border-color-gray: var(--ion-color-gray-600),
+      text-bubble-background-color-primary: var(--ion-color-primary-50),
+      text-bubble-border-color-primary: var(--ion-color-primary-700),
+      text-bubble-background-color-secondary: var(--ion-color-primary-variant-50),
+      text-bubble-border-color-secondary: var(--ion-color-primary-variant-600),
+      text-bubble-background-color-3: var(--ion-color-secondary-variant-50),
+      text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
+      text-bubble-background-color-4: var(--ion-color-secondary-50),
+      text-bubble-border-color-4: var(--ion-color-secondary-300),
+      // PLH module list item
+      plh-module-list-item-background-1: #a6e9ff,
+      plh-module-list-item-background-2: #ffa777,
+      plh-module-list-item-background-3: #ffd973,
+    )
+  ) {
+    @include overrides.overrides;
+  }
+}

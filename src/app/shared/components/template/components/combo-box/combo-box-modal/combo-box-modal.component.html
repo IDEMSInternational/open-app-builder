@@ -1,36 +1,41 @@
 <div class="container-modal">
-  <div class="header" *ngIf="textTitle">
-    {{ textTitle }}
-  </div>
+  @if (textTitle) {
+    <div class="header">
+      {{ textTitle }}
+    </div>
+  }
   <div class="form">
     <form [formGroup]="form" [class.reverse]="inputPosition">
       <div class="checkboxes">
-        <div
-          class="container-radio"
-          [class.checked-radio]="form.get('answer').value === radio[optionsKey]"
-          *ngFor="let radio of answerOptions()"
-        >
-          <label>
-            <input
-              type="radio"
-              (click)="check(radio)"
-              formControlName="answer"
-              [value]="radio[optionsKey]"
-            />
-            {{ radio[optionsValue] | translate }}
-          </label>
+        @for (radio of answerOptions(); track radio) {
+          <div
+            class="container-radio"
+            [class.checked-radio]="form.get('answer').value === radio[optionsKey]"
+          >
+            <label>
+              <input
+                type="radio"
+                (click)="check(radio)"
+                formControlName="answer"
+                [value]="radio[optionsKey]"
+              />
+              {{ radio[optionsValue] | translate }}
+            </label>
+          </div>
+        }
+      </div>
+      @if (inputAllowed) {
+        <div class="wrapper">
+          <ion-input
+            formControlName="customAnswer"
+            [class]="customAnswerClass"
+            (keyup.enter)="enterCustomAnswer()"
+            [placeholder]="placeholder"
+            [class.checked-radio]="form.get('customAnswer').value === selectedValue"
+          >
+          </ion-input>
         </div>
-      </div>
-      <div class="wrapper" *ngIf="inputAllowed">
-        <ion-input
-          formControlName="customAnswer"
-          [class]="customAnswerClass"
-          (keyup.enter)="enterCustomAnswer()"
-          [placeholder]="placeholder"
-          [class.checked-radio]="form.get('customAnswer').value === selectedValue"
-        >
-        </ion-input>
-      </div>
+      }
     </form>
   </div>
 </div>

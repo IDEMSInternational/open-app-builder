@@ -20,4 +20,22 @@ export class MockTemplateCalcService extends TemplateCalcService {
       },
     };
   }
+
+  protected async initialise() {
+    await this.setUserMetaData();
+    this.getCalcContext();
+  }
+
+  protected async setUserMetaData() {
+    this["device_info"] = {
+      model: "test",
+      platform: "web",
+      operatingSystem: "windows",
+      osVersion: "10",
+      manufacturer: "test",
+      isVirtual: true,
+      webViewVersion: "1.0",
+    } as any;
+    this["app_user_id"] = "test_user";
+  }
 }

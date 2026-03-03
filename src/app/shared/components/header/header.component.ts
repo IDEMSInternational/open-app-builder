@@ -1,8 +1,16 @@
 import { Location } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  Signal,
+  inject,
+} from "@angular/core";
 import { computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { NavigationStart, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription, fromEvent, map } from "rxjs";
@@ -36,16 +44,18 @@ export class headerComponent implements OnInit, OnDestroy {
   showBackButton = signal(false);
   headerConfig = computed(() => this.appConfigService.appConfig().APP_HEADER_DEFAULTS);
 
+  private location = inject(Location);
+  private router = inject(Router);
+  private appConfigService = inject(AppConfigService);
+
+  /** listen to hardware back button presses (on android device only) */
+  private hardwareBackButton$: PluginListenerHandle;
+
   /**
    * Listen to router events to handle route change effects
    * NOTE - use events instead of route as header sits outside ion-router (limited access)
    **/
   private routeChanges = toSignal(this.router.events);
-
-  /** listen to hardware back button presses (on android device only) */
-  private hardwareBackButton$: PluginListenerHandle;
-  /** track if navigation has been used to handle back button click behaviour */
-  private hasBackHistory = false;
 
   /** Modify margin to move off-screen when using collapsed mode */
   public marginTop = signal(0);
@@ -56,33 +66,20 @@ export class headerComponent implements OnInit, OnDestroy {
   /** Track whether on home route for back button and menu button side-effects */
   private isHomeRoute = true;
 
-  constructor(
-    private router: Router,
-    private location: Location,
-    private appConfigService: AppConfigService
-  ) {
-    effect(
-      () => {
-        // when header config changes set the height and collapse properties
-        const { collapse, variant } = this.headerConfig();
-        this.setHeaderHeightCSS(variant);
-        if (collapse !== undefined) {
-          this.setHeaderCollapse(collapse);
-        }
-      },
-      { allowSignalWrites: true }
-    );
-    effect(
-      () => {
-        // when route changes handle side-effects
-        const e = this.routeChanges();
-        this.handleRouteChange();
-        if (e instanceof NavigationStart) {
-          this.hasBackHistory = true;
-        }
-      },
-      { allowSignalWrites: true }
-    );
+  constructor() {
+    effect(() => {
+      // when header config changes set the height and collapse properties
+      const { collapse, variant } = this.headerConfig();
+      this.setHeaderHeightCSS(variant);
+      if (collapse !== undefined) {
+        this.setHeaderCollapse(collapse);
+      }
+    });
+    effect(() => {
+      // when route changes handle side-effects
+      const e = this.routeChanges();
+      this.handleRouteChange();
+    });
   }
 
   async ngOnInit() {
@@ -97,7 +94,12 @@ export class headerComponent implements OnInit, OnDestroy {
   }
 
   public handleBackButtonClick() {
-    if (this.hasBackHistory) {
+    // Uses Angular's `navigationId` from `history.state` to determine
+    // if there is prior in-app history. The initial page load is always
+    // `1`, so a higher value means location.back() is safe
+    const historyState = this.location.getState() as { navigationId?: number };
+
+    if (historyState?.navigationId && historyState.navigationId > 1) {
       this.location.back();
     } else {
       this.router.navigateByUrl("/");

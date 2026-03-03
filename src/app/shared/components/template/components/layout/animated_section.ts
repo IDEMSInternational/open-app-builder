@@ -5,12 +5,13 @@ import { TemplateLayoutComponent } from "./layout";
 @Component({
   selector: "plh-tmpl-animated-section",
   template: `
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      [row]="childRow"
-      [parent]="parent"
-      [@fadeSection]="_row?.hidden ? 'out' : 'in'"
-    ></plh-template-component>
+    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+      <plh-template-component
+        [row]="childRow"
+        [parent]="parent"
+        [@fadeSection]="_row?.hidden ? 'out' : 'in'"
+      ></plh-template-component>
+    }
   `,
   animations: [
     // HACK - rough copy of shared fadeInOut method

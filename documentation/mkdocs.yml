@@ -4,6 +4,8 @@ theme:
   palette:
     primary: black
     accent: a mber
+  features:
+    - content.code.copy
   font:
     text: "Open Sans"
 repo_url: https://github.com/IDEMSInternational/open-app-builder
@@ -55,6 +57,8 @@ nav:
   - System Architecture:
       - system/diagrams.md        
       - system/technologies.md
+  - Data: 
+      - data/user_disaggregation.md
   - Q & A:
       - questions/parameters_styles.md
       - questions/positioning_components.md

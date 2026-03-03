@@ -1,12 +1,34 @@
+.pdf-viewer {
+  margin-bottom: var(--regular-margin);
+}
+
 ngx-extended-pdf-viewer {
   #toolbarViewer {
     background-color: var(--ion-color-primary);
+    padding-inline-start: 4px;
+    padding-inline-end: 4px;
   }
   #mainContainer {
     min-width: 250px !important;
   }
   .toolbarButton {
-    color: var(--ion-color-primary-contrast) !important;
+    svg,
+    ion-icon {
+      color: var(--ion-color-primary-contrast) !important;
+    }
+
+    ion-icon {
+      height: 20px;
+      width: 20px;
+    }
+
+    // Remove default styling for hover and focus
+    &:hover {
+      background-color: transparent !important;
+    }
+    &:focus {
+      border: none !important;
+    }
   }
 }
 
