@@ -5,7 +5,7 @@
 >
   <div class="course-button" (click)="toggleOpen()">
     @if (params().imageAsset) {
-      <div class="course-image" [attr.data-image-alignment]="params().imageAlignment">
+      <div class="course-image" [attr.data-image-alignment]="params().imageAlignment || 'bottom'">
         <img [src]="params().imageAsset | plhAsset" />
       </div>
     }
