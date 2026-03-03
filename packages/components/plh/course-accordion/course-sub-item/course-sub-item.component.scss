@@ -3,23 +3,26 @@
 }
 
 .course-sub-item {
+  cursor: pointer;
+
   width: 100%;
+  min-height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  padding: var(--small-padding);
-  border: var(--border-standard);
-  border-width: 2px;
-  border-color: var(--ion-color-primary-600);
-  border-radius: var(--ion-border-radius-small);
-  background-color: var(--ion-color-primary-50);
-  color: var(--ion-color-primary);
-  cursor: pointer;
-  margin-top: var(--tiny-padding);
+  padding: var(--regular-padding, 16px);
+  border: 1px solid var(--ion-color-gray-500);
+  border-radius: var(--ion-border-radius-standard);
+  background-color: white;
+  color: var(--ion-color-gray-800);
+  margin: var(--tiny-padding, 6px) 0;
 
   .course-sub-item-title {
-    font-size: var(--font-size-text);
+    font-size: var(--font-size-text-medium, 18px);
+    font-weight: 500;
+    letter-spacing: var(--font-letter-spacing, 0);
+    margin-inline-end: 6px;
   }
 
   .state-container {
@@ -27,37 +30,62 @@
     align-items: center;
     gap: var(--tiny-padding);
     .state-badge {
-      font-size: 10px;
+      font-size: var(--font-size-text-tiny, 10px);
       font-weight: var(--font-weight-bold);
-      padding: 2px 4px;
+      padding: 2px 8px;
       border-style: solid;
       border-width: 1px;
-      border-radius: var(--ion-border-radius-rounded);
+      border-radius: var(--ion-border-radius-rounded, 100%);
       p {
         margin: 0;
       }
     }
     ion-icon {
-      font-size: var(--icon-size-small);
+      font-size: var(--icon-size-tiny, 24px);
+      --ionicon-stroke-width: 42px;
     }
   }
 
   &[data-state="highlighted"] {
-    background-color: var(--ion-color-green);
+    background-color: var(--ion-color-primary-700);
+    border-color: var(--ion-color-primary-800);
     color: white;
-    border-color: var(--ion-color-green);
     font-weight: var(--font-weight-bold);
+    min-height: 66px;
   }
 
   &[data-state="completed"] {
-    background-color: var(--ion-color-primary-100);
+    .state-container {
+      .state-badge {
+        border-color: var(--ion-color-primary-600);
+        background-color: var(--ion-color-primary-50);
+        p {
+          color: var(--ion-color-primary-700);
+        }
+      }
+      ion-icon {
+        color: var(--ion-color-primary-700);
+      }
+    }
   }
 
   &[data-state="locked"] {
-    opacity: 0.4;
     cursor: not-allowed;
-    background-color: var(--ion-color-gray-100);
-    color: var(--ion-color-gray-800);
-    border-color: var(--ion-color-gray-800);
+    background-color: var(--ion-color-gray-50);
+    .course-sub-item-title {
+      color: var(--ion-color-gray-400);
+    }
+    .state-container {
+      .state-badge {
+        border-color: var(--ion-color-gray-500);
+        background-color: white;
+        p {
+          color: var(--ion-color-gray-700);
+        }
+      }
+      ion-icon {
+        color: var(--ion-color-gray-700);
+      }
+    }
   }
 }
