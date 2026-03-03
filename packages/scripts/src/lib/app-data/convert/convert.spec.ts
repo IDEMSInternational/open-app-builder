@@ -10,10 +10,9 @@ import {
   ensureDirSync,
   pathExistsSync,
 } from "fs-extra";
-import { clearLogs } from "shared";
+import { clearLogs } from "shared/utils";
 
-import { TEST_DATA_PATHS } from "../../../../test/helpers/utils";
-import { ActiveDeployment } from "../../../commands/deployment/get";
+import { TEST_DATA_PATHS, useMockLogger } from "../../../../test/helpers/utils";
 import { IDeploymentConfigJson } from "data-models";
 
 const { SHEETS_CACHE_FOLDER, SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, TEST_DATA_DIR } =
@@ -36,14 +35,12 @@ const mockDeployment: Partial<IDeploymentConfigJson> = {
   _workspace_path: TEST_DATA_DIR,
 };
 
-// HACK - avoid loading active deployment
-jest.spyOn(ActiveDeployment, "get").mockReturnValue(mockDeployment as IDeploymentConfigJson);
-
 /** yarn workspace scripts test -t convert.spec.ts */
 describe("App Data Converter", () => {
   let converter: AppDataConverter;
 
   beforeEach(() => {
+    const loggerSpy = useMockLogger(false);
     ensureDirSync(paths.outputFolder);
     emptyDirSync(paths.outputFolder);
     ensureDirSync(paths.cacheFolder);
@@ -138,6 +135,7 @@ const errorPaths = {
 describe("App Data Converter - Error Checking", () => {
   let errorConverter: AppDataConverter;
   beforeAll(() => {
+    const loggerSpy = useMockLogger(false);
     if (existsSync(paths.outputFolder)) {
       emptyDirSync(paths.outputFolder);
     }

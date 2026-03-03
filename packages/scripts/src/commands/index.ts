@@ -7,7 +7,7 @@ import e2eDataCmd from "./e2e-data";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
-import { callProgramWithHelp, isTsNode, logWarning } from "../utils";
+import { callProgramWithHelp, isRunningTs } from "../utils";
 const { version } = require("../../package.json");
 
 const program = new Command();
@@ -51,7 +51,7 @@ import {
 } from "./deployment/common";
 export { extendDeploymentConfig, generateDeploymentConfig, loadEncryptedConfig };
 
-// Run the program directly when called via ts-node (e.g. start script)
-if (isTsNode) {
+// Run the program directly when called via ts-node/tsx (e.g. start script)
+if (isRunningTs) {
   callProgramWithHelp(program);
 }

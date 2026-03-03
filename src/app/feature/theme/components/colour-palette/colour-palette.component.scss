@@ -1,4 +1,5 @@
 @use "/src/theme/mixins";
+@use "sass:color";
 
 $colors: primary, secondary, primary-variant, secondary-variant, green;
 $colorWeights: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;

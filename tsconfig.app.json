@@ -5,15 +5,11 @@
     "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
+  // Include modules that have js files. Also need to include ts
+  // as default behaviour stops on the js files
   "include": [
-    "src/**/*.d.ts",
     "src/app/shared/components/template/components/odk-form/libs/**/*.js",
-    "src/app/shared/components/template/components/odk-form/libs/**/*.ts",
-    // Ensure any ts-based packages used by frontend app are listed here
-    // to allow import/live-reload within angular compiler
-    "packages/data-models/index.ts",
-    "packages/data-models/db.model.ts",
-    "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts"
+    "src/app/shared/components/template/components/odk-form/libs/**/*.ts"
   ],
   "exclude": ["**/*.spec.ts"]
 }

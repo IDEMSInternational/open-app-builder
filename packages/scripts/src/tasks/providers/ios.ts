@@ -1,6 +1,7 @@
 import { envReplace } from "@idemsInternational/env-replace";
-import { Logger, generateVersionCode } from "../../utils";
-import { PATHS } from "shared";
+import { generateVersionCode } from "../../utils";
+import { Logger } from "shared/utils";
+import { PATHS } from "shared/utils";
 import type { IDeploymentConfig } from "data-models";
 import fs from "fs";
 import plist from "plist";

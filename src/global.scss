@@ -12,35 +12,19 @@
 @use "./theme/breakpoints";
 @use "./theme/components";
 
-/* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+/* Vendor CSS offloaded to angular.json styles array */
 
 /* Custom Styles */
-@import "./theme/fonts";
-@import "./theme/layout";
-@import "./theme/typography";
-@import "./theme/tooltip";
-@import "./theme/variables.scss";
-@import "./theme/deployment/deployment.scss";
+@use "./theme/fonts";
+@use "./theme/layout";
+@use "./theme/typography";
+@use "./theme/tooltip";
 
-/* Styles for 3rd prty libraries */
-@import "~nouislider/dist/nouislider.min.css";
+/* Variables managed in angular.json styles array */
+@use "./theme/deployment/deployment";
 
 /* Platform-specific overrides */
-@import "./theme/overrides.ios.scss";
+@use "./theme/overrides.ios";
 
 /* Overrides for ionic components */
 ion-input {

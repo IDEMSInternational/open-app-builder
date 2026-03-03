@@ -1,19 +1,16 @@
 import { Command } from "commander";
 import open from "open";
 
-// re-export shared utils for ease of import
-export * from "shared/src/utils";
-
-import { logProgramHelp } from "shared";
+import { logProgramHelp } from "shared/utils";
 
 /**
  * Invoke the commander CLI with current process args,
  * displaying help if no args defined.
  * This is typically only used in the context of direct execution,
- * e.g. ts-node environments
+ * e.g. ts-node/tsx environments
  * @example
  * ```ts
- * if(isTsNode){
+ * if(isRunningTs){
  *  callProgramWithHelp(program)
  * }
  * ```
@@ -26,7 +23,8 @@ export function callProgramWithHelp(program: Command) {
 }
 
 /**
- * Detect if running in ts-node environment
+ * Detect if running ts file directly via ts-node or tsx
+ *
  * Used when working in development
  * https://github.com/TypeStrong/ts-node/issues/846#issuecomment-631828160
  * https://github.com/wclr/ts-node-dev#usage
@@ -36,8 +34,10 @@ export function callProgramWithHelp(program: Command) {
  * https://github.com/evanw/esbuild/issues/2121
  * https://github.com/folke/esbuild-runner/issues/53
  */
-export const isTsNode =
-  process[Symbol.for("ts-node.register.instance")] || process.env.TS_NODE_DEV ? true : false;
+export const isRunningTs =
+  !!process[Symbol.for("ts-node.register.instance")] ||
+  !!process.env.TS_NODE_DEV ||
+  /\.tsx?$/.test(process.argv[1] ?? "");
 
 /** Open an external URL using system default program */
 export async function openUrl(url: string) {

@@ -1,6 +1,6 @@
 import { FlowTypes } from "data-models";
 import { setNestedProperty } from "../utils";
-import { parseStringValue } from "shared/src/utils";
+import { parseStringValue } from "shared/utils";
 
 /**
  * Convert app data map string to object

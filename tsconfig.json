@@ -14,11 +14,24 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "DOM"],
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@components/*": ["packages/components/*"],
+      "data-models": ["packages/data-models"],
+      "data-models/*": ["packages/data-models/*"],
+      "shared": ["packages/shared"],
+      "shared/*": ["packages/shared/src/*"]
+    }
   },
-  "paths": {
-    "tslib": ["node_modules/tslib/tslib.d.ts"]
-  },
+  "include": [
+    "src/**/*.ts",
+    ".idems_app/deployments/**/*.ts",
+    "packages/components/**/*.ts",
+    "packages/data-models/**/*.ts",
+    "packages/shared/**/*.ts"
+  ],
+
   "angularCompilerOptions": {
     "strictTemplates": true,
     "strictInjectionParameters": true
