@@ -50,29 +50,23 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     height: auto;
     min-height: 90px;
     padding: var(--regular-padding);
     background-color: var(--ion-color-primary-100);
-    border: var(--border-standard);
-    border-width: 1px;
-    border-color: var(--ion-color-primary-500);
+    border: 1px solid var(--ion-color-primary-500);
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
 
     .course-image {
       display: flex;
       align-items: flex-end;
-      flex-shrink: 1;
-      height: 100%;
+      flex-shrink: 0;
+
       min-width: 40px;
       width: 56px;
       max-width: 66px;
-      @media (max-width: 340px) {
-        width: 48px;
-        height: 48px;
-        min-width: 32px;
-      }
+
       img {
         width: 100%;
       }
@@ -85,9 +79,9 @@
       padding: 0 8px;
 
       .course-title {
-        font-size: var(--font-size-text-large);
+        font-size: var(--font-size-text-medium, 20px);
         font-weight: var(--font-weight-bold);
-        line-height: var(--line-height-text-small);
+        line-height: var(--line-height-text-small, 24px);
         text-align: start;
         margin: 0 4px;
       }
@@ -96,18 +90,18 @@
         flex-shrink: 1;
         width: 100%;
         display: flex;
-        gap: var(--tiny-padding);
+        gap: var(--tiny-padding, 6px);
         align-items: center;
         justify-content: space-between;
         --task-progress-bar-color: var(--ion-color-primary-700);
-        --task-progress-bar-background-color: var(--ion-color-gray-50);
+        --task-progress-bar-background-color: white;
         --task-progress-bar-height: 5px;
         plh-task-progress-bar {
           width: 100%;
         }
         .progress-bar-text {
           flex-shrink: 0;
-          font-size: var(--font-size-text-small);
+          font-size: var(--font-size-text-small, 14px);
           font-weight: var(--font-weight-medium);
           color: var(--ion-color-primary-700);
           margin: 0;
@@ -119,7 +113,7 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      font-size: var(--icon-size-large);
+      font-size: var(--icon-size-large, 32px);
       font-weight: var(--font-weight-bold);
       margin: 0 6px;
       ion-icon {
@@ -137,7 +131,7 @@
     padding: var(--small-padding);
 
     .sub-items-header {
-      font-size: var(--font-size-text-medium);
+      font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
       color: var(--ion-color-gray-800);
       margin: 0 0 8px 0;
