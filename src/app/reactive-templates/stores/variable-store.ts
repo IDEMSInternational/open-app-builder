@@ -1,7 +1,7 @@
 import { Injectable, Injector, Signal } from "@angular/core";
-import { toSignal } from "@angular/core/rxjs-interop";
-import { BehaviorSubject, Observable, combineLatest } from "rxjs";
-import { map } from "rxjs/operators";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { BehaviorSubject, Observable, Subject, combineLatest } from "rxjs";
+import { distinctUntilChanged, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { IStore } from "./store";
 
@@ -13,14 +13,30 @@ import { IStore } from "./store";
 })
 export class VariableStore implements IStore {
   private readonly state: { [key: string]: BehaviorSubject<any> } = {};
+  private readonly stateChanged$ = new Subject<void>();
+  private readonly allSignal: Signal<{ [name: string]: any }>;
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) {
+    this.allSignal = toSignal(
+      this.stateChanged$.pipe(
+        startWith(undefined),
+        map(() => this.getAll())
+      ),
+      {
+        injector: this.injector,
+      }
+    );
+  }
 
   public set(name: string, value: any): void {
     if (!this.state[name]) {
       this.state[name] = new BehaviorSubject<any>(value);
+      this.stateChanged$.next();
     } else {
-      if (!isEqual(value, this.state[name].value)) this.state[name].next(value);
+      if (!isEqual(value, this.state[name].value)) {
+        this.state[name].next(value);
+        this.stateChanged$.next();
+      }
     }
   }
 
@@ -66,6 +82,20 @@ export class VariableStore implements IStore {
     );
   }
 
+  public watchMultipleSignal(names: Signal<string[]>): Signal<{ [key: string]: any }> {
+    return toSignal(
+      toObservable(names, { injector: this.injector }).pipe(
+        distinctUntilChanged((previous, current) => isEqual(previous, current)),
+        switchMap((dependencyNames) => this.watchMultiple(dependencyNames))
+      ),
+      {
+        initialValue: {},
+        equal: isEqual,
+        injector: this.injector,
+      }
+    );
+  }
+
   public has(name: string): boolean {
     return this.state.hasOwnProperty(name);
   }
@@ -79,6 +109,13 @@ export class VariableStore implements IStore {
       result[name] = this.state[name].value;
     });
     return result;
+  }
+
+  /**
+   * Provides a live signal of the entire variable store. Emits a new object with all variable values whenever any variable changes.
+   */
+  public getAllSignal(): Signal<{ [name: string]: any }> {
+    return this.allSignal;
   }
 
   /**
@@ -99,5 +136,6 @@ export class VariableStore implements IStore {
       this.state[name].complete();
       delete this.state[name];
     });
+    this.stateChanged$.next();
   }
 }
