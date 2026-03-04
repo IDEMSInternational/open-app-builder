@@ -33,9 +33,10 @@
       labelPlacement="stacked"
       [disabled]="disabled()"
     >
-      @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
-        <ion-select-option [value]="answerOption[params().optionsKey]">
-          {{ answerOption[params().optionsValue] }}
+      <!-- HACK: Use $any since answerOptions() is typed as IAnswerListItem[] but could contain other types -->
+      @for (answerOption of answerOptions(); track $any(answerOption)[params().optionsKey]) {
+        <ion-select-option [value]="$any(answerOption)[params().optionsKey]">
+          {{ $any(answerOption)[params().optionsValue] }}
         </ion-select-option>
       }
     </ion-select>
