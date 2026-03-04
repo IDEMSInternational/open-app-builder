@@ -7,7 +7,7 @@
     <ion-accordion
       [value]="childRow.name"
       toggle-icon="arrow-down-circle"
-      [style.z-index]="_row.rows.length - i"
+      [style.z-index]="(_row.rows?.length ?? 0) - i"
     >
       <ion-item slot="header" class="accordion-header clear" lines="none">
         <ion-label class="accordion-section-title ion-text-wrap">{{
@@ -44,9 +44,9 @@ override default icon to replace with empty class and toggle depending on open s
   <div class="ion-accordion-toggle-icon"></div>
   <ion-icon
     [name]="
-      childRow && accordionGroup.value.indexOf(childRow.name) === -1
+      childRow && accordionGroup.value?.indexOf(childRow.name) === -1
         ? open_icon_src
-        : _row.parameter_list.close_icon_src
+        : _row.parameter_list?.close_icon_src
     "
   ></ion-icon>
 </ng-template>
