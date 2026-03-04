@@ -4,9 +4,9 @@
     (click)="openModal()"
     [ngClass]="{
       disabled: disabled(),
-      'placeholder-style': (!_row.value && params().placeholder) || params().prioritisePlaceholder,
-      'with-value': _row.value,
-      'no-value': !_row.value
+      'placeholder-style': (!value() && params().placeholder) || params().prioritisePlaceholder,
+      'with-value': !!value(),
+      'no-value': !value(),
     }"
     [disabled]="disabled()"
   >
@@ -25,8 +25,9 @@
 } @else if (params().variant === "dropdown" && !showSearch()) {
   <div class="combo-box-container dropdown">
     <ion-select
-      [class.hasValue]="!!_row.value"
-      [placeholder]="displayText() | translate"
+      [class.hasValue]="!!value()"
+      [placeholder]="params().placeholder | translate"
+      [value]="value()"
       (ionChange)="handleDropdownChange($event.detail.value)"
       interface="popover"
       labelPlacement="stacked"
