@@ -9,12 +9,13 @@ const childWorkflows: IDeploymentWorkflows = {
         name: "configure",
         function: async ({ config, tasks }) => {
           const { ios, git, auth } = config;
-          const { app_id, app_name, zoom_enabled } = ios;
+          const { app_id, app_name, app_display_name, zoom_enabled } = ios;
           const { content_tag_latest } = git;
           const { provider } = auth;
           return tasks.ios.configure({
             appId: app_id,
             appName: app_name,
+            appDisplayName: app_display_name,
             authProvider: provider,
             versionName: content_tag_latest,
             zoomEnabled: zoom_enabled || false,
