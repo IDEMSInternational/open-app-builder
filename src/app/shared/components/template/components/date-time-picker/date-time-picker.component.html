@@ -13,7 +13,7 @@
       [value]="value()"
       [showDefaultButtons]="true"
       [presentation]="params().type"
-      (ionChange)="handleChange(datetime.value)"
+      (ionChange)="handleChange(datetime.value || '')"
     >
       <ion-buttons slot="buttons">
         <ion-button color="danger" (click)="datetime.cancel(true)">
