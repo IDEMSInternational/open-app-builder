@@ -1,13 +1,13 @@
-import { Component, computed } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
-import { generateUUID, parseBoolean } from "src/app/shared/utils";
+import { Component } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { generateUUID } from "src/app/shared/utils";
 
-interface IDateTimePickerParams {
-  /** TEMPLATE PARAMETER: "disabled". If true, date time picker is disabled and greyed out */
-  disabled?: boolean;
-  /** TEMPLATE PARAMETER: "type". Determines the type of picker date & time ('datetime'), date only ('date') or time only ('time') picker*/
-  type?: string;
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** If true, date time picker is disabled and greyed out */
+  disabled: coerce.boolean(),
+  /** Type of picker: date & time ('date-time'), date only ('date') or time only ('time'). Default 'date-time'. */
+  type: coerce.allowedValues(["date", "date-time", "time"], "date-time"),
+}));
 
 @Component({
   selector: "plh-date-time-picker",
@@ -15,9 +15,7 @@ interface IDateTimePickerParams {
   styleUrls: ["./date-time-picker.component.scss"],
   standalone: false,
 })
-export class TmplDateTimePickerComponent extends TemplateBaseComponent {
-  public params = computed(() => this.getParams());
-
+export class TmplDateTimePickerComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   // Generate unique ID to allow multiple date-time components to correctly bind datetime-button with datetime
   public uuid = generateUUID();
 
@@ -27,14 +25,5 @@ export class TmplDateTimePickerComponent extends TemplateBaseComponent {
 
   public handleChange(value: string | string[]) {
     this.setValue(value);
-  }
-
-  private getParams(): IDateTimePickerParams {
-    let parameterList = this.parameterList() as IDateTimePickerParams;
-
-    return {
-      disabled: parseBoolean(parameterList.disabled),
-      type: parameterList.type || "date-time",
-    };
   }
 }
