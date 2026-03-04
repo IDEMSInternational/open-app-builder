@@ -74,6 +74,14 @@ export class TmplComboBoxComponent
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
+  private selectedOption = computed(() => {
+    const val = this.value();
+    const options = this.answerOptions();
+    if (!val || !options.length) return undefined;
+    const optionsKey = this.params().optionsKey;
+    return options.find((x) => String(x[optionsKey]) === String(val));
+  });
+
   /** Display label: from options when value() matches, otherwise custom/placeholder. */
   public displayText = computed(() => {
     if (this.disabled() && this.params().disabledText) return this.params().disabledText;
@@ -82,9 +90,7 @@ export class TmplComboBoxComponent
     if (this.customAnswerSelected())
       return this.customAnswerText ?? this.answerText() ?? String(val);
     if (this.params().prioritisePlaceholder) return this.params().placeholder;
-    const opt = this.answerOptions().find(
-      (x) => String(x[this.params().optionsKey]) === String(val)
-    );
+    const opt = this.selectedOption();
     if (opt) return opt[this.params().optionsValue] ?? this.params().placeholder;
     return this.answerText() || this.params().placeholder;
   });
@@ -98,16 +104,14 @@ export class TmplComboBoxComponent
     // Use value() so the effect re-runs when the row is updated (e.g. after set_self / processRowUpdates).
     effect(() => {
       const val = this.value();
-      const options = this.answerOptions();
-      const optionsKey = this.params().optionsKey;
       const optionsValue = this.params().optionsValue;
       if (!val) {
         this.answerText.set("");
         this.customAnswerSelected.set(false);
         return;
       }
-      if (options.length > 0) {
-        const selectedAnswer = options.find((x) => String(x[optionsKey]) === String(val));
+      if (this.answerOptions().length > 0) {
+        const selectedAnswer = this.selectedOption();
         if (!selectedAnswer) {
           this.customAnswerSelected.set(true);
           this.customAnswerText = String(val);
