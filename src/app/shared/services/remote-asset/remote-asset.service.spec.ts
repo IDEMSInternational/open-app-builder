@@ -186,4 +186,13 @@ describe("RemoteAssetsService", () => {
       },
     });
   });
+
+  it("counts download files including overrides and excludes base for overridesOnly", () => {
+    const total = service["countDownloadFiles"]([
+      MOCK_ASSET_ENTRY,
+      MOCK_ASSET_ENTRY_WITH_OVERRIDES,
+      MOCK_ASSET_ENTRY_OVERRIDES_ONLY,
+    ]);
+    expect(total).toBe(4);
+  });
 });
