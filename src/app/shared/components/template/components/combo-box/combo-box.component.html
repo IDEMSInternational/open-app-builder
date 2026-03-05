@@ -4,9 +4,9 @@
     (click)="openModal()"
     [ngClass]="{
       disabled: disabled(),
-      'placeholder-style': (!_row.value && params().placeholder) || params().prioritisePlaceholder,
-      'with-value': _row.value,
-      'no-value': !_row.value
+      'placeholder-style': (!value() && params().placeholder) || params().prioritisePlaceholder,
+      'with-value': !!value(),
+      'no-value': !value(),
     }"
     [disabled]="disabled()"
   >
@@ -25,16 +25,17 @@
 } @else if (params().variant === "dropdown" && !showSearch()) {
   <div class="combo-box-container dropdown">
     <ion-select
-      [class.hasValue]="!!_row.value"
-      [placeholder]="displayText() | translate"
+      [class.hasValue]="!!value()"
+      [placeholder]="params().placeholder | translate"
       (ionChange)="handleDropdownChange($event.detail.value)"
       interface="popover"
       labelPlacement="stacked"
       [disabled]="disabled()"
     >
-      @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
-        <ion-select-option [value]="answerOption[params().optionsKey]">
-          {{ answerOption[params().optionsValue] }}
+      <!-- HACK: Use $any since answerOptions() is typed as IAnswerListItem[] but could contain other types -->
+      @for (answerOption of answerOptions(); track $any(answerOption)[params().optionsKey]) {
+        <ion-select-option [value]="$any(answerOption)[params().optionsKey]">
+          {{ $any(answerOption)[params().optionsValue] }}
         </ion-select-option>
       }
     </ion-select>
