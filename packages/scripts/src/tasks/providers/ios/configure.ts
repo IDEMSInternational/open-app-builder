@@ -1,5 +1,5 @@
 import { envReplace } from "@idemsInternational/env-replace";
-import { Logger, generateVersionCode } from "../../utils";
+import { Logger, generateVersionCode } from "../../../utils";
 import { PATHS } from "shared";
 import type { IDeploymentConfig } from "data-models";
 import fs from "fs";
@@ -14,7 +14,7 @@ interface IiOSBuildOptions {
 }
 
 /** Populate iOS template files with variables from deployment */
-const configure = async ({
+export const configure = async ({
   appId,
   appName,
   versionName,
@@ -112,7 +112,3 @@ function getCustomUrlSchemes(authProvider: IiOSBuildOptions["authProvider"]) {
 
   return { GOOGLE_REVERSED_CLIENT_ID };
 }
-
-export default {
-  configure,
-};
