@@ -910,7 +910,7 @@
   // bottom_nav
   plh-bottom-navigation-bar {
     .plh-bottom-nav-wrapper {
-      border-top: 1px solid #e7e8e9;
+      border-top: 1px solid var(--ion-color-primary-200);
       .label {
         color: #6686b1;
       }
