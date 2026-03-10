@@ -1,10 +1,14 @@
 import { TestBed } from "@angular/core/testing";
 import { LoopItemEvaluator } from "./loop-item.evaluator";
-import { VariableStore } from "../../stores/variable-store";
 import { RowRegistry } from "../row.registry";
 import { Parameter } from "../../reactive-components/parameters";
 import { signal } from "@angular/core";
+import { VariableStore } from "../../stores/variableStore";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/reactive-templates/services/evaluators/loop-item.evaluator.spec.ts
+ */
 describe("LoopItemEvaluator", () => {
   let subject: LoopItemEvaluator;
   let mockVariableStore: jasmine.SpyObj<VariableStore>;

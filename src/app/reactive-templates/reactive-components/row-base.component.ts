@@ -12,7 +12,6 @@ import {
   WritableSignal,
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
-import { VariableStore } from "../stores/variable-store";
 import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
@@ -20,6 +19,8 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
+import { IStore, StoreType } from "../stores/store";
+import { VariableStore } from "../stores/variableStore";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -57,13 +58,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public params = inject(ROW_PARAMETERS) as TParams;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
-  protected variableStore = inject(VariableStore);
+  protected variableStore: IStore = inject(VariableStore);
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
   protected rowRegistry = inject(RowRegistry);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
+  protected storeType: StoreType = "local";
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -84,7 +86,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public init(): void {
     const row = this.row();
 
-    this.value = this.variableStore.asSignal(this.name());
+    this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
 
     // If there is a value in session storage that matches this row's name, use that to override the expression
     let url = this.router.url.split("?")[0];
@@ -137,7 +139,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
     const computedValue = await this.computeStoredValue(value);
 
-    this.variableStore.set(this.name(), computedValue);
+    this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
   }
 
   private setParams() {
@@ -160,7 +162,12 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     const dependencies = this.evaluationService
       .getDependencies(this.expression(), this.namespace())
-      .filter((d) => d !== this.name()); // avoid self-dependency
+      .filter((d) => d.name !== this.name())
+      .map((d) => ({ name: d.name, type: d.type }));
+
+    if (!dependencies || !dependencies.length) {
+      return;
+    }
 
     let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
       await this.storeValue();
@@ -178,11 +185,15 @@ export abstract class RowBaseComponent<TParams extends Parameters>
       return;
     }
 
-    let sub = this.variableStore
-      .watchMultiple(this.evaluationService.getDependencies(condition, this.namespace()))
-      .subscribe(() => {
-        this.condition.set(this.evaluationService.evaluateExpression(condition, this.namespace()));
-      });
+    const dependencies = this.evaluationService.getDependencies(condition, this.namespace());
+
+    if (!dependencies || !dependencies.length) {
+      return;
+    }
+
+    const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
+      this.condition.set(this.evaluationService.evaluateExpression(condition, this.namespace()));
+    });
     this.conditionDependencySubscriptions.push(sub);
   }
 
@@ -196,7 +207,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
       return this.evaluationService.getDependencies(rowParams[name], this.namespace());
     });
 
-    let sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
+    if (!dependencies || !dependencies.length) {
+      return;
+    }
+
+    const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
       this.setParams();
       this.storeValue();
     });

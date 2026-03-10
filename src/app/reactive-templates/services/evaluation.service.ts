@@ -6,6 +6,7 @@ import { extractDynamicEvaluators } from "packages/data-models/functions";
 import { ListEvaluator } from "./evaluators/list.evaluator";
 import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
 import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
+import { VariableReference } from "../stores/store";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -23,7 +24,6 @@ export class EvaluationService {
     let evaluatedExpression = expression;
 
     // todo: replace appDataEvaluator with more evaluators e.g. localEvaluator, javascriptEvaluator, jsonEvaluator etc.
-    // todo: instead of setting execution context here, pass it into all evaluator.evaluate as a parameter, or is context simply the variableStore?
     const context = this.createExecutionContext(expression, namespace);
     this.appDataEvaluator.setExecutionContext(context);
 
@@ -36,7 +36,10 @@ export class EvaluationService {
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
-  public getDependencies(expression: string | number | boolean, namespace: string): string[] {
+  public getDependencies(
+    expression: string | number | boolean,
+    namespace: string
+  ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
     // todo: Use extractDynamicFields for complex objects like arrays & json.
@@ -45,14 +48,21 @@ export class EvaluationService {
     if (!dependencies || !dependencies.length) return [];
 
     return dependencies
-      .filter((d) => d.type === "local") // just deal with @local dependencies for now
-      .map((dependency) =>
-        dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
+      .filter((dependency) => dependency.type === "local" || dependency.type === "global")
+      .map((dependency) => ({
+        ...dependency,
+        matchedExpression: dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
           .replace(`@${dependency.type}.`, "")
           .replace("parameter_list.", "")
-          .replace(/[#!&|,]/g, "")
-      )
-      .map((dependency) => this.namespaceService.getFullName(namespace, dependency));
+          .replace(/[#!&|,]/g, ""),
+      }))
+      .map(
+        (dependency) =>
+          ({
+            type: dependency.type,
+            name: this.namespaceService.getFullName(namespace, dependency.matchedExpression),
+          }) as VariableReference
+      );
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation

@@ -3,7 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
 import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore } from "./store";
+import { IStore, VariableReference } from "./store";
 
 export interface VariablePointer {
   /** Stable identifier used as the key in aggregated watch results. */
@@ -24,7 +24,7 @@ export interface VariablePointer {
 @Injectable({
   providedIn: "root",
 })
-export class VariableStore implements IStore {
+export class LocalVariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
   private readonly stateChanged$ = new Subject<void>();
   private readonly stateStructureChanged$ = new Subject<string | undefined>();
@@ -43,12 +43,12 @@ export class VariableStore implements IStore {
    * - Emits structural-change events when a new key is added.
    * - Emits value-change events only when the value actually changed (deep-equality aware).
    */
-  public set(name: string, value: any): void {
-    const currentState = this.state.get(name);
+  public set(ref: VariableReference, value: any): void {
+    const currentState = this.state.get(ref.name);
 
     if (!currentState) {
-      this.state.set(name, new BehaviorSubject<any>(value));
-      this.stateStructureChanged$.next(name);
+      this.state.set(ref.name, new BehaviorSubject<any>(value));
+      this.stateStructureChanged$.next(ref.name);
       this.stateChanged$.next();
     } else {
       if (!isEqual(value, currentState.value)) {
@@ -62,21 +62,21 @@ export class VariableStore implements IStore {
    * Gets the current value for a variable name using scope fallback resolution.
    * Returns 'undefined' when no candidate key currently exists.
    */
-  public get(name: string): any {
-    const resolvedName = this.resolveWithScopeFallback(name);
+  public get(ref: VariableReference): any {
+    const resolvedName = this.resolveWithScopeFallback(ref);
 
     if (!resolvedName) {
       return undefined;
     }
 
-    return this.getExact(resolvedName);
+    return this.getExact({ ...ref, name: resolvedName });
   }
 
   /**
    * Returns an Angular 'Signal' view of 'watch(name)' with deep-equality deduplication.
    */
-  public asSignal(name: string): Signal<any> {
-    return toSignal(this.watch(name), { equal: isEqual, injector: this.injector });
+  public asSignal(ref: VariableReference): Signal<any> {
+    return toSignal(this.watch(ref), { equal: isEqual, injector: this.injector });
   }
 
   /**
@@ -85,8 +85,8 @@ export class VariableStore implements IStore {
    * The subscription automatically rebinds when structure changes make a better
    * candidate available (for example, a more specific scoped key appears later).
    */
-  public watch(name: string): Observable<any> {
-    const pointer = this.createScopeFallbackPointer(name);
+  public watch(ref: VariableReference): Observable<any> {
+    const pointer = this.createScopeFallbackPointer(ref);
 
     return this.watchPointer(pointer).pipe(
       map((result) => result.value),
@@ -98,18 +98,18 @@ export class VariableStore implements IStore {
    * Watches multiple dependency names (each with scope fallback) and emits a map
    * '{ dependencyName: value }' whenever any resolved dependency changes.
    */
-  public watchMultiple(names: string[]): Observable<{ [key: string]: any }> {
-    if (names.length === 0) {
+  public watchMultiple(refs: VariableReference[]): Observable<{ [key: string]: any }> {
+    if (refs.length === 0) {
       return new BehaviorSubject<{ [key: string]: any }>({}).asObservable();
     }
 
-    const observables = names.map((name) => this.watch(name));
+    const observables = refs.map((ref) => this.watch(ref));
 
     return combineLatest(observables).pipe(
       map((values) => {
         const result: { [key: string]: any } = {};
-        names.forEach((name, index) => {
-          result[name] = values[index];
+        refs.forEach((ref, index) => {
+          result[ref.name] = values[index];
         });
         return result;
       })
@@ -120,7 +120,7 @@ export class VariableStore implements IStore {
    * Signal-based variant of 'watchMultiple' for reactive Angular consumers.
    * Rebuilds the combined watcher when the dependency-name list changes.
    */
-  public watchMultipleSignal(names: Signal<string[]>): Signal<{ [key: string]: any }> {
+  public watchMultipleSignal(names: Signal<VariableReference[]>): Signal<{ [key: string]: any }> {
     return toSignal(
       toObservable(names, { injector: this.injector }).pipe(
         distinctUntilChanged((previous, current) => isEqual(previous, current)),
@@ -139,8 +139,8 @@ export class VariableStore implements IStore {
    *
    * Note: this checks exact key presence, not fallback resolution.
    */
-  public has(name: string): boolean {
-    return this.state.has(name);
+  public has(ref: VariableReference): boolean {
+    return this.state.has(ref.name);
   }
 
   /**
@@ -201,8 +201,8 @@ export class VariableStore implements IStore {
   /**
    * Gets the current value for an exact key without fallback logic.
    */
-  private getExact(name: string): any {
-    return this.state.get(name)?.value;
+  private getExact(ref: VariableReference): any {
+    return this.state.get(ref.name)?.value;
   }
 
   /**
@@ -259,17 +259,17 @@ export class VariableStore implements IStore {
   /**
    * Convenience resolver for a dependency name using default fallback candidates.
    */
-  private resolveWithScopeFallback(name: string): string | undefined {
-    return this.resolvePointer(this.createScopeFallbackPointer(name));
+  private resolveWithScopeFallback(ref: VariableReference): string | undefined {
+    return this.resolvePointer(this.createScopeFallbackPointer(ref));
   }
 
   /**
    * Creates a pointer descriptor for a dependency name using default scope-fallback candidates.
    */
-  private createScopeFallbackPointer(name: string): VariablePointer {
+  private createScopeFallbackPointer(ref: VariableReference): VariablePointer {
     return {
-      id: name,
-      candidates: this.getScopeFallbackCandidates(name),
+      id: ref.name,
+      candidates: this.getScopeFallbackCandidates(ref.name),
     };
   }
 
