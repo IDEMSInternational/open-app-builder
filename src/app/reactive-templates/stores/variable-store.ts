@@ -148,7 +148,7 @@ export class VariableStore implements IStore {
    * Useful for debugging or diagnostics.
    */
   public getAll(): { [name: string]: any } {
-    const result: { [name: string]: any } = {};
+    const result: { [name: string]: any } = Object.create(null);
     this.state.forEach((state, name) => {
       result[name] = state.value;
     });
@@ -292,10 +292,7 @@ export class VariableStore implements IStore {
 
     for (let scopeCount = scopes.length; scopeCount >= 0; scopeCount -= 1) {
       const candidate = [...scopes.slice(0, scopeCount), variableName].join(".");
-
-      if (!candidates.includes(candidate)) {
-        candidates.push(candidate);
-      }
+      candidates.push(candidate);
     }
 
     return candidates;
