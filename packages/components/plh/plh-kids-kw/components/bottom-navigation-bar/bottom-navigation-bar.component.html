@@ -9,8 +9,12 @@
       [attr.data-variant]="params.variant"
       [attr.data-isActive]="rla.isActive"
       [attr.data-hideInactiveText]="params.hideInactiveText"
+      [attr.data-dim-when-inactive]="!button.active_icon || null"
     >
-      <img class="icon" [src]="(rla.isActive ? button.active_icon : button.icon) | plhAsset" />
+      <img
+        class="icon"
+        [src]="(button.active_icon && rla.isActive ? button.active_icon : button.icon) | plhAsset"
+      />
       <div class="label" [attr.data-hideInactiveText]="params.hideInactiveText">
         {{ button.label }}
       </div>

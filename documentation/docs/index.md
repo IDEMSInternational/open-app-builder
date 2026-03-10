@@ -38,15 +38,20 @@ Note - you may have to do this from time to time when the code is updated
 
 ## Configuration
 ### Set Deployment
-The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
+A "deployment" corresponds to a particular app created with Open App Builder. A deployment consists of content and configuration files, which are stored in `.idems_app/deployments`.
 
-To use an existing deployment, run the following script:
+In order to work on a deployment, it must be made available locally, either by importing an existing deployment from a remote source or creating a new one. See [Deployments](https://idemsinternational.github.io/open-app-builder/developers/deployments/) for information about creating and configuring deployments.
+
+For example, to import the debug deployment, run
+```sh
+yarn workflow deployment import https://github.com/IDEMSInternational/app-debug-content
 ```
+
+After importing a creating a deployment, it can be set to active by running:
+```sh
 yarn workflow deployment set
 ```
-If you have already imported or created a deployment, this will present an interactive list of deployments to select from.
-
-If you have no available deployments, see [Deployment Documentation](https://idemsinternational.github.io/open-app-builder/developers/deployments/) for information about creating and configuring deployments.
+This will present an interactive list of all available deployments to select from.
 
 ## Running locally
 
@@ -66,4 +71,4 @@ Please see [Quickstart Authors](./authors/quickstart.md)
 
 ### For Developers
 
-Please see [Quickstart Developers](/developers/quickstart.md)
+Please see [Quickstart Developers](./developers/quickstart.md)

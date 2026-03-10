@@ -1,11 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { Injector, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { MatTabsModule } from "@angular/material/tabs";
 import { RouterModule } from "@angular/router";
-// TEMP: Disabled for Angular 21 - Swiper 8 Angular module only supports Angular 12-14
-// import { SwiperModule } from "swiper/angular";
 import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 
 import { SharedPipesModule } from "../../pipes";
@@ -35,7 +33,6 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     ReactiveFormsModule,
     RouterModule,
     SharedPipesModule,
-    // SwiperModule, // TEMP: Disabled for Angular 21
     TemplatePipesModule,
     ReactiveTemplateComponent,
     TooltipDirective,
@@ -57,6 +54,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container
