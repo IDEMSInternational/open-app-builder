@@ -10,16 +10,16 @@
         @for (radio of answerOptions(); track radio) {
           <div
             class="container-radio"
-            [class.checked-radio]="form.get('answer').value === radio[optionsKey]"
+            [class.checked-radio]="form.get('answer')?.value === $any(radio)[optionsKey]"
           >
             <label>
               <input
                 type="radio"
                 (click)="check(radio)"
                 formControlName="answer"
-                [value]="radio[optionsKey]"
+                [value]="$any(radio)[optionsKey]"
               />
-              {{ radio[optionsValue] | translate }}
+              {{ $any(radio)[optionsValue] | translate }}
             </label>
           </div>
         }
@@ -31,7 +31,7 @@
             [class]="customAnswerClass"
             (keyup.enter)="enterCustomAnswer()"
             [placeholder]="placeholder"
-            [class.checked-radio]="form.get('customAnswer').value === selectedValue"
+            [class.checked-radio]="form.get('customAnswer')?.value === selectedValue"
           >
           </ion-input>
         </div>

@@ -1,5 +1,5 @@
 import { envReplace } from "@idemsInternational/env-replace";
-import { Logger, generateVersionCode } from "../../utils";
+import { Logger, generateVersionCode } from "../../../utils";
 import { PATHS } from "shared";
 import type { IDeploymentConfig } from "data-models";
 import fs from "fs";
@@ -8,15 +8,18 @@ import plist from "plist";
 interface IiOSBuildOptions {
   appId: string;
   appName: string;
+  /** Optional display name; may include special characters. Defaults to appName. */
+  appDisplayName?: string;
   authProvider: IDeploymentConfig["auth"]["provider"];
   versionName: string;
   zoomEnabled: boolean;
 }
 
 /** Populate iOS template files with variables from deployment */
-const configure = async ({
+export const configure = async ({
   appId,
   appName,
+  appDisplayName,
   versionName,
   zoomEnabled,
   authProvider,
@@ -49,6 +52,7 @@ const configure = async ({
     envAdditional: {
       APP_ID: convertToValidIOSAppId(appId),
       APP_NAME: appName,
+      APP_DISPLAY_NAME: appDisplayName || appName,
       GOOGLE_REVERSED_CLIENT_ID,
       VERSION_CODE: versionCode,
       VERSION_NAME: versionName,
@@ -59,6 +63,7 @@ const configure = async ({
     includeVariables: [
       "APP_ID",
       "APP_NAME",
+      "APP_DISPLAY_NAME",
       "GOOGLE_REVERSED_CLIENT_ID",
       "VERSION_CODE",
       "VERSION_NAME",
@@ -112,7 +117,3 @@ function getCustomUrlSchemes(authProvider: IiOSBuildOptions["authProvider"]) {
 
   return { GOOGLE_REVERSED_CLIENT_ID };
 }
-
-export default {
-  configure,
-};

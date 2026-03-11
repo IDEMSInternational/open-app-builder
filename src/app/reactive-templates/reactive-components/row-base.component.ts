@@ -198,6 +198,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     let sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
       this.setParams();
+      this.storeValue();
     });
     this.paramsDependencySubscriptions.push(sub);
   }
