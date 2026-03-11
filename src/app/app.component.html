@@ -47,7 +47,7 @@
         </div>
         @if (footerConfig().template; as footerTemplate) {
           <ion-footer>
-            <ion-toolbar [color]="footerConfig().background">
+            <ion-toolbar [style]="footerToolbarStyle()">
               <plh-template-container
                 [templatename]="footerTemplate"
                 [ignoreQueryParamChanges]="true"

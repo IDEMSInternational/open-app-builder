@@ -2,7 +2,6 @@ import {
   addRxPlugin,
   createRxDatabase,
   MangoQuery,
-  MigrationStrategies,
   RxCollection,
   RxCollectionCreator,
   RxDatabase,
@@ -16,8 +15,7 @@ import type {
   MemoryStorageInternals,
   RxStorageMemoryInstanceCreationOptions,
 } from "rxdb/plugins/storage-memory";
-import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
-addRxPlugin(RxDBMigrationPlugin);
+
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
 import { map } from "rxjs";
@@ -33,9 +31,7 @@ type IDocWithMeta = FlowTypes.Data_listRow & { APP_META?: Record<string, any> };
  */
 export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
-  // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
-  // for migration strategies for each version which is hugely inefficient
-  version: 2,
+  version: 0, // in-memory db always recreated so versioning and migration not important
   primaryKey: "id",
   type: "object",
   properties: {
@@ -52,19 +48,6 @@ export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   },
   required: ["id"],
   indexes: ["row_index"],
-};
-const MIGRATIONS: MigrationStrategies = {
-  1: (oldDoc) => {
-    const newDoc = { ...oldDoc, row_index: 0 };
-    return newDoc;
-  },
-  2: (oldDoc) => {
-    const newDoc = {
-      ...oldDoc,
-      APP_META: oldDoc.APP_META ?? {},
-    };
-    return newDoc;
-  },
 };
 
 interface IDataUpdate {
@@ -129,7 +112,7 @@ export class ReactiveMemoryAdapter {
    */
   public async createCollection(name: string, schema: RxJsonSchema<any>) {
     const collections: { [x: string]: RxCollectionCreator<any> } = {};
-    collections[name] = { schema, migrationStrategies: MIGRATIONS };
+    collections[name] = { schema };
     await this.db.addCollections(collections);
     const collection = this.db.collections[name];
     // HACK - sometimes rxdb keeps data in memory during repeated create/delete cycles
