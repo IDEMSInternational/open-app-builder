@@ -47,7 +47,12 @@
         </div>
         @if (footerConfig().template; as footerTemplate) {
           <ion-footer>
-            <ion-toolbar [color]="footerConfig().background">
+            <!-- Prefer to set background color using theme variable,
+             but legacy deployment config property will take precedence if set -->
+            <ion-toolbar
+              [color]="footerConfig().background"
+              style="--background: var(--footer-background)"
+            >
               <plh-template-container
                 [templatename]="footerTemplate"
                 [ignoreQueryParamChanges]="true"
