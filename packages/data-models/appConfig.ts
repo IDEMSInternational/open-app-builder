@@ -129,6 +129,7 @@ interface IAppConfigFooter {
 }
 
 const APP_FOOTER_DEFAULTS: IAppConfigFooter = {
+  /** @deprecated use --footer-background theme variable instead */
   background: "primary",
   template: null,
 };
