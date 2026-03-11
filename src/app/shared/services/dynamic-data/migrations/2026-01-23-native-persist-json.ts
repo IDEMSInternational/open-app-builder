@@ -29,7 +29,6 @@ const migration: Migration<{ service: DynamicDataService; deployment: IDeploymen
         const fileStrategy = new FilePersistenceStrategy();
         await fileStrategy.init();
         await fileStrategy.save(legacyState);
-        console.log("Migrating legacy RxDB data to File Storage...", legacyData);
       }
     },
   };
