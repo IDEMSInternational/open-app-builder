@@ -1,8 +1,12 @@
 .plh-bottom-nav-wrapper {
-  display: flex;
-  justify-content: space-around;
-  padding: 8px;
-  gap: 8px;
+  .nav-items {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+    gap: 8px;
+  }
   &[data-variant="inverted"] {
     background-color: var(--ion-color-primary);
     .label {
