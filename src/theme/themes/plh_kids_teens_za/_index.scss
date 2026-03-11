@@ -65,6 +65,7 @@
       border-width-default: 1px,
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
+      footer-background: var(--ion-color-primary-50),
       // COMPONENT VARIABLES
       accordion-background-highlight: var(--ion-color-primary-300),
       accordion-toggle-icon-color: var(--ion-color-primary-contrast),
@@ -101,6 +102,7 @@
       tile-button-background-primary: var(--ion-color-primary-600),
       tile-button-background-secondary-light: var(--ion-color-yellow),
       tile-button-background-secondary: var(--ion-color-secondary-600),
+      tile-image-text-width: 290px,
       tour-next-button-background: var(--ion-color-primary-600),
       // SURFACE COLOUR PALETTE
       color-surface-white: #ffffff,
