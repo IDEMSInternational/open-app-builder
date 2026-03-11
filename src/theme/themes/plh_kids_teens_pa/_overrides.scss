@@ -263,7 +263,6 @@
   plh-accordion-component {
     ion-accordion {
       background: var(--ion-color-primary-600);
-
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -274,10 +273,6 @@
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: white !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;
