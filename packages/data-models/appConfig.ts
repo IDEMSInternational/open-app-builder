@@ -122,15 +122,14 @@ const activeRoute = (location: Location) => {
 };
 
 interface IAppConfigFooter {
-  background: IHeaderFooterBackgroundOptions;
+  /** @deprecated Use theme var --footer-background instead */
+  background?: IHeaderFooterBackgroundOptions;
   template: string | null;
   /** @deprecated use "template" instead */
   templateName?: string | null;
 }
 
 const APP_FOOTER_DEFAULTS: IAppConfigFooter = {
-  /** @deprecated use --footer-background theme variable instead */
-  background: "primary",
   template: null,
 };
 
