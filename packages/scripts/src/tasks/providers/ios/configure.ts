@@ -52,7 +52,7 @@ export const configure = async ({
     envAdditional: {
       APP_ID: convertToValidIOSAppId(appId),
       APP_NAME: appName,
-      APP_DISPLAY_NAME: appDisplayName ?? appName,
+      APP_DISPLAY_NAME: appDisplayName || appName,
       GOOGLE_REVERSED_CLIENT_ID,
       VERSION_CODE: versionCode,
       VERSION_NAME: versionName,
