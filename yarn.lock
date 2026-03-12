@@ -777,13 +777,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/core@npm:~21.0.0":
-  version: 21.0.8
-  resolution: "@angular/core@npm:21.0.8"
+"@angular/core@npm:~21.1.6":
+  version: 21.1.6
+  resolution: "@angular/core@npm:21.1.6"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/compiler": 21.0.8
+    "@angular/compiler": 21.1.6
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -791,7 +791,7 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 92d5f1ad3c461867f118b2ef3fae8f7970a10f396b2e20f1b3a51644b2ed37eb5092b6baa0805f6bbc95fde486fb5d429fb28c16ac55d1fd300d76993d73030b
+  checksum: 7b31f0426bbb9564f03fb131e802e7a87797d63e24f064d9ea188cebb535f7eece431b80c2fc1a641c45725c7a3aac4b044e2ae8de69164509659b05179001b1
   languageName: node
   linkType: hard
 
@@ -17245,7 +17245,7 @@ __metadata:
     "@angular/common": ~21.0.0
     "@angular/compiler": ~21.0.0
     "@angular/compiler-cli": ~21.0.0
-    "@angular/core": ~21.0.0
+    "@angular/core": ~21.1.6
     "@angular/elements": ^21.0.0
     "@angular/forms": ~21.0.0
     "@angular/language-service": ~21.0.0
