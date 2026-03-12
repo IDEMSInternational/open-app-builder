@@ -40,4 +40,15 @@ export class AppUsersService {
     // await this.model.upsert({ ...user, ...data, app_user_id });
     return user.update({ ...data, app_user_id });
   }
+
+  /**
+   * Mark a user for deletion (soft delete).
+   * Sets deletion_requested_at timestamp for later review/processing.
+   */
+  async markForDeletion(app_user_id: string): Promise<[affectedCount: number]> {
+    return this.model.update(
+      { deletion_requested_at: new Date() },
+      { where: { app_user_id } }
+    );
+  }
 }
