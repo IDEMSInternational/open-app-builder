@@ -5,12 +5,11 @@ import { TourService } from "./tour.service";
   template: ` <ion-content class="ion-padding">
     <h3>Start a tour</h3>
     <ion-list>
-      <ion-item
-        *ngFor="let tour of tourService.toursList"
-        (click)="tourService.startTour(tour.flow_name)"
-      >
-        {{ tour.flow_name }}
-      </ion-item>
+      @for (tour of tourService.toursList; track tour) {
+        <ion-item (click)="tourService.startTour(tour.flow_name)">
+          {{ tour.flow_name }}
+        </ion-item>
+      }
     </ion-list>
   </ion-content>`,
   standalone: false,

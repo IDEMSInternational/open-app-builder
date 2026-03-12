@@ -8,7 +8,7 @@ interface IPlhBottomNavigationParams {
   /** TEMPLATE PARAMETER: hide_inactive_text. Hide text on inactive buttons. Default `false` */
   hideInactiveText?: boolean;
   /** TEMPLATE PARAMETER: variant. Default `null` */
-  variant?: "pill" | null;
+  variant?: "pill" | "inverted" | null;
 }
 interface INavButton {
   icon: string | null;

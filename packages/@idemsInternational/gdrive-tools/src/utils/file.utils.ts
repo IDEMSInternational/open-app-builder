@@ -83,7 +83,8 @@ export interface ILocalFileWithStats {
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
-  hash.update(fileBuffer);
+  const view = new Uint8Array(fileBuffer.buffer, fileBuffer.byteOffset, fileBuffer.byteLength);
+  hash.update(view);
   const checksum = hash.digest("hex");
   return checksum;
 }

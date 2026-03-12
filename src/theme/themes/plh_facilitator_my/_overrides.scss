@@ -271,9 +271,7 @@
     }
     .information {
       --background: var(--ion-color-primary-700);
-      &:hover {
-        --background: var(--ion-color-primary-500);
-      }
+      --background-hover: var(--ion-color-primary-500);
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
@@ -500,7 +498,6 @@
   plh-accordion-component {
     ion-accordion {
       background: var(--ion-color-primary-700);
-
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -511,10 +508,6 @@
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: var(--color-surface-white) !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;

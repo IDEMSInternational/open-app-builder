@@ -140,8 +140,8 @@ $background-secondary-light: var(
   align-items: center;
   margin: 0 auto;
   padding: var(--small-padding);
-  width: 10rem;
   margin-bottom: var(--regular-margin);
+  width: 100%;
   max-width: var(--tile-image-text-width);
   background: $background-default;
   box-shadow: var(--ion-default-box-shadow);
