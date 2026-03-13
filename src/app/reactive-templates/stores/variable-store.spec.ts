@@ -57,13 +57,13 @@ describe("VariableStore", () => {
     subscription.unsubscribe();
   });
 
-  it("delegates clear() to the global store", () => {
+  it("delegates clear() to both local and global stores", () => {
     const localClearSpy = spyOn(localStore, "clear").and.callThrough();
     const globalClearSpy = spyOn(globalStore, "clear").and.callThrough();
 
     store.clear();
 
     expect(globalClearSpy).toHaveBeenCalledTimes(1);
-    expect(localClearSpy).not.toHaveBeenCalled();
+    expect(localClearSpy).toHaveBeenCalledTimes(1);
   });
 });
