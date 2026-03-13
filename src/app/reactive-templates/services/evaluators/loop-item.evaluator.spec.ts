@@ -3,7 +3,7 @@ import { LoopItemEvaluator } from "./loop-item.evaluator";
 import { RowRegistry } from "../row.registry";
 import { Parameter } from "../../reactive-components/parameters";
 import { signal } from "@angular/core";
-import { VariableStore } from "../../stores/variableStore";
+import { VariableStore } from "../../stores/variable-store";
 
 /**
  * Call standalone tests via:

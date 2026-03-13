@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { RowRegistry } from "../row.registry";
-import { VariableStore } from "../../stores/variableStore";
+import { VariableStore } from "../../stores/variable-store";
 
 @Injectable({ providedIn: "root" })
 export class LoopItemEvaluator {

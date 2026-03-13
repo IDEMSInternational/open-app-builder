@@ -6,7 +6,7 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 import { IStore, VariableReference } from "./store";
 
 /**
- * A reactive global store for all local variables.
+ * A reactive store for global variables.
  */
 @Injectable({
   providedIn: "root",

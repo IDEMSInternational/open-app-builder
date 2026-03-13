@@ -8,12 +8,12 @@ import { JsonPipe } from "@angular/common";
 import { LocalVariableStore } from "src/app/reactive-templates/stores/local-variable-store";
 
 @Component({
-  selector: "oab-variable-store-debugger",
-  templateUrl: "./variable-store-debugger.component.html",
-  styleUrls: ["./variable-store-debugger.component.scss"],
+  selector: "oab-local-variable-store-debugger",
+  templateUrl: "./local-variable-store-debugger.component.html",
+  styleUrls: ["./local-variable-store-debugger.component.scss"],
   imports: [DebuggerBaseComponent, DebuggerTitleDirective, DebuggerInfoDirective, JsonPipe],
 })
-export class VariableStoreDebuggerComponent {
+export class LocalVariableStoreDebuggerComponent {
   public variableStore = inject(LocalVariableStore);
   public allVariables = this.variableStore.getAllSignal();
 }

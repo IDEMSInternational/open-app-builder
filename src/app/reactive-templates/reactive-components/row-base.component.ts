@@ -20,7 +20,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
 import { IStore, StoreType } from "../stores/store";
-import { VariableStore } from "../stores/variableStore";
+import { VariableStore } from "../stores/variable-store";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { VariableReference } from "../stores/store";
-import { VariableStore } from "../stores/variableStore";
+import { VariableStore } from "../stores/variable-store";
 
 /**
  * The ContextCreatorService is responsible for constructing the execution context for evaluators based on the dependencies they declare.

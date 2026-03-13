@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { ContextCreatorService } from "./context-creator.service";
-import { VariableStore } from "../stores/variableStore";
+import { VariableStore } from "../stores/variable-store";
 
 /**
  * Call standalone tests via:

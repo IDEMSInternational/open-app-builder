@@ -3,7 +3,7 @@ import { LocalVariableStore } from "./local-variable-store";
 
 /**
  * Call standalone tests via:
- * yarn ng test --include src/app/reactive-templates/stores/variable-store.spec.ts
+ * yarn ng test --include src/app/reactive-templates/stores/local-variable-store.spec.ts
  */
 describe("LocalVariableStore", () => {
   let store: LocalVariableStore;
