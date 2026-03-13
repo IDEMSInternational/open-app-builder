@@ -100,7 +100,7 @@ export class LocalVariableStore implements IStore {
    */
   public watchMultiple(refs: VariableReference[]): Observable<{ [key: string]: any }> {
     if (refs.length === 0) {
-      return new BehaviorSubject<{ [key: string]: any }>({}).asObservable();
+      return of({});
     }
 
     const observables = refs.map((ref) => this.watch(ref));

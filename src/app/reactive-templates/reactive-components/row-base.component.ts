@@ -162,8 +162,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     const dependencies = this.evaluationService
       .getDependencies(this.expression(), this.namespace())
-      .filter((d) => d.name !== this.name())
-      .map((d) => ({ name: d.name, type: d.type }));
+      .filter((d) => d.name !== this.name());
 
     if (!dependencies || !dependencies.length) {
       return;

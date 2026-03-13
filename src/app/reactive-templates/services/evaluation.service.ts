@@ -49,20 +49,16 @@ export class EvaluationService {
 
     return dependencies
       .filter((dependency) => dependency.type === "local" || dependency.type === "global")
-      .map((dependency) => ({
-        ...dependency,
-        matchedExpression: dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
+      .map((dependency) => {
+        const name = dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
           .replace(`@${dependency.type}.`, "")
           .replace("parameter_list.", "")
-          .replace(/[#!&|,]/g, ""),
-      }))
-      .map(
-        (dependency) =>
-          ({
-            type: dependency.type,
-            name: this.namespaceService.getFullName(namespace, dependency.matchedExpression),
-          }) as VariableReference
-      );
+          .replace(/[#!&|,]/g, "");
+        return {
+          type: dependency.type,
+          name: this.namespaceService.getFullName(namespace, name),
+        } as VariableReference;
+      });
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation
