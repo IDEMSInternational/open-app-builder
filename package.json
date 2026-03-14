@@ -37,7 +37,7 @@
     "@angular/animations": "^21.0.0",
     "@angular/cdk-experimental": "^21.0.0",
     "@angular/common": "~21.0.0",
-    "@angular/core": "~21.0.0",
+    "@angular/core": "~21.2.4",
     "@angular/elements": "^21.0.0",
     "@angular/forms": "~21.0.0",
     "@angular/material": "^21.0.0",
