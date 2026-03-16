@@ -45,6 +45,18 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      set: {
+        label: "Set active deployment",
+        steps: [
+          {
+            name: "set",
+            function: async ({ tasks, args }) => {
+              const deploymentName = args[0];
+              await tasks.beta.setExternalDeployment(deploymentName);
+            },
+          },
+        ],
+      },
     },
   },
 };
