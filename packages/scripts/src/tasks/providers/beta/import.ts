@@ -1,9 +1,9 @@
 import fs from "fs-extra";
 import path from "path";
-import { DEPLOYMENTS_PATH } from "../../paths";
-import { logOutput, logWarning } from "../../utils";
+import { DEPLOYMENTS_PATH } from "../../../paths";
+import { logOutput, logWarning } from "../../../utils";
 
-export async function importExternalDeployment(sourcePath: string) {
+export async function importExternalDeployment(sourcePath: string, verbose = false) {
   const absoluteSourcePath = path.resolve(sourcePath);
 
   // Verify source exists
@@ -37,27 +37,33 @@ export async function importExternalDeployment(sourcePath: string) {
   // Delete the entire deployment directory if it exists, then recreate it
   if (fs.existsSync(targetDeploymentPath)) {
     fs.removeSync(targetDeploymentPath);
-    logOutput({
-      msg1: `Deleted existing deployment directory: ${deploymentName}`,
-      msg2: targetDeploymentPath,
-    });
+    if (verbose) {
+      logOutput({
+        msg1: `Deleted existing deployment directory: ${deploymentName}`,
+        msg2: targetDeploymentPath,
+      });
+    }
   }
   fs.ensureDirSync(targetDeploymentPath);
 
-  logOutput({
-    msg1: `Created target deployment directory: ${deploymentName}`,
-    msg2: targetDeploymentPath,
-  });
+  if (verbose) {
+    logOutput({
+      msg1: `Created target deployment directory: ${deploymentName}`,
+      msg2: targetDeploymentPath,
+    });
+  }
 
   // Save the source path for later use by 'set' command
   fs.writeFileSync(path.join(targetDeploymentPath, ".external_source"), absoluteSourcePath);
 
-  await copySourceDeploymentFiles(absoluteSourcePath, targetDeploymentPath);
+  await copySourceDeploymentFiles(absoluteSourcePath, targetDeploymentPath, verbose);
 
-  logOutput({
-    msg1: `Import complete for deployment: ${deploymentName}`,
-    msg2: targetDeploymentPath,
-  });
+  if (verbose) {
+    logOutput({
+      msg1: `Import complete for deployment: ${deploymentName}`,
+      msg2: targetDeploymentPath,
+    });
+  }
 }
 
 /**
@@ -66,22 +72,27 @@ export async function importExternalDeployment(sourcePath: string) {
  */
 async function copySourceDeploymentFiles(
   sourceLocation: string,
-  targetLocation: string
+  targetLocation: string,
+  verbose = false
 ): Promise<void> {
-  logOutput({
-    msg1: `Starting copy from source: ${sourceLocation}`,
-    msg2: `To target: ${targetLocation}`,
-  });
+  if (verbose) {
+    logOutput({
+      msg1: `Starting copy from source: ${sourceLocation}`,
+      msg2: `To target: ${targetLocation}`,
+    });
+  }
 
   // Get list of all items in the source directory
   const sourceItems = fs.readdirSync(sourceLocation, { withFileTypes: true });
 
-  logOutput({
-    msg1: `Found ${sourceItems.length} items in source directory`,
-    msg2: sourceItems
-      .map((item) => `${item.name} (${item.isDirectory() ? "dir" : "file"})`)
-      .join(", "),
-  });
+  if (verbose) {
+    logOutput({
+      msg1: `Found ${sourceItems.length} items in source directory`,
+      msg2: sourceItems
+        .map((item) => `${item.name} (${item.isDirectory() ? "dir" : "file"})`)
+        .join(", "),
+    });
+  }
 
   // Copy all items except .git and app_data folders
   for (const item of sourceItems) {
@@ -90,26 +101,32 @@ async function copySourceDeploymentFiles(
 
     // Skip .git and app_data folders
     if (item.name === ".git" || item.name === "app_data" || item.name === ".gitignore") {
-      logOutput({
-        msg1: `Skipping excluded folder: ${item.name}`,
-        msg2: sourcePath,
-      });
+      if (verbose) {
+        logOutput({
+          msg1: `Skipping excluded folder: ${item.name}`,
+          msg2: sourcePath,
+        });
+      }
       continue;
     }
 
     try {
       if (item.isDirectory()) {
         fs.copySync(sourcePath, targetPath, { overwrite: true });
-        logOutput({
-          msg1: `Copied folder: ${item.name}`,
-          msg2: `${sourcePath} -> ${targetPath}`,
-        });
+        if (verbose) {
+          logOutput({
+            msg1: `Copied folder: ${item.name}`,
+            msg2: `${sourcePath} -> ${targetPath}`,
+          });
+        }
       } else {
         fs.copySync(sourcePath, targetPath, { overwrite: true });
-        logOutput({
-          msg1: `Copied file: ${item.name}`,
-          msg2: `${sourcePath} -> ${targetPath}`,
-        });
+        if (verbose) {
+          logOutput({
+            msg1: `Copied file: ${item.name}`,
+            msg2: `${sourcePath} -> ${targetPath}`,
+          });
+        }
       }
     } catch (error) {
       logWarning({

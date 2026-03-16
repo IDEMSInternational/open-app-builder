@@ -2,7 +2,7 @@ import actions from "./providers/actions";
 import android from "./providers/android";
 import appData from "./providers/appData";
 import deployment from "./providers/deployment";
-import external from "./providers/external";
+import beta from "./providers/beta";
 import encryption from "./providers/encryption";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
@@ -25,7 +25,7 @@ const ALL_TASKS = {
   android,
   appData,
   deployment,
-  external,
+  beta,
   encryption,
   file,
   gdrive,

@@ -1,20 +1,20 @@
 import type { IDeploymentWorkflows } from "./workflow.model";
 
 const workflows: IDeploymentWorkflows = {
-  external: {
-    label: "Manage external deployments",
+  beta: {
+    label: "Manage deployments",
     steps: [
       {
         name: "",
         function: async ({ args }) => {
           const [childWorkflow] = args || [];
-          const childWorkflows = workflows.external.children;
+          const childWorkflows = workflows.beta.children;
           if (!childWorkflow || !childWorkflows?.childWorkflow) {
             console.log(
               "available commands",
               "\n\n" +
                 Object.keys(childWorkflows as IDeploymentWorkflows)
-                  .map((name) => `external ${name}`)
+                  .map((name) => `beta ${name}`)
                   .join("\n"),
               "\n"
             );
@@ -25,16 +25,22 @@ const workflows: IDeploymentWorkflows = {
     ],
     children: {
       import: {
-        label: "Import external deployment",
+        label: "Import deployment",
+        options: [
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
         steps: [
           {
             name: "import",
-            function: async ({ tasks, args }) => {
+            function: async ({ tasks, args, options }) => {
               const sourcePath = args[0];
               if (!sourcePath) {
                 throw new Error("Source path is required");
               }
-              await tasks.external.import(sourcePath);
+              await tasks.beta.importExternalDeployment(sourcePath, !!options.verbose);
             },
           },
         ],
