@@ -8,6 +8,7 @@ const config: JestConfigWithTsJest = {
   testEnvironment: "node",
   testRegex: ".e2e.spec.ts$",
   testTimeout: 30000,
+  maxWorkers: 1,
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
     "^test/(.*)$": "<rootDir>/test/$1",
