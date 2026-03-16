@@ -1,21 +1,22 @@
 import { writeFileSync } from "fs-extra";
 import path from "path";
 import packageJSON from "../../../../../package.json";
-import { parseCommand } from "../../commands";
-import { ReportGenerator } from "../../commands/app-data/report/report";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 import { IDeploymentConfigJson, IDeploymentRuntimeConfig } from "data-models";
-import { AppDataOptimiser } from "../../commands/app-data/optimise";
+import {
+  AssetsPostProcessor,
+  AppDataOptimiser,
+  ReportGenerator,
+  SheetsPostProcessor,
+  IDownloadedAssetSource,
+} from "../../lib/app-data";
 
 /** Prepare sourcely cached assets for population to app */
-const postProcessAssets = async (options: { sourceAssetsFolders: string[] }) => {
-  const { sourceAssetsFolders } = options;
-  let args = `--source-assets-folders ${sourceAssetsFolders.join(",")}`;
-  let cmd = `app-data post-process assets ${args}`;
-
-  await parseCommand(`${cmd}`);
+const postProcessAssets = async (options: { sources: IDownloadedAssetSource[] }) => {
+  const { sources } = options;
+  return new AssetsPostProcessor({ sources }).run();
 };
 
 /** Prepare sourcely cached seets for population to app */
@@ -24,9 +25,7 @@ const postProcessSheets = async (options: {
   sourceTranslationsFolder: string;
 }) => {
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
-  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
-  let cmd = `app-data post-process sheets ${args}`;
-  await parseCommand(`${cmd}`);
+  return new SheetsPostProcessor({ sourceSheetsFolder, sourceTranslationsFolder }).run();
 };
 
 const generateReports = async () => {
@@ -78,10 +77,12 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     firebase,
     git,
     name,
+    remote_assets,
     remote_functions,
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   } = deploymentConfig;
 
   return {
@@ -95,12 +96,25 @@ function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploy
     error_logging,
     firebase,
     name,
+    remote_assets,
     remote_functions,
     shared_data,
     supabase,
     web,
+    useReactiveTemplates,
   };
 }
+
+/**
+ * Sync remote assets to external provider (e.g. Supabase/Firebase)
+ * Currently a placeholder for future implementation
+ */
+const syncRemoteAssets = async () => {
+  // TODO: Implement actual sync logic, including:
+  // - Upload asset packs to remote provider
+  // - Delete old asset packs from remote provider (TBC how to handle, legacy app users may still require previous versions)
+  console.log("[Not implemented] Syncing remote assets...");
+};
 
 export default {
   generateReports,
@@ -108,4 +122,5 @@ export default {
   postProcessSheets,
   copyDeploymentDataToApp,
   optimiseBuild,
+  syncRemoteAssets,
 };

@@ -23,6 +23,7 @@ const YOUTUBE_URL_QUERY_PARAMS: { [K in keyof YouTubeUrlQueryParamValues]: strin
   showFullscreenButton: "fs",
   interfaceLanguage: "hl",
   showRelatedVideos: "rel",
+  playsinline: "playsinline",
 };
 
 /** Possible values of the supported query params */
@@ -32,12 +33,14 @@ interface YouTubeUrlQueryParamValues {
   showFullscreenButton: "0" | "1";
   interfaceLanguage: string; // 2-letter ISO 639-1 code
   showRelatedVideos: "0" | "1";
+  playsinline: "1"; // playsinline must be enabled for iOS compatibility
 }
 
 @Component({
   selector: "youtube",
   templateUrl: "./youtube.component.html",
   styleUrls: ["./youtube.component.scss"],
+  standalone: false,
 })
 export class YoutubeComponent extends TemplateBaseComponent {
   constructor(
@@ -98,6 +101,8 @@ export class YoutubeComponent extends TemplateBaseComponent {
     this.setYouTubeParam(url, "interfaceLanguage", languageCode);
     // Disable related videos (at least those from external channels)
     this.setYouTubeParam(url, "showRelatedVideos", "0");
+    // Always enable playsinline for iOS compatibility
+    this.setYouTubeParam(url, "playsinline", "1");
     return url;
   }
 

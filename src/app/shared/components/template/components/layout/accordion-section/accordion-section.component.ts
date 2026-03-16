@@ -9,6 +9,7 @@ import { TemplateBaseComponent } from "../../base";
   selector: "plh-tmpl-accordion-section",
   templateUrl: "./accordion-section.component.html",
   styleUrls: ["./accordion-section.component.scss"],
+  standalone: false,
 })
 export class AccordionSectionComponent extends TemplateBaseComponent implements OnInit {
   public completed: boolean;

@@ -24,9 +24,9 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    @for (item of filteredOptions(); track item.name) {
+    @for (item of filteredOptions(); track item[optionsKey]) {
       <ion-item (click)="select(item)" [class.selected]="isSelected(item)">
-        {{ item.text }}
+        {{ item[optionsValue] }}
       </ion-item>
     }
   </ion-list>

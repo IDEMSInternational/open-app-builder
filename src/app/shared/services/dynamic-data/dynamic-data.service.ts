@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { addRxPlugin, MangoQuery } from "rxdb";
 import { firstValueFrom, lastValueFrom, AsyncSubject } from "rxjs";
 
@@ -7,13 +7,15 @@ import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { deepMergeObjects } from "../../utils";
-import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
+import { deepMergeArrays, isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapter, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { DynamicDataActionFactory } from "./actions";
 import { DeploymentService } from "../deployment/deployment.service";
 import { Observable, defer, switchMap } from "rxjs";
+import { MigrationService } from "../migration/migration.service";
+import { DYNAMIC_DATA_MIGRATIONS } from "./migrations";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -45,6 +47,8 @@ export class DynamicDataService extends AsyncServiceBase {
   /** Hashmap to track pending collection creation and avoid duplicate requests */
   private collectionCreators: Record<string, AsyncSubject<string>> = {};
 
+  private migrationService = inject(MigrationService);
+
   constructor(
     private appDataService: AppDataService,
     private templateActionRegistry: TemplateActionRegistry,
@@ -71,6 +75,13 @@ export class DynamicDataService extends AsyncServiceBase {
         addRxPlugin(module.RxDBDevModePlugin);
       });
     }
+    // Handle one-time data migrations
+    await this.migrationService.handleMigrations(
+      DYNAMIC_DATA_MIGRATIONS,
+      { service: this, deployment: this.deploymentService.config },
+      "DynamicData"
+    );
+    // Setup db adapters
     this.writeCache = await new PersistedMemoryAdapter(name).create();
     this.db = await new ReactiveMemoryAdapter(name).createDB();
   }
@@ -138,9 +149,11 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     row_id: string,
-    update: Partial<T>
+    update: Partial<T>,
+    /** Specify whether to allow new row creation (upsert) if no existing data */
+    options: { upsert?: boolean } = {}
   ) {
-    if (update) {
+    if (isObjectLiteral(update) && Object.keys(update).length > 0) {
       const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
@@ -151,6 +164,9 @@ export class DynamicDataService extends AsyncServiceBase {
         // update persisted db - only use partial update as will be merged
         this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
       } else {
+        if (options.upsert) {
+          return this.insert(flow_type, flow_name, update);
+        }
         throw new Error(
           `[Update Fail] no doc exists for ${flow_type}:${flow_name} with row_id: ${row_id}`
         );

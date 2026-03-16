@@ -18,16 +18,21 @@ interface IModuleListItemParams {
   lockedImageAsset?: string;
   /* TEMPLATE PARAMETER: "module_image_asset". The image attached to the module */
   moduleImageAsset?: string;
-  /* TEMPLATE PARAMETER: "nav_image_asset". The navigation icon*/
+  /* TEMPLATE PARAMETER: "nav_image_asset". The navigation icon */
   navImageAsset?: string;
+  /* TEMPLATE PARAMETER: "completed_image_asset". The icon to display when the module is completed */
+  completedImageAsset?: string;
   /* TEMPLATE PARAMETER: "variant" */
   variant?: "default" | "circle";
+  /* TEMPLATE PARAMETER: "background". This is used to define background colour of the item */
+  background?: string;
 }
 
 @Component({
   selector: "plh-module-list-item",
   templateUrl: "./module-list-item.component.html",
   styleUrls: ["./module-list-item.component.scss"],
+  standalone: false,
 })
 export class PlhModuleListItemComponent extends TemplateBaseComponent {
   params = computed(() => this.getParams(this.parameterList()));
@@ -47,6 +52,7 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent {
       isLocked: getBooleanParamFromTemplateRow(this._row, "is_locked", false),
       navImageAsset: getStringParamFromTemplateRow(this._row, "nav_image_asset", null),
       lockedImageAsset: getStringParamFromTemplateRow(this._row, "locked_image_asset", null),
+      completedImageAsset: getStringParamFromTemplateRow(this._row, "completed_image_asset", null),
       highlighted: getBooleanParamFromTemplateRow(this._row, "highlighted", false),
       completed: getBooleanParamFromTemplateRow(this._row, "completed", false),
       variant: getStringParamFromTemplateRow(
@@ -54,6 +60,7 @@ export class PlhModuleListItemComponent extends TemplateBaseComponent {
         "variant",
         "default"
       ) as IModuleListItemParams["variant"],
+      background: getStringParamFromTemplateRow(this._row, "background", null),
     };
   }
 }

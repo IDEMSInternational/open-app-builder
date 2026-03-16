@@ -27,7 +27,6 @@ interface ITableParams {
   selector: "plh-table",
   templateUrl: "./table.component.html",
   styleUrls: ["./table.component.scss"],
-  standalone: true,
   imports: [ExperimentalScrollingModule, IonicModule, MatSortModule, MatTableModule],
 })
 export class TmplTableComponent extends TemplateBaseComponent {

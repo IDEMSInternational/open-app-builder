@@ -5,6 +5,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-accordion-component",
   templateUrl: "accordion.component.html",
   styleUrls: ["./accordion.component.scss"],
+  standalone: false,
 })
 export class TmplAccordionComponent extends TemplateBaseComponent implements OnInit {
   public openSections = [];

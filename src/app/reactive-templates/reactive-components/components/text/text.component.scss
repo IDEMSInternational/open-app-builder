@@ -1,0 +1,5 @@
+:host {
+  // Default value for top and bottom margins. Can be overridden in parent component
+  // styles if calling the text component as a child of another component
+  --margin-text: 0.75em;
+}

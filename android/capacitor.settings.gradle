@@ -17,6 +17,9 @@ project(':capacitor-firebase-firestore').projectDir = new File('../node_modules/
 include ':capacitor-firebase-performance'
 project(':capacitor-firebase-performance').projectDir = new File('../node_modules/@capacitor-firebase/performance/android')
 
+include ':capacitor-firebase-storage'
+project(':capacitor-firebase-storage').projectDir = new File('../node_modules/@capacitor-firebase/storage/android')
+
 include ':capacitor-app'
 project(':capacitor-app').projectDir = new File('../node_modules/@capacitor/app/android')
 

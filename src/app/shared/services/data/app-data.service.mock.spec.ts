@@ -25,8 +25,6 @@ const mockHttpClient = (responses: { [url: string]: any }): Partial<HttpClient> 
 
 /** Mock calls for sheets from the appData service to return test data */
 export class MockAppDataService extends AppDataService {
-  public appDataCache: IAppDataCache;
-
   // allow additional specs implementing service to provide their own data if required
   constructor(
     mockData: Partial<IAppDataCache> = {},
@@ -42,10 +40,6 @@ export class MockAppDataService extends AppDataService {
     );
     this.appDataCache = { ...DATA_CACHE_CLEAN, ...mockData };
     this.sheetContents = { ...DATA_CACHE_CLEAN, ...mockData };
-  }
-
-  public ready() {
-    return true;
   }
 
   public async getSheet<T extends FlowTypes.FlowTypeWithData>(

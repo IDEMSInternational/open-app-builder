@@ -14,11 +14,11 @@ class DeploymentProvider {
     return new DeploymentSet().setActiveDeployment(name);
   }
 
-  async import(remoteRepo?: string) {
+  async import(options: { acceptDefaults?: boolean } = {}, remoteRepo?: string) {
     if (!remoteRepo) {
       remoteRepo = await promptInput("Specify url to remote git repo");
     }
-    return importRepo(remoteRepo);
+    return importRepo(remoteRepo, options);
   }
 }
 

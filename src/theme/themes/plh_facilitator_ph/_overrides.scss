@@ -6,11 +6,6 @@
     .standard {
       color: var(--color-surface-black);
       font-size: var(--font-size-text-medium);
-      p,
-      ol,
-      ul {
-        margin: var(--paragraph-margin-medium) 0;
-      }
     }
   }
 
@@ -18,7 +13,6 @@
   plh-tmpl-title {
     .title-wrapper h1 {
       font-size: var(--font-size-text-title);
-      margin: var(--paragraph-margin-medium) 0;
       line-height: var(--line-height-text-large);
       color: var(--color-surface-black);
     }
@@ -215,10 +209,9 @@
       height: var(--buttons-full-height);
       width: var(--buttons-full-width);
       margin: 0 auto;
-      --border-radius: var(--ion-border-radius-rounded);
       --box-shadow: none;
 
-      font-size: var(--buttons-font-size-large);
+      font-size: var(--buttons-font-size-small);
       font-weight: var(--font-weight-bold);
       letter-spacing: var(--font-letter-spacing);
       line-height: var(--line-height-text);
@@ -279,9 +272,7 @@
     }
     .information {
       --background: var(--ion-color-primary-800);
-      &:hover {
-        --background: var(--ion-color-primary-500);
-      }
+      --background-hover: var(--ion-color-primary-500);
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
@@ -293,7 +284,7 @@
       background-color: transparent;
       background: transparent;
       color: var(--color-surface-black);
-      min-height: 64px;
+      // min-height: 64px;
       padding: 18px 24px;
       p {
         font-weight: var(--font-weight-standard);
@@ -505,7 +496,6 @@
   plh-accordion-component {
     ion-accordion {
       background: var(--ion-color-primary-700);
-
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -516,10 +506,6 @@
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: var(--color-surface-white) !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;
@@ -587,10 +573,6 @@
         li {
           font-size: var(--font-size-text-mid-size);
           color: var(--ion-color-gray-900);
-        }
-
-        ol {
-          margin: var(--paragraph-margin-small) 0;
         }
       }
 
@@ -929,104 +911,6 @@
     }
   }
 
-  // Combo-box
-  plh-combo-box {
-    .combo-box-container.dropdown {
-      ion-select {
-        background-color: var(--ion-color-primary-100) !important;
-        border: none !important;
-        padding-left: 16px !important;
-        font-size: var(--font-size-text-mid-size);
-        &.hasValue {
-          background: var(--ion-color-primary-800) !important;
-        }
-      }
-    }
-    button.open-combobox {
-      background-color: var(--ion-color-primary-100);
-      border-radius: var(--ion-border-radius-small);
-      filter: none !important;
-      min-height: 58px !important;
-      border: 1px solid var(--ion-color-primary-300);
-      &.placeholder-style {
-        color: var(--ion-color-gray-400);
-        font-weight: var(--font-weight-standard);
-      }
-      &.with-value {
-        font-weight: var(--font-weight-bold);
-        background-color: var(--ion-color-primary-700);
-      }
-    }
-    button.open-search-combobox {
-      background-color: var(--ion-color-primary-100);
-      border-radius: var(--ion-border-radius-small);
-      filter: none !important;
-      min-height: 58px !important;
-      border: 1px solid var(--ion-color-primary-300);
-      padding-left: 16px;
-      &.placeholder-style {
-        color: var(--ion-color-gray-600);
-        font-weight: var(--font-weight-standard);
-      }
-      &.with-value {
-        font-weight: var(--font-weight-bold);
-        background-color: var(--ion-color-primary-800);
-      }
-    }
-  }
-  combo-box-modal {
-    .container-modal {
-      background-color: var(--color-surface-white) !important;
-      padding: 40px 20px;
-      font-family: var(--ion-font-family);
-      .header {
-        font-size: var(--font-size-text-large) !important;
-        font-weight: var(--font-weight-bold) !important;
-        text-align: unset !important;
-        color: var(--ion-color-gray-800);
-      }
-    }
-    .container-radio {
-      box-shadow: none !important;
-      border-radius: var(--ion-border-radius-small) !important;
-      background: var(--ion-color-primary-100) !important;
-      border: 1px solid var(--ion-color-primary-300) !important;
-      label {
-        padding: 8px !important;
-        text-align: unset !important;
-        font-size: var(--font-size-text-medium) !important;
-        color: var(--ion-color-gray-800) !important;
-        min-height: 56px !important;
-        border-radius: var(--ion-border-radius-small) !important;
-        font-weight: var(--font-weight-medium) !important;
-        text-align: center !important;
-      }
-    }
-    .checked-radio {
-      background: var(--ion-color-primary-100) !important;
-      border: 2px solid var(--ion-color-primary-600) !important;
-    }
-    .wrapper {
-      .text-box-input {
-        background: var(--color-surface-white) !important;
-        border: 1px solid var(--color-outline) !important;
-        font-size: var(--font-size-text-medium) !important;
-        color: var(--color-surface-black) !important;
-        font-weight: var(--font-weight-medium) !important;
-        box-shadow: none !important;
-        --padding-end: 16px !important;
-        --padding-start: 16px !important;
-        --padding-top: 14px;
-        --padding-bottom: 14px;
-        min-height: 58px !important;
-        border-radius: var(--ion-border-radius-standard) !important;
-      }
-      .checked-radion {
-        border: 2px solid var(--ion-color-primary-600) !important;
-      }
-    }
-  }
-
   // Dashed Box
   .box-wrapper {
     .item {
@@ -1105,34 +989,20 @@
   // Bottom Nav
   plh-bottom-navigation-bar {
     .plh-bottom-nav-wrapper {
-      @include mixins.flex-space-between;
-      flex-direction: row;
-      width: 100%;
-      padding: 12px 16px 8px 16px;
       border-top: 1px solid #e7e8e9;
       background-color: var(--ion-color-primary-800);
       a {
         color: unset;
       }
-      .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-      }
-      .label p {
-        padding: 0;
-        margin: 0;
+
+      .label {
         color: var(--ion-color-primary-200);
-        font-weight: var(--font-weight-standard);
       }
       .icon img {
         color: var(--ion-color-primary-200);
       }
       .active-link {
-        .label p {
-          font-weight: var(--font-weight-bold);
+        .label {
           color: var(--color-surface-white);
         }
         .icon img {

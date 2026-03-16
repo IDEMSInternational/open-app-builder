@@ -27,6 +27,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *********************************************************************/
 @Directive({
   selector: "[plhTemplateComponentHost]",
+  standalone: false,
 })
 export class TmplCompHostDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
@@ -48,17 +49,16 @@ export class TmplCompHostDirective {
   selector: "plh-template-component",
   template: `
     <!-- Template Debugger -->
-    <plh-template-debugger
-      *ngIf="parent && parent.debugMode"
-      [row]="_row"
-      [parent]="parent"
-    ></plh-template-debugger>
+    @if (parent && parent.debugMode) {
+      <plh-template-debugger [row]="_row" [parent]="parent"></plh-template-debugger>
+    }
 
     <!-- Injected template component -->
     <ng-template plhTemplateComponentHost></ng-template>
   `,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ["./template-component.scss"],
+  standalone: false,
 })
 export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**

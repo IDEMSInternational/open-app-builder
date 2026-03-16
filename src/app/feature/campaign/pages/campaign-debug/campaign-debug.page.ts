@@ -17,6 +17,7 @@ interface IDebugCampaignRows {
 @Component({
   templateUrl: "./campaign-debug.page.html",
   styleUrls: ["./campaign-debug.page.scss"],
+  standalone: false,
 })
 export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;

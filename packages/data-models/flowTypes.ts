@@ -52,8 +52,15 @@ export namespace FlowTypes {
     _overrides?: {
       [templatename: string]: any; // override condition
     };
-    _xlsxPath?: string; // debug info
-    _sheetsFolderUrl?: string; // debug info
+    /** flow source metdata */
+    _source?: {
+      /** Name of input source, e.g. folder name */
+      name?: string;
+      /** Nested path to flow data, e.g. sheet path */
+      path?: string;
+      /** Remote url of source */
+      url?: string;
+    };
     process_on_start?: number; // priority order to process template variable setters on startup
   }
 
@@ -227,7 +234,6 @@ export namespace FlowTypes {
     _satisfied?: boolean;
     /** debug info  */
     _raw?: string;
-    _cleaned?: string;
     _parsed?: string[][];
   }
   export interface Lifecycle_Action {
@@ -273,7 +279,7 @@ export namespace FlowTypes {
   }
 
   /** Row types that do not display component but perform an action when processed */
-  type TemplateRowBaseType =
+  export type TemplateRowBaseType =
     | "items"
     | "nested_properties"
     | "set_default"
@@ -414,6 +420,8 @@ export namespace FlowTypes {
     | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
+    | "notification_interacted"
+    | "notification_received"
     | "sent" // notification sent
     | "uncompleted";
 
@@ -421,6 +429,7 @@ export namespace FlowTypes {
   const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
   // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
   const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
+  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -472,6 +481,7 @@ export namespace FlowTypes {
     ...DATA_ACTIONS_LIST,
     ...ITEMS_ACTIONS_LIST,
     ...PLH_ACTIONS_LIST,
+    ...REACTIVE_TEMPLATE_ACTIONS_LIST, // Only supported in reactive templates
   ] as const;
 
   export interface TemplateRowAction<ParamsType = any> {
@@ -479,6 +489,7 @@ export namespace FlowTypes {
     trigger: TemplateRowActionTrigger;
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
+    rawArgs?: any; // original args before evaluation
     params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
@@ -489,7 +500,6 @@ export namespace FlowTypes {
     _self_triggered?: boolean;
     // debug info
     _raw?: string;
-    _cleaned?: string;
   }
 
   export interface Global extends FlowTypeBase {
