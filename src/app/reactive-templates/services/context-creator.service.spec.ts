@@ -57,4 +57,28 @@ describe("ContextCreatorService", () => {
 
     expect(context).toEqual({ local: {} });
   });
+
+  it("namespace includes numbers", () => {
+    variableStore.set("button_text", "Click Here");
+
+    const context = service.createContext(["parameter_loop.2.options_loop.0.button_text"]);
+
+    expect(context).toEqual({
+      local: { parameter_loop: { 2: { options_loop: { 0: { button_text: "Click Here" } } } } },
+    });
+  });
+
+  it("falls back to root-scope variable when scoped path segments are non-numeric", () => {
+    variableStore.set("button_text", "Click Here");
+
+    const context = service.createContext([
+      "parameter_loop.index2.options_loop.index0.button_text",
+    ]);
+
+    expect(context).toEqual({
+      local: {
+        parameter_loop: { index2: { options_loop: { index0: { button_text: "Click Here" } } } },
+      },
+    });
+  });
 });

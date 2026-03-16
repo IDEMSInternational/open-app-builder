@@ -16,6 +16,8 @@
   gap: var(--small-padding);
   position: relative;
   cursor: pointer;
+  background-position-y: center;
+  background-position-x: center;
 
   .badge {
     position: absolute;
@@ -73,6 +75,8 @@
 
     ion-button.cta-button {
       margin: 2px;
+      height: 60px;
+      width: 60px;
       --background: white;
       --border-color: var(--ion-color-green-900);
       --color: var(--ion-color-green-900);
@@ -81,9 +85,15 @@
     }
 
     .cta-text {
-      font-size: var(--font-size-text-tiny);
+      font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
+      text-align: center;
       margin: 0;
+    }
+
+    ion-icon {
+      font-size: 32px;
+      --ionicon-stroke-width: 36px;
     }
   }
 }

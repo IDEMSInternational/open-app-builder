@@ -10999,7 +10999,7 @@ __metadata:
     reflect-metadata: ^0.2.2
     rimraf: ^6.0.1
     rxjs: ^7.8.2
-    sequelize: ^6.37.7
+    sequelize: ^6.37.8
     sequelize-typescript: ^2.1.6
     supertest: ^6.3.4
     swagger-ui-express: ^5.0.1
@@ -14471,7 +14471,7 @@ __metadata:
     pg: ^8.6.0
     pg-hstore: ^2.3.4
     postgres-migrations: ^5.2.0
-    sequelize: ^6.29.0
+    sequelize: ^6.37.8
     sequelize-cli: ^6.2.0
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
@@ -26497,9 +26497,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sequelize@npm:^6.29.0, sequelize@npm:^6.37.7":
-  version: 6.37.7
-  resolution: "sequelize@npm:6.37.7"
+"sequelize@npm:^6.37.8":
+  version: 6.37.8
+  resolution: "sequelize@npm:6.37.8"
   dependencies:
     "@types/debug": ^4.1.8
     "@types/validator": ^13.7.17
@@ -26536,7 +26536,7 @@ __metadata:
       optional: true
     tedious:
       optional: true
-  checksum: fcca0993defbaed7a9727ae72a4dd00c1c8ec72ca0dd7bd9eab16626420f6719169a46bba18036b0d582599465c4e126547794c9b4b7485d1c2574be0d7d1f23
+  checksum: 8a733c7ee2df11f6bf852a496ee118c3d812d34e7cf3dc94c34bdb26c8fd3ef862a042ce568c7d9d2529676cf43f5e40dd786cad27b88e7518ca8fdb5fd525be
   languageName: node
   linkType: hard
 

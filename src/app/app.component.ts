@@ -72,6 +72,23 @@ export class AppComponent {
     };
   });
 
+  /**
+   * Footer toolbar style: use theme var --footer-background (defaults to var(--ion-color-primary);
+   * Use legacy config background property when set.
+   * */
+  public footerToolbarStyle = computed(() => {
+    const legacyBackgroundFromConfig = this.footerConfig().background;
+    let backgroundValue: string;
+    if (!legacyBackgroundFromConfig) {
+      backgroundValue = "var(--footer-background, var(--ion-color-primary))";
+    } else if (legacyBackgroundFromConfig === "none") {
+      backgroundValue = "transparent";
+    } else {
+      backgroundValue = `var(--ion-color-${legacyBackgroundFromConfig})`;
+    }
+    return { "--background": backgroundValue };
+  });
+
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = signal(false);
 
