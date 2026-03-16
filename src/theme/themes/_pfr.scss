@@ -10,7 +10,8 @@
     $page-background: white,
     $color-green: hsl(139 59% 38%),
     //#289b4c
-    $variable-overrides: (
+    $variable-overrides:
+      (
         // BORDERS
         // border-color-default: var(--ion-color-primary),
         border-width-default: 2px,
@@ -54,7 +55,7 @@
         combo-box-font-size-standard: 20px,
         // task-progress-bar-color: var(--ion-color-primary),
         // checkbox-background-color: white,
-         // progress-path-line-background, var(--ion-color-gray-100),
+        // progress-path-line-background, var(--ion-color-gray-100),
       )
   );
 }
