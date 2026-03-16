@@ -1,11 +1,12 @@
 $accordion-background-color: var(--accordion-background-color, white);
-$accordion-border-color: var(--accordion-border-color, transparent);
+$accordion-border-color: var(--accordion-border-color, var(--border-color-default));
 $icon-color: var(--accordion-toggle-icon-color, var(--ion-color-primary));
 
 // Create overlapping effect
 ion-accordion {
   background: $accordion-background-color;
-  border: 1px solid $accordion-border-color;
+  border: var(--border-standard);
+  border-color: $accordion-border-color;
   border-radius: var(--ion-border-radius-small, 8px);
   margin-top: calc(-1 * var(--small-margin) * 1.2);
   padding-top: calc(var(--tiny-padding) * 1.4);
