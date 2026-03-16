@@ -31,18 +31,18 @@
 
   // Margins //
   --row-margin-top: 1em; // used in downstream calculations, e.g. sticky display-group
-  --tiny-margin: 4px;
+  --tiny-margin: 5px;
   --small-margin: 10px;
-  --regular-margin: 16px;
+  --regular-margin: 15px;
   --large-margin: 24px;
   --largest-margin: 30px;
   --huge-margin: 40px;
 
   // Paddings //
-  --tiny-padding: 6px;
-  --small-padding: 12px;
-  --regular-padding: 18px;
-  --large-padding: 24px;
+  --tiny-padding: 5px;
+  --small-padding: 10px;
+  --regular-padding: 15px;
+  --large-padding: 25px;
   --largest-padding: 30px;
   --huge-padding: 40px;
   --main-container-padding: 0 var(--large-margin);
@@ -87,11 +87,11 @@
   --font-size-text-largest: 28px;
 
   // Line Height //
-  --line-height-text-tiny: 1.2;
-  --line-height-text-small: 1.4;
-  --line-height-text: 1.5;
-  --line-height-text-large: 1.6;
-  --line-height-text-largest: 1.7;
+  --line-height-text-tiny: 14px;
+  --line-height-text-small: 20px;
+  --line-height-text-medium: 22px;
+  --line-height-text-large: 25px;
+  --line-height-text-largest: 28px;
 
   // Font Weight //
   --font-weight-standard: 400;
