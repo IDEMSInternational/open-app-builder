@@ -13,6 +13,7 @@ import { ModalController } from "@ionic/angular";
   selector: "combo-box-modal",
   templateUrl: "./combo-box-modal.component.html",
   styleUrls: ["./combo-box-modal.component.scss"],
+  standalone: false,
 })
 export class ComboBoxModalComponent implements OnInit {
   public answerOptions = input.required<IAnswerListItem[]>();

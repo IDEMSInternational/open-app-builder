@@ -1,5 +1,6 @@
 $accordion-background-color: var(--accordion-background-color, white);
 $accordion-border-color: var(--accordion-border-color, transparent);
+$icon-color: var(--accordion-toggle-icon-color, var(--ion-color-primary));
 
 // Create overlapping effect
 ion-accordion {
@@ -9,6 +10,12 @@ ion-accordion {
   margin-top: calc(-1 * var(--small-margin) * 1.2);
   padding-top: calc(var(--tiny-padding) * 1.4);
   box-shadow: var(--ion-default-box-shadow, none);
+}
+
+// ion-icon doesn't adjust colour as expected, so target explicitly with theme variable
+.accordion-header .ion-accordion-toggle-icon,
+.accordion-header ion-icon.ion-accordion-toggle-icon {
+  color: $icon-color;
 }
 ion-accordion:first-of-type {
   margin-top: unset;

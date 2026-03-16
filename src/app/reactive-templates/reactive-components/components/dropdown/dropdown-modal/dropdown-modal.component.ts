@@ -6,7 +6,6 @@ import { IonicModule, ModalController } from "@ionic/angular";
   selector: "oab-dropdown-modal",
   templateUrl: "./dropdown-modal.component.html",
   styleUrls: ["./dropdown-modal.component.scss"],
-  standalone: true,
   imports: [CommonModule, IonicModule],
 })
 export class DropdownModalComponent {

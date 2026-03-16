@@ -10,52 +10,57 @@ import { CampaignService } from "../../../campaign.service";
         <span class="row-counter">{{ row._campaign_rows.length }}</span>
         <span style="flex:1; margin-left:10px">{{ row.id }}</span>
         <!-- TODO - could be calculated in parent and passed down -->
-        <div
-          *ngIf="
-            campaignService.scheduledNotifications[row.id] | objectValues as scheduledNotifications
-          "
-        >
-          <div class="next-notification" *ngFor="let notification of scheduledNotifications">
-            {{ notification.schedule.at | date: "MMM d h:mm a" }}
-            <ion-icon name="notifications"></ion-icon>
+        @if (
+          campaignService.scheduledNotifications[row.id] | objectValues;
+          as scheduledNotifications
+        ) {
+          <div>
+            @for (notification of scheduledNotifications; track notification) {
+              <div class="next-notification">
+                {{ notification.schedule.at | date: "MMM d h:mm a" }}
+                <ion-icon name="notifications"></ion-icon>
+              </div>
+            }
           </div>
-        </div>
+        }
 
-        <span class="tag activated" *ngIf="row._active">Active</span>
-        <span class="tag deactivated" *ngIf="!row._active">Inactive</span>
+        @if (row._active) {
+          <span class="tag activated">Active</span>
+        }
+        @if (!row._active) {
+          <span class="tag deactivated">Inactive</span>
+        }
       </summary>
       <div class="row-content">
         <!-- Info -->
         <div style="flex:1">
           <div style="flex:1">
             <!-- Activation -->
-            <div *ngIf="row.activation_condition_list && row.activation_condition_list.length > 0">
-              <div class="divider"></div>
-              <h4>Activation</h4>
-              <div
-                *ngFor="let condition of row.activation_condition_list"
-                class="condition-row info-text"
-                (click)="manageVariablesClicked.next(row)"
-              >
-                <ion-checkbox [checked]="condition._satisfied" disabled></ion-checkbox>
-                <span class="condition">{{ condition._raw }}</span>
+            @if (row.activation_condition_list && row.activation_condition_list.length > 0) {
+              <div>
+                <div class="divider"></div>
+                <h4>Activation</h4>
+                @for (condition of row.activation_condition_list; track condition) {
+                  <div class="condition-row info-text" (click)="manageVariablesClicked.next(row)">
+                    <ion-checkbox [checked]="condition._satisfied" disabled></ion-checkbox>
+                    <span class="condition">{{ condition._raw }}</span>
+                  </div>
+                }
               </div>
-            </div>
+            }
             <!-- Deactivation -->
-            <div
-              *ngIf="row.deactivation_condition_list && row.deactivation_condition_list.length > 0"
-            >
-              <div class="divider"></div>
-              <h4>Deactivation</h4>
-              <div
-                *ngFor="let condition of row.deactivation_condition_list"
-                class="condition-row info-text"
-                (click)="manageVariablesClicked.next(row)"
-              >
-                <ion-checkbox [checked]="condition._satisfied" disabled></ion-checkbox>
-                <span class="condition">{{ condition._raw }}</span>
+            @if (row.deactivation_condition_list && row.deactivation_condition_list.length > 0) {
+              <div>
+                <div class="divider"></div>
+                <h4>Deactivation</h4>
+                @for (condition of row.deactivation_condition_list; track condition) {
+                  <div class="condition-row info-text" (click)="manageVariablesClicked.next(row)">
+                    <ion-checkbox [checked]="condition._satisfied" disabled></ion-checkbox>
+                    <span class="condition">{{ condition._raw }}</span>
+                  </div>
+                }
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
@@ -145,6 +150,7 @@ import { CampaignService } from "../../../campaign.service";
       }
     `,
   ],
+  standalone: false,
 })
 export class CampaignScheduleDebugRowComponent {
   @Input() row: FlowTypes.Campaign_Schedule;

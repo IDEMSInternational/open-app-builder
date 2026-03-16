@@ -2,10 +2,10 @@ import { format } from "date-fns";
 import { diff } from "deep-object-diff";
 import { Observable } from "rxjs";
 import { map, pairwise, filter, share } from "rxjs/operators";
-import * as Sentry from "@sentry/angular-ivy";
+import * as Sentry from "@sentry/angular";
 import { FlowTypes } from "../model";
 import { objectToArray } from "../components/template/utils";
-import marked from "marked";
+import { marked, MarkedOptions } from "marked";
 import { markedSmartypantsLite } from "marked-smartypants-lite";
 import { v4 as uuidV4 } from "uuid";
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
@@ -501,7 +501,7 @@ export function isNonEmptyArray(value: unknown): value is any[] {
  * Extends the renderer of "marked" plugin to ensure that links open in new tags.
  * Code from https://github.com/markedjs/marked/pull/1371#issuecomment-434320596
  */
-export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
+export function parseMarkdown(src: string, options?: MarkedOptions) {
   const renderer = new marked.Renderer();
   renderer.link = function (href, title, text) {
     const link = marked.Renderer.prototype.link.apply(this, arguments);
@@ -525,7 +525,7 @@ export function parseMarkdown(src: string, options?: marked.MarkedOptions) {
    */
   marked.use(markedSmartypantsLite());
 
-  return marked(src, options);
+  return marked.parse(src, options) as string;
 }
 
 export function convertBlobToBase64(blob: Blob): Promise<string> {

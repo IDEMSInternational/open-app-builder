@@ -113,7 +113,7 @@ jobs:
       # Install node_module dependencies (includes capacitor plugin pods required for build)
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.17.0
+          node-version: 24.13.0
           cache: yarn
       - run: yarn workspaces focus frontend --production
 

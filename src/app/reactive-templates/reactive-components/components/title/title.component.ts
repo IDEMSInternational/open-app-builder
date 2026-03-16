@@ -18,7 +18,6 @@ const parameters = () =>
   selector: "oab-title",
   templateUrl: "./title.component.html",
   styleUrls: ["./title.component.scss"],
-  standalone: true,
   imports: [IonicModule, TemplatePipesModule, TooltipDirective], // todo: ionic standalone does not seem to work.
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })

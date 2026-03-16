@@ -1,7 +1,7 @@
 <ion-radio-group [value]="value()" (ionChange)="handleItemClick($event.detail.value)">
   @for (item of answerOptions(); track item[params().optionsKey]) {
     <ion-item lines="none">
-      <ion-radio labelPlacement="end" justify="start" [value]="item[params().optionsKey]">
+      <ion-radio labelPlacement="end" justify="start" mode="md" [value]="item[params().optionsKey]">
         <plh-tmpl-text
           [row]="{ _nested_name: '', name: '', type: 'text', value: item[params().optionsValue] }"
         >

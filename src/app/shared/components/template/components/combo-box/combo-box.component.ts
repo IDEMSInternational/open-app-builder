@@ -41,6 +41,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-combo-box",
   templateUrl: "./combo-box.component.html",
   styleUrls: ["./combo-box.component.scss"],
+  standalone: false,
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponentWithParams(AuthorSchema)
@@ -66,19 +67,32 @@ export class TmplComboBoxComponent
   );
 
   public answerOptions = computed(() => {
-    return this.dataItemRows() ?? this.params().answerList;
+    return this.cleanAnswerOptions(this.dataItemRows() ?? this.params().answerList);
   });
 
   public showSearch = computed(() => this.answerOptions().length > 8);
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
+  private selectedOption = computed(() => {
+    const val = this.value();
+    const options = this.answerOptions();
+    if (!val || !options.length) return undefined;
+    const optionsKey = this.params().optionsKey;
+    return options.find((x) => String(x[optionsKey]) === String(val));
+  });
+
+  /** Display label: from options when value() matches, otherwise custom/placeholder. */
   public displayText = computed(() => {
     if (this.disabled() && this.params().disabledText) return this.params().disabledText;
-    if (this.customAnswerSelected()) return this.customAnswerText;
-    return this.answerText() && !this.params().prioritisePlaceholder
-      ? this.answerText()
-      : this.params().placeholder;
+    const val = this.value();
+    if (!val) return this.params().placeholder;
+    if (this.customAnswerSelected())
+      return this.customAnswerText ?? this.answerText() ?? String(val);
+    if (this.params().prioritisePlaceholder) return this.params().placeholder;
+    const opt = this.selectedOption();
+    if (opt) return opt[this.params().optionsValue] ?? this.params().placeholder;
+    return this.answerText() || this.params().placeholder;
   });
 
   constructor(
@@ -86,26 +100,27 @@ export class TmplComboBoxComponent
     private dataItemsService: DataItemsService
   ) {
     super();
-    // If an initial value is authored, check if this corresponds to an answer option entry.
-    // Handle in effect as answer options may not be available on init
-    // TODO: Refactor base component to use value() signal and use this to compute displayText
-    effect(
-      () => {
-        if (this.answerOptions().length > 0 && this._row.value) {
-          const optionsKey = this.params().optionsKey;
-          const optionsValue = this.params().optionsValue;
-          const selectedAnswer = this.answerOptions().find(
-            (x) => String(x[optionsKey]) === String(this._row.value)
-          );
-          if (!selectedAnswer) {
-            this.customAnswerSelected.set(true);
-          } else {
-            this.answerText.set(selectedAnswer?.[optionsValue] || "");
-          }
+    // Sync displayed selection with current value (initial load and programmatic updates).
+    // Use value() so the effect re-runs when the row is updated (e.g. after set_self / processRowUpdates).
+    effect(() => {
+      const val = this.value();
+      const optionsValue = this.params().optionsValue;
+      if (!val) {
+        this.answerText.set("");
+        this.customAnswerSelected.set(false);
+        return;
+      }
+      if (this.answerOptions().length > 0) {
+        const selectedAnswer = this.selectedOption();
+        if (!selectedAnswer) {
+          this.customAnswerSelected.set(true);
+          this.customAnswerText = String(val);
+        } else {
+          this.customAnswerSelected.set(false);
+          this.answerText.set(selectedAnswer?.[optionsValue] ?? "");
         }
-      },
-      { allowSignalWrites: true }
-    );
+      }
+    });
   }
 
   public async handleDropdownChange(value) {
@@ -122,7 +137,7 @@ export class TmplComboBoxComponent
       componentProps: {
         answerOptions: this.answerOptions,
         row: this._row,
-        selectedValue: this.customAnswerSelected() ? this.answerText() : this._row.value,
+        selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
         optionsKey: optionsKey,
@@ -136,7 +151,7 @@ export class TmplComboBoxComponent
       this.answerText.set(answer?.[optionsValue] || "");
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
       this.customAnswerText = this.customAnswerSelected() ? answer?.[optionsValue] || "" : "";
-      await this.setValue(answer?.[optionsKey] || null);
+      await this.setValue(answer?.[optionsKey] || undefined);
     });
     await modal.present();
   }
@@ -162,7 +177,7 @@ export class TmplComboBoxComponent
       this.params().prioritisePlaceholder = false;
       const answer = data?.data?.answer;
       this.answerText.set(answer?.[optionsValue] || "");
-      await this.setValue(answer?.[optionsKey] || null);
+      await this.setValue(answer?.[optionsKey] || undefined);
     });
     await modal.present();
   }
@@ -182,4 +197,13 @@ export class TmplComboBoxComponent
       "no-value": value ? undefined : true,
     };
   });
+
+  private cleanAnswerOptions(options: IAnswerListItem[]) {
+    return options.filter((option) => {
+      return (
+        option[this.params().optionsKey] !== undefined &&
+        option[this.params().optionsValue] !== undefined
+      );
+    });
+  }
 }

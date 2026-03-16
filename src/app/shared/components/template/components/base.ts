@@ -15,6 +15,7 @@ import type { TemplateComponent } from "../template-component";
 @Component({
   template: ``,
   styleUrls: ["./tmpl-components-common.scss"],
+  standalone: false,
 })
 /**
  * Common methods and data made available to all other components

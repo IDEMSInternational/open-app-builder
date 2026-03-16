@@ -17,6 +17,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "plh-radio-list",
   templateUrl: "./radio-list.component.html",
   styleUrls: ["./radio-list.component.scss"],
+  standalone: false,
 })
 export class TmplRadioListComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public answerOptions = computed(() => {

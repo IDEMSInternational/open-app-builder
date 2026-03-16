@@ -4,8 +4,9 @@ import { Component } from "@angular/core";
   selector: "plh-colour-palette",
   templateUrl: "./colour-palette.component.html",
   styleUrls: ["./colour-palette.component.scss"],
+  standalone: false,
 })
 export class ColourPaletteComponent {
-  themeColours = ["primary", "primary-variant", "secondary", "secondary-variant"];
+  themeColours = ["primary", "primary-variant", "secondary", "secondary-variant", "green"];
   colourWeights = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 }
