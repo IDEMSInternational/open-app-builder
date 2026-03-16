@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250818.0;
+export const DEPLOYMENT_CONFIG_VERSION = 20260316.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
