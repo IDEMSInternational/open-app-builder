@@ -3,7 +3,3 @@
   // styles if calling the text component as a child of another component
   --margin-text: var(--paragraph-spacing, 0.75em);
 }
-
-p {
-  line-height: var(--line-height-text-medium);
-}
