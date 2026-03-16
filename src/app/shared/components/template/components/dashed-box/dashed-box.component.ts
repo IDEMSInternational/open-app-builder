@@ -7,6 +7,7 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
   selector: "plh-dashed-box",
   templateUrl: "./dashed-box.component.html",
   styleUrls: ["./dashed-box.component.scss"],
+  standalone: false,
 })
 export class TmplDashedBoxComponent extends TemplateBaseComponent implements OnInit {
   style: string;

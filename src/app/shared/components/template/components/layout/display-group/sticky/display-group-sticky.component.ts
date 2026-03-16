@@ -11,7 +11,9 @@ import {
 @Component({
   selector: "tmpl-display-group-sticky",
   templateUrl: "display-group-sticky.component.html",
-  styleUrl: "display-group-sticky.component.scss",
+  styleUrls: ["display-group-sticky.component.scss"],
+  exportAs: "tmplDisplayGroupSticky",
+  standalone: false,
 })
 /**
  *
@@ -57,6 +59,8 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
     const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
     const ionContentPaddingStart =
       parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    return ionContentPaddingStart;
+    const popUpStickyTopPadding =
+      parseFloat(computedStyles.getPropertyValue("--pop-up-safe-area-top")) || 0;
+    return ionContentPaddingStart + popUpStickyTopPadding;
   }
 }

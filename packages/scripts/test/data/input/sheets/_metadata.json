@@ -1,0 +1,13 @@
+[
+  {
+    "id": "mock-gdrive-id",
+    "name": "test_input",
+    "mimeType": "application/vnd.google-apps.spreadsheet",
+    "modifiedTime": "2025-08-15T17:23:35.657Z",
+    "folderPath": "",
+    "lastModifyingUser": {
+      "displayName": "Test User"
+    },
+    "relativePath": "test_input.xlsx"
+  }
+]

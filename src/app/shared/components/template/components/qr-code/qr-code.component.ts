@@ -6,6 +6,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-qr-code",
   templateUrl: "./qr-code.component.html",
   styleUrls: ["./qr-code.component.scss"],
+  standalone: false,
 })
 export class TmplQRCodeComponent extends TemplateBaseComponent {
   /**

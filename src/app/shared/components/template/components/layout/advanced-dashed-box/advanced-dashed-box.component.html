@@ -1,14 +1,13 @@
 <div class="box-wrapper" [attr.data-hasicon]="icon_src ? true : null">
   <div class="item default" [class]="style">
-    <div class="icon" [class]="icon_position" *ngIf="icon_src">
-      <img [src]="icon_src | plhAsset" alt="" />
-    </div>
-    <plh-template-component
-      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
-      [row]="childRow"
-      [parent]="parent"
-      style="width: 100%"
-    >
-    </plh-template-component>
+    @if (icon_src) {
+      <div class="icon" [class]="icon_position">
+        <img [src]="icon_src | plhAsset" alt="" />
+      </div>
+    }
+    @for (childRow of _row.rows | filterDisplayComponent; track trackByRow($index, childRow)) {
+      <plh-template-component [row]="childRow" [parent]="parent" style="width: 100%">
+      </plh-template-component>
+    }
   </div>
 </div>

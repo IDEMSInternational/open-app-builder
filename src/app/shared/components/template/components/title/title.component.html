@@ -4,12 +4,13 @@
     [class]="'tiny standard' + ' ' + params.style"
     [innerHTML]="_row.value | markdown"
   ></h1>
-  <ion-icon
-    *ngIf="params.help"
-    name="help-circle-outline"
-    class="title-help"
-    [pTooltip]="params.help"
-    [tooltipPosition]="params.tooltipPosition"
-    tooltipEvent="click"
-  ></ion-icon>
+  @if (params.help) {
+    <ion-icon
+      name="help-circle-outline"
+      class="title-help"
+      [pTooltip]="params.help"
+      [tooltipPosition]="params.tooltipPosition"
+      tooltipEvent="click"
+    ></ion-icon>
+  }
 </div>

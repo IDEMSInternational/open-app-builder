@@ -1,5 +1,6 @@
 import { effect, Injectable, signal } from "@angular/core";
 import { Capacitor, PermissionState } from "@capacitor/core";
+import type { FlowTypes } from "data-models";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import { firstValueFrom } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
@@ -29,7 +30,7 @@ export class NotificationService {
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService,
     private capacitorEventService: CapacitorEventService,
-    actionRegistry: TemplateActionRegistry
+    private actionRegistry: TemplateActionRegistry
   ) {
     // Register action handlers
     const { notification } = new NotificationActionFactory(this);
@@ -84,6 +85,7 @@ export class NotificationService {
         status: "pending",
       };
       await this.setDBNotification(dbNotification);
+      console.log("[Notification] scheduled", dbNotification);
     } catch (error) {
       // In case of scheduling issues try to rollback
       console.error(`[Notification]`, error);
@@ -200,6 +202,10 @@ export class NotificationService {
     if (ignored.length > 0) {
       console.log("[Notification] Mark Ignored", ignored);
       await this.dynamicDataService.bulkUpsert("data_list", "_notifications", ignored);
+      // Ensure any received actions also processed
+      for (const notification of ignored) {
+        await this.triggerNotificationActions(notification.action_list, "notification_received");
+      }
     }
   }
 
@@ -220,7 +226,7 @@ export class NotificationService {
       // Only trigger actions for notifications also created by same service
       if (notification.extra?.id && notification.extra?.source === "action") {
         console.log("[Notification] Action", action);
-        this.handleNotificationAction(action.actionId, notification);
+        this.handleNotificationInteracted(action.actionId, notification);
       }
     });
     // Whenever any notification received use as prompt to mark notifications as ignored
@@ -239,7 +245,10 @@ export class NotificationService {
   }
 
   /** When notification interacted with update the db accordingly */
-  private async handleNotificationAction(actionId: string, notification: INotificationInternal) {
+  private async handleNotificationInteracted(
+    actionId: string,
+    notification: INotificationInternal
+  ) {
     // If notification tap opened app from closed state will need to wait for services to be ready
     await this.dynamicDataService.ready();
     const dbNotification = await this.getNotificationById(notification.extra.id);
@@ -253,6 +262,7 @@ export class NotificationService {
         },
       };
       await this.setDBNotification(update);
+      await this.triggerNotificationActions(dbNotification.action_list, "notification_interacted");
     } else {
       console.warn("Failed to find db notification:", notification.extra.id);
     }
@@ -264,6 +274,16 @@ export class NotificationService {
     if (dbNotification) {
       const update: IDBNotification = { ...dbNotification, status: "ignored" };
       await this.setDBNotification(update);
+      await this.triggerNotificationActions(dbNotification.action_list, "notification_received");
+    }
+  }
+
+  private async triggerNotificationActions(
+    action_list: FlowTypes.TemplateRowAction[] = [],
+    trigger: FlowTypes.TemplateRowActionTrigger
+  ) {
+    for (const action of action_list.filter((v) => v.trigger === trigger)) {
+      await this.actionRegistry.trigger(action);
     }
   }
 
@@ -287,7 +307,7 @@ export class NotificationService {
       return { valid: false, msg: "schedule_at not specified" };
     }
     if (new Date(schedule_at).getTime() <= new Date().getTime()) {
-      return { valid: false, msg: "schedule_at in past" };
+      return { valid: false, msg: "schedule_at in past: " + schedule_at };
     }
     return { valid: true };
   }

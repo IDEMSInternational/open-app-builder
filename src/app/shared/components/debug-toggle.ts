@@ -5,19 +5,17 @@ import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "plh-debug-toggle",
-  template: ` <div
-    class="debug-toggle-container"
-    [attr.data-enabled]="debugMode"
-    *ngIf="showDebugToggle"
-  >
-    <ion-icon name="bug-outline"></ion-icon>
-    <ion-toggle
-      class="debug-toggle"
-      #debugToggle
-      (ionChange)="setDebugMode(debugToggle.checked)"
-      [checked]="debugMode"
-    ></ion-toggle>
-  </div>`,
+  template: ` @if (showDebugToggle) {
+    <div class="debug-toggle-container" [attr.data-enabled]="debugMode">
+      <ion-icon name="bug-outline"></ion-icon>
+      <ion-toggle
+        class="debug-toggle"
+        #debugToggle
+        (ionChange)="setDebugMode(debugToggle.checked)"
+        [checked]="debugMode"
+      ></ion-toggle>
+    </div>
+  }`,
   styles: [
     `
       .debug-toggle {
@@ -40,12 +38,16 @@ import { takeUntil } from "rxjs/operators";
       }
     `,
   ],
+  standalone: false,
 })
 export class PLHDebugToggleComponent implements OnInit, OnDestroy {
   debugMode = false;
   showDebugToggle = true;
   private componentDestroyed$ = new Subject<boolean>();
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.subscribeToQueryParamChanges();

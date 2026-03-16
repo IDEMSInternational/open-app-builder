@@ -1,10 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { Injector, NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { NouisliderModule } from "ng2-nouislider";
+import { MatTabsModule } from "@angular/material/tabs";
 import { RouterModule } from "@angular/router";
-import { SwiperModule } from "swiper/angular";
 import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 
 import { SharedPipesModule } from "../../pipes";
@@ -21,6 +20,7 @@ import { TemplatePipesModule } from "./pipes";
 import { PLH_COMPONENTS } from "packages/components/plh";
 import { DEMO_COMPONENTS } from "packages/components/demo";
 import { LottieComponent } from "ngx-lottie";
+import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 
 @NgModule({
   imports: [
@@ -28,30 +28,33 @@ import { LottieComponent } from "ngx-lottie";
     FormsModule,
     IonicModule,
     LottieComponent,
+    MatTabsModule,
     NgxExtendedPdfViewerModule,
-    NouisliderModule,
     ReactiveFormsModule,
     RouterModule,
     SharedPipesModule,
-    SwiperModule,
     TemplatePipesModule,
+    ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   exports: [
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,
     TemplateContainerComponent,
+    ReactiveTemplateComponent,
+    TooltipDirective,
   ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
-    TooltipDirective,
     ...TEMPLATE_COMPONENTS,
     ...PLH_COMPONENTS,
     ...DEMO_COMPONENTS,
     TemplateContainerComponent,
     appendStyleSvgDirective,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container

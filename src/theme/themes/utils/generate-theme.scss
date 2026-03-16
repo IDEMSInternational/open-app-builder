@@ -2,6 +2,64 @@
 @use "sass:map";
 @use "sass:math";
 @use "./contrast-colour.scss";
+@use "./theme-selectors.scss";
+
+// Generate a new theme based on the properties provided
+// Supports additional CSS content via @content, e.g. explicit rule overrides, for complex themes
+@mixin theme(
+  $theme-name,
+  $color-primary,
+  $color-secondary,
+  $page-background: null,
+  $color-primary-variant: null,
+  $color-secondary-variant: null,
+  $color-red: null,
+  $color-green: null,
+  $color-yellow: null,
+  $variable-overrides: ()
+) {
+  @include theme-selectors.theme-selectors($theme-name) {
+    @content; // Allow additional rules to be passed through (e.g. theme rule overrides)
+    @include generate-theme-variables(
+      $color-primary: $color-primary,
+      $color-secondary: $color-secondary,
+      $page-background: $page-background,
+      $color-primary-variant: $color-primary-variant,
+      $color-secondary-variant: $color-secondary-variant,
+      $color-red: $color-red,
+      $color-green: $color-green,
+      $color-yellow: $color-yellow,
+      $variable-overrides: $variable-overrides
+    );
+  }
+}
+
+// Generates color palettes and applies variable overrides
+@mixin generate-theme-variables(
+  $color-primary,
+  $color-secondary,
+  $page-background: null,
+  $color-primary-variant: null,
+  $color-secondary-variant: null,
+  $color-red: null,
+  $color-green: null,
+  $color-yellow: null,
+  $variable-overrides: ()
+) {
+  @include generate-color-palettes(
+    $color-primary,
+    $color-secondary,
+    $page-background,
+    $r: $color-red,
+    $g: $color-green,
+    $y: $color-yellow,
+    $pv: $color-primary-variant,
+    $sv: $color-secondary-variant
+  );
+  @each $name, $value in $variable-overrides {
+    --#{$name}: #{$value};
+  }
+}
 
 @function wrap-hue($angle) {
   @return $angle % 360;
@@ -9,14 +67,14 @@
 
 // Returns a map of colours based partly on Material Design's colour system
 // https://material.io/design/color/the-color-system.html
-@function getColorPalette(
+@function get-color-palette(
   $primary,
   $secondary,
   $page-background: null,
   $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
   $green: null,
   $red: null,
-  $yellow: hsl(45, 100%, 50%),
+  $yellow: null,
   $gray: hsl(0, 0%, 10%),
   $primary-variant: null,
   $secondary-variant: null
@@ -38,6 +96,17 @@
     );
   }
 
+  // Handle default values for optional hardcoded colours
+  @if ($green == null) {
+    $green: hsl(120, 100%, 35%);
+  }
+  @if ($red == null) {
+    $red: hsl(0, 100%, 50%);
+  }
+  @if ($yellow == null) {
+    $yellow: hsl(45, 100%, 50%);
+  }
+
   $result: (
     "color-primary": $primary,
     "color-primary-variant": $primary-variant,
@@ -47,8 +116,8 @@
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "background-color": color.change($primary, $lightness: 98%),
     "color-yellow": $yellow,
-    "color-red": hsl(0, 100%, 50%),
-    "color-green": hsl(120, 100%, 35%),
+    "color-red": $red,
+    "color-green": $green,
     "color-gray-light": color.change($gray, $lightness: 90%),
     "default-box-shadow": 0 2px 8px rgba(0, 0, 0, 0.2),
     // Used for activated/focused/hover states of ion-button – may only be visible in web preview
@@ -59,17 +128,18 @@
 
   // Generate variants of base colours based on given weights and add to map
   // E.g. '"color-primary-400": color.change($primary, $lightness: 60%)'
-  $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
-  $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
-  $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
-  $result: map.merge($result, generateColourVariants($gray, "gray", $weights));
+  $result: map.merge($result, generate-colour-variants($primary, "primary", $weights));
+  $result: map.merge($result, generate-colour-variants($secondary, "secondary", $weights));
+  $result: map.merge($result, generate-colour-variants($yellow, "yellow", $weights));
+  $result: map.merge($result, generate-colour-variants($gray, "gray", $weights));
+  $result: map.merge($result, generate-colour-variants($green, "green", $weights));
   $result: map.merge(
     $result,
-    generateColourVariants($primary-variant, "primary-variant", $weights)
+    generate-colour-variants($primary-variant, "primary-variant", $weights)
   );
   $result: map.merge(
     $result,
-    generateColourVariants($secondary-variant, "secondary-variant", $weights)
+    generate-colour-variants($secondary-variant, "secondary-variant", $weights)
   );
 
   // Handle default values for optional params
@@ -85,7 +155,7 @@
   @return $result;
 }
 
-@function generateColourVariants($base, $baseName, $weights) {
+@function generate-colour-variants($base, $baseName, $weights) {
   $variants-map: ();
   $lightness-map: (
     50: 96%,
@@ -109,7 +179,7 @@
   @return $variants-map;
 }
 
-@function generateColourVariants($base, $baseName, $weights) {
+@function generate-colour-variants($base, $baseName, $weights) {
   $variants-map: ();
 
   // Extract base HSL values
@@ -153,7 +223,7 @@
   @return $variants-map;
 }
 
-@function getGradientPalette($colorPalette) {
+@function get-gradient-palette($colorPalette) {
   $baseColors: primary, secondary;
   $gradientDirections: (
     vertical: 175deg,
@@ -172,25 +242,21 @@
       $gradientPalette: map.merge(
         $gradientPalette,
         (
-          "gradient-#{$baseColor}-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-#{$dirName}": linear-gradient(
               $dirAngle,
               color.adjust($main, $lightness: 12%) 30%,
               color.adjust($main, $lightness: -12%)
             ),
           // Light gradient: 200 → 500
-          "gradient-#{$baseColor}-light-#{$dirName}":
-            linear-gradient($dirAngle, $light 30%, $mid),
+          "gradient-#{$baseColor}-light-#{$dirName}": linear-gradient($dirAngle, $light 30%, $mid),
           // Mid gradient: 400 → 700
-          "gradient-#{$baseColor}-mid-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-mid-#{$dirName}": linear-gradient(
               $dirAngle,
               map.get($colorPalette, "color-#{$baseColor}-400") 30%,
               map.get($colorPalette, "color-#{$baseColor}-700")
             ),
           // Dark gradient: 700 → 900
-          "gradient-#{$baseColor}-dark-#{$dirName}":
-            linear-gradient(
+          "gradient-#{$baseColor}-dark-#{$dirName}": linear-gradient(
               $dirAngle,
               map.get($colorPalette, "color-#{$baseColor}-700") 30%,
               map.get($colorPalette, "color-#{$baseColor}-900")
@@ -203,21 +269,31 @@
   @return $gradientPalette;
 }
 
-@mixin generateTheme($p, $s, $bg: null, $r: null, $g: null, $pv: null, $sv: null) {
-  $colorPalette: getColorPalette(
+@mixin generate-color-palettes(
+  $p,
+  $s,
+  $bg: null,
+  $r: null,
+  $g: null,
+  $y: null,
+  $pv: null,
+  $sv: null
+) {
+  $colorPalette: get-color-palette(
     $p,
     $s,
     $bg,
     $red: $r,
     $green: $g,
+    $yellow: $y,
     $primary-variant: $pv,
     $secondary-variant: $sv
   );
-  $gradientPalette: getGradientPalette($colorPalette);
-  @include colorVariables($colorPalette, $gradientPalette);
+  $gradientPalette: get-gradient-palette($colorPalette);
+  @include color-variables($colorPalette, $gradientPalette);
 }
 
-@mixin colorVariables($sourceColorPalette, $sourceGradientPalette) {
+@mixin color-variables($sourceColorPalette, $sourceGradientPalette) {
   $colorPalette: $sourceColorPalette;
   $gradientPalette: $sourceGradientPalette;
 

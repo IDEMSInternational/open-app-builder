@@ -215,4 +215,42 @@ describe("DynamicDataService", () => {
   it("ignores cached data where initial data no longer exists", async () => {
     // TODO - add methods that ignore rows from cached data if row id deleted from source data_list
   });
+
+  it("update can create new row when upsert enabled", async () => {
+    // Test inserting a new row
+    await service.update<ITestRow>(
+      "data_list",
+      "test_flow",
+      "new_id",
+      {
+        id: "new_id",
+        number: 42,
+        string: "new row",
+        boolean: true,
+      },
+      { upsert: true }
+    );
+
+    const obs = service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    const newRow = data.find((row) => row.id === "new_id");
+
+    expect(newRow).toBeDefined();
+    expect(newRow.number).toEqual(42);
+    expect(newRow.string).toEqual("new row");
+    expect(newRow.boolean).toEqual(true);
+  });
+
+  it("update ignores empty data when upsert enabled", async () => {
+    // Test that empty data doesn't cause errors
+    await expectAsync(
+      service.update("data_list", "test_flow", "id1", {}, { upsert: true })
+    ).toBeResolved();
+
+    // Should not change existing data
+    const obs = service.query$<any>("data_list", "test_flow");
+    const data = await firstValueFrom(obs);
+    const row = data.find((r) => r.id === "id1");
+    expect(row.number).toEqual(1); // Original value preserved
+  });
 });

@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
@@ -9,7 +10,6 @@ import { MockAppDataService } from "src/app/shared/services/data/app-data.servic
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { DataItemsService } from "../data-items/data-items.service";
-import { SwiperModule } from "swiper/angular";
 import { FlowTypes } from "packages/data-models";
 
 const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "carousel" };
@@ -21,15 +21,15 @@ describe("CarouselComponent", () => {
   beforeEach(waitForAsync(async () => {
     TestBed.configureTestingModule({
       declarations: [TmplCarouselComponent],
-      imports: [IonicModule.forRoot(), SwiperModule],
+      imports: [IonicModule.forRoot()],
       providers: [
         { provide: AppConfigService, useValue: new MockAppConfigService() },
         { provide: AppDataService, useValue: new MockAppDataService() },
         { provide: DynamicDataService, useValue: {} },
         { provide: TaskService, useValue: {} },
-        { provide: DynamicDataService, useValue: {} },
         { provide: DataItemsService, useValue: {} },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplCarouselComponent);

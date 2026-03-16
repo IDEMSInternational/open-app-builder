@@ -2,14 +2,15 @@
   <div class="title-slider">
     {{ title }}
   </div>
-  <ion-icon
-    *ngIf="help"
-    name="help-circle-outline"
-    class="help"
-    [pTooltip]="help"
-    tooltipPosition="left"
-    tooltipEvent="click"
-  ></ion-icon>
+  @if (help) {
+    <ion-icon
+      name="help-circle-outline"
+      class="help"
+      [pTooltip]="help"
+      tooltipPosition="left"
+      tooltipEvent="click"
+    ></ion-icon>
+  }
   <div class="slider-container">
     <nouislider
       #slider

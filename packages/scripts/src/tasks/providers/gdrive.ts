@@ -33,15 +33,17 @@ const authorize = async () => {
  * }
  */
 const download = async (options: {
+  type: "sheets" | "assets";
   folderId: string;
+  folderName?: string;
   filterFn?: (entry: IGdriveEntry) => boolean;
 }) => {
-  const { folderId, filterFn } = options;
-  const outputPath = getOutputFolder(folderId);
+  const { type, folderId, folderName, filterFn } = options;
+  const outputPath = getOutputFolder(type, folderId, folderName);
   const dlOptions: IDownloadOptions = {
     ...getCommonOptions(),
     folderId,
-    logName: `${folderId}.log`,
+    logPrefix: folderName,
     outputPath,
     filterFn,
   };
@@ -50,9 +52,9 @@ const download = async (options: {
   return outputPath;
 };
 
-const getOutputFolder = (folderId: string) => {
+const getOutputFolder = (type: "sheets" | "assets", folderId: string, folderName?: string) => {
   const { _workspace_path } = WorkflowRunner.config;
-  return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
+  return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", type, folderName || folderId);
 };
 
 const getAuthTokenPath = () => {
@@ -73,12 +75,14 @@ const getAuthTokenPath = () => {
  * @param optons.customCommands Additional commands to make available to CLI
  */
 const liveReload = async (options: {
+  type: "sheets" | "assets";
   folderId: string;
+  folderName?: string;
   onUpdate?: (filepath: string) => void;
   customCommands?: IWatchCommand[];
 }) => {
-  const { folderId } = options;
-  const outputPath = getOutputFolder(folderId);
+  const { folderId, folderName } = options;
+  const outputPath = getOutputFolder("sheets", folderId, folderName);
   const logName = `${folderId}.log`;
 
   const gdriveWatcher = new GDriveWatcher({

@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from "@angular/core";
+import { Component, computed, input, Input, signal } from "@angular/core";
 import { IAnswerListItem } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 
@@ -6,22 +6,28 @@ import { ModalController } from "@ionic/angular";
   selector: "combo-box-search",
   templateUrl: "./combo-box-search.component.html",
   styleUrls: ["./combo-box-search.component.scss"],
+  standalone: false,
 })
 export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerListItem[]>();
   public title = input<string>();
   public selectedValue = input<string>();
+  @Input() optionsKey: string = "name";
+  @Input() optionsValue: string = "text";
 
   public searchTerm = signal("");
 
-  public filteredOptions = computed(() =>
-    this.answerOptions().filter((options) =>
-      options.text.toLowerCase().includes(this.searchTerm().toLowerCase())
-    )
-  );
+  public filteredOptions = computed(() => {
+    const optionsValue = this.optionsValue;
+    return this.answerOptions().filter((options) =>
+      String(options[optionsValue] || "")
+        .toLowerCase()
+        .includes(this.searchTerm().toLowerCase())
+    );
+  });
 
   public isSelected(item: IAnswerListItem) {
-    return this.selectedValue() === item.name;
+    return this.selectedValue() === item[this.optionsKey];
   }
 
   constructor(private modalController: ModalController) {}
@@ -35,7 +41,10 @@ export class ComboBoxSearchComponent {
   }
 
   public cancel() {
-    let selectedItem = this.answerOptions().find((item) => item.name === this.selectedValue());
+    const optionsKey = this.optionsKey;
+    let selectedItem = this.answerOptions().find(
+      (item) => item[optionsKey] === this.selectedValue()
+    );
     this.closeModal({ answer: selectedItem });
   }
 

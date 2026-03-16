@@ -110,6 +110,7 @@ interface ITaskCardParams {
   selector: "plh-task-card",
   templateUrl: "./task-card.component.html",
   styleUrls: ["./task-card.component.scss"],
+  standalone: false,
 })
 export class TmplTaskCardComponent extends TemplateBaseComponent implements OnInit {
   /** Authoring parameters */

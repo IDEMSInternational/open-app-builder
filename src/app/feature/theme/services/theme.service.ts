@@ -4,12 +4,20 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "data-models";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService extends SyncServiceBase {
+  /**
+   * @deprecated 2025-09
+   * Prefer to use `currentTheme` signal instead
+   */
   currentTheme$ = new BehaviorSubject<string>(null);
+
+  public currentTheme = toSignal(this.currentTheme$);
+
   availableThemes: IAppConfig["APP_THEMES"]["available"];
   defaultThemeName: string;
 

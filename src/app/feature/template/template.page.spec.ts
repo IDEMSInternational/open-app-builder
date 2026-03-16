@@ -8,9 +8,15 @@ import { MockAppDataService } from "src/app/shared/services/data/app-data.servic
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 import { Component, input } from "@angular/core";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS } from "packages/data-models";
 
 // HACK - mock child `<plh-template-container>` component to bypass imports
-@Component({ selector: "plh-template-container", template: "<div></div>" })
+@Component({
+  selector: "plh-template-container",
+  template: "<div></div>",
+  standalone: false,
+})
 class MockTemplateContainerComponent {
   templatename = input<string>();
 }
@@ -35,6 +41,10 @@ describe("TemplatePage", () => {
         {
           provide: AppConfigService,
           useValue: new MockAppConfigService(),
+        },
+        {
+          provide: DeploymentService,
+          useValue: new DeploymentService(DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS),
         },
       ],
     }).compileComponents();

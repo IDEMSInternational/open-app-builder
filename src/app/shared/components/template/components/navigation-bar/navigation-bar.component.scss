@@ -3,9 +3,13 @@
 $navigation-bar-height: var(--navigation-bar-height);
 
 .navigation-bar-wrapper {
-  @include mixins.flex-space-between;
-  height: $navigation-bar-height;
-  padding: var(--tiny-padding);
+  .nav-items {
+    height: $navigation-bar-height;
+    padding: var(--tiny-padding);
+    @include mixins.flex-space-between;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
 
   a.button-wrapper {
     @include mixins.flex-centered;

@@ -1,14 +1,6 @@
-import { Component, computed } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
-import { getParamFromTemplateRow } from "src/app/shared/utils";
-import { FlowTypes } from "packages/data-models";
-
-interface INavigationBarParams {
-  /** TEMPLATE PARAMETER: "button_list" */
-  buttonList: INavigationBarButton[];
-  /** TEMPLATE PARAMETER: "variant". Default: "text_primary_contrast" */
-  variant: "text_primary_contrast" | "text_primary";
-}
+import { Component, signal, effect, inject, computed } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { TemplateMetadataService } from "../../services/template-metadata.service";
 
 interface INavigationBarButton {
   image: string | null;
@@ -17,20 +9,39 @@ interface INavigationBarButton {
   text?: string | null;
 }
 
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  button_list: coerce.objectArray<INavigationBarButton>([
+    { image: null, name: null, target_template: null, text: null },
+  ]),
+  variant: coerce.allowedValues(["text_primary_contrast", "text_primary"], "text_primary_contrast"),
+}));
+
 @Component({
   selector: "plh-navigation-bar",
   templateUrl: "./navigation-bar.component.html",
   styleUrls: ["./navigation-bar.component.scss"],
+  standalone: false,
 })
-export class TmplNavigationBarComponent extends TemplateBaseComponent {
-  params = computed(() => this.getParams(this.parameterList()));
+export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+  /** Index of link to highlight within navigation bar */
+  public activeLinkIndex = signal(0);
 
-  getParams(authorParams: FlowTypes.TemplateRow["parameter_list"]): INavigationBarParams {
-    return {
-      buttonList: getParamFromTemplateRow(this._row, "button_list", []),
-      variant: getParamFromTemplateRow(this._row, "variant", "text_primary_contrast")
-        .split(",")
-        .join(" "),
-    };
+  private templateMetaService = inject(TemplateMetadataService);
+
+  private targetTemplates = computed(() => this.params().buttonList.map((v) => v.targetTemplate));
+
+  constructor() {
+    super();
+
+    effect(() => {
+      // When user navigates to a section matching the nav button target
+      // set as the current highlighted section
+      const templateName = this.templateMetaService.templateName();
+      const targetTemplates = this.targetTemplates();
+      const updatedSection = targetTemplates.findIndex((name) => name === templateName);
+      if (updatedSection > -1) {
+        this.activeLinkIndex.set(updatedSection);
+      }
+    });
   }
 }

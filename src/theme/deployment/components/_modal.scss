@@ -1,7 +1,7 @@
 ion-modal.combo-box-modal {
   --height: auto;
   --max-height: 90vh;
-  --border-color: var(--border-color-default);
+  --border-color: var(--modal-border-color, var(--ion-color-gray-100));
   --border-radius: var(--ion-border-radius-secondary);
   --border-style: solid;
   --border-width: var(--border-width-default);
