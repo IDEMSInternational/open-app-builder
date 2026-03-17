@@ -65,19 +65,17 @@ export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(Author
   }
 
   /** Called on blur: commits value (and when updateOnInput also updates localValue and notifies debounced stream). */
-  public handleChange(value: any) {
+  public handleChange(value: string | null | undefined) {
     if (this.params().updateOnInput) {
       const str = value == null ? "" : String(value);
       this.localValue.set(str);
       this.inputValue$.next(str);
-      this.setValue(value); // commit immediately on blur; debounced setValue would no-op if same
-    } else {
-      this.setValue(value);
     }
+    this.setValue(value);
   }
 
   /** Called on each ionInput when updateOnInput: update display and schedule debounced setValue. */
-  public handleInput(value: any) {
+  public handleInput(value: string | null | undefined) {
     const str = value == null ? "" : String(value);
     this.localValue.set(str);
     this.inputValue$.next(str);
