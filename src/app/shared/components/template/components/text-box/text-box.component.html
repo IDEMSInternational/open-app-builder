@@ -2,7 +2,7 @@
   <ion-input
     #input
     class="text-box-input"
-    [inputmode]="params().isNumberInput ? 'tel' : 'text'"
+    [inputmode]="params().numberInput ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
     [value]="params().prioritisePlaceholder ? '' : value()"
     [placeholder]="params().placeholder"

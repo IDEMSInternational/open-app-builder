@@ -1,21 +1,22 @@
-import { Component, computed, OnInit, Signal } from "@angular/core";
-import {
-  getBooleanParamFromTemplateRow,
-  getNumberParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "../../../../utils";
-import { TemplateBaseComponent } from "../base";
-import { FlowTypes } from "packages/data-models";
+import { Component } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
-interface ITextBoxParams {
-  disabled: boolean;
-  isNumberInput: boolean;
-  maxLength: number;
-  placeholder: string;
-  prioritisePlaceholder: boolean;
-  style: string;
-  textAlign: string;
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** When true, the text box is disabled. */
+  disabled: coerce.boolean(false),
+  /** When true, use numeric/tel input mode. */
+  number_input: coerce.boolean(false),
+  /** Max input length. Use -1 for no max length. */
+  max_length: coerce.number(-1),
+  /** Placeholder text to show when empty. */
+  placeholder: coerce.string(""),
+  /** When true, show placeholder even when a value exists. */
+  prioritise_placeholder: coerce.boolean(false),
+  /** Custom style class to apply. */
+  style: coerce.string(""),
+  /** CSS text-align value applied to the input. */
+  text_align: coerce.string(""),
+}));
 
 @Component({
   selector: "plh-text-box",
@@ -23,26 +24,8 @@ interface ITextBoxParams {
   styleUrls: ["./text-box.component.scss"],
   standalone: false,
 })
-export class TmplTextBoxComponent extends TemplateBaseComponent {
-  public params: Signal<ITextBoxParams> = computed(() => this.getParams(this.parameterList()));
-
+export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public async handleChange(value: any) {
     await this.setValue(value);
-  }
-
-  getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): ITextBoxParams {
-    return {
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-      isNumberInput: getBooleanParamFromTemplateRow(this._row, "number_input", false),
-      maxLength: getNumberParamFromTemplateRow(this._row, "max_length", -1),
-      placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
-      prioritisePlaceholder: getBooleanParamFromTemplateRow(
-        this._row,
-        "prioritise_placeholder",
-        false
-      ),
-      style: getStringParamFromTemplateRow(this._row, "style", null),
-      textAlign: getStringParamFromTemplateRow(this._row, "text_align", ""),
-    };
   }
 }
