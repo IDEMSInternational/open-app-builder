@@ -46,7 +46,6 @@
       // combo-box-placeholder-text: rgba(13, 64, 96, 0.5),
       // slider-ui-color: #096e90,
       accordion-background-highlight: var(--ion-color-primary-300),
-      accordion-background-color: var(--ion-color-primary-600),
       accordion-border-color: var(--ion-color-primary),
       tour-next-button-background: var(--ion-color-secondary),
       radio-button-font-color: var(--ion-color-primary-900),
@@ -58,7 +57,8 @@
       combo-box-font-size-standard: 18px,
       task-progress-bar-color: var(--ion-color-green),
       // checkbox-background-color: white,
-       // progress-path-line-background, var(--ion-color-gray-100),
+      // progress-path-line-background, var(--ion-color-gray-100),
+      paragraph-spacing: 4px,
     )
   ) {
     @include overrides.overrides;
