@@ -57,6 +57,39 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      "sync-libraries": {
+        label: "Sync libraries from deployment config",
+        steps: [
+          {
+            name: "sync-libraries",
+            function: async ({ tasks }) => {
+              await tasks.beta.syncLibraries();
+            },
+          },
+        ],
+      },
+      "sync-sheets": {
+        label: "Sync sheets from Google Drive overrides",
+        steps: [
+          {
+            name: "sync-sheets",
+            function: async ({ tasks }) => {
+              await tasks.beta.syncSheets();
+            },
+          },
+        ],
+      },
+      pull: {
+        label: "Pull external app_data into deployment",
+        steps: [
+          {
+            name: "pull",
+            function: async ({ tasks }) => {
+              await tasks.beta.pull();
+            },
+          },
+        ],
+      },
     },
   },
 };

@@ -13,6 +13,7 @@ import template from "./providers/template";
 import translate from "./providers/translate";
 import userInput from "./providers/userInput";
 import workflow from "./providers/workflow";
+import sheetEditor from "./providers/sheetEditor";
 
 /**
  * Tasks are thin wrappers around functions and commands, to support inclusion as part of
@@ -31,6 +32,7 @@ const ALL_TASKS = {
   gdrive,
   git,
   ios,
+  sheetEditor,
   subtitles,
   template,
   translate,

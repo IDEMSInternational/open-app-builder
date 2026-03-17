@@ -48,3 +48,61 @@ yarn workflow beta set my_deployment
 ```
 
 If the deployment has an `.external_source` file (created during import), the active deployment config will be updated with the external source path. A warning will be shown if no `.external_source` file is found.
+
+### Sync Libraries
+Sync libraries defined in the deployment configuration. This downloads library repositories (at specified tags) into the deployment's `libraries` directory, including any nested library dependencies.
+
+```sh
+yarn workflow beta sync-libraries
+```
+
+Libraries are configured in the deployment's `config.ts` via a `libraries` array:
+
+```ts
+config.libraries = [
+  { repo: "https://github.com/org/library-repo", tag: "v1.0.0" },
+];
+```
+
+The command will recursively resolve and download any dependencies defined in each library's own `config.ts`.
+
+### Sync Sheets
+Sync Google Sheets overrides into the external deployment's `app_data`. This reads sheet override configurations from the active deployment and updates local JSON files with data from Google Sheets.
+
+```sh
+yarn workflow beta sync-sheets
+```
+
+This requires:
+
+- An active deployment with an `external_source` configured (via `beta set`)
+- Google Drive sheet overrides configured in the deployment config under `google_drive.sheets_overrides`
+- Google Drive authorization (will be triggered automatically)
+
+Sheet overrides can reference individual sheets by `sheetId` or entire folders by `folderId`:
+
+```ts
+config.google_drive = {
+  sheets_overrides: [
+    { sheetId: "your-sheet-id", path: "target/path" },
+    { folderId: "your-folder-id" },
+  ],
+};
+```
+
+!!! note
+    The Google Sheets API has rate limits. When processing folders with multiple sheets, requests are automatically throttled to stay within limits.
+
+### Pull
+Pull external `app_data` into the active deployment. This reads the external source path and app data output configuration, then processes the raw JSON data from the external repository into the deployment's `app_data/sheets` directory.
+
+```sh
+yarn workflow beta pull
+```
+
+This requires:
+
+- An active deployment with an `external_source` configured (via `beta set`)
+- The external source repository must contain `app_data` with the output path specified in the deployment config
+
+The command reads the deployment's `app_data.output_path` to locate source data, copies it into the deployment's sheets directory, and runs flow parser generators to produce any template files.

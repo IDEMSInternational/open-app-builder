@@ -4,7 +4,11 @@ import {
   authorizeGDrive,
   GDriveWatcher,
   IGdriveEntry,
+  createGoogleSheet,
+  readGoogleSheet,
+  authorizeGoogleSheets,
 } from "@idemsInternational/gdrive-tools";
+import { google } from "googleapis";
 import chokidar from "chokidar";
 import { existsSync, removeSync } from "fs-extra";
 import path from "path";
@@ -18,12 +22,7 @@ const getCommonOptions = () => {
 };
 
 const authorize = async () => {
-  // remove any pre-existing auth token
-  const authTokenPath = getAuthTokenPath();
-  if (existsSync(authTokenPath)) {
-    removeSync(authTokenPath);
-  }
-  return authorizeGDrive(getCommonOptions());
+  return authorizeGoogleSheets(getCommonOptions());
 };
 
 /**
@@ -135,4 +134,62 @@ interface IWatchCommand {
   command: () => Promise<void>;
 }
 
-export default { authorize, download, liveReload, getOutputFolder };
+const createSheet = async (options: any) => {
+  return createGoogleSheet({
+    ...getCommonOptions(),
+    ...options,
+  });
+};
+
+const readSheet = async (options: any) => {
+  return readGoogleSheet({
+    ...getCommonOptions(),
+    ...options,
+  });
+};
+
+const getSheetsFromFolder = async (folderId: string) => {
+  const { drive } = await authorize();
+
+  const getFiles = async (currentFolderId: string): Promise<any[]> => {
+    let files: any[] = [];
+    let pageToken: string | undefined = undefined;
+
+    do {
+      const res = await drive.files.list({
+        q: `'${currentFolderId}' in parents and (mimeType = 'application/vnd.google-apps.spreadsheet' or mimeType = 'application/vnd.google-apps.folder') and trashed = false`,
+        fields: "nextPageToken, files(id, name, mimeType)",
+        pageToken: pageToken,
+      });
+
+      const resultFiles = res.data.files || [];
+
+      for (const file of resultFiles) {
+        if (file.mimeType === "application/vnd.google-apps.folder") {
+          if (file.id) {
+            const subFiles = await getFiles(file.id);
+            files = files.concat(subFiles);
+          }
+        } else {
+          files.push(file);
+        }
+      }
+
+      pageToken = res.data.nextPageToken || undefined;
+    } while (pageToken);
+
+    return files;
+  };
+
+  return getFiles(folderId);
+};
+
+export default {
+  authorize,
+  download,
+  liveReload,
+  getOutputFolder,
+  createSheet,
+  readSheet,
+  getSheetsFromFolder,
+};
