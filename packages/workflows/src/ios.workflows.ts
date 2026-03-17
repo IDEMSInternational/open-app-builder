@@ -9,12 +9,13 @@ const childWorkflows: IDeploymentWorkflows = {
         name: "configure",
         function: async ({ config, tasks }) => {
           const { ios, git, auth } = config;
-          const { app_id, app_name, zoom_enabled } = ios;
+          const { app_id, app_name, app_display_name, zoom_enabled } = ios;
           const { content_tag_latest } = git;
           const { provider } = auth;
           return tasks.ios.configure({
             appId: app_id,
             appName: app_name,
+            appDisplayName: app_display_name,
             authProvider: provider,
             versionName: content_tag_latest,
             zoomEnabled: zoom_enabled || false,
@@ -25,7 +26,7 @@ const childWorkflows: IDeploymentWorkflows = {
   },
   /**
    * Generate iOS app icon and launch screen from logo + background colour.
-   * Uses ios config if ios.logo_asset_path is set; otherwise uses android config (logo and colour from same source).
+   * Fallback order: ios.logo_asset_path → android.logo_asset_path → android legacy (icon_asset_path).
    */
   generate_assets: {
     label: "Generate launcher assets (icon + launch screen) from logo",
@@ -55,8 +56,21 @@ const childWorkflows: IDeploymentWorkflows = {
             return;
           }
 
+          const hasLegacyConfig = android.icon_asset_path;
+          if (hasLegacyConfig) {
+            logWarning({
+              msg1: "[ios generate_assets] Using android legacy config (no logo_asset_path set)",
+              msg2: "Set ios.logo_asset_path or android.logo_asset_path for logo-based assets.",
+            });
+            await tasks.ios.generateAssets({
+              logoPath: android.icon_asset_path,
+              backgroundColor: android.logo_background_color ?? "",
+            });
+            return;
+          }
+
           console.log(
-            "[ios generate_assets] No logo_asset_path found. Set ios.logo_asset_path or android.logo_asset_path."
+            "[ios generate_assets] No asset config found. Set ios.logo_asset_path or android.logo_asset_path in deployment config."
           );
         },
       },
