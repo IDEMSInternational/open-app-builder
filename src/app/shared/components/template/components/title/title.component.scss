@@ -3,9 +3,15 @@
 .title-wrapper {
   display: flex;
   align-items: center;
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
-    line-height: var(--line-height-text-large);
+  }
+  h1 {
     font-weight: var(--font-weight-bold);
     color: var(--title-text-color, var(--ion-color-primary));
     @media (max-width: 375px) {
@@ -16,7 +22,6 @@
     }
   }
   .alternative {
-    line-height: var(--line-height-text-largest);
     color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: var(--font-size-title-small-device);
