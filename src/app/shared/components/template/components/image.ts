@@ -38,6 +38,7 @@ interface IComponentParams {
       }
     `,
   ],
+  standalone: false,
 })
 export class TmplImageComponent extends TemplateBaseComponent {
   public params = computed(() => this.mapParams(this.parameterList()));

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin margin($dir: right) {
   margin-#{$dir}: 10px;
 }
@@ -118,7 +120,7 @@
       @include select-no-buttons;
 
       label {
-        width: 100% / $total;
+        width: math.div(100%, $total);
 
         img.active {
           // Use natural image size, but reduce to fit cell if necessary
@@ -138,7 +140,7 @@
     }
 
     label {
-      width: calc(#{100% / $total} - 20px);
+      width: calc(math.div(100%, $total) - 20px);
 
       img.active {
         // Use natural image size, but reduce to fit cell if necessary

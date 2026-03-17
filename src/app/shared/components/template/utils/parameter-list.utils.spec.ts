@@ -3,6 +3,7 @@ import { defineAuthorParameterSchema, parseTemplateParameterList } from "./param
 const MOCK_SCHEMA = () =>
   defineAuthorParameterSchema((coerce) => ({
     allowed_values_param: coerce.allowedValues(["v1", "v2"], "v1"),
+    allowed_values_list_param: coerce.allowedValuesList(["v1", "v2", "v3"], ["v1"]),
     any_param: coerce.any({}),
     boolean_param: coerce.boolean(),
     comma_list_param: coerce.commaSeparatedList(),
@@ -68,6 +69,50 @@ describe("parameter_list utils - coerce", () => {
     expect(testSchema.parse({ comma_list_param: ["a", "b"] }).comma_list_param).toEqual(["a", "b"]);
     // fallback
     expect(testSchema.parse({}).comma_list_param).toEqual([]);
+  });
+
+  it("coerce allowedValuesList", () => {
+    const testSchema = MOCK_SCHEMA().pick({ allowed_values_list_param: true });
+    // from comma-separated string
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1, v2 , v3",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // from space-separated string
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1  v2   v3",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // from array
+    expect(
+      testSchema.parse({ allowed_values_list_param: ["v1", "v2", "v3"] }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // with extra whitespace
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "  v1  ,  v2  ,  v3  ",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2", "v3"]);
+    // filters out invalid values
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "v1, invalid, v2, also_invalid",
+      }).allowed_values_list_param
+    ).toEqual(["v1", "v2"]);
+    // empty string falls back
+    expect(testSchema.parse({ allowed_values_list_param: "" }).allowed_values_list_param).toEqual([
+      "v1",
+    ]);
+    // all invalid values falls back
+    expect(
+      testSchema.parse({
+        allowed_values_list_param: "invalid1, invalid2",
+      }).allowed_values_list_param
+    ).toEqual(["v1"]);
+    // fallback when undefined
+    expect(testSchema.parse({}).allowed_values_list_param).toEqual(["v1"]);
   });
 
   it("coerce custom", () => {
@@ -177,6 +222,7 @@ describe("parameter_list utils - parse", () => {
     const result = parseTemplateParameterList(undefined, schema);
     expect(Object.keys(result)).toEqual([
       "allowedValuesParam",
+      "allowedValuesListParam",
       "anyParam",
       "booleanParam",
       "commaListParam",
@@ -191,6 +237,7 @@ describe("parameter_list utils - parse", () => {
     const result = parseTemplateParameterList(undefined, schema);
     expect(result).toEqual({
       allowedValuesParam: "v1",
+      allowedValuesListParam: ["v1"],
       anyParam: {},
       booleanParam: false,
       commaListParam: [],
@@ -210,6 +257,7 @@ describe("parameter_list utils - parse", () => {
       {
         allowedKeys: [
           "allowed_values_param",
+          "allowed_values_list_param",
           "any_param",
           "boolean_param",
           "comma_list_param",

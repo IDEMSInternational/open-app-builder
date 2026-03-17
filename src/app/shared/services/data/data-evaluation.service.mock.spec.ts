@@ -15,4 +15,9 @@ export class MockDataEvaluationService extends DataEvaluationService {
     };
     return this.data;
   }
+
+  public override async ready() {
+    await this.refreshDBCache();
+    return true;
+  }
 }

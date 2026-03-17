@@ -28,6 +28,7 @@ enum PROTECTED_FIELDS {
    * https://capacitorjs.com/docs/plugins/web#aliases
    **/
   NOTIFICATION_PERMISSION_STATUS = "notification_permission_status",
+  MIGRATION_HISTORY = "MIGRATION_HISTORY",
   OPERATING_SYSTEM = "operating_system",
   PLATFORM = "platform",
   SERVER_SYNC_LATEST = "server_sync_latest",

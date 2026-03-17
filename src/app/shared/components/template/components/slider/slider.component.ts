@@ -5,13 +5,19 @@ import {
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
-import { NouisliderComponent } from "ng2-nouislider";
+
 import { Options, PipsMode } from "nouislider";
+import { NouisliderComponent } from "./nouislider.component";
+import { IonicModule } from "@ionic/angular";
+import { FormsModule } from "@angular/forms";
+import { TooltipDirective } from "../../../common/directives/tooltip.directive";
 
 @Component({
   selector: "plh-slider-new",
   templateUrl: "./slider.component.html",
   styleUrls: ["./slider.component.scss"],
+  standalone: true,
+  imports: [NouisliderComponent, IonicModule, FormsModule, TooltipDirective],
 })
 export class TmplSliderComponent extends TemplateBaseComponent implements OnInit {
   @ViewChild("slider") slider: NouisliderComponent;

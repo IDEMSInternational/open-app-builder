@@ -47,12 +47,14 @@ import { ClipboardService } from "./shared/services/clipboard/clipboard.service"
 import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
 import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
+import { AuthService } from "./shared/services/auth/auth.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AppComponent {
   footerConfig = computed(() => this.appConfigService.appConfig().APP_FOOTER_DEFAULTS);
@@ -68,6 +70,23 @@ export class AppComponent {
       "--page-padding-bottom": bottom,
       "--page-padding-end": right,
     };
+  });
+
+  /**
+   * Footer toolbar style: use theme var --footer-background (defaults to var(--ion-color-primary);
+   * Use legacy config background property when set.
+   * */
+  public footerToolbarStyle = computed(() => {
+    const legacyBackgroundFromConfig = this.footerConfig().background;
+    let backgroundValue: string;
+    if (!legacyBackgroundFromConfig) {
+      backgroundValue = "var(--footer-background, var(--ion-color-primary))";
+    } else if (legacyBackgroundFromConfig === "none") {
+      backgroundValue = "transparent";
+    } else {
+      backgroundValue = `var(--ion-color-${legacyBackgroundFromConfig})`;
+    }
+    return { "--background": backgroundValue };
   });
 
   /** Track when app ready to render sidebar and route templates */
@@ -129,7 +148,8 @@ export class AppComponent {
     private clipboardService: ClipboardService,
     private scrollService: ScrollService,
     private toastService: ToastService,
-    private capacitorEventService: CapacitorEventService
+    private capacitorEventService: CapacitorEventService,
+    private authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -218,6 +238,10 @@ export class AppComponent {
         this.dbSyncService,
         this.dynamicDataService,
         this.userMetaService,
+        // Auth service made blocking to ensure auth state is available for initial render
+        // See https://github.com/IDEMSInternational/open-app-builder/pull/3246
+        // Can be removed as blocking init after move to reactive template architecture
+        this.authService,
         this.tourService,
         this.taskService,
         this.taskActions,

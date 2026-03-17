@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin font-normal {
   font-family: "OpenSans", sans-serif, Arial;
   font-weight: normal;
@@ -118,7 +120,9 @@
 }
 
 @mixin text-hide {
-  font: #{0 / 0} a;
+  font-size: 0;
+  line-height: 0;
+  font-family: a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -156,7 +160,7 @@
   @if $total==null {
     $flex: $value;
   } @else if $total>=$value {
-    $flex: percentage($value / $total);
+    $flex: percentage(math.div($value, $total));
   }
 
   -webkit-flex: $flex;
@@ -170,7 +174,7 @@
   @if $total==null {
     $flex: $value;
   } @else if $total>=$value {
-    $flex: percentage($value / $total);
+    $flex: percentage(math.div($value, $total));
   }
 
   flex-grow: 1;

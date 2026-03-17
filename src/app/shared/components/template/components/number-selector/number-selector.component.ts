@@ -15,6 +15,7 @@ interface ICategoryList {
   selector: "plh-number-selector",
   templateUrl: "./number-selector.component.html",
   styleUrls: ["./number-selector.component.scss"],
+  standalone: false,
 })
 export class TmplNumberComponent extends TemplateBaseComponent implements OnInit {
   title: string | null;

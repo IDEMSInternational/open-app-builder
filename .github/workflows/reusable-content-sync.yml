@@ -1,15 +1,15 @@
 ##################################################################################
 #         About
 ##################################################################################
-# Reuseable workflow to be called from content repos. 
-# Syncs content from Google Drive and creates a pull request. Can be run 
+# Reusable workflow to be called from content repos.
+# Syncs content from Google Drive and creates a pull request. Can be run
 # manually by users with access to actions without the need to use git or vscode.
-# Needs gdrive credentails set up on repository and a PAT for the pull request
+# Needs gdrive credentials set up on repository and a PAT for the pull request
 #
 #         Version : 1.0
 #
 ##################################################################################
-#         Configuration 
+#         Configuration
 ##################################################################################
 env:
   DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
@@ -17,41 +17,39 @@ env:
   PARENT_DEPLOYMENT_REPO: ${{vars.PARENT_DEPLOYMENT_REPO}}
   PARENT_DEPLOYMENT_NAME: ${{vars.PARENT_DEPLOYMENT_NAME}}
   PARENT_DEPLOYMENT_BRANCH: ${{vars.PARENT_DEPLOYMENT_BRANCH}}
-  GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} 
-  GDRIVE_TOKEN:  ${{ secrets.GDRIVE_TOKEN }}
+  GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+  GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
   PAT: ${{ secrets.PAT }}
-  
-  
+
 name: Perform content sync and create a PR
 ##################################################################################
 #         Main Code
 ##################################################################################
 on:
-    workflow_call:
-      inputs:
-        pr-title:
-          description: Title for PR
-          type: string
-          default: sync content from Google Sheets
-        pr-body:
-          description: Description for PR
-          type: string
-          default: Automated PR creation from actions
-      secrets:  # Declare secrets you expect to receive
-        GDRIVE_CREDENTIALS:
-          required: true
-        GDRIVE_TOKEN:
-          required: true
-        PAT:
-          required: true
-        DEPLOYMENT_PRIVATE_KEY:
-          description: Provide private key if deployment uses encrypted config
-   
+  workflow_call:
+    inputs:
+      pr-title:
+        description: Title for PR
+        type: string
+        default: sync content from Google Sheets
+      pr-body:
+        description: Description for PR
+        type: string
+        default: Automated PR creation from actions
+    secrets: # Declare secrets you expect to receive
+      GDRIVE_CREDENTIALS:
+        required: true
+      GDRIVE_TOKEN:
+        required: true
+      PAT:
+        required: true
+      DEPLOYMENT_PRIVATE_KEY:
+        description: Provide private key if deployment uses encrypted config
+
 jobs:
-   build:
-      runs-on: ubuntu-latest
-      steps:
-  
+  build:
+    runs-on: ubuntu-latest
+    steps:
       - name: Check out app code
         uses: actions/checkout@v3
         with:
@@ -75,11 +73,11 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
-         
+
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 20.17.0
+          node-version: 24.13.0
 
       - name: Cache node modules
         uses: actions/cache@v3
@@ -95,11 +93,11 @@ jobs:
 
       - name: Set deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME
-          
+
       - name: Add google credentials
         run: |
           echo "${{env.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
-    
+
       - name: Add google token
         run: echo "$GDRIVE_TOKEN" > ./packages/scripts/config/token.json
         env:
@@ -109,8 +107,8 @@ jobs:
         run: yarn workflow sync
 
       - name: Increment version number
-        run: yarn scripts version --content --auto-patch 
-        
+        run: yarn scripts version --content --auto-patch
+
       - name: Commit changes
         working-directory: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}
         run: |
@@ -125,7 +123,7 @@ jobs:
         with:
           token: ${{ env.PAT }}
           # Relative path under $GITHUB_WORKSPACE to the repository. Defaults to $GITHUB_WORKSPACE.
-          path: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}             
+          path: .idems_app/deployments/${{env.DEPLOYMENT_NAME}}
           # The title of the pull request.
           title: ${{ inputs.pr-title }}
           # The body of the pull request.

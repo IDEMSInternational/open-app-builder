@@ -11,6 +11,7 @@ import { isPlatformBrowser } from "@angular/common";
 
 @Directive({
   selector: "ion-icon[src][appendStyleSvg]",
+  standalone: false,
 })
 export class appendStyleSvgDirective implements AfterViewInit, OnDestroy {
   private _styles?: HTMLStyleElement;
@@ -33,7 +34,10 @@ export class appendStyleSvgDirective implements AfterViewInit, OnDestroy {
     return this._styles;
   }
 
-  constructor(private element: ElementRef, @Inject(PLATFORM_ID) platformId: string) {
+  constructor(
+    private element: ElementRef,
+    @Inject(PLATFORM_ID) platformId: string
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 

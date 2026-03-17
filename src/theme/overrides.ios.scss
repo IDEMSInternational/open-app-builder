@@ -15,6 +15,12 @@ ion-app[data-platform~="ios"] {
     }
   }
 
+  // Remove hover effect on iOS
+  // See https://github.com/IDEMSInternational/open-app-builder/issues/3347
+  ion-button {
+    --background-hover: var(--background) !important;
+  }
+
   // Elements that make use of `filter: drop-shadow`:
 
   plh-combo-box {

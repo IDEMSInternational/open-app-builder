@@ -5,11 +5,17 @@
     </ion-button>
   </div>
   <div class="center">
-    <div class="title" *ngIf="title">{{ title }}</div>
-    <div class="num" *ngIf="!category_list">{{ displayValue }}</div>
-    <div class="category" *ngIf="category_list">
-      <span>{{ _row.value }}</span>
-    </div>
+    @if (title) {
+      <div class="title">{{ title }}</div>
+    }
+    @if (!category_list) {
+      <div class="num">{{ displayValue }}</div>
+    }
+    @if (category_list) {
+      <div class="category">
+        <span>{{ _row.value }}</span>
+      </div>
+    }
   </div>
   <div class="right">
     <ion-button (click)="increment('gt')">

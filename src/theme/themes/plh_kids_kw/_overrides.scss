@@ -67,9 +67,7 @@
     }
     .information {
       --background: var(--ion-color-primary-600);
-      &:hover {
-        --background: var(--ion-color-primary-500);
-      }
+      --background-hover: var(--ion-color-primary-500);
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
@@ -262,6 +260,7 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
+      background: var(--ion-color-primary-600);
       border: none;
       box-shadow: none;
       .accordion-section-title {
@@ -270,10 +269,6 @@
         font-size: var(--font-size-text-medium);
         font-weight: var(--font-weight-bold);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: white !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;

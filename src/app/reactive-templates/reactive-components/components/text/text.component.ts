@@ -18,7 +18,6 @@ const parameters = () =>
   selector: "oab-text",
   templateUrl: "./text.component.html",
   styleUrls: ["./text.component.scss"],
-  standalone: true,
   imports: [
     NgStyle,
     TemplatePipesModule, // todo: make pipes standalone
