@@ -16,6 +16,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   style: coerce.string(""),
   /** CSS text-align value applied to the input. */
   text_align: coerce.string(""),
+  /** When true, update the value on input, else update on blur. */
+  update_on_input: coerce.boolean(false),
 }));
 
 @Component({

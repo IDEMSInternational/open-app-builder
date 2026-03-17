@@ -4,6 +4,7 @@
     class="text-box-input"
     [inputmode]="params().numberInput ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
+    (ionInput)="params().updateOnInput ? handleChange(input.value) : null"
     [value]="params().prioritisePlaceholder ? '' : value()"
     [placeholder]="params().placeholder"
     [maxlength]="params().maxLength"
