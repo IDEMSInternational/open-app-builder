@@ -67,7 +67,8 @@ export class TmplComboBoxComponent
   );
 
   public answerOptions = computed(() => {
-    return this.cleanAnswerOptions(this.dataItemRows() ?? this.params().answerList);
+    const options = this.dataItemRows() ?? this.params().answerList;
+    return this.cleanAnswerOptions(options as IAnswerOption[]);
   });
 
   public showSearch = computed(() => this.answerOptions().length > 8);
