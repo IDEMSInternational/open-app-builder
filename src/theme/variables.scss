@@ -31,18 +31,18 @@
 
   // Margins //
   --row-margin-top: 1em; // used in downstream calculations, e.g. sticky display-group
-  --tiny-margin: 4px;
+  --tiny-margin: 5px;
   --small-margin: 10px;
-  --regular-margin: 16px;
+  --regular-margin: 15px;
   --large-margin: 24px;
   --largest-margin: 30px;
   --huge-margin: 40px;
 
   // Paddings //
-  --tiny-padding: 6px;
-  --small-padding: 12px;
-  --regular-padding: 18px;
-  --large-padding: 24px;
+  --tiny-padding: 5px;
+  --small-padding: 10px;
+  --regular-padding: 15px;
+  --large-padding: 25px;
   --largest-padding: 30px;
   --huge-padding: 40px;
   --main-container-padding: 0 var(--large-margin);
@@ -67,31 +67,31 @@
   // Title //
   --font-size-title-small-device: 20px;
   --font-size-title-tiny: 24px;
-  --font-size-title-small: 28px;
-  --font-size-title-medium: 32px;
-  --font-size-title-large: 36px;
-  --font-size-title-largest: 40px;
+  --font-size-title-small: 26px;
+  --font-size-title-medium: 30px;
+  --font-size-title-large: 34px;
+  --font-size-title-largest: 36px;
 
   // Subtitle //
-  --font-size-subtitle-small-device: 16px;
+  --font-size-subtitle-small-device: 17px;
   --font-size-subtitle-small: 18px;
   --font-size-subtitle-medium: 20px;
-  --font-size-subtitle-large: 24px;
+  --font-size-subtitle-large: 22px;
 
-  // Font Size //
+  // Text //
   --font-size-text-tiny: 14px;
   --font-size-text-small: 16px;
   --font-size-text-medium: 18px;
   --font-size-text-large: 20px;
-  --font-size-text-larger: 24px;
-  --font-size-text-largest: 28px;
 
-  // Line Height //
-  --line-height-text-tiny: 1.2;
-  --line-height-text-small: 1.4;
-  --line-height-text: 1.5;
-  --line-height-text-large: 1.6;
-  --line-height-text-largest: 1.7;
+  // Line Height (defaults; themes override in _index.scss when different)
+  --line-height-text-tiny: 15px;
+  --line-height-text-small: 20px;
+  --line-height-text: 22px;
+  --line-height-text-medium: 22px;
+  --line-height-text-large: 22px;
+  --line-height-text-largest: 25px;
+  --line-height-text-extra-large: 25px;
 
   // Font Weight //
   --font-weight-standard: 400;
