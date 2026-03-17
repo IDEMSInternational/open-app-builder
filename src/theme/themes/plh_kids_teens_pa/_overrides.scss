@@ -170,9 +170,9 @@
       width: 100%;
       .second-row {
         width: 100%;
-        border: 0.9px solid var(--ion-color-primary-100);
+        border: 0.9px solid var(--ion-color-primary-variant-100);
         border-radius: var(--ion-border-radius-rounded);
-        background: var(--ion-color-primary-50);
+        background: var(--ion-color-primary-variant-50);
         padding: 8px 16px;
         padding-right: 24px;
         .controls {
@@ -208,9 +208,9 @@
       flex-direction: column;
 
       .second-row {
-        border: 0.9px solid var(--ion-color-primary-100);
+        border: 0.9px solid var(--ion-color-primary-variant-100);
         border-radius: var(--ion-border-radius-standard);
-        background: var(--ion-color-primary-50);
+        background: var(--ion-color-primary-variant-50);
         padding: 12px 16px;
         display: flex;
         flex-direction: column-reverse;
@@ -226,7 +226,7 @@
           }
           .btn-play {
             @include mixins.large-square;
-            --background: var(--ion-color-primary-50) !important;
+            --background: var(--ion-color-primary-variant-50) !important;
             --border-radius: var(--ion-border-radius-rounded) !important;
             --padding: 0 !important;
             --box-shadow: none !important;
@@ -239,10 +239,10 @@
         }
         .progress-block {
           .audio-range {
-            --bar-background-active: var(--ion-color-primary-400) !important;
+            --bar-background-active: var(--ion-color-primary-variant-400) !important;
             --knob-size: 0px !important;
-            --pin-background: var(--ion-color-primary-300) !important;
-            --knob-background: var(--ion-color-primary-300) !important;
+            --pin-background: var(--ion-color-primary-variant-300) !important;
+            --knob-background: var(--ion-color-primary-variant-300) !important;
             padding-inline: 0;
           }
 
@@ -369,7 +369,6 @@
     .title-wrapper h1 {
       font-size: var(--font-size-text-title);
       line-height: var(--line-height-text-large);
-      color: var(--ion-color-gray-900);
     }
     .title-wrapper[data-variant~="section_banner"] {
       font-size: var(--font-size-text-large) !important;
