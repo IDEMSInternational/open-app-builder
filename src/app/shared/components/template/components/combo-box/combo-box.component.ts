@@ -1,7 +1,7 @@
 import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
-import { IAnswerListItem } from "src/app/shared/utils";
+import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
@@ -10,7 +10,7 @@ import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.com
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of answer options to display. */
-  answer_list: coerce.objectArray<IAnswerListItem>([]),
+  answer_list: coerce.objectArray<IAnswerOption>([]),
   /** When true, the combo box is disabled. */
   disabled: coerce.boolean(),
   /** Text to display when the component is disabled. */
@@ -198,7 +198,7 @@ export class TmplComboBoxComponent
     };
   });
 
-  private cleanAnswerOptions(options: IAnswerListItem[]) {
+  private cleanAnswerOptions(options: IAnswerOption[]) {
     return options.filter((option) => {
       return (
         option[this.params().optionsKey] !== undefined &&
