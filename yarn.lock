@@ -720,29 +720,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cdk-experimental@npm:^21.0.0":
-  version: 21.0.6
-  resolution: "@angular/cdk-experimental@npm:21.0.6"
+"@angular/cdk-experimental@npm:^21.2.2":
+  version: 21.2.2
+  resolution: "@angular/cdk-experimental@npm:21.2.2"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/cdk": 21.0.6
+    "@angular/cdk": 21.2.2
     "@angular/core": ^21.0.0 || ^22.0.0
-  checksum: 032a069cdcfea2a2651fa82a1016f0efcfed4ecbcbd11ff979a8fba2dc9d41c61c3b6a064e78a25781efc27617e38994a8ce661eab98418f26cd188dd1b07e35
+  checksum: 6ccc6c9b1e26d428920b8178d40abd7819f3051d4424dd5ba6d365663a8b4881c1f55653eba187b6b8d57b018ababa42f780b5dfb76fc4d289505b8a244e30fe
   languageName: node
   linkType: hard
 
-"@angular/cdk@npm:^21.0.0":
-  version: 21.0.6
-  resolution: "@angular/cdk@npm:21.0.6"
+"@angular/cdk@npm:^21.2.2":
+  version: 21.2.2
+  resolution: "@angular/cdk@npm:21.2.2"
   dependencies:
     parse5: ^8.0.0
     tslib: ^2.3.0
   peerDependencies:
     "@angular/common": ^21.0.0 || ^22.0.0
     "@angular/core": ^21.0.0 || ^22.0.0
+    "@angular/platform-browser": ^21.0.0 || ^22.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: a86bef48d77fd159ddcc1da577466e612913f407d87ef6f5c6fd894eeed7b297828ba01fee2c8286fefdefdbeea9453453929742a259a3a2ae91df91c90c4b8d
+  checksum: 6e5d03252b9013e4005bb3ce87a7b5f4ba4cae2451194660bcd4785e20049b6d7bbab57e4a99914a45770b9b243c618b11d7834e78c80ffae7eebbc66685fee5
   languageName: node
   linkType: hard
 
@@ -872,19 +873,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/material@npm:^21.0.0":
-  version: 21.0.6
-  resolution: "@angular/material@npm:21.0.6"
+"@angular/material@npm:^21.2.2":
+  version: 21.2.2
+  resolution: "@angular/material@npm:21.2.2"
   dependencies:
     tslib: ^2.3.0
   peerDependencies:
-    "@angular/cdk": 21.0.6
+    "@angular/cdk": 21.2.2
     "@angular/common": ^21.0.0 || ^22.0.0
     "@angular/core": ^21.0.0 || ^22.0.0
     "@angular/forms": ^21.0.0 || ^22.0.0
     "@angular/platform-browser": ^21.0.0 || ^22.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 3029a5f4d97259cf0e87ab1341a827de978f23701d8d6886ed3c273fbd1e31a689340b3248d2c9f069064b92da3f794b050f2d88a1328848115fde8cbd18fe87
+  checksum: 821164e96039d05f434416eb91e23a6e8dc5c4c5a84c51fc120921a6143617639a2c41e197b33e7495bc06e4959fce063df2f723288a2f4051e1e58c0bb211e5
   languageName: node
   linkType: hard
 
@@ -17711,8 +17712,8 @@ __metadata:
     "@angular-eslint/schematics": 21.1.0
     "@angular-eslint/template-parser": 21.1.0
     "@angular/animations": ^21.2.4
-    "@angular/cdk": ^21.0.0
-    "@angular/cdk-experimental": ^21.0.0
+    "@angular/cdk": ^21.2.2
+    "@angular/cdk-experimental": ^21.2.2
     "@angular/cli": ~21.2.2
     "@angular/common": ~21.2.4
     "@angular/compiler": ~21.2.4
@@ -17721,7 +17722,7 @@ __metadata:
     "@angular/elements": ^21.2.4
     "@angular/forms": ~21.2.4
     "@angular/language-service": ~21.2.4
-    "@angular/material": ^21.0.0
+    "@angular/material": ^21.2.2
     "@angular/platform-browser": ~21.2.4
     "@angular/platform-browser-dynamic": ~21.2.4
     "@angular/router": ~21.2.4
