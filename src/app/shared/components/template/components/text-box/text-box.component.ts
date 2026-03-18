@@ -29,7 +29,7 @@ export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(Author
   public inputValue = computed(() => this.coerceValue(this.value()));
 
   /** Internal tracking variable to ensure change actions correctly triggered on blur */
-  private lastTriggeredValue: string | number;
+  private lastTriggeredValue: string | number = "";
 
   public handleInput(v: string | number) {
     const coerced = this.coerceValue(v);
@@ -50,11 +50,15 @@ export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(Author
   }
 
   private coerceValue(v: any): string | number {
-    if (this.params().numberInput) {
-      const n = Number(v);
-      return isNaN(n) ? 0 : n;
-    }
     v ??= ""; // coerce null and undefined
+    if (this.params().numberInput) {
+      // allow empty string which would be used to clear input box
+      if (v === "") return "";
+      const n = Number(v);
+      // If not a valid number, return the original string for debugging. Otherwise, return the number.
+      return isNaN(n) ? String(v) : n;
+    }
+
     return String(v);
   }
 }
