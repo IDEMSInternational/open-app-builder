@@ -1,4 +1,4 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, OnInit } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -24,12 +24,20 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./text-box.component.scss"],
   standalone: false,
 })
-export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+export class TmplTextBoxComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements OnInit
+{
   /** Ensure any value passed from parent is coerced to correct format */
   public inputValue = computed(() => this.coerceValue(this.value()));
 
   /** Internal tracking variable to ensure change actions correctly triggered on blur */
-  private lastTriggeredValue: string | number = "";
+  private lastTriggeredValue: string | number;
+
+  ngOnInit() {
+    // Set initial value to prevent firing actions on first blur without changes
+    this.lastTriggeredValue = this.inputValue();
+  }
 
   public handleInput(v: string | number) {
     const coerced = this.coerceValue(v);
