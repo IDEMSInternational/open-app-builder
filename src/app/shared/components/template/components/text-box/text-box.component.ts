@@ -1,7 +1,4 @@
-import { Component, effect, DestroyRef, inject, signal } from "@angular/core";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { Subject } from "rxjs";
-import { debounceTime, distinctUntilChanged } from "rxjs";
+import { Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -19,11 +16,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   style: coerce.string(""),
   /** CSS text-align value applied to the input. */
   text_align: coerce.string(""),
-  /** When true, update the value on input, else update on blur. */
-  update_on_input: coerce.boolean(false),
 }));
-
-const INPUT_DEBOUNCE_MS = 300;
 
 @Component({
   selector: "plh-text-box",
@@ -32,59 +25,36 @@ const INPUT_DEBOUNCE_MS = 300;
   standalone: false,
 })
 export class TmplTextBoxComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
-  private destroyRef = inject(DestroyRef);
-  /**
-   * When updateOnInput is true, holds the current input value for responsive display;
-   * synced from value() when it changes externally.
-   */
-  localValue = signal("");
+  /** Ensure any value passed from parent is coerced to correct format */
+  public inputValue = computed(() => this.coerceValue(this.value()));
 
-  private inputValue$ = new Subject<string>();
+  /** Internal tracking variable to ensure change actions correctly triggered on blur */
+  private lastTriggeredValue: string | number;
 
-  constructor() {
-    super();
-    // Sync external value into localValue when updateOnInput is used.
-    effect(() => {
-      if (!this.params().updateOnInput) return;
-      const v = this.value();
-      const str = v == null ? "" : String(v);
-      if (str !== this.localValue()) {
-        this.localValue.set(str);
-      }
-    });
-    // Debounce setValue when typing so we don't run the full action pipeline on every keystroke.
-    this.inputValue$
-      .pipe(
-        debounceTime(INPUT_DEBOUNCE_MS),
-        distinctUntilChanged(),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe((value) => {
-        this.setValue(value);
-      });
+  public handleInput(v: string | number) {
+    const coerced = this.coerceValue(v);
+    this.setValue(coerced, false);
   }
 
-  /** Called on blur: commits value (and when updateOnInput also updates localValue and notifies debounced stream). */
-  public handleChange(value: string | number | null | undefined) {
-    if (this.params().updateOnInput) {
-      const str = value == null ? "" : String(value);
-      this.localValue.set(str);
-      this.inputValue$.next(str);
+  /** Trigger change actions only when input complete and blur fired */
+  public async handleBlur() {
+    if (this._row.disabled) return;
+    const value = this.inputValue();
+    // previous handleInput will have optimistically set the stored row
+    // value, so use internal tracking to decide whether to trigger actions.
+    // This will also prevent repeated actions if a user clicks in and out an input box
+    if (value === this.lastTriggeredValue) return;
+    this.lastTriggeredValue = value;
+    await this.triggerSetSelfAction(value);
+    await this.triggerActions("changed");
+  }
+
+  private coerceValue(v: any): string | number {
+    if (this.params().numberInput) {
+      const n = Number(v);
+      return isNaN(n) ? 0 : n;
     }
-    this.setValue(value);
-  }
-
-  /** Called on each ionInput when updateOnInput: update display and schedule debounced setValue. */
-  public handleInput(value: string | number | null | undefined) {
-    const str = value == null ? "" : String(value);
-    this.localValue.set(str);
-    this.inputValue$.next(str);
-  }
-
-  /** Used by template for [value]: when updateOnInput use localValue for responsive typing; otherwise use value(). */
-  displayValue(): string {
-    if (this.params().prioritisePlaceholder) return "";
-    const v = this.params().updateOnInput ? this.localValue() : this.value();
-    return v == null ? "" : String(v);
+    v ??= ""; // coerce null and undefined
+    return String(v);
   }
 }
