@@ -1,5 +1,6 @@
 import { Component, computed, OnInit } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { Debouncer } from "shared/src/utils/async-utils";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** When true, the text box is disabled. */
@@ -10,8 +11,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   max_length: coerce.number(-1),
   /** Placeholder text to show when empty. */
   placeholder: coerce.string(""),
-  /** When true, show placeholder even when a value exists. */
-  prioritise_placeholder: coerce.boolean(false),
   /** Custom style class to apply. */
   style: coerce.string(""),
   /** CSS text-align value applied to the input. */
@@ -31,6 +30,9 @@ export class TmplTextBoxComponent
   /** Ensure any value passed from parent is coerced to correct format */
   public inputValue = computed(() => this.coerceValue(this.value()));
 
+  /** Use debouncer to reduce side-effect frequency when typing input */
+  private inputDebouncer = new Debouncer(500);
+
   /** Internal tracking variable to ensure change actions correctly triggered on blur */
   private lastTriggeredValue: string | number;
 
@@ -40,13 +42,17 @@ export class TmplTextBoxComponent
   }
 
   public handleInput(v: string | number) {
-    const coerced = this.coerceValue(v);
-    this.setValue(coerced, false);
+    this.inputDebouncer.run(async () => {
+      const coerced = this.coerceValue(v);
+      await this.setValue(coerced, false);
+    });
   }
 
   /** Trigger change actions only when input complete and blur fired */
   public async handleBlur() {
     if (this._row.disabled) return;
+    // ensure pending value updates complete
+    await this.inputDebouncer.flush();
     const value = this.inputValue();
     // previous handleInput will have optimistically set the stored row
     // value, so use internal tracking to decide whether to trigger actions.
