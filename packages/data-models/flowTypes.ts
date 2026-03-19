@@ -429,7 +429,7 @@ export namespace FlowTypes {
   const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
   // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
   const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
-  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action"] as const;
+  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action", "set_global"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
