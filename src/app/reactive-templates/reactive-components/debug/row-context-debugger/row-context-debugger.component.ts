@@ -1,7 +1,6 @@
 import { Component, computed, inject, input } from "@angular/core";
 import { ContextCreatorService } from "src/app/reactive-templates/services/context-creator.service";
 import { EvaluationService } from "src/app/reactive-templates/services/evaluation.service";
-import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { RowBaseComponent } from "../../row-base.component";
 import { JsonPipe } from "@angular/common";
 import {
@@ -9,6 +8,7 @@ import {
   DebuggerInfoDirective,
   DebuggerTitleDirective,
 } from "../debugger-base/debugger-base.component";
+import { LocalVariableStore } from "src/app/reactive-templates/stores/local-variable-store";
 
 @Component({
   selector: "oab-row-context-debugger",
@@ -19,9 +19,9 @@ import {
 export class RowContextDebuggerComponent {
   private evaluationService = inject(EvaluationService);
   private contextCreator = inject(ContextCreatorService);
-  private variableStore = inject(VariableStore);
+  private variableStore = inject(LocalVariableStore);
 
-  public row = input.required<RowBaseComponent<any>>();
+  public row = input<RowBaseComponent<any>>();
 
   public dependencies = computed(() => {
     const row = this.row();
