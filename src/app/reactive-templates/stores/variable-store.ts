@@ -6,6 +6,7 @@ import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
 import { LocalVariableStore } from "./local-variable-store";
 import { GlobalVariableStore } from "./global-variable-store";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { SystemVariableStore } from "./system-variable-store";
 
 @Injectable({
   providedIn: "root",
@@ -13,10 +14,12 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 export class VariableStore implements IStore {
   private localStore = inject(LocalVariableStore);
   private globalStore = inject(GlobalVariableStore);
+  private systemStore = inject(SystemVariableStore);
 
   private readonly storeMap = new Map<StoreType, IStore>([
     ["local", this.localStore],
     ["global", this.globalStore],
+    ["system", this.systemStore],
   ]);
 
   set(ref: VariableReference, value: any): void {
@@ -54,6 +57,7 @@ export class VariableStore implements IStore {
       {
         local: [] as VariableReference[],
         global: [] as VariableReference[],
+        system: [] as VariableReference[],
       }
     );
 
@@ -94,6 +98,7 @@ export class VariableStore implements IStore {
   clear(): void {
     this.localStore.clear();
     this.globalStore.clear();
+    this.systemStore.clear();
   }
 
   private getStore(ref: VariableReference): IStore {

@@ -28,6 +28,7 @@ export class ContextCreatorService {
     const context = {
       local: {} as Record<string, any>,
       global: {} as Record<string, any>,
+      system: {} as Record<string, any>,
     };
 
     dependencies.forEach((dependency) => {

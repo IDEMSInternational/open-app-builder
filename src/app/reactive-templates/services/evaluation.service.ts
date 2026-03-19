@@ -8,6 +8,8 @@ import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
 import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 import { VariableReference } from "../stores/store";
 
+const supportedDependencyTypes = ["local", "global", "system"];
+
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
   private appDataEvaluator = new AppDataEvaluator();
@@ -48,7 +50,7 @@ export class EvaluationService {
     if (!dependencies || !dependencies.length) return [];
 
     return dependencies
-      .filter((dependency) => dependency.type === "local" || dependency.type === "global")
+      .filter((dependency) => supportedDependencyTypes.includes(dependency.type))
       .map((dependency) => {
         const name = dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
           .replace(`@${dependency.type}.`, "")
