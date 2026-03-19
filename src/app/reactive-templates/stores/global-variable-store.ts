@@ -159,7 +159,6 @@ export class GlobalVariableStore implements IStore {
 
   /**
    * Clear all variables in the store.
-   * todo: we will need to clear variables when changing the main template.
    */
   public clear(): void {
     this.state.forEach((value) => {
