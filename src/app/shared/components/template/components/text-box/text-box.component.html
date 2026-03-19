@@ -2,9 +2,10 @@
   <ion-input
     #input
     class="text-box-input"
-    [inputmode]="params().isNumberInput ? 'tel' : 'text'"
+    [inputmode]="params().numberInput ? 'tel' : 'text'"
     (ionBlur)="handleChange(input.value)"
-    [value]="params().prioritisePlaceholder ? '' : value()"
+    (ionInput)="params().updateOnInput ? handleInput(input.value) : null"
+    [value]="displayValue()"
     [placeholder]="params().placeholder"
     [maxlength]="params().maxLength"
     [style.textAlign]="params().textAlign"
