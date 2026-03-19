@@ -101,7 +101,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * @param triggerActions Emit set_self and changed actions (default true)
    * @ignore
    */
-  async setValue(value: any, triggerActions = true) {
+  async setValue(value: any, triggerChangedActions = true) {
     // TODO - also want to prevent triggering changed action
     if (value === this._row.value) {
       return;
@@ -110,8 +110,9 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
 
-    if (triggerActions) {
-      await this.triggerSetSelfAction(value);
+    await this.triggerSetSelfAction(value);
+
+    if (triggerChangedActions) {
       await this.triggerActions("changed");
     }
   }
