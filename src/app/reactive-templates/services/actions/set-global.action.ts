@@ -21,7 +21,6 @@ export class SetGlobalActionService {
   }
 
   private async setGlobal(key: string, value: any) {
-    let evaluatedValue = this.evaluationService.evaluateExpression(value, "");
-    this.variableStore.set({ type: "global", name: key }, evaluatedValue);
+    this.variableStore.set({ type: "global", name: key }, value);
   }
 }
