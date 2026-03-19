@@ -9,6 +9,7 @@ import { TemplateService } from "../../components/template/services/template.ser
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { MockThemeService } from "src/app/feature/theme/services/theme.service.mock.spec";
 import { IAppConfig, IAppSkin } from "packages/data-models";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 import { deepMergeObjects } from "../../utils";
 import clone from "clone";
 
@@ -72,6 +73,10 @@ describe("SkinService", () => {
         { provide: TemplateService, useValue: new MockTemplateService() },
         // TODO - create better mock and test methods
         { provide: ThemeService, useClass: MockThemeService },
+        {
+          provide: SystemVariableService,
+          useValue: { set: () => {}, get: () => null, remove: () => {} },
+        },
       ],
     });
     service = TestBed.inject(SkinService);
