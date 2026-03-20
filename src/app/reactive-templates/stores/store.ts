@@ -1,7 +1,8 @@
 import { Signal } from "@angular/core";
 import { Observable } from "rxjs";
 
-export type StoreType = "local" | "global" | "system";
+export const STORE_TYPES = ["local", "global", "system"] as const;
+export type StoreType = (typeof STORE_TYPES)[number];
 
 export interface VariableReference {
   type: StoreType;

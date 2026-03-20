@@ -6,9 +6,7 @@ import { extractDynamicEvaluators } from "packages/data-models/functions";
 import { ListEvaluator } from "./evaluators/list.evaluator";
 import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
 import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
-import { VariableReference } from "../stores/store";
-
-const supportedDependencyTypes = ["local", "global", "system"];
+import { VariableReference, STORE_TYPES } from "../stores/store";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -50,7 +48,7 @@ export class EvaluationService {
     if (!dependencies || !dependencies.length) return [];
 
     return dependencies
-      .filter((dependency) => supportedDependencyTypes.includes(dependency.type))
+      .filter((dependency) => (STORE_TYPES as readonly string[]).includes(dependency.type))
       .map((dependency) => {
         const name = dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
           .replace(`@${dependency.type}.`, "")
