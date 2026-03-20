@@ -1,6 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
 
-import { RemoteFunctionProviderBase } from "./providers/base";
+import { RemoteFunctionInvokeParams, RemoteFunctionProviderBase } from "./providers/base";
 import { getFunctionProvider } from "./providers";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
@@ -20,6 +20,14 @@ export class RemoteFunctionService extends AsyncServiceBase {
     super("Remote Function");
     this.provider = getFunctionProvider(this.config.provider);
     this.registerInitFunction(this.initialise, "defer");
+  }
+
+  /**
+   * Invoke a remote function by name with provided parameters.
+   * Public wrapper around the configured provider.
+   */
+  public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
+    return await this.provider.invoke(functionName, params);
   }
 
   private get config() {

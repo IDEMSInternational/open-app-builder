@@ -69,7 +69,7 @@ export class RemoteFunctionDebugPage implements OnInit {
     this.response.set({ error: undefined, data: undefined });
     const params = this.buildParams();
     console.log("[Remote Function] Run", { name, params });
-    const res = await this.service.provider.invoke(name, params);
+    const res = await this.service.invoke(name, params);
     this.response.set(res);
     this.requestPending.set(false);
   }
