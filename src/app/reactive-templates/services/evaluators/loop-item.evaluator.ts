@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { VariableStore } from "../../stores/variable-store";
 import { RowRegistry } from "../row.registry";
+import { VariableStore } from "../../stores/variable-store";
 
 @Injectable({ providedIn: "root" })
 export class LoopItemEvaluator {
@@ -22,13 +22,13 @@ export class LoopItemEvaluator {
       return expression;
     }
 
-    const loopExists = this.variableStore.has(loopInfo.loop);
+    const loopExists = this.variableStore.has({ name: loopInfo.loop, type: "local" });
 
     if (!loopExists) {
       return expression;
     }
 
-    const loopValues = this.variableStore.get(loopInfo.loop);
+    const loopValues = this.variableStore.get({ name: loopInfo.loop, type: "local" });
 
     if (!Array.isArray(loopValues)) {
       return expression;
