@@ -1151,6 +1151,10 @@ PODS:
   - AppAuth/Core (1.7.6)
   - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
+  - AppCheckCore (11.2.0):
+    - GoogleUtilities/Environment (~> 8.0)
+    - GoogleUtilities/UserDefaults (~> 8.0)
+    - PromisesObjC (~> 2.4)
   - BoringSSL-GRPC (0.0.36):
     - BoringSSL-GRPC/Implementation (= 0.0.36)
     - BoringSSL-GRPC/Interface (= 0.0.36)
@@ -1174,6 +1178,9 @@ PODS:
   - CapacitorFilesystem (7.1.6):
     - Capacitor
     - IONFilesystemLib (~> 1.0.1)
+  - CapacitorFirebaseAppCheck (7.3.0):
+    - Capacitor
+    - FirebaseAppCheck (~> 11.7.0)
   - CapacitorFirebaseAuthentication (7.5.0):
     - Capacitor
     - CapacitorFirebaseAuthentication/Lite (= 7.5.0)
@@ -1191,6 +1198,9 @@ PODS:
   - CapacitorFirebaseFirestore (7.5.0):
     - Capacitor
     - FirebaseFirestore (~> 11.7.0)
+  - CapacitorFirebaseFunctions (7.3.0):
+    - Capacitor
+    - FirebaseFunctions (~> 11.7.0)
   - CapacitorFirebasePerformance (7.5.0):
     - Capacitor
     - FirebasePerformance (~> 11.7.0)
@@ -1215,6 +1225,12 @@ PODS:
     - Capacitor
   - FirebaseABTesting (11.7.0):
     - FirebaseCore (~> 11.7.0)
+  - FirebaseAppCheck (11.7.0):
+    - AppCheckCore (~> 11.0)
+    - FirebaseAppCheckInterop (~> 11.0)
+    - FirebaseCore (~> 11.7.0)
+    - GoogleUtilities/Environment (~> 8.0)
+    - GoogleUtilities/UserDefaults (~> 8.0)
   - FirebaseAppCheckInterop (11.15.0)
   - FirebaseAuth (11.7.0):
     - FirebaseAppCheckInterop (~> 11.0)
@@ -1263,11 +1279,20 @@ PODS:
     - gRPC-Core (~> 1.65.0)
     - leveldb-library (~> 1.22)
     - nanopb (~> 3.30910.0)
+  - FirebaseFunctions (11.7.0):
+    - FirebaseAppCheckInterop (~> 11.0)
+    - FirebaseAuthInterop (~> 11.0)
+    - FirebaseCore (~> 11.7.0)
+    - FirebaseCoreExtension (~> 11.7.0)
+    - FirebaseMessagingInterop (~> 11.0)
+    - FirebaseSharedSwift (~> 11.0)
+    - GTMSessionFetcher/Core (< 5.0, >= 3.4)
   - FirebaseInstallations (11.7.0):
     - FirebaseCore (~> 11.7.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - PromisesObjC (~> 2.4)
+  - FirebaseMessagingInterop (11.15.0)
   - FirebasePerformance (11.7.0):
     - FirebaseCore (~> 11.7.0)
     - FirebaseInstallations (~> 11.0)
@@ -1456,10 +1481,12 @@ DEPENDENCIES:
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorFirebaseAppCheck (from `../../node_modules/@capacitor-firebase/app-check`)"
   - "CapacitorFirebaseAuthentication (from `../../node_modules/@capacitor-firebase/authentication`)"
   - "CapacitorFirebaseAuthentication/Google (from `../../node_modules/@capacitor-firebase/authentication`)"
   - "CapacitorFirebaseCrashlytics (from `../../node_modules/@capacitor-firebase/crashlytics`)"
   - "CapacitorFirebaseFirestore (from `../../node_modules/@capacitor-firebase/firestore`)"
+  - "CapacitorFirebaseFunctions (from `../../node_modules/@capacitor-firebase/functions`)"
   - "CapacitorFirebasePerformance (from `../../node_modules/@capacitor-firebase/performance`)"
   - "CapacitorFirebaseStorage (from `../../node_modules/@capacitor-firebase/storage`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
@@ -1476,8 +1503,10 @@ SPEC REPOS:
   trunk:
     - abseil
     - AppAuth
+    - AppCheckCore
     - BoringSSL-GRPC
     - FirebaseABTesting
+    - FirebaseAppCheck
     - FirebaseAppCheckInterop
     - FirebaseAuth
     - FirebaseAuthInterop
@@ -1487,7 +1516,9 @@ SPEC REPOS:
     - FirebaseCrashlytics
     - FirebaseFirestore
     - FirebaseFirestoreInternal
+    - FirebaseFunctions
     - FirebaseInstallations
+    - FirebaseMessagingInterop
     - FirebasePerformance
     - FirebaseRemoteConfig
     - FirebaseRemoteConfigInterop
@@ -1526,12 +1557,16 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/device"
   CapacitorFilesystem:
     :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorFirebaseAppCheck:
+    :path: "../../node_modules/@capacitor-firebase/app-check"
   CapacitorFirebaseAuthentication:
     :path: "../../node_modules/@capacitor-firebase/authentication"
   CapacitorFirebaseCrashlytics:
     :path: "../../node_modules/@capacitor-firebase/crashlytics"
   CapacitorFirebaseFirestore:
     :path: "../../node_modules/@capacitor-firebase/firestore"
+  CapacitorFirebaseFunctions:
+    :path: "../../node_modules/@capacitor-firebase/functions"
   CapacitorFirebasePerformance:
     :path: "../../node_modules/@capacitor-firebase/performance"
   CapacitorFirebaseStorage:
@@ -1556,6 +1591,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
+  AppCheckCore: cc8fd0a3a230ddd401f326489c99990b013f0c4f
   BoringSSL-GRPC: ca6a8e5d04812fce8ffd6437810c2d46f925eaeb
   Capacitor: 12914e6f1b7835e161a74ebd19cb361efa37a7dd
   CapacitorApp: 63b237168fc869e758481dba283315a85743ee78
@@ -1565,9 +1601,11 @@ SPEC CHECKSUMS:
   CapacitorCordova: 31bbe4466000c6b86d9b7f1181ee286cff0205aa
   CapacitorDevice: b64654eb4d404373e733c01d835055ba59286e5c
   CapacitorFilesystem: 66f05ee0d8b1ccdc00d509091273a9b3b57c4a0b
+  CapacitorFirebaseAppCheck: ef9782fa93bb1ca275b2e8019b22223c0cd526bc
   CapacitorFirebaseAuthentication: c5d02225dc97a1192f3b615f8c0df2ef910c40b7
   CapacitorFirebaseCrashlytics: 50fb67e9c1955c49132164e02c8c5164ad811473
   CapacitorFirebaseFirestore: 1dc166ceb6157e2ce0680ac94e4f5af6bd31f249
+  CapacitorFirebaseFunctions: 1093edb4dde50f5f8afc472b1a42f2831c22a28f
   CapacitorFirebasePerformance: 1bf76afbcd257644218c3569eebc595ca0668a46
   CapacitorFirebaseStorage: 4b438b83cb6ce20679b9ad97c2f25f894c1e0a01
   CapacitorLocalNotifications: ba2a08bd92887b08f352e6b2db430575cef0cea3
@@ -1579,6 +1617,7 @@ SPEC CHECKSUMS:
   CapacitorToast: 827b4c977b062f39268188250c980d5b61927a4c
   CapawesomeCapacitorAppUpdate: 9fb16b07faaa1c86468c794e39bfedb822a1a446
   FirebaseABTesting: 08b3e19b28504632a9cd03e7a796b355c5d39b27
+  FirebaseAppCheck: 2bd832b48faa38f7d86f902c57f78af93eae4cdc
   FirebaseAppCheckInterop: 06fe5a3799278ae4667e6c432edd86b1030fa3df
   FirebaseAuth: 77e25aa24f3e1c626c5babd3338551fc1669ee0e
   FirebaseAuthInterop: 7087d7a4ee4bc4de019b2d0c240974ed5d89e2fd
@@ -1588,7 +1627,9 @@ SPEC CHECKSUMS:
   FirebaseCrashlytics: 785a73b624715bbc09a40bb56cdc3829a801cc98
   FirebaseFirestore: e8528981558d50872e24119b9448b18e86cab9f6
   FirebaseFirestoreInternal: 953e31e70db09d928b927b65761171c680d2ea9b
+  FirebaseFunctions: b7f3122ca91ced5253f16aa0418339f19434d0c7
   FirebaseInstallations: 9347e719c3d52d8d7b9074b2c32407dd027305e9
+  FirebaseMessagingInterop: 63e504b147a7206cfe64cbe2f40c2ddd009945bd
   FirebasePerformance: 0c6fe140f24967b09a59c40c5ad54a623b740ad8
   FirebaseRemoteConfig: aa1d4cb05ef4caad203448dfc87842de12f1ea8d
   FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
@@ -1610,6 +1651,6 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 0e26829c81568394bf09630c82a61095c38ae47d
+PODFILE CHECKSUM: 70cee1708468d0d90765046e2f9ed67f8d9c837b
 
 COCOAPODS: 1.16.2
