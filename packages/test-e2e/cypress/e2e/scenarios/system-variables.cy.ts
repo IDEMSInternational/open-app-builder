@@ -1,4 +1,4 @@
-describe("set global component", () => {
+describe("system variables", () => {
   beforeEach(() => {
     cy.visit("/template/test_system_variables");
   });

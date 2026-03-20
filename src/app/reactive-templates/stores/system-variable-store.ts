@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { GlobalVariableStore } from "./global-variable-store";
 
 /**
- * A reactive store for global variables.
+ * A reactive store for system variables.
  */
 @Injectable({
   providedIn: "root",

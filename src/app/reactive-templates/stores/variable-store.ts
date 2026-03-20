@@ -39,7 +39,7 @@ export class VariableStore implements IStore {
   }
 
   /**
-   * Watches multiple variable references across local/global stores.
+   * Watches multiple variable references across local/global/system stores.
    * Returns an empty object stream when no refs are provided, otherwise groups
    * refs by store type, watches each group in its underlying store, and merges
    * the latest results into a single object.
@@ -61,15 +61,9 @@ export class VariableStore implements IStore {
       }
     );
 
-    const groupedObservables: Observable<{ [key: string]: any }>[] = [];
-
-    if (refsByType.local.length > 0) {
-      groupedObservables.push(this.localStore.watchMultiple(refsByType.local));
-    }
-
-    if (refsByType.global.length > 0) {
-      groupedObservables.push(this.globalStore.watchMultiple(refsByType.global));
-    }
+    const groupedObservables = (Object.keys(refsByType) as StoreType[])
+      .filter((type) => refsByType[type].length > 0)
+      .map((type) => this.storeMap.get(type)!.watchMultiple(refsByType[type]));
 
     if (groupedObservables.length === 1) {
       return groupedObservables[0];
