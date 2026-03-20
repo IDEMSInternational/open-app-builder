@@ -171,10 +171,19 @@ export class PlhParentGroupActionFactory {
       },
 
       /**
-       * Join a specified parent group using an access code.
+       * Join a specified remote parent group (i.e. in the shared data of a facilitator app) using an access code.
        */
+      join_remote: async () => {
+        return await this.service.handleJoinRemote({
+          access_code,
+          parent_id,
+          ...restParams,
+        });
+      },
+
+      // Backwards compatible alias
       join_group: async () => {
-        return await this.service.handleJoinGroup({
+        return await this.service.handleJoinRemote({
           access_code,
           parent_id,
           ...restParams,

@@ -162,7 +162,7 @@ export class PlhParentGroupService extends SyncServiceBase {
    * Join a parent group using an access code. This adds the parent to a shared parent group collection in a facilitator app.
    * Goes via a remote function in current app's project, which in turn calls a function in the facilitator app's project.
    */
-  public async handleJoinGroup(options: {
+  public async handleJoinRemote(options: {
     access_code?: string;
     parent_id?: string;
     [key: string]: string | undefined;
