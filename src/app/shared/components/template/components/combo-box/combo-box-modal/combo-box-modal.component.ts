@@ -4,7 +4,7 @@ import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  IAnswerListItem,
+  IAnswerOption,
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
@@ -16,7 +16,7 @@ import { ModalController } from "@ionic/angular";
   standalone: false,
 })
 export class ComboBoxModalComponent implements OnInit {
-  public answerOptions = input.required<IAnswerListItem[]>();
+  public answerOptions = input.required<IAnswerOption[]>();
   @Input() row: FlowTypes.TemplateRow;
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
@@ -24,7 +24,7 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() optionsKey: string = "name";
   @Input() optionsValue: string = "text";
   formData: FormGroup | null;
-  valuesFromListAnswers: IAnswerListItem[];
+  valuesFromListAnswers: IAnswerOption[];
   textTitle: string | null;
   inputAllowed: boolean = false;
   form: FormGroup;
