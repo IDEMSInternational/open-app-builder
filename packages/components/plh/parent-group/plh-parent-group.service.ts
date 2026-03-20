@@ -194,10 +194,32 @@ export class PlhParentGroupService extends SyncServiceBase {
     };
 
     await this.remoteFunctionService.ready();
-    return await this.remoteFunctionService.invoke(
+
+    const result = await this.remoteFunctionService.invoke(
       GROUP_JOIN_PROXY_FUNCTION_NAME,
       invokePayload as any
     );
+
+    const message =
+      typeof result?.error?.message === "string"
+        ? result.error.message
+        : typeof result?.data === "string"
+          ? result.data
+          : undefined;
+
+    if (result?.error) {
+      console.error("[PLH PARENT GROUP] - JOIN - Remote function error", {
+        message,
+        error: result.error,
+      });
+    } else {
+      console.log("[PLH PARENT GROUP] - JOIN - Remote function success", {
+        message,
+        data: result?.data,
+      });
+    }
+
+    return result;
   }
 
   /**
