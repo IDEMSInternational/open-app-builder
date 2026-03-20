@@ -12,6 +12,12 @@ interface IPlhParentGroupActionParams {
   parents_data_list?: string;
   /** Name of the data list that tracks completion of modules by parent group */
   completion_tracking_data_list?: string;
+  /** Access code required to join a group */
+  access_code?: string;
+  /** Parent group join target id */
+  id?: string;
+  /** Additional pass-through params for remote joinGroup invocations */
+  [key: string]: string | undefined;
 }
 
 export class PlhParentGroupActionFactory {
@@ -29,6 +35,9 @@ export class PlhParentGroupActionFactory {
       parent_groups_data_list,
       parents_data_list,
       completion_tracking_data_list,
+      access_code,
+      id,
+      ...restParams
     } = params;
 
     const childActions = {
@@ -159,6 +168,17 @@ export class PlhParentGroupActionFactory {
           parents_data_list,
           parent_group_id
         );
+      },
+
+      /**
+       * Join a specified parent group using an access code.
+       */
+      join_group: async () => {
+        return await this.service.handleJoinGroup({
+          access_code,
+          id,
+          ...restParams,
+        });
       },
     };
 

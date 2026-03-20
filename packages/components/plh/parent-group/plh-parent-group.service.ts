@@ -12,6 +12,7 @@ import type {
   ISharedParentGroupDoc,
 } from "./plh-parent-group.types";
 import { rapidproUtils } from "./utils/rapidpro.utils";
+import { RemoteFunctionService } from "src/app/feature/remote-function/remote-function.service";
 
 /**
  * Service for managing parent groups and sharing them between users
@@ -26,6 +27,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   private authId = computed(() => this.authService.authUser()?.uid);
 
   constructor(
+    private remoteFunctionService: RemoteFunctionService,
     private authService: AuthService,
     private dynamicDataService: DynamicDataService,
     private sharedDataService: SharedDataService
@@ -151,6 +153,36 @@ export class PlhParentGroupService extends SyncServiceBase {
         rp_access_code: code,
       });
     }
+  }
+
+  /**
+   * Join a parent group using an access code. This adds the parent to a shared parent group collection in a facilitator app.
+   * Goes via a remote function in current app's project, which in turn calls a function in the facilitator app's project.
+   */
+  public async handleJoinGroup(options: {
+    access_code?: string;
+    id?: string;
+    [key: string]: string | undefined;
+  }) {
+    const { access_code, id, ...rest } = options;
+
+    const requiredParams = { access_code, id };
+    for (const [param, value] of Object.entries(requiredParams)) {
+      if (!value) {
+        console.error(`[PLH PARENT GROUP] - JOIN - ${param} must be provided`);
+        return;
+      }
+    }
+
+    // Remote function payload expects string values, but template params may include additional keys.
+    const invokeParams: Record<string, string> = {};
+    for (const [key, value] of Object.entries({ access_code, id, ...rest })) {
+      if (value === undefined || value === null) continue;
+      invokeParams[key] = String(value);
+    }
+
+    await this.remoteFunctionService.ready();
+    return await this.remoteFunctionService.invoke("joinGroup", invokeParams);
   }
 
   /**
