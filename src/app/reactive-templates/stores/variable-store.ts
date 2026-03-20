@@ -16,11 +16,15 @@ export class VariableStore implements IStore {
   private globalStore = inject(GlobalVariableStore);
   private systemStore = inject(SystemVariableStore);
 
-  private readonly storeMap = new Map<StoreType, IStore>([
-    ["local", this.localStore],
-    ["global", this.globalStore],
-    ["system", this.systemStore],
-  ]);
+  private readonly stores: Record<StoreType, IStore> = {
+    local: this.localStore,
+    global: this.globalStore,
+    system: this.systemStore,
+  };
+
+  private readonly storeMap = new Map<StoreType, IStore>(
+    Object.entries(this.stores) as [StoreType, IStore][]
+  );
 
   set(ref: VariableReference, value: any): void {
     this.getStore(ref).set(ref, value);
@@ -49,19 +53,21 @@ export class VariableStore implements IStore {
       return of({});
     }
 
-    const refsByType = refs.reduce(
-      (groupedRefs, ref) => {
-        groupedRefs[ref.type].push(ref);
-        return groupedRefs;
-      },
-      {
-        local: [] as VariableReference[],
-        global: [] as VariableReference[],
-        system: [] as VariableReference[],
-      }
-    );
+    const storeTypes = Array.from(this.storeMap.keys());
 
-    const groupedObservables = (Object.keys(refsByType) as StoreType[])
+    const refsByType = {} as Record<StoreType, VariableReference[]>;
+
+    // Initialize an empty ref list for each supported store type.
+    for (const type of storeTypes) {
+      refsByType[type] = [];
+    }
+
+    // Group refs by store type so each underlying store can be watched once.
+    for (const ref of refs) {
+      refsByType[ref.type].push(ref);
+    }
+
+    const groupedObservables = storeTypes
       .filter((type) => refsByType[type].length > 0)
       .map((type) => this.storeMap.get(type)!.watchMultiple(refsByType[type]));
 
@@ -90,9 +96,7 @@ export class VariableStore implements IStore {
   }
 
   clear(): void {
-    this.localStore.clear();
-    this.globalStore.clear();
-    this.systemStore.clear();
+    Object.values(this.stores).forEach((store) => store.clear());
   }
 
   private getStore(ref: VariableReference): IStore {
