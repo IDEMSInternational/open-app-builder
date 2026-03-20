@@ -14,7 +14,7 @@ import type {
 import { rapidproUtils } from "./utils/rapidpro.utils";
 import { RemoteFunctionService } from "src/app/feature/remote-function/remote-function.service";
 
-/** Name of the remote function that proxies joinGroup invocations to the facilitator app */
+/** Name of the remote function that proxies groupJoin invocations to the facilitator app */
 const GROUP_JOIN_PROXY_FUNCTION_NAME = "groupJoinProxy";
 
 /**
@@ -177,7 +177,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       }
     }
 
-    // Recast join payload for the facilitator's `joinGroup` function (which expects a data from rapidpro)
+    // Recast join payload for the facilitator's `groupJoinProxy` function (which expects a data from rapidpro)
     // - access_code stays as-is
     // - parent_id is mapped to rapidpro_uuid
     // - any additional params become rapidpro_fields (key/value pairs)

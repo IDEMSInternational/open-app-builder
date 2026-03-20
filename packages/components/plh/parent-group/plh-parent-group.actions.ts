@@ -16,7 +16,7 @@ interface IPlhParentGroupActionParams {
   access_code?: string;
   /** Parent group join target id */
   parent_id?: string;
-  /** Additional pass-through params for remote joinGroup invocations */
+  /** Additional pass-through params for remote groupJoinProxy invocations */
   [key: string]: string | undefined;
 }
 
