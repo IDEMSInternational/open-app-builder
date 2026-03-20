@@ -180,15 +180,6 @@ export class PlhParentGroupActionFactory {
           ...restParams,
         });
       },
-
-      // Backwards compatible alias
-      join_group: async () => {
-        return await this.service.handleJoinRemote({
-          access_code,
-          parent_id,
-          ...restParams,
-        });
-      },
     };
 
     if (!(actionId in childActions)) {
