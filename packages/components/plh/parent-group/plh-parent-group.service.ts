@@ -14,6 +14,9 @@ import type {
 import { rapidproUtils } from "./utils/rapidpro.utils";
 import { RemoteFunctionService } from "src/app/feature/remote-function/remote-function.service";
 
+/** Name of the remote function that proxies joinGroup invocations to the facilitator app */
+const GROUP_JOIN_PROXY_FUNCTION_NAME = "groupJoinProxy";
+
 /**
  * Service for managing parent groups and sharing them between users
  * Specifically for plh_facilitator_* deployments
@@ -174,15 +177,27 @@ export class PlhParentGroupService extends SyncServiceBase {
       }
     }
 
-    // Remote function payload expects string values, but template params may include additional keys.
-    const invokeParams: Record<string, string> = {};
-    for (const [key, value] of Object.entries({ access_code, id, ...rest })) {
+    // Recast join payload for the facilitator's `joinGroup` function (which expects a data from rapidpro)
+    // - access_code stays as-is
+    // - id is mapped to rapidpro_uuid
+    // - any additional params become rapidpro_fields (key/value pairs)
+    const rapidpro_fields: Record<string, string> = {};
+    for (const [key, value] of Object.entries(rest)) {
       if (value === undefined || value === null) continue;
-      invokeParams[key] = String(value);
+      rapidpro_fields[key] = String(value);
     }
 
+    const invokePayload = {
+      access_code: String(access_code),
+      rapidpro_uuid: String(id),
+      rapidpro_fields,
+    };
+
     await this.remoteFunctionService.ready();
-    return await this.remoteFunctionService.invoke("joinGroup", invokeParams);
+    return await this.remoteFunctionService.invoke(
+      GROUP_JOIN_PROXY_FUNCTION_NAME,
+      invokePayload as any
+    );
   }
 
   /**
