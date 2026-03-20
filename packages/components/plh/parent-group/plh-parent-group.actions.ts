@@ -15,7 +15,7 @@ interface IPlhParentGroupActionParams {
   /** Access code required to join a group */
   access_code?: string;
   /** Parent group join target id */
-  id?: string;
+  parent_id?: string;
   /** Additional pass-through params for remote joinGroup invocations */
   [key: string]: string | undefined;
 }
@@ -36,7 +36,7 @@ export class PlhParentGroupActionFactory {
       parents_data_list,
       completion_tracking_data_list,
       access_code,
-      id,
+      parent_id,
       ...restParams
     } = params;
 
@@ -176,7 +176,7 @@ export class PlhParentGroupActionFactory {
       join_group: async () => {
         return await this.service.handleJoinGroup({
           access_code,
-          id,
+          parent_id,
           ...restParams,
         });
       },

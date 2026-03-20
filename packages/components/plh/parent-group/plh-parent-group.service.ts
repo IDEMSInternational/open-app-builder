@@ -164,12 +164,12 @@ export class PlhParentGroupService extends SyncServiceBase {
    */
   public async handleJoinGroup(options: {
     access_code?: string;
-    id?: string;
+    parent_id?: string;
     [key: string]: string | undefined;
   }) {
-    const { access_code, id, ...rest } = options;
+    const { access_code, parent_id, ...rest } = options;
 
-    const requiredParams = { access_code, id };
+    const requiredParams = { access_code, parent_id };
     for (const [param, value] of Object.entries(requiredParams)) {
       if (!value) {
         console.error(`[PLH PARENT GROUP] - JOIN - ${param} must be provided`);
@@ -179,7 +179,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     // Recast join payload for the facilitator's `joinGroup` function (which expects a data from rapidpro)
     // - access_code stays as-is
-    // - id is mapped to rapidpro_uuid
+    // - parent_id is mapped to rapidpro_uuid
     // - any additional params become rapidpro_fields (key/value pairs)
     const rapidpro_fields: Record<string, string> = {};
     for (const [key, value] of Object.entries(rest)) {
@@ -189,7 +189,7 @@ export class PlhParentGroupService extends SyncServiceBase {
 
     const invokePayload = {
       access_code: String(access_code),
-      rapidpro_uuid: String(id),
+      rapidpro_uuid: String(parent_id),
       rapidpro_fields,
     };
 
