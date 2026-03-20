@@ -12,6 +12,7 @@ import { ServerService } from "../server/server.service";
 import { HttpClient } from "@angular/common/http";
 import type { IServerUser } from "../server/server.types";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
@@ -26,13 +27,13 @@ export class AuthService extends AsyncServiceBase {
   public restoreProfiles = signal<IServerUser[]>([]);
 
   constructor(
-    private localStorageService: LocalStorageService,
     private deploymentService: DeploymentService,
     private injector: Injector,
     private templateService: TemplateService,
     private serverService: ServerService,
     private http: HttpClient,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -113,7 +114,7 @@ export class AuthService extends AsyncServiceBase {
         .pipe(map((v) => (v as IServerUser[]) || []))
     );
 
-    const currentUserId = this.localStorageService.getProtected("APP_USER_ID");
+    const currentUserId = this.systemVariableService.get("APP_USER_ID");
     const restoreProfiles = authEntries
       .filter((v) => v.app_user_id !== currentUserId)
       .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
@@ -138,11 +139,11 @@ export class AuthService extends AsyncServiceBase {
 
   /** Keep id of auth user info in contact fields for db lookup*/
   private addStorageEntry(auth_user: IAuthUser) {
-    this.localStorageService.setProtected("AUTH_USER_ID", auth_user.uid);
-    this.localStorageService.setProtected("AUTH_USER_NAME", auth_user.name || "");
-    this.localStorageService.setProtected("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
-    this.localStorageService.setProtected("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
-    this.localStorageService.setProtected("AUTH_USER_PICTURE", auth_user.picture || "");
+    this.systemVariableService.set("AUTH_USER_ID", auth_user.uid);
+    this.systemVariableService.set("AUTH_USER_NAME", auth_user.name || "");
+    this.systemVariableService.set("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
+    this.systemVariableService.set("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
+    this.systemVariableService.set("AUTH_USER_PICTURE", auth_user.picture || "");
   }
 
   /**
@@ -160,10 +161,10 @@ export class AuthService extends AsyncServiceBase {
   }
 
   private clearUserData() {
-    this.localStorageService.removeProtected("AUTH_USER_ID");
-    this.localStorageService.removeProtected("AUTH_USER_NAME");
-    this.localStorageService.removeProtected("AUTH_USER_FAMILY_NAME");
-    this.localStorageService.removeProtected("AUTH_USER_GIVEN_NAME");
-    this.localStorageService.removeProtected("AUTH_USER_PICTURE");
+    this.systemVariableService.remove("AUTH_USER_ID");
+    this.systemVariableService.remove("AUTH_USER_NAME");
+    this.systemVariableService.remove("AUTH_USER_FAMILY_NAME");
+    this.systemVariableService.remove("AUTH_USER_GIVEN_NAME");
+    this.systemVariableService.remove("AUTH_USER_PICTURE");
   }
 }

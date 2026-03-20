@@ -11,6 +11,7 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { IServerUser } from "./server.types";
 import { DBSyncService } from "../db/db-sync.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 /**
  * Backend API
@@ -37,7 +38,8 @@ export class ServerService extends SyncServiceBase {
     private localStorageService: LocalStorageService,
     private dynamicDataService: DynamicDataService,
     private deploymentService: DeploymentService,
-    private dbSyncService: DBSyncService
+    private dbSyncService: DBSyncService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Server");
     this.initialise();
@@ -90,7 +92,7 @@ export class ServerService extends SyncServiceBase {
     const timestamp = generateTimestamp();
     contact_fields[getProtectedFieldName("SERVER_SYNC_LATEST")] = timestamp;
 
-    const auth_user_id = this.localStorageService.getProtected("AUTH_USER_ID") || null;
+    const auth_user_id = this.systemVariableService.get("AUTH_USER_ID") || null;
 
     const data: Partial<IServerUser> = {
       auth_user_id,
