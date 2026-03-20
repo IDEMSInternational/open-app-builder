@@ -205,10 +205,10 @@ export class AppComponent {
     this.systemVariableService.set("APP_HOSTNAME", location.hostname);
 
     // HACK - ensure first_app_launch migrated from event service
-    if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
+    if (!this.systemVariableService.get("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
-      this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
+      this.systemVariableService.set("APP_FIRST_LAUNCH", first_app_launch);
     }
   }
 
