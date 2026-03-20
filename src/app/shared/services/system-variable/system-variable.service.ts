@@ -19,7 +19,7 @@ export class SystemVariableService {
 
   private useReactiveTemplates = this.deploymentService.config.useReactiveTemplates ?? false;
 
-  public set(name: IProtectedFieldName, value: any) {
+  public set(name: IProtectedFieldName, value: string) {
     if (this.useReactiveTemplates) {
       this.variableStore.set({ type: "system", name }, value);
     } else {
@@ -27,7 +27,7 @@ export class SystemVariableService {
     }
   }
 
-  public get(name: IProtectedFieldName): any {
+  public get(name: IProtectedFieldName): string {
     if (this.useReactiveTemplates) {
       return this.variableStore.get({ type: "system", name });
     } else {
