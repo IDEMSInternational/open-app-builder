@@ -9,8 +9,7 @@
     $color-secondary: hsl(31, 100%, 57%),
     // #fa9529
     // Global and component variables
-    $variable-overrides:
-      (
+    $variable-overrides: (
         // an example variable for illustration purposes
         demo-variable: red,
 
@@ -20,10 +19,16 @@
         border-width-default: 2px,
         border-standard: var(--border-width-default) solid var(--border-color-default),
         border-thin-standard: 1px solid var(--border-color-default),
-        gradient-yellow-vertical:
-          linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
-        gradient-yellow-horizontal:
-          linear-gradient(85deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
+        gradient-yellow-vertical: linear-gradient(
+            175deg,
+            var(--ion-color-yellow-200) 30%,
+            var(--ion-color-yellow-500)
+          ),
+        gradient-yellow-horizontal: linear-gradient(
+            85deg,
+            var(--ion-color-yellow-200) 30%,
+            var(--ion-color-yellow-500)
+          ),
         // button-background-primary: var(--gradient-primary-mid-vertical),
         // button-background-secondary: var(--gradient-secondary-mid-vertical),
         // button-background-option: var(--gradient-primary-dark-vertical),
@@ -74,6 +79,8 @@
         combo-box-placeholder-text: rgba(13, 64, 96, 0.5),
         combo-box-border-with-value: var(--ion-color-primary),
         combo-box-selected-value-text: var(--ion-color-primary),
+        accordion-border-color: var(--ion-color-primary),
+        paragraph-spacing: 4px,
       )
   );
 }
