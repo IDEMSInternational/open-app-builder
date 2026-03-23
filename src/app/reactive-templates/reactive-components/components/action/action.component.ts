@@ -119,9 +119,7 @@ export class ActionComponent
 
         if (isAction(instance)) {
           // Action components need to be manually initialised as ngOnInit is not called automatically
-          if (instance instanceof ActionComponent) {
-            instance.init();
-          }
+          instance.init();
 
           this.actions.set(instance.name(), instance);
         }

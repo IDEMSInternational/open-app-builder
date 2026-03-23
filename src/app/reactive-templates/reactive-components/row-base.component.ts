@@ -81,6 +81,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   ngOnInit(): void {
     this.init();
+
+    // Set default value
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   public init(): void {
@@ -107,11 +112,6 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.watchValueDependencies();
 
     this.rowRegistry.register(this);
-
-    // Set default value
-    this.storeValue().then(() => {
-      this.onInitialised()?.();
-    });
   }
 
   /*
@@ -135,7 +135,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   }
 
   // Store the evaluated value of the row in the variable store.
-  private async storeValue() {
+  protected async storeValue() {
     const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
     const computedValue = await this.computeStoredValue(value);
 

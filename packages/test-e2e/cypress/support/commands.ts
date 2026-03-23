@@ -27,3 +27,15 @@
 Cypress.Commands.add("getDataTest", (name) => {
   return cy.get(`[data-test='${name}']`);
 });
+
+Cypress.Commands.add("clearIndexedDB", () => {
+  return cy.window().then((win) => {
+    return new Cypress.Promise<void>((resolve, reject) => {
+      const request = win.indexedDB.deleteDatabase("plh-app-db");
+
+      request.onsuccess = () => resolve();
+      request.onblocked = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  });
+});
