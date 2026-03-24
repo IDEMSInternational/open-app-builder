@@ -14,8 +14,10 @@ interface IPlhParentGroupActionParams {
   completion_tracking_data_list?: string;
   /** Access code required to join a group */
   access_code?: string;
-  /** Parent group join target id */
-  parent_id?: string;
+  /** App-specific user id for group join */
+  app_user_id?: string;
+  /** Optional authenticated user id for group join */
+  auth_user_id?: string;
   /** Additional pass-through params for remote groupJoinProxy invocations */
   [key: string]: string | undefined;
 }
@@ -36,7 +38,8 @@ export class PlhParentGroupActionFactory {
       parents_data_list,
       completion_tracking_data_list,
       access_code,
-      parent_id,
+      app_user_id,
+      auth_user_id,
       ...restParams
     } = params;
 
@@ -176,7 +179,8 @@ export class PlhParentGroupActionFactory {
       join_remote: async () => {
         return await this.service.handleJoinRemote({
           access_code,
-          parent_id,
+          app_user_id,
+          auth_user_id,
           ...restParams,
         });
       },
