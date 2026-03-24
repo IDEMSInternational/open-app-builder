@@ -82,6 +82,10 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   ngOnInit(): void {
     this.init();
 
+    this.watchParamDependencies();
+    this.watchConditionDependencies();
+    this.watchValueDependencies();
+
     // Set default value
     this.storeValue().then(() => {
       this.onInitialised()?.();
@@ -107,9 +111,6 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     );
 
     this.setParams();
-    this.watchParamDependencies();
-    this.watchConditionDependencies();
-    this.watchValueDependencies();
 
     this.rowRegistry.register(this);
   }
@@ -157,7 +158,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
-  private watchValueDependencies() {
+  protected watchValueDependencies() {
     this.unsubscribeValueDependencies();
 
     const dependencies = this.evaluationService
@@ -175,7 +176,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.valueDependencySubscriptions.push(sub);
   }
 
-  private watchConditionDependencies() {
+  protected watchConditionDependencies() {
     this.unsubscribeConditionDependencies();
 
     const condition = this.row().condition;
@@ -196,7 +197,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.conditionDependencySubscriptions.push(sub);
   }
 
-  private watchParamDependencies() {
+  protected watchParamDependencies() {
     this.unsubscribeParamDependencies();
     const rowParams = this.row().parameter_list;
 

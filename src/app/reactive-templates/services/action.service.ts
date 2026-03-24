@@ -26,14 +26,16 @@ export class ActionService {
 
     if (!actions || !actions.length) return;
 
-    actions
+    const name = rowComponent.row().name;
+
+    const actionArgs = actions
       .map((a) => {
         return {
           ...a,
           // We replace "this.value" with the actual field name, so that it can be evaluated in context
           // this.value is a hack used in the old templates to refer to the current field value
           //
-          args: a.args.map((arg) => arg.replace("this.value", `@local.${rowComponent.row().name}`)),
+          args: a.args.map((arg) => arg.replace("this.value", `@local.${name}`)),
         };
       })
       .map((a) => {
@@ -42,8 +44,9 @@ export class ActionService {
           args: a.args.map((arg) => this.evaluationService.evaluateExpression(arg, namespace)),
           rawArgs: a.args,
         };
-      })
-      .forEach(async (action) => await this.handleAction(action));
+      });
+
+    actionArgs.forEach(async (action) => await this.handleAction(action));
   }
 
   private async handleAction(action: FlowTypes.TemplateRowAction) {

@@ -52,7 +52,6 @@ export class ActionComponent
   public async execute(params?: IActionParameter[]): Promise<void> {
     const name = this.name();
     const expression = this.expression();
-    const value = this.value();
 
     // Any row with a name that matches a param should be updated with the param value
     for (const param of params ?? []) {
@@ -70,17 +69,21 @@ export class ActionComponent
 
     // if this is a reference to another action, execute that instead
     if (expression && expression !== name) {
-      if (this.actionRegistry.has(value)) {
-        const action = this.actionRegistry.get(value);
+      const value = this.evaluationService.evaluateExpression(expression, this.namespace());
+      if (this.actionRegistry.has(value as string)) {
+        const action = this.actionRegistry.get(value as string);
+        action.init();
         await action.execute(mergedParams);
         return; // this action should not define any actions of its own, but removing this return would enable that.
       } else {
-        console.error(`[ACTION] No action registered with name: ${expression}`);
+        console.error(`[ACTION] No action registered with name: ${value}`);
         return;
       }
     }
 
     for (const action of this.actions.values()) {
+      // Action components need to be manually initialised as ngOnInit is not called automatically
+      action.init();
       await action.execute(mergedParams);
     }
   }
@@ -88,6 +91,15 @@ export class ActionComponent
   /** ngOnInit lifecycle hook will only be executed when the action is used as a top-level component */
   public ngOnInit(): void {
     this.init();
+
+    this.watchParamDependencies();
+    this.watchConditionDependencies();
+    this.watchValueDependencies();
+
+    // Set default value
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   public init(): void {
@@ -118,9 +130,6 @@ export class ActionComponent
         }
 
         if (isAction(instance)) {
-          // Action components need to be manually initialised as ngOnInit is not called automatically
-          instance.init();
-
           this.actions.set(instance.name(), instance);
         }
       }

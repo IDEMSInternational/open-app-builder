@@ -24,8 +24,11 @@ export class UpdateComponent
 
   public execute(params?: IActionParameter[]): Promise<void> {
     const dataList = this.params.dataList.value();
-    const value = json5.parse(this.value());
 
-    return this.dynamicDataService.upsert("data_list", dataList, value);
+    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+    const valueJson = `{${value as string}}`;
+    const objValue = json5.parse(valueJson);
+
+    return this.dynamicDataService.upsert("data_list", dataList, objValue);
   }
 }
