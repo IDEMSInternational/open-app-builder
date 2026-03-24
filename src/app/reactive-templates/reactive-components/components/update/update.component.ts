@@ -22,13 +22,32 @@ export class UpdateComponent
 {
   private dynamicDataService = inject(DynamicDataService);
 
-  public execute(params?: IActionParameter[]): Promise<void> {
+  public async execute(params?: IActionParameter[]): Promise<void> {
     const dataList = this.params.dataList.value();
 
-    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
-    const valueJson = `{${value as string}}`;
-    const objValue = json5.parse(valueJson);
+    if (!dataList) {
+      console.error(
+        `[UpdateComponent] 'data_list' parameter is not set for component ${this.name()}`
+      );
+      return;
+    }
 
-    return this.dynamicDataService.upsert("data_list", dataList, objValue);
+    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+
+    try {
+      const valueJson = `{${value as string}}`;
+      const objValue = json5.parse(valueJson);
+
+      if (!objValue.id) {
+        console.error(
+          `[UpdateComponent] upsert object must have an 'id' property for component ${this.name()}`
+        );
+        return;
+      }
+
+      await this.dynamicDataService.upsert("data_list", dataList, objValue);
+    } catch (error) {
+      console.error(`[UpdateComponent] Failed to parse value for component ${this.name()}:`, error);
+    }
   }
 }

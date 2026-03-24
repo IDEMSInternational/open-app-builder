@@ -88,20 +88,6 @@ export class ActionComponent
     }
   }
 
-  /** ngOnInit lifecycle hook will only be executed when the action is used as a top-level component */
-  public ngOnInit(): void {
-    this.init();
-
-    this.watchParamDependencies();
-    this.watchConditionDependencies();
-    this.watchValueDependencies();
-
-    // Set default value
-    this.storeValue().then(() => {
-      this.onInitialised()?.();
-    });
-  }
-
   public init(): void {
     super.init();
 

@@ -48,7 +48,7 @@ export class ActionService {
         };
       });
 
-    actionArgs.forEach(async (action) => await this.handleAction(action));
+    await Promise.all(actionArgs.map((action) => this.handleAction(action)));
   }
 
   private async handleAction(action: FlowTypes.TemplateRowAction) {
