@@ -12,6 +12,10 @@ import type {
   ISharedParentGroupDoc,
 } from "./plh-parent-group.types";
 import { rapidproUtils } from "./utils/rapidpro.utils";
+import { RemoteFunctionService } from "src/app/feature/remote-function/remote-function.service";
+
+/** Name of the remote function that proxies groupJoin invocations to the facilitator app */
+const GROUP_JOIN_PROXY_FUNCTION_NAME = "groupJoinProxy";
 
 /**
  * Service for managing parent groups and sharing them between users
@@ -26,6 +30,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   private authId = computed(() => this.authService.authUser()?.uid);
 
   constructor(
+    private remoteFunctionService: RemoteFunctionService,
     private authService: AuthService,
     private dynamicDataService: DynamicDataService,
     private sharedDataService: SharedDataService
@@ -151,6 +156,70 @@ export class PlhParentGroupService extends SyncServiceBase {
         rp_access_code: code,
       });
     }
+  }
+
+  /**
+   * Join a parent group using an access code. This adds the parent to a shared parent group collection in a facilitator app.
+   * Goes via a remote function in current app's project, which in turn calls a function in the facilitator app's project.
+   */
+  public async handleJoinRemote(options: {
+    access_code?: string;
+    parent_id?: string;
+    [key: string]: string | undefined;
+  }) {
+    const { access_code, parent_id, ...rest } = options;
+
+    const requiredParams = { access_code, parent_id };
+    for (const [param, value] of Object.entries(requiredParams)) {
+      if (!value) {
+        console.error(`[PLH PARENT GROUP] - JOIN - ${param} must be provided`);
+        return;
+      }
+    }
+
+    // Recast join payload for the facilitator's `groupJoinProxy` function (which expects a data from rapidpro)
+    // - access_code stays as-is
+    // - parent_id is mapped to rapidpro_uuid
+    // - any additional params become rapidpro_fields (key/value pairs)
+    const rapidpro_fields: Record<string, string> = {};
+    for (const [key, value] of Object.entries(rest)) {
+      if (value === undefined || value === null) continue;
+      rapidpro_fields[key] = String(value);
+    }
+
+    const invokePayload = {
+      access_code: String(access_code),
+      rapidpro_uuid: String(parent_id),
+      rapidpro_fields,
+    };
+
+    await this.remoteFunctionService.ready();
+
+    const result = await this.remoteFunctionService.invoke(
+      GROUP_JOIN_PROXY_FUNCTION_NAME,
+      invokePayload as any
+    );
+
+    const message =
+      typeof result?.error?.message === "string"
+        ? result.error.message
+        : typeof result?.data === "string"
+          ? result.data
+          : undefined;
+
+    if (result?.error) {
+      console.error("[PLH PARENT GROUP] - JOIN - Remote function error", {
+        message,
+        error: result.error,
+      });
+    } else {
+      console.log("[PLH PARENT GROUP] - JOIN - Remote function success", {
+        message,
+        data: result?.data,
+      });
+    }
+
+    return result;
   }
 
   /**
