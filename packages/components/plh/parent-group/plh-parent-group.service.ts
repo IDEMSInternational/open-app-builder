@@ -7,7 +7,7 @@ import { firstValueFrom } from "rxjs";
 import { generateRandomCode } from "src/app/shared/utils";
 import type {
   IParent,
-  IParentFromRapidPro,
+  IParentFromExternalSource,
   IParentGroup,
   ISharedParentGroupDoc,
 } from "./plh-parent-group.types";
@@ -257,7 +257,7 @@ export class PlhParentGroupService extends SyncServiceBase {
       return;
     }
 
-    // In order to avoid overwriting parent fields added/updated from RapidPro,
+    // In order to avoid overwriting parent fields added/updated from external sources,
     // merge parent group data with existing shared data before pushing
     parentGroup = await this.mergeParentGroupDataWithExistingSharedData(parentGroup);
 
@@ -570,11 +570,11 @@ export class PlhParentGroupService extends SyncServiceBase {
     // Add access code to parent group data. This protected field will not be pushed to shared data
     parentGroupData.rp_access_code = sharedParentGroupDoc.access_code;
 
-    // Parent data added from RapidPro must be reformatted to match local parent data format
+    // Parent data added from external sources must be reformatted to match local parent data format
     parentGroupData.parents = parentGroupData.parents.map((parent) =>
-      rapidproUtils.parentHasRapidProData(parent)
-        ? rapidproUtils.transformParentWithRapidProDataToLocalFormat(
-            parent as IParentFromRapidPro,
+      rapidproUtils.parentHasExternalSourceData(parent)
+        ? rapidproUtils.transformParentWithExternalSourceDataToLocalFormat(
+            parent as IParentFromExternalSource,
             parentGroupData.id
           )
         : parent
@@ -694,7 +694,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   /**
    * Merges parent group data with a snapshot of existing shared data.
    * The merge uses all fields for the incoming parent group data,
-   * but preserves rapidpro_fields on parents from the existing parent group.
+   * but preserves external-source fields on parents from the existing parent group.
    */
   private async mergeParentGroupDataWithExistingSharedData(parentGroup: IParentGroup) {
     const existingSharedParentGroup = await this.sharedDataService.provider.querySingle({
@@ -704,7 +704,7 @@ export class PlhParentGroupService extends SyncServiceBase {
     });
 
     if (existingSharedParentGroup) {
-      parentGroup.parents = rapidproUtils.mergeParentsArraysPreservingRapidProData(
+      parentGroup.parents = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
         existingSharedParentGroup.data.parentGroupData.parents,
         parentGroup.parents as IParent[]
       );
