@@ -18,6 +18,45 @@ import { RemoteFunctionService } from "src/app/feature/remote-function/remote-fu
 const GROUP_JOIN_PROXY_FUNCTION_NAME = "groupJoinProxy";
 
 /**
+ * Normalized return from {@link PlhParentGroupService.handleJoinRemote} after `invoke`.
+ * On success, `data` is nested as `{ data: { userId, groupId, totalMembers } }` from the remote groupJoin function.
+ */
+export interface GroupJoinRemoteResult {
+  data?: unknown;
+  error?: { code?: string; message?: string; details?: unknown };
+  success: boolean;
+  message?: string;
+}
+
+/**
+ * Firebase callables often return message "unknown" with the real reason in `details`.
+ * Templates and follow-up actions should use `success` and `message` from {@link GroupJoinRemoteResult}.
+ */
+function resolveGroupJoinRemoteUserMessage(result: {
+  data?: unknown;
+  error?: { message?: string; details?: unknown };
+}): string | undefined {
+  const err = result?.error;
+  if (err) {
+    const rawMessage = typeof err.message === "string" ? err.message.trim() : "";
+    const details =
+      typeof err.details === "string"
+        ? err.details.trim()
+        : err.details != null && err.details !== ""
+          ? String(err.details).trim()
+          : "";
+    if (details && (!rawMessage || rawMessage.toLowerCase() === "unknown")) {
+      return details;
+    }
+    return rawMessage || details || undefined;
+  }
+  if (typeof result?.data === "string") {
+    return result.data;
+  }
+  return undefined;
+}
+
+/**
  * Service for managing parent groups and sharing them between users
  * Specifically for plh_facilitator_* deployments
  * See https://github.com/IDEMSInternational/open-app-builder/pull/2910
@@ -161,13 +200,15 @@ export class PlhParentGroupService extends SyncServiceBase {
   /**
    * Join a parent group using an access code. This adds the parent to a shared parent group collection in a facilitator app.
    * Goes via a remote function in current app's project, which in turn calls a function in the facilitator app's project.
+   *
+   * @returns {@link GroupJoinRemoteResult} with `success` and `message`;
    */
   public async handleJoinRemote(options: {
     access_code?: string;
     app_user_id?: string;
     auth_user_id?: string;
     [key: string]: string | undefined;
-  }) {
+  }): Promise<GroupJoinRemoteResult | undefined> {
     const { access_code, app_user_id, auth_user_id, ...rest } = options;
 
     const requiredParams = { access_code, app_user_id };
@@ -203,26 +244,27 @@ export class PlhParentGroupService extends SyncServiceBase {
       invokePayload as any
     );
 
-    const message =
-      typeof result?.error?.message === "string"
-        ? result.error.message
-        : typeof result?.data === "string"
-          ? result.data
-          : undefined;
+    console.log("[PLH PARENT GROUP] - JOIN - Remote function result", result);
+
+    const message = resolveGroupJoinRemoteUserMessage(result);
+
+    const success = !result.error;
 
     if (result?.error) {
       console.error("[PLH PARENT GROUP] - JOIN - Remote function error", {
+        success: false,
         message,
         error: result.error,
       });
     } else {
       console.log("[PLH PARENT GROUP] - JOIN - Remote function success", {
+        success: true,
         message,
         data: result?.data,
       });
     }
 
-    return result;
+    return { ...result, success, message };
   }
 
   /**

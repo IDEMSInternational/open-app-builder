@@ -1,4 +1,7 @@
-import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
+import type {
+  IActionHandler,
+  ITemplateActionServiceHandle,
+} from "src/app/shared/components/template/services/instance/template-action.registry";
 import { PlhParentGroupService } from "./plh-parent-group.service";
 
 interface IPlhParentGroupActionParams {
@@ -18,6 +21,8 @@ interface IPlhParentGroupActionParams {
   app_user_id?: string;
   /** Optional authenticated user id for group join */
   auth_user_id?: string;
+  /** Local template row name to store the join result (`set_local` after success) */
+  result_local_variable_name?: string;
   /** Additional pass-through params for remote groupJoinProxy invocations */
   [key: string]: string | undefined;
 }
@@ -25,10 +30,10 @@ interface IPlhParentGroupActionParams {
 export class PlhParentGroupActionFactory {
   constructor(private service: PlhParentGroupService) {}
 
-  public plh_parent_group: IActionHandler<IPlhParentGroupActionParams> = async ({
-    args,
-    params,
-  }) => {
+  public plh_parent_group: IActionHandler<IPlhParentGroupActionParams> = async (
+    { args, params, _triggeredBy },
+    host?: ITemplateActionServiceHandle
+  ) => {
     console.log("[PLH PARENT GROUP] - TEMPLATE ACTION", args, params);
     const [actionId] = args;
     const {
@@ -40,6 +45,7 @@ export class PlhParentGroupActionFactory {
       access_code,
       app_user_id,
       auth_user_id,
+      result_local_variable_name,
       ...restParams
     } = params;
 
@@ -177,12 +183,26 @@ export class PlhParentGroupActionFactory {
        * Join a specified remote parent group (i.e. in the shared data of a facilitator app) using an access code.
        */
       join_remote: async () => {
-        return await this.service.handleJoinRemote({
+        const result = await this.service.handleJoinRemote({
           access_code,
           app_user_id,
           auth_user_id,
           ...restParams,
         });
+        // Store the result of the action in named local variable
+        if (result_local_variable_name && host) {
+          host.enqueueActions(
+            [
+              {
+                action_id: "set_local",
+                args: [result_local_variable_name, result],
+                trigger: "click",
+              },
+            ],
+            _triggeredBy
+          );
+        }
+        return result;
       },
     };
 
