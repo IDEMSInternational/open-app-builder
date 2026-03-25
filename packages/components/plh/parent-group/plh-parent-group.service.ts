@@ -214,8 +214,9 @@ export class PlhParentGroupService extends SyncServiceBase {
     const requiredParams = { access_code, app_user_id };
     for (const [param, value] of Object.entries(requiredParams)) {
       if (!value) {
-        console.error(`[PLH PARENT GROUP] - JOIN - ${param} must be provided`);
-        return;
+        const message = `[PLH PARENT GROUP] - JOIN - ${param} must be provided`;
+        console.error(message);
+        return { success: false, message } as GroupJoinRemoteResult;
       }
     }
 
