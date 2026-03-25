@@ -1,0 +1,114 @@
+name: TestHub Ephemeral Sync & Preview
+
+on:
+  workflow_call:
+    inputs:
+      user_email:
+        description: 'Email of the TestHub user for the Firebase channel ID'
+        required: true
+        type: string
+      firebase-host:
+        description: 'Firebase site for hosting'
+        type: string
+        default: ${{vars.FIREBASE_HOSTING_TARGET}}
+    secrets:
+      FIREBASE_SERVICE_ACCOUNT:
+        required: true
+      GDRIVE_CREDENTIALS:
+        required: true
+      GDRIVE_TOKEN:
+        required: true
+
+env:
+  FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
+
+jobs:
+  # --- JOB 1: SYNC & BUILD INSIDE DOCKER CONTAINER ---
+  build_sync:
+    runs-on: ubuntu-latest
+    
+    container:
+      image: ghcr.io/idemsinternational/open-app-builder:latest
+      
+    steps:
+      - name: Add Google Credentials
+        working-directory: /app
+        run: |
+          mkdir -p ./packages/scripts/config
+          echo "${{secrets.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
+          echo "${{secrets.GDRIVE_TOKEN}}" > ./packages/scripts/config/token.json
+
+      - name: Set deployment
+        working-directory: /app
+        run: yarn workflow deployment set ${{vars.DEPLOYMENT_NAME}}
+
+      - name: Sync fresh content from Sheets
+        working-directory: /app
+        run: yarn workflow sync
+
+      - name: Build Web Bundle
+        working-directory: /app
+        run: yarn build:web
+        env:
+          NODE_OPTIONS: --max_old_space_size=6144
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: www
+          path: /app/www/
+
+  # --- JOB 2: DEPLOY TO FIREBASE ---
+  deploy:
+    needs: build_sync
+    runs-on: ubuntu-latest
+    steps:
+      # Native artifact download automatically unpacks the www folder
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: www
+          path: www
+
+      - name: Sanitize Email for Channel ID
+        id: sanitize
+        run: |
+          CLEAN_EMAIL=$(echo "${{ inputs.user_email }}" | sed -e 's/[^a-zA-Z0-9]/-/g')
+          echo "channel_id=testhub-$CLEAN_EMAIL" >> $GITHUB_OUTPUT
+
+      - name: Populate Firebase Config
+        run: |
+          FIREBASE_RC_TARGETS=$(jq -n \
+            --argjson "${{env.FIREBASE_PROJECT_ID}}" \
+            '{"hosting":{"${{inputs.firebase-host}}":["${{inputs.firebase-host}}"]}}' \
+            '$ARGS.named'
+            )
+          FIREBASE_RC=$(jq -n \
+          --argjson projects '{"default":"${{env.FIREBASE_PROJECT_ID}}"}' \
+          --argjson targets "$FIREBASE_RC_TARGETS" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_RC > .firebaserc
+
+          FIREBASE_JSON_HOSTING=$(jq -n \
+          --arg target "${{inputs.firebase-host}}" \
+          --arg public "www" \
+          --argjson ignore '["firebase.json"]' \
+          --argjson rewrites '[{"source": "**","destination": "/index.html"}]' \
+          '$ARGS.named'
+          )
+          FIREBASE_JSON=$(jq -n \
+          --argjson hosting "[$FIREBASE_JSON_HOSTING]" \
+          '$ARGS.named'
+          )
+          echo $FIREBASE_JSON > firebase.json
+
+      - id: deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: "${{ env.FIREBASE_PROJECT_ID }}"
+          channelId: "${{ steps.sanitize.outputs.channel_id }}"
+          target: "${{inputs.firebase-host}}"
+          expires: "1d"
