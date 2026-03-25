@@ -18,66 +18,78 @@ on:
         required: true
       GDRIVE_TOKEN:
         required: true
+      DEPLOYMENT_PRIVATE_KEY:
+        required: false
 
 env:
   FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
+  DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
 
 jobs:
-  # --- JOB 1: SYNC & BUILD INSIDE DOCKER CONTAINER ---
-  build_sync:
+  build_sync_deploy:
     runs-on: ubuntu-latest
-
-    container:
-      image: ghcr.io/idemsinternational/open-app-builder:latest
-
     steps:
+      # --- 1. Assemble the Code ---
+      # Explicitly clone the engine first
+      - name: Check out open-app-builder
+        uses: actions/checkout@v4
+        with:
+          repository: "IDEMSInternational/open-app-builder"
+
+      - name: Remove .git to allow nesting
+        run: rm -rf .git
+
+      # Clone the deployment content directly into the engine's deployments folder
       - name: Checkout Deployment Repo
         uses: actions/checkout@v4
+        with:
+          path: ".idems_app/deployments/${{env.DEPLOYMENT_NAME}}"
 
-      - name: Mount Deployment to App
+      # --- 2. Fast Native Setup (Cached) ---
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.13.0
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: ./.yarn/cache
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-yarn-v1-
+
+      - name: Install node modules
+        run: yarn install --immutable
+
+      # --- 3. Configuration & Decryption ---
+      - name: Set deployment private key
+        if: ${{ secrets.DEPLOYMENT_PRIVATE_KEY != '' }}
         run: |
-          mkdir -p /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}
-          cp -a . /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}/
+          mkdir -p .idems_app/deployments/$DEPLOYMENT_NAME/encrypted
+          echo "${{secrets.DEPLOYMENT_PRIVATE_KEY}}" > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
 
+      - name: Set deployment
+        run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
+
+      # --- 4. Ephemeral Sync ---
       - name: Add Google Credentials
-        working-directory: /app
         run: |
           mkdir -p ./packages/scripts/config
           echo "${{secrets.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
           echo "${{secrets.GDRIVE_TOKEN}}" > ./packages/scripts/config/token.json
 
-      - name: Set deployment
-        working-directory: /app
-        run: yarn workflow deployment set ${{vars.DEPLOYMENT_NAME}}
-
       - name: Sync fresh content from Sheets
-        working-directory: /app
         run: yarn workflow sync
 
+      # --- 5. Build ---
       - name: Build Web Bundle
-        working-directory: /app
         run: yarn build:web
         env:
           NODE_OPTIONS: --max_old_space_size=6144
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: www
-          path: /app/www/
-
-  # --- JOB 2: DEPLOY TO FIREBASE ---
-  deploy:
-    needs: build_sync
-    runs-on: ubuntu-latest
-    steps:
-      # Native artifact download automatically unpacks the www folder
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: www
-          path: www
-
+      # --- 6. Firebase Config & Deployment ---
       - name: Sanitize Email for Channel ID
         id: sanitize
         run: |
