@@ -25,6 +25,8 @@ env:
   FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
   DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
   DEPLOYMENT_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_PRIVATE_KEY }}
+  GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+  GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
 
 jobs:
   build_sync_deploy:
@@ -73,13 +75,16 @@ jobs:
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
 
       # --- 4. Ephemeral Sync ---
-      - name: Add Google Credentials
+      - name: Add google credentials
         run: |
-          mkdir -p ./packages/scripts/config
-          echo "${{secrets.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
-          echo "${{secrets.GDRIVE_TOKEN}}" > ./packages/scripts/config/token.json
+          echo "${{env.GDRIVE_CREDENTIALS}}" > ./packages/scripts/config/credentials.json
 
-      - name: Sync fresh content from Sheets
+      - name: Add google token
+        run: echo "$GDRIVE_TOKEN" > ./packages/scripts/config/token.json
+        env:
+          GDRIVE_TOKEN: ${{ env.GDRIVE_TOKEN }}
+
+      - name: Sync content
         run: yarn workflow sync
 
       # --- 5. Build ---
