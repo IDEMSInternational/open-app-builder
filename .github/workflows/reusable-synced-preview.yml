@@ -26,15 +26,18 @@ jobs:
   # --- JOB 1: SYNC & BUILD INSIDE DOCKER CONTAINER ---
   build_sync:
     runs-on: ubuntu-latest
-    
+
     container:
       image: ghcr.io/idemsinternational/open-app-builder:latest
-      
+
     steps:
       - name: Checkout Deployment Repo
         uses: actions/checkout@v4
-        with:
-          path: /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}
+
+      - name: Mount Deployment to App
+        run: |
+          mkdir -p /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}
+          cp -a . /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}/
 
       - name: Add Google Credentials
         working-directory: /app
