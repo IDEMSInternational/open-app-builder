@@ -24,6 +24,7 @@ on:
 env:
   FIREBASE_PROJECT_ID: ${{vars.FIREBASE_PROJECT_ID}}
   DEPLOYMENT_NAME: ${{vars.DEPLOYMENT_NAME}}
+  DEPLOYMENT_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_PRIVATE_KEY }}
 
 jobs:
   build_sync_deploy:
@@ -64,11 +65,9 @@ jobs:
         run: yarn install --immutable
 
       # --- 3. Configuration & Decryption ---
-      - name: Set deployment private key
-        if: ${{ secrets.DEPLOYMENT_PRIVATE_KEY != '' }}
-        run: |
-          mkdir -p .idems_app/deployments/$DEPLOYMENT_NAME/encrypted
-          echo "${{secrets.DEPLOYMENT_PRIVATE_KEY}}" > .idems_app/deployments/$DEPLOYMENT_NAME/encrypted/private.key
+      - name: Populate Encryption key
+        if: env.DEPLOYMENT_PRIVATE_KEY != ''
+        run: echo "${{env.DEPLOYMENT_PRIVATE_KEY}}" > ./.idems_app/deployments/${{env.DEPLOYMENT_NAME}}/encrypted/private.key
 
       - name: Set deployment
         run: yarn workflow deployment set ${{env.DEPLOYMENT_NAME}}
