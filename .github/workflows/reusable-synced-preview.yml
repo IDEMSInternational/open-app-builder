@@ -31,6 +31,11 @@ jobs:
       image: ghcr.io/idemsinternational/open-app-builder:latest
       
     steps:
+      - name: Checkout Deployment Repo
+        uses: actions/checkout@v4
+        with:
+          path: /app/.idems_app/deployments/${{vars.DEPLOYMENT_NAME}}
+
       - name: Add Google Credentials
         working-directory: /app
         run: |
