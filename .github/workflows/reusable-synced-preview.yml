@@ -89,7 +89,7 @@ jobs:
 
       # --- 5. Build ---
       - name: Build Web Bundle
-        run: yarn build:web
+        run: yarn build
         env:
           NODE_OPTIONS: --max_old_space_size=6144
 
