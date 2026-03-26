@@ -14,6 +14,7 @@ export class ComboBoxSearchComponent {
   public selectedValue = input<string>();
   @Input() optionsKey: string = "name";
   @Input() optionsValue: string = "text";
+  @Input() optionsBadge: string = "";
 
   public searchTerm = signal("");
 

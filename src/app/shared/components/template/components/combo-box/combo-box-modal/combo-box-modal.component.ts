@@ -23,6 +23,7 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() style: string;
   @Input() optionsKey: string = "name";
   @Input() optionsValue: string = "text";
+  @Input() optionsBadge: string = "";
   formData: FormGroup | null;
   valuesFromListAnswers: IAnswerOption[];
   textTitle: string | null;

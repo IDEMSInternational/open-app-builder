@@ -29,6 +29,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   /** The property key to use for the option display text. Default 'text'. */
   options_value: coerce.string("text"),
+  /** Property key within each answer option used as a badge label (optional). */
+  options_badge: coerce.string(""),
   /** When true, allows users to enter a custom answer. Modal variant only. */
   input_allowed: coerce.boolean(),
   /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
@@ -143,6 +145,7 @@ export class TmplComboBoxComponent
         style: this.params().style,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
+        optionsBadge: this.params().optionsBadge,
       },
     });
 
@@ -171,6 +174,7 @@ export class TmplComboBoxComponent
         style: this.params().style,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
+        optionsBadge: this.params().optionsBadge,
       },
     });
 

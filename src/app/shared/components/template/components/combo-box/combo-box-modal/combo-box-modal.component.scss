@@ -75,6 +75,10 @@
         min-height: 56px;
         border-radius: var(--ion-border-radius-small);
         text-align: center;
+
+        .label-badge {
+          margin-inline-start: var(--small-margin);
+        }
       }
     }
     .checked-radio {
