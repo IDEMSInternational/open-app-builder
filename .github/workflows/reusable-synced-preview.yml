@@ -11,6 +11,12 @@ on:
         description: 'Firebase site for hosting'
         type: string
         default: ${{vars.FIREBASE_HOSTING_TARGET}}
+      webhook_url:
+        required: false
+        type: string
+      webhook_token:
+        required: false
+        type: string
     secrets:
       FIREBASE_SERVICE_ACCOUNT:
         required: true
@@ -136,3 +142,17 @@ jobs:
           channelId: "${{ steps.sanitize.outputs.channel_id }}"
           target: "${{inputs.firebase-host}}"
           expires: "1d"
+
+      - name: Ping TestHub Webhook
+        if: always()
+        env:
+          FIREBASE_URLS: ${{ steps.deploy.outputs.urls }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          if [ -n "${{ inputs.webhook_url }}" ]; then
+            curl -X POST -H "Content-Type: application/json" \
+                 -d "{\"email\": \"${{ inputs.user_email }}\", \"token\": \"${{ inputs.webhook_token }}\", \"urls\": \"$FIREBASE_URLS\", \"status\": \"$JOB_STATUS\"}" \
+                 ${{ inputs.webhook_url }}
+          else
+            echo "No webhook URL provided, skipping ping."
+          fi
