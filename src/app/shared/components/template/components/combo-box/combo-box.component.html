@@ -35,7 +35,9 @@
       @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
         <ion-select-option [value]="answerOption[params().optionsKey]">
           @if (params().optionsBadge) {
-            <p>[{{ answerOption[params().optionsBadge] | uppercase }}]</p>
+            @if (answerOption[params().optionsBadge]) {
+              <p>[{{ answerOption[params().optionsBadge] | uppercase }}]</p>
+            }
           }
           {{ answerOption[params().optionsValue] }}
         </ion-select-option>
