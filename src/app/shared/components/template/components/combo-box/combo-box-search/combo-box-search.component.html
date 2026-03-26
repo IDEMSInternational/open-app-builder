@@ -27,6 +27,9 @@
     @for (item of filteredOptions(); track item[optionsKey]) {
       <ion-item (click)="select(item)" [class.selected]="isSelected(item)">
         {{ item[optionsValue] }}
+        @if (optionsBadge && item[optionsBadge]) {
+          <ion-chip slot="end" color="primary">{{ item[optionsBadge] | uppercase }}</ion-chip>
+        }
       </ion-item>
     }
   </ion-list>

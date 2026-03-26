@@ -145,6 +145,7 @@ export class TmplComboBoxComponent
         style: this.params().style,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
+        optionsBadge: this.params().optionsBadge,
       },
     });
 
@@ -173,6 +174,7 @@ export class TmplComboBoxComponent
         style: this.params().style,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
+        optionsBadge: this.params().optionsBadge,
       },
     });
 
