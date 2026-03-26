@@ -150,9 +150,18 @@ jobs:
           JOB_STATUS: ${{ job.status }}
         run: |
           if [ -n "${{ inputs.webhook_url }}" ]; then
-            curl -X POST -H "Content-Type: application/json" \
-                 -d "{\"email\": \"${{ inputs.user_email }}\", \"token\": \"${{ inputs.webhook_token }}\", \"urls\": \"$FIREBASE_URLS\", \"status\": \"$JOB_STATUS\"}" \
-                 ${{ inputs.webhook_url }}
+            # Use jq to safely construct the JSON payload, escaping all inner quotes
+            PAYLOAD=$(jq -n \
+              --arg email "${{ inputs.user_email }}" \
+              --arg token "${{ inputs.webhook_token }}" \
+              --arg urls "$FIREBASE_URLS" \
+              --arg status "$JOB_STATUS" \
+              '{email: $email, token: $token, urls: $urls, status: $status}')
+              
+            echo "Sending payload to TestHub..."
+            curl --fail -L -X POST -H "Content-Type: application/json" \
+                 -d "$PAYLOAD" \
+                 "${{ inputs.webhook_url }}"
           else
             echo "No webhook URL provided, skipping ping."
           fi
