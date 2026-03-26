@@ -26,16 +26,16 @@
   <div class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!value()"
+      [value]="value()"
       [placeholder]="params().placeholder | translate"
       (ionChange)="handleDropdownChange($event.detail.value)"
       interface="popover"
       labelPlacement="stacked"
       [disabled]="disabled()"
     >
-      <!-- HACK: Use $any since answerOptions() is typed as IAnswerListItem[] but could contain other types -->
-      @for (answerOption of answerOptions(); track $any(answerOption)[params().optionsKey]) {
-        <ion-select-option [value]="$any(answerOption)[params().optionsKey]">
-          {{ $any(answerOption)[params().optionsValue] }}
+      @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
+        <ion-select-option [value]="answerOption[params().optionsKey]">
+          {{ answerOption[params().optionsValue] }}
         </ion-select-option>
       }
     </ion-select>
