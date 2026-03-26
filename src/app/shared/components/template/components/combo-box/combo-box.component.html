@@ -26,6 +26,7 @@
   <div class="combo-box-container dropdown">
     <ion-select
       [class.hasValue]="!!value()"
+      [value]="value()"
       [placeholder]="params().placeholder | translate"
       (ionChange)="handleDropdownChange($event.detail.value)"
       interface="popover"
