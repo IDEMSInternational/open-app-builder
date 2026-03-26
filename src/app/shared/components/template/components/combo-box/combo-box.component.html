@@ -29,15 +29,14 @@
       [value]="value()"
       [placeholder]="params().placeholder | translate"
       (ionChange)="handleDropdownChange($event.detail.value)"
+      (click)="handleDropdownOpen()"
+      (ionFocus)="handleDropdownOpen()"
       interface="popover"
       labelPlacement="stacked"
       [disabled]="disabled()"
     >
       @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
         <ion-select-option [value]="answerOption[params().optionsKey]">
-          @if (params().optionsBadge && answerOption[params().optionsBadge]) {
-            <p>[{{ answerOption[params().optionsBadge] | uppercase }}]</p>
-          }
           {{ answerOption[params().optionsValue] }}
         </ion-select-option>
       }
