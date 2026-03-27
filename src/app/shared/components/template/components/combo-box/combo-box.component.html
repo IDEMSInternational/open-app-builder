@@ -23,24 +23,14 @@
     <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
   </button>
 } @else if (params().variant === "dropdown" && !showSearch()) {
-  <div class="combo-box-container dropdown">
-    <ion-select
-      [class.hasValue]="!!value()"
-      [value]="value()"
-      [placeholder]="params().placeholder | translate"
-      (ionChange)="handleDropdownChange($event.detail.value)"
-      interface="popover"
-      labelPlacement="stacked"
-      [disabled]="disabled()"
-    >
-      @for (answerOption of answerOptions(); track answerOption[params().optionsKey]) {
-        <ion-select-option [value]="answerOption[params().optionsKey]">
-          @if (params().optionsBadge && answerOption[params().optionsBadge]) {
-            <p>[{{ answerOption[params().optionsBadge] | uppercase }}]</p>
-          }
-          {{ answerOption[params().optionsValue] }}
-        </ion-select-option>
-      }
-    </ion-select>
-  </div>
+  <combo-box-dropdown
+    [answerOptions]="answerOptions()"
+    [value]="value()"
+    [placeholder]="params().placeholder"
+    [optionsKey]="params().optionsKey"
+    [optionsValue]="params().optionsValue"
+    [optionsBadge]="params().optionsBadge"
+    [disabled]="disabled()"
+    (valueChange)="handleDropdownChange($event)"
+  />
 }

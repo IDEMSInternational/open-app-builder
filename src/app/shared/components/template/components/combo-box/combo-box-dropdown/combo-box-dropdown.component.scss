@@ -1,0 +1,38 @@
+.combo-box-container.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  ion-select {
+    font-size: var(--combo-box-font-size-standard, 18px);
+    border: 1px solid var(--ion-color-gray-400);
+    border-radius: var(--ion-border-radius-standard, 8px);
+    padding-left: var(--small-padding, 10px);
+    padding-right: var(--small-padding, 10px);
+    --highlight-color-focused: none;
+    --highlight-color: none;
+
+    &::part(icon) {
+      color: var(--ion-color-gray-500);
+    }
+
+    &.hasValue {
+      background: var(--combo-box-background-with-value, var(--ion-color-primary-100));
+      border: 1px solid var(--combo-box-border-with-value, var(--ion-color-primary-300));
+
+      &::part(container) {
+        color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
+      }
+
+      &::part(icon) {
+        color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
+      }
+    }
+
+    &.select-expanded {
+      border: 1.5px solid var(--combo-box-border-with-value, var(--ion-color-primary-400));
+      background: white;
+      color: var(--ion-color-gray-800);
+    }
+  }
+}

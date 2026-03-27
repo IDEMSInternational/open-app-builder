@@ -9,6 +9,7 @@ import { AccordionSectionComponent } from "./layout/accordion-section/accordion-
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
+import { ComboBoxDropdownComponent } from "./combo-box/combo-box-dropdown/combo-box-dropdown.component";
 import { FormComponent } from "./layout/form";
 import { NavGroupComponent } from "./layout/nav_group";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
@@ -86,6 +87,7 @@ export const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   AnimatedSectionGroupComponent,
   ComboBoxModalComponent,
+  ComboBoxDropdownComponent,
   ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
