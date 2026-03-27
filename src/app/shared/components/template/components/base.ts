@@ -98,8 +98,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
   /**
    * Update the current value of the row by setting a local variable that matches
    * @param value
-   * @param triggerActions Emit set_self and changed actions (default true)
-   * @ignore
+   * @param triggerChangedActions Emit "changed" action trigger (default true)
    */
   async setValue(value: any, triggerChangedActions = true) {
     // TODO - also want to prevent triggering changed action
