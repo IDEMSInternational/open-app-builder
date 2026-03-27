@@ -52,12 +52,12 @@ export class ComboBoxDropdownComponent {
       const itemElement = optionItem as HTMLElement;
       if (itemElement.querySelector(".combo-box-option-badge")) continue;
 
-      const optionLabelText = this.normaliseText(itemElement.textContent);
+      const optionLabelText = (itemElement.textContent ?? "").trim();
       if (!optionLabelText) continue;
 
       const matchingOptionLabel = Object.keys(badgeByLabel).find((label) => {
-        const normalisedLabel = this.normaliseText(label);
-        return optionLabelText === normalisedLabel || optionLabelText.includes(normalisedLabel);
+        const optionLabel = label.trim();
+        return optionLabelText === optionLabel || optionLabelText.includes(optionLabel);
       });
       if (!matchingOptionLabel) continue;
 
@@ -97,9 +97,5 @@ export class ComboBoxDropdownComponent {
     }
 
     return results;
-  }
-
-  private normaliseText(text: string | null | undefined): string {
-    return (text ?? "").replace(/\s+/g, " ").trim().toLowerCase();
   }
 }
