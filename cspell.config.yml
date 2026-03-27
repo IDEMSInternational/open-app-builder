@@ -11,6 +11,7 @@
     "cocoapods",
     "danfojs",
     "datetime",
+    "debouncer",
     "dexie",
     "firebaserc",
     "firestore",

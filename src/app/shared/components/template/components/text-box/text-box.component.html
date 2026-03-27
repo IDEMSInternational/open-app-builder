@@ -1,10 +1,10 @@
 <div class="wrapper" [class]="params().style">
   <ion-input
-    #input
     class="text-box-input"
-    [inputmode]="params().isNumberInput ? 'tel' : 'text'"
-    (ionBlur)="handleChange(input.value)"
-    [value]="params().prioritisePlaceholder ? '' : value()"
+    [inputmode]="params().numberInput ? 'tel' : 'text'"
+    (ionBlur)="handleBlur()"
+    (ionInput)="handleInput($event.detail.value)"
+    [value]="inputValue()"
     [placeholder]="params().placeholder"
     [maxlength]="params().maxLength"
     [style.textAlign]="params().textAlign"
