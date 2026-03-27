@@ -22,7 +22,7 @@ describe("ContextCreatorService", () => {
 
     const context = service.createContext([{ name: "simple", type: "local" }]);
 
-    expect(context).toEqual({ local: { simple: 123 }, global: {} });
+    expect(context).toEqual({ local: { simple: 123 }, global: {}, system: {} });
   });
 
   it("creates nested context from dot paths", () => {
@@ -30,7 +30,11 @@ describe("ContextCreatorService", () => {
 
     const context = service.createContext([{ name: "outer.inner.value", type: "local" }]);
 
-    expect(context).toEqual({ local: { outer: { inner: { value: "ok" } } }, global: {} });
+    expect(context).toEqual({
+      local: { outer: { inner: { value: "ok" } } },
+      global: {},
+      system: {},
+    });
   });
 
   it("merges shared prefixes", () => {
@@ -42,7 +46,7 @@ describe("ContextCreatorService", () => {
       { name: "root.right", type: "local" },
     ]);
 
-    expect(context).toEqual({ local: { root: { left: "L", right: "R" } }, global: {} });
+    expect(context).toEqual({ local: { root: { left: "L", right: "R" } }, global: {}, system: {} });
   });
 
   it("replaces non-object segments to allow nesting", () => {
@@ -54,13 +58,13 @@ describe("ContextCreatorService", () => {
       { name: "root.child", type: "local" },
     ]);
 
-    expect(context).toEqual({ local: { root: { child: "nested" } }, global: {} });
+    expect(context).toEqual({ local: { root: { child: "nested" } }, global: {}, system: {} });
   });
 
   it("returns empty local context when no dependencies", () => {
     const context = service.createContext([]);
 
-    expect(context).toEqual({ local: {}, global: {} });
+    expect(context).toEqual({ local: {}, global: {}, system: {} });
   });
 
   it("namespace includes numbers", () => {
@@ -73,6 +77,7 @@ describe("ContextCreatorService", () => {
     expect(context).toEqual({
       local: { parameter_loop: { 2: { options_loop: { 0: { button_text: "Click Here" } } } } },
       global: {},
+      system: {},
     });
   });
 
@@ -88,6 +93,7 @@ describe("ContextCreatorService", () => {
         parameter_loop: { index2: { options_loop: { index0: { button_text: "Click Here" } } } },
       },
       global: {},
+      system: {},
     });
   });
 });
