@@ -3,7 +3,6 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import json5 from "json5";
-import { firstValueFrom } from "rxjs";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 
 const parameters = () =>
@@ -12,41 +11,43 @@ const parameters = () =>
   });
 
 @Component({
-  selector: "oab-query",
+  selector: "oab-update",
   template: "", // template is not needed for this component
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
   standalone: false,
 })
-export class QueryComponent
+export class UpdateComponent
   extends RowBaseComponent<ReturnType<typeof parameters>>
   implements IAction
 {
   private dynamicDataService = inject(DynamicDataService);
 
   public async execute(params?: IActionParameter[]): Promise<void> {
-    await this.storeValue();
-  }
+    const dataList = this.params.dataList.value();
 
-  protected async computeStoredValue(value: any) {
-    return await this.executeQuery(value);
-  }
+    if (!dataList) {
+      console.error(
+        `[UpdateComponent] 'data_list' parameter is not set for component ${this.name()}`
+      );
+      return;
+    }
 
-  private async executeQuery(value: any): Promise<any[]> {
+    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+
     try {
-      const queryString = `{${value as string}}`;
-      const mangoQuery = value ? json5.parse(queryString) : {};
-      const dataList = this.params.dataList.value();
+      const valueJson = `{${value as string}}`;
+      const objValue = json5.parse(valueJson);
 
-      if (!dataList) {
-        return Promise.resolve([]);
+      if (!objValue.id) {
+        console.error(
+          `[UpdateComponent] upsert object must have an 'id' property for component ${this.name()}`
+        );
+        return;
       }
 
-      const query = this.dynamicDataService.query$<any>("data_list", dataList, mangoQuery);
-
-      return await firstValueFrom(query);
+      await this.dynamicDataService.upsert("data_list", dataList, objValue);
     } catch (error) {
-      console.error(`Failed to parse query for ${this.name()}:`, error);
-      return Promise.resolve([]);
+      console.error(`[UpdateComponent] Failed to parse value for component ${this.name()}:`, error);
     }
   }
 }
