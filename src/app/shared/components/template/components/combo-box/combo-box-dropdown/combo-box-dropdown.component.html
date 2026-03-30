@@ -1,0 +1,17 @@
+<div class="combo-box-container dropdown">
+  <ion-select
+    [class.hasValue]="!!value()"
+    [value]="value()"
+    [placeholder]="placeholder() | translate"
+    (ionChange)="onIonSelectChange($event.detail.value)"
+    interface="popover"
+    labelPlacement="stacked"
+    [disabled]="disabled()"
+  >
+    @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
+      <ion-select-option [value]="answerOption[optionsKey()]">
+        {{ answerOption[optionsValue()] }}
+      </ion-select-option>
+    }
+  </ion-select>
+</div>

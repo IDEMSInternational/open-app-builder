@@ -124,10 +124,6 @@ export class TmplComboBoxComponent
     });
   }
 
-  public async handleDropdownChange(value) {
-    await this.setValue(value);
-  }
-
   public async openModal() {
     if (this.disabled()) return;
     const optionsKey = this.params().optionsKey;
