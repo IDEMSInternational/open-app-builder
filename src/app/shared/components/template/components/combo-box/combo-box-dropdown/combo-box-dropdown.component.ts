@@ -66,17 +66,16 @@ export class ComboBoxDropdownComponent {
       cssClass: "combo-box-search",
       componentProps: {
         answerOptions: this.answerOptions,
-        title: signal(this.modalTitle()),
+        title: this.modalTitle,
         selectedValue: this.value,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
       },
     });
 
-    modal.onDidDismiss().then((data) => {
-      this.searchDismiss.emit(data?.data?.answer);
-    });
     await modal.present();
+    const { data } = await modal.onDidDismiss();
+    this.searchDismiss.emit(data?.answer);
   }
 
   public searchButtonClass = computed(() => {
@@ -94,6 +93,14 @@ export class ComboBoxDropdownComponent {
     const key = this.optionsKey();
     this.selectionChange.emit(option[key]);
     this.close();
+  }
+
+  /** Determine whether an option is the currently selected option. */
+  public isSelected(option: IAnswerOption): boolean {
+    const key = this.optionsKey();
+    const optionValue = option[key];
+    const selectedValue = this.value();
+    return String(optionValue ?? "") === String(selectedValue ?? "");
   }
 
   constructor(private modalController: ModalController) {}

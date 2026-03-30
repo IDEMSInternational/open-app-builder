@@ -20,7 +20,7 @@
       [class.dropdown-open]="isOpen()"
     >
       <span class="text">
-        {{ triggerText() || placeholder() | translate }}
+        {{ triggerText() | translate }}
       </span>
       <ion-icon
         class="dropdown-caret"
@@ -49,7 +49,7 @@
               lines="none"
               detail="false"
               (click)="selectOption(answerOption)"
-              [class.selected]="(answerOption[optionsKey()] ?? '') + '' === (value() ?? '') + ''"
+              [class.selected]="isSelected(answerOption)"
             >
               {{ answerOption[optionsValue()] }}
             </ion-item>
