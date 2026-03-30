@@ -51,7 +51,7 @@ export class ComboBoxDropdownComponent {
     this.isOpen.set(false);
   }
 
-  public onPopoverDidPresent() {
+  public onPopoverWillPresent() {
     this.isOpen.set(true);
   }
 

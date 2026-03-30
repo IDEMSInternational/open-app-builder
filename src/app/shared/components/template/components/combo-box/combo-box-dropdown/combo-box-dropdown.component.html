@@ -17,18 +17,23 @@
       class="combo-box-dropdown-trigger combo-box-dropdown-button"
       [disabled]="disabled()"
       [ngClass]="searchButtonClass()"
-      [class.select-expanded]="isOpen()"
+      [class.dropdown-open]="isOpen()"
     >
       <span class="text">
         {{ triggerText() || placeholder() | translate }}
       </span>
-      <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+      <ion-icon
+        class="dropdown-caret"
+        name="caret-down-sharp"
+        size="small"
+        aria-hidden="true"
+      ></ion-icon>
     </button>
 
     <ion-popover
       [trigger]="triggerId"
       triggerAction="click"
-      (didPresent)="onPopoverDidPresent()"
+      (willPresent)="onPopoverWillPresent()"
       (didDismiss)="close()"
       [arrow]="false"
       size="cover"

@@ -11,17 +11,6 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   justify-content: center;
 }
 
-// Only keep the "expanded" look for the popover-trigger button.
-.combo-box-dropdown-trigger.select-expanded {
-  border: 1.5px solid var(--combo-box-border-with-value, var(--ion-color-primary-400));
-  background: white;
-  color: var(--ion-color-gray-800);
-
-  ion-icon {
-    color: var(--ion-color-gray-800);
-  }
-}
-
 // Shared trigger button styles for both dropdown and search variants.
 .combo-box-dropdown-button {
   width: 100%;
@@ -56,6 +45,13 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     color: var(--ion-color-gray-400);
   }
 
+  &.dropdown-open {
+    background: white;
+    .dropdown-caret {
+      transform: rotate(180deg);
+    }
+  }
+
   .text,
   ion-icon {
     margin-top: auto;
@@ -65,6 +61,10 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   ion-icon {
     margin-left: auto;
     width: 0.8125rem;
+  }
+
+  .dropdown-caret {
+    transition: transform 0.2s;
   }
 }
 
