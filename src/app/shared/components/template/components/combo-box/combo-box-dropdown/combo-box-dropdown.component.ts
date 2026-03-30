@@ -21,6 +21,7 @@ export class ComboBoxDropdownComponent {
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
   public optionsValue = input<string>("text");
+  public optionsBadge = input<string>("");
 
   /** When there are more than 8 options, open search modal instead of inline popover. */
   public showSearch = computed(() => this.answerOptions().length > 8);
@@ -70,6 +71,7 @@ export class ComboBoxDropdownComponent {
         selectedValue: this.value,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
+        optionsBadge: this.optionsBadge(),
       },
     });
 

@@ -22,7 +22,7 @@
               {{ answerOption[optionsValue] | translate }}
               @if (optionsBadge && answerOption[optionsBadge]) {
                 <ion-chip class="label-badge" slot="end" color="primary">{{
-                  answerOption[optionsBadge] | uppercase
+                  answerOption[optionsBadge] | translate | uppercase
                 }}</ion-chip>
               }
             </label>
