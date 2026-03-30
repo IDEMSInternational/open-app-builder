@@ -1,17 +1,44 @@
 <div class="combo-box-container dropdown">
-  <ion-select
-    [class.hasValue]="!!value()"
-    [value]="value()"
-    [placeholder]="placeholder() | translate"
-    (ionChange)="onIonSelectChange($event.detail.value)"
-    interface="popover"
-    labelPlacement="stacked"
-    [disabled]="disabled()"
-  >
-    @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
-      <ion-select-option [value]="answerOption[optionsKey()]">
-        {{ answerOption[optionsValue()] }}
-      </ion-select-option>
-    }
-  </ion-select>
+  @if (showSearch()) {
+    <button
+      type="button"
+      class="combo-box-dropdown-button open-search-combobox"
+      (click)="openSearch()"
+      [ngClass]="searchButtonClass()"
+      [disabled]="disabled()"
+    >
+      <span class="text">{{ displayText() | translate }}</span>
+      <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+    </button>
+  } @else {
+    <button
+      type="button"
+      class="combo-box-dropdown-trigger combo-box-dropdown-button"
+      (click)="toggleOpen($event)"
+      [disabled]="disabled()"
+      [ngClass]="searchButtonClass()"
+      [class.select-expanded]="isOpen()"
+    >
+      <span class="text">
+        {{ triggerText() || placeholder() | translate }}
+      </span>
+      <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+    </button>
+
+    <ion-popover [isOpen]="isOpen()" [event]="openEvent()" (didDismiss)="close()">
+      <ng-template>
+        <ion-list class="combo-box-dropdown-list">
+          @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
+            <ion-item
+              button
+              (click)="selectOption(answerOption)"
+              [class.selected]="(answerOption[optionsKey()] ?? '') + '' === (value() ?? '') + ''"
+            >
+              {{ answerOption[optionsValue()] }}
+            </ion-item>
+          }
+        </ion-list>
+      </ng-template>
+    </ion-popover>
+  }
 </div>

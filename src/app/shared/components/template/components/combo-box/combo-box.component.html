@@ -12,24 +12,18 @@
   >
     {{ displayText() | translate }}
   </button>
-} @else if (params().variant === "dropdown" && showSearch()) {
-  <button
-    class="open-search-combobox"
-    (click)="openSearch()"
-    [ngClass]="searchButtonClass()"
-    [disabled]="disabled()"
-  >
-    <span class="text">{{ displayText() | translate }}</span>
-    <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
-  </button>
-} @else if (params().variant === "dropdown" && !showSearch()) {
+} @else if (params().variant === "dropdown") {
   <combo-box-dropdown
+    [displayText]="displayText()"
+    [modalTitle]="params().modalTitle"
+    [prioritisePlaceholder]="params().prioritisePlaceholder"
     [value]="value()"
     [placeholder]="params().placeholder"
     [disabled]="disabled()"
     [answerOptions]="answerOptions()"
     [optionsKey]="params().optionsKey"
     [optionsValue]="params().optionsValue"
+    (searchDismiss)="onSearchDismiss($event)"
     (selectionChange)="setValue($event)"
   />
 }

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output, input } from "@angular/core";
+import { Component, computed, EventEmitter, Output, signal, input } from "@angular/core";
+import { ModalController } from "@ionic/angular";
+import { ComboBoxSearchComponent } from "../combo-box-search/combo-box-search.component";
 import { IAnswerOption } from "src/app/shared/utils";
 
 @Component({
@@ -10,15 +12,89 @@ import { IAnswerOption } from "src/app/shared/utils";
 export class ComboBoxDropdownComponent {
   public value = input<any>();
   public placeholder = input<string>("");
+  public displayText = input<string>("");
+  public modalTitle = input<string>("");
+  public prioritisePlaceholder = input<boolean>(false);
   public disabled = input<boolean>(false);
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
   public optionsValue = input<string>("text");
 
+  /** When there are more than 8 options, open search modal instead of inline popover. */
+  public showSearch = computed(() => this.answerOptions().length > 8);
+
   @Output()
   public selectionChange = new EventEmitter<any>();
 
-  public onIonSelectChange(selectedValue: any) {
-    this.selectionChange.emit(selectedValue);
+  /** Emitted when the search modal dismisses with `data.answer` from `ComboBoxSearchComponent`. */
+  @Output()
+  public searchDismiss = new EventEmitter<IAnswerOption | null | undefined>();
+
+  public isOpen = signal(false);
+  public openEvent = signal<MouseEvent | undefined>(undefined);
+
+  public selectedOptionText = computed(() => {
+    const val = this.value();
+    if (!val) return undefined;
+
+    const key = this.optionsKey();
+    const match = this.answerOptions().find((o) => String(o[key]) === String(val));
+    const text = match?.[this.optionsValue()];
+    return text === undefined || text === null ? undefined : String(text);
+  });
+
+  public triggerText = computed(() => {
+    return this.value() ? (this.selectedOptionText() ?? this.placeholder()) : this.placeholder();
+  });
+
+  public toggleOpen(event: MouseEvent) {
+    if (this.disabled()) return;
+    this.openEvent.set(event);
+    this.isOpen.set(!this.isOpen());
   }
+
+  public close() {
+    this.isOpen.set(false);
+  }
+
+  public async openSearch() {
+    if (this.disabled()) return;
+    const optionsKey = this.optionsKey();
+    const optionsValue = this.optionsValue();
+    const modal = await this.modalController.create({
+      component: ComboBoxSearchComponent,
+      cssClass: "combo-box-search",
+      componentProps: {
+        answerOptions: this.answerOptions,
+        title: signal(this.modalTitle()),
+        selectedValue: this.value,
+        optionsKey: optionsKey,
+        optionsValue: optionsValue,
+      },
+    });
+
+    modal.onDidDismiss().then((data) => {
+      this.searchDismiss.emit(data?.data?.answer);
+    });
+    await modal.present();
+  }
+
+  public searchButtonClass = computed(() => {
+    const val = this.value();
+    const placeholder = this.placeholder();
+    return {
+      disabled: this.disabled(),
+      "placeholder-style": (!val && placeholder) || this.prioritisePlaceholder(),
+      "with-value": val ? true : undefined,
+      "no-value": val ? undefined : true,
+    };
+  });
+
+  public selectOption(option: IAnswerOption) {
+    const key = this.optionsKey();
+    this.selectionChange.emit(option[key]);
+    this.close();
+  }
+
+  constructor(private modalController: ModalController) {}
 }
