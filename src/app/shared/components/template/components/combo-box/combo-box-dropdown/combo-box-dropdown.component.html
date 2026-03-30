@@ -13,8 +13,8 @@
   } @else {
     <button
       type="button"
+      [id]="triggerId"
       class="combo-box-dropdown-trigger combo-box-dropdown-button"
-      (click)="toggleOpen($event)"
       [disabled]="disabled()"
       [ngClass]="searchButtonClass()"
       [class.select-expanded]="isOpen()"
@@ -25,12 +25,24 @@
       <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
     </button>
 
-    <ion-popover [isOpen]="isOpen()" [event]="openEvent()" (didDismiss)="close()">
+    <ion-popover
+      [trigger]="triggerId"
+      triggerAction="click"
+      (didPresent)="onPopoverDidPresent()"
+      (didDismiss)="close()"
+      [arrow]="false"
+      size="cover"
+      reference="trigger"
+      [dismissOnSelect]="true"
+      cssClass="combo-box-select-popover"
+    >
       <ng-template>
-        <ion-list class="combo-box-dropdown-list">
+        <ion-list class="combo-box-dropdown-list" lines="none">
           @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
             <ion-item
               button
+              lines="none"
+              detail="false"
               (click)="selectOption(answerOption)"
               [class.selected]="(answerOption[optionsKey()] ?? '') + '' === (value() ?? '') + ''"
             >

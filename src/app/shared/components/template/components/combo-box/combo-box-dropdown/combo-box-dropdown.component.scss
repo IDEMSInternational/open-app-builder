@@ -4,28 +4,11 @@ $background-no-value: var(--combo-box-background-no-value, #fff);
 $background-with-value: var(--combo-box-background-with-value, var(--ion-color-primary-100));
 $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-300));
 
-// Dropdown variant (custom popover)
+// Dropdown variant trigger container.
 .combo-box-container.dropdown {
   width: 100%;
   display: flex;
   justify-content: center;
-
-  .combo-box-dropdown-list {
-    padding: 0;
-
-    ion-item {
-      --min-height: 44px;
-      --inner-padding-end: 16px;
-      --inner-padding-start: 16px;
-      --border-width: 0;
-
-      &.selected {
-        --background: var(--ion-color-primary-50);
-        --color: var(--ion-color-primary-800);
-        font-weight: var(--font-weight-medium);
-      }
-    }
-  }
 }
 
 // Only keep the "expanded" look for the popover-trigger button.
@@ -84,3 +67,5 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     width: 0.8125rem;
   }
 }
+
+// Popover and list items are styled in `src/global.scss`, as ionic injects the elements into the DOM.

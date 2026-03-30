@@ -31,7 +31,7 @@ export class ComboBoxDropdownComponent {
   public searchDismiss = new EventEmitter<IAnswerOption | null | undefined>();
 
   public isOpen = signal(false);
-  public openEvent = signal<MouseEvent | undefined>(undefined);
+  public readonly triggerId = `combo-box-dropdown-trigger-${Math.random().toString(36).slice(2, 10)}`;
 
   public selectedOptionText = computed(() => {
     const val = this.value();
@@ -47,14 +47,12 @@ export class ComboBoxDropdownComponent {
     return this.value() ? (this.selectedOptionText() ?? this.placeholder()) : this.placeholder();
   });
 
-  public toggleOpen(event: MouseEvent) {
-    if (this.disabled()) return;
-    this.openEvent.set(event);
-    this.isOpen.set(!this.isOpen());
-  }
-
   public close() {
     this.isOpen.set(false);
+  }
+
+  public onPopoverDidPresent() {
+    this.isOpen.set(true);
   }
 
   public async openSearch() {
