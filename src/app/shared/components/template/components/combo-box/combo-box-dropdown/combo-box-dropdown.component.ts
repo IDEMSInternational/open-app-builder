@@ -10,6 +10,8 @@ import { IAnswerOption } from "src/app/shared/utils";
   standalone: false,
 })
 export class ComboBoxDropdownComponent {
+  private static nextId = 0;
+
   public value = input<any>();
   public placeholder = input<string>("");
   public displayText = input<string>("");
@@ -31,7 +33,7 @@ export class ComboBoxDropdownComponent {
   public searchDismiss = new EventEmitter<IAnswerOption | null | undefined>();
 
   public isOpen = signal(false);
-  public readonly triggerId = `combo-box-dropdown-trigger-${Math.random().toString(36).slice(2, 10)}`;
+  public readonly triggerId = `combo-box-dropdown-trigger-${ComboBoxDropdownComponent.nextId++}`;
 
   public selectedOptionText = computed(() => {
     const val = this.value();
