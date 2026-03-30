@@ -16,6 +16,8 @@ import {
 })
 export class ComboBoxDropdownComponent {
   private static nextId = 0;
+  /** Option count above which the trigger opens the search modal instead of the inline popover. */
+  private static readonly SEARCH_THRESHOLD = 8;
 
   public value = input<any>();
   public placeholder = input<string>("");
@@ -32,8 +34,10 @@ export class ComboBoxDropdownComponent {
     valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
   });
 
-  /** When there are more than 8 options, open search modal instead of inline popover. */
-  public showSearch = computed(() => this.answerOptions().length > 8);
+  /** When option count exceeds `SEARCH_THRESHOLD`, open search modal instead of inline popover. */
+  public showSearch = computed(
+    () => this.answerOptions().length > ComboBoxDropdownComponent.SEARCH_THRESHOLD
+  );
 
   @Output()
   public selectionChange = new EventEmitter<any>();
@@ -55,9 +59,7 @@ export class ComboBoxDropdownComponent {
     return text === undefined || text === null ? undefined : String(text);
   });
 
-  public triggerText = computed(() => {
-    return this.value() ? (this.selectedOptionText() ?? this.placeholder()) : this.placeholder();
-  });
+  public triggerText = computed(() => this.selectedOptionText() ?? this.placeholder());
 
   public close() {
     this.isOpen.set(false);
