@@ -3,6 +3,7 @@ import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { snakeToCamel } from "../../utils";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
@@ -34,7 +35,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_value: coerce.string("text"),
   /** Property key on each answer option for badge text (optional). Badge will display if option has a value for this key. */
   options_meta_badge_text: coerce.string(""),
-  /** Property key on each answer option for ion-chip color (optional). Uses OPTION_META_BADGE_VALUE_DEFAULTS.color when missing. */
+  /** Property key on each answer option for badge color (optional). Uses OPTION_META_BADGE_VALUE_DEFAULTS.color when missing. */
   options_meta_badge_color: coerce.string(""),
   /** When true, allows users to enter a custom answer. Modal variant only. */
   input_allowed: coerce.boolean(),
@@ -102,8 +103,10 @@ export class TmplComboBoxComponent
   });
 
   public optionMetaBadge = computed<OptionMetaBadgeConfig>(() => ({
-    textKey: this.params().optionsMetaBadgeText,
-    colorKey: this.params().optionsMetaBadgeColor,
+    // Convert to camel case since answer list keys get converted to camel case by zod parser
+    // TODO: Should they?
+    textKey: snakeToCamel(this.params().optionsMetaBadgeText.trim()),
+    colorKey: snakeToCamel(this.params().optionsMetaBadgeColor.trim()),
     valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
   }));
 

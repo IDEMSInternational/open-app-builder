@@ -17,8 +17,8 @@ export function resolveOptionMetaBadgeColor(
   cfg: OptionMetaBadgeConfig,
   option: IAnswerOption
 ): string {
-  const key = cfg.colorKey;
-  if (!key) return cfg.valueDefaults.color;
-  const raw = option[key];
+  if (!cfg.colorKey.trim()) return cfg.valueDefaults.color;
+
+  const raw = option[cfg.colorKey];
   return raw != null && raw !== "" ? String(raw) : cfg.valueDefaults.color;
 }
