@@ -2,6 +2,11 @@ import { Component, computed, EventEmitter, Output, signal, input } from "@angul
 import { ModalController } from "@ionic/angular";
 import { ComboBoxSearchComponent } from "../combo-box-search/combo-box-search.component";
 import { IAnswerOption } from "src/app/shared/utils";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+  resolveOptionMetaBadgeColor,
+} from "../combo-box-meta-badge.config";
 
 @Component({
   selector: "combo-box-dropdown",
@@ -21,7 +26,11 @@ export class ComboBoxDropdownComponent {
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
   public optionsValue = input<string>("text");
-  public optionsBadge = input<string>("");
+  public optionMetaBadge = input<OptionMetaBadgeConfig>({
+    textKey: "",
+    colorKey: "",
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  });
 
   /** When there are more than 8 options, open search modal instead of inline popover. */
   public showSearch = computed(() => this.answerOptions().length > 8);
@@ -58,6 +67,10 @@ export class ComboBoxDropdownComponent {
     this.isOpen.set(true);
   }
 
+  public metaBadgeChipColor(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeColor(this.optionMetaBadge(), option);
+  }
+
   public async openSearch() {
     if (this.disabled()) return;
     const optionsKey = this.optionsKey();
@@ -71,7 +84,7 @@ export class ComboBoxDropdownComponent {
         selectedValue: this.value,
         optionsKey: optionsKey,
         optionsValue: optionsValue,
-        optionsBadge: this.optionsBadge(),
+        optionMetaBadge: this.optionMetaBadge(),
       },
     });
 

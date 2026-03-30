@@ -20,10 +20,13 @@
                 [value]="answerOption[optionsKey]"
               />
               {{ answerOption[optionsValue] | translate }}
-              @if (optionsBadge && answerOption[optionsBadge]) {
-                <ion-chip class="label-badge" slot="end" color="primary">{{
-                  answerOption[optionsBadge] | translate | uppercase
-                }}</ion-chip>
+              @if (optionMetaBadge.textKey && answerOption[optionMetaBadge.textKey]) {
+                <ion-chip
+                  class="label-badge"
+                  slot="end"
+                  [color]="metaBadgeChipColor(answerOption)"
+                  >{{ answerOption[optionMetaBadge.textKey] | translate | uppercase }}</ion-chip
+                >
               }
             </label>
           </div>

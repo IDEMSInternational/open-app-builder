@@ -8,6 +8,11 @@ import {
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+  resolveOptionMetaBadgeColor,
+} from "../combo-box-meta-badge.config";
 
 @Component({
   selector: "combo-box-modal",
@@ -23,7 +28,11 @@ export class ComboBoxModalComponent implements OnInit {
   @Input() style: string;
   @Input() optionsKey: string = "name";
   @Input() optionsValue: string = "text";
-  @Input() optionsBadge: string = "";
+  @Input() optionMetaBadge: OptionMetaBadgeConfig = {
+    textKey: "",
+    colorKey: "",
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  };
   formData: FormGroup | null;
   valuesFromListAnswers: IAnswerOption[];
   textTitle: string | null;
@@ -117,5 +126,9 @@ export class ComboBoxModalComponent implements OnInit {
 
   get customAnswerClass() {
     return this.customAnswerSelected ? "text-box-input checked-radion" : "text-box-input";
+  }
+
+  metaBadgeChipColor(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeColor(this.optionMetaBadge, option);
   }
 }

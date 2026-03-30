@@ -52,9 +52,9 @@
               [class.selected]="isSelected(answerOption)"
             >
               {{ answerOption[optionsValue()] }}
-              @if (optionsBadge() && answerOption[optionsBadge()]) {
-                <ion-chip slot="end" color="primary">{{
-                  answerOption[optionsBadge()] | translate | uppercase
+              @if (optionMetaBadge().textKey && answerOption[optionMetaBadge().textKey]) {
+                <ion-chip slot="end" [color]="metaBadgeChipColor(answerOption)">{{
+                  answerOption[optionMetaBadge().textKey] | translate | uppercase
                 }}</ion-chip>
               }
             </ion-item>
