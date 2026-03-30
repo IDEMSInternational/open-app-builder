@@ -1,0 +1,61 @@
+<div class="combo-box-container dropdown">
+  @if (showSearch()) {
+    <button
+      type="button"
+      class="combo-box-dropdown-button open-search-combobox"
+      (click)="openSearch()"
+      [ngClass]="searchButtonClass()"
+      [disabled]="disabled()"
+    >
+      <span class="text">{{ displayText() | translate }}</span>
+      <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
+    </button>
+  } @else {
+    <button
+      type="button"
+      [id]="triggerId"
+      class="combo-box-dropdown-trigger combo-box-dropdown-button"
+      [disabled]="disabled()"
+      [ngClass]="searchButtonClass()"
+      [class.dropdown-open]="isOpen()"
+    >
+      <span class="text">
+        {{ triggerText() | translate }}
+      </span>
+      <ion-icon
+        class="dropdown-caret"
+        name="caret-down-sharp"
+        size="small"
+        aria-hidden="true"
+      ></ion-icon>
+    </button>
+
+    <ion-popover
+      [trigger]="triggerId"
+      triggerAction="click"
+      (willPresent)="onPopoverWillPresent()"
+      (didDismiss)="close()"
+      [arrow]="false"
+      size="cover"
+      reference="trigger"
+      [dismissOnSelect]="true"
+      cssClass="combo-box-select-popover"
+    >
+      <ng-template>
+        <ion-list class="combo-box-dropdown-list" lines="none">
+          @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
+            <ion-item
+              button
+              lines="none"
+              detail="false"
+              (click)="selectOption(answerOption)"
+              [class.selected]="isSelected(answerOption)"
+            >
+              {{ answerOption[optionsValue()] }}
+            </ion-item>
+          }
+        </ion-list>
+      </ng-template>
+    </ion-popover>
+  }
+</div>

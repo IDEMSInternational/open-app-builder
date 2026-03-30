@@ -202,25 +202,37 @@ ion-popover::part(content) {
 ion-popover::part(arrow) {
   display: none;
 }
-ion-popover ion-select-popover {
-  .radio-group-wrapper {
-    ion-item {
-      --background: var(--ion-item-background, #fff);
-      --background-activated: var(--ion-color-primary-50);
-      --background-focused: var(--ion-color-primary-50);
-      --background-hover: var(--ion-color-primary-50, var(--ion-color-gray-50));
-      --background-activated-opacity: 1;
-      --background-focused-opacity: 1;
-      --background-hover-opacity: 1;
-      --border-color: var(--ion-color-gray-100);
-      --color: var(--ion-text-color, var(--ion-color-gray-900));
-      --color-focused: var(--ion-color-primary-800);
-      --color-activated: var(--ion-color-primary-800);
-      --color-hover: var(--ion-color-primary-800);
-      font-size: var(--combo-box-font-size-standard, 16px);
-    }
-    ion-item::part(native)::after {
-      background: inherit;
-    }
-  }
+// ion-select popover options + custom combo-box dropdown list
+ion-popover ion-select-popover .radio-group-wrapper ion-item,
+ion-popover.combo-box-select-popover .combo-box-dropdown-list ion-item {
+  --background: var(--ion-item-background, #fff);
+  --background-activated: var(--ion-color-primary-50);
+  --background-focused: var(--ion-color-primary-50);
+  --background-hover: var(--ion-color-primary-50, var(--ion-color-gray-50));
+  --background-activated-opacity: 1;
+  --background-focused-opacity: 1;
+  --background-hover-opacity: 1;
+  --border-color: var(--ion-color-gray-100);
+  --color: var(--ion-text-color, var(--ion-color-gray-900));
+  --color-focused: var(--ion-color-primary-800);
+  --color-activated: var(--ion-color-primary-800);
+  --color-hover: var(--ion-color-primary-800);
+  font-size: var(--combo-box-font-size-standard, 16px);
+}
+
+ion-popover ion-select-popover .radio-group-wrapper ion-item::part(native)::after,
+ion-popover.combo-box-select-popover .combo-box-dropdown-list ion-item::part(native)::after {
+  background: inherit;
+}
+
+ion-popover.combo-box-select-popover .combo-box-dropdown-list {
+  margin: 0;
+  padding: 0;
+  background: var(--ion-list-item-background, #fff);
+}
+
+ion-popover.combo-box-select-popover .combo-box-dropdown-list ion-item.selected {
+  --background: var(--combo-box-background-with-value, var(--ion-color-primary-100));
+  --color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
+  font-weight: 500;
 }
