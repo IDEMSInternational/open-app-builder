@@ -70,7 +70,7 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
       }
       await FirebaseAppCheck.initialize({
         isTokenAutoRefreshEnabled: true,
-        provider: new ReCaptchaEnterpriseProvider("myKey"),
+        provider: new ReCaptchaEnterpriseProvider(siteKey),
         debugToken: environment.production ? false : true,
       });
     }
