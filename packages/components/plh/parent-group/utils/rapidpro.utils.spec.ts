@@ -1,5 +1,9 @@
 import { rapidproUtils } from "./rapidpro.utils";
-import type { IParent, IParentFromRapidPro, IParentInSharedData } from "../plh-parent-group.types";
+import type {
+  IParent,
+  IParentFromExternalSource,
+  IParentInSharedData,
+} from "../plh-parent-group.types";
 
 /**
  * Call standalone tests via:
@@ -14,9 +18,9 @@ describe("rapidproUtils", () => {
         age: 10,
         custom_field: "value",
       },
-    } as IParentFromRapidPro;
+    } as IParentFromExternalSource;
     const parentGroupId = "group-456";
-    const result = rapidproUtils.transformParentWithRapidProDataToLocalFormat(
+    const result = rapidproUtils.transformParentWithExternalSourceDataToLocalFormat(
       parentFromRapidPro,
       parentGroupId
     );
@@ -27,6 +31,52 @@ describe("rapidproUtils", () => {
       rp_name: "Jasper",
       rp_age: 10,
       rp_custom_field: "value",
+    });
+  });
+
+  it("should format a parent from app join_remote correctly", () => {
+    const parentFromApp = {
+      app_user_id: "app-user-123",
+      auth_user_id: "auth-user-999",
+      rapidpro_fields: {
+        name: "Jasper",
+        age: 10,
+      },
+    } as IParentFromExternalSource;
+    const parentGroupId = "group-456";
+    const result = rapidproUtils.transformParentWithExternalSourceDataToLocalFormat(
+      parentFromApp,
+      parentGroupId
+    );
+    expect(result).toEqual({
+      id: "group-456+auth-user-999",
+      group_id: "group-456",
+      app_user_id: "app-user-123",
+      auth_user_id: "auth-user-999",
+      rp_name: "Jasper",
+      rp_age: 10,
+    });
+  });
+
+  it("should format a parent from app join_remote using app_user_id when auth_user_id is missing", () => {
+    const parentFromApp = {
+      app_user_id: "app-user-123",
+      rapidpro_fields: {
+        name: "Jasper",
+        age: 10,
+      },
+    } as IParentFromExternalSource;
+    const parentGroupId = "group-456";
+    const result = rapidproUtils.transformParentWithExternalSourceDataToLocalFormat(
+      parentFromApp,
+      parentGroupId
+    );
+    expect(result).toEqual({
+      id: "group-456+app-user-123",
+      group_id: "group-456",
+      app_user_id: "app-user-123",
+      rp_name: "Jasper",
+      rp_age: 10,
     });
   });
 
@@ -85,7 +135,7 @@ describe("rapidproUtils", () => {
     });
   });
 
-  describe("mergeParentsArraysPreservingRapidProData", () => {
+  describe("mergeParentsArraysPreservingExternalSourceData", () => {
     it("should merge parents arrays correctly, preserving rapidpro_fields, rapidpro_uuid, and rapidpro_uuid-only parents, and preserve order of existing with new at end", () => {
       const existing = [
         {
@@ -122,7 +172,10 @@ describe("rapidproUtils", () => {
           first_name: "Incoming Parent 1",
         } as IParent,
       ];
-      const result = rapidproUtils.mergeParentsArraysPreservingRapidProData(existing, incoming);
+      const result = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
+        existing,
+        incoming
+      );
       expect(result).toEqual([
         {
           id: "parent-1",
@@ -159,7 +212,10 @@ describe("rapidproUtils", () => {
         { id: "a", group_id: "g", first_name: "A2" } as IParent,
         { id: "d", group_id: "g", first_name: "D" } as IParent,
       ];
-      const result = rapidproUtils.mergeParentsArraysPreservingRapidProData(existing, incoming);
+      const result = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
+        existing,
+        incoming
+      );
       expect(result).toEqual([
         { id: "a", group_id: "g", first_name: "A2" },
         { id: "b", group_id: "g", first_name: "B2" },
@@ -194,7 +250,10 @@ describe("rapidproUtils", () => {
           first_name: "Incoming Parent 20",
         } as IParent,
       ];
-      const result = rapidproUtils.mergeParentsArraysPreservingRapidProData(existing, incoming);
+      const result = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
+        existing,
+        incoming
+      );
       expect(result).toEqual([
         {
           id: "uuid-10",
