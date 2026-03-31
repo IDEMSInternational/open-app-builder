@@ -16,7 +16,7 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
 import { IStore, StoreType } from "../stores/store";
@@ -70,6 +70,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
   private paramsDependencySubscriptions: Subscription[] = [];
+  private navigationEndSubscription?: Subscription;
+  private owningRoutePath = "";
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -81,6 +83,27 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   ngOnInit(): void {
     this.init();
+
+    this.watchParamDependencies();
+    this.watchConditionDependencies();
+    this.watchValueDependencies();
+
+    // Set default value
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
+
+    this.navigationEndSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.onNavigationEnd(event);
+      }
+    });
+  }
+
+  protected onNavigationEnd(event: NavigationEnd): void {
+    const navigatedPath = event.urlAfterRedirects.split("?")[0].replace(/\/$/, "");
+    if (navigatedPath !== this.owningRoutePath) return;
+    this.storeValue();
   }
 
   public init(): void {
@@ -106,6 +129,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.watchConditionDependencies();
     this.watchValueDependencies();
 
+    this.owningRoutePath = url;
     this.rowRegistry.register(this);
 
     // Set default value
@@ -239,6 +263,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.unsubscribeValueDependencies();
     this.unsubscribeConditionDependencies();
     this.unsubscribeParamDependencies();
+    this.navigationEndSubscription?.unsubscribe();
 
     this.rowRegistry.unregister(this.name());
   }
