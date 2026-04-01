@@ -9,6 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
+import { basenameFromExternalUrl, isExternalHttpUrl } from "packages/shared/src/utils/string-utils";
 
 @Injectable({
   providedIn: "root",
@@ -36,7 +37,12 @@ export class FileManagerService extends SyncServiceBase {
       // Native: save file to Documents folder in external device storage and open;
       // Web: download file
       save_to_device: async ({ args }) => {
-        await this.downloadTemplateAsset({ relativePath: args[0] });
+        const pathOrUrl = args[0];
+        if (isExternalHttpUrl(pathOrUrl)) {
+          await this.downloadAssetFromExternalUrl(pathOrUrl);
+        } else {
+          await this.downloadTemplateAsset({ relativePath: pathOrUrl });
+        }
       },
       // Native: save file to app's internal cache on device and open it externally to the app
       // (file is not permanently saved and is not accessible through external storage);
@@ -45,6 +51,35 @@ export class FileManagerService extends SyncServiceBase {
         await this.openTemplateAsset(args[0]);
       },
     });
+  }
+
+  /**
+   * Download a file from an absolute http(s) URL (e.g. cloud storage). Uses fetch + the same native
+   * write path as other saves; not for bundled template assets.
+   * Assumes CORS-enabled endpoint.
+   */
+  private async downloadAssetFromExternalUrl(url: string): Promise<void> {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to download file (${response.status})`);
+    }
+    const blob = await response.blob();
+    const fileName = basenameFromExternalUrl(url) ?? "download";
+    try {
+      if (Capacitor.isNativePlatform()) {
+        const { localFilepath } = await this.saveFile({
+          data: blob,
+          targetPath: fileName,
+          directory: "Documents",
+          subdirectory: "",
+        });
+        FileOpener.open({ filePath: localFilepath, openWithDefault: false });
+      } else {
+        saveAs(blob, fileName);
+      }
+    } catch (err) {
+      this.errorHandler.handleError(err);
+    }
   }
 
   /**
