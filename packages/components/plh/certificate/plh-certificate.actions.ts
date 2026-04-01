@@ -7,6 +7,10 @@ import type {
   IPlhCertificateGenerateParams,
   IPlhCertificateGenerateResponse,
 } from "./plh-certificate.types";
+import {
+  isPlhCertificateErrorResponse,
+  isPlhCertificateSuccessResponse,
+} from "./plh-certificate.types";
 
 export type { IPlhCertificateGenerateParams };
 
@@ -41,6 +45,12 @@ export class PlhCertificateActionFactory {
           console.error("[PLH CERTIFICATE] - generate requires `certificate_template`");
           return;
         }
+        if (certificate_data_list?.trim() && !id?.trim()) {
+          console.error(
+            "[PLH CERTIFICATE] - generate requires `id` when `certificate_data_list` is set"
+          );
+          return;
+        }
         const result = await this.service.generateCertificateAndUpdateLocal({
           id,
           url: url.trim(),
@@ -49,8 +59,8 @@ export class PlhCertificateActionFactory {
           certificate_data_list,
         });
         const parsedResult: IPlhCertificateGenerateResponse = {
-          success: "url" in result,
-          error: "detail" in result,
+          success: isPlhCertificateSuccessResponse(result),
+          error: !isPlhCertificateSuccessResponse(result) && isPlhCertificateErrorResponse(result),
           data: result,
         };
         if (result_local_variable_name && host) {
@@ -73,6 +83,6 @@ export class PlhCertificateActionFactory {
       console.error(`[PLH CERTIFICATE] - No action, "${actionId}"`);
       return;
     }
-    return childActions[actionId]();
+    return childActions[actionId as keyof typeof childActions]();
   };
 }

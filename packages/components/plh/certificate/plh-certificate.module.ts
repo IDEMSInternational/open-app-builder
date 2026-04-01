@@ -6,7 +6,6 @@ import { PlhCertificateActionFactory } from "./plh-certificate.actions";
 
 @NgModule({
   imports: [CommonModule],
-  providers: [PlhCertificateService],
 })
 export class PlhCertificateModule {
   constructor(

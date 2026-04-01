@@ -28,11 +28,28 @@ export interface IPlhCertificateSuccessResponse {
 
 /** Error response from the certificate generation API */
 export interface IPlhCertificateErrorResponse {
-  detail: any;
+  detail: unknown;
 }
 
 /** Response from the certificate generation API */
 export type IPlhCertificateResponse = IPlhCertificateSuccessResponse | IPlhCertificateErrorResponse;
+
+export function isPlhCertificateSuccessResponse(
+  value: unknown
+): value is IPlhCertificateSuccessResponse {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "url" in value &&
+    typeof (value as { url: unknown }).url === "string"
+  );
+}
+
+export function isPlhCertificateErrorResponse(
+  value: unknown
+): value is IPlhCertificateErrorResponse {
+  return typeof value === "object" && value !== null && "detail" in value;
+}
 
 /** Response for the `plh_certificate: generate` action */
 export interface IPlhCertificateGenerateResponse {

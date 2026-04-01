@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 
 import { PublicApiService } from "src/app/feature/public-api";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import type {
-  IPlhCertificateGenerateParams,
-  IPlhCertificateRequestBody,
-  IPlhCertificateResponse,
+import {
+  isPlhCertificateSuccessResponse,
+  type IPlhCertificateGenerateParams,
+  type IPlhCertificateRequestBody,
+  type IPlhCertificateResponse,
 } from "./plh-certificate.types";
 
 @Injectable({
@@ -27,11 +28,11 @@ export class PlhCertificateService {
       template: options.certificate_template,
       name: options.name,
     };
-    const response = (await this.fetchCertificate({
+    const response = await this.fetchCertificate({
       url: options.url,
       body,
-    })) as IPlhCertificateResponse;
-    if (options.certificate_data_list && "url" in response) {
+    });
+    if (options.certificate_data_list?.trim() && isPlhCertificateSuccessResponse(response)) {
       await this.updateCertificateDataList({
         certificate_data_list: options.certificate_data_list,
         certificate_id: options.id,
@@ -40,7 +41,7 @@ export class PlhCertificateService {
         certificate_template: options.certificate_template,
       });
     }
-    return response;
+    return response as IPlhCertificateResponse;
   }
 
   /**
