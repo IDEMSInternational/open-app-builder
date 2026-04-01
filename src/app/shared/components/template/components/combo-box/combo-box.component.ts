@@ -133,13 +133,12 @@ export class TmplComboBoxComponent
         selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        optionsKey,
+        optionsValue,
       },
     });
 
     modal.onDidDismiss().then(async (data) => {
-      this.params().prioritisePlaceholder = false;
       const answer = data?.data?.answer;
       this.answerText.set(answer?.[optionsValue] || "");
       this.customAnswerSelected.set(data?.data?.customAnswerSelected);
@@ -150,7 +149,6 @@ export class TmplComboBoxComponent
   }
 
   async onSearchDismiss(answer: IAnswerOption | null | undefined) {
-    this.params().prioritisePlaceholder = false;
     const optionsKey = this.params().optionsKey;
     const optionsValue = this.params().optionsValue;
     this.answerText.set(answer?.[optionsValue] || "");

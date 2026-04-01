@@ -16,7 +16,6 @@ export class ComboBoxDropdownComponent {
   public placeholder = input<string>("");
   public displayText = input<string>("");
   public modalTitle = input<string>("");
-  public prioritisePlaceholder = input<boolean>(false);
   public disabled = input<boolean>(false);
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
@@ -59,17 +58,15 @@ export class ComboBoxDropdownComponent {
 
   public async openSearch() {
     if (this.disabled()) return;
-    const optionsKey = this.optionsKey();
-    const optionsValue = this.optionsValue();
     const modal = await this.modalController.create({
       component: ComboBoxSearchComponent,
       cssClass: "combo-box-search",
       componentProps: {
-        answerOptions: this.answerOptions,
-        title: this.modalTitle,
-        selectedValue: this.value,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        answerOptions: this.answerOptions(),
+        title: this.modalTitle(),
+        selectedValue: this.value(),
+        optionsKey: this.optionsKey(),
+        optionsValue: this.optionsValue(),
       },
     });
 
