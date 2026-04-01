@@ -6,11 +6,9 @@ import { PlhCertificateService } from "./plh-certificate.service";
 import type {
   IPlhCertificateGenerateParams,
   IPlhCertificateGenerateResponse,
+  IPlhCertificateResponse,
 } from "./plh-certificate.types";
-import {
-  isPlhCertificateErrorResponse,
-  isPlhCertificateSuccessResponse,
-} from "./plh-certificate.types";
+import { isPlhCertificateSuccessResponse } from "./plh-certificate.types";
 
 export type { IPlhCertificateGenerateParams };
 
@@ -51,16 +49,22 @@ export class PlhCertificateActionFactory {
           );
           return;
         }
-        const result = await this.service.generateCertificateAndUpdateLocal({
-          id,
-          url: url.trim(),
-          name,
-          certificate_template,
-          certificate_data_list,
-        });
+        let result: IPlhCertificateResponse;
+        try {
+          result = await this.service.generateCertificateAndUpdateLocal({
+            id,
+            url: url.trim(),
+            name,
+            certificate_template,
+            certificate_data_list,
+          });
+        } catch (error) {
+          result = { detail: error };
+        }
+        const isSuccess = isPlhCertificateSuccessResponse(result);
         const parsedResult: IPlhCertificateGenerateResponse = {
-          success: isPlhCertificateSuccessResponse(result),
-          error: !isPlhCertificateSuccessResponse(result) && isPlhCertificateErrorResponse(result),
+          success: isSuccess,
+          error: !isSuccess,
           data: result,
         };
         if (result_local_variable_name && host) {
