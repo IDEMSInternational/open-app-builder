@@ -19,9 +19,7 @@
       [ngClass]="searchButtonClass()"
       [class.dropdown-open]="isOpen()"
     >
-      <span class="text">
-        {{ triggerText() | translate }}
-      </span>
+      <span class="text">{{ displayText() | translate }}</span>
       <ion-icon
         class="dropdown-caret"
         name="caret-down-sharp"
@@ -51,7 +49,7 @@
               (click)="selectOption(answerOption)"
               [class.selected]="isSelected(answerOption)"
             >
-              {{ answerOption[optionsValue()] }}
+              {{ answerOption[optionsValue()] | translate }}
             </ion-item>
           }
         </ion-list>

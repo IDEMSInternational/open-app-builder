@@ -35,20 +35,6 @@ export class ComboBoxDropdownComponent {
   public isOpen = signal(false);
   public readonly triggerId = `combo-box-dropdown-trigger-${ComboBoxDropdownComponent.nextId++}`;
 
-  public selectedOptionText = computed(() => {
-    const val = this.value();
-    if (!val) return undefined;
-
-    const key = this.optionsKey();
-    const match = this.answerOptions().find((o) => String(o[key]) === String(val));
-    const text = match?.[this.optionsValue()];
-    return text === undefined || text === null ? undefined : String(text);
-  });
-
-  public triggerText = computed(() => {
-    return this.value() ? (this.selectedOptionText() ?? this.placeholder()) : this.placeholder();
-  });
-
   public close() {
     this.isOpen.set(false);
   }
