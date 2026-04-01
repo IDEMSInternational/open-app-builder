@@ -59,13 +59,13 @@ export class FileManagerService extends SyncServiceBase {
    * Assumes CORS-enabled endpoint.
    */
   private async downloadAssetFromExternalUrl(url: string): Promise<void> {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to download file (${response.status})`);
-    }
-    const blob = await response.blob();
-    const fileName = basenameFromExternalUrl(url) ?? "download";
     try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to download file (${response.status})`);
+      }
+      const blob = await response.blob();
+      const fileName = basenameFromExternalUrl(url) ?? "download";
       if (Capacitor.isNativePlatform()) {
         const { localFilepath } = await this.saveFile({
           data: blob,
