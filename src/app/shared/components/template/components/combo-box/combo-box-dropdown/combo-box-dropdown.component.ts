@@ -16,6 +16,7 @@ export class ComboBoxDropdownComponent {
   public placeholder = input<string>("");
   public displayText = input<string>("");
   public modalTitle = input<string>("");
+  public prioritisePlaceholder = input<boolean>(false);
   public disabled = input<boolean>(false);
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
