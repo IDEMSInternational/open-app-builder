@@ -3,56 +3,69 @@ import type {
   ITemplateActionServiceHandle,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { PlhCertificateService } from "./plh-certificate.service";
+import type {
+  IPlhCertificateGenerateParams,
+  IPlhCertificateGenerateResponse,
+} from "./plh-certificate.types";
 
-/** Params reserved for the action; any other string params are sent as the JSON POST body */
-interface IPlhCertificateActionParams {
-  /** Full URL of the certificate API (must be absolute, e.g. https://...) */
-  url: string;
-  /** Store the JSON response in a local template variable via `set_local` */
-  result_local_variable_name?: string;
-  [key: string]: string | undefined;
-}
-
-const RESERVED_PARAM_KEYS = new Set(["url", "result_local_variable_name"]);
+export type { IPlhCertificateGenerateParams };
 
 export class PlhCertificateActionFactory {
   constructor(private service: PlhCertificateService) {}
 
-  public plh_certificate: IActionHandler<IPlhCertificateActionParams> = async (
+  public plh_certificate: IActionHandler<IPlhCertificateGenerateParams> = async (
     { args, params, _triggeredBy },
     host?: ITemplateActionServiceHandle
   ) => {
     const [actionId] = args;
-    const { url, result_local_variable_name, ...rest } = params;
-
-    const body: Record<string, string | undefined> = {};
-    for (const [key, value] of Object.entries(rest)) {
-      if (!RESERVED_PARAM_KEYS.has(key) && value !== undefined) {
-        body[key] = value;
-      }
-    }
+    const {
+      url,
+      name,
+      certificate_template,
+      result_local_variable_name,
+      certificate_data_list,
+      id,
+    } = params;
 
     const childActions = {
-      /** POST JSON to the URL in `url` */
-      fetch: async () => {
+      generate: async () => {
         if (!url?.trim()) {
-          console.error("[PLH CERTIFICATE] - fetch requires `url` (full API endpoint)");
+          console.error("[PLH CERTIFICATE] - generate requires `url` (full API endpoint)");
           return;
         }
-        const result = await this.service.fetchCertificate({ url: url.trim(), body });
+        if (!name?.trim()) {
+          console.error("[PLH CERTIFICATE] - generate requires `name`");
+          return;
+        }
+        if (!certificate_template?.trim()) {
+          console.error("[PLH CERTIFICATE] - generate requires `certificate_template`");
+          return;
+        }
+        const result = await this.service.generateCertificateAndUpdateLocal({
+          id,
+          url: url.trim(),
+          name,
+          certificate_template,
+          certificate_data_list,
+        });
+        const parsedResult: IPlhCertificateGenerateResponse = {
+          success: "url" in result,
+          error: "detail" in result,
+          data: result,
+        };
         if (result_local_variable_name && host) {
           host.enqueueActions(
             [
               {
                 action_id: "set_local",
-                args: [result_local_variable_name, result],
+                args: [result_local_variable_name, parsedResult],
                 trigger: "click",
               },
             ],
             _triggeredBy
           );
         }
-        return result;
+        return parsedResult;
       },
     };
 
