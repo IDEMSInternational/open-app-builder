@@ -24,12 +24,12 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    @for (answerOption of filteredOptions(); track answerOption[optionsKey]) {
+    @for (answerOption of filteredOptions(); track answerOption[optionsKey()]) {
       <ion-item (click)="select(answerOption)" [class.selected]="isSelected(answerOption)">
-        {{ answerOption[optionsValue] }}
-        @if (optionMetaBadge.textKey && answerOption[optionMetaBadge.textKey]) {
+        {{ answerOption[optionsValue()] | translate }}
+        @if (optionMetaBadge().textKey && answerOption[optionMetaBadge().textKey]) {
           <ion-chip slot="end" [color]="metaBadgeChipColor(answerOption)">{{
-            answerOption[optionMetaBadge.textKey] | translate | uppercase
+            answerOption[optionMetaBadge().textKey] | translate | uppercase
           }}</ion-chip>
         }
       </ion-item>

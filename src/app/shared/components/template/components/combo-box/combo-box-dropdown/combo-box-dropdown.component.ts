@@ -49,18 +49,6 @@ export class ComboBoxDropdownComponent {
   public isOpen = signal(false);
   public readonly triggerId = `combo-box-dropdown-trigger-${ComboBoxDropdownComponent.nextId++}`;
 
-  public selectedOptionText = computed(() => {
-    const val = this.value();
-    if (!val) return undefined;
-
-    const key = this.optionsKey();
-    const match = this.answerOptions().find((o) => String(o[key]) === String(val));
-    const text = match?.[this.optionsValue()];
-    return text === undefined || text === null ? undefined : String(text);
-  });
-
-  public triggerText = computed(() => this.selectedOptionText() ?? this.placeholder());
-
   public close() {
     this.isOpen.set(false);
   }
@@ -75,17 +63,15 @@ export class ComboBoxDropdownComponent {
 
   public async openSearch() {
     if (this.disabled()) return;
-    const optionsKey = this.optionsKey();
-    const optionsValue = this.optionsValue();
     const modal = await this.modalController.create({
       component: ComboBoxSearchComponent,
       cssClass: "combo-box-search",
       componentProps: {
-        answerOptions: this.answerOptions,
-        title: this.modalTitle,
-        selectedValue: this.value,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        answerOptions: this.answerOptions(),
+        title: this.modalTitle(),
+        selectedValue: this.value(),
+        optionsKey: this.optionsKey(),
+        optionsValue: this.optionsValue(),
         optionMetaBadge: this.optionMetaBadge(),
       },
     });

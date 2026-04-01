@@ -151,8 +151,8 @@ export class TmplComboBoxComponent
         selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        optionsKey,
+        optionsValue,
         optionMetaBadge: this.optionMetaBadge(),
       },
     });
