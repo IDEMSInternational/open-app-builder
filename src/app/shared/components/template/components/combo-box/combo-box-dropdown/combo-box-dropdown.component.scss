@@ -52,13 +52,18 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     }
   }
 
-  .text,
-  ion-icon {
+  .text {
     margin-top: auto;
     margin-bottom: auto;
+    width: 100%;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
   }
 
   ion-icon {
+    margin-top: auto;
+    margin-bottom: auto;
     margin-left: auto;
     width: 0.8125rem;
   }
