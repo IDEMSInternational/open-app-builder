@@ -1,0 +1,16 @@
+.display-group {
+  display: flex;
+  width: 100%;
+
+  &[data-child-sizing="auto"] > * {
+    flex: 0 0 auto;
+  }
+
+  &[data-child-sizing="fill"] > * {
+    flex: 1 1 auto;
+  }
+
+  &[data-child-sizing="equal"] > * {
+    flex-grow: 1;
+  }
+}
