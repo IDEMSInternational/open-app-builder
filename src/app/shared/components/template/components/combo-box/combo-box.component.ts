@@ -128,7 +128,7 @@ export class TmplComboBoxComponent
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
       componentProps: {
-        answerOptions: this.answerOptions,
+        answerOptions: this.answerOptions(),
         row: this._row,
         selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
