@@ -92,7 +92,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   }
 
   protected onNavigationEnd(event: NavigationEnd): void {
-    const navigatedPath = event.urlAfterRedirects.split("?")[0].replace(/\/$/, "");
+    const navigatedPath = this.normalizeRoutePath(event.urlAfterRedirects);
     if (navigatedPath !== this.owningRoutePath) return;
     this.storeValue();
   }
@@ -103,10 +103,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
 
     // If there is a value in session storage that matches this row's name, use that to override the expression
-    let url = this.router.url.split("?")[0];
-    if (url.endsWith("/")) {
-      url = url.slice(0, -1);
-    }
+    const url = this.normalizeRoutePath(this.router.url);
     const paramKey = `${navParamPrefix(url)}${this.name()}`;
     const sessionValue = sessionStorage.getItem(paramKey);
 
@@ -170,6 +167,10 @@ export abstract class RowBaseComponent<TParams extends Parameters>
         this.params[key].setValue(value);
       }
     });
+  }
+
+  private normalizeRoutePath(url: string): string {
+    return url.split("?")[0].replace(/\/$/, "");
   }
 
   private watchValueDependencies() {
