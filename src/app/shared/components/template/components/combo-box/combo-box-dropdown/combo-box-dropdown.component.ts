@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, Output, signal, input } from "@angular/core";
+import { Component, computed, EventEmitter, Output, signal, input, output } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxSearchComponent } from "../combo-box-search/combo-box-search.component";
 import { IAnswerOption } from "src/app/shared/utils";
@@ -43,8 +43,7 @@ export class ComboBoxDropdownComponent {
   public selectionChange = new EventEmitter<any>();
 
   /** Emitted when the search modal dismisses with `data.answer` from `ComboBoxSearchComponent`. */
-  @Output()
-  public searchDismiss = new EventEmitter<IAnswerOption | null | undefined>();
+  public searchDismiss = output<IAnswerOption | null | undefined>();
 
   public isOpen = signal(false);
   public readonly triggerId = `combo-box-dropdown-trigger-${ComboBoxDropdownComponent.nextId++}`;
