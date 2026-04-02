@@ -60,7 +60,6 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
         options: this.options,
         title: this.params.title.value,
         selectedOption: this.selectedOption(),
-        style: this.params.style.value(),
       },
     });
 

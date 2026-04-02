@@ -1,0 +1,76 @@
+$placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-gray-500));
+$selected-value-text: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
+$background-no-value: var(--combo-box-background-no-value, #fff);
+$background-with-value: var(--combo-box-background-with-value, var(--ion-color-primary-100));
+$border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-300));
+
+// Dropdown variant trigger container.
+.combo-box-container.dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// Shared trigger button styles for both dropdown and search variants.
+.combo-box-dropdown-button {
+  width: 100%;
+  height: 58px;
+  display: flex;
+  min-height: var(--combo-box-min-height, 58px);
+  font-size: var(--combo-box-font-size-standard, 18px);
+  border-radius: var(--ion-border-radius-standard, 8px);
+  background: white;
+  padding-left: var(--small-padding, 10px);
+  padding-right: var(--small-padding, 10px);
+
+  &.placeholder-style {
+    color: $placeholder-text;
+    opacity: 0.9;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    color: $placeholder-text;
+  }
+
+  &.with-value {
+    background: $background-with-value;
+    color: $selected-value-text;
+    border: 1px solid $border-with-value;
+  }
+
+  &.no-value {
+    background: inherit;
+    border: 1px solid var(--ion-color-gray-500);
+    color: var(--ion-color-gray-400);
+  }
+
+  &.dropdown-open {
+    background: white;
+    .dropdown-caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  .text {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  ion-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    width: 0.8125rem;
+  }
+
+  .dropdown-caret {
+    transition: transform 0.2s;
+  }
+}
+
+// Popover and list items are styled in `src/global.scss`, as ionic injects the elements into the DOM.

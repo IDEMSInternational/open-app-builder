@@ -6,8 +6,6 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
-
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of answer options to display. */
   answer_list: coerce.objectArray<IAnswerOption>([]),
@@ -71,8 +69,6 @@ export class TmplComboBoxComponent
     return this.cleanAnswerOptions(options as IAnswerOption[]);
   });
 
-  public showSearch = computed(() => this.answerOptions().length > 8);
-
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
   private selectedOption = computed(() => {
@@ -124,10 +120,6 @@ export class TmplComboBoxComponent
     });
   }
 
-  public async handleDropdownChange(value) {
-    await this.setValue(value);
-  }
-
   public async openModal() {
     if (this.disabled()) return;
     const optionsKey = this.params().optionsKey;
@@ -136,13 +128,13 @@ export class TmplComboBoxComponent
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
       componentProps: {
-        answerOptions: this.answerOptions,
+        answerOptions: this.answerOptions(),
         row: this._row,
         selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        optionsKey,
+        optionsValue,
       },
     });
 
@@ -157,47 +149,18 @@ export class TmplComboBoxComponent
     await modal.present();
   }
 
-  async openSearch() {
+  async onSearchDismiss(answer: IAnswerOption | null | undefined) {
+    this.params().prioritisePlaceholder = false;
     const optionsKey = this.params().optionsKey;
     const optionsValue = this.params().optionsValue;
-    const modal = await this.modalController.create({
-      component: ComboBoxSearchComponent,
-      cssClass: "combo-box-search",
-      componentProps: {
-        answerOptions: this.answerOptions,
-        title: signal(this.params().modalTitle),
-        selectedValue: this.value,
-        customAnswerSelected: this.customAnswerSelected(),
-        style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
-      },
-    });
-
-    modal.onDidDismiss().then(async (data) => {
-      this.params().prioritisePlaceholder = false;
-      const answer = data?.data?.answer;
-      this.answerText.set(answer?.[optionsValue] || "");
-      await this.setValue(answer?.[optionsKey] || undefined);
-    });
-    await modal.present();
+    this.answerText.set(answer?.[optionsValue] || "");
+    await this.setValue(answer?.[optionsKey] || undefined);
   }
 
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
   }
-
-  public searchButtonClass = computed(() => {
-    const value = this.value();
-    const params = this.params();
-    return {
-      disabled: this.disabled(),
-      "placeholder-style": (!value && params.placeholder) || params.prioritisePlaceholder,
-      "with-value": value ? true : undefined,
-      "no-value": value ? undefined : true,
-    };
-  });
 
   private cleanAnswerOptions(options: IAnswerOption[]) {
     return options.filter((option) => {
