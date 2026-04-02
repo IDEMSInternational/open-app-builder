@@ -15,25 +15,39 @@ const CERTIFICATE_REQUEST_TIMEOUT_MS = 60_000;
   providedIn: "root",
 })
 export class PlhCertificateService {
-  /** At most one generation runs at a time; overlapping calls await the same in-flight promise. */
-  private inFlight: Promise<IPlhCertificateResponse> | null = null;
+  /**
+   * One in-flight promise per distinct request (see {@link inFlightKey}) to handle duplicate taps
+   */
+  private readonly inFlightByKey = new Map<string, Promise<IPlhCertificateResponse>>();
 
   constructor(private dynamicDataService: DynamicDataService) {}
 
   /**
    * POST JSON to the given absolute URL (certificate generation endpoint).
-   * While a request is in progress, further calls return that same promise (duplicate taps do not start parallel requests).
    */
   public async generateCertificateAndUpdateLocal(
     options: IPlhCertificateGenerateParams
   ): Promise<IPlhCertificateResponse> {
-    if (this.inFlight) {
-      return this.inFlight;
+    const key = this.inFlightKey(options);
+    const existing = this.inFlightByKey.get(key);
+    if (existing) {
+      return existing;
     }
-    this.inFlight = this.generateCertificateAndUpdateLocalOnce(options).finally(() => {
-      this.inFlight = null;
+    const promise = this.generateCertificateAndUpdateLocalOnce(options).finally(() => {
+      this.inFlightByKey.delete(key);
     });
-    return this.inFlight;
+    this.inFlightByKey.set(key, promise);
+    return promise;
+  }
+
+  private inFlightKey(options: IPlhCertificateGenerateParams): string {
+    return [
+      options.url?.trim() ?? "",
+      options.id?.trim() ?? "",
+      options.certificate_template?.trim() ?? "",
+      options.name?.trim() ?? "",
+      options.certificate_data_list?.trim() ?? "",
+    ].join("|");
   }
 
   private async generateCertificateAndUpdateLocalOnce(
