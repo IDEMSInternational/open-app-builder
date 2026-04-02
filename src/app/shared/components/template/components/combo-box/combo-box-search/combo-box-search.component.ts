@@ -1,4 +1,4 @@
-import { Component, computed, input, Input, signal } from "@angular/core";
+import { Component, computed, input, signal } from "@angular/core";
 import { IAnswerOption } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
 
@@ -12,13 +12,13 @@ export class ComboBoxSearchComponent {
   public answerOptions = input.required<IAnswerOption[]>();
   public title = input<string>();
   public selectedValue = input<string>();
-  @Input() optionsKey: string = "name";
-  @Input() optionsValue: string = "text";
+  public optionsKey = input<string>("name");
+  public optionsValue = input<string>("text");
 
   public searchTerm = signal("");
 
   public filteredOptions = computed(() => {
-    const optionsValue = this.optionsValue;
+    const optionsValue = this.optionsValue();
     return this.answerOptions().filter((options) =>
       String(options[optionsValue] || "")
         .toLowerCase()
@@ -27,7 +27,7 @@ export class ComboBoxSearchComponent {
   });
 
   public isSelected(item: IAnswerOption) {
-    return this.selectedValue() === item[this.optionsKey];
+    return this.selectedValue() === item[this.optionsKey()];
   }
 
   constructor(private modalController: ModalController) {}
@@ -41,7 +41,7 @@ export class ComboBoxSearchComponent {
   }
 
   public cancel() {
-    const optionsKey = this.optionsKey;
+    const optionsKey = this.optionsKey();
     let selectedItem = this.answerOptions().find(
       (item) => item[optionsKey] === this.selectedValue()
     );
