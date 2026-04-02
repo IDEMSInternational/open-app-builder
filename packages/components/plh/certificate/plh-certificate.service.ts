@@ -8,16 +8,35 @@ import {
   type IPlhCertificateResponse,
 } from "./plh-certificate.types";
 
+/** Prevent hung requests when connectivity is poor */
+const CERTIFICATE_REQUEST_TIMEOUT_MS = 60_000;
+
 @Injectable({
   providedIn: "root",
 })
 export class PlhCertificateService {
+  /** At most one generation runs at a time; overlapping calls await the same in-flight promise. */
+  private inFlight: Promise<IPlhCertificateResponse> | null = null;
+
   constructor(private dynamicDataService: DynamicDataService) {}
 
   /**
    * POST JSON to the given absolute URL (certificate generation endpoint).
+   * While a request is in progress, further calls return that same promise (duplicate taps do not start parallel requests).
    */
   public async generateCertificateAndUpdateLocal(
+    options: IPlhCertificateGenerateParams
+  ): Promise<IPlhCertificateResponse> {
+    if (this.inFlight) {
+      return this.inFlight;
+    }
+    this.inFlight = this.generateCertificateAndUpdateLocalOnce(options).finally(() => {
+      this.inFlight = null;
+    });
+    return this.inFlight;
+  }
+
+  private async generateCertificateAndUpdateLocalOnce(
     options: IPlhCertificateGenerateParams
   ): Promise<IPlhCertificateResponse> {
     const body = {
@@ -49,16 +68,32 @@ export class PlhCertificateService {
     url: string;
     body?: IPlhCertificateRequestBody;
   }): Promise<unknown> {
-    const response = await fetch(options.url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: options.body ? JSON.stringify(options.body) : undefined,
-    });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), CERTIFICATE_REQUEST_TIMEOUT_MS);
+
+    let response: Response;
+    try {
+      response = await fetch(options.url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: options.body ? JSON.stringify(options.body) : undefined,
+        signal: controller.signal,
+      });
+    } catch (err) {
+      if (err instanceof Error && err.name === "AbortError") {
+        throw new Error(
+          `[PLH CERTIFICATE] - Request timed out after ${CERTIFICATE_REQUEST_TIMEOUT_MS}ms`,
+          { cause: err }
+        );
+      }
+      throw err;
+    } finally {
+      clearTimeout(timeoutId);
+    }
 
     if (!response.ok) {
-      // Ensure we fail loudly so the action can surface a consistent `{ detail: error }` payload.
       const responseText = await response.text().catch(() => "");
       throw new Error(
         `[PLH CERTIFICATE] - Failed to generate certificate (${response.status}): ${responseText.slice(
@@ -76,7 +111,11 @@ export class PlhCertificateService {
       );
     }
 
-    return await response.json();
+    try {
+      return await response.json();
+    } catch {
+      throw new Error("[PLH CERTIFICATE] - Could not read the certificate server response.");
+    }
   }
 
   private async updateCertificateDataList(options: {
