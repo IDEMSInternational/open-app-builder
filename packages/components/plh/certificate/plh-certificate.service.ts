@@ -42,6 +42,8 @@ export class PlhCertificateService {
 
   /**
    * POST JSON to the certificate generation endpoint.
+   * TODO: Work is in progress to add a new service for downloading data from remote endpoints in general
+   * For now, include logic for making the request here
    */
   private async fetchCertificate(options: {
     url: string;
