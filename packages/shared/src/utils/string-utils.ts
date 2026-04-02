@@ -49,3 +49,23 @@ export function cleanAssetName(value: string) {
   if (value.startsWith("/")) value = value.substring(1);
   return value;
 }
+
+/** Matches calendar date only (e.g. `2023-01-01`), extended to full ISO 8601 for ion-datetime. */
+const ISO_DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Normalize author/template date strings to full ISO 8601 for `ion-datetime` `min` / `max`.
+ * - Empty or whitespace-only → `undefined`
+ * - `YYYY-MM-DD` only → UTC start of day, or end of day when `endOfDay` is true
+ * - Other values → `Date.parse` then `toISOString()`, or `undefined` if invalid
+ */
+export function authorDateParamToIso8601(raw: string, endOfDay: boolean): string | undefined {
+  const trimmed = raw.trim();
+  if (!trimmed) return undefined;
+  if (ISO_DATE_ONLY.test(trimmed)) {
+    return endOfDay ? `${trimmed}T23:59:59.999Z` : `${trimmed}T00:00:00.000Z`;
+  }
+  const ms = Date.parse(trimmed);
+  if (Number.isNaN(ms)) return undefined;
+  return new Date(ms).toISOString();
+}
