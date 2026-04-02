@@ -50,9 +50,9 @@
               [class.selected]="isSelected(answerOption)"
             >
               {{ answerOption[optionsValue()] | translate }}
-              @if (optionMetaBadge().textKey && answerOption[optionMetaBadge().textKey]) {
+              @if (metaBadgeChipText(answerOption); as badgeText) {
                 <ion-chip slot="end" [color]="metaBadgeChipColor(answerOption)">{{
-                  answerOption[optionMetaBadge().textKey] | translate | uppercase
+                  badgeText | translate | uppercase
                 }}</ion-chip>
               }
             </ion-item>

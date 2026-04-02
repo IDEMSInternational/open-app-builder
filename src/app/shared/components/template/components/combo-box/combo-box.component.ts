@@ -103,10 +103,8 @@ export class TmplComboBoxComponent
   });
 
   public optionMetaBadge = computed<OptionMetaBadgeConfig>(() => ({
-    // Convert to camel case since answer list keys get converted to camel case by zod parser
-    // TODO: Should they?
-    textKey: snakeToCamel(this.params().optionsMetaBadgeText.trim()),
-    colorKey: snakeToCamel(this.params().optionsMetaBadgeColor.trim()),
+    textKey: this.params().optionsMetaBadgeText.trim(),
+    colorKey: this.params().optionsMetaBadgeColor.trim(),
     valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
   }));
 

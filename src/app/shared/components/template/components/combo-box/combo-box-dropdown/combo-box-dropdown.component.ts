@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, Output, signal, input, output } from "@angular/core";
+import { Component, computed, signal, input, output } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxSearchComponent } from "../combo-box-search/combo-box-search.component";
 import { IAnswerOption } from "src/app/shared/utils";
@@ -6,6 +6,7 @@ import {
   OptionMetaBadgeConfig,
   OPTION_META_BADGE_VALUE_DEFAULTS,
   resolveOptionMetaBadgeColor,
+  resolveOptionMetaBadgeText,
 } from "../combo-box-meta-badge.config";
 
 @Component({
@@ -39,8 +40,7 @@ export class ComboBoxDropdownComponent {
     () => this.answerOptions().length > ComboBoxDropdownComponent.SEARCH_THRESHOLD
   );
 
-  @Output()
-  public selectionChange = new EventEmitter<any>();
+  public selectionChange = output<any>();
 
   /** Emitted when the search modal dismisses with `data.answer` from `ComboBoxSearchComponent`. */
   public searchDismiss = output<IAnswerOption | null | undefined>();
@@ -58,6 +58,10 @@ export class ComboBoxDropdownComponent {
 
   public metaBadgeChipColor(option: IAnswerOption): string {
     return resolveOptionMetaBadgeColor(this.optionMetaBadge(), option);
+  }
+
+  public metaBadgeChipText(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeText(this.optionMetaBadge(), option);
   }
 
   public async openSearch() {

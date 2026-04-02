@@ -12,6 +12,7 @@ import {
   OptionMetaBadgeConfig,
   OPTION_META_BADGE_VALUE_DEFAULTS,
   resolveOptionMetaBadgeColor,
+  resolveOptionMetaBadgeText,
 } from "../combo-box-meta-badge.config";
 
 @Component({
@@ -130,5 +131,9 @@ export class ComboBoxModalComponent implements OnInit {
 
   metaBadgeChipColor(option: IAnswerOption): string {
     return resolveOptionMetaBadgeColor(this.optionMetaBadge, option);
+  }
+
+  metaBadgeChipText(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeText(this.optionMetaBadge, option);
   }
 }
