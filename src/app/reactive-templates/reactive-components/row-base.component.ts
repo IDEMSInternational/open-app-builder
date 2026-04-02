@@ -84,15 +84,6 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   ngOnInit(): void {
     this.init();
 
-    this.watchParamDependencies();
-    this.watchConditionDependencies();
-    this.watchValueDependencies();
-
-    // Set default value
-    this.storeValue().then(() => {
-      this.onInitialised()?.();
-    });
-
     this.navigationEndSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onNavigationEnd(event);
