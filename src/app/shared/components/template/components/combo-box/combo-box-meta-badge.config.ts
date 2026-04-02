@@ -21,12 +21,7 @@ export function resolveOptionMetaBadgeColor(
 ): string {
   if (!cfg.colorKey.trim()) return cfg.valueDefaults.color;
 
-  /**
-   * HACK: Convert to camel case since answer list keys get converted to camel case by zod parser
-   * (only if answer_list is passed in directly, not via data_items child rows)
-   * TODO: update parser logic?
-   */
-  const raw = option[cfg.colorKey] || option[snakeToCamel(cfg.colorKey)];
+  const raw = rawOptionFieldForMetaBadgeKey(option, cfg.colorKey);
   return raw != null && raw !== "" ? String(raw) : cfg.valueDefaults.color;
 }
 
@@ -36,11 +31,15 @@ export function resolveOptionMetaBadgeText(
 ): string {
   if (!cfg.textKey.trim()) return cfg.valueDefaults.text;
 
-  /**
-   * HACK: Convert to camel case since answer list keys get converted to camel case by zod parser
-   * (only if answer_list is passed in directly, not via data_items child rows)
-   * TODO: update parser logic?
-   */
-  const raw = option[cfg.textKey] || option[snakeToCamel(cfg.textKey)];
+  const raw = rawOptionFieldForMetaBadgeKey(option, cfg.textKey);
   return raw != null && raw !== "" ? String(raw) : cfg.valueDefaults.text;
+}
+
+/**
+ * HACK: Prefer exact key, then camelCase variant — answer list keys may be normalized to camelCase
+ * by the zod parser when answer_list is passed in directly (not via data_items child rows).
+ * TODO: update parser logic?
+ */
+function rawOptionFieldForMetaBadgeKey(option: IAnswerOption, key: string): unknown {
+  return option[key] || option[snakeToCamel(key)];
 }
