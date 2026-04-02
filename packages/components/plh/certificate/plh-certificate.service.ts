@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 
-import { PublicApiService } from "src/app/feature/public-api";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import {
   isPlhCertificateSuccessResponse,
@@ -13,10 +12,7 @@ import {
   providedIn: "root",
 })
 export class PlhCertificateService {
-  constructor(
-    private publicApi: PublicApiService,
-    private dynamicDataService: DynamicDataService
-  ) {}
+  constructor(private dynamicDataService: DynamicDataService) {}
 
   /**
    * POST JSON to the given absolute URL (certificate generation endpoint).
@@ -51,7 +47,34 @@ export class PlhCertificateService {
     url: string;
     body?: IPlhCertificateRequestBody;
   }): Promise<unknown> {
-    return await this.publicApi.postJson<unknown>(options.url, options.body);
+    const response = await fetch(options.url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
+
+    if (!response.ok) {
+      // Ensure we fail loudly so the action can surface a consistent `{ detail: error }` payload.
+      const responseText = await response.text().catch(() => "");
+      throw new Error(
+        `[PLH CERTIFICATE] - Failed to generate certificate (${response.status}): ${responseText.slice(
+          0,
+          500
+        )}`
+      );
+    }
+
+    const contentType = response.headers.get("content-type") ?? "";
+    if (!contentType.includes("application/json")) {
+      const responseText = await response.text().catch(() => "");
+      throw new Error(
+        `[PLH CERTIFICATE] - Expected JSON response but got: ${responseText.slice(0, 500)}`
+      );
+    }
+
+    return await response.json();
   }
 
   private async updateCertificateDataList(options: {
