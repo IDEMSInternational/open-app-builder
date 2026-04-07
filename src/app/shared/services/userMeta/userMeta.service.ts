@@ -11,6 +11,7 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { FlowTypes, getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -35,7 +36,8 @@ export class UserMetaService extends AsyncServiceBase {
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
     private fieldService: TemplateFieldService,
-    private dynamicDataService: DynamicDataService
+    private dynamicDataService: DynamicDataService,
+    private systemVariableService: SystemVariableService
   ) {
     super("UserMetaService");
     this.registerInitFunction(this.initialise);
@@ -63,7 +65,7 @@ export class UserMetaService extends AsyncServiceBase {
     userMeta.uuid = uuid;
     this.userMeta = userMeta;
     // populate user id contact field
-    this.localStorageService.setProtected("APP_USER_ID", uuid);
+    this.systemVariableService.set("APP_USER_ID", uuid);
   }
 
   getUserMeta(key: keyof IUserMeta) {
