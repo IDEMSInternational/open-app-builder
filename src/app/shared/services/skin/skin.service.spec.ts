@@ -61,8 +61,10 @@ const MOCK_APP_CONFIG: Partial<IAppConfig> = {
  */
 describe("SkinService", () => {
   let service: SkinService;
+  let systemVarStorage: Record<string, string>;
 
   beforeEach(() => {
+    systemVarStorage = {};
     TestBed.configureTestingModule({
       providers: [
         { provide: LocalStorageService, useValue: new MockLocalStorageService() },
@@ -75,7 +77,15 @@ describe("SkinService", () => {
         { provide: ThemeService, useClass: MockThemeService },
         {
           provide: SystemVariableService,
-          useValue: { set: () => {}, get: () => null, remove: () => {} },
+          useValue: {
+            set: (key: string, val: string) => {
+              systemVarStorage[key] = val;
+            },
+            get: (key: string) => systemVarStorage[key] ?? null,
+            remove: (key: string) => {
+              delete systemVarStorage[key];
+            },
+          },
         },
       ],
     });
@@ -98,8 +108,10 @@ describe("SkinService", () => {
     });
   });
 
-  it("loads active skin from local storage on init if available", () => {
-    service["localStorageService"].setProtected("APP_SKIN", "MOCK_SKIN_2");
+  it("loads active skin from system variables on init if available", () => {
+    // Simulate a previously saved skin and re-run skin loading
+    systemVarStorage["APP_SKIN"] = "MOCK_SKIN_2";
+    service["loadActiveSkin"]();
     expect(service.getActiveSkinName()).toEqual("MOCK_SKIN_2");
   });
 
