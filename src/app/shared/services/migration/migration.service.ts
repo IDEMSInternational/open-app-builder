@@ -1,14 +1,14 @@
 import { inject, Injectable } from "@angular/core";
-import { LocalStorageService } from "../local-storage/local-storage.service";
 import { Migration, MigrationHistory } from "./migration.types";
 import { AlertController } from "@ionic/angular";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class MigrationService {
-  private localStorage = inject(LocalStorageService);
   private alertCtrl = inject(AlertController);
+  private systemVariableService = inject(SystemVariableService);
 
   public async handleMigrations<T>(migrations: Migration<T>[], context: T, source: string) {
     if (!source) {
@@ -65,7 +65,7 @@ export class MigrationService {
   }
 
   private getMigrationHistory(): MigrationHistory {
-    const stored = this.localStorage.getProtected("MIGRATION_HISTORY");
+    const stored = this.systemVariableService.get("MIGRATION_HISTORY");
     if (!stored) return {};
     try {
       const parsed = JSON.parse(stored);
@@ -77,7 +77,7 @@ export class MigrationService {
   }
 
   private saveMigrationHistory(history: MigrationHistory) {
-    this.localStorage.setProtected("MIGRATION_HISTORY", JSON.stringify(history));
+    this.systemVariableService.set("MIGRATION_HISTORY", JSON.stringify(history));
   }
 
   private async showErrorAlert(migrationId: string, error: any) {

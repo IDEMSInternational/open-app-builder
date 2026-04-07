@@ -29,7 +29,7 @@ export class SystemVariableService {
     }
   }
 
-  public get(name: IProtectedFieldName): string {
+  public get(name: IProtectedFieldName): string | null {
     if (this.useReactiveTemplates) {
       return this.variableStore.get({ type: "system", name });
     } else {

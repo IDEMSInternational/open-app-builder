@@ -122,7 +122,7 @@ export class ServerService extends SyncServiceBase {
           (res) => {
             console.log("[SERVER] synced", res);
             // finalise timestamp by storing locally
-            this.localStorageService.setProtected("SERVER_SYNC_LATEST", timestamp);
+            this.systemVariableService.set("SERVER_SYNC_LATEST", timestamp);
             resolve(timestamp);
           },
           (err) => resolve(null)
