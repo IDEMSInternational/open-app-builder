@@ -5,8 +5,10 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { IProtectedFieldName } from "packages/data-models";
 
 /**
- * Service for managing system variables, which are global variables that can be used across the app.
- * Depending on the deployment configuration useReactiveTemplates, it either uses a reactive store or local storage to manage these variables.
+ * Service for managing system variables, which are global variables that can be used across the app and are exposed as readonly values to authoring.
+ * Implementation is different depending on the deployment configuration useReactiveTemplates:
+ * If false: local storage to manage these variables; authors can reference using `@fields._my_protected_field` syntax
+ * If true: service uses a reactive store, authors can reference using `@system.my_system_var` syntax
  * System variables are variables that are set in the app (not by authors) and can be used in templates.
  */
 @Injectable({
