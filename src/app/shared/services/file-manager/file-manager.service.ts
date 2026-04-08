@@ -9,7 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
-import { basenameFromExternalUrl, isExternalHttpUrl } from "packages/shared/src/utils/string-utils";
+import { basenameFromExternalUrl, isExternalHttpUrl } from "shared/src/utils/string-utils";
 
 @Injectable({
   providedIn: "root",
@@ -61,11 +61,13 @@ export class FileManagerService extends SyncServiceBase {
    * @param options.url The URL of the file to download
    * @param options.open If true, then the file will be opened after download on native devices. Default: true
    * @param options.subfolder The subdirectory to save the file to (native only). Default: ""
+   * @param options.filename The filename for saved file (native only). Default: generated from URL
    */
   private async downloadAssetFromExternalUrl(options: {
     url: string;
     open?: boolean;
     subfolder?: string;
+    filename?: string;
   }): Promise<void> {
     const { url, open = true, subfolder = "" } = options;
     try {
@@ -74,7 +76,7 @@ export class FileManagerService extends SyncServiceBase {
         throw new Error(`Failed to download file (${response.status})`);
       }
       const blob = await response.blob();
-      const fileName = basenameFromExternalUrl(url) ?? "download";
+      const fileName = options.filename || basenameFromExternalUrl(url) || "download";
       if (Capacitor.isNativePlatform()) {
         const { localFilepath } = await this.saveFile({
           data: blob,
