@@ -36,12 +36,13 @@ export class FileManagerService extends SyncServiceBase {
     this.templateActionRegistry.register({
       // Native: save file to Documents folder in external device storage and open;
       // Web: download file
-      save_to_device: async ({ args }) => {
+      save_to_device: async ({ args, params }) => {
         const pathOrUrl = args[0];
+        const { open = true, subfolder = "" } = params;
         if (isExternalHttpUrl(pathOrUrl)) {
-          await this.downloadAssetFromExternalUrl(pathOrUrl);
+          await this.downloadAssetFromExternalUrl({ url: pathOrUrl, open, subfolder });
         } else {
-          await this.downloadTemplateAsset({ relativePath: pathOrUrl });
+          await this.downloadTemplateAsset({ relativePath: pathOrUrl, open });
         }
       },
       // Native: save file to app's internal cache on device and open it externally to the app
@@ -57,8 +58,16 @@ export class FileManagerService extends SyncServiceBase {
    * Download a file from an absolute http(s) URL (e.g. cloud storage). Uses fetch + the same native
    * write path as other saves; not for bundled template assets.
    * Assumes CORS-enabled endpoint.
+   * @param options.url The URL of the file to download
+   * @param options.open If true, then the file will be opened after download on native devices. Default: true
+   * @param options.subfolder The subdirectory to save the file to (native only). Default: ""
    */
-  private async downloadAssetFromExternalUrl(url: string): Promise<void> {
+  private async downloadAssetFromExternalUrl(options: {
+    url: string;
+    open?: boolean;
+    subfolder?: string;
+  }): Promise<void> {
+    const { url, open = true, subfolder = "" } = options;
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -71,9 +80,9 @@ export class FileManagerService extends SyncServiceBase {
           data: blob,
           targetPath: fileName,
           directory: "Documents",
-          subdirectory: "",
+          subdirectory: subfolder,
         });
-        FileOpener.open({ filePath: localFilepath, openWithDefault: false });
+        if (open) FileOpener.open({ filePath: localFilepath, openWithDefault: false });
       } else {
         saveAs(blob, fileName);
       }
