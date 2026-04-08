@@ -25,11 +25,13 @@ export class DropdownModalComponent implements OnInit {
     this.selection.set(this.selectedOption());
   }
 
-  public filteredOptions = computed(() =>
-    this.options().filter((options) =>
+  public filteredOptions = computed(() => {
+    if (!this.options() || this.options().length === 0) return [];
+
+    return this.options().filter((options) =>
       options[this.optionsValue()].toLowerCase().includes(this.searchTerm().toLowerCase())
-    )
-  );
+    );
+  });
 
   public isSelected(item: any) {
     const sel = this.selection();
