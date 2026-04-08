@@ -34,6 +34,10 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
   public optionsKey = this.params.optionsKey.value;
   public optionsValue = this.params.optionsValue.value;
   public selectedOption = computed(() => {
+    if (!this.value()) return null;
+
+    if (!this.options() || this.options().length === 0) return null;
+
     return this.options().find((option) => option[this.optionsKey()] === this.value());
   });
 
@@ -57,8 +61,8 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
       component: DropdownModalComponent,
       cssClass: "dropdown-search",
       componentProps: {
-        options: this.options,
-        title: this.params.title.value,
+        options: this.options(),
+        title: this.params.title.value(),
         selectedOption: this.selectedOption(),
       },
     });
