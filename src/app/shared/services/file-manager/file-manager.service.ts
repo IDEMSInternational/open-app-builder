@@ -38,9 +38,9 @@ export class FileManagerService extends SyncServiceBase {
       // Web: download file
       save_to_device: async ({ args, params }) => {
         const pathOrUrl = args[0];
-        const { open = true, subfolder = "" } = params;
+        const { open = true, subfolder = "", filename = undefined } = params;
         if (isExternalHttpUrl(pathOrUrl)) {
-          await this.downloadAssetFromExternalUrl({ url: pathOrUrl, open, subfolder });
+          await this.downloadAssetFromExternalUrl({ url: pathOrUrl, open, subfolder, filename });
         } else {
           await this.downloadTemplateAsset({ relativePath: pathOrUrl, open });
         }
