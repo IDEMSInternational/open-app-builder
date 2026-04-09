@@ -87,10 +87,15 @@ export class HttpCache {
     const storageKey = await hashUrl(key);
     const blob = await res.blob();
 
+    const headers: Record<string, string> = {};
+    res.headers.forEach((value, name) => {
+      headers[name] = value;
+    });
+
     const entry: ICacheManifestEntry = {
       contentType: res.headers.get("content-type") || "application/octet-stream",
       created: Date.now(),
-      headers: Object.fromEntries(res.headers.entries()),
+      headers,
       size: blob.size,
       status: res.status,
       expiry,
