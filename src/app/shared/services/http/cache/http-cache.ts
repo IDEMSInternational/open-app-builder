@@ -148,7 +148,6 @@ async function hashUrl(url: string): Promise<string> {
  * TODO
  * - Max cache size for L2 storage (auto-delete oldest/largest)
  * - Checksums and revalidation (ETag/Last-Modified support)
- * - Object URL creation for cached blobs
  * - Debug page to test strategies, urls etc.
  *
  * Review how cacheable-request encodes....
