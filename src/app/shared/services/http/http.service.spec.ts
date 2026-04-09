@@ -124,7 +124,7 @@ describe("HttpService", () => {
     expect(res.headers.get("x-res-source")).toBe("cache");
   });
 
-  fit("network-first strategy", async () => {
+  it("network-first strategy", async () => {
     // 1. Successful network request
     const res = await service.get("https://example.com/nf", {
       strategy: "network-first",
