@@ -46,15 +46,22 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
 
   public async get(key: string): Promise<Blob | undefined> {
     try {
+      const webViewUrl = await this.getUrl(key);
+      if (!webViewUrl) return undefined;
+      const response = await fetch(webViewUrl);
+      return await response.blob();
+    } catch (e) {
+      return undefined;
+    }
+  }
+
+  public async getUrl(key: string): Promise<string | undefined> {
+    try {
       const { uri } = await Filesystem.getUri({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });
-
-      // Bypass base64 bridge by using local webserver URL
-      const webViewUrl = Capacitor.convertFileSrc(uri);
-      const response = await fetch(webViewUrl);
-      return await response.blob();
+      return Capacitor.convertFileSrc(uri);
     } catch (e) {
       return undefined;
     }

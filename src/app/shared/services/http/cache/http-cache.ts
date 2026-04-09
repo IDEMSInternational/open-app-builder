@@ -83,6 +83,17 @@ export class HttpCache {
     }
   }
 
+  public async getUrl(key: string): Promise<string | undefined> {
+    const storageKey = await hashUrl(key);
+    if (this.storageCache.getUrl) {
+      return this.storageCache.getUrl(`${storageKey}.data`);
+    }
+    // Fallback if adapter doesn't support getUrl
+    const blob = await this.get(key);
+    if (!blob) return undefined;
+    return URL.createObjectURL(blob);
+  }
+
   public async set(key: string, res: Response, expiry?: number) {
     const storageKey = await hashUrl(key);
     const blob = await res.blob();

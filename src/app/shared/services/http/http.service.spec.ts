@@ -93,5 +93,27 @@ describe("HttpService", () => {
   it("network-first strategy", async () => {});
   it("network-only strategy", async () => {});
 
+  describe("getMediaSrc", () => {
+    it("should return object with src and revoke callback", async () => {
+      const media = await service.getMediaSrc("https://example.com/image.png");
+
+      // Since it's our mock cache, the src should equal the mock adapter's output
+      expect(media.src).toBeTruthy();
+      expect(typeof media.revoke).toBe("function");
+    });
+
+    it("should default cache strategy and cache item before returning", async () => {
+      // Mock the cache's getUrl to simulate a hit
+      spyOn(
+        service["cacheNamespaces"]["cache"] || (await service["getCache"]("cache")),
+        "getUrl"
+      ).and.returnValue(Promise.resolve("mock-url"));
+      const media = await service.getMediaSrc("https://example.com/asset.mp4");
+
+      expect(getReqSpy).toHaveBeenCalled();
+      expect(media.src).toEqual("mock-url");
+    });
+  });
+
   it("retries failed downloads", () => {});
 });

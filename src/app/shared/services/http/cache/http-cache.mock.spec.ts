@@ -9,6 +9,9 @@ export class MockHttpCacheAdapter implements IHttpCacheAdapter {
   public async get(key: string) {
     return this.storage.get(key);
   }
+  public async getUrl(key: string) {
+    return this.storage.has(key) ? `mock-url-${key}` : undefined;
+  }
   public async set(key: string, data: Blob) {
     this.storage.set(key, data);
   }

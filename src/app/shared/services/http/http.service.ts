@@ -31,6 +31,13 @@ const DEFAULT_OPTIONS: IHttpRequestOptions = {
   retry: 2,
 };
 
+export interface ICachedMedia {
+  /** The safe URL string ready to be bound to a [src] HTML attribute */
+  src: string;
+  /** Automatically cleans up memory on the Web. Safe to call on Native (no-op) */
+  revoke: () => void;
+}
+
 /**
  * Service to handle http requests, with custom request cache management
  * For more details see [Readme](./README.md)
@@ -43,10 +50,10 @@ export class HttpService {
   private cacheNamespaces: Record<string, HttpCache> = {};
 
   /**
-   * Make a get request to a url. Use options to define default caching behaviour,
-   * such as cache-first or network-only approaches
+   * Standard HTTP GET. Make a get request to a url and returns a standard DOM Response.
+   * Use options to define default caching behaviour, such as cache-first or network-only approaches
    */
-  public async get(url: string, options: IHttpRequestOptions = {}) {
+  public async get(url: string, options: IHttpRequestOptions = {}): Promise<Response> {
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
     const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
@@ -56,6 +63,41 @@ export class HttpService {
     options.headers["x-cache-name"] = cacheName;
 
     return this.requestStrategyHandlers[strategy](url, mergedOptions);
+  }
+
+  /**
+   * Optimized fetch for UI Media rendering.
+   * Ensures the data is cached and returns a safe URL (e.g. localhost native bridge URL)
+   * bypassing heavy javascript Blob parsing overhead.
+   */
+  public async getMediaSrc(url: string, options: IHttpRequestOptions = {}): Promise<ICachedMedia> {
+    // Ensure the item exists in the cache by invoking the standard GET flow.
+    // We don't need the blob response here, we just need the invisible caching strategy to run.
+    const res = await this.get(url, options);
+
+    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
+    const cache = await this.getCache(mergedOptions.cacheName || "cache");
+    const key = generateRequestKey({ url, method: mergedOptions.method });
+
+    let src = await cache.getUrl(key);
+
+    let revoke = () => {};
+
+    // In rare cases (like network-only strategies without existing cache, or parsing errors)
+    // the item might not be in the custom cache yet despite the GET.
+    // Fallback to object URL from the response arrayBuffer if getUrl fails.
+    if (!src) {
+      const blob = await res.clone().blob();
+      src = URL.createObjectURL(blob);
+      revoke = () => URL.revokeObjectURL(src!);
+    }
+    // Web will generate object url that will need to be revoked
+    // Native will generate file url that can simply be left as-is (no revoke required)
+    else if (src.startsWith("blob:")) {
+      revoke = () => URL.revokeObjectURL(src!);
+    }
+
+    return { src, revoke };
   }
 
   /** Specific handling of different request strategies */
