@@ -14,16 +14,18 @@ https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
 
 ## Storage Adaptors
 As there are typically no universally effective ways to persist data to storage, a series of 
-storage adapters are used to handle read/write operations in different environments
+storage adapters are used to handle read/write operations in different environments (e.g. Capacitor Filesystem on native, OPFS on browser).
 
-All storage adapters are 2-layered.
-An L1 layer stores in-memory lists of known files and response values for data retrieved multiple times within a session. An L2 layer stores to a permanent storage location, such as FileSystem, OPFS and IndexedDB
-
-The L1 layer also handles storage of cache metadata, such as expiry, size, checksums, using the L2 provider as permanent data store to omit the need of a separate database for tracking 
+The architecture uses a **Sidecar Pattern** for performance and resilience on low-resource devices:
+- **Atomic Storage**: Each response is stored as two distinct files: `[hash].data` (the raw binary body) and `[hash].meta` (metadata including headers, status, and expiry).
+- **URL Hashing**: Keys are generated using a SHA-1 hash of the Request URL. This provides fast, constant-time lookup without the CPU overhead of hashing entire binary blobs.
+- **Bypassing the Native Bridge**: On Capacitor, the service uses `Capacitor.convertFileSrc` and native `fetch` to read files directly from the local webserver. This avoids the memory bottleneck of transferring large files as Base64 strings across the Javascript bridge.
+- **No Global Manifest**: By avoiding a monolithic JSON index, the app removes I/O bottlenecks during startup and prevents the "Write Contention" corruption risks common in low-connectivity environments.
 
 It takes inspiration from:
 - https://github.com/BYOJS/storage
 - https://keyv.org/
+
 
 
 ## Template Interaction

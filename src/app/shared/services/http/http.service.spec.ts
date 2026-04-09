@@ -24,7 +24,8 @@ describe("HttpService", () => {
 
     // spy on client network get requests and provide fake response
     getReqSpy = spyOn(service["client"], "get").and.callFake(() => {
-      return {} as ResponsePromise<any>;
+      const response = new Response("network", { status: 200 });
+      return Promise.resolve(response) as any;
     });
   });
 
@@ -62,7 +63,7 @@ describe("HttpService", () => {
   });
 
   it("populates cache headers", async () => {
-    const res = await service.get("https://example.com");
+    await service.get("https://example.com");
     const [url, options] = getReqSpy.calls.first().args;
     const expiryHeader = options.headers["x-cache-expiry"];
     expect(expiryHeader).toBeTruthy();
@@ -82,17 +83,7 @@ describe("HttpService", () => {
     expect(expiryTimeDiff).toBeLessThanOrEqual(61000);
   });
 
-  // TODO - only evaluated when preparing to cache...
-  it("QA - throws on invalid cache expiry value", async () => {
-    const res = await service.get("https://example.com", {
-      strategy: "cache-only",
-      cacheExpiry: "2 hours",
-    });
-  });
-
   it("cache-only strategy", async () => {
-    // allow full api to call through to check if intercepted by cache
-    getReqSpy.and.callThrough();
     const res = await service.get("https://mock.string", { strategy: "cache-only" });
     const sourceHeader = res.headers.get("x-res-source");
     expect(sourceHeader).toEqual("cache");

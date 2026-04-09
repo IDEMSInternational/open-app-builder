@@ -1,10 +1,12 @@
 import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Capacitor } from "@capacitor/core";
 import blobWriter from "capacitor-blob-writer";
 import { IHttpCacheAdapter } from "./types";
 
 /**
  * Capacitor Filesystem adapter for Blob responses.
  * Uses Directory.Cache for persistent storage.
+ * Optimized to bypass Base64 bridge for reads.
  */
 export class HttpCacheAdapterFile implements IHttpCacheAdapter {
   constructor(private folder: string = "http-cache") {}
@@ -42,16 +44,16 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
     }
   }
 
-  public async get(key: string) {
+  public async get(key: string): Promise<Blob | undefined> {
     try {
-      const result = await Filesystem.readFile({
+      const { uri } = await Filesystem.getUri({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });
 
-      // Convert base64 to Blob
-      const base64Data = result.data as string;
-      const response = await fetch(`data:application/octet-stream;base64,${base64Data}`);
+      // Bypass base64 bridge by using local webserver URL
+      const webViewUrl = Capacitor.convertFileSrc(uri);
+      const response = await fetch(webViewUrl);
       return await response.blob();
     } catch (e) {
       return undefined;

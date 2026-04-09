@@ -99,8 +99,7 @@ export class HttpService {
     const cache = await this.getCache(cacheName);
     const key = generateRequestKey({ url, method: options.method });
 
-    const cacheRes = await cache.get(key);
-    const entry = await cache.getEntry(key);
+    const [cacheRes, entry] = await Promise.all([cache.get(key), cache.getEntry(key)]);
     const headers = new Headers({ "x-res-source": "cache" });
 
     if (cacheRes && entry) {
@@ -130,21 +129,15 @@ export class HttpService {
 
   private async updateCache(req: Request, res: Response) {
     if (this.isSuccessStatus(res.status)) {
-      const cacheName = req.headers.get("x-cache-name");
+      const cacheName = req.headers.get("x-cache-name") || "cache";
       const cache = await this.getCache(cacheName);
       const key = generateRequestKey({ url: req.url, method: req.method });
       const expiry = req.headers.get("x-cache-expiry");
-      const expiryTime = expiry ? shorthandToTime(expiry) : undefined;
+      const expiryTime = expiry ? Number(expiry) : undefined;
 
       // Use response clone to allow initial response to still be passed
       const clone = res.clone();
-
       await cache.set(key, clone, expiryTime);
-
-      const contentType = res.headers.get("content-type");
-      if (contentType === "application/json") {
-        // TODO - serialisation? or just body
-      }
     }
   }
 
