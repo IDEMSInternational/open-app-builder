@@ -100,15 +100,18 @@ export class HttpService {
     const key = generateRequestKey({ url, method: options.method });
 
     const cacheRes = await cache.get(key);
+    const entry = await cache.getEntry(key);
     const headers = new Headers({ "x-res-source": "cache" });
-    if (cacheRes) {
-      console.log("cacheRes", cacheRes);
-      // TODO - evaluate and handle expiry here to invalidate existing cache which
-      // may have originally set a longer expiry
+
+    if (cacheRes && entry) {
+      if (entry.expiry && entry.expiry < Date.now()) {
+        await cache.delete(key);
+        return new Response(null, { status: 404, headers });
+      }
       return new Response(cacheRes, { status: 200, headers });
     }
 
-    return new Response(cacheRes, { status: 400, headers });
+    return new Response(null, { status: 404, headers });
   }
 
   private async getCache(name: string) {
@@ -133,20 +136,12 @@ export class HttpService {
       const expiry = req.headers.get("x-cache-expiry");
       const expiryTime = expiry ? shorthandToTime(expiry) : undefined;
 
-      // TODO - handle here or in cache?
-
       // Use response clone to allow initial response to still be passed
-      // TODO - handle streaming body response
       const clone = res.clone();
 
       await cache.set(key, clone, expiryTime);
 
-      // TODO - understand different application types
-      // TODO - when to use buffer vs convert...
-      const reader = res.body.getReader();
-      //
       const contentType = res.headers.get("content-type");
-      // TODO - use expiry header
       if (contentType === "application/json") {
         // TODO - serialisation? or just body
       }
@@ -170,56 +165,12 @@ export class HttpService {
     });
   }
 }
-/**
- * 
-
-// Handle request
-    // NOTE - cache requests still go through client api for consistent response format
-    const req = this.client.get(url, {
-      headers,
-      // TODO - maybe this should be part of download service that also handles writing to disk...
-      
-      retry: max_retries,
-      // use custom caching (?) - or maybe default if not strategy selected
-      // this would use request headers.. maybe use response headers?
-      cache: strategy === "network-only" ? "no-cache" : "default",
-    });
-
-     */
 
 /**
- * TODOs
- * - How to keep track of expiry (possibly via cached doc? e.g. _expiry ), or separate db table
- *   If separate db table again will have to ask whether best kept here or in download service
- * 
- * - Handling network-first timeout
- * - Stale-then-revalidate strategy - how best to subscribe (maybe setup in download)
- * - Include namespace for cache files/folders/prefix
- * - Use head requests to help know if cache is potentially invalid (compare size, checksum if available)
- * - Error handling
- *
- * Data-download service
- * - stale-then-revalidate style strategy (possibly just race both cache and network reqs)
- *   requires `revalidate` param
- * - could consider moving all strategies to service?
- * - custom request ids for tracking in other components
- * - download progress observable and abort signal
- * - conversion of response file types
- * 
- * E.g.
- * ```
- *   
-   const controller = new AbortController();
-   const { signal, abort } = controller;
-
-    const progress = new Subject<DownloadProgress>();
-   onDownloadProgress: (p) => {
-        progress.next(p);
-        console.log("progress", p);
-        if (p.percent === 1) {
-          progress.complete();
-        }
-      },
-      signal,
- * ```
+ * TODO
+ * - Stale-then-revalidate strategy support
+ * - Custom request IDs for tracking in other components
+ * - Download progress observable and abort signal
+ * - Conversion of response file types
+ * - Head requests to check if cache is potentially invalid (compare size, checksum)
  */

@@ -14,20 +14,33 @@ import { IHttpCacheAdapter } from "./types";
  * https://web.dev/case-studies/kiwix
  * https://github.com/kiwix/kiwix-js-pwa/blob/main/www/js/lib/cache.js#L721
  */
+interface FileSystemDirectoryHandleWithKeys extends FileSystemDirectoryHandle {
+  keys(): AsyncIterableIterator<string>;
+}
+
 export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
   constructor(private rootFS: FileSystemDirectoryHandle) {}
 
+  public async has(key: string) {
+    try {
+      await this.rootFS.getFileHandle(key);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   public async get(key: string) {
-    const fh = await this.rootFS.getFileHandle(key, { create: true });
-    const file = await fh.getFile();
-    return file;
+    try {
+      const fh = await this.rootFS.getFileHandle(key);
+      const file = await fh.getFile();
+      return file;
+    } catch {
+      return undefined;
+    }
   }
 
   public async set(key: string, value: Blob) {
-    console.log("set opfs", key, value);
-    // note: trick to skip `await` microtask when
-    // not a promise
-
     const fh = await this.rootFS.getFileHandle(key, { create: true });
     const file = await fh.createWritable();
     await file.write(value);
@@ -36,24 +49,26 @@ export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
   }
 
   public async delete(key: string) {
-    // note: trick to skip `await` microtask when
-    // not a promise
-
-    await this.rootFS.removeEntry(key);
-    return true;
+    try {
+      await this.rootFS.removeEntry(key);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   public async list() {
-    // note: trick to skip `await` microtask when
-    // not a promise
-
     const fsKeys: string[] = [];
-    // HACK - type defs don't currently recognise fs.keys
-    for await (let key of this.rootFS["keys"]()) {
+    for await (let key of (this.rootFS as FileSystemDirectoryHandleWithKeys).keys()) {
       fsKeys.push(key);
     }
     return fsKeys;
   }
 
-  public async clear() {}
+  public async clear() {
+    const keys = await this.list();
+    for (const key of keys) {
+      await this.delete(key);
+    }
+  }
 }

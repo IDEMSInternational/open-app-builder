@@ -1,4 +1,4 @@
-import { debounceTime, Subject } from "rxjs";
+import { debounceTime, Subject, Subscription } from "rxjs";
 import { IHttpCacheAdapter } from "./adapters/types";
 
 type ICacheManifest = { [key: string]: ICacheManifestEntry };
@@ -36,12 +36,18 @@ export class HttpCacheManifest {
   /** Track manifest changes in order to debounce persist  */
   private changes$ = new Subject<void>();
 
+  private subscription: Subscription;
+
   constructor(private l2: IHttpCacheAdapter) {}
 
   public async initialise() {
     await this.loadSavedManifest();
     await this.validateManifest();
     this.persistManifestChanges();
+  }
+
+  public destroy() {
+    this.subscription?.unsubscribe();
   }
 
   public async set(key: string, entry: ICacheManifestEntry) {
@@ -60,24 +66,47 @@ export class HttpCacheManifest {
 
   /** Load previously persisted manifest from layer-2 */
   private async loadSavedManifest() {
-    const persistedCache = await this.l2.get("cache-manifest");
-    if (persistedCache) {
-      const text = await persistedCache.text();
-      this.manifest = JSON.parse(text);
+    try {
+      const persistedCache = await this.l2.get("cache-manifest");
+      if (persistedCache) {
+        const text = await persistedCache.text();
+        this.manifest = JSON.parse(text);
+      }
+    } catch (error) {
+      console.error("Failed to load or parse cache manifest", error);
+      this.manifest = {};
     }
   }
 
   /** Store current manifest to layer-2 on change */
   private persistManifestChanges() {
     // debounce writes in case of heavy I/O
-    this.changes$.pipe(debounceTime(1000)).subscribe(async () => {
+    this.subscription = this.changes$.pipe(debounceTime(1000)).subscribe(async () => {
       const manifestBlob = new Blob([JSON.stringify(this.manifest)], { type: "application/json" });
       await this.l2.set("cache-manifest", manifestBlob);
     });
   }
 
   private async validateManifest() {
-    const entries = await this.l2.list();
-    // TODO - check entries against manifest
+    const storageFiles = await this.l2.list();
+    const manifestKeys = Object.keys(this.manifest);
+    const storageKeys = new Set(manifestKeys.map((k) => this.manifest[k].storageKey));
+    storageKeys.add("cache-manifest");
+
+    // 1. Clean up orphaned files in storage
+    for (const file of storageFiles) {
+      if (!storageKeys.has(file)) {
+        await this.l2.delete(file);
+      }
+    }
+
+    // 2. Clean up manifest entries that have no corresponding file
+    for (const key of manifestKeys) {
+      const entry = this.manifest[key];
+      const exists = await this.l2.has(entry.storageKey);
+      if (!exists) {
+        await this.delete(key);
+      }
+    }
   }
 }

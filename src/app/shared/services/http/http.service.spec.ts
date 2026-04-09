@@ -83,12 +83,11 @@ describe("HttpService", () => {
   });
 
   // TODO - only evaluated when preparing to cache...
-  fit("QA - throws on invalid cache expiry value", async () => {
+  it("QA - throws on invalid cache expiry value", async () => {
     const res = await service.get("https://example.com", {
       strategy: "cache-only",
       cacheExpiry: "2 hours",
     });
-    console.log("res", res);
   });
 
   it("cache-only strategy", async () => {

@@ -14,7 +14,9 @@ export class HttpCache {
    * This is used for quick retrieval of frequently accessed files
    * It has a fixed size allocation and automatic eviction of least-recently used (LRU)
    **/
+  private namespace: string;
   private memoryCache = new HttpCacheAdapterMemory();
+  private readonly MEMORY_CACHE_THRESHOLD = 1 * 1024 * 1024; // 1MB
 
   /** Layer-2 cache that persists to storage */
   private storageCache?: IHttpCacheAdapter;
@@ -25,6 +27,7 @@ export class HttpCache {
   private initialised = false;
 
   constructor(namespace: string, storageCache?: IHttpCacheAdapter) {
+    this.namespace = namespace;
     this.storageCache = storageCache;
   }
 
@@ -35,17 +38,15 @@ export class HttpCache {
    */
   private async createStorageAdapter(): Promise<IHttpCacheAdapter> {
     if (Capacitor.isNativePlatform()) {
-      return new HttpCacheAdapterFile();
+      return new HttpCacheAdapterFile(this.namespace);
     }
     // TODO - disable on ios browser (detect), as writes only supported in worker threads
     // https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write#browser_compatibility
     // https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system/
     if ("storage" in navigator) {
       try {
-        // TODO - subfolder name depending on deployment?
         const opfsRoot = await navigator.storage.getDirectory();
-        console.log("opfsRoot", opfsRoot);
-        const directoryHandle = await opfsRoot.getDirectoryHandle("TODO_Deployment_Name", {
+        const directoryHandle = await opfsRoot.getDirectoryHandle(`http-cache-${this.namespace}`, {
           create: true,
         });
 
@@ -72,19 +73,21 @@ export class HttpCache {
   }
 
   public async has(key: string) {
-    // TODO - possibly private method and just use get
     return this.memoryCache.has(key);
   }
 
   public async get(key: string) {
     const cachedValue = await this.memoryCache.get(key);
-    console.log("get", { key, cachedValue });
     if (cachedValue) {
       return cachedValue;
     }
     // cached value exists, but has not been stored in memory
     // (either file too large or first retrieval)
-    return this.storageCache.get(key);
+    return this.storageCache?.get(key);
+  }
+
+  public async getEntry(key: string) {
+    return this.manifest.get(key);
   }
 
   public async stream(req) {
@@ -94,17 +97,16 @@ export class HttpCache {
   public async set(key: string, res: Response, expiry?: number) {
     const blob = await res.blob();
 
-    // TODO - manifest first, then use to populate to storage
-
-    const entry = await this.createManifestEntry(res, blob);
+    const entry = await this.createManifestEntry(res, blob, expiry);
     await this.manifest.set(key, entry);
 
     // Store to storage as contentSHA256 to avoid filename collision or duplication
     await this.storageCache.set(entry.contentSha256, blob);
 
-    // TODO - determine when/if to set to memory
-    // Do not await, prefer to eagerly return
-    this.memoryCache.set(key, blob);
+    // Only store in memory if it's below the threshold to avoid bloating RAM
+    if (blob.size <= this.MEMORY_CACHE_THRESHOLD) {
+      this.memoryCache.set(key, blob);
+    }
 
     return;
   }
@@ -122,23 +124,22 @@ export class HttpCache {
     return deleteRes;
   }
 
-  private async createManifestEntry(res: Response, data: Blob) {
+  private async createManifestEntry(res: Response, data: Blob, expiry?: number) {
     const headersObj: Record<string, string> = {};
     res.headers.forEach((value, key) => {
       headersObj[key] = value;
     });
     const contentSha256 = await hashBlobSHA256(data);
 
-    // TODO - generate checksum
-
     const entry: ICacheManifestEntry = {
       contentSha256,
+      contentType: res.headers.get("content-type") || "application/octet-stream",
       created: new Date().getTime(),
       headers: headersObj,
       size: data.size,
       status: res.status,
       storageKey: contentSha256,
-      expiry: "",
+      expiry,
     };
     return entry;
   }
@@ -155,25 +156,11 @@ async function hashBlobSHA256(blob: Blob): Promise<string> {
 }
 
 /**
- *
  * TODO
- * - expiry header as string? (but also want 0 for no expiry?)
- *    probably keep number for now?
- *
- * - adding support for object url methods? maybe in other service
- *
- * - valid response caching
- * - storing expiry and such
- * - storing blobs (native and browser)
- * - manage cache expiry
- * - max cache size (auto-delete oldest/largest) - ideally with adapter able to provide limit
- * - max ttl
- * - max in-memory size
- * - checksums and revalidation
- * - namespaced caches (with separate contents)
- * - consider bumping min chrome version for compatibility (? or just fallback in-memory where not)
- * - add headers for things like source (e.g. x-source=network|cache)
- * - debug page to test strategies, urls etc.
+ * - Max cache size for L2 storage (auto-delete oldest/largest)
+ * - Checksums and revalidation (ETag/Last-Modified support)
+ * - Object URL creation for cached blobs
+ * - Debug page to test strategies, urls etc.
  *
  * Review how cacheable-request encodes....
  * https://github.dev/jaredwray/cacheable/tree/main/packages/cacheable-request
