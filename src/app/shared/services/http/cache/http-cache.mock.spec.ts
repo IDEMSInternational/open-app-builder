@@ -30,7 +30,11 @@ export class MockHttpCacheAdapter implements IHttpCacheAdapter {
  * Extend the HttpCache by replacing native Layer-2 storage cache with in-memory mock
  */
 export class MockHttpCache extends HttpCache {
+  private static instanceCount = 0;
+
   constructor() {
-    super("mockCache", new MockHttpCacheAdapter());
+    MockHttpCache.instanceCount++;
+    const instanceId = MockHttpCache.instanceCount;
+    super("mockCache-" + instanceId, new MockHttpCacheAdapter());
   }
 }

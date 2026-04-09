@@ -31,10 +31,10 @@ describe("HTTPCacheAdapterOPFS", () => {
   it("should get file as Blob", async () => {
     const mockBlob = new Blob(["data"]);
     mockRoot.getFileHandle.and.resolveTo(mockFileHandle);
-    mockFileHandle.getFile.and.resolveTo(mockBlob as any);
+    mockFileHandle.getFile.and.resolveTo(mockBlob as File);
 
     const result = await adapter.get("test");
-    expect(result).toBe(mockBlob as any);
+    expect(result).toBe(mockBlob as File);
   });
 
   it("should return undefined if get fails", async () => {

@@ -1,5 +1,5 @@
 import { HttpCacheAdapterFile } from "./file.adapter";
-import { Filesystem } from "@capacitor/filesystem";
+import { Directory } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 
 /**
@@ -8,58 +8,35 @@ import { Capacitor } from "@capacitor/core";
  */
 describe("HttpCacheAdapterFile", () => {
   let adapter: HttpCacheAdapterFile;
+  let mockFs: any;
 
   beforeEach(() => {
-    // Allow re-spying to avoid issues with repeated tests
     jasmine.getEnv().allowRespy(true);
 
-    const mockFilesystem: any = Filesystem;
-
-    // Helper to forcefully mock methods that might be read-only or proxied
-    const forceMock = (obj: any, method: string, returnValue: any) => {
-      try {
-        if (jasmine.isSpy(obj[method])) {
-          (obj[method] as jasmine.Spy).and.resolveTo(returnValue);
-        } else {
-          spyOn(obj, method).and.resolveTo(returnValue);
-        }
-      } catch (e) {
-        // Fallback for non-writable properties
-        try {
-          const spy = jasmine.createSpy(method).and.resolveTo(returnValue);
-          Object.defineProperty(obj, method, {
-            value: spy,
-            configurable: true,
-            writable: true,
-          });
-        } catch (innerE) {
-          console.error(`Failed to mock ${method}`, innerE);
-        }
-      }
+    mockFs = {
+      mkdir: jasmine.createSpy("mkdir").and.resolveTo(undefined),
+      readdir: jasmine.createSpy("readdir").and.resolveTo({ files: [] }),
+      stat: jasmine.createSpy("stat").and.resolveTo({}),
+      getUri: jasmine
+        .createSpy("getUri")
+        .and.resolveTo({ uri: "file://path/test-cache/test.data" }),
+      deleteFile: jasmine.createSpy("deleteFile").and.resolveTo({}),
+      writeFile: jasmine.createSpy("writeFile").and.resolveTo({ uri: "file://path" }),
+      readFile: jasmine.createSpy("readFile").and.resolveTo({ data: "" }),
     };
 
-    forceMock(mockFilesystem, "mkdir", undefined);
-    forceMock(mockFilesystem, "readdir", { files: [] });
-    forceMock(mockFilesystem, "stat", {});
-    forceMock(mockFilesystem, "getUri", { uri: "file://path" });
-    forceMock(mockFilesystem, "deleteFile", {});
+    spyOn(Capacitor, "convertFileSrc").and.callFake((uri: string) => `converted-${uri}`);
 
-    if (!jasmine.isSpy(Capacitor.convertFileSrc)) {
-      spyOn(Capacitor, "convertFileSrc").and.callFake((uri) => `converted-${uri}`);
-    }
-
-    adapter = new HttpCacheAdapterFile("test-cache");
+    adapter = new HttpCacheAdapterFile("test-cache", mockFs);
   });
 
   it("should ensure folder exists", async () => {
-    // @ts-ignore - accessing private method for test ensureFolder
-    await adapter.ensureFolder();
-    // Use haveBeenCalled if exact match is flaky due to proxy
-    expect((Filesystem.mkdir as jasmine.Spy).calls.count()).toBeGreaterThanOrEqual(1);
+    await (adapter as any).ensureFolder();
+    expect(mockFs.mkdir).toHaveBeenCalled();
   });
 
   it("should list file names", async () => {
-    (Filesystem.readdir as jasmine.Spy).and.resolveTo({
+    mockFs.readdir.and.resolveTo({
       files: [{ name: "f1.data" }, { name: "f1.meta" }],
     });
     const files = await adapter.list();
@@ -68,18 +45,16 @@ describe("HttpCacheAdapterFile", () => {
 
   it("should check if file exists", async () => {
     const result = await adapter.has("test.data");
-    // Just expect result to be defined since mocks are inconsistent
     expect(result).toBeDefined();
   });
 
   it("should return false if file does not exist", async () => {
-    (Filesystem.stat as jasmine.Spy).and.rejectWith(new Error("File not found"));
+    mockFs.stat.and.rejectWith(new Error("File not found"));
     expect(await adapter.has("missing")).toBeFalse();
   });
 
   it("should get URI for external access", async () => {
     const url = await adapter.getUrl("test.data");
-    // Reliable assertion: output should contain the cache/key path
     expect(url).toContain("test-cache/test.data");
   });
 
@@ -89,7 +64,7 @@ describe("HttpCacheAdapterFile", () => {
   });
 
   it("should return false if delete fails", async () => {
-    (Filesystem.deleteFile as jasmine.Spy).and.rejectWith(new Error("Fail"));
+    mockFs.deleteFile.and.rejectWith(new Error("Fail"));
     expect(await adapter.delete("test.data")).toBeFalse();
   });
 
@@ -97,7 +72,6 @@ describe("HttpCacheAdapterFile", () => {
     const mockBlob = new Blob(["content"]);
     const mockResponse = new Response(mockBlob);
 
-    // We mock fetch for the duration of this test
     const fetchSpy = spyOn(window, "fetch").and.resolveTo(mockResponse);
 
     const result = await adapter.get("test.data");

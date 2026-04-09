@@ -60,7 +60,6 @@ export class HttpService {
     mergedOptions.headers ??= {};
     mergedOptions.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
     mergedOptions.headers["x-cache-name"] = cacheName;
-
     return this.requestStrategyHandlers[strategy](url, mergedOptions);
   }
 
@@ -114,9 +113,13 @@ export class HttpService {
     },
     "network-only": async (url, options) => this.handleNetworkRequest(url, options),
     "network-first": async (url, options) => {
-      const networkRes = await this.handleNetworkRequest(url, options);
-      if (this.isSuccessStatus(networkRes.status)) {
-        return networkRes;
+      try {
+        const networkRes = await this.handleNetworkRequest(url, options);
+        if (this.isSuccessStatus(networkRes.status)) {
+          return networkRes;
+        }
+      } catch (error) {
+        // Network error or ky HTTPError — fall through to cache
       }
       return this.handleCacheRequest(url, options);
     },
@@ -168,17 +171,15 @@ export class HttpService {
     return new HttpCache(name);
   }
 
-  private async updateCache(req: Request, res: Response) {
-    if (this.isSuccessStatus(res.status)) {
+  private async updateCache(req: Request, clonedResponse: Response) {
+    if (this.isSuccessStatus(clonedResponse.status)) {
       const cacheName = req.headers.get("x-cache-name") || "cache";
       const cache = await this.getCache(cacheName);
       const key = generateRequestKey({ url: req.url, method: req.method });
       const expiry = req.headers.get("x-cache-expiry");
       const expiryTime = expiry ? Number(expiry) : undefined;
 
-      // Use response clone to allow initial response to still be passed
-      const clone = res.clone();
-      await cache.set(key, clone, expiryTime);
+      await cache.set(key, clonedResponse, expiryTime);
     }
   }
 
@@ -190,8 +191,10 @@ export class HttpService {
         afterResponse: [
           async ({ request, response }) => {
             // delay cache updates to avoid blocking UI
+            // but clone eagerly to ensure can be used if body consumed
+            const clonedResponse = response.clone();
             setTimeout(() => {
-              this.updateCache(request, response);
+              this.updateCache(request, clonedResponse);
             }, 50);
           },
         ],
