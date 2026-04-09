@@ -17,9 +17,17 @@
                 type="radio"
                 (click)="check(answerOption)"
                 formControlName="answer"
-                [value]="$any(answerOption)[optionsKey]"
+                [value]="answerOption[optionsKey]"
               />
-              {{ $any(answerOption)[optionsValue] | translate }}
+              {{ answerOption[optionsValue] | translate }}
+              @if (metaBadgeChipText(answerOption); as badgeText) {
+                <ion-chip
+                  class="label-badge"
+                  slot="end"
+                  [color]="metaBadgeChipColor(answerOption)"
+                  >{{ badgeText | translate | uppercase }}</ion-chip
+                >
+              }
             </label>
           </div>
         }
