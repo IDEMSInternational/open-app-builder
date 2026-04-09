@@ -10,6 +10,7 @@
 // https://sass-lang.com/documentation/modules/color
 
 @include themes.theme-default;
+@include themes.theme-ae_app;
 @include themes.theme-professional;
 @include themes.theme-plh_kids_tz;
 @include themes.theme-pfr;
