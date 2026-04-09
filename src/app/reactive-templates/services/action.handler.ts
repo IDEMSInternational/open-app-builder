@@ -18,11 +18,8 @@ export class ActionHandler {
       action: async (action) => {
         const params = { name: action.args?.[0] } as IActionParameters;
 
-        // Get the name of the action, which might be a reference to another action
-        const baseName = action.rawArgs?.[0]?.replace("@local.", "");
-
         if (params.name) {
-          await this.handle(params, baseName);
+          await this.handle(params);
         } else {
           return console.error("[ACTION] Name parameter not provided to action");
         }
@@ -30,8 +27,8 @@ export class ActionHandler {
     });
   }
 
-  private async handle(params: IActionParameters, baseName: string) {
-    const actionName = baseName ?? params.name;
+  private async handle(params: IActionParameters) {
+    const actionName = params.name;
 
     if (!this.actionRegistry.has(actionName)) {
       return console.error(`[ACTION] No action registered with name: ${actionName}`);
