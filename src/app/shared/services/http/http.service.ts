@@ -57,9 +57,9 @@ export class HttpService {
     const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
     // populate cache expiry header to handle in after-response hook
-    options.headers ??= {};
-    options.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
-    options.headers["x-cache-name"] = cacheName;
+    mergedOptions.headers ??= {};
+    mergedOptions.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
+    mergedOptions.headers["x-cache-name"] = cacheName;
 
     return this.requestStrategyHandlers[strategy](url, mergedOptions);
   }
