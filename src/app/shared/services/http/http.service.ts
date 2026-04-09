@@ -26,7 +26,6 @@ export interface IHttpRequestOptions extends Options {
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
   cacheExpiry: "30d",
-  // TODO(discuss) - default option cache or network first?
   strategy: "cache-first",
   retry: 2,
 };

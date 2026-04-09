@@ -47,10 +47,11 @@ export class HttpCache {
         console.error("Failed to setup opfs storage", error);
       }
     }
-    // Fallback to memory-like behavior if no storage is available
-    // (Note: we removed memory adapter, but we could add a simple one back if needed.
-    // For now, let's assume storage is available or it just won't cache)
-    return undefined as any;
+    // Fallback to in-memory storage
+    // Note - navigator.storage is widely supported, so unlikely to reach this section of code
+    // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/storage#browser_compatibility
+    // Could consider extending if required to include full list of methods
+    return new Map() as any as IHttpCacheAdapter;
   }
 
   public async ready() {

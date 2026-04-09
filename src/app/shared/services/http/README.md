@@ -30,7 +30,8 @@ It takes inspiration from:
 
 ## Template Interaction
 
-(TODO)
+### TODO (WiP from #3000)
+- [ ] Template Interaction
 
 The service populates download progress and status to the `@data._http` table, and stores cached
 responses locally (file system on native devices, OPFS on browser with indexeddb fallback (?) )
@@ -38,7 +39,7 @@ responses locally (file system on native devices, OPFS on browser with indexeddb
 It can be called directly through authored actions, or integrated into specific components (e.g. image)
 
 
-(todo - markdown table example)
+- [ ] Add markdown table example
 ```
 
 ```

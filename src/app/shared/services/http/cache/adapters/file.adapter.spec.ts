@@ -1,7 +1,11 @@
 import { HttpCacheAdapterFile } from "./file.adapter";
-import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Filesystem } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/http/cache/adapters/file.adapter.spec.ts
+ */
 describe("HttpCacheAdapterFile", () => {
   let adapter: HttpCacheAdapterFile;
 

@@ -9,23 +9,43 @@ import { IHttpCacheAdapter } from "./types";
  * Optimized to bypass Base64 bridge for reads.
  */
 export class HttpCacheAdapterFile implements IHttpCacheAdapter {
-  constructor(private folder: string = "http-cache") {}
+  private fs: typeof Filesystem;
+
+  constructor(
+    private folder: string = "http-cache",
+    fs?: typeof Filesystem
+  ) {
+    this.fs = fs || Filesystem;
+  }
 
   private async ensureFolder() {
     try {
-      await Filesystem.mkdir({
+      await this.fs.mkdir({
         path: this.folder,
         directory: Directory.Cache,
         recursive: true,
       });
-    } catch (e) {
-      // Folder already exists
+    } catch (mkdirError: unknown) {
+      // Check if it failed because it already exists
+      // Avoid checking error message as this is platform-dependent
+      try {
+        const stat = await this.fs.stat({
+          path: this.folder,
+          directory: Directory.Cache,
+        });
+        if (stat.type !== "directory") {
+          throw mkdirError;
+        }
+      } catch {
+        // stat also failed — directory genuinely doesn't exist
+        throw mkdirError;
+      }
     }
   }
 
   public async list() {
     await this.ensureFolder();
-    const result = await Filesystem.readdir({
+    const result = await this.fs.readdir({
       path: this.folder,
       directory: Directory.Cache,
     });
@@ -34,7 +54,7 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
 
   public async has(key: string) {
     try {
-      await Filesystem.stat({
+      await this.fs.stat({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });
@@ -57,7 +77,7 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
 
   public async getUrl(key: string): Promise<string | undefined> {
     try {
-      const { uri } = await Filesystem.getUri({
+      const { uri } = await this.fs.getUri({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });
@@ -88,7 +108,7 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
 
   public async delete(key: string) {
     try {
-      await Filesystem.deleteFile({
+      await this.fs.deleteFile({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });

@@ -75,12 +75,10 @@ export const shorthandToMilliseconds = (shorthand?: string | number): number | u
           break;
         }
 
-        /* c8 ignore next 3 */
         default: {
           milliseconds = Number(shorthand);
         }
       }
-      /* c8 ignore next 6 */
     } else {
       milliseconds = Number(shorthand);
     }
