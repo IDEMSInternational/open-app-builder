@@ -1,16 +1,21 @@
-@if (useNativePlayer) {
-  <div class="youtube-container" #nativeContainer>
-    <ion-button (click)="play()">Play</ion-button>
-    <div [id]="playerId"></div>
-  </div>
-} @else if (src()) {
-  <div class="youtube-container">
-    <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
+@switch (playerImplementation) {
+  @case ("iframe") {
+    @if (src()) {
+      <div class="youtube-container">
+        <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
      see https://angular.dev/errors/NG0910 -->
-    @if (params().allowFullScreen) {
-      <iframe [src]="src()" frameborder="0" allowfullscreen></iframe>
-    } @else {
-      <iframe [src]="src()" frameborder="0"></iframe>
+        @if (params().allowFullScreen) {
+          <iframe [src]="src()" frameborder="0" allowfullscreen></iframe>
+        } @else {
+          <iframe [src]="src()" frameborder="0"></iframe>
+        }
+      </div>
     }
-  </div>
+  }
+  @case ("webview") {
+    <div class="youtube-container">
+      <ion-button (click)="playWebview()">Play</ion-button>
+      <div [id]="playerId"></div>
+    </div>
+  }
 }

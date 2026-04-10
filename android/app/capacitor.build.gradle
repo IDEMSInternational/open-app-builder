@@ -18,6 +18,7 @@ dependencies {
     implementation project(':capacitor-firebase-performance')
     implementation project(':capacitor-firebase-storage')
     implementation project(':capacitor-app')
+    implementation project(':capacitor-browser')
     implementation project(':capacitor-clipboard')
     implementation project(':capacitor-device')
     implementation project(':capacitor-filesystem')
@@ -30,7 +31,6 @@ dependencies {
     implementation project(':capacitor-toast')
     implementation project(':capawesome-capacitor-android-edge-to-edge-support')
     implementation project(':capawesome-capacitor-app-update')
-    implementation project(':capgo-capacitor-youtube-player')
     implementation project(':capacitor-blob-writer')
 
 }

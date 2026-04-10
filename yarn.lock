@@ -2720,6 +2720,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/browser@npm:^7":
+  version: 7.0.5
+  resolution: "@capacitor/browser@npm:7.0.5"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: 044a2c4f6ea87b2ea6c7f20e55cb6153168446585cf7cadb89fb9518901a913c2e3631f940a467a569852200af59df4407999786bacf406c0c1493f9530efcea
+  languageName: node
+  linkType: hard
+
 "@capacitor/cli@npm:^5.3.0":
   version: 5.7.8
   resolution: "@capacitor/cli@npm:5.7.8"
@@ -2908,15 +2917,6 @@ __metadata:
   peerDependencies:
     "@capacitor/core": ">=7.0.0"
   checksum: 532a233e4d153a4fd7e18527dc8b1a569dc85f3b07507933df7951d1773da3e74bc42c453bebc2eba1fa69fb6d34306a8d32ed76a8a3dd6e60206a5c11e63ac7
-  languageName: node
-  linkType: hard
-
-"@capgo/capacitor-youtube-player@npm:^7":
-  version: 7.1.2
-  resolution: "@capgo/capacitor-youtube-player@npm:7.1.2"
-  peerDependencies:
-    "@capacitor/core": ">=7.0.0"
-  checksum: 55eef4626c37f46d7b95c1aa6410c1eef08ca8af805f14a499c971fce3252913698006cce485466d55f1409831b4cbe430cf9435213a36701acde7340b8cf8da
   languageName: node
   linkType: hard
 
@@ -17771,6 +17771,7 @@ __metadata:
     "@capacitor-firebase/storage": ^7.3.1
     "@capacitor/android": ^7.0.0
     "@capacitor/app": ^7.0.0
+    "@capacitor/browser": ^7
     "@capacitor/cli": ^7.0.0
     "@capacitor/clipboard": ^7.0.0
     "@capacitor/core": ^7.0.0
@@ -17786,7 +17787,6 @@ __metadata:
     "@capacitor/toast": ^7.0.0
     "@capawesome/capacitor-android-edge-to-edge-support": ^7.2.3
     "@capawesome/capacitor-app-update": ^7.0.1
-    "@capgo/capacitor-youtube-player": ^7
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.7.4
     "@ionic/angular-toolkit": ^12.3.0

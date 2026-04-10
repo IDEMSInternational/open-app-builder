@@ -3,8 +3,7 @@ import { TemplateBaseComponent } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
 import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
-import { Capacitor } from "@capacitor/core";
-import { YoutubePlayer } from "@capgo/capacitor-youtube-player";
+import { Browser } from "@capacitor/browser";
 
 interface ITemplateParams {
   allow_fullscreen?: string;
@@ -51,7 +50,7 @@ export class YoutubeComponent extends TemplateBaseComponent {
 
   public params = computed(() => this.parseParams(this.parameterList()));
   /** When running on IOS or Android use native capacitor youtube player plugin */
-  public useNativePlayer = Capacitor.isNativePlatform();
+  public playerImplementation: "iframe" | "webview" = "webview";
 
   public videoId = computed(() => {
     const value = this.value();
@@ -64,7 +63,7 @@ export class YoutubeComponent extends TemplateBaseComponent {
 
   public src = computed(() => {
     const url = this.parseValue(this.value());
-    if (url && !this.useNativePlayer) {
+    if (url) {
       const urlWithParams = this.setUrlParams(url, this.params());
       return this.domSanitizer.bypassSecurityTrustResourceUrl(urlWithParams.toString());
     }
@@ -76,41 +75,12 @@ export class YoutubeComponent extends TemplateBaseComponent {
     private templateTranslateService: TemplateTranslateService
   ) {
     super();
-    // Handle native player setup and teardown
+  }
 
-    this.destroyRef.onDestroy(() => {
-      // Best effort cleanup of the native player on component destroy
-      YoutubePlayer.destroy(this.playerId).catch(() => {
-        // Safe to ignore: player was likely already destroyed or not initialized yet
-      });
+  public async playWebview() {
+    await Browser.open({
+      url: `https://www.youtube-nocookie.com/embed/${this.videoId()}?playsinline=1`,
     });
-  }
-
-  public async play() {
-    await this.initNativePlayer(this.videoId());
-  }
-
-  private async initNativePlayer(videoId: string) {
-    try {
-      await YoutubePlayer.destroy(this.playerId);
-    } catch {
-      // Plugin throws if player doesn't exist; safe to ignore on initialization
-    }
-
-    const containerWidth = this.elementRef.nativeElement.clientWidth || window.innerWidth;
-    const playerSize = { width: containerWidth, height: containerWidth * (9 / 16) };
-
-    try {
-      await YoutubePlayer.initialize({
-        playerId: this.playerId,
-        videoId,
-        playerSize,
-        // NOTE - ios is fullscreen-only, but currently bugged in android
-        fullscreen: Capacitor.getPlatform() === "ios" ? true : false,
-      });
-    } catch (e) {
-      console.error("[Youtube] Error initializing native player:", e);
-    }
   }
 
   private parseParams(parameterList: ITemplateParams): IYoutubeParams {
