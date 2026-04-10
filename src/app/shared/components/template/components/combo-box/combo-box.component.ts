@@ -3,9 +3,15 @@ import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { snakeToCamel } from "../../utils";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+} from "./combo-box-meta-badge.config";
+
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of answer options to display. */
   answer_list: coerce.objectArray<IAnswerOption>([]),
@@ -27,6 +33,10 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   /** The property key to use for the option display text. Default 'text'. */
   options_value: coerce.string("text"),
+  /** Property key on each answer option for badge text (optional). Badge will display if option has a value for this key. */
+  options_meta_badge_text: coerce.string(""),
+  /** Property key on each answer option for badge color (optional). Uses OPTION_META_BADGE_VALUE_DEFAULTS.color when missing. */
+  options_meta_badge_color: coerce.string(""),
   /** When true, allows users to enter a custom answer. Modal variant only. */
   input_allowed: coerce.boolean(),
   /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
@@ -92,6 +102,12 @@ export class TmplComboBoxComponent
     return this.answerText() || this.params().placeholder;
   });
 
+  public optionMetaBadge = computed<OptionMetaBadgeConfig>(() => ({
+    textKey: this.params().optionsMetaBadgeText.trim(),
+    colorKey: this.params().optionsMetaBadgeColor.trim(),
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  }));
+
   constructor(
     private modalController: ModalController,
     private dataItemsService: DataItemsService
@@ -135,6 +151,7 @@ export class TmplComboBoxComponent
         style: this.params().style,
         optionsKey,
         optionsValue,
+        optionMetaBadge: this.optionMetaBadge(),
       },
     });
 
