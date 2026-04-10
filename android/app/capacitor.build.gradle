@@ -30,6 +30,7 @@ dependencies {
     implementation project(':capacitor-toast')
     implementation project(':capawesome-capacitor-android-edge-to-edge-support')
     implementation project(':capawesome-capacitor-app-update')
+    implementation project(':capgo-capacitor-youtube-player')
     implementation project(':capacitor-blob-writer')
 
 }

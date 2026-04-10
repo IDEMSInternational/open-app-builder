@@ -84,6 +84,10 @@
 		"classpath": "io.capawesome.capacitorjs.plugins.appupdate.AppUpdatePlugin"
 	},
 	{
+		"pkg": "@capgo/capacitor-youtube-player",
+		"classpath": "com.capgo.youtubeplayer.YoutubePlayer"
+	},
+	{
 		"pkg": "capacitor-blob-writer",
 		"classpath": "com.equimaps.capacitorblobwriter.BlobWriter"
 	}

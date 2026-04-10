@@ -65,5 +65,8 @@ project(':capawesome-capacitor-android-edge-to-edge-support').projectDir = new F
 include ':capawesome-capacitor-app-update'
 project(':capawesome-capacitor-app-update').projectDir = new File('../node_modules/@capawesome/capacitor-app-update/android')
 
+include ':capgo-capacitor-youtube-player'
+project(':capgo-capacitor-youtube-player').projectDir = new File('../node_modules/@capgo/capacitor-youtube-player/android')
+
 include ':capacitor-blob-writer'
 project(':capacitor-blob-writer').projectDir = new File('../node_modules/capacitor-blob-writer/android')
