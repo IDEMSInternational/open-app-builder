@@ -33,7 +33,7 @@ Changes to this iframe must be manually redeployed on hosting platform
       const player = document.getElementById("player");
 
       const allowFullscreen = params.get("fs");
-      if (allowFullscreen) {
+      if (allowFullscreen === "1") {
         player.setAttribute("allowfullscreen", "");
       }
 
