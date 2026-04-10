@@ -1,41 +1,40 @@
-import { Component, computed } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
+import { Component, computed, inject } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
-import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
-import { Browser } from "@capacitor/browser";
 import { Capacitor } from "@capacitor/core";
 
-interface ITemplateParams {
-  allow_fullscreen?: string;
-}
+/**
+ * Deployed URL of iframe proxy. This allows embedding target url within an https site,
+ * instead of local capacitor:// (youtube has error on mismatched protocols)
+ * https://extraordinary-alpaca-9c8297.netlify.app/?v=YE7VzlLtp-4
+ */
+const IFRAME_PROXY_URL = "https://extraordinary-alpaca-9c8297.netlify.app";
 
-interface IYoutubeParams {
-  /** TEMPLATE PARAMETER: allow_fullscreen. Default true */
-  allowFullScreen?: boolean;
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  allow_fullscreen: coerce.boolean(true),
+}));
 
 /**
- * The names of the Youtube-specific query params that will be added to the url
+ * Partial list of query params passed by URL
+ * These will be set via a combination of defaults and derived values
+ *
+ * All other params will be passed without modification
  * For a full list and explanation, see https://developers.google.com/youtube/player_parameters
- * */
-const YOUTUBE_URL_QUERY_PARAMS: { [K in keyof YouTubeUrlQueryParamValues]: string } = {
-  videoId: "v",
-  color: "color",
-  showFullscreenButton: "fs",
-  interfaceLanguage: "hl",
-  showRelatedVideos: "rel",
-  playsinline: "playsinline",
-};
-
-/** Possible values of the supported query params */
-interface YouTubeUrlQueryParamValues {
-  videoId: string;
+ */
+interface YoutubeQueryParams {
+  /** Video Id - extracted from URL */
+  v: string;
+  /** Player color - prefer white for more theme compatibility */
   color: "red" | "white";
-  showFullscreenButton: "0" | "1";
-  interfaceLanguage: string; // 2-letter ISO 639-1 code
-  showRelatedVideos: "0" | "1";
-  playsinline: "1"; // playsinline must be enabled for iOS compatibility
+  /** Show full screen - configured by author value */
+  fs: "0" | "1";
+  /** Interface language - 2-letter ISO 639-1 code extracted from language service */
+  hl: string;
+  /** Show related videos - prefer to disable (will still show same-channel related) */
+  rel: "0" | "1";
+  /** Plays inline - Always enable for iOS compatibility */
+  playsinline: "1";
 }
 
 @Component({
@@ -44,97 +43,66 @@ interface YouTubeUrlQueryParamValues {
   styleUrls: ["./youtube.component.scss"],
   standalone: false,
 })
-export class YoutubeComponent extends TemplateBaseComponent {
-  public playerId = `youtube-${Math.random().toString(36).substring(2, 9)}`;
+export class YoutubeComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+  private domSanitizer = inject(DomSanitizer);
+  private templateTranslateService = inject(TemplateTranslateService);
 
-  public params = computed(() => this.parseParams(this.parameterList()));
-  /** TODO - test different implementations on platforms (and add proxy option) */
-  public playerImplementation = Capacitor.getPlatform() === "ios" ? "webview" : "iframe";
+  public showFullScreenButton = computed(() => this.params().allowFullscreen);
 
-  public videoId = computed(() => {
+  /** Specify whether to use iframe proxy site (fix protocol issue on ios) */
+  private useProxyIframe = Capacitor.getPlatform() === "ios";
+
+  public urlParams = computed(() => {
     const value = this.value();
-    if (value && typeof value === "string" && value.startsWith("https://")) {
-      const url = new URL(value);
-      return url.searchParams.get(YOUTUBE_URL_QUERY_PARAMS.videoId);
-    }
-    return null;
-  });
-
-  public src = computed(() => {
-    const url = this.parseValue(this.value());
-    if (url) {
-      const urlWithParams = this.setUrlParams(url, this.params());
-      return this.domSanitizer.bypassSecurityTrustResourceUrl(urlWithParams.toString());
-    }
-    return undefined;
-  });
-
-  constructor(
-    private domSanitizer: DomSanitizer,
-    private templateTranslateService: TemplateTranslateService
-  ) {
-    super();
-  }
-
-  public async playWebview() {
-    await Browser.open({
-      url: `https://www.youtube.com/watch?v=${this.videoId()}`,
-      presentationStyle: "fullscreen",
-    });
-  }
-
-  private parseParams(parameterList: ITemplateParams): IYoutubeParams {
-    // NOTE - param parsing takes full row not just parameterList
-    // Still included as function arg to prompt re-evaluate if parameters change
-    return { allowFullScreen: getBooleanParamFromTemplateRow(this._row, "allow_fullscreen", true) };
-  }
-
-  /** Validate template value field and convert to URL object **/
-  private parseValue(value: any) {
     // Expect valid url. Don't specify domain as could start youtube.com, youtu.be, m.youtube.com, etc.
     // https://stackoverflow.com/a/70512384/5693245
     if (value && typeof value === "string" && value.startsWith("https://")) {
       const url = new URL(value);
+      const currentParams = Object.fromEntries(url.searchParams.entries());
+      const videoId = url.searchParams.get("v");
       // only support urls that include video id through parameter (e.g. not youtu.be/12345678901)
-      const videoId = url.searchParams.get(YOUTUBE_URL_QUERY_PARAMS.videoId);
       if (videoId) {
-        url.searchParams.delete(YOUTUBE_URL_QUERY_PARAMS.videoId);
-        // rewrite host and pathname to use youtube embed version
-        url.host = "youtube.com";
-        url.pathname = `/embed/${videoId}`;
-        return url;
+        return {
+          ...currentParams,
+          // Favour white over red for more theme compatibility
+          color: "white",
+          fs: this.showFullScreenButton() ? "1" : "0",
+          // Attempt to set the player's interface language to match the app language
+          hl: this.templateTranslateService.app_language_code,
+          // Always enable playsinline for iOS compatibility
+          playsinline: "1",
+          // Disable related videos (at least those from external channels)
+          rel: "0",
+          v: videoId,
+        } satisfies YoutubeQueryParams;
       }
     }
     console.error("[Youtube] Invalid value:", value);
     return undefined;
-  }
+  });
 
-  /**
-   * Update player parameters from authored
-   * See https://developers.google.com/youtube/player_parameters
-   * NOTE - these will be merged with any params passed with the url itself
-   */
-  private setUrlParams(url: URL, params: IYoutubeParams) {
-    // Favour white over red for more theme compatibility
-    this.setYouTubeParam(url, "color", "white");
-    // hide the fullscreen button if allow_fullscreen is false
-    this.setYouTubeParam(url, "showFullscreenButton", params.allowFullScreen ? "1" : "0");
-    // Attempt to set the player's interface language to match the app language
-    const languageCode = this.templateTranslateService.app_language_code;
-    this.setYouTubeParam(url, "interfaceLanguage", languageCode);
-    // Disable related videos (at least those from external channels)
-    this.setYouTubeParam(url, "showRelatedVideos", "0");
-    // Always enable playsinline for iOS compatibility
-    this.setYouTubeParam(url, "playsinline", "1");
-    return url;
-  }
-
-  private setYouTubeParam<K extends keyof YouTubeUrlQueryParamValues>(
-    url: URL,
-    key: K,
-    value: YouTubeUrlQueryParamValues[K]
-  ): void {
-    const paramName = YOUTUBE_URL_QUERY_PARAMS[key];
-    url.searchParams.set(paramName, value);
-  }
+  public iframeSrc = computed(() => {
+    const urlParams = this.urlParams();
+    if (urlParams) {
+      let url: URL;
+      // Proxy Iframe - forward all url params
+      if (this.useProxyIframe) {
+        url = new URL(IFRAME_PROXY_URL);
+        for (const [key, value] of Object.entries(urlParams)) {
+          url.searchParams.set(key, value);
+        }
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(url.toString());
+      }
+      // Regular IFrame - rewrite to use no-cookie embed variant of video id with params
+      else {
+        const { v, ...keptParams } = urlParams;
+        url = new URL(`https://www.youtube-nocookie.com/embed/${v}`);
+        for (const [key, value] of Object.entries(keptParams)) {
+          url.searchParams.set(key, value);
+        }
+      }
+      // Sanitize response for use in component
+      return this.domSanitizer.bypassSecurityTrustResourceUrl(url.toString());
+    }
+  });
 }

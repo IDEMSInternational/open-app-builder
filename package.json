@@ -54,7 +54,6 @@
     "@capacitor-firebase/storage": "^7.3.1",
     "@capacitor/android": "^7.0.0",
     "@capacitor/app": "^7.0.0",
-    "@capacitor/browser": "^7",
     "@capacitor/clipboard": "^7.0.0",
     "@capacitor/core": "^7.0.0",
     "@capacitor/device": "^7.0.0",

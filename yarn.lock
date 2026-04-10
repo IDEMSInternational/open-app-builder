@@ -2720,15 +2720,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/browser@npm:^7":
-  version: 7.0.5
-  resolution: "@capacitor/browser@npm:7.0.5"
-  peerDependencies:
-    "@capacitor/core": ">=7.0.0"
-  checksum: 044a2c4f6ea87b2ea6c7f20e55cb6153168446585cf7cadb89fb9518901a913c2e3631f940a467a569852200af59df4407999786bacf406c0c1493f9530efcea
-  languageName: node
-  linkType: hard
-
 "@capacitor/cli@npm:^5.3.0":
   version: 5.7.8
   resolution: "@capacitor/cli@npm:5.7.8"
@@ -17771,7 +17762,6 @@ __metadata:
     "@capacitor-firebase/storage": ^7.3.1
     "@capacitor/android": ^7.0.0
     "@capacitor/app": ^7.0.0
-    "@capacitor/browser": ^7
     "@capacitor/cli": ^7.0.0
     "@capacitor/clipboard": ^7.0.0
     "@capacitor/core": ^7.0.0
