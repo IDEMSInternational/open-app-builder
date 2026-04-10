@@ -1,4 +1,8 @@
-@if (src()) {
+@if (useNativePlayer) {
+  <div class="youtube-container" #nativeContainer>
+    <div [id]="playerId"></div>
+  </div>
+} @else if (src()) {
   <div class="youtube-container">
     <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
      see https://angular.dev/errors/NG0910 -->

@@ -68,6 +68,7 @@
     "@capacitor/toast": "^7.0.0",
     "@capawesome/capacitor-android-edge-to-edge-support": "^7.2.3",
     "@capawesome/capacitor-app-update": "^7.0.1",
+    "@capgo/capacitor-youtube-player": "^8.1.24",
     "@ionic/angular": "^8.7.4",
     "@ionic/pwa-elements": "^3.3.0",
     "@sentry/angular": "^10.33.0",

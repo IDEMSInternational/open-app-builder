@@ -1,8 +1,10 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, inject, DestroyRef, ElementRef, effect } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
 import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
+import { Capacitor } from "@capacitor/core";
+import { YoutubePlayer } from "@capgo/capacitor-youtube-player";
 
 interface ITemplateParams {
   allow_fullscreen?: string;
@@ -43,23 +45,73 @@ interface YouTubeUrlQueryParamValues {
   standalone: false,
 })
 export class YoutubeComponent extends TemplateBaseComponent {
-  constructor(
-    private domSanitizer: DomSanitizer,
-    private templateTranslateService: TemplateTranslateService
-  ) {
-    super();
-  }
+  private destroyRef = inject(DestroyRef);
+  private elementRef = inject(ElementRef);
+  public playerId = `youtube-${Math.random().toString(36).substring(2, 9)}`;
 
   public params = computed(() => this.parseParams(this.parameterList()));
+  /** When running on IOS or Android use native capacitor youtube player plugin */
+  public useNativePlayer = Capacitor.isNativePlatform();
+
+  public videoId = computed(() => {
+    const value = this.value();
+    if (value && typeof value === "string" && value.startsWith("https://")) {
+      const url = new URL(value);
+      return url.searchParams.get(YOUTUBE_URL_QUERY_PARAMS.videoId);
+    }
+    return null;
+  });
 
   public src = computed(() => {
     const url = this.parseValue(this.value());
-    if (url) {
+    if (url && !this.useNativePlayer) {
       const urlWithParams = this.setUrlParams(url, this.params());
       return this.domSanitizer.bypassSecurityTrustResourceUrl(urlWithParams.toString());
     }
     return undefined;
   });
+
+  constructor(
+    private domSanitizer: DomSanitizer,
+    private templateTranslateService: TemplateTranslateService
+  ) {
+    super();
+    // Handle native player setup and teardown
+    effect(() => {
+      const videoId = this.videoId();
+      if (this.useNativePlayer && videoId) {
+        this.initNativePlayer(videoId);
+      }
+    });
+    this.destroyRef.onDestroy(() => {
+      // Best effort cleanup of the native player on component destroy
+      YoutubePlayer.destroy(this.playerId).catch(() => {
+        // Safe to ignore: player was likely already destroyed or not initialized yet
+      });
+    });
+  }
+
+  private async initNativePlayer(videoId: string) {
+    try {
+      await YoutubePlayer.destroy(this.playerId);
+    } catch {
+      // Plugin throws if player doesn't exist; safe to ignore on initialization
+    }
+
+    const containerWidth = this.elementRef.nativeElement.clientWidth || window.innerWidth;
+    const playerSize = { width: containerWidth, height: containerWidth * (9 / 16) };
+
+    try {
+      await YoutubePlayer.initialize({
+        playerId: this.playerId,
+        videoId,
+        playerSize,
+        privacyEnhanced: true,
+      });
+    } catch (e) {
+      console.error("[Youtube] Error initializing native player:", e);
+    }
+  }
 
   private parseParams(parameterList: ITemplateParams): IYoutubeParams {
     // NOTE - param parsing takes full row not just parameterList
@@ -84,6 +136,7 @@ export class YoutubeComponent extends TemplateBaseComponent {
       }
     }
     console.error("[Youtube] Invalid value:", value);
+    return undefined;
   }
 
   /**
@@ -106,12 +159,12 @@ export class YoutubeComponent extends TemplateBaseComponent {
     return url;
   }
 
-  private setYouTubeParam = <K extends keyof YouTubeUrlQueryParamValues>(
+  private setYouTubeParam<K extends keyof YouTubeUrlQueryParamValues>(
     url: URL,
     key: K,
     value: YouTubeUrlQueryParamValues[K]
-  ) => {
+  ): void {
     const paramName = YOUTUBE_URL_QUERY_PARAMS[key];
     url.searchParams.set(paramName, value);
-  };
+  }
 }
