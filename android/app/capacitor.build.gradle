@@ -18,7 +18,6 @@ dependencies {
     implementation project(':capacitor-firebase-performance')
     implementation project(':capacitor-firebase-storage')
     implementation project(':capacitor-app')
-    implementation project(':capacitor-browser')
     implementation project(':capacitor-clipboard')
     implementation project(':capacitor-device')
     implementation project(':capacitor-filesystem')
