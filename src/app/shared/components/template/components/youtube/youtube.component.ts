@@ -24,6 +24,7 @@ const YOUTUBE_URL_QUERY_PARAMS: { [K in keyof YouTubeUrlQueryParamValues]: strin
   interfaceLanguage: "hl",
   showRelatedVideos: "rel",
   playsinline: "playsinline",
+  enableJsApi: "enablejsapi",
 };
 
 /** Possible values of the supported query params */
@@ -34,6 +35,7 @@ interface YouTubeUrlQueryParamValues {
   interfaceLanguage: string; // 2-letter ISO 639-1 code
   showRelatedVideos: "0" | "1";
   playsinline: "1"; // playsinline must be enabled for iOS compatibility
+  enableJsApi: "1";
 }
 
 @Component({
@@ -103,6 +105,7 @@ export class YoutubeComponent extends TemplateBaseComponent {
     this.setYouTubeParam(url, "showRelatedVideos", "0");
     // Always enable playsinline for iOS compatibility
     this.setYouTubeParam(url, "playsinline", "1");
+    this.setYouTubeParam(url, "enableJsApi", "1");
     return url;
   }
 
