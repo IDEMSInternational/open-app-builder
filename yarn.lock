@@ -2911,12 +2911,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capgo/capacitor-youtube-player@npm:^8.1.24":
-  version: 8.1.24
-  resolution: "@capgo/capacitor-youtube-player@npm:8.1.24"
+"@capgo/capacitor-youtube-player@npm:^7":
+  version: 7.1.2
+  resolution: "@capgo/capacitor-youtube-player@npm:7.1.2"
   peerDependencies:
-    "@capacitor/core": ">=8.0.0"
-  checksum: 5a114584d1a76cbcdea161414a1dbd286fa1aad1bcfbf634a40f29a893d4fd486848249b96e0eec7631e9a41d5338fb6c10adfb459b58af7cb2956e83dbb4cf1
+    "@capacitor/core": ">=7.0.0"
+  checksum: 55eef4626c37f46d7b95c1aa6410c1eef08ca8af805f14a499c971fce3252913698006cce485466d55f1409831b4cbe430cf9435213a36701acde7340b8cf8da
   languageName: node
   linkType: hard
 
@@ -17786,7 +17786,7 @@ __metadata:
     "@capacitor/toast": ^7.0.0
     "@capawesome/capacitor-android-edge-to-edge-support": ^7.2.3
     "@capawesome/capacitor-app-update": ^7.0.1
-    "@capgo/capacitor-youtube-player": ^8.1.24
+    "@capgo/capacitor-youtube-player": ^7
     "@compodoc/compodoc": ^1.1.23
     "@ionic/angular": ^8.7.4
     "@ionic/angular-toolkit": ^12.3.0
