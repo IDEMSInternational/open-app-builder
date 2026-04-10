@@ -1,9 +1,10 @@
-import { Component, computed, inject, DestroyRef, ElementRef } from "@angular/core";
+import { Component, computed } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
 import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateTranslateService } from "../../services/template-translate.service";
 import { Browser } from "@capacitor/browser";
+import { Capacitor } from "@capacitor/core";
 
 interface ITemplateParams {
   allow_fullscreen?: string;
@@ -44,13 +45,11 @@ interface YouTubeUrlQueryParamValues {
   standalone: false,
 })
 export class YoutubeComponent extends TemplateBaseComponent {
-  private destroyRef = inject(DestroyRef);
-  private elementRef = inject(ElementRef);
   public playerId = `youtube-${Math.random().toString(36).substring(2, 9)}`;
 
   public params = computed(() => this.parseParams(this.parameterList()));
-  /** When running on IOS or Android use native capacitor youtube player plugin */
-  public playerImplementation: "iframe" | "webview" = "webview";
+  /** TODO - test different implementations on platforms (and add proxy option) */
+  public playerImplementation = Capacitor.getPlatform() === "ios" ? "webview" : "iframe";
 
   public videoId = computed(() => {
     const value = this.value();
@@ -79,7 +78,8 @@ export class YoutubeComponent extends TemplateBaseComponent {
 
   public async playWebview() {
     await Browser.open({
-      url: `https://www.youtube-nocookie.com/embed/${this.videoId()}?playsinline=1`,
+      url: `https://www.youtube.com/watch?v=${this.videoId()}`,
+      presentationStyle: "fullscreen",
     });
   }
 
