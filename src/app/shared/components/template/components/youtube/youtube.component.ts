@@ -27,7 +27,7 @@ interface YoutubeQueryParams {
   v: string;
   /** Player color - prefer white for more theme compatibility */
   color: "red" | "white";
-  /** Show full screen - configured by author value */
+  /** Show full screen - default "1" can can be disabled via authoring param */
   fs: "0" | "1";
   /** Interface language - 2-letter ISO 639-1 code extracted from language service */
   hl: string;
