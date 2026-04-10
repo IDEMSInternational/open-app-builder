@@ -67,12 +67,12 @@ import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
-import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
 import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
 import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
+import { YoutubeComponent } from "./youtube/youtube.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -146,6 +146,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDateTimePickerComponent,
   // no prefix
   WorkshopsComponent,
+  YoutubeComponent,
 ];
 
 /***************************************************************************************

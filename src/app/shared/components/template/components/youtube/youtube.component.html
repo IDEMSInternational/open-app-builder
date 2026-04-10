@@ -1,5 +1,6 @@
 @if (useNativePlayer) {
   <div class="youtube-container" #nativeContainer>
+    <ion-button (click)="play()">Play</ion-button>
     <div [id]="playerId"></div>
   </div>
 } @else if (src()) {

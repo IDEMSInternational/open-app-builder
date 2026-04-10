@@ -1,4 +1,4 @@
-import { Component, computed, inject, DestroyRef, ElementRef, effect } from "@angular/core";
+import { Component, computed, inject, DestroyRef, ElementRef } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { DomSanitizer } from "@angular/platform-browser";
 import { getBooleanParamFromTemplateRow } from "src/app/shared/utils";
@@ -77,18 +77,17 @@ export class YoutubeComponent extends TemplateBaseComponent {
   ) {
     super();
     // Handle native player setup and teardown
-    effect(() => {
-      const videoId = this.videoId();
-      if (this.useNativePlayer && videoId) {
-        this.initNativePlayer(videoId);
-      }
-    });
+
     this.destroyRef.onDestroy(() => {
       // Best effort cleanup of the native player on component destroy
       YoutubePlayer.destroy(this.playerId).catch(() => {
         // Safe to ignore: player was likely already destroyed or not initialized yet
       });
     });
+  }
+
+  public async play() {
+    await this.initNativePlayer(this.videoId());
   }
 
   private async initNativePlayer(videoId: string) {
@@ -106,7 +105,8 @@ export class YoutubeComponent extends TemplateBaseComponent {
         playerId: this.playerId,
         videoId,
         playerSize,
-        privacyEnhanced: true,
+        // NOTE - ios is fullscreen-only, but currently bugged in android
+        fullscreen: Capacitor.getPlatform() === "ios" ? true : false,
       });
     } catch (e) {
       console.error("[Youtube] Error initializing native player:", e);
