@@ -7,9 +7,10 @@ import { Capacitor } from "@capacitor/core";
 /**
  * Deployed URL of iframe proxy. This allows embedding target url within an https site,
  * instead of local capacitor:// (youtube has error on mismatched protocols)
- * https://extraordinary-alpaca-9c8297.netlify.app/?v=YE7VzlLtp-4
+ * e.g. https://idemsinternational.github.io/youtube-iframe-proxy/?v=YE7VzlLtp-4
+ * See https://github.com/IDEMSInternational/open-app-builder/issues/3432
  */
-const IFRAME_PROXY_URL = "https://extraordinary-alpaca-9c8297.netlify.app";
+const IFRAME_PROXY_URL = "https://idemsinternational.github.io/youtube-iframe-proxy/";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   allow_fullscreen: coerce.boolean(true),
