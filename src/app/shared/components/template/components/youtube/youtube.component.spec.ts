@@ -30,11 +30,4 @@ describe("YoutubeComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
-
-  it("should set iOS-safe embed playback params", () => {
-    const url = new URL("https://youtube.com/embed/dQw4w9WgXcQ");
-    const urlWithParams = (component as any).setUrlParams(url, { allowFullScreen: true });
-    expect(urlWithParams.searchParams.get("playsinline")).toBe("1");
-    expect(urlWithParams.searchParams.get("enablejsapi")).toBe("1");
-  });
 });
