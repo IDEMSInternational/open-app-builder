@@ -82,17 +82,20 @@ function transformParentWithExternalSourceDataToLocalFormat(
   parentGroupId: string
 ): IParent {
   const { rapidpro_uuid, app_user_id, auth_user_id, rapidpro_fields, ...rest } = parent;
+  const normalizedRapidproFields =
+    rapidpro_fields && typeof rapidpro_fields === "object" ? rapidpro_fields : {};
   const parsedExternalFields = Object.fromEntries(
-    Object.entries(rapidpro_fields).map(([key, value]) => [`rp_${key}`, value])
+    Object.entries(normalizedRapidproFields).map(([key, value]) => [`rp_${key}`, value])
   );
 
-  const uniqueId = rapidpro_uuid || auth_user_id || app_user_id;
+  const uniqueId = rapidpro_uuid || auth_user_id || app_user_id || (rest as IParent).id;
+  const localParentId = `${parentGroupId}+${uniqueId}`;
 
   return {
     ...rest,
     ...parsedExternalFields,
     // Use a combined id of the parent group id and source identifier to ensure uniqueness
-    id: `${parentGroupId}+${uniqueId}`,
+    id: localParentId,
     group_id: parentGroupId,
     ...(rapidpro_uuid ? { rp_uuid: rapidpro_uuid } : {}),
     ...(app_user_id ? { app_user_id } : {}),
@@ -156,6 +159,12 @@ function findMatchingIncomingParent(
   const incomingByRapidproUuid = new Map(
     incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
   );
+  const incomingByAppUserId = new Map(
+    incoming.filter((p) => p.app_user_id).map((p) => [p.app_user_id, p])
+  );
+  const incomingByAuthUserId = new Map(
+    incoming.filter((p) => p.auth_user_id).map((p) => [p.auth_user_id, p])
+  );
   // Try to match by id
   if ((existingParent as IParent).id) {
     const matchById = incomingById.get((existingParent as IParent).id!);
@@ -167,6 +176,15 @@ function findMatchingIncomingParent(
     if (matchById) return matchById;
     const matchByRapidproUuid = incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
     if (matchByRapidproUuid) return matchByRapidproUuid;
+  }
+  // Try to match by app/auth identifiers from app join_remote records
+  if (existingParent.auth_user_id) {
+    const matchByAuthUserId = incomingByAuthUserId.get(existingParent.auth_user_id);
+    if (matchByAuthUserId) return matchByAuthUserId;
+  }
+  if (existingParent.app_user_id) {
+    const matchByAppUserId = incomingByAppUserId.get(existingParent.app_user_id);
+    if (matchByAppUserId) return matchByAppUserId;
   }
   return undefined;
 }
