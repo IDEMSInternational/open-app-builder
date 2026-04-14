@@ -39,8 +39,8 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
 }
 
 .disabled {
+  opacity: 0.5;
   &.no-value {
-    opacity: 0.5;
     border-color: var(--ion-color-gray-200);
   }
 }

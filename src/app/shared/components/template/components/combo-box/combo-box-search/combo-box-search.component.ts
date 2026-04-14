@@ -1,6 +1,12 @@
 import { Component, computed, input, signal } from "@angular/core";
 import { IAnswerOption } from "src/app/shared/utils";
 import { ModalController } from "@ionic/angular";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+  resolveOptionMetaBadgeColor,
+  resolveOptionMetaBadgeText,
+} from "../combo-box-meta-badge.config";
 
 @Component({
   selector: "combo-box-search",
@@ -14,6 +20,11 @@ export class ComboBoxSearchComponent {
   public selectedValue = input<string>();
   public optionsKey = input<string>("name");
   public optionsValue = input<string>("text");
+  public optionMetaBadge = input<OptionMetaBadgeConfig>({
+    textKey: "",
+    colorKey: "",
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  });
 
   public searchTerm = signal("");
 
@@ -52,5 +63,13 @@ export class ComboBoxSearchComponent {
     setTimeout(async () => {
       await this.modalController.dismiss(value);
     }, 50);
+  }
+
+  metaBadgeChipColor(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeColor(this.optionMetaBadge(), option);
+  }
+
+  metaBadgeChipText(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeText(this.optionMetaBadge(), option);
   }
 }
