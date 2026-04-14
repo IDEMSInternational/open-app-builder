@@ -16,11 +16,12 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
 import { IStore, StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
+import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -66,10 +67,14 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected storeType: StoreType = "local";
+  protected templateService: TemplateMetadataService = inject(TemplateMetadataService);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
   private paramsDependencySubscriptions: Subscription[] = [];
+
+  private navigationEndSubscription?: Subscription;
+  private pageTemplate: string = "";
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -92,10 +97,23 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
+  protected onNavigationEnd(event: NavigationEnd): void {
+    const activeTemplate = this.templateService.templateName() ?? "";
+    if (activeTemplate === this.pageTemplate) {
+      this.storeValue();
+    }
+  }
+
   public init(): void {
     const row = this.row();
 
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
+    this.pageTemplate = this.templateService.templateName() ?? "";
+    this.navigationEndSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.onNavigationEnd(event);
+      }
+    });
 
     // If there is a value in session storage that matches this row's name, use that to override the expression
     let url = this.router.url.split("?")[0];
@@ -240,7 +258,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.unsubscribeValueDependencies();
     this.unsubscribeConditionDependencies();
     this.unsubscribeParamDependencies();
-
+    this.navigationEndSubscription?.unsubscribe();
     this.rowRegistry.unregister(this.name());
   }
 }
