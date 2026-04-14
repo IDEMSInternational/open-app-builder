@@ -3,7 +3,7 @@ describe("nav component", () => {
     cy.visit("/template/test_row_names");
   });
 
-  it("click triggers navigation with a parameter", () => {
+  it("click click navigates to the target template and back restores the original title", () => {
     cy.getDataTest("mainTitle").contains("First Title");
     cy.getDataTest("navButton").click();
 
