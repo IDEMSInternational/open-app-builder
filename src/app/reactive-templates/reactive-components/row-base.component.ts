@@ -97,6 +97,9 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
+  // Due to the use of <ion-router-outlet> in templates, components may not be destroyed on navigation.
+  // To ensure that the variable store is updated with the latest value when navigating back to a template,
+  // we subscribe to NavigationEnd events and store the value on navigation end if we are on the currently active template.
   protected onNavigationEnd(event: NavigationEnd): void {
     const activeTemplate = this.templateService.templateName() ?? "";
     if (activeTemplate === this.pageTemplate) {
