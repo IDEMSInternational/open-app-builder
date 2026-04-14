@@ -9,6 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
+import { basenameFromExternalUrl, isExternalHttpUrl } from "shared/src/utils/string-utils";
 
 @Injectable({
   providedIn: "root",
@@ -35,8 +36,14 @@ export class FileManagerService extends SyncServiceBase {
     this.templateActionRegistry.register({
       // Native: save file to Documents folder in external device storage and open;
       // Web: download file
-      save_to_device: async ({ args }) => {
-        await this.downloadTemplateAsset({ relativePath: args[0] });
+      save_to_device: async ({ args, params }) => {
+        const pathOrUrl = args[0];
+        const { open = true, subfolder = "", filename = undefined } = params;
+        if (isExternalHttpUrl(pathOrUrl)) {
+          await this.downloadAssetFromExternalUrl({ url: pathOrUrl, open, subfolder, filename });
+        } else {
+          await this.downloadTemplateAsset({ relativePath: pathOrUrl, open });
+        }
       },
       // Native: save file to app's internal cache on device and open it externally to the app
       // (file is not permanently saved and is not accessible through external storage);
@@ -45,6 +52,45 @@ export class FileManagerService extends SyncServiceBase {
         await this.openTemplateAsset(args[0]);
       },
     });
+  }
+
+  /**
+   * Download a file from an absolute http(s) URL (e.g. cloud storage). Uses fetch + the same native
+   * write path as other saves; not for bundled template assets.
+   * Assumes CORS-enabled endpoint.
+   * @param options.url The URL of the file to download
+   * @param options.open If true, then the file will be opened after download on native devices. Default: true
+   * @param options.subfolder The subdirectory to save the file to (native only). Default: ""
+   * @param options.filename The filename for saved file (native only). Default: generated from URL
+   */
+  private async downloadAssetFromExternalUrl(options: {
+    url: string;
+    open?: boolean;
+    subfolder?: string;
+    filename?: string;
+  }): Promise<void> {
+    const { url, open = true, subfolder = "" } = options;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to download file (${response.status})`);
+      }
+      const blob = await response.blob();
+      const fileName = options.filename || basenameFromExternalUrl(url) || "download";
+      if (Capacitor.isNativePlatform()) {
+        const { localFilepath } = await this.saveFile({
+          data: blob,
+          targetPath: fileName,
+          directory: "Documents",
+          subdirectory: subfolder,
+        });
+        if (open) FileOpener.open({ filePath: localFilepath, openWithDefault: false });
+      } else {
+        saveAs(blob, fileName);
+      }
+    } catch (err) {
+      this.errorHandler.handleError(err);
+    }
   }
 
   /**

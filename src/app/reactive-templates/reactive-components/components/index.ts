@@ -10,6 +10,8 @@ import { QueryComponent } from "./query/query.component";
 import { LoopComponent } from "./loop/loop.component";
 import { ActionComponent } from "./action/action.component";
 import { NavComponent } from "./nav/nav.component";
+import { SetGlobalComponent } from "./set-global/set-global.component";
+import { UpdateComponent } from "./update/update.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   action: ActionComponent,
@@ -17,6 +19,7 @@ export const REACTIVE_COMPONENT_MAP = {
   dropdown: DropdownComponent,
   loop: LoopComponent,
   nav: NavComponent,
+  set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,
   template: NestedTemplateComponent,
   text: TextComponent,
@@ -24,4 +27,5 @@ export const REACTIVE_COMPONENT_MAP = {
   title: TitleComponent,
   toggle_bar: ToggleBarComponent,
   query: QueryComponent,
+  update: UpdateComponent,
 };

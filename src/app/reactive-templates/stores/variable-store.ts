@@ -1,300 +1,108 @@
-import { Injectable, Injector, Signal } from "@angular/core";
+import { inject, Injectable, Signal } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
-import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
+import { IStore, StoreType, VariableReference } from "./store";
+import { Observable, combineLatest, of } from "rxjs";
+import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
+import { LocalVariableStore } from "./local-variable-store";
+import { GlobalVariableStore } from "./global-variable-store";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore } from "./store";
 
-export interface VariablePointer {
-  /** Stable identifier used as the key in aggregated watch results. */
-  id: string;
-  /** Ordered list of fully-qualified variable names to try, from most-specific to least-specific scope. */
-  candidates: string[];
-}
-
-/**
- * Reactive store for template/local variables with built-in scope fallback resolution.
- *
- * Key capabilities:
- * - Stores variables as 'BehaviorSubject's for replayable reactive reads.
- * - Resolves names using nearest-scope fallback by default for 'get' and 'watch'.
- * - Supports pointer-based watching so dependencies can bind even when targets are created later.
- * - Exposes aggregate snapshots/signals for debugging and reactive tooling.
- */
 @Injectable({
   providedIn: "root",
 })
 export class VariableStore implements IStore {
-  private readonly state = new Map<string, BehaviorSubject<any>>();
-  private readonly stateChanged$ = new Subject<void>();
-  private readonly stateStructureChanged$ = new Subject<string | undefined>();
-  private allSignal: Signal<{ [name: string]: any }> | undefined;
+  private localStore = inject(LocalVariableStore);
+  private globalStore = inject(GlobalVariableStore);
+
+  private readonly storeMap = new Map<StoreType, IStore>([
+    ["local", this.localStore],
+    ["global", this.globalStore],
+  ]);
+
+  set(ref: VariableReference, value: any): void {
+    this.getStore(ref).set(ref, value);
+  }
+
+  get(ref: VariableReference) {
+    return this.getStore(ref).get(ref);
+  }
+
+  asSignal(ref: VariableReference): Signal<any> {
+    return this.getStore(ref).asSignal(ref);
+  }
+
+  watch(ref: VariableReference): Observable<any> {
+    return this.getStore(ref).watch(ref);
+  }
 
   /**
-   * Initializes the store.
+   * Watches multiple variable references across local/global stores.
+   * Returns an empty object stream when no refs are provided, otherwise groups
+   * refs by store type, watches each group in its underlying store, and merges
+   * the latest results into a single object.
    */
-  constructor(private injector: Injector) {}
+  watchMultiple(refs: VariableReference[]): Observable<{ [key: string]: any }> {
+    if (refs.length === 0) {
+      return of({});
+    }
 
-  /**
-   * Sets or updates a variable value.
-   *
-   * Behavior:
-   * - Creates a new variable if it does not exist.
-   * - Emits structural-change events when a new key is added.
-   * - Emits value-change events only when the value actually changed (deep-equality aware).
-   */
-  public set(name: string, value: any): void {
-    const currentState = this.state.get(name);
-
-    if (!currentState) {
-      this.state.set(name, new BehaviorSubject<any>(value));
-      this.stateStructureChanged$.next(name);
-      this.stateChanged$.next();
-    } else {
-      if (!isEqual(value, currentState.value)) {
-        currentState.next(value);
-        this.stateChanged$.next();
+    const refsByType = refs.reduce(
+      (groupedRefs, ref) => {
+        groupedRefs[ref.type].push(ref);
+        return groupedRefs;
+      },
+      {
+        local: [] as VariableReference[],
+        global: [] as VariableReference[],
       }
-    }
-  }
-
-  /**
-   * Gets the current value for a variable name using scope fallback resolution.
-   * Returns 'undefined' when no candidate key currently exists.
-   */
-  public get(name: string): any {
-    const resolvedName = this.resolveWithScopeFallback(name);
-
-    if (!resolvedName) {
-      return undefined;
-    }
-
-    return this.getExact(resolvedName);
-  }
-
-  /**
-   * Returns an Angular 'Signal' view of 'watch(name)' with deep-equality deduplication.
-   */
-  public asSignal(name: string): Signal<any> {
-    return toSignal(this.watch(name), { equal: isEqual, injector: this.injector });
-  }
-
-  /**
-   * Watches a variable reactively using scope fallback resolution.
-   *
-   * The subscription automatically rebinds when structure changes make a better
-   * candidate available (for example, a more specific scoped key appears later).
-   */
-  public watch(name: string): Observable<any> {
-    const pointer = this.createScopeFallbackPointer(name);
-
-    return this.watchPointer(pointer).pipe(
-      map((result) => result.value),
-      distinctUntilChanged((previous, current) => isEqual(previous, current))
     );
-  }
 
-  /**
-   * Watches multiple dependency names (each with scope fallback) and emits a map
-   * '{ dependencyName: value }' whenever any resolved dependency changes.
-   */
-  public watchMultiple(names: string[]): Observable<{ [key: string]: any }> {
-    if (names.length === 0) {
-      return new BehaviorSubject<{ [key: string]: any }>({}).asObservable();
+    const groupedObservables: Observable<{ [key: string]: any }>[] = [];
+
+    if (refsByType.local.length > 0) {
+      groupedObservables.push(this.localStore.watchMultiple(refsByType.local));
     }
 
-    const observables = names.map((name) => this.watch(name));
+    if (refsByType.global.length > 0) {
+      groupedObservables.push(this.globalStore.watchMultiple(refsByType.global));
+    }
 
-    return combineLatest(observables).pipe(
-      map((values) => {
-        const result: { [key: string]: any } = {};
-        names.forEach((name, index) => {
-          result[name] = values[index];
-        });
-        return result;
-      })
-    );
+    if (groupedObservables.length === 1) {
+      return groupedObservables[0];
+    }
+
+    return combineLatest(groupedObservables).pipe(map((results) => Object.assign({}, ...results)));
   }
 
-  /**
-   * Signal-based variant of 'watchMultiple' for reactive Angular consumers.
-   * Rebuilds the combined watcher when the dependency-name list changes.
-   */
-  public watchMultipleSignal(names: Signal<string[]>): Signal<{ [key: string]: any }> {
+  watchMultipleSignal(refs: Signal<VariableReference[]>): Signal<{ [key: string]: any }> {
     return toSignal(
-      toObservable(names, { injector: this.injector }).pipe(
+      toObservable(refs).pipe(
         distinctUntilChanged((previous, current) => isEqual(previous, current)),
-        switchMap((dependencyNames) => this.watchMultiple(dependencyNames))
+        switchMap((dependencyRefs) => this.watchMultiple(dependencyRefs))
       ),
       {
         initialValue: {},
         equal: isEqual,
-        injector: this.injector,
       }
     );
   }
 
-  /**
-   * Returns 'true' if an exact key currently exists in the internal state map.
-   *
-   * Note: this checks exact key presence, not fallback resolution.
-   */
-  public has(name: string): boolean {
-    return this.state.has(name);
+  has(ref: VariableReference): boolean {
+    return this.getStore(ref).has(ref);
   }
 
-  /**
-   * Returns a plain-object snapshot of all currently tracked keys and values.
-   * Useful for debugging or diagnostics.
-   */
-  public getAll(): { [name: string]: any } {
-    const result: { [name: string]: any } = Object.create(null);
-    this.state.forEach((state, name) => {
-      result[name] = state.value;
-    });
-    return result;
+  clear(): void {
+    this.localStore.clear();
+    this.globalStore.clear();
   }
 
-  /**
-   * Returns a live signal of the entire store snapshot.
-   * The signal is created lazily on first access.
-   */
-  public getAllSignal(): Signal<{ [name: string]: any }> {
-    if (!this.allSignal) {
-      this.allSignal = toSignal(
-        this.stateChanged$.pipe(
-          startWith(undefined),
-          map(() => this.getAll())
-        ),
-        {
-          injector: this.injector,
-        }
-      );
+  private getStore(ref: VariableReference): IStore {
+    const store = this.storeMap.get(ref.type);
+
+    if (!store) {
+      throw new Error(`Missing store configuration for variable reference type: ${ref.type}`);
     }
 
-    return this.allSignal;
-  }
-
-  /**
-   * Returns a sorted list snapshot of all keys and values.
-   * Primarily intended for debug UIs.
-   */
-  public getAllList(): { name: string; value: any }[] {
-    return Array.from(this.state.entries())
-      .map(([name, state]) => ({ name, value: state.value }))
-      .sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  /**
-   * Clears all variables and completes all per-key subjects.
-   * Emits both structure and state change events so subscribers can re-evaluate cleanly.
-   */
-  public clear(): void {
-    this.state.forEach((state) => {
-      state.complete();
-    });
-    this.state.clear();
-    this.stateStructureChanged$.next(undefined);
-    this.stateChanged$.next();
-  }
-
-  /**
-   * Gets the current value for an exact key without fallback logic.
-   */
-  private getExact(name: string): any {
-    return this.state.get(name)?.value;
-  }
-
-  /**
-   * Watches one exact key without applying scope fallback.
-   *
-   * If the key does not exist yet, returns an observable that emits 'undefined'.
-   */
-  private watchExact(name: string): Observable<any> {
-    const state = this.state.get(name);
-    return state ? state.asObservable() : of(undefined);
-  }
-
-  /**
-   * Watches a pointer and emits both the resolved concrete key and its current value.
-   *
-   * Re-evaluates pointer resolution whenever store structure changes, then switches
-   * to the matching exact-key stream.
-   */
-  private watchPointer(
-    pointer: VariablePointer
-  ): Observable<{ resolvedName: string | undefined; value: any }> {
-    const pointerCandidates = new Set(pointer.candidates);
-
-    return this.stateStructureChanged$.pipe(
-      startWith(undefined),
-      filter((changedName) => changedName === undefined || pointerCandidates.has(changedName)),
-      map(() => this.resolvePointer(pointer)),
-      distinctUntilChanged(),
-      switchMap((resolvedName) => {
-        if (!resolvedName) {
-          return of({ resolvedName: undefined, value: undefined });
-        }
-
-        return this.watchExact(resolvedName).pipe(map((value) => ({ resolvedName, value })));
-      })
-    );
-  }
-
-  /**
-   * Resolves a pointer to the first currently defined candidate key.
-   */
-  private resolvePointer(pointer: VariablePointer): string | undefined {
-    const fallbackCandidates = pointer.candidates;
-
-    for (const candidate of fallbackCandidates) {
-      if (this.state.has(candidate)) {
-        return candidate;
-      }
-    }
-
-    return undefined;
-  }
-
-  /**
-   * Convenience resolver for a dependency name using default fallback candidates.
-   */
-  private resolveWithScopeFallback(name: string): string | undefined {
-    return this.resolvePointer(this.createScopeFallbackPointer(name));
-  }
-
-  /**
-   * Creates a pointer descriptor for a dependency name using default scope-fallback candidates.
-   */
-  private createScopeFallbackPointer(name: string): VariablePointer {
-    return {
-      id: name,
-      candidates: this.getScopeFallbackCandidates(name),
-    };
-  }
-
-  /**
-   * Builds fallback candidates for a dotted dependency name.
-   *
-   * Example:
-   * - input: 'a.b.c.value'
-   * - output: ['a.b.c.value', 'a.b.value', 'a.value', 'value']
-   */
-  private getScopeFallbackCandidates(name: string): string[] {
-    const segments = name.split(".");
-    if (segments.length <= 1) {
-      return [name];
-    }
-
-    const variableName = segments[segments.length - 1];
-    const scopes = segments.slice(0, -1);
-    const candidates: string[] = [];
-
-    for (let scopeCount = scopes.length; scopeCount >= 0; scopeCount -= 1) {
-      const candidate = [...scopes.slice(0, scopeCount), variableName].join(".");
-      candidates.push(candidate);
-    }
-
-    return candidates;
+    return store;
   }
 }
