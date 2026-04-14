@@ -67,7 +67,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected storeType: StoreType = "local";
-  protected templateService: TemplateMetadataService = inject(TemplateMetadataService);
+  protected templateMetadataService: TemplateMetadataService = inject(TemplateMetadataService);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -101,7 +101,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   // To ensure that the variable store is updated with the latest value when navigating back to a template,
   // we subscribe to NavigationEnd events and store the value on navigation end if we are on the currently active template.
   protected onNavigationEnd(event: NavigationEnd): void {
-    const activeTemplate = this.templateService.templateName() ?? "";
+    const activeTemplate = this.templateMetadataService.templateName() ?? "";
     if (activeTemplate === this.pageTemplate) {
       this.storeValue();
     }
@@ -111,7 +111,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const row = this.row();
 
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
-    this.pageTemplate = this.templateService.templateName() ?? "";
+    this.pageTemplate = this.templateMetadataService.templateName() ?? "";
     this.navigationEndSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onNavigationEnd(event);
