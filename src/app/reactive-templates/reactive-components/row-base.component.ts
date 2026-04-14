@@ -112,6 +112,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
     this.pageTemplate = this.templateMetadataService.templateName() ?? "";
+
+    // This could be a performance problem if there are a lot of rows on the same page.
     this.navigationEndSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.onNavigationEnd(event);
