@@ -46,4 +46,8 @@ export class RowRegistry {
   unregister(name: string) {
     this.rows.delete(name);
   }
+
+  getAllNames(): string[] {
+    return Array.from(this.rows.keys());
+  }
 }
