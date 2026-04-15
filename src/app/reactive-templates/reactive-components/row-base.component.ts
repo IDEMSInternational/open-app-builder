@@ -81,6 +81,15 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   ngOnInit(): void {
     this.init();
+
+    this.watchParamDependencies();
+    this.watchConditionDependencies();
+    this.watchValueDependencies();
+
+    // Set default value
+    this.storeValue().then(() => {
+      this.onInitialised()?.();
+    });
   }
 
   public init(): void {
@@ -102,16 +111,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     );
 
     this.setParams();
-    this.watchParamDependencies();
-    this.watchConditionDependencies();
-    this.watchValueDependencies();
 
     this.rowRegistry.register(this);
-
-    // Set default value
-    this.storeValue().then(() => {
-      this.onInitialised()?.();
-    });
   }
 
   /*
@@ -135,7 +136,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   }
 
   // Store the evaluated value of the row in the variable store.
-  private async storeValue() {
+  protected async storeValue() {
     const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
     const computedValue = await this.computeStoredValue(value);
 
@@ -157,7 +158,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
-  private watchValueDependencies() {
+  protected watchValueDependencies() {
     this.unsubscribeValueDependencies();
 
     const dependencies = this.evaluationService
@@ -175,7 +176,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.valueDependencySubscriptions.push(sub);
   }
 
-  private watchConditionDependencies() {
+  protected watchConditionDependencies() {
     this.unsubscribeConditionDependencies();
 
     const condition = this.row().condition;
@@ -196,7 +197,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.conditionDependencySubscriptions.push(sub);
   }
 
-  private watchParamDependencies() {
+  protected watchParamDependencies() {
     this.unsubscribeParamDependencies();
     const rowParams = this.row().parameter_list;
 
