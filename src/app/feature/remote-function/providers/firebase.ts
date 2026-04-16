@@ -49,7 +49,7 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   public async initialise(forceRefresh = false) {
     if (forceRefresh || !this.appCheckInitPromise) {
       // wrap init methods in promise to prevent duplicate requests
-      this.appCheckInitPromise = (async () => this.handleInitialise())();
+      this.appCheckInitPromise = this.handleInitialise();
     }
     return this.appCheckInitPromise;
   }
