@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
  * Deployed URL of iframe proxy. This allows embedding target url within an https site,
  * instead of local capacitor:// (youtube has error on mismatched protocols)
  * e.g. https://idemsinternational.github.io/youtube-iframe-proxy/?v=YE7VzlLtp-4
- * See https://github.com/IDEMSInternational/open-app-builder/issues/3432
+ * See https://github.com/ionic-team/capacitor/issues/8205
  */
 const IFRAME_PROXY_URL = "https://idemsinternational.github.io/youtube-iframe-proxy/";
 

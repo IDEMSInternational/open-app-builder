@@ -48,6 +48,7 @@ import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
 import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
 import { AuthService } from "./shared/services/auth/auth.service";
+import { RemoteFunctionService } from "./feature/remote-function/remote-function.service";
 
 @Component({
   selector: "app-root",
@@ -149,7 +150,8 @@ export class AppComponent {
     private scrollService: ScrollService,
     private toastService: ToastService,
     private capacitorEventService: CapacitorEventService,
-    private authService: AuthService
+    private authService: AuthService,
+    private remoteFunctionService: RemoteFunctionService
   ) {
     this.initializeApp();
   }
@@ -233,7 +235,7 @@ export class AppComponent {
       /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
       deprecated: (AsyncServiceBase | SyncServiceBase)[];
     } = {
-      eager: [this.crashlyticsService],
+      eager: [this.crashlyticsService, this.remoteFunctionService],
       blocking: [
         this.dbSyncService,
         this.dynamicDataService,
