@@ -6,7 +6,7 @@ import { ROW_PARAMETERS, RowBaseComponent } from "../../../row-base.component";
 const parameters = () =>
   defineParameters({
     direction: new Parameter<"row" | "column">("direction", "row"),
-    gap: new Parameter<string>("gap", "0.5rem"),
+    gap: new Parameter<string>("gap", "0"),
     align: new Parameter<"start" | "center" | "end" | "stretch">("align", "start"),
     childSizing: new Parameter<"auto" | "equal">("child_sizing", "auto"),
     justify: new Parameter<
