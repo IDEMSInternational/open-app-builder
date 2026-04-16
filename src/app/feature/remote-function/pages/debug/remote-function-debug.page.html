@@ -62,13 +62,24 @@
   <h3>AppCheck Token</h3>
   <p>Firebase uses appcheck to ensure functions only invocated from trusted source</p>
 
-  @if(firebaseToken(); as token){
+  @if(firebaseDebugToken(); as debugToken){
+  <div
+    style="margin-bottom: 24px; padding: 12px; background: rgba(0, 0, 0, 0.05); border-radius: 8px"
+  >
+    <strong>Debug Token</strong>
+    <p style="margin: 4px 0 0; font-family: monospace; font-size: medium">{{debugToken}}</p>
+    <p style="margin: 4px 0 0; font-size: small; color: var(--ion-color-medium)">
+      Add this to the App Check debugging dashboard in the Firebase Console<br />
+      App Check -> Apps -> Web App -> Manage Debug Tokens.
+    </p>
+  </div>
+  } @if(firebaseToken(); as token){
   <div>✅ Token Available</div>
   <div style="font-size: small">
     @if(token.expireTimeMillis; as expiry){ Expires: {{expiry}} } @else{ Expiry not Available on Web
     }
   </div>
-  <ion-button style="margin-top: 1em" (click)="refreshAppCheck()">Refresh</ion-button>
+
   } @if(firebaseTokenError(); as tokenError){
   <div>⚠️ Could Not Retrieve Token</div>
   <div style="margin-top: 1em; font-size: small">{{tokenError}}<br /></div>
@@ -76,7 +87,9 @@
     Ensure the current app, site or debug token is registered in the firebase console
   </div>
 
-  } }
+  }
+  <ion-button style="margin-top: 1em" (click)="refreshAppCheck()">Refresh Status</ion-button>
+  }
 
   <!-- Default Provider -->
   @default {

@@ -14,6 +14,12 @@ import { environment } from "src/environments/environment";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 
 /**
+ * Static token to register in app check to test when running on localhost
+ * This token should be registered within your firebase console
+ */
+const APP_CHECK_DEBUG_TOKEN = "00000000-0000-4000-a000-000000000000";
+
+/**
  * Unified provider to support firestore functions
  * with app-check on both web and native
  *
@@ -23,6 +29,9 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   // Provide public access to token and errors for use in debug page
   public appCheckToken = signal<GetTokenResult | undefined>(undefined);
   public appCheckTokenError = signal<string | undefined>(undefined);
+  public appCheckDebugToken = signal<string | undefined>(
+    environment.production ? undefined : APP_CHECK_DEBUG_TOKEN
+  );
 
   /** Functions region - if `undefined` firebase assumes "us-central1" */
   private region?: string;
@@ -88,10 +97,11 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
       if (!siteKey) {
         throw new Error("App Check: recaptchaEnterpriseSiteKey not configured for web.");
       }
+
       await FirebaseAppCheck.initialize({
         isTokenAutoRefreshEnabled: true,
         provider: new ReCaptchaEnterpriseProvider(siteKey),
-        debugToken: environment.production ? false : true,
+        debugToken: environment.production ? false : APP_CHECK_DEBUG_TOKEN,
       });
     }
   }

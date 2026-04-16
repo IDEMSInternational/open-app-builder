@@ -36,13 +36,12 @@ export class RemoteFunctionDebugPage implements OnInit {
 
   public firebaseToken = computed(() => this.firebaseProvider()?.appCheckToken());
   public firebaseTokenError = computed(() => this.firebaseProvider()?.appCheckTokenError());
+  public firebaseDebugToken = computed(() => this.firebaseProvider()?.appCheckDebugToken());
 
   public config = this.service["config"];
 
   async ngOnInit() {
     await this.service.ready();
-    // eagerly call initialisation to populate console with debug token for testing
-    this.refreshAppCheck();
   }
   public refreshAppCheck() {
     return this.firebaseProvider()?.ensureInitialised(true);
