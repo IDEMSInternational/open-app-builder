@@ -68,7 +68,7 @@
     @if(token.expireTimeMillis; as expiry){ Expires: {{expiry}} } @else{ Expiry not Available on Web
     }
   </div>
-  <ion-button style="margin-top: 1em">Refresh</ion-button>
+  <ion-button style="margin-top: 1em" (click)="refreshAppCheck()">Refresh</ion-button>
   } @if(firebaseTokenError(); as tokenError){
   <div>⚠️ Could Not Retrieve Token</div>
   <div style="margin-top: 1em; font-size: small">{{tokenError}}<br /></div>

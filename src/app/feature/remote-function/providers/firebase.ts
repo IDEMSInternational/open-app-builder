@@ -20,29 +20,49 @@ import { DeploymentService } from "src/app/shared/services/deployment/deployment
  *
  */
 export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
-  private appCheckToken = signal<GetTokenResult | undefined>(undefined);
-  private appCheckTokenError = signal<string | undefined>(undefined);
+  // Provide public access to token and errors for use in debug page
+  public appCheckToken = signal<GetTokenResult | undefined>(undefined);
+  public appCheckTokenError = signal<string | undefined>(undefined);
 
   /** Functions region - if `undefined` firebase assumes "us-central1" */
   private region?: string;
 
   private deploymentService = inject(DeploymentService);
 
-  public async initialise(injector: Injector): Promise<void> {
+  private appCheckInitPromise?: Promise<void>;
+
+  constructor(private injector: Injector) {}
+
+  public async ensureInitialised(forceRefresh = false): Promise<void> {
+    if (forceRefresh || !this.appCheckInitPromise) {
+      this.appCheckInitPromise = (async () => this.initialiseAppCheck())();
+    }
+    return this.appCheckInitPromise;
+  }
+
+  private async initialiseAppCheck() {
     this.region = this.deploymentService.config.firebase?.functions?.region;
-    const firebaseService = injector.get(FirebaseService);
+    const firebaseService = this.injector.get(FirebaseService);
     firebaseService.ready();
     try {
       await this.setupAppCheck();
-      const token = await FirebaseAppCheck.getToken({ forceRefresh: true });
+      const token = await FirebaseAppCheck.getToken();
       this.appCheckToken.set(token);
+      this.appCheckTokenError.set(undefined);
     } catch (error) {
       console.error("[App check]", error);
       this.appCheckTokenError.set(error.message);
+      this.appCheckInitPromise = undefined; // Allow retry on failure
+      throw error;
     }
   }
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
+    await this.ensureInitialised().catch(() => {
+      // Ignore error here as it is captured in appCheckTokenError signal
+      // and we still want to try the function call (which might fail anyway if app check is enforced)
+    });
+
     let error: RemoteFunctionErrorResponse;
     const data = await FirebaseFunctions.callByName({
       name: functionName,
