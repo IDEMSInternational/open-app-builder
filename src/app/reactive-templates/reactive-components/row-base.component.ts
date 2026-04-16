@@ -151,8 +151,21 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   // This can be overridden by child components if they need to apply styles to a different element.
   protected applyStyles() {
     const styles = this.row().style_list || [];
+
     styles.forEach((style) => {
-      const [key, value] = style.split(":");
+      const separatorIndex = style.indexOf(":");
+
+      if (separatorIndex === -1) {
+        return;
+      }
+
+      const key = style.slice(0, separatorIndex).trim();
+      const value = style.slice(separatorIndex + 1).trim();
+
+      if (!key || !value) {
+        return;
+      }
+
       this.elementRef.nativeElement.style.setProperty(key, value);
     });
   }

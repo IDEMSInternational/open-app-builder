@@ -62,7 +62,7 @@ describe("display-group component", () => {
       });
   });
 
-  it("lays out children with in rows with a nested column", () => {
+  it("lays out children in rows with a nested column", () => {
     cy.getDataTest("group4")
       .should("have.css", "flex-direction", "row")
       .should("have.attr", "data-child-sizing", "auto")
@@ -92,7 +92,7 @@ describe("display-group component", () => {
       });
   });
 
-  it("lays out children with in column with a nested row", () => {
+  it("lays out children in column with a nested row", () => {
     cy.getDataTest("group5")
       .should("have.css", "flex-direction", "column")
       .should("have.css", "gap", "16px")

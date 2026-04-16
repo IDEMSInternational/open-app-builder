@@ -35,6 +35,8 @@ export class DisplayGroupComponent extends RowBaseComponent<ReturnType<typeof pa
     switch (justify) {
       case "start":
         return "flex-start";
+      case "center":
+        return "center";
       case "end":
         return "flex-end";
       case "space-between":
