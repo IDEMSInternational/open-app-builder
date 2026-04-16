@@ -9,6 +9,16 @@
     }
   }
 
+  // Title
+  plh-tmpl-title {
+    .title-wrapper[data-variant~="section_banner"] {
+      h1 {
+        font-size: var(--font-size-text-medium) !important;
+        font-weight: var(--font-weight-medium) !important;
+      }
+    }
+  }
+
   // Task Card
   plh-task-card {
     .card-wrapper {
