@@ -9,6 +9,9 @@ const parameters = () =>
     gap: new Parameter<string>("gap", "0.5rem"),
     align: new Parameter<"start" | "center" | "end" | "stretch">("align", "start"),
     childSizing: new Parameter<"auto" | "fill" | "equal">("child_sizing", "equal"),
+    justify: new Parameter<
+      "start" | "center" | "end" | "space-between" | "space-around" | "space-evenly"
+    >("justify", "start"),
   });
 
 @Component({
@@ -25,5 +28,23 @@ export class DisplayGroupComponent extends RowBaseComponent<ReturnType<typeof pa
   public align = computed(() => {
     const align = this.params.align.value();
     return align === "start" ? "flex-start" : align === "end" ? "flex-end" : align;
+  });
+
+  public justify = computed(() => {
+    const justify = this.params.justify.value();
+    switch (justify) {
+      case "start":
+        return "flex-start";
+      case "end":
+        return "flex-end";
+      case "space-between":
+        return "space-between";
+      case "space-around":
+        return "space-around";
+      case "space-evenly":
+        return "space-evenly";
+      default:
+        return "flex-start";
+    }
   });
 }
