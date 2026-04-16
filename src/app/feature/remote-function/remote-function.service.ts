@@ -19,7 +19,11 @@ export class RemoteFunctionService extends AsyncServiceBase {
   ) {
     super("Remote Function");
     this.provider = getFunctionProvider(this.config.provider);
-    this.registerInitFunction(this.initialise, "defer");
+    if (this.provider) {
+      this.registerInitFunction(this.initialise, "defer");
+    } else {
+      console.warn("[Remote Function] No provider configured, feature disabled");
+    }
   }
 
   /**

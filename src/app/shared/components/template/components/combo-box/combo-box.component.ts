@@ -3,10 +3,14 @@ import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
+import { snakeToCamel } from "../../utils";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
-import { ComboBoxSearchComponent } from "./combo-box-search/combo-box-search.component";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+} from "./combo-box-meta-badge.config";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of answer options to display. */
@@ -29,6 +33,10 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   /** The property key to use for the option display text. Default 'text'. */
   options_value: coerce.string("text"),
+  /** Property key on each answer option for badge text (optional). Badge will display if option has a value for this key. */
+  options_meta_badge_text: coerce.string(""),
+  /** Property key on each answer option for badge color (optional). Uses OPTION_META_BADGE_VALUE_DEFAULTS.color when missing. */
+  options_meta_badge_color: coerce.string(""),
   /** When true, allows users to enter a custom answer. Modal variant only. */
   input_allowed: coerce.boolean(),
   /** Position of the custom input field ('top' or 'bottom'). Modal variant only. Default 'bottom'. */
@@ -71,8 +79,6 @@ export class TmplComboBoxComponent
     return this.cleanAnswerOptions(options as IAnswerOption[]);
   });
 
-  public showSearch = computed(() => this.answerOptions().length > 8);
-
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
   private selectedOption = computed(() => {
@@ -95,6 +101,12 @@ export class TmplComboBoxComponent
     if (opt) return opt[this.params().optionsValue] ?? this.params().placeholder;
     return this.answerText() || this.params().placeholder;
   });
+
+  public optionMetaBadge = computed<OptionMetaBadgeConfig>(() => ({
+    textKey: this.params().optionsMetaBadgeText.trim(),
+    colorKey: this.params().optionsMetaBadgeColor.trim(),
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  }));
 
   constructor(
     private modalController: ModalController,
@@ -124,10 +136,6 @@ export class TmplComboBoxComponent
     });
   }
 
-  public async handleDropdownChange(value) {
-    await this.setValue(value);
-  }
-
   public async openModal() {
     if (this.disabled()) return;
     const optionsKey = this.params().optionsKey;
@@ -136,13 +144,14 @@ export class TmplComboBoxComponent
       component: ComboBoxModalComponent,
       cssClass: "combo-box-modal",
       componentProps: {
-        answerOptions: this.answerOptions,
+        answerOptions: this.answerOptions(),
         row: this._row,
         selectedValue: this.customAnswerSelected() ? this.answerText() : this.value(),
         customAnswerSelected: this.customAnswerSelected(),
         style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
+        optionsKey,
+        optionsValue,
+        optionMetaBadge: this.optionMetaBadge(),
       },
     });
 
@@ -157,47 +166,18 @@ export class TmplComboBoxComponent
     await modal.present();
   }
 
-  async openSearch() {
+  async onSearchDismiss(answer: IAnswerOption | null | undefined) {
+    this.params().prioritisePlaceholder = false;
     const optionsKey = this.params().optionsKey;
     const optionsValue = this.params().optionsValue;
-    const modal = await this.modalController.create({
-      component: ComboBoxSearchComponent,
-      cssClass: "combo-box-search",
-      componentProps: {
-        answerOptions: this.answerOptions,
-        title: signal(this.params().modalTitle),
-        selectedValue: this.value,
-        customAnswerSelected: this.customAnswerSelected(),
-        style: this.params().style,
-        optionsKey: optionsKey,
-        optionsValue: optionsValue,
-      },
-    });
-
-    modal.onDidDismiss().then(async (data) => {
-      this.params().prioritisePlaceholder = false;
-      const answer = data?.data?.answer;
-      this.answerText.set(answer?.[optionsValue] || "");
-      await this.setValue(answer?.[optionsKey] || undefined);
-    });
-    await modal.present();
+    this.answerText.set(answer?.[optionsValue] || "");
+    await this.setValue(answer?.[optionsKey] || undefined);
   }
 
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
   }
-
-  public searchButtonClass = computed(() => {
-    const value = this.value();
-    const params = this.params();
-    return {
-      disabled: this.disabled(),
-      "placeholder-style": (!value && params.placeholder) || params.prioritisePlaceholder,
-      "with-value": value ? true : undefined,
-      "no-value": value ? undefined : true,
-    };
-  });
 
   private cleanAnswerOptions(options: IAnswerOption[]) {
     return options.filter((option) => {
