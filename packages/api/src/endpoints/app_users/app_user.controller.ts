@@ -19,18 +19,6 @@ import { DeploymentHeaders } from "src/modules/deployment.decorators";
 export class AppUsersController {
   constructor(private readonly appUsersService: AppUsersService) {}
 
-  // @Post()
-  // create(@Body() createUserDto: CreateAppUserDto): Promise<AppUser> {
-  //   return this.appUsersService.create(createUserDto);
-  // }
-
-  // @Get()
-  // @ApiOperation({ summary: "List users" })
-  // @DeploymentHeaders()
-  // findAll() {
-  //   return this.appUsersService.model.findAll();
-  // }
-
   @Get(":app_user_id")
   @ApiParam({ name: "app_user_id", type: String })
   @ApiOperation({ summary: "Get user profile" })
