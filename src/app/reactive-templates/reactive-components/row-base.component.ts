@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  ElementRef,
   HostBinding,
   inject,
   InjectionToken,
@@ -46,7 +47,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * The current evaluated value of the row, based on its expression with tokens replaced.
    * This may not be the same as the value stored in the variable store if further processing is needed (e.g. executing a data query).
    */
-  public value: Signal<any>;
+  public value!: Signal<any>;
 
   /**
    * The current 'raw' expression of the row, used to calculate its value.
@@ -66,6 +67,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected storeType: StoreType = "local";
+  protected elementRef = inject(ElementRef<HTMLElement>);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
@@ -81,6 +83,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   ngOnInit(): void {
     this.init();
+
+    this.applyStyles();
 
     this.watchParamDependencies();
     this.watchConditionDependencies();
@@ -141,6 +145,16 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const computedValue = await this.computeStoredValue(value);
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
+  }
+
+  // Apply styles defined in the template sheet to the host element
+  // This can be overridden by child components if they need to apply styles to a different element.
+  protected applyStyles() {
+    const styles = this.row().style_list || [];
+    styles.forEach((style) => {
+      const [key, value] = style.split(":");
+      this.elementRef.nativeElement.style.setProperty(key, value);
+    });
   }
 
   private setParams() {
