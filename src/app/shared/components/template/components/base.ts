@@ -89,14 +89,16 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
    * @ignore
    */
-  triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
-    this.disabled.set(true);
+  async triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    if (actionsForTrigger.length > 0) {
-      return this.parent.handleActions(actionsForTrigger, this._row);
+    if (actionsForTrigger.length === 0) return;
+    try {
+      this.disabled.set(true);
+      await this.parent.handleActions(actionsForTrigger, this._row);
+    } finally {
+      this.disabled.set(false);
     }
-    this.disabled.set(false);
   }
 
   /**
