@@ -79,8 +79,20 @@ export class AuthService extends AsyncServiceBase {
     return result;
   }
 
-  /** Delete the current account. Wraps the provider's deleteAccount and syncs auth state to storage */
+  /**
+   * Delete user account.
+   * Requests server data deletion (soft delete for review) then deletes auth account.
+   */
   public async deleteAccount() {
+    // Request server data deletion first (while we still have auth context)
+    // This marks the user for deletion rather than immediately removing data
+    const { success, error } = await this.serverService.requestUserDataDeletion();
+    if (!success) {
+      console.warn(
+        "[Auth] Server data deletion request failed, proceeding with auth deletion:",
+        error
+      );
+    }
     const result = await this.provider.deleteAccount();
     this.syncStorageToAuthState();
     return result;

@@ -228,7 +228,7 @@ function snakeToCamelKeys<T>(obj: T): ISnakeToCamelKeys<T> {
   return obj as ISnakeToCamelKeys<T>;
 }
 
-function snakeToCamel(str: string): string {
+export function snakeToCamel(str: string): string {
   return str.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
 }
 

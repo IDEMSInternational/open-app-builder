@@ -1,12 +1,11 @@
 import { TestBed } from "@angular/core/testing";
 import { FileManagerService } from "./file-manager.service";
-import { provideHttpClientTesting } from "@angular/common/http/testing";
-import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
 /**
  * Call standalone tests via:
@@ -19,10 +18,9 @@ describe("FileManagerService", () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClientTesting(),
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: TemplateAssetService, useValue: {} },
+        { provide: TemplateActionRegistry, useValue: { register: () => undefined } },
         { provide: DeploymentService, useValue: new MockDeploymentService() },
       ],
     });
