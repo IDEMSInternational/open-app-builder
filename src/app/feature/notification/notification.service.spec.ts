@@ -17,6 +17,7 @@ import { IAppConfig } from "data-models/appConfig";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -80,6 +81,7 @@ describe("NotificationService", () => {
   let mockAppConfigService: jasmine.SpyObj<AppConfigService>;
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
   let mockTemplateActionRegistry: jasmine.SpyObj<TemplateActionRegistry>;
+  let mockSystemVariableService: jasmine.SpyObj<SystemVariableService>;
 
   let scheduleSpy: jasmine.Spy<(typeof LocalNotifications)["schedule"]>;
 
@@ -99,6 +101,11 @@ describe("NotificationService", () => {
       "trigger",
       "register",
     ]);
+    mockSystemVariableService = jasmine.createSpyObj("SystemVariableService", [
+      "set",
+      "get",
+      "remove",
+    ]);
 
     // Setup default return values
     mockAppConfigService.appConfig.and.returnValue(mockAppConfig as IAppConfig);
@@ -109,8 +116,9 @@ describe("NotificationService", () => {
         { provide: LocalStorageService, useValue: mockLocalStorageService },
         { provide: AppConfigService, useValue: mockAppConfigService },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
-        { provide: CapacitorEventService, useValue: MockCapacitorEventService },
+        { provide: CapacitorEventService, useValue: new MockCapacitorEventService() },
         { provide: TemplateActionRegistry, useValue: mockTemplateActionRegistry },
+        { provide: SystemVariableService, useValue: mockSystemVariableService },
       ],
     });
 
@@ -127,9 +135,12 @@ describe("NotificationService", () => {
     expect(service).toBeTruthy();
   });
 
-  it("should set permission status to local storage", async () => {
+  it("should set permission status to system variables", async () => {
     await service["checkPermissions"]();
-    expect(mockLocalStorageService.setProtected).toHaveBeenCalled();
+    expect(mockSystemVariableService.set).toHaveBeenCalledWith(
+      "NOTIFICATION_PERMISSION_STATUS",
+      "granted"
+    );
   });
 
   describe("scheduleNotification", () => {
