@@ -5576,11 +5576,11 @@ __metadata:
   linkType: hard
 
 "@hono/node-server@npm:^1.19.9":
-  version: 1.19.11
-  resolution: "@hono/node-server@npm:1.19.11"
+  version: 1.19.14
+  resolution: "@hono/node-server@npm:1.19.14"
   peerDependencies:
     hono: ^4
-  checksum: 5270444b197f4ee0f1f25a6fb6420c9a5eb96c347c6a3b26413e33353fe52de4533da66ab7deb4e75cdea35e852aa1c24bca82544ccc09d1db2a960d438b7e35
+  checksum: c2343ee3d46352f492ee475e12b3c6adfeb3cb4514d7eb06511c38987ec2e6578e26f8ee8d5aa9843c1d34959a76d09cb02f9dd28015f3d172dd9495d66fa527
   languageName: node
   linkType: hard
 
@@ -7195,14 +7195,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:^11.0.17":
-  version: 11.1.11
-  resolution: "@nestjs/core@npm:11.1.11"
+"@nestjs/core@npm:^11.1.18":
+  version: 11.1.19
+  resolution: "@nestjs/core@npm:11.1.19"
   dependencies:
     "@nuxt/opencollective": 0.4.1
     fast-safe-stringify: 2.1.1
     iterare: 1.2.1
-    path-to-regexp: 8.3.0
+    path-to-regexp: 8.4.2
     tslib: 2.8.1
     uid: 2.0.2
   peerDependencies:
@@ -7219,7 +7219,7 @@ __metadata:
       optional: true
     "@nestjs/websockets":
       optional: true
-  checksum: 600d39d0a979c6a115a46d06ef81548b1f05228e06679c605f5b523c7aae7b8829e5cf7f8bea6c3d3119fcddcc021e9c3056c83a5b41cc323521719483ac45db
+  checksum: cb01bbb50cb5d9cb43d49c8fe38a698ba38949d6baa75ddeaf38173581324fe092e0693ffd5757ca25f2d51714cc376be788c840a766c1f26861b79e228f6188
   languageName: node
   linkType: hard
 
@@ -11363,7 +11363,7 @@ __metadata:
     "@nestjs/cli": ^11.0.6
     "@nestjs/common": ^11.0.17
     "@nestjs/config": ^4.0.2
-    "@nestjs/core": ^11.0.17
+    "@nestjs/core": ^11.1.18
     "@nestjs/event-emitter": ^3.0.1
     "@nestjs/platform-express": ^11.0.17
     "@nestjs/schematics": ^11.0.5
@@ -24801,6 +24801,13 @@ __metadata:
   version: 8.3.0
   resolution: "path-to-regexp@npm:8.3.0"
   checksum: 73e0d3db449f9899692b10be8480bbcfa294fd575be2d09bce3e63f2f708d1fccd3aaa8591709f8b82062c528df116e118ff9df8f5c52ccc4c2443a90be73e10
+  languageName: node
+  linkType: hard
+
+"path-to-regexp@npm:8.4.2":
+  version: 8.4.2
+  resolution: "path-to-regexp@npm:8.4.2"
+  checksum: c30fba443e413cc736b7b28056a4b60b537ae1caa80152da21e8093bd41deba7c408a4ac6f11a1bf594e089d8fd8d87ed31476c55c50983719fb355826370ade
   languageName: node
   linkType: hard
 
