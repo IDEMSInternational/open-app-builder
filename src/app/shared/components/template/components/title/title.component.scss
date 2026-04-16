@@ -55,7 +55,7 @@
   }
 
   &[data-variant~="section_banner"] {
-    padding: var(--regular-padding);
+    padding: 18px;
     background-color: color-mix(in srgb, var(--ion-color-primary-50), white 2%);
     border-bottom: 1.5px solid var(--ion-color-primary-200);
     h1 {
