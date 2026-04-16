@@ -25,7 +25,6 @@ export class TmplSliderComponent extends TemplateBaseComponent implements OnInit
   no_value_text: string = "no_value";
   minValue: number = 0;
   maxValue: number = 7;
-  disabled: boolean = false;
   title: string | null;
   step: number = 1;
   min_value_label: string | null;

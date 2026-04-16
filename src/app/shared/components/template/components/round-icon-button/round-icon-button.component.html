@@ -4,7 +4,7 @@
     [class]="params.style || 'information'"
     (click)="onClick($event)"
     class="round-icon-button"
-    [disabled]="_row.disabled"
+    [disabled]="disabled()"
   >
     <ion-icon
       [name]="params.icon_src"
