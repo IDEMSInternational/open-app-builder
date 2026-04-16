@@ -106,6 +106,37 @@
         "tags": [
           "Users"
         ]
+      },
+      "delete": {
+        "operationId": "AppUsersController_deleteUser",
+        "parameters": [
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-deployment-db-name",
+            "in": "header",
+            "description": "Name of db for deployment to populate",
+            "schema": {
+              "type": "string",
+              "default": "plh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User marked for deletion"
+          }
+        },
+        "summary": "Request user deletion (soft delete)",
+        "tags": [
+          "Users"
+        ]
       }
     },
     "/auth_users/{auth_user_id}": {

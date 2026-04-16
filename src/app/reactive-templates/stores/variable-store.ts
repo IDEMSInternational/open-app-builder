@@ -6,6 +6,7 @@ import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
 import { LocalVariableStore } from "./local-variable-store";
 import { GlobalVariableStore } from "./global-variable-store";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { SystemVariableStore } from "./system-variable-store";
 
 @Injectable({
   providedIn: "root",
@@ -13,11 +14,17 @@ import { isEqual } from "packages/shared/src/utils/object-utils";
 export class VariableStore implements IStore {
   private localStore = inject(LocalVariableStore);
   private globalStore = inject(GlobalVariableStore);
+  private systemStore = inject(SystemVariableStore);
 
-  private readonly storeMap = new Map<StoreType, IStore>([
-    ["local", this.localStore],
-    ["global", this.globalStore],
-  ]);
+  private readonly stores: Record<StoreType, IStore> = {
+    local: this.localStore,
+    global: this.globalStore,
+    system: this.systemStore,
+  };
+
+  private readonly storeMap = new Map<StoreType, IStore>(
+    Object.entries(this.stores) as [StoreType, IStore][]
+  );
 
   set(ref: VariableReference, value: any): void {
     this.getStore(ref).set(ref, value);
@@ -36,7 +43,7 @@ export class VariableStore implements IStore {
   }
 
   /**
-   * Watches multiple variable references across local/global stores.
+   * Watches multiple variable references across local/global/system stores.
    * Returns an empty object stream when no refs are provided, otherwise groups
    * refs by store type, watches each group in its underlying store, and merges
    * the latest results into a single object.
@@ -46,26 +53,23 @@ export class VariableStore implements IStore {
       return of({});
     }
 
-    const refsByType = refs.reduce(
-      (groupedRefs, ref) => {
-        groupedRefs[ref.type].push(ref);
-        return groupedRefs;
-      },
-      {
-        local: [] as VariableReference[],
-        global: [] as VariableReference[],
-      }
-    );
+    const storeTypes = Array.from(this.storeMap.keys());
 
-    const groupedObservables: Observable<{ [key: string]: any }>[] = [];
+    const refsByType = {} as Record<StoreType, VariableReference[]>;
 
-    if (refsByType.local.length > 0) {
-      groupedObservables.push(this.localStore.watchMultiple(refsByType.local));
+    // Initialize an empty ref list for each supported store type.
+    for (const type of storeTypes) {
+      refsByType[type] = [];
     }
 
-    if (refsByType.global.length > 0) {
-      groupedObservables.push(this.globalStore.watchMultiple(refsByType.global));
+    // Group refs by store type so each underlying store can be watched once.
+    for (const ref of refs) {
+      refsByType[ref.type].push(ref);
     }
+
+    const groupedObservables = storeTypes
+      .filter((type) => refsByType[type].length > 0)
+      .map((type) => this.storeMap.get(type)!.watchMultiple(refsByType[type]));
 
     if (groupedObservables.length === 1) {
       return groupedObservables[0];
@@ -92,8 +96,7 @@ export class VariableStore implements IStore {
   }
 
   clear(): void {
-    this.localStore.clear();
-    this.globalStore.clear();
+    Object.values(this.stores).forEach((store) => store.clear());
   }
 
   private getStore(ref: VariableReference): IStore {
