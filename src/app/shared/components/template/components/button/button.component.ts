@@ -40,8 +40,6 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   variant: coerce.allowedValuesList(VARIANTS, ["default"]),
   /** Legacy style parameter. Use "variant" instead. Default 'information'. */
   style: coerce.string("information"),
-  /** When true, button is disabled and greyed out. */
-  disabled: coerce.boolean(false),
   /** Text alignment within the button. */
   text_align: coerce.allowedValues(["left", "centre", "right", null], null),
   /** Button alignment within its container. */
@@ -86,7 +84,7 @@ export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorS
   }
 
   public handleClick() {
-    if (this.params().disabled) return;
+    if (this.disabled()) return;
     this.triggerActions("click");
   }
 

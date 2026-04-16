@@ -3,8 +3,6 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 import { generateUUID } from "src/app/shared/utils";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  /** If true, date time picker is disabled and greyed out */
-  disabled: coerce.boolean(),
   /** Type of picker: date & time ('date-time'), date only ('date') or time only ('time'). Default 'date-time'. */
   type: coerce.allowedValues(["date", "date-time", "time"], "date-time"),
   /** Minimum selectable date/time (ISO 8601 string). When empty, no minimum is applied. */

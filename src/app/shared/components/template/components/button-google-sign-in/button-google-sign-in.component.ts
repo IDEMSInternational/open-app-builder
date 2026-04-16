@@ -2,10 +2,7 @@ import { Component, computed } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { FlowTypes } from "packages/data-models";
-import {
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "src/app/shared/utils";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 interface IButtonGoogleSignInComponentParams {
   variant: null | "native_google";
@@ -28,8 +25,13 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   }
 
   public async handleClick() {
-    await this.authService.signIn("google.com");
-    this.triggerActions("click");
+    this.disabled.set(true);
+    try {
+      await this.authService.signIn("google.com");
+      this.triggerActions("click");
+    } finally {
+      this.disabled.set(false);
+    }
   }
 
   private getParams(
@@ -37,7 +39,6 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   ): IButtonGoogleSignInComponentParams {
     return {
       variant: getStringParamFromTemplateRow(this._row, "variant", null),
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
       style: getStringParamFromTemplateRow(this._row, "style", "width_full"),
     } as IButtonGoogleSignInComponentParams;
   }

@@ -6,7 +6,7 @@
     (click)="handleClick()"
     [attr.data-variant]="variantsString()"
     [attr.data-has-children]="rows().length > 0 ? true : null"
-    [attr.data-disabled]="params().disabled"
+    [attr.data-disabled]="disabled()"
   >
     @if (params().imageAsset) {
       <img src="{{ params().imageAsset | plhAsset }}" />
@@ -33,7 +33,7 @@
   <!-- Default variant -->
   <ion-button
     [class]="'full standard medium' + ' ' + style() + ' ' + params().buttonAlign"
-    [disabled]="params().disabled"
+    [disabled]="disabled()"
     (click)="triggerActions('click')"
     [attr.data-param-style]="style()"
     [attr.data-variant]="variantsString()"
