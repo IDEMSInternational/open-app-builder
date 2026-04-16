@@ -42,14 +42,19 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
 
   constructor(private injector: Injector) {}
 
-  public async ensureInitialised(forceRefresh = false): Promise<void> {
+  /**
+   * Ensures service has initialised to register appCheck token ahead of function calls
+   * Can be called optimistically, or will be triggered on first function invocation
+   **/
+  public async initialise(forceRefresh = false) {
     if (forceRefresh || !this.appCheckInitPromise) {
-      this.appCheckInitPromise = (async () => this.initialiseAppCheck())();
+      // wrap init methods in promise to prevent duplicate requests
+      this.appCheckInitPromise = (async () => this.handleInitialise())();
     }
     return this.appCheckInitPromise;
   }
 
-  private async initialiseAppCheck() {
+  private async handleInitialise() {
     this.region = this.deploymentService.config.firebase?.functions?.region;
     const firebaseService = this.injector.get(FirebaseService);
     firebaseService.ready();
@@ -67,10 +72,9 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   }
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
-    await this.ensureInitialised().catch(() => {
-      // Ignore error here as it is captured in appCheckTokenError signal
-      // and we still want to try the function call (which might fail anyway if app check is enforced)
-    });
+    // Ignore error here as it is captured in appCheckTokenError signal
+    // and we still want to try the function call (which might fail anyway if app check is enforced)
+    await this.initialise().catch(() => {});
 
     let error: RemoteFunctionErrorResponse;
     const data = await FirebaseFunctions.callByName({

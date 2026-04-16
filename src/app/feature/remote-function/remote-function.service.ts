@@ -40,5 +40,8 @@ export class RemoteFunctionService extends AsyncServiceBase {
 
   private async initialise() {
     await this.dynamicDataService.ready();
+    // Optimistically ensure provider initialised to reduce delay when
+    // sending first request (i.e. firebase appCheck token registered)
+    await this.provider.initialise();
   }
 }

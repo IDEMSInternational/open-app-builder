@@ -44,7 +44,7 @@ export class RemoteFunctionDebugPage implements OnInit {
     await this.service.ready();
   }
   public refreshAppCheck() {
-    return this.firebaseProvider()?.ensureInitialised(true);
+    return this.firebaseProvider()?.initialise(true);
   }
 
   // --- Param management ---
