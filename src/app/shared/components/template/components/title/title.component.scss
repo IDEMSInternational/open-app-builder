@@ -53,4 +53,19 @@
       text-align: center !important;
     }
   }
+
+  &[data-variant~="section_banner"] {
+    padding: var(--regular-padding);
+    background-color: color-mix(in srgb, var(--ion-color-primary-50), white 2%);
+    border-bottom: 1.5px solid var(--ion-color-primary-200);
+    h1 {
+      font-size: var(--font-size-title-tiny);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  &[data-variant~="page_banner"] h1 {
+    font-size: var(--font-size-title-medium);
+    margin: var(--regular-margin) 0;
+  }
 }
