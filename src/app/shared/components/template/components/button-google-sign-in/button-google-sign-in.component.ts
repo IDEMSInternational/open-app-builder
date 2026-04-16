@@ -28,7 +28,7 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
     this.disabled.set(true);
     try {
       await this.authService.signIn("google.com");
-      this.triggerActions("click");
+      await this.triggerActions("click");
     } finally {
       this.disabled.set(false);
     }
