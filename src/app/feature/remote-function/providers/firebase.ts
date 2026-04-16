@@ -65,7 +65,7 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
       this.appCheckTokenError.set(undefined);
     } catch (error) {
       console.error("[App check]", error);
-      this.appCheckTokenError.set(error.message);
+      this.appCheckTokenError.set(error instanceof Error ? error.message : String(error));
       this.appCheckInitPromise = undefined; // Allow retry on failure
       throw error;
     }
