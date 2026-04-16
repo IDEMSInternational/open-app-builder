@@ -28,7 +28,7 @@ export class TmplButtonAppleSignInComponent extends TemplateBaseComponent {
     this.disabled.set(true);
     try {
       await this.authService.signIn("apple.com");
-      this.triggerActions("click");
+      await this.triggerActions("click");
     } finally {
       this.disabled.set(false);
     }
