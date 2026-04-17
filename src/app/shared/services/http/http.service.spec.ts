@@ -1,7 +1,8 @@
 import { TestBed } from "@angular/core/testing";
 
 import { HttpService } from "./http.service";
-import { MockHttpCache } from "./cache/http-cache.mock.spec";
+import { HttpCache } from "./cache/http-cache";
+import { HttpCacheAdapterMemory } from "./cache/adapters/memory.adapter";
 
 /**
  * Call standalone tests via:
@@ -30,7 +31,7 @@ describe("HttpService", () => {
       return Promise.resolve(response);
     }) as any;
 
-    const mockCache = new MockHttpCache();
+    const mockCache = new HttpCache("mockCache", new HttpCacheAdapterMemory());
     await mockCache.ready();
     cacheGetSpy = spyOn(mockCache, "get").and.callThrough();
 
@@ -38,8 +39,6 @@ describe("HttpService", () => {
     service = TestBed.inject(HttpService);
 
     spyOn(service, "createCache" as any).and.callFake(() => mockCache);
-
-    service["client"] = service["getClient"]();
   });
 
   it("should be created", () => {
@@ -112,9 +111,6 @@ describe("HttpService", () => {
     await service.get("https://example.com/cf", { strategy: "cache-first" });
     expect(getReqSpy).toHaveBeenCalledTimes(1);
 
-    // Wait for async cache update (setTimeout in service)
-    await service.flushCacheUpdates();
-
     // Second call: cache hit, bypass network
     getReqSpy.calls.reset();
     const res = await service.get("https://example.com/cf", {
@@ -131,9 +127,6 @@ describe("HttpService", () => {
     });
     expect(getReqSpy).toHaveBeenCalledTimes(1);
     expect(res.headers.get("x-res-source")).not.toBe("cache");
-
-    // Wait for async cache update (setTimeout in service)
-    await service.flushCacheUpdates();
 
     // 2. Failed network request (e.g. 500) -> returns from cache
     getReqSpy.and.callFake(async () => new Response("cached", { status: 500 }));
@@ -157,9 +150,6 @@ describe("HttpService", () => {
     // Set item with very short expiry
     await service.get(url, { cacheExpiry: "1ms" });
 
-    // Wait for cache update
-    await service.flushCacheUpdates();
-
     // Wait for expiry
     await new Promise((resolve) => setTimeout(resolve, 10));
 
@@ -174,19 +164,19 @@ describe("HttpService", () => {
     it("should return object with src and revoke callback", async () => {
       const media = await service.getMediaSrc("https://example.com/image.png");
 
-      // Since it's our mock cache, the src should equal the mock adapter's output
-      expect(media.src).toBeTruthy();
+      // HttpCacheAdapterMemory returns a blob URL
+      expect(media.src?.startsWith("blob:")).toBeTrue();
       expect(typeof media.revoke).toBe("function");
     });
 
     it("should default cache strategy and cache item before returning", async () => {
       // Mock the cache's getUrl to simulate a hit
       const cache = service["cacheNamespaces"]["cache"] || (await service["getCache"]("cache"));
-      spyOn(cache, "getUrl").and.resolveTo("mock-url");
+      spyOn(cache, "getUrl").and.resolveTo("blob:mock-url");
       const media = await service.getMediaSrc("https://example.com/asset.mp4");
 
       expect(getReqSpy).toHaveBeenCalled();
-      expect(media.src).toEqual("mock-url");
+      expect(media.src).toEqual("blob:mock-url");
     });
   });
 
@@ -206,17 +196,13 @@ describe("HttpService", () => {
     expect(getReqSpy).toHaveBeenCalledTimes(2);
   });
 
-  it("defers cache writes", async () => {
+  it("synchronously writes cache via adapter", async () => {
     const cache = await service["getCache"]("cache");
     const cacheSetSpy = spyOn(cache, "set").and.callThrough();
 
     await service.get("https://example.com/flush");
 
-    // Fetch complete, write is scheduled but not yet run
-    expect(cacheSetSpy).not.toHaveBeenCalled();
-
-    await service.flushCacheUpdates();
-
+    // Fetch complete, adapter should have eagerly awaited cache set
     expect(cacheSetSpy).toHaveBeenCalledTimes(1);
   });
 });

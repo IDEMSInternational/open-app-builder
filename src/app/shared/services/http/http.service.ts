@@ -1,11 +1,14 @@
 import { Injectable } from "@angular/core";
 
-import ky from "ky";
-
 import type { Options } from "ky";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { HttpCache } from "./cache/http-cache";
-import { deferTask } from "shared/src/utils/async-utils";
+import { Capacitor } from "@capacitor/core";
+import { getMimeType } from "shared/src/utils/mimetypes";
+import { WebHttpClientAdapter } from "./client/adapters/web.adapter";
+import { CapacitorHttpClientAdapter } from "./client/adapters/capacitor.adapter";
+import { WorkerHttpClientAdapter } from "./client/adapters/worker.adapter";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client";
 
 export interface IHttpRequestOptions extends Options {
   /**
@@ -44,27 +47,37 @@ export interface ICachedMedia {
  */
 @Injectable({ providedIn: "root" })
 export class HttpService {
-  private client = this.getClient();
+  private webAdapter = new WebHttpClientAdapter();
+  private capacitorAdapter = new CapacitorHttpClientAdapter();
+  private workerAdapter: IHttpClientAdapter;
+
+  constructor() {
+    try {
+      this.workerAdapter = new WorkerHttpClientAdapter();
+    } catch {
+      this.workerAdapter = this.webAdapter;
+    }
+  }
 
   /** Map of cache instances by namespace */
   private cacheNamespaces: Record<string, HttpCache> = {};
-
-  private pendingCacheUpdates = new Set<Promise<void>>();
 
   /**
    * Standard HTTP GET. Make a get request to a url and returns a standard DOM Response.
    * Use options to define default caching behaviour, such as cache-first or network-only approaches
    */
   public async get(url: string, options: IHttpRequestOptions = {}): Promise<Response> {
-    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const { strategy, cacheExpiry, cacheName } = mergedOptions;
+    const adapterResponse = await this.executeStrategy(url, options);
 
-    // populate cache expiry header to handle in after-response hook
-    const headers = new Headers(options.headers);
-    headers.set("x-cache-expiry", `${shorthandToTime(cacheExpiry)}`);
-    headers.set("x-cache-name", cacheName || "cache");
-    mergedOptions.headers = headers;
-    return this.requestStrategyHandlers[strategy](url, mergedOptions);
+    if (!this.isSuccessStatus(adapterResponse.status)) {
+      return new Response(null, {
+        status: adapterResponse.status,
+        headers: adapterResponse.headers,
+      });
+    }
+
+    const data = await adapterResponse.getRawData();
+    return new Response(data, { status: adapterResponse.status, headers: adapterResponse.headers });
   }
 
   /**
@@ -73,42 +86,32 @@ export class HttpService {
    * bypassing heavy javascript Blob parsing overhead.
    */
   public async getMediaSrc(url: string, options: IHttpRequestOptions = {}): Promise<ICachedMedia> {
-    // Ensure the item exists in the cache by invoking the standard GET flow.
-    // We don't need the blob response here, we just need the invisible caching strategy to run.
-    const res = await this.get(url, options);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch media: ${res.statusText}`);
+    const adapterResponse = await this.executeStrategy(url, options);
+    if (!this.isSuccessStatus(adapterResponse.status)) {
+      throw new Error(`Failed to fetch media: HTTP ${adapterResponse.status}`);
     }
+    return adapterResponse.getUri();
+  }
 
+  private async executeStrategy(
+    url: string,
+    options: IHttpRequestOptions
+  ): Promise<IHttpAdapterResponse> {
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const cache = await this.getCache(mergedOptions.cacheName || "cache");
-    const key = generateRequestKey({ url, method: mergedOptions.method });
+    const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
-    let src = await cache.getUrl(key);
+    const headers = new Headers(options.headers);
+    headers.set("x-cache-expiry", `${shorthandToTime(cacheExpiry)}`);
+    headers.set("x-cache-name", cacheName || "cache");
+    mergedOptions.headers = headers;
 
-    let revoke = () => {};
-
-    // In rare cases (like network-only strategies without existing cache, or parsing errors)
-    // the item might not be in the custom cache yet despite the GET.
-    // Fallback to object URL from the response arrayBuffer if getUrl fails.
-    if (!src) {
-      const blob = await res.clone().blob();
-      src = URL.createObjectURL(blob);
-      revoke = () => URL.revokeObjectURL(src!);
-    }
-    // Web will generate object url that will need to be revoked
-    // Native will generate file url that can simply be left as-is (no revoke required)
-    else if (src.startsWith("blob:")) {
-      revoke = () => URL.revokeObjectURL(src!);
-    }
-
-    return { src, revoke };
+    return this.requestStrategyHandlers[strategy!](url, mergedOptions);
   }
 
   /** Specific handling of different request strategies */
   private requestStrategyHandlers: Record<
-    IHttpRequestOptions["strategy"],
-    (url: string, options: IHttpRequestOptions) => Promise<Response>
+    NonNullable<IHttpRequestOptions["strategy"]>,
+    (url: string, options: IHttpRequestOptions) => Promise<IHttpAdapterResponse>
   > = {
     "cache-only": async (url, options) => this.handleCacheRequest(url, options),
     "cache-first": async (url, options) => {
@@ -126,42 +129,96 @@ export class HttpService {
           return networkRes;
         }
       } catch (error) {
-        // Network error or ky HTTPError — fall through to cache
+        // Network error — fall through to cache
       }
       return this.handleCacheRequest(url, options);
     },
   };
 
-  /**
-   * Check if the response received corresponds to a cacheable success code
-   * Currently does not support opaque responses, but could be extended similar to
-   * https://github.com/kornelski/http-cache-semantics
-   */
+  /** Check if the response received corresponds to a cacheable success code */
   private isSuccessStatus(code: number) {
     return code >= 200 && code < 300;
   }
 
-  private handleNetworkRequest(url: string, options: IHttpRequestOptions) {
-    return this.client.get(url, options);
+  private getAdapterForUrl(url: string): IHttpClientAdapter {
+    const mime = getMimeType(url);
+    const isMedia =
+      mime &&
+      (mime.startsWith("image/") ||
+        mime.startsWith("video/") ||
+        mime.startsWith("audio/") ||
+        mime === "application/pdf");
+
+    if (isMedia) {
+      if (Capacitor.isNativePlatform()) {
+        return this.capacitorAdapter;
+      }
+      return this.workerAdapter;
+    }
+    // TODO - could consider HEAD request if url is an api endpoint
+    // or just allow param passing to manually specify
+    // For now just default to web adapter
+    return this.webAdapter;
   }
 
-  private async handleCacheRequest(url: string, options: IHttpRequestOptions) {
-    const { cacheName } = options;
+  private async handleNetworkRequest(
+    url: string,
+    options: IHttpRequestOptions
+  ): Promise<IHttpAdapterResponse> {
+    const adapter = this.getAdapterForUrl(url);
+    const cacheName = options.cacheName || "cache";
     const cache = await this.getCache(cacheName);
+
+    return adapter.request(url, options, cache);
+  }
+
+  private async handleCacheRequest(
+    url: string,
+    options: IHttpRequestOptions
+  ): Promise<IHttpAdapterResponse> {
+    const { cacheName } = options;
+    const cache = await this.getCache(cacheName || "cache");
     const key = generateRequestKey({ url, method: options.method });
 
-    const [cacheRes, entry] = await Promise.all([cache.get(key), cache.getEntry(key)]);
-    const headers = new Headers({ "x-res-source": "cache" });
+    const [hasCache, entry] = await Promise.all([cache.has(key), cache.getEntry(key)]);
+    const headers = { "x-res-source": "cache", ...(entry?.headers || {}) };
 
-    if (cacheRes && entry) {
+    if (hasCache && entry) {
       if (entry.expiry && entry.expiry < Date.now()) {
         await cache.delete(key);
-        return new Response(null, { status: 404, headers });
+        return {
+          status: 404,
+          headers,
+          getUri: async () => ({ src: "", revoke: () => {} }),
+          getRawData: async () => new ArrayBuffer(0),
+        };
       }
-      return new Response(cacheRes, { status: 200, headers });
+      return {
+        status: 200,
+        headers,
+        getUri: async () => {
+          const src = await cache.getUrl(key);
+          if (src && src.startsWith("blob:"))
+            return { src, revoke: () => URL.revokeObjectURL(src as string) };
+          return { src: src || "", revoke: () => {} };
+        },
+        getRawData: async () => {
+          if (Capacitor.isNativePlatform()) {
+            const src = await cache.getUrl(key);
+            if (src) return fetch(src).then((r) => r.arrayBuffer());
+          }
+          const blob = await cache.get(key);
+          return blob ? blob.arrayBuffer() : new ArrayBuffer(0);
+        },
+      };
     }
 
-    return new Response(null, { status: 404, headers });
+    return {
+      status: 404,
+      headers,
+      getUri: async () => ({ src: "", revoke: () => {} }),
+      getRawData: async () => new ArrayBuffer(0),
+    };
   }
 
   private async getCache(name: string) {
@@ -177,60 +234,4 @@ export class HttpService {
   private async createCache(name: string) {
     return new HttpCache(name);
   }
-
-  private async updateCache(req: Request, clonedResponse: Response) {
-    if (this.isSuccessStatus(clonedResponse.status)) {
-      const cacheName = req.headers.get("x-cache-name") || "cache";
-      const cache = await this.getCache(cacheName);
-      const key = generateRequestKey({ url: req.url, method: req.method });
-      const expiry = req.headers.get("x-cache-expiry");
-      const expiryTime = expiry ? Number(expiry) : undefined;
-
-      await cache.set(key, clonedResponse, expiryTime);
-    }
-  }
-
-  /** Create a new ky client with hooks for cache management */
-  private getClient() {
-    return ky.extend({
-      hooks: {
-        beforeRequest: [],
-        afterResponse: [
-          // do not await to allow ky to immediately return response to client
-          // while cache write scheduled in background
-          ({ request, response }) => this.scheduleCacheUpdate(request, response.clone()),
-        ],
-      },
-    });
-  }
-
-  /** Schedule cache update tasks to occur as low priority after UI paint */
-  private scheduleCacheUpdate(request: Request, response: Response) {
-    const task = () => this.updateCache(request, response);
-
-    // deferTask returns the Promise that actually tracks completion
-    const deferredTask = deferTask(task);
-
-    // Track the Promise, not the function
-    this.pendingCacheUpdates.add(deferredTask);
-
-    // Clean up the Set once the background task finishes (or fails)
-    deferredTask.finally(() => {
-      this.pendingCacheUpdates.delete(deferredTask);
-    });
-  }
-
-  /** Resolves when all in-flight cache writes complete. Useful for testing. */
-  public async flushCacheUpdates(): Promise<void> {
-    return Promise.all(this.pendingCacheUpdates).then(() => undefined);
-  }
 }
-
-/**
- * TODO
- * - Stale-then-revalidate strategy support
- * - Custom request IDs for tracking in other components
- * - Download progress observable and abort signal
- * - Conversion of response file types
- * - Head requests to check if cache is potentially invalid (compare size, checksum)
- */

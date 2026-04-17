@@ -1,10 +1,11 @@
-import { MockHttpCache } from "./http-cache.mock.spec";
+import { HttpCache } from "./http-cache";
+import { HttpCacheAdapterMemory } from "./adapters/memory.adapter";
 
 describe("HttpCache", () => {
-  let cache: MockHttpCache;
+  let cache: HttpCache;
 
   beforeEach(async () => {
-    cache = new MockHttpCache();
+    cache = new HttpCache("testCache", new HttpCacheAdapterMemory());
     await cache.ready();
   });
 
@@ -12,7 +13,7 @@ describe("HttpCache", () => {
     const url = "https://example.com/api";
     // We can't easily predict the SHA-1 hash without running it,
     // but we can check if it's consistent.
-    // In MockHttpCacheAdapter, it uses the key directly if we don't mock hashUrl,
+    // In HttpCacheAdapterMemory, it uses the key directly if we don't mock hashUrl,
     // but HttpCache.ts calls hashUrl(key) before passing to adapter.
 
     await cache.set(url, new Response("data", { status: 200 }));
@@ -80,6 +81,7 @@ describe("HttpCache", () => {
     await cache.set(url, new Response("media-data"));
 
     const src = await cache.getUrl(url);
-    expect(src).toContain("mock-url-");
+    expect(src).toBeDefined();
+    expect(src?.startsWith("blob:")).toBeTrue();
   });
 });

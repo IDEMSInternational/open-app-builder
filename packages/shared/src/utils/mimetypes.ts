@@ -50,9 +50,9 @@ const EXTENSIONS: Record<string, string> = Object.entries(MIME_TYPES).reduce<
   return acc;
 }, {});
 
-/** Get the MIME type for a filename based on its extension. */
-export function getMimeType(filename: string): string | null {
-  const basename = filename.split("/").pop() ?? "";
+/** Get the MIME type for a given web or file uri based on its extension. */
+export function getMimeType(uri: string): string | null {
+  const basename = uri.split("/").pop() ?? "";
   // remove any additional info stored after extension name
   const clean = basename.split(/[?#]/)[0];
   const dotIdx = clean.lastIndexOf(".");

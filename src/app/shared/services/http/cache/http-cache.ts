@@ -136,7 +136,7 @@ export class HttpCache {
 }
 
 /** Generate a fast hash from a URL string */
-async function hashUrl(url: string): Promise<string> {
+export async function hashUrl(url: string): Promise<string> {
   const encoder = new TextEncoder();
   const data = encoder.encode(url);
   const hashBuffer = await crypto.subtle.digest("SHA-1", data);
