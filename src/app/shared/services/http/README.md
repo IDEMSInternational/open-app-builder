@@ -1,127 +1,84 @@
-# HTTP Service
+# Smart HTTP Service (`HttpService`)
 
-## Overview
-The HTTP service is used to retrieve data from external sources, with support for request caching,
-progress sharing, download abort and failed download retry
+The `HttpService` is a comprehensive, offline-first network orchestrator for the application domain.
 
-It builds on top of the ky http client, as a language-agnostics and more feature rich alternative to angular's own http client.
-https://github.com/sindresorhus/ky
+At its core, it applies the **Strategy** and **Adapter** patterns to execute network requests, caching them efficiently using platform-specific storage mechanisms. It automatically distinguishes between data and large media streams, deciding the most memory-efficient way to transport data.
 
-Takes inspiration from service worker caching strategies, cacheable-request spec
-https://developer.chrome.com/docs/workbox/caching-strategies-overview
-https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
+## Features
+- **Cross Platform Transports**: Automatically selects the best underlying HTTP client (Browser Fetch, Web Workers, or Native Capacitor transfers).
+- **Smart Mimetype Routing**: Media requests (Audio, Video, PDF) are intelligently offloaded to OPFS workers or Native file transfer plugins to protect the Javascript UI thread.
+- **Offline Strategies**: Supports `cache-first`, `network-only`, `network-first`, and `cache-only` fetch mechanisms.
+- **Base64 Bypass**: Massively optimizes Capacitor bridge memory by downloading media directly to the Native filesystem, returning secure `localhost` native mapped URLs (`convertFileSrc`) instead of sluggish Base64 payloads.
 
+---
 
-## Storage Adaptors
-As there are typically no universally effective ways to persist data to storage, a series of 
-storage adapters are used to handle read/write operations in different environments (e.g. Capacitor Filesystem on native, OPFS on browser).
+## Core Architecture
 
-The architecture uses a **Sidecar Pattern** for performance and resilience on low-resource devices:
-- **Atomic Storage**: Each response is stored as two distinct files: `[hash].data` (the raw binary body) and `[hash].meta` (metadata including headers, status, and expiry).
-- **URL Hashing**: Keys are generated using a SHA-1 hash of the Request URL. This provides fast, constant-time lookup without the CPU overhead of hashing entire binary blobs.
-- **Bypassing the Native Bridge**: On Capacitor, the service uses `Capacitor.convertFileSrc` and native `fetch` to read files directly from the local webserver. This avoids the memory bottleneck of transferring large files as Base64 strings across the Javascript bridge.
-- **No Global Manifest**: By avoiding a monolithic JSON index, the app removes I/O bottlenecks during startup and prevents the "Write Contention" corruption risks common in low-connectivity environments.
+The architecture decouples the concept of a Request Strategy (orchestration) from the Transport details (the HTTP adapters).
 
-It takes inspiration from:
-- https://github.com/BYOJS/storage
-- https://keyv.org/
+```mermaid
+sequenceDiagram
+    participant UI as Component
+    participant HS as HttpService (Orchestrator)
+    participant Cache as HttpCache (Storage Broker)
+    participant Adapter as Transport Adapter
 
-
-
-## Template Interaction
-
-### TODO (WiP from #3000)
-- [ ] Template Interaction
-
-The service populates download progress and status to the `@data._http` table, and stores cached
-responses locally (file system on native devices, OPFS on browser with indexeddb fallback (?) )
-
-It can be called directly through authored actions, or integrated into specific components (e.g. image)
-
-
-- [ ] Add markdown table example
+    UI->>HS: getMediaSrc('https://video.mp4', { strategy: 'cache-first' })
+    
+    activate HS
+    HS->>Cache: has('video.mp4')
+    
+    alt is cached
+        Cache-->>HS: { src: 'blob/native-url', ... }
+    else Not cached (Network Fallback)
+        HS->>Adapter: request('video.mp4')
+        activate Adapter
+        Note right of Adapter: Adapter fetches & streams<br/>directly to file/OPFS!
+        Adapter-->>HS: IHttpAdapterResponse
+        deactivate Adapter
+    end
+    
+    HS-->>UI: { src, revoke() }
+    deactivate HS
 ```
 
+### The Adapters & `IHttpAdapterResponse`
+
+All client Adapters (Web, Capacitor, Worker) guarantee the same uniform data-retrieval interface (`IHttpAdapterResponse`):
+
+1. **`getUri()`**: Returns a safe, bindable URL.
+   - *Web/Worker*: Returns a short-lived `blob:http://` URL with a `revoke()` garbage collection function.
+   - *Native*: Returns a secure device file path using `Capacitor.convertFileSrc()`.
+2. **`getRawData()`**: Returns raw `ArrayBuffer` contents.
+   - *Native*: Bypasses the expensive bridge by using the native browser `fetch()` API against the secure local file URL!
+
+---
+
+## Usage Examples
+
+### 1. Simple Data Requests (JSON, Text)
+Use `.get()` when you only need standard API responses. This returns a standard DOM `Response` object.
+
+```typescript
+const response = await this.httpService.get('https://api.example.com/data.json', {
+  strategy: 'cache-first', 
+  cacheExpiry: '7d' 
+});
+const data = await response.json();
 ```
 
+### 2. Media SRC Requests (Images, Audio, Video)
+Always use `.getMediaSrc()` when binding files to the UI.
 
+```typescript
+const media = await this.httpService.getMediaSrc('https://example.com/huge-video.mp4', {
+  strategy: 'cache-first',
+  cacheName: 'videos' // Store in a dedicated namespace for easy bulk cleanup!
+});
 
-Inspiration:
-- https://tanstack.com/query/latest/docs/framework/react/overview
+// Bind to <video [src]="videoUrl">
+this.videoUrl = media.src;
 
-## TODOs
-
-- [ ] Support passing custom _id to requests to subscribe to result elsewhere (possibly as part of download service)
-
-- [ ] Component support 
-E.g Image component properties - `cache` (no expiry), `cache: 30d`. A separate `cache_update` parameter can be included to force update after response. 
-
-E.g. `external_data` component to handle fetch and map to data_items
-Or would it just wrap other components? E.g.
-```ts
-<data-download #item ['parameter_list']={cache_expiry: '30d', autodownload:false}>
-    <tmpl-component [value]="download.start()">
-    <tmpl-component [value]="download.stop()">
-    <tmpl-component [value]="download.status()">
-    <tmpl-component [value]="download.progress()">
-    <tmpl-component [value]="download.value()" />
-    <tmpl-component [value]="download.source()" />
-</data-download>
-
-<data-download>
-<api-data>
-// similar wrapper for db queries? or is this just data-items?
-<db-query>
+// Clean up memory if destroying component on Web (no-op on native)
+media.revoke();
 ```
-
-- [ ] Local storage table for cache entries, just metadata (status, content-type, size, expiry)
-
-- [ ] Response body parsing and store. OPFS / File-based downloads cache
-
-- [ ] Move actions to child component/feature
-
-- [ ] Demo sheet, showing full cache, button to clear cache, way to download image with custom expiry,
-remove item from cache, bypass cache etc.
-
-- System cache - start as tmp folder, clean on init and move when downloads complete
-- Rename as `downloads.service`? Or possibly create new downloads service that builds on top of core?
-- Handle network update if data changed/not (opfs supports write to tmp file and rename - probably want similar for capacitor)
-
-
-## FAQs
-
-- Why not use the angular http client directly
-Cross-browser support and compatibility
-
-- Why not use service workers
-Not available in native builds
-
-- Why not use [insert tool name here]
-
-A number of popular tools were evaluated when considering ways to enable request caching
-
-*Must Haves*
-Run both in browser and on native device
-Support for binary/blob response formats (e.g. images)
-
-*Nice to Haves*
-Efficient read/write mechanisms (e.g. prefer native file over in-memory data for large binary files)
-Language agnostic. Angular-specific might be prone to breaking with major platform updates, also potential use in other projects
-
-Some popular options which were evaluated (and ruled out)
-
-https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
-Only supports Node environment (not browser). Similar for underlying `cacheable` package.
-
-https://github.com/sindresorhus/got
-Uses cacheable-request under the hood, so again only supports node
-
-https://www.npmjs.com/package/@ngneat/cashew
-Angular specific. Designed as global interceptor, not service-specific
-
-https://www.npmjs.com/package/ng-http-caching
-Angular specific. Binary cache strategies (cache or not), no support of cache-first / network-first with fallback
-
-https://github.com/jaredwray/keyv
-Designed around json-serializable data (no support for binary files, blobs etc.)
-Would require custom storage adapters for opfs and capacitor-file
