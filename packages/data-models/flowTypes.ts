@@ -374,11 +374,14 @@ export namespace FlowTypes {
     "raw",
   ] as const;
 
+  export const DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME = ["system"] as const;
+
   type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
 
   export const DYNAMIC_PREFIXES = [
     ...DYNAMIC_PREFIXES_COMPILER,
     ...DYNAMIC_PREFIXES_RUNTIME,
+    ...DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME,
   ] as const;
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];

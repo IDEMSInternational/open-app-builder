@@ -1,10 +1,16 @@
-import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.mock.spec";
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.mock.spec";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
+
+const MOCK_SYSTEM_VARIABLE_SERVICE = {
+  get: () => "test_user",
+  set: () => {},
+  remove: () => {},
+} as unknown as SystemVariableService;
 
 export class MockTemplateCalcService extends TemplateCalcService {
   constructor(mockCalcContext: Partial<ICalcContext> = {}) {
-    super(new MockDataEvaluationService(), new MockLocalStorageService());
+    super(new MockDataEvaluationService(), MOCK_SYSTEM_VARIABLE_SERVICE);
     // merge any mock calc context with defaults
     super["calcContext"] = {
       thisCtxt: {
