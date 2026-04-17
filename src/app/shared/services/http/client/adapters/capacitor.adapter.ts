@@ -47,7 +47,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
           contentType: headers["content-type"],
           created: Date.now(),
           headers,
-          size: 0,
+          size: (await Filesystem.stat({ path: absolutePath })).size,
           status: 200,
           expiry,
         };
