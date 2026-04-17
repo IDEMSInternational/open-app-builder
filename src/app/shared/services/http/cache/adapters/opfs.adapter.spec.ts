@@ -1,5 +1,9 @@
 import { HTTPCacheAdapterOPFS } from "./opfs.adapter";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/http/cache/adapters/opfs.adapter.spec.ts
+ */
 describe("HTTPCacheAdapterOPFS", () => {
   let adapter: HTTPCacheAdapterOPFS;
   let mockRoot: jasmine.SpyObj<FileSystemDirectoryHandle>;

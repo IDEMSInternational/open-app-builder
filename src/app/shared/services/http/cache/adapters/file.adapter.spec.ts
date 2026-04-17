@@ -1,5 +1,4 @@
 import { HttpCacheAdapterFile } from "./file.adapter";
-import { Directory } from "@capacitor/filesystem";
 import { Capacitor } from "@capacitor/core";
 
 /**
