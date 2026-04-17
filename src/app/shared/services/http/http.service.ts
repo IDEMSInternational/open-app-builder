@@ -60,9 +60,10 @@ export class HttpService {
     const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
     // populate cache expiry header to handle in after-response hook
-    mergedOptions.headers ??= {};
-    mergedOptions.headers["x-cache-expiry"] = `${shorthandToTime(cacheExpiry)}`;
-    mergedOptions.headers["x-cache-name"] = cacheName;
+    const headers = new Headers(options.headers);
+    headers.set("x-cache-expiry", `${shorthandToTime(cacheExpiry)}`);
+    headers.set("x-cache-name", cacheName || "cache");
+    mergedOptions.headers = headers;
     return this.requestStrategyHandlers[strategy](url, mergedOptions);
   }
 
@@ -75,6 +76,9 @@ export class HttpService {
     // Ensure the item exists in the cache by invoking the standard GET flow.
     // We don't need the blob response here, we just need the invisible caching strategy to run.
     const res = await this.get(url, options);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch media: ${res.statusText}`);
+    }
 
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
     const cache = await this.getCache(mergedOptions.cacheName || "cache");
