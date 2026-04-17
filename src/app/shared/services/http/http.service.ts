@@ -5,7 +5,7 @@ import ky from "ky";
 import type { Options } from "ky";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { HttpCache } from "./cache/http-cache";
-import { deferTask } from "shared";
+import { deferTask } from "shared/src/utils/async-utils";
 
 export interface IHttpRequestOptions extends Options {
   /**
