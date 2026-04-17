@@ -20,7 +20,7 @@ export interface IHttpRequestOptions extends Options {
 
   /**
    * Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 30d
-   * NOTE - cache does not auto-purge but will seek to update after expiry
+   * NOTE - cache does not auto-purge but will seek to revalidate after expiry
    * has passed on next fetch
    **/
   cacheExpiry?: string;
@@ -32,16 +32,17 @@ export interface IHttpRequestOptions extends Options {
   headers?: Record<string, string>;
 
   /**
-   * Specify strategy.
-   * Default uses browser own defaults, typically relying on response headers
-   **/
-  strategy?: "cache-first" | "cache-only" | "network-first";
+   * Skip cache entirely and always fetch from network.
+   * Useful for auth endpoints or other non-cacheable requests.
+   */
+  bypassCache?: boolean;
 }
+
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
   cacheExpiry: "30d",
   headers: {},
-  strategy: "cache-first",
+  bypassCache: false,
   retry: 2,
 };
 
@@ -54,6 +55,12 @@ export interface ICachedMedia {
 
 /**
  * Service to handle http requests, with custom request cache management
+ * using a stale-while-revalidate approach.
+ *
+ * - If cached and fresh → return immediately
+ * - If cached but stale → return stale immediately, revalidate in background
+ * - If not cached → fetch from network
+ *
  * For more details see [Readme](./README.md)
  */
 @Injectable({ providedIn: "root" })
@@ -74,11 +81,11 @@ export class HttpService {
   private cacheNamespaces: Record<string, HttpCache> = {};
 
   /**
-   * Standard HTTP GET. Make a get request to a url and returns a standard DOM Response.
-   * Use options to define default caching behaviour, such as cache-first or network-only approaches
+   * Standard HTTP GET. Make a get request to a url and returns a
+   * standard DOM Response. Uses stale-while-revalidate caching by default.
    */
   public async get(url: string, options: IHttpRequestOptions = {}): Promise<Response> {
-    const adapterResponse = await this.executeStrategy(url, options);
+    const adapterResponse = await this.executeRequest(url, options);
 
     if (!this.isSuccessStatus(adapterResponse.status)) {
       return new Response(null, {
@@ -88,64 +95,154 @@ export class HttpService {
     }
 
     const data = await adapterResponse.getRawData();
-    return new Response(data, { status: adapterResponse.status, headers: adapterResponse.headers });
+    return new Response(data, {
+      status: adapterResponse.status,
+      headers: adapterResponse.headers,
+    });
   }
 
   /**
    * Optimized fetch for UI Media rendering.
-   * Ensures the data is cached and returns a safe URL (e.g. localhost native bridge URL)
-   * bypassing heavy javascript Blob parsing overhead.
+   * Ensures the data is cached and returns a safe URL
+   * (e.g. localhost native bridge URL) bypassing heavy javascript
+   * Blob parsing overhead.
    */
   public async getMediaSrc(url: string, options: IHttpRequestOptions = {}): Promise<ICachedMedia> {
-    const adapterResponse = await this.executeStrategy(url, options);
+    const adapterResponse = await this.executeRequest(url, options);
     if (!this.isSuccessStatus(adapterResponse.status)) {
       throw new Error(`Failed to fetch media: HTTP ${adapterResponse.status}`);
     }
     return adapterResponse.getUri();
   }
 
-  private async executeStrategy(
+  /** Invalidate a single cached URL */
+  public async invalidate(url: string, cacheName = "cache"): Promise<void> {
+    const cache = await this.getCache(cacheName);
+    const key = generateRequestKey({ url, method: "get" });
+    await cache.delete(key);
+  }
+
+  /** Clear an entire cache namespace */
+  public async clearNamespace(cacheName: string): Promise<void> {
+    const cache = await this.getCache(cacheName);
+    await cache.clear();
+    delete this.cacheNamespaces[cacheName];
+  }
+
+  /**
+   * Unified stale-while-revalidate request flow:
+   *
+   * 1. If cached and fresh → return immediately
+   * 2. If cached but stale → return stale, revalidate in background
+   * 3. No cache →  fetch from network, cache and return
+   */
+  private async executeRequest(
     url: string,
     options: IHttpRequestOptions
   ): Promise<IHttpAdapterResponse> {
-    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const { strategy, cacheExpiry, cacheName } = mergedOptions;
-
-    // apply cache headers
-    mergedOptions.headers = {
-      ...options.headers,
-      "x-cache-expiry": `${shorthandToTime(cacheExpiry)}`,
-      "x-cache-name": cacheName || "cache",
+    const mergedOptions: IHttpRequestOptions = {
+      ...DEFAULT_OPTIONS,
+      ...options,
+      method: "get",
     };
 
-    switch (strategy) {
-      case "cache-only":
-        return this.handleCacheRequest(url, mergedOptions);
+    // Apply cache-related headers for adapters
+    mergedOptions.headers = {
+      ...mergedOptions.headers,
+      "x-cache-expiry": `${shorthandToTime(mergedOptions.cacheExpiry)}`,
+      "x-cache-name": mergedOptions.cacheName || "cache",
+    };
 
-      case "cache-first": {
-        const cacheRes = await this.handleCacheRequest(url, mergedOptions);
-        if (this.isSuccessStatus(cacheRes.status)) return cacheRes;
-        return this.handleNetworkRequest(url, mergedOptions);
-      }
+    // Bypass cache entirely if requested
+    if (mergedOptions.bypassCache) {
+      return this.handleNetworkRequest(url, mergedOptions);
+    }
 
-      case "network-first": {
-        try {
-          const networkRes = await this.handleNetworkRequest(url, mergedOptions);
-          if (this.isSuccessStatus(networkRes.status)) return networkRes;
-        } catch (error) {
-          // Network error — fall through to cache
-        }
-        return this.handleCacheRequest(url, mergedOptions);
-      }
+    const cacheName = mergedOptions.cacheName || "cache";
+    const cache = await this.getCache(cacheName);
+    const key = generateRequestKey({ url, method: "get" });
+    const entry = await cache.getEntry(key);
 
-      default:
-        // Default to cache-first logic if strategy is missing or unknown
-        return this.executeStrategy(url, { ...mergedOptions, strategy: "cache-first" });
+    const hasValidCache = !!entry;
+    const isStale = hasValidCache && entry.expiry && entry.expiry < Date.now();
+
+    // 1. Cached and fresh — return immediately
+    if (hasValidCache && !isStale) {
+      return this.buildCacheResponse(cache, key, entry);
+    }
+
+    // 2. Cached but stale — return stale, revalidate in background
+    if (hasValidCache && isStale) {
+      this.revalidateInBackground(url, mergedOptions);
+      return this.buildCacheResponse(cache, key, entry);
+    }
+
+    // 3. No cache — network is the only option
+    try {
+      return await this.handleNetworkRequest(url, mergedOptions);
+    } catch {
+      return this.buildEmptyResponse(504);
     }
   }
 
+  /** Fire-and-forget background revalidation */
+  private revalidateInBackground(url: string, options: IHttpRequestOptions): void {
+    const adapter = this.getAdapterForUrl(url);
+    const cacheName = options.cacheName || "cache";
+
+    this.getCache(cacheName)
+      .then((cache) => adapter.request(url, options, cache))
+      .catch(() => {
+        // Silent fail — stale cache remains usable
+      });
+  }
+
+  /** Build an IHttpAdapterResponse from a cache hit */
+  private buildCacheResponse(
+    cache: HttpCache,
+    key: string,
+    entry: { headers?: Record<string, string> }
+  ): IHttpAdapterResponse {
+    const headers = {
+      "x-res-source": "cache",
+      ...(entry.headers || {}),
+    };
+
+    return {
+      status: 200,
+      headers,
+      getUri: async () => {
+        const src = await cache.getUrl(key);
+        if (src?.startsWith("blob:")) {
+          return { src, revoke: () => URL.revokeObjectURL(src) };
+        }
+        return { src: src || "", revoke: () => {} };
+      },
+      getRawData: async () => {
+        if (Capacitor.isNativePlatform()) {
+          const src = await cache.getUrl(key);
+          if (src) {
+            return fetch(src).then((r) => r.arrayBuffer());
+          }
+        }
+        const blob = await cache.get(key);
+        return blob ? blob.arrayBuffer() : new ArrayBuffer(0);
+      },
+    };
+  }
+
+  /** Build an empty error response */
+  private buildEmptyResponse(status: number): IHttpAdapterResponse {
+    return {
+      status,
+      headers: {},
+      getUri: async () => ({ src: "", revoke: () => {} }),
+      getRawData: async () => new ArrayBuffer(0),
+    };
+  }
+
   /** Check if the response received corresponds to a cacheable success code */
-  private isSuccessStatus(code: number) {
+  private isSuccessStatus(code: number): boolean {
     return code >= 200 && code < 300;
   }
 
@@ -164,9 +261,7 @@ export class HttpService {
       }
       return this.workerAdapter;
     }
-    // TODO - could consider HEAD request if url is an api endpoint
-    // or just allow param passing to manually specify
-    // For now just default to web adapter
+
     return this.webAdapter;
   }
 
@@ -181,56 +276,7 @@ export class HttpService {
     return adapter.request(url, options, cache);
   }
 
-  private async handleCacheRequest(
-    url: string,
-    options: IHttpRequestOptions
-  ): Promise<IHttpAdapterResponse> {
-    const { cacheName } = options;
-    const cache = await this.getCache(cacheName || "cache");
-    const key = generateRequestKey({ url, method: options.method });
-
-    const [hasCache, entry] = await Promise.all([cache.has(key), cache.getEntry(key)]);
-    const headers = { "x-res-source": "cache", ...(entry?.headers || {}) };
-
-    if (hasCache && entry) {
-      if (entry.expiry && entry.expiry < Date.now()) {
-        await cache.delete(key);
-        return {
-          status: 404,
-          headers,
-          getUri: async () => ({ src: "", revoke: () => {} }),
-          getRawData: async () => new ArrayBuffer(0),
-        };
-      }
-      return {
-        status: 200,
-        headers,
-        getUri: async () => {
-          const src = await cache.getUrl(key);
-          if (src && src.startsWith("blob:"))
-            return { src, revoke: () => URL.revokeObjectURL(src as string) };
-          return { src: src || "", revoke: () => {} };
-        },
-        getRawData: async () => {
-          if (Capacitor.isNativePlatform()) {
-            const src = await cache.getUrl(key);
-            if (src) return fetch(src).then((r) => r.arrayBuffer());
-          }
-          const blob = await cache.get(key);
-          return blob ? blob.arrayBuffer() : new ArrayBuffer(0);
-        },
-      };
-    }
-
-    return {
-      status: 404,
-      headers,
-      getUri: async () => ({ src: "", revoke: () => {} }),
-      getRawData: async () => new ArrayBuffer(0),
-    };
-  }
-
-  private async getCache(name: string) {
+  private async getCache(name: string): Promise<HttpCache> {
     if (!this.cacheNamespaces[name]) {
       const createdCache = await this.createCache(name);
       await createdCache.ready();
@@ -239,8 +285,8 @@ export class HttpService {
     return this.cacheNamespaces[name];
   }
 
-  // separate cache creation method for easy test stub
-  private async createCache(name: string) {
+  // Separate cache creation method for easy test stub
+  private async createCache(name: string): Promise<HttpCache> {
     return new HttpCache(name);
   }
 }
