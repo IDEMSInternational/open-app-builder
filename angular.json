@@ -41,7 +41,8 @@
               { "input": "src/theme/variables.scss", "inject": true }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": ["*"]
+            "allowedCommonJsDependencies": ["*"],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "development": {
@@ -122,7 +123,8 @@
               { "input": "src/theme/variables.scss", "inject": false },
               { "input": "src/global.scss", "inject": false }
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           }
         },
         "lint": {
