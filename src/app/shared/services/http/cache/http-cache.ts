@@ -2,6 +2,7 @@ import { IHttpCacheAdapter } from "./adapters/types";
 import { Capacitor } from "@capacitor/core";
 import { HttpCacheAdapterFile } from "./adapters/file.adapter";
 import { HTTPCacheAdapterOPFS } from "./adapters/opfs.adapter";
+import { HttpCacheAdapterMemory } from "./adapters/memory.adapter";
 
 export interface ICacheManifestEntry {
   /** Response content type */
@@ -50,8 +51,7 @@ export class HttpCache {
     // Fallback to in-memory storage
     // Note - navigator.storage is widely supported, so unlikely to reach this section of code
     // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/storage#browser_compatibility
-    // Could consider extending if required to include full list of methods
-    return new Map() as any as IHttpCacheAdapter;
+    return new HttpCacheAdapterMemory();
   }
 
   public async ready() {
