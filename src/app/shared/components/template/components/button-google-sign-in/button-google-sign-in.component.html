@@ -5,7 +5,7 @@
   (click)="handleClick()"
   [attr.data-variant]="params().variant"
   [attr.data-style]="params().style"
-  [disabled]="params().disabled"
+  [disabled]="disabled()"
 >
   <div class="gsi-material-button-state"></div>
   <div class="gsi-material-button-content-wrapper">

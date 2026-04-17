@@ -3,12 +3,12 @@
     class="open-combobox"
     (click)="openModal()"
     [ngClass]="{
-      disabled: disabled(),
+      disabled: isDisabled(),
       'placeholder-style': (!value() && params().placeholder) || params().prioritisePlaceholder,
       'with-value': !!value(),
       'no-value': !value(),
     }"
-    [disabled]="disabled()"
+    [disabled]="isDisabled()"
   >
     {{ displayText() | translate }}
   </button>
@@ -19,7 +19,7 @@
     [prioritisePlaceholder]="params().prioritisePlaceholder"
     [value]="value()"
     [placeholder]="params().placeholder"
-    [disabled]="disabled()"
+    [disabled]="isDisabled()"
     [answerOptions]="answerOptions()"
     [optionsKey]="params().optionsKey"
     [optionsValue]="params().optionsValue"

@@ -29,9 +29,9 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   }
 
   public toggleOpen() {
-    if (!this._row.disabled) {
+    if (!this.disabled()) {
       this.toggleState.emit(this.id);
-    } else if (this._row.disabled && this.launch_when_locked) {
+    } else if (this.disabled() && this.launch_when_locked) {
       this.triggerActions("click");
     }
   }

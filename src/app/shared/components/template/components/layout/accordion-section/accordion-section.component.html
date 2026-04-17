@@ -1,26 +1,26 @@
 <div class="accordion-wrapper">
   <div
     [ngClass]="{
-      completed: completed && !_row.disabled,
-      disabled: _row.disabled,
-      inProgress: !completed && !_row.disabled && percentComplete > 0,
-      notStarted: !completed && !_row.disabled && percentComplete === 0,
+      completed: completed && !disabled(),
+      disabled: disabled(),
+      inProgress: !completed && !disabled() && percentComplete > 0,
+      notStarted: !completed && !disabled() && percentComplete === 0,
     }"
     class="accordion-status"
   >
-    @if (completed && !_row.disabled) {
+    @if (completed && !disabled()) {
       <ion-icon
         name="checkmark-outline"
         [src]="completedIcon ? (completedIcon | plhAsset) : ''"
       ></ion-icon>
     }
-    @if (_row.disabled) {
+    @if (disabled()) {
       <ion-icon
         name="lock-closed-outline"
         [src]="disabledIcon ? (disabledIcon | plhAsset) : ''"
       ></ion-icon>
     }
-    @if (!completed && !_row.disabled) {
+    @if (!completed && !disabled()) {
       <ion-icon
         name="timer-outline"
         [src]="inProgressIcon ? (inProgressIcon | plhAsset) : ''"
@@ -31,9 +31,9 @@
     class="accordion-section"
     [ngClass]="{
       openSection: _row.parameter_list?.state === 'open',
-      disabled: _row.disabled,
+      disabled: disabled(),
       completed: completed,
-      inProgress: !completed && !_row.disabled,
+      inProgress: !completed && !disabled(),
     }"
   >
     <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>

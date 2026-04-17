@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "data-models";
 import { TemplateBaseComponent } from "../base";
-import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow } from "../../../../utils";
 
 interface IRoundButtonParams {
   /** TEMPLATE_PARAMETER: 'icon_src' */
@@ -71,10 +71,7 @@ export class RoundIconButtonComponent
       .split(",")
       .join(" ")
       .concat(" ") as IRoundButtonParams["variant"];
-    this.params.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
-    if (this._row.disabled) {
-      this.params.disabled = true;
-    }
+
     this.params.text = getStringParamFromTemplateRow(this._row, "text", "");
     this.params.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
     this.params.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");

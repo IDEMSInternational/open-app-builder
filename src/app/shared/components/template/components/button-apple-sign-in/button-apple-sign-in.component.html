@@ -2,7 +2,7 @@
   id="sign-in-apple"
   class="apple-signin-btn"
   (click)="handleClick()"
-  [disabled]="params().disabled"
+  [disabled]="disabled()"
   [attr.data-variant]="params().variant"
   [attr.data-style]="params().style"
 >

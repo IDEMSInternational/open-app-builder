@@ -8,7 +8,6 @@ import { TemplateBaseComponent } from "../base";
 import { FlowTypes } from "packages/data-models";
 
 interface ITextBoxParams {
-  disabled: boolean;
   isNumberInput: boolean;
   maxLength: number;
   placeholder: string;
@@ -32,7 +31,6 @@ export class TmplTextBoxComponent extends TemplateBaseComponent {
 
   getParams(authorParams?: FlowTypes.TemplateRow["parameter_list"]): ITextBoxParams {
     return {
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
       isNumberInput: getBooleanParamFromTemplateRow(this._row, "number_input", false),
       maxLength: getNumberParamFromTemplateRow(this._row, "max_length", -1),
       placeholder: getStringParamFromTemplateRow(this._row, "placeholder", ""),
