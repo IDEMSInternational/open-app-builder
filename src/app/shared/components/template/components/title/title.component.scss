@@ -3,10 +3,18 @@
 .title-wrapper {
   display: flex;
   align-items: center;
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
+  }
+  h1 {
     line-height: var(--line-height-text-largest);
     font-weight: var(--font-weight-bold);
+    color: var(--title-text-color, var(--ion-color-primary));
     @media (max-width: 375px) {
       font-size: var(--font-size-title-tiny);
     }
