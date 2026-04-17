@@ -4,7 +4,7 @@ import { FileTransfer } from "@capacitor/file-transfer";
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache, ICacheManifestEntry, hashUrl } from "../../cache/http-cache";
-import { generateRequestKey } from "../../http.utils";
+import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
 
 export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
   async request(
@@ -16,6 +16,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
     const storageKey = await hashUrl(key);
     const cacheName = options.cacheName || "cache";
     const folder = `http-cache-${cacheName}`;
+    const requestHeaders = stripCacheHeaders(options.headers);
 
     let absolutePath = "";
 
@@ -31,15 +32,19 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
 
     try {
       // Perform direct-to-disk download using FileTransfer
+      // Note: FileTransfer plugin does not expose response headers, so we cannot
+      // retrieve the actual Content-Type from the server. Using "application/octet-stream"
+      // as a generic binary fallback. If you need accurate content-type, consider using
+      // the Capacitor Http plugin instead (which does support headers).
       await FileTransfer.downloadFile({
         url,
         path: absolutePath,
         method: options.method || "GET",
-        headers: options.headers as any,
+        headers: requestHeaders as any,
       });
 
       if (cache) {
-        const headers = { "content-type": "application/octet-stream" }; // Fallback
+        const headers = { "content-type": "application/octet-stream" }; // Fallback - plugin doesn't expose response headers
         const expiryStr = options.headers?.["x-cache-expiry"] as string | undefined;
         const expiry = expiryStr ? Number(expiryStr) : undefined;
 

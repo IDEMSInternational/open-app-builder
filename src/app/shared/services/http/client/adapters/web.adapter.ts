@@ -2,7 +2,7 @@ import ky from "ky";
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache } from "../../cache/http-cache";
-import { generateRequestKey } from "../../http.utils";
+import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
 
 export class WebHttpClientAdapter implements IHttpClientAdapter {
   private client = ky.create();
@@ -12,7 +12,8 @@ export class WebHttpClientAdapter implements IHttpClientAdapter {
     options: IHttpRequestOptions,
     cache?: HttpCache
   ): Promise<IHttpAdapterResponse> {
-    const response = await this.client.get(url, options as any);
+    const requestHeaders = stripCacheHeaders(options.headers);
+    const response = await this.client.get(url, { ...options, headers: requestHeaders } as any);
 
     if (cache && response.status >= 200 && response.status < 300) {
       const key = generateRequestKey({ url, method: options.method || "get" });

@@ -1,7 +1,7 @@
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache } from "../../cache/http-cache";
-import { generateRequestKey } from "../../http.utils";
+import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
 
 export class WorkerHttpClientAdapter implements IHttpClientAdapter {
   private worker: Worker;
@@ -66,12 +66,13 @@ export class WorkerHttpClientAdapter implements IHttpClientAdapter {
 
       // We instruct the worker to perform the network fetch and save it
       // directly to the named cache via OPFS.
+      const requestHeaders = stripCacheHeaders(options.headers);
       this.worker.postMessage({
         id: messageId,
         url,
         options: {
           method: options.method || "get",
-          headers: options.headers,
+          headers: requestHeaders,
           cacheName: options.cacheName || "cache",
         },
       });

@@ -2,13 +2,14 @@
 
 import { hashUrl, ICacheManifestEntry } from "../../cache/http-cache";
 import { HTTPCacheAdapterOPFS } from "../../cache/adapters/opfs.adapter";
-import { generateRequestKey } from "../../http.utils";
+import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
 
 addEventListener("message", async (event: MessageEvent) => {
   const { id, url, options } = event.data;
 
   try {
-    const response = await fetch(url, options);
+    const requestHeaders = stripCacheHeaders(options.headers);
+    const response = await fetch(url, { ...options, headers: requestHeaders });
 
     if (response.status >= 200 && response.status < 300) {
       const cacheName = options.cacheName || "cache";

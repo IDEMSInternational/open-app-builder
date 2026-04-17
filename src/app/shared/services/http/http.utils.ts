@@ -99,3 +99,15 @@ export const shorthandToTime = (shorthand?: string | number, fromDate?: Date): n
 
   return fromDate.getTime() + milliseconds;
 };
+
+const CACHE_HEADER_PREFIX = "x-cache-";
+
+export const stripCacheHeaders = (headers: Record<string, string> = {}): Record<string, string> => {
+  const filtered: Record<string, string> = {};
+  for (const [key, value] of Object.entries(headers)) {
+    if (!key.toLowerCase().startsWith(CACHE_HEADER_PREFIX)) {
+      filtered[key] = value;
+    }
+  }
+  return filtered;
+};
