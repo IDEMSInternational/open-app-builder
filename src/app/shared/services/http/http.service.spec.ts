@@ -108,6 +108,23 @@ describe("HttpService", () => {
         /Failed to fetch media/
       );
     });
+
+    it("should pass isMedia: true to adapter regardless of URL extension", async () => {
+      await service.getMediaSrc("https://api.example.com/content/123");
+      expect(mockAdapter.lastOptions?.isMedia).toBe(true);
+    });
+  });
+
+  describe("isMedia option", () => {
+    it("should use media adapter when isMedia is explicitly set to true", async () => {
+      await service.get("https://api.example.com/data", { isMedia: true });
+      expect(mockAdapter.lastOptions?.isMedia).toBe(true);
+    });
+
+    it("should fall back to URL detection when isMedia is not set", async () => {
+      await service.get("https://example.com/image.jpg");
+      expect(mockAdapter.lastOptions?.isMedia).toBeUndefined();
+    });
   });
 
   describe("caching - stale-while-revalidate", () => {

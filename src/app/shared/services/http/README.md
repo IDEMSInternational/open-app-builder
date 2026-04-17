@@ -84,7 +84,7 @@ const data = await response.json();
 
 ### 2. Media SRC Requests (Images, Audio, Video)
 
-Always use `.getMediaSrc()` when binding files to the UI.
+Always use `.getMediaSrc()` when binding files to the UI. It automatically uses the more performant worker/capacitor adapters to avoid JavaScript thread blocking.
 
 ```typescript
 const media = await this.httpService.getMediaSrc(
@@ -99,6 +99,18 @@ this.videoUrl = media.src;
 
 // Clean up memory if destroying component on Web (no-op on native)
 media.revoke();
+```
+
+### 2b. Media from API Endpoints
+
+`getMediaSrc()` works with any URL format, including API endpoints without file extensions:
+
+```typescript
+const media = await this.httpService.getMediaSrc(
+  "https://api.example.com/content/123",
+  { cacheName: "downloads" }
+);
+this.imageUrl = media.src;
 ```
 
 ### 3. Bypassing Cache

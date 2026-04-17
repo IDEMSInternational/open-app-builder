@@ -36,6 +36,13 @@ export interface IHttpRequestOptions extends Options {
    * Useful for auth endpoints or other non-cacheable requests.
    */
   bypassCache?: boolean;
+
+  /**
+   * Treat request as media (image/video/audio/pdf), using the more performant
+   * worker/capacitor adapters to avoid JavaScript thread blocking.
+   * Automatically set when requesting via getMediaSrc().
+   */
+  isMedia?: boolean;
 }
 
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
@@ -108,7 +115,7 @@ export class HttpService {
    * Blob parsing overhead.
    */
   public async getMediaSrc(url: string, options: IHttpRequestOptions = {}): Promise<ICachedMedia> {
-    const adapterResponse = await this.executeRequest(url, options);
+    const adapterResponse = await this.executeRequest(url, { ...options, isMedia: true });
     if (!this.isSuccessStatus(adapterResponse.status)) {
       throw new Error(`Failed to fetch media: HTTP ${adapterResponse.status}`);
     }
@@ -187,7 +194,7 @@ export class HttpService {
 
   /** Fire-and-forget background revalidation */
   private revalidateInBackground(url: string, options: IHttpRequestOptions): void {
-    const adapter = this.getAdapterForUrl(url);
+    const adapter = this.getAdapterForUrl(url, options);
     const cacheName = options.cacheName || "cache";
 
     this.getCache(cacheName)
@@ -246,14 +253,8 @@ export class HttpService {
     return code >= 200 && code < 300;
   }
 
-  private getAdapterForUrl(url: string): IHttpClientAdapter {
-    const mime = getMimeType(url);
-    const isMedia =
-      mime &&
-      (mime.startsWith("image/") ||
-        mime.startsWith("video/") ||
-        mime.startsWith("audio/") ||
-        mime === "application/pdf");
+  private getAdapterForUrl(url: string, options: IHttpRequestOptions): IHttpClientAdapter {
+    const isMedia = options.isMedia || this.isMediaFromUrl(url);
 
     if (isMedia) {
       if (Capacitor.isNativePlatform()) {
@@ -265,11 +266,24 @@ export class HttpService {
     return this.webAdapter;
   }
 
+  private isMediaFromUrl(url: string): boolean {
+    const mime = getMimeType(url);
+    // Likely api endpoint, could use HEAD request but for now
+    // simply assume user will have requested mediaSrc explicitly
+    if (!mime) return false;
+    return (
+      mime.startsWith("image/") ||
+      mime.startsWith("video/") ||
+      mime.startsWith("audio/") ||
+      mime === "application/pdf"
+    );
+  }
+
   private async handleNetworkRequest(
     url: string,
     options: IHttpRequestOptions
   ): Promise<IHttpAdapterResponse> {
-    const adapter = this.getAdapterForUrl(url);
+    const adapter = this.getAdapterForUrl(url, options);
     const cacheName = options.cacheName || "cache";
     const cache = await this.getCache(cacheName);
 
