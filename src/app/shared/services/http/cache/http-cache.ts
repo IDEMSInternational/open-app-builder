@@ -144,13 +144,3 @@ export async function hashUrl(url: string): Promise<string> {
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 }
-
-/**
- * TODO
- * - Max cache size for L2 storage (auto-delete oldest/largest)
- * - Checksums and revalidation (ETag/Last-Modified support)
- * - Debug page to test strategies, urls etc.
- *
- * Review how cacheable-request encodes....
- * https://github.dev/jaredwray/cacheable/tree/main/packages/cacheable-request
- */
