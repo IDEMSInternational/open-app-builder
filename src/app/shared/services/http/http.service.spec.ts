@@ -113,7 +113,7 @@ describe("HttpService", () => {
     expect(getReqSpy).toHaveBeenCalledTimes(1);
 
     // Wait for async cache update (setTimeout in service)
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await service.flushCacheUpdates();
 
     // Second call: cache hit, bypass network
     getReqSpy.calls.reset();
@@ -133,7 +133,7 @@ describe("HttpService", () => {
     expect(res.headers.get("x-res-source")).not.toBe("cache");
 
     // Wait for async cache update (setTimeout in service)
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await service.flushCacheUpdates();
 
     // 2. Failed network request (e.g. 500) -> returns from cache
     getReqSpy.and.callFake(async () => new Response("cached", { status: 500 }));
@@ -158,7 +158,7 @@ describe("HttpService", () => {
     await service.get(url, { cacheExpiry: "1ms" });
 
     // Wait for cache update
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await service.flushCacheUpdates();
 
     // Wait for expiry
     await new Promise((resolve) => setTimeout(resolve, 10));
@@ -204,5 +204,19 @@ describe("HttpService", () => {
 
     // 1 initial + 1 retry = 2 calls
     expect(getReqSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("defers cache writes", async () => {
+    const cache = await service["getCache"]("cache");
+    const cacheSetSpy = spyOn(cache, "set").and.callThrough();
+
+    await service.get("https://example.com/flush");
+
+    // Fetch complete, write is scheduled but not yet run
+    expect(cacheSetSpy).not.toHaveBeenCalled();
+
+    await service.flushCacheUpdates();
+
+    expect(cacheSetSpy).toHaveBeenCalledTimes(1);
   });
 });

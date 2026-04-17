@@ -48,6 +48,8 @@ export class HttpService {
   /** Map of cache instances by namespace */
   private cacheNamespaces: Record<string, HttpCache> = {};
 
+  private pendingCacheUpdates = new Set<Promise<void>>();
+
   /**
    * Standard HTTP GET. Make a get request to a url and returns a standard DOM Response.
    * Use options to define default caching behaviour, such as cache-first or network-only approaches
@@ -189,17 +191,30 @@ export class HttpService {
       hooks: {
         beforeRequest: [],
         afterResponse: [
-          async ({ request, response }) => {
-            // delay cache updates to avoid blocking UI
-            // but clone eagerly to ensure can be used if body consumed
-            const clonedResponse = response.clone();
-            setTimeout(() => {
-              this.updateCache(request, clonedResponse);
-            }, 50);
-          },
+          async ({ request, response }) => this.scheduleCacheUpdate(request, response.clone()),
         ],
       },
     });
+  }
+
+  private scheduleCacheUpdate(request: Request, response: Response): Promise<void> {
+    const task = new Promise<void>((resolve) => {
+      const run = () => this.updateCache(request, response).finally(resolve);
+      // Defer cache update until after paint ops
+      if (typeof (globalThis as any).requestIdleCallback === "function") {
+        (globalThis as any).requestIdleCallback(run, { timeout: 1000 });
+      } else {
+        setTimeout(run, 50);
+      }
+    });
+    this.pendingCacheUpdates.add(task);
+    task.finally(() => this.pendingCacheUpdates.delete(task));
+    return task;
+  }
+
+  /** Resolves when all in-flight cache writes complete. Useful for testing. */
+  public async flushCacheUpdates(): Promise<void> {
+    return Promise.all(this.pendingCacheUpdates).then(() => undefined);
   }
 }
 
