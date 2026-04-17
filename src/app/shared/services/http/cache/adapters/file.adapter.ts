@@ -99,10 +99,14 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
   }
 
   public async clear() {
-    await this.ensureFolder();
-    const files = await this.list();
-    for (const file of files) {
-      await this.delete(file);
+    try {
+      await this.fs.rmdir({
+        path: this.folder,
+        directory: Directory.Cache,
+        recursive: true,
+      });
+    } catch (e) {
+      // It's safe to ignore errors if the directory doesn't exist.
     }
   }
 
