@@ -22,6 +22,12 @@ export interface IHttpRequestOptions extends Options {
   cacheExpiry?: string;
 
   /**
+   * Ensure headers are passed as key-value pairs and not HEADER object for
+   * easier serialisation across workers
+   */
+  headers?: Record<string, string>;
+
+  /**
    * Specify strategy.
    * Default uses browser own defaults, typically relying on response headers
    **/
@@ -30,6 +36,7 @@ export interface IHttpRequestOptions extends Options {
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
   cacheExpiry: "30d",
+  headers: {},
   strategy: "cache-first",
   retry: 2,
 };
@@ -100,10 +107,12 @@ export class HttpService {
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
     const { strategy, cacheExpiry, cacheName } = mergedOptions;
 
-    const headers = new Headers(options.headers);
-    headers.set("x-cache-expiry", `${shorthandToTime(cacheExpiry)}`);
-    headers.set("x-cache-name", cacheName || "cache");
-    mergedOptions.headers = headers;
+    // apply cache headers
+    mergedOptions.headers = {
+      ...options.headers,
+      "x-cache-expiry": `${shorthandToTime(cacheExpiry)}`,
+      "x-cache-name": cacheName || "cache",
+    };
 
     return this.requestStrategyHandlers[strategy!](url, mergedOptions);
   }
