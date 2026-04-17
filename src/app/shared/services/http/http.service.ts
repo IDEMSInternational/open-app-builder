@@ -5,6 +5,7 @@ import ky from "ky";
 import type { Options } from "ky";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { HttpCache } from "./cache/http-cache";
+import { deferTask } from "packages/shared/src";
 
 export interface IHttpRequestOptions extends Options {
   /**
@@ -191,25 +192,28 @@ export class HttpService {
       hooks: {
         beforeRequest: [],
         afterResponse: [
-          async ({ request, response }) => this.scheduleCacheUpdate(request, response.clone()),
+          // do not await to allow ky to immediately return response to client
+          // while cache write scheduled in background
+          ({ request, response }) => this.scheduleCacheUpdate(request, response.clone()),
         ],
       },
     });
   }
 
-  private scheduleCacheUpdate(request: Request, response: Response): Promise<void> {
-    const task = new Promise<void>((resolve) => {
-      const run = () => this.updateCache(request, response).finally(resolve);
-      // Defer cache update until after paint ops
-      if (typeof (globalThis as any).requestIdleCallback === "function") {
-        (globalThis as any).requestIdleCallback(run, { timeout: 1000 });
-      } else {
-        setTimeout(run, 50);
-      }
+  /** Schedule cache update tasks to occur as low priority after UI paint */
+  private scheduleCacheUpdate(request: Request, response: Response) {
+    const task = () => this.updateCache(request, response);
+
+    // deferTask returns the Promise that actually tracks completion
+    const deferredTask = deferTask(task);
+
+    // Track the Promise, not the function
+    this.pendingCacheUpdates.add(deferredTask);
+
+    // Clean up the Set once the background task finishes (or fails)
+    deferredTask.finally(() => {
+      this.pendingCacheUpdates.delete(deferredTask);
     });
-    this.pendingCacheUpdates.add(task);
-    task.finally(() => this.pendingCacheUpdates.delete(task));
-    return task;
   }
 
   /** Resolves when all in-flight cache writes complete. Useful for testing. */
