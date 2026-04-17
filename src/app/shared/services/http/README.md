@@ -7,7 +7,7 @@ At its core, it applies the **Strategy** and **Adapter** patterns to execute net
 ## Features
 - **Cross Platform Transports**: Automatically selects the best underlying HTTP client (Browser Fetch, Web Workers, or Native Capacitor transfers).
 - **Smart Mimetype Routing**: Media requests (Audio, Video, PDF) are intelligently offloaded to OPFS workers or Native file transfer plugins to protect the Javascript UI thread.
-- **Offline Strategies**: Supports `cache-first`, `network-only`, `network-first`, and `cache-only` fetch mechanisms.
+- **Offline Strategies**: Supports `cache-first`, `network-first`, and `cache-only` fetch mechanisms.
 - **Base64 Bypass**: Massively optimizes Capacitor bridge memory by downloading media directly to the Native filesystem, returning secure `localhost` native mapped URLs (`convertFileSrc`) instead of sluggish Base64 payloads.
 
 ---
@@ -82,3 +82,12 @@ this.videoUrl = media.src;
 // Clean up memory if destroying component on Web (no-op on native)
 media.revoke();
 ```
+
+## When NOT to use HttpService
+
+The `HttpService` is optimized for **Offline-First** scenarios and **Large Media** persistence. Because it uses the Native Filesystem or OPFS for "Efficient Retrieval", it always leaves a persistent file behind.
+
+For purely **transient, online-only resources** that do not require offline persistence (e.g., dynamic session icons, highly volatile tracking pixels, or preview-quality thumbnails):
+
+1. **Bypass HttpService**: Bind absolute HTTPS URLs directly to standard HTML tags (e.g., `<img src="https://...">`).
+2. **Leverage Browser Cache**: Standard WebViews and Browsers already have highly optimized ephemeral caching and garbage collection mechanisms for these types of resources, which is more efficient than persistent manual storage.

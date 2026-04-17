@@ -18,7 +18,11 @@ export interface IHttpRequestOptions extends Options {
    **/
   cacheName?: string;
 
-  /** Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 1m */
+  /**
+   * Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 30d
+   * NOTE - cache does not auto-purge but will seek to update after expiry
+   * has passed on next fetch
+   **/
   cacheExpiry?: string;
 
   /**
@@ -31,7 +35,7 @@ export interface IHttpRequestOptions extends Options {
    * Specify strategy.
    * Default uses browser own defaults, typically relying on response headers
    **/
-  strategy?: "cache-first" | "cache-only" | "network-first" | "network-only";
+  strategy?: "cache-first" | "cache-only" | "network-first";
 }
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
@@ -114,35 +118,31 @@ export class HttpService {
       "x-cache-name": cacheName || "cache",
     };
 
-    return this.requestStrategyHandlers[strategy!](url, mergedOptions);
-  }
+    switch (strategy) {
+      case "cache-only":
+        return this.handleCacheRequest(url, mergedOptions);
 
-  /** Specific handling of different request strategies */
-  private requestStrategyHandlers: Record<
-    NonNullable<IHttpRequestOptions["strategy"]>,
-    (url: string, options: IHttpRequestOptions) => Promise<IHttpAdapterResponse>
-  > = {
-    "cache-only": async (url, options) => this.handleCacheRequest(url, options),
-    "cache-first": async (url, options) => {
-      const cacheRes = await this.handleCacheRequest(url, options);
-      if (cacheRes.status === 200) {
-        return cacheRes;
+      case "cache-first": {
+        const cacheRes = await this.handleCacheRequest(url, mergedOptions);
+        if (this.isSuccessStatus(cacheRes.status)) return cacheRes;
+        return this.handleNetworkRequest(url, mergedOptions);
       }
-      return this.handleNetworkRequest(url, options);
-    },
-    "network-only": async (url, options) => this.handleNetworkRequest(url, options),
-    "network-first": async (url, options) => {
-      try {
-        const networkRes = await this.handleNetworkRequest(url, options);
-        if (this.isSuccessStatus(networkRes.status)) {
-          return networkRes;
+
+      case "network-first": {
+        try {
+          const networkRes = await this.handleNetworkRequest(url, mergedOptions);
+          if (this.isSuccessStatus(networkRes.status)) return networkRes;
+        } catch (error) {
+          // Network error — fall through to cache
         }
-      } catch (error) {
-        // Network error — fall through to cache
+        return this.handleCacheRequest(url, mergedOptions);
       }
-      return this.handleCacheRequest(url, options);
-    },
-  };
+
+      default:
+        // Default to cache-first logic if strategy is missing or unknown
+        return this.executeStrategy(url, { ...mergedOptions, strategy: "cache-first" });
+    }
+  }
 
   /** Check if the response received corresponds to a cacheable success code */
   private isSuccessStatus(code: number) {
