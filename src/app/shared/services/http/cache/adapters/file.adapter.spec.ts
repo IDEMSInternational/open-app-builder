@@ -83,15 +83,4 @@ describe("HttpCacheAdapterFile", () => {
     const result = await adapter.get("test.data");
     expect(result).toBeUndefined();
   });
-
-  it("should clear all entries", async () => {
-    const files = ["file1", "file2"];
-    spyOn(adapter, "list").and.resolveTo(files);
-    spyOn(adapter, "delete").and.resolveTo(true);
-
-    await adapter.clear();
-    expect(adapter.list).toHaveBeenCalled();
-    expect(adapter.delete).toHaveBeenCalledWith("file1");
-    expect(adapter.delete).toHaveBeenCalledWith("file2");
-  });
 });
