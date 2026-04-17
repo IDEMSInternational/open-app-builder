@@ -75,6 +75,9 @@ export class HttpService {
     // Ensure the item exists in the cache by invoking the standard GET flow.
     // We don't need the blob response here, we just need the invisible caching strategy to run.
     const res = await this.get(url, options);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch media: ${res.statusText}`);
+    }
 
     const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
     const cache = await this.getCache(mergedOptions.cacheName || "cache");
