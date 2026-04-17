@@ -136,6 +136,7 @@
       text-bubble-border-color-3: var(--color-accent-orange-70),
       text-bubble-background-color-4: var(--color-accent-blue-90),
       text-bubble-border-color-4: var(--color-accent-blue-70),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;
