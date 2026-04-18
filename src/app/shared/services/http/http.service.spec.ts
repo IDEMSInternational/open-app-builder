@@ -12,7 +12,7 @@ function createMockAdapterResponse(
     status: 200,
     headers: { "content-type": "text/plain" },
     getUri: async () => ({ src: "https://example.com/img.png", revoke: () => {} }),
-    getRawData: async () => new TextEncoder().encode("ok").buffer,
+    getRawData: async () => new Blob(),
     ...overrides,
   };
 }
@@ -178,15 +178,15 @@ describe("HttpService", () => {
   describe("default options", () => {
     it("should apply default cache headers", async () => {
       await service.get("https://example.com/data");
-      expect(mockAdapter.lastOptions?.headers?.["x-cache-name"]).toBe("cache");
-      expect(mockAdapter.lastOptions?.headers?.["x-cache-expiry"]).toBeDefined();
+      expect(mockAdapter.lastOptions?.cacheName).toBe("cache");
+      expect(mockAdapter.lastOptions?.cacheExpiry).toBeDefined();
     });
 
     it("should use custom cacheName", async () => {
       await service.get("https://example.com/data", {
         cacheName: "downloads",
       });
-      expect(mockAdapter.lastOptions?.headers?.["x-cache-name"]).toBe("downloads");
+      expect(mockAdapter.lastOptions?.cacheName).toBe("downloads");
     });
   });
 });

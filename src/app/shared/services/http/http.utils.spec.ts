@@ -1,4 +1,4 @@
-import { shorthandToMilliseconds, shorthandToTime, stripCacheHeaders } from "./http.utils";
+import { shorthandToMilliseconds, shorthandToTime } from "./http.utils";
 
 describe("HttpUtils", () => {
   describe("shorthandToMilliseconds", () => {
@@ -69,54 +69,6 @@ describe("HttpUtils", () => {
       // Allow 100ms tolerance for execution time
       expect(time).toBeGreaterThanOrEqual(now + 1000);
       expect(time).toBeLessThanOrEqual(now + 1100);
-    });
-  });
-
-  describe("stripCacheHeaders", () => {
-    it("should return empty object for empty input", () => {
-      expect(stripCacheHeaders({})).toEqual({});
-    });
-
-    it("should remove x-cache-expiry header", () => {
-      const headers = { "x-cache-expiry": "1234567890", "content-type": "application/json" };
-      const result = stripCacheHeaders(headers);
-      expect(result).toEqual({ "content-type": "application/json" });
-    });
-
-    it("should remove x-cache-name header", () => {
-      const headers = { "x-cache-name": "cache", authorization: "Bearer token" };
-      const result = stripCacheHeaders(headers);
-      expect(result).toEqual({ authorization: "Bearer token" });
-    });
-
-    it("should remove all x-cache- prefixed headers case-insensitively", () => {
-      const headers = {
-        "X-Cache-Expiry": "123",
-        "X-CACHE-NAME": "test",
-        accept: "application/json",
-      };
-      const result = stripCacheHeaders(headers);
-      expect(result).toEqual({ accept: "application/json" });
-    });
-
-    it("should preserve non-cache headers", () => {
-      const headers = {
-        "content-type": "image/png",
-        authorization: "Bearer abc123",
-        "x-custom-header": "value",
-      };
-      const result = stripCacheHeaders(headers);
-      expect(result).toEqual(headers);
-    });
-
-    it("should return empty object when all headers are cache headers", () => {
-      const headers = { "x-cache-expiry": "123", "x-cache-name": "cache" };
-      const result = stripCacheHeaders(headers);
-      expect(result).toEqual({});
-    });
-
-    it("should handle undefined input", () => {
-      expect(stripCacheHeaders(undefined)).toEqual({});
     });
   });
 });

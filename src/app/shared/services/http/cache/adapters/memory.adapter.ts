@@ -18,6 +18,7 @@ export class HttpCacheAdapterMemory implements IHttpCacheAdapter {
   public async getUrl(key: string) {
     const file = await this.get(key);
     if (!file) return undefined;
+
     const src = URL.createObjectURL(file);
     return { src, revoke: () => URL.revokeObjectURL(src) };
   }

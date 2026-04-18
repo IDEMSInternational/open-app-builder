@@ -1,20 +1,18 @@
 import { Capacitor } from "@capacitor/core";
-import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
+import { Filesystem, Directory } from "@capacitor/filesystem";
 import { FileTransfer } from "@capacitor/file-transfer";
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client.types";
 import { IHttpRequestOptions } from "../../http.service";
-import { HttpCache, ICacheManifestEntry } from "../../cache/http-cache";
-import { stripCacheHeaders } from "../../http.utils";
+import { HttpCache } from "../../cache/http-cache";
 
 export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
   async request(
     url: string,
     options: IHttpRequestOptions,
-    cache?: HttpCache
+    cache: HttpCache
   ): Promise<IHttpAdapterResponse> {
-    const { cacheName = "cache", cacheKey } = options;
+    const { cacheName = "cache", cacheKey, cacheExpiry, headers } = options;
     const folder = `http-cache-${cacheName}`;
-    const requestHeaders = stripCacheHeaders(options.headers);
 
     let absolutePath = "";
 
@@ -38,32 +36,23 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
         url,
         path: absolutePath,
         method: options.method || "GET",
-        headers: requestHeaders as any,
+        headers,
       });
 
-      if (cache) {
-        const headers = { "content-type": "application/octet-stream" }; // Fallback - plugin doesn't expose response headers
-        const expiryStr = options.headers?.["x-cache-expiry"] as string | undefined;
-        const expiry = expiryStr ? Number(expiryStr) : undefined;
+      // Populate cache meta entry
+      const expiry = cacheExpiry ? Number(cacheExpiry) : undefined;
 
-        const entry: ICacheManifestEntry = {
-          contentType: headers["content-type"],
-          created: Date.now(),
-          headers,
-          size: (await Filesystem.stat({ path: absolutePath })).size,
-          status: 200,
-          expiry,
-          url,
-        };
+      const { size } = await Filesystem.stat({ path: absolutePath });
 
-        const metaPath = `${folder}/${cacheKey}.meta.json`;
-        await Filesystem.writeFile({
-          path: metaPath,
-          directory: Directory.Cache,
-          data: JSON.stringify(entry),
-          encoding: Encoding.UTF8,
-        });
-      }
+      await cache.setMeta(cacheKey, {
+        contentType: "application/octet-stream",
+        headers,
+        size,
+        status: 200,
+        expiry,
+        url,
+      });
+      //
 
       return {
         status: 200,
@@ -74,7 +63,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
         getRawData: async () => {
           const src = Capacitor.convertFileSrc(absolutePath);
           const response = await fetch(src);
-          return response.arrayBuffer();
+          return response.blob();
         },
       };
     } catch (e: any) {

@@ -1,7 +1,6 @@
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client.types";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache } from "../../cache/http-cache";
-import { stripCacheHeaders } from "../../http.utils";
 
 export class WorkerHttpClientAdapter implements IHttpClientAdapter {
   private worker: Worker;
@@ -37,14 +36,8 @@ export class WorkerHttpClientAdapter implements IHttpClientAdapter {
             // We read directly from the cache to return URI / Raw Data.
             resolve({
               status: 200,
-              getUri: async () => {
-                return cache.adapter.getUrl(cacheKey);
-              },
-              getRawData: async () => {
-                const blob = await cache.adapter.get(cacheKey);
-                if (!blob) throw new Error("Worker failed to cache effectively.");
-                return blob.arrayBuffer();
-              },
+              getUri: async () => cache.adapter.getUrl(cacheKey),
+              getRawData: async () => cache.adapter.get(cacheKey),
             });
           }
         }
@@ -54,15 +47,10 @@ export class WorkerHttpClientAdapter implements IHttpClientAdapter {
 
       // We instruct the worker to perform the network fetch and save it
       // directly to the named cache via OPFS.
-      const requestHeaders = stripCacheHeaders(options.headers);
       this.worker.postMessage({
         id: messageId,
         url,
-        options: {
-          method: options.method || "get",
-          headers: requestHeaders,
-          cacheName: options.cacheName || "cache",
-        },
+        options,
       });
     });
   }

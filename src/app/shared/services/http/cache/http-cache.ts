@@ -64,15 +64,17 @@ export class HttpCache {
   }
 
   public async getEntry(key: string): Promise<ICacheManifestEntry | undefined> {
-    const metaBlob = await this.adapter.get(`${key}.meta.json`);
-    if (!metaBlob) return undefined;
+    const blob = await this.adapter.get(`${key}.meta.json`);
+    if (!blob) return undefined;
 
+    // 2. Parse the resulting string
     try {
-      const text = await metaBlob.text();
-      return JSON.parse(text);
-    } catch (e) {
-      console.error("Failed to parse metadata", e);
-      return undefined;
+      const text = await blob.text();
+      const data = JSON.parse(text);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("Invalid JSON format:", error);
     }
   }
 

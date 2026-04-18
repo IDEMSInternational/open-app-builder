@@ -1,21 +1,17 @@
 /// <reference lib="webworker" />
 
-import { hashUrl, ICacheManifestEntry } from "../../cache/http-cache";
+import { ICacheManifestEntry } from "../../cache/http-cache";
 import { HTTPCacheAdapterOPFS } from "../../cache/adapters/opfs.adapter";
-import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
+import { IHttpRequestOptions } from "../../http.service";
 
 addEventListener("message", async (event: MessageEvent) => {
   const { id, url, options } = event.data;
+  const { cacheExpiry, cacheKey, cacheName, headers } = options as IHttpRequestOptions;
 
   try {
-    const requestHeaders = stripCacheHeaders(options.headers);
-    const response = await fetch(url, { ...options, headers: requestHeaders });
+    const response = await fetch(url, { ...options, headers });
 
     if (response.status >= 200 && response.status < 300) {
-      const cacheName = options.cacheName || "cache";
-      const key = generateRequestKey({ url, method: options.method || "get" });
-      const storageKey = await hashUrl(key);
-
       // Initialize OPFS
       const opfsRoot = await navigator.storage.getDirectory();
       const directoryHandle = await opfsRoot.getDirectoryHandle(`http-cache-${cacheName}`, {
@@ -27,16 +23,9 @@ addEventListener("message", async (event: MessageEvent) => {
       // Note: While streaming using ReadableStream is preferable for RAM,
       // some platforms (iOS) struggle with WritableStreams, so we rely on the existing Blob integration
       const blob = await response.blob();
-      await cache.set(storageKey, blob);
+      await cache.set(cacheKey, blob);
 
-      // Write Meta sidecar
-      const headers: Record<string, string> = {};
-      response.headers.forEach((value, name) => {
-        headers[name] = value;
-      });
-
-      const expiryStr = options.headers?.["x-cache-expiry"];
-      const expiry = expiryStr ? Number(expiryStr) : undefined;
+      const expiry = cacheExpiry ? Number(cacheExpiry) : undefined;
 
       const entry: ICacheManifestEntry = {
         contentType: headers["content-type"] || "application/octet-stream",
@@ -49,7 +38,7 @@ addEventListener("message", async (event: MessageEvent) => {
       };
 
       const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });
-      await cache.set(`${storageKey}.meta.json`, metaBlob);
+      await cache.set(`${cacheKey}.meta.json`, metaBlob);
     }
 
     postMessage({ id });

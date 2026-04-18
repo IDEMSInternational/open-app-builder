@@ -5,7 +5,7 @@ export interface IHttpAdapterResponse {
   /** Returns a safe URI (e.g., file:// on Native, blob:http:// on Web) */
   getUri(): Promise<{ src: string; revoke: () => void }>;
   /** Returns the raw data in the most efficient format for the platform */
-  getRawData(): Promise<ArrayBuffer>;
+  getRawData(): Promise<Blob>;
   /** The HTTP Status code */
   status: number;
   /** Optional response headers */
