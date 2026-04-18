@@ -4,7 +4,7 @@ import type { Options } from "ky";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
 import { HttpCache } from "./cache/http-cache";
 import { Capacitor } from "@capacitor/core";
-import { getMimeType } from "shared/src/utils/mimetypes";
+import { getMimeType } from "packages/shared/src/utils/mimetypes";
 import { WebHttpClientAdapter } from "./client/adapters/web.adapter";
 import { CapacitorHttpClientAdapter } from "./client/adapters/capacitor.adapter";
 import { WorkerHttpClientAdapter } from "./client/adapters/worker.adapter";
@@ -93,7 +93,6 @@ export class HttpService {
    */
   public async get(url: string, options: IHttpRequestOptions = {}): Promise<Response> {
     const adapterResponse = await this.executeRequest(url, options);
-
     if (!this.isSuccessStatus(adapterResponse.status)) {
       return new Response(null, {
         status: adapterResponse.status,
@@ -172,7 +171,6 @@ export class HttpService {
 
     const hasValidCache = !!entry;
     const isStale = hasValidCache && entry.expiry && entry.expiry < Date.now();
-
     // 1. Cached and fresh — return immediately
     if (hasValidCache && !isStale) {
       return this.buildCacheResponse(cache, key, entry);
@@ -187,7 +185,8 @@ export class HttpService {
     // 3. No cache — network is the only option
     try {
       return await this.handleNetworkRequest(url, mergedOptions);
-    } catch {
+    } catch (err) {
+      console.error(`[HTTP Err]`, err);
       return this.buildEmptyResponse(504);
     }
   }
@@ -286,7 +285,6 @@ export class HttpService {
     const adapter = this.getAdapterForUrl(url, options);
     const cacheName = options.cacheName || "cache";
     const cache = await this.getCache(cacheName);
-
     return adapter.request(url, options, cache);
   }
 
