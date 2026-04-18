@@ -2,7 +2,7 @@ import ky from "ky";
 import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client.types";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache } from "../../cache/http-cache";
-import { deferTask } from "packages/shared/src";
+import { deferTask } from "packages/shared/src/utils/async-utils";
 
 export class WebHttpClientAdapter implements IHttpClientAdapter {
   private client = ky.create();

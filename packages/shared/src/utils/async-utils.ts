@@ -48,20 +48,20 @@ export function deferTask<T>(task: () => T | Promise<T>): Promise<T> {
     };
 
     // SSR Guard: Execute immediately on the server
-    if (typeof window === "undefined") {
+    if (typeof globalThis === "undefined") {
       execute();
       return;
     }
 
     // 1. Modern API: The Prioritized Task Scheduling API
-    if (window.scheduler && typeof window.scheduler.postTask === "function") {
-      window.scheduler.postTask(execute, { priority: "background" }).catch(reject);
+    if (globalThis.scheduler && typeof globalThis.scheduler.postTask === "function") {
+      globalThis.scheduler.postTask(execute, { priority: "background" }).catch(reject);
       return;
     }
 
     // 2. Standard Fallback: requestIdleCallback
-    if (typeof window.requestIdleCallback === "function") {
-      window.requestIdleCallback(() => execute());
+    if (typeof globalThis.requestIdleCallback === "function") {
+      globalThis.requestIdleCallback(() => execute());
       return;
     }
 

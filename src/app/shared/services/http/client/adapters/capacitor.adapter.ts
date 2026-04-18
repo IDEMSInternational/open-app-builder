@@ -58,7 +58,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
         status: 200,
         getUri: async () => {
           const src = Capacitor.convertFileSrc(absolutePath);
-          return { src, revoke: () => {} };
+          return { src, revoke: () => null };
         },
         getRawData: async () => {
           const src = Capacitor.convertFileSrc(absolutePath);

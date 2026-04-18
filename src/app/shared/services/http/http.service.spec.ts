@@ -11,8 +11,8 @@ function createMockAdapterResponse(
   return {
     status: 200,
     headers: { "content-type": "text/plain" },
-    getUri: async () => ({ src: "https://example.com/img.png", revoke: () => {} }),
-    getRawData: async () => new Blob(),
+    getUri: async () => ({ src: "https://example.com/img.png", revoke: () => null }),
+    getRawData: async () => new Blob(["ok"], { type: "text/plain" }),
     ...overrides,
   };
 }
