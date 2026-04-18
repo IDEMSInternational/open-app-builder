@@ -21,7 +21,7 @@ export interface ICacheManifestEntry {
 
 /**
  * HttpCache handles persistent caching of HTTP responses using a sidecar pattern.
- * Each entry is stored as two files: [hash].data (the body) and [hash].meta (metadata).
+ * Each entry is stored as two files: [hash] (the body) and [hash].meta.json (metadata).
  */
 export class HttpCache {
   private namespace: string;
@@ -62,17 +62,17 @@ export class HttpCache {
 
   public async has(key: string) {
     const storageKey = await hashUrl(key);
-    return this.storageCache.has(`${storageKey}.data`);
+    return this.storageCache.has(storageKey);
   }
 
   public async get(key: string): Promise<Blob | undefined> {
     const storageKey = await hashUrl(key);
-    return this.storageCache.get(`${storageKey}.data`);
+    return this.storageCache.get(storageKey);
   }
 
   public async getEntry(key: string): Promise<ICacheManifestEntry | undefined> {
     const storageKey = await hashUrl(key);
-    const metaBlob = await this.storageCache.get(`${storageKey}.meta`);
+    const metaBlob = await this.storageCache.get(`${storageKey}.meta.json`);
     if (!metaBlob) return undefined;
 
     try {
@@ -87,7 +87,7 @@ export class HttpCache {
   public async getUrl(key: string): Promise<string | undefined> {
     const storageKey = await hashUrl(key);
     if (this.storageCache.getUrl) {
-      return this.storageCache.getUrl(`${storageKey}.data`);
+      return this.storageCache.getUrl(storageKey);
     }
     // Fallback if adapter doesn't support getUrl
     const blob = await this.get(key);
@@ -116,8 +116,8 @@ export class HttpCache {
     const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });
 
     await Promise.all([
-      this.storageCache.set(`${storageKey}.data`, blob),
-      this.storageCache.set(`${storageKey}.meta`, metaBlob),
+      this.storageCache.set(storageKey, blob),
+      this.storageCache.set(`${storageKey}.meta.json`, metaBlob),
     ]);
   }
 
@@ -128,8 +128,8 @@ export class HttpCache {
   public async delete(key: string) {
     const storageKey = await hashUrl(key);
     await Promise.all([
-      this.storageCache.delete(`${storageKey}.data`),
-      this.storageCache.delete(`${storageKey}.meta`),
+      this.storageCache.delete(storageKey),
+      this.storageCache.delete(`${storageKey}.meta.json`),
     ]);
     return true;
   }

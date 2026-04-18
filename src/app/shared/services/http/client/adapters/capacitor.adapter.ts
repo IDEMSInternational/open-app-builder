@@ -23,11 +23,11 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
     try {
       // Ensure folder exists and obtain absolute base path for Cache securely to pass to native plugin
       const cacheDirInfo = await Filesystem.getUri({ directory: Directory.Cache, path: folder });
-      absolutePath = `${cacheDirInfo.uri}/${storageKey}.data`;
+      absolutePath = `${cacheDirInfo.uri}/${storageKey}`;
     } catch {
       await Filesystem.mkdir({ path: folder, directory: Directory.Cache, recursive: true });
       const cacheDirInfo = await Filesystem.getUri({ directory: Directory.Cache, path: folder });
-      absolutePath = `${cacheDirInfo.uri}/${storageKey}.data`;
+      absolutePath = `${cacheDirInfo.uri}/${storageKey}`;
     }
 
     try {
@@ -57,7 +57,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
           expiry,
         };
 
-        const metaPath = `${folder}/${storageKey}.meta`;
+        const metaPath = `${folder}/${storageKey}.meta.json`;
         await Filesystem.writeFile({
           path: metaPath,
           directory: Directory.Cache,

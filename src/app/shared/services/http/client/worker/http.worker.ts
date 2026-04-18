@@ -27,7 +27,7 @@ addEventListener("message", async (event: MessageEvent) => {
       // Note: While streaming using ReadableStream is preferable for RAM,
       // some platforms (iOS) struggle with WritableStreams, so we rely on the existing Blob integration
       const blob = await response.blob();
-      await cache.set(`${storageKey}.data`, blob);
+      await cache.set(storageKey, blob);
 
       // Write Meta sidecar
       const headers: Record<string, string> = {};
@@ -48,7 +48,7 @@ addEventListener("message", async (event: MessageEvent) => {
       };
 
       const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });
-      await cache.set(`${storageKey}.meta`, metaBlob);
+      await cache.set(`${storageKey}.meta.json`, metaBlob);
     }
 
     postMessage({ id });

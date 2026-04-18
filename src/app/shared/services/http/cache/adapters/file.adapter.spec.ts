@@ -16,9 +16,7 @@ describe("HttpCacheAdapterFile", () => {
       mkdir: jasmine.createSpy("mkdir").and.resolveTo(undefined),
       readdir: jasmine.createSpy("readdir").and.resolveTo({ files: [] }),
       stat: jasmine.createSpy("stat").and.resolveTo({}),
-      getUri: jasmine
-        .createSpy("getUri")
-        .and.resolveTo({ uri: "file://path/test-cache/test.data" }),
+      getUri: jasmine.createSpy("getUri").and.resolveTo({ uri: "file://path/test-cache/test" }),
       deleteFile: jasmine.createSpy("deleteFile").and.resolveTo({}),
       writeFile: jasmine.createSpy("writeFile").and.resolveTo({ uri: "file://path" }),
       readFile: jasmine.createSpy("readFile").and.resolveTo({ data: "" }),
@@ -36,14 +34,14 @@ describe("HttpCacheAdapterFile", () => {
 
   it("should list file names", async () => {
     mockFs.readdir.and.resolveTo({
-      files: [{ name: "f1.data" }, { name: "f1.meta" }],
+      files: [{ name: "f1" }, { name: "f1.meta.json" }],
     });
     const files = await adapter.list();
-    expect(files).toEqual(["f1.data", "f1.meta"]);
+    expect(files).toEqual(["f1", "f1.meta.json"]);
   });
 
   it("should check if file exists", async () => {
-    const result = await adapter.has("test.data");
+    const result = await adapter.has("test");
     expect(result).toBeDefined();
   });
 
@@ -53,18 +51,18 @@ describe("HttpCacheAdapterFile", () => {
   });
 
   it("should get URI for external access", async () => {
-    const url = await adapter.getUrl("test.data");
-    expect(url).toContain("test-cache/test.data");
+    const url = await adapter.getUrl("test");
+    expect(url).toContain("test-cache/test");
   });
 
   it("should delete file", async () => {
-    const result = await adapter.delete("test.data");
+    const result = await adapter.delete("test");
     expect(result).toBeTrue();
   });
 
   it("should return false if delete fails", async () => {
     mockFs.deleteFile.and.rejectWith(new Error("Fail"));
-    expect(await adapter.delete("test.data")).toBeFalse();
+    expect(await adapter.delete("test")).toBeFalse();
   });
 
   it("should get blob via fetch using converted URI", async () => {
@@ -73,14 +71,14 @@ describe("HttpCacheAdapterFile", () => {
 
     const fetchSpy = spyOn(window, "fetch").and.resolveTo(mockResponse);
 
-    const result = await adapter.get("test.data");
+    const result = await adapter.get("test");
     expect(result).toEqual(mockBlob);
     expect(fetchSpy).toHaveBeenCalled();
   });
 
   it("should return undefined if fetch fails in get", async () => {
     spyOn(window, "fetch").and.rejectWith(new Error("Network fail"));
-    const result = await adapter.get("test.data");
+    const result = await adapter.get("test");
     expect(result).toBeUndefined();
   });
 });
