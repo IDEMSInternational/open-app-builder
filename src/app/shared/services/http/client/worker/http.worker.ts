@@ -45,6 +45,7 @@ addEventListener("message", async (event: MessageEvent) => {
         size: blob.size,
         status: response.status,
         expiry,
+        url,
       };
 
       const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });

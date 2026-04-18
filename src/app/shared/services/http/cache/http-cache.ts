@@ -17,6 +17,8 @@ export interface ICacheManifestEntry {
   size: number;
   /** HTTP status code */
   status: number;
+  /** Source url of content */
+  url: string;
 }
 
 /**
@@ -111,6 +113,7 @@ export class HttpCache {
       size: blob.size,
       status: res.status,
       expiry,
+      url: res.url,
     };
 
     const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });

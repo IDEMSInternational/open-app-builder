@@ -55,6 +55,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
           size: (await Filesystem.stat({ path: absolutePath })).size,
           status: 200,
           expiry,
+          url,
         };
 
         const metaPath = `${folder}/${storageKey}.meta.json`;
