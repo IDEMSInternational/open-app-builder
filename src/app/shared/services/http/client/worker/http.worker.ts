@@ -7,9 +7,10 @@ import { IHttpRequestOptions } from "../../http.service";
 addEventListener("message", async (event: MessageEvent) => {
   const { id, url, options } = event.data;
   const { cacheExpiry, cacheKey, cacheName, headers } = options as IHttpRequestOptions;
-
+  const requestHeaders = new Headers();
+  Object.entries(headers).forEach(([key, value]) => requestHeaders.set(key, value));
   try {
-    const response = await fetch(url, { ...options, headers });
+    const response = await fetch(url, { ...options, headers: requestHeaders });
 
     if (response.status >= 200 && response.status < 300) {
       // Initialize OPFS
@@ -26,7 +27,6 @@ addEventListener("message", async (event: MessageEvent) => {
       });
 
       const contentType = responseHeaders["content-type"] || "application/octet-stream";
-      const contentLength = responseHeaders["content-length"];
 
       // Save Data using streaming for memory efficiency with large files
       if (!response.body) {
@@ -34,13 +34,18 @@ addEventListener("message", async (event: MessageEvent) => {
       }
       await cache.setStream(cacheKey, response.body);
 
+      // Get actual size from OPFS after streaming completes (more accurate than headers)
+      const fh = await directoryHandle.getFileHandle(cacheKey);
+      const writtenFile = await fh.getFile();
+      const finalSize = writtenFile.size;
+
       const expiry = cacheExpiry ? Number(cacheExpiry) : undefined;
 
       const entry: ICacheManifestEntry = {
         contentType,
         created: Date.now(),
         headers: responseHeaders,
-        size: contentLength ? Number(contentLength) : 0,
+        size: finalSize,
         status: response.status,
         expiry,
         url,

@@ -35,9 +35,14 @@ export class WebHttpClientAdapter implements IHttpClientAdapter {
       });
     }
 
+    const responseHeaders: Record<string, string> = {};
+    response.headers.forEach((value, name) => {
+      responseHeaders[name] = value;
+    });
+
     return {
       status: response.status,
-      headers,
+      headers: responseHeaders,
       getUri: async () => {
         const blob = await response.clone().blob();
         const src = URL.createObjectURL(blob);

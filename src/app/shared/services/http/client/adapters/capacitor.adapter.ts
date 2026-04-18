@@ -46,7 +46,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
 
       await cache.setMeta(cacheKey, {
         contentType: "application/octet-stream",
-        headers,
+        headers: {}, // no specific response headers
         size,
         status: 200,
         expiry,
