@@ -1,11 +1,14 @@
 import { Injectable } from "@angular/core";
 
-import ky from "ky";
-
 import type { Options } from "ky";
-import { generateRequestKey, shorthandToTime } from "./http.utils";
-import { HttpCache } from "./cache/http-cache";
-import { deferTask } from "shared/src/utils/async-utils";
+import { generateCacheKey } from "./http.utils";
+import { HttpCache, ICacheManifestEntry } from "./cache/http-cache";
+import { Capacitor } from "@capacitor/core";
+import { getMimeType } from "packages/shared/src/utils/mimetypes";
+import { WebHttpClientAdapter } from "./client/adapters/web.adapter";
+import { CapacitorHttpClientAdapter } from "./client/adapters/capacitor.adapter";
+import { WorkerHttpClientAdapter } from "./client/adapters/worker.adapter";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client.types";
 
 export interface IHttpRequestOptions extends Options {
   /**
@@ -15,19 +18,44 @@ export interface IHttpRequestOptions extends Options {
    **/
   cacheName?: string;
 
-  /** Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 1m */
+  /**
+   * Identifier within cache namespace for entry
+   * Default generated from hash of request method and url
+   */
+  cacheKey?: string;
+
+  /**
+   * Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 30d
+   * NOTE - cache does not auto-purge but will seek to revalidate after expiry
+   * has passed on next fetch
+   **/
   cacheExpiry?: string;
 
   /**
-   * Specify strategy.
-   * Default uses browser own defaults, typically relying on response headers
-   **/
-  strategy?: "cache-first" | "cache-only" | "network-first" | "network-only";
+   * Ensure headers are passed as key-value pairs and not HEADER object for
+   * easier serialisation across workers
+   */
+  headers?: Record<string, string>;
+
+  /**
+   * Skip cache entirely and always fetch from network.
+   * Useful for auth endpoints or other non-cacheable requests.
+   */
+  bypassCache?: boolean;
+
+  /**
+   * Treat request as media (image/video/audio/pdf), using the more performant
+   * worker/capacitor adapters to avoid JavaScript thread blocking.
+   * Automatically set when requesting via getMediaSrc().
+   */
+  isMedia?: boolean;
 }
+
 const DEFAULT_OPTIONS: IHttpRequestOptions = {
   cacheName: "cache",
   cacheExpiry: "30d",
-  strategy: "cache-first",
+  headers: {},
+  bypassCache: false,
   retry: 2,
 };
 
@@ -40,131 +68,234 @@ export interface ICachedMedia {
 
 /**
  * Service to handle http requests, with custom request cache management
+ * using a stale-while-revalidate approach.
+ *
+ * - If cached and fresh → return immediately
+ * - If cached but stale → return stale immediately, revalidate in background
+ * - If not cached → fetch from network
+ *
  * For more details see [Readme](./README.md)
  */
 @Injectable({ providedIn: "root" })
 export class HttpService {
-  private client = this.getClient();
+  private webAdapter = new WebHttpClientAdapter();
+  private capacitorAdapter = new CapacitorHttpClientAdapter();
+  private workerAdapter: IHttpClientAdapter;
+
+  constructor() {
+    try {
+      this.workerAdapter = new WorkerHttpClientAdapter();
+    } catch {
+      this.workerAdapter = this.webAdapter;
+    }
+  }
 
   /** Map of cache instances by namespace */
   private cacheNamespaces: Record<string, HttpCache> = {};
 
-  private pendingCacheUpdates = new Set<Promise<void>>();
-
   /**
-   * Standard HTTP GET. Make a get request to a url and returns a standard DOM Response.
-   * Use options to define default caching behaviour, such as cache-first or network-only approaches
+   * Standard HTTP GET. Make a get request to a url and returns a
+   * standard DOM Response. Uses stale-while-revalidate caching by default.
    */
   public async get(url: string, options: IHttpRequestOptions = {}): Promise<Response> {
-    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const { strategy, cacheExpiry, cacheName } = mergedOptions;
+    const adapterResponse = await this.executeRequest(url, options);
+    if (!this.isSuccessStatus(adapterResponse.status)) {
+      return new Response(null, {
+        status: adapterResponse.status,
+        headers: adapterResponse.headers,
+      });
+    }
 
-    // populate cache expiry header to handle in after-response hook
-    const headers = new Headers(options.headers);
-    headers.set("x-cache-expiry", `${shorthandToTime(cacheExpiry)}`);
-    headers.set("x-cache-name", cacheName || "cache");
-    mergedOptions.headers = headers;
-    return this.requestStrategyHandlers[strategy](url, mergedOptions);
+    const data = await adapterResponse.getRawData();
+    return new Response(data, {
+      status: adapterResponse.status,
+      headers: adapterResponse.headers,
+    });
   }
 
   /**
    * Optimized fetch for UI Media rendering.
-   * Ensures the data is cached and returns a safe URL (e.g. localhost native bridge URL)
-   * bypassing heavy javascript Blob parsing overhead.
+   * Ensures the data is cached and returns a safe URL
+   * (e.g. localhost native bridge URL) bypassing heavy javascript
+   * Blob parsing overhead.
    */
   public async getMediaSrc(url: string, options: IHttpRequestOptions = {}): Promise<ICachedMedia> {
-    // Ensure the item exists in the cache by invoking the standard GET flow.
-    // We don't need the blob response here, we just need the invisible caching strategy to run.
-    const res = await this.get(url, options);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch media: ${res.statusText}`);
+    const adapterResponse = await this.executeRequest(url, { ...options, isMedia: true });
+    if (!this.isSuccessStatus(adapterResponse.status)) {
+      throw new Error(`Failed to fetch media: HTTP ${adapterResponse.status}`);
     }
-
-    const mergedOptions: IHttpRequestOptions = { ...DEFAULT_OPTIONS, ...options, method: "get" };
-    const cache = await this.getCache(mergedOptions.cacheName || "cache");
-    const key = generateRequestKey({ url, method: mergedOptions.method });
-
-    let src = await cache.getUrl(key);
-
-    let revoke = () => {};
-
-    // In rare cases (like network-only strategies without existing cache, or parsing errors)
-    // the item might not be in the custom cache yet despite the GET.
-    // Fallback to object URL from the response arrayBuffer if getUrl fails.
-    if (!src) {
-      const blob = await res.clone().blob();
-      src = URL.createObjectURL(blob);
-      revoke = () => URL.revokeObjectURL(src!);
-    }
-    // Web will generate object url that will need to be revoked
-    // Native will generate file url that can simply be left as-is (no revoke required)
-    else if (src.startsWith("blob:")) {
-      revoke = () => URL.revokeObjectURL(src!);
-    }
-
-    return { src, revoke };
+    return adapterResponse.getUri();
   }
 
-  /** Specific handling of different request strategies */
-  private requestStrategyHandlers: Record<
-    IHttpRequestOptions["strategy"],
-    (url: string, options: IHttpRequestOptions) => Promise<Response>
-  > = {
-    "cache-only": async (url, options) => this.handleCacheRequest(url, options),
-    "cache-first": async (url, options) => {
-      const cacheRes = await this.handleCacheRequest(url, options);
-      if (cacheRes.status === 200) {
-        return cacheRes;
-      }
-      return this.handleNetworkRequest(url, options);
-    },
-    "network-only": async (url, options) => this.handleNetworkRequest(url, options),
-    "network-first": async (url, options) => {
-      try {
-        const networkRes = await this.handleNetworkRequest(url, options);
-        if (this.isSuccessStatus(networkRes.status)) {
-          return networkRes;
-        }
-      } catch (error) {
-        // Network error or ky HTTPError — fall through to cache
-      }
-      return this.handleCacheRequest(url, options);
-    },
-  };
+  /** List all cached keys in a namespace */
+  public async listKeys(cacheName): Promise<string[]> {
+    const cache = await this.getCache(cacheName);
+    return cache.list();
+  }
+
+  /** Get metadata for a cached URL */
+  public async getMetadata(
+    url: string,
+    cacheName = DEFAULT_OPTIONS.cacheName,
+    method = "get"
+  ): Promise<ICacheManifestEntry | undefined> {
+    const cache = await this.getCache(cacheName);
+    const cacheKey = await generateCacheKey({ method, url });
+    return cache.getEntry(cacheKey);
+  }
+
+  /** Invalidate a single cached URL */
+  public async removeCacheEntry(
+    url: string,
+    cacheName = DEFAULT_OPTIONS.cacheName,
+    method = "get"
+  ): Promise<void> {
+    const cacheKey = await generateCacheKey({ method, url });
+    const cache = await this.getCache(cacheName);
+    await cache.delete(cacheKey);
+  }
+
+  /** Clear an entire cache namespace */
+  public async removeCacheEntries(cacheName: string): Promise<void> {
+    const cache = await this.getCache(cacheName);
+    await cache.adapter.clear();
+    delete this.cacheNamespaces[cacheName];
+  }
 
   /**
-   * Check if the response received corresponds to a cacheable success code
-   * Currently does not support opaque responses, but could be extended similar to
-   * https://github.com/kornelski/http-cache-semantics
+   * Unified stale-while-revalidate request flow:
+   *
+   * 1. If cached and fresh → return immediately
+   * 2. If cached but stale → return stale, revalidate in background
+   * 3. No cache →  fetch from network, cache and return
    */
-  private isSuccessStatus(code: number) {
+  private async executeRequest(
+    url: string,
+    options: IHttpRequestOptions
+  ): Promise<IHttpAdapterResponse> {
+    const mergedOptions: IHttpRequestOptions = {
+      ...DEFAULT_OPTIONS,
+      ...options,
+      method: "get",
+    };
+
+    mergedOptions.cacheKey ??= await generateCacheKey({ method: mergedOptions.method, url });
+
+    // Bypass cache entirely if requested
+    if (mergedOptions.bypassCache) {
+      return this.handleNetworkRequest(url, mergedOptions);
+    }
+
+    const { cacheKey, cacheName } = mergedOptions;
+
+    const cache = await this.getCache(cacheName);
+    const entry = await cache.getEntry(cacheKey);
+
+    const hasValidCache = !!entry;
+    const isStale = hasValidCache && entry.expiry && entry.expiry < Date.now();
+    // 1. Cached and fresh — return immediately
+    if (hasValidCache && !isStale) {
+      return this.buildCacheResponse(cache, cacheKey, entry);
+    }
+
+    // 2. Cached but stale — return stale, revalidate in background
+    if (hasValidCache && isStale) {
+      this.revalidateInBackground(url, mergedOptions);
+      return this.buildCacheResponse(cache, cacheKey, entry);
+    }
+
+    // 3. No cache — network is the only option
+    try {
+      return await this.handleNetworkRequest(url, mergedOptions);
+    } catch (err) {
+      console.error(`[HTTP Err]`, err);
+      return this.buildEmptyResponse(504);
+    }
+  }
+
+  /** Fire-and-forget background revalidation */
+  private revalidateInBackground(url: string, options: IHttpRequestOptions): void {
+    const { cacheName } = options;
+    const adapter = this.getAdapterForUrl(url, options);
+
+    this.getCache(cacheName)
+      .then((cache) => adapter.request(url, options, cache))
+      .catch(() => {
+        // Silent fail — stale cache remains usable
+      });
+  }
+
+  /** Build an IHttpAdapterResponse from a cache hit */
+  private buildCacheResponse(
+    cache: HttpCache,
+    key: string,
+    entry: { headers?: Record<string, string> }
+  ): IHttpAdapterResponse {
+    const headers = {
+      "x-res-source": "cache",
+      ...(entry.headers || {}),
+    };
+
+    return {
+      status: 200,
+      headers,
+      getUri: async () => cache.adapter.getUrl(key),
+      getRawData: async () => cache.adapter.get(key),
+    };
+  }
+
+  /** Build an empty error response */
+  private buildEmptyResponse(status: number): IHttpAdapterResponse {
+    return {
+      status,
+      headers: {},
+      getUri: async () => ({ src: "", revoke: () => null }),
+      getRawData: async () => new Blob(),
+    };
+  }
+
+  /** Check if the response received corresponds to a cacheable success code */
+  private isSuccessStatus(code: number): boolean {
     return code >= 200 && code < 300;
   }
 
-  private handleNetworkRequest(url: string, options: IHttpRequestOptions) {
-    return this.client.get(url, options);
-  }
+  private getAdapterForUrl(url: string, options: IHttpRequestOptions): IHttpClientAdapter {
+    const isMedia = options.isMedia || this.isMediaFromUrl(url);
 
-  private async handleCacheRequest(url: string, options: IHttpRequestOptions) {
-    const { cacheName } = options;
-    const cache = await this.getCache(cacheName);
-    const key = generateRequestKey({ url, method: options.method });
-
-    const [cacheRes, entry] = await Promise.all([cache.get(key), cache.getEntry(key)]);
-    const headers = new Headers({ "x-res-source": "cache" });
-
-    if (cacheRes && entry) {
-      if (entry.expiry && entry.expiry < Date.now()) {
-        await cache.delete(key);
-        return new Response(null, { status: 404, headers });
+    if (isMedia) {
+      if (Capacitor.isNativePlatform()) {
+        return this.capacitorAdapter;
       }
-      return new Response(cacheRes, { status: 200, headers });
+      return this.workerAdapter;
     }
 
-    return new Response(null, { status: 404, headers });
+    return this.webAdapter;
   }
 
-  private async getCache(name: string) {
+  private isMediaFromUrl(url: string): boolean {
+    const mime = getMimeType(url);
+    // Likely api endpoint, could use HEAD request but for now
+    // simply assume user will have requested mediaSrc explicitly
+    if (!mime) return false;
+    return (
+      mime.startsWith("image/") ||
+      mime.startsWith("video/") ||
+      mime.startsWith("audio/") ||
+      mime === "application/pdf"
+    );
+  }
+
+  private async handleNetworkRequest(
+    url: string,
+    options: IHttpRequestOptions
+  ): Promise<IHttpAdapterResponse> {
+    const adapter = this.getAdapterForUrl(url, options);
+    const cacheName = options.cacheName || "cache";
+    const cache = await this.getCache(cacheName);
+    return adapter.request(url, options, cache);
+  }
+
+  private async getCache(name: string): Promise<HttpCache> {
     if (!this.cacheNamespaces[name]) {
       const createdCache = await this.createCache(name);
       await createdCache.ready();
@@ -173,64 +304,8 @@ export class HttpService {
     return this.cacheNamespaces[name];
   }
 
-  // separate cache creation method for easy test stub
-  private async createCache(name: string) {
+  // Separate cache creation method for easy test stub
+  private async createCache(name: string): Promise<HttpCache> {
     return new HttpCache(name);
   }
-
-  private async updateCache(req: Request, clonedResponse: Response) {
-    if (this.isSuccessStatus(clonedResponse.status)) {
-      const cacheName = req.headers.get("x-cache-name") || "cache";
-      const cache = await this.getCache(cacheName);
-      const key = generateRequestKey({ url: req.url, method: req.method });
-      const expiry = req.headers.get("x-cache-expiry");
-      const expiryTime = expiry ? Number(expiry) : undefined;
-
-      await cache.set(key, clonedResponse, expiryTime);
-    }
-  }
-
-  /** Create a new ky client with hooks for cache management */
-  private getClient() {
-    return ky.extend({
-      hooks: {
-        beforeRequest: [],
-        afterResponse: [
-          // do not await to allow ky to immediately return response to client
-          // while cache write scheduled in background
-          ({ request, response }) => this.scheduleCacheUpdate(request, response.clone()),
-        ],
-      },
-    });
-  }
-
-  /** Schedule cache update tasks to occur as low priority after UI paint */
-  private scheduleCacheUpdate(request: Request, response: Response) {
-    const task = () => this.updateCache(request, response);
-
-    // deferTask returns the Promise that actually tracks completion
-    const deferredTask = deferTask(task);
-
-    // Track the Promise, not the function
-    this.pendingCacheUpdates.add(deferredTask);
-
-    // Clean up the Set once the background task finishes (or fails)
-    deferredTask.finally(() => {
-      this.pendingCacheUpdates.delete(deferredTask);
-    });
-  }
-
-  /** Resolves when all in-flight cache writes complete. Useful for testing. */
-  public async flushCacheUpdates(): Promise<void> {
-    return Promise.all(this.pendingCacheUpdates).then(() => undefined);
-  }
 }
-
-/**
- * TODO
- * - Stale-then-revalidate strategy support
- * - Custom request IDs for tracking in other components
- * - Download progress observable and abort signal
- * - Conversion of response file types
- * - Head requests to check if cache is potentially invalid (compare size, checksum)
- */
