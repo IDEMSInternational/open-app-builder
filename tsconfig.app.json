@@ -13,6 +13,7 @@
     // to allow import/live-reload within angular compiler
     "packages/data-models/index.ts",
     "packages/data-models/db.model.ts",
+    "packages/shared/src/utils/async-utils.ts",
     "packages/shared/shared/src/models/jsEvaluator/jsEvaluator.ts",
     "packages/shared/src/utils/mimetypes/mimetypes.ts"
   ],

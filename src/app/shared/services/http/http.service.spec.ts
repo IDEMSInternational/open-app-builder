@@ -146,8 +146,7 @@ describe("HttpService", () => {
     it("should remove a cached entry", async () => {
       const url = "https://example.com/data";
       await service.get(url);
-      const key = service.getCacheKey(url);
-      await service.removeCacheEntry(key);
+      await service.removeCacheEntry(url);
       // Next request should go to network
       await service.get("https://example.com/data");
       expect(mockAdapter.callCount).toBe(2);
