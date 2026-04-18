@@ -1,7 +1,7 @@
-import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client.types";
 import { IHttpRequestOptions } from "../../http.service";
 import { HttpCache } from "../../cache/http-cache";
-import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
+import { stripCacheHeaders } from "../../http.utils";
 
 export class WorkerHttpClientAdapter implements IHttpClientAdapter {
   private worker: Worker;
@@ -20,10 +20,11 @@ export class WorkerHttpClientAdapter implements IHttpClientAdapter {
   async request(
     url: string,
     options: IHttpRequestOptions,
-    cache?: HttpCache
+    cache: HttpCache
   ): Promise<IHttpAdapterResponse> {
     return new Promise((resolve, reject) => {
       const messageId = Math.random().toString(36).substring(2, 15);
+      const { cacheKey } = options;
 
       const handleMessage = (event: MessageEvent) => {
         if (event.data.id === messageId) {
@@ -37,23 +38,10 @@ export class WorkerHttpClientAdapter implements IHttpClientAdapter {
             resolve({
               status: 200,
               getUri: async () => {
-                if (!cache)
-                  throw new Error(
-                    "Worker Adapter requires a valid cache instance to retrieve data."
-                  );
-                const key = generateRequestKey({ url, method: options.method || "get" });
-                const blob = await cache.get(key);
-                if (!blob) throw new Error("Worker failed to cache effectively.");
-                const src = URL.createObjectURL(blob);
-                return { src, revoke: () => URL.revokeObjectURL(src) };
+                return cache.adapter.getUrl(cacheKey);
               },
               getRawData: async () => {
-                if (!cache)
-                  throw new Error(
-                    "Worker Adapter requires a valid cache instance to retrieve data."
-                  );
-                const key = generateRequestKey({ url, method: options.method || "get" });
-                const blob = await cache.get(key);
+                const blob = await cache.adapter.get(cacheKey);
                 if (!blob) throw new Error("Worker failed to cache effectively.");
                 return blob.arrayBuffer();
               },

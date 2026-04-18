@@ -5,7 +5,7 @@ describe("HttpCache", () => {
   let cache: HttpCache;
 
   beforeEach(async () => {
-    cache = new HttpCache("testCache", new HttpCacheAdapterMemory());
+    cache.adapter = new HttpCacheAdapterMemory();
     await cache.ready();
   });
 

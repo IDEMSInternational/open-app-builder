@@ -26,14 +26,10 @@ export interface ICacheManifestEntry {
  * Each entry is stored as two files: [hash] (the body) and [hash].meta.json (metadata).
  */
 export class HttpCache {
-  private namespace: string;
-  private storageCache?: IHttpCacheAdapter;
   private initialised = false;
+  public adapter: IHttpCacheAdapter;
 
-  constructor(namespace: string, storageCache?: IHttpCacheAdapter) {
-    this.namespace = namespace;
-    this.storageCache = storageCache;
-  }
+  constructor(private namespace: string) {}
 
   private async createStorageAdapter(): Promise<IHttpCacheAdapter> {
     if (Capacitor.isNativePlatform()) {
@@ -58,28 +54,17 @@ export class HttpCache {
 
   public async ready() {
     if (this.initialised) return;
-    this.storageCache ??= await this.createStorageAdapter();
+    this.adapter ??= await this.createStorageAdapter();
     this.initialised = true;
   }
 
-  public async has(key: string) {
-    const storageKey = await hashUrl(key);
-    return this.storageCache.has(storageKey);
-  }
-
   public async list(): Promise<string[]> {
-    const allKeys = await this.storageCache.list();
+    const allKeys = await this.adapter.list();
     return allKeys.filter((key) => !key.endsWith(".meta.json"));
   }
 
-  public async get(key: string): Promise<Blob | undefined> {
-    const storageKey = await hashUrl(key);
-    return this.storageCache.get(storageKey);
-  }
-
   public async getEntry(key: string): Promise<ICacheManifestEntry | undefined> {
-    const storageKey = await hashUrl(key);
-    const metaBlob = await this.storageCache.get(`${storageKey}.meta.json`);
+    const metaBlob = await this.adapter.get(`${key}.meta.json`);
     if (!metaBlob) return undefined;
 
     try {
@@ -91,64 +76,14 @@ export class HttpCache {
     }
   }
 
-  public async getUrl(key: string): Promise<string | undefined> {
-    const storageKey = await hashUrl(key);
-    if (this.storageCache.getUrl) {
-      return this.storageCache.getUrl(storageKey);
-    }
-    // Fallback if adapter doesn't support getUrl
-    const blob = await this.get(key);
-    if (!blob) return undefined;
-    return URL.createObjectURL(blob);
-  }
-
-  public async set(key: string, res: Response, expiry?: number) {
-    const storageKey = await hashUrl(key);
-    const blob = await res.blob();
-
-    const headers: Record<string, string> = {};
-    res.headers.forEach((value, name) => {
-      headers[name] = value;
-    });
-
-    const entry: ICacheManifestEntry = {
-      contentType: res.headers.get("content-type") || "application/octet-stream",
-      created: Date.now(),
-      headers,
-      size: blob.size,
-      status: res.status,
-      expiry,
-      url: res.url,
-    };
-
-    const metaBlob = new Blob([JSON.stringify(entry)], { type: "application/json" });
-
-    await Promise.all([
-      this.storageCache.set(storageKey, blob),
-      this.storageCache.set(`${storageKey}.meta.json`, metaBlob),
-    ]);
-  }
-
-  public async clear() {
-    await this.storageCache.clear();
+  public async setMeta(key: string, entry: Omit<ICacheManifestEntry, "created">) {
+    const cacheEntry: ICacheManifestEntry = { ...entry, created: Date.now() };
+    const metaBlob = new Blob([JSON.stringify(cacheEntry)], { type: "application/json" });
+    return this.adapter.set(`${key}.meta.json`, metaBlob);
   }
 
   public async delete(key: string) {
-    const storageKey = await hashUrl(key);
-    await Promise.all([
-      this.storageCache.delete(storageKey),
-      this.storageCache.delete(`${storageKey}.meta.json`),
-    ]);
+    await Promise.all([this.adapter.delete(key), this.adapter.delete(`${key}.meta.json`)]);
     return true;
   }
-}
-
-/** Generate a fast hash from a URL string */
-export async function hashUrl(url: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(url);
-  const hashBuffer = await crypto.subtle.digest("SHA-1", data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
 }

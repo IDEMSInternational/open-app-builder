@@ -1,38 +1,6 @@
-import {
-  generateRequestKey,
-  shorthandToMilliseconds,
-  shorthandToTime,
-  stripCacheHeaders,
-} from "./http.utils";
+import { shorthandToMilliseconds, shorthandToTime, stripCacheHeaders } from "./http.utils";
 
 describe("HttpUtils", () => {
-  describe("generateRequestKey", () => {
-    it("should combine method and URL", () => {
-      const key = generateRequestKey({ method: "get", url: "https://example.com/api" });
-      expect(key).toBe("GET|https://example.com/api");
-    });
-
-    it("should normalize method to uppercase", () => {
-      const key = generateRequestKey({ method: "post", url: "https://example.com/api" });
-      expect(key).toBe("POST|https://example.com/api");
-    });
-
-    it("should remove trailing slash from URL", () => {
-      const key1 = generateRequestKey({ method: "GET", url: "https://example.com/api/" });
-      const key2 = generateRequestKey({ method: "GET", url: "https://example.com/api" });
-      expect(key1).toBe("GET|https://example.com/api");
-      expect(key1).toBe(key2);
-    });
-
-    it("should preserve query parameters", () => {
-      const key = generateRequestKey({
-        method: "GET",
-        url: "https://example.com/api?foo=bar&baz=qux",
-      });
-      expect(key).toBe("GET|https://example.com/api?foo=bar&baz=qux");
-    });
-  });
-
   describe("shorthandToMilliseconds", () => {
     it("should return undefined for undefined input", () => {
       expect(shorthandToMilliseconds(undefined)).toBeUndefined();

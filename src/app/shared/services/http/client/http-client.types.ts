@@ -20,6 +20,6 @@ export interface IHttpClientAdapter {
   request(
     url: string,
     options: IHttpRequestOptions,
-    cache?: HttpCache
+    cache: HttpCache
   ): Promise<IHttpAdapterResponse>;
 }

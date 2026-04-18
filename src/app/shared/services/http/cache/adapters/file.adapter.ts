@@ -66,22 +66,22 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
 
   public async get(key: string): Promise<Blob | undefined> {
     try {
-      const webViewUrl = await this.getUrl(key);
-      if (!webViewUrl) return undefined;
-      const response = await fetch(webViewUrl);
+      const res = await this.getUrl(key);
+      if (!res) return undefined;
+      const response = await fetch(res.src);
       return await response.blob();
     } catch (e) {
       return undefined;
     }
   }
 
-  public async getUrl(key: string): Promise<string | undefined> {
+  public async getUrl(key: string) {
     try {
       const { uri } = await this.fs.getUri({
         path: `${this.folder}/${key}`,
         directory: Directory.Cache,
       });
-      return Capacitor.convertFileSrc(uri);
+      return { src: Capacitor.convertFileSrc(uri), revoke: () => null };
     } catch (e) {
       return undefined;
     }

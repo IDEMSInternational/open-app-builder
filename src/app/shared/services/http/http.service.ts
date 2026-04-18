@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 
 import type { Options } from "ky";
-import { generateRequestKey, shorthandToTime } from "./http.utils";
+import { generateCacheKey, shorthandToTime } from "./http.utils";
 import { HttpCache, ICacheManifestEntry } from "./cache/http-cache";
 import { Capacitor } from "@capacitor/core";
 import { getMimeType } from "packages/shared/src/utils/mimetypes";
 import { WebHttpClientAdapter } from "./client/adapters/web.adapter";
 import { CapacitorHttpClientAdapter } from "./client/adapters/capacitor.adapter";
 import { WorkerHttpClientAdapter } from "./client/adapters/worker.adapter";
-import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client.types";
 
 export interface IHttpRequestOptions extends Options {
   /**
@@ -17,6 +17,12 @@ export interface IHttpRequestOptions extends Options {
    * such as deleting all entries in a "downloads" cache
    **/
   cacheName?: string;
+
+  /**
+   * Identifier within cache namespace for entry
+   * Default generated from hash of request method and url
+   */
+  cacheKey?: string;
 
   /**
    * Shorthand ttl, e.g. 1m (60000) 1h (3600000) 1d (86400000). Default 30d
@@ -121,13 +127,6 @@ export class HttpService {
     return adapterResponse.getUri();
   }
 
-  /** Invalidate a single cached URL */
-  public async invalidate(url: string, cacheName = "cache"): Promise<void> {
-    const cache = await this.getCache(cacheName);
-    const key = generateRequestKey({ url, method: "get" });
-    await cache.delete(key);
-  }
-
   /** List all cached keys in a namespace */
   public async listKeys(cacheName = "cache"): Promise<string[]> {
     const cache = await this.getCache(cacheName);
@@ -136,18 +135,24 @@ export class HttpService {
 
   /** Get metadata for a cached URL */
   public async getMetadata(
-    url: string,
+    key: string,
     cacheName = "cache"
   ): Promise<ICacheManifestEntry | undefined> {
     const cache = await this.getCache(cacheName);
-    const key = generateRequestKey({ url, method: "get" });
+    console.log("get entry", { key, cacheName, cache });
     return cache.getEntry(key);
   }
 
-  /** Clear an entire cache namespace */
-  public async clearNamespace(cacheName: string): Promise<void> {
+  /** Invalidate a single cached URL */
+  public async removeCacheEntry(key: string, cacheName = "cache"): Promise<void> {
     const cache = await this.getCache(cacheName);
-    await cache.clear();
+    await cache.delete(key);
+  }
+
+  /** Clear an entire cache namespace */
+  public async removeCacheEntries(cacheName: string): Promise<void> {
+    const cache = await this.getCache(cacheName);
+    await cache.adapter.clear();
     delete this.cacheNamespaces[cacheName];
   }
 
@@ -168,11 +173,14 @@ export class HttpService {
       method: "get",
     };
 
+    mergedOptions.cacheKey ??= await generateCacheKey({ method: mergedOptions.method, url });
+
     // Apply cache-related headers for adapters
     mergedOptions.headers = {
       ...mergedOptions.headers,
       "x-cache-expiry": `${shorthandToTime(mergedOptions.cacheExpiry)}`,
       "x-cache-name": mergedOptions.cacheName || "cache",
+      "x-cache-key": mergedOptions.cacheKey,
     };
 
     // Bypass cache entirely if requested
@@ -181,21 +189,21 @@ export class HttpService {
     }
 
     const cacheName = mergedOptions.cacheName || "cache";
+    const cacheKey = mergedOptions.cacheKey;
     const cache = await this.getCache(cacheName);
-    const key = generateRequestKey({ url, method: "get" });
-    const entry = await cache.getEntry(key);
+    const entry = await cache.getEntry(cacheKey);
 
     const hasValidCache = !!entry;
     const isStale = hasValidCache && entry.expiry && entry.expiry < Date.now();
     // 1. Cached and fresh — return immediately
     if (hasValidCache && !isStale) {
-      return this.buildCacheResponse(cache, key, entry);
+      return this.buildCacheResponse(cache, cacheKey, entry);
     }
 
     // 2. Cached but stale — return stale, revalidate in background
     if (hasValidCache && isStale) {
       this.revalidateInBackground(url, mergedOptions);
-      return this.buildCacheResponse(cache, key, entry);
+      return this.buildCacheResponse(cache, cacheKey, entry);
     }
 
     // 3. No cache — network is the only option
@@ -234,7 +242,7 @@ export class HttpService {
       status: 200,
       headers,
       getUri: async () => {
-        const src = await cache.getUrl(key);
+        const src = await cache.adapter.getUrl(key);
         if (src?.startsWith("blob:")) {
           return { src, revoke: () => URL.revokeObjectURL(src) };
         }
@@ -242,12 +250,12 @@ export class HttpService {
       },
       getRawData: async () => {
         if (Capacitor.isNativePlatform()) {
-          const src = await cache.getUrl(key);
+          const src = await cache.adapter.getUrl(key);
           if (src) {
             return fetch(src).then((r) => r.arrayBuffer());
           }
         }
-        const blob = await cache.get(key);
+        const blob = await cache.adapter.get(key);
         return blob ? blob.arrayBuffer() : new ArrayBuffer(0);
       },
     };

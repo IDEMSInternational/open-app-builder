@@ -1,10 +1,10 @@
 import { Capacitor } from "@capacitor/core";
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { FileTransfer } from "@capacitor/file-transfer";
-import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "../http-client.types";
 import { IHttpRequestOptions } from "../../http.service";
-import { HttpCache, ICacheManifestEntry, hashUrl } from "../../cache/http-cache";
-import { generateRequestKey, stripCacheHeaders } from "../../http.utils";
+import { HttpCache, ICacheManifestEntry } from "../../cache/http-cache";
+import { stripCacheHeaders } from "../../http.utils";
 
 export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
   async request(
@@ -12,9 +12,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
     options: IHttpRequestOptions,
     cache?: HttpCache
   ): Promise<IHttpAdapterResponse> {
-    const key = generateRequestKey({ url, method: options.method || "get" });
-    const storageKey = await hashUrl(key);
-    const cacheName = options.cacheName || "cache";
+    const { cacheName = "cache", cacheKey } = options;
     const folder = `http-cache-${cacheName}`;
     const requestHeaders = stripCacheHeaders(options.headers);
 
@@ -23,11 +21,11 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
     try {
       // Ensure folder exists and obtain absolute base path for Cache securely to pass to native plugin
       const cacheDirInfo = await Filesystem.getUri({ directory: Directory.Cache, path: folder });
-      absolutePath = `${cacheDirInfo.uri}/${storageKey}`;
+      absolutePath = `${cacheDirInfo.uri}/${cacheKey}`;
     } catch {
       await Filesystem.mkdir({ path: folder, directory: Directory.Cache, recursive: true });
       const cacheDirInfo = await Filesystem.getUri({ directory: Directory.Cache, path: folder });
-      absolutePath = `${cacheDirInfo.uri}/${storageKey}`;
+      absolutePath = `${cacheDirInfo.uri}/${cacheKey}`;
     }
 
     try {
@@ -58,7 +56,7 @@ export class CapacitorHttpClientAdapter implements IHttpClientAdapter {
           url,
         };
 
-        const metaPath = `${folder}/${storageKey}.meta.json`;
+        const metaPath = `${folder}/${cacheKey}.meta.json`;
         await Filesystem.writeFile({
           path: metaPath,
           directory: Directory.Cache,

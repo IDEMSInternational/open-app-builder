@@ -1,7 +1,7 @@
 import { HttpService, IHttpRequestOptions } from "./http.service";
 import { HttpCache } from "./cache/http-cache";
 import { HttpCacheAdapterMemory } from "./cache/adapters/memory.adapter";
-import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client.types";
 
 // --- Helpers ---
 
@@ -35,15 +35,6 @@ class MockAdapter implements IHttpClientAdapter {
   }
 }
 
-function createTestCache(): HttpCache {
-  const adapter = new HttpCacheAdapterMemory();
-  const cache = new HttpCache("test", adapter);
-  // Mark as ready since we injected the adapter
-  (cache as any).initialised = true;
-  (cache as any).storageCache = adapter;
-  return cache;
-}
-
 function createService(mockAdapter: MockAdapter): HttpService {
   const service = new HttpService();
   // Override adapters and cache creation
@@ -52,10 +43,8 @@ function createService(mockAdapter: MockAdapter): HttpService {
   service["workerAdapter"] = mockAdapter;
   // Override createCache to use in-memory
   (service as any).createCache = async (name: string) => {
-    const adapter = new HttpCacheAdapterMemory();
-    const cache = new HttpCache(name, adapter);
-    (cache as any).initialised = true;
-    (cache as any).storageCache = adapter;
+    const cache = new HttpCache(name);
+    cache.adapter = new HttpCacheAdapterMemory();
     return cache;
   };
   return service;
@@ -153,21 +142,23 @@ describe("HttpService", () => {
     });
   });
 
-  describe("invalidate", () => {
+  describe("removeCacheEntry", () => {
     it("should remove a cached entry", async () => {
-      await service.get("https://example.com/data");
-      await service.invalidate("https://example.com/data");
+      const url = "https://example.com/data";
+      await service.get(url);
+      const key = service.getCacheKey(url);
+      await service.removeCacheEntry(key);
       // Next request should go to network
       await service.get("https://example.com/data");
       expect(mockAdapter.callCount).toBe(2);
     });
   });
 
-  describe("clearNamespace", () => {
+  describe("removeCacheEntries", () => {
     it("should clear all entries in a namespace", async () => {
       await service.get("https://example.com/a", { cacheName: "ns1" });
       await service.get("https://example.com/b", { cacheName: "ns1" });
-      await service.clearNamespace("ns1");
+      await service.removeCacheEntries("ns1");
 
       // Should not have the namespace cached anymore
       expect((service as any).cacheNamespaces["ns1"]).toBeUndefined();
