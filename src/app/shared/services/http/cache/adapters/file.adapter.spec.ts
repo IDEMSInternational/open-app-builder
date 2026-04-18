@@ -51,8 +51,8 @@ describe("HttpCacheAdapterFile", () => {
   });
 
   it("should get URI for external access", async () => {
-    const url = await adapter.getUrl("test");
-    expect(url).toContain("test-cache/test");
+    const res = await adapter.getUrl("test");
+    expect(res.src).toContain("test-cache/test");
   });
 
   it("should delete file", async () => {

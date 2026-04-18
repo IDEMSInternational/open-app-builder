@@ -141,7 +141,7 @@ export class HttpService {
   ): Promise<ICacheManifestEntry | undefined> {
     const cache = await this.getCache(cacheName);
     const cacheKey = await generateCacheKey({ method, url });
-    return cache.getEntry(url);
+    return cache.getEntry(cacheKey);
   }
 
   /** Invalidate a single cached URL */
@@ -249,7 +249,7 @@ export class HttpService {
     return {
       status,
       headers: {},
-      getUri: async () => ({ src: "", revoke: () => {} }),
+      getUri: async () => ({ src: "", revoke: () => null }),
       getRawData: async () => new Blob(),
     };
   }
