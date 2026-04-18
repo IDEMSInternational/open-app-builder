@@ -19,19 +19,28 @@ addEventListener("message", async (event: MessageEvent) => {
       });
       const cache = new HTTPCacheAdapterOPFS(directoryHandle);
 
-      // Save Data
-      // Note: While streaming using ReadableStream is preferable for RAM,
-      // some platforms (iOS) struggle with WritableStreams, so we rely on the existing Blob integration
-      const blob = await response.blob();
-      await cache.set(cacheKey, blob);
+      // Extract headers before consuming body
+      const responseHeaders: Record<string, string> = {};
+      response.headers.forEach((value, name) => {
+        responseHeaders[name] = value;
+      });
+
+      const contentType = responseHeaders["content-type"] || "application/octet-stream";
+      const contentLength = responseHeaders["content-length"];
+
+      // Save Data using streaming for memory efficiency with large files
+      if (!response.body) {
+        throw new Error("Response body is null");
+      }
+      await cache.setStream(cacheKey, response.body);
 
       const expiry = cacheExpiry ? Number(cacheExpiry) : undefined;
 
       const entry: ICacheManifestEntry = {
-        contentType: headers["content-type"] || "application/octet-stream",
+        contentType,
         created: Date.now(),
-        headers,
-        size: blob.size,
+        headers: responseHeaders,
+        size: contentLength ? Number(contentLength) : 0,
         status: response.status,
         expiry,
         url,

@@ -23,6 +23,12 @@ export class HttpCacheAdapterMemory implements IHttpCacheAdapter {
     return { src, revoke: () => URL.revokeObjectURL(src) };
   }
 
+  public async setStream(key: string, readable: ReadableStream<Uint8Array>): Promise<true> {
+    const blob = await new Response(readable).blob();
+    this.cache.set(key, blob);
+    return true;
+  }
+
   public async set(key: string, value: Blob): Promise<true> {
     this.cache.set(key, value);
     return true;

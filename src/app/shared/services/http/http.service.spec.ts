@@ -51,7 +51,10 @@ function createService(mockAdapter: MockAdapter): HttpService {
 }
 
 // --- Tests ---
-
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/http/http.service.spec.ts
+ */
 describe("HttpService", () => {
   let service: HttpService;
   let mockAdapter: MockAdapter;

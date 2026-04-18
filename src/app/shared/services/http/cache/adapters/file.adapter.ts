@@ -87,6 +87,12 @@ export class HttpCacheAdapterFile implements IHttpCacheAdapter {
     }
   }
 
+  public async setStream(key: string, readable: ReadableStream<Uint8Array>) {
+    const blob = await new Response(readable).blob();
+    await this.set(key, blob);
+    return true;
+  }
+
   public async set(key: string, value: Blob) {
     await this.ensureFolder();
     await blobWriter({
