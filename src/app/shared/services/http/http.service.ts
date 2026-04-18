@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 import type { Options } from "ky";
 import { generateRequestKey, shorthandToTime } from "./http.utils";
-import { HttpCache } from "./cache/http-cache";
+import { HttpCache, ICacheManifestEntry } from "./cache/http-cache";
 import { Capacitor } from "@capacitor/core";
 import { getMimeType } from "packages/shared/src/utils/mimetypes";
 import { WebHttpClientAdapter } from "./client/adapters/web.adapter";
@@ -126,6 +126,22 @@ export class HttpService {
     const cache = await this.getCache(cacheName);
     const key = generateRequestKey({ url, method: "get" });
     await cache.delete(key);
+  }
+
+  /** List all cached keys in a namespace */
+  public async listKeys(cacheName = "cache"): Promise<string[]> {
+    const cache = await this.getCache(cacheName);
+    return cache.list();
+  }
+
+  /** Get metadata for a cached URL */
+  public async getMetadata(
+    url: string,
+    cacheName = "cache"
+  ): Promise<ICacheManifestEntry | undefined> {
+    const cache = await this.getCache(cacheName);
+    const key = generateRequestKey({ url, method: "get" });
+    return cache.getEntry(key);
   }
 
   /** Clear an entire cache namespace */

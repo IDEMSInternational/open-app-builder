@@ -9,7 +9,7 @@ At its core, it applies the **Adapter** pattern to execute network requests, cac
 - **Cross Platform Transports**: Automatically selects the best underlying HTTP client (Browser Fetch, Web Workers, or Native Capacitor transfers).
 - **Smart Mimetype Routing**: Media requests (Audio, Video, PDF) are intelligently offloaded to OPFS workers or Native file transfer plugins to protect the Javascript UI thread.
 - **Stale-While-Revalidate Caching**: Cached responses are always served immediately. Stale entries trigger a silent background revalidation, ensuring the UI is never blocked and offline access is never broken.
-- **Granular Cache Control**: Dedicated `invalidate()` and `clearNamespace()` methods allow precise, on-demand cache busting without interfering with offline availability.
+- **Granular Cache Control**: Dedicated `removeCacheEntry()` and `removeCacheEntries()` methods allow precise, on-demand cache busting without interfering with offline availability.
 - **Base64 Bypass**: Massively optimizes Capacitor bridge memory by downloading media directly to the Native filesystem, returning secure `localhost` native mapped URLs (`convertFileSrc`) instead of sluggish Base64 payloads.
 
 ---
@@ -136,7 +136,7 @@ await this.httpService.invalidate(
 );
 
 // Wipe all cached videos
-await this.httpService.clearNamespace("videos");
+await this.httpService.removeCacheEntries("videos");
 ```
 
 ---

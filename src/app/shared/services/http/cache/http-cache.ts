@@ -67,6 +67,11 @@ export class HttpCache {
     return this.storageCache.has(storageKey);
   }
 
+  public async list(): Promise<string[]> {
+    const allKeys = await this.storageCache.list();
+    return allKeys.filter((key) => !key.endsWith(".meta.json"));
+  }
+
   public async get(key: string): Promise<Blob | undefined> {
     const storageKey = await hashUrl(key);
     return this.storageCache.get(storageKey);
