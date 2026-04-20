@@ -364,6 +364,18 @@
     }
   }
 
+  // Title
+  plh-tmpl-title {
+    .title-wrapper[data-variant~="section_banner"] {
+      font-weight: var(--font-weight-medium) !important;
+      background-color: #e7f2fd;
+      border-bottom: 1px solid var(--ion-color-primary-variant-200);
+    }
+    .title-wrapper[data-variant~="page_banner"] h1 {
+      font-size: var(--font-size-text-extra-large) !important;
+    }
+  }
+
   // Text Area
   plh-text-area {
     .wrapper .text_area {
