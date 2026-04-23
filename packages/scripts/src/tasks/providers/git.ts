@@ -10,7 +10,8 @@ import { ActiveDeployment } from "../../commands/deployment/get";
 import { Logger, logOutput, promptOptions } from "shared/utils";
 import { openUrl } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
-import { pad, PATHS } from "shared/utils";
+import { pad } from "shared/utils";
+import { DEPLOYMENTS_PATH } from "shared/paths";
 
 class GitProvider {
   private git: SimpleGit;
@@ -24,7 +25,7 @@ class GitProvider {
   /** Access git clone methods directly independent of deployment */
   public async cloneRepo(repoPath: string, localPath: string) {
     console.log("\n");
-    const git = simpleGit(PATHS.DEPLOYMENTS_PATH, {
+    const git = simpleGit(DEPLOYMENTS_PATH, {
       progress: ({ stage, progress, processed, total }) =>
         logUpdate(chalk.gray(`${stage} | ${pad(progress, 2)}% | ${processed}/${total}`)),
     });

@@ -1,8 +1,9 @@
 import { resolve, dirname } from "path";
 import * as fs from "fs";
 import { envReplace } from "@idemsInternational/env-replace";
-import { Logger, generateVersionCode } from "../../../utils";
-import { PATHS } from "shared";
+import {  generateVersionCode } from "../../../utils";
+import {  ANDROID_PATH, ROOT_DIR } from "shared/paths";
+import { Logger } from "shared/utils";
 
 interface IAndroidBuildOptions {
   appId: string;
@@ -33,7 +34,7 @@ const configure = async ({ appId, appName, versionName, zoomEnabled }: IAndroidB
 
   // Populate templated android files
   await envReplace.replaceFiles({
-    cwd: PATHS.ROOT_DIR,
+    cwd: ROOT_DIR,
     // include both android folder and root (capacitor.config.ts)
     includeFolders: ["android/**", "."],
     envAdditional: {
@@ -48,9 +49,9 @@ const configure = async ({ appId, appName, versionName, zoomEnabled }: IAndroidB
   });
 
   // Move files where template not already located in correct folder (various reasons below)
-  const androidTemplatesPath = resolve(PATHS.ANDROID_PATH, "templates");
-  const androidJavaPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "java");
-  const androidResPath = resolve(PATHS.ANDROID_PATH, "app", "src", "main", "res");
+  const androidTemplatesPath = resolve(ANDROID_PATH, "templates");
+  const androidJavaPath = resolve(ANDROID_PATH, "app", "src", "main", "java");
+  const androidResPath = resolve(ANDROID_PATH, "app", "src", "main", "res");
 
   const ops = [
     // MainActivity.java needs to sit at nested /org/example/app folder derived from appId
