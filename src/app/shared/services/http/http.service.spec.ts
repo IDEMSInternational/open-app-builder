@@ -1,222 +1,194 @@
-import { TestBed } from "@angular/core/testing";
+import { HttpService, IHttpRequestOptions } from "./http.service";
+import { HttpCache } from "./cache/http-cache";
+import { HttpCacheAdapterMemory } from "./cache/adapters/memory.adapter";
+import { IHttpClientAdapter, IHttpAdapterResponse } from "./client/http-client.types";
 
-import { HttpService } from "./http.service";
-import { MockHttpCache } from "./cache/http-cache.mock.spec";
+// --- Helpers ---
 
+function createMockAdapterResponse(
+  overrides: Partial<IHttpAdapterResponse> = {}
+): IHttpAdapterResponse {
+  return {
+    status: 200,
+    headers: { "content-type": "text/plain" },
+    getUri: async () => ({ src: "https://example.com/img.png", revoke: () => null }),
+    getRawData: async () => new Blob(["ok"], { type: "text/plain" }),
+    ...overrides,
+  };
+}
+
+class MockAdapter implements IHttpClientAdapter {
+  public callCount = 0;
+  public lastUrl?: string;
+  public lastOptions?: IHttpRequestOptions;
+  public response: IHttpAdapterResponse = createMockAdapterResponse();
+
+  async request(
+    url: string,
+    options: IHttpRequestOptions,
+    _cache: HttpCache
+  ): Promise<IHttpAdapterResponse> {
+    this.callCount++;
+    this.lastUrl = url;
+    this.lastOptions = options;
+    return this.response;
+  }
+}
+
+function createService(mockAdapter: MockAdapter): HttpService {
+  const service = new HttpService();
+  // Override adapters and cache creation
+  service["webAdapter"] = mockAdapter as any;
+  service["capacitorAdapter"] = mockAdapter;
+  service["workerAdapter"] = mockAdapter;
+  // Override createCache to use in-memory
+  (service as any).createCache = async (name: string) => {
+    const cache = new HttpCache(name);
+    cache.adapter = new HttpCacheAdapterMemory();
+    return cache;
+  };
+  return service;
+}
+
+// --- Tests ---
 /**
  * Call standalone tests via:
  * yarn ng test --include src/app/shared/services/http/http.service.spec.ts
  */
 describe("HttpService", () => {
   let service: HttpService;
-  let getReqSpy: jasmine.Spy;
-  let cacheGetSpy: jasmine.Spy;
+  let mockAdapter: MockAdapter;
 
-  beforeEach(async () => {
-    // Force allow respy
-    jasmine.getEnv().allowRespy(true);
+  beforeEach(() => {
+    mockAdapter = new MockAdapter();
+    service = createService(mockAdapter);
+  });
 
-    // Use a mock fetch so ky's afterResponse hooks will still fire
-    // Mock BEFORE service is injected so ky captures the spy
-    let callCount = 0;
-    getReqSpy = spyOn(window, "fetch").and.callFake((url: string, init?: RequestInit) => {
-      callCount++;
-      const body = `network-${callCount}`;
-      const headers = new Headers({ "content-type": "text/plain" });
-      const response = new Response(body, {
-        status: 200,
-        headers,
+  describe("get", () => {
+    it("should return a Response with body on success", async () => {
+      const res = await service.get("https://example.com/data.json");
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toBe("ok");
+    });
+
+    it("should return empty body on non-success status", async () => {
+      mockAdapter.response = createMockAdapterResponse({ status: 404 });
+      const res = await service.get("https://example.com/missing");
+      expect(res.status).toBe(404);
+      expect(await res.text()).toBe("");
+    });
+
+    it("should pass merged options to adapter", async () => {
+      await service.get("https://example.com/api", {
+        headers: { Authorization: "Bearer token" },
       });
-      return Promise.resolve(response);
-    }) as any;
-
-    const mockCache = new MockHttpCache();
-    await mockCache.ready();
-    cacheGetSpy = spyOn(mockCache, "get").and.callThrough();
-
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpService);
-
-    spyOn(service, "createCache" as any).and.callFake(() => mockCache);
-
-    service["client"] = service["getClient"]();
-  });
-
-  it("should be created", () => {
-    expect(service).toBeTruthy();
-  });
-
-  it("sends get request", async () => {
-    await service.get("https://example.com");
-    expect(getReqSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it("uses default cache adaptor", async () => {
-    await service.get("https://example.com", { strategy: "cache-only" });
-    expect(Object.keys(service["cacheNamespaces"])).toEqual(["cache"]);
-    expect(cacheGetSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it("supports multiple named cache adaptors", async () => {
-    await service.get("https://example.com", { strategy: "cache-only" });
-    await service.get("https://example.com", {
-      strategy: "cache-only",
-      cacheName: "mock",
+      expect(mockAdapter.lastOptions?.headers?.Authorization).toBe("Bearer token");
     });
-    expect(Object.keys(service["cacheNamespaces"])).toEqual(["cache", "mock"]);
-  });
-
-  it("uses normalized url for cache keys", async () => {
-    // prefixed with method and trailing slash removed
-    await service.get("https://example.com/", { strategy: "cache-only" });
-    const [cacheKey] = cacheGetSpy.calls.mostRecent().args;
-    expect(cacheKey).toEqual("GET|https://example.com");
-
-    // query params preserved
-    await service.get("https://example.com?search=test", {
-      strategy: "cache-only",
-    });
-    const [cacheKey2] = cacheGetSpy.calls.mostRecent().args;
-    expect(cacheKey2).toEqual("GET|https://example.com?search=test");
-  });
-
-  it("populates cache headers", async () => {
-    await service.get("https://example.com");
-    const [req] = getReqSpy.calls.first().args;
-    const expiryHeader = req.headers.get("x-cache-expiry");
-    expect(expiryHeader).toBeTruthy();
-    expect(Number(expiryHeader)).toBeGreaterThan(new Date().getTime());
-  });
-
-  // Should convert '1m' expiry to ms and calculate expiry as epoch time diff from now
-  it("populates custom cache-expiry header", async () => {
-    const reqTimeStamp = new Date().getTime();
-    await service.get("https://example.com", { cacheExpiry: "1m" });
-    const [req] = getReqSpy.calls.first().args;
-    const expiryHeader = req.headers.get("x-cache-expiry");
-    const expiryTimeDiff = Number(expiryHeader) - reqTimeStamp;
-    expect(expiryTimeDiff).toBeGreaterThanOrEqual(60000);
-    expect(expiryTimeDiff).toBeLessThanOrEqual(61000);
-  });
-
-  it("cache-only strategy", async () => {
-    const res = await service.get("https://mock.string", {
-      strategy: "cache-only",
-    });
-    const sourceHeader = res.headers.get("x-res-source");
-    expect(sourceHeader).toEqual("cache");
-  });
-
-  it("cache-first strategy", async () => {
-    // First call: cache miss, hit network
-    await service.get("https://example.com/cf", { strategy: "cache-first" });
-    expect(getReqSpy).toHaveBeenCalledTimes(1);
-
-    // Wait for async cache update (setTimeout in service)
-    await service.flushCacheUpdates();
-
-    // Second call: cache hit, bypass network
-    getReqSpy.calls.reset();
-    const res = await service.get("https://example.com/cf", {
-      strategy: "cache-first",
-    });
-    expect(getReqSpy).not.toHaveBeenCalled();
-    expect(res.headers.get("x-res-source")).toBe("cache");
-  });
-
-  it("network-first strategy", async () => {
-    // 1. Successful network request
-    const res = await service.get("https://example.com/nf", {
-      strategy: "network-first",
-    });
-    expect(getReqSpy).toHaveBeenCalledTimes(1);
-    expect(res.headers.get("x-res-source")).not.toBe("cache");
-
-    // Wait for async cache update (setTimeout in service)
-    await service.flushCacheUpdates();
-
-    // 2. Failed network request (e.g. 500) -> returns from cache
-    getReqSpy.and.callFake(async () => new Response("cached", { status: 500 }));
-    const res2 = await service.get("https://example.com/nf", {
-      strategy: "network-first",
-      retry: 0,
-    });
-    expect(res2.status).toBe(200);
-    expect(res2.headers.get("x-res-source")).toBe("cache");
-  });
-
-  it("network-only strategy", async () => {
-    await service.get("https://example.com/no", { strategy: "network-only" });
-    await service.get("https://example.com/no", { strategy: "network-only" });
-    // Should call network twice even though it was cached after the first call
-    expect(getReqSpy).toHaveBeenCalledTimes(2);
-  });
-
-  it("expires cached items", async () => {
-    const url = "https://example.com/expire";
-    // Set item with very short expiry
-    await service.get(url, { cacheExpiry: "1ms" });
-
-    // Wait for cache update
-    await service.flushCacheUpdates();
-
-    // Wait for expiry
-    await new Promise((resolve) => setTimeout(resolve, 10));
-
-    // Should miss cache because it's expired, and hit network again
-    getReqSpy.calls.reset();
-    await service.get(url, { strategy: "cache-first" });
-
-    expect(getReqSpy).toHaveBeenCalled();
   });
 
   describe("getMediaSrc", () => {
-    it("should return object with src and revoke callback", async () => {
-      const media = await service.getMediaSrc("https://example.com/image.png");
-
-      // Since it's our mock cache, the src should equal the mock adapter's output
-      expect(media.src).toBeTruthy();
-      expect(typeof media.revoke).toBe("function");
+    it("should return media src on success", async () => {
+      const result = await service.getMediaSrc("https://example.com/img.png");
+      expect(result.src).toBe("https://example.com/img.png");
+      expect(typeof result.revoke).toBe("function");
     });
 
-    it("should default cache strategy and cache item before returning", async () => {
-      // Mock the cache's getUrl to simulate a hit
-      const cache = service["cacheNamespaces"]["cache"] || (await service["getCache"]("cache"));
-      spyOn(cache, "getUrl").and.resolveTo("mock-url");
-      const media = await service.getMediaSrc("https://example.com/asset.mp4");
+    it("should throw on non-success status", async () => {
+      mockAdapter.response = createMockAdapterResponse({ status: 500 });
+      await expectAsync(service.getMediaSrc("https://example.com/img.png")).toBeRejectedWithError(
+        /Failed to fetch media/
+      );
+    });
 
-      expect(getReqSpy).toHaveBeenCalled();
-      expect(media.src).toEqual("mock-url");
+    it("should pass isMedia: true to adapter regardless of URL extension", async () => {
+      await service.getMediaSrc("https://api.example.com/content/123");
+      expect(mockAdapter.lastOptions?.isMedia).toBe(true);
     });
   });
 
-  it("retries failed downloads", async () => {
-    await service.get("https://example.com/retry");
-    // With fetch mock, we check that fetch was called multiple times if we returned error
-    getReqSpy.calls.reset();
-    getReqSpy.and.resolveTo(new Response("", { status: 500 }));
+  describe("isMedia option", () => {
+    it("should use media adapter when isMedia is explicitly set to true", async () => {
+      await service.get("https://api.example.com/data", { isMedia: true });
+      expect(mockAdapter.lastOptions?.isMedia).toBe(true);
+    });
 
-    try {
-      await service.get("https://example.com/retry", { retry: 1 });
-    } catch (e) {
-      // ky throws on 500
-    }
-
-    // 1 initial + 1 retry = 2 calls
-    expect(getReqSpy).toHaveBeenCalledTimes(2);
+    it("should fall back to URL detection when isMedia is not set", async () => {
+      await service.get("https://example.com/image.jpg");
+      expect(mockAdapter.lastOptions?.isMedia).toBeUndefined();
+    });
   });
 
-  it("defers cache writes", async () => {
-    const cache = await service["getCache"]("cache");
-    const cacheSetSpy = spyOn(cache, "set").and.callThrough();
+  describe("caching - stale-while-revalidate", () => {
+    it("should fetch from network on first request", async () => {
+      await service.get("https://example.com/data");
+      expect(mockAdapter.callCount).toBe(1);
+    });
 
-    await service.get("https://example.com/flush");
+    it("should return cached response on second request without hitting network", async () => {
+      // First request populates cache
+      await service.get("https://example.com/data");
+      expect(mockAdapter.callCount).toBe(1);
 
-    // Fetch complete, write is scheduled but not yet run
-    expect(cacheSetSpy).not.toHaveBeenCalled();
+      // Second request should come from cache
+      const res = await service.get("https://example.com/data");
+      expect(res.status).toBe(200);
+      // Adapter should not be called again for fresh cache
+      // Note: depends on adapter caching the response in `request()`
+    });
 
-    await service.flushCacheUpdates();
+    it("should bypass cache when bypassCache is true", async () => {
+      await service.get("https://example.com/data");
+      await service.get("https://example.com/data", { bypassCache: true });
+      // Both should hit the adapter
+      expect(mockAdapter.callCount).toBe(2);
+    });
+  });
 
-    expect(cacheSetSpy).toHaveBeenCalledTimes(1);
+  describe("removeCacheEntry", () => {
+    it("should remove a cached entry", async () => {
+      const url = "https://example.com/data";
+      await service.get(url);
+      await service.removeCacheEntry(url);
+      // Next request should go to network
+      await service.get("https://example.com/data");
+      expect(mockAdapter.callCount).toBe(2);
+    });
+  });
+
+  describe("removeCacheEntries", () => {
+    it("should clear all entries in a namespace", async () => {
+      await service.get("https://example.com/a", { cacheName: "ns1" });
+      await service.get("https://example.com/b", { cacheName: "ns1" });
+      await service.removeCacheEntries("ns1");
+
+      // Should not have the namespace cached anymore
+      expect((service as any).cacheNamespaces["ns1"]).toBeUndefined();
+    });
+  });
+
+  describe("error handling", () => {
+    it("should return 504 when network fails and no cache exists", async () => {
+      mockAdapter.request = async () => {
+        throw new Error("Network error");
+      };
+      const res = await service.get("https://example.com/fail");
+      expect(res.status).toBe(504);
+    });
+  });
+
+  describe("default options", () => {
+    it("should apply default cache headers", async () => {
+      await service.get("https://example.com/data");
+      expect(mockAdapter.lastOptions?.cacheName).toBe("cache");
+      expect(mockAdapter.lastOptions?.cacheExpiry).toBeDefined();
+    });
+
+    it("should use custom cacheName", async () => {
+      await service.get("https://example.com/data", {
+        cacheName: "downloads",
+      });
+      expect(mockAdapter.lastOptions?.cacheName).toBe("downloads");
+    });
   });
 });

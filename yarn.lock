@@ -2803,6 +2803,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/file-transfer@npm:latest-7":
+  version: 1.0.12
+  resolution: "@capacitor/file-transfer@npm:1.0.12"
+  dependencies:
+    "@capacitor/synapse": ^1.0.3
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: 6d40f6e90ed1e977da094cdcd2377b3f5b90a8be60c87b967a114e0ad614482c10893b6e49f95cff400a2ed82b88bb00c5e0ab1d3d83b78b6b4fd39424d41f88
+  languageName: node
+  linkType: hard
+
 "@capacitor/filesystem@npm:^7.0.0":
   version: 7.1.6
   resolution: "@capacitor/filesystem@npm:7.1.6"
@@ -17766,6 +17777,7 @@ __metadata:
     "@capacitor/clipboard": ^7.0.0
     "@capacitor/core": ^7.0.0
     "@capacitor/device": ^7.0.0
+    "@capacitor/file-transfer": latest-7
     "@capacitor/filesystem": ^7.0.0
     "@capacitor/ios": ^7.0.0
     "@capacitor/local-notifications": ^7.0.0
