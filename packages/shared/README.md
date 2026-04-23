@@ -9,9 +9,14 @@ Note, some methods will only work in node-based environments (non-browser)
 ### How to import
 
 **Node**
-The workspace is designed for direct import as `.ts` files, to be compiled within parent project. Most imports are made available from the top-level `index.ts`
+Prefer to import from direct path. May require including mapping in tsconfig.json `compilerOptions`
+```json
+"paths": {
+  "shared/*": ["../../packages/shared/src/*"]
+}
+```
 ```ts
-import { TemplatedData } from "shared"
+import { TemplatedData } from "shared/models"
 ```
 If any imports are not available simply update the workspace `index.ts` to include
 

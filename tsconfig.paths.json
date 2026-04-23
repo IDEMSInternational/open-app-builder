@@ -7,7 +7,6 @@
       "data-models/*": ["packages/data-models/*"],
       "scripts": ["packages/scripts"],
       "scripts/*": ["packages/scripts/src/*"],
-      "shared": ["packages/shared/src/index.ts"],
       "shared/*": ["packages/shared/src/*"]
     }
   }

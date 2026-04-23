@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { ROOT_DIR } from 'shared/paths'
+import { ROOT_DIR } from "shared/paths"
 import { Logger, logOutput } from "shared/utils";
 
 // @capacitor/assets has no public programmatic API, so import internal modules directly

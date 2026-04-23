@@ -1,7 +1,8 @@
 import { normalize, resolve } from "path";
-import { logWarning, replicateDir } from "shared";
+import { logWarning } from "shared/utils/logging.utils";
 import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
 import type { IAssetSource, IDeploymentConfigJson } from "data-models";
+import { replicateDir } from "shared/utils/file-utils";
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
