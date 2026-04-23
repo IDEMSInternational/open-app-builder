@@ -5,7 +5,9 @@
       "@components/*": ["packages/components/*"],
       "data-models": ["packages/data-models"],
       "data-models/*": ["packages/data-models/*"],
-      "shared": ["packages/shared"],
+      "scripts": ["packages/scripts"],
+      "scripts/*": ["packages/scripts/src/*"],
+      "shared": ["packages/shared/src/index.ts"],
       "shared/*": ["packages/shared/src/*"]
     }
   }

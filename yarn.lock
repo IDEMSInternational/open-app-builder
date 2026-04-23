@@ -27495,7 +27495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shared@workspace:*, shared@workspace:packages/shared":
+"shared@workspace:packages/shared":
   version: 0.0.0-use.local
   resolution: "shared@workspace:packages/shared"
   dependencies:
@@ -29279,8 +29279,6 @@ __metadata:
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
     typescript: 5.5.4
-  bin:
-    idems-translate: ./lib/index.js
   languageName: unknown
   linkType: soft
 
@@ -31185,16 +31183,6 @@ __metadata:
   checksum: f86d13f9139c3a57c5a5867e81905cd84134b499849405dec2ffe5b1acd30dabaa1809f6f6ee603a7c65e1e4325f21509db6b8398eaf202c8b8f5809e26a2e16
   languageName: node
   linkType: hard
-
-"workflows@workspace:packages/workflows":
-  version: 0.0.0-use.local
-  resolution: "workflows@workspace:packages/workflows"
-  dependencies:
-    "@types/node": ^16.18.9
-    shared: "workspace:*"
-    typescript: 5.5.4
-  languageName: unknown
-  linkType: soft
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0, wrap-ansi@npm:^7.0.0":
   version: 7.0.0

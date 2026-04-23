@@ -23,7 +23,8 @@
     ".idems_app/deployments/**/*.ts",
     "packages/components/**/*.ts",
     "packages/data-models/**/*.ts",
-    "packages/shared/**/*.ts"
+    "packages/shared/**/*.ts",
+    "packages/workflows/**/*.ts"
   ],
 
   "angularCompilerOptions": {
