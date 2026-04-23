@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["packages/components/*"],
+      "data-models": ["packages/data-models"],
+      "data-models/*": ["packages/data-models/*"],
+      "shared": ["packages/shared"],
+      "shared/*": ["packages/shared/src/*"]
+    }
+  }
+}
