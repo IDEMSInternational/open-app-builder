@@ -1,103 +1,111 @@
-import { Injectable, Injector, Signal } from "@angular/core";
-import { toSignal } from "@angular/core/rxjs-interop";
-import { BehaviorSubject, Observable, combineLatest } from "rxjs";
-import { map } from "rxjs/operators";
+import { inject, Injectable, Signal } from "@angular/core";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { IStore, StoreType, VariableReference } from "./store";
+import { Observable, combineLatest, of } from "rxjs";
+import { distinctUntilChanged, map, switchMap } from "rxjs/operators";
+import { LocalVariableStore } from "./local-variable-store";
+import { GlobalVariableStore } from "./global-variable-store";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore } from "./store";
+import { SystemVariableStore } from "./system-variable-store";
 
-/**
- * A reactive global store for all local variables.
- */
 @Injectable({
   providedIn: "root",
 })
 export class VariableStore implements IStore {
-  private readonly state: { [key: string]: BehaviorSubject<any> } = {};
+  private localStore = inject(LocalVariableStore);
+  private globalStore = inject(GlobalVariableStore);
+  private systemStore = inject(SystemVariableStore);
 
-  constructor(private injector: Injector) {}
+  private readonly stores: Record<StoreType, IStore> = {
+    local: this.localStore,
+    global: this.globalStore,
+    system: this.systemStore,
+  };
 
-  public set(name: string, value: any): void {
-    if (!this.state[name]) {
-      this.state[name] = new BehaviorSubject<any>(value);
-    } else {
-      if (!isEqual(value, this.state[name].value)) this.state[name].next(value);
-    }
+  private readonly storeMap = new Map<StoreType, IStore>(
+    Object.entries(this.stores) as [StoreType, IStore][]
+  );
+
+  set(ref: VariableReference, value: any): void {
+    this.getStore(ref).set(ref, value);
   }
 
-  public get(name: string): any {
-    if (!this.state[name]) {
-      return undefined;
-    }
-    return this.state[name].value;
+  get(ref: VariableReference) {
+    return this.getStore(ref).get(ref);
   }
 
-  public asSignal(name: string): Signal<any> {
-    return toSignal(this.watch(name), { equal: isEqual, injector: this.injector });
+  asSignal(ref: VariableReference): Signal<any> {
+    return this.getStore(ref).asSignal(ref);
   }
 
-  public watch(name: string): Observable<any> {
-    if (!this.state[name]) {
-      this.state[name] = new BehaviorSubject<any>(undefined);
-    }
-    return this.state[name].asObservable();
+  watch(ref: VariableReference): Observable<any> {
+    return this.getStore(ref).watch(ref);
   }
 
   /**
-   * Watch multiple variables at once. Returns an observable that emits an object
-   * with the current values of all specified variables whenever any of them change.
-   * @param names Array of variable names to watch
-   * @returns Observable that emits an object with variable names as keys and their values
+   * Watches multiple variable references across local/global/system stores.
+   * Returns an empty object stream when no refs are provided, otherwise groups
+   * refs by store type, watches each group in its underlying store, and merges
+   * the latest results into a single object.
    */
-  public watchMultiple(names: string[]): Observable<{ [key: string]: any }> {
-    if (names.length === 0) {
-      return new BehaviorSubject<{ [key: string]: any }>({}).asObservable();
+  watchMultiple(refs: VariableReference[]): Observable<{ [key: string]: any }> {
+    if (refs.length === 0) {
+      return of({});
     }
 
-    const observables = names.map((name) => this.watch(name));
+    const storeTypes = Array.from(this.storeMap.keys());
 
-    return combineLatest(observables).pipe(
-      map((values) => {
-        const result: { [key: string]: any } = {};
-        names.forEach((name, index) => {
-          result[name] = values[index];
-        });
-        return result;
-      })
+    const refsByType = {} as Record<StoreType, VariableReference[]>;
+
+    // Initialize an empty ref list for each supported store type.
+    for (const type of storeTypes) {
+      refsByType[type] = [];
+    }
+
+    // Group refs by store type so each underlying store can be watched once.
+    for (const ref of refs) {
+      refsByType[ref.type].push(ref);
+    }
+
+    const groupedObservables = storeTypes
+      .filter((type) => refsByType[type].length > 0)
+      .map((type) => this.storeMap.get(type)!.watchMultiple(refsByType[type]));
+
+    if (groupedObservables.length === 1) {
+      return groupedObservables[0];
+    }
+
+    return combineLatest(groupedObservables).pipe(map((results) => Object.assign({}, ...results)));
+  }
+
+  watchMultipleSignal(refs: Signal<VariableReference[]>): Signal<{ [key: string]: any }> {
+    return toSignal(
+      toObservable(refs).pipe(
+        distinctUntilChanged((previous, current) => isEqual(previous, current)),
+        switchMap((dependencyRefs) => this.watchMultiple(dependencyRefs))
+      ),
+      {
+        initialValue: {},
+        equal: isEqual,
+      }
     );
   }
 
-  public has(name: string): boolean {
-    return this.state.hasOwnProperty(name);
+  has(ref: VariableReference): boolean {
+    return this.getStore(ref).has(ref);
   }
 
-  /**
-   * Not used but might be useful to snapshot the current state for debug reasons.
-   */
-  public getAll(): { [name: string]: any } {
-    const result: { [name: string]: any } = {};
-    Object.keys(this.state).forEach((name) => {
-      result[name] = this.state[name].value;
-    });
-    return result;
+  clear(): void {
+    Object.values(this.stores).forEach((store) => store.clear());
   }
 
-  /**
-   * Not used but might be useful to snapshot the current state for debug reasons.
-   */
-  public getAllList(): { name: string; value: any }[] {
-    return Object.keys(this.state)
-      .sort()
-      .map((name) => ({ name, value: this.state[name].value }));
-  }
+  private getStore(ref: VariableReference): IStore {
+    const store = this.storeMap.get(ref.type);
 
-  /**
-   * Clear all variables in the store.
-   * todo: we will need to clear variables when changing the main template.
-   */
-  public clear(): void {
-    Object.keys(this.state).forEach((name) => {
-      this.state[name].complete();
-      delete this.state[name];
-    });
+    if (!store) {
+      throw new Error(`Missing store configuration for variable reference type: ${ref.type}`);
+    }
+
+    return store;
   }
 }

@@ -9,27 +9,6 @@
     }
   }
 
-  //Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--color-surface-black);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      font-size: var(--font-size-text-large) !important;
-      font-weight: var(--font-weight-medium) !important;
-      background-color: #effcfc;
-      border-bottom: 1px solid #b2f3ed;
-      h1 {
-        padding: 18px;
-        border: none;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
-    }
-  }
   // Task Card
   plh-task-card {
     .card-wrapper {
@@ -474,7 +453,6 @@
   plh-accordion-component {
     ion-accordion {
       background: var(--ion-color-primary-600);
-
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -485,10 +463,6 @@
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: var(--color-surface-white) !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;

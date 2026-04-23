@@ -4,21 +4,24 @@
   #accordionGroup
 >
   @for (childRow of _row.rows | filterDisplayComponent; track childRow; let i = $index) {
-    <ion-accordion
-      [value]="childRow.name"
-      toggle-icon="arrow-down-circle"
-      [style.z-index]="_row.rows.length - i"
-    >
+    <ion-accordion [value]="childRow.name" [style.z-index]="(_row.rows?.length ?? 0) - i">
       <ion-item slot="header" class="accordion-header clear" lines="none">
         <ion-label class="accordion-section-title ion-text-wrap">{{
           childRow.value || ""
         }}</ion-label>
-        <!-- If custom icon supplied override. Otherwise default will be arrow -->
+        <!-- If custom icon supplied override. Otherwise use arrow as default
+         (passing in via ion-accordion's toggle-icon attribute doesn't allow for styling) -->
         @if (_row.parameter_list?.open_icon_src; as open_icon_src) {
           <ng-container
             [ngTemplateOutlet]="customIcon"
             [ngTemplateOutletContext]="{ open_icon_src, childRow }"
           ></ng-container>
+        } @else {
+          <ion-icon
+            class="ion-accordion-toggle-icon"
+            name="arrow-down-circle"
+            slot="end"
+          ></ion-icon>
         }
       </ion-item>
       <!-- Accordion section Content -->
@@ -43,10 +46,11 @@ override default icon to replace with empty class and toggle depending on open s
 <ng-template #customIcon let-open_icon_src="open_icon_src" let-childRow="childRow">
   <div class="ion-accordion-toggle-icon"></div>
   <ion-icon
+    class="ion-accordion-toggle-icon"
     [name]="
-      childRow && accordionGroup.value.indexOf(childRow.name) === -1
+      childRow && accordionGroup.value?.indexOf(childRow.name) === -1
         ? open_icon_src
-        : _row.parameter_list.close_icon_src
+        : _row.parameter_list?.close_icon_src
     "
   ></ion-icon>
 </ng-template>

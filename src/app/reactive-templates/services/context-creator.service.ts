@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { VariableReference } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
 
 /**
@@ -20,19 +21,31 @@ import { VariableStore } from "../stores/variable-store";
 export class ContextCreatorService {
   constructor(private variableStore: VariableStore) {}
 
-  public createContext(dependencyNames: string[]): { local: Record<string, any> } {
-    const context = { local: {} as Record<string, any> };
+  public createContext(dependencies: VariableReference[]): {
+    local: Record<string, any>;
+    global: Record<string, any>;
+    system: Record<string, any>;
+  } {
+    const context = {
+      local: {} as Record<string, any>,
+      global: {} as Record<string, any>,
+      system: {} as Record<string, any>,
+    };
 
-    dependencyNames.forEach((dependencyName) => {
-      const value = this.variableStore.get(dependencyName);
-      this.assignValue(context.local, dependencyName, value);
+    dependencies.forEach((dependency) => {
+      const value = this.variableStore.get(dependency);
+      this.assignValue(context[dependency.type], dependency, value);
     });
 
     return context;
   }
 
-  private assignValue(target: Record<string, any>, dependencyName: string, value: unknown): void {
-    const path = dependencyName.split(".");
+  private assignValue(
+    target: Record<string, any>,
+    dependency: VariableReference,
+    value: unknown
+  ): void {
+    const path = dependency.name.split(".");
     let cursor = target;
 
     path.forEach((segment, index) => {

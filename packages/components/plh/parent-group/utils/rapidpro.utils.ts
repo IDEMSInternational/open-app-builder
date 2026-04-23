@@ -1,19 +1,18 @@
 import {
   IParent,
-  IParentFromRapidPro,
+  IParentFromExternalSource,
   IParentGroup,
   IParentInSharedData,
 } from "../plh-parent-group.types";
 
 /**
- * Helper functions to support RapidPro integration: namely, adding parents via the RapidPro API to shared data,
- * and pulling this data into the local parent group dynamicdata.
- * These util methods are seperated here for clarity, but the RapidPro integration is quite stringly coupled with the service code,
- * although not all deployments using parent group functionality will necessarilyintegrate with RapidPro.
+ * Helper functions to support external-source integration (e.g. RapidPro or app join_remote payloads):
+ * adding parents to shared data and pulling this data into local parent group dynamic data.
+ * These util methods are separated here for clarity.
  */
 
 /**
- * Format parent group data for push to shared data by removing and RapidPro fields
+ * Format parent group data for push to shared data by removing RapidPro fields
  */
 function formatParentGroupDataForPush(parentGroup: IParentGroup): IParentGroup {
   // Remove any field whose key starts with "rp_" (e.g. "rp_access_code", "rp_uuid")
@@ -40,12 +39,15 @@ function removeRapidProFieldsFromParentData(parent: IParent): IParent {
   return filtered as IParent;
 }
 
-function parentHasRapidProData(parent: IParentInSharedData): parent is IParentFromRapidPro {
-  return (parent as IParentFromRapidPro).rapidpro_uuid !== undefined;
+function parentHasExternalSourceData(
+  parent: IParentInSharedData
+): parent is IParentFromExternalSource {
+  const sharedDataParent = parent as IParentFromExternalSource;
+  return sharedDataParent.rapidpro_uuid !== undefined || sharedDataParent.app_user_id !== undefined;
 }
 
 /**
- * Convert parent data added to shared data from RapidPro into local parent data format
+ * Convert parent data added to shared data from RapidPro/app join into local parent data format.
  *
  * Example input:
  * ```
@@ -71,39 +73,47 @@ function parentHasRapidProData(parent: IParentInSharedData): parent is IParentFr
  * }
  * ```
  *
- * @param parent - Parent data from RapidPro
+ * @param parent - Parent data from RapidPro/app join
  * @param parentGroupId - ID of the parent group
  * @returns Formatted parent data
  */
-function transformParentWithRapidProDataToLocalFormat(
-  parent: IParentFromRapidPro,
+function transformParentWithExternalSourceDataToLocalFormat(
+  parent: IParentFromExternalSource,
   parentGroupId: string
 ): IParent {
-  const { rapidpro_uuid, rapidpro_fields, ...rest } = parent;
-  const parsedRapidProFields = Object.fromEntries(
-    Object.entries(rapidpro_fields).map(([key, value]) => [`rp_${key}`, value])
+  const { rapidpro_uuid, app_user_id, auth_user_id, rapidpro_fields, ...rest } = parent;
+  const normalizedRapidproFields =
+    rapidpro_fields && typeof rapidpro_fields === "object" ? rapidpro_fields : {};
+  const parsedExternalFields = Object.fromEntries(
+    Object.entries(normalizedRapidproFields).map(([key, value]) => [`rp_${key}`, value])
   );
+
+  const uniqueId = rapidpro_uuid || auth_user_id || app_user_id || (rest as IParent).id;
+  const localParentId = `${parentGroupId}+${uniqueId}`;
+
   return {
     ...rest,
-    ...parsedRapidProFields,
-    // Use a combined id of the parent group id and the rapidpro_uuid to ensure uniqueness
-    id: `${parentGroupId}+${rapidpro_uuid}`,
+    ...parsedExternalFields,
+    // Use a combined id of the parent group id and source identifier to ensure uniqueness
+    id: localParentId,
     group_id: parentGroupId,
-    rp_uuid: rapidpro_uuid,
+    ...(rapidpro_uuid ? { rp_uuid: rapidpro_uuid } : {}),
+    ...(app_user_id ? { app_user_id } : {}),
+    ...(auth_user_id ? { auth_user_id } : {}),
   } as IParent;
 }
 
 /**
  * Merge two arrays of parents, ensuring that parents representing the same entity are merged,
- * and any RapidPro fields added to the shared data are preserved.
+ * and any external-source fields added to shared data are preserved.
  * - For each incoming parent:
  *   - If an existing parent matches by `id`, or by `rapidpro_uuid` (where `rapidpro_uuid === incoming.id`), merge fields:
  *     - Use the incoming parent as the base, but add `rapidpro_fields` and `rapidpro_uuid` from the existing parent if present.
  *   - If no match, use the incoming parent as-is.
  * - After merging, add any existing parent with a `rapidpro_uuid` (and no `id`) that was not already merged.
- * This ensures no duplicates and preserves RapidPro data.
+ * This ensures no duplicates and preserves external-source data.
  */
-function mergeParentsArraysPreservingRapidProData(
+function mergeParentsArraysPreservingExternalSourceData(
   existing: IParentInSharedData[],
   incoming: IParent[]
 ): IParentInSharedData[] {
@@ -149,6 +159,12 @@ function findMatchingIncomingParent(
   const incomingByRapidproUuid = new Map(
     incoming.filter((p) => p.rp_uuid).map((p) => [p.rp_uuid, p])
   );
+  const incomingByAppUserId = new Map(
+    incoming.filter((p) => p.app_user_id).map((p) => [p.app_user_id, p])
+  );
+  const incomingByAuthUserId = new Map(
+    incoming.filter((p) => p.auth_user_id).map((p) => [p.auth_user_id, p])
+  );
   // Try to match by id
   if ((existingParent as IParent).id) {
     const matchById = incomingById.get((existingParent as IParent).id!);
@@ -161,12 +177,21 @@ function findMatchingIncomingParent(
     const matchByRapidproUuid = incomingByRapidproUuid.get(existingParent.rapidpro_uuid);
     if (matchByRapidproUuid) return matchByRapidproUuid;
   }
+  // Try to match by app/auth identifiers from app join_remote records
+  if (existingParent.auth_user_id) {
+    const matchByAuthUserId = incomingByAuthUserId.get(existingParent.auth_user_id);
+    if (matchByAuthUserId) return matchByAuthUserId;
+  }
+  if (existingParent.app_user_id) {
+    const matchByAppUserId = incomingByAppUserId.get(existingParent.app_user_id);
+    if (matchByAppUserId) return matchByAppUserId;
+  }
   return undefined;
 }
 
 export const rapidproUtils = {
   formatParentGroupDataForPush,
-  parentHasRapidProData,
-  transformParentWithRapidProDataToLocalFormat,
-  mergeParentsArraysPreservingRapidProData,
+  parentHasExternalSourceData,
+  transformParentWithExternalSourceDataToLocalFormat,
+  mergeParentsArraysPreservingExternalSourceData,
 };

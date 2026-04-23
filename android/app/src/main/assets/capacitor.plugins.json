@@ -4,6 +4,10 @@
 		"classpath": "com.ryltsov.alex.plugins.file.opener.FileOpenerPlugin"
 	},
 	{
+		"pkg": "@capacitor-firebase/app-check",
+		"classpath": "io.capawesome.capacitorjs.plugins.firebase.appcheck.FirebaseAppCheckPlugin"
+	},
+	{
 		"pkg": "@capacitor-firebase/authentication",
 		"classpath": "io.capawesome.capacitorjs.plugins.firebase.authentication.FirebaseAuthenticationPlugin"
 	},
@@ -14,6 +18,10 @@
 	{
 		"pkg": "@capacitor-firebase/firestore",
 		"classpath": "io.capawesome.capacitorjs.plugins.firebase.firestore.FirebaseFirestorePlugin"
+	},
+	{
+		"pkg": "@capacitor-firebase/functions",
+		"classpath": "io.capawesome.capacitorjs.plugins.firebase.functions.FirebaseFunctionsPlugin"
 	},
 	{
 		"pkg": "@capacitor-firebase/performance",

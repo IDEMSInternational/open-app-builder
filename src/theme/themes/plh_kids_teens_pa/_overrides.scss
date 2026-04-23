@@ -263,7 +263,6 @@
   plh-accordion-component {
     ion-accordion {
       background: var(--ion-color-primary-600);
-
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -274,10 +273,6 @@
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
       }
-    }
-    ion-accordion.accordion-animated > [slot="header"] .ion-accordion-toggle-icon {
-      color: unset !important;
-      color: white !important;
     }
     ion-item.accordion-header[slot="header"] {
       display: flex;
@@ -366,29 +361,6 @@
     .standard {
       color: var(--ion-color-gray-900);
       font-size: var(--font-size-text-medium);
-    }
-  }
-
-  // Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--ion-color-gray-900);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      font-size: var(--font-size-text-large) !important;
-      font-weight: var(--font-weight-medium) !important;
-      background-color: #e7f2fd;
-      border-bottom: 1px solid var(--ion-color-primary-variant-200);
-      h1 {
-        padding: 18px;
-        border: none;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
-      margin: 15px 0;
     }
   }
 
@@ -606,11 +578,10 @@
     }
     .module-title {
       margin-top: -70px;
-      padding-bottom: 30px;
-      padding-left: 16px;
+      padding: 0 16px 30px 16px;
       h2 {
         font-weight: var(--font-weight-bold);
-        font-size: 28px;
+        font-size: 24px;
       }
     }
     .wrapper[data-language-direction~="rtl"] {
@@ -990,15 +961,6 @@
             display: none;
           }
         }
-      }
-    }
-  }
-
-  // Task Progress Bar
-  plh-task-progress-bar {
-    .progress-bar-wrapper {
-      .progress-bar {
-        height: 10px !important;
       }
     }
   }

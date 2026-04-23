@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250407.1;
+export const DEPLOYMENT_CONFIG_VERSION = 20260316.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -71,6 +71,17 @@ export interface IDeploymentRuntimeConfig {
     crashlytics?: {
       enabled: boolean;
     };
+    appCheck?: {
+      /**
+       * Site key used to validate appCheck against recaptcha v3 enterprise
+       * https://firebase.google.com/docs/app-check/web/recaptcha-provider
+       */
+      recaptchaEnterpriseSiteKey?: string;
+    };
+    functions?: {
+      /** Region where functions are deployed to. If not specified assumes "us-central1" */
+      region?: string;
+    };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
@@ -82,6 +93,11 @@ export interface IDeploymentRuntimeConfig {
     /** By convention, this should match the deployment name */
     bucketName: string;
     folderName: string;
+  };
+
+  /** 3rd party integration for remote functions. Default enabled with firebase provider */
+  remote_functions?: {
+    provider: "firebase";
   };
 
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
@@ -144,10 +160,25 @@ interface IDeploymentCoreConfig {
     app_id?: string;
     /** Play store app name, e.g. "Example App" */
     app_name?: string;
-    /** Location of source android assets (splash and launcher source images). */
-    icon_asset_path?: string;
+    /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and splash. */
+    logo_asset_path?: string;
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
+    logo_background_color?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: separate splash image for asset-based generation.
+     */
     splash_asset_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: separate icon image for asset-based generation.
+     */
+    icon_asset_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: adaptive icon foreground (asset-based only).
+     */
     icon_asset_foreground_path?: string;
+    /**
+     * @deprecated Use logo_asset_path + logo_background_color instead. Legacy: adaptive icon background (asset-based only).
+     */
     icon_asset_background_path?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
@@ -169,8 +200,17 @@ interface IDeploymentCoreConfig {
   ios: {
     /** App Store unique app identifier, e.g. "international.idems.example_app" */
     app_id?: string;
-    /** App Store app name, e.g. "Example App" */
+    /** App Store app name, e.g. "Example App". Must not contain special characters. */
     app_name?: string;
+    /**
+     * User-facing display name. May include special characters, e.g. "é", "+",
+     * but must be similar to app_name for Apple to approve. Defaults to app_name if unset.
+     * */
+    app_display_name?: string;
+    /** Path to logo image (PNG/SVG). Used with logo_background_color to generate app icon and launch screen. */
+    logo_asset_path?: string;
+    /** Background colour (any CSS color, e.g. hex "#fff", "yellow", "rgb(255,0,0)"). If omitted, default white is used. */
+    logo_background_color?: string;
     /** Support pinch-zoom within app. Default `false` */
     zoom_enabled?: boolean;
   };
@@ -245,6 +285,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   auth: {},
   campaigns: {
     enabled: true,
+  },
+  remote_functions: {
+    provider: "firebase",
   },
   shared_data: {
     provider: "firebase",
