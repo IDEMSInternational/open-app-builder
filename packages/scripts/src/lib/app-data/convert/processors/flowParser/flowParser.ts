@@ -6,7 +6,7 @@ import BaseProcessor from "../base";
 import { JsonFileCache } from "../../cacheStrategy/jsonFile";
 import { createHash } from "crypto";
 
-const cacheVersion = 20251029.0;
+const cacheVersion = 20260423.2;
 const namespace = "FlowParserProcessor";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
@@ -38,23 +38,22 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
 
-  public override processInput(flow: FlowTypes.FlowTypeWithData) {
+  public override async processInput(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _source } = flow;
     const parser = this.parsers[flow_type];
     if (!parser) {
       const message = `No parser available for flow_type: ${flow_type}`;
-      this.logger.error({ message, details: { ..._source, flow_name, flow_type } });
-      return null;
+      return {
+        data: null,
+        errors: [{ message, details: { ..._source, flow_name, flow_type } }],
+      };
     }
     try {
-      const parsed = parser.run(flow);
-      return parsed;
+      const { data, errors } = parser.run(flow);
+      return { data, errors };
     } catch (error) {
-      this.logger.error({
-        message: "Template parse error",
-        details: { error: error.message, flow },
-      });
-      return null;
+      const { rows, ...loggedFlow } = flow;
+      return { data: null, errors: [{ message: error.message, ...loggedFlow }] };
     }
   }
 
@@ -84,7 +83,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     const flowArraysByType = groupJsonByKey(flows, "flow_type");
     for (const [flowType, parser] of Object.entries(this.parsers)) {
       if (flowArraysByType[flowType]) {
-        flowArraysByType[flowType] = parser.postProcessFlows(flowArraysByType[flowType]);
+        flowArraysByType[flowType] = await parser.postProcessFlows(flowArraysByType[flowType]);
       }
     }
     // convert to hashmap for easier processing of generated flows
