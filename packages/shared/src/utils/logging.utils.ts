@@ -1,2 +1,1 @@
-export * from "./logging/console-logger";
-export * from "./logging/file-logger";
+export * from "./logging";

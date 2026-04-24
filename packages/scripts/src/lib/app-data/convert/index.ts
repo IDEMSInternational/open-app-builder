@@ -7,7 +7,7 @@ import { ActiveDeployment } from "../../../commands/deployment/get";
 import { IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import {
-  createChildFileLogger,
+  createChildLogger,
   getLogs,
   Logger,
   getLogFiles,
@@ -16,7 +16,13 @@ import {
   parseAppDataCollectionString,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser/flowParser";
-import { generateFolderFlatMap, IContentsEntry, IContentsEntryWithLocalPath } from "shared";
+import {
+  _wait,
+  flushLogs,
+  generateFolderFlatMap,
+  IContentsEntry,
+  IContentsEntryWithLocalPath,
+} from "shared";
 import { GDRIVE_FILE_ENTRY_ARRAY_SCHEMA, IGdriveEntry } from "@idemsInternational/gdrive-tools";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
 import { MockJsonFileCache } from "./cacheStrategy/jsonFile.mock";
@@ -54,7 +60,7 @@ export class AppDataConverter {
   public activeDeployment = ActiveDeployment.get();
 
   /** Base logger used by child processors */
-  public logger = createChildFileLogger({ source: "converter" });
+  public logger = createChildLogger({ source: "converter" });
 
   /** Base cache used by child processors */
   private cache: JsonFileCache;
@@ -193,6 +199,8 @@ export class AppDataConverter {
 
   /** Create log of total warnings and errors */
   private logOutputs() {
+    // Ensure file-based logs are written to disk
+    flushLogs();
     const warnings = getLogs("warn");
     if (warnings.length > 0) {
       const warningLogFile = getLogFiles().warn;

@@ -112,8 +112,8 @@ describe("data_list Parser (single)", () => {
   });
 
   it("Extracts condition_list", async () => {
-    const { rows } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
-    const { test_condition_list } = rows[0];
+    const { data } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
+    const { test_condition_list } = data.rows[0];
     expect(test_condition_list).toEqual([
       {
         condition_type: "calc",
@@ -123,14 +123,14 @@ describe("data_list Parser (single)", () => {
     ]);
   });
   it("Extracts nested properties", async () => {
-    const { rows } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
-    const { nested } = rows[0];
+    const { data } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
+    const { nested } = data.rows[0];
     expect(nested).toEqual({ test_1: 1, test_2: "two" });
   });
   // TODO - likely deprecated (can't see in codebase)
   it("Extracts notification_schedule", async () => {
-    const { rows } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
-    const { test_notification_schedule } = rows[0];
+    const { data } = parser.run(MOCK_DATA_LIST_FLOW_ADVANCED() as any);
+    const { test_notification_schedule } = data.rows[0];
     expect(test_notification_schedule).toEqual({ key_1: "value_1", key_2: "value_2" });
   });
 });
