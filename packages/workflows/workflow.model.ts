@@ -4,7 +4,7 @@ import type { IDeploymentConfigJson } from "data-models";
 
 // HACK - we want type-safety for workflow tasks, however the tasks list is part of the
 // scripts workspace. Avoid circular imports by direct import from relative path
-import type { ITasks } from "../../scripts/src/tasks";
+import type { ITasks } from "../scripts/src/tasks";
 
 export interface IWorkflowContext {
   [step_name: string]: IWorkflowStep & { output: any };

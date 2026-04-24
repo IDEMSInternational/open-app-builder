@@ -2,7 +2,7 @@ import { emptyDirSync, existsSync, readdirSync, readJsonSync, rmdirSync, statSyn
 import path from "path";
 import { JsonFileCache } from "./jsonFile";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
+import { SCRIPTS_WORKSPACE_PATH } from "shared/paths";
 const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache", "spec");
 
 const testData = {

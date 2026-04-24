@@ -1,7 +1,7 @@
 import path from "path";
 import { XLSXWorkbookProcessor } from "./xlsxWorkbook";
 
-import { SCRIPTS_TEST_DATA_DIR } from "../../../../paths";
+import { SCRIPTS_TEST_DATA_DIR } from "shared/paths";
 import { MockJsonFileCache } from "../cacheStrategy/jsonFile.mock";
 
 const paths = {

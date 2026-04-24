@@ -2,7 +2,6 @@ import { AssetsPostProcessor } from "./assets";
 import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
 
 // Use default imports to allow spying on functions and replacing with mock methods
-import { ActiveDeployment } from "../../../commands/deployment/get";
 import path from "path";
 
 /** Mock file system folders for use in tests */

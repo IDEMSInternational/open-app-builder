@@ -1,4 +1,4 @@
-import { logWarning } from "shared";
+import { logWarning } from "shared/utils/logging.utils";
 import type { IDeploymentWorkflows } from "./workflow.model";
 
 const childWorkflows: IDeploymentWorkflows = {

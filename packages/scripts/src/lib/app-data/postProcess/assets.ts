@@ -1,16 +1,17 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
+// HACK - use ts path import of shared to allow mock fs to
+// persist across calls to utility methods (breaks with yarn workspace import)
 import {
   generateFolderFlatMap,
-  logOutput,
-  logWarning,
   createTempDir,
   IContentsEntryHashmap,
   replicateDir,
-  sortJsonKeys,
   copyFileWithTimestamp,
-} from "../../../utils";
+} from "shared/utils/file-utils";
+import { logOutput, logWarning } from "shared/utils/logging.utils";
+import { sortJsonKeys } from "shared/utils/object-utils";
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import type { IAssetEntryHashmap, IAssetEntry, IAssetSource } from "data-models";
 import type { FlowTypes } from "data-models";
@@ -42,12 +43,14 @@ interface IAssetPostProcessorOptions {
  * Main Methods
  *************************************************************************************/
 export class AssetsPostProcessor {
-  private activeDeployment = ActiveDeployment.get();
   constructor(private options: IAssetPostProcessorOptions) {}
+
+  private get activeDeployment() {
+    return ActiveDeployment.get();
+  }
 
   public run() {
     const { app_data } = this.activeDeployment;
-
     const sources = this.prepareAssetSources();
 
     const appAssetsFolder = path.resolve(app_data.output_path, "assets");

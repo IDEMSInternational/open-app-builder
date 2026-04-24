@@ -1,18 +1,13 @@
-// tsconfig to allow typescript import from packages (not via yarn workspace)
-// not currently in use but may migrate in future alongside nx
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "baseUrl": ".",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "paths": {
-      "@packages/*": ["packages/*"]
+      "@components/*": ["packages/components/*"],
+      "data-models": ["packages/data-models"],
+      "data-models/*": ["packages/data-models/*"],
+      "scripts": ["packages/scripts"],
+      "scripts/*": ["packages/scripts/src/*"],
+      "shared/*": ["packages/shared/src/*"]
     }
-  },
-  "exclude": ["node_modules", "tmp"]
+  }
 }

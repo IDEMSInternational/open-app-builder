@@ -1,4 +1,4 @@
-import { parseUntil } from "character-parser";
+import { parseUntil } from "./character-parser";
 import type { ITemplatedStringVariable } from "../types";
 
 /**

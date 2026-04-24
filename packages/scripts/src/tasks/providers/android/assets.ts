@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import { ROOT_DIR } from "../../../paths";
-import { Logger, logOutput } from "../../../utils";
+import { ROOT_DIR } from "shared/paths"
+import { Logger, logOutput } from "shared/utils";
 
 // @capacitor/assets has no public programmatic API, so import internal modules directly
 import { AndroidAssetGenerator } from "@capacitor/assets/dist/platforms/android";

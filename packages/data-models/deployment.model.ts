@@ -1,5 +1,5 @@
-import type { IContentsEntry } from "shared";
-import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
+import type { IContentsEntry } from "shared/utils";
+import type { IGdriveEntry } from "@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */

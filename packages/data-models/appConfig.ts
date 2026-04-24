@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
 import clone from "clone";
-import { type RecursivePartial } from "shared/src/types";
+import { type RecursivePartial } from "shared/types";
 import { IAppSkin } from "./skin.model";
 
 /*********************************************************************************************

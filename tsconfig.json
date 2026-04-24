@@ -1,4 +1,5 @@
 {
+  "extends": ["./tsconfig.paths.json"],
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -14,11 +15,18 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2022", "DOM"],
     "skipLibCheck": true,
+    "isolatedModules": true,
     "resolveJsonModule": true
   },
-  "paths": {
-    "tslib": ["node_modules/tslib/tslib.d.ts"]
-  },
+  "include": [
+    "src/**/*.ts",
+    ".idems_app/deployments/**/*.ts",
+    "packages/components/**/*.ts",
+    "packages/data-models/**/*.ts",
+    "packages/shared/**/*.ts",
+    "packages/workflows/**/*.ts"
+  ],
+
   "angularCompilerOptions": {
     "strictTemplates": true,
     "strictInjectionParameters": true

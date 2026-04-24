@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
-  "bin": {
-    "idems-translate": "./lib/index.js"
-  },
   "scripts": {
     "dev": "ts-node-dev --respawn --watch 'src/**/*.ts' src/index.ts",
     "start": "ts-node src/index.ts"
