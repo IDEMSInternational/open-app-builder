@@ -9,7 +9,7 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
-import { basenameFromExternalUrl, isExternalHttpUrl } from "shared/src/utils/string-utils";
+import { basenameFromExternalUrl, isExternalHttpUrl } from "packages/shared/src/utils/string-utils";
 
 @Injectable({
   providedIn: "root",
