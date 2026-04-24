@@ -324,7 +324,6 @@ export namespace FlowTypes {
     parameter_list?: { [param: string]: string };
     hidden?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
-    disabled?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     condition?: boolean | string; // dynamic references will be strings, but converted to boolean during evaluation
     is_override_target?: boolean; // prevent template being overridden when calling self via override_target (prevent infinite loops)
     _debug_name?: string; // some components may optionally provide a different name for debugging purposes

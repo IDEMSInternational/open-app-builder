@@ -11,6 +11,7 @@ export { defineAuthorParameterSchema } from "../utils";
 import { FlowTypes, ITemplateRowProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 import type { TemplateComponent } from "../template-component";
+import { parseBoolean } from "src/app/shared/utils";
 
 @Component({
   template: ``,
@@ -41,6 +42,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     equal: isEqual,
   });
   rows = computed<FlowTypes.TemplateRow[]>(() => this.rowSignal().rows || [], { equal: isEqual });
+  disabled = signal(false);
 
   /** Specify whether component should be shown or not. If hidden sets display:none on host component */
   public shouldShow = signal(true);
@@ -53,6 +55,11 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row = row;
     // take shallow clone to still be able to detect changes if this._row directly modified
     this.rowSignal.set({ ...row });
+
+    // Ensure disabled state is kept in sync with authored disabled parameter
+    // NOTE - whilst this may accidentally overwrite state during pending actions,
+    // most actions avoid row updates until after full action lists complete so should be mitigated
+    this.disabled.set(parseBoolean(row.parameter_list?.disabled));
   }
 
   /**
@@ -82,16 +89,15 @@ export class TemplateBaseComponent implements ITemplateRowProps {
    * Actions are grouped by trigger, only emitting specific event handler (e.g. click)
    * @ignore
    */
-  triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
-    // TODO - CC 2024-11 is the accordion_section workaround still required?
-    if (this._row.disabled && this._row.type !== "accordion_section") {
-      console.log("Click action disabled for ", this._row.name);
-      return;
-    }
+  async triggerActions(trigger: FlowTypes.TemplateRowAction["trigger"] = "click") {
     const action_list = this._row.action_list || [];
     const actionsForTrigger = action_list.filter((a) => a.trigger === trigger);
-    if (actionsForTrigger.length > 0) {
-      return this.parent.handleActions(actionsForTrigger, this._row);
+    if (actionsForTrigger.length === 0) return;
+    try {
+      this.disabled.set(true);
+      await this.parent.handleActions(actionsForTrigger, this._row);
+    } finally {
+      this.disabled.set(false);
     }
   }
 

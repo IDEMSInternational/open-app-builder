@@ -13,7 +13,7 @@
                   [checked]="el.value === _row.value"
                   (click)="handleRadioButtonClick(el.value)"
                   [name]="groupName"
-                  [disabled]="_row.disabled"
+                  [disabled]="disabled()"
                 />
                 <span>{{ item.text | translate }}</span>
               </label>
@@ -38,7 +38,7 @@
                   [checked]="el.value === _row.value"
                   (click)="handleRadioButtonClick(el.value)"
                   [name]="groupName"
-                  [disabled]="_row.disabled"
+                  [disabled]="disabled()"
                 />
                 <span>{{ item.text | translate }}</span>
               </label>
@@ -63,7 +63,7 @@
                   [checked]="el.value === _row.value"
                   (click)="handleRadioButtonClick(el.value)"
                   [name]="groupName"
-                  [disabled]="_row.disabled"
+                  [disabled]="disabled()"
                 />
                 <span> {{ item.text | translate }} </span>
               </label>

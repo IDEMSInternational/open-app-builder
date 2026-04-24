@@ -78,7 +78,7 @@ export class PlhParentPointBoxComponent extends TemplateBaseComponent implements
   }
 
   async clickPointItem() {
-    if (this._row.disabled) {
+    if (this.disabled()) {
       return;
     }
     this._row.value = parseInt(this._row.value as string) + 1;

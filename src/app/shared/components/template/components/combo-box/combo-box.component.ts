@@ -79,7 +79,7 @@ export class TmplComboBoxComponent
     return this.cleanAnswerOptions(options as IAnswerOption[]);
   });
 
-  public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
+  public isDisabled = computed(() => this.disabled() || this.answerOptions().length === 0);
 
   private selectedOption = computed(() => {
     const val = this.value();
