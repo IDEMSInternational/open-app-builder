@@ -45,15 +45,15 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
       const message = `No parser available for flow_type: ${flow_type}`;
       return {
         data: null,
-        errors: [{ message, details: { ..._source, flow_name, flow_type } }],
+        errors: [{ message, ..._source, flow_name, flow_type }],
       };
     }
     try {
       const { data, errors } = parser.run(flow);
       return { data, errors };
     } catch (error) {
-      const { rows, ...loggedFlow } = flow;
-      return { data: null, errors: [{ message: error.message, ...loggedFlow }] };
+      const message = `Template parse error: ${error.message}`;
+      return { data: null, errors: [{ message, flow: { flow_name, flow_type } }] };
     }
   }
 
@@ -83,7 +83,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     const flowArraysByType = groupJsonByKey(flows, "flow_type");
     for (const [flowType, parser] of Object.entries(this.parsers)) {
       if (flowArraysByType[flowType]) {
-        flowArraysByType[flowType] = await parser.postProcessFlows(flowArraysByType[flowType]);
+        flowArraysByType[flowType] = parser.postProcessFlows(flowArraysByType[flowType]);
       }
     }
     // convert to hashmap for easier processing of generated flows

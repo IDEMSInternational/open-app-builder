@@ -10,7 +10,7 @@ import { FlowTypes } from "data-models";
 describe("Default Parser", () => {
   const parser = new DefaultParser({ processedFlowHashmap: {} } as any);
   it("Cleans field values - handles strings consisting only of whitespace", () => {
-    const output = parser.run({
+    const { data: output } = parser.run({
       flow_name: "test_flow_input_empty",
       flow_type: "data_list",
       rows: [
@@ -40,8 +40,7 @@ describe("Default Parser", () => {
           value: "\r\n\n\r",
         },
       ],
-    }) as FlowTypes.FlowTypeWithData;
-    // not possible to use the actual objects as the function used is not exported
+    });
     expect(output.rows).toEqual([
       {
         type: "text",
@@ -72,7 +71,7 @@ describe("Default Parser", () => {
   });
 
   it("Cleans field values - trims whitespace from beginning and end of strings", () => {
-    const output = parser.run({
+    const { data: output } = parser.run({
       flow_name: "test_flow_input_nonempty",
       flow_type: "data_list",
       rows: [
@@ -102,7 +101,7 @@ describe("Default Parser", () => {
           value: "\tThis is a test string with spaces and tabs\t",
         },
       ],
-    }) as FlowTypes.FlowTypeWithData;
+    });
     expect(output.rows).toEqual([
       {
         type: "text",
