@@ -13,6 +13,7 @@ import { HttpClient } from "@angular/common/http";
 import type { IServerUser } from "../server/server.types";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { SystemVariableService } from "../system-variable/system-variable.service";
+import { UserMetaService } from "../userMeta/userMeta.service";
 
 @Injectable({
   providedIn: "root",
@@ -33,7 +34,8 @@ export class AuthService extends AsyncServiceBase {
     private serverService: ServerService,
     private http: HttpClient,
     private dynamicDataService: DynamicDataService,
-    private systemVariableService: SystemVariableService
+    private systemVariableService: SystemVariableService,
+    private userMetaService: UserMetaService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -50,7 +52,7 @@ export class AuthService extends AsyncServiceBase {
         this.restoreProfiles.set([]);
       }
     });
-    // expose restore profile data to authoring via `app_auth_profiles` internal collection
+    // expose restore profile data to authoring via `_auth_profiles` internal collection
     effect(async () => {
       const profiles = this.restoreProfiles();
       if (profiles.length > 0) {
@@ -66,9 +68,22 @@ export class AuthService extends AsyncServiceBase {
    * Sign in with the given sign in provider (e.g. "google.com" or "apple.com").
    * Wraps the auth provider's (e.g. Firebase) signIn method and syncs auth state to storage
    * */
-  public async signIn(providerId: ISignInProvider) {
+  public async signIn(providerId: ISignInProvider, importLatestUserData: boolean = false) {
     const result = await this.provider.signIn(providerId);
     this.syncStorageToAuthState();
+    if (!importLatestUserData) {
+      return result;
+    }
+
+    console.log("[Auth] Importing latest user data");
+    const latestProfile = this.getLatestRestoreProfile();
+    if (!latestProfile) {
+      console.log("[Auth] No restore profiles found");
+      return result;
+    }
+
+    console.log("[Auth] Latest profile:", latestProfile);
+    await this.userMetaService.importUser(latestProfile.app_user_id);
     return result;
   }
 
@@ -131,6 +146,13 @@ export class AuthService extends AsyncServiceBase {
       .filter((v) => v.app_user_id !== currentUserId)
       .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     this.restoreProfiles.set(restoreProfiles);
+  }
+
+  private getLatestRestoreProfile() {
+    const profiles = this.restoreProfiles();
+    if (profiles.length === 0) return undefined;
+    // Use a copied list so we don't mutate signal state by sorting in place.
+    return [...profiles].sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1))[0];
   }
 
   private async enforceLogin(templateName: string) {

@@ -9,6 +9,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   disabled: coerce.boolean(false),
   /** Button width style variant. */
   style: coerce.allowedValues(["width_full", "width_content"], "width_full"),
+  /** When true, import latest user data after successful sign in. */
+  import_latest_user_data: coerce.boolean(false),
 }));
 
 @Component({
@@ -25,7 +27,7 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponentWithPa
   }
 
   public async handleClick() {
-    await this.authService.signIn("google.com");
+    await this.authService.signIn("google.com", this.params().importLatestUserData);
     this.triggerActions("click");
   }
 }
