@@ -1,17 +1,15 @@
-import { Component, computed } from "@angular/core";
-import { TemplateBaseComponent } from "../base";
+import { Component } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { FlowTypes } from "packages/data-models";
-import {
-  getBooleanParamFromTemplateRow,
-  getStringParamFromTemplateRow,
-} from "src/app/shared/utils";
 
-interface IButtonGoogleSignInComponentParams {
-  variant: null | "native_google";
-  disabled: boolean;
-  style: "width_full" | "width_content";
-}
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /** Native rendering variant for Google Sign In button. */
+  variant: coerce.allowedValues([null, "native_google"], null),
+  /** When true, the button is disabled. */
+  disabled: coerce.boolean(false),
+  /** Button width style variant. */
+  style: coerce.allowedValues(["width_full", "width_content"], "width_full"),
+}));
 
 @Component({
   selector: "tmpl-button-google-sign-in",
@@ -19,8 +17,7 @@ interface IButtonGoogleSignInComponentParams {
   styleUrls: ["./button-google-sign-in.component.scss"],
   standalone: false,
 })
-export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
-  params = computed(() => this.getParams(this.parameterList()));
+export class TmplButtonGoogleSignInComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   // The button text is set as row value directly in the HTML template
 
   constructor(private authService: AuthService) {
@@ -30,15 +27,5 @@ export class TmplButtonGoogleSignInComponent extends TemplateBaseComponent {
   public async handleClick() {
     await this.authService.signIn("google.com");
     this.triggerActions("click");
-  }
-
-  private getParams(
-    authorParams: FlowTypes.TemplateRow["parameter_list"]
-  ): IButtonGoogleSignInComponentParams {
-    return {
-      variant: getStringParamFromTemplateRow(this._row, "variant", null),
-      disabled: getBooleanParamFromTemplateRow(this._row, "disabled", false),
-      style: getStringParamFromTemplateRow(this._row, "style", "width_full"),
-    } as IButtonGoogleSignInComponentParams;
   }
 }
