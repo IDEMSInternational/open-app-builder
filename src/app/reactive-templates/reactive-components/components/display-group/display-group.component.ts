@@ -1,7 +1,7 @@
 import { Component, computed, forwardRef, ViewEncapsulation } from "@angular/core";
-import { RowListComponent } from "../../../row-list.component";
-import { defineParameters, Parameter } from "../../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../../row-base.component";
+import { RowListComponent } from "../../row-list.component";
+import { defineParameters, Parameter } from "../../parameters";
+import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 
 const parameters = () =>
   defineParameters({
