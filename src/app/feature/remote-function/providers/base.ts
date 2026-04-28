@@ -1,5 +1,3 @@
-import { Injector } from "@angular/core";
-
 export interface RemoteFunctionInvokeParams {
   /** Payload sent to function */
   [key: string]: string;
@@ -12,7 +10,9 @@ export interface RemoteFunctionErrorResponse {
 }
 
 export class RemoteFunctionProviderBase {
-  public async initialise(injector: Injector) {}
+  public async initialise() {
+    return;
+  }
 
   public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
     console.error(`[Remote Function] Provider method not implemented: invoke`);
