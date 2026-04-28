@@ -11,11 +11,13 @@ import { LoopComponent } from "./loop/loop.component";
 import { ActionComponent } from "./action/action.component";
 import { NavComponent } from "./nav/nav.component";
 import { SetGlobalComponent } from "./set-global/set-global.component";
+import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   action: ActionComponent,
   button: ButtonComponent,
+  display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
   loop: LoopComponent,
   nav: NavComponent,
