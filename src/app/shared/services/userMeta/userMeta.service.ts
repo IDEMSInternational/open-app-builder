@@ -79,7 +79,7 @@ export class UserMetaService extends AsyncServiceBase {
   }
 
   /** Import existing user contact fields and replace current user */
-  private async importUser(id: string) {
+  public async importUser(id: string) {
     if (!id) {
       throw new Error(`[User Import] no id provided`);
     }

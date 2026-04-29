@@ -13,6 +13,7 @@ import { HttpClient } from "@angular/common/http";
 import type { IServerUser } from "../server/server.types";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { SystemVariableService } from "../system-variable/system-variable.service";
+import { UserMetaService } from "../userMeta/userMeta.service";
 
 @Injectable({
   providedIn: "root",
@@ -33,7 +34,8 @@ export class AuthService extends AsyncServiceBase {
     private serverService: ServerService,
     private http: HttpClient,
     private dynamicDataService: DynamicDataService,
-    private systemVariableService: SystemVariableService
+    private systemVariableService: SystemVariableService,
+    private userMetaService: UserMetaService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -43,22 +45,18 @@ export class AuthService extends AsyncServiceBase {
       const authUser = this.provider.authUser();
       this.syncStorageToAuthState();
       if (authUser) {
-        // perform immediate sync if user signed in to ensure data backed up
-        await this.serverService.syncUserData();
         await this.checkForUserRestore(authUser);
       } else {
         this.restoreProfiles.set([]);
       }
     });
-    // expose restore profile data to authoring via `app_auth_profiles` internal collection
+    // expose restore profile data to authoring via `_auth_profiles` internal collection
     effect(async () => {
       const profiles = this.restoreProfiles();
-      if (profiles.length > 0) {
-        const collectionData = profiles.map((p) => ({ ...p, id: p.app_user_id }));
-        await this.dynamicDataService.ready();
-        await this.dynamicDataService.setInternalCollection("auth_profiles", collectionData);
-        console.log("[Auth] Restore Profiles", profiles);
-      }
+      const collectionData = profiles.map((p) => ({ ...p, id: p.app_user_id }));
+      await this.dynamicDataService.ready();
+      await this.dynamicDataService.setInternalCollection("auth_profiles", collectionData);
+      console.log("[Auth] Restore Profiles", profiles);
     });
   }
 
@@ -66,10 +64,30 @@ export class AuthService extends AsyncServiceBase {
    * Sign in with the given sign in provider (e.g. "google.com" or "apple.com").
    * Wraps the auth provider's (e.g. Firebase) signIn method and syncs auth state to storage
    * */
-  public async signIn(providerId: ISignInProvider) {
-    const result = await this.provider.signIn(providerId);
-    this.syncStorageToAuthState();
-    return result;
+  public async signIn(providerId: ISignInProvider, importLatestUserData: boolean = true) {
+    // Temporarily pause sync operations while signing in to avoid overwriting remote user data
+    // with the local data before it can be retrieved
+    await this.serverService.withSyncPaused(async () => {
+      const result = await this.provider.signIn(providerId);
+      this.syncStorageToAuthState();
+      if (!importLatestUserData) {
+        return result;
+      }
+
+      console.log("[Auth] Importing latest user data");
+      await this.checkForUserRestore(result);
+      const latestProfile = this.restoreProfiles()[0];
+      if (!latestProfile) {
+        console.log("[Auth] No restore profiles found");
+        return result;
+      }
+
+      console.log("[Auth] Latest profile:", latestProfile);
+      await this.userMetaService.importUser(latestProfile.app_user_id);
+      return result;
+    });
+    // Perform sync after sign in and import to ensure data backed up
+    await this.serverService.syncUserData();
   }
 
   /** Sign out. Wraps the provider's signOut and syncs auth state to storage */
@@ -126,10 +144,7 @@ export class AuthService extends AsyncServiceBase {
         .pipe(map((v) => (v as IServerUser[]) || []))
     );
 
-    const currentUserId = this.systemVariableService.get("APP_USER_ID");
-    const restoreProfiles = authEntries
-      .filter((v) => v.app_user_id !== currentUserId)
-      .sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
+    const restoreProfiles = authEntries.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     this.restoreProfiles.set(restoreProfiles);
   }
 
