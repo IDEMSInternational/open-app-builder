@@ -68,7 +68,7 @@ export class AuthService extends AsyncServiceBase {
    * Sign in with the given sign in provider (e.g. "google.com" or "apple.com").
    * Wraps the auth provider's (e.g. Firebase) signIn method and syncs auth state to storage
    * */
-  public async signIn(providerId: ISignInProvider, importLatestUserData: boolean = false) {
+  public async signIn(providerId: ISignInProvider, importLatestUserData: boolean = true) {
     const result = await this.provider.signIn(providerId);
     this.syncStorageToAuthState();
     if (!importLatestUserData) {

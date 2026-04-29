@@ -10,7 +10,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Button width style variant. */
   style: coerce.allowedValues(["width_full", "width_content"], "width_full"),
   /** When true, import latest user data after successful sign in. */
-  import_latest_user_data: coerce.boolean(false),
+  import_latest_user_data: coerce.boolean(true),
 }));
 
 @Component({

@@ -6,7 +6,7 @@ export class AuthActionFactory {
 
   public auth: IActionHandler = async ({ args, params }) => {
     const [actionId] = args;
-    const importLatestUserData = params?.import_latest_user_data ?? false;
+    const importLatestUserData = params?.import_latest_user_data ?? true;
 
     const sign_in_google = async () =>
       await this.service.signIn("google.com", importLatestUserData);
