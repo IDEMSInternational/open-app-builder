@@ -77,7 +77,8 @@ export class AuthService extends AsyncServiceBase {
       }
 
       console.log("[Auth] Importing latest user data");
-      const latestProfile = this.getLatestRestoreProfile();
+      await this.checkForUserRestore(result);
+      const latestProfile = this.restoreProfiles()[0];
       if (!latestProfile) {
         console.log("[Auth] No restore profiles found");
         return result;
@@ -147,13 +148,6 @@ export class AuthService extends AsyncServiceBase {
 
     const restoreProfiles = authEntries.sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1));
     this.restoreProfiles.set(restoreProfiles);
-  }
-
-  private getLatestRestoreProfile() {
-    const profiles = this.restoreProfiles();
-    if (profiles.length === 0) return undefined;
-    // Use a copied list so we don't mutate signal state by sorting in place.
-    return [...profiles].sort((a, b) => (a.updatedAt > b.updatedAt ? -1 : 1))[0];
   }
 
   private async enforceLogin(templateName: string) {
