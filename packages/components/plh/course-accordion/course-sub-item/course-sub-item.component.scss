@@ -4,10 +4,12 @@
 
 .course-sub-item {
   cursor: pointer;
+  container-type: inline-size;
 
   width: 100%;
-  min-height: 56px;
+  min-height: 3.5rem;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
   text-align: left;
@@ -23,6 +25,8 @@
     font-weight: 500;
     letter-spacing: var(--font-letter-spacing, 0);
     margin-inline-end: 6px;
+    flex: 1 1 8rem;
+    min-width: 0;
   }
 
   .state-container {
@@ -35,13 +39,13 @@
       padding: 2px 8px;
       border-style: solid;
       border-width: 1px;
-      border-radius: var(--ion-border-radius-rounded, 100%);
+      border-radius: var(--ion-border-radius-rounded, 50px);
       p {
         margin: 0;
       }
     }
     ion-icon {
-      font-size: var(--icon-size-tiny, 24px);
+      font-size: var(--icon-size-tiny, 1.8rem);
       --ionicon-stroke-width: 42px;
     }
   }
@@ -85,6 +89,14 @@
       }
       ion-icon {
         color: var(--ion-color-gray-700);
+      }
+    }
+  }
+
+  @container (max-width: 320px) {
+    .state-container {
+      ion-icon {
+        font-size: 2rem;
       }
     }
   }
