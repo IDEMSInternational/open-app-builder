@@ -20,6 +20,7 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
   background-color: $background-color;
   letter-spacing: var(--font-letter-spacing);
   padding: var(--large-padding) var(--regular-padding);
+  margin-top: 8px;
   gap: var(--small-padding);
   cursor: pointer;
   background-position-y: center;
