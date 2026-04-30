@@ -12,7 +12,19 @@ import {
   WritableSignal,
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
-import { Parameters } from "./parameters";
+import { defineParameters, Parameter, Parameters } from "./parameters";
+
+export type ValueType = "script" | "string";
+
+export const defineBaseParameters = () =>
+  defineParameters({
+    valueType: new Parameter<ValueType>("value_type", "string"),
+  });
+
+export type BaseParameters = ReturnType<typeof defineBaseParameters>;
+
+/** Merges component-specific params with BaseParameters, handling null (components with no params) */
+export type MergeParams<TParams> = TParams extends null ? BaseParameters : TParams & BaseParameters;
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
@@ -33,7 +45,7 @@ export function navParamPrefix(url: string): string {
   template: ``, // template is empty, to be overridden by child components
   standalone: false,
 })
-export abstract class RowBaseComponent<TParams extends Parameters>
+export abstract class RowBaseComponent<TParams extends Parameters | null>
   implements OnInit, OnDestroy, IRow
 {
   public row = input.required<FlowTypes.TemplateRow>();
@@ -55,7 +67,10 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public expression = this._expression.asReadonly();
 
   public condition = signal(true);
-  public params = inject(ROW_PARAMETERS) as TParams;
+  public params: MergeParams<TParams> = {
+    ...(inject(ROW_PARAMETERS) ?? {}),
+    ...defineBaseParameters(),
+  } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
   protected variableStore: IStore = inject(VariableStore);
@@ -107,7 +122,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this._expression.set(sessionValue ?? row.value);
     this.condition.set(
-      this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
+      this.evaluationService.evaluateExpression(
+        row.condition ?? true,
+        this.namespace(),
+        this.params.valueType.value()
+      )
     );
 
     this.setParams();
@@ -137,32 +156,42 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
-    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+    const value = this.evaluationService.evaluateExpression(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    );
     const computedValue = await this.computeStoredValue(value);
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
   }
 
   private setParams() {
-    if (!this.params) return;
     const rowParams = this.row().parameter_list;
 
-    Object.keys(this.params).forEach((key) => {
-      const param = this.params[key];
+    const applyParams = (params: Parameters) => {
+      Object.keys(params).forEach((key) => {
+        const param = params[key];
+        if (rowParams && rowParams.hasOwnProperty(param.name)) {
+          const paramExpression = rowParams[param.name];
+          const value = this.evaluationService.evaluateExpression(
+            paramExpression,
+            this.namespace(),
+            this.params.valueType.value()
+          );
+          params[key].setValue(value);
+        }
+      });
+    };
 
-      if (rowParams && rowParams.hasOwnProperty(param.name)) {
-        const paramExpression = rowParams[param.name];
-        const value = this.evaluationService.evaluateExpression(paramExpression, this.namespace());
-        this.params[key].setValue(value);
-      }
-    });
+    if (this.params) applyParams(this.params);
   }
 
   protected watchValueDependencies() {
     this.unsubscribeValueDependencies();
 
     const dependencies = this.evaluationService
-      .getDependencies(this.expression(), this.namespace())
+      .getDependencies(this.expression(), this.namespace(), this.params.valueType.value())
       .filter((d) => d.name !== this.name());
 
     if (!dependencies || !dependencies.length) {
@@ -185,14 +214,24 @@ export abstract class RowBaseComponent<TParams extends Parameters>
       return;
     }
 
-    const dependencies = this.evaluationService.getDependencies(condition, this.namespace());
+    const dependencies = this.evaluationService.getDependencies(
+      condition,
+      this.namespace(),
+      this.params.valueType.value()
+    );
 
     if (!dependencies || !dependencies.length) {
       return;
     }
 
     const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
-      this.condition.set(this.evaluationService.evaluateExpression(condition, this.namespace()));
+      this.condition.set(
+        this.evaluationService.evaluateExpression(
+          condition,
+          this.namespace(),
+          this.params.valueType.value()
+        )
+      );
     });
     this.conditionDependencySubscriptions.push(sub);
   }
@@ -204,7 +243,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     if (!rowParams) return;
 
     let dependencies = Object.keys(rowParams).flatMap((name) => {
-      return this.evaluationService.getDependencies(rowParams[name], this.namespace());
+      return this.evaluationService.getDependencies(
+        rowParams[name],
+        this.namespace(),
+        this.params.valueType.value()
+      );
     });
 
     if (!dependencies || !dependencies.length) {

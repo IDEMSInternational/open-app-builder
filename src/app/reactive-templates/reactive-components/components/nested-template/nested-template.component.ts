@@ -41,7 +41,11 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private watchChildDependencies() {
     for (const row of this.row().rows) {
-      const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
+      const dependencies = this.evaluationService.getDependencies(
+        row.value,
+        this.namespace(),
+        this.params.valueType.value()
+      );
 
       if (!dependencies || dependencies.length === 0) {
         continue;
@@ -60,7 +64,11 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     const rowFullName = this.namespaceService.getFullName(this.name(), row.name);
 
     if (this.rowRegistry.has(rowFullName)) {
-      const value = this.evaluationService.evaluateExpression(row.value, this.namespace());
+      const value = this.evaluationService.evaluateExpression(
+        row.value,
+        this.namespace(),
+        this.params.valueType.value()
+      );
       this.rowRegistry.get(rowFullName)?.setExpression(value);
     }
   }

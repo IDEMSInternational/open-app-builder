@@ -32,7 +32,11 @@ export class UpdateComponent
       return;
     }
 
-    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
+    const value = this.evaluationService.evaluateExpression(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    );
 
     try {
       const valueJson = `{${value as string}}`;

@@ -7,7 +7,10 @@ export class NamespaceEvaluator {
     namespace: string
   ): string | number | boolean {
     if (typeof expression === "string" && namespace) {
-      return expression.replaceAll("@local.", `@local.${namespace}.`);
+      // replace all occurrences of .local with .local.namespace within template literal expressions (e.g. ${...})
+      return expression.replace(/\$\{[^}]+\}/g, (match) =>
+        match.replaceAll(".local", `.local.${namespace}`)
+      );
     }
 
     return expression;
