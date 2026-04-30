@@ -78,11 +78,13 @@
       }
     }
     .course-title-and-progress-bar {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       flex-shrink: 10;
       margin: 0 4px;
       margin-inline-end: auto;
-      padding: var(--regular-padding) 8px;
+      padding: 10px 8px;
       flex: 1 1 12rem;
       min-width: 0;
 
@@ -98,6 +100,7 @@
         flex-shrink: 1;
         width: 100%;
         display: flex;
+        flex-flow: row wrap;
         gap: var(--tiny-padding, 6px);
         align-items: center;
         justify-content: space-between;
