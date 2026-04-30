@@ -6,18 +6,22 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
 }
 
 .lesson-cta-container {
-  border-radius: var(--ion-border-radius-small);
-  border: 1px solid $border-color;
-  background-color: $background-color;
-  color: white;
-  letter-spacing: var(--font-letter-spacing);
-  width: 100%;
-  padding: var(--large-padding) var(--regular-padding);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--small-padding);
+  container-type: inline-size;
+
   position: relative;
+  width: 100%;
+  color: white;
+  border: 1px solid $border-color;
+  border-radius: var(--ion-border-radius-small);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: $background-color;
+  letter-spacing: var(--font-letter-spacing);
+  padding: var(--large-padding) var(--regular-padding);
+  margin-top: 8px;
+  gap: var(--small-padding);
   cursor: pointer;
   background-position-y: center;
   background-position-x: center;
@@ -25,8 +29,10 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
 
   .badge {
     position: absolute;
-    top: -12px;
-    left: -10px;
+    top: 0;
+    left: 0;
+    transform: translate(-15%, -50%);
+
     background-color: var(--ion-background-color);
     color: black;
     border-style: solid;
@@ -46,6 +52,8 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
   .content {
     width: 100%;
     padding-bottom: var(--small-padding);
+    flex: 1 1 12rem;
+    min-width: 0;
 
     .title {
       font-size: var(--font-size-text-large);
@@ -58,16 +66,18 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
       line-height: var(--line-height-text-small);
+      color: var(--ion-color-gray-50);
       margin: 0;
     }
 
     .progress-bar-container {
-      width: 80%;
+      width: 100%;
+      max-width: 300px;
       margin-top: var(--small-padding);
       // Override the default task progress bar styles for the lesson CTA using theme variables
       --task-progress-bar-color: #{$border-color};
       --task-progress-bar-background-color: white;
-      --task-progress-bar-height: 5px;
+      --task-progress-bar-height: 6px;
     }
   }
 
@@ -76,11 +86,17 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 0 1 auto;
+    margin-left: auto;
+
+    min-width: 4rem;
 
     ion-button.cta-button {
       margin: 2px;
-      height: 60px;
-      width: 60px;
+      width: 4rem;
+      height: 4rem;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
       --background: white;
       --border-color: #{$border-color};
       --color: #{$border-color};
@@ -96,8 +112,40 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
     }
 
     ion-icon {
-      font-size: 32px;
+      font-size: 2rem;
       --ionicon-stroke-width: 36px;
+    }
+  }
+
+  @container (max-width: 280px) {
+    .cta {
+      width: 100%;
+      height: 3.5rem;
+      flex-direction: row-reverse;
+      justify-content: center;
+      margin-top: var(--small-padding);
+
+      background: white;
+      border-color: #{$border-color};
+      color: #{$border-color};
+      border-style: solid;
+      border-width: 1px;
+      border-radius: var(--ion-border-radius-rounded);
+
+      ion-button.cta-button {
+        height: 100%;
+        width: unset;
+        --background: none;
+        --border-color: transparent;
+        --border-style: none;
+        --border-width: 0;
+        --box-shadow: none;
+      }
+
+      .cta-text {
+        font-size: var(--font-size-text-medium);
+        width: unset;
+      }
     }
   }
 }
