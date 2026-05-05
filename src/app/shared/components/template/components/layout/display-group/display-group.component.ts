@@ -44,6 +44,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
 
   ngOnInit() {
     this.getParams();
+    this.makeStickyHostTransparent();
   }
 
   public clickDisplayGroup() {
@@ -83,5 +84,23 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       "top"
     );
     return { backgroundImage, backgroundPosition };
+  }
+
+  /**
+   * As well as applying to the host element, as with all other components,
+   * display-group styles are intentionally applied on the inner wrapper in the template.
+   * For sticky groups, the dynamic host element can be rendered in a different place to the content,
+   * so host-level background styles (from TemplateComponent.setStyleList) can cause visual issues.
+   * Keep host transparent and preserve authored styling on the inner wrapper.
+   */
+  private makeStickyHostTransparent() {
+    if (!this.params.sticky) return;
+
+    const hostElement = this.parentTemplateComponentRef?.elRef?.nativeElement as
+      | HTMLElement
+      | undefined;
+    if (!hostElement) return;
+    hostElement.style.setProperty("background", "transparent");
+    hostElement.style.setProperty("border", "none");
   }
 }
