@@ -16,7 +16,7 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   background-color: $background-color;
   letter-spacing: var(--font-letter-spacing);
   padding: var(--large-padding) var(--regular-padding);
