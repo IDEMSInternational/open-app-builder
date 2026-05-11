@@ -1,7 +1,6 @@
 import { JsonPipe, NgComponentOutlet } from "@angular/common";
 import { Component, computed, contentChild } from "@angular/core";
 import { RowBaseComponent } from "../../row-base.component";
-import { Parameter, Parameters } from "../../parameters";
 import { RowContextDebuggerComponent } from "../row-context-debugger/row-context-debugger.component";
 import {
   DebuggerBaseComponent,
@@ -25,20 +24,9 @@ export class RowDebuggerComponent {
   private outlet = contentChild(NgComponentOutlet);
 
   public row = computed(() => {
-    const instance = this.outlet()?.componentInstance as RowBaseComponent<any> | undefined;
+    const instance = this.outlet()?.componentInstance as RowBaseComponent | undefined;
     return instance;
   });
 
-  public params = computed(() => {
-    const params = this.row()?.params as Parameters | undefined;
-    if (!params) return {} as Record<string, unknown>;
-
-    return (Object.values(params) as Parameter<any>[]).reduce<Record<string, unknown>>(
-      (acc, param) => {
-        acc[param.name] = param.value();
-        return acc;
-      },
-      {}
-    );
-  });
+  public params = computed(() => this.row()?.params() ?? {});
 }

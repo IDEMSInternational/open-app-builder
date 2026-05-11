@@ -1,25 +1,25 @@
-@if (params.showSearch.value()) {
+@if (params().showSearch) {
   <button
     class="open-search-dropdown"
     (click)="openSearch()"
     [ngClass]="searchButtonClass()"
-    [disabled]="params.disabled.value()"
+    [disabled]="params().disabled"
     [attr.data-test]="name()"
   >
-    <span class="text" [class.placeholder]="!!params.placeholder.value()">{{
+    <span class="text" [class.placeholder]="!!params().placeholder">{{
       displayValue() | translate
     }}</span>
     <ion-icon name="caret-down-sharp" size="small" aria-hidden="true"></ion-icon>
   </button>
-} @else if (!params.showSearch.value()) {
+} @else if (!params().showSearch) {
   <div class="dropdown-container">
     <ion-select
       [class.hasValue]="!!value()"
-      [placeholder]="params.placeholder.value() | translate"
+      [placeholder]="params().placeholder | translate"
       (ionChange)="onChange($event)"
       interface="popover"
       labelPlacement="stacked"
-      [disabled]="params.disabled.value()"
+      [disabled]="params().disabled"
       [attr.data-test]="name()"
       [value]="value()"
     >

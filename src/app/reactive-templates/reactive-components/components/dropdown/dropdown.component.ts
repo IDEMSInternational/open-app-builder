@@ -1,38 +1,35 @@
 import { Component, computed } from "@angular/core";
 import { IonicModule, ModalController } from "@ionic/angular";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { defineParameters, Parameter } from "../../parameters";
+import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
 import { DropdownModalComponent } from "./dropdown-modal/dropdown-modal.component";
 import { NgClass } from "@angular/common";
 import { TranslatePipe } from "src/app/shared/components/template/pipes/translate.pipe";
 
-const parameters = () =>
-  defineParameters({
-    disabled: new Parameter("disabled", false),
-    placeholder: new Parameter("placeholder", ""),
-    style: new Parameter("style", ""),
-    showSearch: new Parameter("show_search", false),
-    options: new Parameter("options", []),
-    optionsKey: new Parameter("options_key", "key"),
-    optionsValue: new Parameter("options_value", "value"),
-    title: new Parameter("title", ""),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  disabled: coerce.boolean(),
+  placeholder: coerce.string(""),
+  style: coerce.string(""),
+  show_search: coerce.boolean(),
+  options: coerce.any<any[]>([]),
+  options_key: coerce.string("key"),
+  options_value: coerce.string("value"),
+  title: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-dropdown",
   templateUrl: "./dropdown.component.html",
   styleUrls: ["./dropdown.component.scss"],
   imports: [IonicModule, NgClass, TranslatePipe],
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+export class DropdownComponent extends RowBaseComponentWithParams(AuthorSchema) {
   constructor(private modalController: ModalController) {
     super();
   }
 
-  public options = this.params.options.value;
-  public optionsKey = this.params.optionsKey.value;
-  public optionsValue = this.params.optionsValue.value;
+  public options = computed(() => this.params().options);
+  public optionsKey = computed(() => this.params().optionsKey);
+  public optionsValue = computed(() => this.params().optionsValue);
   public selectedOption = computed(() => {
     if (!this.value()) return null;
 
@@ -44,13 +41,13 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
   public displayValue = computed(() => {
     return this.selectedOption()
       ? this.selectedOption()[this.optionsValue()]
-      : this.params.placeholder.value();
+      : this.params().placeholder;
   });
 
   public searchButtonClass = computed(() => {
     const value = this.value();
     return {
-      disabled: this.params.disabled.value(),
+      disabled: this.params().disabled,
       "with-value": value ? true : undefined,
       "no-value": value ? undefined : true,
     };
@@ -62,7 +59,7 @@ export class DropdownComponent extends RowBaseComponent<ReturnType<typeof parame
       cssClass: "dropdown-search",
       componentProps: {
         options: this.options(),
-        title: this.params.title.value(),
+        title: this.params().title,
         selectedOption: this.selectedOption(),
       },
     });

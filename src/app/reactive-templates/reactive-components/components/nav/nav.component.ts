@@ -1,19 +1,12 @@
 import { Component } from "@angular/core";
-import { navParamPrefix, ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { defineParameters } from "../../parameters";
+import { navParamPrefix, RowBaseComponent } from "../../row-base.component";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
-
-const parameters = () => defineParameters({});
 
 @Component({
   selector: "oab-nav",
   template: "",
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class NavComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements IAction
-{
+export class NavComponent extends RowBaseComponent implements IAction {
   public async execute(params?: IActionParameter[]): Promise<void> {
     const templateName = this.evaluationService.evaluateExpression(
       this.row().value,

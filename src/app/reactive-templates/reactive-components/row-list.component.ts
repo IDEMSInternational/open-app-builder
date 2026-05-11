@@ -42,8 +42,8 @@ export class RowListComponent {
 
   private rowsInitialised = new Set<number>();
 
-  public getComponent(row: FlowTypes.TemplateRow): Type<RowBaseComponent<any>> {
-    return REACTIVE_COMPONENT_MAP[row.type] as Type<RowBaseComponent<any>>;
+  public getComponent(row: FlowTypes.TemplateRow): Type<RowBaseComponent> {
+    return REACTIVE_COMPONENT_MAP[row.type] as Type<RowBaseComponent>;
   }
 
   /* 

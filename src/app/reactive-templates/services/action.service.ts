@@ -19,11 +19,7 @@ export class ActionService {
     private setGlobalActionService: SetGlobalActionService // Also just to force initialisation - todo: as above
   ) {}
 
-  public async handleActions(
-    rowComponent: RowBaseComponent<any>,
-    trigger: string,
-    namespace: string
-  ) {
+  public async handleActions(rowComponent: RowBaseComponent, trigger: string, namespace: string) {
     const actions = rowComponent.row().action_list?.filter((a) => a.trigger === trigger);
 
     if (!actions || !actions.length) return;

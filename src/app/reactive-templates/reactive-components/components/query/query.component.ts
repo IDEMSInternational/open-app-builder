@@ -1,26 +1,20 @@
 import { Component, inject } from "@angular/core";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { defineParameters, Parameter } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
 import json5 from "json5";
 import { firstValueFrom } from "rxjs";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 
-const parameters = () =>
-  defineParameters({
-    dataList: new Parameter<string>("data_list", undefined),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  data_list: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-query",
   template: "", // template is not needed for this component
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
   standalone: false,
 })
-export class QueryComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements IAction
-{
+export class QueryComponent extends RowBaseComponentWithParams(AuthorSchema) implements IAction {
   private dynamicDataService = inject(DynamicDataService);
 
   public async execute(params?: IActionParameter[]): Promise<void> {
@@ -35,7 +29,7 @@ export class QueryComponent
     try {
       const queryString = `{${value as string}}`;
       const mangoQuery = value ? json5.parse(queryString) : {};
-      const dataList = this.params.dataList.value();
+      const { dataList } = this.params();
 
       if (!dataList) {
         return Promise.resolve([]);

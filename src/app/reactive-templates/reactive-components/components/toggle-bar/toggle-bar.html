@@ -1,8 +1,8 @@
 <div
   class="container"
-  [class]="params.position.value()"
-  [attr.data-param-style]="params.style.value()"
-  [attr.data-variant]="params.variant.value()"
+  [class]="params().position"
+  [attr.data-param-style]="params().style"
+  [attr.data-variant]="params().variant"
 >
   <div class="toggle_wrapper">
     @if (!variantMap.icon) {
@@ -10,7 +10,7 @@
     <ion-toggle
       [attr.data-mode]="platformVariant"
       [mode]="platformVariant"
-      [enableOnOffLabels]="params.showTickAndCross.value() && params.showIcons.value()"
+      [enableOnOffLabels]="params().showTickAndCross && params().showIcons"
       [checked]="!!value()"
       (click)="handleClick($event)"
       [attr.data-test]="name()"
@@ -19,12 +19,12 @@
     } @else {
     <!-- "icon" variant, replaces ion-toggle with alternating pair of icons -->
     <div class="icon-wrapper" (click)="handleClick($event)">
-      <img [src]="(value() ? params.iconTrue.value() : params.iconFalse.value()) | plhAsset" />
+      <img [src]="(value() ? params().iconTrueAsset : params().iconFalseAsset) | plhAsset" />
     </div>
     }
   </div>
 
-  @if (params.trueText.value() && params.falseText.value()) {
-  <span class="label">{{ value() ? params.trueText.value() : params.falseText.value() }}</span>
+  @if (params().trueText && params().falseText) {
+  <span class="label">{{ value() ? params().trueText : params().falseText }}</span>
   }
 </div>
