@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../../base";
-import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../../utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from "../../../../../utils";
 import { NgStyle } from "@angular/common";
 import { TemplateAssetService } from "../../../services/template-asset.service";
 
@@ -23,6 +27,8 @@ interface IDisplayGroupParams {
   backgroundImagePosition: string;
   /** TEMPLATE PARAMETER: "sticky". Set to "top" or "bottom" to make the display group a sticky inline header/footer */
   sticky: "top" | "bottom" | null;
+  /** TEMPLATE PARAMETER: "wrap". If true, content will wrap over multiple lines if there is not enough space */
+  wrap: boolean;
 }
 
 @Component({
@@ -59,6 +65,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       .join(" ")
       .concat(" " + this.params.style) as IDisplayGroupParams["variant"];
     this.params.sticky = getStringParamFromTemplateRow(this._row, "sticky", null) as any;
+    this.params.wrap = getBooleanParamFromTemplateRow(this._row, "wrap", false);
     this.type = this.getTypeFromStyles();
     this.backgroundImageStyles = this.getBackgroundImageStyles();
   }
