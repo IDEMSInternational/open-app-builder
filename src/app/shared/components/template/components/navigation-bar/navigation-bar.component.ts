@@ -28,7 +28,7 @@ export class TmplNavigationBarComponent extends TemplateBaseComponentWithParams(
 
   private templateMetaService = inject(TemplateMetadataService);
 
-  private targetTemplates = computed(() => this.params().buttonList.map((v) => v.targetTemplate));
+  private targetTemplates = computed(() => this.params().buttonList.map((v) => v.target_template));
 
   constructor() {
     super();

@@ -248,6 +248,24 @@ describe("parameter_list utils - parse", () => {
     });
   });
 
+  it("preserves snake_case keys within nested object/array values", () => {
+    // Top-level keys are converted to camelCase but values (including nested object keys
+    // and array element keys) are left untouched so that authors can use snake_case
+    // properties inside e.g. answer_list options without them being silently rewritten.
+    const result = parseTemplateParameterList(
+      {
+        any_param: { nested_key: "value", another_nested: { deep_key: 1 } },
+        object_array_param: [{ key1: "a", extra_snake_key: "preserved" }],
+      } as any,
+      schema
+    );
+    expect(result.anyParam).toEqual({
+      nested_key: "value",
+      another_nested: { deep_key: 1 },
+    });
+    expect(result.objectArrayParam).toEqual([{ key1: "a", extra_snake_key: "preserved" }] as any);
+  });
+
   it("warns if invalid keys passed from parameter_list", () => {
     const consoleSpy = spyOn(console, "warn");
     parseTemplateParameterList({ invalid_key: "value" }, schema);

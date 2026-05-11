@@ -212,20 +212,18 @@ export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
 
   // NOTE - should not throw as all coerce methods include own catch
   const parsed = schema.parse(parameterList);
-  // Transform snake_case to camelCase. This will keep type-safety following conversion
-  return snakeToCamelKeys(parsed);
+  // Transform snake_case to camelCase. This will keep type-safety following conversion.
+  // NOTE - only top-level keys are converted; nested object/array values are left untouched
+  // so that authors can use snake_case keys within e.g. answer_list options without them being
+  // silently rewritten.
+  return snakeToCamelTopLevelKeys(parsed);
 }
 
-/** Convert all keys in an object from snake_case to camelCase */
-function snakeToCamelKeys<T>(obj: T): ISnakeToCamelKeys<T> {
-  if (Array.isArray(obj)) {
-    return obj.map((v) => snakeToCamelKeys(v)) as ISnakeToCamelKeys<T>;
-  } else if (obj && typeof obj === "object" && obj.constructor === Object) {
-    return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => [snakeToCamel(k), snakeToCamelKeys(v)])
-    ) as ISnakeToCamelKeys<T>;
-  }
-  return obj as ISnakeToCamelKeys<T>;
+/** Convert top-level keys of an object from snake_case to camelCase (values left untouched) */
+function snakeToCamelTopLevelKeys<T extends object>(obj: T): ISnakeToCamelKeys<T> {
+  return Object.fromEntries(
+    Object.entries(obj).map(([k, v]) => [snakeToCamel(k), v])
+  ) as ISnakeToCamelKeys<T>;
 }
 
 export function snakeToCamel(str: string): string {
@@ -247,12 +245,10 @@ type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
   ? `${T}${Capitalize<SnakeToCamel<U>>}`
   : S;
 
-// type inference when converting all keys in an object from snake_case to camelCase
-type ISnakeToCamelKeys<T> =
-  T extends Array<infer U>
-    ? ISnakeToCamelKeys<U>[]
-    : T extends object
-      ? {
-          [K in keyof T as K extends string ? SnakeToCamel<K> : K]: ISnakeToCamelKeys<T[K]>;
-        }
-      : T;
+// type inference when converting top-level keys in an object from snake_case to camelCase
+// (nested values are left as-is, mirroring the runtime behavior of `snakeToCamelTopLevelKeys`)
+type ISnakeToCamelKeys<T> = T extends object
+  ? {
+      [K in keyof T as K extends string ? SnakeToCamel<K> : K]: T[K];
+    }
+  : T;
