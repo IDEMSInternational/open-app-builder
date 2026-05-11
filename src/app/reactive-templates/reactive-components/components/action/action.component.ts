@@ -21,7 +21,7 @@ import { SetVariableComponent } from "../set-variable/set-variable.component";
   selector: "oab-action",
   template: "", // no template needed
 })
-export class ActionComponent extends RowBaseComponent implements OnInit, OnDestroy, IAction {
+export class ActionComponent extends RowBaseComponent() implements OnInit, OnDestroy, IAction {
   private actionRegistry = inject(ActionRegistry);
   private injector = inject(EnvironmentInjector);
 

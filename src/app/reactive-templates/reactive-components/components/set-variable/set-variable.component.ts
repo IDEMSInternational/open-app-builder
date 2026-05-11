@@ -8,7 +8,7 @@ import { IAction } from "src/app/reactive-templates/services/action.registry";
   styles: "",
   standalone: false,
 })
-export class SetVariableComponent extends RowBaseComponent implements IAction {
+export class SetVariableComponent extends RowBaseComponent() implements IAction {
   async execute(): Promise<void> {
     this.setExpression(this.row().value);
   }

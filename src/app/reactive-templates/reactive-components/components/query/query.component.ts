@@ -1,6 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import json5 from "json5";
 import { firstValueFrom } from "rxjs";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
@@ -14,7 +14,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   template: "", // template is not needed for this component
   standalone: false,
 })
-export class QueryComponent extends RowBaseComponentWithParams(AuthorSchema) implements IAction {
+export class QueryComponent extends RowBaseComponent(AuthorSchema) implements IAction {
   private dynamicDataService = inject(DynamicDataService);
 
   public async execute(params?: IActionParameter[]): Promise<void> {

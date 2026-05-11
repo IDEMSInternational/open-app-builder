@@ -1,5 +1,5 @@
 import { Component, computed } from "@angular/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
@@ -18,7 +18,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
     TemplatePipesModule, // todo: make pipes standalone
   ],
 })
-export class TextComponent extends RowBaseComponentWithParams(AuthorSchema) {
+export class TextComponent extends RowBaseComponent(AuthorSchema) {
   public hasTextValue = computed(
     () => !["undefined", "NaN", "null", '""'].includes(this.row().value as string)
   );

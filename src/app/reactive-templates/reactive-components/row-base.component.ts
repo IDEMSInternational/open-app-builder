@@ -32,12 +32,19 @@ export function navParamPrefix(url: string): string {
   return `navParam_${url}_`;
 }
 
+/**
+ * Internal abstract base class shared by all row components.
+ * Not exported directly — components should extend the `RowBaseComponent(schema)` factory,
+ * which produces a typed subclass of this with a schema-driven `params` signal.
+ *
+ * Exposed externally only through the `RowBaseComponent` type alias.
+ */
 @Component({
   selector: "oab-row-base",
   template: ``, // template is empty, to be overridden by child components
   standalone: false,
 })
-export abstract class RowBaseComponent implements OnInit, OnDestroy, IRow {
+abstract class RowBase implements OnInit, OnDestroy, IRow {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
   public name = computed(() =>
@@ -61,16 +68,15 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy, IRow {
   /**
    * Evaluated parameter_list values keyed by their author-provided (snake_case) name.
    * Updated by `setParams()` whenever the underlying row expression dependencies change.
-   * Consumed by the `params` computed signal of subclasses created via `RowBaseComponentWithParams`.
+   * Consumed by the `params` computed signal defined on subclasses produced by `RowBaseComponent()`.
    */
   protected _evaluatedParameterList: WritableSignal<Record<string, any>> = signal({});
 
   /**
    * Type-safe, computed view over the row's author-defined parameter_list.
-   * Default implementation returns an empty object; subclasses created via
-   * `RowBaseComponentWithParams(schema)` override this with a typed signal.
+   * Concrete shape is provided by subclasses produced by `RowBaseComponent(schema)`.
    */
-  public params: Signal<Record<string, any>> = computed(() => ({}));
+  public abstract params: Signal<Record<string, any>>;
 
   public onInitialised = input<(() => void) | undefined>(undefined);
 
@@ -260,12 +266,14 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy, IRow {
   }
 }
 
+/** Empty schema, used as the default when a row component has no author-defined parameters. */
+const EMPTY_SCHEMA = defineAuthorParameterSchema(() => ({}));
+
 /**
- * Utility function that handles extending the RowBaseComponent and automatically parsing
- * the row's author parameter_list using the provided schema, exposing the result as a
- * type-safe `this.params()` computed signal.
+ * Factory used as the base for every row component. Parses the row's author parameter_list
+ * with the provided (zod) schema and exposes the result as a type-safe `this.params()` signal.
  *
- * @param schema - author parameter_list schema, created using `defineAuthorParameterSchema`
+ * Components without author parameters can call this with no arguments.
  *
  * @example
  * ```
@@ -273,24 +281,34 @@ export abstract class RowBaseComponent implements OnInit, OnDestroy, IRow {
  *   string_param: coerce.string(""),
  * }));
  *
- * class MyComponent extends RowBaseComponentWithParams(AuthorSchema) {
- *   // ...
+ * class MyComponent extends RowBaseComponent(AuthorSchema) {
  *   doSomething() {
  *     const { stringParam } = this.params();
  *   }
  * }
+ *
+ * // Or, with no author parameters:
+ * class MyOtherComponent extends RowBaseComponent() {}
  * ```
  */
-export function RowBaseComponentWithParams<
-  ParamSchema extends ReturnType<typeof defineAuthorParameterSchema>,
->(schema: ParamSchema) {
-  abstract class WithParamsBase extends RowBaseComponent {
-    public override params: Signal<InferParamSchemaType<ParamSchema>> = computed(() =>
-      parseTemplateParameterList(this._evaluatedParameterList(), schema)
+export function RowBaseComponent<
+  ParamSchema extends ReturnType<typeof defineAuthorParameterSchema> = typeof EMPTY_SCHEMA,
+>(schema?: ParamSchema) {
+  const resolvedSchema = (schema ?? EMPTY_SCHEMA) as ParamSchema;
+  abstract class Impl extends RowBase {
+    public params: Signal<InferParamSchemaType<ParamSchema>> = computed(() =>
+      parseTemplateParameterList(this._evaluatedParameterList(), resolvedSchema)
     );
 
     // declare static type to allow extracting type via `typeof MyComponent.Params` (not used at runtime)
     declare static Params: InferParamSchemaType<ParamSchema>;
   }
-  return WithParamsBase;
+  return Impl;
 }
+
+/**
+ * Instance type for any row component produced via the `RowBaseComponent(schema)` factory.
+ * Merges with the function above so that `RowBaseComponent` can be used in both value
+ * (`extends RowBaseComponent(schema)`) and type (`Type<RowBaseComponent>`) positions.
+ */
+export type RowBaseComponent = RowBase;

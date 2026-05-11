@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { TooltipDirective } from "src/app/shared/components/common/directives/tooltip.directive";
@@ -18,4 +18,4 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./title.component.scss"],
   imports: [IonicModule, TemplatePipesModule, TooltipDirective], // todo: ionic standalone does not seem to work.
 })
-export class TitleComponent extends RowBaseComponentWithParams(AuthorSchema) {}
+export class TitleComponent extends RowBaseComponent(AuthorSchema) {}

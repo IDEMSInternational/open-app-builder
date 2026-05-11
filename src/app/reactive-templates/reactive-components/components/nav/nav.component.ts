@@ -6,7 +6,7 @@ import { IAction, IActionParameter } from "src/app/reactive-templates/services/a
   selector: "oab-nav",
   template: "",
 })
-export class NavComponent extends RowBaseComponent implements IAction {
+export class NavComponent extends RowBaseComponent() implements IAction {
   public async execute(params?: IActionParameter[]): Promise<void> {
     const templateName = this.evaluationService.evaluateExpression(
       this.row().value,

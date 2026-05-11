@@ -1,5 +1,5 @@
 import { Component, computed, forwardRef } from "@angular/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -12,7 +12,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./loop.component.scss"],
   imports: [forwardRef(() => RowListComponent)],
 })
-export class LoopComponent extends RowBaseComponentWithParams(AuthorSchema) {
+export class LoopComponent extends RowBaseComponent(AuthorSchema) {
   public rows = computed(() => this.row().rows || []);
   public index = computed(() => this.params().index);
   public hasCustomIndex = computed(() => !!this.params().index);

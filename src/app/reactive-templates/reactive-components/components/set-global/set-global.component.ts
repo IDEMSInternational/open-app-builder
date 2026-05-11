@@ -9,7 +9,7 @@ import { StoreType } from "src/app/reactive-templates/stores/store";
   styles: "",
   standalone: false,
 })
-export class SetGlobalComponent extends RowBaseComponent implements IAction {
+export class SetGlobalComponent extends RowBaseComponent() implements IAction {
   protected override storeType: StoreType = "global";
 
   async execute(): Promise<void> {

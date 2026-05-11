@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
@@ -22,7 +22,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./toggle-bar.scss"],
   imports: [IonicModule, TemplatePipesModule], // todo: ionic standalone does not seem to work.
 })
-export class ToggleBarComponent extends RowBaseComponentWithParams(AuthorSchema) implements OnInit {
+export class ToggleBarComponent extends RowBaseComponent(AuthorSchema) implements OnInit {
   /**
    * The ion-toggle component uses "md" ("material design") and "ios" to refer to visual styles of the component
    * corresponding to the respective platforms. See docs here: https://ionicframework.com/docs/api/toggle

@@ -1,5 +1,5 @@
 import { Component, computed, forwardRef, inject } from "@angular/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 
 import { IonicModule } from "@ionic/angular";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -31,7 +31,7 @@ interface IVariantMap {
   styleUrls: ["./button.component.scss"],
   imports: [IonicModule, TemplatePipesModule, [forwardRef(() => RowListComponent)]],
 })
-export class ButtonComponent extends RowBaseComponentWithParams(AuthorSchema) {
+export class ButtonComponent extends RowBaseComponent(AuthorSchema) {
   /** @ignore */
   public variantMap = computed(() => this.populateVariantMap(this.params().variant));
   public templateTranslateService = inject(TemplateTranslateService);

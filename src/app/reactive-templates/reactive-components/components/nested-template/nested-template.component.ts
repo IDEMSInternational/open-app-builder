@@ -10,7 +10,7 @@ import { Subscription } from "rxjs";
   styleUrls: ["./nested-template.component.scss"],
   imports: [forwardRef(() => ReactiveTemplateComponent)],
 })
-export class NestedTemplateComponent extends RowBaseComponent implements OnInit, OnDestroy {
+export class NestedTemplateComponent extends RowBaseComponent() implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
   private childDependencySubscriptions: Subscription[] = [];
   private templateInitialised = signal(false);

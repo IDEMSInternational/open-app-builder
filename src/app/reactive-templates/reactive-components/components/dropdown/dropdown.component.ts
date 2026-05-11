@@ -1,6 +1,6 @@
 import { Component, computed } from "@angular/core";
 import { IonicModule, ModalController } from "@ionic/angular";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { DropdownModalComponent } from "./dropdown-modal/dropdown-modal.component";
 import { NgClass } from "@angular/common";
 import { TranslatePipe } from "src/app/shared/components/template/pipes/translate.pipe";
@@ -22,7 +22,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./dropdown.component.scss"],
   imports: [IonicModule, NgClass, TranslatePipe],
 })
-export class DropdownComponent extends RowBaseComponentWithParams(AuthorSchema) {
+export class DropdownComponent extends RowBaseComponent(AuthorSchema) {
   constructor(private modalController: ModalController) {
     super();
   }

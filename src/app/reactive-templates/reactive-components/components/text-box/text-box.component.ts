@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { defineAuthorParameterSchema, RowBaseComponentWithParams } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { IonicModule } from "@ionic/angular";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
@@ -18,7 +18,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./text-box.component.scss"],
   imports: [IonicModule], // todo: ionic standalone does not seem to work.
 })
-export class TextBoxComponent extends RowBaseComponentWithParams(AuthorSchema) {
+export class TextBoxComponent extends RowBaseComponent(AuthorSchema) {
   public async handleChange(value: any) {
     this.setExpression(value);
   }
