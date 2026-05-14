@@ -4,10 +4,16 @@ import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
-  IAnswerListItem,
+  IAnswerOption,
 } from "src/app/shared/utils";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+  resolveOptionMetaBadgeColor,
+  resolveOptionMetaBadgeText,
+} from "../combo-box-meta-badge.config";
 
 @Component({
   selector: "combo-box-modal",
@@ -16,15 +22,20 @@ import { ModalController } from "@ionic/angular";
   standalone: false,
 })
 export class ComboBoxModalComponent implements OnInit {
-  public answerOptions = input.required<IAnswerListItem[]>();
+  public answerOptions = input.required<IAnswerOption[]>();
   @Input() row: FlowTypes.TemplateRow;
   @Input() selectedValue: string;
   @Input() customAnswerSelected: boolean;
   @Input() style: string;
   @Input() optionsKey: string = "name";
   @Input() optionsValue: string = "text";
+  @Input() optionMetaBadge: OptionMetaBadgeConfig = {
+    textKey: "",
+    colorKey: "",
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  };
   formData: FormGroup | null;
-  valuesFromListAnswers: IAnswerListItem[];
+  valuesFromListAnswers: IAnswerOption[];
   textTitle: string | null;
   inputAllowed: boolean = false;
   form: FormGroup;
@@ -116,5 +127,13 @@ export class ComboBoxModalComponent implements OnInit {
 
   get customAnswerClass() {
     return this.customAnswerSelected ? "text-box-input checked-radion" : "text-box-input";
+  }
+
+  metaBadgeChipColor(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeColor(this.optionMetaBadge, option);
+  }
+
+  metaBadgeChipText(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeText(this.optionMetaBadge, option);
   }
 }

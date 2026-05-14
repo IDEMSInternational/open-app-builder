@@ -49,3 +49,24 @@ export function cleanAssetName(value: string) {
   if (value.startsWith("/")) value = value.substring(1);
   return value;
 }
+
+export function isExternalHttpUrl(value: string): boolean {
+  return /^https?:\/\//i.test(value);
+}
+
+/**
+ * Last path segment of an http(s) URL, sanitized for use as a filename.
+ * @returns undefined if the URL is invalid or has no usable path segment.
+ */
+export function basenameFromExternalUrl(url: string): string | undefined {
+  try {
+    const { pathname } = new URL(url);
+    const base = pathname.split("/").filter(Boolean).pop();
+    if (base) {
+      return base.replace(/[<>:"/\\|?*\u0000-\u001f]/g, "_");
+    }
+  } catch {
+    /* ignore */
+  }
+  return undefined;
+}

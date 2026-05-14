@@ -39,16 +39,17 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     }
   }
 
-  /**
-   * TODO: Can these child dependencies change at runtime?
-   */
   private watchChildDependencies() {
     for (const row of this.row().rows) {
-      let sub = this.variableStore
-        .watchMultiple(this.evaluationService.getDependencies(row.value, this.namespace()))
-        .subscribe(() => {
-          this.setChildExpression(row);
-        });
+      const dependencies = this.evaluationService.getDependencies(row.value, this.namespace());
+
+      if (!dependencies || dependencies.length === 0) {
+        continue;
+      }
+
+      const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
+        this.setChildExpression(row);
+      });
       this.childDependencySubscriptions.push(sub);
     }
   }

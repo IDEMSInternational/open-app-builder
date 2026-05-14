@@ -15,9 +15,9 @@ import {
           <div style="flex:1">
             <div>
               <div>
-                {{ notification.extra.title }}
+                {{ notification.title }}
               </div>
-              <div class="info-text">{{ notification.extra.id }}</div>
+              <div class="info-text">{{ notification._row_id }}</div>
             </div>
           </div>
           <div class="next-notification">
@@ -30,7 +30,7 @@ import {
           <div style="flex: 1; margin-right: 8px">
             <div class="divider"></div>
 
-            <div>{{ notification.extra.text }}</div>
+            <div>{{ notification.body }}</div>
           </div>
           <div style="text-align: right">
             <div class="divider"></div>

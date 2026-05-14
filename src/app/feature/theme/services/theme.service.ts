@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "data-models";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
@@ -22,15 +22,15 @@ export class ThemeService extends SyncServiceBase {
   defaultThemeName: string;
 
   constructor(
-    private localStorageService: LocalStorageService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Theme");
     this.initialise();
   }
 
   private initialise() {
-    this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
+    this.ensureSyncServicesReady([this.appConfigService]);
     this.subscribeToAppConfigChanges();
     // Retrieve the last active theme and apply it. Fallback on default theme
     // if there is no last active theme, or if it is not "available" in current appConfig
@@ -50,15 +50,15 @@ export class ThemeService extends SyncServiceBase {
       document.documentElement.dataset.theme = themeName;
 
       this.currentTheme$.next(themeName);
-      // Use local storage so that the current theme persists across app launches
-      this.localStorageService.setProtected("APP_THEME", themeName);
+      // Use system variable service so that the current theme persists across app launches
+      this.systemVariableService.set("APP_THEME", themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
     }
   }
 
   public getCurrentTheme() {
-    return this.localStorageService.getProtected("APP_THEME");
+    return this.systemVariableService.get("APP_THEME");
   }
 
   /** Calculate all custom properties inherited for a particular element */

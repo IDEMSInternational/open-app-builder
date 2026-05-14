@@ -48,6 +48,8 @@ import { ScrollService } from "./shared/services/scroll/scroll.service";
 import { ToastService } from "./shared/services/toast/toast.service";
 import { CapacitorEventService } from "./shared/services/capacitor-event/capacitor-event.service";
 import { AuthService } from "./shared/services/auth/auth.service";
+import { SystemVariableService } from "./shared/services/system-variable/system-variable.service";
+import { RemoteFunctionService } from "./feature/remote-function/remote-function.service";
 
 @Component({
   selector: "app-root",
@@ -70,6 +72,23 @@ export class AppComponent {
       "--page-padding-bottom": bottom,
       "--page-padding-end": right,
     };
+  });
+
+  /**
+   * Footer toolbar style: use theme var --footer-background (defaults to var(--ion-color-primary);
+   * Use legacy config background property when set.
+   * */
+  public footerToolbarStyle = computed(() => {
+    const legacyBackgroundFromConfig = this.footerConfig().background;
+    let backgroundValue: string;
+    if (!legacyBackgroundFromConfig) {
+      backgroundValue = "var(--footer-background, var(--ion-color-primary))";
+    } else if (legacyBackgroundFromConfig === "none") {
+      backgroundValue = "transparent";
+    } else {
+      backgroundValue = `var(--ion-color-${legacyBackgroundFromConfig})`;
+    }
+    return { "--background": backgroundValue };
   });
 
   /** Track when app ready to render sidebar and route templates */
@@ -132,7 +151,9 @@ export class AppComponent {
     private scrollService: ScrollService,
     private toastService: ToastService,
     private capacitorEventService: CapacitorEventService,
-    private authService: AuthService
+    private authService: AuthService,
+    private systemVariableService: SystemVariableService,
+    private remoteFunctionService: RemoteFunctionService
   ) {
     this.initializeApp();
   }
@@ -175,21 +196,21 @@ export class AppComponent {
   /** Populate contact fields that may be used by other services during initialisation */
   private async populateAppInitFields() {
     const { _content_version, _app_builder_version, name } = this.deploymentService.config;
-    this.localStorageService.setProtected("DEPLOYMENT_NAME", name);
-    this.localStorageService.setProtected("APP_VERSION", _app_builder_version);
-    this.localStorageService.setProtected("CONTENT_VERSION", _content_version);
-    this.localStorageService.setProtected("PLATFORM", Capacitor.getPlatform());
+    this.systemVariableService.set("DEPLOYMENT_NAME", name);
+    this.systemVariableService.set("APP_VERSION", _app_builder_version);
+    this.systemVariableService.set("CONTENT_VERSION", _content_version);
+    this.systemVariableService.set("PLATFORM", Capacitor.getPlatform());
     const { operatingSystem } = await Device.getInfo();
-    this.localStorageService.setProtected("OPERATING_SYSTEM", operatingSystem);
+    this.systemVariableService.set("OPERATING_SYSTEM", operatingSystem);
     const appEnv = environment.production ? "production" : "development";
-    this.localStorageService.setProtected("APP_ENVIRONMENT", appEnv);
-    this.localStorageService.setProtected("APP_HOSTNAME", location.hostname);
+    this.systemVariableService.set("APP_ENVIRONMENT", appEnv);
+    this.systemVariableService.set("APP_HOSTNAME", location.hostname);
 
     // HACK - ensure first_app_launch migrated from event service
-    if (!this.localStorageService.getProtected("APP_FIRST_LAUNCH")) {
+    if (!this.systemVariableService.get("APP_FIRST_LAUNCH")) {
       await this.appEventService.ready();
       const { first_app_launch } = this.appEventService.summary;
-      this.localStorageService.setProtected("APP_FIRST_LAUNCH", first_app_launch);
+      this.systemVariableService.set("APP_FIRST_LAUNCH", first_app_launch);
     }
   }
 
@@ -216,7 +237,7 @@ export class AppComponent {
       /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
       deprecated: (AsyncServiceBase | SyncServiceBase)[];
     } = {
-      eager: [this.crashlyticsService],
+      eager: [this.crashlyticsService, this.remoteFunctionService],
       blocking: [
         this.dbSyncService,
         this.dynamicDataService,

@@ -62,6 +62,7 @@
       display-group-background-home-mid: var(--ion-color-primary-600),
       display-group-background-home-dark: var(--ion-color-primary-800),
       accordion-background-highlight: var(--ion-color-primary-600),
+      accordion-toggle-icon-color: var(--ion-color-primary-contrast),
       tour-next-button-background: var(--ion-color-primary),
       radio-group-background-selected: var(--ion-color-primary-300),
       radio-group-background-selected-secondary: var(--ion-color-secondary-300),
@@ -90,6 +91,7 @@
       // BOX SHADOW
       box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
       box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

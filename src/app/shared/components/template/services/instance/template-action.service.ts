@@ -16,7 +16,10 @@ import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
-import { TemplateActionRegistry } from "./template-action.registry";
+import {
+  TemplateActionRegistry,
+  type ITemplateActionServiceHandle,
+} from "./template-action.registry";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -28,7 +31,7 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *
  *
  */
-export class TemplateActionService extends SyncServiceBase {
+export class TemplateActionService extends SyncServiceBase implements ITemplateActionServiceHandle {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
   private actionsInterceptors = new Map();
@@ -88,6 +91,22 @@ export class TemplateActionService extends SyncServiceBase {
       this.eventService,
       this.skinService,
     ]);
+  }
+
+  /**
+   * Append actions to the queue without starting or awaiting processing.
+   * For use from registry handlers while the queue is already running.
+   */
+  public enqueueActions(
+    actions: FlowTypes.TemplateRowAction[] = [],
+    _triggeredBy?: FlowTypes.TemplateRow
+  ) {
+    const copies = actions.map((a) => {
+      const copy = { ...a };
+      copy._triggeredBy = _triggeredBy;
+      return copy;
+    });
+    copies.forEach((action) => this.actionsQueue.push({ ...action }));
   }
 
   /** Public method to add actions to processing queue and process */
@@ -207,7 +226,7 @@ export class TemplateActionService extends SyncServiceBase {
 
     // Call any action registered with global handler
     if (this.templateActionRegistry.has(action_id)) {
-      return this.templateActionRegistry.trigger(action);
+      return this.templateActionRegistry.trigger(action, this);
     }
 
     // Handle specific actions

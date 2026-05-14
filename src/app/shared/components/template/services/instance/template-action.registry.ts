@@ -4,8 +4,20 @@ import { FlowTypes } from "data-models";
 
 export type IActionId = FlowTypes.TemplateRowAction["action_id"];
 
+/**
+ * Narrow handle passed to registry handlers when they run inside TemplateActionService.
+ * Use `enqueueActions` to schedule `set_local` and other built-in actions;
+ */
+export interface ITemplateActionServiceHandle {
+  enqueueActions(
+    actions: FlowTypes.TemplateRowAction[],
+    _triggeredBy?: FlowTypes.TemplateRow
+  ): void;
+}
+
 export type IActionHandler<ParamsType = any> = (
-  action: FlowTypes.TemplateRowAction<ParamsType>
+  action: FlowTypes.TemplateRowAction<ParamsType>,
+  host?: ITemplateActionServiceHandle
 ) => Promise<any>;
 
 export type IActionHandlers<ParamsType = any> = Record<IActionId, IActionHandler<ParamsType>>;
@@ -27,13 +39,13 @@ export class TemplateActionRegistry {
     return clone(this.handlers);
   }
 
-  public trigger(action: FlowTypes.TemplateRowAction) {
+  public trigger(action: FlowTypes.TemplateRowAction, host?: ITemplateActionServiceHandle) {
     const { action_id } = action;
     const handler = this.handlers[action_id];
     if (!handler) {
       throw new Error("No handler registered for action_id: " + action_id);
     }
-    return handler(action);
+    return handler(action, host);
   }
 
   public register(handlers: Partial<IActionHandlers> = {}, allowOverride = false) {

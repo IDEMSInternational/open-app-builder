@@ -11,6 +11,7 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { IServerUser } from "./server.types";
 import { DBSyncService } from "../db/db-sync.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 /**
  * Backend API
@@ -37,7 +38,8 @@ export class ServerService extends SyncServiceBase {
     private localStorageService: LocalStorageService,
     private dynamicDataService: DynamicDataService,
     private deploymentService: DeploymentService,
-    private dbSyncService: DBSyncService
+    private dbSyncService: DBSyncService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Server");
     this.initialise();
@@ -90,7 +92,7 @@ export class ServerService extends SyncServiceBase {
     const timestamp = generateTimestamp();
     contact_fields[getProtectedFieldName("SERVER_SYNC_LATEST")] = timestamp;
 
-    const auth_user_id = this.localStorageService.getProtected("AUTH_USER_ID") || null;
+    const auth_user_id = this.systemVariableService.get("AUTH_USER_ID") || null;
 
     const data: Partial<IServerUser> = {
       auth_user_id,
@@ -120,7 +122,7 @@ export class ServerService extends SyncServiceBase {
           (res) => {
             console.log("[SERVER] synced", res);
             // finalise timestamp by storing locally
-            this.localStorageService.setProtected("SERVER_SYNC_LATEST", timestamp);
+            this.systemVariableService.set("SERVER_SYNC_LATEST", timestamp);
             resolve(timestamp);
           },
           (err) => resolve(null)
@@ -131,5 +133,30 @@ export class ServerService extends SyncServiceBase {
   private async syncDBTableData() {
     await this.dbSyncService.ready();
     return this.dbSyncService.syncDBTables();
+  }
+
+  /**
+   * Request deletion of user data from the server (soft delete).
+   * This marks the user for deletion rather than immediately removing data,
+   * allowing for review before permanent deletion.
+   */
+  public async requestUserDataDeletion(): Promise<{ success: boolean; error?: any }> {
+    if (!this.app_user_id) {
+      const { identifier: uuid } = await Device.getId();
+      this.app_user_id = uuid;
+    }
+    console.log("[SERVER] requesting deletion of user data for", this.app_user_id);
+    return new Promise((resolve) => {
+      this.http.delete(`/app_users/${this.app_user_id}`).subscribe({
+        next: () => {
+          console.log("[SERVER] user data marked for deletion");
+          resolve({ success: true });
+        },
+        error: (err) => {
+          console.error("[SERVER] failed to request user data deletion:", err);
+          resolve({ success: false, error: err });
+        },
+      });
+    });
   }
 }

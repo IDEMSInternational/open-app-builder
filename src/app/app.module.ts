@@ -31,7 +31,7 @@ export function lottiePlayerFactory() {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({ useSetInputAPI: true }),
     AppRoutingModule,
     TemplateComponentsModule,
     DeploymentFeaturesModule,

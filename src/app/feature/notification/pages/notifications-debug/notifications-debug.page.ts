@@ -54,7 +54,7 @@ export class NotificationsDebugPage implements OnInit {
     }
   }
   public logDebugInfo(notification: ILocalNotificationInteraction) {
-    console.group(notification.notification_meta.id);
+    console.group(notification.notification_id);
     console.log(notification);
     console.groupEnd();
   }

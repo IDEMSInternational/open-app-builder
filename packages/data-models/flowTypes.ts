@@ -374,11 +374,14 @@ export namespace FlowTypes {
     "raw",
   ] as const;
 
+  export const DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME = ["system"] as const;
+
   type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
 
   export const DYNAMIC_PREFIXES = [
     ...DYNAMIC_PREFIXES_COMPILER,
     ...DYNAMIC_PREFIXES_RUNTIME,
+    ...DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME,
   ] as const;
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
@@ -428,8 +431,8 @@ export namespace FlowTypes {
   const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
   const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
   // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
-  const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
-  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action"] as const;
+  const PLH_ACTIONS_LIST = ["plh_certificate", "plh_parent_group"] as const;
+  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action", "set_global"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -458,6 +461,7 @@ export namespace FlowTypes {
     "open_external",
     "pop_up",
     "process_template",
+    "remote_function",
     "reset_app",
     "reset_data",
     "save_to_device",

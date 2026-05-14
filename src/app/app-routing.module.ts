@@ -62,6 +62,10 @@ const sidebarRoutes: Routes = [
     loadChildren: () => import("./feature/shared-data").then((m) => m.SHARED_DATA_ROUTES),
   },
   {
+    path: "remote-functions",
+    loadChildren: () => import("./feature/remote-function").then((m) => m.REMOTE_FUNCTION_ROUTES),
+  },
+  {
     path: "template",
     loadChildren: () =>
       import("./feature/template/template.module").then((m) => m.TemplatePageModule),

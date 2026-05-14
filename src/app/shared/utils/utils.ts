@@ -252,6 +252,15 @@ export interface IAnswerListItem {
 }
 
 /**
+ * Answer option type based on `IAnswerListItem`, but allowing
+ * arbitrary string keys to allow indexing with an
+ * author-provided key (e.g. `answerOption[params().optionsKey]`).
+ */
+export type IAnswerOption = Partial<IAnswerListItem> & {
+  [key: string]: string | null | undefined;
+};
+
+/**
  * Normalise an answer list from either a hashmap or array format to an array.
  * Handles conversion of hashmap objects (created with {}) to arrays.
  * @param answerList an answer_list parameter, either an array or a hashmap object

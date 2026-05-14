@@ -1,31 +1,43 @@
+$border-color: var(--plh-lesson-cta-border-color, var(--ion-color-green-900));
+$background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-700));
+
 :host {
   margin-bottom: var(--small-margin);
 }
 
 .lesson-cta-container {
-  border-radius: var(--ion-border-radius-small);
-  border: 1px solid var(--ion-color-green-900);
-  background-color: var(--ion-color-green-700);
-  color: white;
-  letter-spacing: var(--font-letter-spacing);
+  container-type: inline-size;
+
+  position: relative;
   width: 100%;
-  padding: var(--large-padding) var(--regular-padding);
+  color: white;
+  border: 1px solid $border-color;
+  border-radius: var(--ion-border-radius-small);
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
+  background-color: $background-color;
+  letter-spacing: var(--font-letter-spacing);
+  padding: var(--large-padding) var(--regular-padding);
+  margin-top: 8px;
   gap: var(--small-padding);
-  position: relative;
   cursor: pointer;
+  background-position-y: center;
+  background-position-x: center;
+  background-size: cover;
 
   .badge {
     position: absolute;
-    top: -12px;
-    left: -10px;
+    top: 0;
+    left: 0;
+    transform: translate(-15%, -50%);
+
     background-color: var(--ion-background-color);
-    color: var(--ion-color-green-900);
+    color: black;
     border-style: solid;
     border-width: 1px;
-    border-color: var(--ion-color-green-900);
+    border-color: $border-color;
     border-radius: var(--ion-border-radius-rounded);
     padding: 4px 16px;
     font-size: var(--font-size-text-small);
@@ -40,6 +52,8 @@
   .content {
     width: 100%;
     padding-bottom: var(--small-padding);
+    flex: 1 1 12rem;
+    min-width: 0;
 
     .title {
       font-size: var(--font-size-text-large);
@@ -52,16 +66,18 @@
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
       line-height: var(--line-height-text-small);
+      color: var(--ion-color-gray-50);
       margin: 0;
     }
 
     .progress-bar-container {
-      width: 80%;
+      width: 100%;
+      max-width: 300px;
       margin-top: var(--small-padding);
       // Override the default task progress bar styles for the lesson CTA using theme variables
-      --task-progress-bar-color: var(--ion-color-green-900);
+      --task-progress-bar-color: #{$border-color};
       --task-progress-bar-background-color: white;
-      --task-progress-bar-height: 5px;
+      --task-progress-bar-height: 6px;
     }
   }
 
@@ -70,20 +86,66 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 0 1 auto;
+    margin-left: auto;
+
+    min-width: 4rem;
 
     ion-button.cta-button {
       margin: 2px;
+      width: 4rem;
+      height: 4rem;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
       --background: white;
-      --border-color: var(--ion-color-green-900);
-      --color: var(--ion-color-green-900);
+      --border-color: #{$border-color};
+      --color: #{$border-color};
       --border-style: solid;
       --border-width: 1px;
     }
 
     .cta-text {
-      font-size: var(--font-size-text-tiny);
+      font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
+      text-align: center;
       margin: 0;
+    }
+
+    ion-icon {
+      font-size: 2rem;
+      --ionicon-stroke-width: 36px;
+    }
+  }
+
+  @container (max-width: 280px) {
+    .cta {
+      width: 100%;
+      height: 3.5rem;
+      flex-direction: row-reverse;
+      justify-content: center;
+      margin-top: var(--small-padding);
+
+      background: white;
+      border-color: #{$border-color};
+      color: #{$border-color};
+      border-style: solid;
+      border-width: 1px;
+      border-radius: var(--ion-border-radius-rounded);
+
+      ion-button.cta-button {
+        height: 100%;
+        width: unset;
+        --background: none;
+        --border-color: transparent;
+        --border-style: none;
+        --border-width: 0;
+        --box-shadow: none;
+      }
+
+      .cta-text {
+        font-size: var(--font-size-text-medium);
+        width: unset;
+      }
     }
   }
 }

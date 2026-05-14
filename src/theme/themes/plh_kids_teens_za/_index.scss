@@ -65,14 +65,16 @@
       border-width-default: 1px,
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 1px solid var(--border-color-default),
+      footer-background: var(--ion-color-primary-50),
       // COMPONENT VARIABLES
       accordion-background-highlight: var(--ion-color-primary-300),
-      button-background-option: var(--ion-color-primary-800),
-      button-background-primary: var(--ion-color-primary-500),
-      button-background-secondary: var(--ion-color-secondary),
+      accordion-toggle-icon-color: var(--ion-color-primary-contrast),
+      button-background-option: var(--ion-color-primary-700),
+      button-background-primary: var(--ion-color-primary-600),
+      button-background-secondary: var(--ion-color-secondary-600),
       button-border-radius: var(--ion-border-radius-rounded),
       display-group-background-banner-primary: var(--ion-color-primary-200),
-      display-group-background-banner-secondary: var(--ion-color-secondary-300),
+      display-group-background-banner-secondary: var(--ion-color-secondary-200),
       display-group-background-home-dark: var(--ion-color-primary-800),
       display-group-background-home-light: var(--ion-color-primary-300),
       display-group-background-home-mid: var(--ion-color-primary-600),
@@ -96,11 +98,12 @@
       round-button-background-secondary-light: var(--ion-color-yellow),
       task-progress-bar-color: var(--ion-color-secondary-600),
       task-progress-bar-height: 10px,
-      tile-button-background-primary-light: var(--ion-color-primary-300),
-      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-primary-light: var(--ion-color-primary-200),
+      tile-button-background-primary: var(--ion-color-primary-600),
       tile-button-background-secondary-light: var(--ion-color-yellow),
-      tile-button-background-secondary: var(--ion-color-secondary),
-      tour-next-button-background: var(--ion-color-secondary),
+      tile-button-background-secondary: var(--ion-color-secondary-600),
+      tile-image-text-width: 290px,
+      tour-next-button-background: var(--ion-color-primary-600),
       // SURFACE COLOUR PALETTE
       color-surface-white: #ffffff,
       color-surface-white-variant: #f9f9fa,
@@ -148,6 +151,8 @@
       plh-module-list-item-background-1: #a6e9ff,
       plh-module-list-item-background-2: #ffa777,
       plh-module-list-item-background-3: #ffd973,
+
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

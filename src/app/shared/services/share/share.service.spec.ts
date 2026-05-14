@@ -1,10 +1,10 @@
 import { TestBed } from "@angular/core/testing";
-
 import { ShareService } from "./share.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
 import { FileManagerService } from "../file-manager/file-manager.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
 describe("ShareService", () => {
   let service: ShareService;
@@ -15,6 +15,7 @@ describe("ShareService", () => {
         { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
         { provide: FileManagerService, useValue: {} },
         { provide: TemplateAssetService, useValue: {} },
+        { provide: TemplateActionRegistry, useValue: { register: () => undefined } },
       ],
     });
     service = TestBed.inject(ShareService);

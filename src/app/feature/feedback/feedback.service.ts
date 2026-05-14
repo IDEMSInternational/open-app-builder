@@ -36,8 +36,8 @@ import {
   TemplateActionRegistry,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
@@ -71,7 +71,6 @@ export class FeedbackService extends SyncServiceBase {
   constructor(
     private contextMenuService: ContextMenuService,
     private templateService: TemplateService,
-    private localStorageService: LocalStorageService,
     private userMetaService: UserMetaService,
     private toastController: ToastController,
     private dbService: DbService,
@@ -81,7 +80,8 @@ export class FeedbackService extends SyncServiceBase {
     private themeService: ThemeService,
     private skinService: SkinService,
     private templateActionRegistry: TemplateActionRegistry,
-    private deploymentService: DeploymentService
+    private deploymentService: DeploymentService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Feedback");
     this.subscribeToAppConfigChanges();
@@ -327,14 +327,14 @@ export class FeedbackService extends SyncServiceBase {
     contextData: IContextMenuActionData = {}
   ) {
     if (contextData?.selectedText) {
-      this.localStorageService.setProtected("FEEDBACK_SELECTED_TEXT", contextData.selectedText);
+      this.systemVariableService.set("FEEDBACK_SELECTED_TEXT", contextData.selectedText);
     }
     // launch feedback template, disable feedback mode to prevent actions on feedback poup
     const additional = { ...contextData, id: feedbackButton.id };
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, additional, ev);
 
     // clear previously set field
-    this.localStorageService.setProtected("FEEDBACK_SELECTED_TEXT", null);
+    this.systemVariableService.set("FEEDBACK_SELECTED_TEXT", null);
   }
 
   /**

@@ -21,7 +21,8 @@
   height: unset;
   width: 100%;
 }
-.display-group-wrapper[data-param-style~="wrap"] {
+.display-group-wrapper[data-param-style~="wrap"],
+.display-group-wrapper[data-wrap="true"] {
   flex-wrap: wrap;
 }
 // assign default background colour to the display group wrapper (useful in sticky group)
