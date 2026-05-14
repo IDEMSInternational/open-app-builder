@@ -15,6 +15,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   selector: "tmpl-button-asset-pack-download",
   templateUrl: "./button-asset-pack-download.component.html",
   styleUrls: ["./button-asset-pack-download.component.scss"],
+  standalone: false,
 })
 export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentWithParams(
   AuthorSchema
