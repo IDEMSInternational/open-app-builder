@@ -70,7 +70,7 @@ const workflows: IDeploymentWorkflows = {
             function: async ({ tasks, args, options }) => {
               // Set Env var for encryption provider to pick up later
               if (options.privateKey) {
-                process.env.DEPLOYMENT_PRIVATE_KEY = options.privateKey as string;
+                process.env.DEPLOYMENT_PRIVATE_KEY = options.privateKey;
               }
               // Pass options (including acceptDefaults flag) to the task
               return tasks.deployment.import(options, args[0]);
