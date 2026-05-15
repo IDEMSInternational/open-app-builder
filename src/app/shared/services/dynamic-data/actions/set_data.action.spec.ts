@@ -247,4 +247,30 @@ describe("set_data Action", () => {
       `[Update Fail] no doc exists\ndata_list: test_flow\n_index: 10`
     );
   });
+
+  it("throws error with operator context when _index is out of range after filtering", async () => {
+    const params: IActionSetDataParams = {
+      _filter: "@item.number > 100", // matches nothing
+      _index: 0,
+      string: "updated",
+    };
+    // Error should mention the active operators and the post-operator count
+    await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
+      /post-operator count: 0/
+    );
+  });
+
+  it("throws error when _limit is negative", async () => {
+    const params: IActionSetDataParams = { _limit: -1, string: "updated" };
+    await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
+      /invalid _limit/
+    );
+  });
+
+  it("throws error when _limit is not an integer", async () => {
+    const params: IActionSetDataParams = { _limit: 1.5, string: "updated" };
+    await expectAsync(triggerTestSetDataAction(service, params)).toBeRejectedWithError(
+      /invalid _limit/
+    );
+  });
 });

@@ -25,6 +25,11 @@ describe("ItemDataPipe", () => {
     expect(result).toEqual([]);
   });
 
+  it("filter - returns items unchanged when expression is empty", () => {
+    const result = pipe.process(TEST_ITEMS(), [{ name: "filter", arg: "" }]);
+    expect(result).toEqual(TEST_ITEMS());
+  });
+
   it("sort - sorts items by field ascending", () => {
     const result = pipe.process(TEST_ITEMS(), [{ name: "sort", arg: "value" }]);
     expect(result.map((r) => r.value)).toEqual([1, 2, 3]);
