@@ -16,12 +16,12 @@ describe("ItemDataPipe", () => {
   });
 
   it("filter - returns items matching expression", () => {
-    const result = pipe.process(TEST_ITEMS(), [{ name: "filter", arg: "item.value > 1" }]);
+    const result = pipe.process(TEST_ITEMS(), [{ name: "filter", arg: "this.item.value > 1" }]);
     expect(result.map((r) => r.id)).toEqual(["a", "c"]);
   });
 
   it("filter - returns empty array when no items match", () => {
-    const result = pipe.process(TEST_ITEMS(), [{ name: "filter", arg: "item.value > 10" }]);
+    const result = pipe.process(TEST_ITEMS(), [{ name: "filter", arg: "this.item.value > 10" }]);
     expect(result).toEqual([]);
   });
 
