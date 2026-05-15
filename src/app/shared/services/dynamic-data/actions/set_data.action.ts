@@ -87,7 +87,14 @@ function applyOperators(
   { _filter, _sort, _reverse, _limit }: IActionSetDataOperatorParams
 ) {
   const operations: { name: string; arg?: string }[] = [];
-  if (_filter) operations.push({ name: "filter", arg: _filter });
+  if (_filter) {
+    // Filter expressions are evaluated as JS by ItemDataPipe (via JSEvaluator),
+    // which binds item context to `this`. `hackParseTemplatedParams` un-converts
+    // `this.item` -> `@item` for update value evaluation; re-apply the conversion
+    // here so authors can use the canonical `@item.x` syntax in filter expressions.
+    const filterArg = _filter.replace(/@item/g, "this.item");
+    operations.push({ name: "filter", arg: filterArg });
+  }
   if (_sort) operations.push({ name: "sort", arg: _sort });
   if (_reverse) operations.push({ name: "reverse" });
   if (_limit !== undefined) operations.push({ name: "limit", arg: String(_limit) });

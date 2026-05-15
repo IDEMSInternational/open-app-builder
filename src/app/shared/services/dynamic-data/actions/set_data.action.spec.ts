@@ -190,7 +190,7 @@ describe("set_data Action", () => {
    ************************************************************/
 
   it("set_data with _filter only updates matching items", async () => {
-    const params: IActionSetDataParams = { _filter: "this.item.number > 0", string: "updated" };
+    const params: IActionSetDataParams = { _filter: "@item.number > 0", string: "updated" };
     const data = await triggerTestSetDataAction(service, params);
     expect(data[0].string).toEqual("hello"); // id_0 (number=0) excluded by filter
     expect(data[1].string).toEqual("updated"); // id_1 (number=1) included by filter
