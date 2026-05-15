@@ -7,10 +7,9 @@ import {
   evaluateDynamicDataUpdate,
   isItemChanged,
 } from "../dynamic-data.utils";
+import { ItemDataPipe } from "../../../components/template/processors/itemPipe";
 
 interface IActionSetDataOperatorParams {
-  // TODO - ideally use same itemPipe operators
-  // (although filter will need to be updated to include dynamic context)
   _filter?: string;
   _limit?: number;
   _reverse?: boolean;
@@ -56,7 +55,7 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
 
 async function generateUpdateList(service: DynamicDataService, params: IActionSetDataParams) {
   // remove metadata from rest of update
-  const { _id, _index, _list_id, _updates, ...update } = params;
+  const { _id, _index, _list_id, _updates, _filter, _limit, _reverse, _sort, ...update } = params;
   const query: MangoQuery = {};
   if (_id) {
     query.selector = { id: _id };
@@ -67,6 +66,7 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
     const msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_id: ${_id}`;
     throw new Error(msg);
   }
+  items = applyOperators(items, { _filter, _limit, _reverse, _sort });
   // NOTE - RXDB doesn't support querying by index or pagination so still retrieve all and then reduce
   if (typeof _index === "number") {
     const targetItem = items[_index];
@@ -80,6 +80,19 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
   const schema = await service.getSchema("data_list", _list_id);
 
   return parseUpdateData(schema, update, items, _list_id);
+}
+
+function applyOperators(
+  items: FlowTypes.Data_listRow[],
+  { _filter, _sort, _reverse, _limit }: IActionSetDataOperatorParams
+) {
+  const operations: { name: string; arg?: string }[] = [];
+  if (_filter) operations.push({ name: "filter", arg: _filter });
+  if (_sort) operations.push({ name: "sort", arg: _sort });
+  if (_reverse) operations.push({ name: "reverse" });
+  if (_limit !== undefined) operations.push({ name: "limit", arg: String(_limit) });
+  if (operations.length === 0) return items;
+  return new ItemDataPipe().process(items, operations);
 }
 
 function parseUpdateData(

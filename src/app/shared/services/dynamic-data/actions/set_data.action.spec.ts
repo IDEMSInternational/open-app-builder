@@ -186,6 +186,45 @@ describe("set_data Action", () => {
   });
 
   /*************************************************************
+   *  Operators
+   ************************************************************/
+
+  it("set_data with _filter only updates matching items", async () => {
+    const params: IActionSetDataParams = { _filter: "item.number > 0", string: "updated" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("hello"); // id_0 (number=0) excluded by filter
+    expect(data[1].string).toEqual("updated"); // id_1 (number=1) included by filter
+  });
+
+  it("set_data with _limit only updates first n items", async () => {
+    const params: IActionSetDataParams = { _limit: 1, string: "updated" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("updated");
+    expect(data[1].string).toEqual("hello");
+  });
+
+  it("set_data with _reverse updates items in reversed order via _index", async () => {
+    // After reverse, index 0 is the last original item (id_1)
+    const params: IActionSetDataParams = { _reverse: true, _index: 0, string: "updated" };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("hello"); // id_0 is now at index 1
+    expect(data[1].string).toEqual("updated"); // id_1 is now at index 0
+  });
+
+  it("set_data with _sort affects which item is targeted by _index", async () => {
+    // Sorted descending (sort by number then reverse), index 0 = id_1 (number=1)
+    const params: IActionSetDataParams = {
+      _sort: "number",
+      _reverse: true,
+      _index: 0,
+      string: "updated",
+    };
+    const data = await triggerTestSetDataAction(service, params);
+    expect(data[0].string).toEqual("hello"); // id_0 (number=0) is at index 1 after desc sort
+    expect(data[1].string).toEqual("updated"); // id_1 (number=1) is at index 0 after desc sort
+  });
+
+  /*************************************************************
    *  Quality Control
    ************************************************************/
 
