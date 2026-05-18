@@ -28,4 +28,9 @@ export interface IPersistenceStrategy {
    * Initialize the strategy (e.g. open DB connection, check file permissions)
    */
   init(): Promise<void>;
+
+  /**
+   * Close any open connections (e.g. rxdb database instances)
+   */
+  destroy(): Promise<void>;
 }

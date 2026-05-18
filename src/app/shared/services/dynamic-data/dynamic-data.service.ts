@@ -68,9 +68,12 @@ export class DynamicDataService extends AsyncServiceBase {
     // This will allow multiple databases to be used on the same origin
     // for different deployments (e.g. dev sites running on localhost)
     const { name } = this.deploymentService.config;
-    // Enable dev mode when not in production
+    // Enable dev mode when not in production and not in a test environment.
+    // rxdb 16 dev-mode enforces additionalProperties:false on all schemas which is
+    // incompatible with this app's dynamic schema approach.
     // NOTE - calls 'global' so requires polyfill
-    if (!environment.production) {
+    const isTestEnvironment = typeof jasmine !== "undefined";
+    if (!environment.production && !isTestEnvironment) {
       await import("rxdb/plugins/dev-mode").then((module) => {
         addRxPlugin(module.RxDBDevModePlugin);
       });
@@ -250,6 +253,11 @@ export class DynamicDataService extends AsyncServiceBase {
   public async resetAll() {
     await this.db.removeAll();
     await this.writeCache.deleteAll();
+  }
+
+  public async destroy() {
+    await this.db?.destroy();
+    await this.writeCache?.destroy();
   }
 
   /** Access full state of all persisted data layers */

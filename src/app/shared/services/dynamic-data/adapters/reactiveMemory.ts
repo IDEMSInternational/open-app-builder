@@ -174,6 +174,10 @@ export class ReactiveMemoryAdapter {
     await this.createDB();
   }
 
+  public async destroy() {
+    await (this.db as any)?.close();
+  }
+
   /**
    * Iterate over a document's key-value pairs and populate any properties starting with
    * an underscore to a single top-level APP_META property

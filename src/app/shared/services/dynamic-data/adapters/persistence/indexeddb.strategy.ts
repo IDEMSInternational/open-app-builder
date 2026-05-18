@@ -9,7 +9,7 @@ import {
 } from "rxdb";
 import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 import { RxDBJsonDumpPlugin } from "rxdb/plugins/json-dump";
-import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
+import { RxDBMigrationPlugin } from "rxdb/plugins/migration-schema";
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 import { arrayToHashmap, diffObjects } from "packages/shared/src/utils/object-utils";
 import { IPersistenceStrategy, PersistedState } from "./persistence.interface";
@@ -115,6 +115,10 @@ export class IndexedDBPersistenceStrategy implements IPersistenceStrategy {
 
   async clear(): Promise<void> {
     await this.collection.remove();
+  }
+
+  async destroy(): Promise<void> {
+    await (this.db as any)?.close();
   }
 
   private getStateHashmap(state: PersistedState) {
