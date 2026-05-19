@@ -59,6 +59,9 @@ export function isExternalHttpUrl(value: string): boolean {
  * Handles durations ≥ 1 hour by showing total minutes (e.g. 65:04).
  */
 export function formatDurationMmSs(totalSeconds: number): string {
+  if (!Number.isFinite(totalSeconds) || totalSeconds < 0) {
+    return "00:00";
+  }
   const m = Math.floor(totalSeconds / 60);
   const s = Math.floor(totalSeconds % 60);
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;

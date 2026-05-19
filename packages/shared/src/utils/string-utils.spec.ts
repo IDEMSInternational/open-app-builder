@@ -28,6 +28,12 @@ describe("string-utils", () => {
     it("truncates fractional seconds", () => {
       expect(formatDurationMmSs(61.9)).toBe("01:01");
     });
+
+    it("returns 00:00 for non-finite or negative values", () => {
+      expect(formatDurationMmSs(NaN)).toBe("00:00");
+      expect(formatDurationMmSs(Infinity)).toBe("00:00");
+      expect(formatDurationMmSs(-1)).toBe("00:00");
+    });
   });
 
   describe("isExternalHttpUrl", () => {
