@@ -15,10 +15,12 @@ ion-app[data-platform~="ios"] {
     }
   }
 
-  // Remove hover effect on iOS
+  // Disable hover and focus background changes on iOS.
+  // Safari can flicker when these state styles differ from the default
   // See https://github.com/IDEMSInternational/open-app-builder/issues/3347
   ion-button {
     --background-hover: var(--background) !important;
+    --background-focused: var(--background) !important;
   }
 
   // Elements that make use of `filter: drop-shadow`:
