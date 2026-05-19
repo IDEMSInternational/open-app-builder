@@ -12,10 +12,8 @@ interface IToastActionParams {
    */
   duration?: "short" | "long";
   /**
-   * On Android 12 and newer, all toasts are always shown at the bottom regardless of this value.
-   * @default 'bottom'
+   * The Capacitor Toast API also exposes a 'position' parameter, but it is not supported on web or newer Android versions, so should not be used.
    */
-  position?: "bottom" | "center" | "top";
 }
 
 @Injectable({
@@ -46,7 +44,6 @@ export class ToastService extends SyncServiceBase {
         await Toast.show({
           text: params.message,
           duration: params.duration,
-          position: params.position,
         });
       }
     } catch (error) {
