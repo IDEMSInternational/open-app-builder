@@ -55,6 +55,16 @@ export function isExternalHttpUrl(value: string): boolean {
 }
 
 /**
+ * Format a duration in seconds as "mm:ss".
+ * Handles durations ≥ 1 hour by showing total minutes (e.g. 65:04).
+ */
+export function formatDurationMmSs(totalSeconds: number): string {
+  const m = Math.floor(totalSeconds / 60);
+  const s = Math.floor(totalSeconds % 60);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+/**
  * Last path segment of an http(s) URL, sanitized for use as a filename.
  * @returns undefined if the URL is invalid or has no usable path segment.
  */

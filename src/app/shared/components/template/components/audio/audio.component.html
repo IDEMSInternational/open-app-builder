@@ -41,16 +41,17 @@
       <div class="time">
         @if (params().variant.includes("large")) {
           <div class="time-value">
-            {{ progressSeconds() * 1000 | date: "mm:ss" }}
+            {{ formatDurationMmSs(progressSeconds()) }}
           </div>
           <div class="time-value">
-            {{ durationSeconds() * 1000 | date: "mm:ss" }}
+            {{ formatDurationMmSs(durationSeconds()) }}
           </div>
         } @else {
           <div class="time-value">
             {{
-              (hasEnded() || !hasStarted() ? durationSeconds() : progressSeconds()) * 1000
-                | date: "mm:ss"
+              formatDurationMmSs(
+                hasEnded() || !hasStarted() ? durationSeconds() : progressSeconds()
+              )
             }}
           </div>
         }
