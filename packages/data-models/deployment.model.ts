@@ -100,7 +100,7 @@ export interface IDeploymentRuntimeConfig {
      * `firebase.config.storageBucket` (and native SDK defaults) instead.
      * A value may still be set for consistency or future sync tooling.
      */
-    bucketName: string;
+    bucketName?: string;
     /** Path prefix inside the bucket for all remote asset files (both providers). */
     folderName: string;
   };
