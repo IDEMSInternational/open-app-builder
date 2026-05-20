@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { VariableReference } from "../stores/store";
 
 @Injectable({ providedIn: "root" })
 export class DependencyExtractorService {
@@ -8,7 +9,21 @@ export class DependencyExtractorService {
     "g"
   );
 
-  public extractVariablePaths(input: string): string[] {
-    return input.match(this.variablePathPattern) ?? [];
+  public extractVariablePaths(input: string): VariableReference[] {
+    return this.extractVariableReferences(input);
+  }
+
+  public extractVariableReferences(input: string): VariableReference[] {
+    return (input.match(this.variablePathPattern) ?? []).map((path) => {
+      const [type, ...pathSegments] = path.split(".");
+
+      return {
+        type: type as VariableReference["type"],
+        name: pathSegments
+          .join(".")
+          .replace("parameter_list.", "")
+          .replace(/[#!&|,]/g, ""),
+      };
+    });
   }
 }

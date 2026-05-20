@@ -55,24 +55,14 @@ export class EvaluationService {
   ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
-    const dependencies = this.dependencyExtractor.extractVariablePaths(expression);
+    const dependencies = this.dependencyExtractor.extractVariableReferences(expression);
 
     if (!dependencies || !dependencies.length) return [];
 
     return dependencies
-      .map((dependency) => {
-        const [type, ...pathSegments] = dependency.split(".");
-        return {
-          type,
-          name: pathSegments
-            .join(".")
-            .replace("parameter_list.", "")
-            .replace(/[#!&|,]/g, ""),
-        };
-      })
       .filter(
         (dependency): dependency is VariableReference =>
-          (STORE_TYPES as readonly string[]).includes(dependency.type) && !!dependency.name
+          !!dependency.name && (STORE_TYPES as readonly string[]).includes(dependency.type)
       )
       .map((dependency) => {
         const name = dependency.name.replace("parameter_list.", "").replace(/[#!&|,]/g, "");
@@ -100,7 +90,10 @@ export class EvaluationService {
     valueType: ValueType
   ): any {
     return this.contextCreator.createContext(
-      this.getDependencies(expression, namespace, valueType)
+      this.getDependencies(expression, namespace, valueType).filter(
+        (dependency): dependency is VariableReference =>
+          (STORE_TYPES as readonly string[]).includes(dependency.type)
+      )
     );
   }
 }
