@@ -8,6 +8,7 @@ import { VariableReference, STORE_TYPES } from "../stores/store";
 import { TemplateLiteralEvaluator } from "./evaluators/template-literal.evaluator";
 import { JavascriptEvaluator } from "./evaluators/javascript.evaluator";
 import { ValueType } from "../reactive-components/row-base.component";
+import { DependencyExtractorService } from "./dependency-extractor.service";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -18,7 +19,8 @@ export class EvaluationService {
     private loopItemEvaluator: LoopItemEvaluator,
     private namespaceEvaluator: NamespaceEvaluator,
     private templateLiteralEvaluator: TemplateLiteralEvaluator,
-    private javascriptEvaluator: JavascriptEvaluator
+    private javascriptEvaluator: JavascriptEvaluator,
+    private dependencyExtractor: DependencyExtractorService
   ) {}
 
   public evaluateExpression<T>(
@@ -49,14 +51,11 @@ export class EvaluationService {
   public getDependencies(
     expression: string | number | boolean,
     namespace: string,
-    valueType: ValueType = "string"
+    _valueType: ValueType = "string"
   ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
-    const dependencies =
-      valueType === "script"
-        ? this.extractScriptDependencies(expression)
-        : this.extractDependencies(expression);
+    const dependencies = this.dependencyExtractor.extractVariablePaths(expression);
 
     if (!dependencies || !dependencies.length) return [];
 
@@ -82,29 +81,6 @@ export class EvaluationService {
           name: this.namespaceService.getFullName(namespace, name),
         } as VariableReference;
       });
-  }
-
-  /** Extracts all variable references from `${...}` blocks in a template literal string.
-   * Matches dot-notation paths inside each block, ignoring surrounding operators or literals.
-   * e.g. "my string ${local.somevar + 1} is ${local.somevar2}" returns ["local.somevar", "local.somevar2"]
-   * e.g. "${local.somevar.nested}" returns ["local.somevar.nested"]
-   */
-  public extractDependencies(expression: string): string[] {
-    const results: string[] = [];
-    const blockRegex = /\$\{([^}]+)\}/g;
-    const varRegex = /[a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*)+/g;
-    for (const blockMatch of expression.matchAll(blockRegex)) {
-      for (const varMatch of blockMatch[1].matchAll(varRegex)) {
-        results.push(varMatch[0]);
-      }
-    }
-    return results;
-  }
-
-  /** Extracts all variable references from a plain JavaScript expression. */
-  public extractScriptDependencies(expression: string): string[] {
-    const matches = expression.match(/[a-zA-Z_$][a-zA-Z0-9_$]*(?:\.[a-zA-Z_$][a-zA-Z0-9_$]*)+/g);
-    return matches ?? [];
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation
