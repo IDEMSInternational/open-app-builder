@@ -7,9 +7,10 @@ import {
   evaluateDynamicDataUpdate,
   isItemChanged,
 } from "../dynamic-data.utils";
-import { ItemDataPipe } from "../../../components/template/processors/itemPipe";
 
 interface IActionSetDataOperatorParams {
+  // TODO - ideally use same itemPipe operators
+  // (although filter will need to be updated to include dynamic context)
   _filter?: string;
   _limit?: number;
   _reverse?: boolean;
@@ -55,7 +56,7 @@ export default async (service: DynamicDataService, params: IActionSetDataParams)
 
 async function generateUpdateList(service: DynamicDataService, params: IActionSetDataParams) {
   // remove metadata from rest of update
-  const { _id, _index, _list_id, _updates, _filter, _limit, _reverse, _sort, ...update } = params;
+  const { _id, _index, _list_id, _updates, ...update } = params;
   const query: MangoQuery = {};
   if (_id) {
     query.selector = { id: _id };
@@ -66,20 +67,11 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
     const msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_id: ${_id}`;
     throw new Error(msg);
   }
-  const operators = { _filter, _limit, _reverse, _sort };
-  items = applyOperators(items, operators);
   // NOTE - RXDB doesn't support querying by index or pagination so still retrieve all and then reduce
   if (typeof _index === "number") {
     const targetItem = items[_index];
     if (!targetItem) {
-      let msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_index: ${_index}`;
-      // Include operator context so an _index miss caused by filter/limit is diagnosable
-      const activeOps = Object.fromEntries(
-        Object.entries(operators).filter(([, v]) => v !== undefined && v !== false)
-      );
-      if (Object.keys(activeOps).length > 0) {
-        msg += `\noperators: ${JSON.stringify(activeOps)}\npost-operator count: ${items.length}`;
-      }
+      const msg = `[Update Fail] no doc exists\ndata_list: ${_list_id}\n_index: ${_index}`;
       throw new Error(msg);
     }
     items = [items[_index]];
@@ -88,32 +80,6 @@ async function generateUpdateList(service: DynamicDataService, params: IActionSe
   const schema = await service.getSchema("data_list", _list_id);
 
   return parseUpdateData(schema, update, items, _list_id);
-}
-
-function applyOperators(
-  items: FlowTypes.Data_listRow[],
-  { _filter, _sort, _reverse, _limit }: IActionSetDataOperatorParams
-) {
-  const operations: { name: string; arg?: string }[] = [];
-  if (_filter) {
-    // Filter expressions are evaluated as JS by ItemDataPipe (via JSEvaluator),
-    // which binds item context to `this`. `hackParseTemplatedParams` un-converts
-    // `this.item` -> `@item` for update value evaluation; re-apply the conversion
-    // here so authors can use the canonical `@item.x` syntax in filter expressions.
-    const filterArg = _filter.replace(/@item/g, "this.item");
-    operations.push({ name: "filter", arg: filterArg });
-  }
-  if (_sort) operations.push({ name: "sort", arg: _sort });
-  if (_reverse) operations.push({ name: "reverse" });
-  if (_limit !== undefined) {
-    const limit = Number(_limit);
-    if (!Number.isInteger(limit) || limit < 0) {
-      throw new Error(`[Set Data] invalid _limit: ${_limit} (must be a non-negative integer)`);
-    }
-    operations.push({ name: "limit", arg: String(limit) });
-  }
-  if (operations.length === 0) return items;
-  return new ItemDataPipe().process(items, operations);
 }
 
 function parseUpdateData(
