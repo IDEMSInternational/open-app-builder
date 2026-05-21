@@ -4,6 +4,7 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 import { Migration, MigrationHistory } from "./migration.types";
 import { Injector } from "@angular/core";
 import { AlertController } from "@ionic/angular";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 /**
  * Call standalone tests via:
@@ -12,6 +13,7 @@ import { AlertController } from "@ionic/angular";
 describe("MigrationService", () => {
   let service: MigrationService;
   let mockLocalStorage: jasmine.SpyObj<LocalStorageService>;
+  let mockSystemVariableService: jasmine.SpyObj<SystemVariableService>;
   let mockInjector: jasmine.SpyObj<Injector>;
   let mockAlertCtrl: jasmine.SpyObj<AlertController>;
   let mockMigrations: Migration<Injector>[];
@@ -37,6 +39,16 @@ describe("MigrationService", () => {
       storage[key] = val;
     });
 
+    mockSystemVariableService = jasmine.createSpyObj("SystemVariableService", [
+      "get",
+      "set",
+      "remove",
+    ]);
+    mockSystemVariableService.get.and.callFake((key) => storage[key] || null);
+    mockSystemVariableService.set.and.callFake((key, val) => {
+      storage[key] = val;
+    });
+
     mockMigrations = [
       {
         id: "20230101_init",
@@ -52,6 +64,7 @@ describe("MigrationService", () => {
       providers: [
         MigrationService,
         { provide: LocalStorageService, useValue: mockLocalStorage },
+        { provide: SystemVariableService, useValue: mockSystemVariableService },
         { provide: Injector, useValue: mockInjector },
         { provide: AlertController, useValue: mockAlertCtrl },
       ],

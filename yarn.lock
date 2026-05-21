@@ -1929,23 +1929,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-modules-systemjs@npm:^7.27.1":
-  version: 7.28.5
-  resolution: "@babel/plugin-transform-modules-systemjs@npm:7.28.5"
-  dependencies:
-    "@babel/helper-module-transforms": ^7.28.3
-    "@babel/helper-plugin-utils": ^7.27.1
-    "@babel/helper-validator-identifier": ^7.28.5
-    "@babel/traverse": ^7.28.5
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 646748dcf968c107fedfbff38aa37f7a9ebf2ccdf51fd9f578c6cd323371db36bbc5fe0d995544db168f39be9bca32a85fbf3bfff4742d2bed22e21c2847fa46
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-systemjs@npm:^7.29.0":
-  version: 7.29.0
-  resolution: "@babel/plugin-transform-modules-systemjs@npm:7.29.0"
+"@babel/plugin-transform-modules-systemjs@npm:^7.27.1, @babel/plugin-transform-modules-systemjs@npm:^7.29.0":
+  version: 7.29.4
+  resolution: "@babel/plugin-transform-modules-systemjs@npm:7.29.4"
   dependencies:
     "@babel/helper-module-transforms": ^7.28.6
     "@babel/helper-plugin-utils": ^7.28.6
@@ -1953,7 +1939,7 @@ __metadata:
     "@babel/traverse": ^7.29.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 36fd7bcd694549effdbdf733c32f0c9dbadea052316ff5e0830b07482a60c8ff1ee79850efff05e8046c4b99c241832f2c5267e0ae7c721c531c8ef12930c4b9
+  checksum: d9cbb30669077756048af990a08ad1ba149785c336024affa49848dc4ffc5948bfaaf52d90bbec711a1f320e19e2c60182dbeff40d81cc5b9a09a87919abe07d
   languageName: node
   linkType: hard
 
@@ -8250,9 +8236,9 @@ __metadata:
   linkType: hard
 
 "@protobufjs/utf8@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@protobufjs/utf8@npm:1.1.0"
-  checksum: f9bf3163d13aaa3b6f5e6fbf37a116e094ea021c0e1f2a7ccd0e12a29e2ce08dafba4e8b36e13f8ed7397e1591610ce880ed1289af4d66cf4ace8a36a9557278
+  version: 1.1.1
+  resolution: "@protobufjs/utf8@npm:1.1.1"
+  checksum: 9352cf54a92219bd7eac9791c62f4d9abc27381a4b8d639e76ca33edb4813e6905c17ea1f894f4730ea1c6e99e69dac4484a661d6715193d88e90c1775df9fe9
   languageName: node
   linkType: hard
 
@@ -8829,6 +8815,22 @@ __metadata:
     "@sigstore/core": ^3.1.0
     "@sigstore/protobuf-specs": ^0.5.0
   checksum: fdb1e008fe346eeaf31ee58bfb5b7e1db1b292fe14f3eaf001e2d67eb3aa3af1637c2e17d87ceaf62d5fcee599a0ec30198480c91559b694bfe963e81d09879e
+  languageName: node
+  linkType: hard
+
+"@simple-git/args-pathspec@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@simple-git/args-pathspec@npm:1.0.3"
+  checksum: 74bcc00123cd0da800fc5a6417f83f2f4fce66eb38749efc2ca3b6e4c431c6edaabe80c5834714c155f6ba07582069b182420eda27a601353fb5a3b48917d7e0
+  languageName: node
+  linkType: hard
+
+"@simple-git/argv-parser@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "@simple-git/argv-parser@npm:1.1.1"
+  dependencies:
+    "@simple-git/args-pathspec": ^1.0.3
+  checksum: 889202319c3d2a9143287ba0951dc5d6b9d6892c70679049722174eb8e10af658bc2c8cff06b75a5a3e3a84485b85fec828b0cd85db34d6868750ae646d1fd99
   languageName: node
   linkType: hard
 
@@ -17111,9 +17113,9 @@ __metadata:
   linkType: hard
 
 "fast-uri@npm:^3.0.1":
-  version: 3.1.0
-  resolution: "fast-uri@npm:3.1.0"
-  checksum: daab0efd3548cc53d0db38ecc764d125773f8bd70c34552ff21abdc6530f26fa4cb1771f944222ca5e61a0a1a85d01a104848ff88c61736de445d97bd616ea7e
+  version: 3.1.2
+  resolution: "fast-uri@npm:3.1.2"
+  checksum: 73a6e1b04e6fcf7a09ed93316e72d643ef177d26969973784690708612141f2c2f74657120bab75bf5bbc26bfd535a32c90a8c3bc50aca50584cf01f98815afe
   languageName: node
   linkType: hard
 
@@ -17843,6 +17845,7 @@ __metadata:
     karma-jasmine-html-reporter: ~2.0.0
     karma-json-result-reporter: ^1.0.0
     katex: ^0.16.21
+    ky: ^2.0.0
     lint-staged: ^15.2.2
     lottie-web: ^5.13.0
     marked: ^11
@@ -17864,7 +17867,7 @@ __metadata:
     trusted-types: ^2.0.0
     typescript: 5.9.3
     typescript-eslint: ^8.53.0
-    uuid: ^11.0.3
+    uuid: ^14.0.0
     zod: ^4.0.17
     zone.js: ~0.15.1
   languageName: unknown
@@ -18911,9 +18914,9 @@ __metadata:
   linkType: hard
 
 "hono@npm:^4.11.4":
-  version: 4.12.8
-  resolution: "hono@npm:4.12.8"
-  checksum: bc2390a161ca7904792e3eed459c98c1414af6b8c59eabbeee65665b229f77ed34ffa7009fba23426dfe9a1a1bdb5ccca4b5b1809bba9d87ca9787be09841086
+  version: 4.12.18
+  resolution: "hono@npm:4.12.18"
+  checksum: 8b1d82b9409229542e4ecc50641ce9dc88522a187615db387b114c3e352ff48a12b838b17bdbc8f8d1fd338dfee587b3a3df1955c6a92d62ec0405888ac6e89d
   languageName: node
   linkType: hard
 
@@ -21551,6 +21554,13 @@ __metadata:
   version: 2.0.0
   resolution: "kuler@npm:2.0.0"
   checksum: 9e10b5a1659f9ed8761d38df3c35effabffbd19fc6107324095238e4ef0ff044392cae9ac64a1c2dda26e532426485342226b93806bd97504b174b0dcf04ed81
+  languageName: node
+  linkType: hard
+
+"ky@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "ky@npm:2.0.0"
+  checksum: ad83e514a49669e5cc4bc14258be6f624669021f54df861280047b359cef4f093abf52fc41fd0b8f6d00de7e05f29a8d51dcf69245f1216f9b067bbcb679cb4b
   languageName: node
   linkType: hard
 
@@ -25269,7 +25279,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.6, postcss@npm:^8.2.14, postcss@npm:^8.4.49, postcss@npm:^8.5.6":
+"postcss@npm:8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -25280,14 +25290,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.40":
-  version: 8.5.8
-  resolution: "postcss@npm:8.5.8"
+"postcss@npm:^8.2.14, postcss@npm:^8.4.40, postcss@npm:^8.4.49, postcss@npm:^8.5.6":
+  version: 8.5.14
+  resolution: "postcss@npm:8.5.14"
   dependencies:
     nanoid: ^3.3.11
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: 118cbec9551c7107c7884a585b45d7cce1632159065c7f6e112bbb4c4811253e78d507e49082b36d9b89f36a02a611c5a8cd210548dead55795c20c4f37ab9e8
+  checksum: ec17d1519cd997b43aceb82bfa959f380085591269e286c53d5ba76eb1989525e7cde106a44f1565516fcbb50f206eb1858cc2cd5e5aaea3a8ee793886c8232c
   languageName: node
   linkType: hard
 
@@ -26904,7 +26914,7 @@ __metadata:
     plist: ^3.1.0
     semver: ^7.5.2
     shared: "workspace:*"
-    simple-git: ^3.32.3
+    simple-git: ^3.36.0
     subtitles-parser-vtt: ^0.1.0
     ts-jest: ^29.2.5
     ts-morph: ^15.0.0
@@ -27472,14 +27482,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:^3.32.3":
-  version: 3.33.0
-  resolution: "simple-git@npm:3.33.0"
+"simple-git@npm:^3.36.0":
+  version: 3.36.0
+  resolution: "simple-git@npm:3.36.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
+    "@simple-git/args-pathspec": ^1.0.3
+    "@simple-git/argv-parser": ^1.1.0
     debug: ^4.4.0
-  checksum: 9c0105f21781d9761d6a82444b7f6c85c21c72b63b38c0e7b53420d248f08541d5b008866d043155cddcc89ea71bb0028d7ed3ec7e0b885a59ee4fd9cce1a99e
+  checksum: 43e0c7383aa8b6917ba15aec5a0533a3490d8c0987d3a4410d8d3f3dc4436a2ce6ca32d7c5751578e3e37a2e57e22eae755891fdb1aac3ac7024c50b4551dca2
   languageName: node
   linkType: hard
 
@@ -30197,12 +30209,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:11.1.0, uuid@npm:^11.0.3":
+"uuid@npm:11.1.0":
   version: 11.1.0
   resolution: "uuid@npm:11.1.0"
   bin:
     uuid: dist/esm/bin/uuid
   checksum: 840f19758543c4631e58a29439e51b5b669d5f34b4dd2700b6a1d15c5708c7a6e0c3e2c8c4a2eae761a3a7caa7e9884d00c86c02622ba91137bd3deade6b4b4a
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "uuid@npm:14.0.0"
+  bin:
+    uuid: dist-node/bin/uuid
+  checksum: 08608584a79e987cdae000fa8eb724fa51dd8aafc136cd9fa9a8c87d07b246c56eec5fd9027fdb3e49a863eedf758bc19e325909ce281955c7a027fed67dc89e
   languageName: node
   linkType: hard
 

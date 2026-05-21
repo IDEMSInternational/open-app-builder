@@ -4,6 +4,7 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
+import { formatDurationMmSs } from "packages/shared/src/utils/string-utils";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -75,6 +76,8 @@ export class TmplAudioComponent
   hasEnded = signal(false);
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
+  /** Utility function to format duration in "mm:ss" format */
+  public formatDurationMmSs = formatDurationMmSs;
   /** Track any opened transcript modal to close on destroy */
   private transcriptModal: HTMLIonModalElement;
 

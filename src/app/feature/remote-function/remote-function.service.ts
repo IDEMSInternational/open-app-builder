@@ -18,7 +18,7 @@ export class RemoteFunctionService extends AsyncServiceBase {
     private dynamicDataService: DynamicDataService
   ) {
     super("Remote Function");
-    this.provider = getFunctionProvider(this.config.provider);
+    this.provider = getFunctionProvider(this.config.provider, this.injector);
     if (this.provider) {
       this.registerInitFunction(this.initialise, "defer");
     } else {
@@ -39,7 +39,9 @@ export class RemoteFunctionService extends AsyncServiceBase {
   }
 
   private async initialise() {
-    await this.provider.initialise(this.injector);
     await this.dynamicDataService.ready();
+    // Optimistically ensure provider initialised to reduce delay when
+    // sending first request (i.e. firebase appCheck token registered)
+    await this.provider.initialise();
   }
 }

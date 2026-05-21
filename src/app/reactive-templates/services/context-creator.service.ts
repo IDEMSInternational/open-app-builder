@@ -24,10 +24,12 @@ export class ContextCreatorService {
   public createContext(dependencies: VariableReference[]): {
     local: Record<string, any>;
     global: Record<string, any>;
+    system: Record<string, any>;
   } {
     const context = {
       local: {} as Record<string, any>,
       global: {} as Record<string, any>,
+      system: {} as Record<string, any>,
     };
 
     dependencies.forEach((dependency) => {

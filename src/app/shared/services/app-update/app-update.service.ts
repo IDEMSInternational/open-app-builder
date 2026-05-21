@@ -11,7 +11,7 @@ import { TemplateNavService } from "../../components/template/services/template-
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
-import { LocalStorageService } from "../local-storage/local-storage.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
@@ -27,7 +27,7 @@ export class AppUpdateService extends SyncServiceBase {
     private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
     private templateNavService: TemplateNavService,
-    private localStorageService: LocalStorageService
+    private systemVariableService: SystemVariableService
   ) {
     super("AppUpdate");
     this.initialise();
@@ -170,11 +170,11 @@ export class AppUpdateService extends SyncServiceBase {
 
   private setUpdateAvailable(value: boolean) {
     this.updateAvailable = value;
-    this.localStorageService.setProtected("APP_UPDATE_AVAILABLE", value.toString());
+    this.systemVariableService.set("APP_UPDATE_AVAILABLE", value.toString());
   }
 
   private setUpdateDownloaded(value: boolean) {
     this.updateDownloaded = value;
-    this.localStorageService.setProtected("APP_UPDATE_DOWNLOADED", value.toString());
+    this.systemVariableService.set("APP_UPDATE_DOWNLOADED", value.toString());
   }
 }
