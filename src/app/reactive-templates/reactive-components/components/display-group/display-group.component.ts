@@ -12,6 +12,7 @@ const parameters = () =>
     justify: new Parameter<
       "start" | "center" | "end" | "space-between" | "space-around" | "space-evenly"
     >("justify", "start"),
+    wrap: new Parameter<boolean>("wrap", false),
   });
 
 @Component({
@@ -49,4 +50,6 @@ export class DisplayGroupComponent extends RowBaseComponent<ReturnType<typeof pa
         return "flex-start";
     }
   });
+
+  public wrap = computed(() => (this.params.wrap.value() ? "wrap" : "nowrap"));
 }
