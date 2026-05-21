@@ -32,6 +32,7 @@ export class RowContextDebuggerComponent {
 
   public context = computed(() => {
     this.dependencyValues();
-    return this.contextCreator.createContext(this.dependencies());
+    const row = this.row();
+    return this.contextCreator.createContext(this.dependencies(), row ? row.namespace() : "");
   });
 }

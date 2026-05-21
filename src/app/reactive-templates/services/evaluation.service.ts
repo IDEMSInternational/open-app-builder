@@ -33,7 +33,7 @@ export class EvaluationService {
     const context = this.createExecutionContext(expression, namespace, valueType);
 
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
+    ////evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
 
     if (valueType === "string") {
@@ -93,7 +93,8 @@ export class EvaluationService {
       this.getDependencies(expression, namespace, valueType).filter(
         (dependency): dependency is VariableReference =>
           (STORE_TYPES as readonly string[]).includes(dependency.type)
-      )
+      ),
+      namespace
     );
   }
 }
