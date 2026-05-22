@@ -165,6 +165,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     try {
+      await this.ready();
       await this.getAssetPackManifest(assetPackName);
       const total = this.countDownloadFiles(this.manifest?.rows as IAssetEntry[]);
       this.downloadProgressCount.set(total ? { completed: 0, total } : null);
@@ -227,6 +228,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     try {
       console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
+
+      if (!this.provider) {
+        throw new Error(
+          "Remote asset provider is not initialized. Please ensure remote_assets is configured in deployment config."
+        );
+      }
 
       // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
       const jsonText = await this.provider.downloadFileAsText(relativePath);
