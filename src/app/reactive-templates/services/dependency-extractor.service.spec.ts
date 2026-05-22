@@ -61,13 +61,21 @@ describe("DependencyExtractorService", () => {
     ]);
   });
 
-  it("extracts loop placeholders with trailing item shorthand", () => {
+  it("template mode ignores plain text and extracts only placeholder dependencies", () => {
     const input = "${loop.index} of ${loop.count} item";
 
-    expect(service.extractVariableReferences(input)).toEqual([
+    expect(service.extractVariableReferences(input, "string")).toEqual([
       { type: "loop", name: "index" },
       { type: "loop", name: "count" },
-      { type: "loop", name: "item" },
+    ]);
+  });
+
+  it("template mode supports item shorthand inside placeholders", () => {
+    const input = "${item.name} of ${loop.count} item";
+
+    expect(service.extractVariableReferences(input, "string")).toEqual([
+      { type: "loop", name: "item.name" },
+      { type: "loop", name: "count" },
     ]);
   });
 

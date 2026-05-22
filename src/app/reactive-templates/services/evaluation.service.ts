@@ -48,11 +48,11 @@ export class EvaluationService {
   public getDependencies(
     expression: string | number | boolean,
     namespace: string,
-    _valueType: ValueType = "string"
+    valueType: ValueType = "string"
   ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
-    const dependencies = this.dependencyExtractor.extractVariableReferences(expression);
+    const dependencies = this.dependencyExtractor.extractVariableReferences(expression, valueType);
 
     if (!dependencies || !dependencies.length) return [];
 
