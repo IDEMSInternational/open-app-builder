@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { NamespaceService } from "./namespace.service";
 import { ContextCreatorService } from "./context-creator.service";
 import { ListEvaluator } from "./evaluators/list.evaluator";
-import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
 import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 import { VariableReference, STORE_TYPES } from "../stores/store";
 import { TemplateLiteralEvaluator } from "./evaluators/template-literal.evaluator";
@@ -16,7 +15,6 @@ export class EvaluationService {
     private namespaceService: NamespaceService,
     private contextCreator: ContextCreatorService,
     private listEvaluator: ListEvaluator,
-    private loopItemEvaluator: LoopItemEvaluator,
     private namespaceEvaluator: NamespaceEvaluator,
     private templateLiteralEvaluator: TemplateLiteralEvaluator,
     private javascriptEvaluator: JavascriptEvaluator,
@@ -33,7 +31,6 @@ export class EvaluationService {
     const context = this.createExecutionContext(expression, namespace, valueType);
 
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    ////evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
 
     if (valueType === "string") {

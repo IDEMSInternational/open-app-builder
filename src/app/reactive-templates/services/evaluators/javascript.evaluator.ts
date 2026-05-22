@@ -5,10 +5,15 @@ export class JavascriptEvaluator {
   private context: any = {};
 
   public evaluate(expression: string | number | boolean): any {
-    return Function(
-      ...Object.keys(this.context),
-      `return (${expression});`
-    )(...Object.values(this.context));
+    try {
+      return Function(
+        ...Object.keys(this.context),
+        `return (${expression});`
+      )(...Object.values(this.context));
+    } catch (error) {
+      console.error("Failed to evaluate expression", { expression, error });
+      return undefined;
+    }
   }
 
   public setContext(context: any) {
