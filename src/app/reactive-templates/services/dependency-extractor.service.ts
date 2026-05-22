@@ -8,13 +8,14 @@ export class DependencyExtractorService {
     `\\b(?:${this.allowedRoots.join("|")})\\.[a-zA-Z_$][\\w$]*(?:\\.[a-zA-Z_$][\\w$]*)*`,
     "g"
   );
-
-  public extractVariablePaths(input: string): VariableReference[] {
-    return this.extractVariableReferences(input);
-  }
+  private readonly shorthandReplacements: Array<{ from: string; to: string }> = [
+    { from: "item", to: "loop.item" },
+  ];
 
   public extractVariableReferences(input: string): VariableReference[] {
-    return (input.match(this.variablePathPattern) ?? []).map((path) => {
+    const normalizedInput = this.replaceShorthands(input);
+
+    return (normalizedInput.match(this.variablePathPattern) ?? []).map((path) => {
       const [type, ...pathSegments] = path.split(".");
 
       return {
@@ -25,5 +26,17 @@ export class DependencyExtractorService {
           .replace(/[#!&|,]/g, ""),
       };
     });
+  }
+
+  private replaceShorthands(input: string): string {
+    return this.shorthandReplacements.reduce((result, { from, to }) => {
+      const shorthandPattern = new RegExp(`(^|[^\\w$.])${this.escapeRegExp(from)}\\b`, "g");
+
+      return result.replace(shorthandPattern, `$1${to}`);
+    }, input);
+  }
+
+  private escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 }
