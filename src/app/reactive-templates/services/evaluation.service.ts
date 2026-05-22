@@ -31,12 +31,15 @@ export class EvaluationService {
     const context = this.createExecutionContext(expression, namespace, valueType);
 
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+
+    if (valueType === "list") {
+      evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+    }
 
     if (valueType === "string") {
       this.templateLiteralEvaluator.setContext(context);
       evaluatedExpression = this.templateLiteralEvaluator.evaluate(evaluatedExpression);
-    } else if (valueType === "script") {
+    } else if (valueType === "script" || valueType === "list") {
       this.javascriptEvaluator.setContext(context);
       evaluatedExpression = this.javascriptEvaluator.evaluate(evaluatedExpression);
     }

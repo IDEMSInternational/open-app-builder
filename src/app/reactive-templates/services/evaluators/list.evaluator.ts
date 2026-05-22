@@ -31,7 +31,7 @@ export class ListEvaluator {
       // Check if there are multiple lines that contain at least one ':'
       const isArrayOfObjectsType = lines.length > 0 && lines.every((line) => line.includes(":"));
       if (isArrayOfObjectsType) {
-        return lines.map((line) => {
+        const parsedList = lines.map((line) => {
           const obj: { [key: string]: string } = {};
           // Split by '|', then parse each key-value pair
           line.split("|").forEach((part) => {
@@ -45,9 +45,16 @@ export class ListEvaluator {
           });
           return obj;
         });
+
+        return this.toJavascriptListString(parsedList);
       }
     }
     // Fallback: return as-is for string, boolean, number
     return expression;
+  }
+
+  private toJavascriptListString(list: Array<Record<string, string>>): string {
+    // JSON output is also valid JavaScript array/object literal syntax.
+    return JSON.stringify(list);
   }
 }

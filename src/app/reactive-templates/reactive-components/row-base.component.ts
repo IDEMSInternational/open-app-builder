@@ -14,7 +14,7 @@ import {
 import { FlowTypes } from "src/app/shared/model";
 import { defineParameters, Parameter, Parameters } from "./parameters";
 
-export type ValueType = "script" | "string";
+export type ValueType = "script" | "string" | "list";
 
 export const defineBaseParameters = () =>
   defineParameters({

@@ -8,7 +8,7 @@ describe("ListEvaluator", () => {
   });
 
   describe("parseExpression", () => {
-    it("parses array-of-objects formatted strings into structured objects", () => {
+    it("parses array-of-objects formatted strings into a JavaScript list string", () => {
       const expression = `
 				key: name_1 | value: Value 1;
 				key: name_2 | value: Value 2 with trailing spaces  ;
@@ -17,23 +17,21 @@ describe("ListEvaluator", () => {
 
       const result = subject.evaluate(expression);
 
-      expect(result).toEqual([
-        { key: "name_1", value: "Value 1" },
-        { key: "name_2", value: "Value 2 with trailing spaces" },
-        { key: "name_3", value: "Value 3" },
-      ]);
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value":"Value 3"}]'
+      );
     });
 
-    it("parses array-of-objects with a single object", () => {
+    it("parses array-of-objects with a single object into a list string", () => {
       const expression = `
 				key: name_1 | value: Value 1 | description: This is description 1;
 			`;
 
       const result = subject.evaluate(expression);
 
-      expect(result).toEqual([
-        { key: "name_1", value: "Value 1", description: "This is description 1" },
-      ]);
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1","description":"This is description 1"}]'
+      );
     });
 
     it("supports values containing additional colons and ignores empty entries", () => {
@@ -45,11 +43,9 @@ describe("ListEvaluator", () => {
 
       const result = subject.evaluate(expression);
 
-      expect(result).toEqual([
-        { key: "name_1", value: "Value with: colon" },
-        { key: "name_2" },
-        { key: "name_3", description: "Something else", value: "Another: colon" },
-      ]);
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value with: colon"},{"key":"name_2"},{"key":"name_3","description":"Something else","value":"Another: colon"}]'
+      );
     });
 
     it("returns the original string when the format is not array of object syntax", () => {
