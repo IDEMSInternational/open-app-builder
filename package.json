@@ -107,7 +107,7 @@
     "ngx-matomo-client": "^9.0.1",
     "nouislider": "^15.7.1",
     "qrcode": "^1.5.3",
-    "rxdb": "^14.17.1",
+    "rxdb": "^16.21.1",
     "rxjs": "^7.8.1",
     "scripts": "workspace:*",
     "shared": "workspace:*",

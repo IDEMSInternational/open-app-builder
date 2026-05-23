@@ -67,6 +67,10 @@ describe("DynamicDataService", () => {
     await service.resetAll();
   });
 
+  afterEach(async () => {
+    await service.destroy();
+  });
+
   it("populates initial flows from json", async () => {
     const obs = service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);

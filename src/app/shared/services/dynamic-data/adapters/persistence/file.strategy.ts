@@ -56,4 +56,6 @@ export class FilePersistenceStrategy implements IPersistenceStrategy {
       // Ignore if file doesn't exist
     }
   }
+
+  async destroy(): Promise<void> {}
 }

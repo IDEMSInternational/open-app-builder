@@ -96,6 +96,10 @@ describe("set_data Action", () => {
     await service.resetFlow("data_list", "test_flow");
   });
 
+  afterEach(async () => {
+    await service.destroy();
+  });
+
   /*************************************************************
    *  Main Tests
    ************************************************************/
