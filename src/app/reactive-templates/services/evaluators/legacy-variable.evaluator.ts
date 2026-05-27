@@ -5,7 +5,7 @@ import { ValueType } from "../../reactive-components/row-base.component";
 export class LegacyVariableEvaluator {
   private readonly legacyPatterns: Array<{
     pattern: RegExp;
-    toReplacement: (match: string) => string;
+    toReplacement: (match: string, valueType: ValueType) => string;
   }> = [
     {
       pattern: /@local(?:\.[a-zA-Z_$][\w$]*)+/g,
@@ -13,9 +13,14 @@ export class LegacyVariableEvaluator {
     },
     {
       pattern: /@item(?:\.[a-zA-Z_$][\w$]*)*/g,
-      toReplacement: (match) => {
+      toReplacement: (match, valueType) => {
         const path = match.slice("@item".length);
-        return path ? `loop${path}` : "loop.item";
+
+        if (!path) {
+          return "loop.item";
+        }
+
+        return valueType === "string" ? `loop.item${path}` : `loop${path}`;
       },
     },
     {
@@ -43,7 +48,7 @@ export class LegacyVariableEvaluator {
             return match;
           }
 
-          const normalizedExpression = toReplacement(match);
+          const normalizedExpression = toReplacement(match, valueType);
 
           if (valueType === "script" || valueType === "list") {
             return normalizedExpression;

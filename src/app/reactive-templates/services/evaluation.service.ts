@@ -9,6 +9,7 @@ import { JavascriptEvaluator } from "./evaluators/javascript.evaluator";
 import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
 import { LegacyVariableEvaluator } from "./evaluators/legacy-variable.evaluator";
+import { ItemVariableEvaluator } from "./evaluators/item-variable.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -17,6 +18,7 @@ export class EvaluationService {
     private contextCreator: ContextCreatorService,
     private listEvaluator: ListEvaluator,
     private namespaceEvaluator: NamespaceEvaluator,
+    private itemVariableEvaluator: ItemVariableEvaluator,
     private legacyVariableEvaluator: LegacyVariableEvaluator,
     private templateLiteralEvaluator: TemplateLiteralEvaluator,
     private javascriptEvaluator: JavascriptEvaluator,
@@ -34,10 +36,11 @@ export class EvaluationService {
       evaluatedExpression = this.legacyVariableEvaluator.evaluate(evaluatedExpression, valueType);
     }
 
-    const context = this.createExecutionContext(evaluatedExpression, namespace, valueType);
-
+    evaluatedExpression = this.itemVariableEvaluator.evaluate(evaluatedExpression, valueType);
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
     evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+
+    const context = this.createExecutionContext(evaluatedExpression, namespace, valueType);
 
     if (valueType === "string") {
       this.templateLiteralEvaluator.setContext(context);
@@ -58,8 +61,11 @@ export class EvaluationService {
   ): VariableReference[] {
     const normalizedExpression =
       valueType === "string" || valueType === "script"
-        ? this.legacyVariableEvaluator.evaluate(expression, valueType)
-        : expression;
+        ? this.legacyVariableEvaluator.evaluate(
+            this.itemVariableEvaluator.evaluate(expression, valueType),
+            valueType
+          )
+        : this.itemVariableEvaluator.evaluate(expression, valueType);
 
     if (typeof normalizedExpression !== "string") return [];
 
