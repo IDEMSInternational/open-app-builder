@@ -8,6 +8,7 @@ import { TemplateLiteralEvaluator } from "./evaluators/template-literal.evaluato
 import { JavascriptEvaluator } from "./evaluators/javascript.evaluator";
 import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
+import { LegacyVariableEvaluator } from "./evaluators/legacy-variable.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -16,6 +17,7 @@ export class EvaluationService {
     private contextCreator: ContextCreatorService,
     private listEvaluator: ListEvaluator,
     private namespaceEvaluator: NamespaceEvaluator,
+    private legacyVariableEvaluator: LegacyVariableEvaluator,
     private templateLiteralEvaluator: TemplateLiteralEvaluator,
     private javascriptEvaluator: JavascriptEvaluator,
     private dependencyExtractor: DependencyExtractorService
@@ -28,13 +30,14 @@ export class EvaluationService {
   ): T {
     let evaluatedExpression = expression;
 
-    const context = this.createExecutionContext(expression, namespace, valueType);
+    if (valueType === "string" || valueType === "script") {
+      evaluatedExpression = this.legacyVariableEvaluator.evaluate(evaluatedExpression, valueType);
+    }
+
+    const context = this.createExecutionContext(evaluatedExpression, namespace, valueType);
 
     evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-
-    if (valueType === "list") {
-      evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
-    }
+    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
 
     if (valueType === "string") {
       this.templateLiteralEvaluator.setContext(context);
@@ -53,9 +56,17 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType = "string"
   ): VariableReference[] {
-    if (typeof expression !== "string") return [];
+    const normalizedExpression =
+      valueType === "string" || valueType === "script"
+        ? this.legacyVariableEvaluator.evaluate(expression, valueType)
+        : expression;
 
-    const dependencies = this.dependencyExtractor.extractVariableReferences(expression, valueType);
+    if (typeof normalizedExpression !== "string") return [];
+
+    const dependencies = this.dependencyExtractor.extractVariableReferences(
+      normalizedExpression,
+      valueType
+    );
 
     if (!dependencies || !dependencies.length) return [];
 

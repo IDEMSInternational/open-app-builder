@@ -132,6 +132,8 @@ describe("ContextCreatorService", () => {
     const context = service.createContext([], "items.1");
 
     expect(context.loop).toEqual({
+      name: "Beta",
+      value: 20,
       item: { name: "Beta", value: 20 },
       index: "1",
       count: 2,
@@ -159,6 +161,8 @@ describe("ContextCreatorService", () => {
     const context = service.createContext([], "items.Beta");
 
     expect(context.loop).toEqual({
+      name: "Beta",
+      value: 20,
       item: { name: "Beta", value: 20 },
       index: "Beta",
       count: 2,
