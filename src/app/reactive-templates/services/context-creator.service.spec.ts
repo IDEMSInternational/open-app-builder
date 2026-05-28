@@ -2,7 +2,6 @@ import { TestBed } from "@angular/core/testing";
 import { ContextCreatorService } from "./context-creator.service";
 import { VariableStore } from "../stores/variable-store";
 import { RowRegistry } from "./row.registry";
-import { signal } from "@angular/core";
 import { Parameter } from "../reactive-components/parameters";
 
 /**
@@ -25,7 +24,7 @@ describe("ContextCreatorService", () => {
   it("creates context for flat dependency", () => {
     variableStore.set({ name: "simple", type: "local" }, 123);
 
-    const context = service.createContext([{ name: "simple", type: "local" }]);
+    const context = service.createContext([{ name: "simple", type: "local" }], "");
 
     expect(context).toEqual({ local: { simple: 123 }, global: {}, system: {}, loop: {} });
   });
@@ -33,10 +32,29 @@ describe("ContextCreatorService", () => {
   it("creates nested context from dot paths", () => {
     variableStore.set({ name: "outer.inner.value", type: "local" }, "ok");
 
-    const context = service.createContext([{ name: "outer.inner.value", type: "local" }]);
+    const context = service.createContext([{ name: "outer.inner.value", type: "local" }], "");
 
     expect(context).toEqual({
       local: { outer: { inner: { value: "ok" } } },
+      global: {},
+      system: {},
+      loop: {},
+    });
+  });
+
+  // expression: local.outerLoop.key_1.innerLoopData  namespace: outerLoop.key_1 valueType: script
+  it("creates nested context from dot paths with namespace", () => {
+    variableStore.set({ name: "local.outerLoop.key_1.innerLoopData", type: "local" }, [
+      { key: "key_1", value: "value_1" },
+    ]);
+
+    const context = service.createContext(
+      [{ name: "local.outerLoop.key_1.innerLoopData", type: "local" }],
+      "outerLoop.key_1"
+    );
+
+    expect(context).toEqual({
+      local: { outerLoop: { key_1: { innerLoopData: [{ key: "key_1", value: "value_1" }] } } },
       global: {},
       system: {},
       loop: {},
@@ -47,10 +65,13 @@ describe("ContextCreatorService", () => {
     variableStore.set({ name: "root.left", type: "local" }, "L");
     variableStore.set({ name: "root.right", type: "local" }, "R");
 
-    const context = service.createContext([
-      { name: "root.left", type: "local" },
-      { name: "root.right", type: "local" },
-    ]);
+    const context = service.createContext(
+      [
+        { name: "root.left", type: "local" },
+        { name: "root.right", type: "local" },
+      ],
+      ""
+    );
 
     expect(context).toEqual({
       local: { root: { left: "L", right: "R" } },
@@ -64,10 +85,13 @@ describe("ContextCreatorService", () => {
     variableStore.set({ name: "root", type: "local" }, "leaf");
     variableStore.set({ name: "root.child", type: "local" }, "nested");
 
-    const context = service.createContext([
-      { name: "root", type: "local" },
-      { name: "root.child", type: "local" },
-    ]);
+    const context = service.createContext(
+      [
+        { name: "root", type: "local" },
+        { name: "root.child", type: "local" },
+      ],
+      ""
+    );
 
     expect(context).toEqual({
       local: { root: { child: "nested" } },
@@ -78,7 +102,7 @@ describe("ContextCreatorService", () => {
   });
 
   it("returns empty local context when no dependencies", () => {
-    const context = service.createContext([]);
+    const context = service.createContext([], "");
 
     expect(context).toEqual({ local: {}, global: {}, system: {}, loop: {} });
   });
@@ -86,9 +110,10 @@ describe("ContextCreatorService", () => {
   it("namespace includes numbers", () => {
     variableStore.set({ name: "button_text", type: "local" }, "Click Here");
 
-    const context = service.createContext([
-      { name: "parameter_loop.2.options_loop.0.button_text", type: "local" },
-    ]);
+    const context = service.createContext(
+      [{ name: "parameter_loop.2.options_loop.0.button_text", type: "local" }],
+      ""
+    );
 
     expect(context).toEqual({
       local: { parameter_loop: { 2: { options_loop: { 0: { button_text: "Click Here" } } } } },
@@ -101,9 +126,10 @@ describe("ContextCreatorService", () => {
   it("falls back to root-scope variable when scoped path segments are non-numeric", () => {
     variableStore.set({ name: "button_text", type: "local" }, "Click Here");
 
-    const context = service.createContext([
-      { name: "parameter_loop.index2.options_loop.index0.button_text", type: "local" },
-    ]);
+    const context = service.createContext(
+      [{ name: "parameter_loop.index2.options_loop.index0.button_text", type: "local" }],
+      ""
+    );
 
     expect(context).toEqual({
       local: {

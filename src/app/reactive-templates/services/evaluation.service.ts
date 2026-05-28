@@ -54,10 +54,17 @@ export class EvaluationService {
     if (typeof expression !== "string") return [];
 
     const parsedExpression = this.parseExpression(expression, namespace, valueType);
-    const dependencies = this.dependencyExtractor.extractVariableReferences(
-      parsedExpression,
-      valueType
-    );
+    return this.getDependenciesInternal(parsedExpression, namespace, valueType);
+  }
+
+  private getDependenciesInternal(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): VariableReference[] {
+    if (typeof expression !== "string") return [];
+
+    const dependencies = this.dependencyExtractor.extractVariableReferences(expression, valueType);
 
     if (!dependencies || !dependencies.length) return [];
 
@@ -107,7 +114,7 @@ export class EvaluationService {
     valueType: ValueType
   ): any {
     return this.contextCreator.createContext(
-      this.getDependencies(expression, namespace, valueType).filter(
+      this.getDependenciesInternal(expression, namespace, valueType).filter(
         (dependency): dependency is VariableReference =>
           (STORE_TYPES as readonly string[]).includes(dependency.type)
       ),

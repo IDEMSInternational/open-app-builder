@@ -27,7 +27,7 @@ export class ContextCreatorService {
 
   public createContext(
     dependencies: VariableReference[],
-    namespace: string = ""
+    namespace: string
   ): {
     local: Record<string, any>;
     global: Record<string, any>;
