@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { NamespaceService } from "./namespace.service";
 import { ContextCreatorService } from "./context-creator.service";
 import { ListEvaluator } from "./evaluators/list.evaluator";
 import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
@@ -15,7 +14,6 @@ import { DependencySanitizerEvaluator } from "./evaluators/dependency-sanitizer.
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
   constructor(
-    private namespaceService: NamespaceService,
     private contextCreator: ContextCreatorService,
     private listEvaluator: ListEvaluator,
     private namespaceEvaluator: NamespaceEvaluator,
