@@ -15,25 +15,25 @@ describe("LegacyVariableExpressionParser", () => {
   it("converts @local paths to template placeholder syntax", () => {
     const expression = "Hello @local.user.name";
 
-    expect(subject.evaluate(expression, "string")).toBe("Hello ${local.user.name}");
+    expect(subject.parse(expression, "string")).toBe("Hello ${local.user.name}");
   });
 
   it("converts multiple legacy variables in the same expression", () => {
     const expression = "@local.first and @local.second.value";
 
-    expect(subject.evaluate(expression, "string")).toBe("${local.first} and ${local.second.value}");
+    expect(subject.parse(expression, "string")).toBe("${local.first} and ${local.second.value}");
   });
 
   it("converts @item paths to loop field placeholders", () => {
     const expression = "Item: @item.value";
 
-    expect(subject.evaluate(expression, "string")).toBe("Item: ${loop.item.value}");
+    expect(subject.parse(expression, "string")).toBe("Item: ${loop.item.value}");
   });
 
   it("converts legacy variables to bare references in script mode", () => {
     const expression = "@local.user.name + @item.value + @count + @is_first";
 
-    expect(subject.evaluate(expression, "script")).toBe(
+    expect(subject.parse(expression, "script")).toBe(
       "local.user.name + loop.value + loop.count + loop.is_first"
     );
   });
@@ -41,7 +41,7 @@ describe("LegacyVariableExpressionParser", () => {
   it("converts loop metadata aliases", () => {
     const expression = "@index of @count, first=@is_first, last=@is_last";
 
-    expect(subject.evaluate(expression, "string")).toBe(
+    expect(subject.parse(expression, "string")).toBe(
       "${loop.index} of ${loop.count}, first=${loop.is_first}, last=${loop.is_last}"
     );
   });
@@ -49,7 +49,7 @@ describe("LegacyVariableExpressionParser", () => {
   it("converts first and last item aliases", () => {
     const expression = "first: @first.value, last: @last.value";
 
-    expect(subject.evaluate(expression, "string")).toBe(
+    expect(subject.parse(expression, "string")).toBe(
       "first: ${loop.first.value}, last: ${loop.last.value}"
     );
   });
@@ -57,29 +57,29 @@ describe("LegacyVariableExpressionParser", () => {
   it("does not convert values that are already inside template placeholders", () => {
     const expression = "${@local.user.name} ${@item.value} ${@index}";
 
-    expect(subject.evaluate(expression, "string")).toBe(expression);
+    expect(subject.parse(expression, "string")).toBe(expression);
   });
 
   it("does not wrap already templated values in script mode", () => {
     const expression = "${@local.user.name} && @item.value";
 
-    expect(subject.evaluate(expression, "script")).toBe("${@local.user.name} && loop.value");
+    expect(subject.parse(expression, "script")).toBe("${@local.user.name} && loop.value");
   });
 
   it("does not convert when @local is part of another token", () => {
     const expression = "contact@local.domain and label@item.value";
 
-    expect(subject.evaluate(expression, "string")).toBe(expression);
+    expect(subject.parse(expression, "string")).toBe(expression);
   });
 
   it("returns non-string values as-is", () => {
-    expect(subject.evaluate(42, "string")).toBe(42);
-    expect(subject.evaluate(true, "string")).toBe(true);
+    expect(subject.parse(42, "string")).toBe(42);
+    expect(subject.parse(true, "string")).toBe(true);
   });
 
   it("does not convert when new syntax is used", () => {
     const expression = "local.someVar.foo";
 
-    expect(subject.evaluate(expression, "script")).toBe(expression);
+    expect(subject.parse(expression, "script")).toBe(expression);
   });
 });
