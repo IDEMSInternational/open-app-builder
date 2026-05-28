@@ -1,15 +1,15 @@
-import { ItemVariableEvaluator } from "./item-variable.evaluator";
+import { ItemVariableExpressionParser } from "./item-variable.expression-parser";
 
 /**
  * Run only this test file via:
- * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/evaluators/item-variable.evaluator.spec.ts
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/item-variable.expression-parser.spec.ts
  */
 
-describe("ItemVariableEvaluator", () => {
-  let subject: ItemVariableEvaluator;
+describe("ItemVariableExpressionParser", () => {
+  let subject: ItemVariableExpressionParser;
 
   beforeEach(() => {
-    subject = new ItemVariableEvaluator();
+    subject = new ItemVariableExpressionParser();
   });
 
   it("converts item paths in script expressions", () => {

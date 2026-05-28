@@ -5,7 +5,7 @@ export class TemplateLiteralEvaluator {
   private context: any = {};
 
   public evaluate(expression: string | number | boolean | any): any {
-    // For now, we only have the ListEvaluator that can parse structured expressions.
+    // For now, we only have the ListExpressionParser that can parse structured expressions.
     // In the future, we can add more evaluators for different expression types (e.g. JavaScript expressions, JSON expressions, etc.)
     return this.evaluateTemplateLiteral(expression);
   }

@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
+import { IExpressionParser } from "./expression-parser";
 
 @Injectable({ providedIn: "root" })
-export class NamespaceEvaluator {
+export class NamespaceExpressionParser implements IExpressionParser {
   private readonly localVariablePattern = /\blocal(?:\.[a-zA-Z_$][\w$]*)+/g;
 
-  public evaluate(
+  public parse(
     expression: string | number | boolean,
     namespace: string
   ): string | number | boolean {

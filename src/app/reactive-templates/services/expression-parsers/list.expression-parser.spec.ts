@@ -1,10 +1,10 @@
-import { ListEvaluator } from "./list.evaluator";
+import { ListExpressionParser } from "./list.expression-parser";
 
-describe("ListEvaluator", () => {
-  let subject: ListEvaluator;
+describe("ListExpressionParser", () => {
+  let subject: ListExpressionParser;
 
   beforeEach(() => {
-    subject = new ListEvaluator();
+    subject = new ListExpressionParser();
   });
 
   describe("parseExpression", () => {

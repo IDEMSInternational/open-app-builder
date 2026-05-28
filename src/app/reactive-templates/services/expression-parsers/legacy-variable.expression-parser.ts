@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ValueType } from "../../reactive-components/row-base.component";
+import { IExpressionParser } from "./expression-parser";
 
 @Injectable({ providedIn: "root" })
-export class LegacyVariableEvaluator {
+export class LegacyVariableExpressionParser implements IExpressionParser {
   private readonly legacyPatterns: Array<{
     pattern: RegExp;
     toReplacement: (match: string, valueType: ValueType) => string;
@@ -33,7 +34,7 @@ export class LegacyVariableEvaluator {
     },
   ];
 
-  public evaluate(
+  public parse(
     expression: string | number | boolean,
     valueType: ValueType
   ): string | number | boolean {

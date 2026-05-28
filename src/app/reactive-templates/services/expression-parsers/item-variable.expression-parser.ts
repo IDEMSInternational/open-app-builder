@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { ValueType } from "../../reactive-components/row-base.component";
+import { IExpressionParser } from "./expression-parser";
 
 @Injectable({ providedIn: "root" })
-export class ItemVariableEvaluator {
+export class ItemVariableExpressionParser implements IExpressionParser {
   private readonly itemVariablePattern = /\bitem(?:\.[a-zA-Z_$][\w$]*)+/g;
   private readonly templateExpressionPattern = /\$\{([^}]*)\}/g;
 
-  public evaluate(
+  public parse(
     expression: string | number | boolean,
     valueType: ValueType
   ): string | number | boolean {

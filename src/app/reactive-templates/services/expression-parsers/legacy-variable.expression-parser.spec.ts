@@ -1,15 +1,15 @@
-import { LegacyVariableEvaluator } from "./legacy-variable.evaluator";
+import { LegacyVariableExpressionParser } from "./legacy-variable.expression-parser";
 
 /**
  * Run only this test file via:
- * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/evaluators/legacy-variable.evaluator.spec.ts
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/legacy-variable.expression-parser.spec.ts
  */
 
-describe("LegacyVariableEvaluator", () => {
-  let subject: LegacyVariableEvaluator;
+describe("LegacyVariableExpressionParser", () => {
+  let subject: LegacyVariableExpressionParser;
 
   beforeEach(() => {
-    subject = new LegacyVariableEvaluator();
+    subject = new LegacyVariableExpressionParser();
   });
 
   it("converts @local paths to template placeholder syntax", () => {

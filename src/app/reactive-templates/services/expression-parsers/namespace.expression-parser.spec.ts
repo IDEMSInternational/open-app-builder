@@ -1,15 +1,15 @@
-import { NamespaceEvaluator } from "./namespace.evaluator";
+import { NamespaceExpressionParser } from "./namespace.expression-parser";
 
 /**
  * Run only this test file via:
- * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/evaluators/namespace.evaluator.spec.ts
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/namespace.expression-parser.spec.ts
  */
 
-describe("NamespaceEvaluator", () => {
-  let subject: NamespaceEvaluator;
+describe("NamespaceExpressionParser", () => {
+  let subject: NamespaceExpressionParser;
 
   beforeEach(() => {
-    subject = new NamespaceEvaluator();
+    subject = new NamespaceExpressionParser();
   });
 
   it("converts local variable references to include namespace", () => {

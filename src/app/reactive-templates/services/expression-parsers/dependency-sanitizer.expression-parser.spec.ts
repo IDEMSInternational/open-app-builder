@@ -1,15 +1,15 @@
-import { DependencySanitizerEvaluator } from "./dependency-sanitizer.evaluator";
+import { DependencySanitizerExpressionParser } from "./dependency-sanitizer.expression-parser";
 
 /**
  * Run only this test file via:
- * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/evaluators/dependency-sanitizer.evaluator.spec.ts
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/dependency-sanitizer.expression-parser.spec.ts
  */
 
-describe("DependencySanitizerEvaluator", () => {
-  let subject: DependencySanitizerEvaluator;
+describe("DependencySanitizerExpressionParser", () => {
+  let subject: DependencySanitizerExpressionParser;
 
   beforeEach(() => {
-    subject = new DependencySanitizerEvaluator();
+    subject = new DependencySanitizerExpressionParser();
   });
 
   it("removes parameter_list prefix from string expressions", () => {

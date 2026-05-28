@@ -1,28 +1,18 @@
 import { Injectable } from "@angular/core";
 import { ContextCreatorService } from "./context-creator.service";
-import { ListEvaluator } from "./evaluators/list.evaluator";
-import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 import { VariableReference, STORE_TYPES } from "../stores/store";
-import { TemplateLiteralEvaluator } from "./evaluators/template-literal.evaluator";
-import { JavascriptEvaluator } from "./evaluators/javascript.evaluator";
 import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
-import { LegacyVariableEvaluator } from "./evaluators/legacy-variable.evaluator";
-import { ItemVariableEvaluator } from "./evaluators/item-variable.evaluator";
-import { DependencySanitizerEvaluator } from "./evaluators/dependency-sanitizer.evaluator";
+import { ExpressionParser } from "./expression-parsers/expression-parser";
+import { ExpressionEvaluator } from "./evaluators/expression-evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
   constructor(
     private contextCreator: ContextCreatorService,
-    private listEvaluator: ListEvaluator,
-    private namespaceEvaluator: NamespaceEvaluator,
-    private itemVariableEvaluator: ItemVariableEvaluator,
-    private legacyVariableEvaluator: LegacyVariableEvaluator,
-    private dependencySanitizerEvaluator: DependencySanitizerEvaluator,
-    private templateLiteralEvaluator: TemplateLiteralEvaluator,
-    private javascriptEvaluator: JavascriptEvaluator,
-    private dependencyExtractor: DependencyExtractorService
+    private dependencyExtractor: DependencyExtractorService,
+    private expressionParser: ExpressionParser,
+    private expressionEvaluator: ExpressionEvaluator
   ) {}
 
   public evaluateExpression<T>(
@@ -30,19 +20,11 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType = "string"
   ): T {
-    let evaluatedExpression = this.parseExpression(expression, namespace, valueType);
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
-    const context = this.createExecutionContext(evaluatedExpression, namespace, valueType);
-
-    if (valueType === "string") {
-      this.templateLiteralEvaluator.setContext(context);
-      evaluatedExpression = this.templateLiteralEvaluator.evaluate(evaluatedExpression);
-    } else if (valueType === "script" || valueType === "list") {
-      this.javascriptEvaluator.setContext(context);
-      evaluatedExpression = this.javascriptEvaluator.evaluate(evaluatedExpression);
-    }
-
-    return evaluatedExpression as T;
+    this.expressionEvaluator.setContext(context);
+    return this.expressionEvaluator.evaluate(parsedExpression, valueType) as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
@@ -53,7 +35,7 @@ export class EvaluationService {
   ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
-    const parsedExpression = this.parseExpression(expression, namespace, valueType);
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     return this.getDependenciesInternal(parsedExpression, namespace, valueType);
   }
 
@@ -74,22 +56,6 @@ export class EvaluationService {
     );
 
     return filteredDependencies;
-  }
-
-  private parseExpression(
-    expression: string | number | boolean,
-    namespace: string,
-    valueType: ValueType = "string"
-  ): any {
-    let parsedExpression = expression;
-
-    parsedExpression = this.legacyVariableEvaluator.evaluate(parsedExpression, valueType);
-    parsedExpression = this.itemVariableEvaluator.evaluate(parsedExpression, valueType);
-    parsedExpression = this.dependencySanitizerEvaluator.evaluate(parsedExpression, valueType);
-    parsedExpression = this.namespaceEvaluator.evaluate(parsedExpression, namespace);
-    parsedExpression = this.listEvaluator.evaluate(parsedExpression);
-
-    return parsedExpression;
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation

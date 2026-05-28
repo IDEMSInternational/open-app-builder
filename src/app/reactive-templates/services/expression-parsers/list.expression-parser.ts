@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
+import { IExpressionParser } from "./expression-parser";
 
 @Injectable({ providedIn: "root" })
-export class ListEvaluator {
+export class ListExpressionParser implements IExpressionParser {
   /**
    * Parses the given expression into a structured format.
    * e.g. array format:
@@ -16,7 +17,7 @@ export class ListEvaluator {
    * @param expression The expression to parse, which may represent an array of objects in a custom string format.
    * @returns
    */
-  public evaluate(expression: string | number | boolean | any): any {
+  public parse(expression: string | number | boolean | any): any {
     // Detect array type expression: lines with 'key: ... | key2: ...;' format
     if (typeof expression === "string") {
       // Only attempt structured parsing when the author used ';' as entry separators
