@@ -68,7 +68,7 @@ export class EvaluationService {
 
     if (!dependencies || !dependencies.length) return [];
 
-    return dependencies
+    let filteredDependencies = dependencies
       .filter(
         (dependency): dependency is VariableReference =>
           !!dependency.name && (STORE_TYPES as readonly string[]).includes(dependency.type)
@@ -77,9 +77,11 @@ export class EvaluationService {
         const name = dependency.name.replace("parameter_list.", "").replace(/[#!&|,]/g, "");
         return {
           type: dependency.type,
-          name: this.namespaceService.getFullName(namespace, name),
+          name,
         } as VariableReference;
       });
+
+    return filteredDependencies;
   }
 
   private parseExpression(
@@ -113,12 +115,8 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType
   ): any {
-    return this.contextCreator.createContext(
-      this.getDependenciesInternal(expression, namespace, valueType).filter(
-        (dependency): dependency is VariableReference =>
-          (STORE_TYPES as readonly string[]).includes(dependency.type)
-      ),
-      namespace
-    );
+    let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
+
+    return this.contextCreator.createContext(dependencies, namespace);
   }
 }
