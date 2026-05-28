@@ -10,6 +10,7 @@ import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
 import { LegacyVariableEvaluator } from "./evaluators/legacy-variable.evaluator";
 import { ItemVariableEvaluator } from "./evaluators/item-variable.evaluator";
+import { DependencySanitizerEvaluator } from "./evaluators/dependency-sanitizer.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -20,6 +21,7 @@ export class EvaluationService {
     private namespaceEvaluator: NamespaceEvaluator,
     private itemVariableEvaluator: ItemVariableEvaluator,
     private legacyVariableEvaluator: LegacyVariableEvaluator,
+    private dependencySanitizerEvaluator: DependencySanitizerEvaluator,
     private templateLiteralEvaluator: TemplateLiteralEvaluator,
     private javascriptEvaluator: JavascriptEvaluator,
     private dependencyExtractor: DependencyExtractorService
@@ -68,18 +70,10 @@ export class EvaluationService {
 
     if (!dependencies || !dependencies.length) return [];
 
-    let filteredDependencies = dependencies
-      .filter(
-        (dependency): dependency is VariableReference =>
-          !!dependency.name && (STORE_TYPES as readonly string[]).includes(dependency.type)
-      )
-      .map((dependency) => {
-        const name = dependency.name.replace("parameter_list.", "").replace(/[#!&|,]/g, "");
-        return {
-          type: dependency.type,
-          name,
-        } as VariableReference;
-      });
+    let filteredDependencies = dependencies.filter(
+      (dependency): dependency is VariableReference =>
+        !!dependency.name && (STORE_TYPES as readonly string[]).includes(dependency.type)
+    );
 
     return filteredDependencies;
   }
@@ -93,6 +87,7 @@ export class EvaluationService {
 
     parsedExpression = this.legacyVariableEvaluator.evaluate(parsedExpression, valueType);
     parsedExpression = this.itemVariableEvaluator.evaluate(parsedExpression, valueType);
+    parsedExpression = this.dependencySanitizerEvaluator.evaluate(parsedExpression, valueType);
     parsedExpression = this.namespaceEvaluator.evaluate(parsedExpression, namespace);
     parsedExpression = this.listEvaluator.evaluate(parsedExpression);
 
