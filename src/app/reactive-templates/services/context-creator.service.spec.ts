@@ -44,12 +44,12 @@ describe("ContextCreatorService", () => {
 
   // expression: local.outerLoop.key_1.innerLoopData  namespace: outerLoop.key_1 valueType: script
   it("creates nested context from dot paths with namespace", () => {
-    variableStore.set({ name: "local.outerLoop.key_1.innerLoopData", type: "local" }, [
+    variableStore.set({ name: "outerLoop.key_1.innerLoopData", type: "local" }, [
       { key: "key_1", value: "value_1" },
     ]);
 
     const context = service.createContext(
-      [{ name: "local.outerLoop.key_1.innerLoopData", type: "local" }],
+      [{ name: "outerLoop.key_1.innerLoopData", type: "local" }],
       "outerLoop.key_1"
     );
 
