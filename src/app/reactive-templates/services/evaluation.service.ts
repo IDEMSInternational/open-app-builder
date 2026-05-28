@@ -30,15 +30,7 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType = "string"
   ): T {
-    let evaluatedExpression = expression;
-
-    if (valueType === "string" || valueType === "script") {
-      evaluatedExpression = this.legacyVariableEvaluator.evaluate(evaluatedExpression, valueType);
-    }
-
-    evaluatedExpression = this.itemVariableEvaluator.evaluate(evaluatedExpression, valueType);
-    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
+    let evaluatedExpression = this.parseExpression(expression, namespace, valueType);
 
     const context = this.createExecutionContext(evaluatedExpression, namespace, valueType);
 
@@ -59,18 +51,11 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType = "string"
   ): VariableReference[] {
-    const normalizedExpression =
-      valueType === "string" || valueType === "script"
-        ? this.legacyVariableEvaluator.evaluate(
-            this.itemVariableEvaluator.evaluate(expression, valueType),
-            valueType
-          )
-        : this.itemVariableEvaluator.evaluate(expression, valueType);
+    if (typeof expression !== "string") return [];
 
-    if (typeof normalizedExpression !== "string") return [];
-
+    const parsedExpression = this.parseExpression(expression, namespace, valueType);
     const dependencies = this.dependencyExtractor.extractVariableReferences(
-      normalizedExpression,
+      parsedExpression,
       valueType
     );
 
@@ -88,6 +73,21 @@ export class EvaluationService {
           name: this.namespaceService.getFullName(namespace, name),
         } as VariableReference;
       });
+  }
+
+  private parseExpression(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): any {
+    let parsedExpression = expression;
+
+    parsedExpression = this.legacyVariableEvaluator.evaluate(parsedExpression, valueType);
+    parsedExpression = this.itemVariableEvaluator.evaluate(parsedExpression, valueType);
+    parsedExpression = this.namespaceEvaluator.evaluate(parsedExpression, namespace);
+    parsedExpression = this.listEvaluator.evaluate(parsedExpression);
+
+    return parsedExpression;
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation

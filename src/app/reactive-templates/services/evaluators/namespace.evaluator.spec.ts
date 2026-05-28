@@ -1,0 +1,57 @@
+import { NamespaceEvaluator } from "./namespace.evaluator";
+
+/**
+ * Run only this test file via:
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/evaluators/namespace.evaluator.spec.ts
+ */
+
+describe("NamespaceEvaluator", () => {
+  let subject: NamespaceEvaluator;
+
+  beforeEach(() => {
+    subject = new NamespaceEvaluator();
+  });
+
+  it("converts local variable references to include namespace", () => {
+    const expression = "local.foo + local.bar.baz";
+
+    expect(subject.evaluate(expression, "myNs")).toBe("local.myNs.foo + local.myNs.bar.baz");
+  });
+
+  it("converts local references inside template placeholders", () => {
+    const expression = "Hello ${local.name}, count=${local.meta.count}";
+
+    expect(subject.evaluate(expression, "screen_1")).toBe(
+      "Hello ${local.screen_1.name}, count=${local.screen_1.meta.count}"
+    );
+  });
+
+  it("does not alter non-local roots", () => {
+    const expression = "global.foo + system.env + loop.item.value";
+
+    expect(subject.evaluate(expression, "myNs")).toBe(expression);
+  });
+
+  it("does not double-prefix already namespaced local paths", () => {
+    const expression = "local.myNs.foo + local.bar";
+
+    expect(subject.evaluate(expression, "myNs")).toBe("local.myNs.foo + local.myNs.bar");
+  });
+
+  it("does not rewrite local references used as object properties", () => {
+    const expression = "other.local.foo + local.bar";
+
+    expect(subject.evaluate(expression, "myNs")).toBe("other.local.foo + local.myNs.bar");
+  });
+
+  it("returns original expression when namespace is empty", () => {
+    const expression = "local.foo + local.bar";
+
+    expect(subject.evaluate(expression, "")).toBe(expression);
+  });
+
+  it("returns non-string values as-is", () => {
+    expect(subject.evaluate(42, "myNs")).toBe(42);
+    expect(subject.evaluate(true, "myNs")).toBe(true);
+  });
+});

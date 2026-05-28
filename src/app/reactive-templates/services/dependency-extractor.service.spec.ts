@@ -91,4 +91,12 @@ describe("DependencyExtractorService", () => {
   it("returns empty array when no matches exist", () => {
     expect(service.extractVariableReferences("Math.max(a, b)")).toEqual([]);
   });
+
+  it("works", () => {
+    const input = "local.outerLoop.key_1.innerLoopData";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "outerLoop.key_1.innerLoopData" },
+    ]);
+  });
 });
