@@ -55,7 +55,32 @@ export class ListExpressionParser implements IExpressionParser {
   }
 
   private toJavascriptListString(list: Array<Record<string, string>>): string {
-    // JSON output is also valid JavaScript array/object literal syntax.
-    return JSON.stringify(list);
+    const jsValueFor = (value: string): { text: string; isRaw: boolean } => {
+      const trimmed = value.trim();
+
+      if (
+        /^\$\{(?:local|global|system)\.[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*\}$/.test(trimmed)
+      ) {
+        return { text: `\`${trimmed}\``, isRaw: true };
+      }
+
+      if (/^(?:local|global|system)\.[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*$/.test(trimmed)) {
+        return { text: trimmed, isRaw: true };
+      }
+
+      return { text: JSON.stringify(value), isRaw: false };
+    };
+
+    const objectEntries = (obj: Record<string, string>) =>
+      Object.keys(obj)
+        .map((key) => {
+          const jsValue = jsValueFor(obj[key]);
+          return jsValue.isRaw
+            ? `${JSON.stringify(key)}: ${jsValue.text} `
+            : `${JSON.stringify(key)}:${jsValue.text}`;
+        })
+        .join(",");
+
+    return `[${list.map((item) => `{${objectEntries(item)}}`).join(",")}]`;
   }
 }

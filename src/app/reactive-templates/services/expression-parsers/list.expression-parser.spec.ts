@@ -1,5 +1,10 @@
 import { ListExpressionParser } from "./list.expression-parser";
 
+/**
+ * Run only this test file via:
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/list.expression-parser.spec.ts
+ */
+
 describe("ListExpressionParser", () => {
   let subject: ListExpressionParser;
 
@@ -19,6 +24,90 @@ describe("ListExpressionParser", () => {
 
       expect(result).toBe(
         '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value":"Value 3"}]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a local variable reference into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: local.someVariable;
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": local.someVariable }]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a global variable reference into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: global.someVariable;
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": global.someVariable }]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a system variable reference into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: system.someVariable;
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": system.someVariable }]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a local variable reference inside a template literal into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: \${local.someVariable};
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": `${local.someVariable}` }]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a global variable reference inside a template literal into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: \${global.someVariable};
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": `${global.someVariable}` }]'
+      );
+    });
+
+    it("parses array-of-objects formatted strings which includes a system variable reference inside a template literal into a JavaScript list string", () => {
+      const expression = `
+				key: name_1 | value: Value 1;
+				key: name_2 | value: Value 2 with trailing spaces  ;
+				key: name_3 | value: \${system.someVariable};
+			`;
+
+      const result = subject.parse(expression);
+
+      expect(result).toBe(
+        '[{"key":"name_1","value":"Value 1"},{"key":"name_2","value":"Value 2 with trailing spaces"},{"key":"name_3","value": `${system.someVariable}` }]'
       );
     });
 
