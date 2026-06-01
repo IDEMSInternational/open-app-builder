@@ -200,7 +200,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
           const value = this.evaluationService.evaluateExpression(
             paramExpression,
             this.namespace(),
-            this.mapParamValueType(param)
+            param.valueType
           );
           params[key].setValue(value);
         }
@@ -208,11 +208,6 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     };
 
     if (this.params) applyParams(this.params);
-  }
-
-  // Params of type string use string literal evaluation, otherwise script evaluation is used.
-  private mapParamValueType(parameter: Parameter<any>): ValueType {
-    return typeof parameter.value() === "string" ? "string" : "script";
   }
 
   protected watchValueDependencies() {
