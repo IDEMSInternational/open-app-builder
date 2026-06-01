@@ -9,7 +9,7 @@ export class LegacyVariableExpressionParser implements IExpressionParser {
     toReplacement: (match: string, valueType: ValueType) => string;
   }> = [
     {
-      pattern: /@local(?:\.[a-zA-Z_$][\w$]*)+/g,
+      pattern: /@(?:local|global|system)(?:\.[a-zA-Z_$][\w$]*)+/g,
       toReplacement: (match) => match.slice(1),
     },
     {

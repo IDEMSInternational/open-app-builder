@@ -18,6 +18,14 @@ describe("LegacyVariableExpressionParser", () => {
     expect(subject.parse(expression, "string")).toBe("Hello ${local.user.name}");
   });
 
+  it("converts @global and @system paths to template placeholder syntax", () => {
+    const expression = "Globals: @global.app.name and @system.device.locale";
+
+    expect(subject.parse(expression, "string")).toBe(
+      "Globals: ${global.app.name} and ${system.device.locale}"
+    );
+  });
+
   it("converts multiple legacy variables in the same expression", () => {
     const expression = "@local.first and @local.second.value";
 
@@ -36,6 +44,12 @@ describe("LegacyVariableExpressionParser", () => {
     expect(subject.parse(expression, "script")).toBe(
       "local.user.name + loop.value + loop.count + loop.is_first"
     );
+  });
+
+  it("converts @global and @system to bare references in script mode", () => {
+    const expression = "@global.flags.enabled && @system.meta.online";
+
+    expect(subject.parse(expression, "script")).toBe("global.flags.enabled && system.meta.online");
   });
 
   it("converts loop metadata aliases", () => {
