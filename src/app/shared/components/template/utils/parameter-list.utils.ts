@@ -212,10 +212,8 @@ export function parseTemplateParameterList<T extends z.ZodObject<any, any>>(
 
   // NOTE - should not throw as all coerce methods include own catch
   const parsed = schema.parse(parameterList);
-  // Transform snake_case to camelCase. This will keep type-safety following conversion.
-  // NOTE - only top-level keys are converted; nested object/array values are left untouched
-  // so that authors can use snake_case keys within e.g. answer_list options without them being
-  // silently rewritten.
+  // Only top-level keys are converted so that authors can use snake_case keys within nested values
+  // (e.g. answer_list option fields) without them being silently rewritten.
   return snakeToCamelTopLevelKeys(parsed);
 }
 
@@ -245,8 +243,7 @@ type SnakeToCamel<S extends string> = S extends `${infer T}_${infer U}`
   ? `${T}${Capitalize<SnakeToCamel<U>>}`
   : S;
 
-// type inference when converting top-level keys in an object from snake_case to camelCase
-// (nested values are left as-is, mirroring the runtime behavior of `snakeToCamelTopLevelKeys`)
+// Converts top-level snake_case keys to camelCase; values (including nested object keys) are unchanged.
 type ISnakeToCamelKeys<T> = T extends object
   ? {
       [K in keyof T as K extends string ? SnakeToCamel<K> : K]: T[K];

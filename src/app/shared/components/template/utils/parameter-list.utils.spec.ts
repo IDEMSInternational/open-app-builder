@@ -249,9 +249,6 @@ describe("parameter_list utils - parse", () => {
   });
 
   it("preserves snake_case keys within nested object/array values", () => {
-    // Top-level keys are converted to camelCase but values (including nested object keys
-    // and array element keys) are left untouched so that authors can use snake_case
-    // properties inside e.g. answer_list options without them being silently rewritten.
     const result = parseTemplateParameterList(
       {
         any_param: { nested_key: "value", another_nested: { deep_key: 1 } },
