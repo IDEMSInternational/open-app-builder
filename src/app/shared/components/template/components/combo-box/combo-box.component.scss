@@ -26,8 +26,8 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     opacity: 0.9;
 
     &.placeholder-style {
-      color: var(--ion-color-primary-300);
-      font-weight: var(--font-weight-medium);
+      color: var(--ion-color-gray-800);
+      font-weight: var(--font-weight-standard);
     }
   }
   &.with-value {
