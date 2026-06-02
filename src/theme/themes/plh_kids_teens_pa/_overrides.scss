@@ -933,7 +933,7 @@
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           text-align: center;
-          color: white;
+          color: var(--ion-color-primary-900);
         }
         plh-tmpl-title {
           div.title-wrapper {
