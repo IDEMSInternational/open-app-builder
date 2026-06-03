@@ -238,6 +238,30 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  canto_wip: {
+    label: "Test Canto methods",
+    steps: [
+      {
+        name: "run_debug_function",
+        function: async ({ tasks }) => {
+          return await tasks.canto.download.debugFunction();
+        },
+      },
+      {
+        name: "restructure_files",
+        function: async ({ tasks, workflow }) => {
+          return tasks.canto.copy.copyFiles(workflow.run_debug_function.output);
+        },
+      },
+      {
+        name: "assets_post_process",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.postProcessAssets({
+            sourceAssetsFolders: workflow.restructure_files.output,
+          }),
+      },
+    ],
+  },
   report: {
     label: "Generate App Data Reports",
     steps: [
