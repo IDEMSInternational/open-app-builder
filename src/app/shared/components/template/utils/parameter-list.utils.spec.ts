@@ -248,6 +248,21 @@ describe("parameter_list utils - parse", () => {
     });
   });
 
+  it("preserves snake_case keys within nested object/array values", () => {
+    const result = parseTemplateParameterList(
+      {
+        any_param: { nested_key: "value", another_nested: { deep_key: 1 } },
+        object_array_param: [{ key1: "a", extra_snake_key: "preserved" }],
+      } as any,
+      schema
+    );
+    expect(result.anyParam).toEqual({
+      nested_key: "value",
+      another_nested: { deep_key: 1 },
+    });
+    expect(result.objectArrayParam).toEqual([{ key1: "a", extra_snake_key: "preserved" }] as any);
+  });
+
   it("warns if invalid keys passed from parameter_list", () => {
     const consoleSpy = spyOn(console, "warn");
     parseTemplateParameterList({ invalid_key: "value" }, schema);
