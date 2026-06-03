@@ -1,85 +1,91 @@
-import { MockHttpCache } from "./http-cache.mock.spec";
+import { HttpCache } from "./http-cache";
+import { HttpCacheAdapterMemory } from "./adapters/memory.adapter";
 
+/**
+ * Call standalone tests via:
+ * yarn ng test --include src/app/shared/services/http/cache/http-cache.spec.ts
+ */
 describe("HttpCache", () => {
-  let cache: MockHttpCache;
+  let cache: HttpCache;
 
-  beforeEach(async () => {
-    cache = new MockHttpCache();
-    await cache.ready();
+  beforeEach(() => {
+    cache = new HttpCache("test");
+    cache.adapter = new HttpCacheAdapterMemory();
   });
 
-  it("should generate a consistent hash for the same URL", async () => {
-    const url = "https://example.com/api";
-    // We can't easily predict the SHA-1 hash without running it,
-    // but we can check if it's consistent.
-    // In MockHttpCacheAdapter, it uses the key directly if we don't mock hashUrl,
-    // but HttpCache.ts calls hashUrl(key) before passing to adapter.
-
-    await cache.set(url, new Response("data", { status: 200 }));
-    expect(await cache.has(url)).toBeTrue();
+  describe("ready", () => {
+    it("should not replace existing adapter", async () => {
+      const original = cache.adapter;
+      await cache.ready();
+      expect(cache.adapter).toBe(original);
+    });
   });
 
-  it("should store and retrieve data and metadata", async () => {
-    const url = "https://example.com/test";
-    const status = 200;
-    const contentType = "text/plain";
-    const body = "hello world";
-    const expiry = Date.now() + 10000;
+  describe("list", () => {
+    it("should return keys excluding meta files", async () => {
+      await cache.adapter.set("abc", new Blob(["body"]));
+      await cache.adapter.set("abc.meta.json", new Blob(["{}"]));
+      await cache.adapter.set("def", new Blob(["body2"]));
+      await cache.adapter.set("def.meta.json", new Blob(["{}"]));
 
-    const res = new Response(body, {
-      status,
-      headers: { "content-type": contentType },
+      const result = await cache.list();
+      expect(result).toEqual(["abc", "def"]);
+    });
+  });
+
+  describe("getEntry", () => {
+    const meta = {
+      contentType: "text/plain",
+      created: 1000,
+      size: 5,
+      status: 200,
+      headers: {},
+      url: "https://example.com",
+    };
+
+    it("should return parsed metadata", async () => {
+      await cache.adapter.set("abc.meta.json", new Blob([JSON.stringify(meta)]));
+      expect(await cache.getEntry("abc")).toEqual(meta);
     });
 
-    await cache.set(url, res, expiry);
+    it("should return undefined when key not found", async () => {
+      expect(await cache.getEntry("missing")).toBeUndefined();
+    });
 
-    const cachedBlob = await cache.get(url);
-    expect(cachedBlob).toBeTruthy();
-    expect(await cachedBlob!.text()).toBe(body);
-
-    const entry = await cache.getEntry(url);
-    expect(entry).toBeTruthy();
-    expect(entry!.status).toBe(status);
-    expect(entry!.contentType).toBe(contentType);
-    expect(entry!.expiry).toBe(expiry);
+    it("should return undefined for invalid JSON", async () => {
+      await cache.adapter.set("bad.meta.json", new Blob(["not json"]));
+      expect(await cache.getEntry("bad")).toBeUndefined();
+    });
   });
 
-  it("should return undefined for non-existent keys", async () => {
-    const url = "https://example.com/missing";
-    expect(await cache.get(url)).toBeUndefined();
-    expect(await cache.getEntry(url)).toBeUndefined();
-    expect(await cache.has(url)).toBeFalse();
+  describe("setMeta", () => {
+    it("should store metadata with created timestamp", async () => {
+      spyOn(Date, "now").and.returnValue(99999);
+
+      await cache.setMeta("abc", {
+        contentType: "text/plain",
+        size: 5,
+        status: 200,
+        headers: {},
+        url: "https://example.com",
+      });
+
+      const blob = await cache.adapter.get("abc.meta.json");
+      const stored = JSON.parse(await blob!.text());
+      expect(stored.created).toBe(99999);
+      expect(stored.contentType).toBe("text/plain");
+    });
   });
 
-  it("should delete entry and data", async () => {
-    const url = "https://example.com/delete-me";
-    await cache.set(url, new Response("data"));
-    expect(await cache.has(url)).toBeTrue();
+  describe("delete", () => {
+    it("should delete both body and meta files", async () => {
+      await cache.adapter.set("abc", new Blob(["body"]));
+      await cache.adapter.set("abc.meta.json", new Blob(["{}"]));
 
-    await cache.delete(url);
-    expect(await cache.has(url)).toBeFalse();
-    expect(await cache.get(url)).toBeUndefined();
-    expect(await cache.getEntry(url)).toBeUndefined();
-  });
+      await cache.delete("abc");
 
-  it("should clear the entire cache", async () => {
-    await cache.set("url1", new Response("data1"));
-    await cache.set("url2", new Response("data2"));
-
-    expect(await cache.has("url1")).toBeTrue();
-    expect(await cache.has("url2")).toBeTrue();
-
-    await cache.clear();
-
-    expect(await cache.has("url1")).toBeFalse();
-    expect(await cache.has("url2")).toBeFalse();
-  });
-
-  it("should support getUrl", async () => {
-    const url = "https://example.com/media";
-    await cache.set(url, new Response("media-data"));
-
-    const src = await cache.getUrl(url);
-    expect(src).toContain("mock-url-");
+      expect(await cache.adapter.get("abc")).toBeUndefined();
+      expect(await cache.adapter.get("abc.meta.json")).toBeUndefined();
+    });
   });
 });
