@@ -13,7 +13,7 @@ export {
   arrayToHashmap,
   logWarning,
   groupJsonByKey,
-  createChildFileLogger,
+  createChildLogger,
   clearLogs,
   getLogFiles,
   getLogs,

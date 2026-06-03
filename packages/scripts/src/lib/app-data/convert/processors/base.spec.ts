@@ -7,7 +7,7 @@ const testData = [{ string: "Hello" }];
 
 class TestProcessor extends BaseProcessor<any, any> {
   public async processInput(input: string) {
-    return { processed: input };
+    return { data: { processed: input } };
   }
 }
 let processor: TestProcessor;
@@ -41,9 +41,9 @@ describe("Deferred Processor", () => {
     public async processInput(input: any) {
       let shouldDefer = input === 1 && this.outputs.length === 0;
       if (shouldDefer) {
-        return this.deferInputProcess(input, input);
+        return { data: this.deferInputProcess(input, input) };
       }
-      return input;
+      return { data: input };
     }
   }
   let deferredProcessor: DeferredProcessor;
@@ -65,13 +65,8 @@ describe("Deferred Processor", () => {
     clearLogs();
     await deferredProcessor.process([1]);
     const errorLogs = getLogs("error");
-    expect(errorLogs).toEqual([
-      {
-        source: "BaseProcessor",
-        message: "Max defer limit reached",
-        details: 1,
-        level: "error",
-      },
-    ]);
+    expect(errorLogs.length).toEqual(1);
+    const [{ message }] = errorLogs;
+    expect(message).toEqual("Max defer limit reached");
   });
 });

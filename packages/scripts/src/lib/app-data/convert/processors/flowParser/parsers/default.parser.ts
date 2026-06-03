@@ -28,13 +28,24 @@ export class DefaultParser<
 
   /** All rows are handled in a queue, processing linearly */
   public queue: IRowData[];
+
   private summary = { missingAssets: [] };
+
+  /**
+   * Internally track any errors thrown during row processing.
+   * These will be forwarded to main processor in bulk after all processing complete
+   */
+  private errors: { message: string; row: any; flow: FlowTypes.FlowTypeBase }[] = [];
 
   /** All parsers have access to main processor */
   constructor(public flowProcessor: FlowParserProcessor) {}
 
   /** Default function to call a start the process of parsing rows */
-  public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
+  public run(flow: FlowTypes.FlowTypeWithData): {
+    data: FlowTypes.FlowTypeWithData;
+    errors?: { message: string; [key: string]: any }[];
+  } {
+    this.errors = [];
     this.flow = JSON.parse(JSON.stringify(flow));
 
     this.queue = flow.rows;
@@ -61,7 +72,7 @@ export class DefaultParser<
         }
         this.queue.shift();
       } catch (error) {
-        throwRowParseError(error, row);
+        this.logRowParseError(error.message, row);
       }
     }
     if (this.summary.missingAssets.length > 0) {
@@ -70,7 +81,12 @@ export class DefaultParser<
     }
     this.flow.rows = processedRows;
     this.flow = this.postProcessFlow(this.flow);
-    return this.flow;
+    // Return data and errors. Errors will be used to determine whether response cacheable or not
+    return { data: this.flow, errors: this.errors.length > 0 ? [].concat(this.errors) : null };
+  }
+  public logRowParseError(message: string, row: any) {
+    const { rows, ...loggedFlow } = this.flow;
+    this.errors.push({ message, row, flow: loggedFlow });
   }
 
   /** If any flows have a first row that starts `@default` return values */
@@ -195,9 +211,10 @@ export class RowProcessor {
         const subParser = new DefaultParser(this.parent.flowProcessor);
         const childFlow = JSON.parse(JSON.stringify(this.parent.flow));
         childFlow.rows = group;
-        const parsedGroup = subParser.run(childFlow);
-        this.row = { ...this.row, type: groupType, rows: parsedGroup.rows as any };
+        const { data } = subParser.run(childFlow);
+        this.row = { ...this.row, type: groupType, rows: data.rows as any };
       } catch (err) {
+        this.parent.logRowParseError(err.message, this.row);
         if (err.message === "missing_end_statement") {
           Logger.error({
             msg1: `Template missing "${type.replace("begin", "end")}" statement`,
@@ -344,19 +361,6 @@ export class RowProcessor {
       });
     }
   }
-}
-
-/**
- * Add context information to errors originating from row parser.
- * This will from the template error logging method
- * */
-function throwRowParseError(error: Error, row: IRowData) {
-  console.trace(error);
-  error.message = `Error Parsing Row \n  ${chalk.yellow(
-    JSON.stringify(row, null, 2)
-  )} \n ${chalk.red(error.message)}`;
-  // add more context to error
-  throw error;
 }
 
 const DEPRECATED_FIELD_NAMES = {
