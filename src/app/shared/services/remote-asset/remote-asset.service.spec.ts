@@ -9,6 +9,7 @@ import { IAssetEntry, IDeploymentRuntimeConfig } from "data-models";
 import clone from "clone";
 import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
+import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -110,14 +111,21 @@ const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
  */
 describe("RemoteAssetsService", () => {
   let service: RemoteAssetService;
+  let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
 
   beforeEach(() => {
+    mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
+      "upsert",
+    ]);
+    mockDynamicDataService.upsert.and.resolveTo();
+
     TestBed.configureTestingModule({
       imports: [],
       providers: [
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
         { provide: DeploymentService, useValue: new MockDeploymentService(MOCK_DEPLOYMENT_CONFIG) },
+        { provide: DynamicDataService, useValue: mockDynamicDataService },
       ],
     });
     service = TestBed.inject(RemoteAssetService);
@@ -194,5 +202,73 @@ describe("RemoteAssetsService", () => {
       MOCK_ASSET_ENTRY_OVERRIDES_ONLY,
     ]);
     expect(total).toBe(4);
+  });
+
+  it("stores downloading and success status for asset pack downloads", async () => {
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+    const upsertCalls = mockDynamicDataService.upsert.calls.allArgs() as [
+      FlowTypes.FlowType,
+      string,
+      unknown,
+    ][];
+
+    expect(success).toBeTrue();
+    expect(upsertCalls).toEqual([
+      [
+        "data_list",
+        "_asset_packs",
+        { id: "asset_pack_1", name: "asset_pack_1", status: "downloading" },
+      ],
+      [
+        "data_list",
+        "_asset_packs",
+        { id: "asset_pack_1", name: "asset_pack_1", status: "success" },
+      ],
+    ]);
+  });
+
+  it("stores error status for failed asset pack downloads", async () => {
+    const consoleErrorSpy = spyOn(console, "error");
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.rejectWith(
+      new Error("Download failed")
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+    const upsertCalls = mockDynamicDataService.upsert.calls.allArgs() as [
+      FlowTypes.FlowType,
+      string,
+      unknown,
+    ][];
+
+    expect(success).toBeFalse();
+    expect(consoleErrorSpy).toHaveBeenCalled();
+    expect(upsertCalls).toEqual([
+      [
+        "data_list",
+        "_asset_packs",
+        { id: "asset_pack_1", name: "asset_pack_1", status: "downloading" },
+      ],
+      ["data_list", "_asset_packs", { id: "asset_pack_1", name: "asset_pack_1", status: "error" }],
+    ]);
   });
 });

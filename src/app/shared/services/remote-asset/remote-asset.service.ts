@@ -16,7 +16,7 @@ import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../uti
 import { DeploymentService } from "../deployment/deployment.service";
 import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
 import { getRemoteAssetProvider } from "./providers";
-import { IDBAssetPack } from "./remote-asset.types";
+import type { IAssetPackDownloadStatus, IDBAssetPack } from "./remote-asset.types";
 
 const CORE_ASSET_PACK_NAME = "core_assets";
 /** Name of the protected data list to store asset pack metadata */
@@ -167,25 +167,30 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       return false;
     }
 
-    await this.setDBAssetPack({ id: assetPackName, name: assetPackName, status: "downloading" });
+    await this.setDBAssetPackStatus(assetPackName, "downloading");
 
     try {
       await this.getAssetPackManifest(assetPackName);
       const total = this.countDownloadFiles(this.manifest?.rows as IAssetEntry[]);
       this.downloadProgressCount.set(total ? { completed: 0, total } : null);
       await this.downloadAndIntegrateAssetPack(this.manifest);
-      await this.setDBAssetPack({ id: assetPackName, name: assetPackName, status: "success" });
+      await this.setDBAssetPackStatus(assetPackName, "success");
       return true;
     } catch (e) {
       console.error(e);
-      await this.setDBAssetPack({ id: assetPackName, name: assetPackName, status: "error" });
+      await this.setDBAssetPackStatus(assetPackName, "error");
       return false;
     } finally {
       this.downloadProgressCount.set(null);
     }
   }
 
-  private async setDBAssetPack(dbAssetPack: IDBAssetPack) {
+  private async setDBAssetPackStatus(assetPackName: string, status: IAssetPackDownloadStatus) {
+    const dbAssetPack: IDBAssetPack = {
+      id: assetPackName,
+      name: assetPackName,
+      status,
+    };
     return this.dynamicDataService.upsert("data_list", ASSET_PACKS_DATA_LIST, dbAssetPack);
   }
 
