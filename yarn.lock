@@ -5678,7 +5678,7 @@ __metadata:
     nyc: ^15.1.0
     ts-mocha: ^8.0.0
     typescript: 5.5.4
-    uuid: ^8.3.2
+    uuid: ^14.0.0
   languageName: unknown
   linkType: soft
 
