@@ -58,21 +58,25 @@ const copyFilesFromFolder = (
 };
 
 function getThemeVariation(file: CantoManifest[0]) {
-  const theme = file.additional[CANTO_CUSTOM_FIELD_THEME];
+  const theme = getCustomFieldValue(file, CANTO_CUSTOM_FIELD_THEME);
   return theme === DEFAULT_THEME_NAME ? undefined : theme;
 }
 
 function getLanguageVariation(file: CantoManifest[0]) {
   const defaultLanguage =
     WorkflowRunner.config.app_config.APP_LANGUAGES?.default || DEFAULT_APP_LANGUAGE_CODE;
-  const languageLabels = file.additional[CANTO_CUSTOM_FIELD_LANGUAGE_LABEL];
-  const languageLabel = Array.isArray(languageLabels) ? languageLabels[0] : languageLabels;
+  const languageLabel = getCustomFieldValue(file, CANTO_CUSTOM_FIELD_LANGUAGE_LABEL);
   const languageMappings = {
     ...DEFAULT_CANTO_LANGUAGE_CODES,
     ...WorkflowRunner.config.canto?.languageMappings,
   };
   const languageCode = languageLabel ? languageMappings[languageLabel] || languageLabel : undefined;
   return languageCode === defaultLanguage ? undefined : languageCode;
+}
+
+function getCustomFieldValue(file: CantoManifest[0], fieldName: string) {
+  const value = file.additional[fieldName];
+  return Array.isArray(value) ? value[0] : value;
 }
 
 export { copyFiles };

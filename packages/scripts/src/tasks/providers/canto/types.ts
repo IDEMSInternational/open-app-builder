@@ -1,12 +1,39 @@
-import searchResponse from "./sample_responses/search";
-import folderResponse from "./sample_responses/folder";
-import batchDetailsResponse from "./sample_responses/batch-content";
+export interface CantoContentSummary {
+  id: string;
+  scheme: string;
+}
 
-export type CantoResponseSearch = typeof searchResponse;
-export type CantoResponseSearchUnderFolder = typeof folderResponse;
-export type CantoResponseBatchContentDetails = typeof batchDetailsResponse;
-export type CantoManifest = typeof batchDetailsResponse.docResult;
-export type CantoManifestEntry = (typeof batchDetailsResponse.docResult)[0];
+export interface CantoResponseSearchUnderFolder {
+  results: CantoContentSummary[];
+}
+
+export interface CantoRelatedAlbum {
+  id: string;
+  idPath: string;
+  name: string;
+  namePath: string;
+  scheme: string;
+  url?: {
+    detail?: string;
+  };
+}
+
+export interface CantoManifestEntry {
+  id: string;
+  name: string;
+  scheme: string;
+  additional: Record<string, string | string[] | null>;
+  relatedAlbums: CantoRelatedAlbum[];
+  url: {
+    directUrlOriginal: string;
+  };
+}
+
+export type CantoManifest = CantoManifestEntry[];
+
+export interface CantoResponseBatchContentDetails {
+  docResult: CantoManifest;
+}
 
 export interface CantoSourceFolder {
   id: string;
