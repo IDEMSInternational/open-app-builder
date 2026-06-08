@@ -9,6 +9,11 @@ export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string
   const albumDetails = fileEntry.relatedAlbums.find((album) =>
     album.idPath.includes(cantoFolderID)
   );
+  if (!albumDetails) {
+    throw new Error(
+      `Canto album path not found for file "${fileEntry.name}" in "${cantoFolderID}"`
+    );
+  }
   // Alternatively, could save at idPath, e.g. "V0DQB/S9CBS/H45JP/JN6JU/TDEJQ", for simpler lookup, but would not be human readable
   const dirname = albumDetails.namePath;
   return path.join(dirname, fileEntry.name);

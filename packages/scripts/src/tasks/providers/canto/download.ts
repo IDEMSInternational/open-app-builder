@@ -22,15 +22,12 @@ interface CantoBatchManifestEntry {
   scheme: string;
 }
 
-const FOLDER_ID = "V0DQB";
-
 const debugFunction = async () => {
   const { config } = WorkflowRunner;
-  // const { sourceFolders } = config.canto
-  const sourceFolders = [FOLDER_ID];
+  const { sourceFolders } = config.canto;
 
   console.log(sourceFolders);
-  const outputFolders = [];
+  const outputFolders: string[] = [];
   for (const folderId of sourceFolders) {
     outputFolders.push(await downloadFilesFromCantoFolder(folderId));
   }
@@ -50,7 +47,7 @@ const downloadFilesFromCantoFolder = async (folderId: string) => {
   }
   const outputFolder = getOutputFolder("original");
   const fullPath = path.join(outputFolder, folderId, "manifest.json");
-  fs.ensureDirSync(path.dirname(outputFolder));
+  fs.ensureDirSync(path.dirname(fullPath));
   fs.writeFileSync(fullPath, JSON.stringify(manifest, null, 2));
   return path.join(outputFolder, folderId);
 };
@@ -77,9 +74,9 @@ const queryCanto = async (opts: {
   const { url: baseUrl } = config.canto;
   const params = queryParams ? new URLSearchParams({ ...queryParams }) : "";
   console.log("params:", params.toString());
-  const url = `${baseUrl}/api/v1/${queryType}${folderId ? "/" + folderId : ""}${
-    params ? "?" + params : ""
-  }`;
+  const url = `${baseUrl.replace(/\/$/, "")}/api/v1/${queryType}${
+    folderId ? "/" + folderId : ""
+  }${params ? "?" + params : ""}`;
 
   console.log("query url:", url);
   const options = {

@@ -257,7 +257,6 @@ const workflows: IDeploymentWorkflows = {
         name: "assets_post_process",
         function: async ({ tasks, workflow }) =>
           tasks.appData.postProcessAssets({
-            // TODO: is this the correct format?
             sources: workflow.restructure_files.output,
           }),
       },
