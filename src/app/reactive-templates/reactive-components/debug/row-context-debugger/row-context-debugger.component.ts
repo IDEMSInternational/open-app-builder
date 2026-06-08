@@ -21,7 +21,7 @@ export class RowContextDebuggerComponent {
   private contextCreator = inject(ContextCreatorService);
   private variableStore = inject(LocalVariableStore);
 
-  public row = input<RowBaseComponent<any>>();
+  public row = input<RowBaseComponent>();
 
   public dependencies = computed(() => {
     const row = this.row();

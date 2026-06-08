@@ -1,24 +1,21 @@
 import { Component, computed, forwardRef } from "@angular/core";
-import { defineParameters, Parameter } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 
-const parameters = () =>
-  defineParameters({
-    index: new Parameter<string>("index", null),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  index: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-loop",
   templateUrl: "./loop.component.html",
   styleUrls: ["./loop.component.scss"],
   imports: [forwardRef(() => RowListComponent)],
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class LoopComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+export class LoopComponent extends RowBaseComponent(AuthorSchema) {
   public rows = computed(() => this.row().rows || []);
-  public index = this.params.index.value;
-  public hasCustomIndex = computed(() => this.params.index.value() !== null);
+  public index = computed(() => this.params().index);
+  public hasCustomIndex = computed(() => !!this.params().index);
 
   public getLoopIndex(item: any, index: number): any {
     return this.hasCustomIndex() ? item[this.index()] : index;

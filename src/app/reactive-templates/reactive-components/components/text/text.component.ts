@@ -1,18 +1,13 @@
-import { Component, computed, OnInit, signal, Signal } from "@angular/core";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { defineParameters, Parameter } from "../../parameters";
+import { Component, computed } from "@angular/core";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { NgStyle } from "@angular/common";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
-const parameters = () =>
-  defineParameters({
-    style: new Parameter("style", ""),
-    textAlign: new Parameter<"start" | "end" | "left" | "right" | "center" | "justify">(
-      "text_align",
-      null
-    ),
-    type: new Parameter("type", "marked"),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  style: coerce.string(""),
+  text_align: coerce.allowedValues(["", "start", "end", "left", "right", "center", "justify"], ""),
+  type: coerce.string("marked"),
+}));
 
 @Component({
   selector: "oab-text",
@@ -22,9 +17,8 @@ const parameters = () =>
     NgStyle,
     TemplatePipesModule, // todo: make pipes standalone
   ],
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class TextComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+export class TextComponent extends RowBaseComponent(AuthorSchema) {
   public hasTextValue = computed(
     () => !["undefined", "NaN", "null", '""'].includes(this.row().value as string)
   );

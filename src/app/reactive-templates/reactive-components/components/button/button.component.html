@@ -2,34 +2,32 @@
   <!-- Default variant -->
   @default {
     <ion-button
-      [class]="
-        'full standard medium' + ' ' + params.style.value() + ' ' + params.buttonAlign.value()
-      "
-      [disabled]="params.disabled.value()"
+      [class]="'full standard medium' + ' ' + params().style + ' ' + params().buttonAlign"
+      [disabled]="params().disabled"
       (click)="handleClick()"
-      [attr.data-param-style]="params.style.value()"
-      [attr.data-variant]="params.variant.value()"
+      [attr.data-param-style]="params().style"
+      [attr.data-variant]="params().variant"
       [attr.data-has-children]="row().rows ? true : null"
       [attr.data-language-direction]="templateTranslateService.languageDirection()"
-      [attr.data-icon-align]="params.iconAlign.value()"
+      [attr.data-icon-align]="params().iconAlign"
       [attr.data-test]="name()"
     >
-      @if (params.icon.value() && params.iconAlign.value() === "left") {
-        <ion-icon slot="start" [src]="params.icon.value() | plhAsset"></ion-icon>
+      @if (params().icon && params().iconAlign === "left") {
+        <ion-icon slot="start" [src]="params().icon | plhAsset"></ion-icon>
       }
-      @if (params.icon.value() && params.iconAlign.value() === "right") {
-        <ion-icon slot="end" [src]="params.icon.value() | plhAsset"></ion-icon>
+      @if (params().icon && params().iconAlign === "right") {
+        <ion-icon slot="end" [src]="params().icon | plhAsset"></ion-icon>
       }
-      @if (params.iconSecondary.value()) {
+      @if (params().iconSecondaryAsset) {
         <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
-        @if (params.iconSecondary.value().includes(".")) {
-          <ion-icon slot="end" [src]="params.iconSecondary.value() | plhAsset"></ion-icon>
+        @if (params().iconSecondaryAsset.includes(".")) {
+          <ion-icon slot="end" [src]="params().iconSecondaryAsset | plhAsset"></ion-icon>
         } @else {
-          <ion-icon slot="end" [name]="params.iconSecondary.value()"></ion-icon>
+          <ion-icon slot="end" [name]="params().iconSecondaryAsset"></ion-icon>
         }
       }
       @if (value()) {
-        <span [class]="'text ' + params.textAlign.value()" [innerHTML]="value() | markdown"> </span>
+        <span [class]="'text ' + params().textAlign" [innerHTML]="value() | markdown"> </span>
       }
       @if (row().rows) {
         <oab-row-list [rows]="row().rows" [namespace]="namespace()" class="children"></oab-row-list>
@@ -41,15 +39,15 @@
     <div
       class="button-container"
       (click)="handleClick()"
-      [attr.data-variant]="params.variant.value()"
+      [attr.data-variant]="params().variant"
       [attr.data-has-children]="row().rows ? true : null"
-      [attr.data-disabled]="params.disabled.value()"
+      [attr.data-disabled]="params().disabled"
     >
-      @if (params.image.value()) {
-        <img src="{{ params.image.value() | plhAsset }}" />
+      @if (params().imageAsset) {
+        <img src="{{ params().imageAsset | plhAsset }}" />
       }
       @if (value()) {
-        <div [class]="'button-text ' + params.textAlign.value()">
+        <div [class]="'button-text ' + params().textAlign">
           {{ value() }}
         </div>
       }

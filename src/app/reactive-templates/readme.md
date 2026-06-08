@@ -39,7 +39,7 @@ Once enabled, the app will use the new reactive template system for supported fl
 ## Further Reading
 
 - See the `reactive-components` directory for available base and UI components.
-- Review the `parameters.ts` file for how to define and use parameters in templates.
+- Review `row-base.component.ts` (and the linked zod-based `defineAuthorParameterSchema` util) for how to define and use parameters in templates.
 
 ## TODO
 

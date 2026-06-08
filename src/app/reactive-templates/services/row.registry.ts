@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Parameters } from "../reactive-components/parameters";
+import { Injectable, Signal } from "@angular/core";
 import { FlowTypes } from "packages/data-models/flowTypes";
 
 export interface IRow {
   name(): string;
   value(): any;
-  params: Parameters;
+  params: Signal<Record<string, any>>;
   setExpression(expression: any): void;
   row(): FlowTypes.TemplateRow;
 }

@@ -39,7 +39,7 @@ export class LoopItemEvaluator {
     }
 
     const loopRow = this.rowRegistry.get(loopInfo.loop);
-    const index = loopRow.params.index.value();
+    const index = loopRow.params()["index"] as string;
 
     const numericIndex = index
       ? loopValues.findIndex((item) => item[index] === loopInfo.index)
