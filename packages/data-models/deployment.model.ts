@@ -175,7 +175,7 @@ interface IDeploymentCoreConfig {
     url: string;
     /** Canto folder/album id and local name for downloaded source assets */
     sourceFolders: { id: string; name: string }[];
-    /** Optional overrides mapping Canto language labels to app language codes, e.g. `{ English: "gb_en" }`. */
+    /** Optional overrides mapping Canto language labels to app language codes, e.g. `{ English: "us_en" }`. */
     languageMappings?: Record<string, string>;
   };
   android: {
