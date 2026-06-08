@@ -14,8 +14,13 @@ export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string
       `Canto album path not found for file "${fileEntry.name}" in "${cantoFolderID}"`
     );
   }
-  // Alternatively, could save at idPath, e.g. "V0DQB/S9CBS/H45JP/JN6JU/TDEJQ", for simpler lookup, but would not be human readable
-  const dirname = albumDetails.namePath;
+  // Match Google Drive downloads by making paths relative to the configured source folder/album.
+  const idPathSegments = albumDetails.idPath.split("/");
+  const namePathSegments = albumDetails.namePath.split("/");
+  const dirname =
+    idPathSegments[0] === cantoFolderID
+      ? namePathSegments.slice(1).join(path.sep)
+      : albumDetails.namePath;
   return path.join(dirname, fileEntry.name);
 }
 
