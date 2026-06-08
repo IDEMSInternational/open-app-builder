@@ -3,7 +3,6 @@ import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { snakeToCamel } from "../../utils";
 import { ReplaySubject, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
