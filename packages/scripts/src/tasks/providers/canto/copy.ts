@@ -14,7 +14,6 @@ import {
   DEFAULT_CANTO_LANGUAGE_CODES,
 } from "./constants";
 
-const ASSETS_GLOBAL_FOLDER_NAME = "global";
 const DEFAULT_THEME_NAME = "theme_default";
 
 // For each folder in the output, read the manifest file and use it to locate and copy to new folder structure
@@ -40,12 +39,16 @@ const copyFilesFromFolder = (
   const outputFolder = path.join(outputRoot, folderConfig.name);
   let copiedFiles = 0;
   for (const file of manifest) {
-    const langVariation = getLanguageVariation(file) || ASSETS_GLOBAL_FOLDER_NAME;
-    const themeVariation = file.additional[CANTO_CUSTOM_FIELD_THEME] || DEFAULT_THEME_NAME;
+    const langVariation = getLanguageVariation(file);
+    const themeVariation = getThemeVariation(file);
     const assetPathName = getFilePath(file, folderConfig.id);
     const srcPath = path.join(sourceFolder.path, assetPathName);
-    const destDir = path.join(outputFolder, themeVariation, langVariation);
-    const destPath = path.join(destDir, assetPathName);
+    const destPath = path.join(
+      outputFolder,
+      themeVariation || "",
+      langVariation || "",
+      assetPathName
+    );
     fs.ensureDirSync(path.dirname(destPath));
     fs.copyFileSync(srcPath, destPath);
     copiedFiles++;
@@ -53,6 +56,11 @@ const copyFilesFromFolder = (
   console.log(`Restructured ${copiedFiles} files to ${outputFolder}`);
   return { path: outputFolder, name: folderConfig.name, remote: false };
 };
+
+function getThemeVariation(file: CantoManifest[0]) {
+  const theme = file.additional[CANTO_CUSTOM_FIELD_THEME];
+  return theme === DEFAULT_THEME_NAME ? undefined : theme;
+}
 
 function getLanguageVariation(file: CantoManifest[0]) {
   const defaultLanguage =
