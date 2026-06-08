@@ -238,6 +238,15 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  canto_authorize: {
+    label: "Authorize Canto for asset sync",
+    steps: [
+      {
+        name: "authorize",
+        function: async ({ tasks }) => tasks.canto.authorize.authorize(),
+      },
+    ],
+  },
   canto_wip: {
     label: "Test Canto methods",
     steps: [
