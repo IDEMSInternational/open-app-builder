@@ -238,7 +238,7 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
-  canto_authorize: {
+  sync_canto_authorize: {
     label: "Authorize Canto for asset sync",
     steps: [
       {
@@ -247,27 +247,8 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
-  canto_download_files: {
-    label: "Download Canto asset files",
-    steps: [
-      {
-        name: "list_files",
-        function: async ({ tasks }) => tasks.canto.download.listFiles(),
-      },
-      {
-        name: "create_manifests",
-        function: async ({ tasks, workflow }) =>
-          tasks.canto.download.createManifests(workflow.list_files.output),
-      },
-      {
-        name: "download_files",
-        function: async ({ tasks, workflow }) =>
-          tasks.canto.download.downloadFiles(workflow.create_manifests.output),
-      },
-    ],
-  },
-  canto_wip: {
-    label: "Test Canto methods",
+  sync_canto: {
+    label: "Sync Canto Assets",
     steps: [
       {
         name: "download_files",
