@@ -247,19 +247,36 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  canto_download_files: {
+    label: "Download Canto asset files",
+    steps: [
+      {
+        name: "list_files",
+        function: async ({ tasks }) => tasks.canto.download.listFiles(),
+      },
+      {
+        name: "create_manifests",
+        function: async ({ tasks, workflow }) =>
+          tasks.canto.download.createManifests(workflow.list_files.output),
+      },
+      {
+        name: "download_files",
+        function: async ({ tasks, workflow }) =>
+          tasks.canto.download.downloadFiles(workflow.create_manifests.output),
+      },
+    ],
+  },
   canto_wip: {
     label: "Test Canto methods",
     steps: [
       {
-        name: "run_debug_function",
-        function: async ({ tasks }) => {
-          return await tasks.canto.download.debugFunction();
-        },
+        name: "download_files",
+        function: async ({ tasks }) => tasks.canto.download.downloadFiles(),
       },
       {
         name: "restructure_files",
         function: async ({ tasks, workflow }) => {
-          return tasks.canto.copy.copyFiles(workflow.run_debug_function.output);
+          return tasks.canto.copy.copyFiles(workflow.download_files.output);
         },
       },
       {

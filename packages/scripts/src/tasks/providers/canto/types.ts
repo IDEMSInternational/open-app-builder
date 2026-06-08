@@ -17,3 +17,8 @@ export interface CantoDownloadedFolder {
   path: string;
   folderConfig: CantoSourceFolder;
 }
+
+export interface CantoSourceFolderFileList {
+  folderConfig: CantoSourceFolder;
+  results: CantoResponseSearchUnderFolder["results"];
+}
