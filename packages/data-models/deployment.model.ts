@@ -169,6 +169,7 @@ interface IDeploymentCoreConfig {
     /** Canto API keys used for authentication. API keys are created/managed at <canto-url>/settings/basicSettings/apiKeys */
     appId: string;
     appSecret: string;
+    /** Optional path for generated Canto OAuth token cache. Defaults to `packages/scripts/config/canto-token.json`. */
     accessTokenPath?: string;
     /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
     url: string;
