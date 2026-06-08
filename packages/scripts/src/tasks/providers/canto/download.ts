@@ -2,11 +2,13 @@ import { WorkflowRunner } from "../../../commands/workflow/run";
 import fetch from "node-fetch";
 import * as fs from "fs-extra";
 import path from "path";
-import {
+import type {
   CantoResponseSearchUnderFolder,
   CantoResponseBatchContentDetails,
   CantoManifest,
   CantoManifestEntry,
+  CantoDownloadedFolder,
+  CantoSourceFolder,
 } from "./types";
 import { getFilePath, getOutputFolder } from "./utils";
 import { ensureValidAccessToken } from "./authorize";
@@ -27,14 +29,15 @@ const debugFunction = async () => {
   const { sourceFolders } = config.canto;
 
   console.log(sourceFolders);
-  const outputFolders: string[] = [];
-  for (const folderId of sourceFolders) {
-    outputFolders.push(await downloadFilesFromCantoFolder(folderId));
+  const outputFolders: CantoDownloadedFolder[] = [];
+  for (const sourceFolder of sourceFolders) {
+    outputFolders.push(await downloadFilesFromCantoFolder(sourceFolder));
   }
   return outputFolders;
 };
 
-const downloadFilesFromCantoFolder = async (folderId: string) => {
+const downloadFilesFromCantoFolder = async (sourceFolder: CantoSourceFolder) => {
+  const { id: folderId } = sourceFolder;
   const { results } = await searchUnderFolder(folderId);
 
   // Make a request for additional info for all files in batch
@@ -43,13 +46,13 @@ const downloadFilesFromCantoFolder = async (folderId: string) => {
   });
   const manifest = await batchGetContentDetails(batchFiles);
   for (const file of manifest) {
-    await downloadFile(file, folderId);
+    await downloadFile(file, sourceFolder);
   }
-  const outputFolder = getOutputFolder("original");
-  const fullPath = path.join(outputFolder, folderId, "manifest.json");
+  const outputFolder = getOutputFolder(path.join("original", sourceFolder.name));
+  const fullPath = path.join(outputFolder, "manifest.json");
   fs.ensureDirSync(path.dirname(fullPath));
   fs.writeFileSync(fullPath, JSON.stringify(manifest, null, 2));
-  return path.join(outputFolder, folderId);
+  return { path: outputFolder, folderConfig: sourceFolder };
 };
 
 /**
@@ -114,13 +117,13 @@ const batchGetContentDetails = async (batchFiles: CantoBatchManifestEntry[]) => 
   return response.docResult as CantoManifest;
 };
 
-const downloadFile = async (fileEntry: CantoManifestEntry, folderId: string) => {
+const downloadFile = async (fileEntry: CantoManifestEntry, sourceFolder: CantoSourceFolder) => {
   const url = fileEntry.url.directUrlOriginal;
-  const filePath = getFilePath(fileEntry, folderId);
+  const filePath = getFilePath(fileEntry, sourceFolder.id);
   const response = await fetch(url);
   const buffer = await response.buffer();
-  const outputFolder = getOutputFolder("original/" + folderId);
-  const fullPath = outputFolder + "/" + filePath;
+  const outputFolder = getOutputFolder(path.join("original", sourceFolder.name));
+  const fullPath = path.join(outputFolder, filePath);
   fs.ensureDirSync(path.dirname(fullPath));
   fs.writeFileSync(fullPath, buffer);
 };

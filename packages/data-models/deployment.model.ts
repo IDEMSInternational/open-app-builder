@@ -172,8 +172,8 @@ interface IDeploymentCoreConfig {
     accessTokenPath?: string;
     /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
     url: string;
-    /** Names of folders and albums containing asset files relevant to the deployment */
-    sourceFolders: string[];
+    /** Canto folder/album id and local name for downloaded source assets */
+    sourceFolders: { id: string; name: string }[];
   };
   android: {
     /** Play store unique app identifier, e.g. international.idems.example_app" */

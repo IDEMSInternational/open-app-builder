@@ -7,3 +7,13 @@ export type CantoResponseSearchUnderFolder = typeof folderResponse;
 export type CantoResponseBatchContentDetails = typeof batchDetailsResponse;
 export type CantoManifest = typeof batchDetailsResponse.docResult;
 export type CantoManifestEntry = (typeof batchDetailsResponse.docResult)[0];
+
+export interface CantoSourceFolder {
+  id: string;
+  name: string;
+}
+
+export interface CantoDownloadedFolder {
+  path: string;
+  folderConfig: CantoSourceFolder;
+}
