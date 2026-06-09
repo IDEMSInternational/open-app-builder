@@ -10,6 +10,7 @@ import clone from "clone";
 import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
+import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -285,5 +286,27 @@ describe("RemoteAssetsService", () => {
         { id: "asset_pack_1", name: "asset_pack_1", download_status: "error" },
       ],
     ]);
+  });
+
+  it("does not integrate a stale manifest when manifest download fails", async () => {
+    spyOn(console, "error");
+    const staleManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "stale_asset_pack",
+      rows: [MOCK_ASSET_ENTRY as FlowTypes.Data_listRow<IAssetEntry>],
+    };
+    const mockProvider = jasmine.createSpyObj<IRemoteAssetProvider>("IRemoteAssetProvider", [
+      "downloadFileAsText",
+    ]);
+    mockProvider.downloadFileAsText.and.resolveTo(null);
+    service.provider = mockProvider;
+    service.manifest = staleManifest;
+    const integrateSpy = spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    expect(service.manifest).toBeNull();
+    expect(integrateSpy).not.toHaveBeenCalled();
   });
 });

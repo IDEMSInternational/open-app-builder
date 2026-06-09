@@ -32,7 +32,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   downloading: boolean = false;
   downloadProgress: number;
   downloadProgressCount = signal<{ completed: number; total: number } | null>(null);
-  manifest: FlowTypes.AssetPack;
+  manifest: FlowTypes.AssetPack | null = null;
   private currentAssetPackName: string | null = null;
 
   private assetContentsSubscription: Subscription;
@@ -171,10 +171,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     await this.setDBAssetPackStatus(assetPackName, "in_progress");
 
     try {
-      await this.getAssetPackManifest(assetPackName);
-      const total = this.countDownloadFiles(this.manifest?.rows as IAssetEntry[]);
+      const manifest = await this.getAssetPackManifest(assetPackName);
+      if (!manifest) {
+        throw new Error(`[REMOTE ASSETS] Failed to load manifest for asset pack: ${assetPackName}`);
+      }
+      const total = this.countDownloadFiles(manifest.rows as IAssetEntry[]);
       this.downloadProgressCount.set(total ? { completed: 0, total } : null);
-      await this.downloadAndIntegrateAssetPack(this.manifest);
+      await this.downloadAndIntegrateAssetPack(manifest);
       await this.setDBAssetPackStatus(assetPackName, "completed");
       return true;
     } catch (e) {
@@ -244,6 +247,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    */
   private async getAssetPackManifest(assetPackName: string) {
     const relativePath = `${assetPackName}/${assetPackName}.json`;
+    this.manifest = null;
 
     try {
       console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
