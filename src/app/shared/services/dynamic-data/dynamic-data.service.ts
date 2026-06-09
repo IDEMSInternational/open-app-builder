@@ -321,8 +321,12 @@ export class DynamicDataService extends AsyncServiceBase {
     let initialRows: any[] = [];
     let schema = { ...REACTIVE_SCHEMA_BASE };
 
-    // Assume any flows that do not start with an underscore should be initialised from sheets
-    if (!flow_name.startsWith("_")) {
+    const shouldLoadInitialFlowData =
+      !flow_name.startsWith("_") || this.appDataService.hasFlow(flow_type, flow_name);
+
+    // Underscore-prefixed flows usually skip seeded app-data rows and hydrate from persisted writes.
+    // Runtime flows registered in app data, e.g. `_assets_contents`, should still load their rows.
+    if (shouldLoadInitialFlowData) {
       const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(
         flow_type,
         flow_name
