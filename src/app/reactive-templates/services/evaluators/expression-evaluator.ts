@@ -11,13 +11,20 @@ export class ExpressionEvaluator {
   private context: any = {};
 
   public evaluate(expression: string | number | boolean, valueType: ValueType): any {
-    if (valueType === "string") {
-      this.templateLiteralEvaluator.setContext(this.context);
-      return this.templateLiteralEvaluator.evaluate(expression);
-    } else if (valueType === "script" || valueType === "list") {
+    if (
+      valueType === "script" ||
+      valueType === "list" ||
+      typeof expression === "number" ||
+      typeof expression === "boolean" ||
+      typeof expression === "object"
+    ) {
       this.javascriptEvaluator.setContext(this.context);
       return this.javascriptEvaluator.evaluate(expression);
+    } else if (valueType === "string") {
+      this.templateLiteralEvaluator.setContext(this.context);
+      return this.templateLiteralEvaluator.evaluate(expression);
     }
+
     return expression;
   }
 

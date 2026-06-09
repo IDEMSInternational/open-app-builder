@@ -252,7 +252,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
         this.evaluationService.evaluateExpression(
           condition,
           this.namespace(),
-          this.params.valueType.value()
+          "script" // conditions are always evaluated as script to allow for complex expressions with logical operators
         )
       );
     });
