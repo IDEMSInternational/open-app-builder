@@ -80,22 +80,22 @@ const MOCK_ASSET_ENTRY_OVERRIDES_ONLY: IAssetEntry = {
   overridesOnly: true,
 };
 
-const MOCK_CORE_ASSET_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
+const MOCK_ASSET_CONTENTS_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
   clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
   clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
   clone(MOCK_ASSET_ENTRY_OVERRIDES_ONLY) as FlowTypes.Data_listRow<IAssetEntry>,
 ];
 
-const MOCK_CORE_ASSET_PACK_ROWS_HASHMAP: Record<
+const MOCK_ASSET_CONTENTS_PACK_ROWS_HASHMAP: Record<
   string,
   FlowTypes.Data_listRow<IAssetEntry>
-> = arrayToHashmap(MOCK_CORE_ASSET_PACK_ROWS, "id");
+> = arrayToHashmap(MOCK_ASSET_CONTENTS_PACK_ROWS, "id");
 
-const MOCK_CORE_ASSET_PACK: FlowTypes.AssetPack = {
+const MOCK_ASSET_CONTENTS_PACK: FlowTypes.AssetPack = {
   flow_type: "asset_pack",
-  flow_name: "core_assets",
-  rows: MOCK_CORE_ASSET_PACK_ROWS,
-  rowsHashmap: MOCK_CORE_ASSET_PACK_ROWS_HASHMAP,
+  flow_name: "_assets_contents",
+  rows: MOCK_ASSET_CONTENTS_PACK_ROWS,
+  rowsHashmap: MOCK_ASSET_CONTENTS_PACK_ROWS_HASHMAP,
 };
 
 const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
@@ -137,9 +137,9 @@ describe("RemoteAssetsService", () => {
     expect(service).toBeTruthy();
   });
 
-  it("generates a core asset pack from asset contents", () => {
-    const coreAssetPack = service["generateCoreAssetPack"](MOCK_ASSETS_CONTENTS_LIST);
-    expect(coreAssetPack).toEqual(MOCK_CORE_ASSET_PACK);
+  it("generates an asset contents pack from asset contents", () => {
+    const assetContentsPack = service["generateAssetContentsPack"](MOCK_ASSETS_CONTENTS_LIST);
+    expect(assetContentsPack).toEqual(MOCK_ASSET_CONTENTS_PACK);
   });
 
   it("adds filepath to asset entry for asset without overrides", () => {
@@ -210,7 +210,7 @@ describe("RemoteAssetsService", () => {
     await service["reset"]();
 
     expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
-      ["asset_pack", "core_assets"],
+      ["asset_pack", "_assets_contents"],
       ["data_list", "_asset_packs"],
     ]);
   });
