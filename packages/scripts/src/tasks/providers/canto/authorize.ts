@@ -4,6 +4,7 @@ import { getJsonFromFile } from "../../../utils";
 import * as fs from "fs-extra";
 import path from "path";
 import { WorkflowRunner } from "../../../commands/workflow/run";
+import { getCantoConfig } from "./utils";
 
 interface CantoAuthResponse {
   access_token: string;
@@ -45,8 +46,7 @@ const authorize = async () => {
 };
 
 const getAccessToken = async () => {
-  const { config } = WorkflowRunner;
-  const { appId, appSecret } = config.canto;
+  const { appId, appSecret } = getCantoConfig();
   const url = `${OAUTH_BASE_URL}/oauth/api/oauth2/compatible/token?app_id=${appId}&app_secret=${appSecret}&grant_type=client_credentials`;
   const response = await fetch(url, { method: "POST" });
   const data = await response.json();
@@ -56,7 +56,7 @@ const getAccessToken = async () => {
 const getAccessTokenPath = () => {
   const { config } = WorkflowRunner;
   const { _workspace_path } = config;
-  const { accessTokenPath } = config.canto;
+  const { accessTokenPath } = getCantoConfig();
   const resolvedAccessTokenPath = accessTokenPath
     ? path.resolve(_workspace_path, accessTokenPath)
     : CANTO_ACCESS_TOKEN_PATH;

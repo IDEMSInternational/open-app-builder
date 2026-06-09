@@ -1,4 +1,3 @@
-import { WorkflowRunner } from "../../../commands/workflow/run";
 import fetch from "node-fetch";
 import * as fs from "fs-extra";
 import path from "path";
@@ -11,7 +10,7 @@ import type {
   CantoSourceFolder,
   CantoSourceFolderFileList,
 } from "./types";
-import { getFilePath, getOutputFolder } from "./utils";
+import { getCantoConfig, getFilePath, getOutputFolder } from "./utils";
 import { ensureValidAccessToken } from "./authorize";
 
 interface CantoQueryParams {
@@ -26,8 +25,7 @@ interface CantoBatchManifestEntry {
 }
 
 const listFiles = async () => {
-  const { config } = WorkflowRunner;
-  const { sourceFolders } = config.canto;
+  const { sourceFolders } = getCantoConfig();
 
   const folderFileLists: CantoSourceFolderFileList[] = [];
   for (const sourceFolder of sourceFolders) {
@@ -113,8 +111,7 @@ const queryCanto = async (opts: {
   // Alternative: const method = opts.method === "batch/content" ? "POST" : "GET"
   const method = opts.method || "GET";
   const accessToken = await ensureValidAccessToken();
-  const { config } = WorkflowRunner;
-  const { url: baseUrl } = config.canto;
+  const { url: baseUrl } = getCantoConfig();
   const params = queryParams ? new URLSearchParams({ ...queryParams }) : "";
   const url = `${baseUrl.replace(/\/$/, "")}/api/v1/${queryType}${
     folderId ? "/" + folderId : ""

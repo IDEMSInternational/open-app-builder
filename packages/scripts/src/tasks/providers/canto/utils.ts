@@ -4,6 +4,14 @@ import { WorkflowRunner } from "../../../commands/workflow/run";
 
 type CantoManifestEntry = CantoManifest[0];
 
+export function getCantoConfig() {
+  const { canto } = WorkflowRunner.config;
+  if (!canto) {
+    throw new Error("Canto configuration is missing in deployment config.");
+  }
+  return canto;
+}
+
 export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string) {
   // File may appear in multiple albums, so find the path that includes the deployment's named folder ID
   const albumDetails = fileEntry.relatedAlbums.find((album) =>
