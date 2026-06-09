@@ -20,6 +20,8 @@ export class EvaluationService {
     namespace: string,
     valueType: ValueType = "string"
   ): T {
+    if (expression === null || expression === undefined) return expression as T;
+
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
