@@ -1,6 +1,7 @@
 import { CANTO_ACCESS_TOKEN_PATH } from "../../../paths";
 import { getJsonFromFile } from "../../../utils";
 import * as fs from "fs-extra";
+import fetch from "node-fetch";
 import path from "path";
 import { WorkflowRunner } from "../../../commands/workflow/run";
 import { getCantoConfig } from "./utils";
@@ -44,16 +45,13 @@ function isAccessToken(value: unknown): value is AccessToken {
 
 const authorize = async () => {
   const accessTokenPath = getAccessTokenPath();
-  if (fs.existsSync(accessTokenPath)) {
-    fs.removeSync(accessTokenPath);
-  }
+  await fs.remove(accessTokenPath);
   const data = await getAccessToken();
   const accessTokenJson = {
     accessToken: data.access_token,
     expiresAt: Date.now() + Number(data.expires_in) * 1000,
   };
-  fs.ensureDirSync(path.dirname(accessTokenPath));
-  fs.writeFileSync(accessTokenPath, JSON.stringify(accessTokenJson));
+  await fs.outputJson(accessTokenPath, accessTokenJson);
   return accessTokenJson;
 };
 
@@ -61,6 +59,9 @@ const getAccessToken = async () => {
   const { appId, appSecret } = getCantoConfig();
   const url = `${OAUTH_BASE_URL}/oauth/api/oauth2/compatible/token?app_id=${appId}&app_secret=${appSecret}&grant_type=client_credentials`;
   const response = await fetch(url, { method: "POST" });
+  if (!response.ok) {
+    throw new Error(`Canto authorization failed: ${response.status} ${response.statusText}`);
+  }
   const data = await response.json();
   return data as CantoAuthResponse;
 };

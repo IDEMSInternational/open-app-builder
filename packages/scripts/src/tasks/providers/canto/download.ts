@@ -41,10 +41,10 @@ const listFilesFromCantoFolder = async (
   console.log(`Checking Canto folder "${sourceFolder.name}"`);
   const { results } = await searchUnderFolder(folderId);
   const outputFolder = getOutputFolder(path.join("search", sourceFolder.name));
-  fs.ensureDirSync(outputFolder);
-  fs.writeFileSync(
+  await fs.outputJson(
     path.join(outputFolder, "folder.json"),
-    JSON.stringify({ folderConfig: sourceFolder, results }, null, 2)
+    { folderConfig: sourceFolder, results },
+    { spaces: 2 }
   );
   console.log(`Found ${results.length} files in "${sourceFolder.name}"`);
   return { folderConfig: sourceFolder, results };
@@ -69,8 +69,7 @@ const createManifestForCantoFolder = async (folderFileList: CantoSourceFolderFil
   const manifest = batchFiles.length === 0 ? [] : await batchGetContentDetails(batchFiles);
   const outputFolder = getOutputFolder(path.join("original", folderConfig.name));
   const fullPath = path.join(outputFolder, "manifest.json");
-  fs.ensureDirSync(path.dirname(fullPath));
-  fs.writeFileSync(fullPath, JSON.stringify(manifest, null, 2));
+  await fs.outputJson(fullPath, manifest, { spaces: 2 });
   console.log(`Created manifest with ${manifest.length} files for "${folderConfig.name}"`);
   return { path: outputFolder, folderConfig };
 };
@@ -112,7 +111,7 @@ const queryCanto = async (opts: {
   const method = opts.method || "GET";
   const accessToken = await ensureValidAccessToken();
   const { url: baseUrl } = getCantoConfig();
-  const params = queryParams ? new URLSearchParams({ ...queryParams }) : "";
+  const params = queryParams ? new URLSearchParams({ ...queryParams }).toString() : "";
   const url = `${baseUrl.replace(/\/$/, "")}/api/v1/${queryType}${
     folderId ? "/" + folderId : ""
   }${params ? "?" + params : ""}`;
