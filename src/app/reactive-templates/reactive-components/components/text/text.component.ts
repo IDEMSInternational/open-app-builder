@@ -26,6 +26,6 @@ const parameters = () =>
 })
 export class TextComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   public hasTextValue = computed(
-    () => !["undefined", "NaN", "null", '""'].includes(this.row().value as string)
+    () => !["undefined", "NaN", "null", '""'].includes(this.value() as string)
   );
 }
