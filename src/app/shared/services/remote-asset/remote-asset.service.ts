@@ -541,11 +541,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Reset the core asset pack contents to its original state before any remote assets were downloaded.
+   * Reset asset pack contents and metadata to their original state before any remote assets were downloaded.
    * Useful when testing. TODO: Also delete any downloaded assets from the device
    * */
   private async reset() {
-    await this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME);
+    await Promise.all([
+      this.dynamicDataService.resetFlow("asset_pack", CORE_ASSET_PACK_NAME),
+      this.dynamicDataService.resetFlow("data_list", ASSET_PACKS_DATA_LIST),
+    ]);
   }
 
   ngOnDestroy(): void {

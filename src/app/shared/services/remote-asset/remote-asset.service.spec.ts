@@ -116,8 +116,10 @@ describe("RemoteAssetsService", () => {
   beforeEach(() => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
       "upsert",
+      "resetFlow",
     ]);
     mockDynamicDataService.upsert.and.resolveTo();
+    mockDynamicDataService.resetFlow.and.resolveTo();
 
     TestBed.configureTestingModule({
       imports: [],
@@ -202,6 +204,15 @@ describe("RemoteAssetsService", () => {
       MOCK_ASSET_ENTRY_OVERRIDES_ONLY,
     ]);
     expect(total).toBe(4);
+  });
+
+  it("resets downloaded asset pack contents and metadata", async () => {
+    await service["reset"]();
+
+    expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
+      ["asset_pack", "core_assets"],
+      ["data_list", "_asset_packs"],
+    ]);
   });
 
   it("stores in-progress and completed status for asset pack downloads", async () => {
