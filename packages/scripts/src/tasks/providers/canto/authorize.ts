@@ -1,5 +1,4 @@
 import { CANTO_ACCESS_TOKEN_PATH } from "../../../paths";
-import { differenceInCalendarDays } from "date-fns";
 import { getJsonFromFile } from "../../../utils";
 import * as fs from "fs-extra";
 import path from "path";
@@ -18,17 +17,30 @@ interface AccessToken {
 }
 
 const OAUTH_BASE_URL = "https://oauth.canto.com";
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 const ensureValidAccessToken = async () => {
   const accessTokenPath = getAccessTokenPath();
-  let accessToken = getJsonFromFile(accessTokenPath) as AccessToken;
+  let accessToken = getJsonFromFile<AccessToken>(accessTokenPath);
   // Re-authorize if existing token has a day or less before expiry (including a negative number)
   // NB: Canto access tokens are valid for 30 days
-  if (!accessToken || differenceInCalendarDays(accessToken.expiresAt, Date.now()) <= 1) {
+  if (!isAccessToken(accessToken) || accessToken.expiresAt - Date.now() <= ONE_DAY_MS) {
     accessToken = await authorize();
   }
   return accessToken.accessToken;
 };
+
+function isAccessToken(value: unknown): value is AccessToken {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  const token = value as Partial<AccessToken>;
+  return (
+    typeof token.expiresAt === "number" &&
+    typeof token.accessToken === "string" &&
+    token.accessToken.length > 0
+  );
+}
 
 const authorize = async () => {
   const accessTokenPath = getAccessTokenPath();
