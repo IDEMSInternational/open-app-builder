@@ -2,7 +2,6 @@
 // for consumption by the assets post-processor
 import * as fs from "fs-extra";
 import path from "path";
-import { getJsonFromFile } from "../../../utils";
 import type { IDownloadedAssetSource } from "../../../lib/app-data";
 import type { CantoDownloadedFolder, CantoManifest } from "./types";
 import { getFilePath, getOutputFolder } from "./utils";
@@ -17,22 +16,27 @@ import {
 const DEFAULT_THEME_NAME = "theme_default";
 
 // For each folder in the output, read the manifest file and use it to locate and copy to new folder structure
-const copyFiles = (folders: CantoDownloadedFolder[]): IDownloadedAssetSource[] => {
+const copyFiles = async (folders: CantoDownloadedFolder[]): Promise<IDownloadedAssetSource[]> => {
   if (folders.length === 0) {
     return [];
   }
   const outputRoot = getOutputFolder("restructured");
-  fs.emptyDirSync(outputRoot);
-  return folders.map((folder) => copyFilesFromFolder(folder, outputRoot));
+  await fs.emptyDir(outputRoot);
+  const copiedFolders: IDownloadedAssetSource[] = [];
+  for (const folder of folders) {
+    copiedFolders.push(await copyFilesFromFolder(folder, outputRoot));
+  }
+  return copiedFolders;
 };
 
-const copyFilesFromFolder = (
+const copyFilesFromFolder = async (
   sourceFolder: CantoDownloadedFolder,
   outputRoot: string
-): IDownloadedAssetSource => {
+): Promise<IDownloadedAssetSource> => {
   const { folderConfig } = sourceFolder;
   console.log(`Restructuring Canto files for "${folderConfig.name}"`);
-  const manifest = getJsonFromFile<CantoManifest>(path.join(sourceFolder.path, "manifest.json"));
+  const manifestPath = path.join(sourceFolder.path, "manifest.json");
+  const manifest = (await fs.readJson(manifestPath)) as CantoManifest;
   if (!manifest) {
     throw new Error(`Canto manifest not found for source folder: ${sourceFolder.path}`);
   }
@@ -49,8 +53,7 @@ const copyFilesFromFolder = (
       langVariation || "",
       assetPathName
     );
-    fs.ensureDirSync(path.dirname(destPath));
-    fs.copyFileSync(srcPath, destPath);
+    await fs.copy(srcPath, destPath);
     copiedFiles++;
   }
   console.log(`Restructured ${copiedFiles} files to ${outputFolder}`);

@@ -25,11 +25,9 @@ export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string
   // Match Google Drive downloads by making paths relative to the configured source folder/album.
   const idPathSegments = albumDetails.idPath.split("/");
   const namePathSegments = albumDetails.namePath.split("/");
-  const dirname =
-    idPathSegments[0] === cantoFolderID
-      ? namePathSegments.slice(1).join(path.sep)
-      : albumDetails.namePath;
-  return path.join(dirname, fileEntry.name);
+  const relativePathSegments =
+    idPathSegments[0] === cantoFolderID ? namePathSegments.slice(1) : namePathSegments;
+  return path.join(...relativePathSegments, fileEntry.name);
 }
 
 export function getOutputFolder(folderId?: string) {
