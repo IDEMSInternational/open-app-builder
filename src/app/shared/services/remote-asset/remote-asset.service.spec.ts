@@ -204,7 +204,7 @@ describe("RemoteAssetsService", () => {
     expect(total).toBe(4);
   });
 
-  it("stores downloading and success status for asset pack downloads", async () => {
+  it("stores in-progress and completed status for asset pack downloads", async () => {
     const assetPackManifest: FlowTypes.AssetPack = {
       flow_type: "asset_pack",
       flow_name: "asset_pack_1",
@@ -228,12 +228,12 @@ describe("RemoteAssetsService", () => {
       [
         "data_list",
         "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", status: "downloading" },
+        { id: "asset_pack_1", name: "asset_pack_1", download_status: "in_progress" },
       ],
       [
         "data_list",
         "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", status: "success" },
+        { id: "asset_pack_1", name: "asset_pack_1", download_status: "completed" },
       ],
     ]);
   });
@@ -266,9 +266,13 @@ describe("RemoteAssetsService", () => {
       [
         "data_list",
         "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", status: "downloading" },
+        { id: "asset_pack_1", name: "asset_pack_1", download_status: "in_progress" },
       ],
-      ["data_list", "_asset_packs", { id: "asset_pack_1", name: "asset_pack_1", status: "error" }],
+      [
+        "data_list",
+        "_asset_packs",
+        { id: "asset_pack_1", name: "asset_pack_1", download_status: "error" },
+      ],
     ]);
   });
 });

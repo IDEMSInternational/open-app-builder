@@ -167,14 +167,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       return false;
     }
 
-    await this.setDBAssetPackStatus(assetPackName, "downloading");
+    await this.setDBAssetPackStatus(assetPackName, "in_progress");
 
     try {
       await this.getAssetPackManifest(assetPackName);
       const total = this.countDownloadFiles(this.manifest?.rows as IAssetEntry[]);
       this.downloadProgressCount.set(total ? { completed: 0, total } : null);
       await this.downloadAndIntegrateAssetPack(this.manifest);
-      await this.setDBAssetPackStatus(assetPackName, "success");
+      await this.setDBAssetPackStatus(assetPackName, "completed");
       return true;
     } catch (e) {
       console.error(e);
@@ -185,11 +185,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
   }
 
-  private async setDBAssetPackStatus(assetPackName: string, status: IAssetPackDownloadStatus) {
+  private async setDBAssetPackStatus(
+    assetPackName: string,
+    downloadStatus: IAssetPackDownloadStatus
+  ) {
     const dbAssetPack: IDBAssetPack = {
       id: assetPackName,
       name: assetPackName,
-      status,
+      download_status: downloadStatus,
     };
     return this.dynamicDataService.upsert("data_list", ASSET_PACKS_DATA_LIST, dbAssetPack);
   }
