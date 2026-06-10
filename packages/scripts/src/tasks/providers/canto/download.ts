@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import * as fs from "fs-extra";
 import path from "path";
+import PQueue from "p-queue";
 import type {
   CantoResponseSearchUnderFolder,
   CantoResponseBatchContentDetails,
@@ -23,6 +24,8 @@ interface CantoBatchManifestEntry {
   id: string;
   scheme: string;
 }
+
+const DOWNLOAD_CONCURRENCY = 5;
 
 const listFiles = async () => {
   const { sourceFolders } = getCantoConfig();
@@ -84,11 +87,10 @@ const downloadFiles = async (downloadedFolders?: CantoDownloadedFolder[]) => {
 
 const downloadFilesFromManifest = async (downloadedFolder: CantoDownloadedFolder) => {
   const manifestPath = path.join(downloadedFolder.path, "manifest.json");
-  const manifest = fs.readJsonSync(manifestPath) as CantoManifest;
+  const manifest = (await fs.readJson(manifestPath)) as CantoManifest;
   console.log(`Downloading ${manifest.length} files from "${downloadedFolder.folderConfig.name}"`);
-  for (const file of manifest) {
-    await downloadFile(file, downloadedFolder);
-  }
+  const queue = new PQueue({ concurrency: DOWNLOAD_CONCURRENCY });
+  await queue.addAll(manifest.map((file) => () => downloadFile(file, downloadedFolder)));
   console.log(`Downloaded files to ${downloadedFolder.path}`);
 };
 
@@ -167,8 +169,7 @@ const downloadFile = async (
   }
   const buffer = await response.buffer();
   const fullPath = path.join(downloadedFolder.path, filePath);
-  fs.ensureDirSync(path.dirname(fullPath));
-  fs.writeFileSync(fullPath, buffer);
+  await fs.outputFile(fullPath, buffer);
 };
 
 export { createManifests, downloadFiles, listFiles };

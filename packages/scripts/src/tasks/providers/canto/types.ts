@@ -9,9 +9,9 @@ export interface CantoResponseSearchUnderFolder {
 
 export interface CantoRelatedAlbum {
   id: string;
-  idPath: string;
+  idPath?: string;
   name: string;
-  namePath: string;
+  namePath?: string;
   scheme: string;
   url?: {
     detail?: string;
@@ -22,8 +22,8 @@ export interface CantoManifestEntry {
   id: string;
   name: string;
   scheme: string;
-  additional: Record<string, string | string[] | null>;
-  relatedAlbums: CantoRelatedAlbum[];
+  additional?: Record<string, string | string[] | null>;
+  relatedAlbums?: CantoRelatedAlbum[];
   url: {
     directUrlOriginal: string;
   };

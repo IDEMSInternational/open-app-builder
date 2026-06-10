@@ -78,7 +78,7 @@ function getLanguageVariation(file: CantoManifest[0]) {
 }
 
 function getCustomFieldValue(file: CantoManifest[0], fieldName: string) {
-  const value = file.additional[fieldName];
+  const value = file.additional?.[fieldName];
   return Array.isArray(value) ? value[0] : value;
 }
 
