@@ -5,7 +5,7 @@
     @if (params().title) {
       <div class="top-row">
         <h3>{{ params().title }}</h3>
-        @if (params().variant.includes("large") && showInfoButton()) {
+        @if (params().variant === "large" && showInfoButton()) {
           <div class="info-icon-container">
             <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
               @if (params().infoIconAsset) {
@@ -20,7 +20,7 @@
     }
     <!-- Enforce LTR language direction for player controls,see https://github.com/IDEMSInternational/open-app-builder/issues/2617 -->
     <div class="second-row" dir="ltr">
-      @if (params().variant.includes("compact") && showInfoButton()) {
+      @if (params().variant === "compact" && showInfoButton()) {
         <ion-button fill="clear" class="action-button" (click)="handleActionButtonClick()">
           @if (params().infoIconAsset) {
             <ion-icon slot="icon-only" [src]="params().infoIconAsset | plhAsset"></ion-icon>
@@ -38,11 +38,11 @@
           [value]="progress()"
           (ionInput)="onProgressDrag($event)"
           (ionChange)="seekToTime()"
-          (touchstart)="player.pause()"
-          (touchend)="isPlaying() ? player.play() : player.pause()"
+          (touchstart)="player?.pause()"
+          (touchend)="isPlaying() ? player?.play() : player?.pause()"
         ></ion-range>
         <div class="time">
-          @if (params().variant.includes("large")) {
+          @if (params().variant === "large") {
             <div class="time-value">
               {{ formatDurationMmSs(progressSeconds()) }}
             </div>

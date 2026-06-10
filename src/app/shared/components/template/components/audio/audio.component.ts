@@ -172,12 +172,14 @@ export class TmplAudioComponent
   }
 
   public togglePlaying() {
+    if (!this.player) return;
+
     if (this.isPlaying()) {
       this.player.pause();
     } else {
       this.player.play();
     }
-    this.isPlaying.set(!this.isPlaying());
+    this.isPlaying.update((playing) => !playing);
   }
 
   /**
