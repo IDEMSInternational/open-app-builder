@@ -85,6 +85,14 @@ const downloadFiles = async (downloadedFolders?: CantoDownloadedFolder[]) => {
   return downloadedFolders;
 };
 
+const getDownloadedFolders = () => {
+  const { sourceFolders } = getCantoConfig();
+  return sourceFolders.map((sourceFolder) => ({
+    path: getOutputFolder(path.join("original", sourceFolder.name)),
+    folderConfig: sourceFolder,
+  }));
+};
+
 const downloadFilesFromManifest = async (downloadedFolder: CantoDownloadedFolder) => {
   const manifestPath = path.join(downloadedFolder.path, "manifest.json");
   const manifest = (await fs.readJson(manifestPath)) as CantoManifest;
@@ -172,4 +180,4 @@ const downloadFile = async (
   await fs.outputFile(fullPath, buffer);
 };
 
-export { createManifests, downloadFiles, listFiles };
+export { createManifests, downloadFiles, getDownloadedFolders, listFiles };
