@@ -1,0 +1,40 @@
+import path from "path";
+import { CantoManifest } from "./types";
+import { WorkflowRunner } from "../../../commands/workflow/run";
+
+type CantoManifestEntry = CantoManifest[0];
+
+export function getCantoConfig() {
+  const { canto } = WorkflowRunner.config;
+  if (!canto) {
+    throw new Error("Canto configuration is missing in deployment config.");
+  }
+  return canto;
+}
+
+export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string) {
+  // File may appear in multiple albums, so find the path that includes the deployment's named folder ID
+  const albumDetails = fileEntry.relatedAlbums?.find((album) =>
+    album.idPath?.includes(cantoFolderID)
+  );
+  if (!albumDetails) {
+    throw new Error(
+      `Canto album path not found for file "${fileEntry.name}" in "${cantoFolderID}"`
+    );
+  }
+  const { idPath, namePath } = albumDetails;
+  if (!idPath || !namePath) {
+    throw new Error(`Canto album path metadata missing for file "${fileEntry.name}"`);
+  }
+  // Match Google Drive downloads by making paths relative to the configured source folder/album.
+  const idPathSegments = idPath.split("/");
+  const namePathSegments = namePath.split("/");
+  const relativePathSegments =
+    idPathSegments[0] === cantoFolderID ? namePathSegments.slice(1) : namePathSegments;
+  return path.join(...relativePathSegments, fileEntry.name);
+}
+
+export function getOutputFolder(folderId?: string) {
+  const { _workspace_path } = WorkflowRunner.config;
+  return path.resolve(_workspace_path, "tasks", "canto", "outputs", folderId || "");
+}

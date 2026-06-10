@@ -9975,7 +9975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:^2.1.2":
+"@types/node-fetch@npm:^2.1.2, @types/node-fetch@npm:^2.6.13":
   version: 2.6.13
   resolution: "@types/node-fetch@npm:2.6.13"
   dependencies:
@@ -26900,6 +26900,7 @@ __metadata:
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/jest": ^29.5.12
+    "@types/node-fetch": ^2.6.13
     "@types/node-rsa": ^1.1.1
     "@types/plist": ^3.0.5
     "@types/semver": ^7.3.9
@@ -26915,6 +26916,7 @@ __metadata:
     jest: ^29.7.0
     log-update: ^4.0.0
     memfs: ^4.11.1
+    node-fetch: ^2.7.0
     node-rsa: ^1.1.1
     open: ^8
     p-queue: ^6.6.2
