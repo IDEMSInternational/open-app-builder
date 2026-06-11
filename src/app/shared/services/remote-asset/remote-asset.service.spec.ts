@@ -220,7 +220,7 @@ describe("RemoteAssetsService", () => {
   });
 
   it("resets downloaded asset pack contents and metadata", async () => {
-    await service["reset"]();
+    await service.reset();
 
     expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
       ["asset_pack", "_assets_contents"],
@@ -229,11 +229,11 @@ describe("RemoteAssetsService", () => {
   });
 
   it("cancels active asset pack downloads before resetting contents and metadata", async () => {
-    spyOn<any>(service, "cancelActiveAssetPackDownloads").and.resolveTo();
+    spyOn(service, "cancelActiveAssetPackDownloads").and.resolveTo();
 
-    await service["reset"]();
+    await service.reset();
 
-    expect(service["cancelActiveAssetPackDownloads"]).toHaveBeenCalled();
+    expect(service.cancelActiveAssetPackDownloads).toHaveBeenCalled();
     expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
       ["asset_pack", "_assets_contents"],
       ["data_list", "_asset_packs"],

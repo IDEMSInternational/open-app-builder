@@ -641,6 +641,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    for (const activeDownload of this.activeAssetPackDownloads.values()) {
+      activeDownload.abortController.abort();
+      activeDownload.removeConnectionStatusListener();
+    }
+    this.activeAssetPackDownloads.clear();
     if (this.assetContentsSubscription) {
       this.assetContentsSubscription.unsubscribe();
     }
