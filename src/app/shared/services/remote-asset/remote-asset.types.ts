@@ -1,3 +1,8 @@
+/** Name of the protected data list storing bundled and downloaded asset contents */
+export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
+/** Name of the protected data list to store asset pack metadata */
+export const ASSET_PACKS_DATA_LIST = "_asset_packs";
+
 /**
  * Represents an asset pack entry stored in the `_asset_packs` protected data list.
  */
@@ -21,4 +26,15 @@ export interface IDBAssetPack {
   download_completed_at: string;
   /** ISO timestamp for the most recent status change */
   download_status_updated_at: string;
+}
+
+export interface IAssetPackDownloadStatusTimestamps {
+  downloadStartedAt?: string;
+  downloadCompletedAt?: string;
+}
+
+export interface IActiveAssetPackDownload {
+  abortController: AbortController;
+  downloadStartedAt: string;
+  removeConnectionStatusListener: () => void;
 }
