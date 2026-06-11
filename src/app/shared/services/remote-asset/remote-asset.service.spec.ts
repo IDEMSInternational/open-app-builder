@@ -228,6 +228,18 @@ describe("RemoteAssetsService", () => {
     ]);
   });
 
+  it("cancels active asset pack downloads before resetting contents and metadata", async () => {
+    spyOn<any>(service, "cancelActiveAssetPackDownloads").and.resolveTo();
+
+    await service["reset"]();
+
+    expect(service["cancelActiveAssetPackDownloads"]).toHaveBeenCalled();
+    expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
+      ["asset_pack", "_assets_contents"],
+      ["data_list", "_asset_packs"],
+    ]);
+  });
+
   it("stores in-progress and completed status for asset pack downloads", async () => {
     spyOn<any>(service, "isOffline").and.returnValue(false);
     const assetPackManifest: FlowTypes.AssetPack = {
@@ -375,6 +387,21 @@ describe("RemoteAssetsService", () => {
       "cancelled",
     ]);
     expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
+  });
+
+  it("does not start a second asset pack download while another is active", async () => {
+    spyOn(console, "warn");
+    service["activeAssetPackDownloads"].set("asset_pack_1", {
+      abortController: new AbortController(),
+      downloadStartedAt: new Date().toISOString(),
+      removeConnectionStatusListener: () => undefined,
+    });
+    const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+    const success = await service.downloadAssetPackByName("asset_pack_2");
+
+    expect(success).toBeFalse();
+    expect(manifestSpy).not.toHaveBeenCalled();
   });
 
   it("does not integrate a stale manifest when manifest download fails", async () => {

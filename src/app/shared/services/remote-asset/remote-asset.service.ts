@@ -122,7 +122,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         const [actionId, ...assetPackArgs] = args;
         const childActions = {
           download: async () => {
-            if (this.remoteAssetsEnabled) {
+            if (this.remoteAssetsEnabled()) {
               const assetPackName = assetPackArgs[0];
               await this.downloadAssetPackByName(assetPackName);
             } else {
@@ -132,9 +132,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             }
           },
           cancel_download: async () => {
-            if (this.remoteAssetsEnabled) {
-              const assetPackName = assetPackArgs[0];
-              await this.cancelAssetPackDownloadByName(assetPackName);
+            if (this.remoteAssetsEnabled()) {
+              console.log("[REMOTE ASSETS] Cancelling active asset pack downloads");
+              await this.cancelActiveAssetPackDownloads();
             } else {
               console.error(
                 "The 'asset_pack: cancel_download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
@@ -142,7 +142,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             }
           },
           reset: async () => {
-            if (this.remoteAssetsEnabled) {
+            if (this.remoteAssetsEnabled()) {
               await this.reset();
             } else
               console.error(
@@ -186,8 +186,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
       return false;
     }
-    if (this.activeAssetPackDownloads.has(assetPackName)) {
-      console.warn(`[REMOTE ASSETS] Asset pack download already active: ${assetPackName}`);
+    if (this.activeAssetPackDownloads.size > 0) {
+      console.warn("[REMOTE ASSETS] An asset pack download is already active");
       return false;
     }
 
@@ -708,10 +708,22 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Useful when testing. TODO: Also delete any downloaded assets from the device
    * */
   private async reset() {
+    await this.cancelActiveAssetPackDownloads();
     await Promise.all([
       this.dynamicDataService.resetFlow("asset_pack", ASSET_CONTENTS_DATA_LIST),
       this.dynamicDataService.resetFlow("data_list", ASSET_PACKS_DATA_LIST),
     ]);
+  }
+
+  private async cancelActiveAssetPackDownloads() {
+    const activeAssetPackNames = [...this.activeAssetPackDownloads.keys()];
+    if (activeAssetPackNames.length === 0) {
+      console.log("[REMOTE ASSETS] No active asset pack downloads to cancel");
+      return;
+    }
+    await Promise.all(
+      activeAssetPackNames.map((assetPackName) => this.cancelAssetPackDownloadByName(assetPackName))
+    );
   }
 
   ngOnDestroy(): void {
