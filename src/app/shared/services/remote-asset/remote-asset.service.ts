@@ -17,11 +17,18 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
 import { getRemoteAssetProvider } from "./providers";
 import type { IAssetPackDownloadStatus, IDBAssetPack } from "./remote-asset.types";
+import { NetworkService } from "../network/network.service";
 
 /** Name of the protected data list storing bundled and downloaded asset contents */
 const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
 /** Name of the protected data list to store asset pack metadata */
 const ASSET_PACKS_DATA_LIST = "_asset_packs";
+
+interface IActiveAssetPackDownload {
+  abortController: AbortController;
+  downloadStartedAt: string;
+  removeConnectionStatusListener: () => void;
+}
 
 @Injectable({
   providedIn: "root",
@@ -34,6 +41,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   downloadProgressCount = signal<{ completed: number; total: number } | null>(null);
   manifest: FlowTypes.AssetPack | null = null;
   private currentAssetPackName: string | null = null;
+  private activeAssetPackDownloads = new Map<string, IActiveAssetPackDownload>();
 
   private assetContentsSubscription: Subscription;
   private assetContentsData = signal<any[]>([]);
@@ -47,6 +55,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     private templateActionRegistry: TemplateActionRegistry,
     private http: HttpClient,
     private deploymentService: DeploymentService,
+    private networkService: NetworkService,
     private injector: Injector
   ) {
     super("RemoteAsset");
@@ -122,6 +131,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
               );
             }
           },
+          cancel_download: async () => {
+            if (this.remoteAssetsEnabled) {
+              const assetPackName = assetPackArgs[0];
+              await this.cancelAssetPackDownloadByName(assetPackName);
+            } else {
+              console.error(
+                "The 'asset_pack: cancel_download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
+              );
+            }
+          },
           reset: async () => {
             if (this.remoteAssetsEnabled) {
               await this.reset();
@@ -167,38 +186,155 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
       return false;
     }
+    if (this.activeAssetPackDownloads.has(assetPackName)) {
+      console.warn(`[REMOTE ASSETS] Asset pack download already active: ${assetPackName}`);
+      return false;
+    }
 
-    await this.setDBAssetPackStatus(assetPackName, "in_progress");
+    const downloadStartedAt = this.getTimestamp();
+    const abortController = new AbortController();
+    // Keep _asset_packs status aligned with connectivity while this download attempt is active.
+    const removeAssetPackConnectionStatusListener = this.trackAssetPackConnectionStatus(
+      assetPackName,
+      downloadStartedAt
+    );
+    this.activeAssetPackDownloads.set(assetPackName, {
+      abortController,
+      downloadStartedAt,
+      removeConnectionStatusListener: removeAssetPackConnectionStatusListener,
+    });
 
     try {
-      const manifest = await this.getAssetPackManifest(assetPackName);
-      if (!manifest) {
-        throw new Error(`[REMOTE ASSETS] Failed to load manifest for asset pack: ${assetPackName}`);
+      while (true) {
+        this.throwIfDownloadCancelled(abortController.signal);
+        if (this.isOffline()) {
+          await this.setAssetPackDownloadStatus(assetPackName, "waiting_for_connection", {
+            downloadStartedAt,
+          });
+          await this.waitForConnection(abortController.signal);
+        }
+
+        this.throwIfDownloadCancelled(abortController.signal);
+        await this.setAssetPackDownloadStatus(assetPackName, "in_progress", { downloadStartedAt });
+
+        try {
+          const manifest = await this.getAssetPackManifest(assetPackName);
+          this.throwIfDownloadCancelled(abortController.signal);
+          if (!manifest) {
+            throw new Error(
+              `[REMOTE ASSETS] Failed to load manifest for asset pack: ${assetPackName}`
+            );
+          }
+          const total = this.countDownloadFiles(manifest.rows as IAssetEntry[]);
+          this.downloadProgressCount.set(total ? { completed: 0, total } : null);
+          await this.downloadAndIntegrateAssetPack(manifest, abortController.signal);
+          this.throwIfDownloadCancelled(abortController.signal);
+          removeAssetPackConnectionStatusListener();
+          await this.setAssetPackDownloadStatus(assetPackName, "completed", {
+            downloadStartedAt,
+            downloadCompletedAt: this.getTimestamp(),
+          });
+          return true;
+        } catch (e) {
+          if (this.isDownloadCancelled(e, abortController.signal)) {
+            throw e;
+          }
+          if (this.isOffline()) {
+            console.warn("[REMOTE ASSETS] Download waiting for connection to be restored", e);
+            continue;
+          }
+          throw e;
+        }
       }
-      const total = this.countDownloadFiles(manifest.rows as IAssetEntry[]);
-      this.downloadProgressCount.set(total ? { completed: 0, total } : null);
-      await this.downloadAndIntegrateAssetPack(manifest);
-      await this.setDBAssetPackStatus(assetPackName, "completed");
-      return true;
     } catch (e) {
+      removeAssetPackConnectionStatusListener();
+      if (this.isDownloadCancelled(e, abortController.signal)) {
+        return false;
+      }
       console.error(e);
-      await this.setDBAssetPackStatus(assetPackName, "error");
+      await this.setAssetPackDownloadStatus(assetPackName, "error", { downloadStartedAt });
       return false;
     } finally {
+      removeAssetPackConnectionStatusListener();
+      const activeDownload = this.activeAssetPackDownloads.get(assetPackName);
+      if (activeDownload?.abortController === abortController) {
+        this.activeAssetPackDownloads.delete(assetPackName);
+      }
       this.downloadProgressCount.set(null);
     }
   }
 
-  private async setDBAssetPackStatus(
+  public async cancelAssetPackDownloadByName(assetPackName: string) {
+    if (!assetPackName) {
+      console.error("[REMOTE ASSETS] Please provide an asset pack name to cancel");
+      return false;
+    }
+
+    const activeDownload = this.activeAssetPackDownloads.get(assetPackName);
+    if (!activeDownload) {
+      console.warn(`[REMOTE ASSETS] No active asset pack download to cancel: ${assetPackName}`);
+      return false;
+    }
+
+    activeDownload.abortController.abort();
+    activeDownload.removeConnectionStatusListener();
+    this.activeAssetPackDownloads.delete(assetPackName);
+    this.downloadProgressCount.set(null);
+    await this.setAssetPackDownloadStatus(assetPackName, "cancelled", {
+      downloadStartedAt: activeDownload.downloadStartedAt,
+    });
+    return true;
+  }
+
+  private async setAssetPackDownloadStatus(
     assetPackName: string,
-    downloadStatus: IAssetPackDownloadStatus
+    downloadStatus: IAssetPackDownloadStatus,
+    timestamps: { downloadStartedAt?: string; downloadCompletedAt?: string } = {}
   ) {
+    const downloadStatusUpdatedAt = this.getTimestamp();
+    const downloadCompletedAt =
+      downloadStatus === "completed"
+        ? timestamps.downloadCompletedAt || downloadStatusUpdatedAt
+        : "";
     const dbAssetPack: IDBAssetPack = {
       id: assetPackName,
       name: assetPackName,
       download_status: downloadStatus,
+      download_started_at: timestamps.downloadStartedAt || downloadStatusUpdatedAt,
+      download_completed_at: downloadCompletedAt,
+      download_status_updated_at: downloadStatusUpdatedAt,
     };
     return this.dynamicDataService.upsert("data_list", ASSET_PACKS_DATA_LIST, dbAssetPack);
+  }
+
+  private getTimestamp() {
+    return new Date().toISOString();
+  }
+
+  private isOffline() {
+    return this.networkService.isOffline();
+  }
+
+  private waitForConnection(signal: AbortSignal) {
+    return this.networkService.waitUntilConnected(signal);
+  }
+
+  private trackAssetPackConnectionStatus(assetPackName: string, downloadStartedAt: string) {
+    return this.networkService.onStatusChange((status) => {
+      const downloadStatus = status.connected ? "in_progress" : "waiting_for_connection";
+      void this.setAssetPackDownloadStatus(assetPackName, downloadStatus, { downloadStartedAt });
+    });
+  }
+
+  private throwIfDownloadCancelled(signal: AbortSignal) {
+    if (!signal.aborted) return;
+    const error = new Error("Asset pack download cancelled");
+    error.name = "AbortError";
+    throw error;
+  }
+
+  private isDownloadCancelled(error: unknown, signal?: AbortSignal) {
+    return signal?.aborted || (error instanceof Error && error.name === "AbortError");
   }
 
   /**
@@ -213,7 +349,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       : relativePath;
   }
 
-  private async downloadAndIntegrateAssetPack(assetPackManifest: FlowTypes.AssetPack) {
+  private async downloadAndIntegrateAssetPack(
+    assetPackManifest: FlowTypes.AssetPack,
+    signal: AbortSignal
+  ) {
     try {
       this.currentAssetPackName = assetPackManifest.flow_name;
       const assetEntries = assetPackManifest.rows as IAssetEntry[];
@@ -223,7 +362,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       if (Capacitor.isNativePlatform()) {
         // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
         for (const [index, assetEntry] of assetEntries.entries()) {
-          await this.handleAssetDownload(assetEntry, index, assetEntries.length);
+          this.throwIfDownloadCancelled(signal);
+          await this.handleAssetDownload(assetEntry, index, assetEntries.length, signal);
         }
       }
 
@@ -231,10 +371,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       // (files will be served remotely via provider CDN)
       else {
         for (const [index, assetEntry] of assetEntries.entries()) {
+          this.throwIfDownloadCancelled(signal);
           console.log(
             `[REMOTE ASSETS] Processing asset entry ${index + 1} of ${assetEntries.length}.`
           );
-          await this.addRemoteFilepathToAssetContentsEntry(assetEntry);
+          await this.addRemoteFilepathToAssetContentsEntry(assetEntry, signal);
         }
       }
     } finally {
@@ -307,7 +448,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   private async handleAssetDownload(
     assetEntry: IAssetEntry,
     fileIndex: number,
-    totalFiles?: number
+    totalFiles?: number,
+    signal?: AbortSignal
   ) {
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
@@ -316,9 +458,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           assetEntry.id,
           assetEntry,
           fileIndex,
-          totalFiles
+          totalFiles,
+          signal
         );
       } catch (error) {
+        if (this.isDownloadCancelled(error, signal)) throw error;
         console.error(error);
       }
     }
@@ -334,9 +478,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
               assetEntry,
               fileIndex,
               totalFiles,
+              signal,
               overrideProps
             );
           } catch (error) {
+            if (this.isDownloadCancelled(error, signal)) throw error;
             console.error(error);
           }
         }
@@ -349,12 +495,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Update the contents list with the contents of an asset pack, including any overrides,
    * updating filepath to be a public remote provider CDN URL
    */
-  public async addRemoteFilepathToAssetContentsEntry(assetEntry: IAssetEntry) {
+  public async addRemoteFilepathToAssetContentsEntry(
+    assetEntry: IAssetEntry,
+    signal?: AbortSignal
+  ) {
+    if (signal) this.throwIfDownloadCancelled(signal);
     // Update the contents entry for the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
       const topLevelAssetUrl =
         this.provider.getPublicUrl(this.getFullRemotePath(assetEntry.id)) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
+      if (signal) this.throwIfDownloadCancelled(signal);
       this.incrementDownloadProgress();
     }
     const { overrides } = assetEntry;
@@ -365,6 +516,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           const filepath =
             this.provider.getPublicUrl(this.getFullRemotePath(overrideAssetEntry.filePath)) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
+          if (signal) this.throwIfDownloadCancelled(signal);
           this.incrementDownloadProgress();
         }
       }
@@ -380,13 +532,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     assetEntry: IAssetEntry,
     fileIndex: number,
     totalFiles?: number,
+    signal?: AbortSignal,
     overrideProps?: IAssetOverrideProps
   ) {
     console.log(`[REMOTE ASSETS] Downloading file ${fileIndex + 1} of ${totalFiles || "?"}`);
 
     try {
+      if (signal) this.throwIfDownloadCancelled(signal);
       // Use provider's direct download method
       const blob = await this.provider.downloadFile(this.getFullRemotePath(relativePath));
+      if (signal) this.throwIfDownloadCancelled(signal);
 
       if (blob) {
         let targetPath = assetEntry.id;
@@ -399,13 +554,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         }
 
         const { src } = await this.fileManagerService.saveFile({ data: blob, targetPath });
+        if (signal) this.throwIfDownloadCancelled(signal);
         await this.updateAssetContents(assetEntry, src, overrideProps);
+        if (signal) this.throwIfDownloadCancelled(signal);
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         this.incrementDownloadProgress();
       } else {
         console.error(`[REMOTE ASSETS] Failed to download ${relativePath}`);
       }
     } catch (error) {
+      if (this.isDownloadCancelled(error, signal)) throw error;
       console.error(`[REMOTE ASSETS] Error downloading ${relativePath}:`, error);
     }
   }
