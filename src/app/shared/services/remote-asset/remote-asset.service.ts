@@ -186,9 +186,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
               `[REMOTE ASSETS] Failed to load manifest for asset pack: ${assetPackName}`
             );
           }
-          const total = this.countDownloadFiles(manifest.rows as IAssetEntry[]);
+          const assetEntries = (manifest.rows || []) as FlowTypes.Data_listRow<IAssetEntry>[];
+          const total = this.countDownloadFiles(assetEntries);
           this.downloadProgressCount.set(total ? { completed: 0, total } : null);
-          await this.downloadAndIntegrateAssetPack(manifest, abortController.signal);
+          await this.downloadAndIntegrateAssetPack(
+            { ...manifest, rows: assetEntries },
+            abortController.signal
+          );
           this.throwIfDownloadCancelled(abortController.signal);
           removeAssetPackConnectionStatusListener();
           await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "completed", {
@@ -295,7 +299,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   ) {
     try {
       this.currentAssetPackName = assetPackManifest.flow_name;
-      const assetEntries = assetPackManifest.rows as IAssetEntry[];
+      const assetEntries = (assetPackManifest.rows || []) as IAssetEntry[];
 
       // If running on native device, download assets and populate to filesystem, adding local
       // filesystem path to asset entry in contents list for consumption by template asset service
