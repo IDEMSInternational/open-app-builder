@@ -128,16 +128,19 @@ export class ContextCreatorService {
 
   // If the argument can be parsed as a number or boolean, we want to parse it as such, otherwise we return it as a string
   private parseValue(arg: any) {
+    if (arg === true || arg === "true") {
+      return true;
+    }
+
+    if (arg === false || arg === "false") {
+      return false;
+    }
+
     // if arg is an empty array Number(arg) == 0, but we want to keep it as an empty array, so we check for that first
     const isNumber = !Array.isArray(arg) && !isNaN(Number(arg));
 
     if (isNumber) {
       return Number(arg);
-    }
-
-    const isBoolean = arg === "true" || arg === "false";
-    if (isBoolean) {
-      return arg === "true";
     }
 
     return arg;
