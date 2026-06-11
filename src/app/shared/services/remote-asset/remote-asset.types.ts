@@ -1,7 +1,17 @@
+/** Name of the protected data list storing bundled and downloaded asset contents */
+export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
+/** Name of the protected data list to store asset pack metadata */
+export const ASSET_PACKS_DATA_LIST = "_asset_packs";
+
 /**
  * Represents an asset pack entry stored in the `_asset_packs` protected data list.
  */
-export type IAssetPackDownloadStatus = "in_progress" | "completed" | "error";
+export type IAssetPackDownloadStatus =
+  | "in_progress"
+  | "waiting_for_connection"
+  | "cancelled"
+  | "completed"
+  | "error";
 
 export interface IDBAssetPack {
   /** Asset pack name, used as the unique row identifier */
@@ -10,4 +20,21 @@ export interface IDBAssetPack {
   name: string;
   /** Last known download status. Rows are upserted, so this reflects the most recent attempt */
   download_status: IAssetPackDownloadStatus;
+  /** ISO timestamp for when the current download attempt started */
+  download_started_at: string;
+  /** ISO timestamp for when the current download attempt completed, empty until completed */
+  download_completed_at: string;
+  /** ISO timestamp for the most recent status change */
+  download_status_updated_at: string;
+}
+
+export interface IAssetPackDownloadStatusTimestamps {
+  downloadStartedAt?: string;
+  downloadCompletedAt?: string;
+}
+
+export interface IActiveAssetPackDownload {
+  abortController: AbortController;
+  downloadStartedAt: string;
+  removeConnectionStatusListener: () => void;
 }
