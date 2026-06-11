@@ -32,24 +32,23 @@ export class UpdateComponent
       return;
     }
 
-    const value = this.evaluationService.evaluateExpression(
-      this.expression(),
-      this.namespace(),
-      this.params.valueType.value()
-    );
-
     try {
-      const valueJson = `{${value as string}}`;
-      const objValue = json5.parse(valueJson);
+      const value = `{${this.expression()}}`;
 
-      if (!objValue.id) {
+      const evaluatedValue = this.evaluationService.evaluateExpression(
+        value,
+        this.namespace(),
+        this.params.valueType.value()
+      ) as any;
+
+      if (!evaluatedValue.id) {
         console.error(
           `[UpdateComponent] upsert object must have an 'id' property for component ${this.name()}`
         );
         return;
       }
 
-      await this.dynamicDataService.upsert("data_list", dataList, objValue);
+      await this.dynamicDataService.upsert("data_list", dataList, evaluatedValue as any);
     } catch (error) {
       console.error(`[UpdateComponent] Failed to parse value for component ${this.name()}:`, error);
     }
