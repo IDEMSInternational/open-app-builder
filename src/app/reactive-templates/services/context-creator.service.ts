@@ -107,13 +107,14 @@ export class ContextCreatorService {
     value: unknown
   ): void {
     const path = dependency.name.split(".");
+    const parsedValue = this.parseValue(value as string);
     let cursor = target;
 
     path.forEach((segment, index) => {
       const isLeaf = index === path.length - 1;
 
       if (isLeaf) {
-        cursor[segment] = value;
+        cursor[segment] = parsedValue;
         return;
       }
 
@@ -123,5 +124,21 @@ export class ContextCreatorService {
 
       cursor = cursor[segment];
     });
+  }
+
+  // If the argument can be parsed as a number or boolean, we want to parse it as such, otherwise we return it as a string
+  private parseValue(arg: string): string | number | boolean {
+    const isNumber = !isNaN(Number(arg));
+    const isBoolean = arg === "true" || arg === "false";
+
+    if (isNumber) {
+      return Number(arg);
+    }
+
+    if (isBoolean) {
+      return arg === "true";
+    }
+
+    return arg;
   }
 }
