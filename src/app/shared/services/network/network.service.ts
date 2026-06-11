@@ -1,7 +1,13 @@
-import { Injectable, OnDestroy, computed, signal } from "@angular/core";
+import { Inject, Injectable, InjectionToken, OnDestroy, computed, signal } from "@angular/core";
 import type { PluginListenerHandle } from "@capacitor/core";
 import { Network } from "@capacitor/network";
-import type { ConnectionStatus } from "@capacitor/network";
+import type { ConnectionStatus, NetworkPlugin } from "@capacitor/network";
+
+/** Allows tests to provide a mock Network plugin while production uses Capacitor Network. */
+export const NETWORK_PLUGIN = new InjectionToken<NetworkPlugin>("NETWORK_PLUGIN", {
+  providedIn: "root",
+  factory: () => Network,
+});
 
 @Injectable({
   providedIn: "root",
@@ -16,7 +22,7 @@ export class NetworkService implements OnDestroy {
   private networkStatusListener: PluginListenerHandle | null = null;
   private statusChangeCallbacks = new Set<(status: ConnectionStatus) => void>();
 
-  constructor() {
+  constructor(@Inject(NETWORK_PLUGIN) private networkPlugin: NetworkPlugin) {
     void this.initialise();
   }
 
@@ -53,10 +59,13 @@ export class NetworkService implements OnDestroy {
 
   private async initialise() {
     try {
-      this.setConnectionStatus(await Network.getStatus());
-      this.networkStatusListener = await Network.addListener("networkStatusChange", (status) => {
-        this.setConnectionStatus(status);
-      });
+      this.setConnectionStatus(await this.networkPlugin.getStatus());
+      this.networkStatusListener = await this.networkPlugin.addListener(
+        "networkStatusChange",
+        (status) => {
+          this.setConnectionStatus(status);
+        }
+      );
     } catch (error) {
       console.error("[Network] Error initialising network status listener", error);
     }
