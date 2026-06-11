@@ -29,11 +29,12 @@ export class NetworkService implements OnDestroy {
     }
 
     return new Promise<void>((resolve, reject) => {
+      let removeStatusChangeCallback = () => {};
       const handleAbort = () => {
         removeStatusChangeCallback();
         reject(this.createAbortError());
       };
-      const removeStatusChangeCallback = this.onStatusChange((status) => {
+      removeStatusChangeCallback = this.onStatusChange((status) => {
         if (!status.connected) return;
         removeStatusChangeCallback();
         signal?.removeEventListener("abort", handleAbort);
