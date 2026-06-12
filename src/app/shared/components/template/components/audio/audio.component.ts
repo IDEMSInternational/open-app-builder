@@ -14,7 +14,7 @@ const FORWARD_ICON_DEFAULT = "play-forward";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Display variant. Default "compact". */
-  variant: coerce.string("compact"),
+  variant: coerce.allowedValues(["compact", "large", "button_only"], "compact"),
   /** Audio source path. May be overridden by row value. */
   src: coerce.string(""),
   /** Title displayed above the player. */
@@ -54,7 +54,7 @@ export class TmplAudioComponent
    * so that manually seeking works as expected: if player is playing before dragging the slider, playing continues after dragging
    * @ignore
    * */
-  isPlaying: boolean = false;
+  isPlaying = signal(false);
   /**
    * Progress, as a percentage of total duration
    * @ignore
@@ -153,7 +153,7 @@ export class TmplAudioComponent
           this.triggerActions("audio_play");
         },
         onend: () => {
-          this.isPlaying = false;
+          this.isPlaying.set(false);
           this.hasEnded.set(true);
           this.progress.set(0);
           this.startProgressTracker();
@@ -172,12 +172,14 @@ export class TmplAudioComponent
   }
 
   public togglePlaying() {
-    if (this.isPlaying) {
+    if (!this.player) return;
+
+    if (this.isPlaying()) {
       this.player.pause();
     } else {
       this.player.play();
     }
-    this.isPlaying = !this.isPlaying;
+    this.isPlaying.update((playing) => !playing);
   }
 
   /**
