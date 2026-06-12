@@ -84,7 +84,7 @@
 <ng-template #playPauseButton>
   <ion-button
     class="btn-play"
-    [class.button-only]="params().variant === 'button_only'"
+    [attr.data-variant]="params().variant"
     (click)="togglePlaying()"
     [disabled]="!player"
   >

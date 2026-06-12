@@ -19,7 +19,8 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
   }
 }
 
-ion-button.btn-play.button-only {
+ion-button.btn-play[data-variant~="button_only"],
+ion-button.btn-play[data-variant~="compact"] {
   @include compact-play-button;
 }
 
@@ -61,7 +62,6 @@ ion-button.btn-play.button-only {
         display: none;
       }
       ion-button.btn-play {
-        @include compact-play-button;
         margin-right: var(--small-margin);
       }
     }
