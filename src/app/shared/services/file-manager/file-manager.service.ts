@@ -36,7 +36,7 @@ export class FileManagerService extends SyncServiceBase {
     this.templateActionRegistry.register({
       // Native: save file to Documents folder in external device storage and open;
       // Web: download file
-      save_to_device: async ({ args, params }) => {
+      save_to_device: async ({ args, params = {} }) => {
         const pathOrUrl = args[0];
         const { open = true, subfolder = "", filename = undefined } = params;
         if (isExternalHttpUrl(pathOrUrl)) {
