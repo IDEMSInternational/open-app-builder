@@ -6,6 +6,7 @@ import { TemplatePopupComponent } from "../layout/popup/popup.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { formatDurationMmSs } from "packages/shared/src/utils/string-utils";
 import { Capacitor } from "@capacitor/core";
+import { ErrorHandlerService } from "../../../../services/error-handler/error-handler.service";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -117,7 +118,8 @@ export class TmplAudioComponent
 
   constructor(
     private templateAssetService: TemplateAssetService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private errorHandler: ErrorHandlerService
   ) {
     super();
     effect(() => {
@@ -148,10 +150,9 @@ export class TmplAudioComponent
           this.durationSeconds.set(this.player.duration());
         },
         onloaderror: (_id, error) => {
-          console.error("[AUDIO COMPONENT] Failed to load audio", {
-            error,
-            src,
-          });
+          void this.errorHandler
+            .logError(new Error(`[AUDIO COMPONENT] Failed to load audio: ${src}; ${String(error)}`))
+            .catch(() => null);
         },
         onplay: () => {
           this.hasEnded.set(false);
@@ -163,11 +164,15 @@ export class TmplAudioComponent
           this.triggerActions("audio_play");
         },
         onplayerror: (_id, error) => {
-          console.error("[AUDIO COMPONENT] Failed to play audio", {
-            error,
-            src,
-            state: this.player?.state(),
-          });
+          void this.errorHandler
+            .logError(
+              new Error(
+                `[AUDIO COMPONENT] Failed to play audio: ${src}; state: ${
+                  this.player?.state() ?? "unknown"
+                }; ${String(error)}`
+              )
+            )
+            .catch(() => null);
         },
         onend: () => {
           this.isPlaying = false;
