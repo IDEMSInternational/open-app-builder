@@ -5,6 +5,7 @@ import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { formatDurationMmSs } from "packages/shared/src/utils/string-utils";
+import { Capacitor } from "@capacitor/core";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -139,9 +140,18 @@ export class TmplAudioComponent
     const src = this.resolvedSrc();
     if (src) {
       this.player = new Howl({
+        // Native HTML5 audio avoids playback issues seen with Howler's Web Audio backend on iOS.
+        // See https://github.com/IDEMSInternational/open-app-builder/issues/3527
+        html5: Capacitor.getPlatform() === "ios",
         src: [src],
         onload: () => {
           this.durationSeconds.set(this.player.duration());
+        },
+        onloaderror: (_id, error) => {
+          console.error("[AUDIO COMPONENT] Failed to load audio", {
+            error,
+            src,
+          });
         },
         onplay: () => {
           this.hasEnded.set(false);
@@ -151,6 +161,13 @@ export class TmplAudioComponent
             this.triggerActions("audio_first_start");
           }
           this.triggerActions("audio_play");
+        },
+        onplayerror: (_id, error) => {
+          console.error("[AUDIO COMPONENT] Failed to play audio", {
+            error,
+            src,
+            state: this.player?.state(),
+          });
         },
         onend: () => {
           this.isPlaying = false;
