@@ -69,6 +69,7 @@
     .information {
       --background: var(--ion-color-primary-600);
       --background-hover: var(--ion-color-primary-500);
+      --background-activated: var(--ion-color-primary-500);
     }
     .navigation {
       --background: var(--ion-color-primary-600);
@@ -265,7 +266,7 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
-      background: var(--ion-color-primary-600);
+      background: var(--ion-color-primary-700);
       border: none;
       border-radius: var(--ion-border-radius-small);
       box-shadow: none;
@@ -598,17 +599,14 @@
       border: none;
       box-shadow: none !important;
       min-height: 54px !important;
-      background-color: var(--ion-color-primary-variant-700);
+      background-color: var(--ion-color-primary-100);
       border-radius: 16px !important;
       margin-bottom: 8px !important;
       .module-title {
         p {
-          color: white !important;
+          color: var(--ion-color-primary-800) !important;
           padding: 0px !important;
         }
-      }
-      .module-image {
-        display: none !important;
       }
       &[data-highlighted~="true"] {
         border: none;
@@ -941,7 +939,7 @@
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           text-align: center;
-          color: white;
+          color: var(--ion-color-primary-900);
         }
         plh-tmpl-title {
           div.title-wrapper {

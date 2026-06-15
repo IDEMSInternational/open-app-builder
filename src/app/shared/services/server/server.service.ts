@@ -27,10 +27,10 @@ export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
   /**
-   * Track whether sync enabled to allow toggling sync on/off
-   * TODO - expose action/public methods to set
+   * Track temporary runtime sync pause state.
+   * Keep as a counter to safely support nested pause scopes.
    **/
-  private syncEnabled: boolean;
+  private syncPauseCount = 0;
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(
@@ -47,9 +47,7 @@ export class ServerService extends SyncServiceBase {
 
   private initialise() {
     this.ensureSyncServicesReady([this.localStorageService]);
-    // set default sync enabled state from deployment config
     const { api } = this.deploymentService.config;
-    this.syncEnabled = api.enabled;
     if (environment.production) {
       // run initial sync and create interval timer to sync regularly
       this.syncUserData();
@@ -61,6 +59,30 @@ export class ServerService extends SyncServiceBase {
     }
   }
 
+  /**
+   * Expose a scoped method to temporarily pause sync operations while executing the provided function.
+   */
+  public async withSyncPaused<T>(fn: () => Promise<T>): Promise<T> {
+    this.pauseSync();
+    try {
+      return await fn();
+    } finally {
+      this.resumeSync();
+    }
+  }
+
+  private isSyncAllowed() {
+    return this.deploymentService.config.api.enabled && this.syncPauseCount === 0;
+  }
+
+  private pauseSync() {
+    this.syncPauseCount++;
+  }
+
+  private resumeSync() {
+    this.syncPauseCount = Math.max(0, this.syncPauseCount - 1);
+  }
+
   private getServerStatus() {
     const endpoint = "/status";
     console.log("[SERVER] get status");
@@ -70,7 +92,7 @@ export class ServerService extends SyncServiceBase {
   }
 
   public async syncUserData() {
-    if (!this.syncEnabled) {
+    if (!this.isSyncAllowed()) {
       console.log("[SERVER] sync disabled");
       return;
     }
@@ -131,6 +153,9 @@ export class ServerService extends SyncServiceBase {
   }
 
   private async syncDBTableData() {
+    if (!this.isSyncAllowed()) {
+      return;
+    }
     await this.dbSyncService.ready();
     return this.dbSyncService.syncDBTables();
   }

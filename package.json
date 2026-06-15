@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.26.5",
+  "version": "0.26.6",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -97,6 +97,7 @@
     "jquery-touchswipe": "^1.6.19",
     "json5": "^2.2.3",
     "katex": "^0.16.21",
+    "ky": "^2.0.0",
     "lottie-web": "^5.13.0",
     "marked": "^11",
     "marked-smartypants-lite": "^1.0.2",
@@ -114,7 +115,7 @@
     "stacktrace-js": "^2.0.2",
     "swiper": "^12.1.2",
     "trusted-types": "^2.0.0",
-    "uuid": "^11.0.3",
+    "uuid": "^14.0.0",
     "zod": "^4.0.17",
     "zone.js": "~0.15.1"
   },
