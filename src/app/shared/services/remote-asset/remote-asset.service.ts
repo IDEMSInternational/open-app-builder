@@ -22,6 +22,12 @@ import { NetworkService } from "../network/network.service";
 import { RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 
+/**
+ * Manual testing aid: set to a positive value, e.g. 3000, to slow each asset entry donwload.
+ * Keep at 0 outside local testing.
+ */
+const REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS = 0;
+
 @Injectable({
   providedIn: "root",
 })
@@ -272,13 +278,39 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
   private throwIfDownloadCancelled(signal: AbortSignal) {
     if (!signal.aborted) return;
+    throw this.createDownloadCancelledError();
+  }
+
+  private createDownloadCancelledError() {
     const error = new Error("Asset pack download cancelled");
     error.name = "AbortError";
-    throw error;
+    return error;
   }
 
   private isDownloadCancelled(error: unknown, signal?: AbortSignal) {
     return signal?.aborted || (error instanceof Error && error.name === "AbortError");
+  }
+
+  private waitForArtificialDownloadDelay(signal: AbortSignal) {
+    if (REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS <= 0) {
+      return Promise.resolve();
+    }
+    this.throwIfDownloadCancelled(signal);
+    console.warn(
+      `[REMOTE ASSETS] Artificial download delay enabled: ${REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS}ms`
+    );
+
+    return new Promise<void>((resolve, reject) => {
+      const handleAbort = () => {
+        clearTimeout(timeout);
+        reject(this.createDownloadCancelledError());
+      };
+      const timeout = setTimeout(() => {
+        signal.removeEventListener("abort", handleAbort);
+        resolve();
+      }, REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS);
+      signal.addEventListener("abort", handleAbort, { once: true });
+    });
   }
 
   /**
@@ -307,6 +339,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
         for (const [index, assetEntry] of assetEntries.entries()) {
           this.throwIfDownloadCancelled(signal);
+          await this.waitForArtificialDownloadDelay(signal);
           await this.handleAssetDownload(assetEntry, index, assetEntries.length, signal);
         }
       }
@@ -316,6 +349,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       else {
         for (const [index, assetEntry] of assetEntries.entries()) {
           this.throwIfDownloadCancelled(signal);
+          await this.waitForArtificialDownloadDelay(signal);
           console.log(
             `[REMOTE ASSETS] Processing asset entry ${index + 1} of ${assetEntries.length}.`
           );
