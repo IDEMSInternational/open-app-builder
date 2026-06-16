@@ -173,20 +173,27 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   // Override to transform the value before storing in variable store.
   // e.g. To execute a data query and store the results as the value
-  protected async computeStoredValue(value: any): Promise<any> {
+  protected async preEvaluation(value: any): Promise<any> {
+    return value;
+  }
+
+  protected async postEvaluation(value: any): Promise<any> {
     return value;
   }
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
+    const preEvaluated = await this.preEvaluation(this.expression());
+
     const value = this.evaluationService.evaluateExpression(
-      this.expression(),
+      preEvaluated,
       this.namespace(),
       this.params.valueType.value()
     );
-    const computedValue = await this.computeStoredValue(value);
 
-    this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
+    const postEvaluated = await this.postEvaluation(value);
+
+    this.variableStore.set({ name: this.name(), type: this.storeType }, postEvaluated);
   }
 
   private setParams() {

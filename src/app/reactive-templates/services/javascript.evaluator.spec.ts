@@ -73,6 +73,15 @@ describe("JavascriptEvaluator", () => {
 
       expect(result).toBe(3);
     });
+
+    it("parses a mango style query", () => {
+      const result = evaluator.evaluate(
+        "{selector: {active: true}, sort: [{name: 'desc'}], limit: 3}",
+        "script"
+      );
+
+      expect(result).toEqual({ selector: { active: true }, sort: [{ name: "desc" }], limit: 3 });
+    });
   });
 
   describe("template literal evaluation", () => {

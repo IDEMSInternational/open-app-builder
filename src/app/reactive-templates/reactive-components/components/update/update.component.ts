@@ -2,7 +2,6 @@ import { Component, inject } from "@angular/core";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import json5 from "json5";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 
 const parameters = () =>

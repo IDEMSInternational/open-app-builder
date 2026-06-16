@@ -26,7 +26,8 @@ export class EvaluationService {
     const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
     this.expressionEvaluator.setContext(context);
-    return this.expressionEvaluator.evaluate(parsedExpression, valueType) as T;
+    const evaluatedValue = this.expressionEvaluator.evaluate(parsedExpression, valueType);
+    return evaluatedValue as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
