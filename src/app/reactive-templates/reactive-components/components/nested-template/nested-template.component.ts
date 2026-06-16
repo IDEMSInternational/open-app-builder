@@ -1,5 +1,5 @@
 import { Component, effect, forwardRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
 import { Subscription } from "rxjs";
@@ -9,9 +9,8 @@ import { Subscription } from "rxjs";
   templateUrl: "./nested-template.component.html",
   styleUrls: ["./nested-template.component.scss"],
   imports: [forwardRef(() => ReactiveTemplateComponent)],
-  providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
-export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
+export class NestedTemplateComponent extends RowBaseComponent() implements OnInit, OnDestroy {
   private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
   private childDependencySubscriptions: Subscription[] = [];
   private templateInitialised = signal(false);

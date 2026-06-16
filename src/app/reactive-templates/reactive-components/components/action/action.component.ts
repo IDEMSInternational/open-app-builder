@@ -7,8 +7,7 @@ import {
   OnDestroy,
   OnInit,
 } from "@angular/core";
-import { defineParameters } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { RowBaseComponent } from "../../row-base.component";
 import {
   ActionRegistry,
   IAction,
@@ -18,17 +17,11 @@ import {
 import { REACTIVE_COMPONENT_MAP } from "..";
 import { SetVariableComponent } from "../set-variable/set-variable.component";
 
-const parameters = () => defineParameters({});
-
 @Component({
   selector: "oab-action",
   template: "", // no template needed
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class ActionComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements OnInit, OnDestroy, IAction
-{
+export class ActionComponent extends RowBaseComponent() implements OnInit, OnDestroy, IAction {
   private actionRegistry = inject(ActionRegistry);
   private injector = inject(EnvironmentInjector);
 

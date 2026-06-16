@@ -1,7 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { LoopItemEvaluator } from "./loop-item.evaluator";
 import { RowRegistry } from "../row.registry";
-import { Parameter } from "../../reactive-components/parameters";
 import { signal } from "@angular/core";
 import { VariableStore } from "../../stores/variable-store";
 
@@ -38,7 +37,7 @@ describe("LoopItemEvaluator", () => {
         name: signal("mockRow"),
         value: signal(() => undefined),
         setExpression: () => {},
-        params: { index: new Parameter("index", null) },
+        params: signal({ index: "" }),
         row: () => ({
           name: "mockRow",
           value: "",
@@ -136,7 +135,7 @@ describe("LoopItemEvaluator", () => {
         name: signal("mockRow"),
         value: signal(() => undefined),
         setExpression: () => {},
-        params: { index: new Parameter("index", "name") },
+        params: signal({ index: "name" }),
         row: () => ({
           name: "mockRow",
           value: "",
@@ -236,7 +235,7 @@ describe("LoopItemEvaluator", () => {
         name: signal("mockRow"),
         value: signal(() => undefined),
         setExpression: () => {},
-        params: { index: new Parameter("index", null) },
+        params: signal({ index: "" }),
         row: () => ({
           name: "mockRow",
           value: "",

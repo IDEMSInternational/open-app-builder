@@ -1,34 +1,28 @@
 import { Component, OnInit } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
-import { defineParameters, Parameter } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 
-const parameters = () =>
-  defineParameters({
-    variant: new Parameter<"" | "icon" | "in_button" | "ios" | "android">("variant", ""),
-    style: new Parameter("style", ""),
-    showIcons: new Parameter("show_icons", true),
-    showTickAndCross: new Parameter("show_tick_and_cross", true),
-    position: new Parameter<"left" | "center" | "right">("position", "left"),
-    falseText: new Parameter("false_text", ""),
-    trueText: new Parameter("true_text", ""),
-    iconTrue: new Parameter("icon_true_asset", ""),
-    iconFalse: new Parameter("icon_false_asset", ""),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  variant: coerce.string(""),
+  style: coerce.string(""),
+  show_icons: coerce.boolean(true),
+  show_tick_and_cross: coerce.boolean(true),
+  position: coerce.allowedValues(["left", "center", "right"], "left"),
+  false_text: coerce.string(""),
+  true_text: coerce.string(""),
+  icon_true_asset: coerce.string(""),
+  icon_false_asset: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-toggle-bar",
   templateUrl: "./toggle-bar.html",
   styleUrls: ["./toggle-bar.scss"],
   imports: [IonicModule, TemplatePipesModule], // todo: ionic standalone does not seem to work.
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class ToggleBarComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements OnInit
-{
+export class ToggleBarComponent extends RowBaseComponent(AuthorSchema) implements OnInit {
   /**
    * The ion-toggle component uses "md" ("material design") and "ios" to refer to visual styles of the component
    * corresponding to the respective platforms. See docs here: https://ionicframework.com/docs/api/toggle
@@ -39,7 +33,7 @@ export class ToggleBarComponent
 
   ngOnInit() {
     super.ngOnInit();
-    this.setPlatformVariant(this.params.variant.value());
+    this.setPlatformVariant(this.params().variant);
     this.populateVariantMap();
   }
 
@@ -72,7 +66,7 @@ export class ToggleBarComponent
   }
 
   private populateVariantMap() {
-    const variantArray = this.params.variant.value().split(" ");
+    const variantArray = this.params().variant.split(" ");
     this.variantMap = {
       icon: variantArray.includes("icon"),
     };

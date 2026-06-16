@@ -1,29 +1,23 @@
 import { Component, inject } from "@angular/core";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
-import { defineParameters, Parameter } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { defineAuthorParameterSchema, RowBaseComponent } from "../../row-base.component";
 import json5 from "json5";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
 
-const parameters = () =>
-  defineParameters({
-    dataList: new Parameter<string>("data_list", undefined),
-  });
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  data_list: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-update",
   template: "", // template is not needed for this component
-  providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
   standalone: false,
 })
-export class UpdateComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements IAction
-{
+export class UpdateComponent extends RowBaseComponent(AuthorSchema) implements IAction {
   private dynamicDataService = inject(DynamicDataService);
 
   public async execute(params?: IActionParameter[]): Promise<void> {
-    const dataList = this.params.dataList.value();
+    const { dataList } = this.params();
 
     if (!dataList) {
       console.error(
