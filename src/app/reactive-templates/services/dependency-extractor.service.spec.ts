@@ -88,6 +88,15 @@ describe("DependencyExtractorService", () => {
     ]);
   });
 
+  it("supports index access in paths", () => {
+    const input = 'local.myitem["0"].foo + local.myitem["my_index"].foo';
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "myitem.0.foo" },
+      { type: "local", name: "myitem.my_index.foo" },
+    ]);
+  });
+
   it("returns empty array when no matches exist", () => {
     expect(service.extractVariableReferences("Math.max(a, b)")).toEqual([]);
   });

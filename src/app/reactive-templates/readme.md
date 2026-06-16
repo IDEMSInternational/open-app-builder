@@ -49,44 +49,39 @@ Technical Tasks
 
 Features
 
-* update component (data list update)
-* action component
-* navigation component
 
 Functionality not yet supported by reactive templates:
 
-* Display Groups
-* Global Variables
-* Template debug mode
 * Modals and modal navigation e.g. nav stack
-* Clearing variable store when loading a new page?
 * Translations
 
 Components without reactive equivalents:
 
-* accordion
+* accordion x
+* course accordion
 * animated-slides
-* audio
+* audio x
 * button-apple-sign-in
 * button-google-sign-in
 * carousel
-* combo-box
+* combo-box x
 * dashed-box
 * data-items
-* date-time-picker
+* date-time-picker x
 * drawer
 * html
 * icon-banner
 * latex
 * layout
-* navigation-bar
+* navigation-bar x
 * number-selector
 * odk-form
-* pdf
+* pdf x
 * progress-path
 * qr-code
 * radio-button-grid
-* radio-group
+* radio-group 
+* radio-list x
 * round-icon-button
 * select-text
 * shared-data
@@ -100,4 +95,4 @@ Components without reactive equivalents:
 * text-bubble
 * tile-component
 * timer
-* youtube
+* youtube x

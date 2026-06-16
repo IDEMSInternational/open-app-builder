@@ -14,10 +14,15 @@ export class TemplateLiteralEvaluator {
     this.context = context;
   }
 
-  private evaluateTemplateLiteral(expression: string): string {
-    return Function(
-      ...Object.keys(this.context),
-      `return \`${expression}\`;`
-    )(...Object.values(this.context));
+  private evaluateTemplateLiteral(expression: string): string | undefined {
+    try {
+      return Function(
+        ...Object.keys(this.context),
+        `return \`${expression}\`;`
+      )(...Object.values(this.context));
+    } catch (error) {
+      console.error("Failed to evaluate template literal", { expression, error });
+      return undefined;
+    }
   }
 }

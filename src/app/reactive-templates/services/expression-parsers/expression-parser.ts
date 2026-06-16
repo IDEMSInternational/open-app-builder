@@ -5,6 +5,7 @@ import { NamespaceExpressionParser } from "./namespace.expression-parser";
 import { ItemVariableExpressionParser } from "./item-variable.expression-parser";
 import { LegacyVariableExpressionParser } from "./legacy-variable.expression-parser";
 import { DependencySanitizerExpressionParser } from "./dependency-sanitizer.expression-parser";
+import { NumericSegmentExpressionParser } from "./numeric-segment.expression-parser";
 
 export interface IExpressionParser {
   parse(
@@ -27,6 +28,9 @@ export class ExpressionParser implements IExpressionParser {
   private dependencySanitizerExpressionParser: DependencySanitizerExpressionParser = inject(
     DependencySanitizerExpressionParser
   );
+  private numericSegmentExpressionParser: NumericSegmentExpressionParser = inject(
+    NumericSegmentExpressionParser
+  );
 
   public parse(
     expression: string | number | boolean,
@@ -40,6 +44,11 @@ export class ExpressionParser implements IExpressionParser {
     parsedExpression = this.dependencySanitizerExpressionParser.parse(parsedExpression, valueType);
     parsedExpression = this.namespaceExpressionParser.parse(parsedExpression, namespace);
     parsedExpression = this.listExpressionParser.parse(parsedExpression);
+    parsedExpression = this.numericSegmentExpressionParser.parse(
+      parsedExpression,
+      namespace,
+      valueType
+    );
 
     return parsedExpression;
   }
