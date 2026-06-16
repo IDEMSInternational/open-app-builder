@@ -6,7 +6,7 @@ import { ValueType } from "../reactive-components/row-base.component";
 export class DependencyExtractorService {
   private readonly allowedRoots = ["local", "global", "system", "loop"];
   private readonly variablePathPattern = new RegExp(
-    `\\b(?:${this.allowedRoots.join("|")})\\.[a-zA-Z_$][\\w$]*(?:\\.[a-zA-Z_$][\\w$]*)*`,
+    `\\b(?:${this.allowedRoots.join("|")})(?:\\.[a-zA-Z_$][\\w$]*|\\[(?:"[^"]+"|'[^']+'|[^\\]]+)\\])+`,
     "g"
   );
   private readonly templateExpressionPattern = /\$\{([^}]*)\}/g;
@@ -19,7 +19,8 @@ export class DependencyExtractorService {
     const normalizedInput = this.replaceShorthands(source);
 
     return (normalizedInput.match(this.variablePathPattern) ?? []).map((path) => {
-      const [type, ...pathSegments] = path.split(".");
+      const normalizedPath = this.normalizeBracketSegments(path);
+      const [type, ...pathSegments] = normalizedPath.split(".");
 
       return {
         type: type as VariableReference["type"],
@@ -44,6 +45,17 @@ export class DependencyExtractorService {
 
       return result.replace(shorthandPattern, `$1${to}`);
     }, input);
+  }
+
+  private normalizeBracketSegments(path: string): string {
+    return path.replace(
+      /\[(?:"([^"]+)"|'([^']+)'|([^\]]+))\]/g,
+      (_match, doubleQuoted, singleQuoted, unquoted) => {
+        const value = doubleQuoted ?? singleQuoted ?? unquoted;
+
+        return `.${value}`;
+      }
+    );
   }
 
   private escapeRegExp(value: string): string {
