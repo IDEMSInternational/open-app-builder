@@ -86,12 +86,22 @@ export interface IDeploymentRuntimeConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
-  /** 3rd party integration for remote asset storage and sync */
+  /**
+   * Remote asset packs (download on device / CDN URLs on web).
+   * Requires the chosen provider to be initialised elsewhere in this config
+   * (`supabase` or `firebase`).
+   */
   remote_assets?: {
-    /** Enable remote asset storage and sync by specifying provider */
     provider: "supabase" | "firebase";
-    /** By convention, this should match the deployment name */
-    bucketName: string;
+    /**
+     * Supabase Storage bucket name. Required when `provider` is `"supabase"`.
+     *
+     * Ignored when `provider` is `"firebase"`: the Firebase provider uses
+     * `firebase.config.storageBucket` (and native SDK defaults) instead.
+     * A value may still be set for consistency or future sync tooling.
+     */
+    bucketName?: string;
+    /** Path prefix inside the bucket for all remote asset files (both providers). */
     folderName: string;
   };
 
