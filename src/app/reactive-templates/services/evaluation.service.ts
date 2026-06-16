@@ -4,7 +4,7 @@ import { VariableReference, STORE_TYPES } from "../stores/store";
 import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
 import { ExpressionParser } from "./expression-parsers/expression-parser";
-import { ExpressionEvaluator } from "./evaluators/expression-evaluator";
+import { JavascriptEvaluator } from "./javascript.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -12,7 +12,7 @@ export class EvaluationService {
     private contextCreator: ContextCreatorService,
     private dependencyExtractor: DependencyExtractorService,
     private expressionParser: ExpressionParser,
-    private expressionEvaluator: ExpressionEvaluator
+    private expressionEvaluator: JavascriptEvaluator
   ) {}
 
   public evaluateExpression<T>(
