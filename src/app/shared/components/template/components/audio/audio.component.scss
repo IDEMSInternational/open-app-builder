@@ -2,6 +2,28 @@
 
 $control-background: var(--audio-control-background, var(--ion-color-primary-500));
 
+@mixin compact-play-button {
+  @include mixins.medium-square;
+  --background: #{$control-background};
+  --border-radius: var(--ion-border-radius-rounded);
+  --box-shadow: var(--ion-default-box-shadow);
+
+  ion-icon {
+    position: absolute;
+    font-size: var(--icon-size-tiny);
+
+    // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
+    &.play-icon {
+      padding-left: 4px;
+    }
+  }
+}
+
+ion-button.btn-play[data-variant~="button_only"],
+ion-button.btn-play[data-variant~="compact"] {
+  @include compact-play-button;
+}
+
 .container-player[data-variant~="compact"] {
   background: white;
   border: var(--border-standard);
@@ -40,19 +62,7 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
         display: none;
       }
       ion-button.btn-play {
-        @include mixins.medium-square;
         margin-right: var(--small-margin);
-        --background: #{$control-background};
-        --border-radius: var(--ion-border-radius-rounded);
-        --box-shadow: var(--ion-default-box-shadow);
-        ion-icon {
-          position: absolute;
-          font-size: var(--icon-size-tiny);
-          // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
-          &.play-icon {
-            padding-left: 4px;
-          }
-        }
       }
     }
 
