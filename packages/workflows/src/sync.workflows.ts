@@ -186,11 +186,6 @@ const workflows: IDeploymentWorkflows = {
           });
         },
       },
-      // {
-      //   name: "sync_remote_assets",
-      //   condition: async ({ config }) => config.remote_assets !== undefined,
-      //   function: async ({ tasks }) => tasks.appData.syncRemoteAssets(),
-      // },
     ],
   },
   sync_local: {
