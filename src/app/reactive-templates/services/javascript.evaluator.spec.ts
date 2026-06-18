@@ -122,6 +122,18 @@ describe("JavascriptEvaluator", () => {
 
       expect(result).toBe("10 + 20 = 30");
     });
+
+    it("supports literal backticks in string mode", () => {
+      const result = evaluator.evaluate("Use `inline code` in text", "string");
+
+      expect(result).toBe("Use `inline code` in text");
+    });
+
+    it("supports literal backslashes in string mode", () => {
+      const result = evaluator.evaluate("Path: C:\\users\\name", "string");
+
+      expect(result).toBe("Path: C:\\users\\name");
+    });
   });
 
   describe("type handling", () => {
