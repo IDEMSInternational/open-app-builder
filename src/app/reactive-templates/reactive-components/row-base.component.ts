@@ -152,7 +152,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       this.evaluationService.evaluateExpression(
         row.condition ?? true,
         this.namespace(),
-        this.params.valueType.value()
+        "script" // conditions are always evaluated as script to allow for complex expressions with logical operators
       )
     );
 
@@ -274,7 +274,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     const dependencies = this.evaluationService.getDependencies(
       condition,
       this.namespace(),
-      this.params.valueType.value()
+      "script"
     );
 
     if (!dependencies || !dependencies.length) {
@@ -299,11 +299,19 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
     if (!rowParams) return;
 
-    let dependencies = Object.keys(rowParams).flatMap((name) => {
+    const params = this.params as Parameters;
+
+    let dependencies = Object.keys(params).flatMap((key) => {
+      const param = params[key];
+
+      if (!Object.prototype.hasOwnProperty.call(rowParams, param.name)) {
+        return [];
+      }
+
       return this.evaluationService.getDependencies(
-        rowParams[name],
+        rowParams[param.name],
         this.namespace(),
-        this.params.valueType.value()
+        param.valueType
       );
     });
 
