@@ -37,6 +37,7 @@ const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
  */
 describe("DynamicDataService", () => {
   let service: DynamicDataService;
+  let appDataService: AppDataService;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -61,6 +62,7 @@ describe("DynamicDataService", () => {
     // HACK - polyfill not loaded for rxdb dev plugin so manually fill global before running tests
     window.global = window;
 
+    appDataService = TestBed.inject(AppDataService);
     service = TestBed.inject(DynamicDataService);
     await service.ready();
     // Ensure any data previously persisted is cleared
@@ -71,6 +73,18 @@ describe("DynamicDataService", () => {
     const obs = service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data.length).toEqual(3);
+  });
+
+  it("populates registered underscore flows from runtime app data", async () => {
+    appDataService.addRuntimeFlowToContents({
+      flow_type: "data_list",
+      flow_name: "_runtime_flow",
+      rows: [{ id: "id1", string: "runtime" }],
+    });
+
+    const obs = service.query$<any>("data_list", "_runtime_flow");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id1", string: "runtime", row_index: 0 }]);
   });
 
   it("supports partial flow row updates", async () => {

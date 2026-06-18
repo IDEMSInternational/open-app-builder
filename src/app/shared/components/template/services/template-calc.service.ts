@@ -8,6 +8,7 @@ import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import type { FlowTypes } from "packages/data-models";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 /** Window context with additional calc service properties attached */
 type IWindowWithCalc = Window & {
@@ -38,7 +39,7 @@ export class TemplateCalcService extends AsyncServiceBase {
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
-    private localStorageService: LocalStorageService
+    private systemVariableService: SystemVariableService
   ) {
     super("TemplateCalc");
     this.registerInitFunction(this.initialise);
@@ -49,7 +50,6 @@ export class TemplateCalcService extends AsyncServiceBase {
   }
 
   protected async initialise() {
-    this.ensureSyncServicesReady([this.localStorageService]);
     await this.ensureAsyncServicesReady([this.dataEvaluationService]);
     await this.setUserMetaData();
     this.getCalcContext();
@@ -105,7 +105,7 @@ export class TemplateCalcService extends AsyncServiceBase {
       this.device_info = await Device.getInfo();
     }
     if (!this.app_user_id) {
-      this.app_user_id = this.localStorageService.getProtected("APP_USER_ID");
+      this.app_user_id = this.systemVariableService.get("APP_USER_ID");
     }
   }
 

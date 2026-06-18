@@ -80,6 +80,22 @@ describe("rapidproUtils", () => {
     });
   });
 
+  it("should not throw when rapidpro_fields is missing", () => {
+    const parentFromApp = {
+      app_user_id: "app-user-123",
+    } as IParentFromExternalSource;
+    const parentGroupId = "group-456";
+    const result = rapidproUtils.transformParentWithExternalSourceDataToLocalFormat(
+      parentFromApp,
+      parentGroupId
+    );
+    expect(result).toEqual({
+      id: "group-456+app-user-123",
+      group_id: "group-456",
+      app_user_id: "app-user-123",
+    });
+  });
+
   describe("formatParentGroupDataForPush", () => {
     it("should remove protected fields and RapidPro fields from parent group and parents", () => {
       const parentGroup: any = {
@@ -266,6 +282,93 @@ describe("rapidproUtils", () => {
           id: "parent-20",
           group_id: "group-10",
           first_name: "Incoming Parent 20",
+        },
+      ]);
+    });
+
+    it("should merge by app_user_id and avoid duplicate appended local parent", () => {
+      const existing = [
+        {
+          app_user_id: "593cc833-7f71-4021-8ea1-d23faa7873d1",
+          rapidpro_fields: {
+            gender: "woman",
+            name: "Bobby",
+            timestamp: "2026-04-14T14:18:08.133Z",
+          },
+        } as IParentInSharedData,
+        {
+          app_user_id: "2825e892-16f0-4a17-bee0-0dd1635852ea",
+          rapidpro_fields: {
+            gender: "man",
+            name: "Gigi",
+            timestamp: "2026-04-14T14:19:45.470Z",
+          },
+        } as IParentInSharedData,
+      ];
+      const incoming = [
+        {
+          id: "b3d292f6-b7ce-4096-b30e-f1dff9890718+593cc833-7f71-4021-8ea1-d23faa7873d1",
+          group_id: "b3d292f6-b7ce-4096-b30e-f1dff9890718",
+          app_user_id: "593cc833-7f71-4021-8ea1-d23faa7873d1",
+          text: "Test 1",
+        } as IParent,
+      ];
+      const result = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
+        existing,
+        incoming
+      );
+      expect(result).toEqual([
+        {
+          id: "b3d292f6-b7ce-4096-b30e-f1dff9890718+593cc833-7f71-4021-8ea1-d23faa7873d1",
+          group_id: "b3d292f6-b7ce-4096-b30e-f1dff9890718",
+          app_user_id: "593cc833-7f71-4021-8ea1-d23faa7873d1",
+          text: "Test 1",
+          rapidpro_fields: {
+            gender: "woman",
+            name: "Bobby",
+            timestamp: "2026-04-14T14:18:08.133Z",
+          },
+        },
+        {
+          app_user_id: "2825e892-16f0-4a17-bee0-0dd1635852ea",
+          rapidpro_fields: {
+            gender: "man",
+            name: "Gigi",
+            timestamp: "2026-04-14T14:19:45.470Z",
+          },
+        },
+      ]);
+    });
+
+    it("should merge by auth_user_id when available", () => {
+      const existing = [
+        {
+          auth_user_id: "auth-user-42",
+          app_user_id: "app-user-42",
+          rapidpro_fields: { name: "Auth Parent" },
+        } as IParentInSharedData,
+      ];
+      const incoming = [
+        {
+          id: "group-1+auth-user-42",
+          group_id: "group-1",
+          auth_user_id: "auth-user-42",
+          app_user_id: "app-user-42",
+          first_name: "Incoming",
+        } as IParent,
+      ];
+      const result = rapidproUtils.mergeParentsArraysPreservingExternalSourceData(
+        existing,
+        incoming
+      );
+      expect(result).toEqual([
+        {
+          id: "group-1+auth-user-42",
+          group_id: "group-1",
+          auth_user_id: "auth-user-42",
+          app_user_id: "app-user-42",
+          first_name: "Incoming",
+          rapidpro_fields: { name: "Auth Parent" },
         },
       ]);
     });

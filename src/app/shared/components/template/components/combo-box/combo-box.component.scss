@@ -1,6 +1,6 @@
 $placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-gray-500));
 $selected-value-text: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
-$background-no-value: var(--combo-box-background-no-value, #fff);
+$background-no-value: var(--combo-box-background-no-value, var(--ion-color-primary-50));
 $background-with-value: var(--combo-box-background-with-value, var(--ion-color-primary-100));
 $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-300));
 
@@ -21,26 +21,26 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     min-width: var(--combo-box-min-width, 328px);
   }
   &.no-value {
-    background: var(--ion-color-primary-50);
+    background: $background-no-value;
     border: 1px solid var(--ion-color-primary-300);
     opacity: 0.9;
 
     &.placeholder-style {
-      color: var(--ion-color-primary-300);
-      font-weight: var(--font-weight-medium);
+      color: var(--ion-color-gray-800);
+      font-weight: var(--font-weight-standard);
     }
   }
   &.with-value {
     background: var(--ion-color-primary-100);
     color: var(--ion-color-primary-800);
     border: 1.5px solid var(--ion-color-primary-300);
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-standard);
   }
 }
 
 .disabled {
+  opacity: 0.5;
   &.no-value {
-    opacity: 0.5;
     border-color: var(--ion-color-gray-200);
   }
 }

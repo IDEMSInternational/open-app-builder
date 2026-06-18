@@ -34,13 +34,17 @@ export class RemoteFunctionDebugPage implements OnInit {
     return undefined;
   });
 
-  public firebaseToken = computed(() => this.firebaseProvider()?.["appCheckToken"]());
-  public firebaseTokenError = computed(() => this.firebaseProvider()?.["appCheckTokenError"]());
+  public firebaseToken = computed(() => this.firebaseProvider()?.appCheckToken());
+  public firebaseTokenError = computed(() => this.firebaseProvider()?.appCheckTokenError());
+  public firebaseDebugToken = computed(() => this.firebaseProvider()?.appCheckDebugToken());
 
   public config = this.service["config"];
 
   async ngOnInit() {
     await this.service.ready();
+  }
+  public refreshAppCheck() {
+    return this.firebaseProvider()?.initialise(true);
   }
 
   // --- Param management ---

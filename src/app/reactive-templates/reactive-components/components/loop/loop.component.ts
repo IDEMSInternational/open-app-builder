@@ -27,4 +27,22 @@ export class LoopComponent extends RowBaseComponent<ReturnType<typeof parameters
   public getName(item: any, index: number): string {
     return `${this.name()}.${this.getLoopIndex(item, index)}`;
   }
+
+  /**
+   * After storing the updated loop value, re-evaluate all child rows so that
+   * expressions using @item / @index tokens reflect the latest item data.
+   * Child rows have no @local.xxx dependency on the loop variable, so they
+   * can't subscribe themselves — the loop component pushes the update instead.
+   */
+  protected override async storeValue(): Promise<void> {
+    await super.storeValue();
+    const prefix = `${this.name()}.`;
+    this.rowRegistry
+      .getAllNames()
+      .filter((name) => name.startsWith(prefix))
+      .forEach((name) => {
+        const row = this.rowRegistry.get(name);
+        row.setExpression(row.row().value);
+      });
+  }
 }

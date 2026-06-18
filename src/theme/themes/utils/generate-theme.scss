@@ -133,6 +133,7 @@
   $result: map.merge($result, generate-colour-variants($yellow, "yellow", $weights));
   $result: map.merge($result, generate-colour-variants($gray, "gray", $weights));
   $result: map.merge($result, generate-colour-variants($green, "green", $weights));
+  $result: map.merge($result, generate-colour-variants($red, "red", $weights));
   $result: map.merge(
     $result,
     generate-colour-variants($primary-variant, "primary-variant", $weights)

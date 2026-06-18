@@ -11,6 +11,7 @@ import { MockAppDataService } from "../data/app-data.service.mock.spec";
 import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 describe("UserMetaService", () => {
   let service: UserMetaService;
@@ -21,6 +22,7 @@ describe("UserMetaService", () => {
   let mockDeploymentService: MockDeploymentService;
   let mockTemplateActionRegistry: jasmine.SpyObj<TemplateActionRegistry>;
   let mockTemplateFieldService: jasmine.SpyObj<TemplateFieldService>;
+  let mockSystemVariableService: jasmine.SpyObj<SystemVariableService>;
 
   beforeEach(() => {
     // Initialize mock services
@@ -30,6 +32,11 @@ describe("UserMetaService", () => {
     mockDeploymentService = new MockDeploymentService();
     mockTemplateActionRegistry = jasmine.createSpyObj("TemplateActionRegistry", ["register"]);
     mockTemplateFieldService = jasmine.createSpyObj("TemplateFieldService", ["ready"]);
+    mockSystemVariableService = jasmine.createSpyObj("SystemVariableService", [
+      "set",
+      "get",
+      "remove",
+    ]);
 
     // Initialize mock dynamic data service with test data
     mockDynamicDataService = new MockDynamicDataService({
@@ -53,6 +60,7 @@ describe("UserMetaService", () => {
         { provide: "DeploymentService", useValue: mockDeploymentService },
         { provide: TemplateActionRegistry, useValue: mockTemplateActionRegistry },
         { provide: TemplateFieldService, useValue: mockTemplateFieldService },
+        { provide: SystemVariableService, useValue: mockSystemVariableService },
       ],
     });
 

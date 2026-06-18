@@ -8,3 +8,8 @@
     --padding-bottom: 8px;
   }
 }
+
+.module-title {
+  margin-inline-start: var(--regular-margin);
+  margin-inline-end: var(--regular-margin);
+}

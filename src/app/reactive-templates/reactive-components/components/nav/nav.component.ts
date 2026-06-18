@@ -15,7 +15,10 @@ export class NavComponent
   implements IAction
 {
   public async execute(params?: IActionParameter[]): Promise<void> {
-    const templateName = this.row().value;
+    const templateName = this.evaluationService.evaluateExpression(
+      this.row().value,
+      this.namespace()
+    );
     const rows = this.row().rows ?? [];
     const url = "/template/" + templateName;
 

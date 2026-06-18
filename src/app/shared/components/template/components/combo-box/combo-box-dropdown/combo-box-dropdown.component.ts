@@ -1,7 +1,13 @@
-import { Component, computed, EventEmitter, Output, signal, input, output } from "@angular/core";
+import { Component, computed, signal, input, output } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { ComboBoxSearchComponent } from "../combo-box-search/combo-box-search.component";
 import { IAnswerOption } from "src/app/shared/utils";
+import {
+  OptionMetaBadgeConfig,
+  OPTION_META_BADGE_VALUE_DEFAULTS,
+  resolveOptionMetaBadgeColor,
+  resolveOptionMetaBadgeText,
+} from "../combo-box-meta-badge.config";
 
 @Component({
   selector: "combo-box-dropdown",
@@ -11,6 +17,8 @@ import { IAnswerOption } from "src/app/shared/utils";
 })
 export class ComboBoxDropdownComponent {
   private static nextId = 0;
+  /** Option count above which the trigger opens the search modal instead of the inline popover. */
+  private static readonly SEARCH_THRESHOLD = 8;
 
   public value = input<any>();
   public placeholder = input<string>("");
@@ -21,12 +29,18 @@ export class ComboBoxDropdownComponent {
   public answerOptions = input.required<IAnswerOption[]>();
   public optionsKey = input<string>("name");
   public optionsValue = input<string>("text");
+  public optionMetaBadge = input<OptionMetaBadgeConfig>({
+    textKey: "",
+    colorKey: "",
+    valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
+  });
 
-  /** When there are more than 8 options, open search modal instead of inline popover. */
-  public showSearch = computed(() => this.answerOptions().length > 8);
+  /** When option count exceeds `SEARCH_THRESHOLD`, open search modal instead of inline popover. */
+  public showSearch = computed(
+    () => this.answerOptions().length > ComboBoxDropdownComponent.SEARCH_THRESHOLD
+  );
 
-  @Output()
-  public selectionChange = new EventEmitter<any>();
+  public selectionChange = output<any>();
 
   /** Emitted when the search modal dismisses with `data.answer` from `ComboBoxSearchComponent`. */
   public searchDismiss = output<IAnswerOption | null | undefined>();
@@ -42,6 +56,14 @@ export class ComboBoxDropdownComponent {
     this.isOpen.set(true);
   }
 
+  public metaBadgeChipColor(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeColor(this.optionMetaBadge(), option);
+  }
+
+  public metaBadgeChipText(option: IAnswerOption): string {
+    return resolveOptionMetaBadgeText(this.optionMetaBadge(), option);
+  }
+
   public async openSearch() {
     if (this.disabled()) return;
     const modal = await this.modalController.create({
@@ -53,6 +75,7 @@ export class ComboBoxDropdownComponent {
         selectedValue: this.value(),
         optionsKey: this.optionsKey(),
         optionsValue: this.optionsValue(),
+        optionMetaBadge: this.optionMetaBadge(),
       },
     });
 

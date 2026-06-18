@@ -16,6 +16,8 @@ export class GlobalVariableStore implements IStore {
   private readonly stateChanged$ = new Subject<void>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
 
+  protected storageKeyPrefix: string = "global-";
+
   constructor(private injector: Injector) {}
 
   public set(ref: VariableReference, value: any): void {
@@ -169,7 +171,7 @@ export class GlobalVariableStore implements IStore {
   }
 
   private getStoredValue(name: string): any {
-    const key = `global-${name}`;
+    const key = `${this.storageKeyPrefix}${name}`;
     const storedValue = localStorage.getItem(key);
 
     if (storedValue === null || storedValue === "undefined") {
@@ -184,7 +186,7 @@ export class GlobalVariableStore implements IStore {
   }
 
   private setStoredValue(name: string, value: any): void {
-    const key = `global-${name}`;
+    const key = `${this.storageKeyPrefix}${name}`;
 
     if (value === undefined) {
       localStorage.removeItem(key);
