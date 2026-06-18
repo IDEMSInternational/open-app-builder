@@ -25,7 +25,13 @@ export class RowContextDebuggerComponent {
 
   public dependencies = computed(() => {
     const row = this.row();
-    return row ? this.evaluationService.getDependencies(row.expression(), row.namespace()) : [];
+    return row
+      ? this.evaluationService.getDependencies(
+          row.expression(),
+          row.namespace(),
+          row.params.valueType.value()
+        )
+      : [];
   });
 
   private dependencyValues = this.variableStore.watchMultipleSignal(this.dependencies);
