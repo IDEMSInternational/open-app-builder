@@ -42,7 +42,7 @@ describe("LegacyVariableExpressionParser", () => {
     const expression = "@local.user.name + @item.value + @count + @is_first";
 
     expect(subject.parse(expression, "script")).toBe(
-      "local.user.name + loop.value + loop.count + loop.is_first"
+      "local.user.name + loop.item.value + loop.count + loop.is_first"
     );
   });
 
@@ -77,7 +77,13 @@ describe("LegacyVariableExpressionParser", () => {
   it("does not wrap already templated values in script mode", () => {
     const expression = "${@local.user.name} && @item.value";
 
-    expect(subject.parse(expression, "script")).toBe("${@local.user.name} && loop.value");
+    expect(subject.parse(expression, "script")).toBe("${@local.user.name} && loop.item.value");
+  });
+
+  it("converts @item paths to loop.item references in list mode", () => {
+    const expression = "@item.value";
+
+    expect(subject.parse(expression, "list")).toBe("loop.item.value");
   });
 
   it("does not convert when @local is part of another token", () => {

@@ -21,7 +21,7 @@ export class LegacyVariableExpressionParser implements IExpressionParser {
           return "loop.item";
         }
 
-        return valueType === "string" ? `loop.item${path}` : `loop${path}`;
+        return `loop.item${path}`;
       },
     },
     {
