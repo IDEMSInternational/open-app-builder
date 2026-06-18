@@ -47,9 +47,6 @@ Technical Tasks
 
 * Run end to end tests on pr
 
-Features
-
-
 Functionality not yet supported by reactive templates:
 
 * Modals and modal navigation e.g. nav stack
