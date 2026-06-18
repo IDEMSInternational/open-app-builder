@@ -8,10 +8,9 @@ export class JavascriptEvaluator {
   public evaluate(expression: string | number | boolean, valueType: ValueType): any {
     const raw = typeof expression === "string" ? expression : String(expression);
     const safeTemplate = raw.replace(/\\/g, "\\\\").replace(/`/g, "\\`");
-    const body =
-      valueType === "string"
-        ? `"use strict"; return \`${safeTemplate}\`;`
-        : `"use strict"; return (${raw});`;
+    const expressionBody =
+      valueType === "string" ? `return \`${safeTemplate}\`;` : `return (${raw});`;
+    const body = `"use strict"; ${expressionBody}`;
 
     return this.evaluateBody(body, expression);
   }
@@ -27,9 +26,5 @@ export class JavascriptEvaluator {
       console.error("Failed to evaluate expression", { expression, error });
       return undefined;
     }
-  }
-
-  private escapeTemplateLiteral(input: string): string {
-    return input.replace(/`/g, "\\`");
   }
 }

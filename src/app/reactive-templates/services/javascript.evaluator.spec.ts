@@ -82,6 +82,12 @@ describe("JavascriptEvaluator", () => {
 
       expect(result).toEqual({ selector: { active: true }, sort: [{ name: "desc" }], limit: 3 });
     });
+
+    it("evaluates script expressions in strict mode", () => {
+      const result = evaluator.evaluate("(function(){ return this; })()", "script");
+
+      expect(result).toBeUndefined();
+    });
   });
 
   describe("template literal evaluation", () => {
@@ -133,6 +139,12 @@ describe("JavascriptEvaluator", () => {
       const result = evaluator.evaluate("Path: C:\\users\\name", "string");
 
       expect(result).toBe("Path: C:\\users\\name");
+    });
+
+    it("evaluates template expressions in strict mode", () => {
+      const result = evaluator.evaluate("Strict mode: ${(function(){ return this; })()}", "string");
+
+      expect(result).toBe("Strict mode: undefined");
     });
   });
 
