@@ -136,7 +136,12 @@ export class ContextCreatorService {
       return false;
     }
 
-    // if arg is an empty array Number(arg) == 0, but we want to keep it as an empty array, so we check for that first
+    // Preserve empty and whitespace-only strings as strings instead of coercing to 0.
+    if (typeof arg === "string" && arg.trim() === "") {
+      return arg;
+    }
+
+    // If arg is an empty array Number(arg) == 0, but we want to keep it as an empty array, so we check for that first.
     const isNumber = !Array.isArray(arg) && !isNaN(Number(arg));
 
     if (isNumber) {

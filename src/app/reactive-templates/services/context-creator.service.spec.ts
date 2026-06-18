@@ -141,6 +141,22 @@ describe("ContextCreatorService", () => {
     });
   });
 
+  it("does not coerce empty string values to number", () => {
+    variableStore.set({ name: "empty_text", type: "local" }, "");
+
+    const context = service.createContext([{ name: "empty_text", type: "local" }], "");
+
+    expect(context.local.empty_text).toBe("");
+  });
+
+  it("does not coerce whitespace-only string values to number", () => {
+    variableStore.set({ name: "space_text", type: "local" }, "   ");
+
+    const context = service.createContext([{ name: "space_text", type: "local" }], "");
+
+    expect(context.local.space_text).toBe("   ");
+  });
+
   it("creates loop context from namespace", () => {
     variableStore.set({ name: "items", type: "local" }, [
       { name: "Alpha", value: 10 },
