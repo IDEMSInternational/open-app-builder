@@ -21,6 +21,11 @@ export class UpdateComponent
 {
   private dynamicDataService = inject(DynamicDataService);
 
+  constructor() {
+    super();
+    this.params.valueType.setValue("script");
+  }
+
   public async execute(params?: IActionParameter[]): Promise<void> {
     const dataList = this.params.dataList.value();
 
