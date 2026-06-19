@@ -13,9 +13,9 @@ export function getCantoConfig() {
 }
 
 export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string) {
-  // File may appear in multiple albums, so find the path that includes the deployment's named folder ID
+  // File may appear in multiple albums, so find the path that includes the deployment's source folder ID
   const albumDetails = fileEntry.relatedAlbums?.find((album) =>
-    album.idPath?.includes(cantoFolderID)
+    album.idPath?.split("/").includes(cantoFolderID)
   );
   if (!albumDetails) {
     throw new Error(
@@ -26,11 +26,16 @@ export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string
   if (!idPath || !namePath) {
     throw new Error(`Canto album path metadata missing for file "${fileEntry.name}"`);
   }
-  // Match Google Drive downloads by making paths relative to the configured source folder/album.
+  // Paths below the configured source folder become the relative asset path.
   const idPathSegments = idPath.split("/");
   const namePathSegments = namePath.split("/");
-  const relativePathSegments =
-    idPathSegments[0] === cantoFolderID ? namePathSegments.slice(1) : namePathSegments;
+  const folderIndex = idPathSegments.indexOf(cantoFolderID);
+  if (folderIndex === -1) {
+    throw new Error(
+      `Canto folder "${cantoFolderID}" not found in album path for file "${fileEntry.name}"`
+    );
+  }
+  const relativePathSegments = namePathSegments.slice(folderIndex + 1);
   return path.join(...relativePathSegments, fileEntry.name);
 }
 
