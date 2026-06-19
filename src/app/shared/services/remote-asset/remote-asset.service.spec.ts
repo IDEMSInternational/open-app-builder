@@ -120,9 +120,13 @@ describe("RemoteAssetsService", () => {
   beforeEach(() => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
       "upsert",
+      "update",
+      "snapshot",
       "resetFlow",
     ]);
     mockDynamicDataService.upsert.and.resolveTo();
+    mockDynamicDataService.update.and.resolveTo();
+    mockDynamicDataService.snapshot.and.resolveTo([]);
     mockDynamicDataService.resetFlow.and.resolveTo();
     mockNetworkService = jasmine.createSpyObj<NetworkService>("NetworkService", [
       "isOffline",
@@ -268,6 +272,8 @@ describe("RemoteAssetsService", () => {
         download_started_at: jasmine.any(String),
         download_completed_at: "",
         download_status_updated_at: jasmine.any(String),
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
       })
     );
     expect(upsertRows[1]).toEqual(
@@ -278,6 +284,65 @@ describe("RemoteAssetsService", () => {
         download_started_at: upsertRows[0].download_started_at,
         download_completed_at: jasmine.any(String),
         download_status_updated_at: jasmine.any(String),
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+      })
+    );
+    expect(mockDynamicDataService.update).toHaveBeenCalledWith(
+      "data_list",
+      "_asset_packs",
+      "asset_pack_1",
+      {
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+      }
+    );
+  });
+
+  it("persists a downloaded count covering every asset, including overrides", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    // Stub a provider so the (web) download path can resolve public URLs without real network calls
+    service["provider"] = {
+      getPublicUrl: (path: string) => `https://cdn.example.com/${path}`,
+    } as any;
+    // 3 rows but 4 files: a base asset, a base asset + 1 override, and 1 override-only asset
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [
+        clone(MOCK_ASSET_ENTRY),
+        clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES),
+        clone(MOCK_ASSET_ENTRY_OVERRIDES_ONLY),
+      ] as FlowTypes.Data_listRow<IAssetEntry>[],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+
+    // Stateful `_asset_packs` row so the "completed" upsert reads back the counts written during the
+    // download rather than a stale/empty snapshot
+    let assetPackRow: IDBAssetPack | undefined;
+    mockDynamicDataService.upsert.and.callFake(async (_type, flow_name, row: any) => {
+      if (flow_name === "_asset_packs") assetPackRow = { ...row };
+    });
+    mockDynamicDataService.update.and.callFake(async (_type, flow_name, _id, update: any) => {
+      if (flow_name === "_asset_packs" && assetPackRow) {
+        assetPackRow = { ...assetPackRow, ...update };
+      }
+    });
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
+      flow_name === "_asset_packs" && assetPackRow ? ([assetPackRow] as any) : []
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(assetPackRow).toEqual(
+      jasmine.objectContaining({
+        download_status: "completed",
+        assets_total_count: 4,
+        assets_downloaded_count: 4,
       })
     );
   });
