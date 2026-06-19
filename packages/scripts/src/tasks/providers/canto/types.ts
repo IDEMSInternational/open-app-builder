@@ -2,6 +2,7 @@ export interface CantoFolderListingEntry {
   id: string;
   name: string;
   scheme: string;
+  md5?: string;
   additional?: Record<string, string | string[] | null>;
   relatedAlbums?: CantoRelatedAlbum[];
   url: {
@@ -30,6 +31,7 @@ export interface CantoManifestEntry {
   id: string;
   name: string;
   scheme: string;
+  md5?: string;
   additional?: Record<string, string | string[] | null>;
   relatedAlbums?: CantoRelatedAlbum[];
   url: {

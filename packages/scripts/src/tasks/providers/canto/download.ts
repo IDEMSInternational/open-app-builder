@@ -13,6 +13,7 @@ import type {
 } from "./types";
 import { getCantoConfig, getFilePath, getOutputFolder } from "./utils";
 import { ensureValidAccessToken } from "./authorize";
+import { cleanupEmptyFolders, generateFolderFlatMap } from "../../../utils";
 
 interface CantoQueryParams {
   tags?: string;
@@ -23,8 +24,22 @@ interface CantoQueryParams {
 }
 type CantoQueryType = "search" | "folder" | "album";
 
+interface ICantoSyncActions {
+  new: CantoManifestEntry[];
+  updated: CantoManifestEntry[];
+  same: CantoManifestEntry[];
+  deleted: { relativePath: string }[];
+  summary: {
+    new: number;
+    updated: number;
+    same: number;
+    deleted: number;
+  };
+}
+
 const DOWNLOAD_CONCURRENCY = 5;
 const FOLDER_LIST_PAGE_SIZE = 1000;
+const MANIFEST_FILENAME = "manifest.json";
 
 const listFiles = async () => {
   const { sourceFolders } = getCantoConfig();
@@ -76,6 +91,7 @@ const toManifestEntry = (file: CantoFolderListingEntry): CantoManifestEntry => (
   id: file.id,
   name: file.name,
   scheme: file.scheme,
+  md5: file.md5,
   additional: file.additional,
   relatedAlbums: file.relatedAlbums?.map((album) => ({
     id: album.id,
@@ -106,12 +122,70 @@ const getDownloadedFolders = () => {
 };
 
 const downloadFilesFromManifest = async (downloadedFolder: CantoDownloadedFolder) => {
-  const manifestPath = path.join(downloadedFolder.path, "manifest.json");
+  const { path: outputPath, folderConfig } = downloadedFolder;
+  const manifestPath = path.join(outputPath, MANIFEST_FILENAME);
   const manifest = (await fs.readJson(manifestPath)) as CantoManifest;
-  console.log(`Downloading ${manifest.length} files from "${downloadedFolder.folderConfig.name}"`);
+  const actions = prepareSyncActions(manifest, outputPath, folderConfig.id);
+  console.log(actions.summary);
+
+  for (const { relativePath } of actions.deleted) {
+    await fs.remove(path.join(outputPath, relativePath));
+  }
+
+  const fileDownloads = [...actions.new, ...actions.updated];
+  console.log(
+    `Downloading ${fileDownloads.length} files from "${folderConfig.name}" (${actions.summary.same} unchanged)`
+  );
   const queue = new PQueue({ concurrency: DOWNLOAD_CONCURRENCY });
-  await queue.addAll(manifest.map((file) => () => downloadFile(file, downloadedFolder)));
-  console.log(`Downloaded files to ${downloadedFolder.path}`);
+  await queue.addAll(fileDownloads.map((file) => () => downloadFile(file, downloadedFolder)));
+  cleanupEmptyFolders(outputPath);
+  console.log(`Downloaded files to ${outputPath}`);
+};
+
+const prepareSyncActions = (
+  manifest: CantoManifest,
+  outputPath: string,
+  folderId: string
+): ICantoSyncActions => {
+  const localFiles = generateFolderFlatMap(outputPath, {
+    filterFn: (relativePath) => relativePath !== MANIFEST_FILENAME,
+  });
+  const actions: ICantoSyncActions = {
+    new: [],
+    updated: [],
+    same: [],
+    deleted: [],
+    summary: { new: 0, updated: 0, same: 0, deleted: 0 },
+  };
+  const manifestPaths = new Set<string>();
+
+  for (const file of manifest) {
+    const relativePath = getFilePath(file, folderId);
+    manifestPaths.add(relativePath);
+    const localFile = localFiles[relativePath];
+
+    if (!localFile) {
+      actions.new.push(file);
+    } else if (file.md5 && localFile.md5Checksum === file.md5) {
+      actions.same.push(file);
+    } else {
+      actions.updated.push(file);
+    }
+  }
+
+  for (const relativePath of Object.keys(localFiles)) {
+    if (!manifestPaths.has(relativePath)) {
+      actions.deleted.push({ relativePath });
+    }
+  }
+
+  actions.summary = {
+    new: actions.new.length,
+    updated: actions.updated.length,
+    same: actions.same.length,
+    deleted: actions.deleted.length,
+  };
+  return actions;
 };
 
 /**
