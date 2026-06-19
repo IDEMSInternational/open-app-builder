@@ -1,10 +1,18 @@
-export interface CantoContentSummary {
+export interface CantoFolderListingEntry {
   id: string;
+  name: string;
   scheme: string;
+  additional?: Record<string, string | string[] | null>;
+  relatedAlbums?: CantoRelatedAlbum[];
+  url: {
+    directUrlOriginal: string;
+    [key: string]: string | undefined;
+  };
 }
 
 export interface CantoResponseSearchUnderFolder {
-  results: CantoContentSummary[];
+  results: CantoFolderListingEntry[];
+  found?: number;
 }
 
 export interface CantoRelatedAlbum {
@@ -30,10 +38,6 @@ export interface CantoManifestEntry {
 }
 
 export type CantoManifest = CantoManifestEntry[];
-
-export interface CantoResponseBatchContentDetails {
-  docResult: CantoManifest;
-}
 
 export interface CantoSourceFolder {
   id: string;

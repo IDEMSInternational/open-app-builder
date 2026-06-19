@@ -4,9 +4,9 @@ import path from "path";
 import PQueue from "p-queue";
 import type {
   CantoResponseSearchUnderFolder,
-  CantoResponseBatchContentDetails,
   CantoManifest,
   CantoManifestEntry,
+  CantoFolderListingEntry,
   CantoDownloadedFolder,
   CantoSourceFolder,
   CantoSourceFolderFileList,
@@ -18,14 +18,13 @@ interface CantoQueryParams {
   tags?: string;
   sortBy?: string;
   scheme?: string;
+  start?: number;
+  limit?: number;
 }
-type CantoQueryType = "search" | "folder" | "album" | "batch/content";
-interface CantoBatchManifestEntry {
-  id: string;
-  scheme: string;
-}
+type CantoQueryType = "search" | "folder" | "album";
 
 const DOWNLOAD_CONCURRENCY = 5;
+const FOLDER_LIST_PAGE_SIZE = 1000;
 
 const listFiles = async () => {
   const { sourceFolders } = getCantoConfig();
@@ -64,18 +63,31 @@ const createManifests = async (folderFileLists?: CantoSourceFolderFileList[]) =>
 
 const createManifestForCantoFolder = async (folderFileList: CantoSourceFolderFileList) => {
   const { folderConfig, results } = folderFileList;
-  // Make a request for additional info for all files in batch
-  const batchFiles = results.map((file) => {
-    return { id: file.id, scheme: file.scheme };
-  });
   console.log(`Creating Canto manifest for "${folderConfig.name}"`);
-  const manifest = batchFiles.length === 0 ? [] : await batchGetContentDetails(batchFiles);
+  const manifest = results.map(toManifestEntry);
   const outputFolder = getOutputFolder(path.join("original", folderConfig.name));
   const fullPath = path.join(outputFolder, "manifest.json");
   await fs.outputJson(fullPath, manifest, { spaces: 2 });
   console.log(`Created manifest with ${manifest.length} files for "${folderConfig.name}"`);
   return { path: outputFolder, folderConfig };
 };
+
+const toManifestEntry = (file: CantoFolderListingEntry): CantoManifestEntry => ({
+  id: file.id,
+  name: file.name,
+  scheme: file.scheme,
+  additional: file.additional,
+  relatedAlbums: file.relatedAlbums?.map((album) => ({
+    id: album.id,
+    idPath: album.idPath,
+    name: album.name,
+    namePath: album.namePath,
+    scheme: album.scheme,
+  })),
+  url: {
+    directUrlOriginal: file.url.directUrlOriginal,
+  },
+});
 
 const downloadFiles = async (downloadedFolders?: CantoDownloadedFolder[]) => {
   downloadedFolders ??= await createManifests();
@@ -104,36 +116,32 @@ const downloadFilesFromManifest = async (downloadedFolder: CantoDownloadedFolder
 
 /**
  * Build a query to Canto's API
- * @param queryType "search" | "folder" | "album" | "batch/content"
+ * @param queryType "search" | "folder" | "album"
  * @param folderId The ID of a folder *or* album
  * @param queryParams Query params, e.g. { tags: debug }
  * @returns JSON parsed response
  */
 const queryCanto = async (opts: {
-  body?: any;
   folderId?: string;
   method?: string;
   queryParams?: CantoQueryParams;
   queryType: CantoQueryType;
 }) => {
-  const { body, folderId, queryParams, queryType } = opts;
-  // Alternative: const method = opts.method === "batch/content" ? "POST" : "GET"
+  const { folderId, queryParams, queryType } = opts;
   const method = opts.method || "GET";
   const accessToken = await ensureValidAccessToken();
   const { url: baseUrl } = getCantoConfig();
-  const params = queryParams ? new URLSearchParams({ ...queryParams }).toString() : "";
+  const params = queryParams ? stringifyQueryParams(queryParams) : "";
   const url = `${baseUrl.replace(/\/$/, "")}/api/v1/${queryType}${
     folderId ? "/" + folderId : ""
   }${params ? "?" + params : ""}`;
-  const options = {
+  const response = await fetch(url, {
     method,
     headers: {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
-  };
-  const response = await fetch(url, options);
+  });
   if (!response.ok) {
     throw new Error(`Canto ${queryType} request failed: ${response.status} ${response.statusText}`);
   }
@@ -141,26 +149,58 @@ const queryCanto = async (opts: {
   return data;
 };
 
+const stringifyQueryParams = (queryParams: CantoQueryParams) => {
+  return new URLSearchParams(
+    Object.entries(queryParams)
+      .filter(([, value]) => value !== undefined)
+      .map(([key, value]) => [key, String(value)])
+  ).toString();
+};
+
 const searchUnderFolder = async (
   folderId: string,
   includeSubfolders: boolean = false,
   params: CantoQueryParams = undefined
-) => {
+): Promise<CantoResponseSearchUnderFolder> => {
   // To exclude subfolders and albums from results, specify "scheme"
   if (!includeSubfolders) {
     params = { ...params, scheme: "image|video|audio|document|other" };
   }
-  const data = await queryCanto({ queryType: "folder", folderId, queryParams: params });
-  return data as CantoResponseSearchUnderFolder;
-};
 
-const batchGetContentDetails = async (batchFiles: CantoBatchManifestEntry[]) => {
-  const response = (await queryCanto({
-    queryType: "batch/content",
-    method: "POST",
-    body: batchFiles,
-  })) as CantoResponseBatchContentDetails;
-  return response.docResult as CantoManifest;
+  const allResults: CantoResponseSearchUnderFolder["results"] = [];
+  let start = 0;
+  let found: number | undefined;
+  let page = 1;
+
+  while (true) {
+    const data = (await queryCanto({
+      queryType: "folder",
+      folderId,
+      queryParams: { ...params, start, limit: FOLDER_LIST_PAGE_SIZE },
+    })) as CantoResponseSearchUnderFolder;
+
+    const { results } = data;
+    found ??= data.found;
+    allResults.push(...results);
+
+    const totalPages =
+      found !== undefined ? Math.max(1, Math.ceil(found / FOLDER_LIST_PAGE_SIZE)) : undefined;
+    console.log(
+      `Fetched page ${page}${totalPages !== undefined ? `/${totalPages}` : ""} (${results.length} files, ${allResults.length} total)`
+    );
+
+    if (results.length < FOLDER_LIST_PAGE_SIZE) {
+      break;
+    }
+    if (found !== undefined && allResults.length >= found) {
+      break;
+    }
+
+    start += FOLDER_LIST_PAGE_SIZE;
+    page++;
+  }
+
+  return { results: allResults, found };
 };
 
 const downloadFile = async (
