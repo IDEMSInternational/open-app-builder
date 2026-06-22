@@ -11,6 +11,8 @@ import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
+import type { IDBAssetPack } from "./remote-asset.types";
+import { NetworkService } from "../network/network.service";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -113,14 +115,27 @@ const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
 describe("RemoteAssetsService", () => {
   let service: RemoteAssetService;
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
+  let mockNetworkService: jasmine.SpyObj<NetworkService>;
 
   beforeEach(() => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
       "upsert",
+      "update",
+      "snapshot",
       "resetFlow",
     ]);
     mockDynamicDataService.upsert.and.resolveTo();
+    mockDynamicDataService.update.and.resolveTo();
+    mockDynamicDataService.snapshot.and.resolveTo([]);
     mockDynamicDataService.resetFlow.and.resolveTo();
+    mockNetworkService = jasmine.createSpyObj<NetworkService>("NetworkService", [
+      "isOffline",
+      "waitUntilConnected",
+      "onStatusChange",
+    ]);
+    mockNetworkService.isOffline.and.returnValue(false);
+    mockNetworkService.waitUntilConnected.and.resolveTo();
+    mockNetworkService.onStatusChange.and.returnValue(() => undefined);
 
     TestBed.configureTestingModule({
       imports: [],
@@ -129,6 +144,7 @@ describe("RemoteAssetsService", () => {
         provideHttpClientTesting(),
         { provide: DeploymentService, useValue: new MockDeploymentService(MOCK_DEPLOYMENT_CONFIG) },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
+        { provide: NetworkService, useValue: mockNetworkService },
       ],
     });
     service = TestBed.inject(RemoteAssetService);
@@ -208,7 +224,7 @@ describe("RemoteAssetsService", () => {
   });
 
   it("resets downloaded asset pack contents and metadata", async () => {
-    await service["reset"]();
+    await service.reset();
 
     expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
       ["asset_pack", "_assets_contents"],
@@ -216,7 +232,20 @@ describe("RemoteAssetsService", () => {
     ]);
   });
 
+  it("cancels active asset pack downloads before resetting contents and metadata", async () => {
+    spyOn(service, "cancelActiveAssetPackDownloads").and.resolveTo();
+
+    await service.reset();
+
+    expect(service.cancelActiveAssetPackDownloads).toHaveBeenCalled();
+    expect(mockDynamicDataService.resetFlow.calls.allArgs()).toEqual([
+      ["asset_pack", "_assets_contents"],
+      ["data_list", "_asset_packs"],
+    ]);
+  });
+
   it("stores in-progress and completed status for asset pack downloads", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
     const assetPackManifest: FlowTypes.AssetPack = {
       flow_type: "asset_pack",
       flow_name: "asset_pack_1",
@@ -229,28 +258,97 @@ describe("RemoteAssetsService", () => {
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
-    const upsertCalls = mockDynamicDataService.upsert.calls.allArgs() as [
-      FlowTypes.FlowType,
-      string,
-      unknown,
-    ][];
+    const upsertRows = mockDynamicDataService.upsert.calls
+      .allArgs()
+      .map(([, , row]) => row as IDBAssetPack);
 
     expect(success).toBeTrue();
-    expect(upsertCalls).toEqual([
-      [
-        "data_list",
-        "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", download_status: "in_progress" },
-      ],
-      [
-        "data_list",
-        "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", download_status: "completed" },
-      ],
-    ]);
+    expect(upsertRows.map((row) => row.download_status)).toEqual(["in_progress", "completed"]);
+    expect(upsertRows[0]).toEqual(
+      jasmine.objectContaining({
+        id: "asset_pack_1",
+        name: "asset_pack_1",
+        download_status: "in_progress",
+        download_started_at: jasmine.any(String),
+        download_completed_at: "",
+        download_status_updated_at: jasmine.any(String),
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+      })
+    );
+    expect(upsertRows[1]).toEqual(
+      jasmine.objectContaining({
+        id: "asset_pack_1",
+        name: "asset_pack_1",
+        download_status: "completed",
+        download_started_at: upsertRows[0].download_started_at,
+        download_completed_at: jasmine.any(String),
+        download_status_updated_at: jasmine.any(String),
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+      })
+    );
+    expect(mockDynamicDataService.update).toHaveBeenCalledWith(
+      "data_list",
+      "_asset_packs",
+      "asset_pack_1",
+      {
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+      }
+    );
+  });
+
+  it("persists a downloaded count covering every asset, including overrides", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    // Stub a provider so the (web) download path can resolve public URLs without real network calls
+    service["provider"] = {
+      getPublicUrl: (path: string) => `https://cdn.example.com/${path}`,
+    } as any;
+    // 3 rows but 4 files: a base asset, a base asset + 1 override, and 1 override-only asset
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [
+        clone(MOCK_ASSET_ENTRY),
+        clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES),
+        clone(MOCK_ASSET_ENTRY_OVERRIDES_ONLY),
+      ] as FlowTypes.Data_listRow<IAssetEntry>[],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+
+    // Stateful `_asset_packs` row so the "completed" upsert reads back the counts written during the
+    // download rather than a stale/empty snapshot
+    let assetPackRow: IDBAssetPack | undefined;
+    mockDynamicDataService.upsert.and.callFake(async (_type, flow_name, row: any) => {
+      if (flow_name === "_asset_packs") assetPackRow = { ...row };
+    });
+    mockDynamicDataService.update.and.callFake(async (_type, flow_name, _id, update: any) => {
+      if (flow_name === "_asset_packs" && assetPackRow) {
+        assetPackRow = { ...assetPackRow, ...update };
+      }
+    });
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
+      flow_name === "_asset_packs" && assetPackRow ? ([assetPackRow] as any) : []
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(assetPackRow).toEqual(
+      jasmine.objectContaining({
+        download_status: "completed",
+        assets_total_count: 4,
+        assets_downloaded_count: 4,
+      })
+    );
   });
 
   it("stores error status for failed asset pack downloads", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
     const consoleErrorSpy = spyOn(console, "error");
     const assetPackManifest: FlowTypes.AssetPack = {
       flow_type: "asset_pack",
@@ -266,29 +364,113 @@ describe("RemoteAssetsService", () => {
     );
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
-    const upsertCalls = mockDynamicDataService.upsert.calls.allArgs() as [
-      FlowTypes.FlowType,
-      string,
-      unknown,
-    ][];
+    const upsertRows = mockDynamicDataService.upsert.calls
+      .allArgs()
+      .map(([, , row]) => row as IDBAssetPack);
 
     expect(success).toBeFalse();
     expect(consoleErrorSpy).toHaveBeenCalled();
-    expect(upsertCalls).toEqual([
-      [
-        "data_list",
-        "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", download_status: "in_progress" },
-      ],
-      [
-        "data_list",
-        "_asset_packs",
-        { id: "asset_pack_1", name: "asset_pack_1", download_status: "error" },
-      ],
+    expect(upsertRows.map((row) => row.download_status)).toEqual(["in_progress", "error"]);
+    expect(upsertRows[1]).toEqual(
+      jasmine.objectContaining({
+        id: "asset_pack_1",
+        name: "asset_pack_1",
+        download_status: "error",
+        download_started_at: upsertRows[0].download_started_at,
+        download_completed_at: "",
+        download_status_updated_at: jasmine.any(String),
+      })
+    );
+  });
+
+  it("stores waiting status and resumes asset pack downloads when connection returns", async () => {
+    const waitForConnectionSpy = spyOn<any>(service, "waitForConnection").and.resolveTo();
+    spyOn<any>(service, "isOffline").and.returnValues(true, false);
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+    const upsertRows = mockDynamicDataService.upsert.calls
+      .allArgs()
+      .map(([, , row]) => row as IDBAssetPack);
+
+    expect(success).toBeTrue();
+    expect(waitForConnectionSpy).toHaveBeenCalled();
+    expect(upsertRows.map((row) => row.download_status)).toEqual([
+      "waiting_for_connection",
+      "in_progress",
+      "completed",
     ]);
+    expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
+    expect(upsertRows[2].download_started_at).toBe(upsertRows[0].download_started_at);
+  });
+
+  it("cancels an active asset pack download while waiting for connection", async () => {
+    let resolveWaitStarted!: () => void;
+    const waitStarted = new Promise<void>((resolve) => {
+      resolveWaitStarted = resolve;
+    });
+    const removeConnectionStatusListener = jasmine.createSpy("removeConnectionStatusListener");
+    spyOn<any>(service, "isOffline").and.returnValue(true);
+    mockNetworkService.onStatusChange.and.returnValue(removeConnectionStatusListener);
+    mockNetworkService.waitUntilConnected.and.callFake((signal?: AbortSignal) => {
+      resolveWaitStarted();
+      return new Promise<void>((_resolve, reject) => {
+        signal?.addEventListener(
+          "abort",
+          () => {
+            const error = new Error("Download cancelled");
+            error.name = "AbortError";
+            reject(error);
+          },
+          { once: true }
+        );
+      });
+    });
+
+    const downloadPromise = service.downloadAssetPackByName("asset_pack_1");
+    await waitStarted;
+    const cancelSuccess = await service.cancelAssetPackDownloadByName("asset_pack_1");
+    const downloadSuccess = await downloadPromise;
+    const upsertRows = mockDynamicDataService.upsert.calls
+      .allArgs()
+      .map(([, , row]) => row as IDBAssetPack);
+
+    expect(cancelSuccess).toBeTrue();
+    expect(downloadSuccess).toBeFalse();
+    expect(removeConnectionStatusListener).toHaveBeenCalled();
+    expect(upsertRows.map((row) => row.download_status)).toEqual([
+      "waiting_for_connection",
+      "cancelled",
+    ]);
+    expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
+  });
+
+  it("does not start a second asset pack download while another is active", async () => {
+    spyOn(console, "warn");
+    service["activeAssetPackDownloads"].set("asset_pack_1", {
+      abortController: new AbortController(),
+      downloadStartedAt: new Date().toISOString(),
+      removeConnectionStatusListener: () => undefined,
+    });
+    const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+    const success = await service.downloadAssetPackByName("asset_pack_2");
+
+    expect(success).toBeFalse();
+    expect(manifestSpy).not.toHaveBeenCalled();
   });
 
   it("does not integrate a stale manifest when manifest download fails", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
     spyOn(console, "error");
     const staleManifest: FlowTypes.AssetPack = {
       flow_type: "asset_pack",

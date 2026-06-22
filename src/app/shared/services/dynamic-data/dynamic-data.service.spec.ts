@@ -121,6 +121,36 @@ describe("DynamicDataService", () => {
     });
   });
 
+  it("excludes local-only flows from sync state", async () => {
+    await service.update("data_list", "test_flow", "id1", { number: 1.1 });
+    await service.upsert("data_list", "_asset_packs", {
+      id: "pack_1",
+      name: "pack_1",
+      download_status: "completed",
+      download_started_at: "",
+      download_completed_at: "",
+      download_status_updated_at: "",
+      assets_total_count: 0,
+      assets_downloaded_count: 0,
+    });
+
+    const fullState = await service.getState();
+    const syncState = await service.getSyncState();
+
+    expect(fullState.data_list?._asset_packs).toEqual({
+      pack_1: jasmine.objectContaining({ download_status: "completed" }),
+    });
+    expect(syncState).toEqual({
+      data_list: {
+        test_flow: {
+          id1: {
+            number: 1.1,
+          },
+        },
+      },
+    });
+  });
+
   it("provides live querying", async () => {
     // HACK - ensure any previous data cleared before running test
     await service.resetFlow("data_list", "test_flow");
