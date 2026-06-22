@@ -2818,6 +2818,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/network@npm:^7.0.0":
+  version: 7.0.4
+  resolution: "@capacitor/network@npm:7.0.4"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: 72012321e1d3f7231986f8654237a5c8486411ae5582d398690082ae9e20c7c4d35df4f6b840e4e1455d05015e513f5bc53154e8d4f24a6a1a7f3e1cce6bb1be
+  languageName: node
+  linkType: hard
+
 "@capacitor/push-notifications@npm:^7.0.0":
   version: 7.0.4
   resolution: "@capacitor/push-notifications@npm:7.0.4"
@@ -17771,6 +17780,7 @@ __metadata:
     "@capacitor/filesystem": ^7.0.0
     "@capacitor/ios": ^7.0.0
     "@capacitor/local-notifications": ^7.0.0
+    "@capacitor/network": ^7.0.0
     "@capacitor/push-notifications": ^7.0.0
     "@capacitor/screen-orientation": ^7.0.0
     "@capacitor/share": ^7.0.0
