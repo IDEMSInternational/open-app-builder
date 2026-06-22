@@ -195,6 +195,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           const assetEntries = (manifest.rows || []) as FlowTypes.Data_listRow<IAssetEntry>[];
           const total = this.countDownloadFiles(assetEntries);
           this.downloadProgressCount.set(total ? { completed: 0, total } : null);
+          await this.remoteAssetMetadataService.setAssetCounts(assetPackName, {
+            assetsTotalCount: total,
+            assetsDownloadedCount: 0,
+          });
           await this.downloadAndIntegrateAssetPack(
             { ...manifest, rows: assetEntries },
             abortController.signal
@@ -454,7 +458,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         this.provider.getPublicUrl(this.getFullRemotePath(assetEntry.id)) || "";
       await this.updateAssetContents(assetEntry, topLevelAssetUrl);
       if (signal) this.throwIfDownloadCancelled(signal);
-      this.incrementDownloadProgress();
+      await this.incrementDownloadProgress();
     }
     const { overrides } = assetEntry;
     if (overrides) {
@@ -465,7 +469,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             this.provider.getPublicUrl(this.getFullRemotePath(overrideAssetEntry.filePath)) || "";
           await this.updateAssetContents(assetEntry, filepath, overrideProps);
           if (signal) this.throwIfDownloadCancelled(signal);
-          this.incrementDownloadProgress();
+          await this.incrementDownloadProgress();
         }
       }
     }
@@ -506,7 +510,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         await this.updateAssetContents(assetEntry, src, overrideProps);
         if (signal) this.throwIfDownloadCancelled(signal);
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
-        this.incrementDownloadProgress();
+        await this.incrementDownloadProgress();
       } else {
         console.error(`[REMOTE ASSETS] Failed to download ${relativePath}`);
       }
@@ -685,11 +689,21 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
   }
 
-  private incrementDownloadProgress() {
+  private async incrementDownloadProgress() {
     const progress = this.downloadProgressCount();
     if (!progress) return;
     const completed = Math.min(progress.completed + 1, progress.total);
     this.downloadProgressCount.set({ ...progress, completed });
+    if (!this.currentAssetPackName) return;
+    // Awaited so writes to the row don't overlap and clobber each other. Never fail a download
+    // over a metadata write.
+    try {
+      await this.remoteAssetMetadataService.setAssetCounts(this.currentAssetPackName, {
+        assetsDownloadedCount: completed,
+      });
+    } catch (error) {
+      console.warn("[REMOTE ASSETS] Failed to persist asset download count", error);
+    }
   }
 
   private countDownloadFiles(assetEntries: IAssetEntry[] = []) {

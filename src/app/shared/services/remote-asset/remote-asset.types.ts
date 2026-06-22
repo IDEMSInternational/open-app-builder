@@ -26,11 +26,20 @@ export interface IDBAssetPack {
   download_completed_at: string;
   /** ISO timestamp for the most recent status change */
   download_status_updated_at: string;
+  /** Total number of asset files in the pack, inferred from the manifest */
+  assets_total_count: number;
+  /** Number of asset files downloaded so far in the current attempt */
+  assets_downloaded_count: number;
 }
 
 export interface IAssetPackDownloadStatusTimestamps {
   downloadStartedAt?: string;
   downloadCompletedAt?: string;
+}
+
+export interface IAssetPackAssetCounts {
+  assetsTotalCount?: number;
+  assetsDownloadedCount?: number;
 }
 
 export interface IActiveAssetPackDownload {
