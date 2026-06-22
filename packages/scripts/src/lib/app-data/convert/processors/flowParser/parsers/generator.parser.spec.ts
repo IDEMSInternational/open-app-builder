@@ -99,7 +99,8 @@ describe("generator Parser", () => {
     ]);
   });
   it("populates list of outputs", async () => {
-    const res = parser.run(generatorInput()) as FlowTypes.GeneratorFlow;
+    const rawRes: any = parser.run(generatorInput());
+    const res = rawRes.data as FlowTypes.GeneratorFlow;
     expect(res._output_flows).toEqual([
       {
         flow_type: "template",

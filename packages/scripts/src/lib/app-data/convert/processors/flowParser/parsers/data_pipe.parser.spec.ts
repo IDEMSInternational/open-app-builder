@@ -17,24 +17,26 @@ describe("data_pipe Parser", () => {
     parser.flowProcessor.processedFlowHashmap = getTestData();
   });
   it("Populates generated data lists", async () => {
-    const res = parser.run({
+    const rawRes: any = parser.run({
       flow_name: "test_pipe_parse",
       flow_type: "data_pipe",
       rows: [
         {
           input_source: "test_data_list",
           operation: "filter",
-          args_list: "id > 1" as any, // will be parsed during process
+          args_list: "id > 1" as any,
           output_target: "test_output_1",
         },
         {
           input_source: "test_output_1",
           operation: "filter",
-          args_list: "id > 2" as any, // will be parsed during process
+          args_list: "id > 2" as any,
           output_target: "test_output_2",
         },
       ],
-    }) as FlowTypes.DataPipeFlow;
+    });
+
+    const res = rawRes.data;
 
     // Ensure all flow processing completed, included deferred processing of generated
     await parser.flowProcessor.queue.onIdle();
@@ -86,7 +88,7 @@ describe("data_pipe Parser", () => {
       flow_name: "flow2",
       flow_type: "data_pipe",
       rows: ops2,
-    }) as FlowTypes.DataPipeFlow;
+    });
     expect(parser["outputHashmap"].flow2).toEqual({
       test_output_2: [{ id: 3 }],
     });

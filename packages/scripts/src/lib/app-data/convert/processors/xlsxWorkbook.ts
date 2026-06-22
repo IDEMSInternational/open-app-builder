@@ -4,7 +4,7 @@ import { basename, extname } from "path";
 import { xlsxToJson } from "../utils/xlsx.utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
 
-const cacheVersion = 20251001.0;
+const cacheVersion = 20260423.0;
 const namespace = "XLSXWorkbookProcessor";
 
 /** Path to xlsx file for conversion  */
@@ -24,8 +24,13 @@ export class XLSXWorkbookProcessor extends BaseProcessor<InputType, OutputType> 
 
   public override async processInput(input: InputType) {
     const { localPath } = input;
-    const xlsxData = await readFile(localPath);
-    return xlsxToJson(xlsxData);
+    try {
+      const xlsxData = await readFile(localPath);
+      return { data: xlsxToJson(xlsxData) };
+    } catch (error) {
+      this.logger.error(error.message, input);
+      return { data: null, errors: [{ message: error.message, ...input }] };
+    }
   }
 
   public override generateCacheEntryName(input: InputType): string {
