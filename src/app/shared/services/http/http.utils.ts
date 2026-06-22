@@ -6,11 +6,11 @@
  * https://github.com/jaredwray/cacheable/blob/main/packages/cacheable-request/src/index.ts#L67
  *
  */
-export const generateRequestKey = (req: { method: string; url: string }) => {
+export const generateCacheKey = (req: { method: string; url: string }) => {
   // Remove trailing slash as a means of normalising requests to `example.com` and `example.com/`
   const url = req.url.replace(/\/$/, "");
   const method = req.method.toUpperCase();
-  return `${method}|${url}`;
+  return hashUrl(`${method}|${url}`);
 };
 
 /**
@@ -99,3 +99,13 @@ export const shorthandToTime = (shorthand?: string | number, fromDate?: Date): n
 
   return fromDate.getTime() + milliseconds;
 };
+
+/** Generate a fast hash from a URL string */
+async function hashUrl(url: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(url);
+  const hashBuffer = await crypto.subtle.digest("SHA-1", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
