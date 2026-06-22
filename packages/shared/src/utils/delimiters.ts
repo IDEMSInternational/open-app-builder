@@ -17,10 +17,11 @@ export function addStringDelimiters(value: string, contextPrefixes: string[], fi
   for (const prefix of contextPrefixes) {
     // First pass ignores nested statements, adding delimiters only to inner parts e.g.
     // @row.@row.some_value -> @row.{@row.some_value}
-    const firstPassRegex = new RegExp(`({?)@${prefix}\.[a-z0-9.:_]+(}?)`, "gi");
+    // Also handles array notation like @items[0].group_id
+    const firstPassRegex = new RegExp(`({?)@${prefix}[.\\[][a-z0-9.:_\\[\\]]+(}?)`, "gi");
     // Second pass includes nested, converting outer parts e.g.
     // @row.{@row.some_value} -> {@row.{@row.some_value}}
-    const secondPassRegex = new RegExp(`({?)@${prefix}\.[a-z0-9.:_{}@]+`, "gi");
+    const secondPassRegex = new RegExp(`({?)@${prefix}[.\\[][a-z0-9.:_{}@\\[\\]]+`, "gi");
     const regex = firstPass ? firstPassRegex : secondPassRegex;
     const matches = value.matchAll(regex);
     let replaceCount = 0;
