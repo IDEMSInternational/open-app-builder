@@ -69,14 +69,14 @@ const copyFilesFromFolder = async (
   const sources: IDownloadedAssetSource[] = [
     { path: coreOutputFolder, name: folderConfig.name, remote: false },
   ];
-  for (const pack of remotePacks) {
-    const copiedFiles = remoteCopiedFiles.get(pack.name) ?? 0;
+  for (const packName of remoteOutputFolders.keys()) {
+    const copiedFiles = remoteCopiedFiles.get(packName) ?? 0;
     console.log(
-      `Restructured ${copiedFiles} remote assets to ${remoteOutputFolders.get(pack.name)}`
+      `Restructured ${copiedFiles} remote assets to ${remoteOutputFolders.get(packName)}`
     );
     sources.push({
-      path: remoteOutputFolders.get(pack.name)!,
-      name: pack.name,
+      path: remoteOutputFolders.get(packName)!,
+      name: packName,
       remote: true,
     });
   }

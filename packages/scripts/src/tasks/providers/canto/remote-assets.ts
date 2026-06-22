@@ -19,7 +19,7 @@ export interface ICantoRemoteAssetMatchContext {
 export function getCantoCustomFieldValue(
   file: CantoManifestEntry,
   fieldName: string
-): string | null | undefined {
+): string | undefined {
   const value = file.additional?.[fieldName];
   if (Array.isArray(value)) {
     return value[0] ?? undefined;
