@@ -8,31 +8,32 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
 
   /** If extending the class add additional postprocess pipeline here */
   public postProcessFlow(flow: FlowTypes.DataPipeFlow): FlowTypes.DataPipeFlow {
-    const inputSources = this.loadInputSources();
-    const pipe = new DataPipe(flow.rows, inputSources);
-    const missingInputs = pipe.checkMissingInputs();
-    // Try to defer processing if inputs are missing as they might be generated as part
-    // of another flow
+    const tracker = this.phaseTracker;
+    const track = <T>(phase: string, fn: () => T): T => (tracker ? tracker.time(phase, fn) : fn());
+
+    const inputSources = track("data_pipe.loadInputSources", () => this.loadInputSources());
+    const pipe = track("data_pipe.createPipe", () => new DataPipe(flow.rows, inputSources));
+    const missingInputs = track("data_pipe.checkMissingInputs", () => pipe.checkMissingInputs());
     if (missingInputs) {
       const deferId = `${flow.flow_type}.${flow.flow_name}`;
       this.flowProcessor.deferInputProcess(flow, deferId);
       return;
     }
     try {
-      const outputs = pipe.run();
-      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
-      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(outputs));
+      const outputs = track("data_pipe.run", () => pipe.run());
+      track("data_pipe.cloneOutputs", () => {
+        this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(outputs));
+      });
 
-      const generated = this.generateFlows(outputs);
+      const generated = track("data_pipe.generateFlows", () => this.generateFlows(outputs));
 
-      // Pass all generated flows to the back of the current processing queue so that they can be
-      // populated to processed hashmap and referenced from other processes as required
-      for (const generatedFlow of generated) {
-        const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
-        this.flowProcessor.deferInputProcess(generatedFlow, deferId);
-      }
+      track("data_pipe.deferGeneratedFlows", () => {
+        for (const generatedFlow of generated) {
+          const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
+          this.flowProcessor.deferInputProcess(generatedFlow, deferId);
+        }
+      });
 
-      // Return the parsed flow along with a summary of output flows to store within outputs
       flow._output_flows = generated.map(({ rows, ...keptFields }) => keptFields);
       return flow;
     } catch (error) {
