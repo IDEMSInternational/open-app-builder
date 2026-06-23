@@ -165,6 +165,19 @@ interface IDeploymentCoreConfig {
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
   };
+  canto?: {
+    /** Canto API keys used for authentication. API keys are created/managed at <canto-url>/settings/basicSettings/apiKeys */
+    appId: string;
+    appSecret: string;
+    /** Optional path for generated Canto OAuth token cache. Defaults to `packages/scripts/config/canto-token.json`. */
+    accessTokenPath?: string;
+    /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
+    url: string;
+    /** Canto folder/album id and local name for downloaded source assets */
+    sourceFolders: { id: string; name: string }[];
+    /** Optional overrides mapping Canto language labels to app language codes, e.g. `{ English: "us_en" }`. */
+    languageMappings?: Record<string, string>;
+  };
   android: {
     /** Play store unique app identifier, e.g. international.idems.example_app" */
     app_id?: string;
