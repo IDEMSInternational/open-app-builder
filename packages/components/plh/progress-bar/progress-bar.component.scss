@@ -1,0 +1,24 @@
+$progress-bar-background-color: var(--ion-color-gray-100);
+$progress-bar-height: 5px;
+
+.progress-bar-wrapper {
+  width: 100%;
+
+  .progress-title {
+    margin: 0 0 var(--tiny-padding);
+    font-size: var(--font-size-text-small);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .progress-bar-background {
+    width: 100%;
+    border-radius: var(--ion-border-radius-small);
+    background-color: $progress-bar-background-color;
+  }
+
+  .progress-bar {
+    height: $progress-bar-height;
+    border-radius: var(--ion-border-radius-small);
+    transition: width 0.1s linear;
+  }
+}
