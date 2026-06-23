@@ -62,6 +62,11 @@ export class RemoteAssetMetadataService {
     );
   }
 
+  public async isDownloadCompleted(assetPackName: string) {
+    const assetPack = await this.getAssetPack(assetPackName);
+    return assetPack?.download_status === "completed";
+  }
+
   private async getAssetPack(assetPackName: string) {
     const assetPacks = await this.dynamicDataService.snapshot<IDBAssetPack>(
       "data_list",

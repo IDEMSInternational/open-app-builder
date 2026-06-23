@@ -13,6 +13,7 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
+import { resolveEnsureDownloadedAssetPackList } from "./remote-asset.actions";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -490,5 +491,90 @@ describe("RemoteAssetsService", () => {
     expect(success).toBeFalse();
     expect(service.manifest).toBeNull();
     expect(integrateSpy).not.toHaveBeenCalled();
+  });
+
+  it("skips asset packs that are already completed when using ensureAssetPacksDownloaded", async () => {
+    const completedPack: IDBAssetPack = {
+      id: "asset_pack_1",
+      name: "asset_pack_1",
+      download_status: "completed",
+      download_started_at: "2024-01-01T00:00:00.000Z",
+      download_completed_at: "2024-01-01T00:01:00.000Z",
+      download_status_updated_at: "2024-01-01T00:01:00.000Z",
+      assets_total_count: 1,
+      assets_downloaded_count: 1,
+    };
+    mockDynamicDataService.snapshot.and.resolveTo([completedPack]);
+    const downloadSpy = spyOn(service, "downloadAssetPackByName").and.resolveTo(true);
+
+    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+
+    expect(success).toBeTrue();
+    expect(downloadSpy).not.toHaveBeenCalled();
+  });
+
+  it("downloads asset packs that are missing or not completed when using ensureAssetPacksDownloaded", async () => {
+    const errorPack: IDBAssetPack = {
+      id: "asset_pack_1",
+      name: "asset_pack_1",
+      download_status: "error",
+      download_started_at: "2024-01-01T00:00:00.000Z",
+      download_completed_at: "",
+      download_status_updated_at: "2024-01-01T00:01:00.000Z",
+      assets_total_count: 1,
+      assets_downloaded_count: 0,
+    };
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
+      flow_name === "_asset_packs" ? ([errorPack] as any) : []
+    );
+    const downloadSpy = spyOn(service, "downloadAssetPackByName").and.resolveTo(true);
+
+    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1", "asset_pack_2"]);
+
+    expect(success).toBeTrue();
+    expect(downloadSpy.calls.allArgs()).toEqual([["asset_pack_1"], ["asset_pack_2"]]);
+  });
+
+  it("downloads asset packs sequentially when using ensureAssetPacksDownloaded", async () => {
+    mockDynamicDataService.snapshot.and.resolveTo([]);
+    const downloadOrder: string[] = [];
+    spyOn(service, "downloadAssetPackByName").and.callFake(async (assetPackName) => {
+      downloadOrder.push(assetPackName);
+      return true;
+    });
+
+    await service.ensureAssetPacksDownloaded(["asset_pack_1", "asset_pack_2", "asset_pack_3"]);
+
+    expect(downloadOrder).toEqual(["asset_pack_1", "asset_pack_2", "asset_pack_3"]);
+  });
+});
+
+describe("resolveEnsureDownloadedAssetPackList", () => {
+  it("returns a single-item list from asset_pack", () => {
+    expect(resolveEnsureDownloadedAssetPackList({ asset_pack: "asset_pack_1" })).toEqual([
+      "asset_pack_1",
+    ]);
+  });
+
+  it("returns asset_pack_list when provided", () => {
+    expect(
+      resolveEnsureDownloadedAssetPackList({
+        asset_pack_list: ["asset_pack_1", "asset_pack_2"],
+      })
+    ).toEqual(["asset_pack_1", "asset_pack_2"]);
+  });
+
+  it("prefers asset_pack_list when both params are provided", () => {
+    expect(
+      resolveEnsureDownloadedAssetPackList({
+        asset_pack: "asset_pack_solo",
+        asset_pack_list: ["asset_pack_1", "asset_pack_2"],
+      })
+    ).toEqual(["asset_pack_1", "asset_pack_2"]);
+  });
+
+  it("returns null when no asset pack params are provided", () => {
+    expect(resolveEnsureDownloadedAssetPackList({})).toBeNull();
+    expect(resolveEnsureDownloadedAssetPackList()).toBeNull();
   });
 });

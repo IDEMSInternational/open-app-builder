@@ -47,3 +47,10 @@ export interface IActiveAssetPackDownload {
   downloadStartedAt: string;
   removeConnectionStatusListener: () => void;
 }
+
+export interface IAssetPackEnsureDownloadedParams {
+  /** Single asset pack name */
+  asset_pack?: string;
+  /** One or more asset pack names */
+  asset_pack_list?: string[];
+}

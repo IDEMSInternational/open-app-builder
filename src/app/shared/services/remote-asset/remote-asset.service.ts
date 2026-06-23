@@ -142,6 +142,29 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /************************************************************************************
    *  Download methods
    ************************************************************************************/
+  public async ensureAssetPacksDownloaded(assetPackList: string[]) {
+    if (!assetPackList?.length) {
+      console.error(
+        "[REMOTE ASSETS] Please provide at least one asset pack name via asset_pack or asset_pack_list"
+      );
+      return false;
+    }
+
+    let allSucceeded = true;
+    for (const assetPackName of assetPackList) {
+      const isCompleted = await this.remoteAssetMetadataService.isDownloadCompleted(assetPackName);
+      if (isCompleted) {
+        console.log(`[REMOTE ASSETS] Asset pack already downloaded: ${assetPackName}`);
+        continue;
+      }
+      const success = await this.downloadAssetPackByName(assetPackName);
+      if (!success) {
+        allSucceeded = false;
+      }
+    }
+    return allSucceeded;
+  }
+
   public async downloadAssetPackByName(assetPackName: string) {
     if (!assetPackName) {
       console.error("[REMOTE ASSETS] Please provide an asset pack name to download");
