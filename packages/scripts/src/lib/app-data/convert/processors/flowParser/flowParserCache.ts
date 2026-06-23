@@ -4,7 +4,7 @@ import { FlowParserProcessor } from "./flowParser";
 
 export function hashJson(data: unknown): string {
   const hash = createHash("md5");
-  hash.update(JSON.stringify(data));
+  hash.update(JSON.stringify(data ?? null));
   return hash.digest("hex");
 }
 

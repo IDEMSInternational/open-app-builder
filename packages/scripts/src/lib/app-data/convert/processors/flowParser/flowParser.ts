@@ -32,7 +32,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     this.parentsNeedingCacheFinalize = [];
     this.outputs = [];
     this.deferredCounter = {};
-    const clonedInputs = inputs.map((input) => JSON.parse(JSON.stringify(input)));
+    const clonedInputs = inputs.map((input) => structuredClone(input));
     return super.process(clonedInputs);
   }
 
@@ -93,7 +93,9 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     this.processedFlowHashmapWithMeta[flow_type] ??= {};
     // NOTE - duplicate flows are identified up during main converter
     // Clone rows so later postProcess mutations do not change dependency checksums
-    this.processedFlowHashmap[flow_type][flow_name] = JSON.parse(JSON.stringify(flow.rows));
+    this.processedFlowHashmap[flow_type][flow_name] = flow.rows
+      ? structuredClone(flow.rows)
+      : flow.rows;
     this.processedFlowHashmapWithMeta[flow_type][flow_name] = flow;
   }
 
@@ -203,7 +205,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     this.parentsNeedingCacheFinalize = [];
   }
 
-  public shouldUseCachedEntry(input: FlowTypes.FlowTypeWithData, cachedEntry: any): Boolean {
+  public shouldUseCachedEntry(input: FlowTypes.FlowTypeWithData, cachedEntry: any): boolean {
     if (this.isParentFlowType(input.flow_type)) {
       return Boolean((cachedEntry as ICachedParentFlow)?._generated_children?.length);
     }

@@ -49,7 +49,7 @@ export class JsonFileCache {
    */
   public add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
     if (data) {
-      const cachedData = JSON.parse(JSON.stringify(data));
+      const cachedData = structuredClone(data);
       if (!entryName) {
         entryName = this.generateCacheEntryName(cachedData);
       }

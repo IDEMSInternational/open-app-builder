@@ -90,7 +90,7 @@ class BaseProcessor<InputType = any, OutputType = any> {
   }
 
   /** Optional override to specify if cached entry should be used */
-  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): Boolean {
+  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): boolean {
     return true;
   }
 
