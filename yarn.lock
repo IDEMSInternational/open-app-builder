@@ -11000,7 +11000,7 @@ __metadata:
     chalk: ^4.1.0
     fs-extra: ^10.0.0
     inquirer: ^7.3.3
-    js-yaml: ^4.1.1
+    js-yaml: ^4.2.0
     ts-node: ^10.8.0
   languageName: unknown
   linkType: soft
@@ -21142,6 +21142,17 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 626fc207734a3452d6ba84e1c8c226240e6d431426ed94d0ab043c50926d97c509629c08b1d636f5d27815833b7cfd225865631da9fb33cb957374490bf3e90b
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "js-yaml@npm:4.2.0"
+  dependencies:
+    argparse: ^2.0.1
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 86bd35548a0c19cd1f5861147c09aa1f52eb0fc9464f34023524d22bbe079c62c30fd00750e63f632e8d12c12ad36ea0dd1e6bec5171c492ecad433d8db295eb
   languageName: node
   linkType: hard
 
