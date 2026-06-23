@@ -41,10 +41,9 @@ export interface CantoManifestEntry {
 
 export type CantoManifest = CantoManifestEntry[];
 
-export interface CantoSourceFolder {
-  id: string;
-  name: string;
-}
+import type { ICantoSourceFolder } from "data-models";
+
+export type CantoSourceFolder = ICantoSourceFolder;
 
 export interface CantoDownloadedFolder {
   path: string;
