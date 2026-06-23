@@ -88,7 +88,7 @@ function getRestructuredRelativePath(file: CantoManifest[0], cantoFolderId: stri
   const langVariation = getLanguageVariation(file);
   const themeVariation = getThemeVariation(file);
   const assetPathName = getFilePath(file, cantoFolderId);
-  return path.join(themeVariation || "", langVariation || "", assetPathName);
+  return [themeVariation, langVariation, assetPathName].filter(Boolean).join("/");
 }
 
 function getThemeVariation(file: CantoManifest[0]) {
