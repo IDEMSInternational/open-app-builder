@@ -36,7 +36,8 @@ export function getFilePath(fileEntry: CantoManifestEntry, cantoFolderID: string
     );
   }
   const relativePathSegments = namePathSegments.slice(folderIndex + 1);
-  return path.join(...relativePathSegments, fileEntry.name);
+  // Use posix paths so keys match generateFolderFlatMap on all platforms (Windows uses `\` in path.join).
+  return path.posix.join(...relativePathSegments, fileEntry.name);
 }
 
 export function getOutputFolder(folderId?: string) {

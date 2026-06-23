@@ -47,12 +47,10 @@ const copyFilesFromFolder = async (
     const themeVariation = getThemeVariation(file);
     const assetPathName = getFilePath(file, folderConfig.id);
     const srcPath = path.join(sourceFolder.path, assetPathName);
-    const destPath = path.join(
-      outputFolder,
-      themeVariation || "",
-      langVariation || "",
-      assetPathName
-    );
+    const destRelativePath = [themeVariation, langVariation, assetPathName]
+      .filter(Boolean)
+      .join("/");
+    const destPath = path.join(outputFolder, destRelativePath);
     await fs.copy(srcPath, destPath);
     copiedFiles++;
   }
