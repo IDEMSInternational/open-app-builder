@@ -47,3 +47,24 @@ export interface IActiveAssetPackDownload {
   downloadStartedAt: string;
   removeConnectionStatusListener: () => void;
 }
+
+export interface IAssetPackEnsureDownloadedParams {
+  /** Single asset pack name */
+  asset_pack?: string;
+  /** One or more asset pack names, as an array or JSON string array */
+  asset_pack_list?: string | string[];
+  /** When false, start downloads without blocking the action queue. Defaults to true. */
+  await?: boolean | string;
+}
+
+export interface IEnsureAssetPacksDownloadedOptions {
+  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
+  awaitCompletion?: boolean;
+}
+
+export interface IDownloadAssetPackByNameOptions {
+  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
+  awaitCompletion?: boolean;
+  /** Called synchronously once a background download is registered. Only used when awaitCompletion is false. */
+  onDownloadStarted?: (completion: Promise<boolean>) => void;
+}
