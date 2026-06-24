@@ -22,6 +22,11 @@ end
 # Map explicit secret name to what fastlane expects
 ENV["MATCH_PASSWORD"] ||= ENV["GCP_IOS_CERTS_ENCRYPTION_PASSWORD"]
 
+# Map explicit workflow flag to whether match can update provisioning
+def allow_provisioning_changes?
+  ENV["ALLOW_PROVISIONING_CHANGES"].to_s.downcase == "true"
+end
+
 # Fastlane Methods
 platform :ios do
   desc "Build and deploy to TestFlight"
@@ -44,7 +49,8 @@ platform :ios do
         api_key: creds[:api_key],
         # This will be populated locally, when running `yarn workflow ios`
         app_identifier: "${APP_ID}",
-        team_id: ENV["APP_STORE_TEAM_ID"]
+        team_id: ENV["APP_STORE_TEAM_ID"],
+        readonly: !allow_provisioning_changes?
       )
 
       # 2. Override signing settings for Release build to use credentials from match
