@@ -51,6 +51,6 @@ export interface IActiveAssetPackDownload {
 export interface IAssetPackEnsureDownloadedParams {
   /** Single asset pack name */
   asset_pack?: string;
-  /** One or more asset pack names */
-  asset_pack_list?: string[];
+  /** One or more asset pack names, as an array or JSON string array */
+  asset_pack_list?: string | string[];
 }

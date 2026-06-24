@@ -564,6 +564,22 @@ describe("resolveEnsureDownloadedAssetPackList", () => {
     ).toEqual(["asset_pack_1", "asset_pack_2"]);
   });
 
+  it("parses asset_pack_list from a JSON string array", () => {
+    expect(
+      resolveEnsureDownloadedAssetPackList({
+        asset_pack_list: '["debug_asset_pack_1","pack_2"]',
+      })
+    ).toEqual(["debug_asset_pack_1", "pack_2"]);
+  });
+
+  it("parses a single asset pack name from asset_pack_list string", () => {
+    expect(
+      resolveEnsureDownloadedAssetPackList({
+        asset_pack_list: "asset_pack_1",
+      })
+    ).toEqual(["asset_pack_1"]);
+  });
+
   it("prefers asset_pack_list when both params are provided", () => {
     expect(
       resolveEnsureDownloadedAssetPackList({

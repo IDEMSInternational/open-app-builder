@@ -67,11 +67,48 @@ export class RemoteAssetActionFactory {
 export function resolveEnsureDownloadedAssetPackList(
   params?: IAssetPackEnsureDownloadedParams
 ): string[] | null {
-  if (params?.asset_pack_list?.length) {
-    return params.asset_pack_list;
+  const assetPackList = parseAssetPackNames(params?.asset_pack_list);
+  if (assetPackList) {
+    return assetPackList;
   }
-  if (params?.asset_pack) {
-    return [params.asset_pack];
+  return parseAssetPackNames(params?.asset_pack);
+}
+
+function parseAssetPackNames(value: string | string[] | undefined): string[] | null {
+  if (value === undefined || value === null) {
+    return null;
   }
+
+  if (Array.isArray(value)) {
+    const names = value.filter(
+      (item): item is string => typeof item === "string" && item.length > 0
+    );
+    return names.length ? names : null;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return null;
+    }
+
+    if (trimmed.startsWith("[")) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) {
+          const names = parsed.filter(
+            (item): item is string => typeof item === "string" && item.length > 0
+          );
+          return names.length ? names : null;
+        }
+      } catch {
+        console.warn("[REMOTE ASSETS] Invalid asset pack list string:", value);
+        return null;
+      }
+    }
+
+    return [trimmed];
+  }
+
   return null;
 }
