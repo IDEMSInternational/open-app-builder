@@ -13,7 +13,11 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
-import { resolveEnsureDownloadedAssetPackList } from "./remote-asset.actions";
+import {
+  resolveEnsureDownloadedAssetPackList,
+  shouldAwaitEnsureDownloaded,
+  RemoteAssetActionFactory,
+} from "./remote-asset.actions";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
@@ -579,6 +583,62 @@ describe("RemoteAssetsService", () => {
 
     expect(downloadOrder).toEqual(["asset_pack_1", "asset_pack_2", "asset_pack_3"]);
   });
+
+  it("sets asset_pack_download_in_progress before returning when awaitCompletion is false", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    let resolveManifest!: () => void;
+    const manifestPromise = new Promise<FlowTypes.AssetPack>((resolve) => {
+      resolveManifest = () =>
+        resolve({
+          flow_type: "asset_pack",
+          flow_name: "asset_pack_1",
+          rows: [],
+        });
+    });
+    spyOn<any>(service, "getAssetPackManifest").and.returnValue(manifestPromise);
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    mockDynamicDataService.snapshot.and.resolveTo([]);
+    mockSystemVariableService.set.calls.reset();
+
+    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"], {
+      awaitCompletion: false,
+    });
+
+    expect(success).toBeTrue();
+    expect(mockSystemVariableService.set).toHaveBeenCalledWith(
+      "ASSET_PACK_DOWNLOAD_IN_PROGRESS",
+      "true"
+    );
+    expect(service["downloadAndIntegrateAssetPack"]).not.toHaveBeenCalled();
+
+    resolveManifest();
+    await manifestPromise;
+  });
+
+  it("returns immediately without setting asset_pack_download_in_progress when all packs are completed", async () => {
+    const completedPack: IDBAssetPack = {
+      id: "asset_pack_1",
+      name: "asset_pack_1",
+      download_status: "completed",
+      download_started_at: "2024-01-01T00:00:00.000Z",
+      download_completed_at: "2024-01-01T00:01:00.000Z",
+      download_status_updated_at: "2024-01-01T00:01:00.000Z",
+      assets_total_count: 1,
+      assets_downloaded_count: 1,
+    };
+    mockDynamicDataService.snapshot.and.resolveTo([completedPack]);
+    mockSystemVariableService.set.calls.reset();
+
+    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"], {
+      awaitCompletion: false,
+    });
+
+    expect(success).toBeTrue();
+    expect(mockSystemVariableService.set).not.toHaveBeenCalledWith(
+      "ASSET_PACK_DOWNLOAD_IN_PROGRESS",
+      "true"
+    );
+  });
 });
 
 describe("resolveEnsureDownloadedAssetPackList", () => {
@@ -624,5 +684,63 @@ describe("resolveEnsureDownloadedAssetPackList", () => {
   it("returns null when no asset pack params are provided", () => {
     expect(resolveEnsureDownloadedAssetPackList({})).toBeNull();
     expect(resolveEnsureDownloadedAssetPackList()).toBeNull();
+  });
+});
+
+describe("shouldAwaitEnsureDownloaded", () => {
+  it("defaults to true when await is omitted", () => {
+    expect(shouldAwaitEnsureDownloaded({ asset_pack: "asset_pack_1" })).toBeTrue();
+    expect(shouldAwaitEnsureDownloaded()).toBeTrue();
+  });
+
+  it("parses authored boolean strings for await", () => {
+    expect(shouldAwaitEnsureDownloaded({ await: false })).toBeFalse();
+    expect(shouldAwaitEnsureDownloaded({ await: "false" })).toBeFalse();
+    expect(shouldAwaitEnsureDownloaded({ await: true })).toBeTrue();
+    expect(shouldAwaitEnsureDownloaded({ await: "true" })).toBeTrue();
+  });
+});
+
+describe("RemoteAssetActionFactory ensure_downloaded", () => {
+  it("passes awaitCompletion false when await is false", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      ensureAssetPacksDownloaded: jasmine
+        .createSpy("ensureAssetPacksDownloaded")
+        .and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["ensure_downloaded"],
+      params: { asset_pack: "asset_pack_1", await: false },
+    });
+
+    expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
+      awaitCompletion: false,
+    });
+  });
+
+  it("passes awaitCompletion true by default", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      ensureAssetPacksDownloaded: jasmine
+        .createSpy("ensureAssetPacksDownloaded")
+        .and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["ensure_downloaded"],
+      params: { asset_pack: "asset_pack_1" },
+    });
+
+    expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
+      awaitCompletion: true,
+    });
   });
 });

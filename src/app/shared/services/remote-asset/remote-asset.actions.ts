@@ -1,6 +1,7 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
 import type { RemoteAssetService } from "./remote-asset.service";
 import type { IAssetPackEnsureDownloadedParams } from "./remote-asset.types";
+import { booleanStringToBoolean } from "../../utils";
 
 export class RemoteAssetActionFactory {
   constructor(private service: RemoteAssetService) {}
@@ -34,7 +35,9 @@ export class RemoteAssetActionFactory {
           );
           return;
         }
-        await this.service.ensureAssetPacksDownloaded(assetPackList);
+        await this.service.ensureAssetPacksDownloaded(assetPackList, {
+          awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
+        });
       },
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
@@ -72,6 +75,14 @@ export function resolveEnsureDownloadedAssetPackList(
     return assetPackList;
   }
   return parseAssetPackNames(params?.asset_pack);
+}
+
+export function shouldAwaitEnsureDownloaded(params?: IAssetPackEnsureDownloadedParams) {
+  if (params?.await === undefined) {
+    return true;
+  }
+  const value = booleanStringToBoolean(params.await);
+  return value !== false;
 }
 
 function parseAssetPackNames(value: string | string[] | undefined): string[] | null {
