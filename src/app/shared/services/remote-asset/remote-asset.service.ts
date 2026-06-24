@@ -31,7 +31,7 @@ import { SystemVariableService } from "../system-variable/system-variable.servic
  * Manual testing aid: set to a positive value, e.g. 3000, to slow each asset entry donwload.
  * Keep at 0 outside local testing.
  */
-const REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS = 3000;
+const REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS = 0;
 
 @Injectable({
   providedIn: "root",
