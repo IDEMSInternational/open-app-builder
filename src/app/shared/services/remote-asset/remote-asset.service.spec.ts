@@ -14,6 +14,7 @@ import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
 import { resolveEnsureDownloadedAssetPackList } from "./remote-asset.actions";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -117,6 +118,7 @@ describe("RemoteAssetsService", () => {
   let service: RemoteAssetService;
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
   let mockNetworkService: jasmine.SpyObj<NetworkService>;
+  let mockSystemVariableService: jasmine.SpyObj<SystemVariableService>;
 
   beforeEach(() => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
@@ -137,6 +139,10 @@ describe("RemoteAssetsService", () => {
     mockNetworkService.isOffline.and.returnValue(false);
     mockNetworkService.waitUntilConnected.and.resolveTo();
     mockNetworkService.onStatusChange.and.returnValue(() => undefined);
+    mockSystemVariableService = jasmine.createSpyObj<SystemVariableService>(
+      "SystemVariableService",
+      ["set", "get", "remove"]
+    );
 
     TestBed.configureTestingModule({
       imports: [],
@@ -146,6 +152,7 @@ describe("RemoteAssetsService", () => {
         { provide: DeploymentService, useValue: new MockDeploymentService(MOCK_DEPLOYMENT_CONFIG) },
         { provide: DynamicDataService, useValue: mockDynamicDataService },
         { provide: NetworkService, useValue: mockNetworkService },
+        { provide: SystemVariableService, useValue: mockSystemVariableService },
       ],
     });
     service = TestBed.inject(RemoteAssetService);
@@ -412,6 +419,31 @@ describe("RemoteAssetsService", () => {
     ]);
     expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
     expect(upsertRows[2].download_started_at).toBe(upsertRows[0].download_started_at);
+  });
+
+  it("updates asset_pack_download_in_progress while downloading", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    const assetPackManifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [],
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = assetPackManifest;
+      return assetPackManifest;
+    });
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+
+    await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(mockSystemVariableService.set.calls.allArgs()).toContain([
+      "ASSET_PACK_DOWNLOAD_IN_PROGRESS",
+      "true",
+    ]);
+    expect(mockSystemVariableService.set.calls.allArgs()).toContain([
+      "ASSET_PACK_DOWNLOAD_IN_PROGRESS",
+      "false",
+    ]);
   });
 
   it("cancels an active asset pack download while waiting for connection", async () => {

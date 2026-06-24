@@ -21,6 +21,7 @@ import type { IActiveAssetPackDownload } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
 import { RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 /**
  * Manual testing aid: set to a positive value, e.g. 3000, to slow each asset entry donwload.
@@ -55,6 +56,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     private deploymentService: DeploymentService,
     private networkService: NetworkService,
     private remoteAssetMetadataService: RemoteAssetMetadataService,
+    private systemVariableService: SystemVariableService,
     private injector: Injector
   ) {
     super("RemoteAsset");
@@ -85,6 +87,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.log("[Remote Asset] Remote asset provider initialized:", remoteAssetsConfig.provider);
     } else {
       this.remoteAssetsEnabled.set(false);
+      this.syncAssetPackDownloadInProgressSystemVariable();
       console.log("[Remote Asset] Remote assets not enabled");
     }
 
@@ -187,6 +190,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       downloadStartedAt,
       removeConnectionStatusListener: removeAssetPackConnectionStatusListener,
     });
+    this.syncAssetPackDownloadInProgressSystemVariable();
 
     try {
       while (true) {
@@ -259,6 +263,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const activeDownload = this.activeAssetPackDownloads.get(assetPackName);
       if (activeDownload?.abortController === abortController) {
         this.activeAssetPackDownloads.delete(assetPackName);
+        this.syncAssetPackDownloadInProgressSystemVariable();
       }
       this.downloadProgressCount.set(null);
     }
@@ -279,6 +284,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     activeDownload.abortController.abort();
     activeDownload.removeConnectionStatusListener();
     this.activeAssetPackDownloads.delete(assetPackName);
+    this.syncAssetPackDownloadInProgressSystemVariable();
     this.downloadProgressCount.set(null);
     await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "cancelled", {
       downloadStartedAt: activeDownload.downloadStartedAt,
@@ -707,9 +713,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       activeDownload.removeConnectionStatusListener();
     }
     this.activeAssetPackDownloads.clear();
+    this.syncAssetPackDownloadInProgressSystemVariable();
     if (this.assetContentsSubscription) {
       this.assetContentsSubscription.unsubscribe();
     }
+  }
+
+  private syncAssetPackDownloadInProgressSystemVariable() {
+    const inProgress = this.activeAssetPackDownloads.size > 0;
+    this.systemVariableService.set("ASSET_PACK_DOWNLOAD_IN_PROGRESS", inProgress.toString());
   }
 
   private async incrementDownloadProgress() {
