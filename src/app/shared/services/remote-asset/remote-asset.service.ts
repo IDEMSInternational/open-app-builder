@@ -161,10 +161,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     const awaitCompletion = options.awaitCompletion ?? true;
+    const assetPacks = await this.remoteAssetMetadataService.snapshotAssetPacks();
+    const completedPackIds = new Set(
+      assetPacks
+        .filter((assetPack) => assetPack.download_status === "completed")
+        .map((assetPack) => assetPack.id)
+    );
     const pendingPacks: string[] = [];
     for (const assetPackName of assetPackList) {
-      const isCompleted = await this.remoteAssetMetadataService.isDownloadCompleted(assetPackName);
-      if (isCompleted) {
+      if (completedPackIds.has(assetPackName)) {
         console.log(`[REMOTE ASSETS] Asset pack already downloaded: ${assetPackName}`);
         continue;
       }

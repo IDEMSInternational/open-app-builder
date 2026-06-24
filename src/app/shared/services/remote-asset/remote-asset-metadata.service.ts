@@ -67,11 +67,12 @@ export class RemoteAssetMetadataService {
     return assetPack?.download_status === "completed";
   }
 
+  public snapshotAssetPacks() {
+    return this.dynamicDataService.snapshot<IDBAssetPack>("data_list", ASSET_PACKS_DATA_LIST);
+  }
+
   private async getAssetPack(assetPackName: string) {
-    const assetPacks = await this.dynamicDataService.snapshot<IDBAssetPack>(
-      "data_list",
-      ASSET_PACKS_DATA_LIST
-    );
+    const assetPacks = await this.snapshotAssetPacks();
     return assetPacks.find((assetPack) => assetPack.id === assetPackName);
   }
 
