@@ -3,9 +3,10 @@ import { Observable } from "rxjs";
 
 export const STORE_TYPES = ["local", "global", "system"] as const;
 export type StoreType = (typeof STORE_TYPES)[number];
+export type VariableReferenceType = StoreType | "loop";
 
 export interface VariableReference {
-  type: StoreType;
+  type: VariableReferenceType;
   name: string;
 }
 

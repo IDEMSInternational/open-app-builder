@@ -20,6 +20,12 @@ export class LoopComponent extends RowBaseComponent<ReturnType<typeof parameters
   public index = this.params.index.value;
   public hasCustomIndex = computed(() => this.params.index.value() !== null);
 
+  constructor() {
+    super();
+    // override the default value type to "script" since loop expressions are typically JavaScript expressions that return arrays
+    this.params.valueType.setValue("script");
+  }
+
   public getLoopIndex(item: any, index: number): any {
     return this.hasCustomIndex() ? item[this.index()] : index;
   }

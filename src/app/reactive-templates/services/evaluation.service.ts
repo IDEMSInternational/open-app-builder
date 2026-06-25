@@ -1,64 +1,64 @@
 import { Injectable } from "@angular/core";
-import { AppDataEvaluator } from "packages/shared/src/models/appDataEvaluator/appDataEvaluator";
-import { NamespaceService } from "./namespace.service";
 import { ContextCreatorService } from "./context-creator.service";
-import { extractDynamicEvaluators } from "packages/data-models/functions";
-import { ListEvaluator } from "./evaluators/list.evaluator";
-import { LoopItemEvaluator } from "./evaluators/loop-item.evaluator";
-import { NamespaceEvaluator } from "./evaluators/namespace.evaluator";
 import { VariableReference, STORE_TYPES } from "../stores/store";
+import { ValueType } from "../reactive-components/row-base.component";
+import { DependencyExtractorService } from "./dependency-extractor.service";
+import { ExpressionParser } from "./expression-parsers/expression-parser";
+import { JavascriptEvaluator } from "./javascript.evaluator";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
-  private appDataEvaluator = new AppDataEvaluator();
-
   constructor(
-    private namespaceService: NamespaceService,
     private contextCreator: ContextCreatorService,
-    private listEvaluator: ListEvaluator,
-    private loopItemEvaluator: LoopItemEvaluator,
-    private namespaceEvaluator: NamespaceEvaluator
+    private dependencyExtractor: DependencyExtractorService,
+    private expressionParser: ExpressionParser,
+    private expressionEvaluator: JavascriptEvaluator
   ) {}
 
-  public evaluateExpression<T>(expression: string | number | boolean, namespace: string): T {
-    let evaluatedExpression = expression;
+  public evaluateExpression<T>(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): T {
+    if (expression === null || expression === undefined) return expression as T;
 
-    // todo: replace appDataEvaluator with more evaluators e.g. localEvaluator, javascriptEvaluator, jsonEvaluator etc.
-    const context = this.createExecutionContext(expression, namespace);
-    this.appDataEvaluator.setExecutionContext(context);
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
-    evaluatedExpression = this.namespaceEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.loopItemEvaluator.evaluate(evaluatedExpression, namespace);
-    evaluatedExpression = this.listEvaluator.evaluate(evaluatedExpression);
-    evaluatedExpression = this.appDataEvaluator.evaluate(evaluatedExpression);
-
-    return evaluatedExpression as T;
+    this.expressionEvaluator.setContext(context);
+    const evaluatedValue = this.expressionEvaluator.evaluate(parsedExpression, valueType);
+    return evaluatedValue as T;
   }
 
   // todo: Cache the results per expression+namespace, to avoid recalculating dependencies.
   public getDependencies(
     expression: string | number | boolean,
-    namespace: string
+    namespace: string,
+    valueType: ValueType = "string"
   ): VariableReference[] {
     if (typeof expression !== "string") return [];
 
-    // todo: Use extractDynamicFields for complex objects like arrays & json.
-    const dependencies = extractDynamicEvaluators(expression as string);
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    return this.getDependenciesInternal(parsedExpression, namespace, valueType);
+  }
+
+  private getDependenciesInternal(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): VariableReference[] {
+    if (typeof expression !== "string") return [];
+
+    const dependencies = this.dependencyExtractor.extractVariableReferences(expression, valueType);
 
     if (!dependencies || !dependencies.length) return [];
 
-    return dependencies
-      .filter((dependency) => (STORE_TYPES as readonly string[]).includes(dependency.type))
-      .map((dependency) => {
-        const name = dependency.matchedExpression // we can't use fieldName because it doesn't allow nesting (TODO: fix or replace extractDynamicEvaluators)
-          .replace(`@${dependency.type}.`, "")
-          .replace("parameter_list.", "")
-          .replace(/[#!&|,]/g, "");
-        return {
-          type: dependency.type,
-          name: this.namespaceService.getFullName(namespace, name),
-        } as VariableReference;
-      });
+    let filteredDependencies = dependencies.filter(
+      (dependency): dependency is VariableReference =>
+        !!dependency.name && (STORE_TYPES as readonly string[]).includes(dependency.type)
+    );
+
+    return filteredDependencies;
   }
 
   // Adds dependencies to the execution context by breaking down the dot notation
@@ -72,7 +72,13 @@ export class EvaluationService {
   //     }
   //   }
   // }
-  private createExecutionContext(expression: string | number | boolean, namespace: string): any {
-    return this.contextCreator.createContext(this.getDependencies(expression, namespace));
+  private createExecutionContext(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType
+  ): any {
+    let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
+
+    return this.contextCreator.createContext(dependencies, namespace);
   }
 }

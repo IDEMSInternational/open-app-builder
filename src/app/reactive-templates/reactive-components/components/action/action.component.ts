@@ -69,7 +69,11 @@ export class ActionComponent
 
     // if this is a reference to another action, execute that instead
     if (expression && expression !== name) {
-      const value = this.evaluationService.evaluateExpression(expression, this.namespace());
+      const value = this.evaluationService.evaluateExpression(
+        expression,
+        this.namespace(),
+        this.params.valueType.value()
+      );
       if (this.actionRegistry.has(value as string)) {
         const action = this.actionRegistry.get(value as string);
         action.init();
