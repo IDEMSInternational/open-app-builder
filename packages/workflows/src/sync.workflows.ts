@@ -123,12 +123,12 @@ const workflows: IDeploymentWorkflows = {
     options: [
       {
         flags: "-s, --skip-download",
-        description: "Skip download and just process local sheets",
+        description: "Skip download and just process local assets",
       },
     ],
     steps: [
       {
-        name: "assets_dl",
+        name: "gdrive_assets_dl",
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
           const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
@@ -156,21 +156,35 @@ const workflows: IDeploymentWorkflows = {
         },
       },
       {
-        name: "assets_post_process",
-        function: async ({ tasks, workflow }) => {
-          return tasks.appData.postProcessAssets({
-            sources: workflow.assets_dl.output.map(({ path, folderConfig }) => ({
-              path,
-              name: folderConfig.name,
-              remote: folderConfig.remote,
-            })),
-          });
+        name: "canto_assets_dl",
+        condition: async ({ config }) => config.canto !== undefined,
+        function: async ({ tasks, options }) => {
+          if (options.skipDownload) {
+            return tasks.canto.download.getDownloadedFolders();
+          }
+          return tasks.canto.download.downloadFiles();
         },
       },
       {
-        name: "sync_remote_assets",
-        condition: async ({ config }) => config.remote_assets !== undefined,
-        function: async ({ tasks }) => tasks.appData.syncRemoteAssets(),
+        name: "canto_assets_restructure",
+        condition: async ({ config }) => config.canto !== undefined,
+        function: async ({ tasks, workflow }) => {
+          return tasks.canto.copy.copyFiles(workflow.canto_assets_dl.output);
+        },
+      },
+      {
+        name: "assets_post_process",
+        function: async ({ tasks, workflow }) => {
+          const gdriveSources = workflow.gdrive_assets_dl.output.map(({ path, folderConfig }) => ({
+            path,
+            name: folderConfig.name,
+            remote: folderConfig.remote,
+          }));
+          const cantoSources = workflow.canto_assets_restructure?.output || [];
+          return tasks.appData.postProcessAssets({
+            sources: [...gdriveSources, ...cantoSources],
+          });
+        },
       },
     ],
   },
@@ -235,6 +249,15 @@ const workflows: IDeploymentWorkflows = {
           await tasks.gdrive.authorize();
           process.exit(0);
         },
+      },
+    ],
+  },
+  sync_canto_authorize: {
+    label: "Authorize Canto for asset sync",
+    steps: [
+      {
+        name: "authorize",
+        function: async ({ tasks }) => tasks.canto.authorize.authorize(),
       },
     ],
   },

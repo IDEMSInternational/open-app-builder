@@ -2818,6 +2818,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor/network@npm:^7.0.0":
+  version: 7.0.4
+  resolution: "@capacitor/network@npm:7.0.4"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: 72012321e1d3f7231986f8654237a5c8486411ae5582d398690082ae9e20c7c4d35df4f6b840e4e1455d05015e513f5bc53154e8d4f24a6a1a7f3e1cce6bb1be
+  languageName: node
+  linkType: hard
+
 "@capacitor/push-notifications@npm:^7.0.0":
   version: 7.0.4
   resolution: "@capacitor/push-notifications@npm:7.0.4"
@@ -9975,7 +9984,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:^2.1.2":
+"@types/node-fetch@npm:^2.1.2, @types/node-fetch@npm:^2.6.13":
   version: 2.6.13
   resolution: "@types/node-fetch@npm:2.6.13"
   dependencies:
@@ -17771,6 +17780,7 @@ __metadata:
     "@capacitor/filesystem": ^7.0.0
     "@capacitor/ios": ^7.0.0
     "@capacitor/local-notifications": ^7.0.0
+    "@capacitor/network": ^7.0.0
     "@capacitor/push-notifications": ^7.0.0
     "@capacitor/screen-orientation": ^7.0.0
     "@capacitor/share": ^7.0.0
@@ -26899,6 +26909,7 @@ __metadata:
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/jest": ^29.5.12
+    "@types/node-fetch": ^2.6.13
     "@types/node-rsa": ^1.1.1
     "@types/plist": ^3.0.5
     "@types/semver": ^7.3.9
@@ -26914,6 +26925,7 @@ __metadata:
     jest: ^29.7.0
     log-update: ^4.0.0
     memfs: ^4.11.1
+    node-fetch: ^2.7.0
     node-rsa: ^1.1.1
     open: ^8
     p-queue: ^6.6.2
