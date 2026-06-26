@@ -1,4 +1,4 @@
-import { Component, computed, effect, OnDestroy } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
 import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
@@ -21,6 +21,12 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   color: coerce.string(""),
 }));
 
+function clampProgress(value: unknown): number {
+  const num = typeof value === "number" ? value : Number(value);
+  if (Number.isNaN(num)) return 0;
+  return Math.min(100, Math.max(0, num));
+}
+
 @Component({
   selector: "plh-progress-bar",
   templateUrl: "./progress-bar.component.html",
@@ -35,13 +41,14 @@ export class PlhProgressBarComponent
   private animationElapsedMs = 0;
   private animationDuration = 0;
 
+  /** Local display value while auto-playing; avoids row refresh races from per-frame setValue. */
+  private localProgress = signal<number | null>(null);
+
   accentColor = computed(() => this.params().color || "var(--ion-color-primary)");
 
   displayProgress = computed(() => {
-    const val = this.value();
-    const num = typeof val === "number" ? val : Number(val);
-    if (Number.isNaN(num)) return 0;
-    return Math.min(100, Math.max(0, num));
+    const local = this.localProgress();
+    return clampProgress(local !== null ? local : this.value());
   });
 
   constructor() {
@@ -53,6 +60,7 @@ export class PlhProgressBarComponent
       if (!duration || duration <= 0) {
         this.animationElapsedMs = 0;
         this.animationDuration = 0;
+        this.localProgress.set(null);
         return;
       }
 
@@ -61,14 +69,18 @@ export class PlhProgressBarComponent
         this.animationDuration = duration;
       }
 
-      if (!autoPlay) return;
-
-      if (this.animationElapsedMs === 0) {
-        void this.setValue(0);
+      if (!autoPlay) {
+        const pausedAt = this.localProgress();
+        if (pausedAt !== null) {
+          this.localProgress.set(null);
+          void this.setValue(pausedAt);
+        }
+        return;
       }
 
       const startTime = performance.now() - this.animationElapsedMs;
       let lastValue = Math.round((this.animationElapsedMs / duration) * 100);
+      this.localProgress.set(lastValue);
 
       const animate = (currentTime: number) => {
         const elapsed = currentTime - startTime;
@@ -77,11 +89,14 @@ export class PlhProgressBarComponent
         const rounded = Math.round(progress);
         if (rounded !== lastValue) {
           lastValue = rounded;
-          void this.setValue(rounded);
+          this.localProgress.set(rounded);
         }
         if (progress < 100) {
           this.animationFrameId = requestAnimationFrame(animate);
+          return;
         }
+        this.localProgress.set(100);
+        void this.commitProgress(100);
       };
 
       this.animationFrameId = requestAnimationFrame(animate);
@@ -93,6 +108,14 @@ export class PlhProgressBarComponent
         }
       });
     });
+  }
+
+  /** Persist the final (or paused) value to the template row once, not on every frame. */
+  private async commitProgress(value: number) {
+    await this.setValue(value);
+    if (this.localProgress() === value) {
+      this.localProgress.set(null);
+    }
   }
 
   ngOnDestroy() {
