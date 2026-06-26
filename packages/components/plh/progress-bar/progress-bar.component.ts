@@ -1,4 +1,4 @@
-import { Component, computed, effect, OnDestroy, signal } from "@angular/core";
+import { Component, computed, effect, OnDestroy, signal, untracked } from "@angular/core";
 import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
@@ -70,7 +70,7 @@ export class PlhProgressBarComponent
       }
 
       if (!autoPlay) {
-        const pausedAt = this.localProgress();
+        const pausedAt = untracked(() => this.localProgress());
         if (pausedAt !== null) {
           this.localProgress.set(null);
           void this.setValue(pausedAt);
