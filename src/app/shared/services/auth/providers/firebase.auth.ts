@@ -84,8 +84,9 @@ export class FirebaseAuthProvider extends AuthProviderBase {
         const { user, additionalUserInfo } = await signInFn();
         if (user) {
           // Note: Apple allows for anonymous sign-in so profile info may be minimal
-          const { profile = {} } = additionalUserInfo;
-          this.setAuthUser(user, profile);
+          const { profile = {} } = additionalUserInfo ?? {};
+          const mergedProfile = { ...this.loadStoredProfile(), ...profile };
+          this.setAuthUser(user, mergedProfile);
           this.saveUserInfo(user, profile);
         } else {
           console.warn("[Firebase Auth] sign-in returned no user");
@@ -146,19 +147,58 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     return this.authUser();
   }
 
+  private isAppleUser(user: User): boolean {
+    return user.providerData?.some((provider) => provider.providerId === "apple.com") ?? false;
+  }
+
+  /**
+   * Apple only returns name data on first authorization and not as OpenID given_name claims.
+   * Fall back to the first word of displayName (set by native Apple sign-in on first login) when needed.
+   */
+  private resolveGivenName(user: User, profile: Partial<IAuthUser>): string | undefined {
+    if (profile.given_name) {
+      return profile.given_name;
+    }
+    if (this.isAppleUser(user) && user.displayName) {
+      return user.displayName.trim().split(/\s+/)[0] || undefined;
+    }
+    return undefined;
+  }
+
+  private normalizeProfile(user: User, profile: Partial<IAuthUser>): Partial<IAuthUser> {
+    const given_name = this.resolveGivenName(user, profile);
+    return given_name ? { ...profile, given_name } : profile;
+  }
+
+  private loadStoredProfile(): Partial<IAuthUser> {
+    const stored = localStorage.getItem(AUTH_METADATA_FIELD);
+    if (!stored) {
+      return {};
+    }
+    try {
+      return JSON.parse(stored);
+    } catch {
+      return {};
+    }
+  }
+
   private setAuthUser(user: User, profile: Partial<IAuthUser>) {
+    const normalizedProfile = this.normalizeProfile(user, profile);
     const authUser: IAuthUser = {
-      ...profile,
+      ...normalizedProfile,
       uid: user.uid,
-      name: user.displayName,
+      name: user.displayName ?? undefined,
     };
     this.authUser.set(authUser);
   }
 
   private saveUserInfo(user: User, profile: AdditionalUserInfo["profile"]) {
     // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
-    // for access on automated sign-in following restart. Use fallback empty object if null
-    localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(profile));
+    // for access on automated sign-in following restart. Merge with any existing profile so
+    // Apple name fields captured on first sign-in are not lost on subsequent sign-ins.
+    const mergedProfile = { ...this.loadStoredProfile(), ...(profile ?? {}) };
+    const normalizedProfile = this.normalizeProfile(user, mergedProfile);
+    localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(normalizedProfile));
   }
 
   /**
