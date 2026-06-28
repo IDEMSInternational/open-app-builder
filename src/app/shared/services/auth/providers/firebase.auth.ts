@@ -1,10 +1,5 @@
 import { Injectable, Injector } from "@angular/core";
-import {
-  AdditionalUserInfo,
-  FirebaseAuthentication,
-  User,
-  SignInResult,
-} from "@capacitor-firebase/authentication";
+import { FirebaseAuthentication, User, SignInResult } from "@capacitor-firebase/authentication";
 import { FirebaseError } from "firebase/app";
 import { AuthErrorCodes } from "firebase/auth";
 import { FirebaseService } from "../../firebase/firebase.service";
@@ -87,7 +82,7 @@ export class FirebaseAuthProvider extends AuthProviderBase {
           const { profile = {} } = additionalUserInfo ?? {};
           const mergedProfile = { ...this.loadStoredProfile(), ...profile };
           this.setAuthUser(user, mergedProfile);
-          this.saveUserInfo(user, profile);
+          this.saveUserInfo(user, mergedProfile);
         } else {
           console.warn("[Firebase Auth] sign-in returned no user");
         }
@@ -176,7 +171,11 @@ export class FirebaseAuthProvider extends AuthProviderBase {
       return {};
     }
     try {
-      return JSON.parse(stored);
+      const parsed: unknown = JSON.parse(stored);
+      if (typeof parsed === "object" && parsed !== null && !Array.isArray(parsed)) {
+        return parsed as Partial<IAuthUser>;
+      }
+      return {};
     } catch {
       return {};
     }
@@ -187,17 +186,15 @@ export class FirebaseAuthProvider extends AuthProviderBase {
     const authUser: IAuthUser = {
       ...normalizedProfile,
       uid: user.uid,
-      name: user.displayName ?? undefined,
+      name: user.displayName ?? normalizedProfile.name,
     };
     this.authUser.set(authUser);
   }
 
-  private saveUserInfo(user: User, profile: AdditionalUserInfo["profile"]) {
+  private saveUserInfo(user: User, profile: Partial<IAuthUser>) {
     // NOTE - additionalUserInfo is only returned on first signIn so persist to localStorage
-    // for access on automated sign-in following restart. Merge with any existing profile so
-    // Apple name fields captured on first sign-in are not lost on subsequent sign-ins.
-    const mergedProfile = { ...this.loadStoredProfile(), ...(profile ?? {}) };
-    const normalizedProfile = this.normalizeProfile(user, mergedProfile);
+    // for access on automated sign-in following restart.
+    const normalizedProfile = this.normalizeProfile(user, profile);
     localStorage.setItem(AUTH_METADATA_FIELD, JSON.stringify(normalizedProfile));
   }
 
