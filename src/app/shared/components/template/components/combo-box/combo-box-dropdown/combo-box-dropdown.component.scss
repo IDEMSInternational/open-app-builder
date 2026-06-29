@@ -52,13 +52,14 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   }
 
   .text {
+    flex: 1;
+    min-width: 0;
     text-align: start;
     margin-top: auto;
     margin-bottom: auto;
-    width: 100%;
-    text-overflow: ellipsis;
-    text-wrap: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   ion-icon {
@@ -76,10 +77,12 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     height: auto;
 
     .text {
+      flex: unset;
+      min-width: unset;
       text-overflow: unset;
-      text-wrap: wrap;
       overflow: visible;
       white-space: normal;
+      overflow-wrap: break-word;
     }
   }
 }
