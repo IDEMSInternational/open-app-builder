@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.26.5",
+  "version": "0.26.7",
   "author": "IDEMS International",
   "license": "See LICENSE",
   "homepage": "https://idems.international/",
@@ -60,6 +60,7 @@
     "@capacitor/filesystem": "^7.0.0",
     "@capacitor/ios": "^7.0.0",
     "@capacitor/local-notifications": "^7.0.0",
+    "@capacitor/network": "^7.0.0",
     "@capacitor/push-notifications": "^7.0.0",
     "@capacitor/screen-orientation": "^7.0.0",
     "@capacitor/share": "^7.0.0",
@@ -115,7 +116,7 @@
     "stacktrace-js": "^2.0.2",
     "swiper": "^12.1.2",
     "trusted-types": "^2.0.0",
-    "uuid": "^11.0.3",
+    "uuid": "^14.0.0",
     "zod": "^4.0.17",
     "zone.js": "~0.15.1"
   },

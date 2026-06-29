@@ -16,6 +16,7 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { Observable, defer, switchMap } from "rxjs";
 import { MigrationService } from "../migration/migration.service";
 import { DYNAMIC_DATA_MIGRATIONS } from "./migrations";
+import { omitLocalOnlyDynamicDataFlows } from "./dynamic-data.sync";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -259,6 +260,11 @@ export class DynamicDataService extends AsyncServiceBase {
     return this.writeCache.state;
   }
 
+  /** Access persisted state excluding flows that should not sync to the server */
+  public async getSyncState() {
+    return omitLocalOnlyDynamicDataFlows(await this.getState());
+  }
+
   public async getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {
     // ensure collection has been created when accessing schema
     const { collectionName } = await this.ensureCollection(flow_type, flow_name);
@@ -321,8 +327,12 @@ export class DynamicDataService extends AsyncServiceBase {
     let initialRows: any[] = [];
     let schema = { ...REACTIVE_SCHEMA_BASE };
 
-    // Assume any flows that do not start with an underscore should be initialised from sheets
-    if (!flow_name.startsWith("_")) {
+    const shouldLoadInitialFlowData =
+      !flow_name.startsWith("_") || this.appDataService.hasFlow(flow_type, flow_name);
+
+    // Underscore-prefixed flows usually skip seeded app-data rows and hydrate from persisted writes.
+    // Runtime flows registered in app data, e.g. `_assets_contents`, should still load their rows.
+    if (shouldLoadInitialFlowData) {
       const flowData = await this.appDataService.getSheet<FlowTypes.Data_list>(
         flow_type,
         flow_name

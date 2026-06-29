@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  ElementRef,
   HostBinding,
   inject,
   InjectionToken,
@@ -16,11 +17,12 @@ import { Parameters } from "./parameters";
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
 import { IStore, StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
+import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -46,7 +48,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * The current evaluated value of the row, based on its expression with tokens replaced.
    * This may not be the same as the value stored in the variable store if further processing is needed (e.g. executing a data query).
    */
-  public value: Signal<any>;
+  public value!: Signal<any>;
 
   /**
    * The current 'raw' expression of the row, used to calculate its value.
@@ -66,10 +68,15 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected storeType: StoreType = "local";
+  protected elementRef = inject(ElementRef<HTMLElement>);
+  protected templateMetadataService: TemplateMetadataService = inject(TemplateMetadataService);
 
   private valueDependencySubscriptions: Subscription[] = [];
   private conditionDependencySubscriptions: Subscription[] = [];
   private paramsDependencySubscriptions: Subscription[] = [];
+
+  private navigationEndSubscription?: Subscription;
+  private pageTemplate: string = "";
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -82,6 +89,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   ngOnInit(): void {
     this.init();
 
+    this.applyStyles();
+
     this.watchParamDependencies();
     this.watchConditionDependencies();
     this.watchValueDependencies();
@@ -92,10 +101,28 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     });
   }
 
+  // Due to the use of <ion-router-outlet> in templates, components may not be destroyed on navigation.
+  // To ensure that the variable store is updated with the latest value when navigating back to a template,
+  // we subscribe to NavigationEnd events and store the value on navigation end if we are on the currently active template.
+  protected onNavigationEnd(event: NavigationEnd): void {
+    const activeTemplate = this.templateMetadataService.templateName() ?? "";
+    if (activeTemplate === this.pageTemplate) {
+      this.storeValue();
+    }
+  }
+
   public init(): void {
     const row = this.row();
 
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
+    this.pageTemplate = this.templateMetadataService.templateName() ?? "";
+
+    // This could be a performance problem if there are a lot of rows on the same page.
+    this.navigationEndSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.onNavigationEnd(event);
+      }
+    });
 
     // If there is a value in session storage that matches this row's name, use that to override the expression
     let url = this.router.url.split("?")[0];
@@ -141,6 +168,29 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     const computedValue = await this.computeStoredValue(value);
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
+  }
+
+  // Apply styles defined in the template sheet to the host element
+  // This can be overridden by child components if they need to apply styles to a different element.
+  protected applyStyles() {
+    const styles = this.row().style_list || [];
+
+    styles.forEach((style) => {
+      const separatorIndex = style.indexOf(":");
+
+      if (separatorIndex === -1) {
+        return;
+      }
+
+      const key = style.slice(0, separatorIndex).trim();
+      const value = style.slice(separatorIndex + 1).trim();
+
+      if (!key || !value) {
+        return;
+      }
+
+      this.elementRef.nativeElement.style.setProperty(key, value);
+    });
   }
 
   private setParams() {
@@ -240,7 +290,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
     this.unsubscribeValueDependencies();
     this.unsubscribeConditionDependencies();
     this.unsubscribeParamDependencies();
-
+    this.navigationEndSubscription?.unsubscribe();
     this.rowRegistry.unregister(this.name());
   }
 }

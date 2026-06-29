@@ -69,6 +69,7 @@
     .information {
       --background: var(--ion-color-primary-600);
       --background-hover: var(--ion-color-primary-500);
+      --background-activated: var(--ion-color-primary-500);
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
@@ -127,6 +128,18 @@
 
   // audio
   plh-audio {
+    ion-button.btn-play[data-variant~="button_only"],
+    ion-button.btn-play[data-variant~="compact"] {
+      --background: var(--ion-color-primary-variant-700) !important;
+      --border-radius: var(--ion-border-radius-rounded) !important;
+      --box-shadow: none !important;
+      height: 52px !important;
+      width: 52px !important;
+      ion-icon {
+        font-size: var(--icon-size-large) !important;
+      }
+    }
+
     .container-player[data-variant~="compact"],
     .container-player[data-variant~="large"] {
       // Remove visible bounding box from container level and apply to second-row instead
@@ -175,18 +188,6 @@
         background: var(--ion-color-primary-50);
         padding: 8px 16px;
         padding-right: 24px;
-        .controls {
-          ion-button.btn-play {
-            --background: var(--ion-color-primary-variant-700) !important;
-            --border-radius: var(--ion-border-radius-rounded) !important;
-            --box-shadow: none !important;
-            height: 52px !important;
-            width: 52px !important;
-            ion-icon {
-              font-size: var(--icon-size-large) !important;
-            }
-          }
-        }
         .progress-block {
           ion-range {
             width: 100% !important;
@@ -358,29 +359,6 @@
     .standard {
       color: var(--ion-color-gray-900);
       font-size: var(--font-size-text-medium);
-    }
-  }
-
-  // Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--ion-color-gray-900);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      font-size: var(--font-size-text-large) !important;
-      font-weight: var(--font-weight-medium) !important;
-      background-color: #e7f2fd;
-      border-bottom: 1px solid var(--ion-color-primary-variant-200);
-      h1 {
-        padding: 18px;
-        border: none;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
-      margin: 15px 0;
     }
   }
 
@@ -617,17 +595,14 @@
       border: none;
       box-shadow: none !important;
       min-height: 54px !important;
-      background-color: var(--ion-color-primary-variant-700);
+      background-color: var(--ion-color-secondary-200);
       border-radius: 16px !important;
       margin-bottom: 8px !important;
       .module-title {
         p {
-          color: white !important;
+          color: var(--ion-color-secondary-900) !important;
           padding: 0px !important;
         }
-      }
-      .module-image {
-        display: none !important;
       }
       &[data-highlighted~="true"] {
         border: none;
@@ -933,8 +908,8 @@
         .popup-content {
           background: linear-gradient(
             310deg,
-            var(--ion-color-primary-variant-500),
-            var(--ion-color-primary-variant-200)
+            var(--ion-color-secondary-400),
+            var(--ion-color-secondary-100)
           );
           border-radius: 40px;
           border: none !important;
@@ -955,7 +930,7 @@
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           text-align: center;
-          color: white;
+          color: var(--ion-color-secondary-900);
         }
         plh-tmpl-title {
           div.title-wrapper {

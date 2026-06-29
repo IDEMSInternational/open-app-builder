@@ -69,6 +69,7 @@
     .information {
       --background: var(--ion-color-primary-600);
       --background-hover: var(--ion-color-primary-500);
+      --background-activated: var(--ion-color-primary-500);
     }
     .navigation {
       --background: var(--ion-color-primary-600);
@@ -130,6 +131,18 @@
 
   // audio
   plh-audio {
+    ion-button.btn-play[data-variant~="button_only"],
+    ion-button.btn-play[data-variant~="compact"] {
+      --background: var(--ion-color-secondary-600) !important;
+      --border-radius: var(--ion-border-radius-rounded) !important;
+      --box-shadow: none !important;
+      height: 52px !important;
+      width: 52px !important;
+      ion-icon {
+        font-size: var(--icon-size-large) !important;
+      }
+    }
+
     .container-player[data-variant~="compact"],
     .container-player[data-variant~="large"] {
       // Remove visible bounding box from container level and apply to second-row instead
@@ -178,18 +191,6 @@
         background: var(--ion-color-secondary-50);
         padding: 8px 16px;
         padding-right: 24px;
-        .controls {
-          ion-button.btn-play {
-            --background: var(--ion-color-secondary-600) !important;
-            --border-radius: var(--ion-border-radius-rounded) !important;
-            --box-shadow: none !important;
-            height: 52px !important;
-            width: 52px !important;
-            ion-icon {
-              font-size: var(--icon-size-large) !important;
-            }
-          }
-        }
         .progress-block {
           ion-range {
             width: 100% !important;
@@ -361,28 +362,6 @@
     .standard {
       color: var(--color-surface-black);
       font-size: var(--font-size-text-medium);
-    }
-  }
-
-  // Title
-  plh-tmpl-title {
-    .title-wrapper h1 {
-      font-size: var(--font-size-text-title);
-      line-height: var(--line-height-text-large);
-      color: var(--color-surface-black);
-    }
-    .title-wrapper[data-variant~="section_banner"] {
-      font-size: var(--font-size-text-large) !important;
-      font-weight: var(--font-weight-medium) !important;
-      background-color: #e7f2fd;
-      border-bottom: 1px solid var(--color-secondary-blue-80);
-      h1 {
-        padding: 18px;
-        border: none;
-      }
-    }
-    .title-wrapper[data-variant~="page_banner"] h1 {
-      font-size: var(--font-size-text-extra-large) !important;
     }
   }
 
