@@ -14,7 +14,6 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   border-radius: var(--ion-border-radius-standard, 8px);
   font-weight: var(--font-weight-standard);
   font-size: var(--combo-box-font-size-standard, 18px);
-  line-height: var(--line-height-text-large, 32px);
   color: var(--ion-color-gray-400);
   min-height: var(--combo-box-min-height, 58px);
   @media (max-width: 400px) {
@@ -35,6 +34,12 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     color: var(--ion-color-primary-800);
     border: 1.5px solid var(--ion-color-primary-300);
     font-weight: var(--font-weight-standard);
+  }
+
+  &.wrap-text {
+    white-space: normal;
+    overflow-wrap: break-word;
+    height: auto;
   }
 }
 

@@ -20,8 +20,7 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   font-size: var(--combo-box-font-size-standard, 18px);
   border-radius: var(--ion-border-radius-standard, 8px);
   background: white;
-  padding-left: var(--small-padding, 10px);
-  padding-right: var(--small-padding, 10px);
+  padding: var(--small-padding, 10px);
 
   &.placeholder-style {
     color: $placeholder-text;
@@ -71,6 +70,17 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
 
   .dropdown-caret {
     transition: transform 0.2s;
+  }
+
+  &.wrap-text {
+    height: auto;
+
+    .text {
+      text-overflow: unset;
+      text-wrap: wrap;
+      overflow: visible;
+      white-space: normal;
+    }
   }
 }
 
