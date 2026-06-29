@@ -43,7 +43,13 @@ export class LifecycleActionsService extends SyncServiceBase {
       }
       if (allConditionsSatisfied) {
         console.log(`[Lifecycle Actions] ${launchAction.id}`);
-        await templateActionService.handleActions(launchAction.action_list);
+        // Lifecycle actions are read directly from data lists and passed to
+        // TemplateActionService, bypassing template row processing. In templates,
+        // action_list args/params are resolved earlier via evaluatePLHData during
+        // TemplateRowService.processSingleRow. Evaluate dynamic references here so
+        // authored values like @global.asset_pack_id resolve before handlers run.
+        const evaluatedActions = await this.evaluateLifecycleActionList(launchAction.action_list);
+        await templateActionService.handleActions(evaluatedActions);
       }
     }
     return;
@@ -64,5 +70,44 @@ export class LifecycleActionsService extends SyncServiceBase {
     return allLifecycleActions.filter(
       (launchAction) => launchAction.lifecycle_event === lifecycleEvent
     );
+  }
+
+  /**
+   * Resolve dynamic references in lifecycle action args and params.
+   * Kept on this service (not a shared util) because only lifecycle actions
+   * need this path — template-triggered actions are evaluated during row processing.
+   */
+  private async evaluateLifecycleActionList(actions: FlowTypes.TemplateRowAction[] = []) {
+    return Promise.all(actions.map((action) => this.evaluateLifecycleAction(action)));
+  }
+
+  private async evaluateLifecycleAction(
+    action: FlowTypes.TemplateRowAction
+  ): Promise<FlowTypes.TemplateRowAction> {
+    const evaluated: FlowTypes.TemplateRowAction = { ...action };
+    if (action.args) {
+      evaluated.args = await Promise.all(
+        action.args.map((arg) => this.evaluateLifecycleActionReference(arg))
+      );
+    }
+    if (action.params) {
+      evaluated.params = {};
+      for (const [key, value] of Object.entries(action.params)) {
+        evaluated.params[key] = await this.evaluateLifecycleActionReference(value);
+      }
+    }
+    return evaluated;
+  }
+
+  private async evaluateLifecycleActionReference<T>(value: T): Promise<T> {
+    if (Array.isArray(value)) {
+      return Promise.all(
+        value.map((item) => this.evaluateLifecycleActionReference(item))
+      ) as Promise<T>;
+    }
+    if (typeof value === "string" && value.includes("@")) {
+      return (await this.templateVariablesService.evaluateConditionString(value)) as T;
+    }
+    return value;
   }
 }
