@@ -16,6 +16,7 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   font-size: var(--combo-box-font-size-standard, 18px);
   color: var(--ion-color-gray-400);
   min-height: var(--combo-box-min-height, 58px);
+  padding: var(--small-padding, 10px);
   @media (max-width: 400px) {
     min-width: var(--combo-box-min-width, 328px);
   }
