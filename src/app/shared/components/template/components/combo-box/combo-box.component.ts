@@ -3,8 +3,9 @@ import { ModalController } from "@ionic/angular";
 import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { ReplaySubject, map, filter, switchMap } from "rxjs";
+import { ReplaySubject, from, map, filter, switchMap } from "rxjs";
 import { DataItemsService } from "../data-items/data-items.service";
+import { TemplateVariablesService } from "../../services/template-variables.service";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import {
   OptionMetaBadgeConfig,
@@ -73,10 +74,20 @@ export class TmplComboBoxComponent
     )
   );
 
-  public answerOptions = computed(() => {
-    const options = this.dataItemRows() ?? this.params().answerList;
-    return this.cleanAnswerOptions(options as IAnswerOption[]);
-  });
+  private rawAnswerOptionsInput = computed(() => ({
+    options: (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[],
+    optionsKey: this.params().optionsKey,
+    optionsValue: this.params().optionsValue,
+  }));
+
+  public answerOptions = toSignal(
+    toObservable(this.rawAnswerOptionsInput).pipe(
+      switchMap(({ options, optionsKey, optionsValue }) =>
+        from(this.cleanAnswerOptions(options, optionsKey, optionsValue))
+      )
+    ),
+    { initialValue: [] as IAnswerOption[] }
+  );
 
   public disabled = computed(() => this.params().disabled || this.answerOptions().length === 0);
 
@@ -109,7 +120,8 @@ export class TmplComboBoxComponent
 
   constructor(
     private modalController: ModalController,
-    private dataItemsService: DataItemsService
+    private dataItemsService: DataItemsService,
+    private templateVariablesService: TemplateVariablesService
   ) {
     super();
     // Sync displayed selection with current value (initial load and programmatic updates).
@@ -178,12 +190,31 @@ export class TmplComboBoxComponent
     this.componentDestroyed$.complete();
   }
 
-  private cleanAnswerOptions(options: IAnswerOption[]) {
-    return options.filter((option) => {
-      return (
-        option[this.params().optionsKey] !== undefined &&
-        option[this.params().optionsValue] !== undefined
-      );
-    });
+  private async cleanAnswerOptions(
+    options: IAnswerOption[],
+    optionsKey: string,
+    optionsValue: string
+  ) {
+    await this.templateVariablesService.ready();
+    const evaluatedOptions: IAnswerOption[] = [];
+    for (const option of options) {
+      const key = await this.evaluateOptionReference(option[optionsKey]);
+      const value = await this.evaluateOptionReference(option[optionsValue]);
+      if (key !== undefined && value !== undefined) {
+        evaluatedOptions.push({
+          ...option,
+          [optionsKey]: key,
+          [optionsValue]: value,
+        });
+      }
+    }
+    return evaluatedOptions;
+  }
+
+  private async evaluateOptionReference<T>(value: T): Promise<T> {
+    if (typeof value === "string" && value.includes("@")) {
+      return (await this.templateVariablesService.evaluateConditionString(value)) as T;
+    }
+    return value;
   }
 }
