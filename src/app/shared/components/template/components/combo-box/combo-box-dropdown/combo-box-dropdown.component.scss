@@ -76,8 +76,6 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
     height: auto;
 
     .text {
-      flex: unset;
-      min-width: unset;
       text-overflow: unset;
       overflow: visible;
       white-space: normal;
