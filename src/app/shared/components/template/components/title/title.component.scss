@@ -25,7 +25,6 @@ $text-color: var(--title-text-color, var(--ion-color-primary-900));
     }
   }
   .alternative {
-    line-height: var(--line-height-text-largest);
     color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: var(--font-size-title-small-device);
