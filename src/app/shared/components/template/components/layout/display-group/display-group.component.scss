@@ -24,6 +24,8 @@
 .display-group-wrapper[data-param-style~="wrap"],
 .display-group-wrapper[data-wrap="true"] {
   flex-wrap: wrap;
+  // gap replaces sibling margins so wrapped rows stay aligned (e.g. when centred)
+  gap: 1em;
 }
 // assign default background colour to the display group wrapper (useful in sticky group)
 .display-group-wrapper[data-param-style~="background_solid"] {
@@ -34,7 +36,9 @@
 .display-group-wrapper[data-param-style~="row"] > plh-template-component:not([data-hidden="true"]) {
   margin: 0;
 }
-.display-group-wrapper[data-param-style~="row"]
+.display-group-wrapper[data-param-style~="row"]:not([data-wrap="true"]):not(
+    [data-param-style~="wrap"]
+  )
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
   margin: 0;
