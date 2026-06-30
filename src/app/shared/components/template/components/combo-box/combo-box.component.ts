@@ -42,6 +42,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   input_position: coerce.string("bottom"),
   /** Placeholder text for the answer input field. Modal variant only. */
   answer_placeholder: coerce.string(""),
+  /** When true, allows the displayed button text to wrap over multiple lines. */
+  wrap: coerce.boolean(false),
 }));
 
 @Component({
