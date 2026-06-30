@@ -58,6 +58,7 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     super();
     this.shouldShow.set(false);
     effect((onCleanup) => {
+      this.rowSignal();
       const resolvedValue = this.resolved()?.value;
       if (!this.parent) return;
 
@@ -66,17 +67,16 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
         cancelled = true;
       });
 
-      void this.setValueIfChanged({ check_complete: false });
-
-      queueMicrotask(() => {
+      void (async () => {
+        await this.setValueIfChanged({ check_complete: false });
         if (cancelled) return;
 
         if (!resolvedValue) {
           console.log("no in progress ATM");
         }
 
-        void this.setValueIfChanged(toSettledValue(resolvedValue));
-      });
+        await this.setValueIfChanged(toSettledValue(resolvedValue));
+      })();
     });
   }
 
@@ -86,9 +86,9 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     });
   }
 
-  private setValueIfChanged(value: IUpNextValue) {
+  private async setValueIfChanged(value: IUpNextValue) {
     if (!isEqual(value, this._row?.value)) {
-      void this.setValue(value);
+      await this.setValue(value);
     }
   }
 }

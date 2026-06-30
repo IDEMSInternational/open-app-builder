@@ -141,7 +141,7 @@ function pickIncompleteTask(
     (task) =>
       !task.completed_ts &&
       matchesModuleTaskLists(task, fields) &&
-      (courseId === undefined || task.tag_course == courseId),
+      (courseId === undefined || task.tag_course === courseId),
     sortByNumberAsc("number")
   );
 }
@@ -180,12 +180,12 @@ function pickTask(
 
 function sortByNumberDesc(field: string) {
   return (a: FlowTypes.Data_listRow, b: FlowTypes.Data_listRow) =>
-    Number(b[field]) - Number(a[field]);
+    (Number(b[field]) || 0) - (Number(a[field]) || 0);
 }
 
 function sortByNumberAsc(field: string) {
   return (a: FlowTypes.Data_listRow, b: FlowTypes.Data_listRow) =>
-    Number(a[field]) - Number(b[field]);
+    (Number(a[field]) || 0) - (Number(b[field]) || 0);
 }
 
 function matchesModuleTaskLists(
