@@ -3,6 +3,7 @@ import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhCourseAccordionComponent } from "./course-accordion/course-accordion.component";
 import { PlhCourseSubItemComponent } from "./course-accordion/course-sub-item/course-sub-item.component";
+import { PlhCourseLessonAccordianComponent } from "./course-lesson-accordian/course-lesson-accordian.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
 import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
@@ -19,6 +20,7 @@ export {
   PlhCompletionModalComponent,
   PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
+  PlhCourseLessonAccordianComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
   PlhModuleListItemComponent,
@@ -38,6 +40,7 @@ export const PLH_COMPONENTS = [
   PlhCompletionModalComponent,
   PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
+  PlhCourseLessonAccordianComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
   PlhModuleListItemComponent,
@@ -55,6 +58,8 @@ export const PLH_COMPONENT_MAPPING = {
   plh_completion_modal: PlhCompletionModalComponent,
   plh_lesson_cta: PlhLessonCtaComponent,
   plh_course_accordion: PlhCourseAccordionComponent,
+  plh_course_lesson_accordion: PlhCourseLessonAccordianComponent,
+  plh_course_lesson_accordian: PlhCourseLessonAccordianComponent,
   plh_course_sub_item: PlhCourseSubItemComponent,
   plh_module_details_header: PlhModuleDetailsHeaderComponent,
   plh_module_list_item: PlhModuleListItemComponent,
