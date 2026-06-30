@@ -116,6 +116,7 @@
       plh-module-list-item-background-3: #ffd973,
 
       title-text-color: var(--ion-color-gray-900),
+      footer-background: var(--ion-color-primary-50),
     )
   ) {
     @include overrides.overrides;
