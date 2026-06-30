@@ -1,6 +1,6 @@
 import { Component, computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { filter, switchMap, tap } from "rxjs";
+import { filter, map, switchMap, tap } from "rxjs";
 import { toObservable } from "@angular/core/rxjs-interop";
 import {
   defineAuthorParameterSchema,
@@ -88,8 +88,8 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
   private dataItemRows = toSignal(
     toObservable(this.rowSignal).pipe(
       filter((row) => row !== undefined),
-      switchMap(async (row) => {
-        const filterContext = await this.resolveFilterContext();
+      map((row) => {
+        const filterContext = this.resolveFilterContext();
         const filterExpression = this.buildModuleTasksFilterExpression(filterContext);
         this.debugLog("module_tasks filter context", {
           ...filterContext,
@@ -147,23 +147,17 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
     ].join(" && ");
   }
 
-  private async resolveFilterContext() {
+  private resolveFilterContext() {
     const courseIdRaw = this.params().courseId || this.rowSignal()?.parameter_list?.course_id;
     const courseId = this.resolveCourseId(courseIdRaw);
-    const [childAgeTag, childAge, childGender, userRelationship] = await Promise.all([
-      this.resolveFieldValue("child_age_tag"),
-      this.resolveFieldValue("child_age"),
-      this.resolveFieldValue("child_gender"),
-      this.resolveFieldValue("user_relationship"),
-    ]);
 
     return {
       courseIdRaw,
       courseId,
-      childAgeTag,
-      childAge,
-      childGender,
-      userRelationship,
+      childAgeTag: this.templateFieldService.getField("child_age_tag"),
+      childAge: this.templateFieldService.getField("child_age"),
+      childGender: this.templateFieldService.getField("child_gender"),
+      userRelationship: this.templateFieldService.getField("user_relationship"),
     };
   }
 
@@ -179,20 +173,6 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
     }
 
     return courseIdRaw;
-  }
-
-  private async resolveFieldValue(fieldName: string) {
-    try {
-      const evaluated = await this.templateVariablesService.evaluateConditionString(
-        `@fields.${fieldName}`
-      );
-      if (typeof evaluated === "string" && evaluated.startsWith("@fields.")) {
-        return this.parentContainerComponentRef?.templateRowMap?.[fieldName]?.value;
-      }
-      return evaluated;
-    } catch {
-      return this.parentContainerComponentRef?.templateRowMap?.[fieldName]?.value;
-    }
   }
 
   private async resolveLabelTextContext() {
