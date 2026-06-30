@@ -10,6 +10,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 const MODULE_TASKS_DATA_LIST = "module_tasks";
+const COURSES_DATA_LIST = "courses";
 
 type IModuleTaskFilterFields = {
   child_age_tag: unknown;
@@ -19,10 +20,20 @@ type IModuleTaskFilterFields = {
   user_relationship: unknown;
 };
 
-type IUpNextValue = {
-  module_id: string;
-  module_title: string;
-  course_id: string;
+type IResolvedUpNextValue = {
+  course_id?: string;
+  course_title?: string;
+  module_id?: string;
+  module_title?: string;
+};
+
+type IUpNextValue = IResolvedUpNextValue & {
+  check_complete: boolean;
+};
+
+type IUpNextResolution = {
+  value: IResolvedUpNextValue;
+  task: FlowTypes.Data_listRow;
 };
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({}));
@@ -42,6 +53,11 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     { initialValue: [] as FlowTypes.Data_listRow[] }
   );
 
+  private courses = toSignal(
+    this.dynamicDataService.query$<FlowTypes.Data_listRow>("data_list", COURSES_DATA_LIST),
+    { initialValue: [] as FlowTypes.Data_listRow[] }
+  );
+
   /** Contact fields referenced by module task checks. */
   private filterFields = computed<IModuleTaskFilterFields>(() => ({
     child_age_tag: this.templateFieldService.getField("child_age_tag", false),
@@ -51,54 +67,178 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     user_relationship: this.templateFieldService.getField("user_relationship", false),
   }));
 
-  /** Resolved module task for "up next", if any check finds a match. */
-  upNextTask = computed(() => resolveUpNextTask(this.moduleTasks(), this.filterFields()));
+  upNext = computed(() => resolveUpNext(this.moduleTasks(), this.filterFields()));
+
+  upNextValue = computed(() => {
+    const upNext = this.upNext();
+    if (!upNext) return undefined;
+    return withCourseTitle(upNext.value, this.courses());
+  });
+
+  upNextTask = computed(() => this.upNext()?.task);
 
   constructor() {
     super();
     this.shouldShow.set(false);
-    effect(() => {
-      const nextTask = this.upNextTask();
+    effect((onCleanup) => {
+      this.moduleTasks();
+      this.filterFields();
+      this.courses();
+      const resolved = this.upNextValue();
+
       if (!this.parent) return;
 
-      if (nextTask) {
-        const value = toUpNextValue(nextTask);
-        if (!isEqual(value, this._row?.value)) {
-          void this.setValue(value);
-        }
-        return;
-      }
+      let cancelled = false;
+      onCleanup(() => {
+        cancelled = true;
+      });
 
-      console.log("no in progress ATM");
+      void this.setValueIfChanged({ check_complete: false });
+
+      queueMicrotask(() => {
+        if (cancelled) return;
+
+        if (!resolved) {
+          console.log("no in progress ATM");
+        }
+
+        void this.setValueIfChanged(toSettledValue(resolved));
+      });
     });
+  }
+
+  private setValueIfChanged(value: IUpNextValue) {
+    if (!isEqual(value, this._row?.value)) {
+      void this.setValue(value);
+    }
   }
 }
 
-function resolveUpNextTask(
+function resolveUpNext(
   tasks: FlowTypes.Data_listRow[],
   fields: IModuleTaskFilterFields
-): FlowTypes.Data_listRow | undefined {
-  return checkForInProgress(tasks, fields);
-  // Add further checks here when no in-progress task is found.
+): IUpNextResolution | undefined {
+  const inProgress = checkForInProgress(tasks, fields);
+  if (inProgress) {
+    return { task: inProgress, value: toModuleTaskValue(inProgress) };
+  }
+
+  const lastCompleted = checkForLastCompleted(tasks, fields);
+  if (lastCompleted) {
+    const nextInModule = getNextInModule(tasks, fields, lastCompleted.tag_course);
+    if (nextInModule) {
+      return {
+        task: lastCompleted,
+        value: {
+          course_id: lastCompleted.tag_course,
+          module_id: nextInModule.id,
+          module_title: nextInModule.title,
+        },
+      };
+    }
+
+    return { task: lastCompleted, value: { course_id: lastCompleted.tag_course } };
+  }
+
+  const firstItem = getFirstItem(tasks, fields);
+  if (firstItem) {
+    return { task: firstItem, value: toModuleTaskValue(firstItem) };
+  }
+
+  return undefined;
 }
 
 function checkForInProgress(
   tasks: FlowTypes.Data_listRow[],
   fields: IModuleTaskFilterFields
 ): FlowTypes.Data_listRow | undefined {
-  return tasks
-    .filter((task) => matchesInProgressModuleTask(task, fields))
-    .sort((a, b) => Number(b.last_accessed_ts) - Number(a.last_accessed_ts))[0];
+  return pickTask(
+    tasks,
+    (task) => !!task.last_accessed_ts && !task.completed_ts && matchesModuleTaskLists(task, fields),
+    (a, b) => Number(b.last_accessed_ts) - Number(a.last_accessed_ts)
+  );
 }
 
-function matchesInProgressModuleTask(
+function checkForLastCompleted(
+  tasks: FlowTypes.Data_listRow[],
+  fields: IModuleTaskFilterFields
+): FlowTypes.Data_listRow | undefined {
+  return pickTask(
+    tasks,
+    (task) => !!task.completed_ts && matchesModuleTaskLists(task, fields),
+    (a, b) => Number(b.completed_ts) - Number(a.completed_ts)
+  );
+}
+
+function getNextInModule(
+  tasks: FlowTypes.Data_listRow[],
+  fields: IModuleTaskFilterFields,
+  courseId: unknown
+): FlowTypes.Data_listRow | undefined {
+  return pickTask(
+    tasks,
+    (task) =>
+      !task.completed_ts && task.tag_course == courseId && matchesModuleTaskLists(task, fields),
+    (a, b) => Number(a.number) - Number(b.number)
+  );
+}
+
+function getFirstItem(
+  tasks: FlowTypes.Data_listRow[],
+  fields: IModuleTaskFilterFields
+): FlowTypes.Data_listRow | undefined {
+  return pickTask(
+    tasks,
+    (task) => !task.completed_ts && matchesModuleTaskLists(task, fields),
+    (a, b) => Number(a.number) - Number(b.number)
+  );
+}
+
+function toModuleTaskValue(row: FlowTypes.Data_listRow): IResolvedUpNextValue {
+  return {
+    module_id: row.id,
+    module_title: row.title,
+    course_id: row.tag_course,
+  };
+}
+
+function withCourseTitle(
+  value: IResolvedUpNextValue,
+  courses: FlowTypes.Data_listRow[]
+): IResolvedUpNextValue {
+  if (!value.course_id) {
+    return value;
+  }
+
+  const course = courses.find((row) => row.id === value.course_id);
+  if (!course?.title) {
+    return value;
+  }
+
+  return { ...value, course_title: course.title };
+}
+
+function toSettledValue(resolved?: IResolvedUpNextValue): IUpNextValue {
+  if (!resolved) {
+    return { check_complete: true };
+  }
+
+  return { ...resolved, check_complete: true };
+}
+
+function pickTask(
+  tasks: FlowTypes.Data_listRow[],
+  predicate: (task: FlowTypes.Data_listRow) => boolean,
+  sort: (a: FlowTypes.Data_listRow, b: FlowTypes.Data_listRow) => number
+): FlowTypes.Data_listRow | undefined {
+  const matches = tasks.filter(predicate).sort(sort);
+  return matches[0];
+}
+
+function matchesModuleTaskLists(
   task: FlowTypes.Data_listRow,
   fields: IModuleTaskFilterFields
 ): boolean {
-  if (!task.last_accessed_ts || task.completed_ts) {
-    return false;
-  }
-
   return (
     listIncludesOrUnset(task.tag_list, fields.child_age_tag) &&
     listIncludesOrUnset(task.age_list, fields.child_age) &&
@@ -106,14 +246,6 @@ function matchesInProgressModuleTask(
     listIncludesOrUnset(task.user_gender_list, fields.user_gender) &&
     listIncludesOrUnset(task.caregiver_relationship_list, fields.user_relationship)
   );
-}
-
-function toUpNextValue(row: FlowTypes.Data_listRow): IUpNextValue {
-  return {
-    module_id: row.id,
-    module_title: row.title,
-    course_id: row.tag_course,
-  };
 }
 
 /** Pass when the list is unset; otherwise require the value to be included. */
