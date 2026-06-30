@@ -53,12 +53,23 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-align: start;
+    appearance: none;
+    -webkit-appearance: none;
     height: auto;
     min-height: 90px;
     padding: 0 12px;
     background-color: var(--ion-color-primary-100);
     border: 1px solid var(--ion-color-primary-500);
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
+
+    &:disabled {
+      cursor: default;
+    }
 
     .course-image {
       display: flex;

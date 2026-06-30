@@ -1,6 +1,6 @@
 import { Component, computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { map, filter, switchMap, tap } from "rxjs";
+import { filter, switchMap, tap } from "rxjs";
 import { toObservable } from "@angular/core/rxjs-interop";
 import {
   defineAuthorParameterSchema,
@@ -31,11 +31,11 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 
 @Component({
   selector: "plh-course-lesson-accordion",
-  templateUrl: "./course-lesson-accordian.component.html",
-  styleUrls: ["./course-lesson-accordian.component.scss"],
+  templateUrl: "./course-lesson-accordion.component.html",
+  styleUrls: ["./course-lesson-accordion.component.scss"],
   standalone: false,
 })
-export class PlhCourseLessonAccordianComponent extends TemplateBaseComponentWithParams(
+export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWithParams(
   AuthorSchema
 ) {
   public rawSubItemDataRows = signal<any[]>([]);
@@ -140,10 +140,10 @@ export class PlhCourseLessonAccordianComponent extends TemplateBaseComponentWith
     return [
       // If course context is missing, do not filter everything out.
       `(${this.toJsLiteral(courseId)} == null || this.item.tag_course == ${this.toJsLiteral(courseId)})`,
-      `(!this.item.tag_list || this.item.tag_list.includes(${this.toJsLiteral(childAgeTag)}))`,
-      `(!this.item.age_list || this.item.age_list.includes(${this.toJsLiteral(childAge)}))`,
-      `(!this.item.child_gender_list || this.item.child_gender_list.includes(${this.toJsLiteral(childGender)}))`,
-      `(!this.item.caregiver_relationship_list || this.item.caregiver_relationship_list.includes(${this.toJsLiteral(userRelationship)}))`,
+      `(${this.toJsLiteral(childAgeTag)} == null || !this.item.tag_list || this.item.tag_list.includes(${this.toJsLiteral(childAgeTag)}))`,
+      `(${this.toJsLiteral(childAge)} == null || !this.item.age_list || this.item.age_list.includes(${this.toJsLiteral(childAge)}))`,
+      `(${this.toJsLiteral(childGender)} == null || !this.item.child_gender_list || this.item.child_gender_list.includes(${this.toJsLiteral(childGender)}))`,
+      `(${this.toJsLiteral(userRelationship)} == null || !this.item.caregiver_relationship_list || this.item.caregiver_relationship_list.includes(${this.toJsLiteral(userRelationship)}))`,
     ].join(" && ");
   }
 

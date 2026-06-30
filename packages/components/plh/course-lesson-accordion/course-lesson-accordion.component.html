@@ -3,7 +3,13 @@
   [class.accordion-closed]="!isOpen()"
   [attr.data-state]="state()"
 >
-  <div class="course-button" (click)="toggleOpen()">
+  <button
+    type="button"
+    class="course-button"
+    (click)="toggleOpen()"
+    [attr.aria-expanded]="isOpen()"
+    [disabled]="params().locked"
+  >
     @if (params().imageAsset) {
       <div class="course-image" [attr.data-image-alignment]="params().imageAlignment || 'bottom'">
         <img [src]="params().imageAsset | plhAsset" />
@@ -34,7 +40,7 @@
         }
       }
     </div>
-  </div>
+  </button>
 
   @if (isOpen()) {
     <div class="sub-items-container">
