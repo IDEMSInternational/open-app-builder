@@ -264,4 +264,12 @@ describe("Loop Component", () => {
           .should("contain", "key: inner_key_2");
       });
   });
+
+  it("Loop is in an action", () => {
+    cy.getDataTest("executeLoopActionButton").click();
+
+    cy.getDataTest("loopAction1Text").contains("Loop action key_1 executed");
+    cy.getDataTest("loopAction2Text").contains("Loop action key_2 executed");
+    cy.getDataTest("loopAction3Text").contains("Loop action key_3 executed");
+  });
 });
