@@ -1,6 +1,6 @@
 import { Component, computed, effect, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { filter, map, switchMap, tap } from "rxjs";
+import { filter, map, switchMap } from "rxjs";
 import { toObservable } from "@angular/core/rxjs-interop";
 import {
   defineAuthorParameterSchema,
@@ -88,36 +88,30 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
   private dataItemRows = toSignal(
     toObservable(this.rowSignal).pipe(
       filter((row) => row !== undefined),
-      map((row) => {
-        const filterContext = this.resolveFilterContext();
-        const filterExpression = this.buildModuleTasksFilterExpression(filterContext);
-        this.debugLog("module_tasks filter context", {
-          ...filterContext,
-          filterExpression,
-        });
-        return {
-          ...row,
-          type: "data_items",
-          name: row.name || "module_tasks",
-          value: MODULE_TASKS_DATA_LIST,
-          rows: [],
-          parameter_list: {
-            filter: filterExpression,
-            sort: MODULE_TASKS_SORT,
-          },
-        };
-      }),
+      map((row) => ({
+        ...row,
+        type: "data_items",
+        name: row.name || "module_tasks",
+        value: MODULE_TASKS_DATA_LIST,
+        rows: [],
+        parameter_list: {},
+      })),
       switchMap((row) =>
         this.dataItemsService.getItemsObservable(
           row,
           this.parentContainerComponentRef.templateRowMap
         )
       ),
-      tap((itemRows) => {
+      map((itemRows) => {
+        const filterContext = this.resolveFilterContext();
+        const filteredItems = this.filterModuleTasks(itemRows, filterContext);
+        const sortedItems = this.sortModuleTasks(filteredItems);
         this.debugLog("module_tasks query result", {
-          count: itemRows?.length || 0,
-          firstIds: (itemRows || []).slice(0, 5).map((item: any) => item?.id),
+          ...filterContext,
+          count: sortedItems.length,
+          firstIds: sortedItems.slice(0, 5).map((item: any) => item?.id),
         });
+        return sortedItems;
       }),
       switchMap(async (itemRows) => {
         const textContext = await this.resolveLabelTextContext();
@@ -127,24 +121,42 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
     )
   );
 
-  private buildModuleTasksFilterExpression(filterContext: {
-    courseIdRaw: unknown;
-    courseId: unknown;
-    childAgeTag: unknown;
-    childAge: unknown;
-    childGender: unknown;
-    userRelationship: unknown;
-  }) {
+  private filterModuleTasks(
+    items: any[],
+    filterContext: ReturnType<PlhCourseLessonAccordionComponent["resolveFilterContext"]>
+  ) {
     const { courseId, childAgeTag, childAge, childGender, userRelationship } = filterContext;
 
-    return [
-      // If course context is missing, do not filter everything out.
-      `(${this.toJsLiteral(courseId)} == null || this.item.tag_course == ${this.toJsLiteral(courseId)})`,
-      `(${this.toJsLiteral(childAgeTag)} == null || !this.item.tag_list || this.item.tag_list.includes(${this.toJsLiteral(childAgeTag)}))`,
-      `(${this.toJsLiteral(childAge)} == null || !this.item.age_list || this.item.age_list.includes(${this.toJsLiteral(childAge)}))`,
-      `(${this.toJsLiteral(childGender)} == null || !this.item.child_gender_list || this.item.child_gender_list.includes(${this.toJsLiteral(childGender)}))`,
-      `(${this.toJsLiteral(userRelationship)} == null || !this.item.caregiver_relationship_list || this.item.caregiver_relationship_list.includes(${this.toJsLiteral(userRelationship)}))`,
-    ].join(" && ");
+    return items.filter((item) => {
+      if (courseId != null && item.tag_course !== courseId) {
+        return false;
+      }
+      if (childAgeTag != null && item.tag_list && !item.tag_list.includes(childAgeTag)) {
+        return false;
+      }
+      if (childAge != null && item.age_list && !item.age_list.includes(childAge)) {
+        return false;
+      }
+      if (
+        childGender != null &&
+        item.child_gender_list &&
+        !item.child_gender_list.includes(childGender)
+      ) {
+        return false;
+      }
+      if (
+        userRelationship != null &&
+        item.caregiver_relationship_list &&
+        !item.caregiver_relationship_list.includes(userRelationship)
+      ) {
+        return false;
+      }
+      return true;
+    });
+  }
+
+  private sortModuleTasks(items: any[]) {
+    return [...items].sort((a, b) => (a[MODULE_TASKS_SORT] > b[MODULE_TASKS_SORT] ? 1 : -1));
   }
 
   private resolveFilterContext() {
@@ -210,10 +222,6 @@ export class PlhCourseLessonAccordionComponent extends TemplateBaseComponentWith
     } catch {
       return fallback;
     }
-  }
-
-  private toJsLiteral(value: unknown) {
-    return JSON.stringify(value);
   }
 
   private toCourseSubItemRow(
