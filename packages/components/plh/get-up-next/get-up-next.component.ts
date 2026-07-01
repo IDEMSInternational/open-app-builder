@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { distinctUntilChanged } from "rxjs";
 import { FlowTypes } from "packages/data-models";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import {
@@ -11,6 +12,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import {
   COURSES_DATA_LIST,
   IModuleTaskFilterFields,
+  IResolvedUpNextValue,
   IUpNextValue,
   MODULE_TASKS_DATA_LIST,
   resolveUpNextValue,
@@ -36,6 +38,7 @@ const FILTER_FIELD_NAMES = [
 export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   private dynamicDataService = inject(DynamicDataService);
   private templateFieldService = inject(TemplateFieldService);
+  private lastPublishedResolved: IResolvedUpNextValue | undefined;
 
   private moduleTasks = this.queryDataList(MODULE_TASKS_DATA_LIST);
   private courses = this.queryDataList(COURSES_DATA_LIST);
@@ -58,9 +61,11 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     super();
     this.shouldShow.set(false);
     effect((onCleanup) => {
-      this.rowSignal();
       const resolvedValue = this.resolved()?.value;
       if (!this.parent) return;
+      if (isEqual(resolvedValue, this.lastPublishedResolved)) {
+        return;
+      }
 
       let cancelled = false;
       onCleanup(() => {
@@ -71,19 +76,23 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
         await this.setValueIfChanged({ check_complete: false });
         if (cancelled) return;
 
-        if (!resolvedValue) {
-          console.log("no in progress ATM");
-        }
-
         await this.setValueIfChanged(toSettledValue(resolvedValue));
+        if (!cancelled) {
+          this.lastPublishedResolved = resolvedValue;
+        }
       })();
     });
   }
 
   private queryDataList(listName: string) {
-    return toSignal(this.dynamicDataService.query$<FlowTypes.Data_listRow>("data_list", listName), {
-      initialValue: [] as FlowTypes.Data_listRow[],
-    });
+    return toSignal(
+      this.dynamicDataService
+        .query$<FlowTypes.Data_listRow>("data_list", listName)
+        .pipe(distinctUntilChanged(isEqual)),
+      {
+        initialValue: [] as FlowTypes.Data_listRow[],
+      }
+    );
   }
 
   private async setValueIfChanged(value: IUpNextValue) {
