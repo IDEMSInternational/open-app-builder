@@ -110,6 +110,7 @@ describe("resolveUpNextValue", () => {
       ]
     );
 
+    expect(resolution?.task.id).toBe("b_next");
     expect(resolution?.value.module_id).toBe("b_next");
     expect(resolution?.value.course_id).toBe("course_b");
   });

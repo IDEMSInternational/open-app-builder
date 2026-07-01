@@ -32,7 +32,8 @@ describe("PlhGetUpNextComponent", () => {
 
   function createComponent(
     tasks: Record<string, unknown>[] = [],
-    courses: Record<string, unknown>[] = []
+    courses: Record<string, unknown>[] = [],
+    options: { spySetValue?: boolean } = {}
   ) {
     mockDynamicDataService.query$.and.callFake((_flowType: string, listName: string) => {
       if (listName === "module_tasks") return of(tasks);
@@ -50,6 +51,9 @@ describe("PlhGetUpNextComponent", () => {
       type: "plh_get_up_next",
       value: null,
     } as any;
+    if (options.spySetValue) {
+      spyOn(component, "setValue").and.resolveTo();
+    }
     fixture.detectChanges();
   }
 
@@ -125,7 +129,7 @@ describe("PlhGetUpNextComponent", () => {
     expect(component.upNextTask()?.id).toBe("matches");
   });
 
-  it("should return the most recently completed task when none are in progress", () => {
+  it("should return the next incomplete module after last completed when none are in progress", () => {
     createComponent([
       {
         id: "older_completed",
@@ -143,7 +147,7 @@ describe("PlhGetUpNextComponent", () => {
       },
     ]);
 
-    expect(component.upNextTask()?.id).toBe("newer_completed");
+    expect(component.upNextTask()?.id).toBe("not_started");
   });
 
   it("should prefer an in-progress task over a completed task", () => {
@@ -164,8 +168,6 @@ describe("PlhGetUpNextComponent", () => {
   });
 
   it("should set the component value from the first in-progress task", async () => {
-    spyOn(component, "setValue").and.resolveTo();
-
     createComponent(
       [
         {
@@ -183,7 +185,8 @@ describe("PlhGetUpNextComponent", () => {
           tag_list: ["age_5_9"],
         },
       ],
-      [{ id: "course_b", title: "Course B" }]
+      [{ id: "course_b", title: "Course B" }],
+      { spySetValue: true }
     );
 
     await flushSettledValue();
@@ -197,8 +200,6 @@ describe("PlhGetUpNextComponent", () => {
   });
 
   it("should fall through to getFirstItem when the last completed course has no following module", async () => {
-    spyOn(component, "setValue").and.resolveTo();
-
     createComponent(
       [
         {
@@ -220,7 +221,8 @@ describe("PlhGetUpNextComponent", () => {
       [
         { id: "relation_c", title: "Mejorar la relación con mi niña o niño" },
         { id: "mood_c", title: "Mood course" },
-      ]
+      ],
+      { spySetValue: true }
     );
 
     await flushSettledValue();
@@ -235,8 +237,6 @@ describe("PlhGetUpNextComponent", () => {
   });
 
   it("should settle with no up-next when all modules are complete", async () => {
-    spyOn(component, "setValue").and.resolveTo();
-
     createComponent(
       [
         {
@@ -254,7 +254,8 @@ describe("PlhGetUpNextComponent", () => {
           tag_list: ["age_5_9"],
         },
       ],
-      [{ id: "course_b", title: "Course B" }]
+      [{ id: "course_b", title: "Course B" }],
+      { spySetValue: true }
     );
 
     await flushSettledValue();
@@ -263,8 +264,6 @@ describe("PlhGetUpNextComponent", () => {
   });
 
   it("should set course_id and the next incomplete module in the same course after last completed", async () => {
-    spyOn(component, "setValue").and.resolveTo();
-
     createComponent(
       [
         {
@@ -303,11 +302,13 @@ describe("PlhGetUpNextComponent", () => {
           tag_list: ["age_5_9"],
         },
       ],
-      [{ id: "course_b", title: "Course B" }]
+      [{ id: "course_b", title: "Course B" }],
+      { spySetValue: true }
     );
 
     await flushSettledValue();
 
+    expect(component.upNextTask()?.id).toBe("next_module");
     expectSettledValue({
       course_id: "course_b",
       course_title: "Course B",
@@ -317,8 +318,6 @@ describe("PlhGetUpNextComponent", () => {
   });
 
   it("should return the first incomplete task by number when no other checks match", async () => {
-    spyOn(component, "setValue").and.resolveTo();
-
     createComponent(
       [
         {
@@ -336,7 +335,8 @@ describe("PlhGetUpNextComponent", () => {
           tag_list: ["age_5_9"],
         },
       ],
-      [{ id: "course_a", title: "Course A" }]
+      [{ id: "course_a", title: "Course A" }],
+      { spySetValue: true }
     );
 
     await flushSettledValue();
@@ -357,6 +357,7 @@ describe("PlhGetUpNextComponent", () => {
         title: "First module",
         tag_course: "course_a",
         last_accessed_ts: 1,
+        tag_list: ["age_5_9"],
       },
     ]);
     const courses$ = new BehaviorSubject<Record<string, unknown>[]>([
@@ -390,9 +391,11 @@ describe("PlhGetUpNextComponent", () => {
         title: "Updated module",
         tag_course: "course_b",
         last_accessed_ts: 2,
+        tag_list: ["age_5_9"],
       },
     ]);
     courses$.next([{ id: "course_b", title: "Course B" }]);
+    fixture.detectChanges();
     await flushSettledValue();
 
     const calls = (component.setValue as jasmine.Spy).calls.allArgs();
@@ -406,15 +409,11 @@ describe("PlhGetUpNextComponent", () => {
     });
   });
 
-  it("should log and settle with check_complete when no matching tasks are found", async () => {
-    spyOn(console, "log");
-    spyOn(component, "setValue").and.resolveTo();
-
-    createComponent([]);
+  it("should settle with check_complete when no matching tasks are found", async () => {
+    createComponent([], [], { spySetValue: true });
 
     await flushSettledValue();
 
-    expect(console.log).toHaveBeenCalledWith("no in progress ATM");
     expectSettledValue({});
   });
 });

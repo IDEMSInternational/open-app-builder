@@ -38,7 +38,7 @@ const FILTER_FIELD_NAMES = [
 export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   private dynamicDataService = inject(DynamicDataService);
   private templateFieldService = inject(TemplateFieldService);
-  private lastPublishedResolved: IResolvedUpNextValue | undefined;
+  private lastPublishedResolved: IResolvedUpNextValue | undefined | null = null;
 
   private moduleTasks = this.queryDataList(MODULE_TASKS_DATA_LIST);
   private courses = this.queryDataList(COURSES_DATA_LIST);
@@ -63,7 +63,10 @@ export class PlhGetUpNextComponent extends TemplateBaseComponentWithParams(Autho
     effect((onCleanup) => {
       const resolvedValue = this.resolved()?.value;
       if (!this.parent) return;
-      if (isEqual(resolvedValue, this.lastPublishedResolved)) {
+      if (
+        this.lastPublishedResolved !== null &&
+        isEqual(resolvedValue, this.lastPublishedResolved)
+      ) {
         return;
       }
 

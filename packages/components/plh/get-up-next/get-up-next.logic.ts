@@ -56,26 +56,28 @@ function resolveUpNext(
   tasks: FlowTypes.Data_listRow[],
   fields: IModuleTaskFilterFields
 ): IUpNextResolution | undefined {
+  // 1. Resume the most recently accessed incomplete module.
   const inProgress = checkForInProgress(tasks, fields);
   if (inProgress) {
     return { task: inProgress, value: toModuleTaskValue(inProgress) };
   }
 
+  // 2. After a completion, continue within that course if possible.
   const lastCompleted = checkForLastCompleted(tasks, fields);
   if (lastCompleted) {
     const nextInModule = getNextInModule(tasks, fields, lastCompleted.tag_course);
     if (nextInModule) {
       return {
-        task: lastCompleted,
+        task: nextInModule,
         value: {
+          ...toModuleTaskValue(nextInModule),
           course_id: lastCompleted.tag_course,
-          module_id: nextInModule.id,
-          module_title: nextInModule.title,
         },
       };
     }
   }
 
+  // 3. Fall back to the first incomplete module globally.
   const firstItem = getFirstItem(tasks, fields);
   if (firstItem) {
     return { task: firstItem, value: toModuleTaskValue(firstItem) };
