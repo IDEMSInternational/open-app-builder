@@ -91,7 +91,7 @@ function checkForInProgress(
   return pickTask(
     tasks,
     (task) => !!task.last_accessed_ts && !task.completed_ts && matchesModuleTaskLists(task, fields),
-    sortByNumberDesc("last_accessed_ts")
+    sortByTimestampDesc("last_accessed_ts")
   );
 }
 
@@ -102,7 +102,7 @@ function checkForLastCompleted(
   return pickTask(
     tasks,
     (task) => !!task.completed_ts && matchesModuleTaskLists(task, fields),
-    sortByNumberDesc("completed_ts")
+    sortByTimestampDesc("completed_ts")
   );
 }
 
@@ -168,14 +168,36 @@ function pickTask(
   return tasks.filter(predicate).sort(sort)[0];
 }
 
-function sortByNumberDesc(field: string) {
+function sortByTimestampDesc(field: string) {
   return (a: FlowTypes.Data_listRow, b: FlowTypes.Data_listRow) =>
-    (Number(b[field]) || 0) - (Number(a[field]) || 0);
+    toTimestampMs(b[field]) - toTimestampMs(a[field]);
 }
 
 function sortByNumberAsc(field: string) {
   return (a: FlowTypes.Data_listRow, b: FlowTypes.Data_listRow) =>
-    (Number(a[field]) || 0) - (Number(b[field]) || 0);
+    toNumber(a[field]) - toNumber(b[field]);
+}
+
+function toTimestampMs(value: unknown): number {
+  if (value == null || value === "") {
+    return 0;
+  }
+
+  if (typeof value === "number") {
+    return value;
+  }
+
+  if (value instanceof Date) {
+    return value.getTime();
+  }
+
+  const ms = new Date(value as string | number).getTime();
+  return Number.isNaN(ms) ? 0 : ms;
+}
+
+function toNumber(value: unknown): number {
+  const number = Number(value);
+  return Number.isNaN(number) ? 0 : number;
 }
 
 function matchesModuleTaskLists(

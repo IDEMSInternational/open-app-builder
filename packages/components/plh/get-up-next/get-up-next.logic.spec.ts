@@ -68,4 +68,94 @@ describe("resolveUpNextValue", () => {
 
     expect(resolution).toBeUndefined();
   });
+
+  it("should advance to the next module in course B after completing in course B", () => {
+    const resolution = resolveUpNextValue(
+      [
+        {
+          id: "a_first",
+          title: "Course A first",
+          tag_course: "course_a",
+          number: 1,
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "a_done",
+          title: "Course A done",
+          tag_course: "course_a",
+          number: 2,
+          completed_ts: "2025-01-01T10:00:00",
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "b_done",
+          title: "Course B done",
+          tag_course: "course_b",
+          number: 1,
+          completed_ts: "2025-06-01T10:00:00",
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "b_next",
+          title: "Course B next",
+          tag_course: "course_b",
+          number: 2,
+          tag_list: ["age_5_9"],
+        },
+      ],
+      defaultFields,
+      [
+        { id: "course_a", title: "Course A" },
+        { id: "course_b", title: "Course B" },
+      ]
+    );
+
+    expect(resolution?.value.module_id).toBe("b_next");
+    expect(resolution?.value.course_id).toBe("course_b");
+  });
+
+  it("should sort completed_ts ISO strings by time rather than lexicographically", () => {
+    const resolution = resolveUpNextValue(
+      [
+        {
+          id: "a_first",
+          title: "Course A first",
+          tag_course: "course_a",
+          number: 1,
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "a_done",
+          title: "Course A done",
+          tag_course: "course_a",
+          number: 2,
+          completed_ts: "2025-12-01T10:00:00",
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "b_done",
+          title: "Course B done",
+          tag_course: "course_b",
+          number: 1,
+          completed_ts: "2025-06-01T10:00:00",
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "b_next",
+          title: "Course B next",
+          tag_course: "course_b",
+          number: 2,
+          tag_list: ["age_5_9"],
+        },
+      ],
+      defaultFields,
+      [
+        { id: "course_a", title: "Course A" },
+        { id: "course_b", title: "Course B" },
+      ]
+    );
+
+    expect(resolution?.value.module_id).toBe("a_first");
+    expect(resolution?.value.course_id).toBe("course_a");
+  });
 });
