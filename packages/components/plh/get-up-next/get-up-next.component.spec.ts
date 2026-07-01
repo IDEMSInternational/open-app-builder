@@ -196,7 +196,45 @@ describe("PlhGetUpNextComponent", () => {
     });
   });
 
-  it("should set only course_id when falling back to the last completed task", async () => {
+  it("should fall through to getFirstItem when the last completed course has no following module", async () => {
+    spyOn(component, "setValue").and.resolveTo();
+
+    createComponent(
+      [
+        {
+          id: "i_calm_c",
+          title: "Mantener la calma cuando hay estrés",
+          tag_course: "relation_c",
+          number: 3,
+          completed_ts: 100,
+          tag_list: ["age_5_9"],
+        },
+        {
+          id: "first_mood",
+          title: "First mood module",
+          tag_course: "mood_c",
+          number: 1,
+          tag_list: ["age_5_9"],
+        },
+      ],
+      [
+        { id: "relation_c", title: "Mejorar la relación con mi niña o niño" },
+        { id: "mood_c", title: "Mood course" },
+      ]
+    );
+
+    await flushSettledValue();
+
+    expect(component.upNextTask()?.id).toBe("first_mood");
+    expectSettledValue({
+      course_id: "mood_c",
+      course_title: "Mood course",
+      module_id: "first_mood",
+      module_title: "First mood module",
+    });
+  });
+
+  it("should settle with no up-next when all modules are complete", async () => {
     spyOn(component, "setValue").and.resolveTo();
 
     createComponent(
@@ -221,10 +259,7 @@ describe("PlhGetUpNextComponent", () => {
 
     await flushSettledValue();
 
-    expectSettledValue({
-      course_id: "course_b",
-      course_title: "Course B",
-    });
+    expectSettledValue({});
   });
 
   it("should set course_id and the next incomplete module in the same course after last completed", async () => {

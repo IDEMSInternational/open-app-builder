@@ -63,7 +63,17 @@ function resolveUpNext(
 
   const lastCompleted = checkForLastCompleted(tasks, fields);
   if (lastCompleted) {
-    return resolveFromLastCompleted(tasks, fields, lastCompleted);
+    const nextInModule = getNextInModule(tasks, fields, lastCompleted.tag_course);
+    if (nextInModule) {
+      return {
+        task: lastCompleted,
+        value: {
+          course_id: lastCompleted.tag_course,
+          module_id: nextInModule.id,
+          module_title: nextInModule.title,
+        },
+      };
+    }
   }
 
   const firstItem = getFirstItem(tasks, fields);
@@ -72,26 +82,6 @@ function resolveUpNext(
   }
 
   return undefined;
-}
-
-function resolveFromLastCompleted(
-  tasks: FlowTypes.Data_listRow[],
-  fields: IModuleTaskFilterFields,
-  lastCompleted: FlowTypes.Data_listRow
-): IUpNextResolution {
-  const nextInModule = getNextInModule(tasks, fields, lastCompleted.tag_course);
-  if (!nextInModule) {
-    return { task: lastCompleted, value: { course_id: lastCompleted.tag_course } };
-  }
-
-  return {
-    task: lastCompleted,
-    value: {
-      course_id: lastCompleted.tag_course,
-      module_id: nextInModule.id,
-      module_title: nextInModule.title,
-    },
-  };
 }
 
 function checkForInProgress(
