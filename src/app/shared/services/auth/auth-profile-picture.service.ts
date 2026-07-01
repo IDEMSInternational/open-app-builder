@@ -29,8 +29,8 @@ export class AuthProfilePictureService {
   private sessionRemoteUrl: string | undefined;
   private sessionSrc: string | undefined;
 
-  /** Dedupes concurrent setFromRemoteUrl calls for the same URL */
-  private pendingByUrl = new Map<string, Promise<void>>();
+  /** Tracks the in-flight remote URL to dedupe concurrent requests */
+  private latestRemoteUrl: string | undefined;
 
   constructor(
     private fileManagerService: FileManagerService,
@@ -42,18 +42,21 @@ export class AuthProfilePictureService {
    * in AUTH_USER_PICTURE. Fire-and-forget: never throws or blocks callers.
    */
   public setFromRemoteUrl(remoteUrl: string): void {
-    if (this.pendingByUrl.has(remoteUrl)) {
+    if (remoteUrl === this.latestRemoteUrl) {
       return;
     }
 
-    const task = this.applyRemoteUrl(remoteUrl)
+    this.latestRemoteUrl = remoteUrl;
+
+    this.applyRemoteUrl(remoteUrl)
       .catch((error) => {
         console.warn(LOG_PREFIX, "Unhandled error caching profile picture:", error);
       })
       .finally(() => {
-        this.pendingByUrl.delete(remoteUrl);
+        if (this.latestRemoteUrl === remoteUrl) {
+          this.latestRemoteUrl = undefined;
+        }
       });
-    this.pendingByUrl.set(remoteUrl, task);
   }
 
   private async applyRemoteUrl(remoteUrl: string) {
@@ -103,7 +106,7 @@ export class AuthProfilePictureService {
       this.cacheGeneration++;
       this.sessionRemoteUrl = undefined;
       this.sessionSrc = undefined;
-      this.pendingByUrl.clear();
+      this.latestRemoteUrl = undefined;
       this.revokeCached();
       this.systemVariableService.remove("AUTH_USER_PICTURE");
     } catch (error) {
