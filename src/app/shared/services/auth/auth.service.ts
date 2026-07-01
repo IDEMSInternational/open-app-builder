@@ -14,6 +14,7 @@ import type { IServerUser } from "../server/server.types";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 import { UserMetaService } from "../userMeta/userMeta.service";
+import { AuthProfilePictureService } from "./auth-profile-picture.service";
 
 @Injectable({
   providedIn: "root",
@@ -35,7 +36,8 @@ export class AuthService extends AsyncServiceBase {
     private http: HttpClient,
     private dynamicDataService: DynamicDataService,
     private systemVariableService: SystemVariableService,
-    private userMetaService: UserMetaService
+    private userMetaService: UserMetaService,
+    private authProfilePictureService: AuthProfilePictureService
   ) {
     super("Auth");
     this.provider = getAuthProvider(this.config.provider);
@@ -170,7 +172,7 @@ export class AuthService extends AsyncServiceBase {
     this.systemVariableService.set("AUTH_USER_NAME", auth_user.name || "");
     this.systemVariableService.set("AUTH_USER_FAMILY_NAME", auth_user.family_name || "");
     this.systemVariableService.set("AUTH_USER_GIVEN_NAME", auth_user.given_name || "");
-    this.systemVariableService.set("AUTH_USER_PICTURE", auth_user.picture || "");
+    this.authProfilePictureService.setFromRemoteUrl(auth_user.picture || "");
   }
 
   /**
@@ -188,10 +190,14 @@ export class AuthService extends AsyncServiceBase {
   }
 
   private clearUserData() {
+    try {
+      this.authProfilePictureService.clear();
+    } catch (error) {
+      console.warn("[Auth] Failed to clear profile picture:", error);
+    }
     this.systemVariableService.remove("AUTH_USER_ID");
     this.systemVariableService.remove("AUTH_USER_NAME");
     this.systemVariableService.remove("AUTH_USER_FAMILY_NAME");
     this.systemVariableService.remove("AUTH_USER_GIVEN_NAME");
-    this.systemVariableService.remove("AUTH_USER_PICTURE");
   }
 }

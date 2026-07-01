@@ -7,6 +7,7 @@ import { TemplateService } from "../../components/template/services/template.ser
 import { ServerService } from "../server/server.service";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { AuthProfilePictureService } from "./auth-profile-picture.service";
 
 describe("AuthService", () => {
   let service: AuthService;
@@ -20,6 +21,10 @@ describe("AuthService", () => {
         { provide: DeploymentService, useValue: new MockDeploymentService() },
         { provide: TemplateService, useValue: {} },
         { provide: ServerService, useValue: {} },
+        {
+          provide: AuthProfilePictureService,
+          useValue: { setFromRemoteUrl: () => {}, clear: () => {} },
+        },
       ],
     });
     service = TestBed.inject(AuthService);
