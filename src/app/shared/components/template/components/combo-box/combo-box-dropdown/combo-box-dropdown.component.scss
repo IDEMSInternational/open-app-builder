@@ -16,12 +16,12 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   width: 100%;
   height: 58px;
   display: flex;
+  align-items: center;
   min-height: var(--combo-box-min-height, 58px);
   font-size: var(--combo-box-font-size-standard, 18px);
   border-radius: var(--ion-border-radius-standard, 8px);
   background: white;
-  padding-left: var(--small-padding, 10px);
-  padding-right: var(--small-padding, 10px);
+  padding: var(--small-padding, 10px);
 
   &.placeholder-style {
     color: $placeholder-text;
@@ -53,24 +53,34 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   }
 
   .text {
+    flex: 1;
+    min-width: 0;
     text-align: start;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 100%;
-    text-overflow: ellipsis;
-    text-wrap: nowrap;
+    line-height: normal;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   ion-icon {
-    margin-top: auto;
-    margin-bottom: auto;
+    flex-shrink: 0;
     margin-left: auto;
     width: 0.8125rem;
   }
 
   .dropdown-caret {
     transition: transform 0.2s;
+  }
+
+  &.wrap-text {
+    height: auto;
+
+    .text {
+      text-overflow: unset;
+      overflow: visible;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
   }
 }
 

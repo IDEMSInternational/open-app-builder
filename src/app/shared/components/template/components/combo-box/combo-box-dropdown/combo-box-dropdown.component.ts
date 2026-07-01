@@ -34,6 +34,7 @@ export class ComboBoxDropdownComponent {
     colorKey: "",
     valueDefaults: { ...OPTION_META_BADGE_VALUE_DEFAULTS },
   });
+  public wrap = input<boolean>(false);
 
   /** When option count exceeds `SEARCH_THRESHOLD`, open search modal instead of inline popover. */
   public showSearch = computed(
@@ -92,6 +93,7 @@ export class ComboBoxDropdownComponent {
       "placeholder-style": (!val && placeholder) || this.prioritisePlaceholder(),
       "with-value": val ? true : undefined,
       "no-value": val ? undefined : true,
+      "wrap-text": this.wrap(),
     };
   });
 
