@@ -43,7 +43,14 @@ export class RowListComponent {
   private rowsInitialised = new Set<number>();
 
   public getComponent(row: FlowTypes.TemplateRow): Type<RowBaseComponent<any>> {
-    return REACTIVE_COMPONENT_MAP[row.type] as Type<RowBaseComponent<any>>;
+    if (!(row.type in REACTIVE_COMPONENT_MAP)) {
+      console.error(`[RowListComponent] No component registered for row type: ${row.type}`, row);
+      throw new Error(`[RowListComponent] Missing component mapping for row type: ${row.type}`);
+    }
+
+    return REACTIVE_COMPONENT_MAP[row.type as keyof typeof REACTIVE_COMPONENT_MAP] as Type<
+      RowBaseComponent<any>
+    >;
   }
 
   /* 
