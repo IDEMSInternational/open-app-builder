@@ -2,15 +2,17 @@ import { Component, computed } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs/operators";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { IAnswerListItem } from "../../../../utils";
+import { IAnswerOption } from "../../../../utils";
 import { DataItemsService } from "../data-items/data-items.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  answer_list: coerce.objectArray<IAnswerListItem>([
+  answer_list: coerce.objectArray<IAnswerOption>([
     { name: null, text: null, image: null, image_checked: null },
   ]),
   options_key: coerce.string("name"),
   options_value: coerce.string("text"),
+  /** The display variant of the radio list. Default 'default'. */
+  variant: coerce.allowedValues(["default", "boxed"], "default"),
 }));
 
 @Component({
@@ -21,7 +23,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 })
 export class TmplRadioListComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public answerOptions = computed(() => {
-    return this.dataItemRows() ?? this.params().answerList;
+    return (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
   });
 
   constructor(private dataItemsService: DataItemsService) {
