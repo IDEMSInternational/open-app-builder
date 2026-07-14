@@ -57,8 +57,12 @@ export class LoopComponent
   }
 
   public async execute(params?: IActionParameter[]): Promise<void> {
+    if (!this.condition()) {
+      return;
+    }
     destroyComponentRefs(this.componentRefs);
     await this.storeValue();
+    let index = 0;
     for (const item of this.value() ?? []) {
       for (const row of this.row().rows ?? []) {
         const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];
@@ -66,7 +70,7 @@ export class LoopComponent
           componentType,
           this.injector,
           row,
-          this.getName(item, 0)
+          this.getName(item, index)
         );
         this.componentRefs.push(componentRef);
 
@@ -74,7 +78,7 @@ export class LoopComponent
         const condition = row.condition
           ? this.evaluationService.evaluateExpression(
               row.condition,
-              this.getName(item, 0),
+              this.getName(item, index),
               "script"
             )
           : true;
@@ -86,6 +90,7 @@ export class LoopComponent
           }
         }
       }
+      index++;
     }
   }
 

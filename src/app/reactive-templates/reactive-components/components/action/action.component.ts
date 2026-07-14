@@ -50,6 +50,10 @@ export class ActionComponent
   }
 
   public async execute(params?: IActionParameter[]): Promise<void> {
+    if (!this.condition()) {
+      return;
+    }
+
     const name = this.name();
     const expression = this.expression();
 
