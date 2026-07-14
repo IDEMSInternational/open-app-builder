@@ -12,6 +12,7 @@ import {
   CANTO_CUSTOM_FIELD_THEME,
   DEFAULT_CANTO_LANGUAGE_CODES,
 } from "./constants";
+import { findMatchingRemotePack, getCantoCustomFieldValue } from "./remote-assets";
 
 const DEFAULT_THEME_NAME = "theme_default";
 
@@ -24,7 +25,7 @@ const copyFiles = async (folders: CantoDownloadedFolder[]): Promise<IDownloadedA
   await fs.emptyDir(outputRoot);
   const copiedFolders: IDownloadedAssetSource[] = [];
   for (const folder of folders) {
-    copiedFolders.push(await copyFilesFromFolder(folder, outputRoot));
+    copiedFolders.push(...(await copyFilesFromFolder(folder, outputRoot)));
   }
   return copiedFolders;
 };
@@ -32,41 +33,73 @@ const copyFiles = async (folders: CantoDownloadedFolder[]): Promise<IDownloadedA
 const copyFilesFromFolder = async (
   sourceFolder: CantoDownloadedFolder,
   outputRoot: string
-): Promise<IDownloadedAssetSource> => {
+): Promise<IDownloadedAssetSource[]> => {
   const { folderConfig } = sourceFolder;
+  const remotePacks = folderConfig.remote_assets ?? [];
   console.log(`Restructuring Canto files for "${folderConfig.name}"`);
   const manifestPath = path.join(sourceFolder.path, "manifest.json");
   const manifest = (await fs.readJson(manifestPath)) as CantoManifest;
   if (!manifest) {
     throw new Error(`Canto manifest not found for source folder: ${sourceFolder.path}`);
   }
-  const outputFolder = path.join(outputRoot, folderConfig.name);
-  let copiedFiles = 0;
+
+  const coreOutputFolder = path.join(outputRoot, folderConfig.name);
+  const remoteOutputFolders = new Map(
+    remotePacks.map((pack) => [pack.name, path.join(outputRoot, pack.name)])
+  );
+  let coreCopiedFiles = 0;
+  const remoteCopiedFiles = new Map(remotePacks.map((pack) => [pack.name, 0]));
+
   for (const file of manifest) {
-    const langVariation = getLanguageVariation(file);
-    const themeVariation = getThemeVariation(file);
-    const assetPathName = getFilePath(file, folderConfig.id);
-    const srcPath = path.join(sourceFolder.path, assetPathName);
-    const destRelativePath = [themeVariation, langVariation, assetPathName]
-      .filter(Boolean)
-      .join("/");
-    const destPath = path.join(outputFolder, destRelativePath);
+    const matchingPack = findMatchingRemotePack(file, remotePacks, { folderId: folderConfig.id });
+    const outputFolder = matchingPack
+      ? remoteOutputFolders.get(matchingPack.name)!
+      : coreOutputFolder;
+    const destPath = path.join(outputFolder, getRestructuredRelativePath(file, folderConfig.id));
+    const srcPath = path.join(sourceFolder.path, getFilePath(file, folderConfig.id));
     await fs.copy(srcPath, destPath);
-    copiedFiles++;
+
+    if (matchingPack) {
+      remoteCopiedFiles.set(matchingPack.name, remoteCopiedFiles.get(matchingPack.name)! + 1);
+    } else {
+      coreCopiedFiles++;
+    }
   }
-  console.log(`Restructured ${copiedFiles} files to ${outputFolder}`);
-  return { path: outputFolder, name: folderConfig.name, remote: false };
+
+  const sources: IDownloadedAssetSource[] = [
+    { path: coreOutputFolder, name: folderConfig.name, remote: false },
+  ];
+  for (const packName of remoteOutputFolders.keys()) {
+    const copiedFiles = remoteCopiedFiles.get(packName) ?? 0;
+    console.log(
+      `Restructured ${copiedFiles} remote assets to ${remoteOutputFolders.get(packName)}`
+    );
+    sources.push({
+      path: remoteOutputFolders.get(packName)!,
+      name: packName,
+      remote: true,
+    });
+  }
+  console.log(`Restructured ${coreCopiedFiles} core assets to ${coreOutputFolder}`);
+  return sources;
 };
 
+function getRestructuredRelativePath(file: CantoManifest[0], cantoFolderId: string) {
+  const langVariation = getLanguageVariation(file);
+  const themeVariation = getThemeVariation(file);
+  const assetPathName = getFilePath(file, cantoFolderId);
+  return [themeVariation, langVariation, assetPathName].filter(Boolean).join("/");
+}
+
 function getThemeVariation(file: CantoManifest[0]) {
-  const theme = getCustomFieldValue(file, CANTO_CUSTOM_FIELD_THEME);
+  const theme = getCantoCustomFieldValue(file, CANTO_CUSTOM_FIELD_THEME);
   return theme === DEFAULT_THEME_NAME ? undefined : theme;
 }
 
 function getLanguageVariation(file: CantoManifest[0]) {
   const defaultLanguage =
     WorkflowRunner.config.app_config.APP_LANGUAGES?.default || DEFAULT_APP_LANGUAGE_CODE;
-  const languageLabel = getCustomFieldValue(file, CANTO_CUSTOM_FIELD_LANGUAGE_LABEL);
+  const languageLabel = getCantoCustomFieldValue(file, CANTO_CUSTOM_FIELD_LANGUAGE_LABEL);
   const languageMappings = {
     ...DEFAULT_CANTO_LANGUAGE_CODES,
     ...WorkflowRunner.config.canto?.languageMappings,
@@ -75,9 +108,4 @@ function getLanguageVariation(file: CantoManifest[0]) {
   return languageCode === defaultLanguage ? undefined : languageCode;
 }
 
-function getCustomFieldValue(file: CantoManifest[0], fieldName: string) {
-  const value = file.additional?.[fieldName];
-  return Array.isArray(value) ? value[0] : value;
-}
-
-export { copyFiles };
+export { copyFiles, getRestructuredRelativePath };
