@@ -5,7 +5,6 @@ import { IonicModule } from "@ionic/angular";
 
 const parameters = () =>
   defineParameters({
-    disabled: new Parameter("disabled", false),
     options: new Parameter("options", [], "script"),
     optionsKey: new Parameter("options_key", "key"),
     optionsValue: new Parameter("options_value", "value"),
