@@ -315,6 +315,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             downloadStartedAt,
             downloadCompletedAt: this.remoteAssetMetadataService.createTimestamp(),
           });
+          console.log(
+            `[REMOTE ASSETS] Asset pack download completed: ${assetPackName} (${total} files)`
+          );
           return true;
         } catch (e) {
           if (this.isDownloadCancelled(e, abortController.signal)) {

@@ -17,7 +17,7 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
 const DEFAULT_THEME_NAME = "theme_default";
 
 /** URL prefixes that indicate external or native file paths that should not be modified */
-const EXTERNAL_URL_PREFIXES = ["http", "file://", "content://", "capacitor://"];
+const EXTERNAL_URL_PREFIXES = ["blob:", "http", "file://", "content://", "capacitor://"];
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
