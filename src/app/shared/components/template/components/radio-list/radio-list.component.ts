@@ -12,7 +12,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   options_value: coerce.string("text"),
   /** The display variant of the radio list. Default 'default'. */
-  variant: coerce.allowedValues(["default", "boxed"], "default"),
+  variant: coerce.allowedValues(["default", "card"], "default"),
 }));
 
 @Component({
