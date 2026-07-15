@@ -1,10 +1,10 @@
 import { Component, computed } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { IAnswerListItem } from "src/app/shared/utils";
+import { IAnswerOption } from "src/app/shared/utils";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of options presented as radio items */
-  answer_list: coerce.objectArray<IAnswerListItem>([]),
+  answer_list: coerce.objectArray<IAnswerOption>([]),
   /** Minimum item width, will increase to fit grid. Default '200px'. */
   item_width: coerce.string("200px"),
   /** Maximum grid width, if specified will center items in available space. Default '100%'. */
@@ -15,6 +15,10 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   variant: coerce.allowedValues(["default", "circle-icon", "flex"], "default"),
   /** The 'secondary' style sets the colour of the buttons. Default 'default'. */
   style: coerce.allowedValues(["default", "secondary"], "default"),
+  /** The property key to use for the option value. Default 'name'. */
+  options_key: coerce.string("name"),
+  /** The property key to use for the option display text. Default 'text'. */
+  options_value: coerce.string("text"),
 }));
 
 @Component({
@@ -25,7 +29,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 })
 export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** Computed item array from author parameters */
-  public radioItems = computed(() => this.params().answerList as IAnswerListItem[]);
+  public radioItems = computed(() => this.params().answerList as IAnswerOption[]);
 
   /** Computed grid style passed into ngStyle */
   public gridStyle = computed<Partial<CSSStyleDeclaration>>(() => {
@@ -43,7 +47,7 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
     };
   });
 
-  public async handleItemClick(item: IAnswerListItem) {
-    await this.setValue(item.name);
+  public async handleItemClick(item: IAnswerOption) {
+    await this.setValue(item[this.params().optionsKey]);
   }
 }

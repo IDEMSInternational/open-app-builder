@@ -8,7 +8,7 @@
     <div
       class="item"
       (click)="handleItemClick(item)"
-      [attr.data-selected]="item.name === value()"
+      [attr.data-selected]="item[params().optionsKey] === value()"
       [style.--min-item-width]="params().itemWidth"
     >
       @if (item.image) {
@@ -16,15 +16,17 @@
           <img
             class="item-image"
             [src]="
-              (item.name === value() && item.image_checked ? item.image_checked : item.image)
-                | plhAsset
+              (item[params().optionsKey] === value() && item.image_checked
+                ? item.image_checked
+                : item.image
+              ) | plhAsset
             "
           />
         </div>
       }
-      @if (item.text) {
+      @if (item[params().optionsValue]) {
         <div class="item-text">
-          <p>{{ item.text }}</p>
+          <p>{{ item[params().optionsValue] }}</p>
         </div>
       }
     </div>
