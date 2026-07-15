@@ -1,22 +1,22 @@
 <div
   class="radio-buttons"
-  [ngStyle]="gridStyle"
-  [attr.data-variant]="parameter_list.variant"
-  [attr.data-style]="parameter_list.style"
+  [ngStyle]="gridStyle()"
+  [attr.data-variant]="params().variant"
+  [attr.data-style]="params().style"
 >
-  @for (item of radioItems; track $index) {
+  @for (item of radioItems(); track $index) {
     <div
       class="item"
       (click)="handleItemClick(item)"
-      [attr.data-selected]="item.name === _row.value"
-      [style.--min-item-width]="parameter_list.item_width"
+      [attr.data-selected]="item.name === value()"
+      [style.--min-item-width]="params().itemWidth"
     >
       @if (item.image) {
         <div class="item-image-container">
           <img
             class="item-image"
             [src]="
-              (item.name === _row.value && item.image_checked ? item.image_checked : item.image)
+              (item.name === value() && item.image_checked ? item.image_checked : item.image)
                 | plhAsset
             "
           />
