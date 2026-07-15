@@ -6,8 +6,8 @@
   @for (item of answerOptions(); track item[params().optionsKey]) {
     <ion-item lines="none">
       <ion-radio
-        [labelPlacement]="params().variant === 'boxed' ? 'start' : 'end'"
-        [justify]="params().variant === 'boxed' ? 'space-between' : 'start'"
+        [labelPlacement]="params().variant === 'card' ? 'start' : 'end'"
+        [justify]="params().variant === 'card' ? 'space-between' : 'start'"
         mode="md"
         [value]="item[params().optionsKey]"
       >

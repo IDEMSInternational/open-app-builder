@@ -1,4 +1,4 @@
-// Theme params for boxed variant
+// Theme params for card variant
 $background-selected: var(--radio-list-background-selected, var(--ion-color-primary-100));
 $border-color-selected: var(--radio-list-border-color-selected, var(--ion-color-primary-200));
 
@@ -12,7 +12,7 @@ ion-radio-group {
     margin-bottom: 0;
   }
 
-  &[data-variant="boxed"] {
+  &[data-variant="card"] {
     display: flex;
     flex-direction: column;
     gap: var(--small-margin, 8px);
