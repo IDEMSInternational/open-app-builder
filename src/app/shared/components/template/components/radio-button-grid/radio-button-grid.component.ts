@@ -1,6 +1,9 @@
 import { Component, computed } from "@angular/core";
+import { toObservable, toSignal } from "@angular/core/rxjs-interop";
+import { filter, map, switchMap } from "rxjs/operators";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { IAnswerOption } from "src/app/shared/utils";
+import { DataItemsService } from "../data-items/data-items.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of options presented as radio items */
@@ -28,8 +31,14 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   standalone: false,
 })
 export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
-  /** Computed item array from author parameters */
-  public radioItems = computed(() => this.params().answerList as IAnswerOption[]);
+  /** Computed item array from data_items child rows (if provided) or author parameters */
+  public radioItems = computed(() => {
+    return (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
+  });
+
+  constructor(private dataItemsService: DataItemsService) {
+    super();
+  }
 
   /** Computed grid style passed into ngStyle */
   public gridStyle = computed<Partial<CSSStyleDeclaration>>(() => {
@@ -50,4 +59,18 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
   public async handleItemClick(item: IAnswerOption) {
     await this.setValue(item[this.params().optionsKey]);
   }
+
+  // Allow radio_button_grid to include data_items child row to define answer list
+  private dataItemRows = toSignal(
+    toObservable(this.rows).pipe(
+      map((rows) => rows.find((r) => r.type === "data_items")),
+      filter((row) => row !== undefined),
+      switchMap((row) =>
+        this.dataItemsService.getItemsObservable(
+          row,
+          this.parentContainerComponentRef.templateRowMap
+        )
+      )
+    )
+  );
 }
