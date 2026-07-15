@@ -15,7 +15,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Spacing between grid items. Default '16px'. */
   grid_gap: coerce.string("16px"),
   /** The style variant of the button grid. Default 'default'. */
-  variant: coerce.allowedValues(["default", "circle-icon", "flex"], "default"),
+  variant: coerce.allowedValues(["default", "circle-icon", "flex", "card"], "default"),
   /** The 'secondary' style sets the colour of the buttons. Default 'default'. */
   style: coerce.allowedValues(["default", "secondary"], "default"),
   /** The property key to use for the option value. Default 'name'. */

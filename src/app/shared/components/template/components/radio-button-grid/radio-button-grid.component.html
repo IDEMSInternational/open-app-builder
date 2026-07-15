@@ -1,34 +1,46 @@
-<div
-  class="radio-buttons"
-  [ngStyle]="gridStyle()"
-  [attr.data-variant]="params().variant"
-  [attr.data-style]="params().style"
->
-  @for (item of radioItems(); track $index) {
-    <div
-      class="item"
-      (click)="handleItemClick(item)"
-      [attr.data-selected]="item[params().optionsKey] === value()"
-      [style.--min-item-width]="params().itemWidth"
-    >
-      @if (item.image) {
-        <div class="item-image-container">
-          <img
-            class="item-image"
-            [src]="
-              (item[params().optionsKey] === value() && item.image_checked
-                ? item.image_checked
-                : item.image
-              ) | plhAsset
-            "
-          />
-        </div>
-      }
-      @if (item[params().optionsValue]) {
-        <div class="item-text">
-          <p>{{ item[params().optionsValue] }}</p>
-        </div>
-      }
-    </div>
-  }
-</div>
+@if (params().variant === "card") {
+  <radio-button-grid-card
+    [value]="value()"
+    [answerOptions]="radioItems()"
+    [optionsKey]="params().optionsKey"
+    [optionsValue]="params().optionsValue"
+    [gridStyle]="gridStyle()"
+    [styleVariant]="params().style"
+    (selectionChange)="setValue($event)"
+  />
+} @else {
+  <div
+    class="radio-buttons"
+    [ngStyle]="gridStyle()"
+    [attr.data-variant]="params().variant"
+    [attr.data-style]="params().style"
+  >
+    @for (item of radioItems(); track $index) {
+      <div
+        class="item"
+        (click)="handleItemClick(item)"
+        [attr.data-selected]="item[params().optionsKey] === value()"
+        [style.--min-item-width]="params().itemWidth"
+      >
+        @if (item.image) {
+          <div class="item-image-container">
+            <img
+              class="item-image"
+              [src]="
+                (item[params().optionsKey] === value() && item.image_checked
+                  ? item.image_checked
+                  : item.image
+                ) | plhAsset
+              "
+            />
+          </div>
+        }
+        @if (item[params().optionsValue]) {
+          <div class="item-text">
+            <p>{{ item[params().optionsValue] }}</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+}
