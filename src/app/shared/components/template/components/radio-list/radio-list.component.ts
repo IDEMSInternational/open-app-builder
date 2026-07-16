@@ -6,9 +6,7 @@ import { IAnswerOption } from "../../../../utils";
 import { DataItemsService } from "../data-items/data-items.service";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  answer_list: coerce.objectArray<IAnswerOption>([
-    { name: null, text: null, image: null, image_checked: null },
-  ]),
+  answer_list: coerce.objectArray<IAnswerOption>([]),
   options_key: coerce.string("name"),
   options_value: coerce.string("text"),
   /** The display variant of the radio list. Default 'default'. */
