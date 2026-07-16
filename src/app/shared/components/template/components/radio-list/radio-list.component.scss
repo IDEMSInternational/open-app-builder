@@ -1,15 +1,57 @@
 // Theme params for card variant
-$background-selected: var(--radio-list-background-selected, var(--ion-color-primary-100));
-$border-color-selected: var(--radio-list-border-color-selected, var(--ion-color-primary-200));
+$background-selected: var(--radio-list-background-selected, var(--ion-color-primary-50));
+$border-color-selected: var(--radio-list-border-color-selected, var(--ion-color-primary-100));
 
-// Remove default styling of ionic components to keep the design minimal
 ion-radio-group {
+  .option {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   ion-item {
     --background: transparent;
+    // Cascades into Ionic shadow `.item-native` / `.item-inner` / `.input-wrapper`
+    align-items: center;
   }
+
   ion-radio::part(label) {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  ion-radio {
+    align-items: center;
+  }
+
+  ion-textarea.option-custom-input {
+    margin-top: 8px;
+    width: 100%;
+    min-height: var(--text-box-height);
+    font-size: var(--text-box-font-size);
+    --background: var(--ion-color-primary-contrast);
+    --placeholder-color: var(--ion-color-primary);
+    --color: var(--ion-color-light-contrast);
+    --border-radius: var(--ion-border-radius-standard);
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--ion-color-primary);
+    --padding-start: var(--small-padding);
+    --padding-end: var(--small-padding);
+    --padding-top: var(--small-padding);
+    --padding-bottom: var(--small-padding);
+    --highlight-color-focused: var(--ion-color-primary);
+  }
+
+  // Default variant: indent to align with the option label
+  // (labelPlacement="end" → radio on start, then 16px gap, then label;
+  // ion-item also applies the standard 16px start padding).
+  &:not([data-variant="card"]) {
+    ion-textarea.option-custom-input {
+      width: auto;
+      margin-inline-start: calc(16px + 1.25rem + 16px);
+      margin-inline-end: 16px;
+    }
   }
 
   &[data-variant="card"] {
@@ -17,25 +59,37 @@ ion-radio-group {
     flex-direction: column;
     gap: var(--small-margin, 8px);
 
-    ion-item {
-      --padding-start: 16px;
-      --padding-end: 16px;
-      --inner-padding-end: 0;
-      --min-height: 55px;
+    .option {
       border: 2px solid var(--ion-color-gray-200);
       border-radius: var(--ion-border-radius-small, 8px);
       overflow: hidden;
       margin: var(--small-margin, 8px) 0;
+      background: transparent;
 
-      &:has(ion-radio.radio-checked) {
-        --background: #{$background-selected};
+      &.option-selected {
+        background: #{$background-selected};
         border-color: $border-color-selected;
       }
+    }
+
+    ion-item {
+      align-items: flex-start;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --padding-top: 4px;
+      --padding-bottom: 4px;
+      --inner-padding-end: 0;
+      --min-height: 0;
     }
 
     ion-radio {
       width: 100%;
       margin: 0;
+    }
+
+    ion-textarea.option-custom-input {
+      width: auto;
+      margin: 0 16px 10px;
     }
   }
 }

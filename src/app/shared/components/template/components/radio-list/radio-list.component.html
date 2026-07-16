@@ -4,18 +4,47 @@
   (ionChange)="handleItemClick($event.detail.value)"
 >
   @for (item of answerOptions(); track item[params().optionsKey]) {
-    <ion-item lines="none">
-      <ion-radio
-        [labelPlacement]="params().variant === 'card' ? 'start' : 'end'"
-        [justify]="params().variant === 'card' ? 'space-between' : 'start'"
-        mode="md"
-        [value]="item[params().optionsKey]"
-      >
-        <plh-tmpl-text
-          [row]="{ _nested_name: '', name: '', type: 'text', value: item[params().optionsValue] }"
+    <div
+      class="option"
+      [class.option-selected]="isOptionSelected(item)"
+      [class.has-custom-input]="
+        params().valueAsObject && isInputAllowed(item) && isOptionSelected(item)
+      "
+    >
+      <ion-item lines="none">
+        <ion-radio
+          [labelPlacement]="params().variant === 'card' ? 'start' : 'end'"
+          [justify]="params().variant === 'card' ? 'space-between' : 'start'"
+          mode="md"
+          [value]="item[params().optionsKey]"
         >
-        </plh-tmpl-text>
-      </ion-radio>
-    </ion-item>
+          <plh-tmpl-text
+            [row]="{
+              _nested_name: '',
+              name: '',
+              type: 'text',
+              value: item[params().optionsValue],
+            }"
+          >
+          </plh-tmpl-text>
+        </ion-radio>
+      </ion-item>
+      @if (params().valueAsObject && isInputAllowed(item) && isOptionSelected(item)) {
+        <ion-textarea
+          class="option-custom-input"
+          fill="outline"
+          mode="md"
+          [attr.aria-label]="item.input_placeholder || 'Custom answer'"
+          [placeholder]="item.input_placeholder || ''"
+          [value]="customInputValue()"
+          auto-grow="true"
+          [rows]="1"
+          (ionInput)="handleCustomInput(item, $event.detail.value)"
+          (ionChange)="$event.stopPropagation()"
+          (mousedown)="$event.stopPropagation()"
+          (click)="$event.stopPropagation()"
+        ></ion-textarea>
+      }
+    </div>
   }
 </ion-radio-group>
