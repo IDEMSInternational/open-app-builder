@@ -1,6 +1,6 @@
 <ion-radio-group
   [attr.data-variant]="params().variant"
-  [value]="value()"
+  [value]="selectedKey()"
   (ionChange)="handleItemClick($event.detail.value)"
 >
   @for (item of answerOptions(); track item[params().optionsKey]) {
