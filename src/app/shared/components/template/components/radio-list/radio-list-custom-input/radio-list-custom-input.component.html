@@ -5,6 +5,7 @@
   [attr.aria-label]="placeholder() || 'Custom answer'"
   [placeholder]="placeholder()"
   [value]="value()"
+  [disabled]="disabled()"
   auto-grow="true"
   [rows]="1"
   (ionInput)="handleInput($event.detail.value)"

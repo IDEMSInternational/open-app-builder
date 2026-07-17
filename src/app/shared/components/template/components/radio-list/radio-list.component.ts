@@ -1,4 +1,4 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, effect } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs/operators";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
@@ -57,12 +57,30 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   /** Persists typed text per option key so it survives selecting other options. */
   private customInputByKey: Record<string, string> = {};
 
+  /** Whether we have warned about the missing `value_as_object` flag. */
+  private hasWarnedValueAsObject = false;
+
   constructor(private dataItemsService: DataItemsService) {
     super();
+    // An `input_allowed` option renders nothing without `value_as_object`, as there is
+    // nowhere on a plain string value to store the text. Warn rather than fail silently.
+    effect(() => {
+      if (this.hasWarnedValueAsObject || this.params().valueAsObject) return;
+      if (!this.answerOptions().some((item) => this.isInputAllowed(item))) return;
+      this.hasWarnedValueAsObject = true;
+      console.warn("[radio_list] options with `input_allowed` require `value_as_object: true`", {
+        row: this._row?.name,
+      });
+    });
   }
 
   public isInputAllowed(item: IAnswerOption): boolean {
     return parseBoolean(item.input_allowed);
+  }
+
+  /** Whether the option should render its custom text input. */
+  public showCustomInput(item: IAnswerOption): boolean {
+    return this.params().valueAsObject && this.isInputAllowed(item) && this.isOptionSelected(item);
   }
 
   public isRowDisabled(): boolean {
@@ -103,10 +121,6 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
 
   /** Debounced optimistic update: set_self only, no changed actions. */
   public async handleCustomValueChange(item: IAnswerOption, text: string) {
-    if (!this.params().valueAsObject) {
-      console.warn("[radio_list] input_allowed options require value_as_object: true");
-      return;
-    }
     const key = String(item[this.params().optionsKey] ?? "");
     this.customInputByKey[key] = text;
     await this.setValue({ key, value: text }, false);
@@ -115,16 +129,16 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   /**
    * Blur commit: ensure the latest text is stored, then fire set_self + changed.
    * Uses the emitted text so a race with the debounced valueChange cannot lose the final value.
+   *
+   * NOTE - unlike text-box, this can defer to `setValue`. That skips its work when the new
+   * value is reference-equal to the stored one, which a freshly-built object never is.
    */
   public async handleCustomValueCommit(item: IAnswerOption, text: string) {
     if (this.isRowDisabled()) return;
-    if (!this.params().valueAsObject) return;
     const key = String(item[this.params().optionsKey] ?? "");
     this.customInputByKey[key] = text;
     const nextValue: IRadioListObjectValue = { key, value: text };
-    await this.setValue(nextValue, false);
-    await this.triggerSetSelfAction(nextValue);
-    await this.triggerActions("changed");
+    await this.setValue(nextValue);
   }
 
   /** Remember custom text for the currently selected input-allowed option before changing selection. */

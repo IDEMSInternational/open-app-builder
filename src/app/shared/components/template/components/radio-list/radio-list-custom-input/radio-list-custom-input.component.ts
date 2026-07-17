@@ -22,7 +22,7 @@ export class RadioListCustomInputComponent implements OnInit, OnDestroy {
   public value = input<string>("");
   /** Placeholder for the textarea. */
   public placeholder = input<string>("");
-  /** When true, blur commit is skipped. */
+  /** When true, the textarea is not editable and blur commit is skipped. */
   public disabled = input<boolean>(false);
   /** Layout variant; drives host `data-variant` for spacing. */
   public variant = input<string>("default");

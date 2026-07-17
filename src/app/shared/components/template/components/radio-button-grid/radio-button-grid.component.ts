@@ -33,7 +33,13 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   /** Computed item array from data_items child rows (if provided) or author parameters */
   public radioItems = computed(() => {
-    return (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
+    const items = (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
+    const optionsValue = this.params().optionsValue;
+    // Drop name-only stubs (e.g. template-generated lists with no text/image).
+    return items.filter((item) => {
+      const label = item[optionsValue];
+      return (label !== undefined && label !== null && label !== "") || !!item.image;
+    });
   });
 
   constructor(private dataItemsService: DataItemsService) {

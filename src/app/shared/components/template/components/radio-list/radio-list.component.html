@@ -4,13 +4,7 @@
   (ionChange)="handleItemClick($event.detail.value)"
 >
   @for (item of answerOptions(); track item[params().optionsKey]) {
-    <div
-      class="option"
-      [class.option-selected]="isOptionSelected(item)"
-      [class.has-custom-input]="
-        params().valueAsObject && isInputAllowed(item) && isOptionSelected(item)
-      "
-    >
+    <div class="option" [class.option-selected]="isOptionSelected(item)">
       <ion-item lines="none">
         <ion-radio
           [labelPlacement]="params().variant === 'card' ? 'start' : 'end'"
@@ -29,7 +23,7 @@
           </plh-tmpl-text>
         </ion-radio>
       </ion-item>
-      @if (params().valueAsObject && isInputAllowed(item) && isOptionSelected(item)) {
+      @if (showCustomInput(item)) {
         <radio-list-custom-input
           [value]="customInputValue()"
           [placeholder]="item.input_placeholder || ''"
