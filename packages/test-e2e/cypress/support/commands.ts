@@ -27,3 +27,33 @@
 Cypress.Commands.add("getDataTest", (name) => {
   return cy.get(`[data-test='${name}']`);
 });
+
+Cypress.Commands.add("clearIndexedDB", () => {
+  return cy.window().then(async (win) => {
+    const deleteDatabase = (name: string) => {
+      return new Cypress.Promise<void>((resolve, reject) => {
+        const request = win.indexedDB.deleteDatabase(name);
+
+        request.onsuccess = () => resolve();
+        request.onblocked = () => resolve();
+        request.onerror = () => reject(request.error);
+      });
+    };
+
+    const databaseNames = new Set<string>(["plh-app-db"]);
+    const indexedDBWithDatabases = win.indexedDB as IDBFactory & {
+      databases?: () => Promise<Array<{ name?: string }>>;
+    };
+
+    if (indexedDBWithDatabases.databases) {
+      const databases = await indexedDBWithDatabases.databases();
+      for (const database of databases) {
+        if (database.name?.startsWith("rxdb-dexie-")) {
+          databaseNames.add(database.name);
+        }
+      }
+    }
+
+    await Cypress.Promise.all(Array.from(databaseNames).map((name) => deleteDatabase(name)));
+  });
+});

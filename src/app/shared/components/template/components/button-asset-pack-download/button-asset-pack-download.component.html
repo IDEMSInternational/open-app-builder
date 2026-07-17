@@ -1,0 +1,38 @@
+@if (status() !== "initial") {
+  <div class="status-message-container">
+    @if (status() === "downloading") {
+      @if (params().progressDisplay === "spinner") {
+        <ion-spinner color="primary"></ion-spinner>
+      }
+      @if (params().progressDisplay === "count" && progressCountText()) {
+        <plh-tmpl-text
+          [row]="{ _nested_name: '', name: '', type: 'text', value: progressCountText() }"
+          [parentContainerComponentRef]="parentContainerComponentRef"
+        ></plh-tmpl-text>
+      }
+      <plh-tmpl-text
+        [row]="{ _nested_name: '', name: '', type: 'text', value: params().progressText }"
+        [parentContainerComponentRef]="parentContainerComponentRef"
+      ></plh-tmpl-text>
+    } @else if (status() === "success") {
+      <plh-tmpl-text
+        [row]="{ _nested_name: '', name: '', type: 'text', value: params().successText }"
+        [parentContainerComponentRef]="parentContainerComponentRef"
+      ></plh-tmpl-text>
+    } @else if (status() === "error") {
+      <plh-tmpl-text
+        [row]="{ _nested_name: '', name: '', type: 'text', value: params().errorText }"
+        [parentContainerComponentRef]="parentContainerComponentRef"
+      ></plh-tmpl-text>
+    }
+  </div>
+}
+
+@if (status() === "initial" || status() === "error") {
+  <div class="button-container">
+    <plh-button
+      [row]="{ _nested_name: '', name: '', type: 'button', value: params().defaultText }"
+      (click)="handleClick($event)"
+    ></plh-button>
+  </div>
+}

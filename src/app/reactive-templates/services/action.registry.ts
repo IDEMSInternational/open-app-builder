@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { IRow } from "./row.registry";
 
 export interface IAction extends IRow {
+  init(): void;
   name(): string;
   execute(params?: IActionParameter[]): Promise<void>;
 }
@@ -12,7 +13,12 @@ export interface IActionParameter {
 }
 
 export function isAction(obj: any): obj is IAction {
-  return obj && typeof obj.name === "function" && typeof obj.execute === "function";
+  return (
+    obj &&
+    typeof obj.name === "function" &&
+    typeof obj.execute === "function" &&
+    typeof obj.init === "function"
+  );
 }
 
 @Injectable({

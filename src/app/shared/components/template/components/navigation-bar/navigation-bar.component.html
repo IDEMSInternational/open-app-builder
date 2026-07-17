@@ -1,9 +1,9 @@
 <div class="navigation-bar-wrapper" [attr.data-variant]="params().variant">
   <div class="nav-items">
-    @for (button of params().buttonList; track button.targetTemplate) {
+    @for (button of params().buttonList; track button.target_template) {
       <a
         class="button-wrapper"
-        [routerLink]="'template/' + button.targetTemplate"
+        [routerLink]="'template/' + button.target_template"
         [attr.data-name]="button.name"
         [class.active-link]="$index === activeLinkIndex()"
       >

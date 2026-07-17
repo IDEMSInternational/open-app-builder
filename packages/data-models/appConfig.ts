@@ -14,9 +14,11 @@ import { IAppSkin } from "./skin.model";
  * special use case for relative paths
  ********************************************************************************************/
 
+export const DEFAULT_APP_LANGUAGE_CODE = "gb_en";
+
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
-  default: "gb_en",
+  default: DEFAULT_APP_LANGUAGE_CODE,
 };
 
 export interface ILanguageMeta {

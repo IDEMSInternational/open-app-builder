@@ -99,6 +99,7 @@
       plh-module-list-item-background-1: hsl(334, 43%, 70%),
       plh-module-list-item-background-2: hsl(29, 77%, 70%),
       plh-module-list-item-background-3: hsl(123, 34%, 70%),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

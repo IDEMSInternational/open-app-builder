@@ -7,9 +7,12 @@ import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module
 import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
 import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
+import { PlhCertificateModule } from "./certificate/plh-certificate.module";
 import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
+import { PlhProgressBarComponent } from "./progress-bar/progress-bar.component";
+import { PlhGetUpNextComponent } from "./get-up-next/get-up-next.component";
 
 export {
   PlhActivityCheckInComponent,
@@ -20,13 +23,16 @@ export {
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
   PlhModuleListItemComponent,
+  PlhCertificateModule,
   PlhParentGroupModule,
   PlhParentPointBoxComponent,
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
+  PlhProgressBarComponent,
+  PlhGetUpNextComponent,
 };
 
-export const PLH_FEATURE_MODULES = [PlhParentGroupModule];
+export const PLH_FEATURE_MODULES = [PlhCertificateModule, PlhParentGroupModule];
 
 export const PLH_COMPONENTS = [
   PlhActivityCheckInComponent,
@@ -40,6 +46,8 @@ export const PLH_COMPONENTS = [
   PlhParentPointBoxComponent,
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
+  PlhProgressBarComponent,
+  PlhGetUpNextComponent,
 ];
 
 export const PLH_COMPONENT_MAPPING = {
@@ -54,6 +62,8 @@ export const PLH_COMPONENT_MAPPING = {
   plh_module_details_header: PlhModuleDetailsHeaderComponent,
   plh_module_list_item: PlhModuleListItemComponent,
   plh_progress_path: PlhProgressPathComponent,
+  plh_progress_bar: PlhProgressBarComponent,
+  plh_get_up_next: PlhGetUpNextComponent,
 };
 
 export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;

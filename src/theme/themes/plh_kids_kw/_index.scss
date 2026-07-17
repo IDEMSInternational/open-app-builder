@@ -112,6 +112,7 @@
       text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
       text-bubble-background-color-4: var(--ion-color-secondary-50),
       text-bubble-border-color-4: var(--ion-color-secondary-300),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

@@ -5,6 +5,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
 import { TemplateNavService } from "../../components/template/services/template-nav.service";
 import { MockSyncServiceBase } from "../syncService.base.mock.spec";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 describe("AppUpdateService", () => {
   let service: AppUpdateService;
@@ -19,6 +20,10 @@ describe("AppUpdateService", () => {
           }),
         },
         { provide: TemplateNavService, useValue: new MockSyncServiceBase() },
+        {
+          provide: SystemVariableService,
+          useValue: { set: () => {}, get: () => null, remove: () => {} },
+        },
       ],
     });
     service = TestBed.inject(AppUpdateService);

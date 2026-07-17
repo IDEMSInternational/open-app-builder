@@ -4,10 +4,10 @@ import { BehaviorSubject } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
 import { isObjectLiteral } from "packages/shared/src/utils/object-utils";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -36,27 +36,23 @@ export class TemplateTranslateService extends AsyncServiceBase {
   private languageCache: { [lang_code: string]: Record<string, string> } = {};
 
   constructor(
-    private localStorageService: LocalStorageService,
     private appDataService: AppDataService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Template Translate");
     this.registerInitFunction(this.init);
 
     effect(() => {
       // persist language direction to authoring field
-      this.localStorageService.setProtected("APP_LANGUAGE_DIRECTION", this.languageDirection());
+      this.systemVariableService.set("APP_LANGUAGE_DIRECTION", this.languageDirection());
     });
   }
 
   private async init() {
-    this.ensureSyncServicesReady([
-      this.localStorageService,
-      this.appDataService,
-      this.appConfigService,
-    ]);
+    this.ensureSyncServicesReady([this.appDataService, this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    const currentLanguage = this.localStorageService.getProtected("APP_LANGUAGE");
+    const currentLanguage = this.systemVariableService.get("APP_LANGUAGE");
     if (currentLanguage) {
       await this.setLanguage(currentLanguage, false);
     } else {
@@ -88,7 +84,7 @@ export class TemplateTranslateService extends AsyncServiceBase {
     if (code) {
       console.log("[SET LANGUAGE]", code);
       if (updateDB) {
-        this.localStorageService.setProtected("APP_LANGUAGE", code);
+        this.systemVariableService.set("APP_LANGUAGE", code);
       }
       this.translation_strings = await this.getTranslationStrings(code);
       // update observable for subscribers

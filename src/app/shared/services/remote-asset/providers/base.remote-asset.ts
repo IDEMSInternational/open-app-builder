@@ -21,7 +21,9 @@ export interface IRemoteAssetProvider {
 }
 
 export interface IRemoteAssetConfig {
+  /** Supabase bucket name only; Firebase reads `firebase.config.storageBucket` instead. */
   bucketName: string;
+  /** Prefix prepended to object paths within the bucket (all providers). */
   folderName: string;
 }
 

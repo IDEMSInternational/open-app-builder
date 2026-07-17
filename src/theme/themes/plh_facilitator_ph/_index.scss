@@ -104,6 +104,7 @@
       box-shadow-secondary: 0px 1.5px 8px rgba(133, 178, 196, 0.6),
       box-shadow-yellow: 0px 1.5px 8px rgba(255, 233, 153, 0.5),
       box-shadow-red: 0px 1.5px 8px rgba(255, 179, 172, 0.5),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

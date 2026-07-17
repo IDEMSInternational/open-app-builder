@@ -23,7 +23,8 @@ export class CrashlyticsService extends AsyncServiceBase {
       const { firebase } = this.deploymentService.config;
       // Crashlytics is still supported on native device without firebase config (uses google-services.json)
       // so use config property to toggle enabled instead
-      await this.setEnabled({ enabled: firebase?.crashlytics?.enabled });
+      const enabled = firebase?.crashlytics?.enabled ?? true;
+      await this.setEnabled({ enabled });
       const { identifier: uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
       // populate webview useragent info

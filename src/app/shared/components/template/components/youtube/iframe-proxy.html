@@ -1,0 +1,50 @@
+<!-- 
+Statically hosted youtube iframe to prevent player errors (on ios)
+See: https://github.com/IDEMSInternational/open-app-builder/issues/3432
+
+Changes to this iframe must be manually redeployed on hosting platform
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        overflow: hidden;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="player" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const videoId = params.get("v");
+      const player = document.getElementById("player");
+
+      const allowFullscreen = params.get("fs");
+      if (allowFullscreen === "1") {
+        player.setAttribute("allowfullscreen", "");
+      }
+
+      if (videoId) {
+        // Always include playsinline, then append any remaining params
+        params.set("playsinline", "1");
+
+        const target = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+        const url = new URL(target);
+        player.src = url.toString();
+      }
+    </script>
+  </body>
+</html>

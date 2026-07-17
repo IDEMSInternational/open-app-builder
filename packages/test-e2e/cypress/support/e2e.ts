@@ -25,6 +25,7 @@ declare global {
        * @example cy.getRow('greeting')
        */
       getDataTest(value: string): Chainable<JQuery<HTMLElement>>;
+      clearIndexedDB(): Chainable<void>;
     }
   }
 }

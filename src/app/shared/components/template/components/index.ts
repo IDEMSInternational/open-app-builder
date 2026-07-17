@@ -9,6 +9,7 @@ import { AccordionSectionComponent } from "./layout/accordion-section/accordion-
 import { AnimatedSectionComponent } from "./layout/animated_section";
 import { AnimatedSectionGroupComponent } from "./layout/animated_section_group";
 import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
+import { ComboBoxDropdownComponent } from "./combo-box/combo-box-dropdown/combo-box-dropdown.component";
 import { FormComponent } from "./layout/form";
 import { NavGroupComponent } from "./layout/nav_group";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
@@ -24,6 +25,7 @@ import { TmplAdvancedDashedBoxComponent } from "./layout/advanced-dashed-box/adv
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplAudioComponent } from "./audio/audio.component";
 import { TmplButtonComponent } from "./button/button.component";
+import { TmplButtonAssetPackDownloadComponent } from "./button-asset-pack-download/button-asset-pack-download.component";
 import { TmplButtonAppleSignInComponent } from "./button-apple-sign-in/button-apple-sign-in.component";
 import { TmplButtonGoogleSignInComponent } from "./button-google-sign-in/button-google-sign-in.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
@@ -66,12 +68,12 @@ import { TmplTimerComponent } from "./timer/timer.component";
 import { TmplToggleBarComponent } from "./toggle-bar/toggle-bar";
 import { TmplVideoComponent } from "./video";
 import { WorkshopsComponent } from "./layout/workshops_accordion";
-import { YoutubeComponent } from "./youtube/youtube.component";
 
 import { DEMO_COMPONENT_MAPPING } from "components/demo";
 import { PLH_COMPONENT_MAPPING } from "components/plh";
 import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
 import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
+import { YoutubeComponent } from "./youtube/youtube.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -86,6 +88,7 @@ export const TEMPLATE_COMPONENTS = [
   AnimatedSectionComponent,
   AnimatedSectionGroupComponent,
   ComboBoxModalComponent,
+  ComboBoxDropdownComponent,
   ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
@@ -102,6 +105,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplAudioComponent,
   TmplButtonComponent,
+  TmplButtonAssetPackDownloadComponent,
   TmplButtonAppleSignInComponent,
   TmplButtonGoogleSignInComponent,
   TmplCarouselComponent,
@@ -144,6 +148,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDateTimePickerComponent,
   // no prefix
   WorkshopsComponent,
+  YoutubeComponent,
 ];
 
 /***************************************************************************************
@@ -171,6 +176,7 @@ const COMMON_COMPONENT_MAPPING = {
   animated_section_group: AnimatedSectionGroupComponent,
   animated_slides: TmplAnimatedSlidesComponent,
   apple_sign_in_button: TmplButtonAppleSignInComponent,
+  asset_pack_download_button: TmplButtonAssetPackDownloadComponent,
   audio: TmplAudioComponent,
   button: TmplButtonComponent,
   carousel: TmplCarouselComponent,

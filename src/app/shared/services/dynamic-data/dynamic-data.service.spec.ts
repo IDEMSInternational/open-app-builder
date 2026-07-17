@@ -37,6 +37,7 @@ const TEST_DATA_LIST = (): FlowTypes.Data_list => ({
  */
 describe("DynamicDataService", () => {
   let service: DynamicDataService;
+  let appDataService: AppDataService;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -61,6 +62,7 @@ describe("DynamicDataService", () => {
     // HACK - polyfill not loaded for rxdb dev plugin so manually fill global before running tests
     window.global = window;
 
+    appDataService = TestBed.inject(AppDataService);
     service = TestBed.inject(DynamicDataService);
     await service.ready();
     // Ensure any data previously persisted is cleared
@@ -71,6 +73,18 @@ describe("DynamicDataService", () => {
     const obs = service.query$("data_list", "test_flow");
     const data = await firstValueFrom(obs);
     expect(data.length).toEqual(3);
+  });
+
+  it("populates registered underscore flows from runtime app data", async () => {
+    appDataService.addRuntimeFlowToContents({
+      flow_type: "data_list",
+      flow_name: "_runtime_flow",
+      rows: [{ id: "id1", string: "runtime" }],
+    });
+
+    const obs = service.query$<any>("data_list", "_runtime_flow");
+    const data = await firstValueFrom(obs);
+    expect(data).toEqual([{ id: "id1", string: "runtime", row_index: 0 }]);
   });
 
   it("supports partial flow row updates", async () => {
@@ -101,6 +115,36 @@ describe("DynamicDataService", () => {
           id1: {
             number: 1.1,
             string: "updated",
+          },
+        },
+      },
+    });
+  });
+
+  it("excludes local-only flows from sync state", async () => {
+    await service.update("data_list", "test_flow", "id1", { number: 1.1 });
+    await service.upsert("data_list", "_asset_packs", {
+      id: "pack_1",
+      name: "pack_1",
+      download_status: "completed",
+      download_started_at: "",
+      download_completed_at: "",
+      download_status_updated_at: "",
+      assets_total_count: 0,
+      assets_downloaded_count: 0,
+    });
+
+    const fullState = await service.getState();
+    const syncState = await service.getSyncState();
+
+    expect(fullState.data_list?._asset_packs).toEqual({
+      pack_1: jasmine.objectContaining({ download_status: "completed" }),
+    });
+    expect(syncState).toEqual({
+      data_list: {
+        test_flow: {
+          id1: {
+            number: 1.1,
           },
         },
       },

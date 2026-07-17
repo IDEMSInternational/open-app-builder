@@ -5,6 +5,15 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 
 interface IToastActionParams {
   message?: string;
+  /**
+   * Either 'short' (2000ms) or 'long' (3500ms).
+   * Arbitrary ms values are not supported by the Capacitor API (a restriction of the native platforms).
+   * @default 'short'
+   */
+  duration?: "short" | "long";
+  /**
+   * The Capacitor Toast API also exposes a 'position' parameter, but it is not supported on web or newer Android versions, so should not be used.
+   */
 }
 
 @Injectable({
@@ -34,6 +43,7 @@ export class ToastService extends SyncServiceBase {
       if (params.message) {
         await Toast.show({
           text: params.message,
+          duration: params.duration,
         });
       }
     } catch (error) {

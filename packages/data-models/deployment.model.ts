@@ -3,7 +3,7 @@ import type { IGdriveEntry } from "../@idemsInternational/gdrive-tools";
 import type { IAppConfig, IAppConfigOverride } from "./appConfig";
 
 /** Update version to force recompile next time deployment set (e.g. after default config update) */
-export const DEPLOYMENT_CONFIG_VERSION = 20250407.1;
+export const DEPLOYMENT_CONFIG_VERSION = 20260316.0;
 
 /** Configuration settings available to runtime application */
 export interface IDeploymentRuntimeConfig {
@@ -71,17 +71,43 @@ export interface IDeploymentRuntimeConfig {
     crashlytics?: {
       enabled: boolean;
     };
+    appCheck?: {
+      /**
+       * Site key used to validate appCheck against recaptcha v3 enterprise
+       * https://firebase.google.com/docs/app-check/web/recaptcha-provider
+       */
+      recaptchaEnterpriseSiteKey?: string;
+    };
+    functions?: {
+      /** Region where functions are deployed to. If not specified assumes "us-central1" */
+      region?: string;
+    };
   };
   /** Friendly name used to identify the deployment name */
   name: string;
 
-  /** 3rd party integration for remote asset storage and sync */
+  /**
+   * Remote asset packs (download on device / CDN URLs on web).
+   * Requires the chosen provider to be initialised elsewhere in this config
+   * (`supabase` or `firebase`).
+   */
   remote_assets?: {
-    /** Enable remote asset storage and sync by specifying provider */
     provider: "supabase" | "firebase";
-    /** By convention, this should match the deployment name */
-    bucketName: string;
+    /**
+     * Supabase Storage bucket name. Required when `provider` is `"supabase"`.
+     *
+     * Ignored when `provider` is `"firebase"`: the Firebase provider uses
+     * `firebase.config.storageBucket` (and native SDK defaults) instead.
+     * A value may still be set for consistency or future sync tooling.
+     */
+    bucketName?: string;
+    /** Path prefix inside the bucket for all remote asset files (both providers). */
     folderName: string;
+  };
+
+  /** 3rd party integration for remote functions. Default enabled with firebase provider */
+  remote_functions?: {
+    provider: "firebase";
   };
 
   /** 3rd party integration for shared data management. Default enabled with firebase provider */
@@ -111,6 +137,77 @@ export interface IAssetSource {
   remote?: boolean;
 }
 
+/** Match a Canto custom field value */
+export interface ICantoRemoteAssetPackCustomFieldCondition {
+  type: "custom_field";
+  /** Canto custom field name, e.g. "Caregiver Gender" */
+  field: string;
+  /** Value the custom field must match */
+  value: string;
+}
+
+/** Match when all nested conditions match */
+export interface ICantoRemoteAssetPackAndCondition {
+  type: "and";
+  conditions: ICantoRemoteAssetPackCondition[];
+}
+
+/** Match when any nested condition matches */
+export interface ICantoRemoteAssetPackOrCondition {
+  type: "or";
+  conditions: ICantoRemoteAssetPackCondition[];
+}
+
+/**
+ * Condition used to select Canto assets for a remote asset pack.
+ *
+ * Currently only `custom_field` leaf conditions are implemented in the sync pipeline.
+ * `and` / `or` composition is supported and can combine any condition types as they are added.
+ *
+ * To add a new leaf type (e.g. subfolder, scheme, file extension):
+ * 1. Add an interface here with a `type` discriminator
+ * 2. Extend this union
+ * 3. Handle the new type in `packages/scripts/src/tasks/providers/canto/remote-assets.ts`
+ *
+ * @example Custom field only
+ * `{ type: "custom_field", field: "Caregiver Gender", value: "Female" }`
+ *
+ * @example Combine conditions (all must match)
+ * `{ type: "and", conditions: [
+ *   { type: "custom_field", field: "Caregiver Gender", value: "Female" },
+ *   // future: { type: "scheme", scheme: "audio" },
+ * ]}`
+ *
+ * @example Future leaf types (not yet implemented)
+ * `{ type: "subfolder", path: "videos/intro" }`
+ * `{ type: "scheme", scheme: "audio" }`
+ * `{ type: "extension", extension: ".mp3" }`
+ */
+export type ICantoRemoteAssetPackCondition =
+  | ICantoRemoteAssetPackCustomFieldCondition
+  | ICantoRemoteAssetPackAndCondition
+  | ICantoRemoteAssetPackOrCondition;
+
+/**
+ * Remote asset pack defined within a Canto source folder.
+ * Matching assets are written to `app_data/remote_assets/{name}` instead of core assets.
+ */
+export interface ICantoRemoteAssetPack {
+  /** Asset pack name used for `app_data/remote_assets/{name}` and the pack manifest */
+  name: string;
+  condition: ICantoRemoteAssetPackCondition;
+}
+
+export interface ICantoSourceFolder {
+  id: string;
+  name: string;
+  /**
+   * Remote asset packs to extract from this Canto folder.
+   * Each pack uses a `condition` to select matching files (see `ICantoRemoteAssetPackCondition`).
+   */
+  remote_assets?: ICantoRemoteAssetPack[];
+}
+
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
   google_drive: {
@@ -138,6 +235,19 @@ interface IDeploymentCoreConfig {
     sheets_path: string;
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
+  };
+  canto?: {
+    /** Canto API keys used for authentication. API keys are created/managed at <canto-url>/settings/basicSettings/apiKeys */
+    appId: string;
+    appSecret: string;
+    /** Optional path for generated Canto OAuth token cache. Defaults to `packages/scripts/config/canto-token.json`. */
+    accessTokenPath?: string;
+    /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
+    url: string;
+    /** Canto folder/album id and local name for downloaded source assets */
+    sourceFolders: ICantoSourceFolder[];
+    /** Optional overrides mapping Canto language labels to app language codes, e.g. `{ English: "us_en" }`. */
+    languageMappings?: Record<string, string>;
   };
   android: {
     /** Play store unique app identifier, e.g. international.idems.example_app" */
@@ -269,6 +379,9 @@ export const DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS: IDeploymentRuntimeConfig = {
   auth: {},
   campaigns: {
     enabled: true,
+  },
+  remote_functions: {
+    provider: "firebase",
   },
   shared_data: {
     provider: "firebase",
