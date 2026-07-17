@@ -1,7 +1,7 @@
 <div class="radio-buttons" [ngStyle]="gridStyle()" [attr.data-style]="styleVariant()">
   <ion-radio-group [value]="value()" (ionChange)="onRadioChange($event.detail.value)">
-    @for (item of answerOptions(); track $index) {
-      <ion-item lines="none" (click)="selectOption(item)">
+    @for (item of answerOptions(); track item[optionsKey()]) {
+      <ion-item lines="none">
         <ion-radio
           labelPlacement="start"
           justify="space-between"

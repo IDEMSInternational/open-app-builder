@@ -15,7 +15,7 @@
     [attr.data-variant]="params().variant"
     [attr.data-style]="params().style"
   >
-    @for (item of radioItems(); track $index) {
+    @for (item of radioItems(); track item[params().optionsKey]) {
       <div
         class="item"
         (click)="handleItemClick(item)"

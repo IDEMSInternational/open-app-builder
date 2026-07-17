@@ -37,11 +37,6 @@ export class RadioButtonGridCardComponent {
   /** Emitted with the selected option's value when the selection changes. */
   public selectionChange = output<any>();
 
-  /** Select via a click anywhere on the card. */
-  public selectOption(item: IAnswerOption) {
-    this.selectionChange.emit(item[this.optionsKey()]);
-  }
-
   /** Select via the ion-radio-group change event. */
   public onRadioChange(value: any) {
     this.selectionChange.emit(value);
