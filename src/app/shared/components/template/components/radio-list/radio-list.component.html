@@ -40,6 +40,7 @@
           auto-grow="true"
           [rows]="1"
           (ionInput)="handleCustomInput(item, $event.detail.value)"
+          (ionBlur)="handleCustomInputBlur()"
           (ionChange)="$event.stopPropagation()"
           (mousedown)="$event.stopPropagation()"
           (click)="$event.stopPropagation()"

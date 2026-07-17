@@ -1,6 +1,7 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, OnInit } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs/operators";
+import { Debouncer } from "shared/src/utils/async-utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { IAnswerOption, parseBoolean } from "../../../../utils";
 import { DataItemsService } from "../data-items/data-items.service";
@@ -31,7 +32,10 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./radio-list.component.scss"],
   standalone: false,
 })
-export class TmplRadioListComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+export class TmplRadioListComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements OnInit
+{
   public answerOptions = computed(() => {
     return (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
   });
@@ -57,8 +61,21 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   /** Persists typed text per option key so it survives selecting other options. */
   private customInputByKey: Record<string, string> = {};
 
+  /** Use debouncer to reduce side-effect frequency when typing custom input. */
+  private inputDebouncer = new Debouncer(500);
+
+  /** Tracks last custom text that fired changed actions (blur commit). */
+  private lastTriggeredValue = "";
+
   constructor(private dataItemsService: DataItemsService) {
     super();
+  }
+
+  ngOnInit() {
+    const key = String(this.selectedKey() ?? "");
+    if (key && this.isInputAllowedForKey(key)) {
+      this.lastTriggeredValue = this.getCustomTextForKey(key);
+    }
   }
 
   public isInputAllowed(item: IAnswerOption): boolean {
@@ -72,13 +89,16 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   public async handleItemClick(selectedKey: string) {
     if (this.params().valueAsObject) {
       this.persistCurrentCustomInput();
+      this.inputDebouncer.cancel();
       const option = this.answerOptions().find(
         (item) => item[this.params().optionsKey] === selectedKey
       );
       if (option && this.isInputAllowed(option)) {
+        const restoredText = this.getCustomTextForKey(selectedKey);
+        this.lastTriggeredValue = restoredText;
         await this.setValue({
           key: selectedKey,
-          value: this.customInputByKey[selectedKey] ?? "",
+          value: restoredText,
         });
         return;
       }
@@ -91,8 +111,8 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
     await this.setValue(selectedKey);
   }
 
-  /** Store the typed text as the object `value`. */
-  public async handleCustomInput(item: IAnswerOption, text: string | null | undefined) {
+  /** Store the typed text as the object `value` (debounced set_self, no changed). */
+  public handleCustomInput(item: IAnswerOption, text: string | null | undefined) {
     if (!this.params().valueAsObject) {
       console.warn("[radio_list] input_allowed options require value_as_object: true");
       return;
@@ -100,7 +120,22 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
     const key = String(item[this.params().optionsKey] ?? "");
     const nextValue = text ?? "";
     this.customInputByKey[key] = nextValue;
-    await this.setValue({ key, value: nextValue });
+    this.inputDebouncer.run(async () => {
+      await this.setValue({ key, value: nextValue }, false);
+    });
+  }
+
+  /** Trigger changed actions only when custom input is complete and blur fired. */
+  public async handleCustomInputBlur() {
+    if (this._row.disabled) return;
+    await this.inputDebouncer.flush();
+    const value = this.value();
+    if (!value || typeof value !== "object") return;
+    const customText = (value as IRadioListObjectValue).value ?? "";
+    if (customText === this.lastTriggeredValue) return;
+    this.lastTriggeredValue = customText;
+    await this.triggerSetSelfAction(value);
+    await this.triggerActions("changed");
   }
 
   /** Remember custom text for the currently selected input-allowed option before changing selection. */
@@ -113,6 +148,27 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
     if (option && this.isInputAllowed(option)) {
       this.customInputByKey[key] = value ?? "";
     }
+  }
+
+  private isInputAllowedForKey(key: string): boolean {
+    const option = this.answerOptions().find((item) => item[this.params().optionsKey] === key);
+    return option ? this.isInputAllowed(option) : false;
+  }
+
+  private getCustomTextForKey(key: string): string {
+    if (key in this.customInputByKey) {
+      return this.customInputByKey[key];
+    }
+    const value = this.value();
+    if (
+      this.params().valueAsObject &&
+      value &&
+      typeof value === "object" &&
+      (value as IRadioListObjectValue).key === key
+    ) {
+      return (value as IRadioListObjectValue).value ?? "";
+    }
+    return "";
   }
 
   // Allow radio_list to include data_items child row to define answer list
