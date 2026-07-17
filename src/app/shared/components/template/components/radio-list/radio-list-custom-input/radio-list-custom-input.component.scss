@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.option-custom-input {
+  width: 100%;
+  min-height: var(--text-box-height);
+  font-size: var(--text-box-font-size);
+  --background: var(--ion-color-primary-contrast);
+  --placeholder-color: var(--ion-color-primary);
+  --color: var(--ion-color-light-contrast);
+  --border-radius: var(--ion-border-radius-standard);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--ion-color-primary);
+  --padding-start: var(--small-padding);
+  --padding-end: var(--small-padding);
+  --padding-top: var(--small-padding);
+  --padding-bottom: var(--small-padding);
+  --highlight-color-focused: var(--ion-color-primary);
+}
+
+// Default variant: indent to align with the option label
+// (labelPlacement="end" → radio on start, then 16px gap, then label;
+// ion-item also applies the standard 16px start padding).
+:host([data-variant="default"]) {
+  width: auto;
+
+  .option-custom-input {
+    width: auto;
+    margin-inline-start: calc(16px + 1.25rem + 16px);
+    margin-inline-end: 16px;
+  }
+}
+
+:host([data-variant="card"]) {
+  width: auto;
+  margin-top: 0;
+  margin: 0 16px 10px;
+
+  .option-custom-input {
+    width: auto;
+  }
+}

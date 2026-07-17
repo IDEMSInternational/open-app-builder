@@ -14,6 +14,7 @@ import { FormComponent } from "./layout/form";
 import { NavGroupComponent } from "./layout/nav_group";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { RadioButtonGridCardComponent } from "./radio-button-grid/radio-button-grid-card/radio-button-grid-card.component";
+import { RadioListCustomInputComponent } from "./radio-list/radio-list-custom-input/radio-list-custom-input.component";
 import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.component";
 import { SelectTextComponent } from "./select-text/select-text.component";
 import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
@@ -94,6 +95,7 @@ export const TEMPLATE_COMPONENTS = [
   FormComponent,
   NavGroupComponent,
   RadioButtonGridCardComponent,
+  RadioListCustomInputComponent,
   RoundIconButtonComponent,
   SelectTextComponent,
   SquareIconButtonComponent,

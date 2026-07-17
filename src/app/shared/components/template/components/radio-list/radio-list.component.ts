@@ -1,7 +1,6 @@
-import { Component, computed, OnInit } from "@angular/core";
+import { Component, computed } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs/operators";
-import { Debouncer } from "shared/src/utils/async-utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { IAnswerOption, parseBoolean } from "../../../../utils";
 import { DataItemsService } from "../data-items/data-items.service";
@@ -32,10 +31,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./radio-list.component.scss"],
   standalone: false,
 })
-export class TmplRadioListComponent
-  extends TemplateBaseComponentWithParams(AuthorSchema)
-  implements OnInit
-{
+export class TmplRadioListComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   public answerOptions = computed(() => {
     return (this.dataItemRows() ?? this.params().answerList) as IAnswerOption[];
   });
@@ -61,25 +57,16 @@ export class TmplRadioListComponent
   /** Persists typed text per option key so it survives selecting other options. */
   private customInputByKey: Record<string, string> = {};
 
-  /** Use debouncer to reduce side-effect frequency when typing custom input. */
-  private inputDebouncer = new Debouncer(500);
-
-  /** Tracks last custom text that fired changed actions (blur commit). */
-  private lastTriggeredValue = "";
-
   constructor(private dataItemsService: DataItemsService) {
     super();
   }
 
-  ngOnInit() {
-    const key = String(this.selectedKey() ?? "");
-    if (key && this.isInputAllowedForKey(key)) {
-      this.lastTriggeredValue = this.getCustomTextForKey(key);
-    }
-  }
-
   public isInputAllowed(item: IAnswerOption): boolean {
     return parseBoolean(item.input_allowed);
+  }
+
+  public isRowDisabled(): boolean {
+    return parseBoolean(this._row.disabled);
   }
 
   public isOptionSelected(item: IAnswerOption): boolean {
@@ -89,16 +76,13 @@ export class TmplRadioListComponent
   public async handleItemClick(selectedKey: string) {
     if (this.params().valueAsObject) {
       this.persistCurrentCustomInput();
-      this.inputDebouncer.cancel();
       const option = this.answerOptions().find(
         (item) => item[this.params().optionsKey] === selectedKey
       );
       if (option && this.isInputAllowed(option)) {
-        const restoredText = this.getCustomTextForKey(selectedKey);
-        this.lastTriggeredValue = restoredText;
         await this.setValue({
           key: selectedKey,
-          value: restoredText,
+          value: this.getCustomTextForKey(selectedKey),
         });
         return;
       }
@@ -111,30 +95,35 @@ export class TmplRadioListComponent
     await this.setValue(selectedKey);
   }
 
-  /** Store the typed text as the object `value` (debounced set_self, no changed). */
-  public handleCustomInput(item: IAnswerOption, text: string | null | undefined) {
+  /** Remember draft text immediately (before debounced setValue). */
+  public rememberCustomText(item: IAnswerOption, text: string) {
+    const key = String(item[this.params().optionsKey] ?? "");
+    this.customInputByKey[key] = text;
+  }
+
+  /** Debounced optimistic update: set_self only, no changed actions. */
+  public async handleCustomValueChange(item: IAnswerOption, text: string) {
     if (!this.params().valueAsObject) {
       console.warn("[radio_list] input_allowed options require value_as_object: true");
       return;
     }
     const key = String(item[this.params().optionsKey] ?? "");
-    const nextValue = text ?? "";
-    this.customInputByKey[key] = nextValue;
-    this.inputDebouncer.run(async () => {
-      await this.setValue({ key, value: nextValue }, false);
-    });
+    this.customInputByKey[key] = text;
+    await this.setValue({ key, value: text }, false);
   }
 
-  /** Trigger changed actions only when custom input is complete and blur fired. */
-  public async handleCustomInputBlur() {
-    if (this._row.disabled) return;
-    await this.inputDebouncer.flush();
-    const value = this.value();
-    if (!value || typeof value !== "object") return;
-    const customText = (value as IRadioListObjectValue).value ?? "";
-    if (customText === this.lastTriggeredValue) return;
-    this.lastTriggeredValue = customText;
-    await this.triggerSetSelfAction(value);
+  /**
+   * Blur commit: ensure the latest text is stored, then fire set_self + changed.
+   * Uses the emitted text so a race with the debounced valueChange cannot lose the final value.
+   */
+  public async handleCustomValueCommit(item: IAnswerOption, text: string) {
+    if (this.isRowDisabled()) return;
+    if (!this.params().valueAsObject) return;
+    const key = String(item[this.params().optionsKey] ?? "");
+    this.customInputByKey[key] = text;
+    const nextValue: IRadioListObjectValue = { key, value: text };
+    await this.setValue(nextValue, false);
+    await this.triggerSetSelfAction(nextValue);
     await this.triggerActions("changed");
   }
 
@@ -146,13 +135,9 @@ export class TmplRadioListComponent
     if (!key) return;
     const option = this.answerOptions().find((item) => item[this.params().optionsKey] === key);
     if (option && this.isInputAllowed(option)) {
-      this.customInputByKey[key] = value ?? "";
+      // Prefer in-memory draft (may be ahead of debounced setValue).
+      this.customInputByKey[key] ??= value ?? "";
     }
-  }
-
-  private isInputAllowedForKey(key: string): boolean {
-    const option = this.answerOptions().find((item) => item[this.params().optionsKey] === key);
-    return option ? this.isInputAllowed(option) : false;
   }
 
   private getCustomTextForKey(key: string): string {

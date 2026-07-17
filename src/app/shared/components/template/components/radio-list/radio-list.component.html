@@ -30,21 +30,15 @@
         </ion-radio>
       </ion-item>
       @if (params().valueAsObject && isInputAllowed(item) && isOptionSelected(item)) {
-        <ion-textarea
-          class="option-custom-input"
-          fill="outline"
-          mode="md"
-          [attr.aria-label]="item.input_placeholder || 'Custom answer'"
-          [placeholder]="item.input_placeholder || ''"
+        <radio-list-custom-input
           [value]="customInputValue()"
-          auto-grow="true"
-          [rows]="1"
-          (ionInput)="handleCustomInput(item, $event.detail.value)"
-          (ionBlur)="handleCustomInputBlur()"
-          (ionChange)="$event.stopPropagation()"
-          (mousedown)="$event.stopPropagation()"
-          (click)="$event.stopPropagation()"
-        ></ion-textarea>
+          [placeholder]="item.input_placeholder || ''"
+          [disabled]="isRowDisabled()"
+          [variant]="params().variant"
+          (textChange)="rememberCustomText(item, $event)"
+          (valueChange)="handleCustomValueChange(item, $event)"
+          (valueCommit)="handleCustomValueCommit(item, $event)"
+        />
       }
     </div>
   }
