@@ -91,6 +91,13 @@ export class LocalNotificationPersistAdapter {
         notification_id,
       } as any;
     }
-    await this.db.put({ ...entry, ...update, _sync_status: "pending" });
+    await this.db.put({
+      ...entry,
+      ...update,
+      ...(entry.sent_recorded_timestamp
+        ? { sent_recorded_timestamp: entry.sent_recorded_timestamp }
+        : {}),
+      _sync_status: "pending",
+    });
   }
 }
