@@ -41,10 +41,13 @@ export class PlhProgressBarComponent
   private animationElapsedMs = 0;
   private animationDuration = 0;
 
-  /** Last observed progress, used to detect upward crossings of `on_progress` thresholds. */
-  private previousProgress: number | null = null;
+  /** `on_progress` thresholds already fired; each fires at most once. */
+  private firedProgressThresholds = new Set<number>();
 
-  /** Local display value while auto-playing; avoids row refresh races from per-frame setValue. */
+  /** Whether thresholds already met when the bar loaded have been recorded (they don't fire). */
+  private initialThresholdsSeeded = false;
+
+  /** Display value while animating or paused; avoids row-refresh races from per-frame setValue. */
   private localProgress = signal<number | null>(null);
 
   accentColor = computed(() => this.params().color || "var(--ion-color-primary)");
@@ -75,7 +78,6 @@ export class PlhProgressBarComponent
       if (!autoPlay) {
         const pausedAt = untracked(() => this.localProgress());
         if (pausedAt !== null) {
-          this.localProgress.set(null);
           void this.setValue(pausedAt);
         }
         return;
@@ -112,30 +114,27 @@ export class PlhProgressBarComponent
       });
     });
 
-    // Fire `on_progress: <percentage>` actions when the displayed progress crosses each threshold.
-    // The threshold is read from the trigger argument (parsed in app-data-action.utils.ts). A crossing
-    // fires once on the way up and re-arms if progress later drops back below the threshold.
+    // Fire each `on_progress: <percentage>` action once, when progress first reaches its threshold.
+    // Latch fired thresholds so async re-observations of progress can't fire the same one twice.
     effect(() => {
       const progress = this.displayProgress();
-      const previous = this.previousProgress;
-      this.previousProgress = progress;
-      // Establish a baseline on first run without firing, so a bar that mounts already at or above a
-      // threshold does not fire on load; only fire on genuine upward crossings thereafter.
-      if (previous === null || progress <= previous) {
-        return;
-      }
-      const crossed = untracked(() => this.actionList())
+      const reached = untracked(() => this.actionList())
         .filter((a) => a.trigger === "on_progress")
         .map((action) => ({ action, threshold: Number(action.trigger_args?.[0]) }))
         .filter(
-          ({ threshold }) =>
-            !Number.isNaN(threshold) && threshold > previous && threshold <= progress
+          ({ threshold }) => threshold <= progress && !this.firedProgressThresholds.has(threshold)
         )
-        .sort((a, b) => a.threshold - b.threshold)
-        .map(({ action }) => action);
-      if (crossed.length > 0) {
-        void this.parentContainerComponentRef.handleActions(crossed, this._row);
-      }
+        .sort((a, b) => a.threshold - b.threshold);
+      reached.forEach(({ threshold }) => this.firedProgressThresholds.add(threshold));
+
+      // On load, record thresholds the bar is already past without firing them; only thresholds
+      // reached afterwards fire (on_progress means reaching a threshold, not loading in past it).
+      const seedingInitialThresholds = !this.initialThresholdsSeeded;
+      this.initialThresholdsSeeded = true;
+      if (seedingInitialThresholds || reached.length === 0) return;
+
+      const actions = reached.map(({ action }) => action);
+      void this.parentContainerComponentRef.handleActions(actions, this._row);
     });
   }
 
