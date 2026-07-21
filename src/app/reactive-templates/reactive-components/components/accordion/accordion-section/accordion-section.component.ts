@@ -8,6 +8,7 @@ const parameters = () =>
   defineParameters({
     disabled: new Parameter("disabled", false),
     iconName: new Parameter("icon_name", "chevron-down-outline"),
+    state: new Parameter<"open" | "closed">("state", "closed"),
   });
 
 @Component({

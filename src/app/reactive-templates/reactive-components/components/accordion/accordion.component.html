@@ -1,3 +1,3 @@
-<ion-accordion-group [multiple]="params.multiple.value()" [value]="[]" #accordionGroup>
+<ion-accordion-group [multiple]="params.multiple.value()" [value]="openSections()" #accordionGroup>
   <oab-row-list [namespace]="namespace()" [rows]="row().rows ?? []"></oab-row-list>
 </ion-accordion-group>
