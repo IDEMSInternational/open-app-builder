@@ -423,9 +423,9 @@ export namespace FlowTypes {
     | "data_changed"
     | "info_click"
     | "nav_resume" // return to template after navigation or popup close;
-    | "on_progress" // component value crosses a threshold provided as a trigger arg, e.g. `on_progress: 50`
     | "notification_interacted"
     | "notification_received"
+    | "on_progress" // fires once when value first reaches a threshold trigger arg, e.g. `on_progress: 50`
     | "sent" // notification sent
     | "uncompleted";
 

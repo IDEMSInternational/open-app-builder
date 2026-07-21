@@ -46,4 +46,14 @@ describe("parseAppDataActionString", () => {
     const action = parseAppDataActionString("on_progress: true | some_action");
     expect(action.trigger_args).toEqual([true]);
   });
+
+  it("parses on_progress without a trigger argument", () => {
+    // Authors should pass a percentage (`on_progress: 50`); without one, trigger_args is unset
+    // and the progress bar ignores the action (NaN threshold).
+    const action = parseAppDataActionString("on_progress | set_local: my_var");
+    expect(action.trigger).toEqual("on_progress");
+    expect(action.trigger_args).toBeUndefined();
+    expect(action.action_id).toEqual("set_local");
+    expect(action.args).toEqual(["my_var"]);
+  });
 });

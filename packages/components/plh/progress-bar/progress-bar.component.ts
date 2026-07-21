@@ -3,6 +3,7 @@ import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
 } from "src/app/shared/components/template/components/base";
+import { selectOnProgressActions } from "./progress-bar.logic";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Text displayed above the progress bar. */
@@ -41,11 +42,14 @@ export class PlhProgressBarComponent
   private animationElapsedMs = 0;
   private animationDuration = 0;
 
-  /** `on_progress` thresholds already fired; each fires at most once. */
-  private firedProgressThresholds = new Set<number>();
+  /** `on_progress` thresholds already handled (seeded or fired); each fires at most once. */
+  private handledProgressThresholds = new Set<number>();
 
-  /** Whether thresholds already met when the bar loaded have been recorded (they don't fire). */
-  private initialThresholdsSeeded = false;
+  /**
+   * Last observed progress for detecting upward threshold crossings.
+   * `null` until the first observation (used to seed without firing).
+   */
+  private previousProgress: number | null = null;
 
   /** Display value while animating or paused; avoids row-refresh races from per-frame setValue. */
   private localProgress = signal<number | null>(null);
@@ -78,7 +82,8 @@ export class PlhProgressBarComponent
       if (!autoPlay) {
         const pausedAt = untracked(() => this.localProgress());
         if (pausedAt !== null) {
-          void this.setValue(pausedAt);
+          // Commit then clear local (same as completion) so external value updates apply while paused.
+          void this.commitProgress(pausedAt);
         }
         return;
       }
@@ -114,27 +119,20 @@ export class PlhProgressBarComponent
       });
     });
 
-    // Fire each `on_progress: <percentage>` action once, when progress first reaches its threshold.
-    // Latch fired thresholds so async re-observations of progress can't fire the same one twice.
+    // Fire each `on_progress: <percentage>` action once when progress first reaches its threshold.
+    // See `selectOnProgressActions` for seed / latch / NaN behaviour (`on_progress: 0` is seeded
+    // without firing when the bar mounts at 0).
     effect(() => {
       const progress = this.displayProgress();
-      const reached = untracked(() => this.actionList())
-        .filter((a) => a.trigger === "on_progress")
-        .map((action) => ({ action, threshold: Number(action.trigger_args?.[0]) }))
-        .filter(
-          ({ threshold }) => threshold <= progress && !this.firedProgressThresholds.has(threshold)
-        )
-        .sort((a, b) => a.threshold - b.threshold);
-      reached.forEach(({ threshold }) => this.firedProgressThresholds.add(threshold));
-
-      // On load, record thresholds the bar is already past without firing them; only thresholds
-      // reached afterwards fire (on_progress means reaching a threshold, not loading in past it).
-      const seedingInitialThresholds = !this.initialThresholdsSeeded;
-      this.initialThresholdsSeeded = true;
-      if (seedingInitialThresholds || reached.length === 0) return;
-
-      const actions = reached.map(({ action }) => action);
-      void this.parentContainerComponentRef.handleActions(actions, this._row);
+      const { previousProgress, toFire } = selectOnProgressActions({
+        progress,
+        previousProgress: this.previousProgress,
+        actions: this.actionList(),
+        handledThresholds: this.handledProgressThresholds,
+      });
+      this.previousProgress = previousProgress;
+      if (toFire.length === 0) return;
+      void this.parentContainerComponentRef.handleActions(toFire, this._row);
     });
   }
 
