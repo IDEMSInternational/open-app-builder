@@ -10411,7 +10411,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.18.1, @types/ws@npm:^8.5.10":
+"@types/ws@npm:^8.18.1, @types/ws@npm:^8.5.10, @types/ws@npm:^8.5.12":
   version: 8.18.1
   resolution: "@types/ws@npm:8.18.1"
   dependencies:
@@ -15496,19 +15496,20 @@ __metadata:
   linkType: hard
 
 "engine.io@npm:~6.6.0":
-  version: 6.6.5
-  resolution: "engine.io@npm:6.6.5"
+  version: 6.6.9
+  resolution: "engine.io@npm:6.6.9"
   dependencies:
     "@types/cors": ^2.8.12
     "@types/node": ">=10.0.0"
+    "@types/ws": ^8.5.12
     accepts: ~1.3.4
     base64id: 2.0.0
     cookie: ~0.7.2
     cors: ~2.8.5
     debug: ~4.4.1
     engine.io-parser: ~5.2.1
-    ws: ~8.18.3
-  checksum: de535e0265c7eba912287715d225c48e3281f1c5db3bedde88c2aee815c1c25f831609317fe2f6e2f2c2954a98fe7a2f9c75c50c865c84627fb0aff6208247d5
+    ws: ~8.21.0
+  checksum: 28497f49a445ef6dbe45ec72523a0a9a78e51b685236ce51ac98e4e17de31dd725b0b1980a2e62557538c76bbe93ef691bc5470db73f59a88b3efd30783da2d3
   languageName: node
   linkType: hard
 
@@ -31281,6 +31282,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: d64ef1631227bd0c5fe21b3eb3646c9c91229402fb963d12d87b49af0a1ef757277083af23a5f85742bae1e520feddfb434cb882ea59249b15673c16dc3f36e0
+  languageName: node
+  linkType: hard
+
+"ws@npm:~8.21.0":
+  version: 8.21.1
+  resolution: "ws@npm:8.21.1"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 2e18c932d7bfeeb36fae32d874e5531f501e26dc932c48b699f9fcd2d7cc38f365e0265eddb47dec413ac6fb0effc0a8fa2cfa372d23f4f5b5ab214f394e1774
   languageName: node
   linkType: hard
 
