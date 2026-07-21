@@ -1,5 +1,5 @@
 import { FlowTypes } from "packages/data-models";
-import { selectOnProgressActions } from "./progress-bar.logic";
+import { selectCompleted, selectOnProgressActions } from "./progress-bar.logic";
 
 function onProgressAction(threshold: number | undefined): FlowTypes.TemplateRowAction {
   return {
@@ -121,5 +121,37 @@ describe("selectOnProgressActions", () => {
       handledThresholds: handled,
     });
     expect(later.toFire).toEqual([]);
+  });
+});
+
+describe("selectCompleted", () => {
+  it("emits when progress first reaches 100% after starting lower", () => {
+    expect(
+      selectCompleted({ progress: 100, previousProgress: 90, completedEmitted: false })
+    ).toEqual({ emit: true, completedEmitted: true });
+  });
+
+  it("does not emit when the bar mounts at 100%, but latches it", () => {
+    expect(
+      selectCompleted({ progress: 100, previousProgress: null, completedEmitted: false })
+    ).toEqual({ emit: false, completedEmitted: true });
+  });
+
+  it("does not re-emit once completed (e.g. after a dip and rise)", () => {
+    expect(
+      selectCompleted({ progress: 100, previousProgress: 40, completedEmitted: true })
+    ).toEqual({
+      emit: false,
+      completedEmitted: true,
+    });
+  });
+
+  it("does not emit below 100%", () => {
+    expect(
+      selectCompleted({ progress: 99, previousProgress: 10, completedEmitted: false })
+    ).toEqual({
+      emit: false,
+      completedEmitted: false,
+    });
   });
 });

@@ -3,7 +3,7 @@ import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
 } from "src/app/shared/components/template/components/base";
-import { selectOnProgressActions } from "./progress-bar.logic";
+import { selectCompleted, selectOnProgressActions } from "./progress-bar.logic";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Text displayed above the progress bar. */
@@ -50,6 +50,9 @@ export class PlhProgressBarComponent
    * `null` until the first observation (used to seed without firing).
    */
   private previousProgress: number | null = null;
+
+  /** Whether the "completed" trigger has fired (or was seeded at mount); it emits at most once. */
+  private completedEmitted = false;
 
   /** Display value while animating or paused; avoids row-refresh races from per-frame setValue. */
   private localProgress = signal<number | null>(null);
@@ -119,20 +122,32 @@ export class PlhProgressBarComponent
       });
     });
 
-    // Fire each `on_progress: <percentage>` action once when progress first reaches its threshold.
-    // See `selectOnProgressActions` for seed / latch / NaN behaviour (`on_progress: 0` is seeded
-    // without firing when the bar mounts at 0).
+    // Fire each `on_progress: <percentage>` action once when progress first reaches its threshold,
+    // and emit the built-in "completed" trigger once when progress first reaches 100%.
+    // See `selectOnProgressActions` / `selectCompleted` for seed / latch / NaN behaviour.
     effect(() => {
       const progress = this.displayProgress();
+      const previous = this.previousProgress;
+
       const { previousProgress, toFire } = selectOnProgressActions({
         progress,
-        previousProgress: this.previousProgress,
+        previousProgress: previous,
         actions: this.actionList(),
         handledThresholds: this.handledProgressThresholds,
       });
       this.previousProgress = previousProgress;
-      if (toFire.length === 0) return;
-      void this.parentContainerComponentRef.handleActions(toFire, this._row);
+
+      const completed = selectCompleted({
+        progress,
+        previousProgress: previous,
+        completedEmitted: this.completedEmitted,
+      });
+      this.completedEmitted = completed.completedEmitted;
+
+      if (toFire.length > 0) {
+        void this.parentContainerComponentRef.handleActions(toFire, this._row);
+      }
+      if (completed.emit) this.triggerActions("completed");
     });
   }
 

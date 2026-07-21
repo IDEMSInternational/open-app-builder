@@ -36,3 +36,21 @@ export function selectOnProgressActions(options: {
 
   return { previousProgress: progress, toFire };
 }
+
+/**
+ * Decide whether to emit the built-in "completed" trigger for a progress update, and the next latch
+ * state. Emits once, when progress first reaches 100%. A bar that loads already at 100% is latched
+ * silently (so it doesn't emit), and a later dip/rise can't re-emit.
+ */
+export function selectCompleted(options: {
+  progress: number;
+  previousProgress: number | null;
+  completedEmitted: boolean;
+}): { emit: boolean; completedEmitted: boolean } {
+  const { progress, previousProgress, completedEmitted } = options;
+  if (completedEmitted || progress < 100) {
+    return { emit: false, completedEmitted };
+  }
+  // Reached 100% for the first time: emit unless this is the seeding first observation (mount at 100%).
+  return { emit: previousProgress !== null, completedEmitted: true };
+}
