@@ -1,4 +1,4 @@
-<ion-accordion [value]="name()" [attr.data-test]="name()">
+<ion-accordion [value]="name()" [attr.data-test]="name()" [disabled]="params.disabled.value()">
   <ion-item slot="header" class="accordion-header clear" lines="none">
     <ion-label class="accordion-section-title ion-text-wrap">
       {{ value() || "" }}

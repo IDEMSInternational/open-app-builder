@@ -11,7 +11,7 @@ const parameters = () =>
   });
 
 @Component({
-  selector: "aob-accordion-component",
+  selector: "oab-accordion-component",
   templateUrl: "accordion.component.html",
   styleUrls: ["./accordion.component.scss"],
   imports: [IonicModule, forwardRef(() => RowListComponent)],
