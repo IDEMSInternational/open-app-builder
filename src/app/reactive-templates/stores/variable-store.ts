@@ -53,6 +53,14 @@ export class VariableStore implements IStore {
       return of({});
     }
 
+    const supportedRefs = refs.filter(
+      (ref): ref is VariableReference & { type: StoreType } => ref.type !== "loop"
+    );
+
+    if (supportedRefs.length === 0) {
+      return of({});
+    }
+
     const storeTypes = Array.from(this.storeMap.keys());
 
     const refsByType = {} as Record<StoreType, VariableReference[]>;
@@ -63,7 +71,7 @@ export class VariableStore implements IStore {
     }
 
     // Group refs by store type so each underlying store can be watched once.
-    for (const ref of refs) {
+    for (const ref of supportedRefs) {
       refsByType[ref.type].push(ref);
     }
 
@@ -100,6 +108,10 @@ export class VariableStore implements IStore {
   }
 
   private getStore(ref: VariableReference): IStore {
+    if (ref.type === "loop") {
+      throw new Error("Loop references are not backed by VariableStore");
+    }
+
     const store = this.storeMap.get(ref.type);
 
     if (!store) {
