@@ -22,10 +22,9 @@ const parameters = () =>
   templateUrl: "./popup.component.html",
   styleUrl: "./popup.component.scss",
   imports: [
-    forwardRef(() => ReactiveTemplateComponent),
+    forwardRef(() => RowListComponent),
     IonicModule,
     NgTemplateOutlet,
-    RowListComponent,
     NestedTemplateComponent,
   ],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
