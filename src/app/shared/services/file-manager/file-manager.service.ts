@@ -197,6 +197,28 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
+   * Native only: check whether a file previously written via `saveFile` exists on disk, and if so
+   * return its size in bytes. Uses the same path rule as `saveFile` so callers do not re-derive it.
+   * Returns `{ exists: false }` when the file is not present (stat throws for a missing path).
+   */
+  public async getSavedFileInfo(
+    targetPath: string,
+    options: { directory?: keyof typeof Directory; subdirectory?: string } = {}
+  ): Promise<{ exists: boolean; sizeBytes?: number }> {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("getSavedFileInfo() is only supported on native platforms");
+    }
+    const { directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    try {
+      const { size } = await Filesystem.stat({ path, directory: Directory[directory] });
+      return { exists: true, sizeBytes: size };
+    } catch {
+      return { exists: false };
+    }
+  }
+
+  /**
    * @returns a URL to access the file (not currently used)
    * Adapted from https://www.npmjs.com/package/capacitor-blob-writer
    */

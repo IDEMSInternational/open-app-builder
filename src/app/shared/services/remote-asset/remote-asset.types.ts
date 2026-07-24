@@ -46,6 +46,11 @@ export interface IActiveAssetPackDownload {
   abortController: AbortController;
   downloadStartedAt: string;
   removeConnectionStatusListener: () => void;
+  /**
+   * Resolves with the download result. Set when the record is created so a concurrent request for
+   * the same pack can always join this in-flight attempt by awaiting it.
+   */
+  completion: Promise<boolean>;
 }
 
 export interface IAssetPackEnsureDownloadedParams {
