@@ -24,6 +24,7 @@ nav:
           - authors/advanced/data-generators.md
           - authors/advanced/overrides.md
       - authors/local-sheets.md
+      - authors/beta.md
   - Contributors:
       - contributors/documentation/running-server.md
       - contributors/documentation/authoring.md
