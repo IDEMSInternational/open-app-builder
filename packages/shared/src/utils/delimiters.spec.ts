@@ -6,12 +6,22 @@ interface IDelimitedTestData {
   delimited: string;
 }
 
-const prefixes = ["row", "local"];
+const prefixes = ["row", "local", "items"];
 const stringDelimiterTests: IDelimitedTestData[] = [
   // basic
   {
     input: "Name: @row.first_name",
     delimited: "Name: {@row.first_name}",
+  },
+  // array notation
+  {
+    input: "@items[0].group_id",
+    delimited: "{@items[0].group_id}",
+  },
+  // array notation with multiple indices
+  {
+    input: "@items[0].values[1]",
+    delimited: "{@items[0].values[1]}",
   },
   // multiple
   {
