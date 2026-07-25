@@ -1,0 +1,17 @@
+<ion-accordion [value]="name()" [attr.data-test]="name()" [disabled]="params.disabled.value()">
+  <ion-item slot="header" class="accordion-header clear" lines="none">
+    <ion-label class="accordion-section-title ion-text-wrap">
+      {{ value() || "" }}
+    </ion-label>
+    <ion-icon
+      class="ion-accordion-toggle-icon"
+      [name]="params.iconName.value()"
+      slot="end"
+    ></ion-icon>
+  </ion-item>
+
+  <!-- Accordion section Content -->
+  <ion-item slot="content" class="accordion-content clear" lines="none">
+    <oab-row-list [namespace]="namespace()" [rows]="row().rows ?? []"></oab-row-list>
+  </ion-item>
+</ion-accordion>
