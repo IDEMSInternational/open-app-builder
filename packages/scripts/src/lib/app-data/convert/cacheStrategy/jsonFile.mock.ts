@@ -24,19 +24,24 @@ export class MockJsonFileCache extends JsonFileCache {
 
   public add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
     if (data) {
+      const cachedData = structuredClone(data);
       if (!entryName) {
-        entryName = this.generateCacheEntryName(data);
+        entryName = this.generateCacheEntryName(cachedData);
       }
       if (!this.mockContents[entryName]) {
         this.mockContents[entryName] = {} as any;
       }
-      this.mockContents[entryName].value = data;
-      return { filePath: entryName, entryName, data };
+      this.mockContents[entryName].value = cachedData;
+      return { filePath: entryName, entryName, data: cachedData };
     }
   }
 
   public clear() {
     this.mockContents = {};
+  }
+
+  public flush() {
+    // no-op for in-memory cache
   }
 
   public remove(entryName: string) {
@@ -46,6 +51,10 @@ export class MockJsonFileCache extends JsonFileCache {
   }
 
   public get<T = any>(entryName: string) {
-    return this.mockContents[entryName] as T;
+    return this.mockContents[entryName]?.value as T;
+  }
+
+  public info(entryName: string) {
+    return this.mockContents[entryName];
   }
 }
