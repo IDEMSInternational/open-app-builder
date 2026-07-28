@@ -64,7 +64,6 @@ export class CoreActionsService {
       },
       emit: async (action) => {
         // todo: Find out what this is and then implement it using reactive templates.
-
         throw new ActionNotImplementedError("emit");
       },
     });

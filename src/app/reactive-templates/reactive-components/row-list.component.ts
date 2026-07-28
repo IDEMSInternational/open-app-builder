@@ -1,17 +1,17 @@
 import { NgComponentOutlet } from "@angular/common";
-import { Component, computed, inject, input, Type } from "@angular/core";
+import { Component, computed, inject, input, output, Type } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { REACTIVE_COMPONENT_MAP } from "./components";
 import { DebugService } from "../services/debug.service";
 import { RowDebuggerComponent } from "./debug/row-debugger/row-debugger.component";
-import { RowBaseComponent } from "./row-base.component";
+import { RowBaseComponent, RowEmitEvent } from "./row-base.component";
 
 @Component({
   selector: "oab-row-list",
   template: `
     @for (row of rows(); track i; let i = $index) {
       @let component = getComponent(row);
-      @let outletInputs = { row, namespace: namespace(), onInitialised: onRowInit(i) };
+      @let outletInputs = getOutletInputs(row, i);
 
       @if (debug.isEnabled()) {
         <oab-row-debugger>
@@ -29,6 +29,7 @@ export class RowListComponent {
 
   public namespace = input("");
   public rows = input<FlowTypes.TemplateRow[]>([]);
+  public emittedValue = output<{ emitValue: string; emitData: any }>();
 
   public readonly initialised = computed(() => {
     // Initially zero rows will be reported we will
@@ -41,6 +42,19 @@ export class RowListComponent {
   });
 
   private rowsInitialised = new Set<number>();
+
+  public getOutletInputs(row: FlowTypes.TemplateRow, index: number) {
+    return {
+      row,
+      namespace: this.namespace(),
+      onInitialised: () => this.onRowInit(index),
+      onEmit: (event: RowEmitEvent) => this.onEmittedValue(event),
+    };
+  }
+
+  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+    this.emittedValue.emit(event);
+  }
 
   public getComponent(row: FlowTypes.TemplateRow): Type<RowBaseComponent<any>> {
     return REACTIVE_COMPONENT_MAP[row.type] as Type<RowBaseComponent<any>>;

@@ -3,7 +3,6 @@ import { NgTemplateOutlet } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
-import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { RowListComponent } from "../../row-list.component";
 import {
   ActionRegistry,
@@ -60,8 +59,15 @@ export class PopupComponent
     }
   }
 
-  public dismiss(value?: { emit_value: string; emit_data: any }) {
-    // todo: close modal and emit completed/uncompleted value to parent template if needed
+  public dismiss(value?: { emitValue: string; emitData: any }) {
     this.isOpen.set(false);
+  }
+
+  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+    super.onEmittedValue(event);
+
+    if (["completed", "uncompleted"].includes(event.emitValue)) {
+      this.dismiss(event);
+    }
   }
 }

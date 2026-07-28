@@ -22,9 +22,17 @@
       }
       <div class="popup-content">
         @if (value()) {
-          <oab-nested-template [row]="row()" [namespace]="namespace()"></oab-nested-template>
+          <oab-nested-template
+            [row]="row()"
+            [namespace]="namespace()"
+            (emittedValue)="onEmittedValue($event)"
+          ></oab-nested-template>
         } @else {
-          <oab-row-list [rows]="row().rows || []" [namespace]="namespace()"></oab-row-list>
+          <oab-row-list
+            [rows]="row().rows || []"
+            [namespace]="namespace()"
+            (emittedValue)="onEmittedValue($event)"
+          ></oab-row-list>
         }
       </div>
     </div>

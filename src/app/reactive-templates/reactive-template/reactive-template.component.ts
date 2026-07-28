@@ -1,4 +1,13 @@
-import { Component, computed, effect, forwardRef, input, signal, viewChild } from "@angular/core";
+import {
+  Component,
+  computed,
+  effect,
+  forwardRef,
+  input,
+  output,
+  signal,
+  viewChild,
+} from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { RowListComponent } from "../reactive-components/row-list.component";
@@ -17,12 +26,17 @@ export class ReactiveTemplateComponent {
 
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
+  public emittedValue = output<{ emitValue: string; emitData: any }>();
 
   private rowListComponent = viewChild.required(RowListComponent);
 
   public readonly initialised = computed(() => {
     return this.rowListComponent().initialised();
   });
+
+  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+    this.emittedValue.emit(event);
+  }
 
   constructor(
     private templateService: TemplateService,
