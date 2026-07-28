@@ -47,7 +47,7 @@ export class RowListComponent {
     return {
       row,
       namespace: this.namespace(),
-      onInitialised: () => this.onRowInit(index),
+      onInitialised: this.onRowInit(index),
       onEmit: (event: RowEmitEvent) => this.onEmittedValue(event),
     };
   }

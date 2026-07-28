@@ -34,7 +34,7 @@ describe("popup component", () => {
 
     cy.get("ion-modal").should("be.visible").find(".popup-container").contains("Override Value");
 
-    cy.get("ion-modal").find(".close-button").click();
+    cy.get("ion-modal").find(`[data-test='templatePopup.okButton']`).click();
 
     cy.get("ion-modal").should("not.be.visible");
   });
