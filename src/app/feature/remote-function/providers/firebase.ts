@@ -183,7 +183,13 @@ export class FirebaseFunctionProvider implements RemoteFunctionProviderBase {
   protected async setupAppCheck() {
     // Native platform - provider configured
     if (Capacitor.isNativePlatform()) {
-      await FirebaseAppCheck.initialize({ isTokenAutoRefreshEnabled: true });
+      // Attestation (ios App Attest, android Play Integrity) is unavailable on simulators and
+      // emulators, so non-production builds use the debug provider instead. Unlike web the token
+      // value cannot be passed from here, so must be set per-platform - see README
+      await FirebaseAppCheck.initialize({
+        isTokenAutoRefreshEnabled: true,
+        debugToken: !environment.production,
+      });
     } else {
       const siteKey = this.deploymentService.config.firebase?.appCheck?.recaptchaEnterpriseSiteKey;
       if (!siteKey) {
