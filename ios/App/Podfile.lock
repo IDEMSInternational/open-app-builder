@@ -1209,6 +1209,8 @@ PODS:
     - FirebaseStorage (~> 11.7.0)
   - CapacitorLocalNotifications (7.0.4):
     - Capacitor
+  - CapacitorNetwork (7.0.4):
+    - Capacitor
   - CapacitorPushNotifications (7.0.4):
     - Capacitor
   - CapacitorScreenOrientation (7.0.3):
@@ -1490,6 +1492,7 @@ DEPENDENCIES:
   - "CapacitorFirebasePerformance (from `../../node_modules/@capacitor-firebase/performance`)"
   - "CapacitorFirebaseStorage (from `../../node_modules/@capacitor-firebase/storage`)"
   - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
+  - "CapacitorNetwork (from `../../node_modules/@capacitor/network`)"
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
   - "CapacitorScreenOrientation (from `../../node_modules/@capacitor/screen-orientation`)"
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
@@ -1573,6 +1576,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor-firebase/storage"
   CapacitorLocalNotifications:
     :path: "../../node_modules/@capacitor/local-notifications"
+  CapacitorNetwork:
+    :path: "../../node_modules/@capacitor/network"
   CapacitorPushNotifications:
     :path: "../../node_modules/@capacitor/push-notifications"
   CapacitorScreenOrientation:
@@ -1609,6 +1614,7 @@ SPEC CHECKSUMS:
   CapacitorFirebasePerformance: 1bf76afbcd257644218c3569eebc595ca0668a46
   CapacitorFirebaseStorage: 4b438b83cb6ce20679b9ad97c2f25f894c1e0a01
   CapacitorLocalNotifications: ba2a08bd92887b08f352e6b2db430575cef0cea3
+  CapacitorNetwork: b719d692a8d1310da8d26d6648d3aa1ef1e100e1
   CapacitorPushNotifications: 7604512af53bbfdf1dd8fb2256b9ef1e8a69cdc2
   CapacitorScreenOrientation: dbc5cb20775d43a8184830792808c71116b12d56
   CapacitorShare: a4f4f86eabd4b3ff52ba6a11b754713c6926a8d1
@@ -1651,6 +1657,6 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 70cee1708468d0d90765046e2f9ed67f8d9c837b
+PODFILE CHECKSUM: 4e36a3e90ee2984f5ec40eed5a516bbe3067804b
 
 COCOAPODS: 1.16.2

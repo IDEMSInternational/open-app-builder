@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  ElementRef,
   HostBinding,
   inject,
   InjectionToken,
@@ -12,7 +13,19 @@ import {
   WritableSignal,
 } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
-import { Parameters } from "./parameters";
+import { defineParameters, Parameter, Parameters } from "./parameters";
+
+export type ValueType = "script" | "string" | "list";
+
+export const defineBaseParameters = () =>
+  defineParameters({
+    valueType: new Parameter<ValueType>("value_type", "string"),
+  });
+
+export type BaseParameters = ReturnType<typeof defineBaseParameters>;
+
+/** Merges component-specific params with BaseParameters, handling null (components with no params) */
+export type MergeParams<TParams> = TParams extends null ? BaseParameters : TParams & BaseParameters;
 import { NamespaceService } from "../services/namespace.service";
 import { ActionService } from "../services/action.service";
 import { Subscription } from "rxjs";
@@ -34,7 +47,7 @@ export function navParamPrefix(url: string): string {
   template: ``, // template is empty, to be overridden by child components
   standalone: false,
 })
-export abstract class RowBaseComponent<TParams extends Parameters>
+export abstract class RowBaseComponent<TParams extends Parameters | null>
   implements OnInit, OnDestroy, IRow
 {
   public row = input.required<FlowTypes.TemplateRow>();
@@ -47,7 +60,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    * The current evaluated value of the row, based on its expression with tokens replaced.
    * This may not be the same as the value stored in the variable store if further processing is needed (e.g. executing a data query).
    */
-  public value: Signal<any>;
+  public value!: Signal<any>;
 
   /**
    * The current 'raw' expression of the row, used to calculate its value.
@@ -56,7 +69,10 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   public expression = this._expression.asReadonly();
 
   public condition = signal(true);
-  public params = inject(ROW_PARAMETERS) as TParams;
+  public params: MergeParams<TParams> = {
+    ...(inject(ROW_PARAMETERS) ?? {}),
+    ...defineBaseParameters(),
+  } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
   protected variableStore: IStore = inject(VariableStore);
@@ -67,6 +83,7 @@ export abstract class RowBaseComponent<TParams extends Parameters>
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected storeType: StoreType = "local";
+  protected elementRef = inject(ElementRef<HTMLElement>);
   protected templateMetadataService: TemplateMetadataService = inject(TemplateMetadataService);
 
   private valueDependencySubscriptions: Subscription[] = [];
@@ -86,6 +103,8 @@ export abstract class RowBaseComponent<TParams extends Parameters>
    */
   ngOnInit(): void {
     this.init();
+
+    this.applyStyles();
 
     this.watchParamDependencies();
     this.watchConditionDependencies();
@@ -130,7 +149,11 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     this._expression.set(sessionValue ?? row.value);
     this.condition.set(
-      this.evaluationService.evaluateExpression(row.condition ?? true, this.namespace())
+      this.evaluationService.evaluateExpression(
+        row.condition ?? true,
+        this.namespace(),
+        "script" // conditions are always evaluated as script to allow for complex expressions with logical operators
+      )
     );
 
     this.setParams();
@@ -154,38 +177,78 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
   // Override to transform the value before storing in variable store.
   // e.g. To execute a data query and store the results as the value
-  protected async computeStoredValue(value: any): Promise<any> {
+  protected async preEvaluation(value: any): Promise<any> {
+    return value;
+  }
+
+  protected async postEvaluation(value: any): Promise<any> {
     return value;
   }
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
-    const value = this.evaluationService.evaluateExpression(this.expression(), this.namespace());
-    const computedValue = await this.computeStoredValue(value);
+    const preEvaluated = await this.preEvaluation(this.expression());
 
-    this.variableStore.set({ name: this.name(), type: this.storeType }, computedValue);
+    const value = this.evaluationService.evaluateExpression(
+      preEvaluated,
+      this.namespace(),
+      this.params.valueType.value()
+    );
+
+    const postEvaluated = await this.postEvaluation(value);
+
+    this.variableStore.set({ name: this.name(), type: this.storeType }, postEvaluated);
+  }
+
+  // Apply styles defined in the template sheet to the host element
+  // This can be overridden by child components if they need to apply styles to a different element.
+  protected applyStyles() {
+    const styles = this.row().style_list || [];
+
+    styles.forEach((style) => {
+      const separatorIndex = style.indexOf(":");
+
+      if (separatorIndex === -1) {
+        return;
+      }
+
+      const key = style.slice(0, separatorIndex).trim();
+      const value = style.slice(separatorIndex + 1).trim();
+
+      if (!key || !value) {
+        return;
+      }
+
+      this.elementRef.nativeElement.style.setProperty(key, value);
+    });
   }
 
   private setParams() {
-    if (!this.params) return;
     const rowParams = this.row().parameter_list;
 
-    Object.keys(this.params).forEach((key) => {
-      const param = this.params[key];
+    const applyParams = (params: Parameters) => {
+      Object.keys(params).forEach((key) => {
+        const param = params[key];
+        if (rowParams && rowParams.hasOwnProperty(param.name)) {
+          const paramExpression = rowParams[param.name];
+          const value = this.evaluationService.evaluateExpression(
+            paramExpression,
+            this.namespace(),
+            param.valueType
+          );
+          params[key].setValue(value);
+        }
+      });
+    };
 
-      if (rowParams && rowParams.hasOwnProperty(param.name)) {
-        const paramExpression = rowParams[param.name];
-        const value = this.evaluationService.evaluateExpression(paramExpression, this.namespace());
-        this.params[key].setValue(value);
-      }
-    });
+    if (this.params) applyParams(this.params);
   }
 
   protected watchValueDependencies() {
     this.unsubscribeValueDependencies();
 
     const dependencies = this.evaluationService
-      .getDependencies(this.expression(), this.namespace())
+      .getDependencies(this.expression(), this.namespace(), this.params.valueType.value())
       .filter((d) => d.name !== this.name());
 
     if (!dependencies || !dependencies.length) {
@@ -208,14 +271,24 @@ export abstract class RowBaseComponent<TParams extends Parameters>
       return;
     }
 
-    const dependencies = this.evaluationService.getDependencies(condition, this.namespace());
+    const dependencies = this.evaluationService.getDependencies(
+      condition,
+      this.namespace(),
+      "script"
+    );
 
     if (!dependencies || !dependencies.length) {
       return;
     }
 
     const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
-      this.condition.set(this.evaluationService.evaluateExpression(condition, this.namespace()));
+      this.condition.set(
+        this.evaluationService.evaluateExpression(
+          condition,
+          this.namespace(),
+          "script" // conditions are always evaluated as script to allow for complex expressions with logical operators
+        )
+      );
     });
     this.conditionDependencySubscriptions.push(sub);
   }
@@ -226,8 +299,20 @@ export abstract class RowBaseComponent<TParams extends Parameters>
 
     if (!rowParams) return;
 
-    let dependencies = Object.keys(rowParams).flatMap((name) => {
-      return this.evaluationService.getDependencies(rowParams[name], this.namespace());
+    const params = this.params as Parameters;
+
+    let dependencies = Object.keys(params).flatMap((key) => {
+      const param = params[key];
+
+      if (!Object.prototype.hasOwnProperty.call(rowParams, param.name)) {
+        return [];
+      }
+
+      return this.evaluationService.getDependencies(
+        rowParams[param.name],
+        this.namespace(),
+        param.valueType
+      );
     });
 
     if (!dependencies || !dependencies.length) {

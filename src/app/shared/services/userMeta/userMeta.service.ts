@@ -12,6 +12,7 @@ import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { FlowTypes, getProtectedFieldName, IProtectedFieldName } from "packages/data-models";
 import { deepMergeArrays } from "packages/shared/src/utils/object-utils";
 import { SystemVariableService } from "../system-variable/system-variable.service";
+import { isLocalOnlyDynamicDataFlow } from "../dynamic-data/dynamic-data.sync";
 
 type IDynamicDataState = ReturnType<DynamicDataService["getState"]>;
 
@@ -137,6 +138,9 @@ export class UserMetaService extends AsyncServiceBase {
     // This preserves final fields (e.g. row_index) from existing docs while updating other fields
     for (const [flow_type, entriesByFlowName] of Object.entries(dynamic_data)) {
       for (const [flow_name, entriesByRowId] of Object.entries(entriesByFlowName)) {
+        if (isLocalOnlyDynamicDataFlow(flow_type as FlowTypes.FlowType, flow_name)) {
+          continue;
+        }
         const entriesArray = Object.entries(entriesByRowId).map(([row_id, entry]) => ({
           ...entry,
           id: row_id,

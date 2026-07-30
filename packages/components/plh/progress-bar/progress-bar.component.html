@@ -1,0 +1,12 @@
+<div class="progress-bar-wrapper">
+  @if (params().title) {
+    <p class="progress-title" [style.color]="accentColor()">{{ params().title }}</p>
+  }
+  <div class="progress-bar-background">
+    <div
+      class="progress-bar"
+      [style.width.%]="displayProgress()"
+      [style.background-color]="accentColor()"
+    ></div>
+  </div>
+</div>
