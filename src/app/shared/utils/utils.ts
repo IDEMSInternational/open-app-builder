@@ -249,6 +249,13 @@ export interface IAnswerListItem {
   image?: string;
   text?: string;
   image_checked?: string | null;
+  /**
+   * When true, show a text input for this option (e.g. radio_list "Other").
+   * Author content usually supplies the string `"true"` / `"false"`.
+   */
+  input_allowed?: string;
+  /** Placeholder text for the option's custom text input. */
+  input_placeholder?: string;
 }
 
 /**
@@ -302,7 +309,7 @@ function parseAnswerList(answerList: any) {
  * Convert answer list item (string or object) to relevant mappings
  */
 function parseAnswerListItem(item: any) {
-  const itemObj: IAnswerListItem = {} as any;
+  const itemObj: IAnswerOption = {};
   if (typeof item === "string") {
     const msg =
       "Unexpected answerList item as string. It should be set from local with '_list' in name";
@@ -310,10 +317,9 @@ function parseAnswerListItem(item: any) {
     console.warn(msg, item);
     const stringProperties = item.split("|");
     stringProperties.forEach((s) => {
-      let [field, value] = s.split(":").map((v) => v.trim());
-      if (field && value) {
-        if (value === "undefined") value = undefined;
-        itemObj[field] = value;
+      const [field, rawValue] = s.split(":").map((v) => v.trim());
+      if (field && rawValue) {
+        itemObj[field] = rawValue === "undefined" ? undefined : rawValue;
       }
     });
     // NOTE CC 2021-08-07 - allow passing of object, not just string for conversion
