@@ -13,6 +13,7 @@ import { TemplateService } from "src/app/shared/components/template/services/tem
 import { RowListComponent } from "../reactive-components/row-list.component";
 import { DebugService } from "../services/debug.service";
 import { TemplateDebuggerComponent } from "../reactive-components/debug/template-debugger/template-debugger.component";
+import { RowEmitEvent } from "../reactive-components/row-base.component";
 
 @Component({
   selector: "oab-reactive-template",
@@ -26,7 +27,7 @@ export class ReactiveTemplateComponent {
 
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
-  public emittedValue = output<{ emitValue: string; emitData: any }>();
+  public emittedValue = output<RowEmitEvent>();
 
   private rowListComponent = viewChild.required(RowListComponent);
 
@@ -34,7 +35,7 @@ export class ReactiveTemplateComponent {
     return this.rowListComponent().initialised();
   });
 
-  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+  public onEmittedValue(event: RowEmitEvent) {
     this.emittedValue.emit(event);
   }
 

@@ -19,7 +19,7 @@ const parameters = () =>
 
 @Component({
   templateUrl: "./popup.component.html",
-  styleUrl: "./popup.component.scss",
+  styleUrls: ["./popup.component.scss"],
   imports: [
     forwardRef(() => RowListComponent),
     IonicModule,

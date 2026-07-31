@@ -29,7 +29,7 @@ export class RowListComponent {
 
   public namespace = input("");
   public rows = input<FlowTypes.TemplateRow[]>([]);
-  public emittedValue = output<{ emitValue: string; emitData: any }>();
+  public emittedValue = output<RowEmitEvent>();
 
   public readonly initialised = computed(() => {
     // Initially zero rows will be reported we will
@@ -52,7 +52,7 @@ export class RowListComponent {
     };
   }
 
-  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+  public onEmittedValue(event: RowEmitEvent) {
     this.emittedValue.emit(event);
   }
 
