@@ -4,4 +4,8 @@
     [template]="template()"
   ></oab-template-debugger>
 }
-<oab-row-list [rows]="rows()" [namespace]="namespace()"></oab-row-list>
+<oab-row-list
+  [rows]="rows()"
+  [namespace]="namespace()"
+  (emittedValue)="onEmittedValue($event)"
+></oab-row-list>

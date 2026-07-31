@@ -8,6 +8,7 @@ import {
   input,
   OnDestroy,
   OnInit,
+  output,
   signal,
   Signal,
   WritableSignal,
@@ -23,6 +24,7 @@ export const defineBaseParameters = () =>
   });
 
 export type BaseParameters = ReturnType<typeof defineBaseParameters>;
+export type RowEmitEvent = { emitValue: string; emitData: any };
 
 /** Merges component-specific params with BaseParameters, handling null (components with no params) */
 export type MergeParams<TParams> = TParams extends null ? BaseParameters : TParams & BaseParameters;
@@ -52,6 +54,9 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
+  public emittedValue = output<RowEmitEvent>();
+  public onEmit = input<((event: RowEmitEvent) => void) | undefined>(undefined);
+
   public name = computed(() =>
     this.namespaceService.getFullName(this.namespace(), this.row().name)
   );
@@ -161,6 +166,16 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     this.rowRegistry.register(this);
   }
 
+  public onEmittedValue(event: RowEmitEvent) {
+    const emit = this.onEmit();
+    if (emit) {
+      emit(event);
+      return;
+    }
+
+    this.emittedValue.emit(event);
+  }
+
   /*
    * Sets the rows expression value and updates the variable store.
    */
@@ -173,6 +188,16 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   public triggerActions(trigger: string) {
     this.actionService.handleActions(this, trigger, this.namespace());
+    const emitActions = this.row().action_list?.filter(
+      (a) => a.trigger === trigger && a.action_id === "emit"
+    );
+
+    for (const action of emitActions ?? []) {
+      this.onEmittedValue({
+        emitValue: action.args[0],
+        emitData: action.args[1],
+      });
+    }
   }
 
   // Override to transform the value before storing in variable store.
