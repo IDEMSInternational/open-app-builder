@@ -105,6 +105,14 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 | `cancel_download` | Abort all active downloads and mark them `cancelled` |
 | `reset` | Clear downloaded contents and pack metadata, back to the pre-download state (testing aid; does not yet delete files from the device) |
 
+Both `download` and `ensure_downloaded` accept `debug_download_delay_ms`, a manual testing aid that pauses for that many ms before each asset file:
+
+```yaml
+asset_pack | download: my_asset_pack | debug_download_delay_ms: 3000
+```
+
+This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack, toggling airplane mode — which is otherwise hard to hit on a fast connection. It defaults to `0`, is scoped to the single action call that sets it, and an unparseable value is ignored rather than breaking the download. Note the delay applies to *skipped* files too, so with it on a resume won't look faster: verify resume by status and counts reaching completion, not by speed.
+
 Progress and status are exposed to authoring in two places:
 
 - **`asset_pack_download_in_progress`** — a system variable holding a boolean string, for showing or hiding UI while any download is running. Referenced as `@fields._asset_pack_download_in_progress`, or as `@system.asset_pack_download_in_progress` in deployments using `useReactiveTemplates`.

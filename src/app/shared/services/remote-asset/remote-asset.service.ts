@@ -33,12 +33,6 @@ import { RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
-/**
- * Manual testing aid: set to a positive value, e.g. 3000, to slow each asset entry donwload.
- * Keep at 0 outside local testing.
- */
-const REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS = 0;
-
 @Injectable({
   providedIn: "root",
 })
@@ -198,6 +192,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     const awaitCompletion = options.awaitCompletion ?? true;
+    const debugDownloadDelayMs = options.debugDownloadDelayMs ?? 0;
     const assetPacks = await this.remoteAssetMetadataService.snapshotAssetPacks();
     const completedPackIds = new Set(
       assetPacks
@@ -221,12 +216,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const [firstPendingPack, ...remainingPendingPacks] = pendingPacks;
       const downloadInBackground = (assetPackNames: string[]) => {
         if (!assetPackNames.length) return;
-        void this.ensureAssetPacksDownloaded(assetPackNames, { awaitCompletion: true }).catch(
-          (error) => console.error("[REMOTE ASSETS] Background ensure_downloaded failed", error)
+        void this.ensureAssetPacksDownloaded(assetPackNames, {
+          awaitCompletion: true,
+          debugDownloadDelayMs,
+        }).catch((error) =>
+          console.error("[REMOTE ASSETS] Background ensure_downloaded failed", error)
         );
       };
       const started = await this.downloadAssetPackByName(firstPendingPack, {
         awaitCompletion: false,
+        debugDownloadDelayMs,
         onDownloadStarted: (completion) => {
           if (!remainingPendingPacks.length) {
             return;
@@ -250,7 +249,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     let allSucceeded = true;
     for (const assetPackName of pendingPacks) {
-      const success = await this.downloadAssetPackByName(assetPackName);
+      const success = await this.downloadAssetPackByName(assetPackName, { debugDownloadDelayMs });
       if (!success) {
         allSucceeded = false;
       }
@@ -299,6 +298,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       abortController,
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
+      debugDownloadDelayMs: options.debugDownloadDelayMs ?? 0,
     });
     const activeDownload: IActiveAssetPackDownload = {
       abortController,
@@ -327,10 +327,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       abortController,
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
+      debugDownloadDelayMs,
     }: {
       abortController: AbortController;
       downloadStartedAt: string;
       removeAssetPackConnectionStatusListener: () => void;
+      debugDownloadDelayMs: number;
     }
   ) {
     try {
@@ -369,7 +371,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           });
           const { failedCount } = await this.downloadAndIntegrateAssetPack(
             { ...manifest, rows: assetEntries },
-            abortController.signal
+            abortController.signal,
+            debugDownloadDelayMs
           );
           this.throwIfDownloadCancelled(abortController.signal);
           if (failedCount > 0) {
@@ -476,14 +479,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     return signal?.aborted || (error instanceof Error && error.name === "AbortError");
   }
 
-  private waitForArtificialDownloadDelay(signal: AbortSignal) {
-    if (REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS <= 0) {
+  /**
+   * Manual testing aid: pause before an asset file so a download can be reliably interrupted.
+   * Driven by the `debug_download_delay_ms` action param, so it is 0 (a no-op) unless an author
+   * asked for it on this specific action call.
+   */
+  private waitForArtificialDownloadDelay(signal: AbortSignal, delayMs: number) {
+    if (delayMs <= 0) {
       return Promise.resolve();
     }
     this.throwIfDownloadCancelled(signal);
-    console.warn(
-      `[REMOTE ASSETS] Artificial download delay enabled: ${REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS}ms`
-    );
+    console.warn(`[REMOTE ASSETS] Artificial download delay enabled: ${delayMs}ms`);
 
     return new Promise<void>((resolve, reject) => {
       const handleAbort = () => {
@@ -493,7 +499,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const timeout = setTimeout(() => {
         signal.removeEventListener("abort", handleAbort);
         resolve();
-      }, REMOTE_ASSET_DOWNLOAD_DEBUG_DELAY_MS);
+      }, delayMs);
       signal.addEventListener("abort", handleAbort, { once: true });
     });
   }
@@ -512,7 +518,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
   private async downloadAndIntegrateAssetPack(
     assetPackManifest: FlowTypes.AssetPack,
-    signal: AbortSignal
+    signal: AbortSignal,
+    debugDownloadDelayMs = 0
   ): Promise<{ failedCount: number }> {
     let failedCount = 0;
     try {
@@ -529,7 +536,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
         for (const [index, assetEntry] of assetEntries.entries()) {
           this.throwIfDownloadCancelled(signal);
-          await this.waitForArtificialDownloadDelay(signal);
+          await this.waitForArtificialDownloadDelay(signal, debugDownloadDelayMs);
           failedCount += await this.handleAssetDownload(
             assetEntry,
             index,
@@ -545,7 +552,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       else {
         for (const [index, assetEntry] of assetEntries.entries()) {
           this.throwIfDownloadCancelled(signal);
-          await this.waitForArtificialDownloadDelay(signal);
+          await this.waitForArtificialDownloadDelay(signal, debugDownloadDelayMs);
           console.log(
             `[REMOTE ASSETS] Processing asset entry ${index + 1} of ${assetEntries.length}.`
           );

@@ -15,6 +15,7 @@ import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
 import {
+  resolveDebugDownloadDelayMs,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
   RemoteAssetActionFactory,
@@ -580,7 +581,10 @@ describe("RemoteAssetsService", () => {
     const success = await service.ensureAssetPacksDownloaded(["asset_pack_1", "asset_pack_2"]);
 
     expect(success).toBeTrue();
-    expect(downloadSpy.calls.allArgs()).toEqual([["asset_pack_1"], ["asset_pack_2"]]);
+    expect(downloadSpy.calls.allArgs()).toEqual([
+      ["asset_pack_1", { debugDownloadDelayMs: 0 }],
+      ["asset_pack_2", { debugDownloadDelayMs: 0 }],
+    ]);
   });
 
   it("downloads asset packs sequentially when using ensureAssetPacksDownloaded", async () => {
@@ -1093,6 +1097,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
+      debugDownloadDelayMs: 0,
     });
   });
 
@@ -1114,6 +1119,70 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
+      debugDownloadDelayMs: 0,
     });
+  });
+
+  it("passes an authored debug_download_delay_ms to ensureAssetPacksDownloaded", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      ensureAssetPacksDownloaded: jasmine
+        .createSpy("ensureAssetPacksDownloaded")
+        .and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["ensure_downloaded"],
+      // Authoring params arrive as strings
+      params: { asset_pack: "asset_pack_1", debug_download_delay_ms: "3000" },
+    });
+
+    expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
+      awaitCompletion: true,
+      debugDownloadDelayMs: 3000,
+    });
+  });
+});
+
+describe("RemoteAssetActionFactory download", () => {
+  it("passes an authored debug_download_delay_ms to downloadAssetPackByName", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["download", "asset_pack_1"],
+      params: { debug_download_delay_ms: 3000 },
+    });
+
+    expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
+      debugDownloadDelayMs: 3000,
+    });
+  });
+});
+
+describe("resolveDebugDownloadDelayMs", () => {
+  it("defaults to no delay when the param is absent or empty", () => {
+    expect(resolveDebugDownloadDelayMs()).toBe(0);
+    expect(resolveDebugDownloadDelayMs({})).toBe(0);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "" })).toBe(0);
+  });
+
+  it("parses authored numbers and numeric strings", () => {
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: 3000 })).toBe(3000);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "3000" })).toBe(3000);
+  });
+
+  it("falls back to no delay for unparseable or negative values", () => {
+    spyOn(console, "warn");
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "soon" })).toBe(0);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: -1 })).toBe(0);
   });
 });
