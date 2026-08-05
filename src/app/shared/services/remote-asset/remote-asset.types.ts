@@ -1,5 +1,14 @@
 /** Name of the protected data list storing bundled and downloaded asset contents */
 export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
+
+/**
+ * Folder (within the deployment's local storage) that all downloaded asset packs live under, one
+ * subfolder per pack. Namespacing by pack keeps packs from colliding on a shared relative path, and
+ * makes "delete everything this pack downloaded" a single recursive folder delete. NB the deployment
+ * folder also holds non-asset files (e.g. the cached auth profile picture), so deletion must always
+ * target this subfolder rather than the deployment folder itself.
+ */
+export const REMOTE_ASSET_STORAGE_FOLDER = "remote_assets";
 /** Name of the protected data list to store asset pack metadata */
 export const ASSET_PACKS_DATA_LIST = "_asset_packs";
 
