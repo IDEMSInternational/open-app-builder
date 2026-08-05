@@ -90,6 +90,14 @@ const MOCK_ASSET_ENTRY_OVERRIDES_ONLY: IAssetEntry = {
   overridesOnly: true,
 };
 
+/**
+ * The webview `src` that a file saved to local storage resolves to. A recorded `_assets_contents`
+ * filePath only looks like this once THIS app integrated the slot - manifest entries carry the
+ * pack-relative path instead - so tests use it to distinguish integrated slots from described ones.
+ */
+const localSrc = (targetPath: string) =>
+  `capacitor://localhost/_capacitor_file_/data/${targetPath}`;
+
 const MOCK_ASSET_CONTENTS_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
   clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
   clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
@@ -644,6 +652,43 @@ describe("RemoteAssetsService", () => {
     );
   });
 
+  it("retries packs refused by a different in-flight download rather than dropping them", async () => {
+    mockDynamicDataService.snapshot.and.resolveTo([]);
+    // Drive each attempt by hand, mirroring the real cleanup that frees the single download slot
+    const attempted: string[] = [];
+    const settleAttempt: Record<string, () => void> = {};
+    spyOn<any>(service, "runAssetPackDownload").and.callFake(async (assetPackName: string) => {
+      attempted.push(assetPackName);
+      await new Promise<void>((resolve) => (settleAttempt[assetPackName] = resolve));
+      service["activeAssetPackDownloads"].delete(assetPackName);
+      return true;
+    });
+    /** Run every pending continuation; only microtasks are involved, so this settles the chain */
+    const flush = async () => {
+      for (let i = 0; i < 100; i++) await Promise.resolve();
+    };
+
+    await service.downloadAssetPackByName("asset_pack_1", { awaitCompletion: false });
+    const started = await service.ensureAssetPacksDownloaded(["asset_pack_2", "asset_pack_3"], {
+      awaitCompletion: false,
+    });
+
+    // Refused while asset_pack_1 holds the slot, but the queue must survive the refusal
+    expect(started).toBeFalse();
+    expect(attempted).toEqual(["asset_pack_1"]);
+
+    settleAttempt["asset_pack_1"]();
+    await flush();
+    expect(attempted).toEqual(["asset_pack_1", "asset_pack_2"]);
+
+    settleAttempt["asset_pack_2"]();
+    await flush();
+    expect(attempted).toEqual(["asset_pack_1", "asset_pack_2", "asset_pack_3"]);
+
+    settleAttempt["asset_pack_3"]();
+    await flush();
+  });
+
   /**
    * Configure a native download so the real download/integrate path runs against spies.
    * Returns the provider `downloadFile` spy and the mocked file manager for per-test assertions.
@@ -672,11 +717,8 @@ describe("RemoteAssetsService", () => {
     const fileManager = service["fileManagerService"];
     const saveFileSpy = spyOn(fileManager, "saveFile").and.callFake(async ({ targetPath }) => ({
       localFilepath: `file:///data/${targetPath}`,
-      src: `capacitor://localhost/_capacitor_file_/data/${targetPath}`,
+      src: localSrc(targetPath),
     }));
-    const getLocalFilepathSpy = spyOn(fileManager, "getLocalFilepath").and.callFake(
-      async (relativePath: string) => `capacitor://localhost/_capacitor_file_/data/${relativePath}`
-    );
 
     // Stateful `_asset_packs` row + `_assets_contents` snapshot fed from `existingContentsRows`
     let assetPackRow: IDBAssetPack | undefined;
@@ -697,23 +739,30 @@ describe("RemoteAssetsService", () => {
     return {
       downloadFileSpy,
       saveFileSpy,
-      getLocalFilepathSpy,
       getAssetPackRow: () => assetPackRow,
     };
   }
   /* eslint-enable jasmine/no-unsafe-spy */
 
   it("skips downloading a file already present on disk with matching size and recorded checksum", async () => {
-    const { downloadFileSpy, saveFileSpy, getLocalFilepathSpy, getAssetPackRow } =
-      setupNativeDownload(
-        [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
-        // Previously integrated from this manifest (recorded checksum matches) -> trustworthy on disk
-        [{ id: "images/asset.png", md5Checksum: MOCK_ASSET_ENTRY.md5Checksum, size_kb: 100 }]
-      );
+    const { downloadFileSpy, saveFileSpy, getAssetPackRow } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Previously integrated from this manifest (recorded checksum matches, filePath points at the
+      // local file) -> trustworthy on disk
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: localSrc("images/asset.png"),
+        },
+      ]
+    );
     // 102400 bytes -> size_kb 100, matching MOCK_ASSET_ENTRY
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
+      src: localSrc("images/asset.png"),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -721,15 +770,12 @@ describe("RemoteAssetsService", () => {
     expect(success).toBeTrue();
     expect(downloadFileSpy).not.toHaveBeenCalled();
     expect(saveFileSpy).not.toHaveBeenCalled();
-    expect(getLocalFilepathSpy).toHaveBeenCalledWith("images/asset.png");
     // Still integrated into the contents list
     expect(mockDynamicDataService.update).toHaveBeenCalledWith(
       "asset_pack",
       "_assets_contents",
       "images/asset.png",
-      jasmine.objectContaining({
-        filePath: "capacitor://localhost/_capacitor_file_/data/images/asset.png",
-      }),
+      jasmine.objectContaining({ filePath: localSrc("images/asset.png") }),
       { upsert: true }
     );
     expect(getAssetPackRow()).toEqual(
@@ -741,16 +787,52 @@ describe("RemoteAssetsService", () => {
     );
   });
 
+  it("skips a file whose recorded local path does not string-match the stat result", async () => {
+    // The recorded path comes from `saveFile` (convertFileSrc of a write_blob path); resume only has
+    // convertFileSrc of a `Filesystem.stat` uri. Those need not be byte-identical on device (e.g. iOS
+    // /private/var vs /var), and such a divergence must not silently disable resume: any path that is
+    // no longer the manifest's own value is proof this app integrated the slot.
+    const { downloadFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: "capacitor://localhost/_capacitor_file_/private/var/data/images/asset.png",
+        },
+      ]
+    );
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc("images/asset.png"),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).not.toHaveBeenCalled();
+  });
+
   it("re-downloads a present file whose on-disk size does not match the manifest", async () => {
     const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
-      // Recorded checksum matches, so only the size mismatch should force a re-download
-      [{ id: "images/asset.png", md5Checksum: MOCK_ASSET_ENTRY.md5Checksum, size_kb: 100 }]
+      // Fully integrated previously, so only the size mismatch should force a re-download
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: localSrc("images/asset.png"),
+        },
+      ]
     );
     // Wrong size on disk (truncated / stale) -> must not be trusted
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 999,
+      src: localSrc("images/asset.png"),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -764,11 +846,19 @@ describe("RemoteAssetsService", () => {
     const { downloadFileSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       // Previously integrated with a different checksum -> pack content changed
-      [{ id: "images/asset.png", md5Checksum: "OUTDATED-CHECKSUM", size_kb: 100 }]
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: "OUTDATED-CHECKSUM",
+          size_kb: 100,
+          filePath: localSrc("images/asset.png"),
+        },
+      ]
     );
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
+      src: localSrc("images/asset.png"),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -786,6 +876,7 @@ describe("RemoteAssetsService", () => {
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
+      src: localSrc("images/asset.png"),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -794,15 +885,53 @@ describe("RemoteAssetsService", () => {
     expect(downloadFileSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("resumes per slot: skips a present base asset but downloads a missing override", async () => {
+  it("re-downloads an override recorded only by a previous base-asset integration", async () => {
+    // Integrating a base asset upserts the whole manifest entry, so the row also gains every
+    // override's checksum. That must not count as evidence for the override slots themselves: only
+    // the recorded filePath (still the pack-relative manifest path here) proves this app saved one.
     const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
-      // Base was integrated previously (recorded checksum matches); the override never was
       [
         {
           id: "audio/asset_with_overrides.mp3",
           md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
           size_kb: 43.4,
+          filePath: localSrc("audio/asset_with_overrides.mp3"),
+          overrides: clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES.overrides),
+        },
+      ]
+    );
+    // Both slots are present on disk at their manifest sizes (44442 -> 43.4kb, 22118 -> 21.6kb),
+    // so only the integration evidence separates them
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.callFake(
+      async (targetPath: string) => ({
+        exists: true,
+        sizeBytes: targetPath === "audio/asset_with_overrides.mp3" ? 44442 : 22118,
+        src: localSrc(targetPath),
+      })
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    // Base skipped (genuinely integrated), override re-downloaded (only described by the manifest)
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(downloadFileSpy).toHaveBeenCalledWith(
+      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3"
+    );
+    expect(saveFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("resumes per slot: skips a present base asset but downloads a missing override", async () => {
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Base was integrated previously (recorded checksum and filePath match); the override never was
+      [
+        {
+          id: "audio/asset_with_overrides.mp3",
+          md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
+          size_kb: 43.4,
+          filePath: localSrc("audio/asset_with_overrides.mp3"),
         },
       ]
     );
@@ -810,7 +939,7 @@ describe("RemoteAssetsService", () => {
       async (targetPath: string) =>
         // base present with matching size (44442 bytes -> 43.4kb); override missing
         targetPath === "audio/asset_with_overrides.mp3"
-          ? { exists: true, sizeBytes: 44442 }
+          ? { exists: true, sizeBytes: 44442, src: localSrc(targetPath) }
           : { exists: false }
     );
 

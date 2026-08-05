@@ -11,6 +11,14 @@ import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { basenameFromExternalUrl, isExternalHttpUrl } from "shared/src/utils/string-utils";
 
+/** Result of statting a file previously written via `FileManagerService.saveFile` */
+export interface ISavedFileInfo {
+  exists: boolean;
+  sizeBytes?: number;
+  /** Webview-usable path to the file, matching the `src` returned by `saveFile` */
+  src?: string;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -198,21 +206,22 @@ export class FileManagerService extends SyncServiceBase {
 
   /**
    * Native only: check whether a file previously written via `saveFile` exists on disk, and if so
-   * return its size in bytes. Uses the same path rule as `saveFile` so callers do not re-derive it.
+   * return its size in bytes and the same `src` that `saveFile` would have returned for it. Uses the
+   * same path rule as `saveFile` so callers do not re-derive it.
    * Returns `{ exists: false }` when the file is not present (stat throws for a missing path).
    */
   public async getSavedFileInfo(
     targetPath: string,
     options: { directory?: keyof typeof Directory; subdirectory?: string } = {}
-  ): Promise<{ exists: boolean; sizeBytes?: number }> {
+  ): Promise<ISavedFileInfo> {
     if (!Capacitor.isNativePlatform()) {
       throw new Error("getSavedFileInfo() is only supported on native platforms");
     }
     const { directory = "Data", subdirectory = "" } = options;
     const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
     try {
-      const { size } = await Filesystem.stat({ path, directory: Directory[directory] });
-      return { exists: true, sizeBytes: size };
+      const { size, uri } = await Filesystem.stat({ path, directory: Directory[directory] });
+      return { exists: true, sizeBytes: size, src: Capacitor.convertFileSrc(uri) };
     } catch {
       return { exists: false };
     }

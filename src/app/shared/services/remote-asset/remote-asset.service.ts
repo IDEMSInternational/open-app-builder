@@ -5,12 +5,17 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { FlowTypes } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
 import { FileManagerService } from "../file-manager/file-manager.service";
+import type { ISavedFileInfo } from "../file-manager/file-manager.service";
 import { IAssetContents } from "src/app/data";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
+import type {
+  IAssetContentsEntryMinimal,
+  IAssetEntry,
+  IAssetOverrideProps,
+} from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
@@ -214,6 +219,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     if (!awaitCompletion) {
       const [firstPendingPack, ...remainingPendingPacks] = pendingPacks;
+      const downloadInBackground = (assetPackNames: string[]) => {
+        if (!assetPackNames.length) return;
+        void this.ensureAssetPacksDownloaded(assetPackNames, { awaitCompletion: true }).catch(
+          (error) => console.error("[REMOTE ASSETS] Background ensure_downloaded failed", error)
+        );
+      };
       const started = await this.downloadAssetPackByName(firstPendingPack, {
         awaitCompletion: false,
         onDownloadStarted: (completion) => {
@@ -221,15 +232,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             return;
           }
           void completion
-            .finally(() =>
-              this.ensureAssetPacksDownloaded(remainingPendingPacks, { awaitCompletion: true })
-            )
+            .finally(() => downloadInBackground(remainingPendingPacks))
             .catch((error) =>
               console.error("[REMOTE ASSETS] Background ensure_downloaded failed", error)
             );
         },
       });
       if (!started) {
+        // The only way to be refused here is a *different* pack already downloading. Retry the whole
+        // list once that settles rather than silently dropping every pack the caller asked for
+        // (e.g. launch-time resume racing a template-triggered download).
+        void this.waitForActiveAssetPackDownloads().then(() => downloadInBackground(pendingPacks));
         return false;
       }
       return true;
@@ -691,29 +704,30 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     overrideProps: IAssetOverrideProps | undefined,
     existingContents: Record<string, IAssetEntry>
   ): Promise<boolean> {
-    const { targetPath, slotChecksum, slotSizeKb } = this.resolveAssetSlot(
+    const { targetPath, slotChecksum, slotSizeKb, manifestFilePath } = this.resolveAssetSlot(
       assetEntry,
       overrideProps
     );
 
     // Resume: if a valid copy already exists on disk, skip the network fetch and re-integrate it.
     if (signal) this.throwIfDownloadCancelled(signal);
+    const savedFileInfo = await this.fileManagerService.getSavedFileInfo(targetPath);
+    if (signal) this.throwIfDownloadCancelled(signal);
     if (
-      await this.isAssetSlotAlreadyDownloaded(
+      this.isSavedAssetSlotTrustworthy(savedFileInfo, {
         targetPath,
         slotChecksum,
         slotSizeKb,
+        manifestFilePath,
         existingContents,
-        assetEntry.id,
-        overrideProps
-      )
+        assetEntryId: assetEntry.id,
+        overrideProps,
+      })
     ) {
       console.log(
         `[REMOTE ASSETS] Skipping already-downloaded file ${fileIndex + 1} of ${totalFiles || "?"}: ${targetPath}`
       );
-      const src = await this.fileManagerService.getLocalFilepath(targetPath);
-      if (signal) this.throwIfDownloadCancelled(signal);
-      await this.updateAssetContents(assetEntry, src, overrideProps);
+      await this.updateAssetContents(assetEntry, savedFileInfo.src, overrideProps);
       if (signal) this.throwIfDownloadCancelled(signal);
       await this.incrementDownloadProgress();
       return true;
@@ -749,6 +763,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /**
    * Resolve the local storage target path and the manifest integrity metadata (checksum/size) for a
    * single asset slot - either the base entry or a specific theme/language override.
+   * `manifestFilePath` is the slot's filePath *as the manifest ships it* (undefined for most base
+   * entries, the pack-relative path for overrides), i.e. the value a recorded entry still holds if
+   * integration has not overwritten it with a local path.
    */
   private resolveAssetSlot(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
     if (overrideProps) {
@@ -758,12 +775,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         targetPath: overrideAssetEntry.filePath,
         slotChecksum: overrideAssetEntry.md5Checksum,
         slotSizeKb: overrideAssetEntry.size_kb,
+        manifestFilePath: overrideAssetEntry.filePath,
       };
     }
     return {
       targetPath: assetEntry.id,
       slotChecksum: assetEntry.md5Checksum,
       slotSizeKb: assetEntry.size_kb,
+      manifestFilePath: assetEntry.filePath,
     };
   }
 
@@ -771,32 +790,53 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Native platforms only:
    * Decide whether an asset slot already has a trustworthy file on disk and so can skip its download.
    * Only skips on POSITIVE evidence: the file exists, its size matches the manifest, and a prior run
-   * integrated this exact file from the current manifest (recorded `_assets_contents` checksum equals
-   * the manifest checksum). Anything unverified re-downloads:
-   *  - no recorded checksum -> saved but never integrated (interrupted mid-write); bytes unconfirmed
-   *  - recorded checksum differs -> pack content changed and the on-disk file is stale
+   * integrated THIS slot from the current manifest - i.e. the recorded `_assets_contents` entry both
+   * carries the manifest checksum and has had its `filePath` rewritten away from the manifest value.
+   * Anything unverified re-downloads:
    *  - size unverifiable or mismatched -> truncated / wrong file
+   *  - no/differing recorded checksum -> never integrated, or pack content changed (file is stale)
+   *  - filePath still the manifest's -> saved but never integrated (interrupted mid-write)
+   * The filePath check is what makes the evidence per-slot: integrating a base asset writes the whole
+   * manifest entry, so it also copies in every override's checksum, and only a rewritten `filePath`
+   * distinguishes a slot this app actually saved from one merely described by the manifest. It is
+   * deliberately a "differs from the manifest" test rather than "equals the local path": the recorded
+   * value comes from `saveFile` (convertFileSrc of a write_blob path) while resume only has
+   * `convertFileSrc` of a `Filesystem.stat` uri, and those need not be byte-identical on device
+   * (e.g. iOS /private/var vs /var). Comparing against our own manifest keeps the gate independent of
+   * how any platform spells a local path - a mismatch there would silently disable resume entirely.
    * NB verifying on-disk bytes directly (MD5) is intentionally deferred to a future `asset_pack:
    * verify` action; it needs an MD5 dependency and would only add value for external corruption of an
    * already-integrated file, which is out of scope for interrupt-resume.
    */
-  private async isAssetSlotAlreadyDownloaded(
-    targetPath: string,
-    slotChecksum: string | undefined,
-    slotSizeKb: number | undefined,
-    existingContents: Record<string, IAssetEntry>,
-    assetEntryId: string,
-    overrideProps: IAssetOverrideProps | undefined
-  ): Promise<boolean> {
-    const info = await this.fileManagerService.getSavedFileInfo(targetPath);
-    if (!info.exists) return false;
+  private isSavedAssetSlotTrustworthy(
+    savedFileInfo: ISavedFileInfo,
+    slot: {
+      targetPath: string;
+      slotChecksum: string | undefined;
+      slotSizeKb: number | undefined;
+      manifestFilePath: string | undefined;
+      existingContents: Record<string, IAssetEntry>;
+      assetEntryId: string;
+      overrideProps: IAssetOverrideProps | undefined;
+    }
+  ): savedFileInfo is ISavedFileInfo & { src: string } {
+    const {
+      targetPath,
+      slotChecksum,
+      slotSizeKb,
+      manifestFilePath,
+      existingContents,
+      assetEntryId,
+      overrideProps,
+    } = slot;
+    if (!savedFileInfo.exists || !savedFileInfo.src) return false;
 
     // Size gate: require a verifiable, matching size (cheap rejection of truncated/wrong files).
-    if (slotSizeKb === undefined || info.sizeBytes === undefined) {
+    if (slotSizeKb === undefined || savedFileInfo.sizeBytes === undefined) {
       console.warn(`[REMOTE ASSETS] Cannot verify size for ${targetPath}; re-downloading`);
       return false;
     }
-    const localSizeKb = Math.round(info.sizeBytes / 102.4) / 10;
+    const localSizeKb = Math.round(savedFileInfo.sizeBytes / 102.4) / 10;
     if (localSizeKb !== slotSizeKb) {
       console.log(
         `[REMOTE ASSETS] On-disk size ${localSizeKb}kb != manifest ${slotSizeKb}kb for ${targetPath}; re-downloading`
@@ -805,13 +845,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     // Integrity gate: only skip when a prior run integrated this exact file from the current manifest.
-    const recordedChecksum = this.getRecordedSlotChecksum(
-      existingContents,
-      assetEntryId,
-      overrideProps
-    );
-    if (!recordedChecksum || !slotChecksum || recordedChecksum !== slotChecksum) {
+    const recordedSlot = this.getRecordedSlot(existingContents, assetEntryId, overrideProps);
+    if (!recordedSlot?.md5Checksum || !slotChecksum || recordedSlot.md5Checksum !== slotChecksum) {
       console.log(`[REMOTE ASSETS] No confirming checksum for ${targetPath}; re-downloading`);
+      return false;
+    }
+    if (!recordedSlot.filePath || recordedSlot.filePath === manifestFilePath) {
+      console.log(`[REMOTE ASSETS] ${targetPath} was saved but never integrated; re-downloading`);
       return false;
     }
 
@@ -819,22 +859,22 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Read the checksum recorded in a snapshot of `_assets_contents` for a given slot, or undefined if
-   * the slot has not been integrated yet. Rows are keyed by the base asset id; override checksums
-   * live nested under `overrides[theme][language]`.
+   * Read the entry recorded in a snapshot of `_assets_contents` for a given slot, or undefined if the
+   * asset has no row yet. Rows are keyed by the base asset id; override entries live nested under
+   * `overrides[theme][language]`.
    */
-  private getRecordedSlotChecksum(
+  private getRecordedSlot(
     existingContents: Record<string, IAssetEntry>,
     assetEntryId: string,
     overrideProps?: IAssetOverrideProps
-  ): string | undefined {
+  ): IAssetContentsEntryMinimal | undefined {
     const row = existingContents[assetEntryId];
     if (!row) return undefined;
     if (overrideProps) {
       const { themeName, languageCode } = overrideProps;
-      return row.overrides?.[themeName]?.[languageCode]?.md5Checksum;
+      return row.overrides?.[themeName]?.[languageCode];
     }
-    return row.md5Checksum;
+    return row;
   }
 
   /**
@@ -982,6 +1022,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       this.dynamicDataService.resetFlow("asset_pack", ASSET_CONTENTS_DATA_LIST),
       this.remoteAssetMetadataService.resetAssetPacks(),
     ]);
+  }
+
+  /**
+   * Resolve once every download attempt active at the time of the call has settled. Rejections are
+   * absorbed: callers wait for the slot to free up, they do not inherit the other pack's outcome.
+   */
+  private async waitForActiveAssetPackDownloads() {
+    const activeDownloads = [...this.activeAssetPackDownloads.values()];
+    if (!activeDownloads.length) return;
+    await Promise.allSettled(activeDownloads.map(({ completion }) => completion));
   }
 
   public async cancelActiveAssetPackDownloads() {
