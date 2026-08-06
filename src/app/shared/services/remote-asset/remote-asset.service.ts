@@ -31,8 +31,6 @@ import type {
 import { NetworkService } from "../network/network.service";
 import { RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
-import { MigrationService } from "../migration/migration.service";
-import { REMOTE_ASSET_MIGRATIONS } from "./migrations";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
@@ -63,7 +61,6 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     private networkService: NetworkService,
     private remoteAssetMetadataService: RemoteAssetMetadataService,
     private systemVariableService: SystemVariableService,
-    private migrationService: MigrationService,
     private injector: Injector
   ) {
     super("RemoteAsset");
@@ -119,30 +116,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         error: (error) => console.error("[Remote Asset] Error in asset contents stream:", error),
       });
 
-      // Clean up any storage left by a previous layout, then resume downloads interrupted by a
-      // previous app session (e.g. app killed mid-download). Fire-and-forget: this is a blocking
-      // core service, so init must not wait on either. Sequenced so a resumed download can't
-      // interleave with the cleanup enumerating local storage.
-      void this.handleMigrations()
-        .then(() => this.resumeInterruptedAssetPackDownloads())
-        .catch((error) => console.error("[REMOTE ASSETS] Startup tasks failed", error));
+      // Resume any downloads interrupted by a previous app session (e.g. app killed mid-download).
+      // Fire-and-forget: this is a blocking core service, so init must not wait on downloads.
+      void this.resumeInterruptedAssetPackDownloads().catch((error) =>
+        console.error("[REMOTE ASSETS] Failed to resume interrupted downloads", error)
+      );
     }
-  }
-
-  /**
-   * Run one-time migrations owned by this feature. Migrations are best-effort and swallow their own
-   * errors: a throwing migration halts app startup behind a critical-error alert, which none of
-   * these (storage tidy-ups) warrant.
-   */
-  private handleMigrations() {
-    return this.migrationService.handleMigrations(
-      REMOTE_ASSET_MIGRATIONS,
-      {
-        fileManagerService: this.fileManagerService,
-        dynamicDataService: this.dynamicDataService,
-      },
-      "remote_asset"
-    );
   }
 
   /**

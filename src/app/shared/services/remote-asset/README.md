@@ -24,7 +24,6 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
 | `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
-| `migrations/` | One-time migrations owned by this feature, run on init via `MigrationService` |
 
 ## The central idea: `_assets_contents`
 
@@ -55,14 +54,6 @@ Data/{deploymentName}/remote_assets/{packName}/{manifest-relative path}
 The pack name is deliberately kept out of the manifest-relative path (exactly as it is for the remote path), so authoring stays agnostic about which pack an asset came from. Namespacing by pack means two packs shipping the same relative path can't overwrite each other, and makes "delete everything this pack downloaded" a single recursive folder delete.
 
 The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
-
-Older builds saved pack files straight into the deployment folder, where they would be stranded — invisible to the resume gate and untouched by `delete`/`reset`, which only clear `remote_assets/`. A one-time migration (`migrations/2026-08-05-namespace-remote-assets.ts`) cleans them up.
-
-It works from `_assets_contents`, deleting only files the app has a record of having saved itself, rather than clearing the deployment folder of everything it doesn't recognise. That folder is shared with other features, and a migration owned by remote assets has no business deciding what someone else's data is. The trade-off is that a file saved but never integrated has no record and so survives — at most one per interrupted download.
-
-Having deleted the files it also clears their `_assets_contents` references and resets `_asset_packs`, so affected packs download again into the new layout. Without that a pack would sit at `completed` with nothing on disk. Every pack row goes, because the old layout stored no pack name in the path — a legacy file can't be attributed to the pack it came from.
-
-The migration is deliberately best-effort and swallows its own errors: a throwing migration halts app startup behind a critical-error alert, which a cache tidy-up does not warrant.
 
 ## Slots
 
@@ -174,4 +165,4 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
 - **No download queue.** One pack and one file at a time; large packs are slow and cannot be parallelised.
 - **No integrity repair.** There is no way to detect or fix an already-integrated file that was corrupted after the fact.
-- **Packs downloaded before per-pack namespacing re-download once.** The cleanup migration reclaims their storage, but the resume gate cannot match files at the old paths, so each affected pack is fetched again into its new folder.
+- **Files downloaded before per-pack namespacing are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once, into its new folder) nor reclaimed by `delete`/`reset`, which only touch `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration was prototyped on `spike/remote-asset-storage-migration` if it ever proves worth doing.
