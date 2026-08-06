@@ -24,6 +24,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
 | `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
+| `migrations/` | One-time migrations owned by this feature, run on init via `MigrationService` |
 
 ## The central idea: `_assets_contents`
 
@@ -54,6 +55,14 @@ Data/{deploymentName}/remote_assets/{manifest-relative path}
 **Every pack shares that folder**, with files keyed only by their manifest-relative path — the same key `_assets_contents` uses. An asset shipped by more than one pack is therefore stored once, and the second pack's resume check finds it already downloaded instead of re-fetching it. The trade-off is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
 
 The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
+
+Older builds saved pack files straight into the deployment folder, where they would be stranded — invisible to the resume gate and untouched by `reset`, which only clears `remote_assets/`. A one-time migration (`migrations/2026-08-05-remote-assets-storage-folder.ts`) cleans them up.
+
+It works from `_assets_contents`, deleting only files the app has a record of having saved itself, rather than clearing the deployment folder of everything it doesn't recognise. That folder is shared with other features, and a migration owned by remote assets has no business deciding what someone else's data is. The trade-off is that a file saved but never integrated has no record and so survives — at most one per interrupted download.
+
+Having deleted the files it also clears their `_assets_contents` references and resets `_asset_packs`, so affected packs download again into the new folder. Without that a pack would sit at `completed` with nothing on disk. Every pack row goes, because a stored file carries no record of which pack fetched it.
+
+The migration is deliberately best-effort and swallows its own errors: a throwing migration halts app startup behind a critical-error alert, which a cache tidy-up does not warrant.
 
 ## Slots
 
@@ -149,6 +158,6 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
 - **No download queue.** One pack and one file at a time; large packs are slow and cannot be parallelised.
 - **No integrity repair.** There is no way to detect or fix an already-integrated file that was corrupted after the fact.
-- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because files are stored flat and may legitimately be shared by two packs, deleting a single pack would need a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
-- **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`, which only touches `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration is prototyped on the same spike branch.
+- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because every pack shares one folder and a file may legitimately be claimed by two packs, deleting a single pack would need a record of which files it fetched.
+- **Packs downloaded before the `remote_assets/` folder existed re-download once.** The cleanup migration reclaims their storage, but the resume gate cannot match files at the old paths, so each affected pack is fetched again into the new folder.
 - **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if packs are ever authored with overlapping paths.

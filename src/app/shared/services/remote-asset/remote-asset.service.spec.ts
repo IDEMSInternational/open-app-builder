@@ -21,6 +21,7 @@ import {
   RemoteAssetActionFactory,
 } from "./remote-asset.actions";
 import { SystemVariableService } from "../system-variable/system-variable.service";
+import { REMOTE_ASSET_MIGRATIONS, IRemoteAssetMigrationContext } from "./migrations";
 
 const MOCK_ASSETS_CONTENTS_LIST: IAssetContents = {
   "images/asset.png": {
@@ -1072,6 +1073,26 @@ describe("RemoteAssetsService", () => {
     expect(ensureSpy).toHaveBeenCalledWith(["p_in_progress", "p_waiting"], {
       awaitCompletion: false,
     });
+  });
+
+  it("runs its migrations against the file manager under its own source namespace", async () => {
+    const handleMigrationsSpy = spyOn(
+      service["migrationService"],
+      "handleMigrations"
+    ).and.resolveTo();
+
+    await service["handleMigrations"]();
+
+    // Compared field by field: deep-equalling whole service instances produces unreadable failures
+    const [migrations, migrationContext, source] = handleMigrationsSpy.calls.mostRecent().args as [
+      unknown,
+      IRemoteAssetMigrationContext,
+      string,
+    ];
+    expect(migrations).toBe(REMOTE_ASSET_MIGRATIONS);
+    expect(source).toBe("remote_asset");
+    expect(migrationContext.fileManagerService).toBe(service["fileManagerService"]);
+    expect(migrationContext.dynamicDataService).toBe(service["dynamicDataService"]);
   });
 
   it("joins an in-flight download for the same pack instead of reporting failure", async () => {
