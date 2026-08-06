@@ -517,14 +517,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Local storage path for a downloaded asset file, relative to the deployment folder that
-   * `FileManagerService.saveFile` writes into.
-   *
-   * Deliberately NOT namespaced per pack. `_assets_contents` is keyed by the manifest-relative
-   * path, so an asset shipped by two packs shares a single row and a single resolved file either
-   * way - a per-pack folder would just mean a second copy on disk that nothing can reference, and
-   * would stop the second pack's resume check finding the file the first pack already fetched.
-   * Flat storage lets that check do double duty as cross-pack de-duplication.
+   * Construct full path for local storage, relative to the deployment folder that
+   * `FileManagerService.saveFile` writes into. Every pack shares this folder and files are keyed
+   * only by their manifest-relative path, matching how `_assets_contents` is keyed - so an asset
+   * shipped by more than one pack is stored once, and the second pack's resume check finds it
+   * already downloaded.
+   * @param relativePath Relative path to the file
+   * @returns Full path within the shared remote assets folder
    */
   private getFullLocalPath(relativePath: string): string {
     return `${REMOTE_ASSET_STORAGE_FOLDER}/${relativePath}`;
@@ -784,8 +783,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /**
    * Resolve the local storage target path and the manifest integrity metadata (checksum/size) for a
    * single asset slot - either the base entry or a specific theme/language override.
-   * `targetPath` is namespaced under the pack's storage folder; `manifestFilePath` is the slot's
-   * filePath *as the manifest ships it* (undefined for most base entries, the pack-relative path for
+   * `targetPath` is the slot's location in local storage; `manifestFilePath` is the slot's filePath
+   * *as the manifest ships it* (undefined for most base entries, the pack-relative path for
    * overrides), i.e. the value a recorded entry still holds if integration has not overwritten it.
    */
   private resolveAssetSlot(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
