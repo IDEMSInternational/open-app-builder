@@ -51,9 +51,7 @@ On native, downloaded files are saved under a single folder within the deploymen
 Data/{deploymentName}/remote_assets/{manifest-relative path}
 ```
 
-**Storage is deliberately not namespaced per pack.** `_assets_contents` is keyed by the manifest-relative path, so an asset shipped by two packs shares one row and resolves to one file no matter how it is stored. A per-pack folder would therefore only ever produce a second copy on disk that nothing can reference — and worse, it would hide the first pack's download from the second pack's resume check, forcing a re-fetch of a file already present. Storing flat lets that check double as cross-pack de-duplication for free.
-
-The consequence is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
+**Every pack shares that folder**, with files keyed only by their manifest-relative path — the same key `_assets_contents` uses. An asset shipped by more than one pack is therefore stored once, and the second pack's resume check finds it already downloaded instead of re-fetching it. The trade-off is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
 
 The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
 
