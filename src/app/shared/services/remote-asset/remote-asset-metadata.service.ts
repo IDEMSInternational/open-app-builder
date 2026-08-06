@@ -76,18 +76,6 @@ export class RemoteAssetMetadataService {
     return assetPacks.find((assetPack) => assetPack.id === assetPackName);
   }
 
-  /**
-   * Remove a single pack's row, returning it to the "never downloaded" state. Safe to call for a
-   * pack with no row. NB `_asset_packs` has no seed data, so removing a row deletes it outright
-   * rather than reverting it to an initial value.
-   */
-  public async removeAssetPack(assetPackName: string) {
-    const existingAssetPack = await this.getAssetPack(assetPackName);
-    if (!existingAssetPack) return false;
-    await this.dynamicDataService.remove("data_list", ASSET_PACKS_DATA_LIST, [assetPackName]);
-    return true;
-  }
-
   public resetAssetPacks() {
     return this.dynamicDataService.resetFlow("data_list", ASSET_PACKS_DATA_LIST);
   }

@@ -45,13 +45,15 @@ Note the platform split: **native downloads files, web does not.** On web the br
 
 ### Local storage layout
 
-On native, a pack's files are saved under its own folder within the deployment's storage:
+On native, downloaded files are saved under a single folder within the deployment's storage:
 
 ```
-Data/{deploymentName}/remote_assets/{packName}/{manifest-relative path}
+Data/{deploymentName}/remote_assets/{manifest-relative path}
 ```
 
-The pack name is deliberately kept out of the manifest-relative path (exactly as it is for the remote path), so authoring stays agnostic about which pack an asset came from. Namespacing by pack means two packs shipping the same relative path can't overwrite each other, and makes "delete everything this pack downloaded" a single recursive folder delete.
+**Storage is deliberately not namespaced per pack.** `_assets_contents` is keyed by the manifest-relative path, so an asset shipped by two packs shares one row and resolves to one file no matter how it is stored. A per-pack folder would therefore only ever produce a second copy on disk that nothing can reference — and worse, it would hide the first pack's download from the second pack's resume check, forcing a re-fetch of a file already present. Storing flat lets that check double as cross-pack de-duplication for free.
+
+The consequence is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
 
 The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
 
@@ -104,32 +106,16 @@ A request for a **different** pack while one is active is refused, but the two e
 - **Background** (`awaitCompletion: false`, used by resume): the refused packs are retried once the active download settles, so the queue is not dropped.
 - **Awaited** (`awaitCompletion: true`, the default for `ensure_downloaded`): returns `false` immediately. This is intentional — an awaited call blocks the template action queue, and a pack parked in `waiting_for_connection` can wait indefinitely, so it must not be able to wedge the queue behind unrelated work.
 
-## Deleting a pack
-
-`asset_pack: delete` reclaims a pack's storage and returns it to the "never downloaded" state, so a later `ensure_downloaded` fetches it again from scratch. It does four things per pack: cancel any in-flight download (first, so nothing can re-create what is about to be removed), delete the pack's storage folder, clear the contents references, and drop the `_asset_packs` row.
-
-Clearing the references is what stops the app pointing at files that no longer exist. `TemplateAssetService` resolves a slot as `filePath || assetName`, so:
-
-- a **base** slot has its `filePath` removed, falling back to the asset's bundled path
-- an **override** slot is removed outright, so lookup falls through to a lower-priority override or to the base asset
-
-Rows themselves are left in place. With no recorded `filePath` they read as "not downloaded" — which is both the correct resolution behaviour and exactly what the resume gate needs in order to re-fetch the slot next time.
-
-A slot is judged to belong to the pack by matching the path this app would itself have produced for it — the `remote_assets/{packName}/` storage folder on native, the provider's public URL prefix on web — rather than by looking for the pack name anywhere in the path. That distinction matters: a bundled asset sitting in a folder that happens to share a pack's name must not be cleared.
-
-Deleting a pack that was never downloaded is a harmless no-op, so the action is safe to call speculatively.
-
 ## Template API
 
 ```yaml
-asset_pack: download | ensure_downloaded | delete | cancel_download | reset
+asset_pack: download | ensure_downloaded | cancel_download | reset
 ```
 
 | Action | Behaviour |
 | --- | --- |
 | `download` | Download a single named pack. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
 | `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not |
-| `delete` | Delete one or more downloaded packs — removes their files from the device, drops their `_asset_packs` rows, and clears the `_assets_contents` references that pointed at the deleted files. Takes `asset_pack` or `asset_pack_list`, or a name as an arg (`asset_pack: delete: my_pack`) |
 | `cancel_download` | Abort all active downloads and mark them `cancelled` |
 | `reset` | Return **every** pack to its pre-download state: cancel active downloads, delete all downloaded files, and clear both data lists |
 
@@ -165,4 +151,6 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
 - **No download queue.** One pack and one file at a time; large packs are slow and cannot be parallelised.
 - **No integrity repair.** There is no way to detect or fix an already-integrated file that was corrupted after the fact.
-- **Files downloaded before per-pack namespacing are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once, into its new folder) nor reclaimed by `delete`/`reset`, which only touch `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration was prototyped on `spike/remote-asset-storage-migration` if it ever proves worth doing.
+- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because files are stored flat and may legitimately be shared by two packs, deleting a single pack would need a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
+- **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`, which only touches `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration is prototyped on the same spike branch.
+- **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if packs are ever authored with overlapping paths.

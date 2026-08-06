@@ -517,25 +517,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Folder a pack's files are saved to in local storage, relative to the deployment folder that
-   * `FileManagerService.saveFile` writes into. Omit the pack name to get the folder holding every
-   * pack (used when resetting).
-   */
-  private getAssetPackStorageFolder(assetPackName?: string): string {
-    return assetPackName
-      ? `${REMOTE_ASSET_STORAGE_FOLDER}/${assetPackName}`
-      : REMOTE_ASSET_STORAGE_FOLDER;
-  }
-
-  /**
-   * Local storage path for a single file in the pack currently being processed. Keeping the pack
-   * name out of the manifest-relative path means authoring stays agnostic about which pack (or the
-   * core bundle) an asset came from, exactly as `getFullRemotePath` does for the remote path.
+   * Local storage path for a downloaded asset file, relative to the deployment folder that
+   * `FileManagerService.saveFile` writes into.
+   *
+   * Deliberately NOT namespaced per pack. `_assets_contents` is keyed by the manifest-relative
+   * path, so an asset shipped by two packs shares a single row and a single resolved file either
+   * way - a per-pack folder would just mean a second copy on disk that nothing can reference, and
+   * would stop the second pack's resume check finding the file the first pack already fetched.
+   * Flat storage lets that check do double duty as cross-pack de-duplication.
    */
   private getFullLocalPath(relativePath: string): string {
-    return this.currentAssetPackName
-      ? `${this.getAssetPackStorageFolder(this.currentAssetPackName)}/${relativePath}`
-      : relativePath;
+    return `${REMOTE_ASSET_STORAGE_FOLDER}/${relativePath}`;
   }
 
   private async downloadAndIntegrateAssetPack(
@@ -1056,134 +1048,26 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Delete downloaded asset pack files from the device, for a single pack or (with no name) every
-   * pack. No-op on web, where nothing is downloaded - assets are served from the provider CDN.
+   * Delete every downloaded asset pack file from the device. No-op on web, where nothing is
+   * downloaded - assets are served from the provider CDN.
+   *
+   * Always targets the `remote_assets` folder, never the deployment folder, which is shared with
+   * other features (the cached auth profile picture, for one).
    */
-  private async deleteAssetPackFiles(assetPackName?: string) {
+  private async deleteAssetPackFiles() {
     if (!Capacitor.isNativePlatform()) return false;
-    const storageFolder = this.getAssetPackStorageFolder(assetPackName);
     try {
-      const deleted = await this.fileManagerService.deleteSavedFolder(storageFolder);
+      const deleted = await this.fileManagerService.deleteSavedFolder(REMOTE_ASSET_STORAGE_FOLDER);
       console.log(
         deleted
-          ? `[REMOTE ASSETS] Deleted downloaded files: ${storageFolder}`
-          : `[REMOTE ASSETS] No downloaded files to delete: ${storageFolder}`
+          ? "[REMOTE ASSETS] Deleted all downloaded asset pack files"
+          : "[REMOTE ASSETS] No downloaded asset pack files to delete"
       );
       return deleted;
     } catch (error) {
-      console.error(`[REMOTE ASSETS] Failed to delete downloaded files: ${storageFolder}`, error);
+      console.error("[REMOTE ASSETS] Failed to delete downloaded asset pack files", error);
       return false;
     }
-  }
-
-  /**
-   * Delete one or more downloaded asset packs: remove their files from the device, drop their
-   * `_asset_packs` rows, and clear the `_assets_contents` references that pointed at the deleted
-   * files so assets fall back to their bundled versions (or to "not downloaded" if remote-only).
-   * A pack that was never downloaded is a harmless no-op, so this is safe to call speculatively.
-   */
-  public async deleteAssetPacks(assetPackList: string[]) {
-    if (!assetPackList?.length) {
-      console.error("[REMOTE ASSETS] Please provide at least one asset pack name to delete");
-      return false;
-    }
-    let allSucceeded = true;
-    for (const assetPackName of assetPackList) {
-      try {
-        // Cancel first so an in-flight download cannot re-create what we are about to remove.
-        if (this.activeAssetPackDownloads.has(assetPackName)) {
-          await this.cancelAssetPackDownloadByName(assetPackName);
-        }
-        await this.deleteAssetPackFiles(assetPackName);
-        await this.clearAssetPackContentsReferences(assetPackName);
-        await this.remoteAssetMetadataService.removeAssetPack(assetPackName);
-        console.log(`[REMOTE ASSETS] Deleted asset pack: ${assetPackName}`);
-      } catch (error) {
-        console.error(`[REMOTE ASSETS] Failed to delete asset pack: ${assetPackName}`, error);
-        allSucceeded = false;
-      }
-    }
-    return allSucceeded;
-  }
-
-  /**
-   * Drop `_assets_contents` filePaths that point into a deleted pack, so nothing keeps referencing
-   * files that no longer exist. Cleared slots resolve by falling back to the asset's bundled path
-   * (`TemplateAssetService` uses `filePath || assetName`), and an override with no file left is
-   * removed outright so lookup falls through to a lower-priority override or the base asset.
-   * Rows are left in place: with no recorded filePath they read as "not downloaded", which is also
-   * what the resume gate needs to re-fetch the slot if the pack is downloaded again.
-   */
-  private async clearAssetPackContentsReferences(assetPackName: string) {
-    const rows = await this.dynamicDataService.snapshot<IAssetEntry & { id: string }>(
-      "asset_pack",
-      ASSET_CONTENTS_DATA_LIST
-    );
-    for (const row of rows) {
-      const cleared = this.clearAssetPackFilePaths(row, assetPackName);
-      if (!cleared) continue;
-      // MUST be upsert (a full document replace), not update: `update` deep-merges its payload into
-      // the stored doc, so a key left out of it survives rather than being removed - the opposite of
-      // what clearing a reference needs.
-      await this.dynamicDataService.upsert<IAssetEntry & { id: string }>(
-        "asset_pack",
-        ASSET_CONTENTS_DATA_LIST,
-        cleared
-      );
-    }
-  }
-
-  /**
-   * Build the update needed to strip a pack's file references from a contents row, or undefined if
-   * the row does not reference the pack at all.
-   */
-  private clearAssetPackFilePaths(
-    row: IAssetEntry & { id: string },
-    assetPackName: string
-  ): (IAssetEntry & { id: string }) | undefined {
-    // Deep clone so we can drop keys without mutating the (immutable) stored row
-    const updated = JSON.parse(JSON.stringify(row)) as IAssetEntry & { id: string };
-    let changed = false;
-
-    if (this.isAssetPackFilePath(updated.filePath, assetPackName)) {
-      delete updated.filePath;
-      changed = true;
-    }
-    const { overrides } = updated;
-    if (overrides) {
-      for (const [themeName, languageOverrides] of Object.entries(overrides)) {
-        for (const [languageCode, overrideEntry] of Object.entries(languageOverrides)) {
-          if (!this.isAssetPackFilePath(overrideEntry.filePath, assetPackName)) continue;
-          delete languageOverrides[languageCode];
-          changed = true;
-        }
-        if (!Object.keys(languageOverrides).length) {
-          delete overrides[themeName];
-        }
-      }
-      if (!Object.keys(overrides).length) {
-        delete updated.overrides;
-      }
-    }
-    return changed ? updated : undefined;
-  }
-
-  /**
-   * Does a recorded `_assets_contents` filePath point at a file provided by the named pack?
-   * Matched against the path this app would itself have produced for that pack - the local storage
-   * folder on native, the provider's public URL prefix on web - rather than just looking for the
-   * pack name, so a bundled asset that happens to sit in a same-named folder is not affected.
-   */
-  private isAssetPackFilePath(filePath: string | undefined, assetPackName: string) {
-    if (!filePath) return false;
-    if (Capacitor.isNativePlatform()) {
-      return filePath.includes(`/${this.getAssetPackStorageFolder(assetPackName)}/`);
-    }
-    // Compare without query strings: providers may append them (Firebase public URLs end
-    // `?alt=media`), which would otherwise sit between the pack prefix and the rest of the path and
-    // stop any stored URL ever matching.
-    const publicUrlPrefix = stripUrlQuery(this.provider?.getPublicUrl(`${assetPackName}/`));
-    return !!publicUrlPrefix && stripUrlQuery(filePath).startsWith(publicUrlPrefix);
   }
 
   /**
@@ -1257,9 +1141,4 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
     return total;
   }
-}
-
-/** Drop any query string from a URL, so prefix comparisons are not defeated by trailing params */
-function stripUrlQuery(url: string | undefined) {
-  return url ? url.split("?")[0] : "";
 }

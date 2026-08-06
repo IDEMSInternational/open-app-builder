@@ -31,7 +31,9 @@ export class RemoteAssetActionFactory {
           );
           return;
         }
-        const assetPackList = resolveAssetPackNames(params as IAssetPackEnsureDownloadedParams);
+        const assetPackList = resolveEnsureDownloadedAssetPackList(
+          params as IAssetPackEnsureDownloadedParams
+        );
         if (!assetPackList) {
           console.error(
             "The 'asset_pack: ensure_downloaded' action requires an 'asset_pack' or 'asset_pack_list' parameter."
@@ -42,26 +44,6 @@ export class RemoteAssetActionFactory {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
         });
-      },
-      delete: async () => {
-        if (!this.service.remoteAssetsEnabled()) {
-          console.error(
-            "The 'asset_pack: delete' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
-          );
-          return;
-        }
-        // Accept a name as an arg (`asset_pack: delete: my_pack`) as well as via params, so this
-        // reads the same as `download` or `ensure_downloaded` depending on the author's preference.
-        const assetPackList =
-          resolveAssetPackNames(params as IAssetPackEnsureDownloadedParams) ||
-          (assetPackArgs[0] ? [assetPackArgs[0]] : null);
-        if (!assetPackList) {
-          console.error(
-            "The 'asset_pack: delete' action requires an 'asset_pack' or 'asset_pack_list' parameter."
-          );
-          return;
-        }
-        await this.service.deleteAssetPacks(assetPackList);
       },
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
@@ -91,7 +73,9 @@ export class RemoteAssetActionFactory {
   };
 }
 
-export function resolveAssetPackNames(params?: IAssetPackEnsureDownloadedParams): string[] | null {
+export function resolveEnsureDownloadedAssetPackList(
+  params?: IAssetPackEnsureDownloadedParams
+): string[] | null {
   const assetPackList = parseAssetPackNames(params?.asset_pack_list);
   if (assetPackList) {
     return assetPackList;
