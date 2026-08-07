@@ -58,7 +58,7 @@ export class TmplComboBoxComponent
 {
   public answerText = signal("");
   private customAnswerSelected = signal(false);
-  private customAnswerText: string;
+  private customAnswerText = "";
   private componentDestroyed$ = new ReplaySubject(1);
 
   // HACK - allow combo_box to include data_items child row to define answer list
