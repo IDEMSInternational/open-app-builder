@@ -1,6 +1,9 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
 import type { RemoteAssetService } from "./remote-asset.service";
-import type { IAssetPackEnsureDownloadedParams } from "./remote-asset.types";
+import type {
+  IAssetPackDownloadParams,
+  IAssetPackEnsureDownloadedParams,
+} from "./remote-asset.types";
 import { booleanStringToBoolean } from "../../utils";
 
 export class RemoteAssetActionFactory {
@@ -12,7 +15,9 @@ export class RemoteAssetActionFactory {
       download: async () => {
         if (this.service.remoteAssetsEnabled()) {
           const assetPackName = assetPackArgs[0];
-          await this.service.downloadAssetPackByName(assetPackName);
+          await this.service.downloadAssetPackByName(assetPackName, {
+            debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          });
         } else {
           console.error(
             "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
@@ -37,6 +42,7 @@ export class RemoteAssetActionFactory {
         }
         await this.service.ensureAssetPacksDownloaded(assetPackList, {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
+          debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
         });
       },
       cancel_download: async () => {
@@ -75,6 +81,23 @@ export function resolveEnsureDownloadedAssetPackList(
     return assetPackList;
   }
   return parseAssetPackNames(params?.asset_pack);
+}
+
+/**
+ * Read the `debug_download_delay_ms` testing param. Authoring values arrive as strings, and a bad
+ * value should never break a real download, so anything unparseable falls back to 0 (no delay).
+ */
+export function resolveDebugDownloadDelayMs(params?: IAssetPackDownloadParams): number {
+  const value = params?.debug_download_delay_ms;
+  if (value === undefined || value === null || value === "") {
+    return 0;
+  }
+  const delayMs = Number(value);
+  if (!Number.isFinite(delayMs) || delayMs < 0) {
+    console.warn("[REMOTE ASSETS] Ignoring invalid debug_download_delay_ms value:", value);
+    return 0;
+  }
+  return delayMs;
 }
 
 export function shouldAwaitEnsureDownloaded(params?: IAssetPackEnsureDownloadedParams) {
