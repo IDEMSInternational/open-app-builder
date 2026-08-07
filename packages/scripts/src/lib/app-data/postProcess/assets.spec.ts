@@ -1,6 +1,6 @@
 import { createHash } from "crypto";
 
-import { AssetsPostProcessor } from "./assets";
+import { AssetsPostProcessor, generateAssetPackVersion } from "./assets";
 import type { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { type RecursivePartial } from "shared/src/types";
 
@@ -10,7 +10,8 @@ import { vol } from "memfs";
 // Use default imports to allow spying on functions and replacing with mock methods
 import { ActiveDeployment } from "../../../commands/deployment/get";
 import { resolve } from "path";
-import { IAssetEntryHashmap } from "data-models/assets.model";
+import { IAssetEntryHashmap, IAssetEntry } from "data-models/assets.model";
+import type { FlowTypes } from "data-models";
 
 // Mock all fs calls to use memfs implementation
 jest.mock("fs", () => require("memfs"));
@@ -177,6 +178,39 @@ describe("Assets PostProcess", () => {
     expect(manifest.rows[0]).toHaveProperty("id");
     expect(manifest.rows[0]).toHaveProperty("md5Checksum");
     expect(manifest.rows[0]).toHaveProperty("size_kb");
+    // Version drives the app's "does this pack need updating?" check
+    expect(manifest.version).toMatch(/^[0-9a-f]{32}$/);
+  });
+
+  /**
+   * End-to-end counterpart to the `generateAssetPackVersion` unit tests: those pin the algorithm
+   * against hand-built rows, this proves the version actually tracks real file content through the
+   * whole pipeline. A version that never changed would silently disable updates for every
+   * deployment, and a version that changed on every sync would make every install re-walk.
+   */
+  it("Generates a manifest version that tracks asset content", () => {
+    const remoteFolder = resolve(mockDirs.localAssets, "remote");
+    const manifestPath = resolve("mock/app_data/remote_assets/test_pack/test_pack.json");
+    const runWith = (assets: Record<string, any>) => {
+      vol.reset();
+      mockLocalAssets(assets);
+      stubDeploymentConfig();
+      new AssetsPostProcessor({
+        sources: [{ path: remoteFolder, name: "test_pack", remote: true }],
+      }).run();
+      return readJsonSync(manifestPath).version as string;
+    };
+
+    const original = runWith({ remote: { "test.jpg": mockFile } });
+    const unchanged = runWith({ remote: { "test.jpg": mockFile } });
+    const contentChanged = runWith({ remote: { "test.jpg": createMockFile(64).file } });
+    const fileAdded = runWith({
+      remote: { "test.jpg": mockFile, "extra.jpg": createMockFile(32).file },
+    });
+
+    expect(unchanged).toEqual(original);
+    expect(contentChanged).not.toEqual(original);
+    expect(fileAdded).not.toEqual(original);
   });
 
   it("Handles remote assets with same paths as core assets", () => {
@@ -347,6 +381,119 @@ describe("Assets PostProcess", () => {
   });
 
    */
+});
+
+/** yarn workspace scripts test -t assets.spec.ts */
+describe("generateAssetPackVersion", () => {
+  /**
+   * A pack covering all three line shapes: a plain base entry, an `overridesOnly` entry (which
+   * carries a copy of its first override's checksum), and a base entry with two overrides.
+   */
+  const fixtureRows = (): FlowTypes.Data_listRow<IAssetEntry>[] => [
+    { id: "images/a.jpg", md5Checksum: "aaa111", size_kb: 1 },
+    {
+      id: "images/b.jpg",
+      md5Checksum: "bbb222",
+      size_kb: 2,
+      overridesOnly: true,
+      overrides: { default: { us_en: { md5Checksum: "bbb222", size_kb: 2 } } },
+    },
+    {
+      id: "images/c.jpg",
+      md5Checksum: "ccc333",
+      size_kb: 3,
+      overrides: {
+        default: {
+          us_en: { md5Checksum: "ddd444", size_kb: 4 },
+          ke_sw: { md5Checksum: "eee555", size_kb: 5 },
+        },
+      },
+    },
+  ];
+
+  /**
+   * Golden hash. Changing the serialisation re-versions every pack in every deployment and forces
+   * a manifest walk on every install, so this must only ever be updated deliberately.
+   */
+  it("matches the pinned hash for a known pack", () => {
+    expect(generateAssetPackVersion(fixtureRows())).toEqual("0441648c332c2d4b536fa1c2df9bdb3e");
+  });
+
+  it("is stable across runs", () => {
+    expect(generateAssetPackVersion(fixtureRows())).toEqual(
+      generateAssetPackVersion(fixtureRows())
+    );
+  });
+
+  it("ignores the order entries arrive in", () => {
+    const reversed = fixtureRows().reverse();
+    expect(generateAssetPackVersion(reversed)).toEqual(generateAssetPackVersion(fixtureRows()));
+  });
+
+  it("ignores object key order within overrides", () => {
+    const rows = fixtureRows();
+    // Same two overrides, declared the other way round
+    rows[2].overrides = {
+      default: {
+        ke_sw: { md5Checksum: "eee555", size_kb: 5 },
+        us_en: { md5Checksum: "ddd444", size_kb: 4 },
+      },
+    };
+    expect(generateAssetPackVersion(rows)).toEqual(generateAssetPackVersion(fixtureRows()));
+  });
+
+  it("changes when a base checksum changes", () => {
+    const rows = fixtureRows();
+    rows[0].md5Checksum = "changed";
+    expect(generateAssetPackVersion(rows)).not.toEqual(generateAssetPackVersion(fixtureRows()));
+  });
+
+  it("changes when only an override checksum changes", () => {
+    // The case a base-only hash would miss: a pack whose sole change is a translated asset
+    const rows = fixtureRows();
+    rows[2].overrides.default.ke_sw.md5Checksum = "changed";
+    expect(generateAssetPackVersion(rows)).not.toEqual(generateAssetPackVersion(fixtureRows()));
+  });
+
+  it("changes when an entry is added or removed", () => {
+    const withoutFirst = fixtureRows().slice(1);
+    expect(generateAssetPackVersion(withoutFirst)).not.toEqual(
+      generateAssetPackVersion(fixtureRows())
+    );
+  });
+
+  it("ignores fields that do not describe content", () => {
+    // size_kb and filePath either duplicate the checksum's signal or vary without content changing
+    const rows = fixtureRows();
+    rows[0].size_kb = 999;
+    rows[0].filePath = "some/other/path.jpg";
+    expect(generateAssetPackVersion(rows)).toEqual(generateAssetPackVersion(fixtureRows()));
+  });
+
+  it("hashes an empty pack rather than throwing", () => {
+    // An empty remote folder is valid config; the shared md5 helper throws on falsy input
+    expect(generateAssetPackVersion([])).toEqual("d41d8cd98f00b204e9800998ecf8427e");
+  });
+
+  it("distinguishes an overridesOnly entry from a base entry with the same checksum", () => {
+    // Guards the "omit the base line for overridesOnly rows" rule: without it, both would emit
+    // the same base line and two structurally different packs would share a version
+    const asOverridesOnly: FlowTypes.Data_listRow<IAssetEntry>[] = [
+      {
+        id: "images/x.jpg",
+        md5Checksum: "xxx999",
+        size_kb: 1,
+        overridesOnly: true,
+        overrides: { default: { us_en: { md5Checksum: "xxx999", size_kb: 1 } } },
+      },
+    ];
+    const asBaseEntry: FlowTypes.Data_listRow<IAssetEntry>[] = [
+      { id: "images/x.jpg", md5Checksum: "xxx999", size_kb: 1 },
+    ];
+    expect(generateAssetPackVersion(asOverridesOnly)).not.toEqual(
+      generateAssetPackVersion(asBaseEntry)
+    );
+  });
 });
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {

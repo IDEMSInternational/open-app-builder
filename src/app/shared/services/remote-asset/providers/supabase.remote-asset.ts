@@ -1,6 +1,12 @@
 import { Injectable, Injector } from "@angular/core";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
+import {
+  IRemoteAssetProvider,
+  IRemoteAssetConfig,
+  IRemoteAssetDownloadOptions,
+  IRemoteFileMetadata,
+  appendCacheBuster,
+} from "./base.remote-asset";
 import { SupabaseService } from "../../supabase/supabase.service";
 
 @Injectable({
@@ -41,7 +47,15 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
-  public async downloadFile(relativePath: string): Promise<Blob | null> {
+  public async downloadFile(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<Blob | null> {
+    // The supabase-js `download()` accepts only a `transform` option, with no way to control
+    // caching, so anything that must be fresh has to go via the public URL instead.
+    if (options.noCache) {
+      return this.downloadFromPublicUrl(relativePath, options);
+    }
     // For Supabase, we can either use the public URL (for public files) or download directly
     // If direct download fails, fall back to public URL fetching
     try {
@@ -60,31 +74,43 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
         "[Supabase Remote Asset] Error downloading file directly, falling back to public URL:",
         error
       );
-
-      // Fallback to public URL fetching
-      try {
-        const publicUrl = this.getPublicUrl(relativePath);
-        if (publicUrl) {
-          const response = await fetch(publicUrl);
-          if (response.ok) {
-            return await response.blob();
-          } else {
-            console.error(
-              `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
-            );
-          }
-        }
-      } catch (fallbackError) {
-        console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
-      }
-
-      return null;
+      return this.downloadFromPublicUrl(relativePath, options);
     }
   }
 
-  public async downloadFileAsText(relativePath: string): Promise<string | null> {
+  /** Fetch straight from the bucket's public URL, the only route that can bypass caches */
+  private async downloadFromPublicUrl(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<Blob | null> {
     try {
-      const blob = await this.downloadFile(relativePath);
+      const publicUrl = this.getPublicUrl(relativePath);
+      if (publicUrl) {
+        const response = await fetch(
+          options.noCache ? appendCacheBuster(publicUrl) : publicUrl,
+          options.noCache ? { cache: "no-store" } : {}
+        );
+        if (response.ok) {
+          return await response.blob();
+        } else {
+          console.error(
+            `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
+          );
+        }
+      }
+    } catch (fallbackError) {
+      console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
+    }
+
+    return null;
+  }
+
+  public async downloadFileAsText(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<string | null> {
+    try {
+      const blob = await this.downloadFile(relativePath, options);
 
       if (blob) {
         return await blob.text();
