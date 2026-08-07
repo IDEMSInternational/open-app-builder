@@ -1,6 +1,12 @@
 import { Injectable, Injector } from "@angular/core";
 import { FirebaseService } from "../../firebase/firebase.service";
-import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
+import {
+  IRemoteAssetProvider,
+  IRemoteAssetConfig,
+  IRemoteAssetDownloadOptions,
+  IRemoteFileMetadata,
+  appendCacheBuster,
+} from "./base.remote-asset";
 import { FirebaseStorage } from "@capacitor-firebase/storage";
 
 @Injectable({
@@ -40,7 +46,10 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
-  public async downloadFile(relativePath: string): Promise<Blob | null> {
+  public async downloadFile(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<Blob | null> {
     if (!this.firebaseService.app) {
       return null;
     }
@@ -55,7 +64,10 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
 
       if (result.downloadUrl) {
         // Download the file using fetch - response varies depending on platform
-        const response = await fetch(result.downloadUrl);
+        const response = await fetch(
+          options.noCache ? appendCacheBuster(result.downloadUrl) : result.downloadUrl,
+          options.noCache ? { cache: "no-store" } : {}
+        );
 
         if (response.ok) {
           return await response.blob();
@@ -72,9 +84,12 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
-  public async downloadFileAsText(relativePath: string): Promise<string | null> {
+  public async downloadFileAsText(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<string | null> {
     try {
-      const blob = await this.downloadFile(relativePath);
+      const blob = await this.downloadFile(relativePath, options);
 
       if (!blob) {
         return null;

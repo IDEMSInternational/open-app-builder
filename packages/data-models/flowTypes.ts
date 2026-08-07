@@ -81,6 +81,13 @@ export namespace FlowTypes {
   export interface AssetPack extends FlowTypeWithData {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
+    /**
+     * Content hash of every asset slot in the pack, generated at sync time. The app compares it
+     * (for inequality, not ordering) against the version recorded for a downloaded pack to decide
+     * whether to re-walk the manifest. Absent on packs published before versioning was introduced,
+     * and on the runtime-generated `_assets_contents` pack.
+     */
+    version?: string;
   }
 
   /**

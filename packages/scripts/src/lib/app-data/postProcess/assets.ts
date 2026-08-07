@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
+import { createHash } from "crypto";
 import {
   generateFolderFlatMap,
   logOutput,
@@ -202,6 +203,7 @@ export class AssetsPostProcessor {
     return {
       flow_type: "asset_pack",
       flow_name: assetPackName,
+      version: generateAssetPackVersion(rows),
       rows,
     };
   }
@@ -301,4 +303,44 @@ export class AssetsPostProcessor {
       }
     }
   }
+}
+
+/**
+ * Generate a content hash identifying this exact set of asset files, written to the manifest as
+ * `version`. The app compares it against the version recorded for a downloaded pack to decide
+ * whether the pack needs re-walking - it never decides which individual files to fetch, which
+ * remains the job of each entry's `md5Checksum`.
+ *
+ * Hashes asset identity and checksums only, so it changes if and only if pack content changes -
+ * never because of the build environment, input ordering or object key order. `size_kb`,
+ * `filePath` and `modifiedTime` are deliberately excluded: they either duplicate what the checksum
+ * already says, or vary without the content changing.
+ *
+ * The serialisation below is a fixed format rather than an implementation detail, because changing
+ * it re-versions every pack in every deployment and forces a manifest walk on every install. It is
+ * pinned by a golden-hash test.
+ *   base entry: `${id}\0${md5Checksum}`, omitted for `overridesOnly` rows
+ *   override:   `${id}\0${themeName}\0${languageCode}\0${md5Checksum}`
+ * sorted lexicographically, joined with newlines.
+ *
+ * NB an `overridesOnly` row carries a copy of its first override's checksum as its own
+ * `md5Checksum` (see `convertAssetEntriesToRows`), so emitting a base line for one would duplicate
+ * a value already covered by that override's own line rather than add any signal.
+ */
+export function generateAssetPackVersion(rows: FlowTypes.Data_listRow<IAssetEntry>[]): string {
+  const lines: string[] = [];
+  for (const row of rows) {
+    if (!row.overridesOnly) {
+      lines.push([row.id, row.md5Checksum ?? ""].join("\0"));
+    }
+    for (const [themeName, languages] of Object.entries(row.overrides || {})) {
+      for (const [languageCode, override] of Object.entries(languages || {})) {
+        lines.push([row.id, themeName, languageCode, override?.md5Checksum ?? ""].join("\0"));
+      }
+    }
+  }
+  // Sorting the emitted lines (rather than the rows) makes the result independent of both input
+  // order and object key order in one step. Hashed via `createHash` rather than the shared
+  // `getDataMD5Checsum` helper, which throws on falsy input - an empty pack must still hash.
+  return createHash("md5").update(lines.sort().join("\n")).digest("hex");
 }

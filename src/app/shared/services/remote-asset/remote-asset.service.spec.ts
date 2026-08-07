@@ -13,11 +13,13 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
+import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { NetworkService } from "../network/network.service";
 import {
   resolveDebugDownloadDelayMs,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
+  shouldCheckForUpdates,
   RemoteAssetActionFactory,
 } from "./remote-asset.actions";
 import { SystemVariableService } from "../system-variable/system-variable.service";
@@ -105,6 +107,85 @@ const localSrc = (targetPath: string) =>
  */
 const packPath = (relativePath: string) => `remote_assets/${relativePath}`;
 
+/** Build an `_asset_packs` row, so fixtures only state the fields the test is about */
+function buildMockAssetPack(overrides: Partial<IDBAssetPack> = {}): IDBAssetPack {
+  return {
+    id: "asset_pack_1",
+    name: "asset_pack_1",
+    download_status: "completed",
+    download_started_at: "2024-01-01T00:00:00.000Z",
+    download_completed_at: "2024-01-01T00:01:00.000Z",
+    download_status_updated_at: "2024-01-01T00:01:00.000Z",
+    assets_total_count: 1,
+    assets_downloaded_count: 1,
+    version: "",
+    available_version: "",
+    update_available: false,
+    has_completed_download: false,
+    version_checked_at: "",
+    version_check_attempted_at: "",
+    version_check_status: "never",
+    ...overrides,
+  };
+}
+
+/**
+ * Stateful `_asset_packs` store modelling the real DynamicDataService write semantics, so tests can
+ * assert on the state a row actually ends up in rather than on which write method produced it:
+ * `update` merges into an existing row (omitted keys survive) and inserts only when `upsert: true`,
+ * while `upsert` replaces the whole document. Writing without either is a genuine error in the real
+ * service, so the fake throws rather than silently doing nothing.
+ */
+function installAssetPackStore(mock: jasmine.SpyObj<DynamicDataService>) {
+  const rows = new Map<string, IDBAssetPack>();
+  const history: IDBAssetPack[] = [];
+  /** Rows for flows other than `_asset_packs`, set by tests that need them */
+  const otherFlowRows: Record<string, any[]> = {};
+  const record = (id: string) => history.push(clone(rows.get(id)));
+
+  mock.upsert.and.callFake(async (_type, flow_name, row: any) => {
+    if (flow_name !== "_asset_packs") return;
+    rows.set(row.id, { ...row });
+    record(row.id);
+  });
+  mock.update.and.callFake(async (_type, flow_name, id: string, update: any, options?: any) => {
+    if (flow_name !== "_asset_packs") return;
+    const existing = rows.get(id);
+    if (existing) rows.set(id, { ...existing, ...update });
+    else if (options?.upsert) rows.set(id, { ...update });
+    else throw new Error(`[Update Fail] no doc exists for data_list:_asset_packs with id: ${id}`);
+    record(id);
+  });
+  mock.snapshot.and.callFake(async (_type, flow_name) => {
+    if (flow_name === "_asset_packs") return [...rows.values()] as any;
+    return (otherFlowRows[flow_name] || []) as any;
+  });
+
+  return {
+    /** Preload rows, e.g. a pack left behind by a previous session */
+    seed: (...seedRows: IDBAssetPack[]) => seedRows.forEach((row) => rows.set(row.id, { ...row })),
+    setFlowRows: (flow_name: string, flowRows: any[]) => (otherFlowRows[flow_name] = flowRows),
+    /** Row state after each write - i.e. the sequence of states a pack moved through */
+    history,
+    /** The stored row, failing loudly rather than yielding undefined if it was never written */
+    get: (id = "asset_pack_1"): IDBAssetPack => {
+      const row = rows.get(id);
+      if (!row) throw new Error(`No _asset_packs row for ${id}`);
+      return row;
+    },
+    has: (id: string) => rows.has(id),
+    /**
+     * Statuses the pack moved through, ignoring writes that left the status unchanged (progress
+     * counts, version-check bookkeeping). Tests care about the transitions, not how many unrelated
+     * writes happened to land in between.
+     */
+    statusTransitions: () =>
+      history
+        .map((row) => row.download_status)
+        .filter((status, index, all) => index === 0 || status !== all[index - 1]),
+  };
+}
+
 const MOCK_ASSET_CONTENTS_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
   clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
   clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
@@ -139,6 +220,7 @@ describe("RemoteAssetsService", () => {
   let mockDynamicDataService: jasmine.SpyObj<DynamicDataService>;
   let mockNetworkService: jasmine.SpyObj<NetworkService>;
   let mockSystemVariableService: jasmine.SpyObj<SystemVariableService>;
+  let assetPacks: ReturnType<typeof installAssetPackStore>;
 
   beforeEach(() => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
@@ -147,9 +229,7 @@ describe("RemoteAssetsService", () => {
       "snapshot",
       "resetFlow",
     ]);
-    mockDynamicDataService.upsert.and.resolveTo();
-    mockDynamicDataService.update.and.resolveTo();
-    mockDynamicDataService.snapshot.and.resolveTo([]);
+    assetPacks = installAssetPackStore(mockDynamicDataService);
     mockDynamicDataService.resetFlow.and.resolveTo();
     mockNetworkService = jasmine.createSpyObj<NetworkService>("NetworkService", [
       "isOffline",
@@ -347,20 +427,15 @@ describe("RemoteAssetsService", () => {
       flow_name: "asset_pack_1",
       rows: [],
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = assetPackManifest;
-      return assetPackManifest;
-    });
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(assetPackManifest);
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
-    const upsertRows = mockDynamicDataService.upsert.calls
-      .allArgs()
-      .map(([, , row]) => row as IDBAssetPack);
+    const rows = assetPacks.history;
 
     expect(success).toBeTrue();
-    expect(upsertRows.map((row) => row.download_status)).toEqual(["in_progress", "completed"]);
-    expect(upsertRows[0]).toEqual(
+    expect(assetPacks.statusTransitions()).toEqual(["in_progress", "completed"]);
+    expect(rows[0]).toEqual(
       jasmine.objectContaining({
         id: "asset_pack_1",
         name: "asset_pack_1",
@@ -372,16 +447,22 @@ describe("RemoteAssetsService", () => {
         assets_downloaded_count: 0,
       })
     );
-    expect(upsertRows[1]).toEqual(
+    // Counts are written separately, merging into the row rather than replacing it
+    expect(rows[1]).toEqual(
+      jasmine.objectContaining({ assets_total_count: 0, assets_downloaded_count: 0 })
+    );
+    expect(rows[2]).toEqual(
       jasmine.objectContaining({
         id: "asset_pack_1",
         name: "asset_pack_1",
         download_status: "completed",
-        download_started_at: upsertRows[0].download_started_at,
+        download_started_at: rows[0].download_started_at,
         download_completed_at: jasmine.any(String),
         download_status_updated_at: jasmine.any(String),
         assets_total_count: 0,
         assets_downloaded_count: 0,
+        // Completing is what marks the pack as having been usable
+        has_completed_download: true,
       })
     );
     expect(mockDynamicDataService.update).toHaveBeenCalledWith(
@@ -411,30 +492,12 @@ describe("RemoteAssetsService", () => {
         clone(MOCK_ASSET_ENTRY_OVERRIDES_ONLY),
       ] as FlowTypes.Data_listRow<IAssetEntry>[],
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = assetPackManifest;
-      return assetPackManifest;
-    });
-
-    // Stateful `_asset_packs` row so the "completed" upsert reads back the counts written during the
-    // download rather than a stale/empty snapshot
-    let assetPackRow: IDBAssetPack | undefined;
-    mockDynamicDataService.upsert.and.callFake(async (_type, flow_name, row: any) => {
-      if (flow_name === "_asset_packs") assetPackRow = { ...row };
-    });
-    mockDynamicDataService.update.and.callFake(async (_type, flow_name, _id, update: any) => {
-      if (flow_name === "_asset_packs" && assetPackRow) {
-        assetPackRow = { ...assetPackRow, ...update };
-      }
-    });
-    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
-      flow_name === "_asset_packs" && assetPackRow ? ([assetPackRow] as any) : []
-    );
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(assetPackManifest);
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
     expect(success).toBeTrue();
-    expect(assetPackRow).toEqual(
+    expect(assetPacks.get()).toEqual(
       jasmine.objectContaining({
         download_status: "completed",
         assets_total_count: 4,
@@ -451,30 +514,27 @@ describe("RemoteAssetsService", () => {
       flow_name: "asset_pack_1",
       rows: [],
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = assetPackManifest;
-      return assetPackManifest;
-    });
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(assetPackManifest);
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.rejectWith(
       new Error("Download failed")
     );
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
-    const upsertRows = mockDynamicDataService.upsert.calls
-      .allArgs()
-      .map(([, , row]) => row as IDBAssetPack);
+    const rows = assetPacks.history;
 
     expect(success).toBeFalse();
     expect(consoleErrorSpy).toHaveBeenCalled();
-    expect(upsertRows.map((row) => row.download_status)).toEqual(["in_progress", "error"]);
-    expect(upsertRows[1]).toEqual(
+    expect(assetPacks.statusTransitions()).toEqual(["in_progress", "error"]);
+    // A first download that fails has nothing usable to fall back on, so it does surface as `error`
+    expect(assetPacks.get()).toEqual(
       jasmine.objectContaining({
         id: "asset_pack_1",
         name: "asset_pack_1",
         download_status: "error",
-        download_started_at: upsertRows[0].download_started_at,
+        download_started_at: rows[0].download_started_at,
         download_completed_at: "",
         download_status_updated_at: jasmine.any(String),
+        has_completed_download: false,
       })
     );
   });
@@ -487,26 +547,21 @@ describe("RemoteAssetsService", () => {
       flow_name: "asset_pack_1",
       rows: [],
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = assetPackManifest;
-      return assetPackManifest;
-    });
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(assetPackManifest);
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
-    const upsertRows = mockDynamicDataService.upsert.calls
-      .allArgs()
-      .map(([, , row]) => row as IDBAssetPack);
+    const rows = assetPacks.history;
 
     expect(success).toBeTrue();
     expect(waitForConnectionSpy).toHaveBeenCalled();
-    expect(upsertRows.map((row) => row.download_status)).toEqual([
+    expect(assetPacks.statusTransitions()).toEqual([
       "waiting_for_connection",
       "in_progress",
       "completed",
     ]);
-    expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
-    expect(upsertRows[2].download_started_at).toBe(upsertRows[0].download_started_at);
+    // The whole attempt keeps one start timestamp, across parking and resuming
+    expect(rows.every((row) => row.download_started_at === rows[0].download_started_at)).toBeTrue();
   });
 
   it("updates asset_pack_download_in_progress while downloading", async () => {
@@ -516,10 +571,7 @@ describe("RemoteAssetsService", () => {
       flow_name: "asset_pack_1",
       rows: [],
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = assetPackManifest;
-      return assetPackManifest;
-    });
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(assetPackManifest);
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     await service.downloadAssetPackByName("asset_pack_1");
@@ -561,18 +613,14 @@ describe("RemoteAssetsService", () => {
     await waitStarted;
     const cancelSuccess = await service.cancelAssetPackDownloadByName("asset_pack_1");
     const downloadSuccess = await downloadPromise;
-    const upsertRows = mockDynamicDataService.upsert.calls
-      .allArgs()
-      .map(([, , row]) => row as IDBAssetPack);
+    const rows = assetPacks.history;
 
     expect(cancelSuccess).toBeTrue();
     expect(downloadSuccess).toBeFalse();
     expect(removeConnectionStatusListener).toHaveBeenCalled();
-    expect(upsertRows.map((row) => row.download_status)).toEqual([
-      "waiting_for_connection",
-      "cancelled",
-    ]);
-    expect(upsertRows[1].download_started_at).toBe(upsertRows[0].download_started_at);
+    // Never completed before, so cancelling leaves it `cancelled` rather than restoring `completed`
+    expect(assetPacks.statusTransitions()).toEqual(["waiting_for_connection", "cancelled"]);
+    expect(rows[1].download_started_at).toBe(rows[0].download_started_at);
   });
 
   it("does not start a second asset pack download while another is active", async () => {
@@ -591,20 +639,16 @@ describe("RemoteAssetsService", () => {
     expect(manifestSpy).not.toHaveBeenCalled();
   });
 
-  it("does not integrate a stale manifest when manifest download fails", async () => {
+  it("does not integrate anything when manifest download fails", async () => {
+    // The manifest is now a return value rather than service state, so there is no stale manifest
+    // left over from a previous pack to integrate by mistake - but a failed fetch must still abort
     spyOn<any>(service, "isOffline").and.returnValue(false);
     spyOn(console, "error");
-    const staleManifest: FlowTypes.AssetPack = {
-      flow_type: "asset_pack",
-      flow_name: "stale_asset_pack",
-      rows: [MOCK_ASSET_ENTRY as FlowTypes.Data_listRow<IAssetEntry>],
-    };
     const mockProvider = jasmine.createSpyObj<IRemoteAssetProvider>("IRemoteAssetProvider", [
       "downloadFileAsText",
     ]);
     mockProvider.downloadFileAsText.and.resolveTo(null);
     service.provider = mockProvider;
-    service.manifest = staleManifest;
     const integrateSpy = spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({
       failedCount: 0,
     });
@@ -612,43 +656,30 @@ describe("RemoteAssetsService", () => {
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
     expect(success).toBeFalse();
-    expect(service.manifest).toBeNull();
     expect(integrateSpy).not.toHaveBeenCalled();
+    expect(assetPacks.get().download_status).toBe("error");
   });
 
   it("skips asset packs that are already completed when using ensureAssetPacksDownloaded", async () => {
-    const completedPack: IDBAssetPack = {
-      id: "asset_pack_1",
-      name: "asset_pack_1",
-      download_status: "completed",
-      download_started_at: "2024-01-01T00:00:00.000Z",
-      download_completed_at: "2024-01-01T00:01:00.000Z",
-      download_status_updated_at: "2024-01-01T00:01:00.000Z",
-      assets_total_count: 1,
-      assets_downloaded_count: 1,
-    };
-    mockDynamicDataService.snapshot.and.resolveTo([completedPack]);
+    assetPacks.seed(buildMockAssetPack({ download_status: "completed" }));
     const downloadSpy = spyOn(service, "downloadAssetPackByName").and.resolveTo(true);
 
-    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+    // No version check requested, so a completed pack is skipped without any remote lookup
+    const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"], {
+      checkForUpdates: false,
+    });
 
     expect(success).toBeTrue();
     expect(downloadSpy).not.toHaveBeenCalled();
   });
 
   it("downloads asset packs that are missing or not completed when using ensureAssetPacksDownloaded", async () => {
-    const errorPack: IDBAssetPack = {
-      id: "asset_pack_1",
-      name: "asset_pack_1",
-      download_status: "error",
-      download_started_at: "2024-01-01T00:00:00.000Z",
-      download_completed_at: "",
-      download_status_updated_at: "2024-01-01T00:01:00.000Z",
-      assets_total_count: 1,
-      assets_downloaded_count: 0,
-    };
-    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
-      flow_name === "_asset_packs" ? ([errorPack] as any) : []
+    assetPacks.seed(
+      buildMockAssetPack({
+        download_status: "error",
+        download_completed_at: "",
+        assets_downloaded_count: 0,
+      })
     );
     const downloadSpy = spyOn(service, "downloadAssetPackByName").and.resolveTo(true);
 
@@ -662,7 +693,6 @@ describe("RemoteAssetsService", () => {
   });
 
   it("downloads asset packs sequentially when using ensureAssetPacksDownloaded", async () => {
-    mockDynamicDataService.snapshot.and.resolveTo([]);
     const downloadOrder: string[] = [];
     spyOn(service, "downloadAssetPackByName").and.callFake(async (assetPackName) => {
       downloadOrder.push(assetPackName);
@@ -687,7 +717,6 @@ describe("RemoteAssetsService", () => {
     });
     spyOn<any>(service, "getAssetPackManifest").and.returnValue(manifestPromise);
     spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
-    mockDynamicDataService.snapshot.and.resolveTo([]);
     mockSystemVariableService.set.calls.reset();
 
     const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"], {
@@ -706,21 +735,12 @@ describe("RemoteAssetsService", () => {
   });
 
   it("returns immediately without setting asset_pack_download_in_progress when all packs are completed", async () => {
-    const completedPack: IDBAssetPack = {
-      id: "asset_pack_1",
-      name: "asset_pack_1",
-      download_status: "completed",
-      download_started_at: "2024-01-01T00:00:00.000Z",
-      download_completed_at: "2024-01-01T00:01:00.000Z",
-      download_status_updated_at: "2024-01-01T00:01:00.000Z",
-      assets_total_count: 1,
-      assets_downloaded_count: 1,
-    };
-    mockDynamicDataService.snapshot.and.resolveTo([completedPack]);
+    assetPacks.seed(buildMockAssetPack({ download_status: "completed" }));
     mockSystemVariableService.set.calls.reset();
 
     const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"], {
       awaitCompletion: false,
+      checkForUpdates: false,
     });
 
     expect(success).toBeTrue();
@@ -731,7 +751,6 @@ describe("RemoteAssetsService", () => {
   });
 
   it("retries packs refused by a different in-flight download rather than dropping them", async () => {
-    mockDynamicDataService.snapshot.and.resolveTo([]);
     // Drive each attempt by hand, mirroring the real cleanup that frees the single download slot
     const attempted: string[] = [];
     const settleAttempt: Record<string, () => void> = {};
@@ -786,10 +805,7 @@ describe("RemoteAssetsService", () => {
       flow_name: assetPackName,
       rows: manifestRows,
     };
-    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
-      service.manifest = manifest;
-      return manifest;
-    });
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(manifest);
     const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"]));
     service["provider"] = { downloadFile: downloadFileSpy } as any;
 
@@ -799,26 +815,13 @@ describe("RemoteAssetsService", () => {
       src: localSrc(targetPath),
     }));
 
-    // Stateful `_asset_packs` row + `_assets_contents` snapshot fed from `existingContentsRows`
-    let assetPackRow: IDBAssetPack | undefined;
-    mockDynamicDataService.upsert.and.callFake(async (_type, flow_name, row: any) => {
-      if (flow_name === "_asset_packs") assetPackRow = { ...row };
-    });
-    mockDynamicDataService.update.and.callFake(async (_type, flow_name, _id, update: any) => {
-      if (flow_name === "_asset_packs" && assetPackRow) {
-        assetPackRow = { ...assetPackRow, ...update };
-      }
-    });
-    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) => {
-      if (flow_name === "_asset_packs") return assetPackRow ? ([assetPackRow] as any) : [];
-      if (flow_name === "_assets_contents") return existingContentsRows as any;
-      return [];
-    });
+    // `_asset_packs` state comes from the shared store; feed `_assets_contents` from the fixture
+    assetPacks.setFlowRows("_assets_contents", existingContentsRows);
 
     return {
       downloadFileSpy,
       saveFileSpy,
-      getAssetPackRow: () => assetPackRow,
+      getAssetPackRow: () => assetPacks.get(assetPackName),
     };
   }
   /* eslint-enable jasmine/no-unsafe-spy */
@@ -1102,14 +1105,13 @@ describe("RemoteAssetsService", () => {
   });
 
   it("resumes interrupted packs on init but not cancelled/error/completed ones", async () => {
-    const packs: IDBAssetPack[] = [
-      { id: "p_in_progress", download_status: "in_progress" } as IDBAssetPack,
-      { id: "p_waiting", download_status: "waiting_for_connection" } as IDBAssetPack,
-      { id: "p_error", download_status: "error" } as IDBAssetPack,
-      { id: "p_cancelled", download_status: "cancelled" } as IDBAssetPack,
-      { id: "p_completed", download_status: "completed" } as IDBAssetPack,
-    ];
-    mockDynamicDataService.snapshot.and.resolveTo(packs);
+    assetPacks.seed(
+      buildMockAssetPack({ id: "p_in_progress", download_status: "in_progress" }),
+      buildMockAssetPack({ id: "p_waiting", download_status: "waiting_for_connection" }),
+      buildMockAssetPack({ id: "p_error", download_status: "error" }),
+      buildMockAssetPack({ id: "p_cancelled", download_status: "cancelled" }),
+      buildMockAssetPack({ id: "p_completed", download_status: "completed" })
+    );
     const ensureSpy = spyOn(service, "ensureAssetPacksDownloaded").and.resolveTo(true);
 
     await service["resumeInterruptedAssetPackDownloads"]();
@@ -1140,6 +1142,692 @@ describe("RemoteAssetsService", () => {
     expect(onDownloadStarted).toHaveBeenCalled();
     // Joined the existing attempt; no new download was kicked off
     expect(manifestSpy).not.toHaveBeenCalled();
+  });
+
+  /**
+   * A pack that has completed before is still fully usable whatever happens to a later attempt, so
+   * no failure or cancellation may leave it reading as broken. The signal has to be persisted:
+   * `resumeInterruptedAssetPackDownloads` filters purely on `download_status`, so an update killed
+   * mid-flight comes back as a plain `in_progress` row with nothing in memory to say otherwise.
+   */
+  describe("attempts on a pack that has completed before", () => {
+    /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
+    /** Fail the download once it is under way, without the manifest fetch itself failing */
+    function setupFailingAttempt() {
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn(console, "error");
+      spyOn(console, "warn");
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+        flow_type: "asset_pack",
+        flow_name: "asset_pack_1",
+        rows: [],
+        version: "v2",
+      } as FlowTypes.AssetPack);
+      spyOn<any>(service, "downloadAndIntegrateAssetPack").and.rejectWith(
+        new Error("Download failed")
+      );
+    }
+    /* eslint-enable jasmine/no-unsafe-spy */
+
+    it("restores completed when an interrupted update is resumed and then fails", async () => {
+      // The launch-resume path: killed mid-update, so the row is `in_progress` and only the
+      // persisted flag distinguishes it from a first download that never finished
+      assetPacks.seed(
+        buildMockAssetPack({
+          download_status: "in_progress",
+          version: "v1",
+          available_version: "v2",
+          update_available: true,
+          has_completed_download: true,
+        })
+      );
+      setupFailingAttempt();
+
+      await service["resumeInterruptedAssetPackDownloads"]();
+      // Resume is fire-and-forget, but registers the download before returning, so the attempt can
+      // be awaited to completion rather than guessed at with a microtask flush
+      await service["waitForActiveAssetPackDownloads"]();
+      const row = assetPacks.get();
+
+      expect(row.download_status).toBe("completed");
+      // Still at the version it last fully completed, so the next check retries the update
+      expect(row.version).toBe("v1");
+      expect(row.update_available).toBeTrue();
+    });
+
+    it("restores completed for a pre-versioning row with no flag recorded", async () => {
+      // Rows written before versioning existed have none of the new keys at all. The flag is
+      // back-filled before the status leaves `completed`, which is what makes the rollout safe.
+      assetPacks.seed({
+        id: "asset_pack_1",
+        name: "asset_pack_1",
+        download_status: "completed",
+      } as IDBAssetPack);
+      setupFailingAttempt();
+
+      await service["remoteAssetMetadataService"].markHasCompletedDownload("asset_pack_1");
+      // The flag must be persisted while the row still reads `completed` - asserting only the end
+      // state would also pass with the back-fill folded into the `in_progress` transition
+      expect(assetPacks.get()).toEqual(
+        jasmine.objectContaining({ download_status: "completed", has_completed_download: true })
+      );
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      expect(assetPacks.get().download_status).toBe("completed");
+    });
+
+    it("restores completed when an explicit download fails, not only an update", async () => {
+      // The flag means "has been usable before", not "this attempt is an update"
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      setupFailingAttempt();
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      expect(assetPacks.statusTransitions()).toEqual(["in_progress", "completed"]);
+      expect(assetPacks.get().version).toBe("v1");
+    });
+
+    it("restores completed when an attempt is cancelled", async () => {
+      // `cancelled` packs never auto-resume, so cancelling a refresh would otherwise strand a
+      // working pack permanently
+      assetPacks.seed(buildMockAssetPack({ has_completed_download: true }));
+      let resolveWaitStarted!: () => void;
+      const waitStarted = new Promise<void>((resolve) => (resolveWaitStarted = resolve));
+      spyOn<any>(service, "isOffline").and.returnValue(true);
+      spyOn(console, "warn");
+      mockNetworkService.waitUntilConnected.and.callFake((signal?: AbortSignal) => {
+        resolveWaitStarted();
+        return new Promise<void>((_resolve, reject) => {
+          signal?.addEventListener(
+            "abort",
+            () => {
+              const error = new Error("Download cancelled");
+              error.name = "AbortError";
+              reject(error);
+            },
+            { once: true }
+          );
+        });
+      });
+
+      const downloadPromise = service.downloadAssetPackByName("asset_pack_1");
+      await waitStarted;
+      await service.cancelAssetPackDownloadByName("asset_pack_1");
+      await downloadPromise;
+
+      expect(assetPacks.get().download_status).toBe("completed");
+    });
+
+    it("records the manifest version on a successful download", async () => {
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+        flow_type: "asset_pack",
+        flow_name: "asset_pack_1",
+        rows: [],
+        version: "v2",
+      } as FlowTypes.AssetPack);
+      spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
+      assetPacks.seed(
+        buildMockAssetPack({ version: "v1", available_version: "v2", update_available: true })
+      );
+
+      await service.downloadAssetPackByName("asset_pack_1");
+      const row = assetPacks.get();
+
+      expect(row.version).toBe("v2");
+      expect(row.update_available).toBeFalse();
+      // A forced re-walk is also a successful check, so the check fields must not read as stale
+      expect(row.version_check_status).toBe("ok");
+      expect(row.version_checked_at).not.toBe("");
+    });
+
+    it("leaves version empty when the manifest is unversioned", async () => {
+      // Packs published before versioning existed carry no version, and must not be re-versioned
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+        flow_type: "asset_pack",
+        flow_name: "asset_pack_1",
+        rows: [],
+      } as FlowTypes.AssetPack);
+      spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(assetPacks.get().version).toBe("");
+      expect(assetPacks.get().update_available).toBeFalse();
+    });
+  });
+
+  /**
+   * The version answers only "should I walk the manifest at all?". Which files then get re-fetched
+   * stays with the per-slot checksum gate, so an update transfers bytes only for what changed.
+   */
+  describe("version checks for downloaded packs", () => {
+    /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
+    /** Stub the manifest a check will fetch, and short-circuit the download it may trigger */
+    function stubRemoteVersion(version?: string) {
+      const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+        flow_type: "asset_pack",
+        flow_name: "asset_pack_1",
+        rows: [],
+        ...(version === undefined ? {} : { version }),
+      } as FlowTypes.AssetPack);
+      spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      return manifestSpy;
+    }
+    /* eslint-enable jasmine/no-unsafe-spy */
+
+    /** Run every pending continuation; the mocked download path involves only microtasks */
+    const flush = async () => {
+      for (let i = 0; i < 100; i++) await Promise.resolve();
+    };
+
+    /** `ensure_downloaded` never awaits checks, so drain the queue they run on and let them finish */
+    const settleChecks = async () => {
+      await flush();
+      await service["waitForActiveAssetPackDownloads"]();
+    };
+
+    it("does nothing but record the check when the version is unchanged", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      const manifestSpy = stubRemoteVersion("v1");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).toHaveBeenCalledTimes(1);
+      expect(assetPacks.statusTransitions()).toEqual(["completed"]);
+      const row = assetPacks.get();
+      expect(row.version_check_status).toBe("ok");
+      expect(row.update_available).toBeFalse();
+    });
+
+    it("downloads when the remote version differs", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(assetPacks.statusTransitions()).toEqual(["completed", "in_progress", "completed"]);
+      expect(assetPacks.get().version).toBe("v2");
+    });
+
+    it("reuses the manifest the check fetched rather than fetching it twice", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      const manifestSpy = stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("marks the pack as previously usable before the status leaves completed", async () => {
+      // Written as its own operation while the row still reads `completed`; folded into the
+      // `in_progress` write it would not survive the app being killed mid-update
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+      stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      const flagWrite = assetPacks.history.findIndex((row) => row.has_completed_download);
+      const inProgressWrite = assetPacks.history.findIndex(
+        (row) => row.download_status === "in_progress"
+      );
+      expect(flagWrite).toBeGreaterThan(-1);
+      expect(flagWrite).toBeLessThan(inProgressWrite);
+      expect(assetPacks.history[flagWrite].download_status).toBe("completed");
+    });
+
+    it("leaves a working pack alone when the manifest cannot be fetched", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      const row = assetPacks.get();
+      // The pack is still downloaded and usable - only the *check* failed
+      expect(row.download_status).toBe("completed");
+      expect(row.version).toBe("v1");
+      expect(row.version_check_status).toBe("failed");
+      expect(Date.parse(row.version_check_attempted_at)).toBeGreaterThan(
+        Date.parse(row.version_checked_at || "1970-01-01T00:00:00.000Z")
+      );
+    });
+
+    it("writes nothing at all when offline", async () => {
+      // Being offline is not a check failure. Recording one would both add a write on every launch
+      // and destroy "failed" as a signal that something is actually wrong with the published pack.
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      spyOn<any>(service, "isOffline").and.returnValue(true);
+      const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).not.toHaveBeenCalled();
+      expect(assetPacks.history).toEqual([]);
+    });
+
+    it("skips the check when one succeeded recently", async () => {
+      assetPacks.seed(
+        buildMockAssetPack({
+          version: "v1",
+          version_check_attempted_at: new Date().toISOString(),
+          version_check_status: "ok",
+        })
+      );
+      const manifestSpy = stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).not.toHaveBeenCalled();
+    });
+
+    it("still retries a known pending update inside the throttle window", async () => {
+      // The check that found the update recorded success before the download was known to have
+      // started, so throttling on that would suppress the retry after an update that failed, was
+      // cancelled, or never got its turn before the app was killed
+      assetPacks.seed(
+        buildMockAssetPack({
+          version: "v1",
+          available_version: "v2",
+          update_available: true,
+          has_completed_download: true,
+          version_check_attempted_at: new Date().toISOString(),
+          version_checked_at: new Date().toISOString(),
+          version_check_status: "ok",
+        })
+      );
+      stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(assetPacks.get().version).toBe("v2");
+    });
+
+    it("retries sooner after a failed check than after a successful one", async () => {
+      // A single flaky response must not suppress updates for the full interval
+      const thirtyMinutesAgo = new Date(Date.now() - 1000 * 60 * 30).toISOString();
+      assetPacks.seed(
+        buildMockAssetPack({
+          version: "v1",
+          has_completed_download: true,
+          version_check_attempted_at: thirtyMinutesAgo,
+          version_check_status: "failed",
+        })
+      );
+      const manifestSpy = stubRemoteVersion("v1");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("skips the check when check_for_updates is false", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+      const manifestSpy = stubRemoteVersion("v2");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"], { checkForUpdates: false });
+      await settleChecks();
+
+      expect(manifestSpy).not.toHaveBeenCalled();
+    });
+
+    it("takes no action for an unversioned manifest", async () => {
+      // Packs published before versioning carry no version; treating that as "changed" would make
+      // every install re-walk them on every check, forever
+      assetPacks.seed(buildMockAssetPack({ version: "", has_completed_download: true }));
+      stubRemoteVersion(undefined);
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(assetPacks.statusTransitions()).toEqual(["completed"]);
+      expect(assetPacks.get().update_available).toBeFalse();
+    });
+
+    it("updates a pack downloaded before versioning existed", async () => {
+      // The rollout path: local version empty, manifest now versioned. Walking is cheap (a stat per
+      // file, no bytes for unchanged ones) and is the only way to be sure of what is on disk.
+      assetPacks.seed(buildMockAssetPack({ version: "" }));
+      stubRemoteVersion("v1");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(assetPacks.get().version).toBe("v1");
+    });
+
+    it("skips the check while a download for that pack is already active", async () => {
+      // An in-flight walk is already reading a manifest at least as fresh as one we would fetch
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+      const manifestSpy = stubRemoteVersion("v2");
+      service["activeAssetPackDownloads"].set("asset_pack_1", {
+        abortController: new AbortController(),
+        downloadStartedAt: new Date().toISOString(),
+        removeConnectionStatusListener: () => undefined,
+        completion: Promise.resolve(true),
+      });
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(manifestSpy).not.toHaveBeenCalled();
+    });
+
+    it("updates every pack that needs it, not just the first", async () => {
+      // Downloads are serial, so starting them inside the check loop would make the packs refuse
+      // each other - and a refused pack has already recorded a successful check, so nothing would
+      // retry it until the throttle expired
+      assetPacks.seed(
+        buildMockAssetPack({ id: "asset_pack_1", version: "v1", has_completed_download: true }),
+        buildMockAssetPack({ id: "asset_pack_2", version: "v1", has_completed_download: true })
+      );
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn<any>(service, "getAssetPackManifest").and.callFake(async (name: string) => ({
+        flow_type: "asset_pack",
+        flow_name: name,
+        rows: [],
+        version: "v2",
+      }));
+      // Hold each download open, so the first is genuinely still occupying the single download slot
+      // while the second is checked. An instantly-resolving download would free the slot during the
+      // second pack's own awaits, and the test would pass either way.
+      const releaseDownload: (() => void)[] = [];
+      spyOn<any>(service, "downloadAndIntegrateAssetPack").and.callFake(
+        () => new Promise((resolve) => releaseDownload.push(() => resolve({ failedCount: 0 })))
+      );
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1", "asset_pack_2"]);
+      // Let each held download finish in turn, freeing the slot for the next
+      for (let i = 0; i < 5; i++) {
+        await flush();
+        releaseDownload.splice(0).forEach((release) => release());
+      }
+      await settleChecks();
+
+      expect(assetPacks.get("asset_pack_1").version).toBe("v2");
+      expect(assetPacks.get("asset_pack_2").version).toBe("v2");
+    });
+
+    it("retries an update refused by an unrelated active download", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      stubRemoteVersion("v2");
+      // A different pack holds the single download slot
+      let settleOther!: () => void;
+      const otherCompletion = new Promise<boolean>(
+        (resolve) => (settleOther = () => resolve(true))
+      );
+      service["activeAssetPackDownloads"].set("other_pack", {
+        abortController: new AbortController(),
+        downloadStartedAt: new Date().toISOString(),
+        removeConnectionStatusListener: () => undefined,
+        completion: otherCompletion,
+      });
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      // Flush only - the update is parked waiting on the other download, so awaiting active
+      // downloads here would deadlock the test on a promise it has not released yet
+      await flush();
+      // Refused so far, but not abandoned
+      expect(assetPacks.get().version).toBe("v1");
+
+      service["activeAssetPackDownloads"].delete("other_pack");
+      settleOther();
+      await flush();
+
+      expect(assetPacks.get().version).toBe("v2");
+    });
+
+    it("takes no action when the remote manifest has no version but the local one does", async () => {
+      // Never downgrade a versioned pack because a manifest was republished without a version
+      assetPacks.seed(buildMockAssetPack({ version: "v1", has_completed_download: true }));
+      stubRemoteVersion(undefined);
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+      await settleChecks();
+
+      expect(assetPacks.statusTransitions()).toEqual(["completed"]);
+      expect(assetPacks.get().version).toBe("v1");
+      expect(assetPacks.get().update_available).toBeFalse();
+    });
+
+    it("does not block the action queue on the check", async () => {
+      // `ensure_downloaded` promises the pack is usable, not that it is the latest
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      let releaseManifest!: () => void;
+      spyOn<any>(service, "getAssetPackManifest").and.returnValue(
+        new Promise((resolve) => (releaseManifest = () => resolve(null)))
+      );
+
+      const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+
+      // Resolved while the manifest fetch is still outstanding
+      expect(success).toBeTrue();
+      releaseManifest();
+      await settleChecks();
+    });
+  });
+
+  it("fetches the manifest with caching bypassed", async () => {
+    // Buckets serve long cache headers, so a cached manifest reports a stale version and updates
+    // silently never land - and would still pass every test on a fresh install
+    const mockProvider = jasmine.createSpyObj<IRemoteAssetProvider>("IRemoteAssetProvider", [
+      "downloadFileAsText",
+    ]);
+    mockProvider.downloadFileAsText.and.resolveTo(null);
+    service.provider = mockProvider;
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    spyOn(console, "error");
+
+    await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(mockProvider.downloadFileAsText).toHaveBeenCalledWith("asset_pack_1/asset_pack_1.json", {
+      noCache: true,
+    });
+  });
+
+  describe("asset pack metadata", () => {
+    let metadata: RemoteAssetMetadataService;
+
+    beforeEach(() => {
+      metadata = service["remoteAssetMetadataService"];
+    });
+
+    /**
+     * The guard against the write mechanism regressing to a full-document upsert, which silently
+     * erases every field the status writer does not name. Deliberately asserts the version fields
+     * survive *without* `setDownloadStatus` knowing they exist - naming them here would test the
+     * carry-through rather than the merge.
+     */
+    it("preserves fields a status change knows nothing about", async () => {
+      assetPacks.seed(
+        buildMockAssetPack({
+          version: "v1",
+          available_version: "v2",
+          update_available: true,
+          has_completed_download: true,
+          version_checked_at: "2024-06-01T00:00:00.000Z",
+          version_check_attempted_at: "2024-06-01T00:00:00.000Z",
+          version_check_status: "ok",
+        })
+      );
+
+      await metadata.setDownloadStatus("asset_pack_1", "in_progress");
+
+      expect(assetPacks.get()).toEqual(
+        jasmine.objectContaining({
+          download_status: "in_progress",
+          version: "v1",
+          available_version: "v2",
+          update_available: true,
+          has_completed_download: true,
+          version_checked_at: "2024-06-01T00:00:00.000Z",
+          version_check_attempted_at: "2024-06-01T00:00:00.000Z",
+          version_check_status: "ok",
+        })
+      );
+    });
+
+    /**
+     * The success write is a single operation covering status, version and check bookkeeping.
+     * Splitting it would leave a window where the pack reads completed at the wrong version, and
+     * omitting the check fields would make a forced `download` leave them looking stale.
+     */
+    it("records version and check state in the same write as completion", async () => {
+      assetPacks.seed(
+        buildMockAssetPack({
+          download_status: "in_progress",
+          version: "v1",
+          available_version: "v2",
+          update_available: true,
+          version_checked_at: "2024-06-01T00:00:00.000Z",
+        })
+      );
+
+      await metadata.setDownloadStatus("asset_pack_1", "completed", {}, {}, "v2");
+      const row = assetPacks.get();
+
+      expect(row.download_status).toBe("completed");
+      expect(row.version).toBe("v2");
+      expect(row.available_version).toBe("v2");
+      expect(row.update_available).toBeFalse();
+      expect(row.has_completed_download).toBeTrue();
+      // Walking the manifest to completion is itself a successful check
+      expect(row.version_check_status).toBe("ok");
+      expect(row.version_checked_at).toBe(row.download_status_updated_at);
+      expect(row.version_check_attempted_at).toBe(row.version_checked_at);
+      // A single write, so there is never a moment where status and version disagree
+      expect(assetPacks.history.length).toBe(1);
+    });
+
+    it("leaves version untouched when completing without one", async () => {
+      // e.g. restoring `completed` after a failed update: the pack is usable but still at its old
+      // version, and the next check must therefore still see an update available
+      assetPacks.seed(
+        buildMockAssetPack({
+          download_status: "in_progress",
+          version: "v1",
+          update_available: true,
+        })
+      );
+
+      await metadata.setDownloadStatus("asset_pack_1", "completed");
+      const row = assetPacks.get();
+
+      expect(row.version).toBe("v1");
+      expect(row.update_available).toBeTrue();
+      expect(row.has_completed_download).toBeTrue();
+    });
+
+    it("creates a complete row when a download writes status for an unknown pack", async () => {
+      await metadata.setDownloadStatus("new_pack", "in_progress");
+
+      // Every field present, so later partial writes always merge into a well-formed row
+      expect(assetPacks.get("new_pack")).toEqual({
+        id: "new_pack",
+        name: "new_pack",
+        download_status: "in_progress",
+        download_started_at: jasmine.any(String),
+        download_completed_at: "",
+        download_status_updated_at: jasmine.any(String),
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+        version: "",
+        available_version: "",
+        update_available: false,
+        has_completed_download: false,
+        version_checked_at: "",
+        version_check_attempted_at: "",
+        version_check_status: "never",
+      });
+    });
+
+    /**
+     * Row creation is a privilege of the download path. A version check only ever runs against a
+     * pack that already completed, so conjuring a row from one would mean inventing a
+     * `download_status` that never happened.
+     */
+    it("does not create a row from version check bookkeeping", async () => {
+      await expectAsync(metadata.recordVersionCheckSuccess("ghost_pack", "v1")).toBeRejected();
+      await expectAsync(metadata.recordVersionCheckFailure("ghost_pack")).toBeRejected();
+      await expectAsync(metadata.markHasCompletedDownload("ghost_pack")).toBeRejected();
+
+      expect(assetPacks.has("ghost_pack")).toBeFalse();
+    });
+
+    it("records a successful check, leaving download status untouched", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+
+      await metadata.recordVersionCheckSuccess("asset_pack_1", "v2");
+      const row = assetPacks.get();
+
+      expect(row.download_status).toBe("completed");
+      expect(row.available_version).toBe("v2");
+      expect(row.update_available).toBeTrue();
+      expect(row.version_check_status).toBe("ok");
+      // A successful check leaves the two timestamps equal
+      expect(row.version_check_attempted_at).toBe(row.version_checked_at);
+    });
+
+    it("leaves download status untouched when a check fails", async () => {
+      assetPacks.seed(
+        buildMockAssetPack({ version: "v1", version_checked_at: "2024-06-01T00:00:00.000Z" })
+      );
+
+      await metadata.recordVersionCheckFailure("asset_pack_1");
+      const row = assetPacks.get();
+
+      // The invariant authoring reads: attempted later than checked means the last check failed
+      expect(row.download_status).toBe("completed");
+      expect(row.version_check_status).toBe("failed");
+      expect(Date.parse(row.version_check_attempted_at)).toBeGreaterThan(
+        Date.parse(row.version_checked_at)
+      );
+      expect(row.version).toBe("v1");
+    });
+
+    it("does not report an update available for an unversioned manifest", async () => {
+      assetPacks.seed(buildMockAssetPack({ version: "v1" }));
+
+      await metadata.recordVersionCheckSuccess("asset_pack_1", "");
+
+      // Nothing to compare against, so an unversioned pack can never signal an update
+      expect(assetPacks.get().update_available).toBeFalse();
+    });
+
+    it("treats a legacy completed row as having been downloaded", async () => {
+      // Rows written before these fields existed have none of the keys at all
+      assetPacks.seed({
+        id: "asset_pack_1",
+        name: "asset_pack_1",
+        download_status: "completed",
+      } as IDBAssetPack);
+
+      const state = await metadata.getVersionCheckState("asset_pack_1");
+
+      expect(state).toEqual({
+        version: "",
+        availableVersion: "",
+        hasCompletedDownload: true,
+        versionCheckedAt: "",
+        versionCheckAttemptedAt: "",
+        versionCheckStatus: "never",
+      });
+    });
   });
 });
 
@@ -1203,6 +1891,26 @@ describe("shouldAwaitEnsureDownloaded", () => {
   });
 });
 
+describe("shouldCheckForUpdates", () => {
+  it("defaults to true when check_for_updates is omitted", () => {
+    expect(shouldCheckForUpdates({ asset_pack: "asset_pack_1" })).toBeTrue();
+    expect(shouldCheckForUpdates()).toBeTrue();
+  });
+
+  it("parses authored boolean strings for check_for_updates", () => {
+    expect(shouldCheckForUpdates({ check_for_updates: false })).toBeFalse();
+    expect(shouldCheckForUpdates({ check_for_updates: "false" })).toBeFalse();
+    expect(shouldCheckForUpdates({ check_for_updates: true })).toBeTrue();
+    expect(shouldCheckForUpdates({ check_for_updates: "true" })).toBeTrue();
+  });
+
+  it("still checks when given an unparseable value", () => {
+    // Keeping downloaded packs current is the normal case, so anything short of an explicit `false`
+    // checks - a typo must not silently leave a deployment stuck on old content
+    expect(shouldCheckForUpdates({ check_for_updates: "yes please" })).toBeTrue();
+  });
+});
+
 describe("RemoteAssetActionFactory ensure_downloaded", () => {
   it("passes awaitCompletion false when await is false", async () => {
     const mockService = {
@@ -1223,6 +1931,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
       debugDownloadDelayMs: 0,
+      checkForUpdates: true,
     });
   });
 
@@ -1245,6 +1954,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
       debugDownloadDelayMs: 0,
+      checkForUpdates: true,
     });
   });
 
@@ -1268,6 +1978,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
       debugDownloadDelayMs: 3000,
+      checkForUpdates: true,
     });
   });
 });

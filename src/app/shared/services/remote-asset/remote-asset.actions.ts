@@ -43,6 +43,7 @@ export class RemoteAssetActionFactory {
         await this.service.ensureAssetPacksDownloaded(assetPackList, {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          checkForUpdates: shouldCheckForUpdates(params as IAssetPackEnsureDownloadedParams),
         });
       },
       cancel_download: async () => {
@@ -105,6 +106,19 @@ export function shouldAwaitEnsureDownloaded(params?: IAssetPackEnsureDownloadedP
     return true;
   }
   const value = booleanStringToBoolean(params.await);
+  return value !== false;
+}
+
+/**
+ * Read the `check_for_updates` param. Defaults to true - keeping downloaded packs up to date is the
+ * normal case, and opting out is the exception. Only an explicit `false` disables it, so an
+ * unparseable value still checks rather than silently leaving a deployment stuck on old content.
+ */
+export function shouldCheckForUpdates(params?: IAssetPackEnsureDownloadedParams) {
+  if (params?.check_for_updates === undefined) {
+    return true;
+  }
+  const value = booleanStringToBoolean(params.check_for_updates);
   return value !== false;
 }
 
