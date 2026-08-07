@@ -285,6 +285,51 @@ describe("RemoteAssetsService", () => {
     expect(deleteSavedFolderSpy).toHaveBeenCalledWith("remote_assets");
   });
 
+  it("waits for a cancelled download to finish writing before deleting storage", async () => {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    // Aborting does not interrupt a `saveFile` already underway, so reset has to wait for the
+    // attempt to settle - otherwise a straggling write re-creates files just after the delete
+    let finishDownload!: () => void;
+    const downloadWriting = new Promise<void>((resolve) => (finishDownload = resolve));
+    let downloadFinished = false;
+    let deletedWhileStillWriting = false;
+    spyOn<any>(service, "runAssetPackDownload").and.returnValue(
+      downloadWriting.then(() => {
+        downloadFinished = true;
+        return true;
+      })
+    );
+    spyOn(service["fileManagerService"], "deleteSavedFolder").and.callFake(async () => {
+      deletedWhileStillWriting = !downloadFinished;
+      return true;
+    });
+    /** Run every pending continuation; only microtasks are involved, so this settles the chain */
+    const flush = async () => {
+      for (let i = 0; i < 100; i++) await Promise.resolve();
+    };
+
+    await service.downloadAssetPackByName("asset_pack_1", { awaitCompletion: false });
+    const resetComplete = service.reset();
+    // Give reset every chance to run ahead of the still-writing download before releasing it
+    await flush();
+    finishDownload();
+    await resetComplete;
+
+    expect(deletedWhileStillWriting).toBeFalse();
+  });
+
+  it("leaves the data lists alone when deleting files fails", async () => {
+    spyOn(console, "error");
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn(service["fileManagerService"], "deleteSavedFolder").and.rejectWith(new Error("EACCES"));
+
+    const success = await service.reset();
+
+    // Clearing them anyway would claim nothing is downloaded while the storage stayed occupied
+    expect(success).toBeFalse();
+    expect(mockDynamicDataService.resetFlow).not.toHaveBeenCalled();
+  });
+
   it("does not attempt to delete files when resetting on web", async () => {
     spyOn(Capacitor, "isNativePlatform").and.returnValue(false);
     const deleteSavedFolderSpy = spyOn(service["fileManagerService"], "deleteSavedFolder");

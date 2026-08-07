@@ -1035,15 +1035,31 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /**
    * Reset every asset pack to its state before any remote assets were downloaded: cancel active
    * downloads, delete downloaded files from the device, and clear both data lists.
+   *
+   * All or nothing: if the files cannot be deleted the data lists are left alone, so the app keeps
+   * describing what is actually on disk and the reset can simply be retried. Clearing them anyway
+   * would leave the app believing nothing is downloaded while the storage stayed occupied.
+   * @returns true if the reset completed, false if deleting the files failed
    * */
   public async reset() {
-    // Cancel first so no in-flight write can land in a folder we are about to delete.
+    // Capture the in-flight attempts before cancelling, which removes them from the map. Aborting
+    // does not interrupt a `saveFile` already underway, so without waiting for them to settle a
+    // straggling write could re-create files under the folder we are about to delete.
+    const cancelledDownloads = [...this.activeAssetPackDownloads.values()];
     await this.cancelActiveAssetPackDownloads();
-    await this.deleteAssetPackFiles();
+    await this.waitForActiveAssetPackDownloads(cancelledDownloads);
+
+    try {
+      await this.deleteAssetPackFiles();
+    } catch (error) {
+      console.error("[REMOTE ASSETS] Reset aborted: failed to delete downloaded files", error);
+      return false;
+    }
     await Promise.all([
       this.dynamicDataService.resetFlow("asset_pack", ASSET_CONTENTS_DATA_LIST),
       this.remoteAssetMetadataService.resetAssetPacks(),
     ]);
+    return true;
   }
 
   /**
@@ -1052,29 +1068,31 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    *
    * Always targets the `remote_assets` folder, never the deployment folder, which is shared with
    * other features (the cached auth profile picture, for one).
+   *
+   * Having nothing to delete is a success; a real filesystem failure throws, so callers can avoid
+   * reporting a reset that did not reclaim anything.
+   * @returns true if files were deleted, false if there were none to delete
    */
   private async deleteAssetPackFiles() {
     if (!Capacitor.isNativePlatform()) return false;
-    try {
-      const deleted = await this.fileManagerService.deleteSavedFolder(REMOTE_ASSET_STORAGE_FOLDER);
-      console.log(
-        deleted
-          ? "[REMOTE ASSETS] Deleted all downloaded asset pack files"
-          : "[REMOTE ASSETS] No downloaded asset pack files to delete"
-      );
-      return deleted;
-    } catch (error) {
-      console.error("[REMOTE ASSETS] Failed to delete downloaded asset pack files", error);
-      return false;
-    }
+    const deleted = await this.fileManagerService.deleteSavedFolder(REMOTE_ASSET_STORAGE_FOLDER);
+    console.log(
+      deleted
+        ? "[REMOTE ASSETS] Deleted all downloaded asset pack files"
+        : "[REMOTE ASSETS] No downloaded asset pack files to delete"
+    );
+    return deleted;
   }
 
   /**
-   * Resolve once every download attempt active at the time of the call has settled. Rejections are
-   * absorbed: callers wait for the slot to free up, they do not inherit the other pack's outcome.
+   * Resolve once every given download attempt has settled, defaulting to those active right now.
+   * Callers that first cancel must capture the records themselves, since cancelling removes them
+   * from the map. Rejections are absorbed: callers wait for the attempts to finish, they do not
+   * inherit their outcome.
    */
-  private async waitForActiveAssetPackDownloads() {
-    const activeDownloads = [...this.activeAssetPackDownloads.values()];
+  private async waitForActiveAssetPackDownloads(
+    activeDownloads = [...this.activeAssetPackDownloads.values()]
+  ) {
     if (!activeDownloads.length) return;
     await Promise.allSettled(activeDownloads.map(({ completion }) => completion));
   }
