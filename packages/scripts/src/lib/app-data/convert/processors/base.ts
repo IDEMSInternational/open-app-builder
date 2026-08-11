@@ -2,7 +2,7 @@ import { TimeLike } from "fs-extra";
 import logUpdate from "log-update";
 import PQueue from "p-queue";
 import { Logger } from "winston";
-import { IContentsEntry, createChildFileLogger } from "../utils";
+import { IContentsEntry, createChildLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
 import chalk from "chalk";
 import { MockJsonFileCache } from "../cacheStrategy/jsonFile.mock";
@@ -23,7 +23,7 @@ class BaseProcessor<InputType = any, OutputType = any> {
    * @param context.namespace - Name used as prefix for cache and logging
    */
   constructor(private context: { namespace: string; cache?: JsonFileCache }) {
-    this.logger = createChildFileLogger({ source: context.namespace });
+    this.logger = createChildLogger({ source: context.namespace });
     this.cache = context.cache || new MockJsonFileCache();
   }
 
@@ -44,18 +44,25 @@ class BaseProcessor<InputType = any, OutputType = any> {
     this.addInputProcessesToQueue(inputs);
     await this.queue.onIdle();
     logUpdate.done();
-    return this.postProcess(this.outputs);
+    const postProcessed = await this.postProcess(this.outputs);
+    // ensure queued postProcess complete
+    await this.queue.onIdle();
+    return postProcessed;
   }
 
   /** Optional post-processing of combined outputs */
-  public postProcess(outputs: OutputType[]): any {
+  public async postProcess(outputs: OutputType[]): Promise<any> {
     return outputs;
   }
 
-  /** Override method to specify how to process a particular input */
-  public processInput(input: InputType): OutputType | Promise<OutputType> {
-    console.log("No process input method defined");
-    return input as any;
+  /**
+   * Override method to specify how to process a particular input
+   * Errors are tracked to determine whether response is cacheable or not
+   **/
+  public async processInput(
+    input: InputType
+  ): Promise<{ data: OutputType; errors?: { message: string; [key: string]: any }[] }> {
+    return { data: null, errors: [{ message: "No process input method defined", input }] };
   }
 
   /** Callback made after input either retrieved from cache or processed */
@@ -135,12 +142,22 @@ class BaseProcessor<InputType = any, OutputType = any> {
         this.cache.remove(cacheEntryName);
       }
     }
-    // handle with processing
-    const output = await this.processInput(input);
-    // update cache
-    const cacheStats = this.generateCacheEntryStats();
-    this.cache.add(output, cacheEntryName, cacheStats);
-    return { value: output, source: "processor" };
+    // process without cache
+    const { data, errors } = await this.processInput(input);
+
+    // Log any errors. Cache if processed successfully
+    if (errors) {
+      for (const { message, ...details } of errors) {
+        this.logger.error(message, details);
+      }
+    } else {
+      if (data) {
+        const cacheStats = this.generateCacheEntryStats();
+        this.cache.add(data, cacheEntryName, cacheStats);
+      }
+    }
+
+    return { value: data, source: "processor" };
   }
 }
 

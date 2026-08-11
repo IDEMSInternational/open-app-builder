@@ -65,18 +65,13 @@ describe("FlowParser Processor", () => {
       rows: null,
     };
     await processor.process([brokenFlow]);
-    const errorLogs = getLogs("error").filter(({ message }) => message === "Template parse error");
-    expect(errorLogs).toEqual([
-      {
-        source: "FlowParserProcessor",
-        message: "Template parse error",
-        details: {
-          error: "Cannot read properties of null (reading 'length')",
-          flow: brokenFlow,
-        },
-        level: "error",
-      },
-    ]);
+    const errorLogs = getLogs("error").filter((e) => e.message?.startsWith("Template parse error"));
+    expect(errorLogs.length).toEqual(1);
+    const [{ message, details }] = errorLogs;
+    expect(message).toEqual(
+      "Template parse error: Cannot read properties of null (reading 'length')"
+    );
+    expect(details.flow.flow_name).toEqual("test_broken_flow");
   });
   it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);
