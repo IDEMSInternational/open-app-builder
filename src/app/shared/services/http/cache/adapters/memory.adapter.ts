@@ -15,10 +15,18 @@ export class HttpCacheAdapterMemory implements IHttpCacheAdapter {
     return this.cache.get(key);
   }
 
-  public async getUrl(key: string): Promise<string | undefined> {
+  public async getUrl(key: string) {
     const file = await this.get(key);
     if (!file) return undefined;
-    return URL.createObjectURL(file);
+
+    const src = URL.createObjectURL(file);
+    return { src, revoke: () => URL.revokeObjectURL(src) };
+  }
+
+  public async setStream(key: string, readable: ReadableStream<Uint8Array>): Promise<true> {
+    const blob = await new Response(readable).blob();
+    this.cache.set(key, blob);
+    return true;
   }
 
   public async set(key: string, value: Blob): Promise<true> {
