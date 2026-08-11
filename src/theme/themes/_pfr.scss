@@ -10,8 +10,7 @@
     $page-background: white,
     $color-green: hsl(139 59% 38%),
     //#289b4c
-    $variable-overrides:
-      (
+    $variable-overrides: (
         // BORDERS
         // border-color-default: var(--ion-color-primary),
         border-width-default: 2px,
@@ -46,6 +45,7 @@
         combo-box-background-with-value: var(--ion-color-primary-100),
         // slider-ui-color: #096e90,
         accordion-background-highlight: var(--ion-color-primary-300),
+        accordion-border-color: var(--ion-color-primary),
         tour-next-button-background: var(--ion-color-secondary),
         radio-group-background-selected: var(--ion-color-primary-300),
         radio-group-background-selected-secondary: var(--ion-color-secondary-300),
@@ -55,7 +55,7 @@
         combo-box-font-size-standard: 20px,
         // task-progress-bar-color: var(--ion-color-primary),
         // checkbox-background-color: white,
-        // progress-path-line-background, var(--ion-color-gray-100),
+         // progress-path-line-background, var(--ion-color-gray-100),
       )
   );
 }
