@@ -5,6 +5,7 @@ export interface IAction extends IRow {
   init(): void;
   name(): string;
   execute(params?: IActionParameter[]): Promise<void>;
+  condition(): boolean;
 }
 
 export interface IActionParameter {
@@ -17,7 +18,8 @@ export function isAction(obj: any): obj is IAction {
     obj &&
     typeof obj.name === "function" &&
     typeof obj.execute === "function" &&
-    typeof obj.init === "function"
+    typeof obj.init === "function" &&
+    typeof obj.condition === "function"
   );
 }
 
