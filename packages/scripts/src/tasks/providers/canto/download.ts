@@ -38,8 +38,47 @@ interface ICantoSyncActions {
 }
 
 const DOWNLOAD_CONCURRENCY = 5;
+/** 1 initial attempt + 3 retries */
+const DOWNLOAD_MAX_ATTEMPTS = 4;
+const DOWNLOAD_RETRY_BASE_DELAY_MS = 500;
 const FOLDER_LIST_PAGE_SIZE = 1000;
 const MANIFEST_FILENAME = "manifest.json";
+
+const RETRYABLE_NETWORK_CODES = new Set([
+  "ECONNRESET",
+  "ETIMEDOUT",
+  "ECONNREFUSED",
+  "EPIPE",
+  "ENOTFOUND",
+  "EAI_AGAIN",
+]);
+const RETRYABLE_HTTP_STATUSES = new Set([429, 500, 502, 503, 504]);
+
+const isRetryableDownloadError = (error: unknown): boolean => {
+  if (!error || typeof error !== "object") {
+    return false;
+  }
+  const err = error as { code?: string; errno?: string; status?: number };
+  if (typeof err.status === "number") {
+    return RETRYABLE_HTTP_STATUSES.has(err.status);
+  }
+  const code = err.code || err.errno;
+  return typeof code === "string" && RETRYABLE_NETWORK_CODES.has(code);
+};
+
+const getRetryDelayMs = (failedAttempt: number): number => {
+  const base = DOWNLOAD_RETRY_BASE_DELAY_MS * Math.pow(2, failedAttempt - 1);
+  const jitter = Math.random() * DOWNLOAD_RETRY_BASE_DELAY_MS * 0.25;
+  return base + jitter;
+};
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+const createHttpDownloadError = (status: number, statusText: string) => {
+  const error = new Error(`${status} ${statusText}`) as Error & { status: number };
+  error.status = status;
+  return error;
+};
 
 const listFiles = async () => {
   const { sourceFolders } = getCantoConfig();
@@ -283,15 +322,48 @@ const downloadFile = async (
 ) => {
   const url = fileEntry.url.directUrlOriginal;
   const filePath = getFilePath(fileEntry, downloadedFolder.folderConfig.id);
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      `Canto file download failed for "${fileEntry.name}": ${response.status} ${response.statusText}`
-    );
-  }
-  const buffer = await response.buffer();
   const fullPath = path.join(downloadedFolder.path, filePath);
-  await fs.outputFile(fullPath, buffer);
+  let lastError: unknown;
+  let attemptsMade = 0;
+
+  for (let attempt = 1; attempt <= DOWNLOAD_MAX_ATTEMPTS; attempt++) {
+    attemptsMade = attempt;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw createHttpDownloadError(response.status, response.statusText);
+      }
+      const buffer = await response.buffer();
+      await fs.outputFile(fullPath, buffer);
+      return;
+    } catch (error) {
+      lastError = error;
+      const canRetry = isRetryableDownloadError(error) && attempt < DOWNLOAD_MAX_ATTEMPTS;
+      if (!canRetry) {
+        break;
+      }
+      const delayMs = Math.round(getRetryDelayMs(attempt));
+      console.warn(
+        `Retrying Canto download for "${fileEntry.name}" (attempt ${attempt}/${DOWNLOAD_MAX_ATTEMPTS} failed: ${
+          error instanceof Error ? error.message : String(error)
+        }). Waiting ${delayMs}ms...`
+      );
+      await sleep(delayMs);
+    }
+  }
+
+  const reason = lastError instanceof Error ? lastError.message : String(lastError);
+  throw new Error(
+    `Canto file download failed for "${fileEntry.name}" after ${attemptsMade} attempt(s): ${reason}`,
+    { cause: lastError }
+  );
 };
 
-export { createManifests, downloadFiles, getDownloadedFolders, listFiles };
+export {
+  createManifests,
+  downloadFile,
+  downloadFiles,
+  getDownloadedFolders,
+  isRetryableDownloadError,
+  listFiles,
+};
