@@ -9,5 +9,6 @@
   [attr.data-child-sizing]="params.childSizing.value()"
   [attr.data-test]="name()"
   [style.flex-wrap]="wrap()"
+  (emittedValue)="onEmittedValue($event)"
   class="display-group"
 ></oab-row-list>
