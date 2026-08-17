@@ -16,15 +16,20 @@ export interface ICantoRemoteAssetMatchContext {
   folderId: string;
 }
 
+/** All values assigned to a custom field, as Canto returns multi-select fields as arrays */
+export function getCantoCustomFieldValues(file: CantoManifestEntry, fieldName: string): string[] {
+  const value = file.additional?.[fieldName];
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+  return value ? [value] : [];
+}
+
 export function getCantoCustomFieldValue(
   file: CantoManifestEntry,
   fieldName: string
 ): string | undefined {
-  const value = file.additional?.[fieldName];
-  if (Array.isArray(value)) {
-    return value[0] ?? undefined;
-  }
-  return value ?? undefined;
+  return getCantoCustomFieldValues(file, fieldName)[0];
 }
 
 function matchesCustomFieldCondition(
