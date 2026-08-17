@@ -11,6 +11,7 @@ $pop-up-padding: var(--pop-up-padding, 20px);
 ion-modal {
   &::part(content) {
     overflow: visible;
+    margin: 20px;
   }
 
   .popup-container {
@@ -64,6 +65,10 @@ ion-modal.dialog {
 }
 
 ion-modal.fullscreen {
+  &::part(content) {
+    margin: 0;
+  }
+
   ion-toolbar {
     height: var(--header-height);
   }
