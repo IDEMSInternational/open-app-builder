@@ -69,6 +69,8 @@ export function matchesRemoteAssetCondition(
       return condition.conditions.some((nestedCondition) =>
         matchesRemoteAssetCondition(file, nestedCondition, _context)
       );
+    case "field_empty":
+      return getCantoCustomFieldValues(file, condition.field).length === 0;
     default:
       return assertUnreachableCondition(condition);
   }

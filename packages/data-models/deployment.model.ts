@@ -158,11 +158,18 @@ export interface ICantoRemoteAssetPackOrCondition {
   conditions: ICantoRemoteAssetPackCondition[];
 }
 
+/** Match when a Canto custom field has no value set */
+export interface ICantoRemoteAssetPackFieldEmptyCondition {
+  type: "field_empty";
+  /** Canto custom field name, e.g. "Child Age Category" */
+  field: string;
+}
+
 /**
  * Condition used to select Canto assets for a remote asset pack.
  *
- * Currently only `custom_field` leaf conditions are implemented in the sync pipeline.
- * `and` / `or` composition is supported and can combine any condition types as they are added.
+ * Supported leaf types: `custom_field`, `field_empty`. `and` / `or` composition
+ * is supported and can combine any condition types as they are added.
  *
  * To add a new leaf type (e.g. subfolder, scheme, file extension):
  * 1. Add an interface here with a `type` discriminator
@@ -172,10 +179,13 @@ export interface ICantoRemoteAssetPackOrCondition {
  * @example Custom field only
  * `{ type: "custom_field", field: "Caregiver Gender", value: "Female" }`
  *
+ * @example Field has no value set
+ * `{ type: "field_empty", field: "Child Age Category" }`
+ *
  * @example Combine conditions (all must match)
  * `{ type: "and", conditions: [
- *   { type: "custom_field", field: "Caregiver Gender", value: "Female" },
- *   // future: { type: "scheme", scheme: "audio" },
+ *   { type: "custom_field", field: "Language", value: "English" },
+ *   { type: "field_empty", field: "Child Age Category" },
  * ]}`
  *
  * @example Future leaf types (not yet implemented)
@@ -186,7 +196,8 @@ export interface ICantoRemoteAssetPackOrCondition {
 export type ICantoRemoteAssetPackCondition =
   | ICantoRemoteAssetPackCustomFieldCondition
   | ICantoRemoteAssetPackAndCondition
-  | ICantoRemoteAssetPackOrCondition;
+  | ICantoRemoteAssetPackOrCondition
+  | ICantoRemoteAssetPackFieldEmptyCondition;
 
 /**
  * Remote asset pack defined within a Canto source folder.
