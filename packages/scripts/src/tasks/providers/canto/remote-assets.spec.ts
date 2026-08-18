@@ -1,6 +1,6 @@
 import type { ICantoRemoteAssetPack } from "data-models";
 import {
-  findMatchingRemotePack,
+  findMatchingRemotePacks,
   getCantoCustomFieldValue,
   matchesRemoteAssetCondition,
 } from "./remote-assets";
@@ -123,10 +123,10 @@ describe("Canto remote asset matching", () => {
     ).toEqual(true);
   });
 
-  it("returns the first matching remote asset pack", () => {
+  it("returns every remote asset pack the file matches", () => {
     const file = createFile({
       name: "test.jpg",
-      additional: { "Caregiver Gender": "Female" },
+      additional: { "Caregiver Gender": "Female", Age: "Adult" },
     });
     const remotePacks: ICantoRemoteAssetPack[] = [
       {
@@ -134,14 +134,20 @@ describe("Canto remote asset matching", () => {
         condition: { type: "custom_field", field: "Caregiver Gender", value: "Female" },
       },
       {
-        name: "Other Pack",
-        condition: { type: "custom_field", field: "Caregiver Gender", value: "Female" },
+        name: "Adult Pack",
+        condition: { type: "custom_field", field: "Age", value: "Adult" },
+      },
+      {
+        name: "Child Pack",
+        condition: { type: "custom_field", field: "Age", value: "Child" },
       },
     ];
-    expect(findMatchingRemotePack(file, remotePacks, matchContext)?.name).toEqual("Female Pack");
+    expect(
+      findMatchingRemotePacks(file, remotePacks, matchContext).map((pack) => pack.name)
+    ).toEqual(["Female Pack", "Adult Pack"]);
   });
 
-  it("returns undefined when no remote asset pack matches", () => {
+  it("returns no packs when none match", () => {
     const file = createFile({
       name: "test.jpg",
       additional: { "Caregiver Gender": "Male" },
@@ -152,6 +158,6 @@ describe("Canto remote asset matching", () => {
         condition: { type: "custom_field", field: "Caregiver Gender", value: "Female" },
       },
     ];
-    expect(findMatchingRemotePack(file, remotePacks, matchContext)).toBeUndefined();
+    expect(findMatchingRemotePacks(file, remotePacks, matchContext)).toEqual([]);
   });
 });

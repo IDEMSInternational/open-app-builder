@@ -202,6 +202,7 @@ export type ICantoRemoteAssetPackCondition =
 /**
  * Remote asset pack defined within a Canto source folder.
  * Matching assets are written to `app_data/remote_assets/{name}` instead of core assets.
+ * Packs are not exclusive: an asset is copied into every pack whose condition it matches.
  */
 export interface ICantoRemoteAssetPack {
   /** Asset pack name used for `app_data/remote_assets/{name}` and the pack manifest */
