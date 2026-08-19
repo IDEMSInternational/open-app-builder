@@ -6,7 +6,6 @@
  * corresponding type in `data-models/deployment.model.ts`).
  */
 import type { ICantoRemoteAssetPack, ICantoRemoteAssetPackCondition } from "data-models";
-import { logWarning } from "../../../utils";
 import type { CantoManifest } from "./types";
 
 type CantoManifestEntry = CantoManifest[0];
@@ -69,24 +68,21 @@ export function matchesRemoteAssetCondition(
       return condition.conditions.some((nestedCondition) =>
         matchesRemoteAssetCondition(file, nestedCondition, _context)
       );
+    case "field_empty":
+      return getCantoCustomFieldValues(file, condition.field).length === 0;
     default:
       return assertUnreachableCondition(condition);
   }
 }
 
-export function findMatchingRemotePack(
+/**
+ * All remote asset packs whose condition the file matches. An asset is included in every pack it
+ * matches, so the same file can be copied into any number of packs.
+ */
+export function findMatchingRemotePacks(
   file: CantoManifestEntry,
   remotePacks: ICantoRemoteAssetPack[],
   context: ICantoRemoteAssetMatchContext
-): ICantoRemoteAssetPack | undefined {
-  const matches = remotePacks.filter((pack) =>
-    matchesRemoteAssetCondition(file, pack.condition, context)
-  );
-  if (matches.length > 1) {
-    logWarning({
-      msg1: `Canto asset "${file.name}" matches multiple remote asset packs`,
-      msg2: `Using "${matches[0].name}". Matched: ${matches.map((pack) => pack.name).join(", ")}`,
-    });
-  }
-  return matches[0];
+): ICantoRemoteAssetPack[] {
+  return remotePacks.filter((pack) => matchesRemoteAssetCondition(file, pack.condition, context));
 }

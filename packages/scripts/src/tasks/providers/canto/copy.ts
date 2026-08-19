@@ -5,7 +5,7 @@ import path from "path";
 import type { IDownloadedAssetSource } from "../../../lib/app-data";
 import type { CantoDownloadedFolder, CantoManifest } from "./types";
 import { getManifestFileMap, getOutputFolder } from "./utils";
-import { findMatchingRemotePack } from "./remote-assets";
+import { findMatchingRemotePacks } from "./remote-assets";
 
 // For each folder in the output, read the manifest file and use it to locate and copy to new folder structure
 const copyFiles = async (folders: CantoDownloadedFolder[]): Promise<IDownloadedAssetSource[]> => {
@@ -48,21 +48,26 @@ const copyFilesFromFolder = async (
   for (const [relativePath, file] of getManifestFileMap(manifest, folderConfig.id, {
     logWarnings: true,
   })) {
-    const matchingPack = findMatchingRemotePack(file, remotePacks, { folderId: folderConfig.id });
-    const outputFolder = matchingPack
-      ? remoteOutputFolders.get(matchingPack.name)!
-      : coreOutputFolder;
-    const destPath = path.join(outputFolder, relativePath);
+    const matchingPacks = findMatchingRemotePacks(file, remotePacks, { folderId: folderConfig.id });
     const srcPath = path.join(sourceFolder.path, relativePath);
     if (!(await fs.pathExists(srcPath))) {
       missingFiles.push(relativePath);
       continue;
     }
-    await fs.copy(srcPath, destPath);
+    // A file is copied into every remote pack it matches, and only falls back to core assets
+    // when it matches none
+    const outputFolders =
+      matchingPacks.length > 0
+        ? matchingPacks.map((pack) => remoteOutputFolders.get(pack.name)!)
+        : [coreOutputFolder];
+    for (const outputFolder of outputFolders) {
+      await fs.copy(srcPath, path.join(outputFolder, relativePath));
+    }
 
-    if (matchingPack) {
-      remoteCopiedFiles.set(matchingPack.name, remoteCopiedFiles.get(matchingPack.name)! + 1);
-    } else {
+    for (const pack of matchingPacks) {
+      remoteCopiedFiles.set(pack.name, remoteCopiedFiles.get(pack.name)! + 1);
+    }
+    if (matchingPacks.length === 0) {
       coreCopiedFiles++;
     }
   }
