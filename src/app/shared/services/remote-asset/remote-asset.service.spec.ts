@@ -16,6 +16,7 @@ import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
 import {
   resolveDebugDownloadDelayMs,
+  resolveDownloadAssetPackName,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
   RemoteAssetActionFactory,
@@ -1290,6 +1291,64 @@ describe("RemoteAssetActionFactory download", () => {
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 3000,
     });
+  });
+
+  it("takes the asset pack name from an asset_pack param when given no arg", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["download"],
+      params: { asset_pack: "asset_pack_1" },
+    });
+
+    expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
+      debugDownloadDelayMs: 0,
+    });
+  });
+
+  it("does not download when no asset pack name is provided", async () => {
+    spyOn(console, "error");
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({ trigger: "click", action_id: "asset_pack", args: ["download"], params: {} });
+
+    expect(mockService.downloadAssetPackByName).not.toHaveBeenCalled();
+  });
+});
+
+describe("resolveDownloadAssetPackName", () => {
+  it("reads the name from the action arg", () => {
+    expect(resolveDownloadAssetPackName(["asset_pack_1"])).toEqual("asset_pack_1");
+  });
+
+  it("falls back to the asset_pack param", () => {
+    expect(resolveDownloadAssetPackName([], { asset_pack: "asset_pack_1" })).toEqual(
+      "asset_pack_1"
+    );
+    expect(resolveDownloadAssetPackName(undefined, { asset_pack: " asset_pack_1 " })).toEqual(
+      "asset_pack_1"
+    );
+  });
+
+  it("prefers the action arg when both are provided", () => {
+    expect(
+      resolveDownloadAssetPackName(["asset_pack_arg"], { asset_pack: "asset_pack_param" })
+    ).toEqual("asset_pack_arg");
+  });
+
+  it("returns null when no name is provided", () => {
+    expect(resolveDownloadAssetPackName()).toBeNull();
+    expect(resolveDownloadAssetPackName([""], { asset_pack: "  " })).toBeNull();
   });
 });
 

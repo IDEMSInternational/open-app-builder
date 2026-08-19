@@ -112,7 +112,7 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 
 | Action | Behaviour |
 | --- | --- |
-| `download` | Download a single named pack. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
+| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
 | `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not |
 | `cancel_download` | Abort all active downloads and mark them `cancelled` |
 | `reset` | Return **every** pack to its pre-download state: cancel active downloads (waiting for any in-flight write to finish), delete all downloaded files, and clear both data lists. All or nothing — if the files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk and the reset can be retried |
