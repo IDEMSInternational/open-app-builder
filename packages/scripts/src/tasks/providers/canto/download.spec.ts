@@ -1,19 +1,34 @@
 jest.mock("../../../commands/workflow/run", () => ({
-  WorkflowRunner: { config: {} },
+  WorkflowRunner: {
+    config: {
+      app_config: { APP_LANGUAGES: { default: "za_en" } },
+      canto: { languageMappings: { English: "za_en" } },
+    },
+  },
 }));
 
 jest.mock("node-fetch");
 jest.mock("fs-extra", () => ({
   outputFile: jest.fn().mockResolvedValue(undefined),
 }));
+jest.mock("../../../utils", () => ({
+  cleanupEmptyFolders: jest.fn(),
+  generateFolderFlatMap: jest.fn(() => ({})),
+  logWarning: jest.fn(),
+}));
 
 import fetch from "node-fetch";
 import * as fs from "fs-extra";
-import { downloadFile, isRetryableDownloadError } from "./download";
+import path from "path";
+import { generateFolderFlatMap } from "../../../utils";
+import { downloadFile, isRetryableDownloadError, prepareSyncActions } from "./download";
 import type { CantoDownloadedFolder, CantoManifestEntry } from "./types";
 
 const mockFetch = fetch as jest.MockedFunction<typeof fetch>;
 const mockOutputFile = fs.outputFile as jest.MockedFunction<typeof fs.outputFile>;
+const mockFolderFlatMap = generateFolderFlatMap as jest.MockedFunction<
+  typeof generateFolderFlatMap
+>;
 
 const createFile = (
   overrides: Partial<CantoManifestEntry> & Pick<CantoManifestEntry, "name"> = { name: "asset.svg" }
@@ -24,9 +39,9 @@ const createFile = (
   relatedAlbums: [
     {
       id: "album-id",
-      idPath: "root/source-folder-id/theme_default",
-      namePath: "Root/Source Folder/theme_default",
-      name: "theme_default",
+      idPath: "root/source-folder-id/images",
+      namePath: "Root/Source Folder/images",
+      name: "images",
       scheme: "album",
     },
   ],
@@ -128,6 +143,20 @@ describe("Canto download retries", () => {
       );
     });
 
+    it("downloads language variants of an asset to separate paths", async () => {
+      mockFetch.mockResolvedValue(createOkResponse());
+
+      await downloadFile(createFile({ name: "asset.svg" }), downloadedFolder);
+      await downloadFile(
+        createFile({ name: "asset.svg", additional: { Language: ["isiXhosa"] } }),
+        downloadedFolder
+      );
+
+      const [[defaultPath], [overridePath]] = mockOutputFile.mock.calls;
+      expect(defaultPath).toEqual(path.join("/tmp/canto-output", "images", "asset.svg"));
+      expect(overridePath).toEqual(path.join("/tmp/canto-output", "za_xh", "images", "asset.svg"));
+    });
+
     it("does not retry a non-retryable 403", async () => {
       mockFetch.mockResolvedValueOnce(createHttpResponse(403, "Forbidden"));
 
@@ -148,5 +177,76 @@ describe("Canto download retries", () => {
       expect(mockFetch).toHaveBeenCalledTimes(4);
       expect(mockOutputFile).not.toHaveBeenCalled();
     });
+  });
+});
+
+/**
+ * Sync decisions must be keyed by the same paths that files are written to, as otherwise language
+ * variants of an asset are compared against (and overwrite) a single local file
+ */
+describe("Canto sync actions", () => {
+  const defaultFile = createFile({
+    id: "id-default",
+    name: "asset.svg",
+    md5: "md5-default",
+    additional: { Language: ["English"] },
+  });
+  const overrideFile = createFile({
+    id: "id-override",
+    name: "asset.svg",
+    md5: "md5-override",
+    additional: { Language: ["isiXhosa"] },
+  });
+
+  const createLocalFile = (relativePath: string, md5Checksum: string) =>
+    ({ relativePath, md5Checksum, size_kb: 1, modifiedTime: "" }) as any;
+
+  beforeEach(() => jest.clearAllMocks());
+
+  it("compares each language variant against its own local file", () => {
+    mockFolderFlatMap.mockReturnValue({
+      "images/asset.svg": createLocalFile("images/asset.svg", "md5-default"),
+    });
+
+    const actions = prepareSyncActions(
+      [defaultFile, overrideFile],
+      "/tmp/canto-output",
+      "source-folder-id"
+    );
+
+    expect(actions.same).toEqual([defaultFile]);
+    expect(actions.new).toEqual([overrideFile]);
+    expect(actions.updated).toEqual([]);
+    expect(actions.deleted).toEqual([]);
+  });
+
+  it("re-downloads a variant whose local file holds the wrong content", () => {
+    // Reproduces the state left by earlier syncs, where variants shared one local file
+    mockFolderFlatMap.mockReturnValue({
+      "images/asset.svg": createLocalFile("images/asset.svg", "md5-override"),
+    });
+
+    const actions = prepareSyncActions(
+      [defaultFile, overrideFile],
+      "/tmp/canto-output",
+      "source-folder-id"
+    );
+
+    expect(actions.updated).toEqual([defaultFile]);
+    expect(actions.new).toEqual([overrideFile]);
+    expect(actions.same).toEqual([]);
+    expect(actions.deleted).toEqual([]);
+  });
+
+  it("deletes local files no longer listed in the manifest", () => {
+    mockFolderFlatMap.mockReturnValue({
+      "images/asset.svg": createLocalFile("images/asset.svg", "md5-default"),
+      "images/removed.svg": createLocalFile("images/removed.svg", "md5-removed"),
+    });
+
+    const actions = prepareSyncActions([defaultFile], "/tmp/canto-output", "source-folder-id");
+
+    expect(actions.deleted).toEqual([{ relativePath: "images/removed.svg" }]);
+    expect(actions.summary).toEqual({ new: 0, updated: 0, same: 1, deleted: 1 });
   });
 });
