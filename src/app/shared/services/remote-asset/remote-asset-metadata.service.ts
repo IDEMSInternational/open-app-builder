@@ -15,35 +15,77 @@ import type {
 export class RemoteAssetMetadataService {
   constructor(private dynamicDataService: DynamicDataService) {}
 
+  /** Tail of the chain that keeps status writes in the order they were issued */
+  private statusWriteQueue: Promise<unknown> = Promise.resolve();
+
   public createTimestamp() {
     return new Date().toISOString();
   }
 
-  public async setDownloadStatus(
+  /**
+   * Run status writes one at a time, in issue order. `dynamicDataService.upsert` awaits internally
+   * before it writes, so two concurrent status writes can otherwise be *applied* in the opposite
+   * order to the one they were issued in - and `cancel_download` runs immediately, mid-attempt, so
+   * that reordering is reachable: the cancelled attempt's `in_progress` write lands after the
+   * `cancelled` one and the pack looks resumable again on next launch.
+   * Serialising is also what makes the guards in `setDownloadStatus` meaningful, since they then run
+   * at write time rather than at issue time. Only db writes are queued, never a download, so a
+   * cancel still takes effect immediately - it aborts and deregisters its attempt synchronously,
+   * before any of this is awaited.
+   */
+  private queueStatusWrite<T>(write: () => Promise<T>) {
+    const result = this.statusWriteQueue.then(write, write);
+    // a rejected write must not wedge every write queued behind it
+    this.statusWriteQueue = result.catch(() => undefined);
+    return result;
+  }
+
+  /**
+   * @param options.signal abort signal of the download attempt this status belongs to, if any. An
+   * aborted attempt writes nothing - `cancel_download` runs immediately, so it can land at any point
+   * mid-attempt, and a write from the attempt it cancelled must not resurrect the pack.
+   */
+  public setDownloadStatus(
     assetPackName: string,
     downloadStatus: IAssetPackDownloadStatus,
     timestamps: IAssetPackDownloadStatusTimestamps = {},
-    assetCounts: IAssetPackAssetCounts = {}
+    assetCounts: IAssetPackAssetCounts = {},
+    options: { signal?: AbortSignal } = {}
   ) {
-    const existingAssetPack = await this.getAssetPack(assetPackName);
-    const downloadStatusUpdatedAt = this.createTimestamp();
-    const downloadCompletedAt =
-      downloadStatus === "completed"
-        ? timestamps.downloadCompletedAt || downloadStatusUpdatedAt
-        : "";
-    const dbAssetPack: IDBAssetPack = {
-      id: assetPackName,
-      name: assetPackName,
-      download_status: downloadStatus,
-      download_started_at: timestamps.downloadStartedAt || downloadStatusUpdatedAt,
-      download_completed_at: downloadCompletedAt,
-      download_status_updated_at: downloadStatusUpdatedAt,
-      assets_total_count:
-        assetCounts.assetsTotalCount ?? existingAssetPack?.assets_total_count ?? 0,
-      assets_downloaded_count:
-        assetCounts.assetsDownloadedCount ?? existingAssetPack?.assets_downloaded_count ?? 0,
-    };
-    return this.dynamicDataService.upsert("data_list", ASSET_PACKS_DATA_LIST, dbAssetPack);
+    return this.queueStatusWrite(async () => {
+      if (options.signal?.aborted) return;
+      const existingAssetPack = await this.getAssetPack(assetPackName);
+      if (options.signal?.aborted) return;
+      const downloadStatusUpdatedAt = this.createTimestamp();
+      const downloadStartedAt = timestamps.downloadStartedAt || downloadStatusUpdatedAt;
+      // `cancelled` is sticky against the attempt that was cancelled, whether or not that attempt
+      // passed us a signal. Only a *new* attempt clears it, identified by a later start timestamp,
+      // so an explicit re-trigger still works while a straggling write cannot undo the cancel.
+      if (
+        existingAssetPack?.download_status === "cancelled" &&
+        downloadStatus !== "cancelled" &&
+        downloadStartedAt <= existingAssetPack.download_started_at
+      ) {
+        return;
+      }
+      const downloadCompletedAt =
+        downloadStatus === "completed"
+          ? timestamps.downloadCompletedAt || downloadStatusUpdatedAt
+          : "";
+      const dbAssetPack: IDBAssetPack = {
+        id: assetPackName,
+        name: assetPackName,
+        download_status: downloadStatus,
+        download_started_at: downloadStartedAt,
+        download_completed_at: downloadCompletedAt,
+        download_status_updated_at: downloadStatusUpdatedAt,
+        assets_total_count:
+          assetCounts.assetsTotalCount ?? existingAssetPack?.assets_total_count ?? 0,
+        assets_downloaded_count:
+          assetCounts.assetsDownloadedCount ?? existingAssetPack?.assets_downloaded_count ?? 0,
+      };
+      return this.dynamicDataService.upsert("data_list", ASSET_PACKS_DATA_LIST, dbAssetPack);
+    });
   }
 
   public async setAssetCounts(assetPackName: string, assetCounts: IAssetPackAssetCounts) {
