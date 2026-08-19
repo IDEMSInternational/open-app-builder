@@ -1,7 +1,16 @@
 /** Name of the protected data list storing bundled and downloaded asset contents */
 export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
+
 /** Name of the protected data list to store asset pack metadata */
 export const ASSET_PACKS_DATA_LIST = "_asset_packs";
+
+/**
+ * Folder (within the deployment's local storage) that all downloaded asset pack files live under,
+ * shared across packs and keyed only by manifest-relative path. NB the deployment folder also holds
+ * non-asset files (e.g. the cached auth profile picture), so deletion must always target this
+ * subfolder rather than the deployment folder itself.
+ */
+export const REMOTE_ASSET_STORAGE_FOLDER = "remote_assets";
 
 /**
  * Represents an asset pack entry stored in the `_asset_packs` protected data list.
@@ -46,25 +55,47 @@ export interface IActiveAssetPackDownload {
   abortController: AbortController;
   downloadStartedAt: string;
   removeConnectionStatusListener: () => void;
+  /**
+   * Resolves with the download result. Set when the record is created so a concurrent request for
+   * the same pack can always join this in-flight attempt by awaiting it.
+   */
+  completion: Promise<boolean>;
 }
 
-export interface IAssetPackEnsureDownloadedParams {
-  /** Single asset pack name */
+/** Params accepted by every `asset_pack` action that starts a download */
+export interface IAssetPackDownloadParams {
+  /**
+   * Single asset pack name. For `download` this is an alternative to naming the pack as an action
+   * arg (`asset_pack: download: my_pack`), so both download actions can be authored the same way.
+   */
   asset_pack?: string;
+  /**
+   * Manual testing aid: artificially pause for this many ms before each asset file, to open a
+   * reliable window for interrupting a download (e.g. force-quitting the app mid-pack).
+   * Omit outside local testing - the delay applies to skipped files too, so it also masks the
+   * speed-up that resume is supposed to give.
+   */
+  debug_download_delay_ms?: number | string;
+}
+
+export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
   /** One or more asset pack names, as an array or JSON string array */
   asset_pack_list?: string | string[];
   /** When false, start downloads without blocking the action queue. Defaults to true. */
   await?: boolean | string;
 }
 
-export interface IEnsureAssetPacksDownloadedOptions {
+/** Options shared by the service methods that start a download */
+interface IAssetPackDownloadOptions {
   /** When false, return once a download is registered without waiting for completion. Defaults to true. */
   awaitCompletion?: boolean;
+  /** See `IAssetPackDownloadParams.debug_download_delay_ms`. Defaults to 0 (no delay). */
+  debugDownloadDelayMs?: number;
 }
 
-export interface IDownloadAssetPackByNameOptions {
-  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
-  awaitCompletion?: boolean;
+export type IEnsureAssetPacksDownloadedOptions = IAssetPackDownloadOptions;
+
+export interface IDownloadAssetPackByNameOptions extends IAssetPackDownloadOptions {
   /** Called synchronously once a background download is registered. Only used when awaitCompletion is false. */
   onDownloadStarted?: (completion: Promise<boolean>) => void;
 }

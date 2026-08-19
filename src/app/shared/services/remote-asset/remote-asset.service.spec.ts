@@ -1,4 +1,5 @@
 import { TestBed } from "@angular/core/testing";
+import { Capacitor } from "@capacitor/core";
 import { RemoteAssetService } from "./remote-asset.service";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
@@ -14,6 +15,8 @@ import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
 import {
+  resolveDebugDownloadDelayMs,
+  resolveDownloadAssetPackName,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
   RemoteAssetActionFactory,
@@ -88,6 +91,20 @@ const MOCK_ASSET_ENTRY_OVERRIDES_ONLY: IAssetEntry = {
   },
   overridesOnly: true,
 };
+
+/**
+ * The webview `src` that a file saved to local storage resolves to. A recorded `_assets_contents`
+ * filePath only looks like this once THIS app integrated the slot - manifest entries carry the
+ * pack-relative path instead - so tests use it to distinguish integrated slots from described ones.
+ */
+const localSrc = (targetPath: string) =>
+  `capacitor://localhost/_capacitor_file_/data/${targetPath}`;
+
+/**
+ * Local storage path a downloaded asset file is saved under. Deliberately not namespaced per pack,
+ * so a file fetched by one pack is found (and skipped) by the next pack that ships it.
+ */
+const packPath = (relativePath: string) => `remote_assets/${relativePath}`;
 
 const MOCK_ASSET_CONTENTS_PACK_ROWS: FlowTypes.Data_listRow<IAssetEntry>[] = [
   clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
@@ -256,6 +273,74 @@ describe("RemoteAssetsService", () => {
     ]);
   });
 
+  it("deletes every pack's downloaded files when resetting", async () => {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    const deleteSavedFolderSpy = spyOn(
+      service["fileManagerService"],
+      "deleteSavedFolder"
+    ).and.resolveTo(true);
+
+    await service.reset();
+
+    // The whole remote_assets folder, never the deployment folder (which also holds non-asset files)
+    expect(deleteSavedFolderSpy).toHaveBeenCalledWith("remote_assets");
+  });
+
+  it("waits for a cancelled download to finish writing before deleting storage", async () => {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    // Aborting does not interrupt a `saveFile` already underway, so reset has to wait for the
+    // attempt to settle - otherwise a straggling write re-creates files just after the delete
+    let finishDownload!: () => void;
+    const downloadWriting = new Promise<void>((resolve) => (finishDownload = resolve));
+    let downloadFinished = false;
+    let deletedWhileStillWriting = false;
+    spyOn<any>(service, "runAssetPackDownload").and.returnValue(
+      downloadWriting.then(() => {
+        downloadFinished = true;
+        return true;
+      })
+    );
+    spyOn(service["fileManagerService"], "deleteSavedFolder").and.callFake(async () => {
+      deletedWhileStillWriting = !downloadFinished;
+      return true;
+    });
+    /** Run every pending continuation; only microtasks are involved, so this settles the chain */
+    const flush = async () => {
+      for (let i = 0; i < 100; i++) await Promise.resolve();
+    };
+
+    await service.downloadAssetPackByName("asset_pack_1", { awaitCompletion: false });
+    const resetComplete = service.reset();
+    // Give reset every chance to run ahead of the still-writing download before releasing it
+    await flush();
+    finishDownload();
+    await resetComplete;
+
+    expect(deletedWhileStillWriting).toBeFalse();
+  });
+
+  it("leaves the data lists alone when deleting files fails", async () => {
+    spyOn(console, "error");
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn(service["fileManagerService"], "deleteSavedFolder").and.rejectWith(new Error("EACCES"));
+
+    const success = await service.reset();
+
+    // Clearing them anyway would claim nothing is downloaded while the storage stayed occupied
+    expect(success).toBeFalse();
+    expect(mockDynamicDataService.resetFlow).not.toHaveBeenCalled();
+  });
+
+  it("does not attempt to delete files when resetting on web", async () => {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(false);
+    const deleteSavedFolderSpy = spyOn(service["fileManagerService"], "deleteSavedFolder");
+
+    await service.reset();
+
+    expect(deleteSavedFolderSpy).not.toHaveBeenCalled();
+    expect(mockDynamicDataService.resetFlow).toHaveBeenCalled();
+  });
+
   it("stores in-progress and completed status for asset pack downloads", async () => {
     spyOn<any>(service, "isOffline").and.returnValue(false);
     const assetPackManifest: FlowTypes.AssetPack = {
@@ -267,7 +352,7 @@ describe("RemoteAssetsService", () => {
       service.manifest = assetPackManifest;
       return assetPackManifest;
     });
-    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
     const upsertRows = mockDynamicDataService.upsert.calls
@@ -407,7 +492,7 @@ describe("RemoteAssetsService", () => {
       service.manifest = assetPackManifest;
       return assetPackManifest;
     });
-    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
     const upsertRows = mockDynamicDataService.upsert.calls
@@ -436,7 +521,7 @@ describe("RemoteAssetsService", () => {
       service.manifest = assetPackManifest;
       return assetPackManifest;
     });
-    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
 
     await service.downloadAssetPackByName("asset_pack_1");
 
@@ -497,6 +582,7 @@ describe("RemoteAssetsService", () => {
       abortController: new AbortController(),
       downloadStartedAt: new Date().toISOString(),
       removeConnectionStatusListener: () => undefined,
+      completion: Promise.resolve(false),
     });
     const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
 
@@ -520,7 +606,9 @@ describe("RemoteAssetsService", () => {
     mockProvider.downloadFileAsText.and.resolveTo(null);
     service.provider = mockProvider;
     service.manifest = staleManifest;
-    const integrateSpy = spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    const integrateSpy = spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({
+      failedCount: 0,
+    });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
@@ -568,7 +656,10 @@ describe("RemoteAssetsService", () => {
     const success = await service.ensureAssetPacksDownloaded(["asset_pack_1", "asset_pack_2"]);
 
     expect(success).toBeTrue();
-    expect(downloadSpy.calls.allArgs()).toEqual([["asset_pack_1"], ["asset_pack_2"]]);
+    expect(downloadSpy.calls.allArgs()).toEqual([
+      ["asset_pack_1", { debugDownloadDelayMs: 0 }],
+      ["asset_pack_2", { debugDownloadDelayMs: 0 }],
+    ]);
   });
 
   it("downloads asset packs sequentially when using ensureAssetPacksDownloaded", async () => {
@@ -596,7 +687,7 @@ describe("RemoteAssetsService", () => {
         });
     });
     spyOn<any>(service, "getAssetPackManifest").and.returnValue(manifestPromise);
-    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo();
+    spyOn<any>(service, "downloadAndIntegrateAssetPack").and.resolveTo({ failedCount: 0 });
     mockDynamicDataService.snapshot.and.resolveTo([]);
     mockSystemVariableService.set.calls.reset();
 
@@ -638,6 +729,418 @@ describe("RemoteAssetsService", () => {
       "ASSET_PACK_DOWNLOAD_IN_PROGRESS",
       "true"
     );
+  });
+
+  it("retries packs refused by a different in-flight download rather than dropping them", async () => {
+    mockDynamicDataService.snapshot.and.resolveTo([]);
+    // Drive each attempt by hand, mirroring the real cleanup that frees the single download slot
+    const attempted: string[] = [];
+    const settleAttempt: Record<string, () => void> = {};
+    spyOn<any>(service, "runAssetPackDownload").and.callFake(async (assetPackName: string) => {
+      attempted.push(assetPackName);
+      await new Promise<void>((resolve) => (settleAttempt[assetPackName] = resolve));
+      service["activeAssetPackDownloads"].delete(assetPackName);
+      return true;
+    });
+    /** Run every pending continuation; only microtasks are involved, so this settles the chain */
+    const flush = async () => {
+      for (let i = 0; i < 100; i++) await Promise.resolve();
+    };
+
+    await service.downloadAssetPackByName("asset_pack_1", { awaitCompletion: false });
+    const started = await service.ensureAssetPacksDownloaded(["asset_pack_2", "asset_pack_3"], {
+      awaitCompletion: false,
+    });
+
+    // Refused while asset_pack_1 holds the slot, but the queue must survive the refusal
+    expect(started).toBeFalse();
+    expect(attempted).toEqual(["asset_pack_1"]);
+
+    settleAttempt["asset_pack_1"]();
+    await flush();
+    expect(attempted).toEqual(["asset_pack_1", "asset_pack_2"]);
+
+    settleAttempt["asset_pack_2"]();
+    await flush();
+    expect(attempted).toEqual(["asset_pack_1", "asset_pack_2", "asset_pack_3"]);
+
+    settleAttempt["asset_pack_3"]();
+    await flush();
+  });
+
+  /**
+   * Configure a native download so the real download/integrate path runs against spies.
+   * Returns the provider `downloadFile` spy and the mocked file manager for per-test assertions.
+   * Spies are safe: this is invoked synchronously from within each `it`, so Jasmine still
+   * auto-restores them (the no-unsafe-spy rule cannot see through the helper call).
+   */
+  /* eslint-disable jasmine/no-unsafe-spy */
+  function setupNativeDownload(
+    manifestRows: FlowTypes.Data_listRow<IAssetEntry>[],
+    existingContentsRows: Partial<IAssetEntry>[] = [],
+    assetPackName = "asset_pack_1"
+  ) {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    const manifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: assetPackName,
+      rows: manifestRows,
+    };
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      service.manifest = manifest;
+      return manifest;
+    });
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"]));
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    const fileManager = service["fileManagerService"];
+    const saveFileSpy = spyOn(fileManager, "saveFile").and.callFake(async ({ targetPath }) => ({
+      localFilepath: `file:///data/${targetPath}`,
+      src: localSrc(targetPath),
+    }));
+
+    // Stateful `_asset_packs` row + `_assets_contents` snapshot fed from `existingContentsRows`
+    let assetPackRow: IDBAssetPack | undefined;
+    mockDynamicDataService.upsert.and.callFake(async (_type, flow_name, row: any) => {
+      if (flow_name === "_asset_packs") assetPackRow = { ...row };
+    });
+    mockDynamicDataService.update.and.callFake(async (_type, flow_name, _id, update: any) => {
+      if (flow_name === "_asset_packs" && assetPackRow) {
+        assetPackRow = { ...assetPackRow, ...update };
+      }
+    });
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) => {
+      if (flow_name === "_asset_packs") return assetPackRow ? ([assetPackRow] as any) : [];
+      if (flow_name === "_assets_contents") return existingContentsRows as any;
+      return [];
+    });
+
+    return {
+      downloadFileSpy,
+      saveFileSpy,
+      getAssetPackRow: () => assetPackRow,
+    };
+  }
+  /* eslint-enable jasmine/no-unsafe-spy */
+
+  it("skips downloading a file already present on disk with matching size and recorded checksum", async () => {
+    const { downloadFileSpy, saveFileSpy, getAssetPackRow } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Previously integrated from this manifest (recorded checksum matches, filePath points at the
+      // local file) -> trustworthy on disk
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: localSrc(packPath("images/asset.png")),
+        },
+      ]
+    );
+    // 102400 bytes -> size_kb 100, matching MOCK_ASSET_ENTRY
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).not.toHaveBeenCalled();
+    expect(saveFileSpy).not.toHaveBeenCalled();
+    // Still integrated into the contents list
+    expect(mockDynamicDataService.update).toHaveBeenCalledWith(
+      "asset_pack",
+      "_assets_contents",
+      "images/asset.png",
+      jasmine.objectContaining({ filePath: localSrc(packPath("images/asset.png")) }),
+      { upsert: true }
+    );
+    expect(getAssetPackRow()).toEqual(
+      jasmine.objectContaining({
+        download_status: "completed",
+        assets_total_count: 1,
+        assets_downloaded_count: 1,
+      })
+    );
+  });
+
+  it("skips a file whose recorded local path does not string-match the stat result", async () => {
+    // The recorded path comes from `saveFile` (convertFileSrc of a write_blob path); resume only has
+    // convertFileSrc of a `Filesystem.stat` uri. Those need not be byte-identical on device (e.g. iOS
+    // /private/var vs /var), and such a divergence must not silently disable resume: any path that is
+    // no longer the manifest's own value is proof this app integrated the slot.
+    const { downloadFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath:
+            "capacitor://localhost/_capacitor_file_/private/var/data/remote_assets/images/asset.png",
+        },
+      ]
+    );
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).not.toHaveBeenCalled();
+  });
+
+  it("re-downloads a present file whose on-disk size does not match the manifest", async () => {
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Fully integrated previously, so only the size mismatch should force a re-download
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: localSrc(packPath("images/asset.png")),
+        },
+      ]
+    );
+    // Wrong size on disk (truncated / stale) -> must not be trusted
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 999,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(saveFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("re-downloads a present file whose recorded checksum differs from the manifest (stale pack)", async () => {
+    const { downloadFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Previously integrated with a different checksum -> pack content changed
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: "OUTDATED-CHECKSUM",
+          size_kb: 100,
+          filePath: localSrc(packPath("images/asset.png")),
+        },
+      ]
+    );
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("re-downloads a present, correctly-sized file that was never integrated (no recorded checksum)", async () => {
+    // Interrupted after saveFile but before the contents upsert: the file exists with the right size
+    // but there is no recorded checksum to confirm it, so it must not be skipped on trust.
+    const { downloadFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("re-downloads an override recorded only by a previous base-asset integration", async () => {
+    // Integrating a base asset upserts the whole manifest entry, so the row also gains every
+    // override's checksum. That must not count as evidence for the override slots themselves: only
+    // the recorded filePath (still the pack-relative manifest path here) proves this app saved one.
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
+      [
+        {
+          id: "audio/asset_with_overrides.mp3",
+          md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
+          size_kb: 43.4,
+          filePath: localSrc(packPath("audio/asset_with_overrides.mp3")),
+          overrides: clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES.overrides),
+        },
+      ]
+    );
+    // Both slots are present on disk at their manifest sizes (44442 -> 43.4kb, 22118 -> 21.6kb),
+    // so only the integration evidence separates them
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.callFake(
+      async (targetPath: string) => ({
+        exists: true,
+        sizeBytes: targetPath === packPath("audio/asset_with_overrides.mp3") ? 44442 : 22118,
+        src: localSrc(targetPath),
+      })
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    // Base skipped (genuinely integrated), override re-downloaded (only described by the manifest)
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(downloadFileSpy).toHaveBeenCalledWith(
+      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3"
+    );
+    expect(saveFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("resumes per slot: skips a present base asset but downloads a missing override", async () => {
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Base was integrated previously (recorded checksum and filePath match); the override never was
+      [
+        {
+          id: "audio/asset_with_overrides.mp3",
+          md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
+          size_kb: 43.4,
+          filePath: localSrc(packPath("audio/asset_with_overrides.mp3")),
+        },
+      ]
+    );
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.callFake(
+      async (targetPath: string) =>
+        // base present with matching size (44442 bytes -> 43.4kb); override missing
+        targetPath === packPath("audio/asset_with_overrides.mp3")
+          ? { exists: true, sizeBytes: 44442, src: localSrc(targetPath) }
+          : { exists: false }
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(downloadFileSpy).toHaveBeenCalledWith(
+      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3"
+    );
+    expect(saveFileSpy).toHaveBeenCalledTimes(1);
+    expect(saveFileSpy).toHaveBeenCalledWith(
+      jasmine.objectContaining({ targetPath: packPath("tz_sw/audio/asset_with_overrides.mp3") })
+    );
+  });
+
+  it("saves files under the shared remote_assets folder, not a per-pack one", async () => {
+    const { saveFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+
+    await service.downloadAssetPackByName("asset_pack_1");
+
+    // Local paths carry no pack name, so a file is stored once however many packs ship it
+    expect(saveFileSpy.calls.allArgs().map(([{ targetPath }]) => targetPath)).toEqual([
+      "remote_assets/audio/asset_with_overrides.mp3",
+      "remote_assets/tz_sw/audio/asset_with_overrides.mp3",
+    ]);
+    // The remote path still identifies the pack - only local storage is shared
+    expect(service["provider"].downloadFile).toHaveBeenCalledWith(
+      "asset_pack_1/audio/asset_with_overrides.mp3"
+    );
+  });
+
+  it("reuses a file already fetched by a different asset pack", async () => {
+    // Two packs shipping the same asset share one `_assets_contents` row and one stored file, so
+    // the second pack's resume check finds the first pack's download and skips the fetch. This is
+    // the de-duplication that per-pack storage folders would prevent.
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+      // Integrated earlier by asset_pack_1; the row records no pack, only the shared local path
+      [
+        {
+          id: "images/asset.png",
+          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+          size_kb: 100,
+          filePath: localSrc(packPath("images/asset.png")),
+        },
+      ],
+      "asset_pack_2"
+    );
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+      exists: true,
+      sizeBytes: 102400,
+      src: localSrc(packPath("images/asset.png")),
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_2");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).not.toHaveBeenCalled();
+    expect(saveFileSpy).not.toHaveBeenCalled();
+  });
+
+  it("marks a pack with a failed file as error rather than completed", async () => {
+    spyOn(console, "error");
+    const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    // File not on disk, and the network download fails (null blob)
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    downloadFileSpy.and.resolveTo(null);
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(getAssetPackRow()).toEqual(jasmine.objectContaining({ download_status: "error" }));
+  });
+
+  it("resumes interrupted packs on init but not cancelled/error/completed ones", async () => {
+    const packs: IDBAssetPack[] = [
+      { id: "p_in_progress", download_status: "in_progress" } as IDBAssetPack,
+      { id: "p_waiting", download_status: "waiting_for_connection" } as IDBAssetPack,
+      { id: "p_error", download_status: "error" } as IDBAssetPack,
+      { id: "p_cancelled", download_status: "cancelled" } as IDBAssetPack,
+      { id: "p_completed", download_status: "completed" } as IDBAssetPack,
+    ];
+    mockDynamicDataService.snapshot.and.resolveTo(packs);
+    const ensureSpy = spyOn(service, "ensureAssetPacksDownloaded").and.resolveTo(true);
+
+    await service["resumeInterruptedAssetPackDownloads"]();
+
+    expect(ensureSpy).toHaveBeenCalledWith(["p_in_progress", "p_waiting"], {
+      awaitCompletion: false,
+    });
+  });
+
+  it("joins an in-flight download for the same pack instead of reporting failure", async () => {
+    const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+    service["activeAssetPackDownloads"].set("asset_pack_1", {
+      abortController: new AbortController(),
+      downloadStartedAt: new Date().toISOString(),
+      removeConnectionStatusListener: () => undefined,
+      completion: Promise.resolve(true),
+    });
+
+    const awaited = await service.downloadAssetPackByName("asset_pack_1");
+    expect(awaited).toBeTrue();
+
+    const onDownloadStarted = jasmine.createSpy("onDownloadStarted");
+    const started = await service.downloadAssetPackByName("asset_pack_1", {
+      awaitCompletion: false,
+      onDownloadStarted,
+    });
+    expect(started).toBeTrue();
+    expect(onDownloadStarted).toHaveBeenCalled();
+    // Joined the existing attempt; no new download was kicked off
+    expect(manifestSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -720,6 +1223,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
+      debugDownloadDelayMs: 0,
     });
   });
 
@@ -741,6 +1245,128 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
+      debugDownloadDelayMs: 0,
     });
+  });
+
+  it("passes an authored debug_download_delay_ms to ensureAssetPacksDownloaded", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      ensureAssetPacksDownloaded: jasmine
+        .createSpy("ensureAssetPacksDownloaded")
+        .and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["ensure_downloaded"],
+      // Authoring params arrive as strings
+      params: { asset_pack: "asset_pack_1", debug_download_delay_ms: "3000" },
+    });
+
+    expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
+      awaitCompletion: true,
+      debugDownloadDelayMs: 3000,
+    });
+  });
+});
+
+describe("RemoteAssetActionFactory download", () => {
+  it("passes an authored debug_download_delay_ms to downloadAssetPackByName", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["download", "asset_pack_1"],
+      params: { debug_download_delay_ms: 3000 },
+    });
+
+    expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
+      debugDownloadDelayMs: 3000,
+    });
+  });
+
+  it("takes the asset pack name from an asset_pack param when given no arg", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["download"],
+      params: { asset_pack: "asset_pack_1" },
+    });
+
+    expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
+      debugDownloadDelayMs: 0,
+    });
+  });
+
+  it("does not download when no asset pack name is provided", async () => {
+    spyOn(console, "error");
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({ trigger: "click", action_id: "asset_pack", args: ["download"], params: {} });
+
+    expect(mockService.downloadAssetPackByName).not.toHaveBeenCalled();
+  });
+});
+
+describe("resolveDownloadAssetPackName", () => {
+  it("reads the name from the action arg", () => {
+    expect(resolveDownloadAssetPackName(["asset_pack_1"])).toEqual("asset_pack_1");
+  });
+
+  it("falls back to the asset_pack param", () => {
+    expect(resolveDownloadAssetPackName([], { asset_pack: "asset_pack_1" })).toEqual(
+      "asset_pack_1"
+    );
+    expect(resolveDownloadAssetPackName(undefined, { asset_pack: " asset_pack_1 " })).toEqual(
+      "asset_pack_1"
+    );
+  });
+
+  it("prefers the action arg when both are provided", () => {
+    expect(
+      resolveDownloadAssetPackName(["asset_pack_arg"], { asset_pack: "asset_pack_param" })
+    ).toEqual("asset_pack_arg");
+  });
+
+  it("returns null when no name is provided", () => {
+    expect(resolveDownloadAssetPackName()).toBeNull();
+    expect(resolveDownloadAssetPackName([""], { asset_pack: "  " })).toBeNull();
+  });
+});
+
+describe("resolveDebugDownloadDelayMs", () => {
+  it("defaults to no delay when the param is absent or empty", () => {
+    expect(resolveDebugDownloadDelayMs()).toBe(0);
+    expect(resolveDebugDownloadDelayMs({})).toBe(0);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "" })).toBe(0);
+  });
+
+  it("parses authored numbers and numeric strings", () => {
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: 3000 })).toBe(3000);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "3000" })).toBe(3000);
+  });
+
+  it("falls back to no delay for unparseable or negative values", () => {
+    spyOn(console, "warn");
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: "soon" })).toBe(0);
+    expect(resolveDebugDownloadDelayMs({ debug_download_delay_ms: -1 })).toBe(0);
   });
 });
