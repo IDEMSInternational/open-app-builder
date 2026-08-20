@@ -39,24 +39,23 @@ export class MapDrawingComponent
   private terraDraw: TerraDraw | null = null;
   private map: Map | null = null;
   private dragPan: DragPan | null = null;
-  private streetLayer: TileLayer | null = null;
-  private satelliteLayer: TileLayer | null = null;
+  private baseLayer: TileLayer | null = null;
+  private streetSource = new OSM();
+  private satelliteSource = new XYZ({
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    attributions: "Tiles © Esri",
+    maxZoom: 19,
+  });
 
   ngOnInit(): void {
-    this.streetLayer = new TileLayer({
-      source: new OSM(),
-    });
-    this.satelliteLayer = new TileLayer({
-      source: new XYZ({
-        url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        attributions: "Tiles © Esri",
-        maxZoom: 19,
-      }),
-      visible: false,
+    // a single tile layer with a swappable source keeps its canvas in a fixed DOM position so
+    // TerraDraw's vector layer (added after) reliably stays on top and clickable
+    this.baseLayer = new TileLayer({
+      source: this.streetSource,
     });
 
     const map = new Map({
-      layers: [this.streetLayer, this.satelliteLayer],
+      layers: [this.baseLayer],
       target: "map",
       view: new View({
         center: fromLonLat([0, 0]),
@@ -160,8 +159,7 @@ export class MapDrawingComponent
   toggleSatellite() {
     const satellite = !this.satellite();
     this.satellite.set(satellite);
-    this.streetLayer?.setVisible(!satellite);
-    this.satelliteLayer?.setVisible(satellite);
+    this.baseLayer?.setSource(satellite ? this.satelliteSource : this.streetSource);
   }
 
   private setMode(mode: MapDrawingMode) {
