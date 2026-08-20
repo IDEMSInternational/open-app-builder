@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TerraDraw, TerraDrawPolygonMode, TerraDrawSelectMode } from "terra-draw";
 import { TerraDrawOpenLayersAdapter } from "terra-draw-openlayers-adapter";
@@ -12,11 +12,14 @@ import { Circle, Icon, Stroke, Style, Fill } from "ol/style";
 import { OSM, Vector as VectorSource, XYZ } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, getUserProjection, Projection, toLonLat } from "ol/proj";
+import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 
 type MapDrawingMode = "static" | "polygon" | "select";
 type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
 
-const AuthorSchema = defineAuthorParameterSchema((coerce) => ({}));
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  data_list: coerce.string(""),
+}));
 
 @Component({
   selector: "oab-map-drawing",
@@ -31,10 +34,7 @@ export class MapDrawingComponent
   extends TemplateBaseComponentWithParams(AuthorSchema)
   implements OnInit
 {
-  public mode = signal<MapDrawingMode>("static");
-  public selectedFeatureId = signal<FeatureId | null>(null);
-  public locating = signal(false);
-  public satellite = signal(false);
+  private dynamicDataService = inject(DynamicDataService);
 
   private terraDraw: TerraDraw | null = null;
   private map: Map | null = null;
@@ -47,7 +47,12 @@ export class MapDrawingComponent
     maxZoom: 19,
   });
 
-  ngOnInit(): void {
+  public mode = signal<MapDrawingMode>("static");
+  public selectedFeatureId = signal<FeatureId | null>(null);
+  public locating = signal(false);
+  public satellite = signal(false);
+
+  public ngOnInit(): void {
     // a single tile layer with a swappable source keeps its canvas in a fixed DOM position so
     // TerraDraw's vector layer (added after) reliably stays on top and clickable
     this.baseLayer = new TileLayer({
@@ -120,29 +125,29 @@ export class MapDrawingComponent
     });
   }
 
-  togglePolygon() {
+  public togglePolygon() {
     this.setMode(this.mode() === "polygon" ? "static" : "polygon");
   }
 
-  cancelPolygon() {
+  public cancelPolygon() {
     // switching away from polygon mode discards any in-progress (unfinished) drawing
     if (this.mode() === "polygon") {
       this.setMode("static");
     }
   }
 
-  toggleSelect() {
+  public toggleSelect() {
     this.setMode(this.mode() === "select" ? "static" : "select");
   }
 
-  deleteSelected() {
+  public deleteSelected() {
     const id = this.selectedFeatureId();
     if (id === null) return;
     this.terraDraw?.removeFeatures([id]);
     this.selectedFeatureId.set(null);
   }
 
-  locateMe() {
+  public locateMe() {
     if (!navigator.geolocation || this.locating()) return;
     this.locating.set(true);
     navigator.geolocation.getCurrentPosition(
@@ -156,10 +161,28 @@ export class MapDrawingComponent
     );
   }
 
-  toggleSatellite() {
+  public toggleSatellite() {
     const satellite = !this.satellite();
     this.satellite.set(satellite);
     this.baseLayer?.setSource(satellite ? this.satelliteSource : this.streetSource);
+  }
+
+  public async save() {
+    const dataList = this.params().dataList;
+    const features = this.terraDraw?.getSnapshot() ?? [];
+    if (features.length === 0) return;
+
+    const rows = features.map((feature) => ({
+      id: String(feature.id),
+      geometry: feature.geometry,
+      properties: feature.properties,
+    }));
+
+    try {
+      await this.dynamicDataService.bulkUpsert("data_list", dataList, rows as any);
+    } catch (error) {
+      console.error(`[MapDrawingComponent] Failed to save drawn features:`, error);
+    }
   }
 
   private setMode(mode: MapDrawingMode) {
