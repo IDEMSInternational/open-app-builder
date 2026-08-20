@@ -19,6 +19,8 @@ type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   data_list: coerce.string(""),
+  geometry_field_name: coerce.string("geometry"),
+  properties_field_name: coerce.string("properties"),
 }));
 
 @Component({
@@ -122,6 +124,7 @@ export class MapDrawingComponent
 
     map.once("rendercomplete", () => {
       this.terraDraw?.start();
+      this.load();
     });
   }
 
@@ -169,19 +172,58 @@ export class MapDrawingComponent
 
   public async save() {
     const dataList = this.params().dataList;
+
+    if (!dataList || !this.terraDraw) return;
+
+    const geometryFieldName = this.params().geometryFieldName;
+    const propertiesFieldName = this.params().propertiesFieldName;
+
     const features = this.terraDraw?.getSnapshot() ?? [];
     if (features.length === 0) return;
 
     const rows = features.map((feature) => ({
       id: String(feature.id),
-      geometry: feature.geometry,
-      properties: feature.properties,
+      [geometryFieldName]: feature.geometry,
+      [propertiesFieldName]: feature.properties,
     }));
 
     try {
       await this.dynamicDataService.bulkUpsert("data_list", dataList, rows as any);
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to save drawn features:`, error);
+    }
+  }
+
+  private async load() {
+    const dataList = this.params().dataList;
+    const geometryFieldName = this.params().geometryFieldName;
+    const propertiesFieldName = this.params().propertiesFieldName;
+
+    if (!dataList || !this.terraDraw) return;
+
+    try {
+      const rows = await this.dynamicDataService.snapshot("data_list", dataList);
+      const features = rows
+        .filter((row: any) => row[geometryFieldName])
+        .map((row: any) => ({
+          type: "Feature" as const,
+          id: row.id,
+          geometry: row[geometryFieldName],
+          properties: row[propertiesFieldName] ?? {},
+        }));
+      if (features.length === 0) return;
+
+      const validations = this.terraDraw.addFeatures(features);
+      validations.forEach((validation, index) => {
+        if (!validation.valid) {
+          console.error(
+            `[MapDrawingComponent] Invalid feature '${features[index].id}':`,
+            validation.reason
+          );
+        }
+      });
+    } catch (error) {
+      console.error(`[MapDrawingComponent] Failed to load drawn features:`, error);
     }
   }
 
