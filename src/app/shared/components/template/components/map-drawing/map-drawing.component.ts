@@ -1,16 +1,20 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
-import { TerraDraw, TerraDrawPolygonMode } from "terra-draw";
+import { TerraDraw, TerraDrawPolygonMode, TerraDrawSelectMode } from "terra-draw";
 import { TerraDrawOpenLayersAdapter } from "terra-draw-openlayers-adapter";
 
 import Feature from "ol/Feature";
 import GeoJSON from "ol/format/GeoJSON";
 import Map from "ol/Map";
 import View from "ol/View";
+import { DragPan } from "ol/interaction";
 import { Circle, Icon, Stroke, Style, Fill } from "ol/style";
 import { OSM, Vector as VectorSource } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, getUserProjection, Projection, toLonLat } from "ol/proj";
+
+type MapDrawingMode = "static" | "polygon" | "select";
+type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({}));
 
@@ -19,12 +23,21 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({}));
   templateUrl: "./map-drawing.component.html",
   styleUrls: ["./map-drawing.component.scss"],
   standalone: false,
+  host: {
+    "(document:keydown.escape)": "cancelPolygon()",
+  },
 })
 export class MapDrawingComponent
   extends TemplateBaseComponentWithParams(AuthorSchema)
   implements OnInit
 {
-  public terraDraw: TerraDraw | null = null;
+  public mode = signal<MapDrawingMode>("static");
+  public selectedFeatureId = signal<FeatureId | null>(null);
+  public locating = signal(false);
+
+  private terraDraw: TerraDraw | null = null;
+  private map: Map | null = null;
+  private dragPan: DragPan | null = null;
 
   ngOnInit(): void {
     const map = new Map({
@@ -40,6 +53,14 @@ export class MapDrawingComponent
       }),
       controls: [],
     });
+    this.map = map;
+
+    map.getInteractions().forEach((interaction) => {
+      if (interaction instanceof DragPan) {
+        this.dragPan = interaction;
+      }
+    });
+
     const adapter = new TerraDrawOpenLayersAdapter({
       lib: {
         Feature,
@@ -62,12 +83,74 @@ export class MapDrawingComponent
 
     this.terraDraw = new TerraDraw({
       adapter,
-      modes: [new TerraDrawPolygonMode()],
+      modes: [
+        new TerraDrawPolygonMode(),
+        new TerraDrawSelectMode({
+          flags: {
+            polygon: {
+              feature: {
+                draggable: true,
+                coordinates: {
+                  midpoints: true,
+                  draggable: true,
+                  deletable: true,
+                },
+              },
+            },
+          },
+        }),
+      ],
     });
+
+    this.terraDraw.on("select", (id) => this.selectedFeatureId.set(id));
+    this.terraDraw.on("deselect", () => this.selectedFeatureId.set(null));
 
     map.once("rendercomplete", () => {
       this.terraDraw?.start();
-      this.terraDraw?.setMode("polygon");
     });
+  }
+
+  togglePolygon() {
+    this.setMode(this.mode() === "polygon" ? "static" : "polygon");
+  }
+
+  cancelPolygon() {
+    // switching away from polygon mode discards any in-progress (unfinished) drawing
+    if (this.mode() === "polygon") {
+      this.setMode("static");
+    }
+  }
+
+  toggleSelect() {
+    this.setMode(this.mode() === "select" ? "static" : "select");
+  }
+
+  deleteSelected() {
+    const id = this.selectedFeatureId();
+    if (id === null) return;
+    this.terraDraw?.removeFeatures([id]);
+    this.selectedFeatureId.set(null);
+  }
+
+  locateMe() {
+    if (!navigator.geolocation || this.locating()) return;
+    this.locating.set(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.locating.set(false);
+        const center = fromLonLat([position.coords.longitude, position.coords.latitude]);
+        this.map?.getView().animate({ center, zoom: 16, duration: 500 });
+      },
+      () => this.locating.set(false),
+      { enableHighAccuracy: true }
+    );
+  }
+
+  private setMode(mode: MapDrawingMode) {
+    this.mode.set(mode);
+    this.selectedFeatureId.set(null);
+    this.terraDraw?.setMode(mode);
+    // disable map panning while actively drawing so drag gestures draw instead of pan the map
+    this.dragPan?.setActive(mode !== "polygon");
   }
 }
