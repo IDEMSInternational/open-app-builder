@@ -28,5 +28,8 @@
     <button [disabled]="selectedFeatureId() === null" (click)="deleteSelected()">
       <ion-icon name="trash-outline"></ion-icon>
     </button>
+    <button [class.active]="satellite()" (click)="toggleSatellite()">
+      <ion-icon name="globe-outline"></ion-icon>
+    </button>
   </div>
 </div>

@@ -9,7 +9,7 @@ import Map from "ol/Map";
 import View from "ol/View";
 import { DragPan } from "ol/interaction";
 import { Circle, Icon, Stroke, Style, Fill } from "ol/style";
-import { OSM, Vector as VectorSource } from "ol/source";
+import { OSM, Vector as VectorSource, XYZ } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, getUserProjection, Projection, toLonLat } from "ol/proj";
 
@@ -34,18 +34,29 @@ export class MapDrawingComponent
   public mode = signal<MapDrawingMode>("static");
   public selectedFeatureId = signal<FeatureId | null>(null);
   public locating = signal(false);
+  public satellite = signal(false);
 
   private terraDraw: TerraDraw | null = null;
   private map: Map | null = null;
   private dragPan: DragPan | null = null;
+  private streetLayer: TileLayer | null = null;
+  private satelliteLayer: TileLayer | null = null;
 
   ngOnInit(): void {
+    this.streetLayer = new TileLayer({
+      source: new OSM(),
+    });
+    this.satelliteLayer = new TileLayer({
+      source: new XYZ({
+        url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        attributions: "Tiles © Esri",
+        maxZoom: 19,
+      }),
+      visible: false,
+    });
+
     const map = new Map({
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
+      layers: [this.streetLayer, this.satelliteLayer],
       target: "map",
       view: new View({
         center: fromLonLat([0, 0]),
@@ -144,6 +155,13 @@ export class MapDrawingComponent
       () => this.locating.set(false),
       { enableHighAccuracy: true }
     );
+  }
+
+  toggleSatellite() {
+    const satellite = !this.satellite();
+    this.satellite.set(satellite);
+    this.streetLayer?.setVisible(!satellite);
+    this.satelliteLayer?.setVisible(satellite);
   }
 
   private setMode(mode: MapDrawingMode) {
