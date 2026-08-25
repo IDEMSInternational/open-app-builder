@@ -25,11 +25,12 @@ import { ASSET_CONTENTS_DATA_LIST, REMOTE_ASSET_STORAGE_FOLDER } from "./remote-
 import type {
   IActiveAssetPackDownload,
   IAssetPackDownloadStatus,
+  IAssetPackDownloadStatusTimestamps,
   IDownloadAssetPackByNameOptions,
   IEnsureAssetPacksDownloadedOptions,
 } from "./remote-asset.types";
 import { NetworkService } from "../network/network.service";
-import { RemoteAssetActionFactory } from "./remote-asset.actions";
+import { isImmediateAssetPackAction, RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
@@ -156,6 +157,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   private registerTemplateActionHandlers() {
     const { asset_pack } = new RemoteAssetActionFactory(this);
     this.templateActionRegistry.register({ asset_pack });
+    this.templateActionRegistry.registerImmediate("asset_pack", isImmediateAssetPackAction);
   }
 
   /**
@@ -289,7 +291,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     // Keep _asset_packs status aligned with connectivity while this download attempt is active.
     const removeAssetPackConnectionStatusListener = this.trackAssetPackConnectionStatus(
       assetPackName,
-      downloadStartedAt
+      downloadStartedAt,
+      abortController.signal
     );
     // runAssetPackDownload runs synchronously up to its first await (no access to the downloads map
     // in that prefix), so its promise is available to store on the record before we register it -
@@ -339,20 +342,23 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       while (true) {
         this.throwIfDownloadCancelled(abortController.signal);
         if (this.isOffline()) {
-          await this.remoteAssetMetadataService.setDownloadStatus(
+          await this.setAttemptDownloadStatus(
             assetPackName,
             "waiting_for_connection",
-            {
-              downloadStartedAt,
-            }
+            abortController.signal,
+            { downloadStartedAt }
           );
           await this.waitForConnection(abortController.signal);
         }
 
         this.throwIfDownloadCancelled(abortController.signal);
-        await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "in_progress", {
+        await this.setAttemptDownloadStatus(assetPackName, "in_progress", abortController.signal, {
           downloadStartedAt,
         });
+
+        // Re-check after the status write: a cancel can land during any await, and there is no
+        // point spending a manifest fetch on an attempt that has already been abandoned
+        this.throwIfDownloadCancelled(abortController.signal);
 
         try {
           const manifest = await this.getAssetPackManifest(assetPackName);
@@ -384,7 +390,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             );
           }
           removeAssetPackConnectionStatusListener();
-          await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "completed", {
+          await this.setAttemptDownloadStatus(assetPackName, "completed", abortController.signal, {
             downloadStartedAt,
             downloadCompletedAt: this.remoteAssetMetadataService.createTimestamp(),
           });
@@ -406,10 +412,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     } catch (e) {
       removeAssetPackConnectionStatusListener();
       if (this.isDownloadCancelled(e, abortController.signal)) {
+        // Confirms the download loop actually stopped, rather than running on in the background
+        console.log(`[REMOTE ASSETS] Asset pack download stopped: ${assetPackName}`);
         return false;
       }
       console.error(e);
-      await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "error", {
+      await this.setAttemptDownloadStatus(assetPackName, "error", abortController.signal, {
         downloadStartedAt,
       });
       return false;
@@ -440,7 +448,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     activeDownload.removeConnectionStatusListener();
     this.activeAssetPackDownloads.delete(assetPackName);
     this.syncAssetPackDownloadInProgressSystemVariable();
+    const progress = this.downloadProgressCount();
     this.downloadProgressCount.set(null);
+    const progressSummary = progress
+      ? ` (stopped at ${progress.completed} of ${progress.total} files)`
+      : "";
+    console.log(
+      `[REMOTE ASSETS] Cancelled asset pack download: ${assetPackName}${progressSummary}`
+    );
     await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "cancelled", {
       downloadStartedAt: activeDownload.downloadStartedAt,
     });
@@ -455,13 +470,38 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     return this.networkService.waitUntilConnected(signal);
   }
 
-  private trackAssetPackConnectionStatus(assetPackName: string, downloadStartedAt: string) {
+  private trackAssetPackConnectionStatus(
+    assetPackName: string,
+    downloadStartedAt: string,
+    signal: AbortSignal
+  ) {
     return this.networkService.onStatusChange((status) => {
       const downloadStatus = status.connected ? "in_progress" : "waiting_for_connection";
-      void this.remoteAssetMetadataService.setDownloadStatus(assetPackName, downloadStatus, {
+      void this.setAttemptDownloadStatus(assetPackName, downloadStatus, signal, {
         downloadStartedAt,
       });
     });
+  }
+
+  /**
+   * Persist a download status on behalf of a specific download attempt, skipping the write if that
+   * attempt has since been cancelled. Every status write made while an attempt is in flight must go
+   * through here - `cancel_download` bypasses the template action queue, so it can land between any
+   * two awaits and must not be overwritten by the attempt it just cancelled.
+   */
+  private setAttemptDownloadStatus(
+    assetPackName: string,
+    downloadStatus: IAssetPackDownloadStatus,
+    signal: AbortSignal,
+    timestamps: IAssetPackDownloadStatusTimestamps = {}
+  ) {
+    return this.remoteAssetMetadataService.setDownloadStatus(
+      assetPackName,
+      downloadStatus,
+      timestamps,
+      {},
+      { signal }
+    );
   }
 
   private throwIfDownloadCancelled(signal: AbortSignal) {
@@ -1097,15 +1137,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     await Promise.allSettled(activeDownloads.map(({ completion }) => completion));
   }
 
+  /** @returns the names of the asset packs whose downloads were cancelled */
   public async cancelActiveAssetPackDownloads() {
     const activeAssetPackNames = [...this.activeAssetPackDownloads.keys()];
     if (activeAssetPackNames.length === 0) {
       console.log("[REMOTE ASSETS] No active asset pack downloads to cancel");
-      return;
+      return [];
     }
-    await Promise.all(
+    const results = await Promise.all(
       activeAssetPackNames.map((assetPackName) => this.cancelAssetPackDownloadByName(assetPackName))
     );
+    return activeAssetPackNames.filter((_, index) => results[index]);
   }
 
   ngOnDestroy(): void {
