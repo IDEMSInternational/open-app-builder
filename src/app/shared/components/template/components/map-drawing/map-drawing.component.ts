@@ -16,11 +16,18 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 
 type MapDrawingMode = "static" | "polygon" | "select";
 type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
+type StoredFeatureRow = {
+  id: string;
+  [key: string]: unknown;
+};
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   data_list: coerce.string(""),
   geometry_field_name: coerce.string("geometry"),
   properties_field_name: coerce.string("properties"),
+  center_lon: coerce.number(0),
+  center_lat: coerce.number(0),
+  zoom: coerce.number(2),
 }));
 
 @Component({
@@ -30,6 +37,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   standalone: false,
   host: {
     "(document:keydown.escape)": "cancelPolygon()",
+    "(document:keydown.delete)": "deleteSelected()",
   },
 })
 export class MapDrawingComponent
@@ -65,8 +73,8 @@ export class MapDrawingComponent
       layers: [this.baseLayer],
       target: "map",
       view: new View({
-        center: fromLonLat([0, 0]),
-        zoom: 2,
+        center: fromLonLat([this.params().centerLon, this.params().centerLat]),
+        zoom: this.params().zoom,
       }),
       controls: [],
     });
@@ -186,8 +194,23 @@ export class MapDrawingComponent
       [geometryFieldName]: feature.geometry,
       [propertiesFieldName]: feature.properties,
     }));
+    const existingRows = (await this.dynamicDataService.snapshot(
+      "data_list",
+      dataList
+    )) as StoredFeatureRow[];
+    const rowsToRemove = existingRows.filter(
+      (row) => !rows.some((featureRow) => featureRow.id === row.id)
+    );
 
     try {
+      if (rowsToRemove.length > 0) {
+        await this.dynamicDataService.remove(
+          "data_list",
+          dataList,
+          rowsToRemove.map((row) => row.id)
+        );
+      }
+
       await this.dynamicDataService.bulkUpsert("data_list", dataList, rows as any);
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to save drawn features:`, error);
