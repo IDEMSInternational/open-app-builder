@@ -1,7 +1,24 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
+import type { FlowTypes } from "src/app/shared/model";
 import type { RemoteAssetService } from "./remote-asset.service";
-import type { IAssetPackEnsureDownloadedParams } from "./remote-asset.types";
+import type {
+  IAssetPackDownloadParams,
+  IAssetPackEnsureDownloadedParams,
+} from "./remote-asset.types";
 import { booleanStringToBoolean } from "../../utils";
+
+/**
+ * Child actions that must bypass the template action queue. A download blocks that queue for its
+ * full duration, so a queued `cancel_download` would only run once the download it was meant to
+ * abort had already finished.
+ */
+const IMMEDIATE_ASSET_PACK_ACTIONS = new Set(["cancel_download"]);
+
+/** Whether an `asset_pack` action should be dispatched ahead of the template action queue */
+export function isImmediateAssetPackAction(action: FlowTypes.TemplateRowAction) {
+  const [actionId] = action.args || [];
+  return IMMEDIATE_ASSET_PACK_ACTIONS.has(actionId);
+}
 
 export class RemoteAssetActionFactory {
   constructor(private service: RemoteAssetService) {}
@@ -12,7 +29,9 @@ export class RemoteAssetActionFactory {
       download: async () => {
         if (this.service.remoteAssetsEnabled()) {
           const assetPackName = assetPackArgs[0];
-          await this.service.downloadAssetPackByName(assetPackName);
+          await this.service.downloadAssetPackByName(assetPackName, {
+            debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          });
         } else {
           console.error(
             "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
@@ -37,12 +56,19 @@ export class RemoteAssetActionFactory {
         }
         await this.service.ensureAssetPacksDownloaded(assetPackList, {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
+          debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
         });
       },
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
           console.log("[REMOTE ASSETS] Cancelling active asset pack downloads");
-          await this.service.cancelActiveAssetPackDownloads();
+          const cancelledAssetPacks = await this.service.cancelActiveAssetPackDownloads();
+          if (cancelledAssetPacks.length) {
+            console.log(
+              `[REMOTE ASSETS] Cancel complete, ${cancelledAssetPacks.length} download(s) now marked 'cancelled':`,
+              cancelledAssetPacks
+            );
+          }
         } else {
           console.error(
             "The 'asset_pack: cancel_download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
@@ -75,6 +101,23 @@ export function resolveEnsureDownloadedAssetPackList(
     return assetPackList;
   }
   return parseAssetPackNames(params?.asset_pack);
+}
+
+/**
+ * Read the `debug_download_delay_ms` testing param. Authoring values arrive as strings, and a bad
+ * value should never break a real download, so anything unparseable falls back to 0 (no delay).
+ */
+export function resolveDebugDownloadDelayMs(params?: IAssetPackDownloadParams): number {
+  const value = params?.debug_download_delay_ms;
+  if (value === undefined || value === null || value === "") {
+    return 0;
+  }
+  const delayMs = Number(value);
+  if (!Number.isFinite(delayMs) || delayMs < 0) {
+    console.warn("[REMOTE ASSETS] Ignoring invalid debug_download_delay_ms value:", value);
+    return 0;
+  }
+  return delayMs;
 }
 
 export function shouldAwaitEnsureDownloaded(params?: IAssetPackEnsureDownloadedParams) {

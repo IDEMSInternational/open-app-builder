@@ -46,9 +46,25 @@ export interface IActiveAssetPackDownload {
   abortController: AbortController;
   downloadStartedAt: string;
   removeConnectionStatusListener: () => void;
+  /**
+   * Resolves with the download result. Set when the record is created so a concurrent request for
+   * the same pack can always join this in-flight attempt by awaiting it.
+   */
+  completion: Promise<boolean>;
 }
 
-export interface IAssetPackEnsureDownloadedParams {
+/** Params accepted by every `asset_pack` action that starts a download */
+export interface IAssetPackDownloadParams {
+  /**
+   * Manual testing aid: artificially pause for this many ms before each asset file, to open a
+   * reliable window for interrupting a download (e.g. force-quitting the app mid-pack).
+   * Omit outside local testing - the delay applies to skipped files too, so it also masks the
+   * speed-up that resume is supposed to give.
+   */
+  debug_download_delay_ms?: number | string;
+}
+
+export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
   /** Single asset pack name */
   asset_pack?: string;
   /** One or more asset pack names, as an array or JSON string array */
@@ -57,14 +73,17 @@ export interface IAssetPackEnsureDownloadedParams {
   await?: boolean | string;
 }
 
-export interface IEnsureAssetPacksDownloadedOptions {
+/** Options shared by the service methods that start a download */
+interface IAssetPackDownloadOptions {
   /** When false, return once a download is registered without waiting for completion. Defaults to true. */
   awaitCompletion?: boolean;
+  /** See `IAssetPackDownloadParams.debug_download_delay_ms`. Defaults to 0 (no delay). */
+  debugDownloadDelayMs?: number;
 }
 
-export interface IDownloadAssetPackByNameOptions {
-  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
-  awaitCompletion?: boolean;
+export type IEnsureAssetPacksDownloadedOptions = IAssetPackDownloadOptions;
+
+export interface IDownloadAssetPackByNameOptions extends IAssetPackDownloadOptions {
   /** Called synchronously once a background download is registered. Only used when awaitCompletion is false. */
   onDownloadStarted?: (completion: Promise<boolean>) => void;
 }
