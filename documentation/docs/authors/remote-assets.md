@@ -233,6 +233,7 @@ assets and written to `app_data/remote_assets/{packName}/` instead. There are tw
 **A Google Drive assets folder marked** `remote: true`**.** The whole folder becomes one pack, and the
 folder's `name` becomes the pack name:
 
+<!-- cspell:disable -->
 ```ts
 config.google_drive = {
   assets_folders: [
@@ -241,6 +242,7 @@ config.google_drive = {
   ],
 };
 ```
+<!-- cspell:enable -->
 
 !!! warning
 
@@ -420,7 +422,7 @@ click | asset_pack: download: my_asset_pack | debug_download_delay_ms: 3000
 ```
 
 This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack,
-toggling airplane mode — which is otherwise hard to hit on a fast connection. It should be omitted
+toggling aeroplane mode — which is otherwise hard to hit on a fast connection. It should be omitted
 outside local testing. Note that the delay applies to skipped files too, so a resumed download won't
 look any faster with it enabled: check that status and counts reach completion rather than judging by
 speed.
