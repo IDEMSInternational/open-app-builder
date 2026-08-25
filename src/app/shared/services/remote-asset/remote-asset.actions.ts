@@ -1,10 +1,24 @@
 import type { IActionHandler } from "src/app/shared/components/template/services/instance/template-action.registry";
+import type { FlowTypes } from "src/app/shared/model";
 import type { RemoteAssetService } from "./remote-asset.service";
 import type {
   IAssetPackDownloadParams,
   IAssetPackEnsureDownloadedParams,
 } from "./remote-asset.types";
 import { booleanStringToBoolean } from "../../utils";
+
+/**
+ * Child actions that must bypass the template action queue. A download blocks that queue for its
+ * full duration, so a queued `cancel_download` would only run once the download it was meant to
+ * abort had already finished.
+ */
+const IMMEDIATE_ASSET_PACK_ACTIONS = new Set(["cancel_download"]);
+
+/** Whether an `asset_pack` action should be dispatched ahead of the template action queue */
+export function isImmediateAssetPackAction(action: FlowTypes.TemplateRowAction) {
+  const [actionId] = action.args || [];
+  return IMMEDIATE_ASSET_PACK_ACTIONS.has(actionId);
+}
 
 export class RemoteAssetActionFactory {
   constructor(private service: RemoteAssetService) {}
@@ -13,16 +27,25 @@ export class RemoteAssetActionFactory {
     const [actionId, ...assetPackArgs] = args;
     const childActions = {
       download: async () => {
-        if (this.service.remoteAssetsEnabled()) {
-          const assetPackName = assetPackArgs[0];
-          await this.service.downloadAssetPackByName(assetPackName, {
-            debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
-          });
-        } else {
+        if (!this.service.remoteAssetsEnabled()) {
           console.error(
             "The 'asset_pack: download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
           );
+          return;
         }
+        const assetPackName = resolveDownloadAssetPackName(
+          assetPackArgs,
+          params as IAssetPackDownloadParams
+        );
+        if (!assetPackName) {
+          console.error(
+            "The 'asset_pack: download' action requires an asset pack name, given either as an argument ('asset_pack: download: my_pack') or an 'asset_pack' parameter."
+          );
+          return;
+        }
+        await this.service.downloadAssetPackByName(assetPackName, {
+          debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+        });
       },
       ensure_downloaded: async () => {
         if (!this.service.remoteAssetsEnabled()) {
@@ -49,7 +72,13 @@ export class RemoteAssetActionFactory {
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
           console.log("[REMOTE ASSETS] Cancelling active asset pack downloads");
-          await this.service.cancelActiveAssetPackDownloads();
+          const cancelledAssetPacks = await this.service.cancelActiveAssetPackDownloads();
+          if (cancelledAssetPacks.length) {
+            console.log(
+              `[REMOTE ASSETS] Cancel complete, ${cancelledAssetPacks.length} download(s) now marked 'cancelled':`,
+              cancelledAssetPacks
+            );
+          }
         } else {
           console.error(
             "The 'asset_pack: cancel_download' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
@@ -72,6 +101,23 @@ export class RemoteAssetActionFactory {
     }
     return childActions[actionId]();
   };
+}
+
+/**
+ * Read the asset pack name for a `download` action, which takes it either as an action arg
+ * (`asset_pack: download: my_pack`) or as an `asset_pack` param, matching how `ensure_downloaded`
+ * is authored. The arg wins when both are given, preserving the original behaviour.
+ */
+export function resolveDownloadAssetPackName(
+  assetPackArgs: string[] = [],
+  params?: IAssetPackDownloadParams
+): string | null {
+  for (const candidate of [assetPackArgs[0], params?.asset_pack]) {
+    if (typeof candidate === "string" && candidate.trim()) {
+      return candidate.trim();
+    }
+  }
+  return null;
 }
 
 export function resolveEnsureDownloadedAssetPackList(

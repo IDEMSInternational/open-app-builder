@@ -432,6 +432,7 @@ export namespace FlowTypes {
     | "nav_resume" // return to template after navigation or popup close;
     | "notification_interacted"
     | "notification_received"
+    | "on_progress" // fires once when value first reaches a threshold trigger arg, e.g. `on_progress: 50`
     | "sent" // notification sent
     | "uncompleted";
 
@@ -497,6 +498,8 @@ export namespace FlowTypes {
   export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
+    /** optional arguments provided to the trigger itself, e.g. the `50` in `on_progress: 50` */
+    trigger_args?: any[];
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
     rawArgs?: any; // original args before evaluation

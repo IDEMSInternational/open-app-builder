@@ -1,6 +1,10 @@
 import { TestBed } from "@angular/core/testing";
+import { Injector } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import { RemoteAssetService } from "./remote-asset.service";
+import { TemplateActionService } from "../../components/template/services/instance/template-action.service";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { TemplateNavService } from "../../components/template/services/template-nav.service";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MockDeploymentService } from "../deployment/deployment.service.mock.spec";
@@ -16,7 +20,9 @@ import type { IDBAssetPack } from "./remote-asset.types";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { NetworkService } from "../network/network.service";
 import {
+  isImmediateAssetPackAction,
   resolveDebugDownloadDelayMs,
+  resolveDownloadAssetPackName,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
   shouldCheckForUpdates,
@@ -210,6 +216,21 @@ const MOCK_DEPLOYMENT_CONFIG: Partial<IDeploymentRuntimeConfig> = {
     enabled: true,
   },
 };
+
+/**
+ * `TemplateActionService` resolves its dependencies from the injector on demand, so a stub only has
+ * to answer the registry under test plus the handful of services `handleActions` touches
+ */
+const mockTemplateActionInjector = (registry: TemplateActionRegistry): Injector =>
+  ({
+    get: (token: any) => {
+      if (token === TemplateActionRegistry) return registry;
+      if (token === TemplateNavService) {
+        return { handleNavActionsFromChild: () => null, isReady: () => true, ready: () => true };
+      }
+      return { ready: () => true, isReady: () => true };
+    },
+  }) as Injector;
 
 /**
  * Call standalone tests via:
@@ -621,6 +642,147 @@ describe("RemoteAssetsService", () => {
     // Never completed before, so cancelling leaves it `cancelled` rather than restoring `completed`
     expect(assetPacks.statusTransitions()).toEqual(["waiting_for_connection", "cancelled"]);
     expect(rows[1].download_started_at).toBe(rows[0].download_started_at);
+  });
+
+  /**
+   * `cancel_download` bypasses the template action queue so it can land at any point mid-attempt,
+   * including while a status write from that attempt is mid-flight. If such a write completed it
+   * would overwrite `cancelled` with `in_progress` and the pack would auto-resume on next launch,
+   * silently undoing the cancel.
+   */
+  it("does not let a cancelled attempt's in-flight status write overwrite the cancelled status", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    let releaseSnapshot!: () => void;
+    let signalSnapshotStarted!: () => void;
+    const snapshotBlocked = new Promise<void>((resolve) => (releaseSnapshot = resolve));
+    const snapshotStarted = new Promise<void>((resolve) => (signalSnapshotStarted = resolve));
+    // Park the download inside the read half of its "in_progress" write, then cancel underneath it
+    let blockNextSnapshot = true;
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) => {
+      if (flow_name === "_asset_packs" && blockNextSnapshot) {
+        blockNextSnapshot = false;
+        signalSnapshotStarted();
+        await snapshotBlocked;
+      }
+      return [] as any;
+    });
+    const manifestSpy = spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+    const downloadPromise = service.downloadAssetPackByName("asset_pack_1");
+    await snapshotStarted;
+    // the cancel takes effect synchronously, but its own write queues behind the parked one
+    const cancelPromise = service.cancelAssetPackDownloadByName("asset_pack_1");
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    releaseSnapshot();
+    const [cancelSuccess, downloadSuccess] = await Promise.all([cancelPromise, downloadPromise]);
+    const updateRows = mockDynamicDataService.update.calls
+      .allArgs()
+      .filter(([, flow_name]) => flow_name === "_asset_packs")
+      .map(([, , , row]) => row as Partial<IDBAssetPack>);
+
+    expect(cancelSuccess).toBeTrue();
+    expect(downloadSuccess).toBeFalse();
+    expect(updateRows.map((row) => row.download_status)).toEqual(["cancelled"]);
+    // the cancelled attempt abandoned the download rather than continuing to the manifest
+    expect(manifestSpy).not.toHaveBeenCalled();
+  });
+
+  /**
+   * The abort checks above cannot catch a write that was already issued when the cancel landed:
+   * `dynamicDataService.update` awaits internally before it writes, so an attempt's `in_progress`
+   * write can be applied *after* the `cancelled` one that was issued later. Status writes are
+   * serialised to keep them in issue order.
+   */
+  it("does not let a status write already in flight overwrite the cancelled status", async () => {
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    let releaseFirstUpdate!: () => void;
+    let signalFirstUpdateStarted!: () => void;
+    const firstUpdateBlocked = new Promise<void>((resolve) => (releaseFirstUpdate = resolve));
+    const firstUpdateStarted = new Promise<void>((resolve) => (signalFirstUpdateStarted = resolve));
+    // Stateful row so the assertion reads the value that actually survived, not the write order
+    let assetPackRow: IDBAssetPack | undefined;
+    let blockNextUpdate = true;
+    mockDynamicDataService.update.and.callFake(
+      async (_type, flow_name, _id: string, update: any) => {
+        if (flow_name !== "_asset_packs") return;
+        // stand in for the await inside the dynamic-data write, holding this write open mid-flight
+        if (blockNextUpdate) {
+          blockNextUpdate = false;
+          signalFirstUpdateStarted();
+          await firstUpdateBlocked;
+        }
+        assetPackRow = { ...(assetPackRow || { id: _id }), ...update };
+      }
+    );
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
+      flow_name === "_asset_packs" && assetPackRow ? ([assetPackRow] as any) : []
+    );
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo(null);
+
+    const downloadPromise = service.downloadAssetPackByName("asset_pack_1");
+    await firstUpdateStarted;
+    const cancelPromise = service.cancelAssetPackDownloadByName("asset_pack_1");
+    // Flush pending microtasks: an unserialised cancel writes `cancelled` here, while the attempt's
+    // own `in_progress` write is still parked and would land afterwards
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    releaseFirstUpdate();
+    const [cancelSuccess, downloadSuccess] = await Promise.all([cancelPromise, downloadPromise]);
+
+    expect(cancelSuccess).toBeTrue();
+    expect(downloadSuccess).toBeFalse();
+    expect(assetPackRow?.download_status).toBe("cancelled");
+  });
+
+  /**
+   * The bug this whole mechanism exists for: a download and a cancel button authored on the same
+   * template share one `TemplateActionService` queue, and the download holds that queue for its full
+   * duration. Drives both through the real action service to prove the cancel is not appended to it.
+   */
+  it("cancels a download that is holding the same template action queue", async () => {
+    const registry = TestBed.inject(TemplateActionRegistry);
+    // init is deferred in tests, so register the handlers the way `initialise` would
+    if (!registry.has("asset_pack")) service["registerTemplateActionHandlers"]();
+    service.remoteAssetsEnabled.set(true);
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    let assetPackRow: IDBAssetPack | undefined;
+    mockDynamicDataService.update.and.callFake(
+      async (_type, flow_name, id: string, update: any) => {
+        if (flow_name === "_asset_packs") assetPackRow = { ...(assetPackRow || { id }), ...update };
+      }
+    );
+    mockDynamicDataService.snapshot.and.callFake(async (_type, flow_name) =>
+      flow_name === "_asset_packs" && assetPackRow ? ([assetPackRow] as any) : []
+    );
+    // Hold the download open inside the manifest fetch, standing in for a real pack download
+    let releaseManifest!: () => void;
+    let signalManifestRequested!: () => void;
+    const manifestBlocked = new Promise<void>((resolve) => (releaseManifest = resolve));
+    const manifestRequested = new Promise<void>((resolve) => (signalManifestRequested = resolve));
+    spyOn<any>(service, "getAssetPackManifest").and.callFake(async () => {
+      signalManifestRequested();
+      await manifestBlocked;
+      return { flow_type: "asset_pack", flow_name: "asset_pack_1", rows: [] };
+    });
+    const actionService = new TemplateActionService(mockTemplateActionInjector(registry));
+
+    let downloadActionSettled = false;
+    const downloadAction = actionService
+      .handleActions([
+        { trigger: "click", action_id: "asset_pack", args: ["download", "asset_pack_1"] },
+      ])
+      .then(() => (downloadActionSettled = true));
+    await manifestRequested;
+    await actionService.handleActions([
+      { trigger: "click", action_id: "asset_pack", args: ["cancel_download"] },
+    ]);
+
+    // the cancel ran to completion while the download still held the queue
+    expect(downloadActionSettled).toBeFalse();
+    expect(assetPackRow?.download_status).toBe("cancelled");
+    releaseManifest();
+    await downloadAction;
+    expect(assetPackRow?.download_status).toBe("cancelled");
+    expect(service["activeAssetPackDownloads"].size).toBe(0);
   });
 
   it("does not start a second asset pack download while another is active", async () => {
@@ -1698,7 +1860,7 @@ describe("RemoteAssetsService", () => {
         })
       );
 
-      await metadata.setDownloadStatus("asset_pack_1", "completed", {}, {}, "v2");
+      await metadata.setDownloadStatus("asset_pack_1", "completed", {}, {}, { version: "v2" });
       const row = assetPacks.get();
 
       expect(row.download_status).toBe("completed");
@@ -2001,6 +2163,81 @@ describe("RemoteAssetActionFactory download", () => {
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 3000,
     });
+  });
+
+  it("takes the asset pack name from an asset_pack param when given no arg", async () => {
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({
+      trigger: "click",
+      action_id: "asset_pack",
+      args: ["download"],
+      params: { asset_pack: "asset_pack_1" },
+    });
+
+    expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
+      debugDownloadDelayMs: 0,
+    });
+  });
+
+  it("does not download when no asset pack name is provided", async () => {
+    spyOn(console, "error");
+    const mockService = {
+      remoteAssetsEnabled: () => true,
+      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
+    } as unknown as RemoteAssetService;
+    const { asset_pack } = new RemoteAssetActionFactory(mockService);
+
+    await asset_pack({ trigger: "click", action_id: "asset_pack", args: ["download"], params: {} });
+
+    expect(mockService.downloadAssetPackByName).not.toHaveBeenCalled();
+  });
+});
+
+describe("resolveDownloadAssetPackName", () => {
+  it("reads the name from the action arg", () => {
+    expect(resolveDownloadAssetPackName(["asset_pack_1"])).toEqual("asset_pack_1");
+  });
+
+  it("falls back to the asset_pack param", () => {
+    expect(resolveDownloadAssetPackName([], { asset_pack: "asset_pack_1" })).toEqual(
+      "asset_pack_1"
+    );
+    expect(resolveDownloadAssetPackName(undefined, { asset_pack: " asset_pack_1 " })).toEqual(
+      "asset_pack_1"
+    );
+  });
+
+  it("prefers the action arg when both are provided", () => {
+    expect(
+      resolveDownloadAssetPackName(["asset_pack_arg"], { asset_pack: "asset_pack_param" })
+    ).toEqual("asset_pack_arg");
+  });
+
+  it("returns null when no name is provided", () => {
+    expect(resolveDownloadAssetPackName()).toBeNull();
+    expect(resolveDownloadAssetPackName([""], { asset_pack: "  " })).toBeNull();
+  });
+});
+
+describe("isImmediateAssetPackAction", () => {
+  const action = { trigger: "click", action_id: "asset_pack" } as FlowTypes.TemplateRowAction;
+
+  it("marks cancel_download as immediate so it can interrupt a download holding the queue", () => {
+    expect(isImmediateAssetPackAction({ ...action, args: ["cancel_download"] })).toBeTrue();
+  });
+
+  it("leaves every other asset_pack action on the queue", () => {
+    expect(
+      isImmediateAssetPackAction({ ...action, args: ["download", "asset_pack_1"] })
+    ).toBeFalse();
+    expect(isImmediateAssetPackAction({ ...action, args: ["ensure_downloaded"] })).toBeFalse();
+    expect(isImmediateAssetPackAction({ ...action, args: ["reset"] })).toBeFalse();
+    expect(isImmediateAssetPackAction({ ...action, args: undefined })).toBeFalse();
   });
 });
 

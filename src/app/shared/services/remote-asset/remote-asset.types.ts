@@ -115,6 +115,11 @@ export interface IActiveAssetPackDownload {
 /** Params accepted by every `asset_pack` action that starts a download */
 export interface IAssetPackDownloadParams {
   /**
+   * Single asset pack name. For `download` this is an alternative to naming the pack as an action
+   * arg (`asset_pack: download: my_pack`), so both download actions can be authored the same way.
+   */
+  asset_pack?: string;
+  /**
    * Manual testing aid: artificially pause for this many ms before each asset file, to open a
    * reliable window for interrupting a download (e.g. force-quitting the app mid-pack).
    * Omit outside local testing - the delay applies to skipped files too, so it also masks the
@@ -124,8 +129,6 @@ export interface IAssetPackDownloadParams {
 }
 
 export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
-  /** Single asset pack name */
-  asset_pack?: string;
   /** One or more asset pack names, as an array or JSON string array */
   asset_pack_list?: string | string[];
   /** When false, start downloads without blocking the action queue. Defaults to true. */

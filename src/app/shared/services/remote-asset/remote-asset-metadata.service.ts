@@ -15,6 +15,9 @@ import type {
 export class RemoteAssetMetadataService {
   constructor(private dynamicDataService: DynamicDataService) {}
 
+  /** Tail of the chain that keeps status writes in the order they were issued */
+  private statusWriteQueue: Promise<unknown> = Promise.resolve();
+
   public createTimestamp() {
     return new Date().toISOString();
   }
@@ -67,59 +70,98 @@ export class RemoteAssetMetadataService {
     );
   }
 
-  public async setDownloadStatus(
+  /**
+   * Run status writes one at a time, in issue order. `dynamicDataService.update` awaits internally
+   * before it writes, so two concurrent status writes can otherwise be *applied* in the opposite
+   * order to the one they were issued in - and `cancel_download` runs immediately, mid-attempt, so
+   * that reordering is reachable: the cancelled attempt's `in_progress` write lands after the
+   * `cancelled` one and the pack looks resumable again on next launch.
+   * Serialising is also what makes the guards in `setDownloadStatus` meaningful, since they then run
+   * at write time rather than at issue time. Only db writes are queued, never a download, so a
+   * cancel still takes effect immediately - it aborts and deregisters its attempt synchronously,
+   * before any of this is awaited.
+   */
+  private queueStatusWrite<T>(write: () => Promise<T>) {
+    const result = this.statusWriteQueue.then(write, write);
+    // a rejected write must not wedge every write queued behind it
+    this.statusWriteQueue = result.catch(() => undefined);
+    return result;
+  }
+
+  /**
+   * @param options.signal abort signal of the download attempt this status belongs to, if any. An
+   * aborted attempt writes nothing - `cancel_download` runs immediately, so it can land at any point
+   * mid-attempt, and a write from the attempt it cancelled must not resurrect the pack.
+   * @param options.version manifest version to record. Only pass on a fully successful download -
+   * see `IDBAssetPack.version`.
+   */
+  public setDownloadStatus(
     assetPackName: string,
     downloadStatus: IAssetPackDownloadStatus,
     timestamps: IAssetPackDownloadStatusTimestamps = {},
     assetCounts: IAssetPackAssetCounts = {},
-    /** Manifest version to record. Only pass on a fully successful download - see `IDBAssetPack.version` */
-    version?: string
+    options: { signal?: AbortSignal; version?: string } = {}
   ) {
-    const existingAssetPack = await this.getAssetPack(assetPackName);
-    const downloadStatusUpdatedAt = this.createTimestamp();
-    const downloadCompletedAt =
-      downloadStatus === "completed"
-        ? timestamps.downloadCompletedAt || downloadStatusUpdatedAt
-        : "";
-    const update: Partial<IDBAssetPack> = {
-      download_status: downloadStatus,
-      download_started_at: timestamps.downloadStartedAt || downloadStatusUpdatedAt,
-      download_completed_at: downloadCompletedAt,
-      download_status_updated_at: downloadStatusUpdatedAt,
-    };
-    if (assetCounts.assetsTotalCount !== undefined) {
-      update.assets_total_count = assetCounts.assetsTotalCount;
-    }
-    if (assetCounts.assetsDownloadedCount !== undefined) {
-      update.assets_downloaded_count = assetCounts.assetsDownloadedCount;
-    }
-    // Reaching `completed` is the only thing that advances the recorded version, and it must land
-    // in the same write as the status - splitting them would leave a window in which the pack
-    // reads as completed at the wrong version.
-    if (downloadStatus === "completed") {
-      update.has_completed_download = true;
-      if (version !== undefined) {
-        update.version = version;
-        update.available_version = version;
-        update.update_available = false;
-        // A completed download walked the manifest, so it also *is* a successful version check -
-        // recording it here keeps a forced `asset_pack: download` from leaving the check fields
-        // reading as stale, and keeps the whole success write atomic.
-        update.version_checked_at = downloadStatusUpdatedAt;
-        update.version_check_attempted_at = downloadStatusUpdatedAt;
-        update.version_check_status = "ok";
+    return this.queueStatusWrite(async () => {
+      if (options.signal?.aborted) return;
+      const existingAssetPack = await this.getAssetPack(assetPackName);
+      if (options.signal?.aborted) return;
+      const downloadStatusUpdatedAt = this.createTimestamp();
+      const downloadStartedAt = timestamps.downloadStartedAt || downloadStatusUpdatedAt;
+      // `cancelled` is sticky against the attempt that was cancelled, whether or not that attempt
+      // passed us a signal. Only a *new* attempt clears it, identified by a later start timestamp,
+      // so an explicit re-trigger still works while a straggling write cannot undo the cancel.
+      if (
+        existingAssetPack?.download_status === "cancelled" &&
+        downloadStatus !== "cancelled" &&
+        downloadStartedAt <= existingAssetPack.download_started_at
+      ) {
+        return;
       }
-    }
-    if (!existingAssetPack) {
-      return this.dynamicDataService.update<Partial<IDBAssetPack>>(
-        "data_list",
-        ASSET_PACKS_DATA_LIST,
-        assetPackName,
-        { ...this.buildDefaultAssetPackRow(assetPackName, downloadStatus), ...update },
-        { upsert: true }
-      );
-    }
-    return this.patchAssetPack(assetPackName, update);
+      const downloadCompletedAt =
+        downloadStatus === "completed"
+          ? timestamps.downloadCompletedAt || downloadStatusUpdatedAt
+          : "";
+      const update: Partial<IDBAssetPack> = {
+        download_status: downloadStatus,
+        download_started_at: downloadStartedAt,
+        download_completed_at: downloadCompletedAt,
+        download_status_updated_at: downloadStatusUpdatedAt,
+      };
+      if (assetCounts.assetsTotalCount !== undefined) {
+        update.assets_total_count = assetCounts.assetsTotalCount;
+      }
+      if (assetCounts.assetsDownloadedCount !== undefined) {
+        update.assets_downloaded_count = assetCounts.assetsDownloadedCount;
+      }
+      // Reaching `completed` is the only thing that advances the recorded version, and it must land
+      // in the same write as the status - splitting them would leave a window in which the pack
+      // reads as completed at the wrong version.
+      if (downloadStatus === "completed") {
+        update.has_completed_download = true;
+        if (options.version !== undefined) {
+          update.version = options.version;
+          update.available_version = options.version;
+          update.update_available = false;
+          // A completed download walked the manifest, so it also *is* a successful version check -
+          // recording it here keeps a forced `asset_pack: download` from leaving the check fields
+          // reading as stale, and keeps the whole success write atomic.
+          update.version_checked_at = downloadStatusUpdatedAt;
+          update.version_check_attempted_at = downloadStatusUpdatedAt;
+          update.version_check_status = "ok";
+        }
+      }
+      if (!existingAssetPack) {
+        return this.dynamicDataService.update<Partial<IDBAssetPack>>(
+          "data_list",
+          ASSET_PACKS_DATA_LIST,
+          assetPackName,
+          { ...this.buildDefaultAssetPackRow(assetPackName, downloadStatus), ...update },
+          { upsert: true }
+        );
+      }
+      return this.patchAssetPack(assetPackName, update);
+    });
   }
 
   public async setAssetCounts(assetPackName: string, assetCounts: IAssetPackAssetCounts) {
