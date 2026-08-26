@@ -144,6 +144,11 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
+  public async getFetchableUrl(relativePath: string): Promise<string | null> {
+    // Supabase public URLs are derived without a network call, so there is nothing to resolve
+    return this.getPublicUrl(relativePath) || null;
+  }
+
   public async getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null> {
     if (!this.supabase) {
       return null;

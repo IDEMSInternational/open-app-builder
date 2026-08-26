@@ -126,6 +126,21 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
     return this.downloadFile(relativePath);
   }
 
+  public async getFetchableUrl(relativePath: string): Promise<string | null> {
+    if (!this.firebaseService.app) {
+      return null;
+    }
+    try {
+      const { downloadUrl } = await FirebaseStorage.getDownloadUrl({
+        path: `${this.config.folderName}/${relativePath}`,
+      });
+      return downloadUrl || null;
+    } catch (error) {
+      console.error("[Firebase Remote Asset] Error resolving fetchable url:", error);
+      return null;
+    }
+  }
+
   public async getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null> {
     if (!this.firebaseService.app) {
       return null;

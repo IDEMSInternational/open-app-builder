@@ -153,6 +153,7 @@ progress bar or status display:
 | `download_status`            | `in_progress`, `waiting_for_connection`, `completed`, `error` or `cancelled` |
 | `assets_total_count`         | Total number of files in the pack                                            |
 | `assets_downloaded_count`    | Number processed so far in the current attempt                               |
+| `download_progress_percent`  | Percentage complete for the current attempt, 0-100                           |
 | `download_started_at`        | ISO timestamp of when the current attempt started                            |
 | `download_completed_at`      | ISO timestamp of completion, empty until completed                           |
 | `download_status_updated_at` | ISO timestamp of the most recent status change                               |
@@ -167,6 +168,17 @@ pack's progress:
 | begin_data_items |                                                         | @data._asset_packs                                                   |
 | text             | [pack_progress_@item.id](mailto:pack_progress_@item.id) | @item.name: @item.assets_downloaded_count / @item.assets_total_count |
 | end_data_items   |                                                         |                                                                      |
+
+
+!!! tip "Counts or percentage?"
+
+    `assets_downloaded_count` is always a real file count, so "x of y files" is accurate however a
+    pack was fetched. It steps unevenly though, because files in a pack range from under a kilobyte
+    to a couple of megabytes.
+
+    For a **progress bar**, prefer `download_progress_percent`. It tracks transferred bytes when a
+    pack is downloaded in bulk and files otherwise, so it moves smoothly either way — and which way
+    a given download takes is decided automatically, not by authoring.
 
 
 !!! note
@@ -207,7 +219,7 @@ and result:
 | `progress_text`    | text                         | Button text while downloading (default `Downloading...`)    |
 | `success_text`     | text                         | Button text after a successful download (default `Success`) |
 | `error_text`       | text                         | Button text after a failed download (default `Error`)       |
-| `progress_display` | `count` (default), `spinner` | Show a downloaded/total count, or a spinner                 |
+| `progress_display` | `count` (default), `percent`, `spinner` | Show a downloaded/total file count, a percentage, or a spinner |
 
 
 The button behaves like the `download` action, i.e. it always re-downloads the pack rather than
@@ -303,6 +315,7 @@ Sync writes each pack to the deployment's `app_data/remote_assets/{packName}/` f
 
 - every asset file, in the same folder structure as the source assets folder
 - `{packName}.json` — the manifest the app reads, listing each asset's size and checksum
+- `{packName}.zip` — every asset in one archive, used when most of a pack is missing on a device
 - `contents.json` — not used at runtime, but harmless to upload
 
 Uploading is **currently a manual process**. Upload the pack folder as-is (via the Firebase console,
@@ -311,11 +324,22 @@ ends up with:
 
 ```
 {folderName}/{packName}/{packName}.json   <- manifest
+{folderName}/{packName}/{packName}.zip    <- archive of every asset
 {folderName}/{packName}/{relativePath}    <- each asset file
 ```
 
-The folder name in storage must exactly match the pack name used in templates, and re-uploading a
-changed pack means re-uploading its manifest too.
+The folder name in storage must exactly match the pack name used in templates.
+
+!!! warning "Re-uploading a changed pack"
+
+    Upload the asset files and `{packName}.zip` **first**, and `{packName}.json` **last**. The
+    manifest is what tells the app a new version exists, so if it arrives first the app goes looking
+    for content that is not there yet. It recovers on its own once the rest lands, but it looks like
+    a bug in the meantime.
+
+    All three must go up together. The archive and the loose files are both used — which one a given
+    device fetches depends on how much of the pack it already has — so an archive left behind from a
+    previous version would hand out stale assets.
 
 ## Deployment and storage setup
 
@@ -415,11 +439,15 @@ files are read from
 ## Testing and debugging
 
 `download` and `ensure_downloaded` accept `debug_download_delay_ms`, which pauses for that many
-milliseconds before each asset file:
+milliseconds before each asset file, however the pack is being fetched:
+
 
 ```
 click | asset_pack: download: my_asset_pack | debug_download_delay_ms: 3000
 ```
+
+When a pack is fetched in bulk the pause applies as each file is unpacked, not to the transfer
+itself, so the window it opens is during installation rather than during the download.
 
 This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack,
 toggling aeroplane mode — which is otherwise hard to hit on a fast connection. It should be omitted

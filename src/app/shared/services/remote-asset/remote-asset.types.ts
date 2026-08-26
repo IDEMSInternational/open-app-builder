@@ -1,4 +1,5 @@
 import type { FlowTypes } from "../../model";
+import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 
 /** Name of the protected data list storing bundled and downloaded asset contents */
 export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
@@ -30,6 +31,38 @@ export const VERSION_CHECK_MIN_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
 export const VERSION_CHECK_FAILURE_BACKOFF_MS = 1000 * 60 * 15; // 15 minutes
 
 /**
+ * Fraction of a pack's bytes that must be missing locally before the whole pack is fetched as a
+ * single archive rather than file by file.
+ *
+ * Measured in *bytes*, not slots, deliberately. The trade is round trips against redundant
+ * transfer: N loose fetches cost N round trips but only the bytes needed, while the archive costs
+ * one round trip and re-transfers the whole pack. Real packs mix ~85kb images with ~350kb audio,
+ * so a slot count would pick the wrong mode in both directions - a handful of changed audio files
+ * looks small by count but large by bytes, and vice versa.
+ */
+export const ASSET_PACK_ARCHIVE_THRESHOLD_FRACTION = 0.3;
+
+/**
+ * Consecutive archive failures (corrupt stream, 5xx, unzip error) after which a pack falls back to
+ * per-file downloads for the rest of the session. Being offline does not count - that is parked
+ * and retried, not a failure of the archive.
+ *
+ * Held in memory only: persisting it would strand a pack on the slow path after two transient
+ * blips, with nothing to clear it.
+ */
+export const ASSET_PACK_ARCHIVE_FAILURE_LIMIT = 2;
+
+/**
+ * How many completed `_assets_contents` rows to accumulate before writing them as one bulk
+ * operation. Bounds how much written-but-unrecorded work an interruption discards: unflushed
+ * files are on disk but re-download next attempt, which is the safe direction but wasted effort.
+ */
+export const ASSET_CONTENTS_FLUSH_INTERVAL = 25;
+
+/** Minimum gap between persisted download-progress writes, to keep chunk-rate updates off the db */
+export const DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS = 500;
+
+/**
  * Represents an asset pack entry stored in the `_asset_packs` protected data list.
  */
 export type IAssetPackDownloadStatus =
@@ -56,6 +89,16 @@ export interface IDBAssetPack {
   assets_total_count: number;
   /** Number of asset files downloaded so far in the current attempt */
   assets_downloaded_count: number;
+  /**
+   * Percentage complete for the current attempt, 0-100.
+   *
+   * Exists because `assets_downloaded_count` is a coarse bar: pack files range from under a
+   * kilobyte to a couple of megabytes, so a file count jumps unevenly. This tracks bytes when
+   * downloading an archive and files otherwise, so authors get one field that moves smoothly
+   * whichever way a pack was fetched - which matters because that choice is invisible to
+   * authoring.
+   */
+  download_progress_percent: number;
   /**
    * Manifest version at which every file in the pack was verified downloaded. Only advances on a
    * fully successful download, so a partially applied update leaves it at the previous value and
@@ -99,6 +142,32 @@ export interface IAssetPackDownloadStatusTimestamps {
 export interface IAssetPackAssetCounts {
   assetsTotalCount?: number;
   assetsDownloadedCount?: number;
+}
+
+export interface IAssetPackProgress {
+  /** Percentage complete for the current attempt, 0-100. See `IDBAssetPack.download_progress_percent` */
+  downloadProgressPercent?: number;
+}
+
+/**
+ * One downloadable file within a pack - a manifest entry's base file, or one of its theme/language
+ * overrides - resolved against local storage before any fetching begins.
+ */
+export interface IAssetPackSlotPlan {
+  assetEntry: IAssetEntry;
+  overrideProps?: IAssetOverrideProps;
+  /** Path within the pack: the archive entry name, and the suffix of the remote object path */
+  relativePath: string;
+  /** Where the file lives in local storage */
+  targetPath: string;
+  slotChecksum: string | undefined;
+  slotSizeKb: number | undefined;
+  /** The slot's `filePath` as the manifest ships it, used by the resume gate */
+  manifestFilePath: string | undefined;
+  /** Webview-usable path to an existing trustworthy local copy, if the resume gate found one */
+  existingSrc?: string;
+  /** Whether this attempt has written and integrated the slot */
+  settled?: boolean;
 }
 
 export interface IActiveAssetPackDownload {

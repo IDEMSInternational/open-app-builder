@@ -21,6 +21,7 @@ import {
   checkTotalAssetSize,
   filterAppAssets,
   handleAssetOverrides,
+  writeAssetPackArchive,
 } from "./asset-processors";
 
 /** Unique value to be used internally as name for core asset pack */
@@ -167,6 +168,11 @@ export class AssetsPostProcessor {
     }
   }
 
+  /**
+   * Write the pack manifest and, alongside it, the `{packName}.zip` the app downloads when most
+   * of a pack is missing locally. Both are generated here from the same manifest so they cannot
+   * drift - a zip describing different content to its manifest is a silent, whole-pack bug.
+   */
   private writeRemoteAssetsManifest(
     targetFolder: string,
     assetPackName: string,
@@ -180,6 +186,16 @@ export class AssetsPostProcessor {
     );
     const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
     fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
+
+    const { rawBytes, archiveBytes } = writeAssetPackArchive(
+      targetFolder,
+      assetPackName,
+      assetPackManifest
+    );
+    logOutput({
+      msg1: `Asset pack archive: ${assetPackName}.zip`,
+      msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)`,
+    });
   }
 
   /**

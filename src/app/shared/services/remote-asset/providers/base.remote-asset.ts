@@ -21,6 +21,17 @@ export interface IRemoteAssetProvider {
 
   /** Get file metadata */
   getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null>;
+
+  /**
+   * Resolve a URL the app can fetch directly, for cases that need the response stream rather than
+   * a finished blob (see the asset pack archive download).
+   *
+   * Separate from `getPublicUrl` because that only works where bucket objects are publicly
+   * readable, which is not true of every deployment. Costing a round trip is acceptable here: it
+   * is paid once per archive, not once per asset.
+   * @returns null when no URL could be resolved
+   */
+  getFetchableUrl(relativePath: string): Promise<string | null>;
 }
 
 export interface IRemoteAssetConfig {
@@ -38,6 +49,18 @@ export interface IRemoteAssetDownloadOptions {
    * Asset files themselves are fetched once and keyed by checksum, so they do not need it.
    */
   noCache?: boolean;
+}
+
+/**
+ * Append a query parameter to a URL that may or may not already carry one.
+ *
+ * NB the parameter must go on the *fetch* URL, never the storage key - provider download URLs
+ * already carry their own query (`?alt=media&token=...`), and a key containing `?` simply does
+ * not exist in the bucket.
+ */
+export function appendUrlParam(url: string, key: string, value: string): string {
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
 }
 
 /**
