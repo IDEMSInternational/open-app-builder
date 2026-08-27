@@ -36,12 +36,18 @@ flowchart TD
     Core["Bundled contents.json"] -->|seeds at init| Contents["_assets_contents (dynamic data)"]
     Manifest["Pack manifest"] --> Native["Native: fetch bytes, write to Data dir"]
     Manifest --> Web["Web: no fetch needed"]
-    Native -->|"filePath = local src"| Contents
+    Native -->|"filePath = local:// path"| Contents
     Web -->|"filePath = provider CDN URL"| Contents
     Contents --> Template["TemplateAssetService resolves asset references"]
 ```
 
 Note the platform split: **native downloads files, web does not.** On web the browser can stream straight from the provider's CDN, so a "download" only rewrites `filePath` to a public URL. All the filesystem, resume and integrity logic below is native-only.
+
+### `filePath` is never an absolute device path
+
+On native, a downloaded row stores `local://<pack-relative path>` — never the absolute path the file currently sits at. iOS relocates the app container whenever the app is updated ([Apple TN2285](https://developer.apple.com/library/archive/technotes/tn2285/_index.html): *"the absolute path to the app's container [...] will change [...] you must only save paths to files relative to your application container"*), so an absolute path stored at download time goes stale on the next release and every downloaded asset silently stops rendering — while `_asset_packs` still reports the pack as `completed`, so nothing re-downloads to repair it.
+
+`TemplateAssetService` therefore resolves `local://` paths **at the point of display**, against the container reported for the current session (`FileManagerService.getLocalAssetPathConfig`, handed over during `RemoteAssetService` init). Rows written by app versions that stored absolute paths are still understood: `getLocalAssetTargetPath` recovers the pack-relative tail, so they re-point to the live container on next launch without needing a migration.
 
 ## Slots
 
@@ -75,9 +81,9 @@ Downloads run in the WebView's JS runtime, so killing or backgrounding the app k
 
 1. The file exists on disk (`FileManagerService.getSavedFileInfo`), and
 2. its size matches the manifest's `size_kb`, and
-3. the `_assets_contents` entry recorded for that slot carries the manifest's checksum **and** has a `filePath` that differs from the manifest's own value.
+3. the `_assets_contents` entry recorded for that slot carries the manifest's checksum **and** has a `filePath` that is a local asset path.
 
-Point 3 does the real work. Integrating a base asset writes the whole manifest entry, so the row also picks up every *override's* checksum before those files exist — a checksum alone would vouch for slots that were never downloaded, and only a rewritten `filePath` proves this app saved one. It is compared against the manifest value rather than against the expected local path so that platform path quirks (e.g. iOS `/private/var` vs `/var`) can't silently disable resume.
+Point 3 does the real work. Integrating a base asset writes the whole manifest entry, so the row also picks up every *override's* checksum before those files exist — a checksum alone would vouch for slots that were never downloaded, and only a rewritten `filePath` proves this app saved one. Manifest override entries carry a pack-relative path, which is never itself a local asset path, so the two stay distinguishable. Absolute paths from older app versions count as evidence too, so taking an update resumes rather than re-downloading every pack.
 
 Anything unverified re-downloads. The cost of a false negative is one wasted file fetch; the cost of a false positive is a corrupt asset that never heals, so the gate is deliberately biased toward re-downloading.
 
