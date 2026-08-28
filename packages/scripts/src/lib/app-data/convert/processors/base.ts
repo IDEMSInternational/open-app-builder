@@ -39,13 +39,18 @@ class BaseProcessor<InputType = any, OutputType = any> {
       const queueCounter = total - this.queue.size - this.queue.pending;
       const logCount = `${queueCounter}/${total} processed`;
       logUpdate(chalk.blue(`[ ${this.context.namespace} ] ${logCount}`));
+      this.onQueueProgress(queueCounter, total);
     });
     // queue inputs
     this.addInputProcessesToQueue(inputs);
     await this.queue.onIdle();
     logUpdate.done();
+    await this.beforePostProcess();
     return this.postProcess(this.outputs);
   }
+
+  /** Optional hook run after queue completes and before postProcess */
+  protected async beforePostProcess(): Promise<void> {}
 
   /** Optional post-processing of combined outputs */
   public postProcess(outputs: OutputType[]): any {
@@ -85,9 +90,35 @@ class BaseProcessor<InputType = any, OutputType = any> {
   }
 
   /** Optional override to specify if cached entry should be used */
-  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): Boolean {
+  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): boolean {
     return true;
   }
+
+  /** Optional override to record per-input processing timings (used by FlowParserProcessor) */
+  protected recordInputProcessingTimings(
+    _input: InputType,
+    _result: { value: any; source: "cache" | "processor" },
+    _timings: Record<string, number>
+  ): void {}
+
+  /** Optional override called when a cached entry is used; return null to use default handling */
+  protected onCachedEntryRetrieved(
+    _input: InputType,
+    _cachedEntry: any
+  ): { value: any; source: "cache"; additionalOutputs?: any[] } | null {
+    return null;
+  }
+
+  /** Optional override called after an input is processed and cached */
+  protected onInputProcessed(
+    _input: InputType,
+    _output: any,
+    _cacheEntryName: string,
+    _source: "cache" | "processor"
+  ): void {}
+
+  /** Optional override called as queue items complete */
+  protected onQueueProgress(_processed: number, _total: number): void {}
 
   private addInputProcessesToQueue(inputs: InputType[] = [], autoStart = true, priority = 1) {
     this.queue.pause();
@@ -95,10 +126,14 @@ class BaseProcessor<InputType = any, OutputType = any> {
       if (input) {
         this.queue.add(
           async () => {
-            const { value, source } = await this.handleInputProcessing(input);
-            if (value) {
-              this.notifyInputProcessed(value, source as any);
-              this.outputs.push(value);
+            const result = await this.handleInputProcessing(input);
+            if (result.value) {
+              this.notifyInputProcessed(result.value, result.source as any);
+              this.outputs.push(result.value);
+              for (const extra of result.additionalOutputs || []) {
+                this.notifyInputProcessed(extra, "cache");
+                this.outputs.push(extra);
+              }
             }
           },
           { priority }
@@ -123,24 +158,57 @@ class BaseProcessor<InputType = any, OutputType = any> {
     this.addInputProcessesToQueue([input], true, priority);
   }
 
-  private async handleInputProcessing(input: InputType) {
+  private async handleInputProcessing(input: InputType): Promise<{
+    value: any;
+    source: "cache" | "processor";
+    additionalOutputs?: any[];
+  }> {
+    const totalStart = performance.now();
+    const cacheEntryNameStart = performance.now();
     const cacheEntryName = this.generateCacheEntryName(input);
+    const cacheEntryNameMs = performance.now() - cacheEntryNameStart;
+
+    const cacheGetStart = performance.now();
     const cachedEntry = this.cache.get(cacheEntryName);
-    // handle with cache
+    const cacheGetMs = performance.now() - cacheGetStart;
+
     if (cachedEntry) {
       if (this.shouldUseCachedEntry(input, cachedEntry)) {
         this.logger.debug("cache retrieved: " + cacheEntryName);
-        return { value: cachedEntry, source: "cache" };
+        const custom = this.onCachedEntryRetrieved(input, cachedEntry);
+        const result = custom ?? { value: cachedEntry, source: "cache" as const };
+        this.recordInputProcessingTimings(input, result, {
+          cacheEntryNameMs,
+          cacheGetMs,
+          processInputMs: 0,
+          cacheAddMs: 0,
+          totalMs: performance.now() - totalStart,
+        });
+        return result;
       } else {
         this.cache.remove(cacheEntryName);
       }
     }
-    // handle with processing
+
+    const processInputStart = performance.now();
     const output = await this.processInput(input);
-    // update cache
+    const processInputMs = performance.now() - processInputStart;
+
+    const cacheAddStart = performance.now();
     const cacheStats = this.generateCacheEntryStats();
     this.cache.add(output, cacheEntryName, cacheStats);
-    return { value: output, source: "processor" };
+    const cacheAddMs = performance.now() - cacheAddStart;
+
+    const result = { value: output, source: "processor" as const };
+    this.onInputProcessed(input, output, cacheEntryName, "processor");
+    this.recordInputProcessingTimings(input, result, {
+      cacheEntryNameMs,
+      cacheGetMs,
+      processInputMs,
+      cacheAddMs,
+      totalMs: performance.now() - totalStart,
+    });
+    return result;
   }
 }
 
