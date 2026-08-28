@@ -279,6 +279,12 @@ export class TemplateVariablesService extends AsyncServiceBase {
         parsedValue = evaluated.parsedValue;
         if (typeof parsedValue === "string") {
           parsedValue = `"${parsedValue}"`;
+        } else if (
+          Array.isArray(parsedValue) ||
+          (typeof parsedValue === "object" && parsedValue !== null)
+        ) {
+          // Serialize arrays and objects as JSON so they remain valid JavaScript when inserted
+          parsedValue = JSON.stringify(parsedValue);
         }
       }
       expression = expression.replace(evaluator.matchedExpression, parsedValue);
@@ -321,6 +327,23 @@ export class TemplateVariablesService extends AsyncServiceBase {
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
   ) {
     const { thisCtxt, globalFunctions, globalConstants } = context.calc as ICalcContext;
+
+    // // CRITICAL: Merge latest context.local values into thisCtxt before evaluation
+    // // This ensures @calc() expressions see the most up-to-date local variables
+    // // when set_variable rows are evaluated sequentially
+    // // IMPORTANT: Only merge non-undefined values to avoid overwriting valid values with undefined
+    // if (context.local) {
+    //   if (!thisCtxt.local) {
+    //     thisCtxt.local = {};
+    //   }
+    //   // Merge context.local into thisCtxt.local to get latest values, but skip undefined
+    //   Object.entries(context.local).forEach(([key, value]) => {
+    //     if (value !== undefined) {
+    //       thisCtxt.local![key] = value;
+    //     }
+    //   });
+    // }
+
     let evaluated: any;
     try {
       // first pass - full evaluation
@@ -345,7 +368,17 @@ export class TemplateVariablesService extends AsyncServiceBase {
       let replacedExpression = fullExpression;
       evaluators.forEach((evaluator) => {
         const { matchedExpression, parsedValue } = evaluator;
-        replacedExpression = replacedExpression.replace(matchedExpression, parsedValue);
+        let replacementValue = parsedValue;
+        // Properly serialize arrays and objects for JavaScript evaluation
+        if (typeof replacementValue === "string") {
+          replacementValue = `"${replacementValue}"`;
+        } else if (
+          Array.isArray(replacementValue) ||
+          (typeof replacementValue === "object" && replacementValue !== null)
+        ) {
+          replacementValue = JSON.stringify(replacementValue);
+        }
+        replacedExpression = replacedExpression.replace(matchedExpression, replacementValue);
       });
       evaluated = replacedExpression;
       log("fail to evaluate as JS", { error, fullExpression });
