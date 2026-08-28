@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
-import { writeFile, ensureDir, emptyDir } from "fs-extra";
+import { writeFile, ensureDir, emptyDir, pathExists, readdir } from "fs-extra";
 import { resolve, dirname } from "path";
 import { logOutput } from "shared";
 
@@ -72,12 +72,38 @@ export class ReportGenerator {
     return workbookData;
   }
 
-  private async loadAssetsData() {
+  /**
+   * Load asset entries from both the core `assets` folder and any `remote_assets`
+   * pack subfolders, merging them into a single hashmap for reporting
+   **/
+  private async loadAssetsData(): Promise<IAssetEntryHashmap> {
     const { _workspace_path } = this.deployment;
-    const assetsDir = resolve(_workspace_path, "app_data", "assets");
-    const assetsContents = resolve(assetsDir, "contents.json");
-    const contents = (await readJson(assetsContents)) as IAssetEntryHashmap;
-    return contents;
+    const appDataDir = resolve(_workspace_path, "app_data");
+
+    // Core assets
+    const coreAssetsDir = resolve(appDataDir, "assets");
+    const coreContents = (await readJson(
+      resolve(coreAssetsDir, "contents.json")
+    )) as IAssetEntryHashmap;
+
+    // Remote assets - each pack has its own subfolder with a contents.json
+    const remoteAssetsDir = resolve(appDataDir, "remote_assets");
+    const remoteContents: IAssetEntryHashmap = {};
+    if (await pathExists(remoteAssetsDir)) {
+      const packEntries = await readdir(remoteAssetsDir, { withFileTypes: true });
+      const packFolders = packEntries
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => entry.name);
+      for (const packName of packFolders) {
+        const packContentsPath = resolve(remoteAssetsDir, packName, "contents.json");
+        if (await pathExists(packContentsPath)) {
+          const packContents = (await readJson(packContentsPath)) as IAssetEntryHashmap;
+          Object.assign(remoteContents, packContents);
+        }
+      }
+    }
+
+    return { ...coreContents, ...remoteContents };
   }
 
   private async writeOutputJson(reports: Record<string, IReport>, target: string) {
