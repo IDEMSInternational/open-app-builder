@@ -4,6 +4,66 @@ export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
 export const ASSET_PACKS_DATA_LIST = "_asset_packs";
 
 /**
+ * Prefix marking an `_assets_contents` `filePath` as a file this app downloaded to native storage.
+ * What follows the prefix is the pack-relative target path, i.e. the same value passed to
+ * `FileManagerService.saveFile`.
+ *
+ * An absolute path must never be persisted here. iOS relocates the app container on update (Apple
+ * TN2285: "the absolute path to the app's container [...] will change [...] you must only save paths
+ * to files relative to your application container"), so a stored absolute path silently goes stale
+ * and every downloaded asset stops rendering while `_asset_packs` still reports the pack as
+ * downloaded. Storing the relative path instead lets it be resolved against the *current* container
+ * at read time, every session.
+ */
+export const LOCAL_ASSET_PATH_PREFIX = "local://";
+
+/**
+ * Marks an absolute webview path written by an app version predating `local://`.
+ * `Capacitor.convertFileSrc` always routes local files through this segment, whatever scheme the
+ * platform is configured with - `capacitor://localhost/_capacitor_file_/...` on iOS,
+ * `http(s)://localhost/_capacitor_file_/...` on Android (see `server.androidScheme`) - so matching
+ * the segment rather than the scheme keeps every platform's legacy rows recognisable.
+ */
+const LEGACY_WEBVIEW_FILE_SEGMENT = "/_capacitor_file_/";
+
+/** Format a pack-relative target path for storage in `_assets_contents.filePath` */
+export function toLocalAssetPath(targetPath: string) {
+  return `${LOCAL_ASSET_PATH_PREFIX}${targetPath}`;
+}
+
+/**
+ * Recover the pack-relative target path from an `_assets_contents` `filePath`.
+ *
+ * Also handles the absolute paths written before `local://` existed: those embed a container path
+ * that may now be stale, but everything after the deployment folder is still the target path, so
+ * rows written by an older app version resolve correctly without needing a migration.
+ *
+ * NB legacy parsing keys off the *current* deployment name, since that is the folder `saveFile`
+ * inserts. Renaming a deployment therefore orphans any legacy row still holding the old name - such
+ * rows re-download once and are then stored as `local://`, so it self-corrects at the cost of one
+ * fetch rather than breaking.
+ *
+ * @returns the target path, or undefined if the value is not a locally downloaded asset (a bundled
+ * asset's relative path, or a provider URL on web)
+ */
+export function getLocalAssetTargetPath(filePath: string, deploymentName: string) {
+  if (filePath.startsWith(LOCAL_ASSET_PATH_PREFIX)) {
+    return filePath.slice(LOCAL_ASSET_PATH_PREFIX.length);
+  }
+  const isLegacyLocalPath =
+    filePath.includes(LEGACY_WEBVIEW_FILE_SEGMENT) || filePath.startsWith("file://");
+  if (!isLegacyLocalPath) return undefined;
+  // e.g. "capacitor://localhost/_capacitor_file_/<container>/Documents/<deployment>/<targetPath>"
+  // Taking the FIRST match: the container prefix ahead of it is OS-structured (a UUID path on iOS,
+  // the package dir on Android) and so will not contain the deployment folder, whereas an authored
+  // target path is free to contain a folder that happens to share the deployment's name.
+  const deploymentFolder = `/${deploymentName}/`;
+  const deploymentFolderIndex = filePath.indexOf(deploymentFolder);
+  if (deploymentFolderIndex === -1) return undefined;
+  return filePath.slice(deploymentFolderIndex + deploymentFolder.length);
+}
+
+/**
  * Represents an asset pack entry stored in the `_asset_packs` protected data list.
  */
 export type IAssetPackDownloadStatus =
