@@ -31,19 +31,16 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 }));
 
 @Component({
-  selector: "oab-map-drawing",
-  templateUrl: "./map-drawing.component.html",
-  styleUrls: ["./map-drawing.component.scss"],
+  selector: "oab-map",
+  templateUrl: "./map.component.html",
+  styleUrls: ["./map.component.scss"],
   standalone: false,
   host: {
     "(document:keydown.escape)": "cancelPolygon()",
     "(document:keydown.delete)": "deleteSelected()",
   },
 })
-export class MapDrawingComponent
-  extends TemplateBaseComponentWithParams(AuthorSchema)
-  implements OnInit
-{
+export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) implements OnInit {
   private dynamicDataService = inject(DynamicDataService);
 
   private terraDraw: TerraDraw | null = null;
