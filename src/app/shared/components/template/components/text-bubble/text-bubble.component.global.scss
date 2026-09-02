@@ -1,0 +1,18 @@
+// Styling must be globally scoped ('@use'd in src/theme/_components.scss), as the child text
+// component renders markdown via `[innerHTML]`, so the generated elements are injected into the
+// DOM without a component encapsulation attribute and cannot be reached from component styles.
+
+// The bubble's own padding handles spacing at its edges, so collapse just the outer margins of the
+// child text component. Margins *between* blocks are left alone, so text authored with blank lines
+// still renders as spaced-out paragraphs.
+// NOTE: matching only direct children of the markdown wrapper (`> *`) is important. A descendant
+// `:first-child`/`:last-child` would also collapse the margins of the `<p>` that markdown nests
+// inside every `<li>` of a loose list, rendering blank-line-separated list items as a tight list.
+tmpl-text-bubble .text-bubble > plh-tmpl-text > * {
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
