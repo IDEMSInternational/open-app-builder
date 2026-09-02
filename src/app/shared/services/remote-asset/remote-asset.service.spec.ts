@@ -100,11 +100,7 @@ const MOCK_ASSET_ENTRY_OVERRIDES_ONLY: IAssetEntry = {
   overridesOnly: true,
 };
 
-/**
- * The webview `src` that a file saved to local storage resolves to. A recorded `_assets_contents`
- * filePath only looks like this once THIS app integrated the slot - manifest entries carry the
- * pack-relative path instead - so tests use it to distinguish integrated slots from described ones.
- */
+/** The absolute webview `src` that `saveFile` resolves a file on device to */
 const localSrc = (targetPath: string) =>
   `capacitor://localhost/_capacitor_file_/data/${targetPath}`;
 
@@ -113,6 +109,20 @@ const localSrc = (targetPath: string) =>
  * so a file fetched by one pack is found (and skipped) by the next pack that ships it.
  */
 const packPath = (relativePath: string) => `remote_assets/${relativePath}`;
+
+/**
+ * The value recorded in `_assets_contents.filePath` once THIS app integrated the slot. Manifest
+ * entries carry the pack-relative path instead, so tests use it to distinguish integrated slots
+ * from ones merely described by the manifest.
+ */
+const localAssetPath = (targetPath: string) => `local://${targetPath}`;
+
+/**
+ * An absolute path as recorded by app versions before `local://` existed, embedding a container
+ * that iOS has since relocated. `MOCK` is the deployment name from `MOCK_DEPLOYMENT_CONFIG`.
+ */
+const legacyLocalSrc = (targetPath: string) =>
+  `capacitor://localhost/_capacitor_file_/var/mobile/Containers/Data/Application/OLD-UUID/Documents/MOCK/${targetPath}`;
 
 /** Build an `_asset_packs` row, so fixtures only state the fields the test is about */
 function buildMockAssetPack(overrides: Partial<IDBAssetPack> = {}): IDBAssetPack {
@@ -1036,7 +1046,7 @@ describe("RemoteAssetsService", () => {
           id: "images/asset.png",
           md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
           size_kb: 100,
-          filePath: localSrc(packPath("images/asset.png")),
+          filePath: localAssetPath(packPath("images/asset.png")),
         },
       ]
     );
@@ -1044,7 +1054,6 @@ describe("RemoteAssetsService", () => {
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -1057,7 +1066,7 @@ describe("RemoteAssetsService", () => {
       "asset_pack",
       "_assets_contents",
       "images/asset.png",
-      jasmine.objectContaining({ filePath: localSrc(packPath("images/asset.png")) }),
+      jasmine.objectContaining({ filePath: localAssetPath(packPath("images/asset.png")) }),
       { upsert: true }
     );
     expect(getAssetPackRow()).toEqual(
@@ -1069,11 +1078,10 @@ describe("RemoteAssetsService", () => {
     );
   });
 
-  it("skips a file whose recorded local path does not string-match the stat result", async () => {
-    // The recorded path comes from `saveFile` (convertFileSrc of a write_blob path); resume only has
-    // convertFileSrc of a `Filesystem.stat` uri. Those need not be byte-identical on device (e.g. iOS
-    // /private/var vs /var), and such a divergence must not silently disable resume: any path that is
-    // no longer the manifest's own value is proof this app integrated the slot.
+  it("skips a file recorded by an older app version as an absolute (now stale) path", async () => {
+    // Upgrade path: rows written before `local://` existed hold an absolute path into a container
+    // iOS has since relocated. The file itself is still on disk, so this must resume (and rewrite
+    // the path) rather than re-download an entire pack for every user who takes the update.
     const { downloadFileSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       [
@@ -1081,21 +1089,27 @@ describe("RemoteAssetsService", () => {
           id: "images/asset.png",
           md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
           size_kb: 100,
-          filePath:
-            "capacitor://localhost/_capacitor_file_/private/var/data/remote_assets/images/asset.png",
+          filePath: legacyLocalSrc(packPath("images/asset.png")),
         },
       ]
     );
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
     expect(success).toBeTrue();
     expect(downloadFileSpy).not.toHaveBeenCalled();
+    // and the stale absolute path is replaced with a container-independent one
+    expect(mockDynamicDataService.update).toHaveBeenCalledWith(
+      "asset_pack",
+      "_assets_contents",
+      "images/asset.png",
+      jasmine.objectContaining({ filePath: localAssetPath(packPath("images/asset.png")) }),
+      { upsert: true }
+    );
   });
 
   it("re-downloads a present file whose on-disk size does not match the manifest", async () => {
@@ -1107,7 +1121,7 @@ describe("RemoteAssetsService", () => {
           id: "images/asset.png",
           md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
           size_kb: 100,
-          filePath: localSrc(packPath("images/asset.png")),
+          filePath: localAssetPath(packPath("images/asset.png")),
         },
       ]
     );
@@ -1115,7 +1129,6 @@ describe("RemoteAssetsService", () => {
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 999,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -1134,14 +1147,13 @@ describe("RemoteAssetsService", () => {
           id: "images/asset.png",
           md5Checksum: "OUTDATED-CHECKSUM",
           size_kb: 100,
-          filePath: localSrc(packPath("images/asset.png")),
+          filePath: localAssetPath(packPath("images/asset.png")),
         },
       ]
     );
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -1159,7 +1171,6 @@ describe("RemoteAssetsService", () => {
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -1179,7 +1190,7 @@ describe("RemoteAssetsService", () => {
           id: "audio/asset_with_overrides.mp3",
           md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
           size_kb: 43.4,
-          filePath: localSrc(packPath("audio/asset_with_overrides.mp3")),
+          filePath: localAssetPath(packPath("audio/asset_with_overrides.mp3")),
           overrides: clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES.overrides),
         },
       ]
@@ -1190,7 +1201,6 @@ describe("RemoteAssetsService", () => {
       async (targetPath: string) => ({
         exists: true,
         sizeBytes: targetPath === packPath("audio/asset_with_overrides.mp3") ? 44442 : 22118,
-        src: localSrc(targetPath),
       })
     );
 
@@ -1214,7 +1224,7 @@ describe("RemoteAssetsService", () => {
           id: "audio/asset_with_overrides.mp3",
           md5Checksum: MOCK_ASSET_ENTRY_WITH_OVERRIDES.md5Checksum,
           size_kb: 43.4,
-          filePath: localSrc(packPath("audio/asset_with_overrides.mp3")),
+          filePath: localAssetPath(packPath("audio/asset_with_overrides.mp3")),
         },
       ]
     );
@@ -1222,7 +1232,7 @@ describe("RemoteAssetsService", () => {
       async (targetPath: string) =>
         // base present with matching size (44442 bytes -> 43.4kb); override missing
         targetPath === packPath("audio/asset_with_overrides.mp3")
-          ? { exists: true, sizeBytes: 44442, src: localSrc(targetPath) }
+          ? { exists: true, sizeBytes: 44442 }
           : { exists: false }
     );
 
@@ -1270,7 +1280,7 @@ describe("RemoteAssetsService", () => {
           id: "images/asset.png",
           md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
           size_kb: 100,
-          filePath: localSrc(packPath("images/asset.png")),
+          filePath: localAssetPath(packPath("images/asset.png")),
         },
       ],
       "asset_pack_2"
@@ -1278,7 +1288,6 @@ describe("RemoteAssetsService", () => {
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
       exists: true,
       sizeBytes: 102400,
-      src: localSrc(packPath("images/asset.png")),
     });
 
     const success = await service.downloadAssetPackByName("asset_pack_2");
