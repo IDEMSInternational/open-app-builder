@@ -897,7 +897,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         }
       }
       for (const { relativePath, overrideProps } of slotDescriptors) {
-        const { targetPath, slotChecksum, slotSizeKb, manifestFilePath } = this.resolveAssetSlot(
+        const { targetPath, slotChecksum, slotSizeKb } = this.resolveAssetSlot(
           assetEntry,
           overrideProps
         );
@@ -908,7 +908,6 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           targetPath,
           slotChecksum,
           slotSizeKb,
-          manifestFilePath,
         });
       }
     }
@@ -929,13 +928,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           targetPath: slot.targetPath,
           slotChecksum: slot.slotChecksum,
           slotSizeKb: slot.slotSizeKb,
-          manifestFilePath: slot.manifestFilePath,
           existingContents,
           assetEntryId: slot.assetEntry.id,
           overrideProps: slot.overrideProps,
         })
       ) {
-        slot.existingSrc = savedFileInfo.src;
+        slot.alreadyDownloaded = true;
       }
     }
   }
@@ -967,7 +965,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     for (const slot of slots) {
       const slotBytes = (slot.slotSizeKb ?? 0) * 1024;
       totalBytes += slotBytes;
-      if (!slot.existingSrc) missingBytes += slotBytes;
+      if (!slot.alreadyDownloaded) missingBytes += slotBytes;
     }
     if (missingBytes === 0 || totalBytes === 0) return false;
     return missingBytes / totalBytes > ASSET_PACK_ARCHIVE_THRESHOLD_FRACTION;
@@ -1008,7 +1006,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     const missingSlotsByPath = new Map<string, IAssetPackSlotPlan[]>();
     for (const slot of slots) {
-      if (slot.existingSrc) continue;
+      if (slot.alreadyDownloaded) continue;
       const existing = missingSlotsByPath.get(slot.relativePath);
       if (existing) existing.push(slot);
       else missingSlotsByPath.set(slot.relativePath, [slot]);
@@ -1046,7 +1044,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     await writer.flush();
-    return slots.filter((slot) => !slot.existingSrc && !slot.settled).length;
+    return slots.filter((slot) => !slot.alreadyDownloaded && !slot.settled).length;
   }
 
   /**
@@ -1071,16 +1069,19 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       return;
     }
     try {
-      const { src } = await this.fileManagerService.saveFile({
+      await this.fileManagerService.saveFile({
         // Taken as a view rather than its underlying buffer: `concatChunks` allocates an exact
         // buffer today, but a subarray showing up later would silently widen this to whatever
         // else shared that allocation
         data: new Blob([data as BlobPart]),
         targetPath: slot.targetPath,
       });
-      // `src` comes straight back from the write, so there is no need to stat the file again -
+      // The write is the evidence the file is there, so there is no need to stat it again -
       // hundreds of redundant bridge calls on a large pack.
-      writer.settleSlot(slot.assetEntry, { filePath: src, overrideProps: slot.overrideProps });
+      writer.settleSlot(slot.assetEntry, {
+        filePath: toLocalAssetPath(slot.targetPath),
+        overrideProps: slot.overrideProps,
+      });
       slot.settled = true;
       await this.incrementDownloadProgress();
     } catch (error) {
@@ -1095,9 +1096,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     writer: AssetContentsWriter
   ) {
     for (const slot of slots) {
-      if (!slot.existingSrc) continue;
+      if (!slot.alreadyDownloaded) continue;
       writer.settleSlot(slot.assetEntry, {
-        filePath: slot.existingSrc,
+        filePath: toLocalAssetPath(slot.targetPath),
         overrideProps: slot.overrideProps,
       });
       slot.settled = true;
@@ -1113,7 +1114,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     for (const slot of slots) {
       const slotBytes = (slot.slotSizeKb ?? 0) * 1024;
       totalBytes += slotBytes;
-      if (slot.existingSrc) presentBytes += slotBytes;
+      if (slot.alreadyDownloaded) presentBytes += slotBytes;
     }
     if (!totalBytes) return 0;
     return Math.min(99, Math.round((presentBytes / totalBytes) * 100));

@@ -1474,7 +1474,7 @@ describe("RemoteAssetsService", () => {
       const getSavedFileInfoSpy = spyOn(fileManager, "getSavedFileInfo").and.callFake(
         async (targetPath: string) =>
           savedFiles.has(targetPath)
-            ? { exists: true, sizeBytes: savedFiles.get(targetPath), src: localSrc(targetPath) }
+            ? { exists: true, sizeBytes: savedFiles.get(targetPath) }
             : { exists: false }
       );
 
@@ -1516,7 +1516,7 @@ describe("RemoteAssetsService", () => {
       expect(saveFileSpy).toHaveBeenCalledWith(
         jasmine.objectContaining({ targetPath: packPath("images/a.png") })
       );
-      expect(contentsRow("images/a.png").filePath).toBe(localSrc(packPath("images/a.png")));
+      expect(contentsRow("images/a.png").filePath).toBe(localAssetPath(packPath("images/a.png")));
       expect(getAssetPackRow()).toEqual(
         jasmine.objectContaining({
           download_status: "completed",
@@ -1575,13 +1575,13 @@ describe("RemoteAssetsService", () => {
             id: "images/present.png",
             md5Checksum: present.md5Checksum,
             size_kb: present.size_kb,
-            filePath: localSrc(packPath("images/present.png")),
+            filePath: localAssetPath(packPath("images/present.png")),
           },
         ],
       });
       setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
         targetPath === packPath("images/present.png")
-          ? { exists: true, sizeBytes: 2048, src: localSrc(targetPath) }
+          ? { exists: true, sizeBytes: 2048 }
           : { exists: false }
       );
 
@@ -1595,7 +1595,7 @@ describe("RemoteAssetsService", () => {
       expect(savedPaths).toContain(packPath("images/missing.png"));
       // ...but it is still integrated, so its row carries the local path
       expect(setup.contentsRow("images/present.png").filePath).toBe(
-        localSrc(packPath("images/present.png"))
+        localAssetPath(packPath("images/present.png"))
       );
     });
 
@@ -1613,13 +1613,13 @@ describe("RemoteAssetsService", () => {
             id: "audio/big.mp3",
             md5Checksum: big.md5Checksum,
             size_kb: big.size_kb,
-            filePath: localSrc(packPath("audio/big.mp3")),
+            filePath: localAssetPath(packPath("audio/big.mp3")),
           },
         ],
       });
       setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
         targetPath === packPath("audio/big.mp3")
-          ? { exists: true, sizeBytes: 102400, src: localSrc(targetPath) }
+          ? { exists: true, sizeBytes: 102400 }
           : { exists: false }
       );
 
@@ -1645,13 +1645,13 @@ describe("RemoteAssetsService", () => {
             id: "images/small.png",
             md5Checksum: small.md5Checksum,
             size_kb: small.size_kb,
-            filePath: localSrc(packPath("images/small.png")),
+            filePath: localAssetPath(packPath("images/small.png")),
           },
         ],
       });
       setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
         targetPath === packPath("images/small.png")
-          ? { exists: true, sizeBytes: 1024, src: localSrc(targetPath) }
+          ? { exists: true, sizeBytes: 1024 }
           : { exists: false }
       );
 
@@ -1730,7 +1730,9 @@ describe("RemoteAssetsService", () => {
         .map(([path]) => path as string)
         .sort();
       expect(individually).toEqual(["asset_pack_1/images/b.png", "asset_pack_1/images/c.png"]);
-      expect(setup.contentsRow("images/a.png").filePath).toBe(localSrc(packPath("images/a.png")));
+      expect(setup.contentsRow("images/a.png").filePath).toBe(
+        localAssetPath(packPath("images/a.png"))
+      );
     });
 
     it("rejects an archive entry that escapes the pack root", async () => {
@@ -1804,9 +1806,9 @@ describe("RemoteAssetsService", () => {
 
       expect(success).toBeTrue();
       const row = setup.contentsRow("audio/track.mp3");
-      expect(row.filePath).toBe(localSrc(packPath("audio/track.mp3")));
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/track.mp3")));
       expect(row.overrides.theme_default.tz_sw.filePath).toBe(
-        localSrc(packPath("tz_sw/audio/track.mp3"))
+        localAssetPath(packPath("tz_sw/audio/track.mp3"))
       );
       // One row, written once, rather than a half-updated row followed by a completion
       const bulkCalls = mockDynamicDataService.bulkUpsert.calls
@@ -1822,11 +1824,11 @@ describe("RemoteAssetsService", () => {
         id: "audio/track.mp3",
         md5Checksum: "core-checksum",
         size_kb: 20,
-        filePath: localSrc(packPath("audio/track.mp3")),
+        filePath: localAssetPath(packPath("audio/track.mp3")),
         overrides: Object.freeze({
           theme_default: Object.freeze({
             tz_sw: Object.freeze({
-              filePath: localSrc(packPath("tz_sw/audio/track.mp3")),
+              filePath: localAssetPath(packPath("tz_sw/audio/track.mp3")),
               md5Checksum: "bundled-override",
               size_kb: 1,
             }),
@@ -1857,12 +1859,12 @@ describe("RemoteAssetsService", () => {
       const row = setup.contentsRow("audio/track.mp3");
       // The pack's new override landed...
       expect(row.overrides.theme_default.ke_sw.filePath).toBe(
-        localSrc(packPath("ke_sw/audio/track.mp3"))
+        localAssetPath(packPath("ke_sw/audio/track.mp3"))
       );
       // ...without dropping the bundled base file or the bundled language
-      expect(row.filePath).toBe(localSrc(packPath("audio/track.mp3")));
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/track.mp3")));
       expect(row.overrides.theme_default.tz_sw.filePath).toBe(
-        localSrc(packPath("tz_sw/audio/track.mp3"))
+        localAssetPath(packPath("tz_sw/audio/track.mp3"))
       );
     });
 
@@ -1922,7 +1924,7 @@ describe("RemoteAssetsService", () => {
             id: "images/present.png",
             md5Checksum: present.md5Checksum,
             size_kb: present.size_kb,
-            filePath: localSrc(packPath("images/present.png")),
+            filePath: localAssetPath(packPath("images/present.png")),
           },
         ],
       });
