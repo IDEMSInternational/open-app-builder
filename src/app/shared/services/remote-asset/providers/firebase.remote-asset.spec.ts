@@ -186,6 +186,47 @@ describe("FirebaseRemoteAssetProvider", () => {
     expect(getDownloadUrlSpy).toHaveBeenCalledTimes(1);
   });
 
+  it("passes an abort signal through to the fetch", async () => {
+    const provider = await createProvider(BUCKET);
+    stubFetchResponses(ok);
+    const controller = new AbortController();
+
+    await provider.downloadFile(ASSET_PATH, { signal: controller.signal });
+
+    expect(fetchSpy.calls.argsFor(0)[1]).toEqual({ signal: controller.signal });
+  });
+
+  it("combines the abort signal with noCache rather than dropping either", async () => {
+    const provider = await createProvider(BUCKET);
+    stubFetchResponses(ok);
+    const controller = new AbortController();
+
+    await provider.downloadFile(ASSET_PATH, { noCache: true, signal: controller.signal });
+
+    expect(fetchSpy.calls.argsFor(0)[1]).toEqual({
+      cache: "no-store",
+      signal: controller.signal,
+    });
+    expect(fetchedUrl(0)).toMatch(/&_oab_ts=\d+$/);
+  });
+
+  it("propagates a cancelled transfer instead of reporting it as a failed download", async () => {
+    const provider = await createProvider(BUCKET);
+    const abortError = new DOMException("The operation was aborted", "AbortError");
+    fetchSpy.and.rejectWith(abortError);
+
+    // Returning null here would look like a missing file and earn retries against a transfer the
+    // caller has already abandoned
+    await expectAsync(provider.downloadFile(ASSET_PATH)).toBeRejectedWith(abortError);
+  });
+
+  it("still reports a genuine network error as a failed download", async () => {
+    const provider = await createProvider(BUCKET);
+    fetchSpy.and.rejectWith(new TypeError("Failed to fetch"));
+
+    expect(await provider.downloadFile(ASSET_PATH)).toBeNull();
+  });
+
   it("cache-busts the tokenised url when falling back with noCache", async () => {
     const provider = await createProvider(BUCKET);
     stubFetchResponses(failed(403), ok);

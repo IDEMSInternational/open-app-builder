@@ -19,7 +19,11 @@ import type {
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
-import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
+import {
+  IRemoteAssetProvider,
+  IRemoteAssetConfig,
+  isAbortError,
+} from "./providers/base.remote-asset";
 import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
@@ -754,7 +758,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   private isDownloadCancelled(error: unknown, signal?: AbortSignal) {
-    return signal?.aborted || (error instanceof Error && error.name === "AbortError");
+    // `isAbortError` rather than an `instanceof Error` check: `fetch` rejects with a DOMException,
+    // which is not reliably an `Error`, and relying on `signal.aborted` having been set first would
+    // make a cancelled transfer look retryable whenever it has not been observed yet
+    return signal?.aborted || isAbortError(error);
   }
 
   /**
@@ -945,7 +952,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       // manifest reports a stale version, so updates would silently never reach anyone.
       const jsonText = await this.withDownloadRetry(
         `manifest for ${assetPackName}`,
-        () => this.provider.downloadFileAsText(relativePath, { noCache: true }),
+        () => this.provider.downloadFileAsText(relativePath, { noCache: true, signal }),
         signal
       );
 
@@ -957,6 +964,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.log("[REMOTE ASSETS] Manifest loaded", manifest);
       return manifest;
     } catch (error) {
+      // Returning `null` here would turn a cancel into "no manifest", which the caller treats as a
+      // failed attempt and an `error` pack. Currently survivable only because that caller re-checks
+      // the signal on the very next line - too fragile to rely on, so rethrow instead.
+      if (this.isDownloadCancelled(error, signal)) throw error;
       console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
       return null;
     }
@@ -1108,7 +1119,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const remotePath = this.getFullRemotePath(relativePath);
       const blob = await this.withDownloadRetry(
         remotePath,
-        () => this.provider.downloadFile(remotePath),
+        () => this.provider.downloadFile(remotePath, { signal }),
         signal
       );
       if (signal) this.throwIfDownloadCancelled(signal);

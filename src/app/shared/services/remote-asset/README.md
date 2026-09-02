@@ -137,7 +137,9 @@ A download holds the template action queue for its full duration, so a queued `c
 
 A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
 
-Cancelling aborts the loop, not the socket: the file request already in flight runs to completion and its result is discarded at the next checkpoint.
+Cancelling aborts the socket too, not just the loop: the attempt's abort signal is threaded into the provider's `fetch`, so the transfer in flight stops rather than running to completion and having its bytes discarded. That covers the HTTP transfer only - a Storage plugin round trip already under way (Firebase's `getDownloadUrl` fallback) has no signal to take and still runs to completion. Providers surface that as a rejected `AbortError`, never a `null` result, which is what keeps a cancel from being mistaken for a failed download and earning retries.
+
+The exception is the Supabase provider's default route. `supabase-js` `download()` takes no abort signal, and sending signalled downloads via the public URL instead would quietly require every bucket to be public, so on that route a cancel still only lands at the next checkpoint. Firebase, and any Supabase download that already goes via the public URL (`noCache`, i.e. manifests), abort in flight.
 
 #### Artificial delay
 

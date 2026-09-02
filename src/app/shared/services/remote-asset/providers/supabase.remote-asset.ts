@@ -6,6 +6,7 @@ import {
   IRemoteAssetDownloadOptions,
   IRemoteFileMetadata,
   appendCacheBuster,
+  isAbortError,
 } from "./base.remote-asset";
 import { SupabaseService } from "../../supabase/supabase.service";
 
@@ -52,7 +53,10 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     options: IRemoteAssetDownloadOptions = {}
   ): Promise<Blob | null> {
     // The supabase-js `download()` accepts only a `transform` option, with no way to control
-    // caching, so anything that must be fresh has to go via the public URL instead.
+    // caching, so anything that must be fresh has to go via the public URL instead. It also has no
+    // way to pass an abort signal, so a cancel on this route still only lands at the caller's next
+    // checkpoint - routing signalled downloads via the public URL instead would quietly require
+    // every bucket to be public, which is a bigger change than abortability is worth here.
     if (options.noCache) {
       return this.downloadFromPublicUrl(relativePath, options);
     }
@@ -86,9 +90,12 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     try {
       const publicUrl = this.getPublicUrl(relativePath);
       if (publicUrl) {
+        const init: RequestInit = {};
+        if (options.noCache) init.cache = "no-store";
+        if (options.signal) init.signal = options.signal;
         const response = await fetch(
           options.noCache ? appendCacheBuster(publicUrl) : publicUrl,
-          options.noCache ? { cache: "no-store" } : {}
+          init
         );
         if (response.ok) {
           return await response.blob();
@@ -99,6 +106,8 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
         }
       }
     } catch (fallbackError) {
+      // Cancellation is not a download failure - see the equivalent note in the Firebase provider
+      if (isAbortError(fallbackError)) throw fallbackError;
       console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
     }
 
@@ -118,6 +127,7 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
 
       return null;
     } catch (error) {
+      if (isAbortError(error)) throw error;
       console.error("[Supabase Remote Asset] Error downloading file as text:", error);
       return null;
     }

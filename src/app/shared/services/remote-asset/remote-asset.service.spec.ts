@@ -990,6 +990,12 @@ describe("RemoteAssetsService", () => {
       localFilepath: `file:///data/${targetPath}`,
       src: localSrc(targetPath),
     }));
+    // Native is faked, so an unstubbed stat would hit the real Capacitor Filesystem plugin and can
+    // hang until Jasmine's timeout. Default to "nothing on disk"; tests that need a present file
+    // override via the returned spy.
+    const getSavedFileInfoSpy = spyOn(fileManager, "getSavedFileInfo").and.resolveTo({
+      exists: false,
+    });
 
     // `_asset_packs` state comes from the shared store; feed `_assets_contents` from the fixture
     assetPacks.setFlowRows("_assets_contents", existingContentsRows);
@@ -997,27 +1003,29 @@ describe("RemoteAssetsService", () => {
     return {
       downloadFileSpy,
       saveFileSpy,
+      getSavedFileInfoSpy,
       getAssetPackRow: () => assetPacks.get(assetPackName),
     };
   }
   /* eslint-enable jasmine/no-unsafe-spy */
 
   it("skips downloading a file already present on disk with matching size and recorded checksum", async () => {
-    const { downloadFileSpy, saveFileSpy, getAssetPackRow } = setupNativeDownload(
-      [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
-      // Previously integrated from this manifest (recorded checksum matches, filePath points at the
-      // local file) -> trustworthy on disk
-      [
-        {
-          id: "images/asset.png",
-          md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
-          size_kb: 100,
-          filePath: localAssetPath(packPath("images/asset.png")),
-        },
-      ]
-    );
+    const { downloadFileSpy, saveFileSpy, getAssetPackRow, getSavedFileInfoSpy } =
+      setupNativeDownload(
+        [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+        // Previously integrated from this manifest (recorded checksum matches, filePath points at the
+        // local file) -> trustworthy on disk
+        [
+          {
+            id: "images/asset.png",
+            md5Checksum: MOCK_ASSET_ENTRY.md5Checksum,
+            size_kb: 100,
+            filePath: localAssetPath(packPath("images/asset.png")),
+          },
+        ]
+      );
     // 102400 bytes -> size_kb 100, matching MOCK_ASSET_ENTRY
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 102400,
     });
@@ -1048,7 +1056,7 @@ describe("RemoteAssetsService", () => {
     // Upgrade path: rows written before `local://` existed hold an absolute path into a container
     // iOS has since relocated. The file itself is still on disk, so this must resume (and rewrite
     // the path) rather than re-download an entire pack for every user who takes the update.
-    const { downloadFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       [
         {
@@ -1059,7 +1067,7 @@ describe("RemoteAssetsService", () => {
         },
       ]
     );
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 102400,
     });
@@ -1079,7 +1087,7 @@ describe("RemoteAssetsService", () => {
   });
 
   it("re-downloads a present file whose on-disk size does not match the manifest", async () => {
-    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       // Fully integrated previously, so only the size mismatch should force a re-download
       [
@@ -1092,7 +1100,7 @@ describe("RemoteAssetsService", () => {
       ]
     );
     // Wrong size on disk (truncated / stale) -> must not be trusted
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 999,
     });
@@ -1110,10 +1118,8 @@ describe("RemoteAssetsService", () => {
     ]);
     // Backoff is real time in production; skip the waiting so the test does not sleep
     const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
-    downloadFileSpy.and.returnValues(
-      Promise.resolve(null),
-      Promise.resolve(new Blob(["recovered"]))
-    );
+    let attempts = 0;
+    downloadFileSpy.and.callFake(async () => (++attempts === 1 ? null : new Blob(["recovered"])));
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
@@ -1127,14 +1133,18 @@ describe("RemoteAssetsService", () => {
   });
 
   it("retries an asset download that throws, not just one returning null", async () => {
+    // The throw is the point of the test, so keep its expected logging out of the Karma output
+    spyOn(console, "error");
+    spyOn(console, "warn");
     const { downloadFileSpy } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
     ]);
     spyOn<any>(service, "abortableDelay").and.resolveTo();
-    downloadFileSpy.and.returnValues(
-      Promise.reject(new Error("socket hang up")),
-      Promise.resolve(new Blob(["recovered"]))
-    );
+    let attempts = 0;
+    downloadFileSpy.and.callFake(async () => {
+      if (++attempts === 1) throw new Error("socket hang up");
+      return new Blob(["recovered"]);
+    });
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
@@ -1234,9 +1244,10 @@ describe("RemoteAssetsService", () => {
       rows: [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
     };
     // A manifest blip fails the attempt before any slot retry could help, so it needs its own
+    let manifestAttempts = 0;
     const downloadFileAsTextSpy = jasmine
       .createSpy("downloadFileAsText")
-      .and.returnValues(Promise.resolve(null), Promise.resolve(JSON.stringify(manifest)));
+      .and.callFake(async () => (++manifestAttempts === 1 ? null : JSON.stringify(manifest)));
     service["provider"] = {
       downloadFileAsText: downloadFileAsTextSpy,
       downloadFile: jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"])),
@@ -1250,6 +1261,81 @@ describe("RemoteAssetsService", () => {
 
     expect(success).toBeTrue();
     expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("hands the attempt's abort signal to the provider so a transfer can stop in flight", async () => {
+    const { downloadFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+
+    await service.downloadAssetPackByName("asset_pack_1");
+
+    const [, options] = downloadFileSpy.calls.argsFor(0);
+    expect(options.signal).toEqual(jasmine.any(AbortSignal));
+    expect(options.signal.aborted).toBeFalse();
+  });
+
+  it("does not retry a transfer the provider reports as aborted", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    const controller = new AbortController();
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.callFake(async () => {
+      controller.abort();
+      throw new DOMException("The operation was aborted", "AbortError");
+    });
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    // An abort is the caller's own doing, so it must propagate rather than be spent on retries
+    await expectAsync(
+      service["withDownloadRetry"](
+        "images/asset.png",
+        () => service["provider"].downloadFile("images/asset.png", { signal: controller.signal }),
+        controller.signal
+      )
+    ).toBeRejected();
+
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("treats an abort as cancellation even before the signal reports aborted", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Not an `instanceof Error` (a cross-realm DOMException behaves the same), and the signal has
+    // not been observed as aborted - so only matching on the name keeps this from being retried
+    const downloadFileSpy = jasmine
+      .createSpy("downloadFile")
+      .and.rejectWith({ name: "AbortError" });
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    await expectAsync(
+      service["withDownloadRetry"](
+        "images/asset.png",
+        () => service["provider"].downloadFile("images/asset.png"),
+        new AbortController().signal
+      )
+    ).toBeRejected();
+
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(delaySpy).not.toHaveBeenCalled();
+  });
+
+  it("surfaces a cancelled manifest fetch as an abort, not as a missing manifest", async () => {
+    spyOn(console, "error");
+    const controller = new AbortController();
+    // Reported as null this becomes "no manifest", which the caller turns into an `error` pack
+    const downloadFileAsTextSpy = jasmine.createSpy("downloadFileAsText").and.callFake(async () => {
+      controller.abort();
+      throw new DOMException("The operation was aborted", "AbortError");
+    });
+    service["provider"] = { downloadFileAsText: downloadFileAsTextSpy } as any;
+
+    await expectAsync(
+      service["getAssetPackManifest"]("asset_pack_1", controller.signal)
+    ).toBeRejected();
+    expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(1);
   });
 
   it("stops retrying an asset once the device goes offline", async () => {
@@ -1278,12 +1364,9 @@ describe("RemoteAssetsService", () => {
     ]);
     spyOn<any>(service, "abortableDelay").and.resolveTo();
     // Base slot fails once then recovers; the override slot must start with a full allowance
-    downloadFileSpy.and.returnValues(
-      Promise.resolve(null),
-      Promise.resolve(new Blob(["base"])),
-      Promise.resolve(null),
-      Promise.resolve(new Blob(["override"]))
-    );
+    const slotResults = [null, new Blob(["base"]), null, new Blob(["override"])];
+    let attempts = 0;
+    downloadFileSpy.and.callFake(async () => slotResults[attempts++]);
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
@@ -1293,7 +1376,7 @@ describe("RemoteAssetsService", () => {
   });
 
   it("re-downloads a present file whose recorded checksum differs from the manifest (stale pack)", async () => {
-    const { downloadFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       // Previously integrated with a different checksum -> pack content changed
       [
@@ -1305,7 +1388,7 @@ describe("RemoteAssetsService", () => {
         },
       ]
     );
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 102400,
     });
@@ -1319,10 +1402,10 @@ describe("RemoteAssetsService", () => {
   it("re-downloads a present, correctly-sized file that was never integrated (no recorded checksum)", async () => {
     // Interrupted after saveFile but before the contents upsert: the file exists with the right size
     // but there is no recorded checksum to confirm it, so it must not be skipped on trust.
-    const { downloadFileSpy } = setupNativeDownload([
+    const { downloadFileSpy, getSavedFileInfoSpy } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
     ]);
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 102400,
     });
@@ -1337,7 +1420,7 @@ describe("RemoteAssetsService", () => {
     // Integrating a base asset upserts the whole manifest entry, so the row also gains every
     // override's checksum. That must not count as evidence for the override slots themselves: only
     // the recorded filePath (still the pack-relative manifest path here) proves this app saved one.
-    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
       [
         {
@@ -1351,12 +1434,10 @@ describe("RemoteAssetsService", () => {
     );
     // Both slots are present on disk at their manifest sizes (44442 -> 43.4kb, 22118 -> 21.6kb),
     // so only the integration evidence separates them
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.callFake(
-      async (targetPath: string) => ({
-        exists: true,
-        sizeBytes: targetPath === packPath("audio/asset_with_overrides.mp3") ? 44442 : 22118,
-      })
-    );
+    getSavedFileInfoSpy.and.callFake(async (targetPath: string) => ({
+      exists: true,
+      sizeBytes: targetPath === packPath("audio/asset_with_overrides.mp3") ? 44442 : 22118,
+    }));
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
@@ -1364,13 +1445,14 @@ describe("RemoteAssetsService", () => {
     // Base skipped (genuinely integrated), override re-downloaded (only described by the manifest)
     expect(downloadFileSpy).toHaveBeenCalledTimes(1);
     expect(downloadFileSpy).toHaveBeenCalledWith(
-      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3"
+      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3",
+      { signal: jasmine.any(AbortSignal) }
     );
     expect(saveFileSpy).toHaveBeenCalledTimes(1);
   });
 
   it("resumes per slot: skips a present base asset but downloads a missing override", async () => {
-    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
       // Base was integrated previously (recorded checksum and filePath match); the override never was
       [
@@ -1382,12 +1464,11 @@ describe("RemoteAssetsService", () => {
         },
       ]
     );
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.callFake(
-      async (targetPath: string) =>
-        // base present with matching size (44442 bytes -> 43.4kb); override missing
-        targetPath === packPath("audio/asset_with_overrides.mp3")
-          ? { exists: true, sizeBytes: 44442 }
-          : { exists: false }
+    getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
+      // base present with matching size (44442 bytes -> 43.4kb); override missing
+      targetPath === packPath("audio/asset_with_overrides.mp3")
+        ? { exists: true, sizeBytes: 44442 }
+        : { exists: false }
     );
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -1395,7 +1476,8 @@ describe("RemoteAssetsService", () => {
     expect(success).toBeTrue();
     expect(downloadFileSpy).toHaveBeenCalledTimes(1);
     expect(downloadFileSpy).toHaveBeenCalledWith(
-      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3"
+      "asset_pack_1/tz_sw/audio/asset_with_overrides.mp3",
+      { signal: jasmine.any(AbortSignal) }
     );
     expect(saveFileSpy).toHaveBeenCalledTimes(1);
     expect(saveFileSpy).toHaveBeenCalledWith(
@@ -1404,10 +1486,10 @@ describe("RemoteAssetsService", () => {
   });
 
   it("saves files under the shared remote_assets folder, not a per-pack one", async () => {
-    const { saveFileSpy } = setupNativeDownload([
+    const { saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
     ]);
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    getSavedFileInfoSpy.and.resolveTo({ exists: false });
 
     await service.downloadAssetPackByName("asset_pack_1");
 
@@ -1418,7 +1500,8 @@ describe("RemoteAssetsService", () => {
     ]);
     // The remote path still identifies the pack - only local storage is shared
     expect(service["provider"].downloadFile).toHaveBeenCalledWith(
-      "asset_pack_1/audio/asset_with_overrides.mp3"
+      "asset_pack_1/audio/asset_with_overrides.mp3",
+      { signal: jasmine.any(AbortSignal) }
     );
   });
 
@@ -1426,7 +1509,7 @@ describe("RemoteAssetsService", () => {
     // Two packs shipping the same asset share one `_assets_contents` row and one stored file, so
     // the second pack's resume check finds the first pack's download and skips the fetch. This is
     // the de-duplication that per-pack storage folders would prevent.
-    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(
+    const { downloadFileSpy, saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
       // Integrated earlier by asset_pack_1; the row records no pack, only the shared local path
       [
@@ -1439,7 +1522,7 @@ describe("RemoteAssetsService", () => {
       ],
       "asset_pack_2"
     );
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({
+    getSavedFileInfoSpy.and.resolveTo({
       exists: true,
       sizeBytes: 102400,
     });
@@ -1454,12 +1537,12 @@ describe("RemoteAssetsService", () => {
   it("marks a pack with a failed file as error rather than completed", async () => {
     spyOn(console, "error");
     spyOn(console, "warn");
-    const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
+    const { downloadFileSpy, getAssetPackRow, getSavedFileInfoSpy } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
     ]);
     spyOn<any>(service, "abortableDelay").and.resolveTo();
     // File not on disk, and the network download fails (null blob) on every attempt
-    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    getSavedFileInfoSpy.and.resolveTo({ exists: false });
     downloadFileSpy.and.resolveTo(null);
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
@@ -2003,6 +2086,7 @@ describe("RemoteAssetsService", () => {
 
     expect(mockProvider.downloadFileAsText).toHaveBeenCalledWith("asset_pack_1/asset_pack_1.json", {
       noCache: true,
+      signal: jasmine.any(AbortSignal),
     });
   });
 

@@ -6,6 +6,7 @@ import {
   IRemoteAssetDownloadOptions,
   IRemoteFileMetadata,
   appendCacheBuster,
+  isAbortError,
 } from "./base.remote-asset";
 import { FirebaseStorage } from "@capacitor-firebase/storage";
 
@@ -121,6 +122,9 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
       console.error(`[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`);
       return null;
     } catch (error) {
+      // Cancellation is not a download failure: reporting it as `null` would look like a missing
+      // file and earn pointless retries against a transfer the caller has already abandoned
+      if (isAbortError(error)) throw error;
       console.error("[Firebase Remote Asset] Error downloading file:", error);
       return null;
     }
@@ -128,10 +132,10 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
 
   /** Fetch a resolved storage URL - response format varies depending on platform */
   private fetchStorageUrl(url: string, options: IRemoteAssetDownloadOptions): Promise<Response> {
-    return fetch(
-      options.noCache ? appendCacheBuster(url) : url,
-      options.noCache ? { cache: "no-store" } : {}
-    );
+    const init: RequestInit = {};
+    if (options.noCache) init.cache = "no-store";
+    if (options.signal) init.signal = options.signal;
+    return fetch(options.noCache ? appendCacheBuster(url) : url, init);
   }
 
   public async downloadFileAsText(
@@ -165,6 +169,7 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
       // Regular text content
       return textContent;
     } catch (error) {
+      if (isAbortError(error)) throw error;
       console.error("[Firebase Remote Asset] Error downloading file as text:", error);
       return null;
     }
