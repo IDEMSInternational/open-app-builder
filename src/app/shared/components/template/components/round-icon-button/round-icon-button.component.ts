@@ -72,9 +72,6 @@ export class RoundIconButtonComponent
       this.params().style.includes("home_screen") || this.params().variant.includes("home_screen")
   );
 
-  /** True when icon_src is an asset path rather than an ion-icon name */
-  public isCustomIcon = computed(() => this.params().iconSrc.includes("/"));
-
   public isDisabled = computed(() => !!(this.params().disabled || this.rowSignal()?.disabled));
 
   ngAfterViewInit() {

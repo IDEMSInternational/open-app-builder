@@ -5,13 +5,16 @@
     (click)="onClick($event)"
     class="round-icon-button"
     [disabled]="isDisabled()"
+    [attr.data-has-text]="params().text ? true : null"
   >
-    <ion-icon
-      [name]="params().iconSrc"
-      [style.place-items]="params().text ? 'flex-end' : 'center'"
-      [style.margin-top]="params().text ? '5px' : '0'"
-      [src]="isCustomIcon() ? (params().iconSrc | plhAsset) : params().iconSrc"
-    ></ion-icon>
+    @if (params().iconSrc) {
+      <!-- HACK: support icon being a path to an asset or assume it is the name of an ion-icon (e.g. chevron-forward) -->
+      @if (params().iconSrc.includes(".")) {
+        <ion-icon [src]="params().iconSrc | plhAsset"></ion-icon>
+      } @else {
+        <ion-icon [name]="params().iconSrc"></ion-icon>
+      }
+    }
     @if (params().text) {
       <div>{{ params().text }}</div>
     }
