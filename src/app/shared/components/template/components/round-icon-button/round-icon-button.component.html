@@ -1,19 +1,19 @@
-<div class="wrapper" [class.home_screen_wrapper]="isHomeScreen">
+<div class="wrapper" [class.home_screen_wrapper]="isHomeScreen()">
   <ion-tab-button
-    [attr.data-variant]="params.variant"
-    [class]="params.style || 'information'"
+    [attr.data-variant]="variantsString()"
+    [class]="params().style"
     (click)="onClick($event)"
     class="round-icon-button"
-    [disabled]="_row.disabled"
+    [disabled]="isDisabled()"
   >
     <ion-icon
-      [name]="params.icon_src"
-      [style.place-items]="params.text ? 'flex-end' : 'center'"
-      [style.margin-top]="params.text ? '5px' : '0'"
-      [src]="isCustomIcon ? (params.icon_src | plhAsset) : params.icon_src"
+      [name]="params().iconSrc"
+      [style.place-items]="params().text ? 'flex-end' : 'center'"
+      [style.margin-top]="params().text ? '5px' : '0'"
+      [src]="isCustomIcon() ? (params().iconSrc | plhAsset) : params().iconSrc"
     ></ion-icon>
-    @if (params.text) {
-      <div>{{ params.text }}</div>
+    @if (params().text) {
+      <div>{{ params().text }}</div>
     }
   </ion-tab-button>
 </div>
