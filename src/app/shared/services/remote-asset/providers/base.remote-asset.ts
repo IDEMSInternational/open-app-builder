@@ -4,7 +4,7 @@ export interface IRemoteAssetProvider {
   /** Initialize the provider with configuration */
   initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void>;
 
-  /** Get public URL for a file (legacy method, used only when direct HTTP downloads possible) */
+  /** Deterministic public URL for a file. Assumes the bucket allows unauthenticated read. */
   getPublicUrl(relativePath: string): string;
 
   /** Download file using provider's own SDK/methods (preferred) */
