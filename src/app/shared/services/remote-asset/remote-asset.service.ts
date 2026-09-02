@@ -21,7 +21,12 @@ import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../uti
 import { DeploymentService } from "../deployment/deployment.service";
 import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
 import { getRemoteAssetProvider } from "./providers";
-import { ASSET_CONTENTS_DATA_LIST, REMOTE_ASSET_STORAGE_FOLDER } from "./remote-asset.types";
+import {
+  ASSET_CONTENTS_DATA_LIST,
+  REMOTE_ASSET_STORAGE_FOLDER,
+  getLocalAssetTargetPath,
+  toLocalAssetPath,
+} from "./remote-asset.types";
 import type {
   IActiveAssetPackDownload,
   IAssetPackDownloadStatus,
@@ -79,6 +84,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   private async initialise() {
+    // Resolve where downloaded assets live in the current container before anything can read a
+    // downloaded `filePath`. Done regardless of whether remote assets are currently enabled, so that
+    // rows left by a previous configuration still resolve.
+    await this.setLocalAssetPathConfig();
+
     // Initialize the remote asset provider
     const remoteAssetsConfig = this.deploymentService.config.remote_assets;
     if (remoteAssetsConfig?.provider) {
@@ -153,6 +163,22 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /************************************************************************************
    *  Service Init methods
    ************************************************************************************/
+
+  /**
+   * Hand `TemplateAssetService` the current container path so it can resolve downloaded assets at
+   * the point of display. Native only - on web `filePath` holds a provider URL and needs no
+   * resolution. Failure is non-fatal: downloaded assets will not render, but bundled ones still do.
+   */
+  private async setLocalAssetPathConfig() {
+    if (!Capacitor.isNativePlatform()) return;
+    this.ensureSyncServicesReady([this.fileManagerService]);
+    try {
+      const pathConfig = await this.fileManagerService.getLocalAssetPathConfig();
+      this.templateAssetService.localAssetPathConfig.set(pathConfig);
+    } catch (error) {
+      console.error("[REMOTE ASSETS] Failed to resolve local asset path config", error);
+    }
+  }
 
   private registerTemplateActionHandlers() {
     const { asset_pack } = new RemoteAssetActionFactory(this);
@@ -764,7 +790,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     overrideProps: IAssetOverrideProps | undefined,
     existingContents: Record<string, IAssetEntry>
   ): Promise<boolean> {
-    const { targetPath, slotChecksum, slotSizeKb, manifestFilePath } = this.resolveAssetSlot(
+    const { targetPath, slotChecksum, slotSizeKb } = this.resolveAssetSlot(
       assetEntry,
       overrideProps
     );
@@ -778,7 +804,6 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         targetPath,
         slotChecksum,
         slotSizeKb,
-        manifestFilePath,
         existingContents,
         assetEntryId: assetEntry.id,
         overrideProps,
@@ -787,7 +812,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.log(
         `[REMOTE ASSETS] Skipping already-downloaded file ${fileIndex + 1} of ${totalFiles || "?"}: ${targetPath}`
       );
-      await this.updateAssetContents(assetEntry, savedFileInfo.src, overrideProps);
+      await this.updateAssetContents(assetEntry, toLocalAssetPath(targetPath), overrideProps);
       if (signal) this.throwIfDownloadCancelled(signal);
       await this.incrementDownloadProgress();
       return true;
@@ -802,9 +827,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       if (signal) this.throwIfDownloadCancelled(signal);
 
       if (blob) {
-        const { src } = await this.fileManagerService.saveFile({ data: blob, targetPath });
+        await this.fileManagerService.saveFile({ data: blob, targetPath });
         if (signal) this.throwIfDownloadCancelled(signal);
-        await this.updateAssetContents(assetEntry, src, overrideProps);
+        await this.updateAssetContents(assetEntry, toLocalAssetPath(targetPath), overrideProps);
         if (signal) this.throwIfDownloadCancelled(signal);
         console.log(`[REMOTE ASSETS] File ${fileIndex + 1} of ${totalFiles} downloaded to cache`);
         await this.incrementDownloadProgress();
@@ -823,9 +848,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /**
    * Resolve the local storage target path and the manifest integrity metadata (checksum/size) for a
    * single asset slot - either the base entry or a specific theme/language override.
-   * `targetPath` is the slot's location in local storage; `manifestFilePath` is the slot's filePath
-   * *as the manifest ships it* (undefined for most base entries, the pack-relative path for
-   * overrides), i.e. the value a recorded entry still holds if integration has not overwritten it.
+   * `targetPath` is the slot's location in local storage, i.e. the value stored (prefixed) as the
+   * recorded entry's `filePath` once integration has overwritten it.
    */
   private resolveAssetSlot(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
     if (overrideProps) {
@@ -835,14 +859,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         targetPath: this.getFullLocalPath(overrideAssetEntry.filePath),
         slotChecksum: overrideAssetEntry.md5Checksum,
         slotSizeKb: overrideAssetEntry.size_kb,
-        manifestFilePath: overrideAssetEntry.filePath,
       };
     }
     return {
       targetPath: this.getFullLocalPath(assetEntry.id),
       slotChecksum: assetEntry.md5Checksum,
       slotSizeKb: assetEntry.size_kb,
-      manifestFilePath: assetEntry.filePath,
     };
   }
 
@@ -851,19 +873,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Decide whether an asset slot already has a trustworthy file on disk and so can skip its download.
    * Only skips on POSITIVE evidence: the file exists, its size matches the manifest, and a prior run
    * integrated THIS slot from the current manifest - i.e. the recorded `_assets_contents` entry both
-   * carries the manifest checksum and has had its `filePath` rewritten away from the manifest value.
+   * carries the manifest checksum and has had its `filePath` rewritten to a local asset path.
    * Anything unverified re-downloads:
    *  - size unverifiable or mismatched -> truncated / wrong file
    *  - no/differing recorded checksum -> never integrated, or pack content changed (file is stale)
-   *  - filePath still the manifest's -> saved but never integrated (interrupted mid-write)
+   *  - filePath not a local asset path -> saved but never integrated (interrupted mid-write)
    * The filePath check is what makes the evidence per-slot: integrating a base asset writes the whole
    * manifest entry, so it also copies in every override's checksum, and only a rewritten `filePath`
-   * distinguishes a slot this app actually saved from one merely described by the manifest. It is
-   * deliberately a "differs from the manifest" test rather than "equals the local path": the recorded
-   * value comes from `saveFile` (convertFileSrc of a write_blob path) while resume only has
-   * `convertFileSrc` of a `Filesystem.stat` uri, and those need not be byte-identical on device
-   * (e.g. iOS /private/var vs /var). Comparing against our own manifest keeps the gate independent of
-   * how any platform spells a local path - a mismatch there would silently disable resume entirely.
+   * distinguishes a slot this app actually saved from one merely described by the manifest (whose
+   * override entries carry a pack-relative path that is never itself a local asset path).
+   * `getLocalAssetTargetPath` also accepts the absolute paths written before the `local://` marker
+   * existed, so upgrading from an older app version resumes rather than re-downloading the pack.
    * NB verifying on-disk bytes directly (MD5) is intentionally deferred to a future `asset_pack:
    * verify` action; it needs an MD5 dependency and would only add value for external corruption of an
    * already-integrated file, which is out of scope for interrupt-resume.
@@ -874,22 +894,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       targetPath: string;
       slotChecksum: string | undefined;
       slotSizeKb: number | undefined;
-      manifestFilePath: string | undefined;
       existingContents: Record<string, IAssetEntry>;
       assetEntryId: string;
       overrideProps: IAssetOverrideProps | undefined;
     }
-  ): savedFileInfo is ISavedFileInfo & { src: string } {
-    const {
-      targetPath,
-      slotChecksum,
-      slotSizeKb,
-      manifestFilePath,
-      existingContents,
-      assetEntryId,
-      overrideProps,
-    } = slot;
-    if (!savedFileInfo.exists || !savedFileInfo.src) return false;
+  ): boolean {
+    const { targetPath, slotChecksum, slotSizeKb, existingContents, assetEntryId, overrideProps } =
+      slot;
+    if (!savedFileInfo.exists) return false;
 
     // Size gate: require a verifiable, matching size (cheap rejection of truncated/wrong files).
     if (slotSizeKb === undefined || savedFileInfo.sizeBytes === undefined) {
@@ -910,7 +922,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.log(`[REMOTE ASSETS] No confirming checksum for ${targetPath}; re-downloading`);
       return false;
     }
-    if (!recordedSlot.filePath || recordedSlot.filePath === manifestFilePath) {
+    const deploymentName = this.deploymentService.config.name;
+    if (
+      !recordedSlot.filePath ||
+      getLocalAssetTargetPath(recordedSlot.filePath, deploymentName) === undefined
+    ) {
       console.log(`[REMOTE ASSETS] ${targetPath} was saved but never integrated; re-downloading`);
       return false;
     }
@@ -938,8 +954,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Save updates to asset contents in dynamic data, including file path
-   * (filepath should be local storage on native platforms and remote provider URL on web)
+   * Save updates to asset contents in dynamic data, including file path.
+   * On native this should be a `local://` path (see `LOCAL_ASSET_PATH_PREFIX`) and on web a remote
+   * provider URL - never an absolute device path, which does not survive an app update on iOS.
    * */
   private async updateAssetContents(
     assetEntry: IAssetEntry,
