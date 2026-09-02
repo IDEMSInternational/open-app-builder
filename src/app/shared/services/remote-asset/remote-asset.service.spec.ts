@@ -16,6 +16,10 @@ import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
+import {
+  ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
+  ASSET_DOWNLOAD_RETRY_LIMIT,
+} from "./remote-asset.types";
 import type { IDBAssetPack } from "./remote-asset.types";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { NetworkService } from "../network/network.service";
@@ -1100,6 +1104,194 @@ describe("RemoteAssetsService", () => {
     expect(saveFileSpy).toHaveBeenCalledTimes(1);
   });
 
+  it("retries a failed asset download and succeeds without failing the pack", async () => {
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    // Backoff is real time in production; skip the waiting so the test does not sleep
+    const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
+    downloadFileSpy.and.returnValues(
+      Promise.resolve(null),
+      Promise.resolve(new Blob(["recovered"]))
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(2);
+    expect(saveFileSpy).toHaveBeenCalledTimes(1);
+    // First backoff only, since the second attempt succeeded
+    expect(delaySpy.calls.allArgs().map(([ms]) => ms)).toEqual([
+      ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
+    ]);
+  });
+
+  it("retries an asset download that throws, not just one returning null", async () => {
+    const { downloadFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    downloadFileSpy.and.returnValues(
+      Promise.reject(new Error("socket hang up")),
+      Promise.resolve(new Blob(["recovered"]))
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("gives up on an asset after the retry limit, backing off between attempts", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
+    downloadFileSpy.and.resolveTo(null);
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(ASSET_DOWNLOAD_RETRY_LIMIT + 1);
+    expect(delaySpy.calls.allArgs().map(([ms]) => ms)).toEqual([
+      ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
+      ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS * 2,
+    ]);
+    expect(getAssetPackRow()).toEqual(jasmine.objectContaining({ download_status: "error" }));
+  });
+
+  it("rejects a backoff whose signal has already aborted, rather than waiting it out", async () => {
+    // `addEventListener("abort")` never fires on an already-aborted signal, so a naive
+    // implementation sits out the full timer before anyone notices the cancel
+    const controller = new AbortController();
+    controller.abort();
+    const startedAt = Date.now();
+
+    await expectAsync(service["abortableDelay"](5000, controller.signal)).toBeRejectedWithError(
+      "Asset pack download cancelled"
+    );
+    expect(Date.now() - startedAt).toBeLessThan(1000);
+  });
+
+  it("stops retrying immediately when a download is cancelled, without serving the backoff", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    const controller = new AbortController();
+    // Cancel lands while the first attempt is in flight; the retry must not wait 300ms to notice
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.callFake(async () => {
+      controller.abort();
+      return null;
+    });
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+    const startedAt = Date.now();
+
+    await expectAsync(
+      service["withDownloadRetry"](
+        "images/asset.png",
+        () => service["provider"].downloadFile("images/asset.png"),
+        controller.signal
+      )
+    ).toBeRejectedWithError("Asset pack download cancelled");
+
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(Date.now() - startedAt).toBeLessThan(ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS);
+  });
+
+  it("does not start another attempt if the device goes offline during the backoff", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    let offline = false;
+    spyOn<any>(service, "isOffline").and.callFake(() => offline);
+    // Connectivity drops while waiting to retry, so the queued attempt must be abandoned
+    spyOn<any>(service, "abortableDelay").and.callFake(async () => {
+      offline = true;
+    });
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(null);
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    const result = await service["withDownloadRetry"](
+      "images/asset.png",
+      () => service["provider"].downloadFile("images/asset.png"),
+      undefined
+    );
+
+    expect(result).toBeNull();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("retries a failed manifest fetch before failing the pack attempt", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    const manifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+    };
+    // A manifest blip fails the attempt before any slot retry could help, so it needs its own
+    const downloadFileAsTextSpy = jasmine
+      .createSpy("downloadFileAsText")
+      .and.returnValues(Promise.resolve(null), Promise.resolve(JSON.stringify(manifest)));
+    service["provider"] = {
+      downloadFileAsText: downloadFileAsTextSpy,
+      downloadFile: jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"])),
+    } as any;
+    spyOn(service["fileManagerService"], "saveFile").and.resolveTo({
+      localFilepath: "file:///data/x",
+      src: "x",
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("stops retrying an asset once the device goes offline", async () => {
+    // Driven directly rather than through a pack download: an offline pack parks and resumes in a
+    // loop by design, which would mask what this asserts - that the slot itself stops trying and
+    // hands recovery to that pack-level handler.
+    spyOn<any>(service, "isOffline").and.returnValue(true);
+    const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(null);
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    const result = await service["withDownloadRetry"](
+      "images/asset.png",
+      () => service["provider"].downloadFile("images/asset.png"),
+      undefined
+    );
+
+    expect(result).toBeNull();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    expect(delaySpy).not.toHaveBeenCalled();
+  });
+
+  it("retries each slot independently rather than sharing an allowance", async () => {
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload([
+      clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Base slot fails once then recovers; the override slot must start with a full allowance
+    downloadFileSpy.and.returnValues(
+      Promise.resolve(null),
+      Promise.resolve(new Blob(["base"])),
+      Promise.resolve(null),
+      Promise.resolve(new Blob(["override"]))
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileSpy).toHaveBeenCalledTimes(4);
+    expect(saveFileSpy).toHaveBeenCalledTimes(2);
+  });
+
   it("re-downloads a present file whose recorded checksum differs from the manifest (stale pack)", async () => {
     const { downloadFileSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
@@ -1261,17 +1453,20 @@ describe("RemoteAssetsService", () => {
 
   it("marks a pack with a failed file as error rather than completed", async () => {
     spyOn(console, "error");
+    spyOn(console, "warn");
     const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
     ]);
-    // File not on disk, and the network download fails (null blob)
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // File not on disk, and the network download fails (null blob) on every attempt
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
     downloadFileSpy.and.resolveTo(null);
 
     const success = await service.downloadAssetPackByName("asset_pack_1");
 
     expect(success).toBeFalse();
-    expect(downloadFileSpy).toHaveBeenCalledTimes(1);
+    // Retries are exhausted first, then the slot counts as failed
+    expect(downloadFileSpy).toHaveBeenCalledTimes(ASSET_DOWNLOAD_RETRY_LIMIT + 1);
     expect(getAssetPackRow()).toEqual(jasmine.objectContaining({ download_status: "error" }));
   });
 

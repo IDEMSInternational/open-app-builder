@@ -23,6 +23,8 @@ import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remot
 import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
+  ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
+  ASSET_DOWNLOAD_RETRY_LIMIT,
   REMOTE_ASSET_STORAGE_FOLDER,
   VERSION_CHECK_FAILURE_BACKOFF_MS,
   VERSION_CHECK_MIN_INTERVAL_MS,
@@ -532,7 +534,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         this.throwIfDownloadCancelled(abortController.signal);
 
         try {
-          const manifest = manifestForAttempt ?? (await this.getAssetPackManifest(assetPackName));
+          const manifest =
+            manifestForAttempt ??
+            (await this.getAssetPackManifest(assetPackName, abortController.signal));
           manifestForAttempt = undefined;
           this.throwIfDownloadCancelled(abortController.signal);
           if (!manifest) {
@@ -765,17 +769,77 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     this.throwIfDownloadCancelled(signal);
     console.warn(`[REMOTE ASSETS] Artificial download delay enabled: ${delayMs}ms`);
 
+    return this.abortableDelay(delayMs, signal);
+  }
+
+  /**
+   * Sleep that rejects rather than resolving if the download is cancelled while it waits, so a
+   * pause never outlives the attempt it belongs to.
+   */
+  private abortableDelay(delayMs: number, signal?: AbortSignal) {
+    // `addEventListener("abort")` never fires on an already-aborted signal, so without this the
+    // timer would run to completion and the cancel would only be noticed after the wait it was
+    // meant to cut short
+    if (signal?.aborted) {
+      return Promise.reject(this.createDownloadCancelledError());
+    }
     return new Promise<void>((resolve, reject) => {
       const handleAbort = () => {
         clearTimeout(timeout);
         reject(this.createDownloadCancelledError());
       };
       const timeout = setTimeout(() => {
-        signal.removeEventListener("abort", handleAbort);
+        signal?.removeEventListener("abort", handleAbort);
         resolve();
       }, delayMs);
-      signal.addEventListener("abort", handleAbort, { once: true });
+      signal?.addEventListener("abort", handleAbort, { once: true });
     });
+  }
+
+  /**
+   * Run one download, retrying a few times before treating it as failed. Used for both asset slots
+   * and pack manifests: a manifest blip fails an attempt before any slot retry can help, so leaving
+   * it unretried would leave the same "one blip fails the pack" hole this closes.
+   *
+   * Providers report failure as a `null` result with no error channel, so a genuinely missing object
+   * is retried too and costs a couple of wasted requests before failing anyway. That is the cheaper
+   * mistake: not retrying spends nothing on missing objects, but sends packs to `error` that would
+   * otherwise have completed, and an `error` pack needs an explicit re-trigger to make progress.
+   *
+   * Going offline is deliberately not retried - the pack-level handler parks the download as
+   * `waiting_for_connection` and resumes it, which is a far better answer than burning attempts
+   * against a connection known to be down. Checked both when an attempt fails and again after any
+   * backoff, since connectivity can drop while waiting.
+   */
+  private async withDownloadRetry<T>(
+    label: string,
+    attemptDownload: () => Promise<T | null>,
+    signal: AbortSignal | undefined
+  ): Promise<T | null> {
+    const totalAttempts = ASSET_DOWNLOAD_RETRY_LIMIT + 1;
+    for (let attempt = 0; attempt < totalAttempts; attempt++) {
+      if (signal) this.throwIfDownloadCancelled(signal);
+      // Connectivity can drop during a backoff, so re-check before spending the next attempt
+      if (attempt > 0 && this.isOffline()) return null;
+      try {
+        const result = await attemptDownload();
+        if (result) return result;
+      } catch (error) {
+        if (this.isDownloadCancelled(error, signal)) throw error;
+        console.error(`[REMOTE ASSETS] Error downloading ${label}:`, error);
+      }
+      if (this.isOffline()) return null;
+      const isLastAttempt = attempt === totalAttempts - 1;
+      if (!isLastAttempt) {
+        const delayMs = ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS * 2 ** attempt;
+        console.warn(
+          `[REMOTE ASSETS] Retrying ${label} in ${delayMs}ms (attempt ${attempt + 2} of ${totalAttempts})`
+        );
+        if (signal) this.throwIfDownloadCancelled(signal);
+        await this.abortableDelay(delayMs, signal);
+      }
+    }
+    return null;
   }
 
   /**
@@ -867,7 +931,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * to decide what a missing manifest means - a download treats it as a failure, a version check
    * must treat it as "could not check" and leave the pack's status alone.
    */
-  private async getAssetPackManifest(assetPackName: string): Promise<FlowTypes.AssetPack | null> {
+  private async getAssetPackManifest(
+    assetPackName: string,
+    signal?: AbortSignal
+  ): Promise<FlowTypes.AssetPack | null> {
     const relativePath = `${assetPackName}/${assetPackName}.json`;
 
     try {
@@ -876,7 +943,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
       // `noCache` is essential, not an optimisation: buckets serve long cache headers, and a cached
       // manifest reports a stale version, so updates would silently never reach anyone.
-      const jsonText = await this.provider.downloadFileAsText(relativePath, { noCache: true });
+      const jsonText = await this.withDownloadRetry(
+        `manifest for ${assetPackName}`,
+        () => this.provider.downloadFileAsText(relativePath, { noCache: true }),
+        signal
+      );
 
       if (!jsonText) {
         console.error(`[REMOTE ASSETS] Failed to download manifest for ${assetPackName}`);
@@ -1033,8 +1104,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     try {
       if (signal) this.throwIfDownloadCancelled(signal);
-      // Use provider's direct download method
-      const blob = await this.provider.downloadFile(this.getFullRemotePath(relativePath));
+      // Use provider's direct download method, retrying transient failures
+      const remotePath = this.getFullRemotePath(relativePath);
+      const blob = await this.withDownloadRetry(
+        remotePath,
+        () => this.provider.downloadFile(remotePath),
+        signal
+      );
       if (signal) this.throwIfDownloadCancelled(signal);
 
       if (blob) {

@@ -83,6 +83,12 @@ Execution is deliberately serial: **one pack at a time, one file at a time** wit
 
 A pack only reaches `completed` when **all** slots succeed. Per-slot failures are counted and returned as `failedCount`; a non-zero count throws, which either parks the pack (offline) or surfaces it as `error` (online). This matters: silently marking a pack complete with missing files leaves the app permanently referencing assets that will never arrive.
 
+Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help.
+
+Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked both when one fails and again after any backoff, since connectivity can drop mid-wait - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
+
+Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake - the alternative spends the same requests sending packs to `error` that would otherwise have completed.
+
 ## Resume after interruption
 
 Downloads run in the WebView's JS runtime, so killing or backgrounding the app kills the download. Recovery is *restart and skip what's already done*, not byte-range continuation.

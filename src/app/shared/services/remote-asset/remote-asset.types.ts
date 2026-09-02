@@ -30,6 +30,20 @@ export const VERSION_CHECK_MIN_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
 export const VERSION_CHECK_FAILURE_BACKOFF_MS = 1000 * 60 * 15; // 15 minutes
 
 /**
+ * Retries allowed for a single download (asset slot or pack manifest) before it counts as failed.
+ * A pack only completes when every slot does, so without retries one transient blip on one file of
+ * a hundred sends the pack to `error` and it needs an explicit re-trigger - by far the most likely
+ * way a pack fails on the connections these are fetched over.
+ */
+export const ASSET_DOWNLOAD_RETRY_LIMIT = 2;
+
+/**
+ * Base for the exponential backoff between slot attempts, giving 300ms then 600ms. Long enough to
+ * ride out a brief drop, short enough that a pack of failing assets still fails promptly.
+ */
+export const ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS = 300;
+
+/**
  * Prefix marking an `_assets_contents` `filePath` as a file this app downloaded to native storage.
  * What follows the prefix is the pack-relative target path, i.e. the same value passed to
  * `FileManagerService.saveFile`.
