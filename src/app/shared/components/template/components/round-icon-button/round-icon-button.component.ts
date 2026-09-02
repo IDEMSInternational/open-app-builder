@@ -1,36 +1,56 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "data-models";
-import { TemplateBaseComponent } from "../base";
-import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
+import { AfterViewInit, Component, computed, ElementRef, inject } from "@angular/core";
+import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 
-interface IRoundButtonParams {
-  /** TEMPLATE_PARAMETER: 'icon_src' */
-  buttonAlign: string;
-  /** TEMPLATE_PARAMETER: 'icon_src' */
-  disabled: boolean;
-  /** TEMPLATE_PARAMETER: 'icon_src' */
-  icon_src: string;
-  /** TEMPLATE_PARAMETER: 'icon_src' */
-  style: string;
-  /** TEMPLATE_PARAMETER: 'icon_src' */
-  text: string;
-  /** TEMPLATE_PARAMETER: 'style'. Legacy, use 'variant' instead */
-  textAlign: string;
-  /** TEMPLATE_PARAMETER: 'variant' */
-  variant:
-    | "no-background"
-    | "module"
-    | "category"
-    | "navigation"
-    | "information"
-    | "module"
-    | "home_screen"
-    | "orange"
-    | "dark_orange"
-    | "yellow"
-    | "standard"
-    | "alternative";
-}
+const VARIANTS = [
+  "alternative",
+  "category",
+  "dark_orange",
+  "get_me_going",
+  "home_screen",
+  "information",
+  "make_me_smile",
+  "module",
+  "navigation",
+  "no-background",
+  "options",
+  "orange",
+  "primary_light",
+  "standard",
+  "yellow",
+] as const;
+
+const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
+  /**
+   * The display variant of the button. Can be comma-separated or space-separated for multiple variants.
+   * Supported variants:
+   * - "alternative"
+   * - "category"
+   * - "dark_orange"
+   * - "get_me_going"
+   * - "home_screen"
+   * - "information"
+   * - "make_me_smile"
+   * - "module"
+   * - "navigation"
+   * - "no-background"
+   * - "options"
+   * - "orange"
+   * - "primary_light"
+   * - "standard"
+   * - "yellow"
+   */
+  variant: coerce.allowedValuesList(VARIANTS, []),
+  /** Legacy style parameter. Use "variant" instead. Default 'information'. */
+  style: coerce.string("information"),
+  /** When true, button is disabled and greyed out. */
+  disabled: coerce.boolean(false),
+  /** The path to an icon asset, or the name of an ion-icon. */
+  icon_src: coerce.string(""),
+  /** Text displayed below the icon. */
+  text: coerce.string(""),
+  /** Button alignment within its container. */
+  button_align: coerce.allowedValues(["left", "center", "right", "centre"], "center"),
+}));
 
 @Component({
   selector: "plh-round-button",
@@ -39,19 +59,20 @@ interface IRoundButtonParams {
   standalone: false,
 })
 export class RoundIconButtonComponent
-  extends TemplateBaseComponent
-  implements OnInit, AfterViewInit
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements AfterViewInit
 {
-  @Input() template: FlowTypes.Template;
-  params: Partial<IRoundButtonParams> = {};
-  isHomeScreen: boolean = false;
-  isCustomIcon: boolean = false;
-  constructor(private elRef: ElementRef) {
-    super();
-  }
-  ngOnInit() {
-    this.getParams();
-  }
+  private elRef = inject(ElementRef);
+
+  /** Space-separated string of variants for template use */
+  public variantsString = computed(() => this.params().variant.join(" "));
+
+  public isHomeScreen = computed(
+    () =>
+      this.params().style.includes("home_screen") || this.params().variant.includes("home_screen")
+  );
+
+  public isDisabled = computed(() => !!(this.params().disabled || this.rowSignal()?.disabled));
 
   ngAfterViewInit() {
     const el = this.elRef.nativeElement.closest(".display-group-wrapper");
@@ -63,22 +84,5 @@ export class RoundIconButtonComponent
   onClick(event: Event) {
     this.triggerActions("click");
     event.stopPropagation();
-  }
-
-  getParams() {
-    this.params.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.params.variant = getStringParamFromTemplateRow(this._row, "variant", "")
-      .split(",")
-      .join(" ")
-      .concat(" ") as IRoundButtonParams["variant"];
-    this.params.disabled = getBooleanParamFromTemplateRow(this._row, "disabled", false);
-    if (this._row.disabled) {
-      this.params.disabled = true;
-    }
-    this.params.text = getStringParamFromTemplateRow(this._row, "text", "");
-    this.params.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
-    this.params.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
-    this.isHomeScreen = this.params.style.includes("home_screen");
-    this.isCustomIcon = this.params.icon_src.includes("/");
   }
 }
