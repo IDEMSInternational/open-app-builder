@@ -15,6 +15,8 @@ remote_assets: {
 
 Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`, registers the template actions so authors get an explanatory error rather than a silent no-op, and does nothing else.
 
+> Most of the *why* behind the behaviour below lives in comments on the code that implements it. This README covers what the pieces are and how they fit; see [Where the reasoning lives](#where-the-reasoning-lives).
+
 ## Files in this folder
 
 | File | Responsibility |
@@ -27,11 +29,11 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the retry/archive/version-check tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
-## The central idea: `_assets_contents`
+## Mental model
 
-Everything hangs off one dynamic data list, `_assets_contents`. `TemplateAssetService` reads it to turn an authored asset reference into a real path, and it does not care where a row came from.
+### Everything hangs off `_assets_contents`
 
-At startup the list is seeded from the **bundled** (core) asset contents. Downloading a pack simply **overwrites rows in that same list** with paths that point at the newly available copies. That is why an author can write `my_image.png` without knowing whether it ships in the bundle or arrives from a pack — resolution is identical either way.
+`TemplateAssetService` reads this one dynamic data list to turn an authored asset reference into a real path, and it does not care where a row came from. At startup the list is seeded from the **bundled** (core) asset contents; downloading a pack **overwrites rows in that same list** with paths pointing at the newly available copies. That is why an author writes `my_image.png` without knowing whether it ships in the bundle or arrives from a pack.
 
 ```mermaid
 flowchart TD
@@ -43,65 +45,95 @@ flowchart TD
     Contents --> Template["TemplateAssetService resolves asset references"]
 ```
 
-Note the platform split: **native downloads files, web does not.** On web the browser can stream straight from the provider's CDN, so a "download" only rewrites `filePath` to a public URL. All the filesystem, resume and integrity logic below is native-only.
+### Native downloads, web does not
 
-### Local storage layout
+On web the browser streams straight from the provider's CDN, so a "download" only rewrites `filePath` to a public URL. **All filesystem, resume, archive and integrity logic is native-only.**
 
-On native, downloaded files are saved under a single folder within the deployment's storage:
+### Slots
+
+A manifest row is one logical asset but can carry several files: the base file plus one override per theme/language. Each downloadable file is a **slot** — one base slot (unless the entry is `overridesOnly`) plus one per override. Slots are the unit of progress counts, success/failure and resume decisions, even though `_assets_contents` stores them together in one row keyed by base asset id.
+
+### Storage layout
 
 ```
 Data/{deploymentName}/remote_assets/{manifest-relative path}
 ```
 
-**Every pack shares that folder**, with files keyed only by their manifest-relative path — the same key `_assets_contents` uses. An asset shipped by more than one pack is therefore stored once, and the second pack's resume check finds it already downloaded instead of re-fetching it. The trade-off is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
+**Every pack shares that folder**, keyed only by manifest-relative path — the same key `_assets_contents` uses. An asset shipped by two packs is stored once, and the second pack's resume check finds it already downloaded. The trade-off is that a stored file carries no record of which pack fetched it, hence no per-pack delete (see [Known limitations](#known-limitations)). The deployment folder also holds non-asset files (the cached auth profile picture), so deletion must always target the `remote_assets` subfolder.
 
-The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
+Rows store `local://remote_assets/<path>`, **never an absolute device path** — iOS relocates the app container on update ([Apple TN2285](https://developer.apple.com/library/archive/technotes/tn2285/_index.html)), so an absolute path goes stale on the next release and every downloaded asset silently stops rendering while `_asset_packs` still reports `completed`. `TemplateAssetService` resolves `local://` at display time against the container reported for the current session (`FileManagerService.getLocalAssetPathConfig`, handed to it during `RemoteAssetService` init). Absolute paths written by older app versions are still understood — `getLocalAssetTargetPath` recovers the deployment-relative tail — so no migration is needed.
 
-### `filePath` is never an absolute device path
+## Template API
 
-On native, a downloaded row stores `local://remote_assets/<manifest-relative path>` — never the absolute path the file currently sits at. iOS relocates the app container whenever the app is updated ([Apple TN2285](https://developer.apple.com/library/archive/technotes/tn2285/_index.html): *"the absolute path to the app's container [...] will change [...] you must only save paths to files relative to your application container"*), so an absolute path stored at download time goes stale on the next release and every downloaded asset silently stops rendering — while `_asset_packs` still reports the pack as `completed`, so nothing re-downloads to repair it.
+```yaml
+asset_pack: download | ensure_downloaded | cancel_download | reset
+```
 
-`TemplateAssetService` therefore resolves `local://` paths **at the point of display**, against the container reported for the current session (`FileManagerService.getLocalAssetPathConfig`, handed over during `RemoteAssetService` init). Rows written by app versions that stored absolute paths are still understood: `getLocalAssetTargetPath` recovers the deployment-relative tail, so they re-point to the live container on next launch without needing a migration.
+| Action | Behaviour |
+| --- | --- |
+| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if already `completed`, and always blocks the action queue. Because it always re-walks the manifest, it is also how to force an update check |
+| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) and `check_for_updates` (default `true`) |
+| `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued |
+| `reset` | Return **every** pack to its pre-download state: cancel active downloads, delete all downloaded files, clear both data lists. All or nothing — if files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk |
 
-## Slots
+### Progress and status for authoring
 
-A manifest row is one logical asset, but it can carry several files: the base file plus one override per theme/language combination. Each downloadable file is called a **slot** — one base slot (unless the entry is `overridesOnly`) plus one per override.
+- **`asset_pack_download_in_progress`** — system variable holding a boolean string, for showing/hiding UI while any download runs. Referenced as `@fields._asset_pack_download_in_progress`, or `@system.asset_pack_download_in_progress` under `useReactiveTemplates`.
+- **The `_asset_packs` data list** — one row per pack with `download_status`, counts (`assets_downloaded_count` of `assets_total_count`, in slots), `download_progress_percent`, timestamps, and the version fields below. Consumable via `data_items` to drive a progress bar.
 
-Slots matter because they are the unit of nearly everything: progress counts, download success/failure, and resume decisions are all per-slot, even though `_assets_contents` stores them together in a single row keyed by the base asset id (overrides nested under `overrides[theme][language]`).
+`assets_downloaded_count` is always a genuine file count whichever mode ran, so "x of y files" stays truthful — but it steps unevenly, because files range from under a kilobyte to a couple of megabytes. `download_progress_percent` exists for bars, and tracks transferred bytes while an archive streams and files otherwise. Both reset per attempt and are written to 100 / total on success.
+
+| Field | Meaning |
+| --- | --- |
+| `version` | Version at which every file was verified downloaded. `""` for packs downloaded before versioning existed |
+| `available_version` | Version last seen remotely. `""` until a check has succeeded |
+| `update_available` | A successful check found a remote version differing from the downloaded one |
+| `has_completed_download` | Pack has reached `completed` at least once. Never cleared except by `reset` |
+| `version_checked_at` | Last **successful** check |
+| `version_check_attempted_at` | Last check **attempt**. Always `>=` `version_checked_at`, strictly greater exactly when the last check failed |
+| `version_check_status` | `"never"`, `"ok"`, or `"failed"` |
+
+### Debug: `debug_download_delay_ms`
+
+Both `download` and `ensure_downloaded` accept it. Pauses that many ms before each asset file — and, on the archive path, before each extracted file — to open a reliable window for interrupting a download (force-quit, airplane mode) that is otherwise hard to hit on a fast connection.
+
+```yaml
+asset_pack | download: my_asset_pack | debug_download_delay_ms: 3000
+```
+
+Defaults to `0`, scoped to the single action call, unparseable values ignored. Note it applies to *skipped* files too, so resume will not look faster with it on — verify resume by status and counts, not speed. It delays extraction, not the archive transfer itself.
 
 ## Download lifecycle
 
-A pack's state lives in the `_asset_packs` data list, one row per pack, with a `download_status` of:
+One row per pack in `_asset_packs`, with a `download_status` of:
 
 | Status | Meaning |
 | --- | --- |
 | `in_progress` | Actively downloading |
-| `waiting_for_connection` | Offline; parked and will continue automatically when connectivity returns |
+| `waiting_for_connection` | Offline; parked, continues automatically when connectivity returns |
 | `completed` | Every slot downloaded and integrated |
 | `error` | Something failed; needs an explicit re-trigger |
 | `cancelled` | The user/template cancelled it |
 
-Execution is deliberately serial: **one pack at a time**, and within it either one archive or one file at a time (see *Two acquisition modes*). Requesting a second, different pack while one is active is refused (see *Concurrency* below). There is no download queue yet — a `TODO` in `downloadAndIntegrateAssetPack` tracks this.
+Execution is deliberately serial: **one pack at a time**, and within it either one archive or one file at a time. There is no download queue yet — a `TODO` in `downloadAndIntegrateAssetPack` tracks it.
 
-A pack only reaches `completed` when **all** slots succeed. Per-slot failures are counted and returned as `failedCount`; a non-zero count throws, which either parks the pack (offline) or surfaces it as `error` (online). This matters: silently marking a pack complete with missing files leaves the app permanently referencing assets that will never arrive.
+A pack only reaches `completed` when **all** slots succeed; a non-zero `failedCount` throws, which parks the pack (offline) or surfaces it as `error` (online). Marking a pack complete with missing files would leave the app permanently referencing assets that never arrive.
 
-Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help. The manifest's *parse* is inside that retry, not after it: a truncated body is still a non-empty string, so parsing outside would read as a successful fetch and then fail the attempt with no second try.
+### Failure handling
 
-Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked before every attempt, including the first, since the walk is serial and a device already known to be offline would otherwise spend a doomed request on every remaining file - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
+| Situation | Behaviour |
+| --- | --- |
+| A slot or the manifest fails | Retried `ASSET_DOWNLOAD_RETRY_LIMIT` times, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`. Each slot gets its own allowance |
+| A manifest arrives truncated | Parsing happens *inside* the retry, so a garbled body is retried rather than failing the attempt outright |
+| `ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT` slots fail in a row | The walk stops and the pack goes to `error`. Any success resets the count — including a slot skipped as already on disk — so scattered missing files still walk the whole pack |
+| Offline | Not retried. Checked before *every* attempt, so a device known to be offline spends no requests; the pack-level handler parks and resumes |
+| Cancelled | Not retried; aborts immediately, backoff included |
 
-Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake for *one* file - the alternative spends the same requests sending packs to `error` that would otherwise have completed. What it is not cheap for is a whole-pack outage (dead bucket, unpublished pack, every object 500), where flattening the status means paying every file's full allowance and backoff in turn before anyone is told. `ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT` bounds that: once that many slots have failed **in a row**, each having spent its retries, the walk stops and the pack goes to `error`. Any success resets the count - including a slot skipped as already on disk - so scattered missing files still walk the whole pack and download everything that is there.
+Providers report failure as `null` with no status detail, so a genuinely missing object is retried too — cheap for one file, which is why the consecutive-failure limit exists to bound a whole-pack outage.
 
 ## Two acquisition modes
 
-Fetching hundreds of files individually is dominated by round trips, not bytes: a 427-file pack is
-427 sequential requests to move around 50MB, and completion time is set by the slowest few of them.
-(It used to be 854 — each file also cost a download-url lookup, until the Firebase provider started
-resolving the public URL locally.) So a pack that is mostly missing is instead pulled as **one
-archive**, `{packName}.{version}.zip`, generated at sync time alongside the manifest.
-
-An archive cannot be the only mode, though, because it would undo what versioning bought: one
-changed file in a 427-file pack would re-transfer the whole thing, where per-file fetching moves
-only what actually changed.
+Fetching hundreds of files individually is dominated by round trips: a 427-file pack is 427 sequential requests to move ~50MB, and completion time is set by the slowest few. So a pack being acquired in bulk is pulled as **one archive**, `{packName}.{version}.zip`, generated at sync time alongside the manifest. An archive cannot be the only mode, though — one changed file would re-transfer the whole pack, undoing what versioning bought.
 
 The mode is chosen on one question: **has this pack ever completed a download?**
 
@@ -112,263 +144,125 @@ The mode is chosen on one question: **has this pack ever completed a download?**
 
 Either way, a pack with nothing outstanding fetches neither and just re-integrates what is on disk.
 
-Deliberately not a "how much is missing" threshold. Any such number is arbitrary, and the two
-cases it would be trying to separate are already named by a flag that is persisted: a pack that has
-never been usable is a first install, and one that has is an update. An update changes a handful of
-files, so per-file always wins there; a first install has everything to fetch, so the archive
-always wins.
-
-Keying on `has_completed_download` rather than "is anything already on disk" is what makes an
-**interrupted first install resume on the archive**. Entries are integrated as they arrive, so a
-killed install leaves files behind — and treating their presence as "this is an update" would drop
-the entire remainder onto hundreds of individual requests, in precisely the case the archive exists
-for. The flag survives process death, which is what lets it answer this; see
-`IDBAssetPack.has_completed_download`.
-
-It also disposes of a wart the old threshold had: storage is shared across packs, so a second pack
-shipping some of the same files finds part of itself already downloaded. That is an update-shaped
-situation, and it now takes the per-file path instead of pulling a whole archive to re-transfer
-files already on disk.
+This is deliberately *not* a "how much is missing" threshold: any such number is arbitrary, and the flag already names the two cases exactly. Keying on it rather than "is anything on disk" is what makes an **interrupted first install resume on the archive** — entries are integrated as they arrive, so a killed install leaves files behind, and treating their presence as "this is an update" would drop the whole remainder onto individual requests in precisely the case the archive exists for.
 
 ### The archive
 
-- **Fetched as a stream**, not a blob. Packs reach ~35MB compressed, and buffering the response
-  only to copy it into an `ArrayBuffer` for decompression peaks at roughly twice that before any
-  entry is inflated. Chunks are fed straight into the unzipper, so peak memory stays at a few
-  chunks plus the single largest entry.
-- **The storage key carries the manifest version**: `{packName}/{packName}.{version}.zip`, built
-  by the shared `getAssetPackArchiveFileName` so the build and the app cannot name it differently.
-  This is correctness, not cache hygiene. Entries are verified only against the manifest that asked
-  for them, so a stale archive would install outdated content and then record it at the *new*
-  version — permanently wrong, with nothing able to detect it. A query parameter cannot be trusted
-  to defeat every cache in the path, so the version goes in the key: the app asks for the exact
-  archive its manifest describes, and a 404 simply means per-file (which is checksum-gated, so it
-  is always safe). A manifest with no `version` therefore never uses the archive at all.
-  A publish adds a new object rather than overwriting the one in-flight installs are reading, so
-  superseded archives accumulate and need pruning as separate housekeeping.
-- **Entries already on disk are read and discarded, not left unread.** This looks like the wrong
-  choice — fflate documents skipping as "don't call `start()`" — but an unstarted entry has no
-  decompressor attached, so `Unzip` diverts its raw compressed bytes into a per-file buffer it
-  never frees. Skipping that way retains the whole archive, which is exactly what streaming is
-  there to prevent, and it is worst on a resumed install where most entries are already present.
-  Discarding instead costs a copy per stored entry and an inflate per deflated one — affordable
-  *because* generation stores media and deflates only text (below), so the bulk of it is a memcpy.
-- **Extracted entries are integrated directly, never through the per-file path.** That path skips
-  its fetch only on evidence a *previous* run integrated the file, which freshly extracted bytes
-  cannot have — so routing them through it would re-download every file just delivered.
-- **Entry size is checked against the manifest.** fflate's read path neither verifies the
-  per-entry CRC nor exposes it to the streaming API, so checking that would mean hand-parsing zip
-  headers. In practice corruption shows up as a failing deflate stream, a size mismatch, or is
-  ruled out by the version-stamped object key.
+- **Streamed, not buffered.** Chunks are fed straight into the unzipper, so peak memory is a few chunks plus the largest entry rather than ~2× the 35MB response.
+- **The version is in the object key**, built by the shared `getAssetPackArchiveFileName` so build and app cannot name it differently. A stale archive is never *requested*, rather than requested and cache-busted past. A manifest with no `version` therefore never uses the archive. Publishing adds a new object rather than overwriting one in-flight installs are reading, so **superseded archives accumulate and need pruning**.
+- **Unwanted entries are read and discarded**, not left unread — skipping them the way fflate documents leaks their compressed bytes for the life of the stream.
+- **Extracted entries are integrated directly**, never through the per-file path, which would re-download everything just delivered.
+- **Entry size is checked against the manifest.** fflate's streaming API exposes no per-entry CRC, so size plus the version-stamped key is the integrity story.
 
 ### When the archive does not work out
 
-Falling back is per pack and lasts the session; none of it is persisted, since that would strand
-a pack on the slow path after a couple of transient blips.
+Per pack and per session; never persisted, since that would strand a pack on the slow path after a couple of blips.
 
 | Outcome | Behaviour |
 | --- | --- |
-| No archive published (400/401/403/404) | Per-file for this pack, and no re-probing for the rest of the session |
+| No archive published (400/401/403/404) | Per-file for this pack, no re-probing for the rest of the session |
 | Manifest has no `version` | Per-file; the versioned object key cannot be built |
 | Offline / cancelled | Not an archive failure. Parked and retried like any other download |
-| Stream truncated, corrupt, 5xx | Whatever arrived is kept, the shortfall is fetched per-file, and after two such failures the pack stops trying archives |
+| Stream truncated, corrupt, 5xx | Whatever arrived is kept, the shortfall is fetched per-file, and after `ASSET_PACK_ARCHIVE_FAILURE_LIMIT` such failures the pack stops trying archives |
 
-The shortfall case matters more than it sounds: entries are integrated as they arrive, so a failed
-archive still leaves most of the pack on disk. The fallback re-reads the contents list and fetches
-only what is genuinely still missing, rather than starting the pack over.
-
+The shortfall case matters more than it sounds: entries are integrated as they arrive, so a failed archive still leaves most of the pack on disk and the fallback fetches only what is genuinely missing.
 
 ## Resume after interruption
 
 Downloads run in the WebView's JS runtime, so killing or backgrounding the app kills the download. Recovery is *restart and skip what's already done*, not byte-range continuation.
 
-**On launch**, any pack still sitting at `in_progress` or `waiting_for_connection` is picked up automatically — process death skips cleanup, so a stale status *is* the interruption signal. `error` and `cancelled` packs never auto-resume: the first waits for an explicit re-trigger (either `asset_pack` action will do, since `ensure_downloaded` only skips packs already `completed`), the second reflects user intent.
+**On launch**, any pack still at `in_progress` or `waiting_for_connection` is picked up automatically — process death skips cleanup, so a stale status *is* the interruption signal. `error` and `cancelled` never auto-resume: the first waits for an explicit re-trigger (either `asset_pack` action will do, since `ensure_downloaded` only skips packs already `completed`), the second reflects user intent.
 
-**Per slot**, the download is skipped only on *positive evidence* that a previous run finished this exact file. All three must hold:
+**Per slot**, a download is skipped only on *positive evidence* that a previous run finished that exact file. All three must hold:
 
 1. The file exists on disk (`FileManagerService.getSavedFileInfo`), and
 2. its size matches the manifest's `size_kb`, and
-3. the `_assets_contents` entry recorded for that slot carries the manifest's checksum **and** has a `filePath` that is a local asset path.
+3. the `_assets_contents` entry for that slot carries the manifest's checksum **and** has a `filePath` that is a local asset path.
 
-Point 3 does the real work. Integrating a base asset writes the whole manifest entry, so the row also picks up every *override's* checksum before those files exist — a checksum alone would vouch for slots that were never downloaded, and only a rewritten `filePath` proves this app saved one. Manifest override entries carry a pack-relative path, which is never itself a local asset path, so the two stay distinguishable. Absolute paths from older app versions count as evidence too, so taking an update resumes rather than re-downloading every pack.
+Point 3 does the real work: integrating a base asset writes the whole manifest entry, so the row picks up every override's checksum before those files exist — only a rewritten `filePath` proves this app saved one.
 
-Anything unverified re-downloads. The cost of a false negative is one wasted file fetch; the cost of a false positive is a corrupt asset that never heals, so the gate is deliberately biased toward re-downloading.
-
-**Not covered:** the on-disk bytes are never hashed. Web Crypto has no MD5, and hashing would only catch external corruption of an already-integrated file — out of scope for interrupt-resume, and better handled by a future `asset_pack: verify`/repair action that owns the MD5 dependency.
+Anything unverified re-downloads. A false negative costs one wasted fetch; a false positive is a corrupt asset that never heals, so the gate is biased toward re-downloading. On-disk bytes are never hashed (Web Crypto has no MD5); that belongs to a future `asset_pack: verify`/repair action.
 
 ### Concurrency
 
-Two different requests for the **same** pack join the same in-flight attempt rather than the second one failing — launch-time resume can easily race a template-triggered download for the same pack.
+Two requests for the **same** pack join the same in-flight attempt — launch-time resume can easily race a template-triggered download.
 
-A request for a **different** pack while one is active is refused, but the two entry points differ in what happens next:
+A request for a **different** pack while one is active is refused, and the entry points differ in what follows:
 
-- **Background** (`awaitCompletion: false`, used by resume): the refused packs are retried once the active download settles, so the queue is not dropped.
-- **Awaited** (`awaitCompletion: true`, the default for `ensure_downloaded`): returns `false` immediately. This is intentional — an awaited call blocks the template action queue, and a pack parked in `waiting_for_connection` can wait indefinitely, so it must not be able to wedge the queue behind unrelated work.
+- **Background** (`awaitCompletion: false`, used by resume): refused packs are retried once the active download settles, so the queue is not dropped.
+- **Awaited** (`awaitCompletion: true`, the default for `ensure_downloaded`): returns `false` immediately. An awaited call blocks the template action queue, and a pack parked in `waiting_for_connection` can wait indefinitely, so it must not be able to wedge the queue behind unrelated work.
 
-## Template API
+### Cancelling
 
-```yaml
-asset_pack: download | ensure_downloaded | cancel_download | reset
-```
+A download holds the template action queue for its full duration, so `cancel_download` bypasses the queue via `TemplateActionRegistry.registerImmediate`. Author it as the only action on its trigger, and not behind `trigger_actions`, or it is queued like anything else.
 
-| Action | Behaviour |
-| --- | --- |
-| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes. Because it always re-walks the manifest, it is also the way to force an update check |
-| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not, and `check_for_updates` (default `true`) |
-| `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued (see *Cancelling* below) |
-| `reset` | Return **every** pack to its pre-download state: cancel active downloads (waiting for any in-flight write to finish), delete all downloaded files, and clear both data lists. All or nothing — if the files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk and the reset can be retried |
-
-### Debug options
-
-#### Cancelling
-
-A download holds the template action queue for its full duration, so a queued `cancel_download` would only run once the download it aborts had finished. It bypasses the queue instead, via `TemplateActionRegistry.registerImmediate`. Author it as the only action on its trigger, and not behind `trigger_actions`, or it is queued like anything else.
-
-A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
-
-Cancelling aborts the socket, not just the loop: the attempt's abort signal is threaded into the provider's `fetch` on **both** modes. It matters most on the archive path, which is one long request — a cancel landing only between entries would let a whole pack finish transferring — but the per-file path takes it too, so a large asset stops rather than running to completion and having its bytes discarded. Providers surface an abort as a rejected `AbortError`, never a `null` result, which is what keeps a cancel from being mistaken for a failed download and earning retries.
-
-Two things still only stop at the next checkpoint. A Storage plugin round trip already under way (Firebase's `getDownloadUrl` fallback) has no signal to take — though one that has *not* started is skipped outright once the signal is aborted. And the Supabase provider's default asset route: `supabase-js` `download()` takes no abort signal, and sending signalled downloads via the public URL instead would quietly require every bucket to be public. Archives on either provider, every Firebase download, and any Supabase download already going via the public URL (`noCache`, i.e. manifests) abort in flight.
-
-#### Artificial delay
-
-Both `download` and `ensure_downloaded` accept `debug_download_delay_ms`, a manual testing aid that pauses for that many ms before each asset file — and, on the archive path, before each file extracted from it, so a first install is just as interruptible as a per-file download:
-
-```yaml
-asset_pack | download: my_asset_pack | debug_download_delay_ms: 3000
-```
-
-This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack, toggling airplane mode — which is otherwise hard to hit on a fast connection. It defaults to `0`, is scoped to the single action call that sets it, and an unparseable value is ignored rather than breaking the download. Note the delay applies to *skipped* files too, so with it on a resume won't look faster: verify resume by status and counts reaching completion, not by speed. It does not slow the archive transfer itself, only extraction, so it opens a window during integration rather than during the download.
+A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. It aborts the socket, not just the loop: the signal is threaded into the provider's `fetch` on **both** modes, and providers surface an abort as a rejected `AbortError` rather than a `null` result, so a cancel is never mistaken for a failed download. Two things still stop only at the next checkpoint — a Storage plugin round trip already under way (Firebase's `getDownloadUrl`; one not yet started is skipped outright), and Supabase's default asset route, since `supabase-js` `download()` takes no abort signal.
 
 ## Updating a published pack
 
-Each manifest carries a `version`: a content hash over every asset's checksum, generated at sync
-time in `AssetsPostProcessor`. It changes if and only if the pack's content changes, so it cannot be
-forgotten the way a hand-maintained version number can.
+Each manifest carries a `version`: a content hash over every asset's checksum, generated at sync time in `AssetsPostProcessor`. It changes if and only if pack content changes, so it cannot be forgotten the way a hand-maintained number can.
 
-`ensure_downloaded` uses it to decide **whether to look**, and nothing more. Once a pack is being
-re-walked, which individual files get re-fetched is still decided by the per-slot resume gate above,
-comparing checksums — so an update transfers bytes only for the files that actually changed.
+`ensure_downloaded` uses it to decide **whether to look**, and nothing more. Which files then get re-fetched is still the per-slot resume gate's job, so an update transfers bytes only for what actually changed. The comparison is **inequality**, not "greater than", so a rollback resyncs to whatever the bucket currently holds.
 
-The check compares for **inequality**, not "greater than". If a pack is rolled back, or a CDN serves
-an older object, the app resyncs to whatever the bucket currently holds rather than being stuck
-forever on content that no longer exists.
+- **Checks never block the action queue**, whatever `await` says. `ensure_downloaded` guarantees a pack is *usable*, not latest; use `download` to block until latest.
+- **A failed check never changes `download_status`** — a working pack must not look broken because a *check* failed. The failure is recorded in `version_check_status`.
+- **Being offline records nothing at all**, so `"failed"` keeps meaning "we reached the provider and something is wrong". Staleness shows up as `version_checked_at` failing to advance.
+- **Checks are throttled** to hourly per pack, or 15 minutes after a check that reached the provider and failed. `download` bypasses both. A pack with an update already known outstanding is never throttled, so an update that failed, was cancelled, or was killed mid-flight is retried on the next `ensure_downloaded`.
+- **A manifest with no `version` is left alone**, or pre-versioning packs would be re-walked forever.
+- **`version` only advances on a fully successful download**, so a partial update stays at the old version and is retried next check. Every asset still resolves meanwhile.
+- **A failed or cancelled attempt on a previously-completed pack restores `completed`** and leaves `version` untouched, because the pack is still usable. One consequence: an update cannot be permanently dismissed by cancelling — use `check_for_updates: false` to stop a refresh recurring.
 
-Rules worth knowing:
+Progress during an update looks like a full re-download: each attempt resets `assets_downloaded_count` to 0 and skipped files count toward it, so a 200-file pack with one changed file sweeps to 199 then pauses on the single real fetch.
 
-- **Checks never block the action queue**, whatever `await` says. `ensure_downloaded` guarantees a
-  pack is *usable*, not that it is the latest; use `download` to block until latest.
-- **A failed check never changes `download_status`.** A pack that is downloaded and working must
-  not be made to look broken because a *check* failed. It stays `completed`, with the failure
-  recorded in `version_check_status`.
-- **Being offline records nothing at all** — not even a failed check. That keeps `"failed"` meaning
-  "we reached the provider and something is wrong with the published pack", which is a far more
-  actionable signal. Staleness shows up instead as `version_checked_at` failing to advance.
-- **Checks are throttled** to once an hour per pack, or 15 minutes after a check that reached the
-  provider and failed. `download` bypasses both. A pack with an update already known to be
-  outstanding (`available_version` differs from `version`) is never throttled, so an update that
-  failed, was cancelled, or never got its turn before the app was killed is retried on the next
-  `ensure_downloaded` rather than an hour later. Retrying is cheap — the resume gate skips every
-  file the previous attempt did manage to integrate.
-- **A manifest with no `version` is left alone.** Packs published before versioning existed would
-  otherwise be re-walked on every check forever.
-- **`version` only advances on a fully successful download.** A partially applied update therefore
-  stays at the old version and is retried by the next check; every asset still resolves in the
-  meantime, since untouched files are the old version and updated ones were integrated as they went.
-- **A failed or cancelled attempt on a pack that has completed before restores `completed`**, and
-  leaves `version` untouched. This is not specific to updates — an explicit `download` that fails
-  takes the same path, because the pack is equally still usable. One consequence: an update cannot
-  be permanently dismissed by cancelling it; the next check past the throttle retries it. Use
-  `check_for_updates: false` to stop a refresh recurring.
+## Publishing packs
 
-Progress during an update looks like a full re-download: each attempt resets
-`assets_downloaded_count` to 0 and skipped files still count toward it, so a 200-file pack with one
-changed file sweeps rapidly to 199 and then pauses on the single real fetch.
-
-### Not covered by versioning
-
-- **Files orphaned by an update.** If an entry is removed or renamed, its old file stays on disk —
-  storage is flat and shared, so nothing can prove another pack does not still need it. Same blocker
-  as per-pack delete (see *Known limitations*). Content changes overwrite in place, so this only
-  arises from removals and renames.
-- **`_assets_contents` rows for removed entries.** They keep pointing at a file that still exists,
-  so the asset keeps resolving until `reset`. Worth knowing if you rely on a missing asset falling
-  back to something else.
-- **Web browser caching.** On web an updated file lives at the same CDN URL, so the browser may
-  serve the old copy. Pre-existing, but versioning makes it visible.
-
-Progress and status are exposed to authoring in two places:
-
-- **`asset_pack_download_in_progress`** — a system variable holding a boolean string, for showing or hiding UI while any download is running. Referenced as `@fields._asset_pack_download_in_progress`, or as `@system.asset_pack_download_in_progress` in deployments using `useReactiveTemplates`.
-- **The `_asset_packs` data list** — one row per pack, carrying the full `download_status` plus fine-grained counts (`assets_downloaded_count` of `assets_total_count`, in slots), `download_progress_percent`, and the start/completion timestamps. This can be consumed, for example, to drive a progress bar, i.e. via `data_items`.
-
-`assets_downloaded_count` is always a genuine file count, whichever mode a pack used, so a display
-reading "x of y files" stays truthful. It steps unevenly though, because pack files range from
-under a kilobyte to a couple of megabytes — `download_progress_percent` exists for bars, and
-tracks transferred bytes while an archive is streaming and files otherwise. Both reset per attempt
-and are written to 100 / total on success even if throttling would have dropped the last update.
-
-The same row carries the version and update-check state:
-
-| Field | Meaning |
-| --- | --- |
-| `version` | Version at which every file was verified downloaded. `""` for packs downloaded before versioning existed |
-| `available_version` | Version last seen remotely. `""` until a check has succeeded |
-| `update_available` | A successful check found a remote version differing from the downloaded one |
-| `has_completed_download` | The pack has reached `completed` at least once. Never cleared except by `reset` |
-| `version_checked_at` | Last **successful** check |
-| `version_check_attempted_at` | Last check **attempt**. Always `>=` `version_checked_at`, and strictly greater exactly when the last check failed |
-| `version_check_status` | `"never"`, `"ok"`, or `"failed"` |
-
-## Where packs come from
-
-Asset packs are produced at sync time: assets destined for a pack are held out of the bundled app assets and written to `app_data/remote_assets/{packName}/` instead. Two config paths produce one:
+Packs are produced at sync time: assets destined for a pack are held out of the bundled app assets and written to `app_data/remote_assets/{packName}/`. Two config paths produce one:
 
 - An entry in `google_drive.assets_folders` marked `remote: true` — the folder's `name` becomes the pack name.
-- A Canto source folder with `remote_assets` entries — each declares a pack `name` plus a `condition` selecting which of that folder's files belong to it. Files matching no condition stay as core assets.
+- A Canto source folder with `remote_assets` entries — each declares a pack `name` plus a `condition` selecting which files belong to it. Files matching no condition stay as core assets.
 
-Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, carrying every entry's `size_kb` and `md5Checksum` — the same metadata the resume gate later relies on. A `contents.json` is written alongside it in the standard core-asset format; only the manifest is fetched at runtime, so the extra file is not currently used but is harmless to include in upload. Pack folders are then uploaded to the configured bucket (currently a manual process), where the app expects:
+Upload is **currently manual**. The app expects:
 
 ```
-{folderName}/{packName}/{packName}.json   <- manifest
-{folderName}/{packName}/{packName}.zip    <- archive of every manifest slot
-{folderName}/{packName}/{relativePath}    <- each asset file
+{folderName}/{packName}/{packName}.json            <- manifest
+{folderName}/{packName}/{packName}.{version}.zip   <- archive of every manifest slot
+{folderName}/{packName}/{relativePath}             <- each asset file
 ```
 
-`{packName}.zip` is written by the same code that writes the manifest, from the same data. That is
-deliberate: an archive that has drifted from the loose files is a silent, whole-pack correctness
-bug, and no upload runbook can prevent it. It contains exactly the manifest's slots, each asset's
-base file immediately followed by that asset's own overrides — the app can only write a contents
-row once every slot for it has arrived, so interleaved entries would mean nothing could be
-recorded until the stream ended.
+**Upload assets and the archive first, the manifest last.** A manifest landing first describes a version whose assets 404. It self-heals — the recorded `version` does not advance, so the next check retries — but it looks like a code bug.
 
-Text-like entries (`.svg`, `.json`, …) are deflated and everything else is stored. Packs are
-dominated by already-compressed media, so blanket compression costs device CPU on extract for
-almost nothing: on the largest real pack, deflating everything gives 33.5MB against 34.2MB for
-text only, while making the device inflate 23MB of mp3 and png. **Unrecognised extensions are
-stored**, so a newly-introduced media type is never inflated on device just because nobody added
-it to a list.
+The loose files are still needed: web resolves assets straight from them, and they are the per-file download path. A `contents.json` is also written but is not fetched at runtime.
 
-The loose files are still needed — web resolves assets straight from them, and they are the
-per-file download path.
+The archive is written by the same code, from the same data, as the manifest — a drifted archive would be a silent whole-pack correctness bug that no upload runbook could prevent. It holds exactly the manifest's slots, each asset's base file immediately followed by its own overrides, because the app can only write a contents row once every slot for it has arrived. Text-like entries are deflated and everything else is stored, **unrecognised extensions included**, so a new media type is never inflated on device just because nobody added it to a list.
 
-**Upload assets and the archive first, the manifest last.** A manifest that lands before them
-describes a version whose assets 404, so updates fail until the rest catches up. It is
-self-healing — the recorded `version` does not advance, so the next check retries — but it looks
-like a code bug.
-
-Manifests are fetched with caching bypassed (`cache: "no-store"` plus a cache-busting query
-parameter). Buckets typically serve long cache headers, and a cached manifest would report a stale
-version, meaning updates silently never reach anyone — while still working perfectly on a fresh
-install. Asset files are unaffected: they are fetched once and gated on checksums.
+Manifests are fetched with caching bypassed (`cache: "no-store"` plus a cache-busting query parameter): a cached manifest reports a stale version, so updates would silently never reach anyone while still working perfectly on a fresh install.
 
 ## Known limitations
 
-- **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
-- **No download queue, and no parallelism within a pack.** One pack at a time, and the per-file path fetches one file at a time. Bulk downloads avoid the cost by pulling an archive instead, but a pack that falls back to per-file (no archive published, or an unversioned manifest) is still slow.
-- **No integrity repair.** There is no way to detect or fix an already-integrated file that was corrupted after the fact.
-- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because files are stored flat and may legitimately be shared by two packs, deleting a single pack would need a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
-- **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`, which only touches `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration is prototyped on the same spike branch.
-- **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if packs are ever authored with overlapping paths.
-- **Updates can orphan files.** Removing or renaming a manifest entry leaves its old file on disk, and its `_assets_contents` row still resolving, until `reset`. See *Not covered by versioning* above.
-- **Web assets can be served stale from browser cache after an update**, since the CDN URL does not change with content. Cache-busting web `filePath` values on `md5Checksum` would fix it and is a candidate follow-up.
+- **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin.
+- **No download queue, and no parallelism within a pack.** Bulk downloads avoid the cost by pulling an archive, but a pack that falls back to per-file (no archive published, or an unversioned manifest) is still slow.
+- **No integrity repair.** No way to detect or fix an already-integrated file corrupted after the fact.
+- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Files are stored flat and may legitimately be shared, so deleting one pack needs a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
+- **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so they are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`. Accepted as a one-off; a cleanup migration is prototyped on the same spike branch.
+- **Superseded archives accumulate**, since the object key carries the version. Pruning is separate housekeeping.
+- **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if this is ever authored.
+- **Updates orphan files and rows.** Removing or renaming a manifest entry leaves its old file on disk *and* its `_assets_contents` row still resolving, until `reset`. Content changes overwrite in place, so this only arises from removals and renames.
+- **Web assets can be served stale from browser cache after an update**, since the CDN URL does not change with content. Cache-busting web `filePath` on `md5Checksum` would fix it.
+
+## Where the reasoning lives
+
+This README is deliberately thin on rationale, because most of it is recorded next to the code it constrains and would otherwise drift:
+
+| Question | Look at |
+| --- | --- |
+| Why these retry/backoff/failure numbers? | `remote-asset.types.ts` constants |
+| Why is a cancel not a failed download? | `withDownloadRetry` and `isAbortError` |
+| Why are status writes serialised? | `RemoteAssetMetadataService.queueStatusWrite` |
+| Why is the resume gate shaped like that? | `isSavedAssetSlotTrustworthy` |
+| Why `start()` every archive entry? | `remote-asset-archive.ts`, `onfile` |
+| Why is a row only written when all its slots settle? | `remote-asset-contents.writer.ts` |
+| Why is the version in the object key? | `getAssetPackArchiveFileName` in `data-models` |
+| Why store media and deflate only text? | `asset-pack-archive.ts` in `packages/scripts` |
+| What each `_asset_packs` field means | `IDBAssetPack` in `remote-asset.types.ts` |
+
+Author-facing setup and upload instructions are in `documentation/docs/authors/remote-assets.md`.
