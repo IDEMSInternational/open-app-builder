@@ -20,10 +20,17 @@ import {
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
-import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remote-asset";
+import {
+  IRemoteAssetProvider,
+  IRemoteAssetConfig,
+  isAbortError,
+} from "./providers/base.remote-asset";
 import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
+  ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT,
+  ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
+  ASSET_DOWNLOAD_RETRY_LIMIT,
   ASSET_PACK_ARCHIVE_FAILURE_LIMIT,
   DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS,
   REMOTE_ASSET_STORAGE_FOLDER,
@@ -575,7 +582,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         this.throwIfDownloadCancelled(abortController.signal);
 
         try {
-          const manifest = manifestForAttempt ?? (await this.getAssetPackManifest(assetPackName));
+          const manifest =
+            manifestForAttempt ??
+            (await this.getAssetPackManifest(assetPackName, abortController.signal));
           manifestForAttempt = undefined;
           this.throwIfDownloadCancelled(abortController.signal);
           if (!manifest) {
@@ -814,7 +823,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   private isDownloadCancelled(error: unknown, signal?: AbortSignal) {
-    return signal?.aborted || (error instanceof Error && error.name === "AbortError");
+    // `isAbortError` rather than an `instanceof Error` check: `fetch` rejects with a DOMException,
+    // which is not reliably an `Error`, and relying on `signal.aborted` having been set first would
+    // make a cancelled transfer look retryable whenever it has not been observed yet
+    return signal?.aborted || isAbortError(error);
   }
 
   /**
@@ -829,17 +841,86 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     this.throwIfDownloadCancelled(signal);
     console.warn(`[REMOTE ASSETS] Artificial download delay enabled: ${delayMs}ms`);
 
+    return this.abortableDelay(delayMs, signal);
+  }
+
+  /**
+   * Sleep that rejects rather than resolving if the download is cancelled while it waits, so a
+   * pause never outlives the attempt it belongs to.
+   */
+  private abortableDelay(delayMs: number, signal?: AbortSignal) {
+    // `addEventListener("abort")` never fires on an already-aborted signal, so without this the
+    // timer would run to completion and the cancel would only be noticed after the wait it was
+    // meant to cut short
+    if (signal?.aborted) {
+      return Promise.reject(this.createDownloadCancelledError());
+    }
     return new Promise<void>((resolve, reject) => {
       const handleAbort = () => {
         clearTimeout(timeout);
         reject(this.createDownloadCancelledError());
       };
       const timeout = setTimeout(() => {
-        signal.removeEventListener("abort", handleAbort);
+        signal?.removeEventListener("abort", handleAbort);
         resolve();
       }, delayMs);
-      signal.addEventListener("abort", handleAbort, { once: true });
+      signal?.addEventListener("abort", handleAbort, { once: true });
     });
+  }
+
+  /**
+   * Run one download, retrying a few times before treating it as failed. Used for both asset slots
+   * and pack manifests: a manifest blip fails an attempt before any slot retry can help, so leaving
+   * it unretried would leave the same "one blip fails the pack" hole this closes.
+   *
+   * Providers report failure as a `null` result with no error channel, so a genuinely missing object
+   * is retried too and costs a couple of wasted requests before failing anyway. That is the cheaper
+   * mistake: not retrying spends nothing on missing objects, but sends packs to `error` that would
+   * otherwise have completed, and an `error` pack needs an explicit re-trigger to make progress.
+   *
+   * Going offline is deliberately not retried - the pack-level handler parks the download as
+   * `waiting_for_connection` and resumes it, which is a far better answer than burning attempts
+   * against a connection known to be down. Checked before every attempt, including the first: the
+   * walk is serial, so a device that has already dropped its connection would otherwise spend one
+   * doomed request on every remaining file in the pack before parking.
+   */
+  private async withDownloadRetry<T>(
+    label: string,
+    attemptDownload: () => Promise<T | null>,
+    signal: AbortSignal | undefined
+  ): Promise<T | null> {
+    const totalAttempts = ASSET_DOWNLOAD_RETRY_LIMIT + 1;
+    // Every giving-up path goes through here rather than returning `null` directly. A provider that
+    // swallowed an abort instead of rethrowing it would otherwise surface a cancel as a failed
+    // download, which is what earns an `error` pack - and only the paths that happen to be followed
+    // by a caller-side check are saved from that today.
+    const giveUp = () => {
+      if (signal) this.throwIfDownloadCancelled(signal);
+      return null;
+    };
+    for (let attempt = 0; attempt < totalAttempts; attempt++) {
+      if (signal) this.throwIfDownloadCancelled(signal);
+      if (this.isOffline()) return giveUp();
+      try {
+        const result = await attemptDownload();
+        if (result) return result;
+      } catch (error) {
+        if (this.isDownloadCancelled(error, signal)) throw error;
+        console.error(`[REMOTE ASSETS] Error downloading ${label}:`, error);
+      }
+      // Connectivity can drop mid-attempt, so re-check rather than serving a pointless backoff
+      if (this.isOffline()) return giveUp();
+      const isLastAttempt = attempt === totalAttempts - 1;
+      if (!isLastAttempt) {
+        const delayMs = ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS * 2 ** attempt;
+        console.warn(
+          `[REMOTE ASSETS] Retrying ${label} in ${delayMs}ms (attempt ${attempt + 2} of ${totalAttempts})`
+        );
+        if (signal) this.throwIfDownloadCancelled(signal);
+        await this.abortableDelay(delayMs, signal);
+      }
+    }
+    return giveUp();
   }
 
   /**
@@ -996,6 +1077,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       throw new AssetPackArchiveNotFoundError(`${assetPackName} (manifest has no version)`);
     }
     const archivePath = this.getAssetPackArchivePath(assetPackName, manifest.version);
+    // `getFetchableUrl` is a provider round trip that takes no signal - a Storage plugin call on
+    // Firebase, a signing request on Supabase - so a cancel that has already landed can only be
+    // honoured by not making it. Mirrors the same guard on the per-file path's `getDownloadUrl`.
+    this.throwIfDownloadCancelled(signal);
     const url = await this.provider.getFetchableUrl(archivePath);
     if (!url) {
       throw new AssetPackArchiveNotFoundError(archivePath);
@@ -1304,17 +1389,36 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           }
         }
 
+        // Slots that failed in a row, each having already spent its retries. Reset by any success,
+        // so this only climbs while nothing at all is getting through. Applies to the archive's
+        // per-file fallback as well as a plain per-file pass: a slot the archive already delivered
+        // is skipped rather than fetched, and a skip counts as a success, so a fallback that is
+        // making progress never trips it.
+        let consecutiveFailures = 0;
         // TODO: implement queue system for downloads (see template-action service, or use of 3rd party p-queue elsewhere)
         for (const [index, assetEntry] of assetEntries.entries()) {
           this.throwIfDownloadCancelled(signal);
           await this.waitForArtificialDownloadDelay(signal, debugDownloadDelayMs);
-          failedCount += await this.handleAssetDownload(
+          const { succeededCount, failedCount: entryFailedCount } = await this.handleAssetDownload(
             assetEntry,
             index,
             assetEntries.length,
             signal,
             existingContents
           );
+          failedCount += entryFailedCount;
+          consecutiveFailures = succeededCount > 0 ? 0 : consecutiveFailures + entryFailedCount;
+          if (consecutiveFailures >= ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT) {
+            // The pack was going to fail anyway - `failedCount` is already non-zero and no partial
+            // pack is ever marked complete - so the only thing walking the rest would buy is the
+            // files still ahead of the outage. Against a dead bucket or an unpublished pack that
+            // buys nothing at all, and costs every remaining file its full retry allowance and
+            // backoff before the user is told. Stopping trades that for a prompt `error`.
+            console.error(
+              `[REMOTE ASSETS] Abandoning ${assetPackManifest.flow_name} after ${consecutiveFailures} consecutive file failures (stopped at entry ${index + 1} of ${assetEntries.length})`
+            );
+            break;
+          }
         }
       }
 
@@ -1352,7 +1456,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * to decide what a missing manifest means - a download treats it as a failure, a version check
    * must treat it as "could not check" and leave the pack's status alone.
    */
-  private async getAssetPackManifest(assetPackName: string): Promise<FlowTypes.AssetPack | null> {
+  private async getAssetPackManifest(
+    assetPackName: string,
+    signal?: AbortSignal
+  ): Promise<FlowTypes.AssetPack | null> {
     const relativePath = `${assetPackName}/${assetPackName}.json`;
 
     try {
@@ -1361,26 +1468,67 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
       // `noCache` is essential, not an optimisation: buckets serve long cache headers, and a cached
       // manifest reports a stale version, so updates would silently never reach anyone.
-      const jsonText = await this.provider.downloadFileAsText(relativePath, { noCache: true });
+      const manifest = await this.withDownloadRetry(
+        `manifest for ${assetPackName}`,
+        () => this.fetchAssetPackManifest(assetPackName, relativePath, signal),
+        signal
+      );
 
-      if (!jsonText) {
+      if (!manifest) {
         console.error(`[REMOTE ASSETS] Failed to download manifest for ${assetPackName}`);
         return null;
       }
-      const manifest: FlowTypes.AssetPack = JSON.parse(jsonText);
       console.log("[REMOTE ASSETS] Manifest loaded", manifest);
       return manifest;
     } catch (error) {
+      // Returning `null` here would turn a cancel into "no manifest", which the caller treats as a
+      // failed attempt and an `error` pack. Currently survivable only because that caller re-checks
+      // the signal on the very next line - too fragile to rely on, so rethrow instead.
+      if (this.isDownloadCancelled(error, signal)) throw error;
       console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
       return null;
     }
   }
 
   /**
+   * One attempt at fetching and parsing a pack manifest, kept as a single unit so `withDownloadRetry`
+   * covers the parse too.
+   *
+   * Parsing outside the retry would leave the hole the retry exists to close: a truncated or garbled
+   * body is still a non-empty string, so it reads as a successful fetch, and the `JSON.parse` throw
+   * that follows fails the whole attempt without a second try. Throwing from in here instead makes a
+   * bad body indistinguishable from a failed fetch, which is what it is.
+   *
+   * The shape check earns its place for the same reason: a bucket or proxy answering with a JSON
+   * error envelope parses perfectly well, and without it that would be accepted as a manifest
+   * describing zero assets - i.e. a pack that "completes" having downloaded nothing.
+   */
+  private async fetchAssetPackManifest(
+    assetPackName: string,
+    relativePath: string,
+    signal?: AbortSignal
+  ): Promise<FlowTypes.AssetPack | null> {
+    const jsonText = await this.provider.downloadFileAsText(relativePath, {
+      noCache: true,
+      signal,
+    });
+    if (!jsonText) return null;
+    const manifest: FlowTypes.AssetPack = JSON.parse(jsonText);
+    if (!manifest?.flow_name || !Array.isArray(manifest.rows)) {
+      throw new Error(
+        `[REMOTE ASSETS] Manifest for ${assetPackName} is not an asset pack (no flow_name or rows)`
+      );
+    }
+    return manifest;
+  }
+
+  /**
    * Native platforms only:
    * Download an asset from an asset pack, including any overrides,
    * and update the contents list so that the filepath is the path to the file in local storage.
-   * @returns the number of file slots (base and/or overrides) that failed to download.
+   * @returns how many of the entry's file slots (base and/or overrides) succeeded and how many
+   * failed. The successes matter as well as the failures: they are what resets the pack walk's
+   * consecutive-failure count, so a pack that is still making progress is never abandoned.
    */
   private async handleAssetDownload(
     assetEntry: IAssetEntry,
@@ -1388,7 +1536,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     totalFiles: number | undefined,
     signal: AbortSignal | undefined,
     existingContents: Record<string, IAssetEntry>
-  ): Promise<number> {
+  ): Promise<{ succeededCount: number; failedCount: number }> {
+    let succeededCount = 0;
     let failedCount = 0;
     // Download the top level asset, unless overridesOnly is specified
     if (!assetEntry.overridesOnly) {
@@ -1402,7 +1551,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           undefined,
           existingContents
         );
-        if (!succeeded) failedCount += 1;
+        if (succeeded) succeededCount += 1;
+        else failedCount += 1;
       } catch (error) {
         if (this.isDownloadCancelled(error, signal)) throw error;
         console.error(error);
@@ -1427,7 +1577,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
               overrideProps,
               existingContents
             );
-            if (!succeeded) failedCount += 1;
+            if (succeeded) succeededCount += 1;
+            else failedCount += 1;
           } catch (error) {
             if (this.isDownloadCancelled(error, signal)) throw error;
             console.error(error);
@@ -1436,7 +1587,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         }
       }
     }
-    return failedCount;
+    return { succeededCount, failedCount };
   }
 
   /**
@@ -1521,8 +1672,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     try {
       if (signal) this.throwIfDownloadCancelled(signal);
-      // Use provider's direct download method
-      const blob = await this.provider.downloadFile(this.getFullRemotePath(relativePath));
+      // Use provider's direct download method, retrying transient failures
+      const remotePath = this.getFullRemotePath(relativePath);
+      const blob = await this.withDownloadRetry(
+        remotePath,
+        () => this.provider.downloadFile(remotePath, { signal }),
+        signal
+      );
       if (signal) this.throwIfDownloadCancelled(signal);
 
       if (blob) {

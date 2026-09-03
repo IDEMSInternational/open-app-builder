@@ -24,7 +24,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
 | `remote-asset-archive.ts` | Streams a pack's `.zip` and hands back each wanted entry as it arrives |
 | `remote-asset-contents.writer.ts` | Batches `_assets_contents` row updates and writes them in bulk |
-| `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the archive/flush tuning constants |
+| `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the retry/archive/version-check tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
 ## The central idea: `_assets_contents`
@@ -85,13 +85,19 @@ Execution is deliberately serial: **one pack at a time**, and within it either o
 
 A pack only reaches `completed` when **all** slots succeed. Per-slot failures are counted and returned as `failedCount`; a non-zero count throws, which either parks the pack (offline) or surfaces it as `error` (online). This matters: silently marking a pack complete with missing files leaves the app permanently referencing assets that will never arrive.
 
+Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help. The manifest's *parse* is inside that retry, not after it: a truncated body is still a non-empty string, so parsing outside would read as a successful fetch and then fail the attempt with no second try.
+
+Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked before every attempt, including the first, since the walk is serial and a device already known to be offline would otherwise spend a doomed request on every remaining file - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
+
+Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake for *one* file - the alternative spends the same requests sending packs to `error` that would otherwise have completed. What it is not cheap for is a whole-pack outage (dead bucket, unpublished pack, every object 500), where flattening the status means paying every file's full allowance and backoff in turn before anyone is told. `ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT` bounds that: once that many slots have failed **in a row**, each having spent its retries, the walk stops and the pack goes to `error`. Any success resets the count - including a slot skipped as already on disk - so scattered missing files still walk the whole pack and download everything that is there.
+
 ## Two acquisition modes
 
 Fetching hundreds of files individually is dominated by round trips, not bytes: a 427-file pack is
-854 sequential requests (each file costs a download-url lookup plus the download itself) to move
-around 50MB, and completion time is set by the slowest few of them. So a pack that is mostly
-missing is instead pulled as **one archive**, `{packName}.zip`, generated at sync time alongside
-the manifest.
+427 sequential requests to move around 50MB, and completion time is set by the slowest few of them.
+(It used to be 854 — each file also cost a download-url lookup, until the Firebase provider started
+resolving the public URL locally.) So a pack that is mostly missing is instead pulled as **one
+archive**, `{packName}.{version}.zip`, generated at sync time alongside the manifest.
 
 An archive cannot be the only mode, though, because it would undo what versioning bought: one
 changed file in a 427-file pack would re-transfer the whole thing, where per-file fetching moves
@@ -153,7 +159,7 @@ files already on disk.
 - **Entry size is checked against the manifest.** fflate's read path neither verifies the
   per-entry CRC nor exposes it to the streaming API, so checking that would mean hand-parsing zip
   headers. In practice corruption shows up as a failing deflate stream, a size mismatch, or is
-  ruled out by the version-stamped URL.
+  ruled out by the version-stamped object key.
 
 ### When the archive does not work out
 
@@ -162,14 +168,15 @@ a pack on the slow path after a couple of transient blips.
 
 | Outcome | Behaviour |
 | --- | --- |
-| No archive published (404) | Per-file for this pack, and no re-probing for the rest of the session |
-| Manifest has no `version` | Per-file; the URL cannot be made cache-safe |
+| No archive published (400/401/403/404) | Per-file for this pack, and no re-probing for the rest of the session |
+| Manifest has no `version` | Per-file; the versioned object key cannot be built |
 | Offline / cancelled | Not an archive failure. Parked and retried like any other download |
 | Stream truncated, corrupt, 5xx | Whatever arrived is kept, the shortfall is fetched per-file, and after two such failures the pack stops trying archives |
 
 The shortfall case matters more than it sounds: entries are integrated as they arrive, so a failed
 archive still leaves most of the pack on disk. The fallback re-reads the contents list and fetches
 only what is genuinely still missing, rather than starting the pack over.
+
 
 ## Resume after interruption
 
@@ -219,7 +226,9 @@ A download holds the template action queue for its full duration, so a queued `c
 
 A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
 
-What a cancel reaches depends on the mode. On the **archive** path the attempt's signal is handed to `fetch`, so the transfer itself stops — which matters most there, since an archive is one long request and a cancel that only landed between entries would let the whole pack finish transferring. On the **per-file** path the signal does not reach the request: cancelling aborts the loop, not the socket, so the file already in flight runs to completion and its result is discarded at the next checkpoint.
+Cancelling aborts the socket, not just the loop: the attempt's abort signal is threaded into the provider's `fetch` on **both** modes. It matters most on the archive path, which is one long request — a cancel landing only between entries would let a whole pack finish transferring — but the per-file path takes it too, so a large asset stops rather than running to completion and having its bytes discarded. Providers surface an abort as a rejected `AbortError`, never a `null` result, which is what keeps a cancel from being mistaken for a failed download and earning retries.
+
+Two things still only stop at the next checkpoint. A Storage plugin round trip already under way (Firebase's `getDownloadUrl` fallback) has no signal to take — though one that has *not* started is skipped outright once the signal is aborted. And the Supabase provider's default asset route: `supabase-js` `download()` takes no abort signal, and sending signalled downloads via the public URL instead would quietly require every bucket to be public. Archives on either provider, every Firebase download, and any Supabase download already going via the public URL (`noCache`, i.e. manifests) abort in flight.
 
 #### Artificial delay
 

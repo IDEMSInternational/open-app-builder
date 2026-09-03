@@ -6,6 +6,8 @@ import {
   IRemoteAssetDownloadOptions,
   IRemoteFileMetadata,
   appendCacheBuster,
+  createAbortError,
+  isAbortError,
 } from "./base.remote-asset";
 import { FirebaseStorage } from "@capacitor-firebase/storage";
 
@@ -15,6 +17,20 @@ import { FirebaseStorage } from "@capacitor-firebase/storage";
 export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
   private firebaseService: FirebaseService;
   private config: IRemoteAssetConfig;
+  /**
+   * Storage plugin binding, held as a field so tests can substitute it - `registerPlugin` returns a
+   * Proxy that synthesises every method on property access, so the plugin cannot be spied on. Same
+   * reason as the `fs` field on `HttpCacheAdapterFile`, but a field rather than a constructor
+   * argument, which would fight `providedIn: "root"`.
+   */
+  private storage: typeof FirebaseStorage = FirebaseStorage;
+  /**
+   * Session-scoped switch for the public-URL fast path. Starts optimistic and flips on the first
+   * forbidden response, so a deployment whose rules deny unauthenticated reads pays the wasted
+   * request once rather than on every asset of every pack. Deliberately not persisted: rules can
+   * change between sessions and rediscovering them costs a single request.
+   */
+  private publicUrlFastPathEnabled = true;
 
   async initialise(injector: Injector, config: IRemoteAssetConfig): Promise<void> {
     this.config = config;
@@ -55,33 +71,76 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
 
     try {
-      const fullPath = `${this.config.folderName}/${relativePath}`;
-
-      // Use Capacitor Firebase Storage to get the download URL
-      const result = await FirebaseStorage.getDownloadUrl({
-        path: fullPath,
-      });
-
-      if (result.downloadUrl) {
-        // Download the file using fetch - response varies depending on platform
-        const response = await fetch(
-          options.noCache ? appendCacheBuster(result.downloadUrl) : result.downloadUrl,
-          options.noCache ? { cache: "no-store" } : {}
-        );
-
-        if (response.ok) {
-          return await response.blob();
-        } else {
-          console.error(`[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`);
-          return null;
+      // Prefer the deterministic public URL. `getDownloadUrl` is itself a network round trip, so
+      // resolving locally costs one request per asset instead of two - a per-file latency tax that
+      // dominates a pack of many small assets. Unauthenticated read (`allow read: if true`) is the
+      // documented setup for Firebase asset packs, so this is the expected route, not a gamble.
+      // An empty URL means no `storageBucket` in the JS config, which the native SDK can still
+      // resolve from its own config, so that falls through rather than failing.
+      if (this.publicUrlFastPathEnabled) {
+        const publicUrl = this.getPublicUrl(relativePath);
+        if (publicUrl) {
+          // A throw here (offline, CORS, invalid URL) is left to the outer catch rather than
+          // retried via the SDK: both routes share a host, so a throw almost never favours one URL
+          // over the other.
+          const response = await this.fetchStorageUrl(publicUrl, options);
+          if (response.ok) {
+            return await response.blob();
+          }
+          if (response.status !== 401 && response.status !== 403) {
+            // No fallback here, deliberately. Anything that is not a permission failure says the
+            // object is missing or storage is unhealthy, neither of which a tokenised URL fixes.
+            // A wrong `storageBucket` would 404 here, but the same string is what web writes into
+            // `_assets_contents`, so that deployment is already serving broken images - papering
+            // over it on native would hide a fault that has to be fixed anyway.
+            console.error(
+              `[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`
+            );
+            return null;
+          }
+          console.warn(
+            `[Firebase Remote Asset] Unauthenticated read of ${relativePath} was forbidden (HTTP ${response.status}); using download URLs for the rest of this session`
+          );
+          this.publicUrlFastPathEnabled = false;
         }
       }
 
+      // `getDownloadUrl` is a native plugin round trip that takes no signal, so the only way to
+      // honour a cancel that has already landed is not to make the call
+      if (options.signal?.aborted) throw createAbortError();
+
+      // Safety net for a deployment whose rules deny unauthenticated reads, at the cost of the extra
+      // round trip this method exists to avoid. Not private-bucket support: web writes
+      // `getPublicUrl` straight into `_assets_contents` with no such fallback, and an
+      // unauthenticated app cannot mint a URL for an object it is not allowed to read. Enforced App
+      // Check also surfaces as 403 above, and will fail here too - `fetch` sends no App Check header.
+      const fullPath = `${this.config.folderName}/${relativePath}`;
+      const { downloadUrl } = await this.storage.getDownloadUrl({ path: fullPath });
+      if (!downloadUrl) {
+        return null;
+      }
+
+      const response = await this.fetchStorageUrl(downloadUrl, options);
+      if (response.ok) {
+        return await response.blob();
+      }
+      console.error(`[Firebase Remote Asset] HTTP ${response.status}: ${response.statusText}`);
       return null;
     } catch (error) {
+      // Cancellation is not a download failure: reporting it as `null` would look like a missing
+      // file and earn pointless retries against a transfer the caller has already abandoned
+      if (isAbortError(error)) throw error;
       console.error("[Firebase Remote Asset] Error downloading file:", error);
       return null;
     }
+  }
+
+  /** Fetch a resolved storage URL - response format varies depending on platform */
+  private fetchStorageUrl(url: string, options: IRemoteAssetDownloadOptions): Promise<Response> {
+    const init: RequestInit = {};
+    if (options.noCache) init.cache = "no-store";
+    if (options.signal) init.signal = options.signal;
+    return fetch(options.noCache ? appendCacheBuster(url) : url, init);
   }
 
   public async downloadFileAsText(
@@ -115,6 +174,7 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
       // Regular text content
       return textContent;
     } catch (error) {
+      if (isAbortError(error)) throw error;
       console.error("[Firebase Remote Asset] Error downloading file as text:", error);
       return null;
     }
@@ -150,7 +210,7 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
       const fullPath = `${this.config.folderName}/${relativePath}`;
 
       // Use Capacitor Firebase Storage to get file metadata
-      const result = await FirebaseStorage.getMetadata({
+      const result = await this.storage.getMetadata({
         path: fullPath,
       });
 
