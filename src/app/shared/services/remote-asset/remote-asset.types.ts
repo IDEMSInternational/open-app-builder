@@ -44,6 +44,19 @@ export const ASSET_DOWNLOAD_RETRY_LIMIT = 2;
 export const ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS = 300;
 
 /**
+ * Consecutive asset slot failures (each already having spent its full retry allowance) that end the
+ * pack walk early. Downloads are serial, so without this a dead bucket or an unpublished pack pays
+ * every file's full allowance in turn - retries and backoff included - before the pack can reach
+ * `error`, which on a pack of a few hundred files is minutes of sleeping to reach a conclusion that
+ * was clear after the first handful.
+ *
+ * Counted *consecutively* and reset by any slot that succeeds (including one skipped as already on
+ * disk), so this only trips when nothing is getting through. A bad publish missing scattered files
+ * still walks the whole pack and downloads everything that is there.
+ */
+export const ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT = 5;
+
+/**
  * Prefix marking an `_assets_contents` `filePath` as a file this app downloaded to native storage.
  * What follows the prefix is the pack-relative target path, i.e. the same value passed to
  * `FileManagerService.saveFile`.

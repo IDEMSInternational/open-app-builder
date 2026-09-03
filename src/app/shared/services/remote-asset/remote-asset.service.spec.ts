@@ -16,7 +16,9 @@ import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
+import { FirebaseRemoteAssetProvider } from "./providers/firebase.remote-asset";
 import {
+  ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT,
   ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
   ASSET_DOWNLOAD_RETRY_LIMIT,
 } from "./remote-asset.types";
@@ -126,6 +128,20 @@ const localAssetPath = (targetPath: string) => `local://${targetPath}`;
  */
 const legacyLocalSrc = (targetPath: string) =>
   `capacitor://localhost/_capacitor_file_/var/mobile/Containers/Data/Application/OLD-UUID/Documents/MOCK/${targetPath}`;
+
+/**
+ * A run of single-slot asset entries, for tests that need a pack long enough to show what the walk
+ * does *after* a file fails rather than just to it.
+ */
+const buildAssetEntries = (count: number) =>
+  Array.from({ length: count }, (_, index) => ({
+    id: `images/asset_${index}.png`,
+    md5Checksum: `checksum_${index}`,
+    size_kb: 10,
+  })) as FlowTypes.Data_listRow<IAssetEntry>[];
+
+/** The entry index a remote path belongs to, for staging per-file results in walk tests */
+const assetEntryIndex = (remotePath: string) => Number(remotePath.match(/asset_(\d+)/)[1]);
 
 /** Build an `_asset_packs` row, so fixtures only state the fields the test is about */
 function buildMockAssetPack(overrides: Partial<IDBAssetPack> = {}): IDBAssetPack {
@@ -1263,6 +1279,73 @@ describe("RemoteAssetsService", () => {
     expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(2);
   });
 
+  /**
+   * Native download whose manifest comes from the provider rather than a stub, so the fetch/parse
+   * path `getAssetPackManifest` actually runs. Returns the manifest-text spy for per-test staging.
+   */
+  /* eslint-disable jasmine/no-unsafe-spy */
+  function setupNativeDownloadWithRealManifestFetch(
+    manifestRows: FlowTypes.Data_listRow<IAssetEntry>[] = [
+      clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+    ]
+  ) {
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    const manifest: FlowTypes.AssetPack = {
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: manifestRows,
+    };
+    const downloadFileAsTextSpy = jasmine
+      .createSpy("downloadFileAsText")
+      .and.resolveTo(JSON.stringify(manifest));
+    service["provider"] = {
+      downloadFileAsText: downloadFileAsTextSpy,
+      downloadFile: jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"])),
+    } as any;
+    spyOn(service["fileManagerService"], "saveFile").and.resolveTo({
+      localFilepath: "file:///data/x",
+      src: "x",
+    });
+    // See `setupNativeDownload`: an unstubbed stat reaches the real Filesystem plugin and can hang
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    return { manifest, downloadFileAsTextSpy };
+  }
+  /* eslint-enable jasmine/no-unsafe-spy */
+
+  it("retries a manifest that arrives truncated, rather than failing the pack on the parse", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const { manifest, downloadFileAsTextSpy } = setupNativeDownloadWithRealManifestFetch();
+    // A truncated body is a non-empty string, so it reads as a successful fetch right up until it
+    // is parsed - which is exactly the blip the manifest retry exists to ride out
+    let attempts = 0;
+    downloadFileAsTextSpy.and.callFake(async () =>
+      ++attempts === 1 ? '{"flow_type":"asset_pack","rows":[' : JSON.stringify(manifest)
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not accept a parseable non-manifest as an asset pack with no files", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const { downloadFileAsTextSpy } = setupNativeDownloadWithRealManifestFetch();
+    // A bucket or proxy answering with a JSON error envelope parses perfectly well. Taken at face
+    // value it describes a pack of zero assets, so the pack would "complete" having fetched nothing
+    downloadFileAsTextSpy.and.resolveTo('{"error":"NoSuchKey"}');
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(ASSET_DOWNLOAD_RETRY_LIMIT + 1);
+    expect(assetPacks.get()).toEqual(jasmine.objectContaining({ download_status: "error" }));
+  });
+
   it("hands the attempt's abort signal to the provider so a transfer can stop in flight", async () => {
     const { downloadFileSpy } = setupNativeDownload([
       clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
@@ -1273,6 +1356,57 @@ describe("RemoteAssetsService", () => {
     const [, options] = downloadFileSpy.calls.argsFor(0);
     expect(options.signal).toEqual(jasmine.any(AbortSignal));
     expect(options.signal.aborted).toBeFalse();
+  });
+
+  it("aborts the transfer in flight when an active download is cancelled", async () => {
+    // End-to-end rather than at `withDownloadRetry`: the claim is that cancelling stops the socket,
+    // which only holds if the attempt's signal survives every hop down to the provider's `fetch`.
+    // Driven through the real Firebase provider for the same reason - a provider mock would only
+    // re-assert that a signal was handed over, not that anything acts on it.
+    spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+      flow_type: "asset_pack",
+      flow_name: "asset_pack_1",
+      rows: [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
+    } as FlowTypes.AssetPack);
+    spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+
+    const firebaseService = { app: { options: { storageBucket: "test-bucket.appspot.com" } } };
+    const provider = new FirebaseRemoteAssetProvider();
+    await provider.initialise({ get: () => firebaseService } as unknown as Injector, {
+      bucketName: "unused",
+      folderName: "asset_packs",
+    });
+    service["provider"] = provider as any;
+
+    let transferSignal!: AbortSignal;
+    let signalTransferStarted!: () => void;
+    const transferStarted = new Promise<void>((resolve) => (signalTransferStarted = resolve));
+    spyOn(window, "fetch").and.callFake((_url, init: RequestInit) => {
+      transferSignal = init.signal;
+      signalTransferStarted();
+      // A transfer that never finishes on its own, so the only way out is the abort
+      return new Promise<Response>((_resolve, reject) =>
+        init.signal.addEventListener(
+          "abort",
+          () => reject(new DOMException("The operation was aborted", "AbortError")),
+          { once: true }
+        )
+      );
+    });
+
+    const downloadPromise = service.downloadAssetPackByName("asset_pack_1");
+    await transferStarted;
+    expect(transferSignal.aborted).toBeFalse();
+
+    const cancelled = await service.cancelAssetPackDownloadByName("asset_pack_1");
+
+    expect(cancelled).toBeTrue();
+    expect(transferSignal.aborted).toBeTrue();
+    // And the abort is read as a cancel, not as a file that could not be downloaded
+    expect(await downloadPromise).toBeFalse();
+    expect(assetPacks.get()).toEqual(jasmine.objectContaining({ download_status: "cancelled" }));
   });
 
   it("does not retry a transfer the provider reports as aborted", async () => {
@@ -1338,10 +1472,11 @@ describe("RemoteAssetsService", () => {
     expect(downloadFileAsTextSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("stops retrying an asset once the device goes offline", async () => {
+  it("does not spend a request on an asset once the device is known offline", async () => {
     // Driven directly rather than through a pack download: an offline pack parks and resumes in a
     // loop by design, which would mask what this asserts - that the slot itself stops trying and
-    // hands recovery to that pack-level handler.
+    // hands recovery to that pack-level handler. The walk is serial, so trying once anyway would
+    // cost a doomed request per remaining file before the pack could park.
     spyOn<any>(service, "isOffline").and.returnValue(true);
     const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
     const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(null);
@@ -1354,8 +1489,58 @@ describe("RemoteAssetsService", () => {
     );
 
     expect(result).toBeNull();
+    expect(downloadFileSpy).not.toHaveBeenCalled();
+    expect(delaySpy).not.toHaveBeenCalled();
+  });
+
+  it("stops retrying an asset when the device drops its connection mid-attempt", async () => {
+    let offline = false;
+    spyOn<any>(service, "isOffline").and.callFake(() => offline);
+    const delaySpy = spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Online when the attempt starts, offline by the time it fails - so the retry has to re-check
+    // rather than trusting the state it was given at the top of the loop
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.callFake(async () => {
+      offline = true;
+      return null;
+    });
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    const result = await service["withDownloadRetry"](
+      "images/asset.png",
+      () => service["provider"].downloadFile("images/asset.png"),
+      undefined
+    );
+
+    expect(result).toBeNull();
     expect(downloadFileSpy).toHaveBeenCalledTimes(1);
     expect(delaySpy).not.toHaveBeenCalled();
+  });
+
+  it("reports a cancel as an abort even when the last attempt merely returned null", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    spyOn<any>(service, "isOffline").and.returnValue(false);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    const controller = new AbortController();
+    // A provider that swallows its own abort surfaces a cancel as a failed download. Earlier
+    // attempts catch that on the way into their backoff; the last has no backoff left, so without
+    // a check on the way out the cancel returns `null` and the caller reads it as a missing file.
+    let attempts = 0;
+    const downloadFileSpy = jasmine.createSpy("downloadFile").and.callFake(async () => {
+      if (++attempts === ASSET_DOWNLOAD_RETRY_LIMIT + 1) controller.abort();
+      return null;
+    });
+    service["provider"] = { downloadFile: downloadFileSpy } as any;
+
+    await expectAsync(
+      service["withDownloadRetry"](
+        "images/asset.png",
+        () => service["provider"].downloadFile("images/asset.png"),
+        controller.signal
+      )
+    ).toBeRejectedWithError("Asset pack download cancelled");
+
+    expect(downloadFileSpy).toHaveBeenCalledTimes(ASSET_DOWNLOAD_RETRY_LIMIT + 1);
   });
 
   it("retries each slot independently rather than sharing an allowance", async () => {
@@ -1373,6 +1558,68 @@ describe("RemoteAssetsService", () => {
     expect(success).toBeTrue();
     expect(downloadFileSpy).toHaveBeenCalledTimes(4);
     expect(saveFileSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("abandons the walk once enough slots fail in a row, instead of paying out every file", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const entries = buildAssetEntries(ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT + 4);
+    const { downloadFileSpy, getAssetPackRow } = setupNativeDownload(entries);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Nothing at all is getting through - a dead bucket, or a pack that was never published
+    downloadFileSpy.and.resolveTo(null);
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    // Only the failing prefix is attempted; the files behind it cost neither a request nor a backoff
+    expect(downloadFileSpy).toHaveBeenCalledTimes(
+      ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT * (ASSET_DOWNLOAD_RETRY_LIMIT + 1)
+    );
+    expect(getAssetPackRow()).toEqual(jasmine.objectContaining({ download_status: "error" }));
+  });
+
+  it("keeps walking a pack whose failures are scattered rather than consecutive", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const entries = buildAssetEntries(ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT * 2);
+    const { downloadFileSpy, saveFileSpy, getAssetPackRow } = setupNativeDownload(entries);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // A bad publish missing every other file: the pack still fails, but every file that *is* there
+    // must be fetched, so a later attempt only has the genuinely missing ones left to retry
+    downloadFileSpy.and.callFake(async (remotePath: string) =>
+      assetEntryIndex(remotePath) % 2 === 0 ? null : new Blob(["x"])
+    );
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeFalse();
+    const attempted = new Set(downloadFileSpy.calls.allArgs().map(([path]) => path));
+    expect(attempted.size).toEqual(entries.length);
+    expect(saveFileSpy).toHaveBeenCalledTimes(entries.length / 2);
+    expect(getAssetPackRow()).toEqual(jasmine.objectContaining({ download_status: "error" }));
+  });
+
+  it("does not trip the failure limit on blips that recover on retry", async () => {
+    spyOn(console, "warn");
+    const entries = buildAssetEntries(ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT + 4);
+    const { downloadFileSpy, saveFileSpy } = setupNativeDownload(entries);
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Every file blips once and then succeeds: a flaky connection, not an outage. The limit counts
+    // slots that exhausted their retries, so a pack that is still making progress must complete.
+    const attempted = new Set<string>();
+    downloadFileSpy.and.callFake(async (remotePath: string) => {
+      if (!attempted.has(remotePath)) {
+        attempted.add(remotePath);
+        return null;
+      }
+      return new Blob(["recovered"]);
+    });
+
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    expect(success).toBeTrue();
+    expect(saveFileSpy).toHaveBeenCalledTimes(entries.length);
   });
 
   it("re-downloads a present file whose recorded checksum differs from the manifest (stale pack)", async () => {

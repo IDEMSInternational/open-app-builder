@@ -22,7 +22,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.service.ts` | Everything stateful: init, download orchestration, per-file fetch/save/integrate, resume |
 | `remote-asset-metadata.service.ts` | Reads/writes pack status rows in the `_asset_packs` data list |
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
-| `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
+| `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the retry/version-check tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
 ## The central idea: `_assets_contents`
@@ -83,11 +83,11 @@ Execution is deliberately serial: **one pack at a time, one file at a time** wit
 
 A pack only reaches `completed` when **all** slots succeed. Per-slot failures are counted and returned as `failedCount`; a non-zero count throws, which either parks the pack (offline) or surfaces it as `error` (online). This matters: silently marking a pack complete with missing files leaves the app permanently referencing assets that will never arrive.
 
-Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help.
+Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help. The manifest's *parse* is inside that retry, not after it: a truncated body is still a non-empty string, so parsing outside would read as a successful fetch and then fail the attempt with no second try.
 
-Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked both when one fails and again after any backoff, since connectivity can drop mid-wait - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
+Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked before every attempt, including the first, since the walk is serial and a device already known to be offline would otherwise spend a doomed request on every remaining file - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
 
-Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake - the alternative spends the same requests sending packs to `error` that would otherwise have completed.
+Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake for *one* file - the alternative spends the same requests sending packs to `error` that would otherwise have completed. What it is not cheap for is a whole-pack outage (dead bucket, unpublished pack, every object 500), where flattening the status means paying every file's full allowance and backoff in turn before anyone is told. `ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT` bounds that: once that many slots have failed **in a row**, each having spent its retries, the walk stops and the pack goes to `error`. Any success resets the count - including a slot skipped as already on disk - so scattered missing files still walk the whole pack and download everything that is there.
 
 ## Resume after interruption
 

@@ -75,6 +75,23 @@ describe("FirebaseRemoteAssetProvider", () => {
     expect(getDownloadUrlSpy).not.toHaveBeenCalled();
   });
 
+  it("does not spend a download-url round trip on a transfer already cancelled", async () => {
+    const provider = await createProvider(BUCKET);
+    const controller = new AbortController();
+    // Cancel lands while the public-url attempt is in flight, and that attempt comes back forbidden.
+    // `getDownloadUrl` is a plugin call with no signal to take, so the only way to honour the cancel
+    // is not to make it - otherwise the user waits out a native round trip they already stopped.
+    fetchSpy.and.callFake(() => {
+      controller.abort();
+      return Promise.resolve(new Response(null, { status: 403 }));
+    });
+
+    await expectAsync(
+      provider.downloadFile(ASSET_PATH, { signal: controller.signal })
+    ).toBeRejectedWith(jasmine.objectContaining({ name: "AbortError" }));
+    expect(getDownloadUrlSpy).not.toHaveBeenCalled();
+  });
+
   it("falls back to a tokenised download url when the public url is forbidden", async () => {
     const provider = await createProvider(BUCKET);
     stubFetchResponses(failed(403), ok);

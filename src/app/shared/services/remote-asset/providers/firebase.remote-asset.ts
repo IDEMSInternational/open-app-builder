@@ -6,6 +6,7 @@ import {
   IRemoteAssetDownloadOptions,
   IRemoteFileMetadata,
   appendCacheBuster,
+  createAbortError,
   isAbortError,
 } from "./base.remote-asset";
 import { FirebaseStorage } from "@capacitor-firebase/storage";
@@ -103,6 +104,10 @@ export class FirebaseRemoteAssetProvider implements IRemoteAssetProvider {
           this.publicUrlFastPathEnabled = false;
         }
       }
+
+      // `getDownloadUrl` is a native plugin round trip that takes no signal, so the only way to
+      // honour a cancel that has already landed is not to make the call
+      if (options.signal?.aborted) throw createAbortError();
 
       // Safety net for a deployment whose rules deny unauthenticated reads, at the cost of the extra
       // round trip this method exists to avoid. Not private-bucket support: web writes

@@ -56,6 +56,15 @@ export function isAbortError(error: unknown): boolean {
 }
 
 /**
+ * The rejection an aborted `fetch` produces, for the provider calls that have no signal of their own
+ * to take. Raising it in place of making the call is the only way those honour a cancel that has
+ * already landed, and matching `fetch`'s shape keeps `isAbortError` the single thing callers check.
+ */
+export function createAbortError(): Error {
+  return new DOMException("The operation was aborted", "AbortError") as unknown as Error;
+}
+
+/**
  * Defeat CDN and proxy caching by making the URL unique per request. Complements `cache: "no-store"`,
  * which only governs the local HTTP cache - an intermediary can still serve a stale object for a URL
  * it has seen before.
