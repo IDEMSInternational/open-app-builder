@@ -1,4 +1,12 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
+import {
+  afterNextRender,
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  signal,
+  AfterViewInit,
+} from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TerraDraw, TerraDrawPolygonMode, TerraDrawSelectMode } from "terra-draw";
 import { TerraDrawOpenLayersAdapter } from "terra-draw-openlayers-adapter";
@@ -36,11 +44,15 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   styleUrls: ["./map.component.scss"],
   standalone: false,
   host: {
-    "(document:keydown.escape)": "cancelPolygon()",
-    "(document:keydown.delete)": "deleteSelected()",
+    "(document:keydown.escape)": "handleKeydown($event)",
+    "(document:keydown.delete)": "handleKeydown($event)",
   },
 })
-export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) implements OnInit {
+export class MapComponent
+  extends TemplateBaseComponentWithParams(AuthorSchema)
+  implements AfterViewInit
+{
+  private hostElement = inject(ElementRef<HTMLElement>);
   private dynamicDataService = inject(DynamicDataService);
 
   private terraDraw: TerraDraw | null = null;
@@ -58,8 +70,13 @@ export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) 
   public selectedFeatureId = signal<FeatureId | null>(null);
   public locating = signal(false);
   public satellite = signal(false);
+  public readonly mapId = `map-${crypto.randomUUID()}`;
 
-  public ngOnInit(): void {
+  public ngAfterViewInit(): void {
+    this.initMap();
+  }
+
+  public initMap() {
     // a single tile layer with a swappable source keeps its canvas in a fixed DOM position so
     // TerraDraw's vector layer (added after) reliably stays on top and clickable
     this.baseLayer = new TileLayer({
@@ -68,7 +85,7 @@ export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) 
 
     const map = new Map({
       layers: [this.baseLayer],
-      target: "map",
+      target: this.mapId,
       view: new View({
         center: fromLonLat([this.params().centerLon, this.params().centerLat]),
         zoom: this.params().zoom,
@@ -144,6 +161,29 @@ export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) 
     }
   }
 
+  public handleKeydown(event: Event) {
+    if (!(event instanceof KeyboardEvent)) return;
+
+    const target = event.target;
+    const isEditableTarget =
+      target instanceof HTMLElement &&
+      target.closest("input, textarea, select, [contenteditable='true']") !== null;
+    const mapHasFocus = this.hostElement.nativeElement.contains(document.activeElement);
+
+    if (isEditableTarget || !mapHasFocus) return;
+
+    event.preventDefault();
+    if (event.key === "Escape") {
+      this.cancelPolygon();
+    } else if (event.key === "Delete") {
+      this.deleteSelected();
+    }
+  }
+
+  public focusMap() {
+    (this.hostElement.nativeElement.querySelector(".map-container") as HTMLElement | null)?.focus();
+  }
+
   public toggleSelect() {
     this.setMode(this.mode() === "select" ? "static" : "select");
   }
@@ -184,8 +224,6 @@ export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) 
     const propertiesFieldName = this.params().propertiesFieldName;
 
     const features = this.terraDraw?.getSnapshot() ?? [];
-    if (features.length === 0) return;
-
     const rows = features.map((feature) => ({
       id: String(feature.id),
       [geometryFieldName]: feature.geometry,
@@ -208,7 +246,9 @@ export class MapComponent extends TemplateBaseComponentWithParams(AuthorSchema) 
         );
       }
 
-      await this.dynamicDataService.bulkUpsert("data_list", dataList, rows as any);
+      if (rows.length > 0) {
+        await this.dynamicDataService.bulkUpsert("data_list", dataList, rows as any);
+      }
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to save drawn features:`, error);
     }

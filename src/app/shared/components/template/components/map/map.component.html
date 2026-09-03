@@ -1,5 +1,5 @@
-<div class="map-container">
-  <div id="map"></div>
+<div class="map-container" tabindex="0" (pointerdown)="focusMap()">
+  <div [id]="mapId" class="map"></div>
 
   <div class="map-controls">
     <button [disabled]="locating()" (click)="locateMe()">
