@@ -186,6 +186,13 @@ function installAssetPackStore(mock: jasmine.SpyObj<DynamicDataService>) {
     if (flow_name === "_asset_packs") return [...rows.values()] as any;
     return (otherFlowRows[flow_name] || []) as any;
   });
+  // Modelled rather than stubbed to a bare resolve: `reset()` clears these lists for real, and
+  // anything keyed on persisted pack state (whether a pack has ever completed, say) is supposed to
+  // read as untouched afterwards. A fake that kept the rows would report the opposite.
+  mock.resetFlow.and.callFake(async (_type, flow_name) => {
+    if (flow_name === "_asset_packs") rows.clear();
+    else delete otherFlowRows[flow_name];
+  });
 
   return {
     /** Preload rows, e.g. a pack left behind by a previous session */
@@ -274,7 +281,6 @@ describe("RemoteAssetsService", () => {
       "resetFlow",
     ]);
     assetPacks = installAssetPackStore(mockDynamicDataService);
-    mockDynamicDataService.resetFlow.and.resolveTo();
     mockNetworkService = jasmine.createSpyObj<NetworkService>("NetworkService", [
       "isOffline",
       "waitUntilConnected",
@@ -1599,43 +1605,11 @@ describe("RemoteAssetsService", () => {
       );
     });
 
-    it("fetches individually when only a small fraction of the pack's bytes are missing", async () => {
-      const big = archiveEntry("audio/big.mp3", 102400);
-      const small = archiveEntry("images/small.png", 1024);
+    it("fetches individually once the pack has completed a download before", async () => {
+      const changed = archiveEntry("audio/big.mp3", 102400);
+      const unchanged = archiveEntry("images/small.png", 1024);
       const setup = setupArchiveDownload({
-        manifestRows: [big, small],
-        archiveFiles: {
-          "audio/big.mp3": fileOfLength(102400),
-          "images/small.png": fileOfLength(1024),
-        },
-        existingContentsRows: [
-          {
-            id: "audio/big.mp3",
-            md5Checksum: big.md5Checksum,
-            size_kb: big.size_kb,
-            filePath: localAssetPath(packPath("audio/big.mp3")),
-          },
-        ],
-      });
-      setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
-        targetPath === packPath("audio/big.mp3")
-          ? { exists: true, sizeBytes: 102400 }
-          : { exists: false }
-      );
-
-      const success = await service.downloadAssetPackByName("asset_pack_1");
-
-      expect(success).toBeTrue();
-      // 1kb of 101kb is nowhere near worth re-pulling the whole pack
-      expect(setup.fetchSpy).not.toHaveBeenCalled();
-      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it("uses the archive when few files but most bytes are missing", async () => {
-      const big = archiveEntry("audio/big.mp3", 102400);
-      const small = archiveEntry("images/small.png", 1024);
-      const setup = setupArchiveDownload({
-        manifestRows: [big, small],
+        manifestRows: [changed, unchanged],
         archiveFiles: {
           "audio/big.mp3": fileOfLength(102400),
           "images/small.png": fileOfLength(1024),
@@ -1643,12 +1617,16 @@ describe("RemoteAssetsService", () => {
         existingContentsRows: [
           {
             id: "images/small.png",
-            md5Checksum: small.md5Checksum,
-            size_kb: small.size_kb,
+            md5Checksum: unchanged.md5Checksum,
+            size_kb: unchanged.size_kb,
             filePath: localAssetPath(packPath("images/small.png")),
           },
         ],
       });
+      // A pack that has been usable before is being *updated*, whatever share of it changed
+      assetPacks.seed(
+        buildMockAssetPack({ id: "asset_pack_1", has_completed_download: true, version: "v0" })
+      );
       setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
         targetPath === packPath("images/small.png")
           ? { exists: true, sizeBytes: 1024 }
@@ -1658,7 +1636,52 @@ describe("RemoteAssetsService", () => {
       const success = await service.downloadAssetPackByName("asset_pack_1");
 
       expect(success).toBeTrue();
-      // One file of two, but ~99% of the bytes: a slot count would have got this backwards
+      // ~99% of the pack's bytes changed, and it still goes per-file: the rule is about whether
+      // the pack has ever been usable, not how much of it moved
+      expect(setup.fetchSpy).not.toHaveBeenCalled();
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("resumes an interrupted first install on the archive, not file by file", async () => {
+      const arrived = archiveEntry("images/arrived.png", 2048);
+      const setup = setupArchiveDownload({
+        manifestRows: [
+          arrived,
+          archiveEntry("images/b.png", 2048),
+          archiveEntry("images/c.png", 2048),
+        ],
+        archiveFiles: {
+          "images/arrived.png": fileOfLength(2048),
+          "images/b.png": fileOfLength(2048),
+          "images/c.png": fileOfLength(2048),
+        },
+        existingContentsRows: [
+          {
+            id: "images/arrived.png",
+            md5Checksum: arrived.md5Checksum,
+            size_kb: arrived.size_kb,
+            filePath: localAssetPath(packPath("images/arrived.png")),
+          },
+        ],
+      });
+      // A first install killed part-way: files on disk, but the pack has never completed. Keying
+      // the mode on "is anything present" would drop the whole remainder onto per-file requests.
+      assetPacks.seed(
+        buildMockAssetPack({
+          id: "asset_pack_1",
+          download_status: "in_progress",
+          has_completed_download: false,
+        })
+      );
+      setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
+        targetPath === packPath("images/arrived.png")
+          ? { exists: true, sizeBytes: 2048 }
+          : { exists: false }
+      );
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
       expect(setup.fetchSpy).toHaveBeenCalledTimes(1);
       expect(setup.downloadFileSpy).not.toHaveBeenCalled();
     });

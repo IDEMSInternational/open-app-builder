@@ -31,18 +31,6 @@ export const VERSION_CHECK_MIN_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
 export const VERSION_CHECK_FAILURE_BACKOFF_MS = 1000 * 60 * 15; // 15 minutes
 
 /**
- * Fraction of a pack's bytes that must be missing locally before the whole pack is fetched as a
- * single archive rather than file by file.
- *
- * Measured in *bytes*, not slots, deliberately. The trade is round trips against redundant
- * transfer: N loose fetches cost N round trips but only the bytes needed, while the archive costs
- * one round trip and re-transfers the whole pack. Real packs mix ~85kb images with ~350kb audio,
- * so a slot count would pick the wrong mode in both directions - a handful of changed audio files
- * looks small by count but large by bytes, and vice versa.
- */
-export const ASSET_PACK_ARCHIVE_THRESHOLD_FRACTION = 0.3;
-
-/**
  * Consecutive archive failures (corrupt stream, 5xx, unzip error) after which a pack falls back to
  * per-file downloads for the rest of the session. Being offline does not count - that is parked
  * and retried, not a failure of the archive.

@@ -95,27 +95,32 @@ An archive cannot be the only mode, though, because it would undo what versionin
 changed file in a 427-file pack would re-transfer the whole thing, where per-file fetching moves
 only what actually changed.
 
-So every download starts by checking each slot against local storage — the same resume gate
-described below — and then picks:
+The mode is chosen on one question: **has this pack ever completed a download?**
 
-| Missing | Mode |
+| `has_completed_download` | Mode |
 | --- | --- |
-| Nothing | Neither; re-integrate what is already on disk |
-| More than 30% of the pack's **bytes** | Archive |
-| 30% or less | Per-file, fetching only the missing slots |
+| `false` | Archive — the pack is still being acquired in bulk |
+| `true` | Per-file, fetching only the missing slots — the pack is being updated |
 
-The threshold is on bytes rather than file count. The trade is round trips against redundant
-transfer, and packs mix ~85kb images with ~350kb audio, so a count misjudges it in both
-directions — a handful of changed audio files looks small by count but large by bytes.
+Either way, a pack with nothing outstanding fetches neither and just re-integrates what is on disk.
 
-In practice that means **first install uses the archive, updates use per-file**, without either
-being special-cased.
+Deliberately not a "how much is missing" threshold. Any such number is arbitrary, and the two
+cases it would be trying to separate are already named by a flag that is persisted: a pack that has
+never been usable is a first install, and one that has is an update. An update changes a handful of
+files, so per-file always wins there; a first install has everything to fetch, so the archive
+always wins.
 
-One case the threshold handles imperfectly: storage is shared across packs, so two packs shipping
-some of the same files mean the second one finds part of itself already downloaded. If that still
-leaves more than 30% of its bytes missing it fetches a full archive, most of which duplicates
-files already on disk. The duplicated bytes are bounded by the overlap, and the alternative -
-hundreds of individual requests - is usually worse, so this is accepted rather than solved.
+Keying on `has_completed_download` rather than "is anything already on disk" is what makes an
+**interrupted first install resume on the archive**. Entries are integrated as they arrive, so a
+killed install leaves files behind — and treating their presence as "this is an update" would drop
+the entire remainder onto hundreds of individual requests, in precisely the case the archive exists
+for. The flag survives process death, which is what lets it answer this; see
+`IDBAssetPack.has_completed_download`.
+
+It also disposes of a wart the old threshold had: storage is shared across packs, so a second pack
+shipping some of the same files finds part of itself already downloaded. That is an update-shaped
+situation, and it now takes the per-file path instead of pulling a whole archive to re-transfer
+files already on disk.
 
 ### The archive
 
@@ -130,9 +135,13 @@ hundreds of individual requests - is usually worse, so this is accepted rather t
   the pack permanently wrong with nothing able to detect it. Stamping with the content hash keeps
   the archive cacheable while changing the URL exactly when the content changes. A manifest with
   no `version` therefore never uses the archive at all.
-- **Entries already on disk are skipped without being decompressed.** Not calling `start()` on an
-  entry leaves it compressed, which is the whole point of compressing selectively (below): on a
-  bulk update most entries are present already.
+- **Entries already on disk are read and discarded, not left unread.** This looks like the wrong
+  choice — fflate documents skipping as "don't call `start()`" — but an unstarted entry has no
+  decompressor attached, so `Unzip` diverts its raw compressed bytes into a per-file buffer it
+  never frees. Skipping that way retains the whole archive, which is exactly what streaming is
+  there to prevent, and it is worst on a resumed install where most entries are already present.
+  Discarding instead costs a copy per stored entry and an inflate per deflated one — affordable
+  *because* generation stores media and deflates only text (below), so the bulk of it is a memcpy.
 - **Extracted entries are integrated directly, never through the per-file path.** That path skips
   its fetch only on evidence a *previous* run integrated the file, which freshly extracted bytes
   cannot have — so routing them through it would re-download every file just delivered.

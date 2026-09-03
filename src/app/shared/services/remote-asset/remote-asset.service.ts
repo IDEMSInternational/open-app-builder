@@ -24,7 +24,6 @@ import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
   ASSET_PACK_ARCHIVE_FAILURE_LIMIT,
-  ASSET_PACK_ARCHIVE_THRESHOLD_FRACTION,
   DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS,
   REMOTE_ASSET_STORAGE_FOLDER,
   VERSION_CHECK_FAILURE_BACKOFF_MS,
@@ -939,36 +938,30 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Whether an archive is available to this pack at all, independent of how much is missing.
-   * Checked before walking local storage, since a pack that cannot use one gains nothing from
-   * the walk.
+   * Whether this pack should be fetched as one archive rather than file by file.
+   *
+   * The question asked is "has this pack ever been usable?", not "how much of it is missing?". A
+   * pack that has never completed is still being acquired in bulk, which is what an archive is
+   * for; a pack that has completed is being updated, and an update changes a handful of files, so
+   * fetching those individually beats re-transferring the whole pack to get them.
+   *
+   * `has_completed_download` rather than "is anything on disk" specifically so an interrupted
+   * first install resumes on the archive. Entries are integrated as they arrive, so a killed
+   * install leaves files behind; keying on their presence would drop the remainder onto hundreds
+   * of individual requests, in exactly the case the archive exists for. That flag is persisted and
+   * survives process death, which is what makes it able to answer this.
+   *
+   * Checked before walking local storage, since a pack that cannot use an archive gains nothing
+   * from the walk.
    */
-  private canUseAssetPackArchive(assetPackName: string, manifest: FlowTypes.AssetPack) {
+  private async shouldUseAssetPackArchive(assetPackName: string, manifest: FlowTypes.AssetPack) {
     if (!Capacitor.isNativePlatform()) return false;
     // Without a version there is nothing to stamp the archive URL with, and an unstamped URL can
     // be served stale from a CDN indefinitely - which would silently install outdated content and
     // then record it as current. Per-file fetches are checksum-gated, so they stay safe.
     if (!manifest.version) return false;
-    return !this.assetPackArchiveDisabled.has(assetPackName);
-  }
-
-  /**
-   * Whether enough of the pack is missing to be worth pulling as one archive.
-   *
-   * Compares *bytes* still needed, not file count: the archive trades one round trip against
-   * re-transferring the entire pack, and packs mix small images with much larger audio, so a
-   * count would misjudge that trade in both directions.
-   */
-  private isAssetPackArchiveWorthwhile(slots: IAssetPackSlotPlan[]) {
-    let totalBytes = 0;
-    let missingBytes = 0;
-    for (const slot of slots) {
-      const slotBytes = (slot.slotSizeKb ?? 0) * 1024;
-      totalBytes += slotBytes;
-      if (!slot.alreadyDownloaded) missingBytes += slotBytes;
-    }
-    if (missingBytes === 0 || totalBytes === 0) return false;
-    return missingBytes / totalBytes > ASSET_PACK_ARCHIVE_THRESHOLD_FRACTION;
+    if (this.assetPackArchiveDisabled.has(assetPackName)) return false;
+    return !(await this.remoteAssetMetadataService.hasCompletedDownload(assetPackName));
   }
 
   /** Pack-relative location of a pack's archive within the bucket */
@@ -1202,12 +1195,13 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         const assetPackName = assetPackManifest.flow_name;
         // Only walk local storage up front when an archive is actually a possibility. Otherwise
         // the mode is already decided, and the per-file path checks each slot again anyway.
-        const slots = this.canUseAssetPackArchive(assetPackName, assetPackManifest)
-          ? this.buildAssetSlotPlan(assetEntries)
-          : [];
+        const useArchive = await this.shouldUseAssetPackArchive(assetPackName, assetPackManifest);
+        const slots = useArchive ? this.buildAssetSlotPlan(assetEntries) : [];
         await this.resolvePresentAssetSlots(slots, existingContents, signal);
 
-        if (this.isAssetPackArchiveWorthwhile(slots)) {
+        // A pack with nothing outstanding needs no fetch of either kind: the per-file pass below
+        // re-integrates what is on disk and completes.
+        if (useArchive && slots.some((slot) => !slot.alreadyDownloaded)) {
           const writer = new AssetContentsWriter(this.dynamicDataService, existingContents);
           // Every slot is written back, present ones included, so a row is only complete once all
           // of them have settled - archive entries arrive in archive order, not row order.

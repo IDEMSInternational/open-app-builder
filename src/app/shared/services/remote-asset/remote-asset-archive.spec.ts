@@ -1,4 +1,4 @@
-import { zipSync } from "fflate";
+import { Unzip, zipSync } from "fflate";
 import { AssetPackArchiveNotFoundError, streamAssetPackArchive } from "./remote-asset-archive";
 
 const bytes = (length: number, fill = 97) => new Uint8Array(length).fill(fill);
@@ -184,6 +184,48 @@ describe("streamAssetPackArchive", () => {
 
     // A half-read body would otherwise hold the connection open
     expect(wasCancelled()).toBeTrue();
+  });
+
+  it("does not retain skipped entries in memory", async () => {
+    // Regression: skipping by not calling fflate's `start()` leaves the entry undecompressed, but
+    // `Unzip` then parks its raw compressed bytes in a per-file buffer it never releases - so a
+    // resumed install, which skips most of the archive, would retain nearly all of it. That is the
+    // precise failure streaming exists to prevent, and it is invisible from fflate's API surface,
+    // so this asserts on the unzipper's internals.
+    //
+    // Reached by spying the prototype rather than the constructor: `Unzip` is imported directly by
+    // the module under test, so a spy on the module's export would never be consulted, whereas a
+    // prototype method still receives the real instance as `this`.
+    const instances = new Set<any>();
+    const realPush = Unzip.prototype.push;
+    spyOn(Unzip.prototype, "push").and.callFake(function (this: any, ...args: any[]) {
+      instances.add(this);
+      return realPush.apply(this, args);
+    });
+    const skippable = zipSync({
+      "images/skipped_a.png": [bytes(64 * 1024), { level: 0 }],
+      "images/skipped_b.png": [bytes(64 * 1024, 98), { level: 0 }],
+      "images/wanted.png": [bytes(2048, 99), { level: 0 }],
+    });
+    const { response } = streamingResponse(skippable, { chunkSize: 4096 });
+    spyOn(window, "fetch").and.resolveTo(response);
+    const { entries, onEntry } = collectEntries();
+
+    await streamAssetPackArchive({
+      url: "https://example.test/pack.zip",
+      signal: new AbortController().signal,
+      shouldExtract: (path) => path === "images/wanted.png",
+      onEntry,
+      onProgress: () => undefined,
+    });
+
+    // The spy has to have seen a real instance, or the assertion below proves nothing
+    expect(instances.size).toBe(1);
+    expect([...entries.keys()]).toEqual(["images/wanted.png"]);
+    const retained = [...instances]
+      .flatMap((unzipper) => unzipper.k as Uint8Array[][])
+      .reduce((total, chunks) => total + chunks.reduce((sum, c) => sum + c.length, 0), 0);
+    expect(retained).toBe(0);
   });
 
   it("passes the abort signal to fetch", async () => {

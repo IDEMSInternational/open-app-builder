@@ -10,7 +10,10 @@ export interface IStreamAssetPackArchiveOptions {
    * The archive is compressed so this over-estimates, hence the cap in `onProgress` callers.
    */
   fallbackTotalBytes?: number;
-  /** Whether an entry is wanted. Entries answering false are skipped without being decompressed */
+  /**
+   * Whether an entry is wanted. Entries answering false are still read off the stream and then
+   * discarded, rather than left unread - see the note on `start()` in the implementation.
+   */
   shouldExtract: (entryPath: string) => boolean;
   /** Called with the complete bytes of each wanted entry, awaited before reading continues */
   onEntry: (entryPath: string, data: Uint8Array) => Promise<void>;
@@ -54,6 +57,8 @@ function concatChunks(chunks: Uint8Array[], totalLength: number): Uint8Array {
  * that before any entry is inflated - enough to matter on low-end devices. Feeding chunks
  * straight into the unzipper keeps the peak to a few chunks plus the single largest entry.
  *
+ * NB that peak only holds if every entry is `start()`ed, wanted or not - see `onfile` below.
+ *
  * NB entry bytes are only checked against the manifest's recorded size, by the caller. fflate's
  * read path neither verifies the per-entry CRC nor exposes it to this streaming API, so checking
  * it would mean hand-parsing zip headers. Corruption is caught in practice by the deflate stream
@@ -94,11 +99,7 @@ export async function streamAssetPackArchive(
       streamError ??= new Error(`[REMOTE ASSETS] Unsafe archive entry path: ${file.name}`);
       return;
     }
-    // Not calling start() leaves the entry undecompressed and skipped. This is the whole reason
-    // for compressing selectively at generation time: on an update most entries are already on
-    // disk, and inflating them just to throw them away would be the bulk of the work.
-    if (!shouldExtract(file.name)) return;
-
+    const wanted = shouldExtract(file.name);
     const chunks: Uint8Array[] = [];
     let length = 0;
     file.ondata = (error, chunk, final) => {
@@ -106,6 +107,8 @@ export async function streamAssetPackArchive(
         streamError ??= error;
         return;
       }
+      // Unwanted entries are read and dropped rather than left unread - see `start()` below
+      if (!wanted) return;
       if (chunk?.length) {
         // Copy: fflate hands back views over buffers it reuses for subsequent chunks
         chunks.push(chunk.slice());
@@ -116,6 +119,16 @@ export async function streamAssetPackArchive(
         chunks.length = 0;
       }
     };
+    // Started even when the entry is unwanted. Skipping by *not* calling `start()` reads as the
+    // cheaper option and is how fflate documents skipping, but it leaks: an unstarted entry has no
+    // decompressor attached, so `Unzip.push` diverts its raw compressed bytes into a per-file
+    // buffer (kept so a later `start()` could still replay them) that is never released. Skipping
+    // every entry therefore retains the entire archive - the exact thing streaming exists to avoid,
+    // and worst on a resumed install, where most entries are already on disk.
+    //
+    // Reading and discarding costs a copy per stored entry and an inflate per deflated one. That is
+    // affordable precisely because generation stores media and deflates only text: the bulk of a
+    // pack is stored, so the bulk of this is a memcpy.
     file.start();
   };
 
