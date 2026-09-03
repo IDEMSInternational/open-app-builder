@@ -24,6 +24,8 @@ import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
   REMOTE_ASSET_STORAGE_FOLDER,
+  VERSION_CHECK_FAILURE_BACKOFF_MS,
+  VERSION_CHECK_MIN_INTERVAL_MS,
   getLocalAssetTargetPath,
   toLocalAssetPath,
 } from "./remote-asset.types";
@@ -48,7 +50,6 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   downloading: boolean = false;
   downloadProgress: number;
   downloadProgressCount = signal<{ completed: number; total: number } | null>(null);
-  manifest: FlowTypes.AssetPack | null = null;
   private currentAssetPackName: string | null = null;
   private activeAssetPackDownloads = new Map<string, IActiveAssetPackDownload>();
 
@@ -221,6 +222,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     const awaitCompletion = options.awaitCompletion ?? true;
     const debugDownloadDelayMs = options.debugDownloadDelayMs ?? 0;
+    const checkForUpdates = options.checkForUpdates ?? true;
     const assetPacks = await this.remoteAssetMetadataService.snapshotAssetPacks();
     const completedPackIds = new Set(
       assetPacks
@@ -228,12 +230,24 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         .map((assetPack) => assetPack.id)
     );
     const pendingPacks: string[] = [];
+    const completedPacks: string[] = [];
     for (const assetPackName of assetPackList) {
       if (completedPackIds.has(assetPackName)) {
         console.log(`[REMOTE ASSETS] Asset pack already downloaded: ${assetPackName}`);
+        completedPacks.push(assetPackName);
         continue;
       }
       pendingPacks.push(assetPackName);
+    }
+
+    // Checks are never awaited, whatever the caller asked for: `ensure_downloaded` guarantees a pack
+    // is *usable*, not that it is the latest, and a manifest fetch per pack on the action queue is
+    // exactly the latency this is meant to avoid. `asset_pack: download` is the way to block on
+    // getting the latest.
+    if (checkForUpdates && completedPacks.length) {
+      void this.checkAssetPacksForUpdates(completedPacks, debugDownloadDelayMs).catch((error) =>
+        console.error("[REMOTE ASSETS] Asset pack update check failed", error)
+      );
     }
 
     if (!pendingPacks.length) {
@@ -247,6 +261,9 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         void this.ensureAssetPacksDownloaded(assetPackNames, {
           awaitCompletion: true,
           debugDownloadDelayMs,
+          // Already checked above; re-checking on retry would double the manifest fetches and
+          // ignore a caller who asked for no checks at all
+          checkForUpdates: false,
         }).catch((error) =>
           console.error("[REMOTE ASSETS] Background ensure_downloaded failed", error)
         );
@@ -283,6 +300,128 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       }
     }
     return allSucceeded;
+  }
+
+  /**
+   * For each already-downloaded pack, fetch its manifest and compare the version against the one
+   * recorded locally, starting a background download for any that differ.
+   *
+   * The version only decides *whether to walk the manifest*. Which individual files get re-fetched
+   * remains the job of the per-slot resume gate comparing checksums, so an update transfers bytes
+   * only for the files that actually changed.
+   */
+  private async checkAssetPacksForUpdates(assetPackNames: string[], debugDownloadDelayMs: number) {
+    const packsToUpdate: { assetPackName: string; manifest: FlowTypes.AssetPack }[] = [];
+    for (const assetPackName of assetPackNames) {
+      // An in-flight walk is already reading a manifest at least as fresh as one we would fetch now
+      if (this.activeAssetPackDownloads.has(assetPackName)) continue;
+      // Offline is not a check failure: nothing is written at all, so `version_check_status` keeps
+      // meaning "we reached the provider and something was wrong", and staleness shows up instead
+      // as `version_checked_at` failing to advance.
+      if (this.isOffline()) continue;
+
+      const checkState = await this.remoteAssetMetadataService.getVersionCheckState(assetPackName);
+      if (this.isVersionCheckThrottled(checkState)) continue;
+
+      const manifest = await this.getAssetPackManifest(assetPackName);
+      if (!manifest) {
+        // Explicitly leaves `download_status` alone - a working pack must never be made to look
+        // broken because a *check* failed.
+        await this.remoteAssetMetadataService.recordVersionCheckFailure(assetPackName);
+        continue;
+      }
+      const availableVersion = manifest.version ?? "";
+      await this.remoteAssetMetadataService.recordVersionCheckSuccess(
+        assetPackName,
+        availableVersion
+      );
+      if (!availableVersion) {
+        // Packs published before versioning existed carry no version. Treating that as "changed"
+        // would re-walk them on every check forever, so take no action.
+        console.log(
+          `[REMOTE ASSETS] No version in manifest for ${assetPackName}; skipping update check`
+        );
+        continue;
+      }
+      if (availableVersion === checkState.version) continue;
+
+      console.log(
+        `[REMOTE ASSETS] Update available for ${assetPackName} (have "${checkState.version || "none"}", remote "${availableVersion}")`
+      );
+      // Record that the pack has been usable *before* the download moves it off `completed`. Folded
+      // into the `in_progress` write it would not survive the app being killed mid-update, which is
+      // the case it exists for. Also back-fills the flag for pre-versioning rows.
+      await this.remoteAssetMetadataService.markHasCompletedDownload(assetPackName);
+      packsToUpdate.push({ assetPackName, manifest });
+    }
+
+    // Downloads are applied after every pack has been checked, and one at a time. Starting them
+    // inside the loop above would make the packs refuse *each other* - only one download may be
+    // active - so with two packs needing updates the second would be dropped and then throttled out
+    // of retrying for a full interval.
+    // Awaiting here costs nothing: this whole routine is already fire-and-forget.
+    for (const { assetPackName, manifest } of packsToUpdate) {
+      await this.downloadAssetPackUpdate(assetPackName, manifest, debugDownloadDelayMs);
+    }
+  }
+
+  /**
+   * Start an update download, waiting for the current download to finish first if an unrelated one
+   * holds the slot. Without the retry the update would be abandoned, having already recorded a
+   * successful check - so nothing would try again until the throttle expired.
+   */
+  private async downloadAssetPackUpdate(
+    assetPackName: string,
+    manifest: FlowTypes.AssetPack,
+    debugDownloadDelayMs: number
+  ) {
+    let completion: Promise<boolean> | undefined;
+    const started = await this.downloadAssetPackByName(assetPackName, {
+      // `awaitCompletion: false` so a refusal is reported rather than being indistinguishable from
+      // a failed download; the completion handle is then used to keep updates serial.
+      awaitCompletion: false,
+      debugDownloadDelayMs,
+      manifest,
+      onDownloadStarted: (downloadCompletion) => (completion = downloadCompletion),
+    });
+    if (started) {
+      await completion;
+      return;
+    }
+
+    console.log(
+      `[REMOTE ASSETS] Update for ${assetPackName} deferred behind an active download; will retry`
+    );
+    await this.waitForActiveAssetPackDownloads();
+    // Deliberately without the prefetched manifest: an unrelated download has since run, so re-fetch
+    // rather than walk a manifest that may already be out of date.
+    await this.downloadAssetPackByName(assetPackName, { debugDownloadDelayMs });
+  }
+
+  /**
+   * Whether a version check for this pack is too recent to repeat. A successful check holds for the
+   * full interval; one that reached the provider and failed backs off for a shorter window, so a
+   * single flaky response does not suppress updates for an hour.
+   */
+  private isVersionCheckThrottled(
+    checkState: Awaited<ReturnType<RemoteAssetMetadataService["getVersionCheckState"]>>
+  ) {
+    const { versionCheckAttemptedAt, versionCheckStatus, version, availableVersion } = checkState;
+    // An update we already know about is never throttled. The check that found it records success
+    // *before* the download is known to have started, so throttling here would suppress exactly the
+    // retry the pack needs after an update that failed, was cancelled, or never got its turn before
+    // the app was killed - leaving it stuck until the interval expired.
+    // Retrying is cheap: the resume gate skips every file the previous attempt did integrate.
+    if (availableVersion && availableVersion !== version) return false;
+    if (!versionCheckAttemptedAt) return false;
+    const elapsedMs = Date.now() - Date.parse(versionCheckAttemptedAt);
+    // An unparseable timestamp should mean "check again", not "never check again"
+    if (Number.isNaN(elapsedMs)) return false;
+    const throttleMs =
+      versionCheckStatus === "failed"
+        ? VERSION_CHECK_FAILURE_BACKOFF_MS
+        : VERSION_CHECK_MIN_INTERVAL_MS;
+    return elapsedMs < throttleMs;
   }
 
   public async downloadAssetPackByName(
@@ -328,6 +467,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
       debugDownloadDelayMs: options.debugDownloadDelayMs ?? 0,
+      prefetchedManifest: options.manifest,
     });
     const activeDownload: IActiveAssetPackDownload = {
       abortController,
@@ -357,13 +497,18 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
       debugDownloadDelayMs,
+      prefetchedManifest,
     }: {
       abortController: AbortController;
       downloadStartedAt: string;
       removeAssetPackConnectionStatusListener: () => void;
+      prefetchedManifest?: FlowTypes.AssetPack;
       debugDownloadDelayMs: number;
     }
   ) {
+    // Used for the first attempt only. A retry after parking offline may be much later, by which
+    // point the pack could have been republished again, so every retry re-fetches.
+    let manifestForAttempt = prefetchedManifest;
     try {
       while (true) {
         this.throwIfDownloadCancelled(abortController.signal);
@@ -387,7 +532,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         this.throwIfDownloadCancelled(abortController.signal);
 
         try {
-          const manifest = await this.getAssetPackManifest(assetPackName);
+          const manifest = manifestForAttempt ?? (await this.getAssetPackManifest(assetPackName));
+          manifestForAttempt = undefined;
           this.throwIfDownloadCancelled(abortController.signal);
           if (!manifest) {
             throw new Error(
@@ -416,10 +562,18 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             );
           }
           removeAssetPackConnectionStatusListener();
-          await this.setAttemptDownloadStatus(assetPackName, "completed", abortController.signal, {
-            downloadStartedAt,
-            downloadCompletedAt: this.remoteAssetMetadataService.createTimestamp(),
-          });
+          // Only a fully successful walk advances the recorded version. A partial update therefore
+          // leaves it at the previous value, and the next check retries what is still outstanding.
+          await this.setAttemptDownloadStatus(
+            assetPackName,
+            "completed",
+            abortController.signal,
+            {
+              downloadStartedAt,
+              downloadCompletedAt: this.remoteAssetMetadataService.createTimestamp(),
+            },
+            manifest.version ?? ""
+          );
           console.log(
             `[REMOTE ASSETS] Asset pack download completed: ${assetPackName} (${total} files)`
           );
@@ -443,9 +597,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         return false;
       }
       console.error(e);
-      await this.setAttemptDownloadStatus(assetPackName, "error", abortController.signal, {
+      await this.setTerminalFailureStatus(
+        assetPackName,
+        "error",
         downloadStartedAt,
-      });
+        abortController.signal
+      );
       return false;
     } finally {
       removeAssetPackConnectionStatusListener();
@@ -482,10 +639,60 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     console.log(
       `[REMOTE ASSETS] Cancelled asset pack download: ${assetPackName}${progressSummary}`
     );
-    await this.remoteAssetMetadataService.setDownloadStatus(assetPackName, "cancelled", {
-      downloadStartedAt: activeDownload.downloadStartedAt,
-    });
+    // Cancelling an attempt on a pack that already completed leaves it usable, so it goes back to
+    // `completed` rather than `cancelled` - which would both misreport it and, since cancelled packs
+    // never auto-resume, strand it there permanently. Do not pass the aborted signal: this write
+    // *is* the cancel, and would otherwise skip itself.
+    await this.setTerminalFailureStatus(
+      assetPackName,
+      "cancelled",
+      activeDownload.downloadStartedAt
+    );
     return true;
+  }
+
+  /**
+   * Write the status for an attempt that failed or was cancelled.
+   *
+   * A pack that has completed before is still fully usable: files left untouched are the previous
+   * version, files already updated were integrated as they went, and every asset still resolves. So
+   * it is restored to `completed` rather than reported as `error`/`cancelled`, which would tell
+   * authoring a working pack is broken. `version` is deliberately left alone, so the pack reads as
+   * being at whatever version it fully completed, and the next check retries the update.
+   *
+   * Note this is *not* conditioned on the attempt being an update - an explicit `asset_pack:
+   * download` on an already-completed pack takes the same path, for the same reason.
+   *
+   * Reads the raw persisted flag rather than `getVersionCheckState`, whose coercion is a
+   * presentation convenience for reads: terminal handling must not inherit a display rule.
+   */
+  private async setTerminalFailureStatus(
+    assetPackName: string,
+    status: Extract<IAssetPackDownloadStatus, "error" | "cancelled">,
+    downloadStartedAt: string,
+    signal?: AbortSignal
+  ) {
+    const hasCompletedBefore =
+      await this.remoteAssetMetadataService.hasCompletedDownload(assetPackName);
+    if (hasCompletedBefore) {
+      console.warn(
+        `[REMOTE ASSETS] Attempt did not complete for ${assetPackName}; the previously downloaded files are still usable so the pack remains 'completed'`
+      );
+      return this.remoteAssetMetadataService.setDownloadStatus(
+        assetPackName,
+        "completed",
+        { downloadStartedAt },
+        {},
+        { signal }
+      );
+    }
+    return this.remoteAssetMetadataService.setDownloadStatus(
+      assetPackName,
+      status,
+      { downloadStartedAt },
+      {},
+      { signal }
+    );
   }
 
   private isOffline() {
@@ -519,14 +726,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     assetPackName: string,
     downloadStatus: IAssetPackDownloadStatus,
     signal: AbortSignal,
-    timestamps: IAssetPackDownloadStatusTimestamps = {}
+    timestamps: IAssetPackDownloadStatusTimestamps = {},
+    version?: string
   ) {
     return this.remoteAssetMetadataService.setDownloadStatus(
       assetPackName,
       downloadStatus,
       timestamps,
       {},
-      { signal }
+      { signal, version }
     );
   }
 
@@ -654,30 +862,33 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Download the asset pack manifest for a named asset pack from the remote provider and store the result in this.manifest
+   * Download the asset pack manifest for a named asset pack from the remote provider.
+   * Returns null rather than throwing if the manifest cannot be fetched or parsed, leaving callers
+   * to decide what a missing manifest means - a download treats it as a failure, a version check
+   * must treat it as "could not check" and leave the pack's status alone.
    */
-  private async getAssetPackManifest(assetPackName: string) {
+  private async getAssetPackManifest(assetPackName: string): Promise<FlowTypes.AssetPack | null> {
     const relativePath = `${assetPackName}/${assetPackName}.json`;
-    this.manifest = null;
 
     try {
       console.log(`[REMOTE ASSETS] Downloading manifest for asset pack: ${assetPackName}`);
 
       // Use provider's downloadFileAsText method to handle different blob formats (Firebase data URLs vs Supabase regular blobs)
-      const jsonText = await this.provider.downloadFileAsText(relativePath);
+      // `noCache` is essential, not an optimisation: buckets serve long cache headers, and a cached
+      // manifest reports a stale version, so updates would silently never reach anyone.
+      const jsonText = await this.provider.downloadFileAsText(relativePath, { noCache: true });
 
-      if (jsonText) {
-        this.manifest = JSON.parse(jsonText);
-        console.log("[REMOTE ASSETS] Manifest loaded", this.manifest);
-      } else {
+      if (!jsonText) {
         console.error(`[REMOTE ASSETS] Failed to download manifest for ${assetPackName}`);
+        return null;
       }
+      const manifest: FlowTypes.AssetPack = JSON.parse(jsonText);
+      console.log("[REMOTE ASSETS] Manifest loaded", manifest);
+      return manifest;
     } catch (error) {
       console.error(`[REMOTE ASSETS] Error downloading manifest for ${assetPackName}:`, error);
-      this.manifest = null;
+      return null;
     }
-
-    return this.manifest;
   }
 
   /**

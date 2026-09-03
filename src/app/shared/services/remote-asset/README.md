@@ -118,8 +118,8 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 
 | Action | Behaviour |
 | --- | --- |
-| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
-| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not |
+| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes. Because it always re-walks the manifest, it is also the way to force an update check |
+| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not, and `check_for_updates` (default `true`) |
 | `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued (see *Cancelling* below) |
 | `reset` | Return **every** pack to its pre-download state: cancel active downloads (waiting for any in-flight write to finish), delete all downloaded files, and clear both data lists. All or nothing — if the files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk and the reset can be retried |
 
@@ -129,7 +129,7 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 
 A download holds the template action queue for its full duration, so a queued `cancel_download` would only run once the download it aborts had finished. It bypasses the queue instead, via `TemplateActionRegistry.registerImmediate`. Author it as the only action on its trigger, and not behind `trigger_actions`, or it is queued like anything else.
 
-A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.upsert` awaits internally before writing, so an `in_progress` upsert issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
+A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
 
 Cancelling aborts the loop, not the socket: the file request already in flight runs to completion and its result is discarded at the next checkpoint.
 
@@ -143,10 +143,79 @@ asset_pack | download: my_asset_pack | debug_download_delay_ms: 3000
 
 This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack, toggling airplane mode — which is otherwise hard to hit on a fast connection. It defaults to `0`, is scoped to the single action call that sets it, and an unparseable value is ignored rather than breaking the download. Note the delay applies to *skipped* files too, so with it on a resume won't look faster: verify resume by status and counts reaching completion, not by speed.
 
+## Updating a published pack
+
+Each manifest carries a `version`: a content hash over every asset's checksum, generated at sync
+time in `AssetsPostProcessor`. It changes if and only if the pack's content changes, so it cannot be
+forgotten the way a hand-maintained version number can.
+
+`ensure_downloaded` uses it to decide **whether to look**, and nothing more. Once a pack is being
+re-walked, which individual files get re-fetched is still decided by the per-slot resume gate above,
+comparing checksums — so an update transfers bytes only for the files that actually changed.
+
+The check compares for **inequality**, not "greater than". If a pack is rolled back, or a CDN serves
+an older object, the app resyncs to whatever the bucket currently holds rather than being stuck
+forever on content that no longer exists.
+
+Rules worth knowing:
+
+- **Checks never block the action queue**, whatever `await` says. `ensure_downloaded` guarantees a
+  pack is *usable*, not that it is the latest; use `download` to block until latest.
+- **A failed check never changes `download_status`.** A pack that is downloaded and working must
+  not be made to look broken because a *check* failed. It stays `completed`, with the failure
+  recorded in `version_check_status`.
+- **Being offline records nothing at all** — not even a failed check. That keeps `"failed"` meaning
+  "we reached the provider and something is wrong with the published pack", which is a far more
+  actionable signal. Staleness shows up instead as `version_checked_at` failing to advance.
+- **Checks are throttled** to once an hour per pack, or 15 minutes after a check that reached the
+  provider and failed. `download` bypasses both. A pack with an update already known to be
+  outstanding (`available_version` differs from `version`) is never throttled, so an update that
+  failed, was cancelled, or never got its turn before the app was killed is retried on the next
+  `ensure_downloaded` rather than an hour later. Retrying is cheap — the resume gate skips every
+  file the previous attempt did manage to integrate.
+- **A manifest with no `version` is left alone.** Packs published before versioning existed would
+  otherwise be re-walked on every check forever.
+- **`version` only advances on a fully successful download.** A partially applied update therefore
+  stays at the old version and is retried by the next check; every asset still resolves in the
+  meantime, since untouched files are the old version and updated ones were integrated as they went.
+- **A failed or cancelled attempt on a pack that has completed before restores `completed`**, and
+  leaves `version` untouched. This is not specific to updates — an explicit `download` that fails
+  takes the same path, because the pack is equally still usable. One consequence: an update cannot
+  be permanently dismissed by cancelling it; the next check past the throttle retries it. Use
+  `check_for_updates: false` to stop a refresh recurring.
+
+Progress during an update looks like a full re-download: each attempt resets
+`assets_downloaded_count` to 0 and skipped files still count toward it, so a 200-file pack with one
+changed file sweeps rapidly to 199 and then pauses on the single real fetch.
+
+### Not covered by versioning
+
+- **Files orphaned by an update.** If an entry is removed or renamed, its old file stays on disk —
+  storage is flat and shared, so nothing can prove another pack does not still need it. Same blocker
+  as per-pack delete (see *Known limitations*). Content changes overwrite in place, so this only
+  arises from removals and renames.
+- **`_assets_contents` rows for removed entries.** They keep pointing at a file that still exists,
+  so the asset keeps resolving until `reset`. Worth knowing if you rely on a missing asset falling
+  back to something else.
+- **Web browser caching.** On web an updated file lives at the same CDN URL, so the browser may
+  serve the old copy. Pre-existing, but versioning makes it visible.
+
 Progress and status are exposed to authoring in two places:
 
 - **`asset_pack_download_in_progress`** — a system variable holding a boolean string, for showing or hiding UI while any download is running. Referenced as `@fields._asset_pack_download_in_progress`, or as `@system.asset_pack_download_in_progress` in deployments using `useReactiveTemplates`.
 - **The `_asset_packs` data list** — one row per pack, carrying the full `download_status` plus fine-grained counts (`assets_downloaded_count` of `assets_total_count`, in slots) and the start/completion timestamps. This can be consumed, for example, to drive a progress bar, i.e. via `data_items`.
+
+The same row carries the version and update-check state:
+
+| Field | Meaning |
+| --- | --- |
+| `version` | Version at which every file was verified downloaded. `""` for packs downloaded before versioning existed |
+| `available_version` | Version last seen remotely. `""` until a check has succeeded |
+| `update_available` | A successful check found a remote version differing from the downloaded one |
+| `has_completed_download` | The pack has reached `completed` at least once. Never cleared except by `reset` |
+| `version_checked_at` | Last **successful** check |
+| `version_check_attempted_at` | Last check **attempt**. Always `>=` `version_checked_at`, and strictly greater exactly when the last check failed |
+| `version_check_status` | `"never"`, `"ok"`, or `"failed"` |
 
 ## Where packs come from
 
@@ -162,6 +231,15 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 {folderName}/{packName}/{relativePath}    <- each asset file
 ```
 
+**Upload assets first, the manifest last.** A manifest that lands before its files describes a
+version whose assets 404, so updates fail until the rest catches up. It is self-healing — the
+recorded `version` does not advance, so the next check retries — but it looks like a code bug.
+
+Manifests are fetched with caching bypassed (`cache: "no-store"` plus a cache-busting query
+parameter). Buckets typically serve long cache headers, and a cached manifest would report a stale
+version, meaning updates silently never reach anyone — while still working perfectly on a fresh
+install. Asset files are unaffected: they are fetched once and gated on checksums.
+
 ## Known limitations
 
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
@@ -170,3 +248,5 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 - **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because files are stored flat and may legitimately be shared by two packs, deleting a single pack would need a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
 - **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`, which only touches `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration is prototyped on the same spike branch.
 - **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if packs are ever authored with overlapping paths.
+- **Updates can orphan files.** Removing or renaming a manifest entry leaves its old file on disk, and its `_assets_contents` row still resolving, until `reset`. See *Not covered by versioning* above.
+- **Web assets can be served stale from browser cache after an update**, since the CDN URL does not change with content. Cache-busting web `filePath` values on `md5Checksum` would fix it and is a candidate follow-up.
