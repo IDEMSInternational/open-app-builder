@@ -238,6 +238,33 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
+   * Native only: recursively delete a folder previously written to via `saveFile`, reclaiming the
+   * storage it used. Uses the same path rule as `saveFile` so callers do not re-derive it.
+   * Deleting a folder that does not exist is a no-op rather than an error.
+   * @returns true if a folder was deleted, false if there was nothing to delete
+   */
+  public async deleteSavedFolder(
+    targetPath: string,
+    options: { directory?: keyof typeof Directory; subdirectory?: string } = {}
+  ): Promise<boolean> {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("deleteSavedFolder() is only supported on native platforms");
+    }
+    const { directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    try {
+      await Filesystem.rmdir({ path, directory: Directory[directory], recursive: true });
+      return true;
+    } catch (error) {
+      // Distinguish "nothing to delete" (expected, e.g. a pack that was never downloaded) from a
+      // real failure, which the caller should hear about rather than silently treat as success.
+      const { exists } = await this.getSavedFileInfo(targetPath, options);
+      if (!exists) return false;
+      throw error;
+    }
+  }
+
+  /**
    * Native only: resolve where `saveFile` writes to in the container the app is running in *now*.
    *
    * The container path is not stable across app updates on iOS (Apple TN2285), so this must be

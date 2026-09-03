@@ -22,7 +22,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.service.ts` | Everything stateful: init, download orchestration, per-file fetch/save/integrate, resume |
 | `remote-asset-metadata.service.ts` | Reads/writes pack status rows in the `_asset_packs` data list |
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
-| `remote-asset.types.ts` | Shared types and the two protected data list names |
+| `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
 ## The central idea: `_assets_contents`
@@ -43,11 +43,23 @@ flowchart TD
 
 Note the platform split: **native downloads files, web does not.** On web the browser can stream straight from the provider's CDN, so a "download" only rewrites `filePath` to a public URL. All the filesystem, resume and integrity logic below is native-only.
 
+### Local storage layout
+
+On native, downloaded files are saved under a single folder within the deployment's storage:
+
+```
+Data/{deploymentName}/remote_assets/{manifest-relative path}
+```
+
+**Every pack shares that folder**, with files keyed only by their manifest-relative path — the same key `_assets_contents` uses. An asset shipped by more than one pack is therefore stored once, and the second pack's resume check finds it already downloaded instead of re-fetching it. The trade-off is that a stored file carries no record of which pack fetched it, which is why there is no per-pack delete (see *Known limitations*).
+
+The deployment folder itself holds non-asset files too — the cached auth profile picture, for one — so deletion must always target the `remote_assets` subfolder, never the deployment folder.
+
 ### `filePath` is never an absolute device path
 
-On native, a downloaded row stores `local://<pack-relative path>` — never the absolute path the file currently sits at. iOS relocates the app container whenever the app is updated ([Apple TN2285](https://developer.apple.com/library/archive/technotes/tn2285/_index.html): *"the absolute path to the app's container [...] will change [...] you must only save paths to files relative to your application container"*), so an absolute path stored at download time goes stale on the next release and every downloaded asset silently stops rendering — while `_asset_packs` still reports the pack as `completed`, so nothing re-downloads to repair it.
+On native, a downloaded row stores `local://remote_assets/<manifest-relative path>` — never the absolute path the file currently sits at. iOS relocates the app container whenever the app is updated ([Apple TN2285](https://developer.apple.com/library/archive/technotes/tn2285/_index.html): *"the absolute path to the app's container [...] will change [...] you must only save paths to files relative to your application container"*), so an absolute path stored at download time goes stale on the next release and every downloaded asset silently stops rendering — while `_asset_packs` still reports the pack as `completed`, so nothing re-downloads to repair it.
 
-`TemplateAssetService` therefore resolves `local://` paths **at the point of display**, against the container reported for the current session (`FileManagerService.getLocalAssetPathConfig`, handed over during `RemoteAssetService` init). Rows written by app versions that stored absolute paths are still understood: `getLocalAssetTargetPath` recovers the pack-relative tail, so they re-point to the live container on next launch without needing a migration.
+`TemplateAssetService` therefore resolves `local://` paths **at the point of display**, against the container reported for the current session (`FileManagerService.getLocalAssetPathConfig`, handed over during `RemoteAssetService` init). Rows written by app versions that stored absolute paths are still understood: `getLocalAssetTargetPath` recovers the deployment-relative tail, so they re-point to the live container on next launch without needing a migration.
 
 ## Slots
 
@@ -106,10 +118,10 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 
 | Action | Behaviour |
 | --- | --- |
-| `download` | Download a single named pack. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
+| `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if the pack is already `completed`, and always blocks the action queue until it finishes |
 | `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) to block the action queue or not |
 | `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued (see *Cancelling* below) |
-| `reset` | Clear downloaded contents and pack metadata, back to the pre-download state (testing aid; does not yet delete files from the device) |
+| `reset` | Return **every** pack to its pre-download state: cancel active downloads (waiting for any in-flight write to finish), delete all downloaded files, and clear both data lists. All or nothing — if the files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk and the reset can be retried |
 
 ### Debug options
 
@@ -154,5 +166,7 @@ Each pack folder gets a `{packName}.json` manifest in `asset_pack` flow format, 
 
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin and is not implemented.
 - **No download queue.** One pack and one file at a time; large packs are slow and cannot be parallelised.
-- **`reset` leaves files on disk.** It clears metadata and contents rows but does not reclaim storage.
 - **No integrity repair.** There is no way to detect or fix an already-integrated file that was corrupted after the fact.
+- **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Because files are stored flat and may legitimately be shared by two packs, deleting a single pack would need a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
+- **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so those files are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`, which only touches `remote_assets/`. Accepted as a one-off cost on the small number of existing installs; a cleanup migration is prototyped on the same spike branch.
+- **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if packs are ever authored with overlapping paths.

@@ -23,6 +23,7 @@ import { IRemoteAssetProvider, IRemoteAssetConfig } from "./providers/base.remot
 import { getRemoteAssetProvider } from "./providers";
 import {
   ASSET_CONTENTS_DATA_LIST,
+  REMOTE_ASSET_STORAGE_FOLDER,
   getLocalAssetTargetPath,
   toLocalAssetPath,
 } from "./remote-asset.types";
@@ -581,6 +582,19 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       : relativePath;
   }
 
+  /**
+   * Construct full path for local storage, relative to the deployment folder that
+   * `FileManagerService.saveFile` writes into. Every pack shares this folder and files are keyed
+   * only by their manifest-relative path, matching how `_assets_contents` is keyed - so an asset
+   * shipped by more than one pack is stored once, and the second pack's resume check finds it
+   * already downloaded.
+   * @param relativePath Relative path to the file
+   * @returns Full path within the shared remote assets folder
+   */
+  private getFullLocalPath(relativePath: string): string {
+    return `${REMOTE_ASSET_STORAGE_FOLDER}/${relativePath}`;
+  }
+
   private async downloadAndIntegrateAssetPack(
     assetPackManifest: FlowTypes.AssetPack,
     signal: AbortSignal,
@@ -834,19 +848,21 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   /**
    * Resolve the local storage target path and the manifest integrity metadata (checksum/size) for a
    * single asset slot - either the base entry or a specific theme/language override.
+   * `targetPath` is the slot's location in local storage, i.e. the value stored (prefixed) as the
+   * recorded entry's `filePath` once integration has overwritten it.
    */
   private resolveAssetSlot(assetEntry: IAssetEntry, overrideProps?: IAssetOverrideProps) {
     if (overrideProps) {
       const { themeName, languageCode } = overrideProps;
       const overrideAssetEntry = assetEntry.overrides[themeName][languageCode];
       return {
-        targetPath: overrideAssetEntry.filePath,
+        targetPath: this.getFullLocalPath(overrideAssetEntry.filePath),
         slotChecksum: overrideAssetEntry.md5Checksum,
         slotSizeKb: overrideAssetEntry.size_kb,
       };
     }
     return {
-      targetPath: assetEntry.id,
+      targetPath: this.getFullLocalPath(assetEntry.id),
       slotChecksum: assetEntry.md5Checksum,
       slotSizeKb: assetEntry.size_kb,
     };
@@ -1074,23 +1090,66 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Reset asset pack contents and metadata to their original state before any remote assets were downloaded.
-   * Useful when testing. TODO: Also delete any downloaded assets from the device
+   * Reset every asset pack to its state before any remote assets were downloaded: cancel active
+   * downloads, delete downloaded files from the device, and clear both data lists.
+   *
+   * All or nothing: if the files cannot be deleted the data lists are left alone, so the app keeps
+   * describing what is actually on disk and the reset can simply be retried. Clearing them anyway
+   * would leave the app believing nothing is downloaded while the storage stayed occupied.
+   * @returns true if the reset completed, false if deleting the files failed
    * */
   public async reset() {
+    // Capture the in-flight attempts before cancelling, which removes them from the map. Aborting
+    // does not interrupt a `saveFile` already underway, so without waiting for them to settle a
+    // straggling write could re-create files under the folder we are about to delete.
+    const cancelledDownloads = [...this.activeAssetPackDownloads.values()];
     await this.cancelActiveAssetPackDownloads();
+    await this.waitForActiveAssetPackDownloads(cancelledDownloads);
+
+    try {
+      await this.deleteAssetPackFiles();
+    } catch (error) {
+      console.error("[REMOTE ASSETS] Reset aborted: failed to delete downloaded files", error);
+      return false;
+    }
     await Promise.all([
       this.dynamicDataService.resetFlow("asset_pack", ASSET_CONTENTS_DATA_LIST),
       this.remoteAssetMetadataService.resetAssetPacks(),
     ]);
+    return true;
   }
 
   /**
-   * Resolve once every download attempt active at the time of the call has settled. Rejections are
-   * absorbed: callers wait for the slot to free up, they do not inherit the other pack's outcome.
+   * Delete every downloaded asset pack file from the device. No-op on web, where nothing is
+   * downloaded - assets are served from the provider CDN.
+   *
+   * Always targets the `remote_assets` folder, never the deployment folder, which is shared with
+   * other features (the cached auth profile picture, for one).
+   *
+   * Having nothing to delete is a success; a real filesystem failure throws, so callers can avoid
+   * reporting a reset that did not reclaim anything.
+   * @returns true if files were deleted, false if there were none to delete
    */
-  private async waitForActiveAssetPackDownloads() {
-    const activeDownloads = [...this.activeAssetPackDownloads.values()];
+  private async deleteAssetPackFiles() {
+    if (!Capacitor.isNativePlatform()) return false;
+    const deleted = await this.fileManagerService.deleteSavedFolder(REMOTE_ASSET_STORAGE_FOLDER);
+    console.log(
+      deleted
+        ? "[REMOTE ASSETS] Deleted all downloaded asset pack files"
+        : "[REMOTE ASSETS] No downloaded asset pack files to delete"
+    );
+    return deleted;
+  }
+
+  /**
+   * Resolve once every given download attempt has settled, defaulting to those active right now.
+   * Callers that first cancel must capture the records themselves, since cancelling removes them
+   * from the map. Rejections are absorbed: callers wait for the attempts to finish, they do not
+   * inherit their outcome.
+   */
+  private async waitForActiveAssetPackDownloads(
+    activeDownloads = [...this.activeAssetPackDownloads.values()]
+  ) {
     if (!activeDownloads.length) return;
     await Promise.allSettled(activeDownloads.map(({ completion }) => completion));
   }
