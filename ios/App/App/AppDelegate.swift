@@ -8,6 +8,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        #if DEBUG
+        // App Attest is unavailable on simulators, so debug builds initialise app check with the
+        // debug provider instead (see src/app/feature/remote-function/README.md). Store a fixed
+        // token so a single registered token can be shared, rather than the sdk generating and
+        // logging a random one per install. Must match APP_CHECK_DEBUG_TOKEN in the js provider.
+        // Overridden if the AppCheckDebugToken or FIRAAppCheckDebugToken env variables are set.
+        UserDefaults.standard.set("00000000-0000-4000-a000-000000000000", forKey: "GACAppCheckDebugToken")
+        #endif
         return true
     }
 

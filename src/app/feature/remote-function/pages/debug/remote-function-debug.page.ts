@@ -44,7 +44,9 @@ export class RemoteFunctionDebugPage implements OnInit {
     await this.service.ready();
   }
   public refreshAppCheck() {
-    return this.firebaseProvider()?.initialise(true);
+    // NOTE - only the token is refreshed; provider registration is one-shot and must not be
+    // re-run, as that could race with an in-flight init or function invocation
+    return this.firebaseProvider()?.refreshAppCheckToken();
   }
 
   // --- Param management ---
