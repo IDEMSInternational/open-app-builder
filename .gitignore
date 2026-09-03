@@ -99,3 +99,5 @@ ios/App/App/config.xml
 
 # Deployment-specific files
 src/**/*.deployment.ts
+# Claude Code personal instructions (team instructions live in CLAUDE.md / .claude/rules)
+CLAUDE.local.md
