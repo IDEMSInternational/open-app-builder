@@ -223,6 +223,8 @@ In accordance with the instructions on deployment [file encryption](#file-encryp
     ```
     In this case, authentication must also be enabled for the corresponding project through the Firebase console too.
 
+    Firebase Storage can similarly be used to host downloadable asset packs - see [Remote Assets](../authors/remote-assets.md) for the storage, rules and CORS setup this requires.
+
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
 
