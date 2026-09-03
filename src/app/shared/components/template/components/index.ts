@@ -76,6 +76,7 @@ import { PLH_COMPONENT_MAPPING } from "components/plh";
 import { TmplDateTimePickerComponent } from "./date-time-picker/date-time-picker.component";
 import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-search.component";
 import { YoutubeComponent } from "./youtube/youtube.component";
+import { MapComponent } from "./map/map.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
   // tmpl prefix
@@ -153,6 +154,7 @@ export const TEMPLATE_COMPONENTS = [
   // no prefix
   WorkshopsComponent,
   YoutubeComponent,
+  MapComponent,
 ];
 
 /***************************************************************************************
@@ -200,6 +202,7 @@ const COMMON_COMPONENT_MAPPING = {
   image: TmplImageComponent,
   latex: TmplLatexComponent,
   lottie_animation: TmplLottieAnimation,
+  map: MapComponent,
   nav_group: NavGroupComponent,
   nav_section: AnimatedSectionComponent,
   navigation_bar: TmplNavigationBarComponent,

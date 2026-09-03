@@ -1,0 +1,42 @@
+<div class="map-container" tabindex="0" (pointerdown)="focusMap()">
+  <div [id]="mapId" class="map"></div>
+
+  <div class="map-controls">
+    <button aria-label="Locate me" [disabled]="locating()" (click)="locateMe()">
+      <ion-icon name="locate-outline"></ion-icon>
+    </button>
+    <button
+      aria-label="Draw polygon"
+      [class.active]="mode() === 'polygon'"
+      (click)="togglePolygon()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path
+          d="
+                M80 140
+                L80 372
+                L420 440
+                L420 72
+                Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="32"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+    <button [class.active]="mode() === 'select'" (click)="toggleSelect()">
+      <ion-icon name="hand-right-outline"></ion-icon>
+    </button>
+    <button [disabled]="selectedFeatureId() === null" (click)="deleteSelected()">
+      <ion-icon name="trash-outline"></ion-icon>
+    </button>
+    <button [class.active]="satellite()" (click)="toggleSatellite()">
+      <ion-icon name="globe-outline"></ion-icon>
+    </button>
+    <button (click)="save()">
+      <ion-icon name="save-outline"></ion-icon>
+    </button>
+  </div>
+</div>
