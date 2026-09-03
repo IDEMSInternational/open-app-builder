@@ -43,9 +43,10 @@ export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
  * entries are only checked against the manifest that asked for them, so a stale archive served
  * from a fixed key would install outdated bytes and have them recorded at the *new* version -
  * permanently wrong, and undetectable - and a query parameter cannot be relied on to defeat every
- * cache in the path. Keyed on the version, a stale archive is simply never requested: the app asks
- * for the exact archive its manifest describes, or gets a 404 and takes the checksum-gated
- * per-file path.
+ * cache in the path. Keyed on the version, a stale archive is simply never requested: the app
+ * derives this filename from the version its manifest carries, so it can only ask for the archive
+ * built from that same manifest, and otherwise gets a 404 and takes the checksum-gated per-file
+ * path.
  */
 export function getAssetPackArchiveFileName(assetPackName: string, version: string) {
   return `${assetPackName}.${version}.zip`;

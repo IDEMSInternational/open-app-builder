@@ -119,6 +119,27 @@ describe("asset pack archive", () => {
       expect(fs.existsSync(path.resolve(folder, "my_pack.zip"))).toBe(false);
     });
 
+    it("removes archives superseded by the one it writes", () => {
+      const folder = createPackFolder({ "audio/a.mp3": "aaa" });
+      // A previous sync's output, plus the unversioned name used before the version was in the key
+      fs.writeFileSync(path.resolve(folder, "my_pack.v0.zip"), "old");
+      fs.writeFileSync(path.resolve(folder, "my_pack.zip"), "older");
+      // Another pack's archive in the same folder must survive
+      fs.writeFileSync(path.resolve(folder, "other_pack.v0.zip"), "theirs");
+
+      const { removedArchives } = writeAssetPackArchive(
+        folder,
+        "my_pack",
+        manifestOf([{ id: "audio/a.mp3" }])
+      );
+
+      expect(removedArchives.sort()).toEqual(["my_pack.v0.zip", "my_pack.zip"]);
+      expect(fs.existsSync(path.resolve(folder, ARCHIVE_FILE_NAME))).toBe(true);
+      expect(fs.existsSync(path.resolve(folder, "my_pack.v0.zip"))).toBe(false);
+      expect(fs.existsSync(path.resolve(folder, "my_pack.zip"))).toBe(false);
+      expect(fs.existsSync(path.resolve(folder, "other_pack.v0.zip"))).toBe(true);
+    });
+
     it("writes every manifest slot, preserving nested paths", () => {
       const folder = createPackFolder({
         "audio/a.mp3": "aaa",

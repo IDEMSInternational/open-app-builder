@@ -149,7 +149,7 @@ This is deliberately *not* a "how much is missing" threshold: any such number is
 ### The archive
 
 - **Streamed, not buffered.** Chunks are fed straight into the unzipper, so peak memory is a few chunks plus the largest entry rather than ~2× the 35MB response.
-- **The version is in the object key**, built by the shared `getAssetPackArchiveFileName` so build and app cannot name it differently. A stale archive is never *requested*, rather than requested and cache-busted past. A manifest with no `version` therefore never uses the archive. Publishing adds a new object rather than overwriting one in-flight installs are reading, so **superseded archives accumulate and need pruning**.
+- **The version is in the object key**, built by the shared `getAssetPackArchiveFileName` so build and app cannot name it differently. The app derives the filename from the version its manifest carries, so it can only ask for the archive built from that same manifest — a stale one is never *requested*, rather than requested and cache-busted past. A manifest with no `version` therefore never uses the archive. Publishing adds a new object rather than overwriting one in-flight installs are reading, so superseded archives need pruning **from the bucket** (sync removes them locally).
 - **Unwanted entries are read and discarded**, not left unread — skipping them the way fflate documents leaks their compressed bytes for the life of the stream.
 - **Extracted entries are integrated directly**, never through the per-file path, which would re-download everything just delivered.
 - **Entry size is checked against the manifest.** fflate's streaming API exposes no per-entry CRC, so size plus the version-stamped key is the integrity story.
@@ -231,7 +231,7 @@ Upload is **currently manual**. The app expects:
 
 **Upload assets and the archive first, the manifest last.** A manifest landing first describes a version whose assets 404. It self-heals — the recorded `version` does not advance, so the next check retries — but it looks like a code bug.
 
-The loose files are still needed: web resolves assets straight from them, and they are the per-file download path. A `contents.json` is also written but is not fetched at runtime.
+The loose files are still needed: web resolves assets straight from them, and they are the per-file download path.
 
 The archive is written by the same code, from the same data, as the manifest — a drifted archive would be a silent whole-pack correctness bug that no upload runbook could prevent. It holds exactly the manifest's slots, each asset's base file immediately followed by its own overrides, because the app can only write a contents row once every slot for it has arrived. Text-like entries are deflated and everything else is stored, **unrecognised extensions included**, so a new media type is never inflated on device just because nobody added it to a list.
 
@@ -244,7 +244,7 @@ Manifests are fetched with caching bypassed (`cache: "no-store"` plus a cache-bu
 - **No integrity repair.** No way to detect or fix an already-integrated file corrupted after the fact.
 - **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Files are stored flat and may legitimately be shared, so deleting one pack needs a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
 - **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so they are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`. Accepted as a one-off; a cleanup migration is prototyped on the same spike branch.
-- **Superseded archives accumulate**, since the object key carries the version. Pruning is separate housekeeping.
+- **Superseded archives accumulate in the bucket.** The object key carries the version, and uploads are manual and additive, so old archives have to be deleted separately. Sync removes them from the generated pack folder, so only the current one is ever uploaded.
 - **Two packs shipping the same path with different content conflict.** They share one `_assets_contents` row and one stored file, so whichever downloads last wins. Worth a build-time warning if this is ever authored.
 - **Updates orphan files and rows.** Removing or renaming a manifest entry leaves its old file on disk *and* its `_assets_contents` row still resolving, until `reset`. Content changes overwrite in place, so this only arises from removals and renames.
 - **Web assets can be served stale from browser cache after an update**, since the CDN URL does not change with content. Cache-busting web `filePath` on `md5Checksum` would fix it.

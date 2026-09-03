@@ -130,7 +130,8 @@ export class AssetsPostProcessor {
   /**
    * Process assets and write them to the target folder
    * Handles asset overrides, copying files, and writing contents files
-   * @param assetPackName If provided, writes AssetPack format manifest instead of contents.json
+   * @param assetPackName If provided, writes an AssetPack manifest plus its archive instead of the
+   * core `contents.json`/untracked pair
    */
   private processAndWriteAssets(
     assetsHashmap: IContentsEntryHashmap,
@@ -154,15 +155,17 @@ export class AssetsPostProcessor {
     replicateDir(stagingDir, targetFolder);
     fs.removeSync(stagingDir);
 
-    // Always write standard contents files (contents.json)
-    this.writeAssetsContentsFile(targetFolder, contentsData);
-
     // For remote assets, write the asset pack manifest
     if (assetPackName) {
       this.writeRemoteAssetsManifest(targetFolder, assetPackName, contentsData, untrackedData);
     }
-    // For core assets, check total asset size and write the untracked assets file
+    // For core assets, write contents.json (the format the app bundles and reads at startup),
+    // check total size, and record the untracked assets.
+    // A pack folder deliberately gets no contents.json: the manifest is built from `contentsData`
+    // in memory, nothing reads the file at runtime or at build time, and it was only ever dead
+    // weight in every manual upload.
     else {
+      this.writeAssetsContentsFile(targetFolder, contentsData);
       checkTotalAssetSize({ tracked: contentsData, untracked: untrackedData });
       this.writeUntrackedAssetsFile(targetFolder, untrackedData);
     }
@@ -187,14 +190,17 @@ export class AssetsPostProcessor {
     const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
     fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
 
-    const { archiveFileName, rawBytes, archiveBytes } = writeAssetPackArchive(
+    const { archiveFileName, removedArchives, rawBytes, archiveBytes } = writeAssetPackArchive(
       targetFolder,
       assetPackName,
       assetPackManifest
     );
+    const supersededNote = removedArchives.length
+      ? `, replacing ${removedArchives.join(", ")}`
+      : "";
     logOutput({
       msg1: `Asset pack archive: ${archiveFileName}`,
-      msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)`,
+      msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)${supersededNote}`,
     });
   }
 

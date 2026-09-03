@@ -62,6 +62,30 @@ export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] 
 }
 
 /**
+ * Delete every archive for this pack other than the one just written - earlier versions, and the
+ * unversioned `{packName}.zip` written before the filename carried a version.
+ *
+ * Keyed on the pack name so that a folder holding more than one pack (not how sync writes them, but
+ * nothing here depends on that) cannot have one pack's output delete another's.
+ */
+function removeSupersededArchives(
+  targetFolder: string,
+  assetPackName: string,
+  keepFileName: string
+): string[] {
+  const escapedName = assetPackName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const isArchiveForThisPack = new RegExp(`^${escapedName}(\\.[^.]+)?\\.zip$`);
+  const removed: string[] = [];
+  for (const fileName of fs.readdirSync(targetFolder)) {
+    if (fileName === keepFileName) continue;
+    if (!isArchiveForThisPack.test(fileName)) continue;
+    fs.removeSync(path.resolve(targetFolder, fileName));
+    removed.push(fileName);
+  }
+  return removed;
+}
+
+/**
  * Write `{packName}.{version}.zip` alongside the loose pack files, containing every file the
  * manifest declares. The app downloads this instead of fetching hundreds of individual objects
  * when most of a pack is missing locally.
@@ -71,12 +95,19 @@ export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] 
  * from a fixed key would install outdated bytes and then have them recorded at the *new* version -
  * permanently wrong, with nothing able to detect it - and a query parameter cannot be relied on to
  * defeat every cache in the path. Keying on the version means a stale archive is never requested at
- * all: the app asks for the exact archive its manifest describes, and gets a 404 (and the
- * checksum-gated per-file path) if it was never published.
+ * all: the app derives the filename from the version its manifest carries, so it can only ask for
+ * the archive built from that same manifest, and gets a 404 (and the checksum-gated per-file path)
+ * if that archive was never published.
  *
  * The same property retires the upload-ordering hazard: a publish adds a new object rather than
- * overwriting the one in-flight installs are reading. Old archives are left behind deliberately and
- * need pruning as a separate housekeeping step.
+ * overwriting the one in-flight installs are reading. Locally that would mean a folder accumulating
+ * one archive per sync, so any previously-generated archive is removed here. (`replicateDir` clears
+ * the target folder earlier in the pipeline and so already does this, but only as a side effect of
+ * running before the archive is written - stating it here keeps the "one archive per pack" rule a
+ * property of this function rather than of the order its caller happens to use.)
+ *
+ * NB this only cleans the *generated* output. Uploads are manual and additive, so superseded
+ * archives still have to be removed from the bucket separately.
  *
  * Generated here, next to the manifest and its version hash, rather than left to the (manual)
  * upload step: a zip that has drifted from the loose files is a silent, whole-pack correctness
@@ -85,13 +116,14 @@ export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] 
  * The manifest itself is excluded - it is fetched separately, before the archive, and a copy
  * inside would just be a second source of truth to go stale.
  *
- * @returns the archive's filename plus the uncompressed and compressed totals in bytes, for reporting
+ * @returns the archive's filename, any superseded archives removed, and the uncompressed and
+ * compressed totals in bytes, for reporting
  */
 export function writeAssetPackArchive(
   targetFolder: string,
   assetPackName: string,
   manifest: FlowTypes.AssetPack
-): { archiveFileName: string; rawBytes: number; archiveBytes: number } {
+): { archiveFileName: string; removedArchives: string[]; rawBytes: number; archiveBytes: number } {
   const archiveEntries: ZipOptions & Record<string, [Uint8Array, ZipOptions]> = {} as any;
   let rawBytes = 0;
   const missingSlotPaths: string[] = [];
@@ -122,6 +154,9 @@ export function writeAssetPackArchive(
   const archive = zipSync(archiveEntries as any, { level: STORE_LEVEL });
   const archiveFileName = getAssetPackArchiveFileName(assetPackName, manifest.version);
   fs.writeFileSync(path.resolve(targetFolder, archiveFileName), archive);
+  // Cleaned after the write, never before: a failed write then leaves the previous archive in place
+  // rather than leaving the pack with none at all
+  const removedArchives = removeSupersededArchives(targetFolder, assetPackName, archiveFileName);
 
-  return { archiveFileName, rawBytes, archiveBytes: archive.byteLength };
+  return { archiveFileName, removedArchives, rawBytes, archiveBytes: archive.byteLength };
 }

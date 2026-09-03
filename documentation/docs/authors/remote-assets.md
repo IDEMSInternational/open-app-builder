@@ -317,7 +317,6 @@ Sync writes each pack to the deployment's `app_data/remote_assets/{packName}/` f
 - `{packName}.json` — the manifest the app reads, listing each asset's size and checksum
 - `{packName}.{version}.zip` — every asset in one archive, used on a device installing the pack for
   the first time. The `{version}` matches the manifest's own `version` field
-- `contents.json` — not used at runtime, but harmless to upload
 
 Uploading is **currently a manual process**. Upload the pack folder as-is (via the Firebase console,
 or `gsutil cp -r ./app_data/remote_assets/my_asset_pack gs://my-bucket/asset_packs/`), so that storage
@@ -340,9 +339,10 @@ The folder name in storage must exactly match the pack name used in templates.
 
     The archive filename changes with every content change, so a new upload never overwrites the
     archive that in-flight installs are still reading, and a stale archive can never be served for a
-    new manifest. The flip side is that **superseded archives are left behind** — delete the old
-    `{packName}.{version}.zip` files once no device is still installing from them, or storage grows
-    by the size of the pack on every publish.
+    new manifest. Sync only ever leaves the current archive in the pack folder, so you will not
+    upload an old one by accident — but uploading **adds** to the bucket rather than replacing, so
+    **delete superseded `{packName}.{version}.zip` objects** once no device is still installing from
+    them, or storage grows by the size of the pack on every publish.
 
 ## Deployment and storage setup
 
