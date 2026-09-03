@@ -47,7 +47,7 @@
 }
 
 .map-container .map-controls button.active {
-  background-color: #3388ff;
+  background-color: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
   color: #fff;
 }
 

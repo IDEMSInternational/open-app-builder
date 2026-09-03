@@ -2,10 +2,14 @@
   <div [id]="mapId" class="map"></div>
 
   <div class="map-controls">
-    <button [disabled]="locating()" (click)="locateMe()">
+    <button aria-label="Locate me" [disabled]="locating()" (click)="locateMe()">
       <ion-icon name="locate-outline"></ion-icon>
     </button>
-    <button [class.active]="mode() === 'polygon'" (click)="togglePolygon()">
+    <button
+      aria-label="Draw polygon"
+      [class.active]="mode() === 'polygon'"
+      (click)="togglePolygon()"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           d="

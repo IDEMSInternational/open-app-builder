@@ -4,6 +4,7 @@ import {
   ElementRef,
   inject,
   OnInit,
+  OnDestroy,
   signal,
   AfterViewInit,
 } from "@angular/core";
@@ -50,7 +51,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 })
 export class MapComponent
   extends TemplateBaseComponentWithParams(AuthorSchema)
-  implements AfterViewInit
+  implements AfterViewInit, OnDestroy
 {
   private hostElement = inject(ElementRef<HTMLElement>);
   private dynamicDataService = inject(DynamicDataService);
@@ -74,6 +75,13 @@ export class MapComponent
 
   public ngAfterViewInit(): void {
     this.initMap();
+  }
+
+  public ngOnDestroy(): void {
+    this.terraDraw?.stop();
+    this.map?.dispose();
+    this.terraDraw = null;
+    this.map = null;
   }
 
   public initMap() {
@@ -216,28 +224,28 @@ export class MapComponent
   }
 
   public async save() {
-    const dataList = this.params().dataList;
-
-    if (!dataList || !this.terraDraw) return;
-
-    const geometryFieldName = this.params().geometryFieldName;
-    const propertiesFieldName = this.params().propertiesFieldName;
-
-    const features = this.terraDraw?.getSnapshot() ?? [];
-    const rows = features.map((feature) => ({
-      id: String(feature.id),
-      [geometryFieldName]: feature.geometry,
-      [propertiesFieldName]: feature.properties,
-    }));
-    const existingRows = (await this.dynamicDataService.snapshot(
-      "data_list",
-      dataList
-    )) as StoredFeatureRow[];
-    const rowsToRemove = existingRows.filter(
-      (row) => !rows.some((featureRow) => featureRow.id === row.id)
-    );
-
     try {
+      const dataList = this.params().dataList;
+
+      if (!dataList || !this.terraDraw) return;
+
+      const geometryFieldName = this.params().geometryFieldName;
+      const propertiesFieldName = this.params().propertiesFieldName;
+
+      const features = this.terraDraw?.getSnapshot() ?? [];
+      const rows = features.map((feature) => ({
+        id: String(feature.id),
+        [geometryFieldName]: feature.geometry,
+        [propertiesFieldName]: feature.properties,
+      }));
+      const existingRows = (await this.dynamicDataService.snapshot(
+        "data_list",
+        dataList
+      )) as StoredFeatureRow[];
+      const rowsToRemove = existingRows.filter(
+        (row) => row[geometryFieldName] && !rows.some((featureRow) => featureRow.id === row.id)
+      );
+
       if (rowsToRemove.length > 0) {
         await this.dynamicDataService.remove(
           "data_list",
