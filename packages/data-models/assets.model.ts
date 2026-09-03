@@ -31,3 +31,22 @@ export interface IAssetEntry extends IAssetContentsEntryMinimal {
   };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
+
+/**
+ * Filename of a pack's archive at a given manifest version, e.g. `my_pack.a1b2c3.zip`.
+ *
+ * Lives here because the build writes the file and the app fetches it, and a difference between
+ * the two names is a silent whole-pack fault: every install would 404 and quietly fall back to
+ * hundreds of individual requests, with nothing failing loudly enough to notice.
+ *
+ * The version belongs in the object key rather than in a cache-busting query parameter. Archive
+ * entries are only checked against the manifest that asked for them, so a stale archive served
+ * from a fixed key would install outdated bytes and have them recorded at the *new* version -
+ * permanently wrong, and undetectable - and a query parameter cannot be relied on to defeat every
+ * cache in the path. Keyed on the version, a stale archive is simply never requested: the app asks
+ * for the exact archive its manifest describes, or gets a 404 and takes the checksum-gated
+ * per-file path.
+ */
+export function getAssetPackArchiveFileName(assetPackName: string, version: string) {
+  return `${assetPackName}.${version}.zip`;
+}

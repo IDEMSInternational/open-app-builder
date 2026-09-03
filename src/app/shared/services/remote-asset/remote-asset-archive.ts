@@ -30,6 +30,25 @@ export class AssetPackArchiveNotFoundError extends Error {
 }
 
 /**
+ * Statuses meaning "there is no archive here to fetch", as opposed to "this attempt went wrong".
+ * The distinction decides whether the pack latches onto per-file immediately or spends its whole
+ * archive failure allowance first.
+ *
+ * Wider than 404 because buckets disagree about what a missing object is. Supabase answers a
+ * missing object on a public URL with a 400 carrying a `404` in its body, and any bucket whose
+ * rules are evaluated before existence reports a missing object as 403. A pack published before
+ * archives existed would otherwise pay two full attempts every session to rediscover that.
+ *
+ * 401 and 403 also cover the genuinely-forbidden case, where per-file is likewise the right answer:
+ * it authenticates through the provider SDK, which a raw `fetch` of a stream cannot.
+ *
+ * Deliberately excludes 408/429/5xx, which say to try again rather than to give up.
+ */
+function isArchiveUnavailableStatus(status: number): boolean {
+  return status === 400 || status === 401 || status === 403 || status === 404;
+}
+
+/**
  * Reject entries whose path escapes the archive root. We generate these archives ourselves, so
  * this should never fire - but an extraction routine that writes wherever an archive tells it to
  * is worth two lines to not have.
@@ -70,7 +89,7 @@ export async function streamAssetPackArchive(
   const { url, signal, fallbackTotalBytes, shouldExtract, onEntry, onProgress } = options;
 
   const response = await fetch(url, { signal });
-  if (response.status === 404) {
+  if (isArchiveUnavailableStatus(response.status)) {
     throw new AssetPackArchiveNotFoundError(url);
   }
   if (!response.ok) {
@@ -96,6 +115,9 @@ export async function streamAssetPackArchive(
   unzipper.register(UnzipInflate);
   unzipper.onfile = (file) => {
     if (!isSafeEntryPath(file.name)) {
+      // Returning without `start()` is the one place that is safe to do so: the read loop checks
+      // `streamError` on the very next drain, which is within this same iteration, so the unzipper
+      // is thrown away before it can accumulate more than the chunk in hand.
       streamError ??= new Error(`[REMOTE ASSETS] Unsafe archive entry path: ${file.name}`);
       return;
     }

@@ -315,7 +315,8 @@ Sync writes each pack to the deployment's `app_data/remote_assets/{packName}/` f
 
 - every asset file, in the same folder structure as the source assets folder
 - `{packName}.json` — the manifest the app reads, listing each asset's size and checksum
-- `{packName}.zip` — every asset in one archive, used when most of a pack is missing on a device
+- `{packName}.{version}.zip` — every asset in one archive, used on a device installing the pack for
+  the first time. The `{version}` matches the manifest's own `version` field
 - `contents.json` — not used at runtime, but harmless to upload
 
 Uploading is **currently a manual process**. Upload the pack folder as-is (via the Firebase console,
@@ -323,23 +324,25 @@ or `gsutil cp -r ./app_data/remote_assets/my_asset_pack gs://my-bucket/asset_pac
 ends up with:
 
 ```
-{folderName}/{packName}/{packName}.json   <- manifest
-{folderName}/{packName}/{packName}.zip    <- archive of every asset
-{folderName}/{packName}/{relativePath}    <- each asset file
+{folderName}/{packName}/{packName}.json            <- manifest
+{folderName}/{packName}/{packName}.{version}.zip  <- archive of every asset
+{folderName}/{packName}/{relativePath}            <- each asset file
 ```
 
 The folder name in storage must exactly match the pack name used in templates.
 
 !!! warning "Re-uploading a changed pack"
 
-    Upload the asset files and `{packName}.zip` **first**, and `{packName}.json` **last**. The
-    manifest is what tells the app a new version exists, so if it arrives first the app goes looking
-    for content that is not there yet. It recovers on its own once the rest lands, but it looks like
-    a bug in the meantime.
+    Upload the asset files and the new `{packName}.{version}.zip` **first**, and `{packName}.json`
+    **last**. The manifest is what tells the app a new version exists, so if it arrives first the app
+    goes looking for content that is not there yet. It recovers on its own once the rest lands, but
+    it looks like a bug in the meantime.
 
-    All three must go up together. The archive and the loose files are both used — which one a given
-    device fetches depends on how much of the pack it already has — so an archive left behind from a
-    previous version would hand out stale assets.
+    The archive filename changes with every content change, so a new upload never overwrites the
+    archive that in-flight installs are still reading, and a stale archive can never be served for a
+    new manifest. The flip side is that **superseded archives are left behind** — delete the old
+    `{packName}.{version}.zip` files once no device is still installing from them, or storage grows
+    by the size of the pack on every publish.
 
 ## Deployment and storage setup
 

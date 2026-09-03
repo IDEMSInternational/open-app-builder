@@ -214,6 +214,14 @@ export interface IAssetPackSlotPlan {
   alreadyDownloaded?: boolean;
   /** Whether this attempt has written and integrated the slot */
   settled?: boolean;
+  /**
+   * Whether the slot's outcome has been handed to the `AssetContentsWriter`. Distinct from
+   * `settled`, which means the file was actually integrated: a slot the archive delivered at the
+   * wrong size, or failed to save, is settled with the writer as a *failure* while staying
+   * unintegrated. Tracking both is what stops the end-of-stream sweep settling such a slot twice
+   * and releasing its row before the rest of it has arrived.
+   */
+  writerSettled?: boolean;
 }
 
 export interface IActiveAssetPackDownload {

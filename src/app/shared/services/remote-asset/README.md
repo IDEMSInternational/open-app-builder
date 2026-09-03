@@ -22,7 +22,9 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.service.ts` | Everything stateful: init, download orchestration, per-file fetch/save/integrate, resume |
 | `remote-asset-metadata.service.ts` | Reads/writes pack status rows in the `_asset_packs` data list |
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
-| `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
+| `remote-asset-archive.ts` | Streams a pack's `.zip` and hands back each wanted entry as it arrives |
+| `remote-asset-contents.writer.ts` | Batches `_assets_contents` row updates and writes them in bulk |
+| `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the archive/flush tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
 ## The central idea: `_assets_contents`
@@ -128,13 +130,16 @@ files already on disk.
   only to copy it into an `ArrayBuffer` for decompression peaks at roughly twice that before any
   entry is inflated. Chunks are fed straight into the unzipper, so peak memory stays at a few
   chunks plus the single largest entry.
-- **The URL carries the manifest version** (`...&v={version}`), on the fetch URL only — never in
-  the storage key, which stays `{packName}/{packName}.zip`. This is correctness, not cache
-  hygiene. Entries are verified only against the manifest that asked for them, so a CDN serving a
-  stale archive would install outdated content and then record it at the *new* version, leaving
-  the pack permanently wrong with nothing able to detect it. Stamping with the content hash keeps
-  the archive cacheable while changing the URL exactly when the content changes. A manifest with
-  no `version` therefore never uses the archive at all.
+- **The storage key carries the manifest version**: `{packName}/{packName}.{version}.zip`, built
+  by the shared `getAssetPackArchiveFileName` so the build and the app cannot name it differently.
+  This is correctness, not cache hygiene. Entries are verified only against the manifest that asked
+  for them, so a stale archive would install outdated content and then record it at the *new*
+  version — permanently wrong, with nothing able to detect it. A query parameter cannot be trusted
+  to defeat every cache in the path, so the version goes in the key: the app asks for the exact
+  archive its manifest describes, and a 404 simply means per-file (which is checksum-gated, so it
+  is always safe). A manifest with no `version` therefore never uses the archive at all.
+  A publish adds a new object rather than overwriting the one in-flight installs are reading, so
+  superseded archives accumulate and need pruning as separate housekeeping.
 - **Entries already on disk are read and discarded, not left unread.** This looks like the wrong
   choice — fflate documents skipping as "don't call `start()`" — but an unstarted entry has no
   decompressor attached, so `Unzip` diverts its raw compressed bytes into a per-file buffer it
@@ -214,7 +219,7 @@ A download holds the template action queue for its full duration, so a queued `c
 
 A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
 
-Cancelling aborts the loop, not the socket: the file request already in flight runs to completion and its result is discarded at the next checkpoint.
+What a cancel reaches depends on the mode. On the **archive** path the attempt's signal is handed to `fetch`, so the transfer itself stops — which matters most there, since an archive is one long request and a cancel that only landed between entries would let the whole pack finish transferring. On the **per-file** path the signal does not reach the request: cancelling aborts the loop, not the socket, so the file already in flight runs to completion and its result is discarded at the next checkpoint.
 
 #### Artificial delay
 

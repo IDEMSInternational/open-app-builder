@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import { zipSync, type ZipOptions } from "fflate";
-import type { FlowTypes, IAssetEntry } from "data-models";
+import { getAssetPackArchiveFileName, type FlowTypes, type IAssetEntry } from "data-models";
 import { logWarning } from "../../../../utils";
 
 /**
@@ -62,9 +62,21 @@ export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] 
 }
 
 /**
- * Write `{packName}.zip` alongside the loose pack files, containing every file the manifest
- * declares. The app downloads this instead of fetching hundreds of individual objects when most
- * of a pack is missing locally.
+ * Write `{packName}.{version}.zip` alongside the loose pack files, containing every file the
+ * manifest declares. The app downloads this instead of fetching hundreds of individual objects
+ * when most of a pack is missing locally.
+ *
+ * The manifest version is in the *object key*, not just a cache-busting query parameter, because
+ * entries are only ever checked against the manifest that asked for them. A stale archive served
+ * from a fixed key would install outdated bytes and then have them recorded at the *new* version -
+ * permanently wrong, with nothing able to detect it - and a query parameter cannot be relied on to
+ * defeat every cache in the path. Keying on the version means a stale archive is never requested at
+ * all: the app asks for the exact archive its manifest describes, and gets a 404 (and the
+ * checksum-gated per-file path) if it was never published.
+ *
+ * The same property retires the upload-ordering hazard: a publish adds a new object rather than
+ * overwriting the one in-flight installs are reading. Old archives are left behind deliberately and
+ * need pruning as a separate housekeeping step.
  *
  * Generated here, next to the manifest and its version hash, rather than left to the (manual)
  * upload step: a zip that has drifted from the loose files is a silent, whole-pack correctness
@@ -73,13 +85,13 @@ export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] 
  * The manifest itself is excluded - it is fetched separately, before the archive, and a copy
  * inside would just be a second source of truth to go stale.
  *
- * @returns the uncompressed and compressed totals in bytes, for reporting
+ * @returns the archive's filename plus the uncompressed and compressed totals in bytes, for reporting
  */
 export function writeAssetPackArchive(
   targetFolder: string,
   assetPackName: string,
   manifest: FlowTypes.AssetPack
-): { rawBytes: number; archiveBytes: number } {
+): { archiveFileName: string; rawBytes: number; archiveBytes: number } {
   const archiveEntries: ZipOptions & Record<string, [Uint8Array, ZipOptions]> = {} as any;
   let rawBytes = 0;
   const missingSlotPaths: string[] = [];
@@ -108,8 +120,8 @@ export function writeAssetPackArchive(
   }
 
   const archive = zipSync(archiveEntries as any, { level: STORE_LEVEL });
-  const archivePath = path.resolve(targetFolder, `${assetPackName}.zip`);
-  fs.writeFileSync(archivePath, archive);
+  const archiveFileName = getAssetPackArchiveFileName(assetPackName, manifest.version);
+  fs.writeFileSync(path.resolve(targetFolder, archiveFileName), archive);
 
-  return { rawBytes, archiveBytes: archive.byteLength };
+  return { archiveFileName, rawBytes, archiveBytes: archive.byteLength };
 }

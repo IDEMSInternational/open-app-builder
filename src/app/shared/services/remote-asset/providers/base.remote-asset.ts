@@ -52,18 +52,6 @@ export interface IRemoteAssetDownloadOptions {
 }
 
 /**
- * Append a query parameter to a URL that may or may not already carry one.
- *
- * NB the parameter must go on the *fetch* URL, never the storage key - provider download URLs
- * already carry their own query (`?alt=media&token=...`), and a key containing `?` simply does
- * not exist in the bucket.
- */
-export function appendUrlParam(url: string, key: string, value: string): string {
-  const separator = url.includes("?") ? "&" : "?";
-  return `${url}${separator}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-}
-
-/**
  * Defeat CDN and proxy caching by making the URL unique per request. Complements `cache: "no-store"`,
  * which only governs the local HTTP cache - an intermediary can still serve a stale object for a URL
  * it has seen before.

@@ -187,13 +187,13 @@ export class AssetsPostProcessor {
     const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
     fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
 
-    const { rawBytes, archiveBytes } = writeAssetPackArchive(
+    const { archiveFileName, rawBytes, archiveBytes } = writeAssetPackArchive(
       targetFolder,
       assetPackName,
       assetPackManifest
     );
     logOutput({
-      msg1: `Asset pack archive: ${assetPackName}.zip`,
+      msg1: `Asset pack archive: ${archiveFileName}`,
       msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)`,
     });
   }

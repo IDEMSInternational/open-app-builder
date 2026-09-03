@@ -1533,7 +1533,7 @@ describe("RemoteAssetsService", () => {
       );
     });
 
-    it("stamps the archive url with the manifest version without touching the storage key", async () => {
+    it("asks for the archive keyed to the manifest version", async () => {
       const { fetchSpy, getFetchableUrlSpy } = setupArchiveDownload({
         manifestRows: [archiveEntry("images/a.png", 2048)],
         archiveFiles: { "images/a.png": fileOfLength(2048) },
@@ -1542,11 +1542,12 @@ describe("RemoteAssetsService", () => {
 
       await service.downloadAssetPackByName("asset_pack_1");
 
-      // The key must stay a real object path - a `?` in it simply does not exist in the bucket
-      expect(getFetchableUrlSpy).toHaveBeenCalledWith("asset_pack_1/asset_pack_1.zip");
-      // Joined with `&` because provider download urls already carry their own query
+      // The version is in the object key, not a query parameter, so a stale archive is never
+      // requested rather than merely cache-busted past
+      expect(getFetchableUrlSpy).toHaveBeenCalledWith("asset_pack_1/asset_pack_1.abc123.zip");
+      // The resolved url is fetched as-is; it already carries the provider's own query
       expect(fetchSpy.calls.mostRecent().args[0]).toBe(
-        "https://storage.example/packs/asset_pack_1.zip?alt=media&token=abc&v=abc123"
+        "https://storage.example/packs/asset_pack_1.zip?alt=media&token=abc"
       );
     });
 
@@ -1756,6 +1757,82 @@ describe("RemoteAssetsService", () => {
       expect(setup.contentsRow("images/a.png").filePath).toBe(
         localAssetPath(packPath("images/a.png"))
       );
+    });
+
+    it("does not write rows the archive never reached", async () => {
+      const rows = [
+        archiveEntry("images/a.png", 2048),
+        archiveEntry("images/b.png", 2048),
+        archiveEntry("images/c.png", 2048),
+      ];
+      const files = {
+        "images/a.png": fileOfLength(2048),
+        "images/b.png": fileOfLength(2048),
+        "images/c.png": fileOfLength(2048),
+      };
+      const full = zipSync({
+        "images/a.png": [files["images/a.png"], { level: 0 }],
+        "images/b.png": [files["images/b.png"], { level: 0 }],
+        "images/c.png": [files["images/c.png"], { level: 0 }],
+      });
+      setupArchiveDownload({
+        manifestRows: rows,
+        archiveFiles: files,
+        respondWith: () => streamingResponse(full.slice(0, secondEntryOffset(full) + 10)),
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Completing a row flushes it, which writes the manifest merge - so settling slots the
+      // stream never reached would publish manifest-relative paths for files this attempt never
+      // touched. Harmless where a per-file pass follows and corrects them, but a cancel or an
+      // offline abort has no such pass, and these paths can sit over another pack's `local://`
+      // rows where the two packs share an asset.
+      const writtenIds = mockDynamicDataService.bulkUpsert.calls
+        .allArgs()
+        .flatMap(([, , bulkRows]) => (bulkRows as { id: string }[]).map((row) => row.id));
+      expect(writtenIds).toEqual(["images/a.png"]);
+    });
+
+    it("keeps an extracted base file when its override is missing from the archive", async () => {
+      spyOn(console, "warn");
+      spyOn(console, "error");
+      // A row whose slots do not all arrive is the case the writer's "a failed slot still settles"
+      // rule exists for. If the row is never written, the base file sits on disk unrecorded, the
+      // resume gate cannot see it, and the per-file fallback re-fetches bytes already paid for.
+      const withOverride = archiveEntry("audio/a.mp3", 2048, {
+        overrides: {
+          theme_default: {
+            tz_sw: {
+              filePath: "tz_sw/audio/a.mp3",
+              md5Checksum: "checksum-override",
+              size_kb: Math.round(1024 / 102.4) / 10,
+            },
+          },
+        },
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: [withOverride],
+        // Override deliberately absent: an archive published out of step with its manifest
+        archiveFiles: { "audio/a.mp3": fileOfLength(2048) },
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Only the override is fetched individually; the base is not re-downloaded or re-saved
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
+      expect(setup.downloadFileSpy.calls.argsFor(0)[0]).toBe("asset_pack_1/tz_sw/audio/a.mp3");
+      const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
+      expect(savedPaths.filter((path) => path === packPath("audio/a.mp3")).length).toBe(1);
+      // The row was written even though one of its slots never arrived: the base carries its local
+      // path, and the missing override was settled *without* one, so it keeps the manifest's remote
+      // path - which is exactly what sends the resume gate after that file and nothing else.
+      // (The per-file pass then rewrites it via `update`, which this fake models only for
+      // `_asset_packs`, so the row here shows the state the archive path left behind.)
+      const row = setup.contentsRow("audio/a.mp3");
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/a.mp3")));
+      expect(row.overrides.theme_default.tz_sw.filePath).toBe("tz_sw/audio/a.mp3");
     });
 
     it("rejects an archive entry that escapes the pack root", async () => {

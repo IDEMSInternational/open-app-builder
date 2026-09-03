@@ -11,10 +11,11 @@ import { BehaviorSubject, Subscription } from "rxjs";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 import { AsyncServiceBase } from "../asyncService.base";
-import type {
-  IAssetContentsEntryMinimal,
-  IAssetEntry,
-  IAssetOverrideProps,
+import {
+  getAssetPackArchiveFileName,
+  type IAssetContentsEntryMinimal,
+  type IAssetEntry,
+  type IAssetOverrideProps,
 } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
@@ -44,7 +45,6 @@ import { isImmediateAssetPackAction, RemoteAssetActionFactory } from "./remote-a
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { AssetContentsWriter } from "./remote-asset-contents.writer";
 import { AssetPackArchiveNotFoundError, streamAssetPackArchive } from "./remote-asset-archive";
-import { appendUrlParam } from "./providers/base.remote-asset";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
@@ -964,9 +964,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     return !(await this.remoteAssetMetadataService.hasCompletedDownload(assetPackName));
   }
 
-  /** Pack-relative location of a pack's archive within the bucket */
-  private getAssetPackArchivePath(assetPackName: string) {
-    return `${assetPackName}/${assetPackName}.zip`;
+  /**
+   * Pack-relative location of a pack's archive within the bucket.
+   *
+   * Version-keyed, so the app only ever asks for the archive matching the manifest in hand - see
+   * `getAssetPackArchiveFileName`. A pack published before archives existed, or one whose archive
+   * was not uploaded, simply 404s and takes the per-file path.
+   */
+  private getAssetPackArchivePath(assetPackName: string, version: string) {
+    return `${assetPackName}/${getAssetPackArchiveFileName(assetPackName, version)}`;
   }
 
   /**
@@ -983,19 +989,17 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     signal: AbortSignal,
     debugDownloadDelayMs = 0
   ): Promise<number> {
-    const baseUrl = await this.provider.getFetchableUrl(
-      this.getAssetPackArchivePath(assetPackName)
-    );
-    if (!baseUrl) {
-      throw new AssetPackArchiveNotFoundError(this.getAssetPackArchivePath(assetPackName));
+    // Guaranteed by `shouldUseAssetPackArchive`, restated here because the object key is built from
+    // it: an absent version would otherwise silently ask the bucket for `{packName}..zip`. Raised as
+    // "not found" so the pack latches onto per-file rather than retrying a request that cannot work.
+    if (!manifest.version) {
+      throw new AssetPackArchiveNotFoundError(`${assetPackName} (manifest has no version)`);
     }
-    // Stamp the fetch URL with the content version. This is not cache hygiene: the archive lives
-    // at a fixed key, buckets serve long cache headers, and entries are verified only against the
-    // manifest that asked for them - so a cached older archive would install stale content and
-    // then be recorded at the *new* version, leaving the pack permanently wrong with nothing to
-    // detect it. Stamping with the version (rather than a timestamp) keeps the archive cacheable
-    // while changing the URL exactly when the content changes.
-    const url = appendUrlParam(baseUrl, "v", manifest.version);
+    const archivePath = this.getAssetPackArchivePath(assetPackName, manifest.version);
+    const url = await this.provider.getFetchableUrl(archivePath);
+    if (!url) {
+      throw new AssetPackArchiveNotFoundError(archivePath);
+    }
 
     const missingSlotsByPath = new Map<string, IAssetPackSlotPlan[]>();
     for (const slot of slots) {
@@ -1034,10 +1038,61 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       });
     } finally {
       this.currentArchiveProgress = null;
+      // Settle whatever the archive never delivered, so the rows it *did* fill can be written.
+      // A slot left outstanding pins its entire row in the writer's `partial` map, and a row that
+      // never lands takes its already-extracted siblings down with it: those files are on disk,
+      // but with nothing recording them the resume gate cannot see them and the per-file fallback
+      // re-fetches bytes the archive already paid for. Runs on the throw path too - a truncated
+      // stream is the main way slots go missing.
+      this.settleUnsatisfiedArchiveSlots(slots, writer);
     }
 
     await writer.flush();
     return slots.filter((slot) => !slot.alreadyDownloaded && !slot.settled).length;
+  }
+
+  /**
+   * Hand one slot's outcome to the contents writer, at most once.
+   *
+   * The guard is what makes the end-of-stream sweep safe: a slot that arrived at the wrong size or
+   * failed to save is already settled as a failure but is still not `settled` (i.e. not
+   * integrated), so an unguarded sweep would settle it a second time and release its row while
+   * siblings were still outstanding.
+   */
+  private settleArchiveSlot(
+    slot: IAssetPackSlotPlan,
+    writer: AssetContentsWriter,
+    filePath?: string
+  ) {
+    if (slot.writerSettled) return;
+    writer.settleSlot(slot.assetEntry, { filePath, overrideProps: slot.overrideProps });
+    slot.writerSettled = true;
+  }
+
+  /**
+   * Settle the slots the archive did not supply *on rows it had already started*, as failures.
+   *
+   * Leaving them without a `filePath` keeps the manifest's own (remote) path on those slots, which
+   * is precisely what makes the resume gate re-fetch just those and skip everything the archive
+   * delivered.
+   *
+   * Restricted to rows with a settled sibling on purpose. Sweeping every undelivered slot would
+   * also complete rows the stream never reached, and completing a row flushes it - writing the
+   * manifest merge for files this attempt never touched. On a cancel or an offline abort there is
+   * no per-file pass afterwards to correct that, so a pack whose paths overlap another's could
+   * leave manifest-relative `filePath`s sitting over the other pack's `local://` rows until
+   * something re-integrated them. A row with nothing settled has no evidence worth preserving,
+   * so dropping it is both safer and what happened before this sweep existed.
+   */
+  private settleUnsatisfiedArchiveSlots(slots: IAssetPackSlotPlan[], writer: AssetContentsWriter) {
+    const startedRowIds = new Set(
+      slots.filter((slot) => slot.writerSettled).map((slot) => slot.assetEntry.id)
+    );
+    for (const slot of slots) {
+      if (slot.alreadyDownloaded || slot.writerSettled) continue;
+      if (!startedRowIds.has(slot.assetEntry.id)) continue;
+      this.settleArchiveSlot(slot, writer);
+    }
   }
 
   /**
@@ -1058,7 +1113,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       console.error(
         `[REMOTE ASSETS] Archive entry ${slot.relativePath} is ${sizeKb}kb, manifest says ${slot.slotSizeKb}kb; skipping`
       );
-      writer.settleSlot(slot.assetEntry, { overrideProps: slot.overrideProps });
+      this.settleArchiveSlot(slot, writer);
       return;
     }
     try {
@@ -1071,15 +1126,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       });
       // The write is the evidence the file is there, so there is no need to stat it again -
       // hundreds of redundant bridge calls on a large pack.
-      writer.settleSlot(slot.assetEntry, {
-        filePath: toLocalAssetPath(slot.targetPath),
-        overrideProps: slot.overrideProps,
-      });
+      this.settleArchiveSlot(slot, writer, toLocalAssetPath(slot.targetPath));
       slot.settled = true;
       await this.incrementDownloadProgress();
     } catch (error) {
       console.error(`[REMOTE ASSETS] Failed to save archive entry ${slot.relativePath}`, error);
-      writer.settleSlot(slot.assetEntry, { overrideProps: slot.overrideProps });
+      this.settleArchiveSlot(slot, writer);
     }
   }
 
@@ -1090,10 +1142,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   ) {
     for (const slot of slots) {
       if (!slot.alreadyDownloaded) continue;
-      writer.settleSlot(slot.assetEntry, {
-        filePath: toLocalAssetPath(slot.targetPath),
-        overrideProps: slot.overrideProps,
-      });
+      this.settleArchiveSlot(slot, writer, toLocalAssetPath(slot.targetPath));
       slot.settled = true;
       await this.incrementDownloadProgress();
     }

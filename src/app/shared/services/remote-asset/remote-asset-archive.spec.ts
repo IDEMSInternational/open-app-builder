@@ -71,7 +71,7 @@ describe("streamAssetPackArchive", () => {
     expect(entries.get("data/b.svg").every((byte) => byte === 60)).toBeTrue();
   });
 
-  it("skips unwanted entries without decompressing them", async () => {
+  it("hands back only the wanted entries", async () => {
     const { response } = streamingResponse(archive());
     spyOn(window, "fetch").and.resolveTo(response);
     const { entries, onEntry } = collectEntries();
@@ -84,8 +84,8 @@ describe("streamAssetPackArchive", () => {
       onProgress: () => undefined,
     });
 
-    // Inflating entries only to discard them would undo the reason for compressing selectively:
-    // on a bulk update most entries are already on disk
+    // Unwanted entries ARE read and inflated - see `does not retain skipped entries in memory` for
+    // why leaving them unread is not an option - they just never reach the caller
     expect([...entries.keys()]).toEqual(["images/a.png"]);
   });
 
@@ -144,6 +144,49 @@ describe("streamAssetPackArchive", () => {
         onProgress: () => undefined,
       })
     ).toBeRejectedWithError(AssetPackArchiveNotFoundError);
+  });
+
+  it("treats every no-archive-here status as missing, not as a failed attempt", async () => {
+    // A pack published before archives existed, or a bucket that answers a missing object with
+    // something other than 404, must latch onto per-file on the first probe rather than spending
+    // the pack's whole archive allowance rediscovering it every session
+    let status = 404;
+    spyOn(window, "fetch").and.callFake(
+      async () => ({ ok: false, status, headers: { get: () => null } }) as any
+    );
+
+    for (const probedStatus of [400, 401, 403, 404]) {
+      status = probedStatus;
+      await expectAsync(
+        streamAssetPackArchive({
+          url: "https://example.test/pack.zip",
+          signal: new AbortController().signal,
+          shouldExtract: () => true,
+          onEntry: async () => undefined,
+          onProgress: () => undefined,
+        })
+      ).toBeRejectedWithError(AssetPackArchiveNotFoundError);
+    }
+  });
+
+  it("treats a retryable status as a failed attempt, not a missing archive", async () => {
+    // 5xx and 429 say try again; latching on them would drop a pack onto per-file for the rest of
+    // the session over a blip
+    spyOn(window, "fetch").and.resolveTo({
+      ok: false,
+      status: 503,
+      headers: { get: () => null },
+    } as any);
+
+    await expectAsync(
+      streamAssetPackArchive({
+        url: "https://example.test/pack.zip",
+        signal: new AbortController().signal,
+        shouldExtract: () => true,
+        onEntry: async () => undefined,
+        onProgress: () => undefined,
+      })
+    ).toBeRejectedWithError(/HTTP 503/);
   });
 
   it("rejects an entry whose path escapes the archive root", async () => {

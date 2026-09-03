@@ -32,8 +32,10 @@ function createPackFolder(files: Record<string, string>) {
   return folder;
 }
 
+const ARCHIVE_FILE_NAME = "my_pack.v1.zip";
+
 const readArchive = (folder: string) =>
-  unzipSync(new Uint8Array(fs.readFileSync(path.resolve(folder, "my_pack.zip"))));
+  unzipSync(new Uint8Array(fs.readFileSync(path.resolve(folder, ARCHIVE_FILE_NAME))));
 
 /** yarn workspace scripts test -t asset-pack-archive.spec.ts */
 describe("asset pack archive", () => {
@@ -99,6 +101,24 @@ describe("asset pack archive", () => {
   });
 
   describe("writeAssetPackArchive", () => {
+    it("keys the archive filename on the manifest version", () => {
+      const folder = createPackFolder({ "audio/a.mp3": "aaa" });
+
+      const { archiveFileName } = writeAssetPackArchive(
+        folder,
+        "my_pack",
+        manifestOf([{ id: "audio/a.mp3" }])
+      );
+
+      // The version belongs in the object key, not a cache-busting query: entries are checked only
+      // against the manifest that asked for them, so a stale archive at a fixed key would install
+      // outdated bytes and have them recorded at the new version, permanently and undetectably
+      expect(archiveFileName).toBe("my_pack.v1.zip");
+      expect(fs.existsSync(path.resolve(folder, archiveFileName))).toBe(true);
+      // A publish adds an object rather than overwriting the one in-flight installs are reading
+      expect(fs.existsSync(path.resolve(folder, "my_pack.zip"))).toBe(false);
+    });
+
     it("writes every manifest slot, preserving nested paths", () => {
       const folder = createPackFolder({
         "audio/a.mp3": "aaa",
@@ -174,7 +194,7 @@ describe("asset pack archive", () => {
         manifestOf([{ id: "images/icon.svg" }, { id: "audio/track.mp3" }])
       );
 
-      const archiveBytes = fs.readFileSync(path.resolve(folder, "my_pack.zip")).byteLength;
+      const archiveBytes = fs.readFileSync(path.resolve(folder, ARCHIVE_FILE_NAME)).byteLength;
       // Identical content, but only one copy is deflated, so the total lands well below two
       // uncompressed copies and well above one
       expect(archiveBytes).toBeGreaterThan(5000);
