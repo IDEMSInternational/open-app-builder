@@ -22,7 +22,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset.service.ts` | Everything stateful: init, download orchestration, per-file fetch/save/integrate, resume |
 | `remote-asset-metadata.service.ts` | Reads/writes pack status rows in the `_asset_packs` data list |
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
-| `remote-asset.types.ts` | Shared types, the two protected data list names, and the storage folder name |
+| `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the retry/version-check tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
 ## The central idea: `_assets_contents`
@@ -83,6 +83,12 @@ Execution is deliberately serial: **one pack at a time, one file at a time** wit
 
 A pack only reaches `completed` when **all** slots succeed. Per-slot failures are counted and returned as `failedCount`; a non-zero count throws, which either parks the pack (offline) or surfaces it as `error` (online). This matters: silently marking a pack complete with missing files leaves the app permanently referencing assets that will never arrive.
 
+Because of that all-or-nothing rule, a download is retried (`ASSET_DOWNLOAD_RETRY_LIMIT`, exponential backoff from `ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS`) before it counts as failed - otherwise a single blip on one file of a hundred sends the whole pack to `error`, which then needs an explicit re-trigger before it can make progress. Files already saved are *not* lost: the walk continues past a failed slot and the resume gate skips everything already on disk next time. Each slot gets its own allowance, and the **pack manifest** is retried on the same budget - a manifest blip fails an attempt before any slot retry could help. The manifest's *parse* is inside that retry, not after it: a truncated body is still a non-empty string, so parsing outside would read as a successful fetch and then fail the attempt with no second try.
+
+Two things are deliberately *not* retried. A cancelled download aborts immediately, backoff included. Going offline stops without starting another attempt - checked before every attempt, including the first, since the walk is serial and a device already known to be offline would otherwise spend a doomed request on every remaining file - so the pack-level `waiting_for_connection` handler can park and resume rather than burning attempts on a connection known to be down.
+
+Note that providers report failure as `null` with no error detail, so a genuinely missing object is retried too. That is the cheaper mistake for *one* file - the alternative spends the same requests sending packs to `error` that would otherwise have completed. What it is not cheap for is a whole-pack outage (dead bucket, unpublished pack, every object 500), where flattening the status means paying every file's full allowance and backoff in turn before anyone is told. `ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT` bounds that: once that many slots have failed **in a row**, each having spent its retries, the walk stops and the pack goes to `error`. Any success resets the count - including a slot skipped as already on disk - so scattered missing files still walk the whole pack and download everything that is there.
+
 ## Resume after interruption
 
 Downloads run in the WebView's JS runtime, so killing or backgrounding the app kills the download. Recovery is *restart and skip what's already done*, not byte-range continuation.
@@ -131,7 +137,9 @@ A download holds the template action queue for its full duration, so a queued `c
 
 A cancel therefore lands mid-attempt, so `_asset_packs` status writes are serialised in `RemoteAssetMetadataService`, carry the attempt's abort signal, and treat `cancelled` as sticky until a later attempt starts. Serialising is the load-bearing part: `dynamicDataService.update` awaits internally before writing, so an `in_progress` write issued *before* the cancel could otherwise be applied *after* it — and a pack left `in_progress` is what resume treats as "restart me". Only `download_status` needs this; a stray count or file write after a cancel is harmless.
 
-Cancelling aborts the loop, not the socket: the file request already in flight runs to completion and its result is discarded at the next checkpoint.
+Cancelling aborts the socket too, not just the loop: the attempt's abort signal is threaded into the provider's `fetch`, so the transfer in flight stops rather than running to completion and having its bytes discarded. That covers the HTTP transfer only - a Storage plugin round trip already under way (Firebase's `getDownloadUrl` fallback) has no signal to take and still runs to completion. Providers surface that as a rejected `AbortError`, never a `null` result, which is what keeps a cancel from being mistaken for a failed download and earning retries.
+
+The exception is the Supabase provider's default route. `supabase-js` `download()` takes no abort signal, and sending signalled downloads via the public URL instead would quietly require every bucket to be public, so on that route a cancel still only lands at the next checkpoint. Firebase, and any Supabase download that already goes via the public URL (`noCache`, i.e. manifests), abort in flight.
 
 #### Artificial delay
 
