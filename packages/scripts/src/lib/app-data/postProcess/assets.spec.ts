@@ -165,9 +165,11 @@ describe("Assets PostProcess", () => {
     const manifestPath = resolve("mock/app_data/remote_assets/test_pack/test_pack.json");
     expect(existsSync(manifestPath)).toEqual(true);
 
-    // Check that standard contents.json also exists
+    // A pack folder gets no contents.json: the manifest is built from the in-memory entries, and
+    // nothing reads the file at runtime or at build time, so writing it only added dead weight to
+    // every manual upload
     const contentsPath = resolve("mock/app_data/remote_assets/test_pack/contents.json");
-    expect(existsSync(contentsPath)).toEqual(true);
+    expect(existsSync(contentsPath)).toEqual(false);
 
     // Check manifest format
     const manifest = readJsonSync(manifestPath);

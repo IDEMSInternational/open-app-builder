@@ -1,4 +1,5 @@
 import type { FlowTypes } from "../../model";
+import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
 
 /** Name of the protected data list storing bundled and downloaded asset contents */
 export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
@@ -28,6 +29,26 @@ export const VERSION_CHECK_MIN_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
  * recovery escape hatch.
  */
 export const VERSION_CHECK_FAILURE_BACKOFF_MS = 1000 * 60 * 15; // 15 minutes
+
+/**
+ * Consecutive archive failures (corrupt stream, 5xx, unzip error) after which a pack falls back to
+ * per-file downloads for the rest of the session. Being offline does not count - that is parked
+ * and retried, not a failure of the archive.
+ *
+ * Held in memory only: persisting it would strand a pack on the slow path after two transient
+ * blips, with nothing to clear it.
+ */
+export const ASSET_PACK_ARCHIVE_FAILURE_LIMIT = 2;
+
+/**
+ * How many completed `_assets_contents` rows to accumulate before writing them as one bulk
+ * operation. Bounds how much written-but-unrecorded work an interruption discards: unflushed
+ * files are on disk but re-download next attempt, which is the safe direction but wasted effort.
+ */
+export const ASSET_CONTENTS_FLUSH_INTERVAL = 25;
+
+/** Minimum gap between persisted download-progress writes, to keep chunk-rate updates off the db */
+export const DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS = 500;
 
 /**
  * Retries allowed for a single download (asset slot or pack manifest) before it counts as failed.
@@ -144,6 +165,16 @@ export interface IDBAssetPack {
   /** Number of asset files downloaded so far in the current attempt */
   assets_downloaded_count: number;
   /**
+   * Percentage complete for the current attempt, 0-100.
+   *
+   * Exists because `assets_downloaded_count` is a coarse bar: pack files range from under a
+   * kilobyte to a couple of megabytes, so a file count jumps unevenly. This tracks bytes when
+   * downloading an archive and files otherwise, so authors get one field that moves smoothly
+   * whichever way a pack was fetched - which matters because that choice is invisible to
+   * authoring.
+   */
+  download_progress_percent: number;
+  /**
    * Manifest version at which every file in the pack was verified downloaded. Only advances on a
    * fully successful download, so a partially applied update leaves it at the previous value and
    * the next check retries. Empty for packs downloaded before versioning existed.
@@ -186,6 +217,38 @@ export interface IAssetPackDownloadStatusTimestamps {
 export interface IAssetPackAssetCounts {
   assetsTotalCount?: number;
   assetsDownloadedCount?: number;
+}
+
+export interface IAssetPackProgress {
+  /** Percentage complete for the current attempt, 0-100. See `IDBAssetPack.download_progress_percent` */
+  downloadProgressPercent?: number;
+}
+
+/**
+ * One downloadable file within a pack - a manifest entry's base file, or one of its theme/language
+ * overrides - resolved against local storage before any fetching begins.
+ */
+export interface IAssetPackSlotPlan {
+  assetEntry: IAssetEntry;
+  overrideProps?: IAssetOverrideProps;
+  /** Path within the pack: the archive entry name, and the suffix of the remote object path */
+  relativePath: string;
+  /** Where the file lives in local storage */
+  targetPath: string;
+  slotChecksum: string | undefined;
+  slotSizeKb: number | undefined;
+  /** Whether the resume gate found a trustworthy local copy already on disk */
+  alreadyDownloaded?: boolean;
+  /** Whether this attempt has written and integrated the slot */
+  settled?: boolean;
+  /**
+   * Whether the slot's outcome has been handed to the `AssetContentsWriter`. Distinct from
+   * `settled`, which means the file was actually integrated: a slot the archive delivered at the
+   * wrong size, or failed to save, is settled with the writer as a *failure* while staying
+   * unintegrated. Tracking both is what stops the end-of-stream sweep settling such a slot twice
+   * and releasing its row before the rest of it has arrived.
+   */
+  writerSettled?: boolean;
 }
 
 export interface IActiveAssetPackDownload {

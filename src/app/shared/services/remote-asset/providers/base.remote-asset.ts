@@ -21,6 +21,17 @@ export interface IRemoteAssetProvider {
 
   /** Get file metadata */
   getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null>;
+
+  /**
+   * Resolve a URL the app can fetch directly, for cases that need the response stream rather than
+   * a finished blob (see the asset pack archive download).
+   *
+   * Separate from `getPublicUrl` because that only works where bucket objects are publicly
+   * readable, which is not true of every deployment. Costing a round trip is acceptable here: it
+   * is paid once per archive, not once per asset.
+   * @returns null when no URL could be resolved
+   */
+  getFetchableUrl(relativePath: string): Promise<string | null>;
 }
 
 export interface IRemoteAssetConfig {

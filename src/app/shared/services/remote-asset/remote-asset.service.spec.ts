@@ -12,6 +12,7 @@ import { IAssetContents } from "src/app/data";
 import { FlowTypes } from "../../model";
 import { IAssetEntry, IDeploymentRuntimeConfig } from "data-models";
 import clone from "clone";
+import { zipSync } from "fflate";
 import { arrayToHashmap } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
@@ -154,6 +155,7 @@ function buildMockAssetPack(overrides: Partial<IDBAssetPack> = {}): IDBAssetPack
     download_status_updated_at: "2024-01-01T00:01:00.000Z",
     assets_total_count: 1,
     assets_downloaded_count: 1,
+    download_progress_percent: 100,
     version: "",
     available_version: "",
     update_available: false,
@@ -192,15 +194,32 @@ function installAssetPackStore(mock: jasmine.SpyObj<DynamicDataService>) {
     else throw new Error(`[Update Fail] no doc exists for data_list:_asset_packs with id: ${id}`);
     record(id);
   });
+  // `_assets_contents` rows are written in bulk by the archive path. Applying them to the same
+  // store the snapshots read from matters: after an archive fails the service re-snapshots to see
+  // what it already integrated, and would otherwise re-fetch the lot.
+  mock.bulkUpsert.and.callFake(async (_type, flow_name, bulkRows: any[]) => {
+    const byId = new Map((otherFlowRows[flow_name] || []).map((row: any) => [row.id, row]));
+    for (const row of bulkRows) byId.set(row.id, clone(row));
+    otherFlowRows[flow_name] = [...byId.values()];
+  });
   mock.snapshot.and.callFake(async (_type, flow_name) => {
     if (flow_name === "_asset_packs") return [...rows.values()] as any;
     return (otherFlowRows[flow_name] || []) as any;
+  });
+  // Modelled rather than stubbed to a bare resolve: `reset()` clears these lists for real, and
+  // anything keyed on persisted pack state (whether a pack has ever completed, say) is supposed to
+  // read as untouched afterwards. A fake that kept the rows would report the opposite.
+  mock.resetFlow.and.callFake(async (_type, flow_name) => {
+    if (flow_name === "_asset_packs") rows.clear();
+    else delete otherFlowRows[flow_name];
   });
 
   return {
     /** Preload rows, e.g. a pack left behind by a previous session */
     seed: (...seedRows: IDBAssetPack[]) => seedRows.forEach((row) => rows.set(row.id, { ...row })),
     setFlowRows: (flow_name: string, flowRows: any[]) => (otherFlowRows[flow_name] = flowRows),
+    /** Rows currently stored for a non-`_asset_packs` flow, e.g. integrated `_assets_contents` */
+    getFlowRows: (flow_name: string) => (otherFlowRows[flow_name] || []) as any[],
     /** Row state after each write - i.e. the sequence of states a pack moved through */
     history,
     /** The stored row, failing loudly rather than yielding undefined if it was never written */
@@ -277,11 +296,11 @@ describe("RemoteAssetsService", () => {
     mockDynamicDataService = jasmine.createSpyObj<DynamicDataService>("DynamicDataService", [
       "upsert",
       "update",
+      "bulkUpsert",
       "snapshot",
       "resetFlow",
     ]);
     assetPacks = installAssetPackStore(mockDynamicDataService);
-    mockDynamicDataService.resetFlow.and.resolveTo();
     mockNetworkService = jasmine.createSpyObj<NetworkService>("NetworkService", [
       "isOffline",
       "waitUntilConnected",
@@ -371,6 +390,23 @@ describe("RemoteAssetsService", () => {
         },
       },
     });
+  });
+
+  it("does not count an override with no file path as a downloadable slot", () => {
+    // A corrupt or hand-edited manifest can carry one. Counting it would set a total the download
+    // can never reach, leaving the pack permanently short of complete.
+    const total = service["countDownloadFiles"]([
+      {
+        id: "audio/a.mp3",
+        overrides: {
+          theme_default: {
+            tz_sw: { filePath: "tz_sw/audio/a.mp3", md5Checksum: "x", size_kb: 1 },
+            ke_sw: { filePath: "", md5Checksum: "y", size_kb: 1 },
+          },
+        },
+      } as unknown as IAssetEntry,
+    ]);
+    expect(total).toBe(2);
   });
 
   it("counts download files including overrides and excludes base for overridesOnly", () => {
@@ -500,9 +536,16 @@ describe("RemoteAssetsService", () => {
     );
     // Counts are written separately, merging into the row rather than replacing it
     expect(rows[1]).toEqual(
-      jasmine.objectContaining({ assets_total_count: 0, assets_downloaded_count: 0 })
+      jasmine.objectContaining({
+        assets_total_count: 0,
+        assets_downloaded_count: 0,
+        download_progress_percent: 0,
+      })
     );
-    expect(rows[2]).toEqual(
+    // Progress is written once more on success regardless of throttling, so a completed pack can
+    // never be left showing a partial bar
+    expect(rows[2]).toEqual(jasmine.objectContaining({ download_progress_percent: 100 }));
+    expect(rows[3]).toEqual(
       jasmine.objectContaining({
         id: "asset_pack_1",
         name: "asset_pack_1",
@@ -523,6 +566,7 @@ describe("RemoteAssetsService", () => {
       {
         assets_total_count: 0,
         assets_downloaded_count: 0,
+        download_progress_percent: 0,
       }
     );
   });
@@ -1846,6 +1890,813 @@ describe("RemoteAssetsService", () => {
    * `resumeInterruptedAssetPackDownloads` filters purely on `download_status`, so an update killed
    * mid-flight comes back as a plain `in_progress` row with nothing in memory to say otherwise.
    */
+  describe("asset pack archives", () => {
+    /** Manifest entry sized to match the bytes a fixture file will actually contain */
+    const archiveEntry = (id: string, bytes: number, extra: Partial<IAssetEntry> = {}) =>
+      ({
+        id,
+        md5Checksum: `checksum-${id}`,
+        size_kb: Math.round(bytes / 102.4) / 10,
+        ...extra,
+      }) as FlowTypes.Data_listRow<IAssetEntry>;
+
+    const fileOfLength = (length: number, fill = 97) => new Uint8Array(length).fill(fill);
+
+    /** Byte offset of the second entry's local file header, i.e. just past the first entry */
+    function secondEntryOffset(zipBytes: Uint8Array) {
+      let found = 0;
+      for (let i = 0; i < zipBytes.length - 3; i++) {
+        const isLocalHeader =
+          zipBytes[i] === 0x50 &&
+          zipBytes[i + 1] === 0x4b &&
+          zipBytes[i + 2] === 0x03 &&
+          zipBytes[i + 3] === 0x04;
+        if (isLocalHeader && ++found === 2) return i;
+      }
+      throw new Error("Test archive has fewer than two entries");
+    }
+
+    /** Serve bytes as a genuine chunked ReadableStream, so the streaming path is really exercised */
+    function streamingResponse(body: Uint8Array, { chunkSize = 64, status = 200 } = {}) {
+      return {
+        ok: status >= 200 && status < 300,
+        status,
+        headers: { get: (name: string) => (name === "content-length" ? `${body.length}` : null) },
+        body: {
+          getReader: () => {
+            let offset = 0;
+            return {
+              read: async () => {
+                if (offset >= body.length) return { done: true, value: undefined };
+                const value = body.slice(offset, offset + chunkSize);
+                offset += chunkSize;
+                return { done: false, value };
+              },
+              cancel: async () => undefined,
+            };
+          },
+        },
+      } as any;
+    }
+
+    /* eslint-disable jasmine/no-unsafe-spy */
+    function setupArchiveDownload(options: {
+      manifestRows: FlowTypes.Data_listRow<IAssetEntry>[];
+      /** Contents of the archive, keyed by pack-relative path */
+      archiveFiles: Record<string, Uint8Array>;
+      existingContentsRows?: Partial<IAssetEntry>[];
+      version?: string;
+      /** Deflate these entries, to prove both compression methods extract */
+      deflatePaths?: string[];
+      /** Return this instead of the archive bytes */
+      respondWith?: () => any;
+      assetPackName?: string;
+    }) {
+      const {
+        manifestRows,
+        archiveFiles,
+        existingContentsRows = [],
+        version = "v1",
+        deflatePaths = [],
+        respondWith,
+        assetPackName = "asset_pack_1",
+      } = options;
+
+      spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      const manifest: FlowTypes.AssetPack = {
+        flow_type: "asset_pack",
+        flow_name: assetPackName,
+        version,
+        rows: manifestRows,
+      };
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo(manifest);
+
+      const zipInput: Record<string, any> = {};
+      for (const [path, data] of Object.entries(archiveFiles)) {
+        zipInput[path] = [data, { level: deflatePaths.includes(path) ? 6 : 0 }];
+      }
+      const archiveBytes = zipSync(zipInput);
+
+      const downloadFileSpy = jasmine.createSpy("downloadFile").and.resolveTo(new Blob(["x"]));
+      const getFetchableUrlSpy = jasmine
+        .createSpy("getFetchableUrl")
+        .and.resolveTo("https://storage.example/packs/asset_pack_1.zip?alt=media&token=abc");
+      service["provider"] = {
+        downloadFile: downloadFileSpy,
+        getFetchableUrl: getFetchableUrlSpy,
+      } as any;
+
+      const fetchSpy = spyOn(window, "fetch").and.callFake(async () =>
+        respondWith ? respondWith() : streamingResponse(archiveBytes)
+      );
+
+      const fileManager = service["fileManagerService"];
+      // Model local storage, so files the archive writes are visible to any later resume check.
+      // Without this a fallback after a partial archive would re-fetch files it already has, and
+      // the test would pass while hiding exactly the behaviour it is meant to prove.
+      const savedFiles = new Map<string, number>();
+      const saveFileSpy = spyOn(fileManager, "saveFile").and.callFake(
+        async ({ targetPath, data }) => {
+          savedFiles.set(targetPath, data.size);
+          return { localFilepath: `file:///data/${targetPath}`, src: localSrc(targetPath) };
+        }
+      );
+      const getSavedFileInfoSpy = spyOn(fileManager, "getSavedFileInfo").and.callFake(
+        async (targetPath: string) =>
+          savedFiles.has(targetPath)
+            ? { exists: true, sizeBytes: savedFiles.get(targetPath) }
+            : { exists: false }
+      );
+
+      assetPacks.setFlowRows("_assets_contents", existingContentsRows);
+
+      return {
+        downloadFileSpy,
+        getFetchableUrlSpy,
+        fetchSpy,
+        saveFileSpy,
+        getSavedFileInfoSpy,
+        savedFiles,
+        archiveBytes,
+        getAssetPackRow: () => assetPacks.get(assetPackName),
+        contentsRow: (id: string) =>
+          assetPacks.getFlowRows("_assets_contents").find((row) => row.id === id),
+      };
+    }
+    /* eslint-enable jasmine/no-unsafe-spy */
+
+    it("downloads a pack as one archive when nothing is present locally", async () => {
+      const { fetchSpy, downloadFileSpy, saveFileSpy, getAssetPackRow, contentsRow } =
+        setupArchiveDownload({
+          manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 1024)],
+          archiveFiles: {
+            "images/a.png": fileOfLength(2048),
+            "images/b.png": fileOfLength(1024),
+          },
+        });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      // The whole point: no per-asset requests once the archive has been paid for
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      expect(saveFileSpy).toHaveBeenCalledTimes(2);
+      // Written to the shared remote_assets folder, matching where the resume gate looks
+      expect(saveFileSpy).toHaveBeenCalledWith(
+        jasmine.objectContaining({ targetPath: packPath("images/a.png") })
+      );
+      expect(contentsRow("images/a.png").filePath).toBe(localAssetPath(packPath("images/a.png")));
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({
+          download_status: "completed",
+          assets_downloaded_count: 2,
+          download_progress_percent: 100,
+          version: "v1",
+        })
+      );
+    });
+
+    it("asks for the archive keyed to the manifest version", async () => {
+      const { fetchSpy, getFetchableUrlSpy } = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048)],
+        archiveFiles: { "images/a.png": fileOfLength(2048) },
+        version: "abc123",
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // The version is in the object key, not a query parameter, so a stale archive is never
+      // requested rather than merely cache-busted past
+      expect(getFetchableUrlSpy).toHaveBeenCalledWith("asset_pack_1/asset_pack_1.abc123.zip");
+      // The resolved url is fetched as-is; it already carries the provider's own query
+      expect(fetchSpy.calls.mostRecent().args[0]).toBe(
+        "https://storage.example/packs/asset_pack_1.zip?alt=media&token=abc"
+      );
+    });
+
+    it("extracts both stored and deflated entries", async () => {
+      const { saveFileSpy } = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("data/b.svg", 4096)],
+        archiveFiles: {
+          "images/a.png": fileOfLength(2048),
+          "data/b.svg": fileOfLength(4096, 60),
+        },
+        deflatePaths: ["data/b.svg"],
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(saveFileSpy).toHaveBeenCalledTimes(2);
+    });
+
+    it("does not extract entries whose slot is already present on disk", async () => {
+      const present = archiveEntry("images/present.png", 2048);
+      const missing = archiveEntry("images/missing.png", 1024);
+      const setup = setupArchiveDownload({
+        manifestRows: [present, missing, archiveEntry("images/other.png", 4096)],
+        archiveFiles: {
+          "images/present.png": fileOfLength(2048),
+          "images/missing.png": fileOfLength(1024),
+          "images/other.png": fileOfLength(4096),
+        },
+        existingContentsRows: [
+          {
+            id: "images/present.png",
+            md5Checksum: present.md5Checksum,
+            size_kb: present.size_kb,
+            filePath: localAssetPath(packPath("images/present.png")),
+          },
+        ],
+      });
+      setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
+        targetPath === packPath("images/present.png")
+          ? { exists: true, sizeBytes: 2048 }
+          : { exists: false }
+      );
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Re-writing a present file wastes a write and, with shared storage, can clobber a file
+      // another pack owns
+      const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
+      expect(savedPaths).not.toContain(packPath("images/present.png"));
+      expect(savedPaths).toContain(packPath("images/missing.png"));
+      // ...but it is still integrated, so its row carries the local path
+      expect(setup.contentsRow("images/present.png").filePath).toBe(
+        localAssetPath(packPath("images/present.png"))
+      );
+    });
+
+    it("fetches individually once the pack has completed a download before", async () => {
+      const changed = archiveEntry("audio/big.mp3", 102400);
+      const unchanged = archiveEntry("images/small.png", 1024);
+      const setup = setupArchiveDownload({
+        manifestRows: [changed, unchanged],
+        archiveFiles: {
+          "audio/big.mp3": fileOfLength(102400),
+          "images/small.png": fileOfLength(1024),
+        },
+        existingContentsRows: [
+          {
+            id: "images/small.png",
+            md5Checksum: unchanged.md5Checksum,
+            size_kb: unchanged.size_kb,
+            filePath: localAssetPath(packPath("images/small.png")),
+          },
+        ],
+      });
+      // A pack that has been usable before is being *updated*, whatever share of it changed
+      assetPacks.seed(
+        buildMockAssetPack({ id: "asset_pack_1", has_completed_download: true, version: "v0" })
+      );
+      setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
+        targetPath === packPath("images/small.png")
+          ? { exists: true, sizeBytes: 1024 }
+          : { exists: false }
+      );
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // ~99% of the pack's bytes changed, and it still goes per-file: the rule is about whether
+      // the pack has ever been usable, not how much of it moved
+      expect(setup.fetchSpy).not.toHaveBeenCalled();
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("resumes an interrupted first install on the archive, not file by file", async () => {
+      const arrived = archiveEntry("images/arrived.png", 2048);
+      const setup = setupArchiveDownload({
+        manifestRows: [
+          arrived,
+          archiveEntry("images/b.png", 2048),
+          archiveEntry("images/c.png", 2048),
+        ],
+        archiveFiles: {
+          "images/arrived.png": fileOfLength(2048),
+          "images/b.png": fileOfLength(2048),
+          "images/c.png": fileOfLength(2048),
+        },
+        existingContentsRows: [
+          {
+            id: "images/arrived.png",
+            md5Checksum: arrived.md5Checksum,
+            size_kb: arrived.size_kb,
+            filePath: localAssetPath(packPath("images/arrived.png")),
+          },
+        ],
+      });
+      // A first install killed part-way: files on disk, but the pack has never completed. Keying
+      // the mode on "is anything present" would drop the whole remainder onto per-file requests.
+      assetPacks.seed(
+        buildMockAssetPack({
+          id: "asset_pack_1",
+          download_status: "in_progress",
+          has_completed_download: false,
+        })
+      );
+      setup.getSavedFileInfoSpy.and.callFake(async (targetPath: string) =>
+        targetPath === packPath("images/arrived.png")
+          ? { exists: true, sizeBytes: 2048 }
+          : { exists: false }
+      );
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(setup.fetchSpy).toHaveBeenCalledTimes(1);
+      expect(setup.downloadFileSpy).not.toHaveBeenCalled();
+    });
+
+    it("never uses an archive for a manifest with no version", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048)],
+        archiveFiles: { "images/a.png": fileOfLength(2048) },
+        version: "",
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Without a version there is nothing to stamp the url with, so a CDN could serve a stale
+      // archive indefinitely and it would be recorded as current
+      expect(setup.fetchSpy).not.toHaveBeenCalled();
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("falls back to per-file downloads when no archive is published, once per session", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 2048)],
+        archiveFiles: {},
+        respondWith: () => ({ ok: false, status: 404, headers: { get: () => null } }),
+      });
+
+      expect(await service.downloadAssetPackByName("asset_pack_1")).toBeTrue();
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(2);
+
+      setup.downloadFileSpy.calls.reset();
+      setup.fetchSpy.calls.reset();
+      expect(await service.downloadAssetPackByName("asset_pack_1")).toBeTrue();
+
+      // Latched: a pack with no archive must not re-probe on every download
+      expect(setup.fetchSpy).not.toHaveBeenCalled();
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(2);
+    });
+
+    it("fetches only the remainder after an archive fails midway", async () => {
+      const rows = [
+        archiveEntry("images/a.png", 2048),
+        archiveEntry("images/b.png", 2048),
+        archiveEntry("images/c.png", 2048),
+      ];
+      const files = {
+        "images/a.png": fileOfLength(2048),
+        "images/b.png": fileOfLength(2048),
+        "images/c.png": fileOfLength(2048),
+      };
+      const full = zipSync({
+        "images/a.png": [files["images/a.png"], { level: 0 }],
+        "images/b.png": [files["images/b.png"], { level: 0 }],
+        "images/c.png": [files["images/c.png"], { level: 0 }],
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: rows,
+        archiveFiles: files,
+        // Cut the stream partway through the second entry, so only the first one completes
+        respondWith: () => streamingResponse(full.slice(0, secondEntryOffset(full) + 10)),
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Whatever the archive did deliver is kept; only the rest is fetched individually
+      const individually = setup.downloadFileSpy.calls
+        .allArgs()
+        .map(([path]) => path as string)
+        .sort();
+      expect(individually).toEqual(["asset_pack_1/images/b.png", "asset_pack_1/images/c.png"]);
+      expect(setup.contentsRow("images/a.png").filePath).toBe(
+        localAssetPath(packPath("images/a.png"))
+      );
+    });
+
+    it("does not write rows the archive never reached", async () => {
+      const rows = [
+        archiveEntry("images/a.png", 2048),
+        archiveEntry("images/b.png", 2048),
+        archiveEntry("images/c.png", 2048),
+      ];
+      const files = {
+        "images/a.png": fileOfLength(2048),
+        "images/b.png": fileOfLength(2048),
+        "images/c.png": fileOfLength(2048),
+      };
+      const full = zipSync({
+        "images/a.png": [files["images/a.png"], { level: 0 }],
+        "images/b.png": [files["images/b.png"], { level: 0 }],
+        "images/c.png": [files["images/c.png"], { level: 0 }],
+      });
+      setupArchiveDownload({
+        manifestRows: rows,
+        archiveFiles: files,
+        respondWith: () => streamingResponse(full.slice(0, secondEntryOffset(full) + 10)),
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Completing a row flushes it, which writes the manifest merge - so settling slots the
+      // stream never reached would publish manifest-relative paths for files this attempt never
+      // touched. Harmless where a per-file pass follows and corrects them, but a cancel or an
+      // offline abort has no such pass, and these paths can sit over another pack's `local://`
+      // rows where the two packs share an asset.
+      const writtenIds = mockDynamicDataService.bulkUpsert.calls
+        .allArgs()
+        .flatMap(([, , bulkRows]) => (bulkRows as { id: string }[]).map((row) => row.id));
+      expect(writtenIds).toEqual(["images/a.png"]);
+    });
+
+    it("keeps an extracted base file when its override is missing from the archive", async () => {
+      spyOn(console, "warn");
+      spyOn(console, "error");
+      // A row whose slots do not all arrive is the case the writer's "a failed slot still settles"
+      // rule exists for. If the row is never written, the base file sits on disk unrecorded, the
+      // resume gate cannot see it, and the per-file fallback re-fetches bytes already paid for.
+      const withOverride = archiveEntry("audio/a.mp3", 2048, {
+        overrides: {
+          theme_default: {
+            tz_sw: {
+              filePath: "tz_sw/audio/a.mp3",
+              md5Checksum: "checksum-override",
+              size_kb: Math.round(1024 / 102.4) / 10,
+            },
+          },
+        },
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: [withOverride],
+        // Override deliberately absent: an archive published out of step with its manifest
+        archiveFiles: { "audio/a.mp3": fileOfLength(2048) },
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Only the override is fetched individually; the base is not re-downloaded or re-saved
+      expect(setup.downloadFileSpy).toHaveBeenCalledTimes(1);
+      expect(setup.downloadFileSpy.calls.argsFor(0)[0]).toBe("asset_pack_1/tz_sw/audio/a.mp3");
+      const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
+      expect(savedPaths.filter((path) => path === packPath("audio/a.mp3")).length).toBe(1);
+      // The row was written even though one of its slots never arrived: the base carries its local
+      // path, and the missing override was settled *without* one, so it keeps the manifest's remote
+      // path - which is exactly what sends the resume gate after that file and nothing else.
+      // (The per-file pass then rewrites it via `update`, which this fake models only for
+      // `_asset_packs`, so the row here shows the state the archive path left behind.)
+      const row = setup.contentsRow("audio/a.mp3");
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/a.mp3")));
+      expect(row.overrides.theme_default.tz_sw.filePath).toBe("tz_sw/audio/a.mp3");
+    });
+
+    it("rejects an archive entry that escapes the pack root", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048)],
+        archiveFiles: { "images/a.png": fileOfLength(2048) },
+        respondWith: () =>
+          streamingResponse(zipSync({ "../escaped.png": [fileOfLength(2048), { level: 0 }] })),
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
+      expect(savedPaths.some((path) => path.includes(".."))).toBeFalse();
+    });
+
+    it("does not advance the recorded version when the archive is short of files", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 2048)],
+        // Archive omits b, and the per-file fallback cannot supply it either
+        archiveFiles: { "images/a.png": fileOfLength(2048) },
+      });
+      setup.downloadFileSpy.and.resolveTo(null);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      expect(setup.getAssetPackRow()).toEqual(
+        jasmine.objectContaining({ download_status: "error", version: "" })
+      );
+    });
+
+    it("rejects an archive entry whose size disagrees with the manifest", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048)],
+        // Manifest says 2048 bytes, archive holds 4096
+        archiveFiles: { "images/a.png": fileOfLength(4096) },
+      });
+      setup.downloadFileSpy.and.resolveTo(null);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
+      expect(savedPaths).not.toContain(packPath("images/a.png"));
+    });
+
+    it("writes a row once, carrying both a base and an override local path", async () => {
+      const entry = archiveEntry("audio/track.mp3", 2048, {
+        overrides: {
+          theme_default: {
+            tz_sw: {
+              filePath: "tz_sw/audio/track.mp3",
+              md5Checksum: "override-checksum",
+              size_kb: 1,
+            },
+          },
+        },
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: [entry],
+        // Deliberately non-adjacent ordering is impossible with two entries, so rely on the
+        // override arriving last and assert the row was still written complete
+        archiveFiles: {
+          "audio/track.mp3": fileOfLength(2048),
+          "tz_sw/audio/track.mp3": fileOfLength(1024),
+        },
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      const row = setup.contentsRow("audio/track.mp3");
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/track.mp3")));
+      expect(row.overrides.theme_default.tz_sw.filePath).toBe(
+        localAssetPath(packPath("tz_sw/audio/track.mp3"))
+      );
+      // One row, written once, rather than a half-updated row followed by a completion
+      const bulkCalls = mockDynamicDataService.bulkUpsert.calls
+        .allArgs()
+        .filter(([, flow]) => flow === "_assets_contents");
+      expect(bulkCalls.length).toBe(1);
+    });
+
+    it("preserves bundled keys the pack manifest does not mention", async () => {
+      // A core row already carrying a base file and one override language, of which the pack
+      // supplies only a second language
+      const existingRow = Object.freeze({
+        id: "audio/track.mp3",
+        md5Checksum: "core-checksum",
+        size_kb: 20,
+        filePath: localAssetPath(packPath("audio/track.mp3")),
+        overrides: Object.freeze({
+          theme_default: Object.freeze({
+            tz_sw: Object.freeze({
+              filePath: localAssetPath(packPath("tz_sw/audio/track.mp3")),
+              md5Checksum: "bundled-override",
+              size_kb: 1,
+            }),
+          }),
+        }),
+      });
+      const entry = archiveEntry("audio/track.mp3", 2048, {
+        overridesOnly: true,
+        overrides: {
+          theme_default: {
+            ke_sw: {
+              filePath: "ke_sw/audio/track.mp3",
+              md5Checksum: "pack-override",
+              size_kb: 1,
+            },
+          },
+        },
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: [entry],
+        archiveFiles: { "ke_sw/audio/track.mp3": fileOfLength(1024) },
+        existingContentsRows: [existingRow as any],
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      const row = setup.contentsRow("audio/track.mp3");
+      // The pack's new override landed...
+      expect(row.overrides.theme_default.ke_sw.filePath).toBe(
+        localAssetPath(packPath("ke_sw/audio/track.mp3"))
+      );
+      // ...without dropping the bundled base file or the bundled language
+      expect(row.filePath).toBe(localAssetPath(packPath("audio/track.mp3")));
+      expect(row.overrides.theme_default.tz_sw.filePath).toBe(
+        localAssetPath(packPath("tz_sw/audio/track.mp3"))
+      );
+    });
+
+    it("reports progress that only ever moves forward and ends at 100", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [
+          archiveEntry("images/a.png", 2048),
+          archiveEntry("images/b.png", 2048),
+          archiveEntry("images/c.png", 2048),
+        ],
+        archiveFiles: {
+          "images/a.png": fileOfLength(2048),
+          "images/b.png": fileOfLength(2048),
+          "images/c.png": fileOfLength(2048),
+        },
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      const percentages = assetPacks.history
+        .map((row) => row.download_progress_percent)
+        .filter((percent) => percent !== undefined);
+      expect(percentages.length).toBeGreaterThan(1);
+      // A bar that jumps backwards is the visible symptom of unordered progress writes
+      const sorted = [...percentages].sort((a, b) => a - b);
+      expect(percentages).toEqual(sorted);
+      expect(setup.getAssetPackRow().download_progress_percent).toBe(100);
+      // The file count stays a genuine file count throughout
+      expect(setup.getAssetPackRow().assets_downloaded_count).toBe(3);
+    });
+
+    /** Every percentage the pack row was written with, in write order */
+    const persistedPercentages = () =>
+      assetPacks.history
+        .map((row) => row.download_progress_percent)
+        .filter((percent): percent is number => percent !== undefined);
+
+    const expectNonDecreasing = (values: number[]) => {
+      const decreases = values.filter((value, index) => index > 0 && value < values[index - 1]);
+      // A bar that runs backwards reads as a broken download
+      expect(decreases).toEqual([]);
+    };
+
+    it("does not rewind progress when an archive follows files already on disk", async () => {
+      const present = archiveEntry("images/present.png", 51200);
+      const missing = archiveEntry("images/missing.png", 51200);
+      const another = archiveEntry("images/another.png", 51200);
+      const setup = setupArchiveDownload({
+        manifestRows: [present, missing, another],
+        archiveFiles: {
+          "images/present.png": fileOfLength(51200),
+          "images/missing.png": fileOfLength(51200),
+          "images/another.png": fileOfLength(51200),
+        },
+        existingContentsRows: [
+          {
+            id: "images/present.png",
+            md5Checksum: present.md5Checksum,
+            size_kb: present.size_kb,
+            filePath: localAssetPath(packPath("images/present.png")),
+          },
+        ],
+      });
+      setup.savedFiles.set(packPath("images/present.png"), 51200);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // A third of the pack was integrated as a file count before the archive began measuring
+      // bytes; without a shared baseline the second metric would restart from zero
+      expectNonDecreasing(persistedPercentages());
+      expect(setup.getAssetPackRow().download_progress_percent).toBe(100);
+    });
+
+    it("does not rewind progress when a truncated archive falls back to per-file", async () => {
+      const rows = [
+        archiveEntry("images/a.png", 2048),
+        archiveEntry("images/b.png", 2048),
+        archiveEntry("images/c.png", 2048),
+      ];
+      const files = {
+        "images/a.png": fileOfLength(2048),
+        "images/b.png": fileOfLength(2048),
+        "images/c.png": fileOfLength(2048),
+      };
+      const full = zipSync({
+        "images/a.png": [files["images/a.png"], { level: 0 }],
+        "images/b.png": [files["images/b.png"], { level: 0 }],
+        "images/c.png": [files["images/c.png"], { level: 0 }],
+      });
+      const setup = setupArchiveDownload({
+        manifestRows: rows,
+        archiveFiles: files,
+        respondWith: () => streamingResponse(full.slice(0, secondEntryOffset(full) + 10)),
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // The per-file pass restarts its file count from zero, so the percentage has to hold where
+      // the archive left it and resume from there rather than following the count down
+      expectNonDecreasing(persistedPercentages());
+      expect(setup.getAssetPackRow().download_progress_percent).toBe(100);
+    });
+
+    it("parks rather than blaming the archive when the connection drops", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 2048)],
+        archiveFiles: {
+          "images/a.png": fileOfLength(2048),
+          "images/b.png": fileOfLength(2048),
+        },
+      });
+      // The connection drops *during* the transfer, twice - enough to disable archives for the
+      // session if a dropped connection were counted as an archive failure
+      let offline = false;
+      let attempts = 0;
+      (service["isOffline"] as jasmine.Spy).and.callFake(() => offline);
+      setup.fetchSpy.and.callFake(async () => {
+        if (++attempts <= 2) {
+          offline = true;
+          throw new TypeError("Failed to fetch");
+        }
+        return streamingResponse(setup.archiveBytes);
+      });
+      mockNetworkService.waitUntilConnected.and.callFake(async () => {
+        offline = false;
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      // Losing the connection says nothing about the archive, so the retry still uses one, and
+      // no per-file pass was spent on a request that was always going to fail
+      expect(setup.downloadFileSpy).not.toHaveBeenCalled();
+      expect(setup.fetchSpy.calls.count()).toBe(3);
+      expect(assetPacks.statusTransitions()).toContain("waiting_for_connection");
+    });
+
+    it("tags every progress write with the attempt it belongs to", async () => {
+      const setAssetCountsSpy = spyOn(
+        service["remoteAssetMetadataService"],
+        "setAssetCounts"
+      ).and.callThrough();
+      setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 2048)],
+        archiveFiles: {
+          "images/a.png": fileOfLength(2048),
+          "images/b.png": fileOfLength(2048),
+        },
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Progress is reported at chunk rate and written without being awaited, so a straggler from
+      // a cancelled attempt would otherwise land on the row a re-trigger has already started
+      // filling. The signal is what lets the write be discarded at write time.
+      expect(setAssetCountsSpy.calls.count()).toBeGreaterThan(0);
+      const untagged = setAssetCountsSpy.calls
+        .allArgs()
+        .filter(([, , , options]) => !(options as { signal?: AbortSignal })?.signal);
+      expect(untagged).toEqual([]);
+    });
+
+    it("tries archives again after a reset", async () => {
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048), archiveEntry("images/b.png", 2048)],
+        archiveFiles: {},
+        respondWith: () => ({ ok: false, status: 404, headers: { get: () => null } }),
+      });
+
+      await service.downloadAssetPackByName("asset_pack_1");
+      setup.fetchSpy.calls.reset();
+
+      await service.reset();
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Reset means back to the pre-download state. Silently staying on the per-file path because
+      // of something that happened before the reset would be unexplainable from the outside.
+      expect(setup.fetchSpy).toHaveBeenCalled();
+    });
+
+    it("aborts the archive request when a download is cancelled", async () => {
+      let capturedSignal: AbortSignal | undefined;
+      const setup = setupArchiveDownload({
+        manifestRows: [archiveEntry("images/a.png", 2048)],
+        archiveFiles: { "images/a.png": fileOfLength(2048) },
+      });
+      setup.fetchSpy.and.callFake(async (_url: any, init: any) => {
+        capturedSignal = init?.signal;
+        await service.cancelAssetPackDownloadByName("asset_pack_1");
+        const error = new Error("aborted");
+        error.name = "AbortError";
+        throw error;
+      });
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      // Passed to fetch, not merely checked between files: an archive is one long request, so a
+      // cancel that only stopped a loop would let the whole pack finish downloading
+      expect(capturedSignal).toBeDefined();
+      expect(capturedSignal.aborted).toBeTrue();
+      expect(setup.getAssetPackRow().download_status).toBe("cancelled");
+    });
+  });
+
   describe("attempts on a pack that has completed before", () => {
     /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
     /** Fail the download once it is under way, without the manifest fetch itself failing */
@@ -2344,6 +3195,40 @@ describe("RemoteAssetsService", () => {
       metadata = service["remoteAssetMetadataService"];
     });
 
+    it("drops progress writes belonging to an aborted attempt", async () => {
+      await metadata.setDownloadStatus("asset_pack_1", "in_progress");
+      const controller = new AbortController();
+      controller.abort();
+
+      await metadata.setAssetCounts(
+        "asset_pack_1",
+        { assetsDownloadedCount: 7 },
+        { downloadProgressPercent: 62 },
+        { signal: controller.signal }
+      );
+
+      // Checked at write time rather than issue time, so a chunk-rate straggler cannot report a
+      // stale figure onto a row a later attempt has already started filling
+      expect(assetPacks.get()).toEqual(
+        jasmine.objectContaining({ assets_downloaded_count: 0, download_progress_percent: 0 })
+      );
+    });
+
+    it("writes progress for an attempt that is still live", async () => {
+      await metadata.setDownloadStatus("asset_pack_1", "in_progress");
+
+      await metadata.setAssetCounts(
+        "asset_pack_1",
+        { assetsDownloadedCount: 7 },
+        { downloadProgressPercent: 62 },
+        { signal: new AbortController().signal }
+      );
+
+      expect(assetPacks.get()).toEqual(
+        jasmine.objectContaining({ assets_downloaded_count: 7, download_progress_percent: 62 })
+      );
+    });
+
     /**
      * The guard against the write mechanism regressing to a full-document upsert, which silently
      * erases every field the status writer does not name. Deliberately asserts the version fields
@@ -2443,6 +3328,7 @@ describe("RemoteAssetsService", () => {
         download_status_updated_at: jasmine.any(String),
         assets_total_count: 0,
         assets_downloaded_count: 0,
+        download_progress_percent: 0,
         version: "",
         available_version: "",
         update_available: false,
