@@ -264,4 +264,20 @@ describe("Loop Component", () => {
           .should("contain", "key: inner_key_2");
       });
   });
+
+  it("Loop is in an action", () => {
+    cy.getDataTest("executeLoopActionButton").click();
+
+    cy.getDataTest("loopAction1Text").contains("Loop action key_1 executed");
+    cy.getDataTest("loopAction2Text").contains("Loop action key_2 executed");
+    cy.getDataTest("loopAction3Text").contains("Loop action key_3 executed");
+  });
+
+  it("Loop is disabled in an action", () => {
+    cy.getDataTest("executeDisabledLoopActionButton").click();
+
+    cy.getDataTest("actionLoop2Text")
+      .invoke("attr", "style", "display: none")
+      .should("have.attr", "style", "display: none");
+  });
 });
