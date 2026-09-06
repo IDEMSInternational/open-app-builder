@@ -20,7 +20,8 @@
 | disabled	            | true                | Disables the button and greys it out |
 | type                  | date-time (default) | Allows date and time to be selected  |
 | type                  | date                | Allows date only to be selected      |  
-| type                  | time                | Allows time only to be selected      |  
+| type                  | time                | Allows time only to be selected      |
+| type                  | year                | Allows year only to be selected      |
 
 ## Events
 
