@@ -1,7 +1,81 @@
+import type { FlowTypes } from "../../model";
+import type { IAssetEntry, IAssetOverrideProps } from "packages/data-models";
+
 /** Name of the protected data list storing bundled and downloaded asset contents */
 export const ASSET_CONTENTS_DATA_LIST = "_assets_contents";
+
 /** Name of the protected data list to store asset pack metadata */
 export const ASSET_PACKS_DATA_LIST = "_asset_packs";
+
+/**
+ * Folder (within the deployment's local storage) that all downloaded asset pack files live under,
+ * shared across packs and keyed only by manifest-relative path. NB the deployment folder also holds
+ * non-asset files (e.g. the cached auth profile picture), so deletion must always target this
+ * subfolder rather than the deployment folder itself.
+ */
+export const REMOTE_ASSET_STORAGE_FOLDER = "remote_assets";
+
+/**
+ * Minimum interval between successful remote version checks for a given pack. Checks cost a
+ * manifest fetch per pack, so without this an `ensure_downloaded` on every template entry would
+ * mean a round trip every time.
+ */
+export const VERSION_CHECK_MIN_INTERVAL_MS = 1000 * 60 * 60; // 1 hour
+
+/**
+ * Shorter retry window after a check that reached the network and failed, so one flaky response
+ * does not suppress updates for the full interval.
+ * NB `asset_pack: download` bypasses both throttles, so it doubles as the manual-testing and
+ * recovery escape hatch.
+ */
+export const VERSION_CHECK_FAILURE_BACKOFF_MS = 1000 * 60 * 15; // 15 minutes
+
+/**
+ * Consecutive archive failures (corrupt stream, 5xx, unzip error) after which a pack falls back to
+ * per-file downloads for the rest of the session. Being offline does not count - that is parked
+ * and retried, not a failure of the archive.
+ *
+ * Held in memory only: persisting it would strand a pack on the slow path after two transient
+ * blips, with nothing to clear it.
+ */
+export const ASSET_PACK_ARCHIVE_FAILURE_LIMIT = 2;
+
+/**
+ * How many completed `_assets_contents` rows to accumulate before writing them as one bulk
+ * operation. Bounds how much written-but-unrecorded work an interruption discards: unflushed
+ * files are on disk but re-download next attempt, which is the safe direction but wasted effort.
+ */
+export const ASSET_CONTENTS_FLUSH_INTERVAL = 25;
+
+/** Minimum gap between persisted download-progress writes, to keep chunk-rate updates off the db */
+export const DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS = 500;
+
+/**
+ * Retries allowed for a single download (asset slot or pack manifest) before it counts as failed.
+ * A pack only completes when every slot does, so without retries one transient blip on one file of
+ * a hundred sends the pack to `error` and it needs an explicit re-trigger - by far the most likely
+ * way a pack fails on the connections these are fetched over.
+ */
+export const ASSET_DOWNLOAD_RETRY_LIMIT = 2;
+
+/**
+ * Base for the exponential backoff between slot attempts, giving 300ms then 600ms. Long enough to
+ * ride out a brief drop, short enough that a pack of failing assets still fails promptly.
+ */
+export const ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS = 300;
+
+/**
+ * Consecutive asset slot failures (each already having spent its full retry allowance) that end the
+ * pack walk early. Downloads are serial, so without this a dead bucket or an unpublished pack pays
+ * every file's full allowance in turn - retries and backoff included - before the pack can reach
+ * `error`, which on a pack of a few hundred files is minutes of sleeping to reach a conclusion that
+ * was clear after the first handful.
+ *
+ * Counted *consecutively* and reset by any slot that succeeds (including one skipped as already on
+ * disk), so this only trips when nothing is getting through. A bad publish missing scattered files
+ * still walks the whole pack and downloads everything that is there.
+ */
+export const ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT = 5;
 
 /**
  * Prefix marking an `_assets_contents` `filePath` as a file this app downloaded to native storage.
@@ -90,7 +164,50 @@ export interface IDBAssetPack {
   assets_total_count: number;
   /** Number of asset files downloaded so far in the current attempt */
   assets_downloaded_count: number;
+  /**
+   * Percentage complete for the current attempt, 0-100.
+   *
+   * Exists because `assets_downloaded_count` is a coarse bar: pack files range from under a
+   * kilobyte to a couple of megabytes, so a file count jumps unevenly. This tracks bytes when
+   * downloading an archive and files otherwise, so authors get one field that moves smoothly
+   * whichever way a pack was fetched - which matters because that choice is invisible to
+   * authoring.
+   */
+  download_progress_percent: number;
+  /**
+   * Manifest version at which every file in the pack was verified downloaded. Only advances on a
+   * fully successful download, so a partially applied update leaves it at the previous value and
+   * the next check retries. Empty for packs downloaded before versioning existed.
+   */
+  version: string;
+  /** Manifest version last seen remotely. Empty until a version check has succeeded */
+  available_version: string;
+  /** True when a successful check found a remote version differing from the downloaded one */
+  update_available: boolean;
+  /**
+   * True once the pack has reached `completed` at least once, and never cleared except by `reset`.
+   * Means "this pack has been usable before" - NOT "this attempt is an update". It is what lets a
+   * failed or cancelled attempt restore `completed` instead of stranding a working pack in
+   * `error`, and it must survive process death: a killed update sits at `in_progress`, which is
+   * otherwise indistinguishable from a first download when resumed on next launch.
+   */
+  has_completed_download: boolean;
+  /** ISO timestamp of the last SUCCESSFUL version check. Drives staleness reporting */
+  version_checked_at: string;
+  /**
+   * ISO timestamp of the last version check ATTEMPT, successful or not. Drives throttling.
+   * Always >= `version_checked_at`, and strictly greater exactly when the last attempt failed.
+   */
+  version_check_attempted_at: string;
+  /**
+   * "failed" means the network was reached and the check still failed (bad publish, 404,
+   * unparseable manifest) - a more alarming signal than simply being offline, which records
+   * nothing at all and shows up as `version_checked_at` going stale.
+   */
+  version_check_status: IAssetPackVersionCheckStatus;
 }
+
+export type IAssetPackVersionCheckStatus = "never" | "ok" | "failed";
 
 export interface IAssetPackDownloadStatusTimestamps {
   downloadStartedAt?: string;
@@ -100,6 +217,38 @@ export interface IAssetPackDownloadStatusTimestamps {
 export interface IAssetPackAssetCounts {
   assetsTotalCount?: number;
   assetsDownloadedCount?: number;
+}
+
+export interface IAssetPackProgress {
+  /** Percentage complete for the current attempt, 0-100. See `IDBAssetPack.download_progress_percent` */
+  downloadProgressPercent?: number;
+}
+
+/**
+ * One downloadable file within a pack - a manifest entry's base file, or one of its theme/language
+ * overrides - resolved against local storage before any fetching begins.
+ */
+export interface IAssetPackSlotPlan {
+  assetEntry: IAssetEntry;
+  overrideProps?: IAssetOverrideProps;
+  /** Path within the pack: the archive entry name, and the suffix of the remote object path */
+  relativePath: string;
+  /** Where the file lives in local storage */
+  targetPath: string;
+  slotChecksum: string | undefined;
+  slotSizeKb: number | undefined;
+  /** Whether the resume gate found a trustworthy local copy already on disk */
+  alreadyDownloaded?: boolean;
+  /** Whether this attempt has written and integrated the slot */
+  settled?: boolean;
+  /**
+   * Whether the slot's outcome has been handed to the `AssetContentsWriter`. Distinct from
+   * `settled`, which means the file was actually integrated: a slot the archive delivered at the
+   * wrong size, or failed to save, is settled with the writer as a *failure* while staying
+   * unintegrated. Tracking both is what stops the end-of-stream sweep settling such a slot twice
+   * and releasing its row before the rest of it has arrived.
+   */
+  writerSettled?: boolean;
 }
 
 export interface IActiveAssetPackDownload {
@@ -116,6 +265,11 @@ export interface IActiveAssetPackDownload {
 /** Params accepted by every `asset_pack` action that starts a download */
 export interface IAssetPackDownloadParams {
   /**
+   * Single asset pack name. For `download` this is an alternative to naming the pack as an action
+   * arg (`asset_pack: download: my_pack`), so both download actions can be authored the same way.
+   */
+  asset_pack?: string;
+  /**
    * Manual testing aid: artificially pause for this many ms before each asset file, to open a
    * reliable window for interrupting a download (e.g. force-quitting the app mid-pack).
    * Omit outside local testing - the delay applies to skipped files too, so it also masks the
@@ -125,12 +279,15 @@ export interface IAssetPackDownloadParams {
 }
 
 export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
-  /** Single asset pack name */
-  asset_pack?: string;
   /** One or more asset pack names, as an array or JSON string array */
   asset_pack_list?: string | string[];
   /** When false, start downloads without blocking the action queue. Defaults to true. */
   await?: boolean | string;
+  /**
+   * When false, skip the remote version check for packs already downloaded. Defaults to true.
+   * Checks never block the action queue regardless of `await`.
+   */
+  check_for_updates?: boolean | string;
 }
 
 /** Options shared by the service methods that start a download */
@@ -141,9 +298,21 @@ interface IAssetPackDownloadOptions {
   debugDownloadDelayMs?: number;
 }
 
-export type IEnsureAssetPacksDownloadedOptions = IAssetPackDownloadOptions;
+export interface IEnsureAssetPacksDownloadedOptions extends IAssetPackDownloadOptions {
+  /**
+   * When false, skip the remote version check for packs already downloaded. Defaults to true.
+   * Checks are always started off the action queue, so this does not interact with awaitCompletion.
+   */
+  checkForUpdates?: boolean;
+}
 
 export interface IDownloadAssetPackByNameOptions extends IAssetPackDownloadOptions {
   /** Called synchronously once a background download is registered. Only used when awaitCompletion is false. */
   onDownloadStarted?: (completion: Promise<boolean>) => void;
+  /**
+   * Manifest already fetched by a version check, used in place of the first fetch to avoid a
+   * duplicate round trip. Deliberately used for the first download attempt only - a retry after an
+   * offline park may be much later, by which point the pack could have been republished again.
+   */
+  manifest?: FlowTypes.AssetPack;
 }
