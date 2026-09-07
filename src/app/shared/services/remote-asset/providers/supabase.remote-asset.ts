@@ -1,7 +1,21 @@
 import { Injectable, Injector } from "@angular/core";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { IRemoteAssetProvider, IRemoteAssetConfig, IRemoteFileMetadata } from "./base.remote-asset";
+import {
+  IRemoteAssetProvider,
+  IRemoteAssetConfig,
+  IRemoteAssetDownloadOptions,
+  IRemoteFileMetadata,
+  appendCacheBuster,
+  isAbortError,
+} from "./base.remote-asset";
 import { SupabaseService } from "../../supabase/supabase.service";
+
+/**
+ * Lifetime of a signed archive URL. Only has to outlive a single archive download, but that is a
+ * ~35MB transfer on a connection that may be slow, so it is generous rather than tight - an
+ * expiry mid-download surfaces as a truncated stream, which costs a whole archive attempt.
+ */
+const SUPABASE_SIGNED_URL_EXPIRY_SECONDS = 60 * 60;
 
 @Injectable({
   providedIn: "root",
@@ -41,7 +55,18 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
     }
   }
 
-  public async downloadFile(relativePath: string): Promise<Blob | null> {
+  public async downloadFile(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<Blob | null> {
+    // The supabase-js `download()` accepts only a `transform` option, with no way to control
+    // caching, so anything that must be fresh has to go via the public URL instead. It also has no
+    // way to pass an abort signal, so a cancel on this route still only lands at the caller's next
+    // checkpoint - routing signalled downloads via the public URL instead would quietly require
+    // every bucket to be public, which is a bigger change than abortability is worth here.
+    if (options.noCache) {
+      return this.downloadFromPublicUrl(relativePath, options);
+    }
     // For Supabase, we can either use the public URL (for public files) or download directly
     // If direct download fails, fall back to public URL fetching
     try {
@@ -60,31 +85,48 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
         "[Supabase Remote Asset] Error downloading file directly, falling back to public URL:",
         error
       );
-
-      // Fallback to public URL fetching
-      try {
-        const publicUrl = this.getPublicUrl(relativePath);
-        if (publicUrl) {
-          const response = await fetch(publicUrl);
-          if (response.ok) {
-            return await response.blob();
-          } else {
-            console.error(
-              `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
-            );
-          }
-        }
-      } catch (fallbackError) {
-        console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
-      }
-
-      return null;
+      return this.downloadFromPublicUrl(relativePath, options);
     }
   }
 
-  public async downloadFileAsText(relativePath: string): Promise<string | null> {
+  /** Fetch straight from the bucket's public URL, the only route that can bypass caches */
+  private async downloadFromPublicUrl(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<Blob | null> {
     try {
-      const blob = await this.downloadFile(relativePath);
+      const publicUrl = this.getPublicUrl(relativePath);
+      if (publicUrl) {
+        const init: RequestInit = {};
+        if (options.noCache) init.cache = "no-store";
+        if (options.signal) init.signal = options.signal;
+        const response = await fetch(
+          options.noCache ? appendCacheBuster(publicUrl) : publicUrl,
+          init
+        );
+        if (response.ok) {
+          return await response.blob();
+        } else {
+          console.error(
+            `[Supabase Remote Asset] HTTP ${response.status}: ${response.statusText} when fetching from public URL`
+          );
+        }
+      }
+    } catch (fallbackError) {
+      // Cancellation is not a download failure - see the equivalent note in the Firebase provider
+      if (isAbortError(fallbackError)) throw fallbackError;
+      console.error("[Supabase Remote Asset] Error fetching from public URL:", fallbackError);
+    }
+
+    return null;
+  }
+
+  public async downloadFileAsText(
+    relativePath: string,
+    options: IRemoteAssetDownloadOptions = {}
+  ): Promise<string | null> {
+    try {
+      const blob = await this.downloadFile(relativePath, options);
 
       if (blob) {
         return await blob.text();
@@ -92,6 +134,7 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
 
       return null;
     } catch (error) {
+      if (isAbortError(error)) throw error;
       console.error("[Supabase Remote Asset] Error downloading file as text:", error);
       return null;
     }
@@ -116,6 +159,34 @@ export class SupabaseRemoteAssetProvider implements IRemoteAssetProvider {
       console.error("[Supabase Remote Asset] Error downloading from private bucket:", error);
       return null;
     }
+  }
+
+  public async getFetchableUrl(relativePath: string): Promise<string | null> {
+    if (!this.supabase) return null;
+    // A signed URL first, because this method's whole reason for existing is that not every
+    // deployment's objects are publicly readable - and on a private bucket a public URL resolves
+    // fine and then 403s, which reads as a broken archive rather than an auth problem. Signing is
+    // a round trip, but one per archive rather than one per asset.
+    try {
+      const { data, error } = await this.supabase.storage
+        .from(this.config.bucketName)
+        .createSignedUrl(
+          this.getSupabaseFilepath(relativePath),
+          SUPABASE_SIGNED_URL_EXPIRY_SECONDS
+        );
+      if (data?.signedUrl) return data.signedUrl;
+      // Not an error worth surfacing: signing needs a policy the anon key may not have, and on a
+      // public bucket the URL below works anyway
+      if (error) {
+        console.warn(
+          `[Supabase Remote Asset] Could not sign ${relativePath}, falling back to public URL:`,
+          error.message
+        );
+      }
+    } catch (error) {
+      console.warn("[Supabase Remote Asset] Error creating signed URL:", error);
+    }
+    return this.getPublicUrl(relativePath) || null;
   }
 
   public async getRemoteFileMetadata(relativePath: string): Promise<IRemoteFileMetadata | null> {
