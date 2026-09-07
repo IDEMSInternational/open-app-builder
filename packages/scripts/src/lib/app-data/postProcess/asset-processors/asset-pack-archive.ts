@@ -1,0 +1,162 @@
+import * as path from "path";
+import * as fs from "fs-extra";
+import { zipSync, type ZipOptions } from "fflate";
+import { getAssetPackArchiveFileName, type FlowTypes, type IAssetEntry } from "data-models";
+import { logWarning } from "../../../../utils";
+
+/**
+ * Extensions whose contents compress usefully. Asset packs are dominated by already-compressed
+ * media, so deflating everything costs the device CPU on extract for effectively no saving:
+ * measured on the largest real pack (`assets_teen_za_en`, 427 files) blanket deflate gives
+ * 33.5MB against 34.2MB for this list, while making the device inflate 23MB of mp3/png/gif.
+ *
+ * Store is deliberately the default for anything unrecognised. A newly-introduced media type
+ * must not get inflated on device merely because nobody remembered to add it here.
+ */
+const DEFLATE_EXTENSIONS = new Set([
+  ".css",
+  ".csv",
+  ".htm",
+  ".html",
+  ".json",
+  ".md",
+  ".svg",
+  ".txt",
+  ".vtt",
+  ".xml",
+]);
+
+const DEFLATE_LEVEL = 6;
+const STORE_LEVEL = 0;
+
+/** @returns the fflate compression level to use for a given pack-relative path */
+export function getArchiveCompressionLevel(relativePath: string): 0 | 6 {
+  return DEFLATE_EXTENSIONS.has(path.extname(relativePath).toLowerCase())
+    ? DEFLATE_LEVEL
+    : STORE_LEVEL;
+}
+
+/**
+ * List every downloadable file in a manifest, in the order they should appear in the archive:
+ * each asset's base file immediately followed by that asset's overrides.
+ *
+ * The grouping is not cosmetic. The app integrates a whole `_assets_contents` row at once, and a
+ * row is only complete when every slot it owns has been written - so with entries interleaved the
+ * app could not flush anything until the stream ended, and an interruption would discard the lot.
+ */
+export function listAssetPackSlotPaths(manifest: FlowTypes.AssetPack): string[] {
+  const slotPaths: string[] = [];
+  for (const row of (manifest.rows || []) as IAssetEntry[]) {
+    if (!row.overridesOnly && row.id) {
+      slotPaths.push(row.id);
+    }
+    for (const languageOverrides of Object.values(row.overrides || {})) {
+      for (const overrideEntry of Object.values(languageOverrides || {})) {
+        if (overrideEntry?.filePath) {
+          slotPaths.push(overrideEntry.filePath);
+        }
+      }
+    }
+  }
+  return slotPaths;
+}
+
+/**
+ * Delete every archive for this pack other than the one just written - earlier versions, and the
+ * unversioned `{packName}.zip` written before the filename carried a version.
+ *
+ * Keyed on the pack name so that a folder holding more than one pack (not how sync writes them, but
+ * nothing here depends on that) cannot have one pack's output delete another's.
+ */
+function removeSupersededArchives(
+  targetFolder: string,
+  assetPackName: string,
+  keepFileName: string
+): string[] {
+  const escapedName = assetPackName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const isArchiveForThisPack = new RegExp(`^${escapedName}(\\.[^.]+)?\\.zip$`);
+  const removed: string[] = [];
+  for (const fileName of fs.readdirSync(targetFolder)) {
+    if (fileName === keepFileName) continue;
+    if (!isArchiveForThisPack.test(fileName)) continue;
+    fs.removeSync(path.resolve(targetFolder, fileName));
+    removed.push(fileName);
+  }
+  return removed;
+}
+
+/**
+ * Write `{packName}.{version}.zip` alongside the loose pack files, containing every file the
+ * manifest declares. The app downloads this instead of fetching hundreds of individual objects
+ * when most of a pack is missing locally.
+ *
+ * The manifest version is in the *object key*, not just a cache-busting query parameter, because
+ * entries are only ever checked against the manifest that asked for them. A stale archive served
+ * from a fixed key would install outdated bytes and then have them recorded at the *new* version -
+ * permanently wrong, with nothing able to detect it - and a query parameter cannot be relied on to
+ * defeat every cache in the path. Keying on the version means a stale archive is never requested at
+ * all: the app derives the filename from the version its manifest carries, so it can only ask for
+ * the archive built from that same manifest, and gets a 404 (and the checksum-gated per-file path)
+ * if that archive was never published.
+ *
+ * The same property retires the upload-ordering hazard: a publish adds a new object rather than
+ * overwriting the one in-flight installs are reading. Locally that would mean a folder accumulating
+ * one archive per sync, so any previously-generated archive is removed here. (`replicateDir` clears
+ * the target folder earlier in the pipeline and so already does this, but only as a side effect of
+ * running before the archive is written - stating it here keeps the "one archive per pack" rule a
+ * property of this function rather than of the order its caller happens to use.)
+ *
+ * NB this only cleans the *generated* output. Uploads are manual and additive, so superseded
+ * archives still have to be removed from the bucket separately.
+ *
+ * Generated here, next to the manifest and its version hash, rather than left to the (manual)
+ * upload step: a zip that has drifted from the loose files is a silent, whole-pack correctness
+ * bug, and only generating both from the same source prevents it.
+ *
+ * The manifest itself is excluded - it is fetched separately, before the archive, and a copy
+ * inside would just be a second source of truth to go stale.
+ *
+ * @returns the archive's filename, any superseded archives removed, and the uncompressed and
+ * compressed totals in bytes, for reporting
+ */
+export function writeAssetPackArchive(
+  targetFolder: string,
+  assetPackName: string,
+  manifest: FlowTypes.AssetPack
+): { archiveFileName: string; removedArchives: string[]; rawBytes: number; archiveBytes: number } {
+  const archiveEntries: ZipOptions & Record<string, [Uint8Array, ZipOptions]> = {} as any;
+  let rawBytes = 0;
+  const missingSlotPaths: string[] = [];
+
+  for (const slotPath of listAssetPackSlotPaths(manifest)) {
+    const localPath = path.resolve(targetFolder, slotPath);
+    if (!fs.existsSync(localPath)) {
+      // A manifest entry with no file on disk would become a slot the app can never satisfy from
+      // the archive. Skipping keeps the archive self-consistent; the per-file path remains able
+      // to fetch it, and the download fails honestly rather than completing with a gap.
+      missingSlotPaths.push(slotPath);
+      continue;
+    }
+    const contents = new Uint8Array(fs.readFileSync(localPath));
+    rawBytes += contents.byteLength;
+    archiveEntries[slotPath] = [contents, { level: getArchiveCompressionLevel(slotPath) }];
+  }
+
+  if (missingSlotPaths.length > 0) {
+    // Silence here would mean an incomplete archive shipping unnoticed, and every install paying
+    // for a per-file fallback to fetch the difference
+    logWarning({
+      msg1: `Asset pack ${assetPackName}: ${missingSlotPaths.length} manifest entr(ies) missing from disk, excluded from archive`,
+      msg2: missingSlotPaths.join("\n"),
+    });
+  }
+
+  const archive = zipSync(archiveEntries as any, { level: STORE_LEVEL });
+  const archiveFileName = getAssetPackArchiveFileName(assetPackName, manifest.version);
+  fs.writeFileSync(path.resolve(targetFolder, archiveFileName), archive);
+  // Cleaned after the write, never before: a failed write then leaves the previous archive in place
+  // rather than leaving the pack with none at all
+  const removedArchives = removeSupersededArchives(targetFolder, assetPackName, archiveFileName);
+
+  return { archiveFileName, removedArchives, rawBytes, archiveBytes: archive.byteLength };
+}

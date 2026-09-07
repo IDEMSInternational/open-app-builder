@@ -5,6 +5,7 @@ import type {
   IAssetPackAssetCounts,
   IAssetPackDownloadStatus,
   IAssetPackDownloadStatusTimestamps,
+  IAssetPackProgress,
   IDBAssetPack,
 } from "./remote-asset.types";
 
@@ -44,6 +45,7 @@ export class RemoteAssetMetadataService {
       download_status_updated_at: "",
       assets_total_count: 0,
       assets_downloaded_count: 0,
+      download_progress_percent: 0,
       version: "",
       available_version: "",
       update_available: false,
@@ -164,7 +166,23 @@ export class RemoteAssetMetadataService {
     });
   }
 
-  public async setAssetCounts(assetPackName: string, assetCounts: IAssetPackAssetCounts) {
+  /**
+   * Write progress figures for the current attempt.
+   *
+   * @param options.signal abort signal of the download attempt these figures belong to, if any.
+   * Queued alongside status writes, not just patched directly. Progress is written from several
+   * points and, while downloading an archive, at chunk rate - and `dynamicDataService.update`
+   * awaits internally before it writes, so two concurrent writes can be *applied* in the opposite
+   * order to the one they were issued in. Both fields here are absolute rather than incremental,
+   * so a reordering means an older figure overwrites a newer one and the bar visibly runs
+   * backwards. Serialising is what makes "later call wins" true.
+   */
+  public async setAssetCounts(
+    assetPackName: string,
+    assetCounts: IAssetPackAssetCounts,
+    progress: IAssetPackProgress = {},
+    options: { signal?: AbortSignal } = {}
+  ) {
     const update: Partial<IDBAssetPack> = {};
     if (assetCounts.assetsTotalCount !== undefined) {
       update.assets_total_count = assetCounts.assetsTotalCount;
@@ -172,7 +190,17 @@ export class RemoteAssetMetadataService {
     if (assetCounts.assetsDownloadedCount !== undefined) {
       update.assets_downloaded_count = assetCounts.assetsDownloadedCount;
     }
-    return this.patchAssetPack(assetPackName, update);
+    if (progress.downloadProgressPercent !== undefined) {
+      update.download_progress_percent = progress.downloadProgressPercent;
+    }
+    if (Object.keys(update).length === 0) return;
+    return this.queueStatusWrite(async () => {
+      // Checked at write time, not issue time: progress is reported at chunk rate, so a straggler
+      // from a cancelled attempt could otherwise land on the row a re-trigger has already started
+      // filling and report a stale figure against it.
+      if (options.signal?.aborted) return;
+      return this.patchAssetPack(assetPackName, update);
+    });
   }
 
   /**

@@ -1,4 +1,4 @@
-import { appendCacheBuster } from "./base.remote-asset";
+import { appendCacheBuster, isAbortError } from "./base.remote-asset";
 
 /**
  * Call standalone tests via:
@@ -22,5 +22,27 @@ describe("appendCacheBuster", () => {
     const first = appendCacheBuster("https://cdn.example.com/pack.json");
     await new Promise((resolve) => setTimeout(resolve, 2));
     expect(appendCacheBuster("https://cdn.example.com/pack.json")).not.toEqual(first);
+  });
+});
+
+describe("isAbortError", () => {
+  it("recognises the DOMException fetch rejects with on abort", () => {
+    // The reason this exists: DOMException is not reliably an `instanceof Error`, so a check on
+    // the prototype chain would let a cancelled transfer be retried as a download failure
+    expect(isAbortError(new DOMException("The operation was aborted", "AbortError"))).toBeTrue();
+  });
+
+  it("recognises anything else named AbortError", () => {
+    expect(isAbortError({ name: "AbortError" })).toBeTrue();
+  });
+
+  it("does not treat a genuine network failure as an abort", () => {
+    expect(isAbortError(new TypeError("Failed to fetch"))).toBeFalse();
+    expect(isAbortError(new Error("boom"))).toBeFalse();
+  });
+
+  it("tolerates a thrown null or undefined", () => {
+    expect(isAbortError(null)).toBeFalse();
+    expect(isAbortError(undefined)).toBeFalse();
   });
 });
