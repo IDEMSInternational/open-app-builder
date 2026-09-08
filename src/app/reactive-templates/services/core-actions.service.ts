@@ -63,9 +63,7 @@ export class CoreActionsService {
         throw new ActionNotImplementedError("trigger_actions");
       },
       emit: async (action) => {
-        // todo: Find out what this is and then implement it using reactive templates.
-
-        throw new ActionNotImplementedError("emit");
+        // todo: This logs a completed event in the old template system. Should we implement this in the new system?
       },
     });
   }
