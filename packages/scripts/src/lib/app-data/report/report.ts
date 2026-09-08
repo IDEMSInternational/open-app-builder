@@ -1,6 +1,6 @@
 import chalk from "chalk";
-import { FlowTypes, IAssetEntry, IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
-import { writeFile, ensureDir, emptyDir, pathExists, readdir } from "fs-extra";
+import { type IDeploymentConfigJson } from "data-models";
+import { writeFile, ensureDir, emptyDir, readJson } from "fs-extra";
 import { resolve, dirname } from "path";
 import { logOutput } from "shared";
 
@@ -10,7 +10,7 @@ import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
 import { AssetsSummaryReport } from "./reporters/asset-summary";
 import { IParsedWorkbookData } from "../convert/types";
-import { readJson } from "fs-extra";
+import { loadAssetEntries } from "./load-asset-entries";
 import { ISheetContents } from "../postProcess/sheets";
 
 /**
@@ -72,57 +72,9 @@ export class ReportGenerator {
     return workbookData;
   }
 
-  /**
-   * Load asset entries from both the core `assets` folder and any `remote_assets`
-   * pack subfolders, merging them into a single hashmap for reporting.
-   *
-   * Remote packs no longer expose a `contents.json`, so instead read their
-   * AssetPack manifest (`<packName>.json`) and convert its `rows` array back
-   * into the standard `IAssetEntryHashmap` shape.
-   **/
-  private async loadAssetsData(): Promise<IAssetEntryHashmap> {
+  private async loadAssetsData() {
     const { _workspace_path } = this.deployment;
-    const appDataDir = resolve(_workspace_path, "app_data");
-
-    // Core assets
-    const coreAssetsDir = resolve(appDataDir, "assets");
-    const coreContents = (await readJson(
-      resolve(coreAssetsDir, "contents.json")
-    )) as IAssetEntryHashmap;
-
-    // Remote assets - each pack has its own subfolder with a `<packName>.json` manifest
-    const remoteAssetsDir = resolve(appDataDir, "remote_assets");
-    const remoteContents: IAssetEntryHashmap = {};
-    if (await pathExists(remoteAssetsDir)) {
-      const packEntries = await readdir(remoteAssetsDir, { withFileTypes: true });
-      const packFolders = packEntries
-        .filter((entry) => entry.isDirectory())
-        .map((entry) => entry.name);
-      for (const packName of packFolders) {
-        const manifestPath = resolve(remoteAssetsDir, packName, `${packName}.json`);
-        if (await pathExists(manifestPath)) {
-          const manifest = (await readJson(manifestPath)) as FlowTypes.AssetPack;
-          Object.assign(remoteContents, this.convertAssetPackRowsToHashmap(manifest.rows));
-        }
-      }
-    }
-
-    return { ...coreContents, ...remoteContents };
-  }
-
-  /**
-   * Convert an AssetPack manifest's `rows` array (keyed by `id`) back into the
-   * standard `IAssetEntryHashmap` shape (keyed by path) used elsewhere in reporting
-   */
-  private convertAssetPackRowsToHashmap(
-    rows: FlowTypes.Data_listRow<IAssetEntry>[]
-  ): IAssetEntryHashmap {
-    const hashmap: IAssetEntryHashmap = {};
-    for (const row of rows) {
-      const { id, ...entry } = row;
-      hashmap[id] = entry as IAssetEntry;
-    }
-    return hashmap;
+    return loadAssetEntries(resolve(_workspace_path, "app_data"));
   }
 
   private async writeOutputJson(reports: Record<string, IReport>, target: string) {
