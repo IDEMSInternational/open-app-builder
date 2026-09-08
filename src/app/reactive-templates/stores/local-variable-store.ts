@@ -3,7 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
 import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore, VariableReference } from "./store";
+import { IStore, mergeDescendants, VariableReference } from "./store";
 
 export interface VariablePointer {
   /** Stable identifier used as the key in aggregated watch results. */
@@ -77,6 +77,33 @@ export class LocalVariableStore implements IStore {
    */
   public asSignal(ref: VariableReference): Signal<any> {
     return toSignal(this.watch(ref), { equal: isEqual, injector: this.injector });
+  }
+
+  /**
+   * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
+   * nested onto "foo"), using the same scope-fallback resolution as 'get'.
+   */
+  public getWithDescendants(ref: VariableReference): any {
+    const resolvedName = this.resolveWithScopeFallback(ref) ?? ref.name;
+    const exactValue = this.getExact({ ...ref, name: resolvedName });
+
+    return mergeDescendants(
+      exactValue,
+      resolvedName,
+      Array.from(this.state, ([key, subject]) => [key, subject.value])
+    );
+  }
+
+  /**
+   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever any
+   * variable in the store changes, since a descendant key changing elsewhere should also count.
+   */
+  public watchWithDescendants(ref: VariableReference): Observable<any> {
+    return this.stateChanged$.pipe(
+      startWith(undefined),
+      map(() => this.getWithDescendants(ref)),
+      distinctUntilChanged((previous, current) => isEqual(previous, current))
+    );
   }
 
   /**

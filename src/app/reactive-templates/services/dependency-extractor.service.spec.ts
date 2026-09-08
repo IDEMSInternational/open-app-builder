@@ -100,4 +100,22 @@ describe("DependencyExtractorService", () => {
   it("returns empty array when no matches exist", () => {
     expect(service.extractVariableReferences("Math.max(a, b)")).toEqual([]);
   });
+
+  it("splits dynamic (unquoted) bracket index into a separate dependency", () => {
+    const input = "local.all_questions_loop[item.id].question.value";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "all_questions_loop" },
+      { type: "loop", name: "item.id" },
+    ]);
+  });
+
+  it("supports dynamic bracket index referencing an explicit path", () => {
+    const input = "local.all_questions_loop[loop.item.id]";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "all_questions_loop" },
+      { type: "loop", name: "item.id" },
+    ]);
+  });
 });

@@ -210,4 +210,19 @@ describe("ContextCreatorService", () => {
       is_last: true,
     });
   });
+
+  it("resolves a dynamic bracket index (e.g. items[item.name]) via nested descendant keys", () => {
+    variableStore.set({ name: "items", type: "local" }, [
+      { name: "Alpha", value: 10 },
+      { name: "Beta", value: 20 },
+    ]);
+    variableStore.set({ name: "items.Beta.question", type: "local" }, "answer-for-beta");
+
+    const context = service.createContext([{ name: "items", type: "local" }], "");
+    const items = context.local.items as any;
+
+    expect(items[0]).toEqual({ name: "Alpha", value: 10 });
+    expect(items[1]).toEqual({ name: "Beta", value: 20 });
+    expect(items.Beta).toEqual({ question: "answer-for-beta" });
+  });
 });

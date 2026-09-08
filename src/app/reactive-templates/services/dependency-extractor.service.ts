@@ -10,6 +10,10 @@ export class DependencyExtractorService {
     "g"
   );
   private readonly templateExpressionPattern = /\$\{([^}]*)\}/g;
+  private readonly rootPattern = /^[a-zA-Z_$][\w$]*/;
+  // Dot-prop segments and bracket segments; unquoted bracket content is a dynamic expression (e.g. an index variable), not a literal key.
+  private readonly pathSegmentPattern =
+    /\.([a-zA-Z_$][\w$]*)|\[(?:"([^"]+)"|'([^']+)'|([^\]]+))\]/g;
   private readonly shorthandReplacements: Array<{ from: string; to: string }> = [
     { from: "item", to: "loop.item" },
   ];
@@ -18,18 +22,9 @@ export class DependencyExtractorService {
     const source = mode === "string" ? this.extractTemplateExpressions(input) : input;
     const normalizedInput = this.replaceShorthands(source);
 
-    return (normalizedInput.match(this.variablePathPattern) ?? []).map((path) => {
-      const normalizedPath = this.normalizeBracketSegments(path);
-      const [type, ...pathSegments] = normalizedPath.split(".");
-
-      return {
-        type: type as VariableReference["type"],
-        name: pathSegments
-          .join(".")
-          .replace("parameter_list.", "")
-          .replace(/[#!&|,]/g, ""),
-      };
-    });
+    return (normalizedInput.match(this.variablePathPattern) ?? []).flatMap((path) =>
+      this.parseVariablePath(path)
+    );
   }
 
   private extractTemplateExpressions(input: string): string {
@@ -47,15 +42,45 @@ export class DependencyExtractorService {
     }, input);
   }
 
-  private normalizeBracketSegments(path: string): string {
-    return path.replace(
-      /\[(?:"([^"]+)"|'([^']+)'|([^\]]+))\]/g,
-      (_match, doubleQuoted, singleQuoted, unquoted) => {
-        const value = doubleQuoted ?? singleQuoted ?? unquoted;
+  /**
+   * Splits a matched path into its static segments plus any nested references found inside
+   * dynamic (unquoted) bracket expressions, e.g. "all_questions_loop[item.id]" depends on both
+   * "all_questions_loop" (the collection) and "loop.item.id" (the dynamic index).
+   */
+  private parseVariablePath(path: string): VariableReference[] {
+    const type = this.rootPattern.exec(path)![0] as VariableReference["type"];
+    const segmentPattern = new RegExp(this.pathSegmentPattern.source, "g");
+    segmentPattern.lastIndex = type.length;
 
-        return `.${value}`;
+    const segments: string[] = [];
+    const nestedReferences: VariableReference[] = [];
+    let match: RegExpExecArray | null;
+
+    while ((match = segmentPattern.exec(path))) {
+      const [, dotProp, doubleQuoted, singleQuoted, unquoted] = match;
+
+      if (unquoted !== undefined) {
+        nestedReferences.push(...this.extractVariableReferences(unquoted));
+        break;
       }
-    );
+
+      segments.push((dotProp ?? doubleQuoted ?? singleQuoted)!);
+    }
+
+    const references: VariableReference[] =
+      segments.length > 0
+        ? [
+            {
+              type,
+              name: segments
+                .join(".")
+                .replace("parameter_list.", "")
+                .replace(/[#!&|,]/g, ""),
+            },
+          ]
+        : [];
+
+    return [...references, ...nestedReferences];
   }
 
   private escapeRegExp(value: string): string {

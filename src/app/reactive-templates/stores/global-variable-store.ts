@@ -3,7 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
 import { distinctUntilChanged, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore, VariableReference } from "./store";
+import { IStore, mergeDescendants, VariableReference } from "./store";
 
 /**
  * A reactive store for global variables.
@@ -48,6 +48,30 @@ export class GlobalVariableStore implements IStore {
     }
 
     return this.state.get(name)!.value;
+  }
+
+  /**
+   * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
+   * nested onto "foo").
+   */
+  public getWithDescendants(ref: VariableReference): any {
+    return mergeDescendants(
+      this.get(ref),
+      ref.name,
+      Array.from(this.state, ([key, subject]) => [key, subject.value])
+    );
+  }
+
+  /**
+   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever any
+   * variable in the store changes, since a descendant key changing elsewhere should also count.
+   */
+  public watchWithDescendants(ref: VariableReference): Observable<any> {
+    return this.stateChanged$.pipe(
+      startWith(undefined),
+      map(() => this.getWithDescendants(ref)),
+      distinctUntilChanged((previous, current) => isEqual(previous, current))
+    );
   }
 
   public asSignal(ref: VariableReference): Signal<any> {
