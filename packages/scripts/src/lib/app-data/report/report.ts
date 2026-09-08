@@ -1,6 +1,6 @@
 import chalk from "chalk";
-import { IAssetEntryHashmap, IDeploymentConfigJson } from "data-models";
-import { writeFile, ensureDir, emptyDir } from "fs-extra";
+import { type IDeploymentConfigJson } from "data-models";
+import { writeFile, ensureDir, emptyDir, readJson } from "fs-extra";
 import { resolve, dirname } from "path";
 import { logOutput } from "shared";
 
@@ -10,7 +10,7 @@ import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
 import { AssetsSummaryReport } from "./reporters/asset-summary";
 import { IParsedWorkbookData } from "../convert/types";
-import { readJson } from "fs-extra";
+import { loadAssetEntries } from "./load-asset-entries";
 import { ISheetContents } from "../postProcess/sheets";
 
 /**
@@ -74,10 +74,7 @@ export class ReportGenerator {
 
   private async loadAssetsData() {
     const { _workspace_path } = this.deployment;
-    const assetsDir = resolve(_workspace_path, "app_data", "assets");
-    const assetsContents = resolve(assetsDir, "contents.json");
-    const contents = (await readJson(assetsContents)) as IAssetEntryHashmap;
-    return contents;
+    return loadAssetEntries(resolve(_workspace_path, "app_data"));
   }
 
   private async writeOutputJson(reports: Record<string, IReport>, target: string) {
