@@ -3,6 +3,7 @@ import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
 } from "src/app/shared/components/template/components/base";
+import { selectCompleted, selectOnProgressActions } from "./progress-bar.logic";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Text displayed above the progress bar. */
@@ -41,7 +42,19 @@ export class PlhProgressBarComponent
   private animationElapsedMs = 0;
   private animationDuration = 0;
 
-  /** Local display value while auto-playing; avoids row refresh races from per-frame setValue. */
+  /** `on_progress` thresholds already handled (seeded or fired); each fires at most once. */
+  private handledProgressThresholds = new Set<number>();
+
+  /**
+   * Last observed progress for detecting upward threshold crossings.
+   * `null` until the first observation (used to seed without firing).
+   */
+  private previousProgress: number | null = null;
+
+  /** Whether the "completed" trigger has fired (or was seeded at mount); it emits at most once. */
+  private completedEmitted = false;
+
+  /** Display value while animating or paused; avoids row-refresh races from per-frame setValue. */
   private localProgress = signal<number | null>(null);
 
   accentColor = computed(() => this.params().color || "var(--ion-color-primary)");
@@ -72,8 +85,8 @@ export class PlhProgressBarComponent
       if (!autoPlay) {
         const pausedAt = untracked(() => this.localProgress());
         if (pausedAt !== null) {
-          this.localProgress.set(null);
-          void this.setValue(pausedAt);
+          // Commit then clear local (same as completion) so external value updates apply while paused.
+          void this.commitProgress(pausedAt);
         }
         return;
       }
@@ -107,6 +120,34 @@ export class PlhProgressBarComponent
           this.animationFrameId = undefined;
         }
       });
+    });
+
+    // Fire each `on_progress: <percentage>` action once when progress first reaches its threshold,
+    // and emit the built-in "completed" trigger once when progress first reaches 100%.
+    // See `selectOnProgressActions` / `selectCompleted` for seed / latch / NaN behaviour.
+    effect(() => {
+      const progress = this.displayProgress();
+      const previous = this.previousProgress;
+
+      const { previousProgress, toFire } = selectOnProgressActions({
+        progress,
+        previousProgress: previous,
+        actions: this.actionList(),
+        handledThresholds: this.handledProgressThresholds,
+      });
+      this.previousProgress = previousProgress;
+
+      const completed = selectCompleted({
+        progress,
+        previousProgress: previous,
+        completedEmitted: this.completedEmitted,
+      });
+      this.completedEmitted = completed.completedEmitted;
+
+      if (toFire.length > 0) {
+        void this.parentContainerComponentRef.handleActions(toFire, this._row);
+      }
+      if (completed.emit) this.triggerActions("completed");
     });
   }
 

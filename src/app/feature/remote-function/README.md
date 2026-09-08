@@ -50,11 +50,31 @@ https://firebase.google.com/docs/app-check/android/play-integrity-provider
 Additional platform setup not required as integrated with `capacitor-firebase/app-check`
 
 ### App Check - IOS
-Follow instructions to integrate `DeviceCheck` on older devices (ios 11+)
-https://firebase.google.com/docs/app-check/ios/devicecheck-provider
-
-Follow instructions to integrate `App Attest` on newer devices (ios 14+)
+Follow instructions to integrate `App Attest`
 https://firebase.google.com/docs/app-check/ios/app-attest-provider
+
+This requires the `com.apple.developer.devicecheck.appattest-environment` entitlement, declared in
+`ios/App/App/App.entitlements`, and the app's bundle id and team id to be registered in the firebase
+console. Note that `capacitor-firebase/app-check` uses App Attest on all ios 14+ devices with no
+`DeviceCheck` fallback, and the project targets ios 14 as a minimum - so `DeviceCheck` is never used
+and does not need configuring.
+
+### App Check - Debug provider (native)
+
+Attestation is unavailable on simulators and emulators, so non-production builds initialise app check
+with the debug provider instead. Unlike web the debug token value cannot be set from javascript, so
+must be provided per-platform. Register the resulting token in the firebase console under
+App Check -> Apps -> (app) -> Manage Debug Tokens.
+
+- **IOS** - handled in `AppDelegate.swift`, which stores the same token used on web (under `#if DEBUG`)
+  so that only one token needs registering. To use a different token without editing the file, set an
+  `AppCheckDebugToken` or `FIRAAppCheckDebugToken` environment variable on the Xcode scheme
+  (Product -> Scheme -> Edit Scheme -> Run -> Arguments); these take precedence. NOTE - scheme files
+  are gitignored, so any such override applies only to your local checkout.
+- **Android** - the sdk generates a random token and logs it to logcat on launch (filter for
+  `DebugAppCheckProvider`).
+
+Production builds are unaffected, and always use the attestation providers above.
 
 ## Testing
 Remote functions can be tested locally from a debug page, with support for whitelisted device tokens.
