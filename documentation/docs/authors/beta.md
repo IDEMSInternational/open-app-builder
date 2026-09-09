@@ -14,7 +14,7 @@ yarn workflow beta import [source_path]
 Where `[source_path]` is the local path to the external deployment repository, e.g.:
 
 ```sh
-yarn workflow beta import C:\Source\my-deployment-repo
+yarn workflow beta import /path/to/my-deployment-repo
 ```
 
 The deployment name is automatically extracted from the `config.ts` file in the source repository. If a deployment with the same name already exists, it will be replaced.

@@ -9,7 +9,7 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ args }) => {
           const [childWorkflow] = args || [];
           const childWorkflows = workflows.beta.children;
-          if (!childWorkflow || !childWorkflows?.childWorkflow) {
+          if (!childWorkflow || !childWorkflows[childWorkflow]) {
             console.log(
               "available commands",
               "\n\n" +

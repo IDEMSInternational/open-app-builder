@@ -56,7 +56,7 @@ export async function importExternalDeployment(sourcePath: string, verbose = fal
   // Save the source path for later use by 'set' command
   fs.writeFileSync(path.join(targetDeploymentPath, ".external_source"), absoluteSourcePath);
 
-  await copySourceDeploymentFiles(absoluteSourcePath, targetDeploymentPath, verbose);
+  copySourceDeploymentFiles(absoluteSourcePath, targetDeploymentPath, verbose);
 
   if (verbose) {
     logOutput({
@@ -70,11 +70,11 @@ export async function importExternalDeployment(sourcePath: string, verbose = fal
  * Copy all necessary files from a source deployment to the target deployment
  * Excludes .git and app_data folders as specified
  */
-async function copySourceDeploymentFiles(
+function copySourceDeploymentFiles(
   sourceLocation: string,
   targetLocation: string,
   verbose = false
-): Promise<void> {
+): void {
   if (verbose) {
     logOutput({
       msg1: `Starting copy from source: ${sourceLocation}`,

@@ -24,7 +24,6 @@ export default program
   .description("Run a workflow")
   .argument("[name]", "Name of workflow to run")
   .passThroughOptions()
-  .passThroughOptions()
   .allowUnknownOption()
   .helpOption("--helpIgnored", "will show help from child workflow instead of this")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
