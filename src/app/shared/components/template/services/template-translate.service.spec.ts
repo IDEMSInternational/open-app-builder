@@ -4,6 +4,7 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { MockAppDataService } from "src/app/shared/services/data/app-data.service.mock.spec";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 const MOCK_DATA_LIST_ROWS = [
   {
@@ -71,6 +72,10 @@ describe("TemplateTranslateService", () => {
         {
           provide: AppConfigService,
           useValue: new MockAppConfigService({ APP_LANGUAGES: { default: "en_mock" } }),
+        },
+        {
+          provide: SystemVariableService,
+          useValue: { set: () => {}, get: () => null, remove: () => {} },
         },
       ],
     });

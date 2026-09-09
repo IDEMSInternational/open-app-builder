@@ -32,7 +32,8 @@ export class ItemDataPipe {
       expression: string,
       contextVariables: FlowTypes.IDynamicContext = {}
     ) => {
-      if (!expression) return;
+      // No expression is a no-op; return items so subsequent operations receive a valid array
+      if (!expression) return items;
       return items.filter((item) => {
         // NOTE - expects all non-item condition to be evaluated
         // e.g. `@item.field > @local.some_value` already be evaluated to `this.item.field > "local value"`

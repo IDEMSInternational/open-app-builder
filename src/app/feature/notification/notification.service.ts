@@ -12,6 +12,7 @@ import { CapacitorEventService } from "src/app/shared/services/capacitor-event/c
 import { _wait } from "packages/shared/src/utils/async-utils";
 import { NotificationActionFactory } from "./notification.actions";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -26,11 +27,11 @@ export class NotificationService {
   private api = LocalNotifications;
 
   constructor(
-    private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
     private dynamicDataService: DynamicDataService,
     private capacitorEventService: CapacitorEventService,
-    private actionRegistry: TemplateActionRegistry
+    private actionRegistry: TemplateActionRegistry,
+    private systemVariableService: SystemVariableService
   ) {
     // Register action handlers
     const { notification } = new NotificationActionFactory(this);
@@ -153,7 +154,7 @@ export class NotificationService {
     }
     const { display } = await this.api.checkPermissions();
     // Store to localstorage and signal
-    this.localStorageService.setProtected("NOTIFICATION_PERMISSION_STATUS", display);
+    this.systemVariableService.set("NOTIFICATION_PERMISSION_STATUS", display);
     this.permissionStatus.set(display);
   }
 

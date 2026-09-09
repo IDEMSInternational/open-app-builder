@@ -4,11 +4,13 @@ import { AuthService } from "./auth.service";
 export class AuthActionFactory {
   constructor(private service: AuthService) {}
 
-  public auth: IActionHandler = async ({ args }) => {
+  public auth: IActionHandler = async ({ args, params }) => {
     const [actionId] = args;
+    const importLatestUserData = params?.import_latest_user_data ?? true;
 
-    const sign_in_google = async () => await this.service.signIn("google.com");
-    const sign_in_apple = async () => await this.service.signIn("apple.com");
+    const sign_in_google = async () =>
+      await this.service.signIn("google.com", importLatestUserData);
+    const sign_in_apple = async () => await this.service.signIn("apple.com", importLatestUserData);
     const sign_out = async () => await this.service.signOut();
     const delete_account = async () => await this.service.deleteAccount();
 

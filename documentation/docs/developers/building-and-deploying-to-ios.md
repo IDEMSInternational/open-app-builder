@@ -12,11 +12,25 @@ In order to create iOS applications, you will need to enrol in the [Apple Develo
 
 In order to run applications locally on an iOS device or simulator (Apple's term for an iOS device emulator), and submit them to the App Store, you will need XCode. [XCode](https://developer.apple.com/xcode/) is available from the Mac App Store.
 
+**XCode 26 or newer is required.** This minimum is set by Capacitor — older versions of XCode cannot build the project.
+
 You will also need XCode CLI tools. These may have been installed with XCode, run `xcode-select -v` to check. If not already installed, run `xcode-select --install`. The CLI tools may need to be configured using the command `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`.
 
 ### CocoaPods
 
-[CocoaPods](https://cocoapods.org/) is a dependency manager for iOS projects, and is required to build iOS apps via Capacitor. Installing via [Homebrew](https://brew.sh/) seems to be the best method, via the command `brew install cocoapods`.
+[CocoaPods](https://cocoapods.org/) is a dependency manager for iOS projects, and is used to build iOS apps in this project. Installing via [Homebrew](https://brew.sh/) seems to be the best method, via the command `brew install cocoapods`.
+
+!!! note "CocoaPods vs Swift Package Manager"
+
+    Capacitor creates new iOS projects using Swift Package Manager (SPM) by default. This project's `ios` directory is committed and uses CocoaPods, so no action is needed for normal development.
+
+    If you ever need to regenerate the iOS platform from scratch, pass the flag to keep it on CocoaPods:
+
+    ```sh
+    npx cap add ios --packagemanager CocoaPods
+    ```
+
+    This is a holding pattern rather than a long-term choice — new versions of the Firebase Apple SDK stop being published to CocoaPods after October 2026, so a migration to SPM is expected. Existing versions remain installable, so nothing breaks at that date.
 
 ### Capacitor iOS setup
 

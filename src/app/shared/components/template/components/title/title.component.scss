@@ -1,12 +1,22 @@
 @use "/src/theme/mixins";
 
+$text-color: var(--title-text-color, var(--ion-color-primary-900));
+
 .title-wrapper {
   display: flex;
   align-items: center;
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
+  }
+  h1 {
     line-height: var(--line-height-text-largest);
     font-weight: var(--font-weight-bold);
+    color: $text-color;
     @media (max-width: 375px) {
       font-size: var(--font-size-title-tiny);
     }
@@ -51,6 +61,24 @@
     h1 {
       width: 100%;
       text-align: center !important;
+    }
+  }
+
+  &[data-variant~="section_banner"] {
+    padding: 18px 24px;
+    background-color: color-mix(in srgb, var(--ion-color-primary-50), white 2%);
+    border-bottom: 1.5px solid var(--ion-color-primary-200);
+    h1 {
+      font-size: var(--font-size-title-tiny);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+
+  &[data-variant~="page_banner"] {
+    margin: var(--regular-margin) 0;
+    h1 {
+      font-size: var(--font-size-title-medium);
+      font-weight: var(--font-weight-bold);
     }
   }
 }

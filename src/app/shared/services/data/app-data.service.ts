@@ -61,6 +61,11 @@ export class AppDataService extends SyncServiceBase {
     return this.sheetContents[type];
   }
 
+  /** Check whether a flow has been registered in app data contents or runtime cache. */
+  public hasFlow(flow_type: FlowTypes.FlowType, flow_name: string) {
+    return !!this.sheetContents[flow_type]?.[flow_name];
+  }
+
   /**
    * Return a list of all sheets by type with data rows
    * NOTE - this may be a slower operation depending on the amount of data to retrieve from disk

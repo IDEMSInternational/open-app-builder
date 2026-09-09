@@ -4,6 +4,9 @@ import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "..
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../layout/popup/popup.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
+import { formatDurationMmSs } from "packages/shared/src/utils/string-utils";
+import { Capacitor } from "@capacitor/core";
+import { ErrorHandlerService } from "../../../../services/error-handler/error-handler.service";
 
 // Names of ion-icons to be used by default in the player.
 // Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
@@ -13,7 +16,7 @@ const FORWARD_ICON_DEFAULT = "play-forward";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** Display variant. Default "compact". */
-  variant: coerce.string("compact"),
+  variant: coerce.allowedValues(["compact", "large", "button_only"], "compact"),
   /** Audio source path. May be overridden by row value. */
   src: coerce.string(""),
   /** Title displayed above the player. */
@@ -53,7 +56,7 @@ export class TmplAudioComponent
    * so that manually seeking works as expected: if player is playing before dragging the slider, playing continues after dragging
    * @ignore
    * */
-  isPlaying: boolean = false;
+  isPlaying = signal(false);
   /**
    * Progress, as a percentage of total duration
    * @ignore
@@ -75,6 +78,8 @@ export class TmplAudioComponent
   hasEnded = signal(false);
   /** @ignore */
   trackerInterval: NodeJS.Timeout;
+  /** Utility function to format duration in "mm:ss" format */
+  public formatDurationMmSs = formatDurationMmSs;
   /** Track any opened transcript modal to close on destroy */
   private transcriptModal: HTMLIonModalElement;
 
@@ -113,7 +118,8 @@ export class TmplAudioComponent
 
   constructor(
     private templateAssetService: TemplateAssetService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private errorHandler: ErrorHandlerService
   ) {
     super();
     effect(() => {
@@ -136,9 +142,17 @@ export class TmplAudioComponent
     const src = this.resolvedSrc();
     if (src) {
       this.player = new Howl({
+        // Native HTML5 audio avoids playback issues seen with Howler's Web Audio backend on iOS.
+        // See https://github.com/IDEMSInternational/open-app-builder/issues/3527
+        html5: Capacitor.getPlatform() === "ios",
         src: [src],
         onload: () => {
           this.durationSeconds.set(this.player.duration());
+        },
+        onloaderror: (_id, error) => {
+          void this.errorHandler
+            .logError(new Error(`[AUDIO COMPONENT] Failed to load audio: ${src}; ${String(error)}`))
+            .catch(() => null);
         },
         onplay: () => {
           this.hasEnded.set(false);
@@ -149,8 +163,19 @@ export class TmplAudioComponent
           }
           this.triggerActions("audio_play");
         },
+        onplayerror: (_id, error) => {
+          void this.errorHandler
+            .logError(
+              new Error(
+                `[AUDIO COMPONENT] Failed to play audio: ${src}; state: ${
+                  this.player?.state() ?? "unknown"
+                }; ${String(error)}`
+              )
+            )
+            .catch(() => null);
+        },
         onend: () => {
-          this.isPlaying = false;
+          this.isPlaying.set(false);
           this.hasEnded.set(true);
           this.progress.set(0);
           this.startProgressTracker();
@@ -169,12 +194,14 @@ export class TmplAudioComponent
   }
 
   public togglePlaying() {
-    if (this.isPlaying) {
+    if (!this.player) return;
+
+    if (this.isPlaying()) {
       this.player.pause();
     } else {
       this.player.play();
     }
-    this.isPlaying = !this.isPlaying;
+    this.isPlaying.update((playing) => !playing);
   }
 
   /**

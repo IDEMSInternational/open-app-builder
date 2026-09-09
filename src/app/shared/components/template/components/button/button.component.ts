@@ -1,6 +1,7 @@
-import { Component, computed, ElementRef } from "@angular/core";
+import { Component, computed, ElementRef, Input } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { TemplateTranslateService } from "../../services/template-translate.service";
+import type { FlowTypes } from "../../models";
 
 const VARIANTS = [
   "default",
@@ -8,11 +9,13 @@ const VARIANTS = [
   "card",
   "card-portrait",
   "compact",
+  "faq",
   "flexible",
   "full",
   "information",
   "medium",
   "navigation",
+  "nested_color",
   "short",
   "standard",
   "tall",
@@ -27,11 +30,13 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "card"
    * - "card-portrait"
    * - "compact"
+   * - "faq"
    * - "flexible"
    * - "full"
    * - "information"
    * - "medium"
    * - "navigation"
+   * - "nested_color"
    * - "short"
    * - "standard"
    * - "tall"
@@ -69,6 +74,10 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   standalone: false,
 })
 export class TmplButtonComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
+  @Input() override set row(row: FlowTypes.TemplateRow) {
+    super.row = row;
+  }
+
   /** Style with two_columns logic applied */
   public style = computed(() => {
     const baseStyle = this.params().style;

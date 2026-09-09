@@ -1,6 +1,7 @@
 import actions from "./providers/actions";
 import android from "./providers/android";
 import appData from "./providers/appData";
+import canto from "./providers/canto";
 import deployment from "./providers/deployment";
 import beta from "./providers/beta";
 import encryption from "./providers/encryption";
@@ -24,6 +25,7 @@ const ALL_TASKS = {
   actions,
   android,
   appData,
+  canto,
   deployment,
   beta,
   encryption,

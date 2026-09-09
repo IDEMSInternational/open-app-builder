@@ -19,19 +19,24 @@ export interface IParent {
   other?: string;
   consoltation?: string;
   archived?: boolean;
-  // Allow for fields added from RapidPro, which will be prefixed with `rp_`
+  // Allow for fields added from RapidPro, which will be prefixed with `rp_`, or other external sources
   [key: string]: any;
   rp_uuid?: string;
 }
 
-// Parent from RapidPro added directly to shared data
-export interface IParentFromRapidPro {
-  rapidpro_uuid: string;
+// Parent added directly to shared data from external source (RapidPro/app join_remote)
+export interface IParentFromExternalSource {
+  rapidpro_uuid?: string;
+  app_user_id?: string;
+  auth_user_id?: string;
   rapidpro_fields: any;
 }
 
 // Parent in shared data. May have been pushed from local data, or added directly from RapidPro, or merged from both
-export type IParentInSharedData = IParent | IParentFromRapidPro | (IParent & IParentFromRapidPro);
+export type IParentInSharedData =
+  | IParent
+  | IParentFromExternalSource
+  | (IParent & IParentFromExternalSource);
 
 export interface IParentGroup {
   rp_access_code?: string;

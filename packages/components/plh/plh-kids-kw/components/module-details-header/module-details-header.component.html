@@ -11,14 +11,14 @@
       </div>
     }
     <div class="image">
-      @if (params.moduleImageAsset) {
-        <div
-          class="module-illustration"
-          [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
-        >
+      <div
+        class="module-illustration"
+        [style.backgroundImage]="'url(' + (params.backgroundImageAsset | plhAsset) + ')'"
+      >
+        @if (params.moduleImageAsset) {
           <img [src]="params.moduleImageAsset | plhAsset" class="module-image" />
-        </div>
-      }
+        }
+      </div>
     </div>
     @if (_row.value) {
       <div class="module-title">

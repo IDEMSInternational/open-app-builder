@@ -4,6 +4,8 @@ import { IonicModule } from "@ionic/angular";
 import { TmplAudioComponent } from "./audio.component";
 import { TemplateAssetService } from "../../services/template-asset.service";
 import { FlowTypes } from "packages/data-models";
+import { ErrorHandlerService } from "../../../../services/error-handler/error-handler.service";
+import { MockErrorHandlerService } from "../../../../services/error-handler/error-handler.service.mock.spec";
 
 const MOCK_ROW: FlowTypes.TemplateRow = { _nested_name: "", name: "", type: "audio" };
 
@@ -15,7 +17,10 @@ describe("TmplAudioComponent", () => {
     TestBed.configureTestingModule({
       declarations: [TmplAudioComponent],
       imports: [IonicModule.forRoot()],
-      providers: [{ provide: TemplateAssetService, useValue: {} }],
+      providers: [
+        { provide: ErrorHandlerService, useValue: new MockErrorHandlerService() },
+        { provide: TemplateAssetService, useValue: {} },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplAudioComponent);

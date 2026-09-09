@@ -91,6 +91,7 @@
       // BOX SHADOW
       box-shadow-primary: 0px 1.5px 8px rgba(104, 148, 188, 0.6),
       box-shadow-secondary: 0px 1.5px 8px rgba(212, 165, 147, 0.6),
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

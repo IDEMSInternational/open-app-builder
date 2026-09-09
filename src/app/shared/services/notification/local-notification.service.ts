@@ -306,7 +306,7 @@ export class LocalNotificationService extends AsyncServiceBase {
         notification[key] = value;
       }
     });
-    if (!notification.extra?.id) {
+    if (!id) {
       throw new Error(`no id supplied for notification\n${notification.title}`);
     }
     if (!notification.schedule) {

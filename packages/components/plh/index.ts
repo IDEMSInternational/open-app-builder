@@ -3,13 +3,17 @@ import { PlhBottomNavigationBarComponent } from "./plh-kids-kw/components/bottom
 import { PlhCompletionModalComponent } from "./plh-kids-kw/components/completion-modal/completion-modal.component";
 import { PlhCourseAccordionComponent } from "./course-accordion/course-accordion.component";
 import { PlhCourseSubItemComponent } from "./course-accordion/course-sub-item/course-sub-item.component";
+import { PlhCourseLessonAccordionComponent } from "./course-lesson-accordion/course-lesson-accordion.component";
 import { PlhModuleDetailsHeaderComponent } from "./plh-kids-kw/components/module-details-header/module-details-header.component";
 import { PlhProgressPathComponent } from "./progress-path/progress-path.component";
 import { PlhLessonCtaComponent } from "./lesson-cta/lesson-cta.component";
 import { PlhModuleListItemComponent } from "./module-list-item/module-list-item.component";
+import { PlhCertificateModule } from "./certificate/plh-certificate.module";
 import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
+import { PlhProgressBarComponent } from "./progress-bar/progress-bar.component";
+import { PlhGetUpNextComponent } from "./get-up-next/get-up-next.component";
 
 export {
   PlhActivityCheckInComponent,
@@ -17,16 +21,20 @@ export {
   PlhCompletionModalComponent,
   PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
+  PlhCourseLessonAccordionComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
   PlhModuleListItemComponent,
+  PlhCertificateModule,
   PlhParentGroupModule,
   PlhParentPointBoxComponent,
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
+  PlhProgressBarComponent,
+  PlhGetUpNextComponent,
 };
 
-export const PLH_FEATURE_MODULES = [PlhParentGroupModule];
+export const PLH_FEATURE_MODULES = [PlhCertificateModule, PlhParentGroupModule];
 
 export const PLH_COMPONENTS = [
   PlhActivityCheckInComponent,
@@ -34,12 +42,15 @@ export const PLH_COMPONENTS = [
   PlhCompletionModalComponent,
   PlhLessonCtaComponent,
   PlhCourseAccordionComponent,
+  PlhCourseLessonAccordionComponent,
   PlhCourseSubItemComponent,
   PlhModuleDetailsHeaderComponent,
   PlhModuleListItemComponent,
   PlhParentPointBoxComponent,
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
+  PlhProgressBarComponent,
+  PlhGetUpNextComponent,
 ];
 
 export const PLH_COMPONENT_MAPPING = {
@@ -50,10 +61,13 @@ export const PLH_COMPONENT_MAPPING = {
   plh_completion_modal: PlhCompletionModalComponent,
   plh_lesson_cta: PlhLessonCtaComponent,
   plh_course_accordion: PlhCourseAccordionComponent,
+  plh_course_lesson_accordion: PlhCourseLessonAccordionComponent,
   plh_course_sub_item: PlhCourseSubItemComponent,
   plh_module_details_header: PlhModuleDetailsHeaderComponent,
   plh_module_list_item: PlhModuleListItemComponent,
   plh_progress_path: PlhProgressPathComponent,
+  plh_progress_bar: PlhProgressBarComponent,
+  plh_get_up_next: PlhGetUpNextComponent,
 };
 
 export type PLHComponentName = keyof typeof PLH_COMPONENT_MAPPING;
