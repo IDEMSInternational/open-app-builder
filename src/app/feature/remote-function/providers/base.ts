@@ -1,0 +1,21 @@
+export interface RemoteFunctionInvokeParams {
+  /** Payload sent to function */
+  [key: string]: string;
+}
+
+export interface RemoteFunctionErrorResponse {
+  code: string;
+  message: string;
+  details: string;
+}
+
+export class RemoteFunctionProviderBase {
+  public async initialise() {
+    return;
+  }
+
+  public async invoke(functionName: string, params: RemoteFunctionInvokeParams) {
+    console.error(`[Remote Function] Provider method not implemented: invoke`);
+    return { data: undefined, error: undefined };
+  }
+}

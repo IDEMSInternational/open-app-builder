@@ -65,6 +65,64 @@ describe("app_user (e2e)", () => {
     expect(record.app_user_id).toBeTruthy();
   });
 
+  it("[Delete] mark user for deletion (soft delete)", async () => {
+    // First verify user exists
+    const getResponse = await request(app.getHttpServer()).get(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(getResponse.status).toEqual(200);
+    expect(getResponse.body.deletion_requested_at).toBeNull();
+
+    // Request deletion (soft delete)
+    const { status, body } = await request(app.getHttpServer()).delete(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(status).toEqual(200);
+    expect(body.marked_for_deletion).toEqual(true);
+
+    // Verify user still exists but is marked for deletion
+    const verifyResponse = await request(app.getHttpServer()).get(
+      `${ENDPOINT_BASE}/${app_user_id}`,
+    );
+    expect(verifyResponse.status).toEqual(200);
+    expect(verifyResponse.body.app_user_id).toEqual(app_user_id);
+    expect(verifyResponse.body.deletion_requested_at).toBeTruthy();
+  });
+
+  it("[Delete] mark non-existent user for deletion", async () => {
+    const nonExistentId = randomUUID();
+    const { status, body } = await request(app.getHttpServer()).delete(
+      `${ENDPOINT_BASE}/${nonExistentId}`,
+    );
+    expect(status).toEqual(200);
+    expect(body.marked_for_deletion).toEqual(false);
+  });
+
+  it("[Delete] mark user for deletion on deployment DB", async () => {
+    const deploymentDBName = `test_e2e_${generateTestID()}`;
+    const app_user_id = randomUUID();
+    const endpoint = `/app_users/${app_user_id}`;
+
+    const { status: createStatus } = await request(app.getHttpServer())
+      .post(endpoint)
+      .set("x-deployment-db-name", deploymentDBName)
+      .send(mockUser(app_user_id));
+    expect(createStatus).toEqual(201);
+
+    const { status: deleteStatus, body } = await request(app.getHttpServer())
+      .delete(endpoint)
+      .set("x-deployment-db-name", deploymentDBName);
+    expect(deleteStatus).toEqual(200);
+    expect(body.marked_for_deletion).toEqual(true);
+
+    const { rows, rowCount } = await testDBQuery(
+      `SELECT deletion_requested_at FROM app_users WHERE app_user_id = '${app_user_id}'`,
+      deploymentDBName,
+    );
+    expect(rowCount).toEqual(1);
+    expect(rows[0].deletion_requested_at).toBeTruthy();
+  });
+
   it("[Post] create on deployment DB", async () => {
     const deploymentDBName = `test_e2e_${generateTestID()}`;
     const app_user_id = randomUUID();

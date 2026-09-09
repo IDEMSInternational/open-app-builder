@@ -151,6 +151,8 @@
       plh-module-list-item-background-1: #a6e9ff,
       plh-module-list-item-background-2: #ffa777,
       plh-module-list-item-background-3: #ffd973,
+
+      title-text-color: var(--ion-color-primary-shade),
     )
   ) {
     @include overrides.overrides;

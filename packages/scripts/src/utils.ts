@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import * as fs from "fs-extra";
 import open from "open";
 
 // re-export shared utils for ease of import
@@ -68,4 +69,12 @@ export async function openUrlDynamic(url: string) {
 export function generateVersionCode(versionName: string) {
   const v = versionName.split(".");
   return `${Number(v[0]) * 1000000 + Number(v[1] || 0) * 1000 + Number(v[2] || 0)}`;
+}
+
+export function getJsonFromFile<T = unknown>(filepath: string): T | null {
+  try {
+    return fs.readJsonSync(filepath) as T;
+  } catch {
+    return null;
+  }
 }

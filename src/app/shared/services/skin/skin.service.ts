@@ -7,6 +7,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { SyncServiceBase } from "../syncService.base";
+import { SystemVariableService } from "../system-variable/system-variable.service";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +21,8 @@ export class SkinService extends SyncServiceBase {
     private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService,
     private templateService: TemplateService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private systemVariableService: SystemVariableService
   ) {
     super("Skin Service");
     this.initialise();
@@ -60,8 +62,8 @@ export class SkinService extends SyncServiceBase {
         // Do not apply skin theme changes on init, to avoid resetting the theme to the active skin's default on app reload
         this.applySkinThemeChanges();
       }
-      // Use local storage so that the active skin persists across app launches
-      this.localStorageService.setProtected("APP_SKIN", targetSkin.name);
+      // Use system variable service so that the active skin persists across app launches
+      this.systemVariableService.set("APP_SKIN", targetSkin.name);
     } else {
       console.error(`No skin found with name "${skinName}"`, {
         availableSkins: this.availableSkins,
@@ -69,9 +71,9 @@ export class SkinService extends SyncServiceBase {
     }
   }
 
-  /** Get the name of the active skin, as saved in local storage */
+  /** Get the name of the active skin, as saved in system variables */
   public getActiveSkinName() {
-    return this.localStorageService.getProtected("APP_SKIN");
+    return this.systemVariableService.get("APP_SKIN");
   }
 
   /**

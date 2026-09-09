@@ -5,7 +5,7 @@ import {
   DebuggerInfoDirective,
   DebuggerTitleDirective,
 } from "../debugger-base/debugger-base.component";
-import { VariableStoreDebuggerComponent } from "../variable-store-debugger/variable-store-debugger.component";
+import { LocalVariableStoreDebuggerComponent } from "../local-variable-store-debugger/local-variable-store-debugger.component";
 
 @Component({
   selector: "oab-template-debugger",
@@ -15,7 +15,7 @@ import { VariableStoreDebuggerComponent } from "../variable-store-debugger/varia
     DebuggerBaseComponent,
     DebuggerInfoDirective,
     DebuggerTitleDirective,
-    VariableStoreDebuggerComponent,
+    LocalVariableStoreDebuggerComponent,
   ],
 })
 export class TemplateDebuggerComponent {

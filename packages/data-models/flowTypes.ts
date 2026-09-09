@@ -81,6 +81,13 @@ export namespace FlowTypes {
   export interface AssetPack extends FlowTypeWithData {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
+    /**
+     * Content hash of every asset slot in the pack, generated at sync time. The app compares it
+     * (for inequality, not ordering) against the version recorded for a downloaded pack to decide
+     * whether to re-walk the manifest. Absent on packs published before versioning was introduced,
+     * and on the runtime-generated `_assets_contents` pack.
+     */
+    version?: string;
   }
 
   /**
@@ -374,11 +381,14 @@ export namespace FlowTypes {
     "raw",
   ] as const;
 
+  export const DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME = ["system"] as const;
+
   type IDynamicPrefixRuntime = (typeof DYNAMIC_PREFIXES_RUNTIME)[number];
 
   export const DYNAMIC_PREFIXES = [
     ...DYNAMIC_PREFIXES_COMPILER,
     ...DYNAMIC_PREFIXES_RUNTIME,
+    ...DYNAMIC_PREFIXES_REACTIVE_TEMPLATE_RUNTIME,
   ] as const;
 
   export type IDynamicPrefix = (typeof DYNAMIC_PREFIXES)[number];
@@ -422,14 +432,15 @@ export namespace FlowTypes {
     | "nav_resume" // return to template after navigation or popup close;
     | "notification_interacted"
     | "notification_received"
+    | "on_progress" // fires once when value first reaches a threshold trigger arg, e.g. `on_progress: 50`
     | "sent" // notification sent
     | "uncompleted";
 
   const DATA_ACTIONS_LIST = ["add_data", "remove_data", "set_data"] as const;
   const ITEMS_ACTIONS_LIST = ["remove_item", "set_item", "set_items"] as const;
   // Difficult to avoid circular imports with current configuration, so explicitly define actions from PLH package here
-  const PLH_ACTIONS_LIST = ["plh_parent_group"] as const;
-  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action"] as const;
+  const PLH_ACTIONS_LIST = ["plh_certificate", "plh_parent_group"] as const;
+  const REACTIVE_TEMPLATE_ACTIONS_LIST = ["action", "set_global"] as const;
 
   // TODO document '' action for stop propagation
   // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -458,6 +469,7 @@ export namespace FlowTypes {
     "open_external",
     "pop_up",
     "process_template",
+    "remote_function",
     "reset_app",
     "reset_data",
     "save_to_device",
@@ -486,6 +498,8 @@ export namespace FlowTypes {
   export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
+    /** optional arguments provided to the trigger itself, e.g. the `50` in `on_progress: 50` */
+    trigger_args?: any[];
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
     rawArgs?: any; // original args before evaluation

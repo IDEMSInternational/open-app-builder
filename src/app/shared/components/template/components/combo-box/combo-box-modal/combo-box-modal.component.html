@@ -7,19 +7,27 @@
   <div class="form">
     <form [formGroup]="form" [class.reverse]="inputPosition">
       <div class="checkboxes">
-        @for (radio of answerOptions(); track radio) {
+        @for (answerOption of answerOptions(); track answerOption) {
           <div
             class="container-radio"
-            [class.checked-radio]="form.get('answer')?.value === $any(radio)[optionsKey]"
+            [class.checked-radio]="form.get('answer')?.value === answerOption[optionsKey]"
           >
             <label>
               <input
                 type="radio"
-                (click)="check(radio)"
+                (click)="check(answerOption)"
                 formControlName="answer"
-                [value]="$any(radio)[optionsKey]"
+                [value]="answerOption[optionsKey]"
               />
-              {{ $any(radio)[optionsValue] | translate }}
+              {{ answerOption[optionsValue] | translate }}
+              @if (metaBadgeChipText(answerOption); as badgeText) {
+                <ion-chip
+                  class="label-badge"
+                  slot="end"
+                  [color]="metaBadgeChipColor(answerOption)"
+                  >{{ badgeText | translate | uppercase }}</ion-chip
+                >
+              }
             </label>
           </div>
         }

@@ -6,6 +6,7 @@ import { MockLocalStorageService } from "src/app/shared/services/local-storage/l
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { MockAppConfigService } from "src/app/shared/services/app-config/app-config.service.mock.spec";
 import { IAppConfig } from "packages/data-models";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 
 const MOCK_APP_CONFIG: Partial<IAppConfig> = {
   APP_THEMES: {
@@ -24,6 +25,10 @@ describe("ThemeService", () => {
         {
           provide: AppConfigService,
           useValue: new MockAppConfigService(MOCK_APP_CONFIG),
+        },
+        {
+          provide: SystemVariableService,
+          useValue: { set: () => {}, get: () => null, remove: () => {} },
         },
       ],
     });

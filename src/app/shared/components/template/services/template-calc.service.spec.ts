@@ -2,9 +2,8 @@ import { TestBed } from "@angular/core/testing";
 import { TemplateCalcService } from "./template-calc.service";
 import { Device } from "@capacitor/device";
 import { MockDataEvaluationService } from "src/app/shared/services/data/data-evaluation.service.mock.spec";
-import { MockLocalStorageService } from "src/app/shared/services/local-storage/local-storage.service.mock.spec";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
-import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
+import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
 import { CORE_CALC_FUNCTIONS } from "./template-calc-functions/core-calc-functions";
 import { PLH_CALC_FUNCTIONS } from "./template-calc-functions/plh-calc-functions";
 
@@ -34,8 +33,8 @@ describe("TemplateCalcService", () => {
           useValue: new MockDataEvaluationService(),
         },
         {
-          provide: LocalStorageService,
-          useValue: new MockLocalStorageService(),
+          provide: SystemVariableService,
+          useValue: jasmine.createSpyObj("SystemVariableService", ["get", "set", "remove"]),
         },
       ],
     });

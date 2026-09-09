@@ -144,5 +144,79 @@ describe("TemplateActionService", () => {
     });
   });
 
+  /**
+   * Actions registered as immediate must interrupt work already holding the queue open (the
+   * `asset_pack: cancel_download` case - a download blocks the queue for its full duration, so a
+   * queued cancel would only run once the download it aborts had already finished)
+   */
+  it("dispatches immediate actions ahead of the queue", async () => {
+    const order: string[] = [];
+    let signalQueuedStarted!: () => void;
+    let releaseQueuedAction!: () => void;
+    const queuedStarted = new Promise<void>((resolve) => (signalQueuedStarted = resolve));
+    const queuedRunning = new Promise<void>((resolve) => (releaseQueuedAction = resolve));
+    const registry = service["templateActionRegistry"] as TemplateActionRegistry;
+    registry.register(
+      {
+        set_data: async () => {
+          order.push("queued_start");
+          signalQueuedStarted();
+          await queuedRunning;
+          order.push("queued_end");
+        },
+        immediate_action: async () => {
+          order.push("immediate");
+        },
+      } as any,
+      true
+    );
+    registry.registerImmediate("immediate_action" as any);
+
+    const queued = service.handleActions([{ trigger: "click", action_id: "set_data", args: [] }]);
+    await queuedStarted;
+    await service.handleActions([
+      { trigger: "click", action_id: "immediate_action" as any, args: [] },
+    ]);
+
+    // the immediate action both ran and resolved while the queued action was still in flight
+    expect(order).toEqual(["queued_start", "immediate"]);
+    releaseQueuedAction();
+    await queued;
+    expect(order).toEqual(["queued_start", "immediate", "queued_end"]);
+    registry.unregister(["immediate_action" as any]);
+  });
+
+  it("queues actions not registered as immediate", async () => {
+    const order: string[] = [];
+    let signalQueuedStarted!: () => void;
+    let releaseQueuedAction!: () => void;
+    const queuedStarted = new Promise<void>((resolve) => (signalQueuedStarted = resolve));
+    const queuedRunning = new Promise<void>((resolve) => (releaseQueuedAction = resolve));
+    service["templateActionRegistry"].register(
+      {
+        set_data: async () => {
+          order.push("queued_start");
+          signalQueuedStarted();
+          await queuedRunning;
+          order.push("queued_end");
+        },
+        add_data: async () => {
+          order.push("second");
+        },
+      } as any,
+      true
+    );
+
+    const queued = service.handleActions([{ trigger: "click", action_id: "set_data", args: [] }]);
+    await queuedStarted;
+    const second = service.handleActions([{ trigger: "click", action_id: "add_data", args: [] }]);
+    await queuedStarted;
+
+    expect(order).toEqual(["queued_start"]);
+    releaseQueuedAction();
+    await Promise.all([queued, second]);
+    expect(order).toEqual(["queued_start", "queued_end", "second"]);
+  });
+
   //   TODO - improve test coverage
 });

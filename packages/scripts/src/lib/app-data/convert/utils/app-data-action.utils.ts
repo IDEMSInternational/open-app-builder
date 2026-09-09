@@ -32,6 +32,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     notification_interacted: true,
     notification_received: true,
     nav_resume: true,
+    on_progress: true,
     sent: true,
     uncompleted: true,
   };
@@ -39,18 +40,22 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     actionString = `click | ${actionString}`;
   }
   const parts = actionString.split("|").map((s) => s.trim());
-  const trigger = parts[0] as any;
+  // A trigger may optionally take arguments provided after a `:`, e.g. `on_progress: 50`.
+  const [trigger, ...trigger_args] = parts[0].split(":").map((s) => s.trim());
   const action: FlowTypes.TemplateRowAction = {
-    trigger,
-    action_id: null,
+    trigger: trigger as any,
+    action_id: null as any,
     args: [],
     _raw,
   };
+  if (trigger_args.length > 0) {
+    action.trigger_args = trigger_args.map((arg: string) => booleanStringToBoolean(arg));
+  }
   if (parts[1]) {
     // e.g `completed | emit:completed`
     let [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
     action.action_id = action_id;
-    action.args = args.map((arg) => booleanStringToBoolean(arg));
+    action.args = args.map((arg: string) => booleanStringToBoolean(arg));
   }
   if (parts[2]) {
     // e.g. `click | pop_up:my_template | fullscreen:true`

@@ -1,0 +1,43 @@
+import { ItemVariableExpressionParser } from "./item-variable.expression-parser";
+
+/**
+ * Run only this test file via:
+ * yarn ng test --watch=false --browsers=ChromeHeadless --include src/app/reactive-templates/services/expression-parsers/item-variable.expression-parser.spec.ts
+ */
+
+describe("ItemVariableExpressionParser", () => {
+  let subject: ItemVariableExpressionParser;
+
+  beforeEach(() => {
+    subject = new ItemVariableExpressionParser();
+  });
+
+  it("converts item paths in script expressions", () => {
+    const expression = "item.foo.bar + item.count";
+
+    expect(subject.parse(expression, "script")).toBe("loop.item.foo.bar + loop.item.count");
+  });
+
+  it("converts item paths inside string template placeholders", () => {
+    const expression = "Value: ${item.foo.bar}";
+
+    expect(subject.parse(expression, "string")).toBe("Value: ${loop.item.foo.bar}");
+  });
+
+  it("does not rewrite already qualified loop.item paths", () => {
+    const expression = "loop.item.foo + item.bar";
+
+    expect(subject.parse(expression, "script")).toBe("loop.item.foo + loop.item.bar");
+  });
+
+  it("does not rewrite plain text outside string placeholders", () => {
+    const expression = "item.foo should stay text";
+
+    expect(subject.parse(expression, "string")).toBe(expression);
+  });
+
+  it("returns non-string values as-is", () => {
+    expect(subject.parse(42, "script")).toBe(42);
+    expect(subject.parse(true, "string")).toBe(true);
+  });
+});
