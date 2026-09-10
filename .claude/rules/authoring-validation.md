@@ -61,6 +61,14 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   Example (found 2026-09-09): a module-completion action list set `prox_7d_last_ts: @calc(now())` while the
   follow-on check-in row was gated on `days_since >= frequency`; the check-in never rendered.
 
+- **`data_items` with `shuffle` + `data_changed | set_local` can loop.** Components get a fresh row object on
+  every parent re-render and `rowSignal` deliberately has no equality check (`components/base.ts`), so a
+  `data_items` re-subscribes and re-runs its pipe; `shuffle` re-randomises each time, so `data_changed` fires
+  again, and its `set_local` reprocesses the parent — which re-renders if any row depends on the picked value
+  (or contains `@calc(now())`). It ends only when two shuffles pick the same item (~1/n per round), rebuilding
+  nested templates each round. Fix: gate the row on its own output (e.g. `condition: !@local.picked_id`) so it
+  picks once, or drop `shuffle`. (found 2026-09-10)
+  
 ## Pre-wired hooks for validation
 
 - `TemplateParser.qualityControlCheck` (`template.parser.ts`) — row-level, currently empty; **skipped for
