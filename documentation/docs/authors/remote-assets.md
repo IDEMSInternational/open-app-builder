@@ -23,7 +23,7 @@ What "downloading" means depends on the platform:
 
 | Platform      | Behaviour                                                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Android / iOS | Each file in the pack is fetched and saved to the device. Interrupted downloads resume on the next app launch, skipping files already saved |
+| Android / iOS | The pack's files are fetched and saved to the device. Interrupted downloads resume on the next app launch                                  |
 | Web           | No files are saved. The pack's assets are pointed at the storage provider's CDN and streamed by the browser                                 |
 
 
@@ -32,6 +32,24 @@ What "downloading" means depends on the platform:
     A pack's assets are unavailable on **both** platforms until a template has run an `asset_pack`
     download action for it at least once — on web that action rewrites the asset paths to CDN URLs
     rather than transferring files. Only the file storage and resume behaviour is native-only.
+
+### First download, and later updates
+
+On Android and iOS, how a pack is fetched depends on whether the device has it already:
+
+
+| Situation                          | How it is fetched                                                      |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| The device has never had this pack | As one compressed file, which is much faster than a request per asset  |
+| The pack is being updated          | File by file, fetching only those files whose content has changed      |
+
+
+This is decided automatically and needs nothing from authoring, but two things follow from it:
+
+- Interrupting a **first** download means its transfer starts again on the next attempt. Once a pack
+has completed, later updates only fetch what changed.
+- If a deployment has not uploaded the compressed file for a pack (see
+[Uploading asset packs](#uploading-asset-packs)), packs still download correctly, just more slowly.
 
 ## Referencing remote assets in templates
 
@@ -231,8 +249,7 @@ pack's progress:
     to a couple of megabytes.
 
     For a **progress bar**, prefer `download_progress_percent`. It tracks transferred bytes when a
-    pack is downloaded in bulk and files otherwise, so it moves smoothly either way — and which way
-    a given download takes is decided automatically, not by authoring.
+    pack is downloaded as one compressed file and files otherwise, so it moves smoothly either way.
 
 
 !!! note
@@ -249,6 +266,8 @@ The statuses behave as follows:
 connectivity returns.
 - `in_progress` and `waiting_for_connection` are picked up automatically on the next app launch if the
 app was closed mid-download.
+- Individual files are retried a few times before a pack is given up on, so `error` means a
+persistent problem rather than one failed request.
 - `error` and `cancelled` are not retried automatically, but either `download` or `ensure_downloaded`
 will retry them (`ensure_downloaded` only skips packs that are `completed`).
 
@@ -503,8 +522,8 @@ milliseconds before each asset file, however the pack is being fetched:
 click | asset_pack: download: my_asset_pack | debug_download_delay_ms: 3000
 ```
 
-When a pack is fetched in bulk the pause applies as each file is unpacked, not to the transfer
-itself, so the window it opens is during installation rather than during the download.
+On a first download the pause applies as each file is unpacked, not to the transfer itself, so the
+window it opens is during installation rather than during the download.
 
 This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack,
 toggling aeroplane mode — which is otherwise hard to hit on a fast connection. It should be omitted
