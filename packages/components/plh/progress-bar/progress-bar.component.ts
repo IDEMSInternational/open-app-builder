@@ -21,6 +21,11 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   auto_play: coerce.boolean(false),
   /** Color applied to the title and completed portion of the progress bar. */
   color: coerce.string(""),
+  /**
+   * When true, the current percentage is displayed to the right of the title.
+   * It is hidden while progress remains at 0, and replaced by a tick once complete.
+   */
+  show_percentage: coerce.boolean(false),
 }));
 
 function clampProgress(value: unknown): number {
@@ -60,24 +65,50 @@ export class PlhProgressBarComponent
 
   accentColor = computed(() => this.params().color || "var(--ion-color-primary)");
 
-  /**
-   * Row rendered by the nested text component, so that the title inherits standard text styling
-   * (and markdown support) instead of being styled here.
-   * The accent colour is passed as `style_list` as those are applied inline, taking precedence
-   * over the colour set by the text component's own classes.
-   */
-  titleRow = computed<FlowTypes.TemplateRow>(() => ({
-    _nested_name: "",
-    name: "",
-    type: "text",
-    value: this.params().title,
-    style_list: [`color: ${this.accentColor()}`],
-  }));
-
   displayProgress = computed(() => {
     const local = this.localProgress();
     return clampProgress(local !== null ? local : this.value());
   });
+
+  /** Progress is complete, so the tick icon replaces the percentage display. */
+  isComplete = computed(() => this.displayProgress() >= 100);
+
+  /**
+   * Whether the percentage (or, once complete, the tick that replaces it) is displayed.
+   * Authored via `show_percentage`, and hidden while progress remains at 0.
+   */
+  showPercentageDisplay = computed(
+    () => this.params().showPercentage && this.displayProgress() > 0
+  );
+
+  /**
+   * Whole percentage shown when `show_percentage` is enabled. Fractional values are rounded,
+   * but held within 1-99 so that a bar which has yet to complete never reads "100%"
+   * (nor a bar which has started "0%"), keeping the display in step with the tick.
+   */
+  private displayPercentage = computed(() =>
+    Math.min(99, Math.max(1, Math.round(this.displayProgress())))
+  );
+
+  titleRow = computed(() => this.textRow(this.params().title));
+
+  percentageRow = computed(() => this.textRow(`${this.displayPercentage()}%`));
+
+  /**
+   * Build a row for a nested text component, so that displayed text inherits standard text
+   * styling (and markdown support) instead of being styled here.
+   * The accent colour is passed as `style_list` as those are applied inline, taking precedence
+   * over the colour set by the text component's own classes.
+   */
+  private textRow(value: string): FlowTypes.TemplateRow {
+    return {
+      _nested_name: "",
+      name: "",
+      type: "text",
+      value,
+      style_list: [`color: ${this.accentColor()}`],
+    };
+  }
 
   constructor() {
     super();

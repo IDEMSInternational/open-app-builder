@@ -4,12 +4,40 @@ $progress-bar-height: 5px;
 .progress-bar-wrapper {
   width: 100%;
 
-  .progress-title {
-    // Typography is inherited from the text component; only spacing is set here.
-    // `--margin-text` overrides the paragraph spacing the text component sets on its own host
-    display: block;
-    --margin-text: 0;
+  .progress-header {
+    // Text size used for the percentage and the tick, matching the text component's default
+    --progress-percentage-font-size: var(--font-size-text-large);
+    // Reserve the same width for the percentage and the tick which replaces it, so that the
+    // title wraps the same way either side of completion. Wide enough for the widest value ("99%")
+    --progress-percentage-width: calc(var(--progress-percentage-font-size) * 2.4);
+
+    display: flex;
+    align-items: center;
+    gap: var(--small-padding);
     margin: var(--small-margin) 0;
+
+    // Typography is inherited from the text component; only spacing is set here. `--margin-text`
+    // has to be set on the text component's own host element, which otherwise defaults it to the
+    // standard paragraph spacing - inheriting it from a container is not enough to override that
+    plh-tmpl-text {
+      --margin-text: 0;
+    }
+
+    // Hold the percentage (or the tick which replaces it) against the end of the bar, with or
+    // without a title. The width is reserved on this container rather than on the contents, so
+    // that the tick keeps its own size and aligns to the same edge as the percentage
+    .progress-percentage {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-inline-start: auto;
+      flex-shrink: 0;
+      min-width: var(--progress-percentage-width);
+
+      ion-icon {
+        font-size: var(--progress-percentage-font-size);
+      }
+    }
   }
 
   .progress-bar-background {

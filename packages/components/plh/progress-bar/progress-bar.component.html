@@ -1,6 +1,19 @@
 <div class="progress-bar-wrapper">
-  @if (params().title) {
-    <plh-tmpl-text class="progress-title" [row]="titleRow()"></plh-tmpl-text>
+  @if (params().title || showPercentageDisplay()) {
+    <div class="progress-header">
+      @if (params().title) {
+        <plh-tmpl-text class="progress-title" [row]="titleRow()"></plh-tmpl-text>
+      }
+      @if (showPercentageDisplay()) {
+        <div class="progress-percentage">
+          @if (isComplete()) {
+            <ion-icon name="checkmark-outline" [style.color]="accentColor()"></ion-icon>
+          } @else {
+            <plh-tmpl-text [row]="percentageRow()"></plh-tmpl-text>
+          }
+        </div>
+      }
+    </div>
   }
   <div class="progress-bar-background">
     <div
