@@ -106,17 +106,31 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
   });
 
   public isOptionSelected(item: IAnswerOption): boolean {
-    return item[this.params().optionsKey] === this.selectedKey();
+    return this.optionKey(item) === this.selectedKey();
   }
 
-  public async handleItemClick(selectedKey: string) {
+  /** Select an option from the grid, as clicked in the default variant. */
+  public async handleItemClick(item: IAnswerOption) {
+    await this.handleKeySelection(this.optionKey(item));
+  }
+
+  /** Select an option by key, as emitted by the card variant's radio group. */
+  public async handleKeySelection(selectedKey: string) {
     await this.setValue(this.buildValueForKey(selectedKey));
+  }
+
+  /**
+   * Read an option's `options_key` field. Cast as an answer list types every field as possibly
+   * null or undefined, whereas an option rendered in the grid is expected to have a key.
+   */
+  private optionKey(item: IAnswerOption): string {
+    return item[this.params().optionsKey] as string;
   }
 
   /** Build the row value representing a selected option, in the shape set by `value_as_object`. */
   private buildValueForKey(selectedKey: string): string | IRadioButtonGridObjectValue {
     if (!this.params().valueAsObject) return selectedKey;
-    const option = this.radioItems().find((item) => item[this.params().optionsKey] === selectedKey);
+    const option = this.radioItems().find((item) => this.optionKey(item) === selectedKey);
     return { key: selectedKey, value: option?.[this.params().optionsValue] ?? null };
   }
 
@@ -140,9 +154,7 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
     }
     // Compare as strings, as the authored parameter cannot express a non-string data list key,
     // then select using the option's own key so the type matches what a click would produce.
-    const option = this.radioItems().find(
-      (item) => String(item[this.params().optionsKey]) === initialKey
-    );
+    const option = this.radioItems().find((item) => String(this.optionKey(item)) === initialKey);
     if (!option) {
       console.warn(
         "[radio_button_grid] `initial_selected_option_key` does not match any answer option",
@@ -154,8 +166,7 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
       );
       return;
     }
-    const optionKey = option[this.params().optionsKey] as string;
-    await this.setValue(this.buildValueForKey(optionKey), false);
+    await this.setValue(this.buildValueForKey(this.optionKey(option)), false);
   }
 
   // Allow radio_button_grid to include data_items child row to define answer list

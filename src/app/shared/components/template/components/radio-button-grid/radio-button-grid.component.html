@@ -6,7 +6,7 @@
     [optionsValue]="params().optionsValue"
     [gridStyle]="gridStyle()"
     [styleVariant]="params().style"
-    (selectionChange)="handleItemClick($event)"
+    (selectionChange)="handleKeySelection($event)"
   />
 } @else {
   <div
@@ -18,7 +18,7 @@
     @for (item of radioItems(); track item[params().optionsKey]) {
       <div
         class="item"
-        (click)="handleItemClick(item[params().optionsKey])"
+        (click)="handleItemClick(item)"
         [attr.data-selected]="isOptionSelected(item)"
         [style.--min-item-width]="params().itemWidth"
       >

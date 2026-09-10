@@ -55,7 +55,7 @@ describe("RadioButtonGridComponent", () => {
   describe("value_as_object", () => {
     it("sets the selected option key as the value by default", async () => {
       await renderRow(MOCK_ROW({ parameter_list: { answer_list: ANSWER_LIST } }));
-      await component.handleItemClick("option_2");
+      await component.handleKeySelection("option_2");
       expect(component.value()).toEqual("option_2");
       expect(component.selectedKey()).toEqual("option_2");
     });
@@ -64,7 +64,7 @@ describe("RadioButtonGridComponent", () => {
       await renderRow(
         MOCK_ROW({ parameter_list: { answer_list: ANSWER_LIST, value_as_object: "true" } })
       );
-      await component.handleItemClick("option_2");
+      await component.handleKeySelection("option_2");
       expect(component.value()).toEqual({ key: "option_2", value: "Second" });
       expect(component.selectedKey()).toEqual("option_2");
     });
