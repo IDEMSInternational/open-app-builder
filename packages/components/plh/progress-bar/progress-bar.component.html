@@ -1,6 +1,6 @@
 <div class="progress-bar-wrapper">
   @if (params().title) {
-    <p class="progress-title" [style.color]="accentColor()">{{ params().title }}</p>
+    <plh-tmpl-text class="progress-title" [row]="titleRow()"></plh-tmpl-text>
   }
   <div class="progress-bar-background">
     <div

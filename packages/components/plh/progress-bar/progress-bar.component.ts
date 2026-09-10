@@ -1,4 +1,5 @@
 import { Component, computed, effect, OnDestroy, signal, untracked } from "@angular/core";
+import { FlowTypes } from "packages/data-models";
 import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
@@ -58,6 +59,20 @@ export class PlhProgressBarComponent
   private localProgress = signal<number | null>(null);
 
   accentColor = computed(() => this.params().color || "var(--ion-color-primary)");
+
+  /**
+   * Row rendered by the nested text component, so that the title inherits standard text styling
+   * (and markdown support) instead of being styled here.
+   * The accent colour is passed as `style_list` as those are applied inline, taking precedence
+   * over the colour set by the text component's own classes.
+   */
+  titleRow = computed<FlowTypes.TemplateRow>(() => ({
+    _nested_name: "",
+    name: "",
+    type: "text",
+    value: this.params().title,
+    style_list: [`color: ${this.accentColor()}`],
+  }));
 
   displayProgress = computed(() => {
     const local = this.localProgress();

@@ -5,9 +5,11 @@ $progress-bar-height: 5px;
   width: 100%;
 
   .progress-title {
-    margin: 0 0 var(--tiny-padding);
-    font-size: var(--font-size-text-small);
-    font-weight: var(--font-weight-medium);
+    // Typography is inherited from the text component; only spacing is set here.
+    // `--margin-text` overrides the paragraph spacing the text component sets on its own host
+    display: block;
+    --margin-text: 0;
+    margin: var(--small-margin) 0;
   }
 
   .progress-bar-background {
