@@ -1,9 +1,15 @@
-import { Component, computed } from "@angular/core";
+import { Component, computed, effect } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { filter, map, switchMap } from "rxjs/operators";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { IAnswerOption } from "src/app/shared/utils";
 import { DataItemsService } from "../data-items/data-items.service";
+
+/** Shape of the row value when `value_as_object` is true. */
+export interface IRadioButtonGridObjectValue {
+  key: string;
+  value: string | null;
+}
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   /** List of options presented as radio items */
@@ -22,6 +28,21 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   /** The property key to use for the option display text. Default 'text'. */
   options_value: coerce.string("text"),
+  /**
+   * Key of the option to select when the row has no value of its own, i.e. the option's
+   * `options_key` field. Applied once, as soon as the answer options are available, and written
+   * in whichever shape `value_as_object` specifies.
+   *
+   * Provides a way to preselect an option by key when `value_as_object` is true, where authoring
+   * the full object value on the row directly is impractical. An authored row `value` takes
+   * precedence, so the two should not be combined.
+   */
+  initial_selected_option_key: coerce.string(""),
+  /**
+   * When true, the row value is set as `{ key, value }` using the selected option's
+   * options_key and options_value fields. When false (default), the value is the key string only.
+   */
+  value_as_object: coerce.boolean(false),
 }));
 
 @Component({
@@ -42,8 +63,30 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
     });
   });
 
+  /** Key of the selected option (extracted from the object value when needed). */
+  public selectedKey = computed(() => {
+    const value = this.value();
+    if (this.params().valueAsObject && value && typeof value === "object") {
+      return (value as IRadioButtonGridObjectValue).key;
+    }
+    return value;
+  });
+
+  /** Whether `initial_selected_option_key` has been resolved (applied or discarded). */
+  private hasAppliedInitialSelection = false;
+
   constructor(private dataItemsService: DataItemsService) {
     super();
+    // Apply `initial_selected_option_key` once the answer options are known (they may arrive
+    // asynchronously via a nested `data_items` row, and are needed to build an object value).
+    effect(() => {
+      if (this.hasAppliedInitialSelection) return;
+      const initialKey = this.params().initialSelectedOptionKey;
+      // Wait rather than discard - a dynamic reference may not have resolved yet
+      if (!initialKey || this.radioItems().length === 0) return;
+      this.hasAppliedInitialSelection = true;
+      void this.applyInitialSelection(initialKey);
+    });
   }
 
   /** Computed grid style passed into ngStyle */
@@ -62,8 +105,57 @@ export class TmplRadioButtonGridComponent extends TemplateBaseComponentWithParam
     };
   });
 
-  public async handleItemClick(item: IAnswerOption) {
-    await this.setValue(item[this.params().optionsKey]);
+  public isOptionSelected(item: IAnswerOption): boolean {
+    return item[this.params().optionsKey] === this.selectedKey();
+  }
+
+  public async handleItemClick(selectedKey: string) {
+    await this.setValue(this.buildValueForKey(selectedKey));
+  }
+
+  /** Build the row value representing a selected option, in the shape set by `value_as_object`. */
+  private buildValueForKey(selectedKey: string): string | IRadioButtonGridObjectValue {
+    if (!this.params().valueAsObject) return selectedKey;
+    const option = this.radioItems().find((item) => item[this.params().optionsKey] === selectedKey);
+    return { key: selectedKey, value: option?.[this.params().optionsValue] ?? null };
+  }
+
+  /**
+   * Select the option named by `initial_selected_option_key`, writing the value in full so that
+   * references such as `@local.<row_name>.key` resolve before the user has touched the grid.
+   * Triggers `set_self` (and so dependent row re-evaluation) but not `changed` actions, as this
+   * is initialisation rather than a user selection.
+   */
+  private async applyInitialSelection(initialKey: string) {
+    const currentValue = this.value();
+    if (currentValue !== undefined && currentValue !== null && currentValue !== "") {
+      console.warn(
+        "[radio_button_grid] `initial_selected_option_key` ignored as row already has a value",
+        {
+          row: this._row?.name,
+          value: currentValue,
+        }
+      );
+      return;
+    }
+    // Compare as strings, as the authored parameter cannot express a non-string data list key,
+    // then select using the option's own key so the type matches what a click would produce.
+    const option = this.radioItems().find(
+      (item) => String(item[this.params().optionsKey]) === initialKey
+    );
+    if (!option) {
+      console.warn(
+        "[radio_button_grid] `initial_selected_option_key` does not match any answer option",
+        {
+          row: this._row?.name,
+          initial_selected_option_key: initialKey,
+          options_key: this.params().optionsKey,
+        }
+      );
+      return;
+    }
+    const optionKey = option[this.params().optionsKey] as string;
+    await this.setValue(this.buildValueForKey(optionKey), false);
   }
 
   // Allow radio_button_grid to include data_items child row to define answer list

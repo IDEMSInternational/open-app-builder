@@ -1,12 +1,12 @@
 @if (params().variant === "card") {
   <radio-button-grid-card
-    [value]="value()"
+    [value]="selectedKey()"
     [answerOptions]="radioItems()"
     [optionsKey]="params().optionsKey"
     [optionsValue]="params().optionsValue"
     [gridStyle]="gridStyle()"
     [styleVariant]="params().style"
-    (selectionChange)="setValue($event)"
+    (selectionChange)="handleItemClick($event)"
   />
 } @else {
   <div
@@ -18,8 +18,8 @@
     @for (item of radioItems(); track item[params().optionsKey]) {
       <div
         class="item"
-        (click)="handleItemClick(item)"
-        [attr.data-selected]="item[params().optionsKey] === value()"
+        (click)="handleItemClick(item[params().optionsKey])"
+        [attr.data-selected]="isOptionSelected(item)"
         [style.--min-item-width]="params().itemWidth"
       >
         @if (item.image) {
@@ -27,10 +27,8 @@
             <img
               class="item-image"
               [src]="
-                (item[params().optionsKey] === value() && item.image_checked
-                  ? item.image_checked
-                  : item.image
-                ) | plhAsset
+                (isOptionSelected(item) && item.image_checked ? item.image_checked : item.image)
+                  | plhAsset
               "
             />
           </div>
