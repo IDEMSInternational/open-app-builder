@@ -150,7 +150,7 @@ changes. Nothing has to be incremented or remembered when republishing.
 
 !!! warning "Version checks are throttled to once an hour per pack"
 
-    `ensure_downloaded` is authored on template entry and on buttons, so an unthrottled check would
+    `ensure_downloaded` is authored on template entry and on buttons, so an un-throttled check would
     mean a manifest fetch every time one runs. A check therefore happens at most **once an hour per
     pack**, or 15 minutes after a check that reached the server and failed.
 
