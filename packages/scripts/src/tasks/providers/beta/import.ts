@@ -111,22 +111,12 @@ function copySourceDeploymentFiles(
     }
 
     try {
-      if (item.isDirectory()) {
-        fs.copySync(sourcePath, targetPath, { overwrite: true });
-        if (verbose) {
-          logOutput({
-            msg1: `Copied folder: ${item.name}`,
-            msg2: `${sourcePath} -> ${targetPath}`,
-          });
-        }
-      } else {
-        fs.copySync(sourcePath, targetPath, { overwrite: true });
-        if (verbose) {
-          logOutput({
-            msg1: `Copied file: ${item.name}`,
-            msg2: `${sourcePath} -> ${targetPath}`,
-          });
-        }
+      fs.copySync(sourcePath, targetPath, { overwrite: true });
+      if (verbose) {
+        logOutput({
+          msg1: `Copied folder: ${item.name}`,
+          msg2: `${sourcePath} -> ${targetPath}`,
+        });
       }
     } catch (error) {
       logWarning({
