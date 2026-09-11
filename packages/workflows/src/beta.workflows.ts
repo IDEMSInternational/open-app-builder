@@ -57,6 +57,17 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      publish: {
+        label: "Create github release",
+        steps: [
+          {
+            name: "publish",
+            function: async ({ tasks }) => {
+              await tasks.beta.publishExternalDeployment();
+            },
+          },
+        ],
+      },
     },
   },
 };

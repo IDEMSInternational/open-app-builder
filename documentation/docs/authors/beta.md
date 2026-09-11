@@ -48,3 +48,13 @@ yarn workflow beta set my_deployment
 ```
 
 If the deployment has an `.external_source` file (created during import), the active deployment config will be updated with the external source path. A warning will be shown if no `.external_source` file is found.
+
+### Publish
+Publish content changes for the active external deployment. This runs the same release process as `yarn workflow deployment publish` (stage changes, prompt for a version tag, create a `content/<tag>` branch, commit, tag, and push), but operates directly on the external source folder rather than the copied workspace files.
+
+```sh
+yarn workflow beta publish
+```
+
+!!! note
+    The active deployment (set via `beta set`) must have been imported via `beta import` and still have a valid external source path with a `.git` folder. Otherwise the command will fail and suggest running `yarn workflow deployment publish` instead.

@@ -7,6 +7,7 @@ import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
+import { loadDeploymentJson } from "../../commands/deployment/utils";
 import { Logger, logOutput, openUrl, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
 import { pad, PATHS } from "shared";
@@ -61,8 +62,12 @@ class GitProvider {
     console.log(chalk.gray("branch up-to-date"));
   }
 
-  public async createContentRelease() {
-    await this.initialiseGitProvider();
+  /**
+   * @param workspacePath Path to a deployment workspace to publish from. Defaults to the
+   * active deployment, but can be used to publish an external deployment's folder directly
+   */
+  public async createContentRelease(workspacePath?: string) {
+    await this.initialiseGitProvider(workspacePath);
     console.log("Preparing files...");
     await this.promptChangesReview();
     const revertTagName = this.deployment.git.content_tag_latest;
@@ -243,11 +248,11 @@ class GitProvider {
    * NOTE - as async cannot be called in constructor and so should be called first
    * from any public api methods
    * */
-  private async initialiseGitProvider() {
+  private async initialiseGitProvider(workspacePath?: string) {
     if (this.git) {
       return;
     }
-    this.deployment = ActiveDeployment.get();
+    this.deployment = workspacePath ? loadDeploymentJson(workspacePath) : ActiveDeployment.get();
     const { _workspace_path, git, _config_ts_path } = this.deployment;
     if (!git?.content_repo) {
       Logger.error({
