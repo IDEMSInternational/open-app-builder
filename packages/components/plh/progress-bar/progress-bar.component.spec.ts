@@ -16,7 +16,7 @@ describe("PlhProgressBarComponent", () => {
     TestBed.configureTestingModule({
       declarations: [PlhProgressBarComponent],
       imports: [IonicModule.forRoot()],
-      // Allow the nested text component to be rendered without declaring it
+      // Allow the nested ion-icon to be rendered without declaring it
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

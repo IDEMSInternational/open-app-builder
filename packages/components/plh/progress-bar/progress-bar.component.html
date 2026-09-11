@@ -1,15 +1,15 @@
 <div class="progress-bar-wrapper">
   @if (params().title || showPercentageDisplay()) {
-    <div class="progress-header">
+    <div class="progress-header" [style.color]="accentColor()">
       @if (params().title) {
-        <plh-tmpl-text class="progress-title" [row]="titleRow()"></plh-tmpl-text>
+        <p class="progress-title">{{ params().title }}</p>
       }
       @if (showPercentageDisplay()) {
         <div class="progress-percentage">
           @if (isComplete()) {
-            <ion-icon name="checkmark-outline" [style.color]="accentColor()"></ion-icon>
+            <ion-icon name="checkmark-outline"></ion-icon>
           } @else {
-            <plh-tmpl-text [row]="percentageRow()"></plh-tmpl-text>
+            <span>{{ displayPercentage() }}%</span>
           }
         </div>
       }

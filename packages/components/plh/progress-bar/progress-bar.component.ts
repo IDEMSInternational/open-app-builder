@@ -1,5 +1,4 @@
 import { Component, computed, effect, OnDestroy, signal, untracked } from "@angular/core";
-import { FlowTypes } from "packages/data-models";
 import {
   defineAuthorParameterSchema,
   TemplateBaseComponentWithParams,
@@ -86,29 +85,7 @@ export class PlhProgressBarComponent
    * but held within 1-99 so that a bar which has yet to complete never reads "100%"
    * (nor a bar which has started "0%"), keeping the display in step with the tick.
    */
-  private displayPercentage = computed(() =>
-    Math.min(99, Math.max(1, Math.round(this.displayProgress())))
-  );
-
-  titleRow = computed(() => this.textRow(this.params().title));
-
-  percentageRow = computed(() => this.textRow(`${this.displayPercentage()}%`));
-
-  /**
-   * Build a row for a nested text component, so that displayed text inherits standard text
-   * styling (and markdown support) instead of being styled here.
-   * The accent colour is passed as `style_list` as those are applied inline, taking precedence
-   * over the colour set by the text component's own classes.
-   */
-  private textRow(value: string): FlowTypes.TemplateRow {
-    return {
-      _nested_name: "",
-      name: "",
-      type: "text",
-      value,
-      style_list: [`color: ${this.accentColor()}`],
-    };
-  }
+  displayPercentage = computed(() => Math.min(99, Math.max(1, Math.round(this.displayProgress()))));
 
   constructor() {
     super();

@@ -1,26 +1,32 @@
 $progress-bar-background-color: var(--ion-color-gray-100);
-$progress-bar-height: 5px;
+$progress-bar-height: 6px;
+/// Total vertical gap between one bar and the component which follows it
+$progress-bar-row-gap: 24px;
 
 .progress-bar-wrapper {
   width: 100%;
+  // Template rows already space themselves with `--row-margin-top`, so only the remainder of the
+  // gap is added here. It is padding rather than margin, which would otherwise collapse with
+  // the following row's margin instead of adding to it
+  padding-bottom: calc(#{$progress-bar-row-gap} - var(--row-margin-top));
 
   .progress-header {
-    // Text size used for the percentage and the tick, matching the text component's default
-    --progress-percentage-font-size: var(--font-size-text-large);
+    // Typography shared by the title and the percentage beside it
+    --progress-header-font-size: var(--font-size-text-small);
     // Reserve the same width for the percentage and the tick which replaces it, so that the
     // title wraps the same way either side of completion. Wide enough for the widest value ("99%")
-    --progress-percentage-width: calc(var(--progress-percentage-font-size) * 2.4);
+    --progress-percentage-width: calc(var(--progress-header-font-size) * 2.4);
 
     display: flex;
     align-items: center;
     gap: var(--small-padding);
-    margin: var(--small-margin) 0;
+    // Gap between the title and the bar below it
+    margin-bottom: var(--tiny-margin);
+    font-size: var(--progress-header-font-size);
+    font-weight: 500;
 
-    // Typography is inherited from the text component; only spacing is set here. `--margin-text`
-    // has to be set on the text component's own host element, which otherwise defaults it to the
-    // standard paragraph spacing - inheriting it from a container is not enough to override that
-    plh-tmpl-text {
-      --margin-text: 0;
+    .progress-title {
+      margin: 0;
     }
 
     // Hold the percentage (or the tick which replaces it) against the end of the bar, with or
@@ -35,7 +41,7 @@ $progress-bar-height: 5px;
       min-width: var(--progress-percentage-width);
 
       ion-icon {
-        font-size: var(--progress-percentage-font-size);
+        font-size: var(--progress-header-font-size);
       }
     }
   }
