@@ -26,3 +26,13 @@
 
 5. "Duplicate flows found" entries in `packages/scripts/logs/error.log` are usually pre-existing authoring
    noise (last-wins resolution, see `content-pipeline.md`), not blockers.
+
+6. **`ng serve` can keep serving stale `src/assets` after a sync.** The dev server holds its own in-memory copy
+   of assets; after `sync`/`populate_src_assets` some files update and others don't (seen 2026-09-11: 1 generated
+   template stale while `contents.json` and the generator JSON updated). Likely cause: `replicateDir` back-dates
+   copies to the source mtime (`fs.utimesSync`, `packages/shared/src/utils/file-utils.ts`), which can land inside an
+   in-progress webpack rebuild's snapshot. Browser "Disable cache" does not help. Check by fetching
+   `http://localhost:4200/assets/app_data/<path>` and comparing to disk; fix by restarting `yarn start`.
+
+7. **`ng serve` binds to IPv6 `::1` only on Windows/Node ≥17,** so `127.0.0.1:4200` refuses connections. To use the
+   `127.0.0.1` onboarding workaround (item 1), start with `yarn start --host 127.0.0.1`. (verified 2026-09-11)
