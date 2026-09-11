@@ -3,6 +3,7 @@ import android from "./providers/android";
 import appData from "./providers/appData";
 import canto from "./providers/canto";
 import deployment from "./providers/deployment";
+import beta from "./providers/beta";
 import encryption from "./providers/encryption";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
@@ -26,6 +27,7 @@ const ALL_TASKS = {
   appData,
   canto,
   deployment,
+  beta,
   encryption,
   file,
   gdrive,
