@@ -223,6 +223,33 @@ describe("asset pack archive", () => {
       fs.removeSync(folder);
     });
 
+    it("rebuilds byte-identically when nothing has changed", () => {
+      const files = {
+        "audio/a.mp3": "not really audio",
+        "images/icon.svg": "<svg>".padEnd(500, "-"),
+      };
+      const manifest = manifestOf([{ id: "audio/a.mp3" }, { id: "images/icon.svg" }]);
+
+      const first = createPackFolder(files);
+      writeAssetPackArchive(first, "my_pack", manifest);
+      const firstBytes = fs.readFileSync(path.resolve(first, ARCHIVE_FILE_NAME));
+
+      // The wall clock moves between syncs; the archive must not. An hour is well clear of the
+      // two-second granularity a zip timestamp records, so an unstamped build cannot match by luck
+      const nowSpy = jest.spyOn(Date, "now").mockReturnValue(Date.now() + 60 * 60 * 1000);
+      const second = createPackFolder(files);
+      writeAssetPackArchive(second, "my_pack", manifest);
+      nowSpy.mockRestore();
+      const secondBytes = fs.readFileSync(path.resolve(second, ARCHIVE_FILE_NAME));
+
+      // Both builds agree on the version, so both write the same object name - differing bytes
+      // would mean that one name resolves to different content depending on who published last,
+      // and locally that every content sync rewrites every pack's archive untouched or not
+      expect(secondBytes.equals(firstBytes)).toBe(true);
+      fs.removeSync(first);
+      fs.removeSync(second);
+    });
+
     it("skips a manifest slot with no file on disk, and says so", () => {
       const folder = createPackFolder({ "images/b.png": "ccc" });
 
