@@ -2,9 +2,9 @@
   <ion-textarea
     #input
     class="text_area"
-    [placeholder]="placeholder"
+    [placeholder]="params().placeholder"
     (ionBlur)="handleChange(input.value)"
-    [value]="_row.value"
+    [value]="value()"
     auto-grow="true"
   ></ion-textarea>
 </div>
