@@ -25,13 +25,10 @@ const workflows: IDeploymentWorkflows = {
           tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
       },
       {
+        // NOTE - also copies processed assets and sheets to app
         name: "sync_sheets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
-      },
-      {
-        name: "copy_to_app",
-        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
       {
         name: "sync_watch",
@@ -115,6 +112,11 @@ const workflows: IDeploymentWorkflows = {
             sourceSheetsFolder: workflow.translations_apply.output.sheets,
             sourceTranslationsFolder: workflow.translations_apply.output.strings,
           }),
+      },
+      {
+        // Copy to src assets so that a running dev server can pick up changes
+        name: "copy_to_app",
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
     ],
   },
@@ -231,7 +233,6 @@ const workflows: IDeploymentWorkflows = {
                     parent: workflow,
                     args: ["--skip-download"],
                   });
-                  await tasks.appData.copyDeploymentDataToApp();
                 }
               },
             });
@@ -307,9 +308,10 @@ const processLocalFiles = async (
       parent: workflow,
       args: ["--skip-download"],
     });
+  } else {
+    // sync_sheets includes copy to app, so only copy directly when sheets not processed
+    await tasks.appData.copyDeploymentDataToApp();
   }
-
-  await tasks.appData.copyDeploymentDataToApp();
 };
 
 /** Migrate deprecated asset and sheet folder id formats */
