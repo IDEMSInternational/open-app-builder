@@ -1,7 +1,17 @@
 import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
-import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
+import type { IDeploymentWorkflows, IWorkflow, IWorkflowStepContext } from "./workflow.model";
 import type { IAssetSource, IDeploymentConfigJson } from "data-models";
+
+/**
+ * Copy processed data to src assets, so that a running dev server can pick up changes.
+ * Skipped when run from a parent workflow, which should copy once all child workflows complete
+ */
+const copyToAppStep: IWorkflow["steps"][number] = {
+  name: "copy_to_app",
+  condition: async ({ parent }) => !parent,
+  function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+};
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -25,11 +35,11 @@ const workflows: IDeploymentWorkflows = {
           tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
       },
       {
-        // NOTE - also copies processed assets and sheets to app
         name: "sync_sheets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
+      copyToAppStep,
       {
         name: "sync_watch",
         condition: async ({ options }) => options.contentWatch === true,
@@ -113,11 +123,7 @@ const workflows: IDeploymentWorkflows = {
             sourceTranslationsFolder: workflow.translations_apply.output.strings,
           }),
       },
-      {
-        // Copy to src assets so that a running dev server can pick up changes
-        name: "copy_to_app",
-        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
-      },
+      copyToAppStep,
     ],
   },
   sync_assets: {
@@ -188,6 +194,7 @@ const workflows: IDeploymentWorkflows = {
           });
         },
       },
+      copyToAppStep,
     ],
   },
   sync_local: {
@@ -233,6 +240,7 @@ const workflows: IDeploymentWorkflows = {
                     parent: workflow,
                     args: ["--skip-download"],
                   });
+                  await tasks.appData.copyDeploymentDataToApp();
                 }
               },
             });
@@ -308,10 +316,9 @@ const processLocalFiles = async (
       parent: workflow,
       args: ["--skip-download"],
     });
-  } else {
-    // sync_sheets includes copy to app, so only copy directly when sheets not processed
-    await tasks.appData.copyDeploymentDataToApp();
   }
+
+  await tasks.appData.copyDeploymentDataToApp();
 };
 
 /** Migrate deprecated asset and sheet folder id formats */
