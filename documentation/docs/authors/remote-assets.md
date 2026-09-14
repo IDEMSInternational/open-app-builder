@@ -80,10 +80,21 @@ Downloads are triggered from templates with the `asset_pack` action:
 | Action              | Behaviour                                                                                                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `download`          | Download a single named pack. Always runs, even if the pack has already been downloaded, and always blocks the action queue until finished (may be deprecated in future) |
-| `ensure_downloaded` | Download those packs not already completed, and check the rest for a published update. Takes an `asset_pack` or `asset_pack_list` parameter                              |
+| `ensure_downloaded` | Download those packs not already completed, and check the rest for a published update. **Does not wait** for downloads unless `await: true` is set                       |
 | `cancel_download`   | Abort any active download and mark it `cancelled`                                                                                                                        |
 | `reset`             | Return **every** pack to its pre-download state                                                                                                                          |
 
+
+!!! important "`ensure_downloaded` does not wait for downloads to finish"
+
+    Unlike other actions, `ensure_downloaded` does not block the action queue by default. It starts
+    its downloads in the background and the actions after it run straight away, so those actions
+    cannot rely on the pack's assets being present yet. Gate content on the pack's `download_status`
+    instead (see [Showing download progress](#showing-download-progress)).
+
+    To wait until downloads finish, pass `await: true`. Use it sparingly: a download that loses
+    connectivity parks itself until connectivity returns, so an awaited call can block the action
+    queue indefinitely.
 
 !!! note "Naming the pack"
 
@@ -98,7 +109,7 @@ Downloads are triggered from templates with the `asset_pack` action:
 | button | Download pack (parameter form) | `click | asset_pack: download | asset_pack: my_asset_pack`                         |
 | button | Ensure single pack             | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack`                |
 | button | Ensure multiple packs          | `click | asset_pack: ensure_downloaded | asset_pack_list: @field.my_pack_list`     |
-| button | Ensure without blocking        | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | await: false` |
+| button | Ensure and block until done    | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | await: true`  |
 | button | Cancel download                | `click | asset_pack: cancel_download`                                              |
 | button | Reset all packs                | `click | asset_pack: reset`                                                        |
 
@@ -112,18 +123,12 @@ Downloads are triggered from templates with the `asset_pack` action:
 | ------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `asset_pack`              | `download`, `ensure_downloaded` | Single pack name. For `download`, an alternative to giving the name as an argument                   |
 | `asset_pack_list`         | `ensure_downloaded`             | One or more pack names, as an array or JSON array string                                             |
-| `await`                   | `ensure_downloaded`             | Default `true`. When `false`, downloads start in the background instead of blocking the action queue |
+| `await`                   | `ensure_downloaded`             | Default `false`, so downloads start in the background. When `true`, blocks the action queue instead  |
 | `check_for_updates`       | `ensure_downloaded`             | Default `true`. When `false`, skips the version check on packs already downloaded                    |
 | `debug_download_delay_ms` | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
 
 
 `download` has no `await` parameter — it always blocks the action queue until the download finishes.
-
-!!! tip
-
-    Use `await: false` when a download shouldn't hold up navigation, e.g. starting an optional pack in
-    the background while the user carries on. Note that a download that loses connectivity parks
-    itself until connectivity returns, so an awaited call can block the action queue indefinitely.
 
 ### One at a time
 
@@ -133,8 +138,8 @@ Downloads run one pack at a time, and one file at a time within a pack:
 | Situation                                   | Result                                                     |
 | ------------------------------------------- | ---------------------------------------------------------- |
 | Same pack requested again while downloading | Joins the download already in progress                     |
-| Different pack requested, `await: false`    | Refused for now, retried once the active download finishes |
-| Different pack requested, awaited           | Refused and returns immediately, not retried               |
+| Different pack requested (default)          | Refused for now, retried once the active download finishes |
+| Different pack requested, `await: true`     | Refused and returns immediately, not retried               |
 
 
 
@@ -302,7 +307,7 @@ or `error`), and any authored `click` actions run after the download attempt com
 ## Recommended pattern
 
 - Call `ensure_downloaded` at a known entry point (e.g. after onboarding, or when a section is first
-opened), usually with `await: false` so navigation isn't held up.
+opened). By default it runs in the background, so navigation isn't held up.
 - Gate media screens on `@fields._asset_pack_download_in_progress` and/or the pack's
 `download_status` from `_asset_packs`, rather than assuming the assets are present.
 - Use `download` only where content needs to be refreshed after a pack has been replaced in storage.
