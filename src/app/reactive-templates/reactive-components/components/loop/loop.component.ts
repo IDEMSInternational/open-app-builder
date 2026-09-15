@@ -66,6 +66,19 @@ export class LoopComponent
     for (const item of this.value() ?? []) {
       for (const row of this.row().rows ?? []) {
         const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];
+        if (!componentType) {
+          continue;
+        }
+
+        const condition = this.evaluationService.evaluateExpression(
+          row.condition ?? true,
+          this.getName(item, index),
+          "script"
+        );
+        if (!condition) {
+          continue;
+        }
+
         const componentRef = createReactiveComponentRef(
           componentType,
           this.injector,
@@ -75,15 +88,7 @@ export class LoopComponent
         this.componentRefs.push(componentRef);
 
         const instance = componentRef.instance;
-        const condition = row.condition
-          ? this.evaluationService.evaluateExpression(
-              row.condition,
-              this.getName(item, index),
-              "script"
-            )
-          : true;
-
-        if (isAction(instance) && condition) {
+        if (isAction(instance)) {
           instance.init();
           if (instance.condition()) {
             await instance.execute(params);

@@ -276,8 +276,6 @@ describe("Loop Component", () => {
   it("Loop is disabled in an action", () => {
     cy.getDataTest("executeDisabledLoopActionButton").click();
 
-    cy.getDataTest("actionLoop2Text")
-      .invoke("attr", "style", "display: none")
-      .should("have.attr", "style", "display: none");
+    cy.getDataTest("actionLoop2Text").should("have.attr", "style", "display: none;");
   });
 });
