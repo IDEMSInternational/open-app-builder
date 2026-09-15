@@ -118,4 +118,14 @@ describe("DependencyExtractorService", () => {
       { type: "loop", name: "item.id" },
     ]);
   });
+
+  it("extracts dependencies from multiple dynamic bracket indexes", () => {
+    const input = "local.matrix[local.row][local.column]";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "matrix" },
+      { type: "local", name: "row" },
+      { type: "local", name: "column" },
+    ]);
+  });
 });

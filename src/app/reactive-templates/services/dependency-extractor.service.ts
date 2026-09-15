@@ -54,6 +54,7 @@ export class DependencyExtractorService {
 
     const segments: string[] = [];
     const nestedReferences: VariableReference[] = [];
+    let hasDynamicSegment = false;
     let match: RegExpExecArray | null;
 
     while ((match = segmentPattern.exec(path))) {
@@ -61,10 +62,13 @@ export class DependencyExtractorService {
 
       if (unquoted !== undefined) {
         nestedReferences.push(...this.extractVariableReferences(unquoted));
-        break;
+        hasDynamicSegment = true;
+        continue;
       }
 
-      segments.push((dotProp ?? doubleQuoted ?? singleQuoted)!);
+      if (!hasDynamicSegment) {
+        segments.push((dotProp ?? doubleQuoted ?? singleQuoted)!);
+      }
     }
 
     const references: VariableReference[] =
