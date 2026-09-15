@@ -168,7 +168,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.storeValue();
+    await this.storeValue();
   }
 
   public triggerActions(trigger: string) {
