@@ -81,6 +81,13 @@ export namespace FlowTypes {
   export interface AssetPack extends FlowTypeWithData {
     flow_type: "asset_pack";
     rows: Data_listRow<IAssetEntry>[];
+    /**
+     * Content hash of every asset slot in the pack, generated at sync time. The app compares it
+     * (for inequality, not ordering) against the version recorded for a downloaded pack to decide
+     * whether to re-walk the manifest. Absent on packs published before versioning was introduced,
+     * and on the runtime-generated `_assets_contents` pack.
+     */
+    version?: string;
   }
 
   /**
@@ -425,6 +432,7 @@ export namespace FlowTypes {
     | "nav_resume" // return to template after navigation or popup close;
     | "notification_interacted"
     | "notification_received"
+    | "on_progress" // fires once when value first reaches a threshold trigger arg, e.g. `on_progress: 50`
     | "sent" // notification sent
     | "uncompleted";
 
@@ -490,6 +498,8 @@ export namespace FlowTypes {
   export interface TemplateRowAction<ParamsType = any> {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
+    /** optional arguments provided to the trigger itself, e.g. the `50` in `on_progress: 50` */
+    trigger_args?: any[];
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
     rawArgs?: any; // original args before evaluation

@@ -1,0 +1,124 @@
+// Theme params for the boxed 'card' variant
+$background: var(--radio-button-grid-background, transparent);
+$background-selected: var(--radio-button-grid-background-selected, var(--ion-color-primary-100));
+$border-color: var(--radio-button-grid-border-color, var(--ion-color-gray-200));
+$border-color-selected: var(
+  --radio-button-grid-border-color-selected,
+  var(--ion-color-primary-200)
+);
+$background-selected-secondary: var(
+  --radio-button-grid-background-selected-secondary,
+  var(--ion-color-secondary-100)
+);
+$border-color-selected-secondary: var(
+  --radio-button-grid-border-color-selected-secondary,
+  var(--ion-color-secondary-200)
+);
+$radio-color-checked-secondary: var(
+  --radio-button-grid-radio-color-checked-secondary,
+  var(--ion-color-secondary)
+);
+
+$text-size: var(--radio-button-font-size, 1.25rem);
+$text-color: var(--radio-button-font-color, var(--ion-color-primary));
+
+// Boxed options using ion-radio, laid out in a grid: image top-left, radio
+// circle top-right. Grid columns/gap/width come from the parent's gridStyle()
+// (applied via [ngStyle]); this rule just provides `display: grid`.
+.radio-buttons {
+  display: grid;
+
+  // ion-radio-group (a scoped Ionic component) projects its radios into an
+  // inner `.radio-group-wrapper` element. Collapse both boxes with
+  // `display: contents` so the ion-items become direct grid items.
+  ion-radio-group {
+    display: contents;
+  }
+  ::ng-deep .radio-group-wrapper {
+    display: contents;
+  }
+
+  ion-item {
+    --background: #{$background};
+    // Symmetric inset so the image (top-left) and radio circle (top-right) are
+    // equidistant from the top and their respective sides. Applied via Ionic's
+    // native padding vars so it sits inside .item-native (background/ripple
+    // still fill the whole box).
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    --inner-padding-end: 0;
+    border: 2px solid $border-color;
+    border-radius: var(--ion-border-radius-small, 8px);
+    overflow: hidden;
+    cursor: pointer;
+
+    // The grid stretches each item to equal height (gridAutoRows: 1fr), but
+    // Ionic's `.item-native` (which paints --background and hosts the ripple)
+    // is only content-height by default. Force it to fill the box so the
+    // selected background and ripple span the whole item, not just the radio.
+    &::part(native) {
+      height: 100%;
+    }
+
+    &:has(ion-radio.radio-checked) {
+      --background: #{$background-selected};
+      border-color: $border-color-selected;
+    }
+  }
+
+  ion-radio {
+    width: 100%;
+    margin: 0;
+
+    // Pin the label content to the top of the box (alignment="start" on the
+    // ion-radio drives this) and strip Ionic's default label margins so the
+    // image top aligns with the circle top.
+    &::part(label) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--small-margin, 8px);
+  }
+
+  .item-image-container {
+    width: 64px;
+    height: 64px;
+
+    .item-image {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+  }
+
+  .item-text {
+    text-align: start;
+    color: $text-color;
+
+    p {
+      margin: 0;
+      font-size: $text-size;
+    }
+  }
+
+  // 'secondary' style: recolour the selected card using secondary theme colours.
+  &[data-style="secondary"] {
+    // Recolour Ionic's checked radio dot (and its ring) to the secondary colour.
+    ion-radio {
+      --color-checked: #{$radio-color-checked-secondary};
+    }
+
+    ion-item:has(ion-radio.radio-checked) {
+      --background: #{$background-selected-secondary};
+      border-color: $border-color-selected-secondary;
+    }
+  }
+}

@@ -8,7 +8,7 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   progress_text: coerce.string("Downloading..."),
   success_text: coerce.string("Success"),
   error_text: coerce.string("Error"),
-  progress_display: coerce.allowedValues(["spinner", "count"], "count"),
+  progress_display: coerce.allowedValues(["spinner", "count", "percent"], "count"),
 }));
 
 @Component({
@@ -21,9 +21,21 @@ export class TmplButtonAssetPackDownloadComponent extends TemplateBaseComponentW
   AuthorSchema
 ) {
   public status = signal<"initial" | "downloading" | "success" | "error">("initial");
+  /**
+   * Text shown alongside `progress_text` while downloading.
+   *
+   * `count` is a genuine file count, which stays accurate however the pack was fetched but steps
+   * unevenly - pack files range from under a kilobyte to a couple of megabytes. `percent` tracks
+   * bytes while a pack archive is streaming, so it moves smoothly, which suits a bar better.
+   */
   public progressCountText = computed(() => {
+    const progressDisplay = this.params().progressDisplay;
+    if (progressDisplay === "percent") {
+      const percent = this.remoteAssetService.downloadProgressPercent();
+      return percent === null ? "" : `(${percent}%)`;
+    }
+    if (progressDisplay !== "count") return "";
     const progress = this.remoteAssetService.downloadProgressCount();
-    if (this.params().progressDisplay !== "count") return "";
     if (!progress?.total) return "";
     return `(${progress.completed}/${progress.total})`;
   });
