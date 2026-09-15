@@ -13,6 +13,7 @@ import { NavComponent } from "./nav/nav.component";
 import { SetGlobalComponent } from "./set-global/set-global.component";
 import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
+import { PopupComponent } from "./popup/popup.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   action: ActionComponent,
@@ -20,6 +21,7 @@ export const REACTIVE_COMPONENT_MAP = {
   display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
   loop: LoopComponent,
+  popup: PopupComponent,
   nav: NavComponent,
   set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,
