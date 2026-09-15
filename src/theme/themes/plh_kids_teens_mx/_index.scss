@@ -13,6 +13,9 @@
     $page-background: white,
     $variable-overrides: (
       // PRIMARY PALETTE OVERRIDE
+      // $color-primary is the dark brand teal; the generator remaps it into a fully
+      // saturated 50–900 scale that reads neon. These tokens replace 50–800 with a
+      // muted tonal ramp of the same hue. 900 is left as the brand colour.
       ion-color-primary-800: #00383b,
       ion-color-primary-700: #004448,
       ion-color-primary-600: #0f696d,
