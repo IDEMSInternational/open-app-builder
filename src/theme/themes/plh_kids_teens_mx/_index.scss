@@ -12,6 +12,17 @@
     $color-secondary-variant: hsl(17 74% 55%),
     $page-background: white,
     $variable-overrides: (
+      // PRIMARY PALETTE OVERRIDE
+      ion-color-primary-800: #00383b,
+      ion-color-primary-700: #004448,
+      ion-color-primary-600: #0f696d,
+      ion-color-primary-500: #2c8388,
+      ion-color-primary-400: #509ca1,
+      ion-color-primary-300: #77b6b9,
+      ion-color-primary-200: #a2ced1,
+      ion-color-primary-100: #d0e7e8,
+      ion-color-primary-50: #e7f3f4,
+
       ion-font-family: "Quicksand",
       font-weight-standard: 500,
       font-letter-spacing: -0.2px,
