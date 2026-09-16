@@ -320,7 +320,6 @@
       justify-content: center;
       align-items: start;
       height: fit-content;
-      margin-bottom: 20px;
 
       img.speaker-image {
         position: unset;
@@ -372,7 +371,6 @@
       border: 1px solid var(--ion-color-gray-300) !important;
       font-size: var(--font-size-text-medium) !important;
       color: var(--ion-color-gray-900) !important;
-      font-weight: var(--font-weight-medium) !important;
       box-shadow: none !important;
       border-radius: var(--ion-border-radius-standard);
       --padding-end: 16px !important;
@@ -388,7 +386,6 @@
         border: 1px solid var(--ion-color-gray-300) !important;
         font-size: var(--font-size-text-medium) !important;
         color: var(--ion-color-gray-900) !important;
-        font-weight: var(--font-weight-medium) !important;
         box-shadow: none !important;
         --padding-end: 16px !important;
         --padding-start: 16px !important;
