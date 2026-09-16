@@ -46,6 +46,17 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   Example (found 2026-08-27): `proximal_outcome_checkin` tab in `PLH proximal outcomes.xlsx` (kids_teens_mx) —
   rows `icon_checkin`/`icon_progress`/`title_checkin`/`title_progress` had their condition in `parameter_list`.
 
+- **Rows gated on values set by `data_changed | set_local` render their fallback branch first.** `data_items`
+  fires `data_changed` only after its data subscription emits, i.e. after the first render
+  (`data-items.component.ts` effect → `hackTriggerDataChangedActions`), then `set_local` reprocesses the page.
+  Until then the local is empty/its `set_variable` default, so an `if X / else` pair of rows briefly shows the
+  "else" row — a visible flash of the wrong card. Fix: add `data_changed | set_local: <name>_loaded: true` to
+  each source `data_items` and require those flags in the fallback row's condition; leave numeric defaults
+  empty rather than `0` so `== 0` and `> 0` are both false until loaded.
+  Example (found 2026-09-15): kids_teens_mx `home_screen_header` flashed `proximal_outcome_header_b` before the
+  hp review `header_button`.
+
+
 - **An action list that writes a field its own (or a sibling's) condition derives from will invalidate that
   condition before the next row renders.** `set_field`, `set_local`, `set_self` and `trigger_actions` trigger
   exactly one full row reprocess, and it runs *after the entire action queue drains*
