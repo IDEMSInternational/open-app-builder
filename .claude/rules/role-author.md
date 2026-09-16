@@ -61,3 +61,15 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 - **`click | …` on a `template` row never fires.** Actions on a nested-template row only run when the child template emits a value matching the trigger (`template-action.service.ts`, `emit` handler). Use the child's emitted values (e.g. `completed` / `uncompleted` from nav-button templates). (verified 2026-09-14)
 
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
+
+- **Never use `|` inside an `action_list` cell's arguments, including `||` in `@calc(...)`.** Each action is
+  split on every `|` (`app-data-action.utils.ts` `parseAppDataActionString`), so
+  `click | set_field: x: @calc(@local.a || '')` saves the literal text `@calc(<value of a>` with no error.
+  Use a ternary instead (`@local.a ? … : …`), or compute the value in a `set_variable` row and pass
+  `@local.<name>`. `||` is fine in `value`/`condition` cells. (verified 2026-09-16)
+- **A deployment copy of a shared tab only overrides it if the `flow_name` matches exactly.** A near-miss
+  (`app_menu_global` vs shared `app_menu_globals`) loads *both* tabs; for globals, the later one in
+  `contents.json` order (alphabetical) wins per constant, so the shared English values silently beat the
+  translated copy. Check with: same constant names declared in two global tabs from different workbooks.
+  (found 2026-09-16: kids_teens_mx `app_menu_global`, `auth_global`)
+
