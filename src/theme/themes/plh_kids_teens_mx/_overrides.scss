@@ -889,19 +889,6 @@
     }
   }
 
-  // bottom_nav
-  plh-bottom-navigation-bar {
-    .plh-bottom-nav-wrapper {
-      border-top: 1px solid #e7e8e9;
-      .label {
-        color: #6686b1;
-      }
-      .active-link .label {
-        color: #0066a1;
-      }
-    }
-  }
-
   // Pop Up
   .popup-backdrop {
     &[data-variant~="plh_completion"] {
