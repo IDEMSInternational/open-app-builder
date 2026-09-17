@@ -11,13 +11,16 @@ p {
   margin: var(--paragraph-spacing) 0;
 }
 
-// Space above and below the content of a text component, separate from the spacing between its paragraphs
+// Space above and below the content of a text component (paragraphs, lists, headings, etc.),
+// separate from the spacing between its blocks.
+// NOTE: only direct children of the markdown wrapper are matched, so paragraphs that markdown nests
+// inside list items keep their spacing
 plh-tmpl-text > div,
 oab-text > div {
-  > p:first-child {
+  > :first-child {
     margin-top: var(--text-outer-margin);
   }
-  > p:last-child {
+  > :last-child {
     margin-bottom: var(--text-outer-margin);
   }
 }
