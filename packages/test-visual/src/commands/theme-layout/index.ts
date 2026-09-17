@@ -41,11 +41,21 @@ const ENCAPSULATED_COMPONENT_STYLES = {
   ttl: `${COMPONENTS_FOLDER}/title/title.component.scss`,
   txt: `${COMPONENTS_FOLDER}/text/text.component.scss`,
   rttl: "src/app/reactive-templates/reactive-components/components/title/title.component.scss",
+  tbox: `${COMPONENTS_FOLDER}/text-box/text-box.component.scss`,
+  tarea: `${COMPONENTS_FOLDER}/text-area/text-area.component.scss`,
+  tbub: `${COMPONENTS_FOLDER}/text-bubble/text-bubble.component.scss`,
+  rgrp: `${COMPONENTS_FOLDER}/radio-group/radio-group.component.scss`,
+  rib: `${COMPONENTS_FOLDER}/round-icon-button/round-icon-button.component.scss`,
+  dgrp: `${COMPONENTS_FOLDER}/layout/display-group/display-group.component.scss`,
+  pop: `${COMPONENTS_FOLDER}/layout/popup/popup.component.scss`,
   cacc: `${PLH_COMPONENTS_FOLDER}/course-accordion/course-accordion.component.scss`,
   clacc: `${PLH_COMPONENTS_FOLDER}/course-lesson-accordion/course-lesson-accordion.component.scss`,
   lcta: `${PLH_COMPONENTS_FOLDER}/lesson-cta/lesson-cta.component.scss`,
   mli: `${PLH_COMPONENTS_FOLDER}/module-list-item/module-list-item.component.scss`,
   ppb: `${PLH_COMPONENTS_FOLDER}/parent-point-box/parent-point-box.component.scss`,
+  mdh: `${PLH_COMPONENTS_FOLDER}/plh-kids-kw/components/module-details-header/module-details-header.component.scss`,
+  cmod: `${PLH_COMPONENTS_FOLDER}/plh-kids-kw/components/completion-modal/completion-modal.component.scss`,
+  bnav: `${PLH_COMPONENTS_FOLDER}/plh-kids-kw/components/bottom-navigation-bar/bottom-navigation-bar.component.scss`,
 };
 
 const FIXTURES_TEMPLATE_PATH = path.resolve(import.meta.dirname, "fixtures.html");
@@ -75,7 +85,7 @@ interface IProgramOptions {
 const program = new Command("theme-layout");
 export default program
   .description(
-    "Compare computed layout of component fixtures across all themes, between a git ref and the working tree"
+    "Compare computed styles and layout of component fixtures across all themes, between a git ref and the working tree"
   )
   .option("-b, --base <string>", "Git ref to compare the working tree against", "HEAD")
   .option("-t, --themes <string>", "Comma-separated list of themes to compare (default: all)")
@@ -91,8 +101,10 @@ export default program
 interface IElementMeasurement {
   /** Human-readable element path, including classes */
   label: string;
-  lineHeight: string;
-  fontSize: string;
+  /** All computed style properties */
+  styles: Record<string, string>;
+  /** Computed styles of ::before and ::after pseudo-elements that render content */
+  pseudo: Record<string, Record<string, string>>;
   /** Bounding box relative to fixture: [x, y, width, height] */
   rect: number[];
 }
@@ -104,18 +116,22 @@ type IThemeMeasurements = Record<string, IFixtureMeasurements>;
 interface IElementChange {
   fixture: string;
   element: string;
-  /** Changed computed styles, e.g. "line-height: normal -> 22px" */
+  /** Changed computed styles, e.g. "line-height: normal -> 22px" or "::before color: ..." */
   styles: string[];
   /** Whether the element's own bounding box changed */
   layoutChanged: boolean;
 }
 interface IThemeReport {
-  /** Elements with changed line-height or font-size */
+  /** Elements with changed computed styles */
   styleChanges: IElementChange[];
   /** Elements with a changed bounding box but no changed styles in the same fixture */
   unexplainedLayoutChanges: IElementChange[];
   /** Number of elements with changed bounding boxes */
   layoutChangeCount: number;
+  /** Number of elements compared */
+  elementCount: number;
+  /** Number of computed style values compared */
+  valueCount: number;
 }
 
 /***************************************************************************************
@@ -304,8 +320,8 @@ export class ThemeLayoutComparator {
   }
 
   /**
-   * Compare measurements for each theme. Changed line-height or font-size are reported as the likely
-   * cause of any layout changes within the same fixture, other layout changes are reported individually
+   * Compare measurements for each theme. Changed computed styles are reported as the likely cause of any
+   * layout changes within the same fixture, other layout changes are reported individually
    */
   private compareMeasurements(base: IThemeMeasurements, current: IThemeMeasurements) {
     const report: Record<string, IThemeReport> = {};
@@ -314,6 +330,8 @@ export class ThemeLayoutComparator {
         styleChanges: [],
         unexplainedLayoutChanges: [],
         layoutChangeCount: 0,
+        elementCount: 0,
+        valueCount: 0,
       };
       for (const fixture of Object.keys(current[themeMode])) {
         const baseElements = base[themeMode][fixture] || {};
@@ -331,13 +349,14 @@ export class ThemeLayoutComparator {
             layoutChanges.push({ fixture, element, styles: [], layoutChanged: true });
             continue;
           }
-          const styles = [];
-          if (before.lineHeight !== after.lineHeight) {
-            styles.push(`line-height: ${before.lineHeight} -> ${after.lineHeight}`);
-          }
-          if (before.fontSize !== after.fontSize) {
-            styles.push(`font-size: ${before.fontSize} -> ${after.fontSize}`);
-          }
+          themeReport.elementCount++;
+          themeReport.valueCount += countValues(after);
+          const styles = [
+            ...diffStyles("", before.styles, after.styles),
+            ...["::before", "::after"].flatMap((pseudo) =>
+              diffStyles(`${pseudo} `, before.pseudo[pseudo], after.pseudo[pseudo])
+            ),
+          ];
           // Ignore elements without size (e.g. hidden inputs), whose position may not be relative to the fixture
           const isEmpty = (rect: number[]) => rect[2] === 0 && rect[3] === 0;
           const layoutChanged =
@@ -379,11 +398,17 @@ export class ThemeLayoutComparator {
       }
     }
 
-    console.log(chalk.bold("\nLayout changes per theme"));
-    for (const [themeMode, { layoutChangeCount }] of Object.entries(report)) {
-      const summary =
-        layoutChangeCount === 0 ? chalk.green("none") : chalk.yellow(layoutChangeCount);
-      console.log(`  ${themeMode}: ${summary}`);
+    console.log(chalk.bold("\nChanges per theme"));
+    const formatCount = (count: number) =>
+      count === 0 ? chalk.green("none") : chalk.yellow(count);
+    for (const [themeMode, themeReport] of Object.entries(report)) {
+      const { styleChanges, layoutChangeCount, elementCount, valueCount } = themeReport;
+      const compared = chalk.gray(
+        `(${elementCount} elements, ${valueCount} style values compared)`
+      );
+      console.log(
+        `  ${themeMode}: styles ${formatCount(styleChanges.length)}, layout ${formatCount(layoutChangeCount)} ${compared}`
+      );
     }
     if (Object.keys(groups).length > 0) {
       console.log(chalk.bold("\nChanged elements"));
@@ -392,4 +417,23 @@ export class ThemeLayoutComparator {
       }
     }
   }
+}
+
+/** List properties with different values, e.g. "color: rgb(0, 0, 0) -> rgb(255, 255, 255)" */
+function diffStyles(
+  prefix: string,
+  before: Record<string, string> = {},
+  after: Record<string, string> = {}
+) {
+  const properties = new Set([...Object.keys(before), ...Object.keys(after)]);
+  return Array.from(properties)
+    .filter((property) => before[property] !== after[property])
+    .map((property) => `${prefix}${property}: ${before[property]} -> ${after[property]}`);
+}
+
+function countValues({ styles, pseudo }: IElementMeasurement) {
+  return Object.values({ styles, ...pseudo }).reduce(
+    (sum, values) => sum + Object.keys(values).length,
+    0
+  );
 }

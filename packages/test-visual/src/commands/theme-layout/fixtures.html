@@ -95,6 +95,80 @@
           >
         </div>
 
+        <div data-fixture="button-navigation">
+          <plh-template-component
+            ><plh-button _nghost-btn>
+              <ion-button
+                _ngcontent-btn
+                class="full standard medium null navigation"
+                data-variant="navigation"
+                ><span _ngcontent-btn class="left text null"><p>Navigation</p></span></ion-button
+              >
+            </plh-button></plh-template-component
+          >
+        </div>
+        <div data-fixture="button-card-no-background">
+          <plh-template-component
+            ><plh-button _nghost-btn>
+              <ion-button
+                _ngcontent-btn
+                class="full standard medium null"
+                data-variant="card"
+                data-param-style="no-background"
+                ><span _ngcontent-btn class="left text null"
+                  ><p>A card button without background</p></span
+                ></ion-button
+              >
+            </plh-button></plh-template-component
+          >
+        </div>
+
+        <!-- Text (with links) -->
+        <div data-fixture="text">
+          <plh-template-component
+            ><plh-tmpl-text _nghost-txt>
+              <div _ngcontent-txt class="large standard normal" style="display: block">
+                <p>Text with <a href="#">a link</a> that is long enough to wrap onto more lines.</p>
+                <ul>
+                  <li>A list item with <a href="#">a link</a></li>
+                </ul>
+              </div>
+            </plh-tmpl-text></plh-template-component
+          >
+        </div>
+
+        <!-- Text bubble (variants added in script) -->
+        <template id="text-bubble-template">
+          <plh-template-component
+            ><tmpl-text-bubble _nghost-tbub>
+              <div
+                _ngcontent-tbub
+                class="text-bubble-container container"
+                data-position="left"
+                data-variant=""
+                data-language-direction="ltr"
+              >
+                <div _ngcontent-tbub>
+                  <div _ngcontent-tbub class="speaker-name">Speaker name</div>
+                  <div _ngcontent-tbub class="text-bubble" data-position="left">
+                    <plh-tmpl-text _ngcontent-tbub _nghost-txt
+                      ><div _ngcontent-txt class="large standard normal" style="display: block">
+                        <p>Text bubble content that is long enough to wrap</p>
+                      </div></plh-tmpl-text
+                    >
+                  </div>
+                </div>
+                <img
+                  _ngcontent-tbub
+                  class="speaker-image"
+                  data-position="left"
+                  width="60"
+                  height="60"
+                />
+              </div> </tmpl-text-bubble
+          ></plh-template-component>
+        </template>
+
         <!-- Accordion (with nested text component) -->
         <div data-fixture="accordion">
           <plh-template-component
@@ -126,7 +200,10 @@
                     <plh-template-component _ngcontent-acc
                       ><plh-tmpl-text _nghost-txt>
                         <div _ngcontent-txt class="large standard normal" style="display: block">
-                          <p>A paragraph that is long enough to wrap onto several lines of text.</p>
+                          <p>
+                            A paragraph with <a href="#">a link</a> that is long enough to wrap onto
+                            several lines.
+                          </p>
                           <ul>
                             <li>A list item that is long enough to wrap onto more than one line</li>
                           </ul>
@@ -171,10 +248,20 @@
                       <div _ngcontent-aud class="time-value">01:23</div>
                     </div>
                   </div>
+                  <div _ngcontent-aud class="controls">
+                    <div _ngcontent-aud class="rewind">
+                      <ion-icon _ngcontent-aud name="play-back"></ion-icon>
+                    </div>
+                    <ion-button _ngcontent-aud class="btn-play" data-variant=""
+                      ><ion-icon _ngcontent-aud name="play"></ion-icon
+                    ></ion-button>
+                    <div _ngcontent-aud class="forward">
+                      <ion-icon _ngcontent-aud name="play-forward"></ion-icon>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </plh-audio></plh-template-component
-          >
+              </div> </plh-audio
+          ></plh-template-component>
         </template>
 
         <!-- Dashed box -->
@@ -234,6 +321,110 @@
           ></plh-template-component>
         </div>
 
+        <!-- Text box -->
+        <div data-fixture="text-box">
+          <plh-template-component
+            ><plh-text-box _nghost-tbox>
+              <div _ngcontent-tbox class="wrapper">
+                <ion-input
+                  _ngcontent-tbox
+                  class="text-box-input"
+                  value="Typed text"
+                  placeholder="Placeholder"
+                ></ion-input>
+              </div> </plh-text-box
+          ></plh-template-component>
+        </div>
+
+        <!-- Text area -->
+        <div data-fixture="text-area">
+          <plh-template-component
+            ><plh-text-area _nghost-tarea>
+              <div _ngcontent-tarea class="wrapper">
+                <ion-textarea
+                  _ngcontent-tarea
+                  class="text_area"
+                  value="Typed text that is long enough to wrap onto more lines"
+                  auto-grow="true"
+                ></ion-textarea>
+              </div> </plh-text-area
+          ></plh-template-component>
+        </div>
+
+        <!-- Radio group (text and image buttons, first option checked) -->
+        <div data-fixture="radio-group-text">
+          <plh-template-component
+            ><plh-radio-group _nghost-rgrp>
+              <div _ngcontent-rgrp class="wrapper-radio-group margin-t-large">
+                <div _ngcontent-rgrp class="container">
+                  <div _ngcontent-rgrp class="btn_triangle dse">
+                    <div
+                      _ngcontent-rgrp
+                      class="btn_triangle_container center"
+                      style="flex: 0 0 50%"
+                    >
+                      <label _ngcontent-rgrp class="center standard-label checked"
+                        ><input
+                          _ngcontent-rgrp
+                          type="radio"
+                          name="radio-text"
+                          value="a"
+                          checked
+                        /><span _ngcontent-rgrp>Option A</span></label
+                      >
+                    </div>
+                    <div
+                      _ngcontent-rgrp
+                      class="btn_triangle_container center"
+                      style="flex: 0 0 50%"
+                    >
+                      <label _ngcontent-rgrp class="center standard-label"
+                        ><input _ngcontent-rgrp type="radio" name="radio-text" value="b" /><span
+                          _ngcontent-rgrp
+                          >Option B</span
+                        ></label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </plh-radio-group></plh-template-component
+          >
+        </div>
+        <div data-fixture="radio-group-both">
+          <plh-template-component
+            ><plh-radio-group _nghost-rgrp>
+              <div _ngcontent-rgrp class="wrapper-radio-group margin-t-large">
+                <div _ngcontent-rgrp class="container">
+                  <div _ngcontent-rgrp class="btn_square dse">
+                    <div _ngcontent-rgrp class="btn_square_container center" style="flex: 0 0 50%">
+                      <label _ngcontent-rgrp class="center standard-label checked"
+                        ><img _ngcontent-rgrp width="40" height="40" /><input
+                          _ngcontent-rgrp
+                          type="radio"
+                          name="radio-both"
+                          value="a"
+                          checked
+                        /><span _ngcontent-rgrp>Option A</span></label
+                      >
+                    </div>
+                    <div _ngcontent-rgrp class="btn_square_container center" style="flex: 0 0 50%">
+                      <label _ngcontent-rgrp class="center standard-label"
+                        ><img _ngcontent-rgrp width="40" height="40" /><input
+                          _ngcontent-rgrp
+                          type="radio"
+                          name="radio-both"
+                          value="b"
+                        /><span _ngcontent-rgrp>Option B</span></label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </plh-radio-group></plh-template-component
+          >
+        </div>
+
         <!-- Number selector -->
         <div data-fixture="number-selector">
           <plh-template-component
@@ -254,6 +445,70 @@
               </div> </plh-number-selector
           ></plh-template-component>
         </div>
+
+        <!-- Display group (box variants added in script) -->
+        <template id="display-group-template">
+          <plh-template-component
+            ><plh-tmpl-display-group _nghost-dgrp>
+              <div _ngcontent-dgrp class="display-group-wrapper" data-variant="">
+                <plh-template-component _ngcontent-dgrp
+                  ><plh-tmpl-text _nghost-txt
+                    ><div _ngcontent-txt class="large standard normal" style="display: block">
+                      <p>Display group content that is long enough to wrap</p>
+                    </div></plh-tmpl-text
+                  ></plh-template-component
+                >
+              </div>
+            </plh-tmpl-display-group></plh-template-component
+          >
+        </template>
+
+        <!-- Popup (plh_completion variant) -->
+        <div data-fixture="popup-plh-completion">
+          <plh-template-component
+            ><plh-template-popup _nghost-pop>
+              <div _ngcontent-pop class="popup-backdrop" data-variant="plh_completion" dir="ltr">
+                <div _ngcontent-pop class="popup-container">
+                  <div _ngcontent-pop class="close-button" fill="clear">
+                    <ion-icon _ngcontent-pop slot="icon-only" name="close"></ion-icon>
+                  </div>
+                  <div _ngcontent-pop class="popup-content">
+                    <plh-template-component
+                      ><plh-tmpl-title _nghost-ttl
+                        ><div _ngcontent-ttl class="title-wrapper">
+                          <h1 _ngcontent-ttl class="tiny standard">Popup title</h1>
+                        </div></plh-tmpl-title
+                      ></plh-template-component
+                    ><plh-tmpl-text _ngcontent-pop _nghost-txt
+                      ><div _ngcontent-txt class="large standard normal" style="display: block">
+                        <p>Popup text that is long enough to wrap</p>
+                        <h1>Heading</h1>
+                      </div></plh-tmpl-text
+                    >
+                  </div>
+                </div>
+              </div>
+            </plh-template-popup></plh-template-component
+          >
+        </div>
+
+        <!-- Round icon button (variants added in script) -->
+        <template id="round-button-template">
+          <plh-template-component
+            ><plh-round-button _nghost-rib>
+              <div _ngcontent-rib class="wrapper">
+                <ion-tab-button
+                  _ngcontent-rib
+                  class="round-icon-button"
+                  data-variant=""
+                  data-has-text="true"
+                  ><ion-icon _ngcontent-rib name="home"></ion-icon>
+                  <div _ngcontent-rib>Text</div></ion-tab-button
+                >
+              </div>
+            </plh-round-button></plh-template-component
+          >
+        </template>
 
         <!-- Tile -->
         <template id="tile-template">
@@ -370,6 +625,26 @@
           ></plh-template-component>
         </div>
 
+        <!-- Module list item with image (variants and states added in script) -->
+        <template id="module-list-item-template">
+          <plh-template-component
+            ><plh-module-list-item _nghost-mli>
+              <div _ngcontent-mli class="container" data-language-direction="ltr">
+                <div _ngcontent-mli class="module-image">
+                  <img _ngcontent-mli width="90" height="90" />
+                </div>
+                <div _ngcontent-mli class="text-wrapper">
+                  <div _ngcontent-mli class="module-title">
+                    <p _ngcontent-mli>A module title that is long enough to wrap</p>
+                  </div>
+                  <div _ngcontent-mli class="nav-icon">
+                    <img _ngcontent-mli class="icon" width="24" height="24" />
+                  </div>
+                </div>
+              </div> </plh-module-list-item
+          ></plh-template-component>
+        </template>
+
         <!-- Task card -->
         <template id="task-card-template">
           <plh-template-component
@@ -407,6 +682,113 @@
             </plh-task-card></plh-template-component
           >
         </div>
+        <!-- Task card circle with badge (states added in script) -->
+        <template id="task-card-circle-template">
+          <plh-template-component
+            ><plh-task-card _nghost-tc>
+              <div _ngcontent-tc class="circle-card-wrapper">
+                <div _ngcontent-tc class="image-and-badge-wrapper">
+                  <span _ngcontent-tc class="badge highlighted-badge">Next</span>
+                  <div _ngcontent-tc class="circle-wrapper">
+                    <img _ngcontent-tc width="60" height="60" />
+                  </div>
+                </div>
+                <div _ngcontent-tc class="title-wrapper">
+                  <p _ngcontent-tc>A circle task card title that wraps</p>
+                </div>
+              </div>
+            </plh-task-card></plh-template-component
+          >
+        </template>
+
+        <!-- Module details header -->
+        <div data-fixture="module-details-header">
+          <plh-template-component
+            ><plh-module-details-header _nghost-mdh>
+              <div _ngcontent-mdh class="module-header">
+                <div _ngcontent-mdh class="wrapper" data-language-direction="ltr">
+                  <div _ngcontent-mdh class="back-button">
+                    <ion-button _ngcontent-mdh size="small"
+                      ><ion-icon
+                        _ngcontent-mdh
+                        slot="icon-only"
+                        name="chevron-back-outline"
+                      ></ion-icon
+                    ></ion-button>
+                  </div>
+                  <div _ngcontent-mdh class="image">
+                    <div _ngcontent-mdh class="module-illustration">
+                      <img _ngcontent-mdh class="module-image" width="120" height="120" />
+                    </div>
+                  </div>
+                  <div _ngcontent-mdh class="module-title">
+                    <h2 _ngcontent-mdh>A module title that is long enough to wrap</h2>
+                  </div>
+                </div>
+              </div>
+            </plh-module-details-header></plh-template-component
+          >
+        </div>
+
+        <!-- Completion modal (with nested title and text) -->
+        <div data-fixture="completion-modal">
+          <plh-template-component
+            ><plh-completion-modal _nghost-cmod>
+              <div _ngcontent-cmod class="completion-modal">
+                <div _ngcontent-cmod class="wrapper">
+                  <div _ngcontent-cmod class="confetti-image">
+                    <img _ngcontent-cmod width="100" height="100" />
+                  </div>
+                  <span _ngcontent-cmod class="children"
+                    ><plh-template-component _ngcontent-cmod class="child"
+                      ><plh-tmpl-title _nghost-ttl
+                        ><div _ngcontent-ttl class="title-wrapper">
+                          <h1 _ngcontent-ttl class="tiny standard">Well done</h1>
+                        </div></plh-tmpl-title
+                      ></plh-template-component
+                    ><plh-template-component _ngcontent-cmod class="child"
+                      ><plh-tmpl-text _nghost-txt
+                        ><div _ngcontent-txt class="large standard normal" style="display: block">
+                          <p>Completion text that is long enough to wrap</p>
+                        </div></plh-tmpl-text
+                      ></plh-template-component
+                    ></span
+                  >
+                </div>
+              </div>
+            </plh-completion-modal></plh-template-component
+          >
+        </div>
+
+        <!-- Bottom navigation bar (variants added in script) -->
+        <template id="bottom-nav-template">
+          <plh-template-component
+            ><plh-bottom-navigation-bar _nghost-bnav>
+              <div _ngcontent-bnav class="plh-bottom-nav-wrapper" data-variant="">
+                <div _ngcontent-bnav class="nav-items">
+                  <a
+                    _ngcontent-bnav
+                    class="nav-item active-link"
+                    data-name="home"
+                    data-variant=""
+                    data-isActive="true"
+                    ><img _ngcontent-bnav class="icon" width="24" height="24" />
+                    <div _ngcontent-bnav class="label">Home</div></a
+                  >
+                  <a
+                    _ngcontent-bnav
+                    class="nav-item"
+                    data-name="modules"
+                    data-variant=""
+                    data-isActive="false"
+                    ><img _ngcontent-bnav class="icon" width="24" height="24" />
+                    <div _ngcontent-bnav class="label">Modules</div></a
+                  >
+                </div>
+              </div>
+            </plh-bottom-navigation-bar></plh-template-component
+          >
+        </template>
       </div>
     </ion-app>
 
@@ -431,9 +813,51 @@
         el.querySelector(".title-wrapper").classList.add("alternative");
         el.querySelector("h1").classList.add("alternative");
       });
-      for (const variant of ["compact", "large"]) {
-        addFixture("audio-template", `audio-${variant}`, (el) =>
-          el.querySelector(".container-player").setAttribute("data-variant", variant)
+      for (const variant of ["compact", "large", "button_only"]) {
+        addFixture("audio-template", `audio-${variant}`, (el) => {
+          el.querySelector(".container-player").setAttribute("data-variant", variant);
+          el.querySelector(".btn-play").setAttribute("data-variant", variant);
+        });
+      }
+      for (const variant of [
+        "",
+        "gray",
+        "primary",
+        "secondary",
+        "speaker-3",
+        "speaker-4",
+        "no_border",
+      ]) {
+        addFixture("text-bubble-template", `text-bubble-${variant || "default"}`, (el) =>
+          el.querySelector(".text-bubble-container").setAttribute("data-variant", variant)
+        );
+      }
+      // Variants are a space-separated list, so include each box variant and every pair of them
+      const boxVariants = ["box_primary", "box_secondary", "box_gray", "box_white"];
+      const boxCases = boxVariants.flatMap((variant, i) => [
+        [variant],
+        ...boxVariants.slice(i + 1).map((other) => [variant, other]),
+      ]);
+      for (const variants of boxCases) {
+        addFixture("display-group-template", `display-group-${variants.join("+")}`, (el) =>
+          el
+            .querySelector(".display-group-wrapper")
+            .setAttribute("data-variant", variants.join(" "))
+        );
+      }
+      const roundButtonVariants = [
+        "",
+        "navigation",
+        "module",
+        "orange",
+        "yellow",
+        "dark_orange",
+        "dark-orange",
+        "information",
+      ];
+      for (const variant of roundButtonVariants) {
+        addFixture("round-button-template", `round-button-${variant || "default"}`, (el) =>
+          el.querySelector("ion-tab-button").setAttribute("data-variant", variant)
         );
       }
       addFixture("tile-template", "tile-default", () => {});
@@ -464,9 +888,79 @@
         });
       }
 
+      // Module list item variants, in every combination of highlighted, locked and completed states
+      for (const variant of ["", "default", "circle"]) {
+        for (let flags = 0; flags < 8; flags++) {
+          const states = {
+            highlighted: !!(flags & 1),
+            locked: !!(flags & 2),
+            completed: !!(flags & 4),
+          };
+          const stateName =
+            Object.keys(states)
+              .filter((state) => states[state])
+              .join("+") || "no-state";
+          addFixture(
+            "module-list-item-template",
+            `module-list-item-${variant || "no-variant"}-${stateName}`,
+            (el) => {
+              const container = el.querySelector(".container");
+              container.setAttribute("data-variant", variant);
+              for (const [state, value] of Object.entries(states)) {
+                container.setAttribute(`data-${state}`, String(value));
+              }
+            }
+          );
+        }
+      }
+      const circleStates = [
+        "",
+        "highlighted",
+        "completed",
+        "locked",
+        "highlighted completed",
+        "highlighted locked",
+      ];
+      for (const classes of circleStates) {
+        addFixture(
+          "task-card-circle-template",
+          `task-card-circle-${classes.replace(" ", "+") || "default"}`,
+          (el) =>
+            el.querySelector(".circle-wrapper").classList.add(...classes.split(" ").filter(Boolean))
+        );
+      }
+      for (const variant of ["", "pill"]) {
+        addFixture("bottom-nav-template", `bottom-nav-${variant || "default"}`, (el) =>
+          el
+            .querySelectorAll("[data-variant]")
+            .forEach((node) => node.setAttribute("data-variant", variant))
+        );
+      }
+
       // Ionic classes added at runtime that are omitted from element labels for readability
       const runtimeClassPattern =
         /^(sc-|hydrated$|md$|ios$|ion-(activatable|focusable|color|touched|untouched|valid|pristine)|in-item$|item-|button-(solid|has)|accordion-(group-|next|previous|expanded|expanding|collapsed|collapsing|animated))/;
+
+      /** All computed style property values */
+      function getStyleValues(style) {
+        const values = {};
+        for (let i = 0; i < style.length; i++) {
+          values[style[i]] = style.getPropertyValue(style[i]);
+        }
+        return values;
+      }
+
+      /** Computed styles of ::before and ::after pseudo-elements that render content */
+      function getPseudoStyleValues(element) {
+        const pseudo = {};
+        for (const pseudoElement of ["::before", "::after"]) {
+          const style = getComputedStyle(element, pseudoElement);
+          if (!["none", "normal", ""].includes(style.content)) {
+            pseudo[pseudoElement] = getStyleValues(style);
+          }
+        }
+        return pseudo;
+      }
 
       /** Record computed styles and bounding box of every element (including open shadow roots) */
       function measureFixture(fixture) {
@@ -483,8 +977,8 @@
             const rect = child.getBoundingClientRect();
             elements[key] = {
               label,
-              lineHeight: style.lineHeight,
-              fontSize: style.fontSize,
+              styles: getStyleValues(style),
+              pseudo: getPseudoStyleValues(child),
               rect: [rect.x - origin.x, rect.y - origin.y, rect.width, rect.height].map(round),
             };
             walk(child, key, label);
@@ -507,6 +1001,9 @@
           "ion-label",
           "ion-range",
           "ion-checkbox",
+          "ion-input",
+          "ion-textarea",
+          "ion-tab-button",
         ];
         await Promise.all(ionicTags.map((tag) => customElements.whenDefined(tag)));
         await Promise.all(
