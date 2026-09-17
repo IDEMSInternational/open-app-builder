@@ -11,6 +11,17 @@ p {
   margin: var(--paragraph-spacing) 0;
 }
 
+// Space above and below the content of a text component, separate from the spacing between its paragraphs
+plh-tmpl-text > div,
+oab-text > div {
+  > p:first-child {
+    margin-top: var(--text-outer-margin);
+  }
+  > p:last-child {
+    margin-bottom: var(--text-outer-margin);
+  }
+}
+
 .standard {
   color: var(--ion-color-primary-900);
 }
