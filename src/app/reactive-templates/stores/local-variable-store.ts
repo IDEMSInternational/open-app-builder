@@ -81,10 +81,11 @@ export class LocalVariableStore implements IStore {
 
   /**
    * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
-   * nested onto "foo"), using the same scope-fallback resolution as 'get'.
+   * nested onto "foo"). Unlike 'get', a scope candidate counts as resolved if it has descendant
+   * keys even without an exact own value (e.g. a nested loop only referenced via its child rows).
    */
   public getWithDescendants(ref: VariableReference): any {
-    const resolvedName = this.resolveWithScopeFallback(ref) ?? ref.name;
+    const resolvedName = this.resolveScopeWithDescendants(ref) ?? ref.name;
     const exactValue = this.getExact({ ...ref, name: resolvedName });
 
     return mergeDescendants(
@@ -92,6 +93,32 @@ export class LocalVariableStore implements IStore {
       resolvedName,
       Array.from(this.state, ([key, subject]) => [key, subject.value])
     );
+  }
+
+  /**
+   * Same candidate order as 'resolveWithScopeFallback', but a candidate is accepted if it has
+   * an exact value OR any descendant key, since 'getWithDescendants' can resolve from either.
+   */
+  private resolveScopeWithDescendants(ref: VariableReference): string | undefined {
+    return this.getScopeFallbackCandidates(ref.name).find((candidate) =>
+      this.hasValueOrDescendants(candidate)
+    );
+  }
+
+  private hasValueOrDescendants(name: string): boolean {
+    if (this.state.has(name)) {
+      return true;
+    }
+
+    const prefix = `${name}.`;
+
+    for (const key of this.state.keys()) {
+      if (key.startsWith(prefix)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**

@@ -225,4 +225,22 @@ describe("ContextCreatorService", () => {
     expect(items[1]).toEqual({ name: "Beta", value: 20 });
     expect(items.Beta).toEqual({ question: "answer-for-beta" });
   });
+
+  it("falls back through outer scopes when resolving a dynamic bracket base from a nested loop namespace", () => {
+    variableStore.set({ name: "question_loop", type: "local" }, [
+      { key: "key_1" },
+      { key: "key_2" },
+    ]);
+    variableStore.set({ name: "question_loop.key_1.question", type: "local" }, "root-answer");
+
+    const context = service.createContext(
+      [{ name: "answer_loop.key_1.question_loop", type: "local" }],
+      ""
+    );
+
+    const resolved = (context.local as any).answer_loop.key_1.question_loop;
+
+    expect(resolved[0]).toEqual({ key: "key_1" });
+    expect(resolved.key_1).toEqual({ question: "root-answer" });
+  });
 });
