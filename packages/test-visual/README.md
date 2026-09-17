@@ -22,6 +22,22 @@ Output will be updated as screenshots are produced, and image diffs populated to
 
 
 
+## Compare theme layout
+Compare the computed layout of core components across every theme, between a git ref and the local working tree. This is intended for refactoring theme styles and variables (e.g. line-heights), where the aim is to confirm exactly which themes and components are visually affected.
+
+`yarn workspace test-visual start theme-layout --base origin/master`
+
+Options
+- `--base` git ref to compare against (default `HEAD`)
+- `--themes` comma-separated list of themes (default all themes included in `src/theme/variables.scss`)
+- `--modes` comma-separated list of Ionic modes (default `md,ios`)
+
+Styles are compiled from both sources and applied to static component fixtures (`src/commands/theme-layout/fixtures.html`), which are rendered with Ionic in headless Chrome. The computed line-height, font-size and bounding box of every element are recorded for each theme and compared. Output lists elements with changed styles (and whether this affected layout), along with any other layout changes. A full report is written to `output/theme-layout/report.json`, alongside the generated fixture pages, which can be opened in a browser for inspection (e.g. `output/theme-layout/current/index.html?theme=default&mode=md`).
+
+Limitations
+- Fixtures approximate rendered component markup, so should be updated if component templates change or new components need to be compared
+- Ionic and fonts are loaded from the local installation for both sources
+
 ## Manually populating screenshots
 ### v0.12+
 (WiP docs - to confirm use of gh action or alts)

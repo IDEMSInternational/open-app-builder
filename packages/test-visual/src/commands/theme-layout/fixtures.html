@@ -1,0 +1,527 @@
+<!doctype html>
+<!--
+  Static approximations of rendered component markup, used to measure computed layout per theme.
+  Elements rendered from a component template carry the "_nghost-{id}" / "_ngcontent-{id}" attributes
+  that Angular emulated encapsulation adds, where {id} matches the component list in index.ts.
+  Content rendered via innerHTML (e.g. markdown) does not carry attributes, as in the app.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      const params = new URLSearchParams(location.search);
+      document.documentElement.setAttribute("data-theme", params.get("theme"));
+      document.documentElement.setAttribute("mode", params.get("mode"));
+      window.Ionic = { config: { mode: params.get("mode"), animated: false } };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="{{IONIC_ESM_URL}}"></script>
+    <style>
+      [data-fixture] {
+        width: 390px;
+        margin-bottom: 40px;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <ion-app>
+      <div id="fixtures">
+        <!-- Title -->
+        <template id="title-template">
+          <plh-template-component
+            ><plh-tmpl-title _nghost-ttl>
+              <div _ngcontent-ttl class="title-wrapper">
+                <h1 _ngcontent-ttl class="tiny standard">A title that is long enough to wrap</h1>
+              </div>
+            </plh-tmpl-title></plh-template-component
+          >
+        </template>
+        <div data-fixture="reactive-title">
+          <plh-template-component
+            ><oab-title _nghost-rttl>
+              <div _ngcontent-rttl class="title-wrapper">
+                <h1 _ngcontent-rttl class="tiny standard">A title that is long enough to wrap</h1>
+              </div>
+            </oab-title></plh-template-component
+          >
+        </div>
+
+        <!-- Subtitle -->
+        <div data-fixture="subtitle">
+          <plh-template-component
+            ><plh-tmpl-subtitle _nghost-sub>
+              <div _ngcontent-sub class="subtitle-wrapper margin-t-regular">
+                <h2 _ngcontent-sub class="standard normal">
+                  <span _ngcontent-sub>A subtitle that is long enough to wrap onto more lines</span>
+                </h2>
+              </div>
+            </plh-tmpl-subtitle></plh-template-component
+          >
+        </div>
+
+        <!-- Button -->
+        <div data-fixture="button-default">
+          <plh-template-component
+            ><plh-button _nghost-btn>
+              <ion-button _ngcontent-btn class="full standard medium null" data-variant="">
+                <span _ngcontent-btn class="left text null"
+                  ><p>A default button with a label long enough to wrap onto more lines</p></span
+                >
+              </ion-button>
+            </plh-button></plh-template-component
+          >
+        </div>
+        <div data-fixture="button-faq">
+          <plh-template-component
+            ><plh-button _nghost-btn>
+              <ion-button _ngcontent-btn class="full standard medium null" data-variant="faq">
+                <span _ngcontent-btn class="left text null"
+                  ><p>An faq button with a label long enough to wrap onto more lines</p></span
+                >
+              </ion-button>
+            </plh-button></plh-template-component
+          >
+        </div>
+        <div data-fixture="button-card">
+          <plh-template-component
+            ><plh-button _nghost-btn>
+              <ion-button _ngcontent-btn class="full standard medium null" data-variant="card">
+                <span _ngcontent-btn class="left text null"
+                  ><p>A card button with a label long enough to wrap onto more lines</p></span
+                >
+              </ion-button>
+            </plh-button></plh-template-component
+          >
+        </div>
+
+        <!-- Accordion (with nested text component) -->
+        <div data-fixture="accordion">
+          <plh-template-component
+            ><plh-accordion-component _nghost-acc>
+              <ion-accordion-group _ngcontent-acc value="section_1" animated="false">
+                <ion-accordion _ngcontent-acc value="section_1">
+                  <ion-item
+                    _ngcontent-acc
+                    slot="header"
+                    class="accordion-header clear"
+                    lines="none"
+                  >
+                    <ion-label _ngcontent-acc class="accordion-section-title ion-text-wrap"
+                      >An accordion section title long enough to wrap onto more lines</ion-label
+                    >
+                    <ion-icon
+                      _ngcontent-acc
+                      class="ion-accordion-toggle-icon"
+                      name="arrow-down-circle"
+                      slot="end"
+                    ></ion-icon>
+                  </ion-item>
+                  <ion-item
+                    _ngcontent-acc
+                    slot="content"
+                    class="accordion-content clear"
+                    lines="none"
+                  >
+                    <plh-template-component _ngcontent-acc
+                      ><plh-tmpl-text _nghost-txt>
+                        <div _ngcontent-txt class="large standard normal" style="display: block">
+                          <p>A paragraph that is long enough to wrap onto several lines of text.</p>
+                          <ul>
+                            <li>A list item that is long enough to wrap onto more than one line</li>
+                          </ul>
+                        </div>
+                      </plh-tmpl-text></plh-template-component
+                    >
+                  </ion-item>
+                </ion-accordion>
+                <ion-accordion _ngcontent-acc value="section_2">
+                  <ion-item
+                    _ngcontent-acc
+                    slot="header"
+                    class="accordion-header clear"
+                    lines="none"
+                  >
+                    <ion-label _ngcontent-acc class="accordion-section-title ion-text-wrap"
+                      >Second section</ion-label
+                    >
+                  </ion-item>
+                  <ion-item
+                    _ngcontent-acc
+                    slot="content"
+                    class="accordion-content clear"
+                    lines="none"
+                  ></ion-item>
+                </ion-accordion>
+              </ion-accordion-group> </plh-accordion-component
+          ></plh-template-component>
+        </div>
+
+        <!-- Audio -->
+        <template id="audio-template">
+          <plh-template-component
+            ><plh-audio _nghost-aud>
+              <div _ngcontent-aud class="container-player">
+                <div _ngcontent-aud class="top-row"><h3 _ngcontent-aud>Audio title</h3></div>
+                <div _ngcontent-aud class="second-row" dir="ltr">
+                  <div _ngcontent-aud class="progress-block">
+                    <ion-range _ngcontent-aud class="audio-range" max="100" value="30"></ion-range>
+                    <div _ngcontent-aud class="time">
+                      <div _ngcontent-aud class="time-value">00:12</div>
+                      <div _ngcontent-aud class="time-value">01:23</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </plh-audio></plh-template-component
+          >
+        </template>
+
+        <!-- Dashed box -->
+        <div data-fixture="dashed-box">
+          <plh-template-component
+            ><plh-dashed-box _nghost-dbox>
+              <div _ngcontent-dbox class="box-wrapper">
+                <div _ngcontent-dbox class="item margin-t-regular">
+                  <div _ngcontent-dbox class="text">
+                    Dashed box text that is long enough to wrap
+                  </div>
+                </div>
+              </div>
+            </plh-dashed-box></plh-template-component
+          >
+        </div>
+        <div data-fixture="advanced-dashed-box">
+          <plh-template-component
+            ><plh-advanced-dashed-box _nghost-adbox>
+              <div _ngcontent-adbox class="box-wrapper">
+                <div _ngcontent-adbox class="item default">
+                  <plh-template-component _ngcontent-adbox style="width: 100%"
+                    ><plh-tmpl-text _nghost-txt>
+                      <div _ngcontent-txt class="large standard normal" style="display: block">
+                        <p>Nested text that is long enough to wrap onto more lines</p>
+                      </div>
+                    </plh-tmpl-text></plh-template-component
+                  >
+                </div>
+              </div>
+            </plh-advanced-dashed-box></plh-template-component
+          >
+        </div>
+
+        <!-- Simple checkbox -->
+        <div data-fixture="simple-checkbox">
+          <plh-template-component
+            ><plh-simple-checkbox _nghost-chk>
+              <div _ngcontent-chk class="checkbox-wrapper margin-t-large">
+                <ion-checkbox _ngcontent-chk color="primary" label-placement="end"
+                  >A checkbox label that is long enough to wrap onto more lines</ion-checkbox
+                >
+              </div>
+            </plh-simple-checkbox></plh-template-component
+          >
+        </div>
+
+        <!-- Select text -->
+        <div data-fixture="select-text">
+          <plh-template-component
+            ><plh-select-text _nghost-stxt>
+              <div _ngcontent-stxt class="box-wrapper" data-language-direction="ltr">
+                <div _ngcontent-stxt class="text">Selectable text that is long enough to wrap</div>
+                <div _ngcontent-stxt class="copy-button">Copy</div>
+                <span _ngcontent-stxt></span>
+              </div> </plh-select-text
+          ></plh-template-component>
+        </div>
+
+        <!-- Number selector -->
+        <div data-fixture="number-selector">
+          <plh-template-component
+            ><plh-number-selector _nghost-nsel>
+              <div _ngcontent-nsel class="container margin-t-large">
+                <div _ngcontent-nsel class="left">
+                  <ion-button _ngcontent-nsel><div _ngcontent-nsel class="line"></div></ion-button>
+                </div>
+                <div _ngcontent-nsel class="center">
+                  <div _ngcontent-nsel class="title">Title</div>
+                  <div _ngcontent-nsel class="category">
+                    <span _ngcontent-nsel>A category value that wraps</span>
+                  </div>
+                </div>
+                <div _ngcontent-nsel class="right">
+                  <ion-button _ngcontent-nsel><div _ngcontent-nsel class="line"></div></ion-button>
+                </div>
+              </div> </plh-number-selector
+          ></plh-template-component>
+        </div>
+
+        <!-- Tile -->
+        <template id="tile-template">
+          <plh-template-component
+            ><plh-tile-component _nghost-tile>
+              <div _ngcontent-tile class="tile-wrapper default_style">
+                <div _ngcontent-tile class="text">
+                  <div _ngcontent-tile class="first-line-text">
+                    <p>First line text that wraps</p>
+                  </div>
+                  <div _ngcontent-tile class="second-line-text">
+                    <p>Second line text that wraps</p>
+                  </div>
+                </div>
+              </div>
+            </plh-tile-component></plh-template-component
+          >
+        </template>
+
+        <!-- Parent point box -->
+        <div data-fixture="parent-point-box">
+          <plh-template-component
+            ><plh-parent-point-box _nghost-ppb>
+              <div _ngcontent-ppb class="wrapper-point">
+                <div _ngcontent-ppb class="item">
+                  <div _ngcontent-ppb class="star">
+                    <div _ngcontent-ppb class="star-value">3</div>
+                  </div>
+                  <div _ngcontent-ppb class="image"></div>
+                  <div _ngcontent-ppb class="text">
+                    Parent point text that is long enough to wrap
+                  </div>
+                </div>
+              </div>
+            </plh-parent-point-box></plh-template-component
+          >
+        </div>
+
+        <!-- Course accordions (closed) -->
+        <div data-fixture="course-accordion">
+          <plh-template-component
+            ><plh-course-accordion _nghost-cacc>
+              <div _ngcontent-cacc class="course-accordion-container accordion-closed">
+                <div _ngcontent-cacc class="course-button">
+                  <div _ngcontent-cacc class="course-title-and-progress-bar">
+                    <p _ngcontent-cacc class="course-title">
+                      A course title that is long enough to wrap
+                    </p>
+                    <div _ngcontent-cacc class="progress-bar-container">
+                      <div _ngcontent-cacc class="progress-bar-text">
+                        <p _ngcontent-cacc>1/3 lessons</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </plh-course-accordion></plh-template-component
+          >
+        </div>
+        <div data-fixture="course-lesson-accordion">
+          <plh-template-component
+            ><plh-course-lesson-accordion _nghost-clacc>
+              <div _ngcontent-clacc class="course-accordion-container accordion-closed">
+                <button _ngcontent-clacc type="button" class="course-button">
+                  <div _ngcontent-clacc class="course-title-and-progress-bar">
+                    <p _ngcontent-clacc class="course-title">
+                      A course title that is long enough to wrap
+                    </p>
+                    <div _ngcontent-clacc class="progress-bar-container">
+                      <div _ngcontent-clacc class="progress-bar-text">
+                        <p _ngcontent-clacc>1/3 lessons</p>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </plh-course-lesson-accordion></plh-template-component
+          >
+        </div>
+
+        <!-- Lesson CTA -->
+        <div data-fixture="lesson-cta">
+          <plh-template-component
+            ><plh-lesson-cta _nghost-lcta>
+              <div _ngcontent-lcta class="lesson-cta-container">
+                <div _ngcontent-lcta class="badge">
+                  <p _ngcontent-lcta class="badge-text">Badge</p>
+                </div>
+                <div _ngcontent-lcta class="content">
+                  <p _ngcontent-lcta class="title">A lesson title that is long enough to wrap</p>
+                  <p _ngcontent-lcta class="subtitle">
+                    A subtitle that is long enough to wrap onto lines
+                  </p>
+                </div>
+                <div _ngcontent-lcta class="cta"><p _ngcontent-lcta class="cta-text">Start</p></div>
+              </div>
+            </plh-lesson-cta></plh-template-component
+          >
+        </div>
+
+        <!-- Module list item -->
+        <div data-fixture="module-list-item">
+          <plh-template-component
+            ><plh-module-list-item _nghost-mli>
+              <div _ngcontent-mli class="container" data-language-direction="ltr">
+                <div _ngcontent-mli class="image-spacer"></div>
+                <div _ngcontent-mli class="text-wrapper">
+                  <div _ngcontent-mli class="module-title">
+                    <p _ngcontent-mli>A module title that is long enough to wrap</p>
+                  </div>
+                  <div _ngcontent-mli class="icon-spacer"></div>
+                </div>
+              </div> </plh-module-list-item
+          ></plh-template-component>
+        </div>
+
+        <!-- Task card -->
+        <template id="task-card-template">
+          <plh-template-component
+            ><plh-task-card _nghost-tc>
+              <div _ngcontent-tc class="card-wrapper landscape">
+                <div _ngcontent-tc class="content-wrapper">
+                  <div _ngcontent-tc class="text-wrapper">
+                    <div _ngcontent-tc class="title-wrapper">
+                      <h1 _ngcontent-tc>A task card title long enough to wrap onto lines</h1>
+                    </div>
+                    <div _ngcontent-tc class="subtitle-wrapper">
+                      <p _ngcontent-tc>
+                        A subtitle that is also long enough to wrap onto more lines
+                      </p>
+                    </div>
+                  </div>
+                  <div _ngcontent-tc class="image-wrapper">
+                    <div style="width: 60px; height: 60px"></div>
+                  </div>
+                </div>
+              </div> </plh-task-card
+          ></plh-template-component>
+        </template>
+        <div data-fixture="task-card-circle">
+          <plh-template-component
+            ><plh-task-card _nghost-tc>
+              <div _ngcontent-tc class="circle-card-wrapper">
+                <div _ngcontent-tc class="image-and-badge-wrapper">
+                  <div _ngcontent-tc class="circle-wrapper"></div>
+                </div>
+                <div _ngcontent-tc class="title-wrapper">
+                  <p _ngcontent-tc>A circle task card title that wraps</p>
+                </div>
+              </div>
+            </plh-task-card></plh-template-component
+          >
+        </div>
+      </div>
+    </ion-app>
+
+    <script type="module">
+      const fixtures = document.getElementById("fixtures");
+
+      /** Clone a <template> into a new fixture, applying a callback to customise its markup */
+      function addFixture(templateId, name, customise) {
+        const wrapper = document.createElement("div");
+        wrapper.dataset.fixture = name;
+        wrapper.appendChild(document.getElementById(templateId).content.cloneNode(true));
+        customise(wrapper);
+        fixtures.appendChild(wrapper);
+      }
+
+      for (const variant of ["", "header", "section_banner", "page_banner"]) {
+        addFixture("title-template", `title-${variant || "default"}`, (el) =>
+          el.querySelector(".title-wrapper").setAttribute("data-variant", variant)
+        );
+      }
+      addFixture("title-template", "title-alternative", (el) => {
+        el.querySelector(".title-wrapper").classList.add("alternative");
+        el.querySelector("h1").classList.add("alternative");
+      });
+      for (const variant of ["compact", "large"]) {
+        addFixture("audio-template", `audio-${variant}`, (el) =>
+          el.querySelector(".container-player").setAttribute("data-variant", variant)
+        );
+      }
+      addFixture("tile-template", "tile-default", () => {});
+      addFixture("tile-template", "tile-button", (el) =>
+        el.querySelector(".tile-wrapper").classList.add("button_tile")
+      );
+      // Task card variants can be set via "variant" param, or legacy "style" param (adds a class)
+      const taskCardCases = [
+        { name: "landscape", variant: "", style: "" },
+        { name: "portrait", variant: "portrait", style: "" },
+        { name: "portrait-legacy-style", variant: "", style: "portrait" },
+        { name: "button", variant: "button", style: "" },
+        { name: "button-legacy-style", variant: "", style: "button" },
+        { name: "block-button", variant: "block-button", style: "button" },
+        {
+          name: "block-button-in-progress",
+          variant: "block-button",
+          style: "button",
+          status: "inProgress",
+        },
+      ];
+      for (const { name, variant, style, status } of taskCardCases) {
+        addFixture("task-card-template", `task-card-${name}`, (el) => {
+          const card = el.querySelector(".card-wrapper");
+          card.className = `card-wrapper landscape ${style}`;
+          card.setAttribute("data-variant", variant);
+          if (status) card.setAttribute("data-status", status);
+        });
+      }
+
+      // Ionic classes added at runtime that are omitted from element labels for readability
+      const runtimeClassPattern =
+        /^(sc-|hydrated$|md$|ios$|ion-(activatable|focusable|color|touched|untouched|valid|pristine)|in-item$|item-|button-(solid|has)|accordion-(group-|next|previous|expanded|expanding|collapsed|collapsing|animated))/;
+
+      /** Record computed styles and bounding box of every element (including open shadow roots) */
+      function measureFixture(fixture) {
+        const origin = fixture.getBoundingClientRect();
+        const round = (n) => Math.round(n * 100) / 100;
+        const elements = {};
+        const walk = (parent, keyPath, labelPath) => {
+          [...parent.children].forEach((child, index) => {
+            const tag = child.tagName.toLowerCase();
+            const classes = [...child.classList].filter((c) => !runtimeClassPattern.test(c));
+            const key = `${keyPath}/${tag}[${index}]`;
+            const label = `${labelPath}/${tag}${classes.map((c) => `.${c}`).join("")}`;
+            const style = getComputedStyle(child);
+            const rect = child.getBoundingClientRect();
+            elements[key] = {
+              label,
+              lineHeight: style.lineHeight,
+              fontSize: style.fontSize,
+              rect: [rect.x - origin.x, rect.y - origin.y, rect.width, rect.height].map(round),
+            };
+            walk(child, key, label);
+            // ion-icon svg content loads asynchronously, so exclude to avoid inconsistent measurements
+            if (child.shadowRoot && tag !== "ion-icon") {
+              walk(child.shadowRoot, `${key}/#shadow`, `${label}/#shadow`);
+            }
+          });
+        };
+        walk(fixture, "", "");
+        return elements;
+      }
+
+      try {
+        const ionicTags = [
+          "ion-button",
+          "ion-accordion-group",
+          "ion-accordion",
+          "ion-item",
+          "ion-label",
+          "ion-range",
+          "ion-checkbox",
+        ];
+        await Promise.all(ionicTags.map((tag) => customElements.whenDefined(tag)));
+        await Promise.all(
+          [...document.querySelectorAll(ionicTags.join(","))].map((el) => el.componentOnReady())
+        );
+        await document.fonts.ready;
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const result = {};
+        for (const fixture of document.querySelectorAll("[data-fixture]")) {
+          result[fixture.dataset.fixture] = measureFixture(fixture);
+        }
+        window.themeLayoutResult = result;
+      } catch (error) {
+        window.themeLayoutError = error.stack || String(error);
+      }
+    </script>
+  </body>
+</html>
