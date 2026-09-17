@@ -12,7 +12,8 @@ export class JavascriptEvaluator {
       valueType === "string" ? `return \`${safeTemplate}\`;` : `return (${raw});`;
     const body = `"use strict"; ${expressionBody}`;
 
-    return this.evaluateBody(body, expression);
+    const value = this.evaluateBody(body, expression);
+    return value;
   }
 
   public setContext(context: any) {
