@@ -210,4 +210,37 @@ describe("ContextCreatorService", () => {
       is_last: true,
     });
   });
+
+  it("resolves a dynamic bracket index (e.g. items[item.name]) via nested descendant keys", () => {
+    variableStore.set({ name: "items", type: "local" }, [
+      { name: "Alpha", value: 10 },
+      { name: "Beta", value: 20 },
+    ]);
+    variableStore.set({ name: "items.Beta.question", type: "local" }, "answer-for-beta");
+
+    const context = service.createContext([{ name: "items", type: "local" }], "");
+    const items = context.local.items as any;
+
+    expect(items[0]).toEqual({ name: "Alpha", value: 10 });
+    expect(items[1]).toEqual({ name: "Beta", value: 20 });
+    expect(items.Beta).toEqual({ question: "answer-for-beta" });
+  });
+
+  it("falls back through outer scopes when resolving a dynamic bracket base from a nested loop namespace", () => {
+    variableStore.set({ name: "question_loop", type: "local" }, [
+      { key: "key_1" },
+      { key: "key_2" },
+    ]);
+    variableStore.set({ name: "question_loop.key_1.question", type: "local" }, "root-answer");
+
+    const context = service.createContext(
+      [{ name: "answer_loop.key_1.question_loop", type: "local" }],
+      ""
+    );
+
+    const resolved = (context.local as any).answer_loop.key_1.question_loop;
+
+    expect(resolved[0]).toEqual({ key: "key_1" });
+    expect(resolved.key_1).toEqual({ question: "root-answer" });
+  });
 });

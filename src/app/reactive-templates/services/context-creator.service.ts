@@ -42,7 +42,7 @@ export class ContextCreatorService {
     };
 
     dependencies.forEach((dependency) => {
-      const value = this.variableStore.get(dependency);
+      const value = this.variableStore.getWithDescendants(dependency);
       this.assignValue(context[dependency.type], dependency, value);
     });
 
