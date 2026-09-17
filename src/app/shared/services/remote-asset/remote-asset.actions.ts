@@ -47,6 +47,9 @@ export class RemoteAssetActionFactory {
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
         });
       },
+      // Unlike other actions, this does not block the action queue by default: downloads start in
+      // the background and the next actions run straight away. Blocking is opt-in via
+      // `await: true`, as a download parked offline would block the queue indefinitely.
       ensure_downloaded: async () => {
         if (!this.service.remoteAssetsEnabled()) {
           console.error(
@@ -147,12 +150,13 @@ export function resolveDebugDownloadDelayMs(params?: IAssetPackDownloadParams): 
   return delayMs;
 }
 
+/** Read the `await` param. Only an explicit `true` blocks - see `ensure_downloaded` */
 export function shouldAwaitEnsureDownloaded(params?: IAssetPackEnsureDownloadedParams) {
   if (params?.await === undefined) {
-    return true;
+    return false;
   }
   const value = booleanStringToBoolean(params.await);
-  return value !== false;
+  return value === true;
 }
 
 /**
