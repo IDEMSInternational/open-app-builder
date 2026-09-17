@@ -32,7 +32,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   justify-content: center;
   align-items: start;
   height: fit-content;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 
   &[data-variant~="gray"] {
     .text-bubble {
@@ -117,7 +117,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   }
 }
 
-// NOTE: margins around the child text component's rendered markdown are handled in
+// NOTE: font size and margins of the child text component's rendered markdown are handled in
 // `text-bubble.component.global.scss`, as that content cannot be reached from here
 
 // This creates the bubble shape, including the tail
@@ -138,12 +138,10 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   min-width: 124px;
 
   p {
-    font-size: var(--font-size-text-medium);
     color: var(--ion-color-gray-900);
   }
 
   li {
-    font-size: var(--font-size-text-medium);
     color: var(--ion-color-gray-900);
   }
 

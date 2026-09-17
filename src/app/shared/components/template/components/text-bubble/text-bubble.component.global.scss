@@ -2,6 +2,14 @@
 // component renders markdown via `[innerHTML]`, so the generated elements are injected into the
 // DOM without a component encapsulation attribute and cannot be reached from component styles.
 
+// Font size of text bubble content, set by themes with the `--text-bubble-font-size` variable
+tmpl-text-bubble .text-bubble {
+  p,
+  li {
+    font-size: var(--text-bubble-font-size, 1em);
+  }
+}
+
 // The bubble's own padding handles spacing at its edges, so collapse just the outer margins of the
 // child text component. Margins *between* blocks are left alone, so text authored with blank lines
 // still renders as spaced-out paragraphs.
