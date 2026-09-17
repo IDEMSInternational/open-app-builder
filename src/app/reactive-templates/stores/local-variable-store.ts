@@ -124,12 +124,16 @@ export class LocalVariableStore implements IStore {
   /**
    * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever any
    * variable in the store changes, since a descendant key changing elsewhere should also count.
+   *
+   * Deliberately does NOT use 'distinctUntilChanged'/'isEqual' here: 'isEqual' only compares
+   * arrays by numeric index/length, so it's blind to the extra string-keyed descendant
+   * properties 'mergeDescendants' attaches onto an array clone - deduping would silently drop
+   * real descendant changes (e.g. a sibling loop's row value updating).
    */
   public watchWithDescendants(ref: VariableReference): Observable<any> {
     return this.stateChanged$.pipe(
       startWith(undefined),
-      map(() => this.getWithDescendants(ref)),
-      distinctUntilChanged((previous, current) => isEqual(previous, current))
+      map(() => this.getWithDescendants(ref))
     );
   }
 

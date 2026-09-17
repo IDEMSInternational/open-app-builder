@@ -124,4 +124,22 @@ describe("LocalVariableStore", () => {
 
     expect((result as any).key_1).toEqual({ question: "root-answer" });
   });
+
+  it("watchWithDescendants re-emits when a descendant of an array value changes", () => {
+    // isEqual only compares array elements by numeric index/length, so it can't see extra
+    // string-keyed descendant properties mergeDescendants attaches onto an array's clone.
+    store.set({ name: "items", type: "local" }, [{ key: "key_1" }]);
+
+    const emissions: any[] = [];
+    const subscription = store
+      .watchWithDescendants({ name: "items", type: "local" })
+      .subscribe((value) => emissions.push(value));
+
+    store.set({ name: "items.key_1.question", type: "local" }, "Question 1");
+
+    expect(emissions.length).toBe(2);
+    expect((emissions[1] as any).key_1).toEqual({ question: "Question 1" });
+
+    subscription.unsubscribe();
+  });
 });
