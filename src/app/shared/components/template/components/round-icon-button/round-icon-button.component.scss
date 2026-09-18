@@ -35,6 +35,10 @@ ion-tab-button {
     margin-bottom: 0;
     flex: auto;
   }
+  &[data-has-text] ion-icon {
+    place-items: flex-end;
+    margin-top: 5px;
+  }
 }
 
 ion-tab-button::part(native) {

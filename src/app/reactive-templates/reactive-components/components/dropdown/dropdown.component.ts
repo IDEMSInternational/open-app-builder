@@ -12,7 +12,7 @@ const parameters = () =>
     placeholder: new Parameter("placeholder", ""),
     style: new Parameter("style", ""),
     showSearch: new Parameter("show_search", false),
-    options: new Parameter("options", []),
+    options: new Parameter("options", [], "script"),
     optionsKey: new Parameter("options_key", "key"),
     optionsValue: new Parameter("options_value", "value"),
     title: new Parameter("title", ""),
