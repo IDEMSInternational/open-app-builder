@@ -159,13 +159,11 @@
   --home-screen-height-small: 130px;
 
   // Audio //
-  --audio-container-padding: 17px 14px 16px 20px;
   --audio-title-size: 22px;
   --audio-title-and-help-height: 30px;
   --audio-bar-height: 10px;
-  --audio-play-img-width: 35px;
+  --audio-range-bar-background: white;
   --audio-controls-width: 240px;
-  --audio-controls-img-width: 48px;
 
   // Slider //
   --slider-wrapper-min-height: 139px;
@@ -196,6 +194,8 @@
   --icon-size-medium: 40px;
   --icon-size-large: 48px;
   --icon-size-largest: 56px;
+  // Sits outside the scale above: most themes set it to 40px, matching --icon-size-medium
+  --icon-size-extra-large: 40px;
 
   //BUTTONS
   --buttons-min-height: 71px;

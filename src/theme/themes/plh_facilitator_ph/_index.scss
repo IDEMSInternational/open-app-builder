@@ -11,6 +11,7 @@
     //#70aac0
     $page-background: white,
     $variable-overrides: (
+      audio-control-color: var(--ion-color-secondary-600),
       input-background: var(--color-surface-white),
       input-border: 1px solid var(--color-outline-variant),
       input-box-shadow: none,
