@@ -72,4 +72,10 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   `contents.json` order (alphabetical) wins per constant, so the shared English values silently beat the
   translated copy. Check with: same constant names declared in two global tabs from different workbooks.
   (found 2026-09-16: kids_teens_mx `app_menu_global`, `auth_global`)
+- **`update_action_list` = a template adding actions to its own container row.** Its `action_list` entries
+  are appended to the container's row as `_self_triggered` (tagged by row name, so re-processing replaces
+  rather than duplicates them) and run in the child template's own queue when it emits the matching value
+  (`template-row.service.ts` `update_action_list` case; `template-action.service.ts` emit handler). Triggers
+  are emitted values (`completed`, `uncompleted`, custom emits), not `click`. Not documented under
+  `documentation/docs/authors/`. (verified 2026-09-18)
 
