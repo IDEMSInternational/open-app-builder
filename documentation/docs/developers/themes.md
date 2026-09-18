@@ -129,6 +129,29 @@ Note that a child theme's rules are applied **after** its parent's, so a child c
 rule but cannot remove it. If only some children want a rule, move it out of the parent into the
 children that do, or give the parent a variable that each child sets.
 
+## Component variables
+
+A component can read a variable so that themes can restyle it without an override rule. For example
+the text box and text area read `--input-background`, `--input-border` and `--input-box-shadow`, and
+a theme sets values for them rather than rewriting the components' rules.
+
+Defaults for these live in one of two places:
+
+- **`src/theme/variables.scss`**, for values that don't depend on the theme, e.g.
+  `--text-box-padding-block: 0`.
+- **`$component-variable-defaults` in `themes/utils/generate-theme.scss`**, for values that follow
+  another theme variable, e.g. `input-border: var(--border-standard)`. These are applied to every
+  theme, before its own values.
+
+The second case exists because a custom property is resolved where it is declared. A default written
+at `:root` would capture the value the referenced variable has at `:root`, ignoring whatever the theme
+sets on `body`. Declaring it per theme keeps it following the theme, and a theme can still override it.
+
+When adding a component variable:
+1. Give it a default that reproduces what the component does today, in whichever of the two places fits.
+2. Have the component read it.
+3. Move any theme override rules for that property to values for the new variable.
+
 ## Checking a change
 
 Theme CSS is generated at build time, so a change can be checked by compiling it:

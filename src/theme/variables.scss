@@ -147,18 +147,23 @@
   // Text box //
   --text-box-height: 44px;
 
+  // Text inputs (text box and text area) //
+  // Values that follow other theme variables (background, border, box shadow, font weight and text
+  // colours) are defaulted per theme in themes/utils/generate-theme.scss
+  --input-padding-inline: var(--small-padding);
+  --text-box-min-height: var(--text-box-height);
+  --text-box-padding-block: 0;
+
   // Home screen //
   --home-screen-height: 154px;
   --home-screen-height-small: 130px;
 
   // Audio //
-  --audio-container-padding: 17px 14px 16px 20px;
   --audio-title-size: 22px;
   --audio-title-and-help-height: 30px;
   --audio-bar-height: 10px;
-  --audio-play-img-width: 35px;
+  --audio-range-bar-background: white;
   --audio-controls-width: 240px;
-  --audio-controls-img-width: 48px;
 
   // Slider //
   --slider-wrapper-min-height: 139px;
@@ -189,6 +194,8 @@
   --icon-size-medium: 40px;
   --icon-size-large: 48px;
   --icon-size-largest: 56px;
+  // Sits outside the scale above: most themes set it to 40px, matching --icon-size-medium
+  --icon-size-extra-large: 40px;
 
   //BUTTONS
   --buttons-min-height: 71px;

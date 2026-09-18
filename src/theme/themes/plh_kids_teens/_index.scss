@@ -38,6 +38,11 @@ $variables: (
   border-width-default: 1px,
   border-standard: var(--border-width-default) solid var(--border-color-default),
   // COMPONENT VARIABLES
+  input-box-shadow: none,
+  input-padding-inline: 16px,
+  text-box-font-size: var(--font-size-text-medium),
+  text-box-min-height: 58px,
+  text-box-padding-block: 14px,
   accordion-background-highlight: var(--ion-color-primary-300),
   accordion-toggle-icon-color: var(--ion-color-primary-contrast),
   button-border-radius: var(--ion-border-radius-rounded),
