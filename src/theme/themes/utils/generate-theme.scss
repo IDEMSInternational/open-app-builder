@@ -39,6 +39,11 @@
 /// it is declared, so a default written at `:root` would capture the value at `:root` and ignore
 /// whatever the theme sets. A theme can still override any of these via $variable-overrides.
 $component-variable-defaults: (
+  audio-background: var(--ion-color-primary-50),
+  audio-border-color: var(--ion-color-primary-100),
+  audio-control-color: var(--ion-color-primary),
+  audio-range-bar-background-active: var(--ion-color-primary-400),
+  audio-range-knob-background: var(--ion-color-primary-300),
   input-background: var(--ion-color-primary-contrast),
   input-border: var(--border-standard),
   input-box-shadow: var(--ion-default-box-shadow),
