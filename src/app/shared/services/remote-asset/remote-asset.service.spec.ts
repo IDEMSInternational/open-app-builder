@@ -3461,9 +3461,9 @@ describe("resolveEnsureDownloadedAssetPackList", () => {
 });
 
 describe("shouldAwaitEnsureDownloaded", () => {
-  it("defaults to true when await is omitted", () => {
-    expect(shouldAwaitEnsureDownloaded({ asset_pack: "asset_pack_1" })).toBeTrue();
-    expect(shouldAwaitEnsureDownloaded()).toBeTrue();
+  it("defaults to false when await is omitted", () => {
+    expect(shouldAwaitEnsureDownloaded({ asset_pack: "asset_pack_1" })).toBeFalse();
+    expect(shouldAwaitEnsureDownloaded()).toBeFalse();
   });
 
   it("parses authored boolean strings for await", () => {
@@ -3471,6 +3471,12 @@ describe("shouldAwaitEnsureDownloaded", () => {
     expect(shouldAwaitEnsureDownloaded({ await: "false" })).toBeFalse();
     expect(shouldAwaitEnsureDownloaded({ await: true })).toBeTrue();
     expect(shouldAwaitEnsureDownloaded({ await: "true" })).toBeTrue();
+  });
+
+  it("does not await when given an unparseable value", () => {
+    // An awaited download can block the action queue indefinitely, so anything short of an
+    // explicit `true` runs in the background
+    expect(shouldAwaitEnsureDownloaded({ await: "yes please" })).toBeFalse();
   });
 });
 
@@ -3495,7 +3501,7 @@ describe("shouldCheckForUpdates", () => {
 });
 
 describe("RemoteAssetActionFactory ensure_downloaded", () => {
-  it("passes awaitCompletion false when await is false", async () => {
+  it("passes awaitCompletion true when await is true", async () => {
     const mockService = {
       remoteAssetsEnabled: () => true,
       ensureAssetPacksDownloaded: jasmine
@@ -3508,17 +3514,17 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
       trigger: "click",
       action_id: "asset_pack",
       args: ["ensure_downloaded"],
-      params: { asset_pack: "asset_pack_1", await: false },
+      params: { asset_pack: "asset_pack_1", await: true },
     });
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
-      awaitCompletion: false,
+      awaitCompletion: true,
       debugDownloadDelayMs: 0,
       checkForUpdates: true,
     });
   });
 
-  it("passes awaitCompletion true by default", async () => {
+  it("passes awaitCompletion false by default", async () => {
     const mockService = {
       remoteAssetsEnabled: () => true,
       ensureAssetPacksDownloaded: jasmine
@@ -3535,7 +3541,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     });
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
-      awaitCompletion: true,
+      awaitCompletion: false,
       debugDownloadDelayMs: 0,
       checkForUpdates: true,
     });
@@ -3559,7 +3565,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     });
 
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
-      awaitCompletion: true,
+      awaitCompletion: false,
       debugDownloadDelayMs: 3000,
       checkForUpdates: true,
     });
