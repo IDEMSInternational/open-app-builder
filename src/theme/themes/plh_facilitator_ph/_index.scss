@@ -11,6 +11,16 @@
     //#70aac0
     $page-background: white,
     $variable-overrides: (
+      input-background: var(--color-surface-white),
+      input-border: 1px solid var(--color-outline-variant),
+      input-box-shadow: none,
+      input-font-weight: var(--font-weight-standard),
+      input-padding-inline: 16px,
+      text-area-text-color: var(--ion-color-gray-900),
+      text-box-font-size: var(--font-size-text-mid-size),
+      text-box-min-height: 58px,
+      text-box-padding-block: 14px,
+      text-box-text-color: var(--color-surface-black),
       font-weight-medium: 600,
       font-weight-bold: 700,
       font-weight-extra-bold: 800,

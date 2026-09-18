@@ -1,14 +1,14 @@
 .wrapper {
   .text_area {
-    background: var(--ion-color-primary-contrast);
-    border: var(--border-standard);
+    background: var(--input-background);
+    border: var(--input-border);
     font-size: var(--text-box-font-size);
-    color: var(--ion-color-primary);
-    font-weight: var(--font-weight-standard);
-    box-shadow: var(--ion-default-box-shadow);
+    color: var(--text-area-text-color);
+    font-weight: var(--input-font-weight);
+    box-shadow: var(--input-box-shadow);
     border-radius: var(--ion-border-radius-standard);
-    --padding-end: var(--small-padding);
-    --padding-start: var(--small-padding);
+    --padding-end: var(--input-padding-inline);
+    --padding-start: var(--input-padding-inline);
     min-height: 30vh;
     max-height: 30vh;
     overflow: hidden;

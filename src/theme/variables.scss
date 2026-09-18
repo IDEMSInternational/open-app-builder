@@ -147,6 +147,13 @@
   // Text box //
   --text-box-height: 44px;
 
+  // Text inputs (text box and text area) //
+  // Values that follow other theme variables (background, border, box shadow, font weight and text
+  // colours) are defaulted per theme in themes/utils/generate-theme.scss
+  --input-padding-inline: var(--small-padding);
+  --text-box-min-height: var(--text-box-height);
+  --text-box-padding-block: 0;
+
   // Home screen //
   --home-screen-height: 154px;
   --home-screen-height-small: 130px;
