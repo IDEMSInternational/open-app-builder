@@ -1,3 +1,19 @@
+// Theme variables used by this component, which a theme can set to restyle it.
+//
+// Defaults that follow the theme's colours (theme/themes/utils/generate-theme.scss):
+//   --input-background        input background
+//   --input-border            input border
+//   --input-box-shadow        input shadow
+//   --input-font-weight       weight of the entered text
+//   --text-box-text-color     colour of the entered text
+//
+// Fixed defaults (theme/variables.scss):
+//   --input-padding-inline    space inside the input, left and right
+//   --text-box-font-size      size of the entered text
+//   --text-box-height         input height
+//   --text-box-min-height     minimum input height
+//   --text-box-padding-block  space inside the input, top and bottom
+
 .wrapper {
   .text-box-input {
     background: var(--input-background);
