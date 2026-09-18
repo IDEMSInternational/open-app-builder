@@ -11,9 +11,5 @@ ion-datetime-button::part(native) {
 // item's text colour (`--ion-color-base`, i.e. the theme primary), which is too close to the
 // colour of the unselected items to stand out. Highlight the selected item instead.
 ion-datetime {
-  --wheel-highlight-background: var(--ion-color-primary);
-}
-
-ion-datetime::part(wheel-item active) {
-  color: var(--ion-color-primary-contrast);
+  --wheel-highlight-background: var(--ion-color-primary-100);
 }
