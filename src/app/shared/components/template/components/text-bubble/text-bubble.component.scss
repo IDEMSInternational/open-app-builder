@@ -117,7 +117,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   }
 }
 
-// NOTE: font size and margins of the child text component's rendered markdown are handled in
+// NOTE: font size of the child text component's rendered markdown is handled in
 // `text-bubble.component.global.scss`, as that content cannot be reached from here
 
 // This creates the bubble shape, including the tail
@@ -127,6 +127,11 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   --h: 0em; /* height */
 
   --p: 0%; /* triangle position (0%:left 100%:right) */
+
+  // The bubble's padding handles spacing at its edges, so remove the outer margins of text inside it.
+  // Spacing between blocks within the text is unaffected
+  --text-outer-margin: 0;
+
   position: relative;
 
   clip-path: none;
