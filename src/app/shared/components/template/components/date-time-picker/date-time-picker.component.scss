@@ -6,3 +6,14 @@ ion-datetime-button::part(native) {
   padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-standard);
 }
+
+// Ionic provides no highlight behind the selected wheel item by default, so the only cue is the
+// item's text colour (`--ion-color-base`, i.e. the theme primary), which is too close to the
+// colour of the unselected items to stand out. Highlight the selected item instead.
+ion-datetime {
+  --wheel-highlight-background: var(--ion-color-primary);
+}
+
+ion-datetime::part(wheel-item active) {
+  color: var(--ion-color-primary-contrast);
+}
