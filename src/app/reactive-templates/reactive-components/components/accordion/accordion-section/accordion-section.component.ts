@@ -1,4 +1,4 @@
-import { Component, computed, forwardRef, inject } from "@angular/core";
+import { Component, computed, effect, forwardRef, inject } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { defineParameters, Parameter } from "../../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../../row-base.component";
@@ -31,4 +31,18 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
     const index = siblingRows.findIndex((row) => row.name === this.row().name);
     return index === -1 ? null : siblingRows.length - index;
   });
+
+  constructor() {
+    super();
+
+    // Open or close this section whenever its `state` changes
+    effect(() => {
+      this.accordion?.setSectionOpen(this.name(), this.params.state.value() === "open");
+    });
+  }
+
+  public ngOnDestroy(): void {
+    super.ngOnDestroy();
+    this.accordion?.setSectionOpen(this.name(), false);
+  }
 }

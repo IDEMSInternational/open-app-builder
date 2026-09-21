@@ -1,3 +1,8 @@
-<ion-accordion-group [multiple]="params.multiple.value()" [value]="openSections()" #accordionGroup>
+<ion-accordion-group
+  [multiple]="params.multiple.value()"
+  [value]="openSections()"
+  (ionChange)="handleChange($event)"
+  #accordionGroup
+>
   <oab-row-list [namespace]="namespace()" [rows]="row().rows ?? []"></oab-row-list>
 </ion-accordion-group>

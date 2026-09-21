@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, effect, forwardRef, signal } from "@angular/core";
+import { Component, forwardRef, signal } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
-import { IonicModule } from "@ionic/angular";
+import { AccordionGroupCustomEvent, IonicModule } from "@ionic/angular";
 
 const parameters = () =>
   defineParameters({
@@ -17,43 +17,29 @@ const parameters = () =>
   imports: [IonicModule, forwardRef(() => RowListComponent)],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
-export class AccordionComponent
-  extends RowBaseComponent<ReturnType<typeof parameters>>
-  implements AfterViewInit
-{
+export class AccordionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+  /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */
   public openSections = signal<string[]>([]);
-  private viewInitialised = signal(false);
 
-  constructor() {
-    super();
-
-    effect(() => {
-      if (!this.viewInitialised()) {
-        return;
+  /** Called by child sections whenever their `state` changes */
+  public setSectionOpen(sectionName: string, open: boolean): void {
+    this.openSections.update((openSections) => {
+      if (openSections.includes(sectionName) === open) {
+        return openSections;
       }
-
-      this.setOpenSectionsFromRegistry();
+      return open
+        ? [...openSections, sectionName]
+        : openSections.filter((name) => name !== sectionName);
     });
   }
 
-  public ngAfterViewInit(): void {
-    this.viewInitialised.set(true);
-  }
-
-  private setOpenSectionsFromRegistry(): void {
-    const childRows = this.row().rows ?? [];
-    const openSections = childRows
-      .map((childRow) => {
-        const fullName = this.namespaceService.getFullName(this.namespace(), childRow.name);
-        if (!this.rowRegistry.has(fullName)) {
-          return null;
-        }
-
-        const childInstance = this.rowRegistry.get(fullName);
-        return childInstance.params["state"]?.value() === "open" ? childInstance.name() : null;
-      })
-      .filter((name): name is string => name !== null);
-
-    this.openSections.set(openSections);
+  public handleChange(event: AccordionGroupCustomEvent<string | string[] | null | undefined>) {
+    // ionChange bubbles up from nested accordion groups and from inputs within sections,
+    // so ignore any event that wasn't emitted by this component's own group
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    const { value } = event.detail;
+    this.openSections.set(Array.isArray(value) ? value : value ? [value] : []);
   }
 }
