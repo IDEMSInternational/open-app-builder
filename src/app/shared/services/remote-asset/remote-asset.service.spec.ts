@@ -2564,6 +2564,39 @@ describe("RemoteAssetsService", () => {
       expect(setup.getAssetPackRow().download_progress_percent).toBe(100);
     });
 
+    it("starts an archive that follows files already on disk from their share, not 99", async () => {
+      const present = archiveEntry("images/present.png", 51200);
+      const missing = archiveEntry("images/missing.png", 51200);
+      const another = archiveEntry("images/another.png", 51200);
+      const setup = setupArchiveDownload({
+        manifestRows: [present, missing, another],
+        archiveFiles: {
+          "images/present.png": fileOfLength(51200),
+          "images/missing.png": fileOfLength(51200),
+          "images/another.png": fileOfLength(51200),
+        },
+        existingContentsRows: [
+          {
+            id: "images/present.png",
+            md5Checksum: present.md5Checksum,
+            size_kb: present.size_kb,
+            filePath: localAssetPath(packPath("images/present.png")),
+          },
+        ],
+      });
+      setup.savedFiles.set(packPath("images/present.png"), 51200);
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Files already on disk are integrated before the first chunk arrives, with no byte total
+      // yet to measure against. They are a third of the pack, and reported progress only ever
+      // moves up, so reporting anything higher here would pin the bar there for the whole transfer.
+      const percentages = persistedPercentages();
+      expect(percentages.find((percent) => percent > 0)).toBe(33);
+      // ...and the bar then visibly climbs while the archive streams
+      expect(percentages.some((percent) => percent > 33 && percent < 99)).toBeTrue();
+    });
+
     it("does not rewind progress when a truncated archive falls back to per-file", async () => {
       const rows = [
         archiveEntry("images/a.png", 2048),
