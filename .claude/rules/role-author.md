@@ -78,4 +78,13 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   (`template-row.service.ts` `update_action_list` case; `template-action.service.ts` emit handler). Triggers
   are emitted values (`completed`, `uncompleted`, custom emits), not `click`. Not documented under
   `documentation/docs/authors/`. (verified 2026-09-18)
+  - **Notification tap actions only support globally registered actions, and one bad action stops the rest.**
+  `action_list` on `notification: create` runs through `TemplateActionRegistry.trigger`
+  (`src/app/feature/notification/notification.service.ts` `triggerNotificationActions`), not the template
+  action queue. `emit` (`force_reload`, `completed`, …), `set_local` and other container actions are not
+  registered: the registry throws `No handler registered for action_id`, and the remaining actions in the list
+  do not run. Use `set_field`, `set_data`, `add_data`, `go_to`, `nav_stack` etc., and keep values static,
+  since they may be evaluated when the notification is created rather than when it's tapped. The variable
+  holding the list must be named `…_action_list` to parse. (verified 2026-09-21)
+
 
