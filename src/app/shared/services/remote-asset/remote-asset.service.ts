@@ -2099,11 +2099,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     const archive = this.currentArchiveProgress;
     if (archive) {
       const floor = this.archiveProgressFloorPercent;
+      // No byte total to measure against. Mostly this is the files already on disk being
+      // integrated before the first chunk arrives, which is exactly what the floor measures. It is
+      // also a response with no `Content-Length` for a manifest with no sizes, where holding still
+      // is honest and any higher figure would stick, since reported progress never moves down.
+      if (!archive.totalBytes) return floor;
+      const transferred = Math.min(1, archive.bytesRead / archive.totalBytes);
+      // The archive covers whatever is not already on disk, so it moves the bar from the floor up.
       // Falling back to the manifest's summed size over-reports, because the archive is
       // compressed. Cap short of complete so the bar cannot claim to be finished mid-transfer.
-      if (!archive.totalBytes) return Math.max(floor, 99);
-      const transferred = Math.min(1, archive.bytesRead / archive.totalBytes);
-      // The archive covers whatever is not already on disk, so it moves the bar from the floor up
       return Math.min(99, Math.round(floor + (100 - floor) * transferred));
     }
     if (!progress.total) return 0;
