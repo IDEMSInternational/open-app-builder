@@ -15,8 +15,7 @@ ion-accordion {
 .accordion-header ion-icon.ion-accordion-toggle-icon {
   color: $icon-color;
 }
-// Each section wraps its own ion-accordion, so check for the first section rather than the first ion-accordion
-:host(:first-of-type) ion-accordion {
+ion-accordion.first-section {
   margin-top: unset;
   padding-top: unset;
 }

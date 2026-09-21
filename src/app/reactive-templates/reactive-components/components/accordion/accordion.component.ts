@@ -21,6 +21,22 @@ export class AccordionComponent extends RowBaseComponent<ReturnType<typeof param
   /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */
   public openSections = signal<string[]>([]);
 
+  /** Host elements of all child sections (including those within loops), in document order */
+  private _sections = signal<HTMLElement[]>([]);
+  public sections = this._sections.asReadonly();
+
+  public registerSection(section: HTMLElement): void {
+    this._sections.update((sections) =>
+      [...sections, section].sort((a, b) =>
+        a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
+      )
+    );
+  }
+
+  public unregisterSection(section: HTMLElement): void {
+    this._sections.update((sections) => sections.filter((s) => s !== section));
+  }
+
   /** Called by child sections whenever their `state` changes */
   public setSectionOpen(sectionName: string, open: boolean): void {
     this.openSections.update((openSections) => {

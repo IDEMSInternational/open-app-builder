@@ -22,14 +22,15 @@ const parameters = () =>
 export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   private accordion = inject(AccordionComponent, { optional: true });
 
-  /**
-   * Stack each section above the next so that it overlaps the top of the section below.
-   * Sections that aren't direct children of the accordion (e.g. inside a loop) keep the default stacking
-   */
+  /** Position among all of the accordion's sections, or -1 if not within an accordion */
+  public sectionIndex = computed(
+    () => this.accordion?.sections().indexOf(this.elementRef.nativeElement) ?? -1
+  );
+
+  /** Stack each section above the next so that it overlaps the top of the section below */
   public zIndex = computed(() => {
-    const siblingRows = this.accordion?.row().rows ?? [];
-    const index = siblingRows.findIndex((row) => row.name === this.row().name);
-    return index === -1 ? null : siblingRows.length - index;
+    const sectionCount = this.accordion?.sections().length ?? 0;
+    return this.sectionIndex() === -1 ? null : sectionCount - this.sectionIndex();
   });
 
   constructor() {
@@ -41,8 +42,14 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
     });
   }
 
+  public ngOnInit(): void {
+    super.ngOnInit();
+    this.accordion?.registerSection(this.elementRef.nativeElement);
+  }
+
   public ngOnDestroy(): void {
     super.ngOnDestroy();
+    this.accordion?.unregisterSection(this.elementRef.nativeElement);
     this.accordion?.setSectionOpen(this.name(), false);
   }
 }
