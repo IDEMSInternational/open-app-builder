@@ -36,6 +36,18 @@ describe("accordion component", () => {
     cy.getDataTest("open_second_section").should("have.class", "accordion-collapsed");
   });
 
+  it("opens sections within a loop with state: open", () => {
+    cy.getDataTest("state_loop.1.loop_state_section").should("have.class", "accordion-expanded");
+    cy.getDataTest("state_loop.0.loop_state_section").should("have.class", "accordion-collapsed");
+    cy.getDataTest("state_loop.2.loop_state_section").should("have.class", "accordion-collapsed");
+  });
+
+  it("keeps multiple sections open by default", () => {
+    cy.getDataTest("first_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("second_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("first_section").should("have.class", "accordion-expanded");
+  });
+
   it("keeps only one section open when multiple is false", () => {
     cy.getDataTest("single_first_section").click().should("have.class", "accordion-expanded");
     cy.getDataTest("single_second_section").click().should("have.class", "accordion-expanded");

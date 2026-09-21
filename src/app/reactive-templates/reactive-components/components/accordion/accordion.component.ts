@@ -1,8 +1,13 @@
-import { Component, computed, forwardRef, signal } from "@angular/core";
+import { Component, computed, forwardRef, Signal, signal } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 import { AccordionGroupCustomEvent, IonicModule } from "@ionic/angular";
+
+interface AccordionSection {
+  element: HTMLElement;
+  visible: Signal<boolean>;
+}
 
 const parameters = () =>
   defineParameters({
@@ -26,20 +31,26 @@ export class AccordionComponent extends RowBaseComponent<ReturnType<typeof param
     this.params.multiple.value() ? this.openSections() : this.openSections().at(-1)
   );
 
-  /** Host elements of all child sections (including those within loops), in document order */
-  private _sections = signal<HTMLElement[]>([]);
-  public sections = this._sections.asReadonly();
+  /** All child sections (including those within loops), in document order */
+  private sections = signal<AccordionSection[]>([]);
 
-  public registerSection(section: HTMLElement): void {
-    this._sections.update((sections) =>
+  /** Host elements of the child sections that aren't hidden by their `condition`, in document order */
+  public visibleSections = computed(() =>
+    this.sections()
+      .filter((section) => section.visible())
+      .map((section) => section.element)
+  );
+
+  public registerSection(section: AccordionSection): void {
+    this.sections.update((sections) =>
       [...sections, section].sort((a, b) =>
-        a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
+        a.element.compareDocumentPosition(b.element) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
       )
     );
   }
 
-  public unregisterSection(section: HTMLElement): void {
-    this._sections.update((sections) => sections.filter((s) => s !== section));
+  public unregisterSection(element: HTMLElement): void {
+    this.sections.update((sections) => sections.filter((section) => section.element !== element));
   }
 
   /** Called by child sections whenever their `state` changes */

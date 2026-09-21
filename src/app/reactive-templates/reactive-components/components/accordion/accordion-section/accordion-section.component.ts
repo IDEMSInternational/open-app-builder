@@ -30,14 +30,14 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
     () => this.params.disabled.value() || !!this.accordion?.params.disabled.value()
   );
 
-  /** Position among all of the accordion's sections, or -1 if not within an accordion */
+  /** Position among the accordion's visible sections, or -1 if hidden or not within an accordion */
   public sectionIndex = computed(
-    () => this.accordion?.sections().indexOf(this.elementRef.nativeElement) ?? -1
+    () => this.accordion?.visibleSections().indexOf(this.elementRef.nativeElement) ?? -1
   );
 
   /** Stack each section above the next so that it overlaps the top of the section below */
   public zIndex = computed(() => {
-    const sectionCount = this.accordion?.sections().length ?? 0;
+    const sectionCount = this.accordion?.visibleSections().length ?? 0;
     return this.sectionIndex() === -1 ? null : sectionCount - this.sectionIndex();
   });
 
@@ -55,7 +55,10 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
 
   public ngOnInit(): void {
     super.ngOnInit();
-    this.accordion?.registerSection(this.elementRef.nativeElement);
+    this.accordion?.registerSection({
+      element: this.elementRef.nativeElement,
+      visible: this.condition,
+    });
   }
 
   public ngOnDestroy(): void {
