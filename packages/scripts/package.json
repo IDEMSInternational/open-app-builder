@@ -27,6 +27,7 @@
     "chokidar": "^3.5.3",
     "commander": "^8.3.0",
     "data-models": "workspace:*",
+    "fflate": "^0.8.2",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
     "log-update": "^4.0.0",

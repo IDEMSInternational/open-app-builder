@@ -1,0 +1,36 @@
+<div class="radio-buttons" [ngStyle]="gridStyle()" [attr.data-style]="styleVariant()">
+  <ion-radio-group [value]="value()" (ionChange)="onRadioChange($event.detail.value)">
+    @for (item of answerOptions(); track item[optionsKey()]) {
+      <ion-item lines="none">
+        <ion-radio
+          labelPlacement="start"
+          justify="space-between"
+          alignment="start"
+          mode="md"
+          [value]="item[optionsKey()]"
+        >
+          <div class="item-content">
+            @if (item.image) {
+              <div class="item-image-container">
+                <img
+                  class="item-image"
+                  [src]="
+                    (item[optionsKey()] === value() && item.image_checked
+                      ? item.image_checked
+                      : item.image
+                    ) | plhAsset
+                  "
+                />
+              </div>
+            }
+            @if (item[optionsValue()]) {
+              <div class="item-text">
+                <p>{{ item[optionsValue()] }}</p>
+              </div>
+            }
+          </div>
+        </ion-radio>
+      </ion-item>
+    }
+  </ion-radio-group>
+</div>
