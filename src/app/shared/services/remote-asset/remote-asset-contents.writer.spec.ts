@@ -1,6 +1,6 @@
 import type { IAssetEntry } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { AssetContentsWriter } from "./remote-asset-contents.writer";
+import { AssetContentsWriter, buildAssetSlotUpdate } from "./remote-asset-contents.writer";
 
 const baseEntry: IAssetEntry = {
   id: "audio/track.mp3",
@@ -64,10 +64,56 @@ describe("AssetContentsWriter", () => {
     writer.settleSlot(entryWithOverride, { overrideProps: override });
     await writer.flush();
 
-    // The successful sibling's evidence is worth keeping, and leaving the failed slot's path at
-    // the manifest value is exactly what makes the resume gate re-fetch that one file next time
+    // The successful sibling's evidence is worth keeping, and recording nothing for the failed slot
+    // is exactly what makes the resume gate re-fetch that one file next time
     expect(writtenRows()[0].filePath).toBe("local://base");
-    expect(writtenRows()[0].overrides.theme_default.tz_sw.filePath).toBe("tz_sw/audio/track.mp3");
+    expect(writtenRows()[0].overrides).toBeUndefined();
+  });
+
+  it("does not give a failed slot the checksum of a sibling that succeeded", async () => {
+    // Both slots previously integrated at the old version
+    const existing = Object.freeze({
+      id: "audio/track.mp3",
+      md5Checksum: "old-base",
+      size_kb: 20,
+      filePath: "local://base",
+      overrides: Object.freeze({
+        theme_default: Object.freeze({
+          tz_sw: Object.freeze({
+            filePath: "local://override",
+            md5Checksum: "old-tz",
+            size_kb: 10,
+          }),
+        }),
+      }),
+    }) as IAssetEntry;
+    const { writer, writtenRows } = setup({ "audio/track.mp3": existing });
+    writer.expectSlots(entryWithOverride, 2);
+
+    // The base fails to arrive, its override succeeds
+    writer.settleSlot(entryWithOverride, {});
+    writer.settleSlot(entryWithOverride, { filePath: "local://override", overrideProps: override });
+    await writer.flush();
+
+    // The base file on disk is still the old one. Recording the new checksum against it would let
+    // the resume gate trust it - a manifest base entry has no `filePath` to overwrite the local
+    // one - so the stale file would be kept for good if its size happened not to change.
+    const row = writtenRows()[0];
+    expect(row.md5Checksum).toBe("old-base");
+    expect(row.filePath).toBe("local://base");
+    expect(row.overrides.theme_default.tz_sw.md5Checksum).toBe("override-checksum");
+  });
+
+  it("does not write a row none of whose slots was integrated", async () => {
+    const { writer, dynamicDataService } = setup();
+    writer.expectSlots(entryWithOverride, 2);
+
+    writer.settleSlot(entryWithOverride, {});
+    writer.settleSlot(entryWithOverride, { overrideProps: override });
+    await writer.flush();
+
+    // It could only restate the snapshot, or here, with no snapshot, invent a row with no files
+    expect(dynamicDataService.bulkUpsert).not.toHaveBeenCalled();
   });
 
   it("merges over an existing row rather than replacing it", async () => {
@@ -107,8 +153,10 @@ describe("AssetContentsWriter", () => {
     // carried over here or it is silently dropped
     expect(row.filePath).toBe("local://bundled-base");
     expect(row.overrides.theme_default.tz_sw.filePath).toBe("local://bundled-tz");
-    // ...while the manifest still wins wherever it does have something to say
-    expect(row.md5Checksum).toBe("manifest-checksum");
+    // ...while the manifest still wins for the slot the pack did supply. The base is not one of
+    // them, so it keeps the bundled checksum describing the bundled file.
+    expect(row.overrides.theme_default.ke_sw.md5Checksum).toBe("pack");
+    expect(row.md5Checksum).toBe("core-checksum");
   });
 
   it("never mutates the snapshot it reads from", async () => {
@@ -184,5 +232,40 @@ describe("AssetContentsWriter", () => {
     // Better a loud no-op than inventing a row from a partial view of the entry
     expect(dynamicDataService.bulkUpsert).not.toHaveBeenCalled();
     expect(console.warn).toHaveBeenCalled();
+  });
+});
+
+describe("buildAssetSlotUpdate", () => {
+  it("writes a base slot's own fields and its saved path, but none of its overrides", () => {
+    expect(buildAssetSlotUpdate(entryWithOverride, "local://base")).toEqual({
+      id: "audio/track.mp3",
+      md5Checksum: "manifest-checksum",
+      size_kb: 20,
+      filePath: "local://base",
+    });
+  });
+
+  it("writes an override slot's own fields and its saved path, but not the base's", () => {
+    expect(buildAssetSlotUpdate(entryWithOverride, "local://override", override)).toEqual({
+      id: "audio/track.mp3",
+      overrides: {
+        theme_default: {
+          tz_sw: { filePath: "local://override", md5Checksum: "override-checksum", size_kb: 10 },
+        },
+      },
+    });
+  });
+
+  it("replaces a manifest base filePath with the saved one", () => {
+    // A base file authored under a legacy `global/` folder is given an explicit manifest path
+    const legacyEntry = { ...baseEntry, filePath: "global/audio/track.mp3" };
+    expect(buildAssetSlotUpdate(legacyEntry, "local://base").filePath).toBe("local://base");
+  });
+
+  it("does not mutate the manifest entry", () => {
+    const entry = JSON.parse(JSON.stringify(entryWithOverride));
+    buildAssetSlotUpdate(entry, "local://base");
+    buildAssetSlotUpdate(entry, "local://override", override);
+    expect(entry).toEqual(entryWithOverride);
   });
 });
