@@ -1,4 +1,4 @@
-import { Component, computed, effect, forwardRef, inject } from "@angular/core";
+import { Component, computed, effect, forwardRef, inject, untracked } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { defineParameters, Parameter } from "../../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../../row-base.component";
@@ -37,8 +37,11 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
     super();
 
     // Open or close this section whenever its `state` changes
+    // (untracked so that signals read by the accordion, e.g. its `multiple` param, don't re-apply the state)
     effect(() => {
-      this.accordion?.setSectionOpen(this.name(), this.params.state.value() === "open");
+      const name = this.name();
+      const open = this.params.state.value() === "open";
+      untracked(() => this.accordion?.setSectionOpen(name, open));
     });
   }
 

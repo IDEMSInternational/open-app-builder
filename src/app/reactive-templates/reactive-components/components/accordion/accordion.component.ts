@@ -1,4 +1,4 @@
-import { Component, forwardRef, signal } from "@angular/core";
+import { Component, computed, forwardRef, signal } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
@@ -20,6 +20,11 @@ const parameters = () =>
 export class AccordionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */
   public openSections = signal<string[]>([]);
+
+  /** ion-accordion-group expects a single value rather than an array when only one section can be open */
+  public groupValue = computed(() =>
+    this.params.multiple.value() ? this.openSections() : this.openSections().at(-1)
+  );
 
   /** Host elements of all child sections (including those within loops), in document order */
   private _sections = signal<HTMLElement[]>([]);
@@ -43,9 +48,11 @@ export class AccordionComponent extends RowBaseComponent<ReturnType<typeof param
       if (openSections.includes(sectionName) === open) {
         return openSections;
       }
-      return open
-        ? [...openSections, sectionName]
-        : openSections.filter((name) => name !== sectionName);
+      if (!open) {
+        return openSections.filter((name) => name !== sectionName);
+      }
+      // As when the user opens a section, opening one closes any others unless `multiple` is set
+      return this.params.multiple.value() ? [...openSections, sectionName] : [sectionName];
     });
   }
 
