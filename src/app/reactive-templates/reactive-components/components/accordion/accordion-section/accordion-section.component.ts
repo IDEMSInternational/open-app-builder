@@ -22,6 +22,14 @@ const parameters = () =>
 export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   private accordion = inject(AccordionComponent, { optional: true });
 
+  /**
+   * Disabled if either this section or the whole accordion is disabled
+   * (ion-accordion-group only passes `disabled` down to ion-accordions that are its direct children)
+   */
+  public disabled = computed(
+    () => this.params.disabled.value() || !!this.accordion?.params.disabled.value()
+  );
+
   /** Position among all of the accordion's sections, or -1 if not within an accordion */
   public sectionIndex = computed(
     () => this.accordion?.sections().indexOf(this.elementRef.nativeElement) ?? -1

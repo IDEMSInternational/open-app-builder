@@ -89,6 +89,7 @@ Components without reactive equivalents:
 * qr-code
 * radio-button-grid
 * radio-group 
+* radio-list x
 * round-icon-button
 * select-text
 * shared-data
