@@ -277,7 +277,8 @@ export class MapComponent
           type: "Feature" as const,
           id: row.id,
           geometry: row[geometryFieldName],
-          properties: row[propertiesFieldName] ?? {},
+          properties:
+            row[propertiesFieldName] ?? this.toTerraDrawFeatureProperties(row[geometryFieldName]),
         }));
       if (features.length === 0) return;
 
@@ -301,5 +302,45 @@ export class MapComponent
     this.terraDraw?.setMode(mode);
     // disable map panning while actively drawing so drag gestures draw instead of pan the map
     this.dragPan?.setActive(mode !== "polygon");
+  }
+
+  private toTerraDrawFeatureProperties(geojson: any): any {
+    if (!geojson || geojson.type !== "Feature") {
+      throw new Error("Expected a GeoJSON Feature");
+    }
+
+    const geom = geojson.geometry;
+
+    const featureType = this.matchTerraDrawType(geom);
+
+    return {
+      featureType,
+      ...(geojson.properties ?? {}),
+    };
+  }
+
+  private matchTerraDrawType(geometry: any): string {
+    switch (geometry.type) {
+      case "Point":
+        return "point";
+
+      case "LineString":
+        return "line";
+
+      case "Polygon":
+        return "polygon";
+
+      case "MultiPolygon":
+        return "multipolygon";
+
+      case "MultiLineString":
+        return "multiline";
+
+      case "MultiPoint":
+        return "multipoint";
+
+      default:
+        return "unknown";
+    }
   }
 }
