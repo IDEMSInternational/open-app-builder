@@ -32,7 +32,8 @@ describe("EvaluationService", () => {
     rowRegistry.register({
       name: () => "answer_loop",
       value: () => undefined,
-      setExpression: () => {},
+      setExpression: async () => {},
+      evaluate: async () => {},
       params: { index: new Parameter("index", "key") },
       row: () => ({
         name: "answer_loop",
@@ -62,7 +63,8 @@ describe("EvaluationService", () => {
     rowRegistry.register({
       name: () => "answer_loop",
       value: () => undefined,
-      setExpression: () => {},
+      setExpression: async () => {},
+      evaluate: async () => {},
       params: { index: new Parameter("index", "key") },
       row: () => ({
         name: "answer_loop",
@@ -110,7 +112,8 @@ describe("EvaluationService", () => {
     rowRegistry.register({
       name: () => "answer_loop",
       value: () => undefined,
-      setExpression: () => {},
+      setExpression: async () => {},
+      evaluate: async () => {},
       params: { index: new Parameter("index", "key") },
       row: () => ({
         name: "answer_loop",

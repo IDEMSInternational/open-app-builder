@@ -166,7 +166,8 @@ describe("ContextCreatorService", () => {
     rowRegistry.register({
       name: () => "items",
       value: () => undefined,
-      setExpression: () => {},
+      setExpression: async () => {},
+      evaluate: async () => {},
       params: { index: new Parameter("index", null) },
       row: () => ({ name: "items", value: "", type: "loop", rows: [], _nested_name: "items" }),
     });
@@ -193,7 +194,8 @@ describe("ContextCreatorService", () => {
     rowRegistry.register({
       name: () => "items",
       value: () => undefined,
-      setExpression: () => {},
+      setExpression: async () => {},
+      evaluate: async () => {},
       params: { index: new Parameter("index", "name") },
       row: () => ({ name: "items", value: "", type: "loop", rows: [], _nested_name: "items" }),
     });

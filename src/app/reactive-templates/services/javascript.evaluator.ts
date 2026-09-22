@@ -6,6 +6,7 @@ export class JavascriptEvaluator {
   private context: any = {};
 
   public evaluate(expression: string | number | boolean, valueType: ValueType): any {
+    const context = this.context;
     const raw = typeof expression === "string" ? expression : String(expression);
     const safeTemplate = raw.replace(/\\/g, "\\\\").replace(/`/g, "\\`");
     const expressionBody =

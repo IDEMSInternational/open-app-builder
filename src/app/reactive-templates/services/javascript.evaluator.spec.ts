@@ -177,12 +177,12 @@ describe("JavascriptEvaluator", () => {
       expect(result).toBeUndefined();
     });
 
-    it("logs error to console on evaluation failure", () => {
-      spyOn(console, "error");
+    it("logs warning to console on evaluation failure", () => {
+      spyOn(console, "warn");
 
       evaluator.evaluate("x +", "script");
 
-      expect(console.error).toHaveBeenCalledWith(
+      expect(console.warn).toHaveBeenCalledWith(
         "Failed to evaluate expression",
         jasmine.objectContaining({ expression: "x +" })
       );
