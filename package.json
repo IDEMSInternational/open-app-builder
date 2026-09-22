@@ -88,6 +88,7 @@
     "document-register-element": "^1.14.10",
     "dompurify": "^3.4.11",
     "extract-math": "^1.2.3",
+    "fflate": "^0.8.2",
     "file-saver": "^2.0.5",
     "firebase": "^11.2.0",
     "globalthis": "^1.0.3",

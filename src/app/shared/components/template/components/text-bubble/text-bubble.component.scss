@@ -117,13 +117,8 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   }
 }
 
-.text-bubble {
-  // Override default margins of child text component:
-  // handle with padding on this parent element instead
-  plh-tmpl-text {
-    --margin-text: 0;
-  }
-}
+// NOTE: margins around the child text component's rendered markdown are handled in
+// `text-bubble.component.global.scss`, as that content cannot be reached from here
 
 // This creates the bubble shape, including the tail
 .text-bubble {
