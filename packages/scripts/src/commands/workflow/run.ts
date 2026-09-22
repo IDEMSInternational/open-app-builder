@@ -96,7 +96,7 @@ export class WorkflowRunnerClass {
       };
       workflowArgs = remainingArgs;
     }
-    return this.executeWorkflow(workflow, workflowArgs);
+    return this.executeWorkflow(workflow, workflowArgs, parent);
   }
 
   /**
@@ -155,7 +155,7 @@ export class WorkflowRunnerClass {
     return { options: parsedOptions, args: subProgram.args };
   }
 
-  private async executeWorkflow(workflow: IWorkflow, args: string[] = []) {
+  private async executeWorkflow(workflow: IWorkflow, args: string[] = [], parent?: string) {
     const activeWorkflow = {};
     for (const step of workflow.steps) {
       activeWorkflow[step.name] = step;
@@ -166,6 +166,7 @@ export class WorkflowRunnerClass {
         tasks: this.tasks,
         args,
         options: this.activeWorkflowOptions,
+        parent,
       };
       let shouldProcess = true;
       if (step.condition) {
