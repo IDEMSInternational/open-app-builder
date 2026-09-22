@@ -72,6 +72,11 @@ const sidebarRoutes: Routes = [
     outlet: "sidebar",
   },
   {
+    path: "theme",
+    loadChildren: () => import("./feature/theme/theme.module").then((m) => m.ThemeModule),
+    outlet: "sidebar",
+  },
+  {
     path: "user",
     loadChildren: () => import("./feature/user/user.module").then((m) => m.UserModule),
     outlet: "sidebar",

@@ -23,7 +23,7 @@ What "downloading" means depends on the platform:
 
 | Platform      | Behaviour                                                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Android / iOS | Each file in the pack is fetched and saved to the device. Interrupted downloads resume on the next app launch, skipping files already saved |
+| Android / iOS | The pack's files are fetched and saved to the device. Interrupted downloads resume on the next app launch                                  |
 | Web           | No files are saved. The pack's assets are pointed at the storage provider's CDN and streamed by the browser                                 |
 
 
@@ -32,6 +32,24 @@ What "downloading" means depends on the platform:
     A pack's assets are unavailable on **both** platforms until a template has run an `asset_pack`
     download action for it at least once — on web that action rewrites the asset paths to CDN URLs
     rather than transferring files. Only the file storage and resume behaviour is native-only.
+
+### First download, and later updates
+
+On Android and iOS, how a pack is fetched depends on whether the device has it already:
+
+
+| Situation                          | How it is fetched                                                      |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| The device has never had this pack | As one compressed file, which is much faster than a request per asset  |
+| The pack is being updated          | File by file, fetching only those files whose content has changed      |
+
+
+This is decided automatically and needs nothing from authoring, but two things follow from it:
+
+- Interrupting a **first** download means its transfer starts again on the next attempt. Once a pack
+has completed, later updates only fetch what changed.
+- If a deployment has not uploaded the compressed file for a pack (see
+[Uploading asset packs](#uploading-asset-packs)), packs still download correctly, just more slowly.
 
 ## Referencing remote assets in templates
 
@@ -62,10 +80,21 @@ Downloads are triggered from templates with the `asset_pack` action:
 | Action              | Behaviour                                                                                                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `download`          | Download a single named pack. Always runs, even if the pack has already been downloaded, and always blocks the action queue until finished (may be deprecated in future) |
-| `ensure_downloaded` | Download only those packs not already completed. Takes an `asset_pack` or `asset_pack_list` parameter                                                                    |
+| `ensure_downloaded` | Download those packs not already completed, and check the rest for a published update. **Does not wait** for downloads unless `await: true` is set                       |
 | `cancel_download`   | Abort any active download and mark it `cancelled`                                                                                                                        |
 | `reset`             | Return **every** pack to its pre-download state                                                                                                                          |
 
+
+!!! important "`ensure_downloaded` does not wait for downloads to finish"
+
+    Unlike other actions, `ensure_downloaded` does not block the action queue by default. It starts
+    its downloads in the background and the actions after it run straight away, so those actions
+    cannot rely on the pack's assets being present yet. Gate content on the pack's `download_status`
+    instead (see [Showing download progress](#showing-download-progress)).
+
+    To wait until downloads finish, pass `await: true`. Use it sparingly: a download that loses
+    connectivity parks itself until connectivity returns, so an awaited call can block the action
+    queue indefinitely.
 
 !!! note "Naming the pack"
 
@@ -80,7 +109,7 @@ Downloads are triggered from templates with the `asset_pack` action:
 | button | Download pack (parameter form) | `click | asset_pack: download | asset_pack: my_asset_pack`                         |
 | button | Ensure single pack             | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack`                |
 | button | Ensure multiple packs          | `click | asset_pack: ensure_downloaded | asset_pack_list: @field.my_pack_list`     |
-| button | Ensure without blocking        | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | await: false` |
+| button | Ensure and block until done    | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | await: true`  |
 | button | Cancel download                | `click | asset_pack: cancel_download`                                              |
 | button | Reset all packs                | `click | asset_pack: reset`                                                        |
 
@@ -94,17 +123,12 @@ Downloads are triggered from templates with the `asset_pack` action:
 | ------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `asset_pack`              | `download`, `ensure_downloaded` | Single pack name. For `download`, an alternative to giving the name as an argument                   |
 | `asset_pack_list`         | `ensure_downloaded`             | One or more pack names, as an array or JSON array string                                             |
-| `await`                   | `ensure_downloaded`             | Default `true`. When `false`, downloads start in the background instead of blocking the action queue |
+| `await`                   | `ensure_downloaded`             | Default `false`, so downloads start in the background. When `true`, blocks the action queue instead  |
+| `check_for_updates`       | `ensure_downloaded`             | Default `true`. When `false`, skips the version check on packs already downloaded                    |
 | `debug_download_delay_ms` | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
 
 
 `download` has no `await` parameter — it always blocks the action queue until the download finishes.
-
-!!! tip
-
-    Use `await: false` when a download shouldn't hold up navigation, e.g. starting an optional pack in
-    the background while the user carries on. Note that a download that loses connectivity parks
-    itself until connectivity returns, so an awaited call can block the action queue indefinitely.
 
 ### One at a time
 
@@ -114,18 +138,64 @@ Downloads run one pack at a time, and one file at a time within a pack:
 | Situation                                   | Result                                                     |
 | ------------------------------------------- | ---------------------------------------------------------- |
 | Same pack requested again while downloading | Joins the download already in progress                     |
-| Different pack requested, `await: false`    | Refused for now, retried once the active download finishes |
-| Different pack requested, awaited           | Refused and returns immediately, not retried               |
+| Different pack requested (default)          | Refused for now, retried once the active download finishes |
+| Different pack requested, `await: true`     | Refused and returns immediately, not retried               |
 
 
 
 
 ### Updating a pack that users already have
 
-`ensure_downloaded` skips any pack already marked completed, so replacing files in cloud storage does
-**not** reach users who have already downloaded that pack. Use `download`, which always re-runs and
-re-fetches any file whose size or checksum no longer matches the pack manifest, to pick up changed
-content. There is no "update if changed" action.
+Republishing a pack does reach users who already have it. `ensure_downloaded` compares the published
+pack's version against the one on the device, and if they differ re-reads the manifest and fetches
+only those files whose content actually changed — not the whole pack.
+
+That version is a content hash generated at sync time, so it changes if and only if pack content
+changes. Nothing has to be incremented or remembered when republishing.
+
+!!! warning "Version checks are throttled to once an hour per pack"
+
+    `ensure_downloaded` is authored on template entry and on buttons, so an un-throttled check would
+    mean a manifest fetch every time one runs. A check therefore happens at most **once an hour per
+    pack**, or 15 minutes after a check that reached the server and failed.
+
+    A **successful download sets that clock too**. So immediately after downloading a pack,
+    `ensure_downloaded` will not check again for an hour — which catches out testing far more than it
+    catches out users: publish an update, press the button, and nothing appears to happen.
+
+    Use `download` to force a check; it bypasses the throttle. That is not an expensive thing to do —
+    it re-reads the manifest, but still transfers only files whose content changed.
+
+A pack already known to have an update outstanding is never throttled, so an update that failed, was
+cancelled, or was interrupted is retried on the next `ensure_downloaded`.
+
+To opt a call out of checking altogether, pass `check_for_updates: false`:
+
+
+| type   | value                   | action_list                                                                                      |
+| ------ | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| button | Ensure, no update check | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | check_for_updates: false`   |
+
+
+Further behaviour worth knowing:
+
+- Checks **never block the action queue**, whatever `await` says. `ensure_downloaded` promises that a
+pack is *usable*, not that it is the latest; use `download` to block until latest.
+- A failed check **never changes** `download_status`. A downloaded, working pack is not made to look
+broken because a check failed — the failure shows up in `version_check_status` instead.
+- Being offline records nothing at all, so `failed` keeps meaning "the server was reached and there is
+something wrong with the published pack". Staleness shows up as `version_checked_at` not advancing.
+- `version` only advances once every file has downloaded successfully, so a partly applied update
+stays at the old version and is retried on the next check. Every asset still resolves meanwhile.
+- A failed or cancelled attempt on a pack that had completed before leaves it `completed` with its
+`version` untouched, because the pack is still usable. One consequence: an update cannot be
+permanently dismissed by cancelling it — use `check_for_updates: false` to stop a refresh recurring.
+
+!!! note "Progress looks like a full re-download"
+
+    Each attempt resets `assets_downloaded_count` to 0, and files skipped as unchanged still count
+    towards it. A 200-file pack with one changed file therefore sweeps up to 199 and then pauses on
+    the single real fetch.
 
 !!! warning "`reset` affects every pack"
 
@@ -157,6 +227,13 @@ progress bar or status display:
 | `download_started_at`        | ISO timestamp of when the current attempt started                            |
 | `download_completed_at`      | ISO timestamp of completion, empty until completed                           |
 | `download_status_updated_at` | ISO timestamp of the most recent status change                               |
+| `version`                    | Version of the pack currently on the device, empty for pre-versioning packs  |
+| `available_version`          | Version last seen in cloud storage, empty until a check has succeeded        |
+| `update_available`           | A check found a published version differing from the downloaded one          |
+| `has_completed_download`     | The pack has been fully downloaded at least once                             |
+| `version_checked_at`         | ISO timestamp of the last **successful** version check                       |
+| `version_check_attempted_at` | ISO timestamp of the last check **attempt**, successful or not               |
+| `version_check_status`       | `never`, `ok`, or `failed`                                                   |
 
 
 For example, looping over the list (see [looping data](./advanced/looping-data.md)) to show each
@@ -177,8 +254,7 @@ pack's progress:
     to a couple of megabytes.
 
     For a **progress bar**, prefer `download_progress_percent`. It tracks transferred bytes when a
-    pack is downloaded in bulk and files otherwise, so it moves smoothly either way — and which way
-    a given download takes is decided automatically, not by authoring.
+    pack is downloaded as one compressed file and files otherwise, so it moves smoothly either way.
 
 
 !!! note
@@ -195,6 +271,8 @@ The statuses behave as follows:
 connectivity returns.
 - `in_progress` and `waiting_for_connection` are picked up automatically on the next app launch if the
 app was closed mid-download.
+- Individual files are retried a few times before a pack is given up on, so `error` means a
+persistent problem rather than one failed request.
 - `error` and `cancelled` are not retried automatically, but either `download` or `ensure_downloaded`
 will retry them (`ensure_downloaded` only skips packs that are `completed`).
 
@@ -229,7 +307,7 @@ or `error`), and any authored `click` actions run after the download attempt com
 ## Recommended pattern
 
 - Call `ensure_downloaded` at a known entry point (e.g. after onboarding, or when a section is first
-opened), usually with `await: false` so navigation isn't held up.
+opened). By default it runs in the background, so navigation isn't held up.
 - Gate media screens on `@fields._asset_pack_download_in_progress` and/or the pack's
 `download_status` from `_asset_packs`, rather than assuming the assets are present.
 - Use `download` only where content needs to be refreshed after a pack has been replaced in storage.
@@ -449,8 +527,8 @@ milliseconds before each asset file, however the pack is being fetched:
 click | asset_pack: download: my_asset_pack | debug_download_delay_ms: 3000
 ```
 
-When a pack is fetched in bulk the pause applies as each file is unpacked, not to the transfer
-itself, so the window it opens is during installation rather than during the download.
+On a first download the pause applies as each file is unpacked, not to the transfer itself, so the
+window it opens is during installation rather than during the download.
 
 This exists to open a reliable window for interrupting a download — force-quitting the app mid-pack,
 toggling aeroplane mode — which is otherwise hard to hit on a fast connection. It should be omitted
@@ -469,7 +547,10 @@ next launch rather than continuing while away.
 - **No download queue.** One pack and one file at a time, so large packs are slow.
 - **No per-pack delete.** Storage is reclaimed for all packs at once via `asset_pack: reset`, or not at
 all.
-- **No update-if-changed action.** Refreshing replaced content needs `download` (or `reset`).
+- **Updates can leave orphaned files.** Removing or renaming a manifest entry leaves the old file on
+the device, still resolving, until `reset`. Storage is shared between packs, so nothing can prove
+another pack does not still need that file. Changed content is overwritten in place, so this only
+arises from removals and renames.
 - **No integrity repair.** There is no way to detect or fix an asset file that becomes corrupted after
 it has been downloaded.
 
