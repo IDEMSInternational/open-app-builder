@@ -49,17 +49,32 @@ export class JsonFileCache {
    */
   public add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
     if (data) {
+      const cachedData = structuredClone(data);
       if (!entryName) {
-        entryName = this.generateCacheEntryName(data);
+        entryName = this.generateCacheEntryName(cachedData);
       }
       if (!this.contents[entryName]) {
         this.contents[entryName] = {} as any;
       }
-      const filePath = this.writeCacheFile(entryName, data, stats);
-      this.contents[entryName].value = data;
-      this.writeCacheContents();
-      return { filePath, entryName, data };
+      const filePath = this.writeCacheFile(entryName, cachedData, stats);
+      this.contents[entryName].value = cachedData;
+      this.scheduleWriteCacheContents();
+      return { filePath, entryName, data: cachedData };
     }
+  }
+
+  /** Persist pending updates to the cache contents index */
+  public flush() {
+    if (this.pendingContentsWrite) {
+      this.pendingContentsWrite = false;
+      this.writeCacheContents();
+    }
+  }
+
+  private pendingContentsWrite = false;
+
+  private scheduleWriteCacheContents() {
+    this.pendingContentsWrite = true;
   }
 
   /** Clear all cache entries */
