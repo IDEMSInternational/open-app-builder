@@ -24,7 +24,7 @@ export class JavascriptEvaluator {
     try {
       return Function(...Object.keys(this.context), body)(...Object.values(this.context));
     } catch (error) {
-      console.error("Failed to evaluate expression", { expression, error });
+      console.warn("Failed to evaluate expression", { expression, error });
       return undefined;
     }
   }

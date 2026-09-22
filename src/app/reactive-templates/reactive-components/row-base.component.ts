@@ -165,9 +165,15 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
    * Sets the rows expression value and updates the variable store.
    */
   public async setExpression(expression: any): Promise<void> {
+    const name = this.name();
+    const expressionBefore = this.expression();
     this._expression.set(expression);
     this.watchValueDependencies();
 
+    await this.storeValue();
+  }
+
+  public async evaluate() {
     await this.storeValue();
   }
 

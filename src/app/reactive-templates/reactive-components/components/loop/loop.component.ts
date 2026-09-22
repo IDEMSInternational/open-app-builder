@@ -111,9 +111,9 @@ export class LoopComponent
     this.rowRegistry
       .getAllNames()
       .filter((name) => name.startsWith(prefix))
-      .forEach((name) => {
+      .forEach(async (name) => {
         const row = this.rowRegistry.get(name);
-        row.setExpression(row.row().value);
+        await row.evaluate();
       });
   }
 
