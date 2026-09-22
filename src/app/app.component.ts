@@ -358,7 +358,7 @@ export class AppComponent {
   private hackSetDeveloperOptions() {
     if (location.hostname === "localhost" && !environment.production) {
       const isUserMode = this.templateFieldService.getField("user_mode");
-      if (isUserMode == false) {
+      if (isUserMode !== false) {
         this.localStorageService.setString("user_mode", "false");
       }
     }
