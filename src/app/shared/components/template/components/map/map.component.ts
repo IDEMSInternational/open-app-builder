@@ -22,6 +22,7 @@ import { OSM, Vector as VectorSource, XYZ } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, getUserProjection, Projection, toLonLat } from "ol/proj";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
+import { toMapPolygon } from "./map-geometry.utils";
 
 type MapDrawingMode = "static" | "polygon" | "select";
 type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
@@ -37,6 +38,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   center_lon: coerce.number(0),
   center_lat: coerce.number(0),
   zoom: coerce.number(2),
+  /** When false, data list geometries are only displayed (no drawing, editing or saving) */
+  editable: coerce.boolean(true),
 }));
 
 @Component({
@@ -107,6 +110,11 @@ export class MapComponent
         this.dragPan = interaction;
       }
     });
+
+    if (!this.params().editable) {
+      this.loadReadOnly(map);
+      return;
+    }
 
     const adapter = new TerraDrawOpenLayersAdapter({
       lib: {
@@ -294,6 +302,62 @@ export class MapComponent
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to load drawn features:`, error);
     }
+  }
+
+  /**
+   * Display data list geometries as a plain OpenLayers layer. TerraDraw is not used, so authored
+   * data (e.g. recorded GPS traces with sheet ids) is shown without its editing constraints
+   */
+  private async loadReadOnly(map: Map) {
+    const dataList = this.params().dataList;
+    const geometryFieldName = this.params().geometryFieldName;
+
+    if (!dataList) return;
+
+    try {
+      const rows = await this.dynamicDataService.snapshot("data_list", dataList);
+      // map may have been destroyed while loading
+      if (this.map !== map) return;
+
+      const features = rows.flatMap((row: any) => {
+        const value = row[geometryFieldName];
+        if (!value) return [];
+        const geometry = toMapPolygon(value);
+        if (!geometry) {
+          console.warn(`[MapDrawingComponent] Cannot read geometry of '${row.id}':`, value);
+          return [];
+        }
+        return [{ type: "Feature", id: row.id, geometry, properties: {} }];
+      });
+      if (features.length === 0) return;
+
+      const source = new VectorSource({
+        features: new GeoJSON().readFeatures(
+          { type: "FeatureCollection", features },
+          { featureProjection: map.getView().getProjection() }
+        ),
+      });
+      map.addLayer(new VectorLayer({ source, style: this.readOnlyStyle() }));
+
+      // zoom to the shapes rather than relying on the authored center and zoom
+      const size = map.getSize();
+      if (size && size[0] > 0 && size[1] > 0) {
+        map.getView().fit(source.getExtent(), { padding: [40, 40, 40, 40], maxZoom: 18 });
+      }
+    } catch (error) {
+      console.error(`[MapDrawingComponent] Failed to load features:`, error);
+    }
+  }
+
+  private readOnlyStyle() {
+    const color =
+      getComputedStyle(this.hostElement.nativeElement)
+        .getPropertyValue("--ion-color-primary")
+        .trim() || "#3880ff";
+    return new Style({
+      stroke: new Stroke({ color, width: 2 }),
+      fill: new Fill({ color: "rgba(255, 255, 255, 0.2)" }),
+    });
   }
 
   private setMode(mode: MapDrawingMode) {
