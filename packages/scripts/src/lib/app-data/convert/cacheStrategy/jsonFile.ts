@@ -10,6 +10,7 @@ import {
   writeJSONSync,
 } from "fs-extra";
 import path from "path";
+import { getFileStats } from "shared";
 import { generateFolderFlatMap, IContentsEntry } from "../utils";
 
 interface IContentsEntryWithValue extends IContentsEntry {
@@ -52,12 +53,11 @@ export class JsonFileCache {
       if (!entryName) {
         entryName = this.generateCacheEntryName(data);
       }
-      if (!this.contents[entryName]) {
-        this.contents[entryName] = {} as any;
-      }
       const filePath = this.writeCacheFile(entryName, data, stats);
-      this.contents[entryName].value = data;
-      this.writeCacheContents();
+      // Only update the contents entry for the added file, as regenerating the full contents
+      // list re-reads and hashes every cached file (slow for large caches)
+      this.contents[entryName] = { relativePath: entryName, ...getFileStats(filePath) };
+      this.saveCacheContents();
       return { filePath, entryName, data };
     }
   }
@@ -91,6 +91,12 @@ export class JsonFileCache {
       let value = entry.value as T;
       if (!value) {
         const entryPath = path.resolve(this.folderPath, entry.relativePath);
+        // Treat as missing if file no longer exists, e.g. entry removed in a previous run
+        // without being added back (contents file is only saved when entries are added)
+        if (!existsSync(entryPath)) {
+          delete this.contents[entryName];
+          return undefined;
+        }
         value = readJSONSync(entryPath);
       }
       return value;
@@ -129,12 +135,18 @@ export class JsonFileCache {
     }
     return target;
   }
+  /** Regenerate the contents list from all files in the cache folder, and save to disk */
   private writeCacheContents() {
-    const { contentsPath, folderPath } = this;
+    const { folderPath } = this;
     const contents = generateFolderFlatMap(folderPath, { filterFn: (p) => p !== "_contents.json" });
     contents._version = this.version as any;
     this.contents = contents as any;
-    writeJSONSync(contentsPath, contents);
+    this.saveCacheContents();
+  }
+
+  /** Save the in-memory contents list to disk */
+  private saveCacheContents() {
+    writeJSONSync(this.contentsPath, this.contents);
   }
 
   /**
