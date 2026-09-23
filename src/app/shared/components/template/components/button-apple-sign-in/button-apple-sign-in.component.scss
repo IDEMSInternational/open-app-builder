@@ -19,7 +19,7 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   height: 100%;
-  min-height: var(--buttons-min-height);
+  min-height: var(--buttons-medium-height);
   width: 100%;
   min-width: 140px;
 
