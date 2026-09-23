@@ -1,4 +1,9 @@
 $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
+$logo-size: 20px;
+$border-width: 1px;
+// Centre of the circle that forms the button's rounded corner. The browser clamps the radius
+// to half the button's height, so clamp this the same way
+$corner-centre: min(#{$border-radius}, calc(var(--buttons-medium-height) / 2));
 
 /* 
 CSS adapted from https://developers.google.com/identity/branding-guidelines
@@ -27,6 +32,12 @@ Native Google variant reflects the example styling exactly
   outline: none;
   overflow: hidden;
   padding: var(--regular-margin);
+  // Align the logo with the centre of the corner circle, where the radius is large enough for
+  // that to sit outside the default padding. Set on both sides so the label stays centred
+  padding-inline: max(
+    var(--regular-margin),
+    calc(#{$corner-centre} - #{$logo-size * 0.5} - #{$border-width})
+  );
   position: relative;
   text-align: center;
   -webkit-transition:
@@ -42,10 +53,10 @@ Native Google variant reflects the example styling exactly
   min-width: 140px;
 
   .gsi-material-button-icon {
-    height: 20px;
+    height: $logo-size;
     margin-inline-end: 12px;
-    min-width: 20px;
-    width: 20px;
+    min-width: $logo-size;
+    width: $logo-size;
     flex-shrink: 0;
   }
 
@@ -66,7 +77,7 @@ Native Google variant reflects the example styling exactly
     // This centers the text content while keeping the icon at the start
     &::after {
       content: "";
-      width: 32px; // 20px icon + 12px margin
+      width: $logo-size + 12px; // logo + its margin
       flex-shrink: 0;
     }
   }
