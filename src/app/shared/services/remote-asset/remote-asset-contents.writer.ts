@@ -3,11 +3,47 @@ import { deepMergeObjects } from "../../utils";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import { ASSET_CONTENTS_DATA_LIST, ASSET_CONTENTS_FLUSH_INTERVAL } from "./remote-asset.types";
 
+/**
+ * An `_assets_contents` row, or an update to one. Partial because a row need not describe every
+ * slot of its entry - a pack may supply only an override, and a slot update carries only its own.
+ */
+type IAssetContentsRow = Partial<IAssetEntry> & { id: string };
+
 /** A row still waiting for some of the slots this attempt intends to settle for it */
 interface IPartialRow {
-  row: IAssetEntry & { id: string };
+  row: IAssetContentsRow;
   /** Slots this attempt still expects to settle before the row can be written */
   outstanding: number;
+  /** Whether any slot has been integrated into the row, i.e. whether it has anything to write */
+  integrated: boolean;
+}
+
+/**
+ * The update integrating one slot makes to its `_assets_contents` row: that slot's own manifest
+ * fields with its saved `filePath`, and nothing belonging to the entry's other slots.
+ *
+ * Scoped to the slot because the resume gate reads a slot's recorded checksum and `filePath` as a
+ * pair describing one file on disk. Writing the whole manifest entry would hand every sibling slot
+ * the new checksum while its `filePath` still pointed at a file an earlier version saved, so a
+ * sibling that then failed would be recorded as current. An override would still be caught, as its
+ * manifest `filePath` overwrites the local one, but a base entry carries no `filePath` in the
+ * manifest - so a stale base file of unchanged size would be trusted and never re-fetched.
+ */
+export function buildAssetSlotUpdate(
+  assetEntry: IAssetEntry,
+  filePath: string,
+  overrideProps?: IAssetOverrideProps
+): IAssetContentsRow {
+  if (overrideProps) {
+    const { themeName, languageCode } = overrideProps;
+    const overrideEntry = assetEntry.overrides?.[themeName]?.[languageCode];
+    return {
+      id: assetEntry.id,
+      overrides: { [themeName]: { [languageCode]: { ...overrideEntry, filePath } } },
+    };
+  }
+  const { overrides, ...baseFields } = assetEntry;
+  return { ...baseFields, id: assetEntry.id, filePath };
 }
 
 /**
@@ -17,17 +53,17 @@ interface IPartialRow {
  * for a 400-file pack is the single largest non-network cost of a download. Batching those into
  * `bulkUpsert` calls removes almost all of it.
  *
- * The subtlety is that `bulkUpsert` REPLACES a row while the per-slot path deep-MERGED into it,
+ * The subtlety is that `bulkUpsert` REPLACES a row while the per-slot path deep-MERGES into it,
  * and those are not interchangeable. `_assets_contents` is keyed by base asset id and seeded at
  * startup from the bundled core contents, so a pack row can legitimately be layered on top of a
  * core one - that is exactly what `overridesOnly` entries are for, where the base file and some
  * language variants ship in the bundle and the pack adds only the extra overrides. Writing the
- * manifest entry alone would drop the bundled base `filePath` and every override language the
- * manifest does not mention. So the merge has to happen here instead, before the write.
+ * integrated slots alone would drop the bundled base `filePath` and every override language the
+ * pack does not supply. So the merge has to happen here instead, before the write.
  */
 export class AssetContentsWriter {
   /** Rows whose slots have all settled, waiting to be written */
-  private completed = new Map<string, IAssetEntry & { id: string }>();
+  private completed = new Map<string, IAssetContentsRow>();
   private partial = new Map<string, IPartialRow>();
 
   constructor(
@@ -57,13 +93,17 @@ export class AssetContentsWriter {
       existing.outstanding += slotCount;
       return;
     }
-    this.partial.set(id, { row: this.buildBaseRow(assetEntry), outstanding: slotCount });
+    this.partial.set(id, {
+      row: this.buildBaseRow(assetEntry),
+      outstanding: slotCount,
+      integrated: false,
+    });
   }
 
   /**
    * Record the outcome of one slot. A failed slot still counts as settled: its siblings' evidence
-   * is worth keeping, and leaving the failed slot's `filePath` at the manifest value is precisely
-   * what makes the resume gate re-fetch that one file and nothing else next time.
+   * is worth keeping, and leaving the failed slot exactly as the snapshot had it is precisely what
+   * makes the resume gate re-fetch that one file and nothing else next time.
    */
   public settleSlot(
     assetEntry: IAssetEntry,
@@ -76,12 +116,18 @@ export class AssetContentsWriter {
       return;
     }
     if (outcome.filePath) {
-      this.applyFilePath(pending.row, outcome.filePath, outcome.overrideProps);
+      deepMergeObjects(
+        pending.row,
+        buildAssetSlotUpdate(assetEntry, outcome.filePath, outcome.overrideProps)
+      );
+      pending.integrated = true;
     }
     pending.outstanding -= 1;
     if (pending.outstanding <= 0) {
       this.partial.delete(id);
-      this.completed.set(id, pending.row);
+      // A row with nothing integrated would only restate the snapshot - or, with no snapshot row,
+      // invent one describing no files at all
+      if (pending.integrated) this.completed.set(id, pending.row);
     }
   }
 
@@ -110,7 +156,7 @@ export class AssetContentsWriter {
     // written twice.
     const rows = [...this.completed.values()];
     this.completed.clear();
-    await this.dynamicDataService.bulkUpsert<IAssetEntry & { id: string }>(
+    await this.dynamicDataService.bulkUpsert<IAssetContentsRow>(
       "asset_pack",
       ASSET_CONTENTS_DATA_LIST,
       rows
@@ -118,43 +164,13 @@ export class AssetContentsWriter {
   }
 
   /**
-   * Start a row from the pre-attempt snapshot and merge the manifest entry over it.
-   *
-   * Order matters both ways round. Seeding from the snapshot is what preserves bundled keys the
-   * manifest never mentions; merging the manifest over it is what stops a changed pack leaving
-   * stale checksums behind, which the resume gate would then trust.
+   * Start a row from the pre-attempt snapshot, which is what preserves bundled keys the pack never
+   * mentions. Each integrated slot is then merged over it, and nothing else from the manifest is.
    */
-  private buildBaseRow(assetEntry: IAssetEntry): IAssetEntry & { id: string } {
-    // Deep clone: `deepMergeObjects` mutates its target, and snapshot rows are frozen RxDB
-    // documents shared with the resume gate.
+  private buildBaseRow(assetEntry: IAssetEntry): IAssetContentsRow {
+    // Deep clone: slot updates are merged into it, and snapshot rows are frozen RxDB documents
+    // shared with the resume gate.
     const existing = this.existingContents[assetEntry.id];
-    const target = existing ? JSON.parse(JSON.stringify(existing)) : {};
-    const manifestEntry = JSON.parse(JSON.stringify(assetEntry));
-    return deepMergeObjects(target, manifestEntry);
-  }
-
-  /**
-   * Overlay a locally-saved path onto the row.
-   *
-   * Always applied after the manifest merge, never before: manifest override entries carry their
-   * own pack-relative `filePath`, so merging the manifest last would overwrite the local path with
-   * a remote one and the asset would fail to resolve.
-   */
-  private applyFilePath(
-    row: IAssetEntry & { id: string },
-    filePath: string,
-    overrideProps?: IAssetOverrideProps
-  ) {
-    if (!overrideProps) {
-      row.filePath = filePath;
-      return;
-    }
-    const { themeName, languageCode } = overrideProps;
-    row.overrides ??= {};
-    row.overrides[themeName] ??= {};
-    row.overrides[themeName][languageCode] = {
-      ...row.overrides[themeName][languageCode],
-      filePath,
-    };
+    return existing ? JSON.parse(JSON.stringify(existing)) : { id: assetEntry.id };
   }
 }
