@@ -58,19 +58,34 @@ export function mergeDescendants(
   return container ?? exactValue;
 }
 
+const FORBIDDEN = new Set(["__proto__", "prototype", "constructor"]);
+
 function assignNestedPath(target: any, segments: string[], value: unknown): void {
   let cursor = target;
 
-  segments.forEach((segment, index) => {
-    if (index === segments.length - 1) {
-      cursor[segment] = value;
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+
+    if (FORBIDDEN.has(segment)) {
+      throw new Error(`Refusing to assign forbidden key: ${segment}`);
+    }
+
+    const last = i === segments.length - 1;
+
+    if (last) {
+      Object.defineProperty(cursor, segment, {
+        value,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
       return;
     }
 
-    if (!cursor[segment] || typeof cursor[segment] !== "object") {
-      cursor[segment] = {};
+    if (!Object.hasOwn(cursor, segment) || typeof cursor[segment] !== "object") {
+      cursor[segment] = Object.create(null);
     }
 
     cursor = cursor[segment];
-  });
+  }
 }
