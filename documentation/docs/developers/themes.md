@@ -8,6 +8,9 @@ config.app_config.APP_THEMES.available = ["example_theme"];
 config.app_config.APP_THEMES.defaultThemeName = "example_theme";
 ```
 
+For how themes fit alongside component styles, global stylesheets and deployment styles — and
+why a theme override sometimes loses to a component — see [Styling](./styling.md).
+
 ## How a theme is built
 
 A theme folder contains:
