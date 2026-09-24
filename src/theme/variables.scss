@@ -23,6 +23,7 @@
 @include themes.theme-plh_facilitator_cw;
 @include themes.theme-plh_kids_teens_pa;
 @include themes.theme-plh_kids_teens_my;
+@include themes.theme-plh_kids_teens_mx;
 
 /** Ionic CSS Variables **/
 :root {
@@ -88,8 +89,10 @@
   --line-height-text-tiny: 15px;
   --line-height-text-small: 20px;
   --line-height-text: 22px;
-  --line-height-text-large: 22px;
-  --line-height-text-largest: 25px;
+  --line-height-text-medium: 22px;
+  --line-height-text-large: 25px;
+  // Vertical margin above and below paragraphs (all <p> elements)
+  --paragraph-spacing: 0.75em;
 
   // Font Weight //
   --font-weight-standard: 400;
@@ -101,6 +104,10 @@
 
   // Components variables //
   --timer-title-size: 22px;
+
+  // Text bubble //
+  // Font size of text bubble content. Default matches the size of the surrounding text
+  --text-bubble-font-size: 1em;
 
   --number-selector-short-font-size: 15px;
   --number-selector-normal-font-size: 20px;

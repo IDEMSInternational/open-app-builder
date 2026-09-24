@@ -231,7 +231,9 @@ export class AssetsPostProcessor {
   }
 
   /**
-   * Convert asset entries hashmap to array of rows
+   * Convert asset entries hashmap to array of rows (`id` = asset path).
+   * Reversed by `convertAssetPackRowsToHashmap`, other than the `overridesOnly` values
+   * substituted below.
    * @param entries Asset entries hashmap
    * @param overridesOnly Whether these entries are overridesOnly
    */

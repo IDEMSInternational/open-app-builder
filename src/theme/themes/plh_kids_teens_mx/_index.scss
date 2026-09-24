@@ -1,0 +1,90 @@
+@use "../utils";
+@use "sass:map";
+@use "../plh_kids_teens" as parent;
+@use "./overrides" as overrides;
+@use "./typography";
+
+@mixin theme-plh_kids_teens_mx {
+  @include utils.theme(
+    $theme-name: "plh_kids_teens_mx",
+    $color-primary: hsl(183 100% 16%),
+    $color-secondary: hsl(18 87% 35%),
+    $color-primary-variant: hsl(183 77% 43%),
+    $color-secondary-variant: hsl(17 74% 55%),
+    $page-background: white,
+    $variable-overrides: map.merge(
+        parent.$variables,
+        (
+          // PRIMARY PALETTE OVERRIDE
+          // $color-primary is the dark brand teal; the generator remaps it into a fully
+          // saturated 50–900 scale that reads neon. These tokens replace 50–800 with a
+          // muted tonal ramp of the same hue. 900 is left as the brand colour.
+          ion-color-primary-800: #00383b,
+          ion-color-primary-700: #004448,
+          ion-color-primary-600: #0f696d,
+          ion-color-primary-500: #2c8388,
+          ion-color-primary-400: #509ca1,
+          ion-color-primary-300: #77b6b9,
+          ion-color-primary-200: #a2ced1,
+          ion-color-primary-100: #d0e7e8,
+          ion-color-primary-50: #e7f3f4,
+
+          ion-font-family: "Quicksand",
+
+          font-size-text-tiny: 12px,
+          font-size-text-small: 14px,
+          font-size-text-medium: 20px,
+          font-size-text-large: 24px,
+          font-size-text-title: 28px,
+          font-size-text-extra-large: 32px,
+
+          icon-size-small: 16px,
+          icon-size-medium: 24px,
+          icon-size-large: 32px,
+          icon-size-extra-large: 40px,
+          icon-size-largest: 48px,
+
+          buttons-font-size-small: 16px,
+          buttons-font-size: 20px,
+
+          border-color-default: var(--ion-color-gray-500),
+          border-thin-standard: 0.5px solid var(--border-color-default),
+          row-margin-top: 10px,
+          // COMPONENT VARIABLES
+          combo-box-font-size-standard: 20px,
+          button-background-option: var(--ion-color-primary-800),
+          button-background-primary: var(--ion-color-primary-500),
+          button-background-secondary: var(--ion-color-primary-variant),
+          display-group-background-banner-secondary: var(--ion-color-primary-variant-300),
+          module-list-item-color-highlighted: var(--ion-color-secondary-300),
+          points-item-border: var(--ion-color-gray-900),
+          radio-button-font-color: var(--ion-color-secondary-900),
+          radio-group-background-secondary: var(--ion-color-secondary-100),
+          radio-group-background-selected-secondary: var(--ion-color-secondary-200),
+          radio-group-border-selected-secondary: 2px solid var(--ion-color-secondary-300),
+          round-button-background-secondary-light: var(--ion-color-secondary-100),
+          task-progress-wheel-color: var(--ion-color-primary-variant-700),
+          tile-button-background-primary-light: var(--ion-color-primary-300),
+          tile-button-background-primary: var(--ion-color-primary-500),
+          tile-button-background-secondary-light: var(--ion-color-secondary-100),
+          tile-button-background-secondary: var(--ion-color-primary-variant-600),
+          tour-next-button-background: var(--ion-color-primary-variant),
+          // TEXT BUBBLE COLOURS
+          text-bubble-background-color-gray: var(--ion-color-gray-50),
+          text-bubble-border-color-gray: var(--ion-color-gray-600),
+          text-bubble-background-color-secondary: var(--ion-color-secondary-variant-50),
+          text-bubble-border-color-secondary: var(--ion-color-secondary-600),
+          text-bubble-background-color-3: var(--ion-color-secondary-50),
+          text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
+          text-bubble-background-color-4: var(--ion-color-secondary-50),
+          text-bubble-border-color-4: var(--ion-color-secondary-300),
+          plh-lesson-cta-border-color: var(--ion-color-secondary-800),
+          plh-lesson-cta-background-color: var(--ion-color-secondary-600),
+          title-text-color: var(--ion-color-gray-900)
+        )
+      )
+  ) {
+    @include parent.overrides;
+    @include overrides.overrides;
+  }
+}
