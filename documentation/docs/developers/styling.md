@@ -1,7 +1,6 @@
 # Styling
 
-This page answers two questions: where a style rule belongs, and why a rule that looks correct
-isn't winning.
+This page explains the layers of styling within the app code and attempts to cover any edge cases. It is intended to be useful for answering two questions: where a style rule belongs, and why a rule that looks correct isn't winning.
 
 For themes specifically — how one is built, parent themes, adding a child theme — see
 [Themes](./themes.md).
