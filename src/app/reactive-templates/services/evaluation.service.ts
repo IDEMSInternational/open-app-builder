@@ -5,6 +5,7 @@ import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
 import { ExpressionParser } from "./expression-parsers/expression-parser";
 import { JavascriptEvaluator } from "./javascript.evaluator";
+import { hasIndexer } from "./expression-utils";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -79,6 +80,6 @@ export class EvaluationService {
   ): any {
     let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
 
-    return this.contextCreator.createContext(dependencies, namespace);
+    return this.contextCreator.createContext(dependencies, namespace, hasIndexer(expression));
   }
 }

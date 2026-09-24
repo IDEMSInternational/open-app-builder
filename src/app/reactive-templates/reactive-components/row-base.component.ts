@@ -32,9 +32,10 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
-import { IStore, StoreType } from "../stores/store";
+import { StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
 import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
+import { hasIndexer } from "../services/expression-utils";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -75,7 +76,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
-  protected variableStore: IStore = inject(VariableStore);
+  protected variableStore: VariableStore = inject(VariableStore);
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
@@ -164,11 +165,15 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   /*
    * Sets the rows expression value and updates the variable store.
    */
-  public setExpression(expression: any): void {
+  public async setExpression(expression: any): Promise<void> {
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.storeValue();
+    await this.storeValue();
+  }
+
+  public async evaluate() {
+    await this.storeValue();
   }
 
   public triggerActions(trigger: string) {
@@ -255,7 +260,11 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       return;
     }
 
-    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+    const watcher = hasIndexer(this.expression())
+      ? this.variableStore.watchMultipleWithDescendants(dependencies)
+      : this.variableStore.watchMultiple(dependencies);
+
+    const sub = watcher.subscribe(async () => {
       await this.storeValue();
     });
 
