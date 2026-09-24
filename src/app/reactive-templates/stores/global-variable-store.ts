@@ -51,14 +51,24 @@ export class GlobalVariableStore implements IStore {
   }
 
   /**
-   * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
-   * nested onto "foo").
+   * Resolves a value merged with any descendant keys nested onto it
+   * (e.g. "foo.bar" values nested onto "foo").
    */
   public getWithDescendants(ref: VariableReference): any {
+    const prefix = ref.name + ".";
+
+    // Only include keys that match the root or its descendants
+    const relevantEntries = Array.from(this.state, ([key, subject]) => {
+      if (key === ref.name || key.startsWith(prefix)) {
+        return [key, subject.value];
+      }
+      return null;
+    }).filter(Boolean) as [string, any][];
+
     return mergeDescendants(
-      this.get(ref),
-      ref.name,
-      Array.from(this.state, ([key, subject]) => [key, subject.value])
+      this.get(ref), // the root value
+      ref.name, // the root key
+      relevantEntries // only the keys that belong under that root
     );
   }
 
