@@ -25,11 +25,14 @@
     </style>
   </head>
   <body>
+    <!-- The app renders inside <app-root>; any styles scoped to it (e.g. deployment
+         variables) must be part of the cascade here, or they are silently missed -->
+    <app-root>
     <ion-app>
       <div id="fixtures">
         <!-- Title -->
         <template id="title-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-tmpl-title _nghost-ttl>
               <div _ngcontent-ttl class="title-wrapper">
                 <h1 _ngcontent-ttl class="tiny standard">A title that is long enough to wrap</h1>
@@ -38,7 +41,7 @@
           >
         </template>
         <div data-fixture="reactive-title">
-          <plh-template-component
+          <plh-template-component class="row"
             ><oab-title _nghost-rttl>
               <div _ngcontent-rttl class="title-wrapper">
                 <h1 _ngcontent-rttl class="tiny standard">A title that is long enough to wrap</h1>
@@ -49,7 +52,7 @@
 
         <!-- Subtitle -->
         <div data-fixture="subtitle">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-tmpl-subtitle _nghost-sub>
               <div _ngcontent-sub class="subtitle-wrapper margin-t-regular">
                 <h2 _ngcontent-sub class="standard normal">
@@ -62,7 +65,7 @@
 
         <!-- Button -->
         <div data-fixture="button-default">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-button _nghost-btn>
               <ion-button _ngcontent-btn class="full standard medium null" data-variant="">
                 <span _ngcontent-btn class="left text null"
@@ -73,7 +76,7 @@
           >
         </div>
         <div data-fixture="button-faq">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-button _nghost-btn>
               <ion-button _ngcontent-btn class="full standard medium null" data-variant="faq">
                 <span _ngcontent-btn class="left text null"
@@ -84,7 +87,7 @@
           >
         </div>
         <div data-fixture="button-card">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-button _nghost-btn>
               <ion-button _ngcontent-btn class="full standard medium null" data-variant="card">
                 <span _ngcontent-btn class="left text null"
@@ -96,7 +99,7 @@
         </div>
 
         <div data-fixture="button-navigation">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-button _nghost-btn>
               <ion-button
                 _ngcontent-btn
@@ -108,7 +111,7 @@
           >
         </div>
         <div data-fixture="button-card-no-background">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-button _nghost-btn>
               <ion-button
                 _ngcontent-btn
@@ -123,9 +126,124 @@
           >
         </div>
 
+        <!-- Google and Apple sign-in buttons (default and native variants) -->
+        <div data-fixture="button-google-sign-in">
+          <plh-template-component class="row"
+            ><tmpl-button-google-sign-in _nghost-gsi>
+              <button _ngcontent-gsi class="gsi-material-button" data-variant="" data-style="">
+                <div _ngcontent-gsi class="gsi-material-button-state"></div>
+                <div _ngcontent-gsi class="gsi-material-button-content-wrapper">
+                  <div _ngcontent-gsi class="gsi-material-button-icon">
+                    <svg _ngcontent-gsi viewBox="0 0 48 48" style="display: block"></svg>
+                  </div>
+                  <span _ngcontent-gsi class="gsi-material-button-contents">Sign in with Google</span>
+                  <span _ngcontent-gsi style="display: none">Sign in with Google</span>
+                </div>
+              </button> </tmpl-button-google-sign-in
+          ></plh-template-component>
+        </div>
+        <div data-fixture="button-google-sign-in-native">
+          <plh-template-component class="row"
+            ><tmpl-button-google-sign-in _nghost-gsi>
+              <button
+                _ngcontent-gsi
+                class="gsi-material-button"
+                data-variant="native_google"
+                data-style=""
+              >
+                <div _ngcontent-gsi class="gsi-material-button-state"></div>
+                <div _ngcontent-gsi class="gsi-material-button-content-wrapper">
+                  <div _ngcontent-gsi class="gsi-material-button-icon">
+                    <svg _ngcontent-gsi viewBox="0 0 48 48" style="display: block"></svg>
+                  </div>
+                  <span _ngcontent-gsi class="gsi-material-button-contents">Sign in with Google</span>
+                  <span _ngcontent-gsi style="display: none">Sign in with Google</span>
+                </div>
+              </button> </tmpl-button-google-sign-in
+          ></plh-template-component>
+        </div>
+        <div data-fixture="button-apple-sign-in">
+          <plh-template-component class="row"
+            ><tmpl-button-apple-sign-in _nghost-asi>
+              <button
+                _ngcontent-asi
+                id="sign-in-apple"
+                class="apple-signin-btn"
+                data-variant=""
+                data-style=""
+              >
+                <!-- Stand-in for the Apple logo, carrying its real intrinsic dimensions (842x1000) so the
+                 rendered width is faithful -->
+                <img _ngcontent-asi class="apple-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='842'%20height='1000'%3E%3Crect%20width='842'%20height='1000'%20fill='%23000'/%3E%3C/svg%3E" />
+                Sign in with Apple
+              </button> </tmpl-button-apple-sign-in
+          ></plh-template-component>
+        </div>
+        <div data-fixture="button-apple-sign-in-native">
+          <plh-template-component class="row"
+            ><tmpl-button-apple-sign-in _nghost-asi>
+              <button
+                _ngcontent-asi
+                id="sign-in-apple"
+                class="apple-signin-btn"
+                data-variant="native_apple"
+                data-style=""
+              >
+                <img _ngcontent-asi class="apple-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='842'%20height='1000'%3E%3Crect%20width='842'%20height='1000'%20fill='%23000'/%3E%3C/svg%3E" />
+                Sign in with Apple
+              </button> </tmpl-button-apple-sign-in
+          ></plh-template-component>
+        </div>
+        <div data-fixture="combo-box-dropdown">
+          <plh-template-component class="row"
+            ><combo-box-dropdown _nghost-cbd>
+              <div _ngcontent-cbd class="combo-box-container dropdown">
+                <button
+                  _ngcontent-cbd
+                  type="button"
+                  class="combo-box-dropdown-trigger combo-box-dropdown-button with-value"
+                >
+                  <span _ngcontent-cbd class="text">A selected value</span>
+                  <ion-icon
+                    _ngcontent-cbd
+                    class="dropdown-caret"
+                    name="caret-down-sharp"
+                    size="small"
+                  ></ion-icon>
+                </button>
+              </div> </combo-box-dropdown
+          ></plh-template-component>
+        </div>
+        <div data-fixture="text-bubble-list">
+          <plh-template-component class="row"
+            ><tmpl-text-bubble _nghost-tbub>
+              <div
+                _ngcontent-tbub
+                class="text-bubble-container container"
+                data-position="left"
+                data-variant=""
+                data-language-direction="ltr"
+              >
+                <div _ngcontent-tbub>
+                  <div _ngcontent-tbub class="text-bubble" data-position="left">
+                    <plh-tmpl-text _ngcontent-tbub _nghost-txt
+                      ><div _ngcontent-txt class="large standard normal" style="display: block">
+                        <p>A text bubble containing a list</p>
+                        <ul>
+                          <li>The first list item, long enough to wrap onto more lines</li>
+                          <li>A second list item</li>
+                        </ul>
+                      </div></plh-tmpl-text
+                    >
+                  </div>
+                </div>
+              </div> </tmpl-text-bubble
+          ></plh-template-component>
+        </div>
+
         <!-- Text (with links) -->
         <div data-fixture="text">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-tmpl-text _nghost-txt>
               <div _ngcontent-txt class="large standard normal" style="display: block">
                 <p>Text with <a href="#">a link</a> that is long enough to wrap onto more lines.</p>
@@ -137,9 +255,45 @@
           >
         </div>
 
+        <!-- Text whose first or last block is not a paragraph -->
+        <div data-fixture="text-heading-first">
+          <plh-template-component class="row"
+            ><plh-tmpl-text _nghost-txt>
+              <div _ngcontent-txt class="large standard normal" style="display: block">
+                <h1>A heading</h1>
+                <p>Text that is long enough to wrap onto more lines.</p>
+              </div>
+            </plh-tmpl-text></plh-template-component
+          >
+        </div>
+
+        <div data-fixture="text-heading-last">
+          <plh-template-component class="row"
+            ><plh-tmpl-text _nghost-txt>
+              <div _ngcontent-txt class="large standard normal" style="display: block">
+                <p>Text that is long enough to wrap onto more lines.</p>
+                <h1>A heading</h1>
+              </div>
+            </plh-tmpl-text></plh-template-component
+          >
+        </div>
+
+        <div data-fixture="text-list-first">
+          <plh-template-component class="row"
+            ><plh-tmpl-text _nghost-txt>
+              <div _ngcontent-txt class="large standard normal" style="display: block">
+                <ul>
+                  <li>A list item</li>
+                </ul>
+                <p>Text that is long enough to wrap onto more lines.</p>
+              </div>
+            </plh-tmpl-text></plh-template-component
+          >
+        </div>
+
         <!-- Text bubble (variants added in script) -->
         <template id="text-bubble-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><tmpl-text-bubble _nghost-tbub>
               <div
                 _ngcontent-tbub
@@ -171,7 +325,7 @@
 
         <!-- Accordion (with nested text component) -->
         <div data-fixture="accordion">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-accordion-component _nghost-acc>
               <ion-accordion-group _ngcontent-acc value="section_1" animated="false">
                 <ion-accordion _ngcontent-acc value="section_1">
@@ -236,7 +390,7 @@
 
         <!-- Audio -->
         <template id="audio-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-audio _nghost-aud>
               <div _ngcontent-aud class="container-player">
                 <div _ngcontent-aud class="top-row"><h3 _ngcontent-aud>Audio title</h3></div>
@@ -266,7 +420,7 @@
 
         <!-- Dashed box -->
         <div data-fixture="dashed-box">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-dashed-box _nghost-dbox>
               <div _ngcontent-dbox class="box-wrapper">
                 <div _ngcontent-dbox class="item margin-t-regular">
@@ -279,7 +433,7 @@
           >
         </div>
         <div data-fixture="advanced-dashed-box">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-advanced-dashed-box _nghost-adbox>
               <div _ngcontent-adbox class="box-wrapper">
                 <div _ngcontent-adbox class="item default">
@@ -298,7 +452,7 @@
 
         <!-- Simple checkbox -->
         <div data-fixture="simple-checkbox">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-simple-checkbox _nghost-chk>
               <div _ngcontent-chk class="checkbox-wrapper margin-t-large">
                 <ion-checkbox _ngcontent-chk color="primary" label-placement="end"
@@ -311,7 +465,7 @@
 
         <!-- Select text -->
         <div data-fixture="select-text">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-select-text _nghost-stxt>
               <div _ngcontent-stxt class="box-wrapper" data-language-direction="ltr">
                 <div _ngcontent-stxt class="text">Selectable text that is long enough to wrap</div>
@@ -323,7 +477,7 @@
 
         <!-- Text box -->
         <div data-fixture="text-box">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-text-box _nghost-tbox>
               <div _ngcontent-tbox class="wrapper">
                 <ion-input
@@ -338,7 +492,7 @@
 
         <!-- Text area -->
         <div data-fixture="text-area">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-text-area _nghost-tarea>
               <div _ngcontent-tarea class="wrapper">
                 <ion-textarea
@@ -353,7 +507,7 @@
 
         <!-- Radio group (text and image buttons, first option checked) -->
         <div data-fixture="radio-group-text">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-radio-group _nghost-rgrp>
               <div _ngcontent-rgrp class="wrapper-radio-group margin-t-large">
                 <div _ngcontent-rgrp class="container">
@@ -392,7 +546,7 @@
           >
         </div>
         <div data-fixture="radio-group-both">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-radio-group _nghost-rgrp>
               <div _ngcontent-rgrp class="wrapper-radio-group margin-t-large">
                 <div _ngcontent-rgrp class="container">
@@ -427,7 +581,7 @@
 
         <!-- Number selector -->
         <div data-fixture="number-selector">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-number-selector _nghost-nsel>
               <div _ngcontent-nsel class="container margin-t-large">
                 <div _ngcontent-nsel class="left">
@@ -448,7 +602,7 @@
 
         <!-- Display group (box variants added in script) -->
         <template id="display-group-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-tmpl-display-group _nghost-dgrp>
               <div _ngcontent-dgrp class="display-group-wrapper" data-variant="">
                 <plh-template-component _ngcontent-dgrp
@@ -463,9 +617,58 @@
           >
         </template>
 
+        <!-- Radio list (option labels hold a text component) -->
+        <div data-fixture="radio-list">
+          <plh-template-component class="row"
+            ><plh-radio-list _nghost-rlst>
+              <ion-radio-group _ngcontent-rlst data-variant="">
+                <div _ngcontent-rlst class="option">
+                  <ion-item _ngcontent-rlst lines="none">
+                    <ion-radio _ngcontent-rlst label-placement="end" justify="start" mode="md"
+                      ><plh-tmpl-text _ngcontent-rlst _nghost-txt
+                        ><div _ngcontent-txt class="large standard normal" style="display: block">
+                          <p>A radio list option long enough to wrap onto more lines</p>
+                        </div></plh-tmpl-text
+                      ></ion-radio
+                    >
+                  </ion-item>
+                </div>
+                <div _ngcontent-rlst class="option">
+                  <ion-item _ngcontent-rlst lines="none">
+                    <ion-radio _ngcontent-rlst label-placement="end" justify="start" mode="md"
+                      ><plh-tmpl-text _ngcontent-rlst _nghost-txt
+                        ><div _ngcontent-txt class="large standard normal" style="display: block">
+                          <p>A second option</p>
+                        </div></plh-tmpl-text
+                      ></ion-radio
+                    >
+                  </ion-item>
+                </div>
+              </ion-radio-group>
+            </plh-radio-list></plh-template-component
+          >
+        </div>
+
+        <!-- Display group holding a title rather than a text, so no text margins are involved -->
+        <div data-fixture="display-group-box_gray-title">
+          <plh-template-component class="row"
+            ><plh-tmpl-display-group _nghost-dgrp>
+              <div _ngcontent-dgrp class="display-group-wrapper" data-variant="box_gray">
+                <plh-template-component _ngcontent-dgrp
+                  ><plh-tmpl-title _nghost-ttl>
+                    <div _ngcontent-ttl class="title-wrapper">
+                      <h1 _ngcontent-ttl class="tiny standard">Variant: box_gray</h1>
+                    </div>
+                  </plh-tmpl-title></plh-template-component
+                >
+              </div>
+            </plh-tmpl-display-group></plh-template-component
+          >
+        </div>
+
         <!-- Popup (plh_completion variant) -->
         <div data-fixture="popup-plh-completion">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-template-popup _nghost-pop>
               <div _ngcontent-pop class="popup-backdrop" data-variant="plh_completion" dir="ltr">
                 <div _ngcontent-pop class="popup-container">
@@ -473,7 +676,7 @@
                     <ion-icon _ngcontent-pop slot="icon-only" name="close"></ion-icon>
                   </div>
                   <div _ngcontent-pop class="popup-content">
-                    <plh-template-component
+                    <plh-template-component class="row"
                       ><plh-tmpl-title _nghost-ttl
                         ><div _ngcontent-ttl class="title-wrapper">
                           <h1 _ngcontent-ttl class="tiny standard">Popup title</h1>
@@ -494,7 +697,7 @@
 
         <!-- Round icon button (variants added in script) -->
         <template id="round-button-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-round-button _nghost-rib>
               <div _ngcontent-rib class="wrapper">
                 <ion-tab-button
@@ -512,7 +715,7 @@
 
         <!-- Tile -->
         <template id="tile-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-tile-component _nghost-tile>
               <div _ngcontent-tile class="tile-wrapper default_style">
                 <div _ngcontent-tile class="text">
@@ -530,7 +733,7 @@
 
         <!-- Parent point box -->
         <div data-fixture="parent-point-box">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-parent-point-box _nghost-ppb>
               <div _ngcontent-ppb class="wrapper-point">
                 <div _ngcontent-ppb class="item">
@@ -549,7 +752,7 @@
 
         <!-- Course accordions (closed) -->
         <div data-fixture="course-accordion">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-course-accordion _nghost-cacc>
               <div _ngcontent-cacc class="course-accordion-container accordion-closed">
                 <div _ngcontent-cacc class="course-button">
@@ -569,7 +772,7 @@
           >
         </div>
         <div data-fixture="course-lesson-accordion">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-course-lesson-accordion _nghost-clacc>
               <div _ngcontent-clacc class="course-accordion-container accordion-closed">
                 <button _ngcontent-clacc type="button" class="course-button">
@@ -591,7 +794,7 @@
 
         <!-- Lesson CTA -->
         <div data-fixture="lesson-cta">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-lesson-cta _nghost-lcta>
               <div _ngcontent-lcta class="lesson-cta-container">
                 <div _ngcontent-lcta class="badge">
@@ -611,7 +814,7 @@
 
         <!-- Module list item -->
         <div data-fixture="module-list-item">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-module-list-item _nghost-mli>
               <div _ngcontent-mli class="container" data-language-direction="ltr">
                 <div _ngcontent-mli class="image-spacer"></div>
@@ -627,7 +830,7 @@
 
         <!-- Module list item with image (variants and states added in script) -->
         <template id="module-list-item-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-module-list-item _nghost-mli>
               <div _ngcontent-mli class="container" data-language-direction="ltr">
                 <div _ngcontent-mli class="module-image">
@@ -647,7 +850,7 @@
 
         <!-- Task card -->
         <template id="task-card-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-task-card _nghost-tc>
               <div _ngcontent-tc class="card-wrapper landscape">
                 <div _ngcontent-tc class="content-wrapper">
@@ -669,7 +872,7 @@
           ></plh-template-component>
         </template>
         <div data-fixture="task-card-circle">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-task-card _nghost-tc>
               <div _ngcontent-tc class="circle-card-wrapper">
                 <div _ngcontent-tc class="image-and-badge-wrapper">
@@ -684,7 +887,7 @@
         </div>
         <!-- Task card circle with badge (states added in script) -->
         <template id="task-card-circle-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-task-card _nghost-tc>
               <div _ngcontent-tc class="circle-card-wrapper">
                 <div _ngcontent-tc class="image-and-badge-wrapper">
@@ -703,7 +906,7 @@
 
         <!-- Module details header -->
         <div data-fixture="module-details-header">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-module-details-header _nghost-mdh>
               <div _ngcontent-mdh class="module-header">
                 <div _ngcontent-mdh class="wrapper" data-language-direction="ltr">
@@ -732,7 +935,7 @@
 
         <!-- Completion modal (with nested title and text) -->
         <div data-fixture="completion-modal">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-completion-modal _nghost-cmod>
               <div _ngcontent-cmod class="completion-modal">
                 <div _ngcontent-cmod class="wrapper">
@@ -762,7 +965,7 @@
 
         <!-- Bottom navigation bar (variants added in script) -->
         <template id="bottom-nav-template">
-          <plh-template-component
+          <plh-template-component class="row"
             ><plh-bottom-navigation-bar _nghost-bnav>
               <div _ngcontent-bnav class="plh-bottom-nav-wrapper" data-variant="">
                 <div _ngcontent-bnav class="nav-items">
@@ -791,6 +994,7 @@
         </template>
       </div>
     </ion-app>
+    </app-root>
 
     <script type="module">
       const fixtures = document.getElementById("fixtures");
