@@ -300,7 +300,6 @@
       justify-content: center;
       align-items: start;
       height: fit-content;
-      margin-bottom: 20px;
 
       img.speaker-image {
         position: unset;
@@ -314,12 +313,10 @@
         min-width: 124px;
 
         p {
-          font-size: var(--font-size-text-mid-size);
           color: var(--ion-color-gray-900);
         }
 
         li {
-          font-size: var(--font-size-text-mid-size);
           color: var(--ion-color-gray-900);
         }
       }
@@ -348,7 +345,6 @@
     .wrapper .text_area {
       font-size: var(--font-size-text-medium) !important;
       color: var(--ion-color-gray-900) !important;
-      font-weight: var(--font-weight-medium) !important;
       box-shadow: none !important;
       border-radius: var(--ion-border-radius-standard);
       --padding-end: 16px !important;
@@ -361,7 +357,6 @@
     .wrapper {
       .text-box-input {
         font-size: var(--font-size-text-medium) !important;
-        font-weight: var(--font-weight-medium) !important;
         box-shadow: none !important;
         --padding-end: 16px !important;
         --padding-start: 16px !important;
