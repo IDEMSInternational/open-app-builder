@@ -1,9 +1,19 @@
-import { Component, computed, effect, forwardRef, input, signal, viewChild } from "@angular/core";
+import {
+  Component,
+  computed,
+  effect,
+  forwardRef,
+  input,
+  output,
+  signal,
+  viewChild,
+} from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { RowListComponent } from "../reactive-components/row-list.component";
 import { DebugService } from "../services/debug.service";
 import { TemplateDebuggerComponent } from "../reactive-components/debug/template-debugger/template-debugger.component";
+import { RowEmitEvent } from "../reactive-components/row-base.component";
 
 @Component({
   selector: "oab-reactive-template",
@@ -17,12 +27,17 @@ export class ReactiveTemplateComponent {
 
   public template = signal<FlowTypes.Template | undefined>(undefined);
   public rows = computed(() => this.template()?.rows || []);
+  public emittedValue = output<RowEmitEvent>();
 
   private rowListComponent = viewChild.required(RowListComponent);
 
   public readonly initialised = computed(() => {
     return this.rowListComponent().initialised();
   });
+
+  public onEmittedValue(event: RowEmitEvent) {
+    this.emittedValue.emit(event);
+  }
 
   constructor(
     private templateService: TemplateService,

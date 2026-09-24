@@ -1,0 +1,55 @@
+<ion-modal
+  [isOpen]="isOpen()"
+  [class.dialog]="!params.fullscreen.value()"
+  [class.fullscreen]="params.fullscreen.value()"
+>
+  <ng-template>
+    @if (params.fullscreen.value()) {
+      <ion-header>
+        <ion-toolbar>
+          @if (params.showCloseButton.value()) {
+            <div slot="end">
+              <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
+            </div>
+          }
+        </ion-toolbar>
+      </ion-header>
+    }
+
+    <div class="popup-container">
+      @if (!params.fullscreen.value() && params.showCloseButton.value()) {
+        <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
+      }
+      <div class="popup-content">
+        @if (value()) {
+          <oab-nested-template
+            [row]="row()"
+            [namespace]="namespace()"
+            (emittedValue)="onEmittedValue($event)"
+          ></oab-nested-template>
+        } @else {
+          <oab-row-list
+            [rows]="row().rows || []"
+            [namespace]="namespace()"
+            (emittedValue)="onEmittedValue($event)"
+          ></oab-row-list>
+        }
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+
+<ng-template #closeButton>
+  <button
+    type="button"
+    (click)="dismiss()"
+    (keyup.escape)="dismiss()"
+    class="close-button"
+    fill="clear"
+    tabindex="0"
+    role="button"
+    aria-label="Close popup"
+  >
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </button>
+</ng-template>
