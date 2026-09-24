@@ -10,17 +10,17 @@ tmpl-text-bubble .text-bubble {
   }
 }
 
-// The bubble's own padding handles spacing at its edges, so collapse just the outer margins of the
-// child text component. Margins *between* blocks are left alone, so text authored with blank lines
-// still renders as spaced-out paragraphs.
+// The bubble's padding handles spacing at its edges, so the outer margins of the text inside it
+// are set by `--text-outer-margin`, which the component sets to 0. Margins *between* blocks are
+// left alone, so text authored with blank lines still renders as spaced-out paragraphs.
 // NOTE: matching only direct children of the markdown wrapper (`> *`) is important. A descendant
 // `:first-child`/`:last-child` would also collapse the margins of the `<p>` that markdown nests
 // inside every `<li>` of a loose list, rendering blank-line-separated list items as a tight list.
 tmpl-text-bubble .text-bubble > plh-tmpl-text > * {
   > :first-child {
-    margin-top: 0;
+    margin-top: var(--text-outer-margin);
   }
   > :last-child {
-    margin-bottom: 0;
+    margin-bottom: var(--text-outer-margin);
   }
 }
