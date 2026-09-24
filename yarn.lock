@@ -2567,6 +2567,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capacitor-community/device@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@capacitor-community/device@npm:7.0.0"
+  peerDependencies:
+    "@capacitor/core": ">=7.0.0"
+  checksum: c3f8309f6bb6580ebff81120ca21c0c3487b60c00885e184cad4f761c8a7f875c54edf9fb5b56fc752a503b2bc03b2f1740593a62407c5971926ecb057364e2a
+  languageName: node
+  linkType: hard
+
 "@capacitor-community/file-opener@npm:^7.0.1":
   version: 7.0.1
   resolution: "@capacitor-community/file-opener@npm:7.0.1"
@@ -17777,6 +17786,7 @@ __metadata:
     "@angular/platform-browser": ~21.2.4
     "@angular/platform-browser-dynamic": ~21.2.4
     "@angular/router": ~21.2.4
+    "@capacitor-community/device": ^7.0.0
     "@capacitor-community/file-opener": ^7.0.1
     "@capacitor-firebase/app-check": ^7.3.0
     "@capacitor-firebase/authentication": ^7.2.0

@@ -32,10 +32,14 @@ import {
   ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
   ASSET_DOWNLOAD_RETRY_LIMIT,
   ASSET_PACK_ARCHIVE_FAILURE_LIMIT,
+  ASSET_PACK_STORAGE_MARGIN_MIN_BYTES,
+  ASSET_PACK_STORAGE_MARGIN_RATIO,
+  AssetPackInsufficientStorageError,
   DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS,
   REMOTE_ASSET_STORAGE_FOLDER,
   VERSION_CHECK_FAILURE_BACKOFF_MS,
   VERSION_CHECK_MIN_INTERVAL_MS,
+  formatBytesAsMb,
   getLocalAssetTargetPath,
   toLocalAssetPath,
 } from "./remote-asset.types";
@@ -44,6 +48,7 @@ import type {
   IAssetPackDownloadStatus,
   IAssetPackDownloadStatusTimestamps,
   IAssetPackSlotPlan,
+  IAssetPackStorageReport,
   IDownloadAssetPackByNameOptions,
   IEnsureAssetPacksDownloadedOptions,
 } from "./remote-asset.types";
@@ -593,6 +598,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
             );
           }
           const assetEntries = (manifest.rows || []) as FlowTypes.Data_listRow<IAssetEntry>[];
+          // Before anything is written or fetched. NB this deliberately sits AFTER the
+          // `in_progress` write: fetching a manifest genuinely is work in progress, and moving the
+          // write later would cost the cancel checkpoint above and leave a first download with no
+          // row at all while the manifest loads. `download_size_mb` survives that write (see
+          // `setDownloadStatus`), so a retry does not blank an author's warning on the way past.
+          await this.assertSufficientStorageForAssetPack(
+            assetPackName,
+            assetEntries,
+            abortController.signal
+          );
           const total = this.countDownloadFiles(assetEntries);
           this.downloadProgressCount.set(total ? { completed: 0, total } : null);
           this.downloadProgressPercent.set(0);
@@ -653,6 +668,11 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           if (this.isDownloadCancelled(e, abortController.signal)) {
             throw e;
           }
+          // Checked ahead of the offline test, since both can be true at once: space does not
+          // appear because connectivity returned, so parking would spin forever on a full device.
+          if (e instanceof AssetPackInsufficientStorageError) {
+            throw e;
+          }
           if (this.isOffline()) {
             console.warn("[REMOTE ASSETS] Download waiting for connection to be restored", e);
             continue;
@@ -665,6 +685,18 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       if (this.isDownloadCancelled(e, abortController.signal)) {
         // Confirms the download loop actually stopped, rather than running on in the background
         console.log(`[REMOTE ASSETS] Asset pack download stopped: ${assetPackName}`);
+        return false;
+      }
+      if (e instanceof AssetPackInsufficientStorageError) {
+        // An expected outcome on a full device, not a fault - hence warn, and its own status
+        console.warn(e.message);
+        await this.setTerminalFailureStatus(
+          assetPackName,
+          "insufficient_storage",
+          downloadStartedAt,
+          abortController.signal,
+          formatBytesAsMb(e.report.requiredBytes)
+        );
         return false;
       }
       console.error(e);
@@ -725,7 +757,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Write the status for an attempt that failed or was cancelled.
+   * Write the status for an attempt that failed, was cancelled, or was refused for want of space.
    *
    * A pack that has completed before is still fully usable: files left untouched are the previous
    * version, files already updated were integrated as they went, and every asset still resolves. So
@@ -736,14 +768,22 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * Note this is *not* conditioned on the attempt being an update - an explicit `asset_pack:
    * download` on an already-completed pack takes the same path, for the same reason.
    *
+   * That applies to `insufficient_storage` too: an update that will not fit leaves the previous
+   * version working, to be retried by the next check. Authors therefore cannot tell "update waiting
+   * for space" from "up to date" - accepted, since the alternative loses the "pack is usable"
+   * signal `ensure_downloaded` and template gating depend on.
+   *
    * Reads the raw persisted flag rather than `getVersionCheckState`, whose coercion is a
    * presentation convenience for reads: terminal handling must not inherit a display rule.
+   *
+   * @param downloadSizeMb only for `insufficient_storage` - megabytes the pack still needs.
    */
   private async setTerminalFailureStatus(
     assetPackName: string,
-    status: Extract<IAssetPackDownloadStatus, "error" | "cancelled">,
+    status: Extract<IAssetPackDownloadStatus, "error" | "cancelled" | "insufficient_storage">,
     downloadStartedAt: string,
-    signal?: AbortSignal
+    signal?: AbortSignal,
+    downloadSizeMb?: number
   ) {
     const hasCompletedBefore =
       await this.remoteAssetMetadataService.hasCompletedDownload(assetPackName);
@@ -764,7 +804,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       status,
       { downloadStartedAt },
       {},
-      { signal }
+      { signal, downloadSizeMb }
     );
   }
 
@@ -992,6 +1032,138 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       }
     }
     return slots;
+  }
+
+  /**
+   * Refuse a download the device has no room for, before a single file is fetched.
+   *
+   * Called once the manifest is in hand: the only point a pack's size is known without an extra
+   * request, and one common to every trigger (`ensure_downloaded`, `download`, the button,
+   * launch-time resume), so one check covers them all. Native only - on web nothing is saved to the
+   * device.
+   *
+   * @throws AssetPackInsufficientStorageError when free space is KNOWN and falls short. Unknown
+   * free space always proceeds - see `FileManagerService.getFreeDiskSpaceBytes`.
+   */
+  private async assertSufficientStorageForAssetPack(
+    assetPackName: string,
+    assetEntries: IAssetEntry[],
+    signal: AbortSignal
+  ) {
+    if (!Capacitor.isNativePlatform()) return;
+    const report = await this.measureAssetPackStorage(assetEntries);
+    // A cancel can land during the data read or the disk-space call
+    this.throwIfDownloadCancelled(signal);
+    if (report.isSufficient) return;
+    throw new AssetPackInsufficientStorageError(assetPackName, report);
+  }
+
+  /**
+   * Work out what a pack still needs and whether the device can take it.
+   *
+   * Size is the manifest's `size_kb` for every slot not already held at the current version.
+   * Presence is judged from `_assets_contents` alone (see `getRecordedAssetSlotState`), making this
+   * one data read rather than a native stat per file. Archives stream straight into files, so there
+   * is no temporary overhead to account for.
+   *
+   * A pack with nothing outstanding short-circuits to sufficient, or the margin floor would refuse
+   * an up-to-date pack on a device low on space.
+   */
+  public async measureAssetPackStorage(
+    assetEntries: IAssetEntry[]
+  ): Promise<IAssetPackStorageReport> {
+    const slots = this.buildAssetSlotPlan(assetEntries);
+    const existingContents = await this.snapshotAssetContents();
+    let outstandingBytes = 0;
+    let outstandingSlotCount = 0;
+    let unknownSizeSlotCount = 0;
+    for (const slot of slots) {
+      const recordedState = this.getRecordedAssetSlotState({
+        existingContents,
+        assetEntryId: slot.assetEntry.id,
+        overrideProps: slot.overrideProps,
+        slotChecksum: slot.slotChecksum,
+      });
+      if (recordedState === "downloaded") continue;
+      outstandingSlotCount++;
+      // Guessing a size could refuse a download over a figure we invented. Counting 0 instead
+      // under-estimates, which at worst starts a download that fails the old way.
+      if (slot.slotSizeKb === undefined) {
+        unknownSizeSlotCount++;
+        continue;
+      }
+      outstandingBytes += slot.slotSizeKb * 1024;
+    }
+    if (unknownSizeSlotCount > 0) {
+      console.warn(
+        `[REMOTE ASSETS] ${unknownSizeSlotCount} outstanding file(s) have no size in the manifest; storage check will under-estimate`
+      );
+    }
+    // Keyed on bytes, not on slot count: a pack whose outstanding files carry no `size_kb` reaches
+    // here with slots but zero bytes, and applying the margin floor to that would refuse a download
+    // whose size we never established - exactly the block the "counts as 0" rule above exists to
+    // avoid. Also covers a pack that is simply up to date, which needs no room at all.
+    if (outstandingBytes <= 0) {
+      return {
+        outstandingBytes: 0,
+        requiredBytes: 0,
+        outstandingSlotCount,
+        unknownSizeSlotCount,
+        isSufficient: true,
+      };
+    }
+    const requiredBytes =
+      outstandingBytes +
+      Math.max(
+        outstandingBytes * ASSET_PACK_STORAGE_MARGIN_RATIO,
+        ASSET_PACK_STORAGE_MARGIN_MIN_BYTES
+      );
+    const freeBytes = await this.fileManagerService.getFreeDiskSpaceBytes();
+    if (freeBytes === undefined) {
+      console.log(
+        `[REMOTE ASSETS] Free space could not be read; proceeding with download of ${formatBytesAsMb(outstandingBytes)}MB`
+      );
+    }
+    return {
+      outstandingBytes,
+      requiredBytes,
+      outstandingSlotCount,
+      unknownSizeSlotCount,
+      freeBytes,
+      isSufficient: freeBytes === undefined || freeBytes >= requiredBytes,
+    };
+  }
+
+  /**
+   * Fetch a pack's manifest, measure it against free space and log the verdict. Writes nothing, so
+   * it can be run without disturbing a pack's real status. Backs `asset_pack: check_storage`, which
+   * exists to make the check observable during device testing.
+   */
+  public async logAssetPackStorageCheck(assetPackName: string) {
+    if (!Capacitor.isNativePlatform()) {
+      console.log(
+        `[REMOTE ASSETS] check_storage: nothing to check for ${assetPackName} on web - packs are served from cloud storage and nothing is saved to the device`
+      );
+      return;
+    }
+    const manifest = await this.getAssetPackManifest(assetPackName);
+    if (!manifest) {
+      console.error(`[REMOTE ASSETS] check_storage: could not load manifest for ${assetPackName}`);
+      return;
+    }
+    const report = await this.measureAssetPackStorage((manifest.rows || []) as IAssetEntry[]);
+    console.log(`[REMOTE ASSETS] check_storage: ${assetPackName}`, {
+      outstandingFiles: report.outstandingSlotCount,
+      filesWithNoSizeInManifest: report.unknownSizeSlotCount,
+      outstandingMb: formatBytesAsMb(report.outstandingBytes),
+      requiredMbIncludingMargin: formatBytesAsMb(report.requiredBytes),
+      freeMb: report.freeBytes === undefined ? "unknown" : formatBytesAsMb(report.freeBytes),
+      verdict: report.isSufficient
+        ? report.outstandingSlotCount === 0
+          ? "nothing to download"
+          : "would download"
+        : "would be refused as insufficient_storage",
+    });
   }
 
   /** Check each planned slot against local storage, marking those already downloaded */
@@ -1772,21 +1944,54 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     }
 
     // Integrity gate: only skip when a prior run integrated this exact file from the current manifest.
-    const recordedSlot = this.getRecordedSlot(existingContents, assetEntryId, overrideProps);
-    if (!recordedSlot?.md5Checksum || !slotChecksum || recordedSlot.md5Checksum !== slotChecksum) {
+    const recordedState = this.getRecordedAssetSlotState({
+      existingContents,
+      assetEntryId,
+      overrideProps,
+      slotChecksum,
+    });
+    if (recordedState === "no_confirming_checksum") {
       console.log(`[REMOTE ASSETS] No confirming checksum for ${targetPath}; re-downloading`);
       return false;
+    }
+    if (recordedState === "not_integrated") {
+      console.log(`[REMOTE ASSETS] ${targetPath} was saved but never integrated; re-downloading`);
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * The half of the resume gate that reads only `_assets_contents`: whether a prior run integrated
+   * THIS slot from the CURRENT manifest. See `isSavedAssetSlotTrustworthy` for why both halves of
+   * that evidence are needed.
+   *
+   * Split out so the storage check can ask the same question without touching the filesystem - it
+   * needs an answer for every slot at once, and a `Filesystem.stat` each would be hundreds of
+   * native calls. It therefore trusts the recorded row, so files deleted from under the app are
+   * counted as present - an under-estimate, which is the safe direction for a check that must never
+   * wrongly block.
+   */
+  private getRecordedAssetSlotState(slot: {
+    existingContents: Record<string, IAssetEntry>;
+    assetEntryId: string;
+    overrideProps: IAssetOverrideProps | undefined;
+    slotChecksum: string | undefined;
+  }): "downloaded" | "no_confirming_checksum" | "not_integrated" {
+    const { existingContents, assetEntryId, overrideProps, slotChecksum } = slot;
+    const recordedSlot = this.getRecordedSlot(existingContents, assetEntryId, overrideProps);
+    if (!recordedSlot?.md5Checksum || !slotChecksum || recordedSlot.md5Checksum !== slotChecksum) {
+      return "no_confirming_checksum";
     }
     const deploymentName = this.deploymentService.config.name;
     if (
       !recordedSlot.filePath ||
       getLocalAssetTargetPath(recordedSlot.filePath, deploymentName) === undefined
     ) {
-      console.log(`[REMOTE ASSETS] ${targetPath} was saved but never integrated; re-downloading`);
-      return false;
+      return "not_integrated";
     }
-
-    return true;
+    return "downloaded";
   }
 
   /**

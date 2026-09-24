@@ -51,6 +51,23 @@ export const ASSET_CONTENTS_FLUSH_INTERVAL = 25;
 export const DOWNLOAD_PROGRESS_WRITE_INTERVAL_MS = 500;
 
 /**
+ * Headroom required on top of a pack's outstanding size before its download may start. The check is
+ * an estimate: block rounding adds a little per file, and the device keeps being used meanwhile.
+ */
+export const ASSET_PACK_STORAGE_MARGIN_RATIO = 0.1;
+
+/**
+ * Floor on that headroom: 10% of a 2MB pack is 200kb, which protects nothing. A floor on the
+ * MARGIN, not on free space - a pack with nothing outstanding skips the check, so an up-to-date
+ * pack is never refused for room it does not need.
+ *
+ * 50MB, DECIDED against the 100MB originally proposed in #3677: a 100MB floor refuses a 2MB pack
+ * on a device with 99MB free, which is room for it fifty times over. Please do not raise it back
+ * without a device-measured reason to.
+ */
+export const ASSET_PACK_STORAGE_MARGIN_MIN_BYTES = 50 * 1024 * 1024; // 50MB
+
+/**
  * Retries allowed for a single download (asset slot or pack manifest) before it counts as failed.
  * A pack only completes when every slot does, so without retries one transient blip on one file of
  * a hundred sends the pack to `error` and it needs an explicit re-trigger - by far the most likely
@@ -145,7 +162,8 @@ export type IAssetPackDownloadStatus =
   | "waiting_for_connection"
   | "cancelled"
   | "completed"
-  | "error";
+  | "error"
+  | "insufficient_storage";
 
 export interface IDBAssetPack {
   /** Asset pack name, used as the unique row identifier */
@@ -162,6 +180,24 @@ export interface IDBAssetPack {
   download_status_updated_at: string;
   /** Total number of asset files in the pack, inferred from the manifest */
   assets_total_count: number;
+  /**
+   * Megabytes that must be free for this pack's download to go ahead, for an author's out-of-space
+   * warning. This is the threshold the check applied - outstanding manifest size plus the margin
+   * (`ASSET_PACK_STORAGE_MARGIN_*`) - NOT the raw pack size, so a user who frees this much is
+   * guaranteed to get past the check. Reporting the raw size instead would send them round a loop
+   * of freeing the stated amount and being refused again.
+   *
+   * Set by `insufficient_storage` and cleared by the statuses that settle a pack (`completed`,
+   * `error`, `cancelled`), so it cannot linger on a pack that has since downloaded. It deliberately
+   * SURVIVES `in_progress` and `waiting_for_connection`: a retry passes through those before it can
+   * re-check, and clearing there would blink an author's warning to "needs 0 MB" and back. So a
+   * non-zero value means "last refused needing this much", not "out of space right now" - gate the
+   * warning on `download_status`, as the author docs' example does.
+   *
+   * Manifest size plus a fixed constant carries nothing of the free-space reading Apple's E174.1
+   * forbids leaving the device - see `FileManagerService.getFreeDiskSpaceBytes`.
+   */
+  download_size_mb: number;
   /** Number of asset files downloaded so far in the current attempt */
   assets_downloaded_count: number;
   /**
@@ -208,6 +244,59 @@ export interface IDBAssetPack {
 }
 
 export type IAssetPackVersionCheckStatus = "never" | "ok" | "failed";
+
+/**
+ * What a storage check found for one pack. Every figure comes from the manifest and
+ * `_assets_contents` EXCEPT `freeBytes`, which comes from the disk-space API.
+ */
+export interface IAssetPackStorageReport {
+  /** Manifest size of every slot not already held at the current version */
+  outstandingBytes: number;
+  /** `outstandingBytes` plus the margin: what the device must actually have free. 0 when nothing
+   * is outstanding, or when no outstanding file declared a size */
+  requiredBytes: number;
+  /** Slots still to download */
+  outstandingSlotCount: number;
+  /** Outstanding slots with no `size_kb`. They count as 0, so the pack is under-estimated */
+  unknownSizeSlotCount: number;
+
+  /** Free space, or undefined when it could not be read. Never persist or display this */
+  freeBytes?: number;
+  /** False only when free space is known AND falls short; unknown is always sufficient */
+  isSufficient: boolean;
+}
+
+/**
+ * Stops a download the device has no room for. Its own type because it must not be retried as an
+ * offline park, and resolves to its own `download_status` rather than `error`.
+ *
+ * The `message` must never quote `report.freeBytes`. Error messages can reach Crashlytics via
+ * `ErrorHandlerService`, and E174.1 forbids the free-space reading leaving the device - the sizes
+ * below come from the manifest, which is why the message is safe to log. For the same reason the
+ * handler for this logs `e.message`, never the error object, which does carry `freeBytes`.
+ */
+export class AssetPackInsufficientStorageError extends Error {
+  constructor(
+    public assetPackName: string,
+    public report: IAssetPackStorageReport
+  ) {
+    super(
+      `[REMOTE ASSETS] Not enough free space to download asset pack: ${assetPackName} ` +
+        `(needs ${formatBytesAsMb(report.requiredBytes)}MB free for ` +
+        `${formatBytesAsMb(report.outstandingBytes)}MB of files)`
+    );
+    this.name = "AssetPackInsufficientStorageError";
+  }
+}
+
+/**
+ * Bytes as megabytes to one decimal place, for author-facing figures and logs. A non-zero size
+ * never rounds to 0, since "needs 0 MB" reads as a bug.
+ */
+export function formatBytesAsMb(bytes: number) {
+  const mb = Math.round((bytes / (1024 * 1024)) * 10) / 10;
+  return bytes > 0 ? Math.max(mb, 0.1) : 0;
+}
 
 export interface IAssetPackDownloadStatusTimestamps {
   downloadStartedAt?: string;

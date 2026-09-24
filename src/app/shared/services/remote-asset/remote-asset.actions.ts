@@ -72,6 +72,27 @@ export class RemoteAssetActionFactory {
           checkForUpdates: shouldCheckForUpdates(params as IAssetPackEnsureDownloadedParams),
         });
       },
+      // Debug aid only: logs what the check inside every download would decide for this pack, and
+      // writes nothing, so it cannot disturb the pack's real status.
+      check_storage: async () => {
+        if (!this.service.remoteAssetsEnabled()) {
+          console.error(
+            "The 'asset_pack: check_storage' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
+          );
+          return;
+        }
+        const assetPackName = resolveDownloadAssetPackName(
+          assetPackArgs,
+          params as IAssetPackDownloadParams
+        );
+        if (!assetPackName) {
+          console.error(
+            "The 'asset_pack: check_storage' action requires an asset pack name, given either as an argument ('asset_pack: check_storage: my_pack') or an 'asset_pack' parameter."
+          );
+          return;
+        }
+        await this.service.logAssetPackStorageCheck(assetPackName);
+      },
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
           console.log("[REMOTE ASSETS] Cancelling active asset pack downloads");
