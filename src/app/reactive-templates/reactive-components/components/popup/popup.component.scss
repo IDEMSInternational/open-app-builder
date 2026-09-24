@@ -9,6 +9,10 @@ $pop-up-padding: var(--pop-up-padding, 20px);
 }
 
 ion-modal {
+  ion-header {
+    box-shadow: none;
+  }
+
   &::part(content) {
     overflow: visible;
     margin: 20px;
@@ -22,7 +26,6 @@ ion-modal {
   .popup-content {
     height: fit-content;
     max-height: 100%;
-    background: $pop-up-background;
     border-radius: 20px;
     padding: $pop-up-padding;
     overflow: auto;
