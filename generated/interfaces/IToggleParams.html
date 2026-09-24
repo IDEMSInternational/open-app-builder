@@ -1,0 +1,756 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  IToggleParams</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/components/template/components/toggle-bar/toggle-bar.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#falseText" 
+>
+                                            falseText
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#iconFalse" 
+>
+                                            iconFalse
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#iconTrue" 
+>
+                                            iconTrue
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#position" 
+>
+                                            position
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#showIcons" 
+>
+                                            showIcons
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#showTickAndCross" 
+>
+                                            showTickAndCross
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#style" 
+>
+                                            style
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#trueText" 
+>
+                                            trueText
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#variant" 
+>
+                                            variant
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="falseText"></a>
+                                        <span class="name "><b>falseText</b>
+                                            <a href="#falseText">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>falseText:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;false_text&quot;. Label text to display when value is false</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="iconFalse"></a>
+                                        <span class="name "><b>iconFalse</b>
+                                            <a href="#iconFalse">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>iconFalse:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;icon_false_asset&quot;. Clickable icon to display when value is false</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="iconTrue"></a>
+                                        <span class="name "><b>iconTrue</b>
+                                            <a href="#iconTrue">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>iconTrue:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;icon_true_asset&quot;. Clickable icon to display when value is true</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="position"></a>
+                                        <span class="name "><b>position</b>
+                                            <a href="#position">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>position:     <code>&quot;left&quot; | &quot;center&quot; | &quot;right&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>&quot;left&quot; | &quot;center&quot; | &quot;right&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;position&quot;. Default &quot;left&quot;</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="showIcons"></a>
+                                        <span class="name "><b>showIcons</b>
+                                            <a href="#showIcons">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>showIcons:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;show_icons&quot;. Display icons within toggle to represent enabled/disabled state. Default true.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="showTickAndCross"></a>
+                                        <span class="name "><b>showTickAndCross</b>
+                                            <a href="#showTickAndCross">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>showTickAndCross:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;show_tick_and_cross&quot;. Legacy, use &quot;show-icons&quot; instead</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="style"></a>
+                                        <span class="name "><b>style</b>
+                                            <a href="#style">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>style:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;style&quot;. Legacy, use &quot;variant&quot; instead.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="trueText"></a>
+                                        <span class="name "><b>trueText</b>
+                                            <a href="#trueText">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>trueText:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;true_text&quot;. Label text to display when value is true</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="variant"></a>
+                                        <span class="name "><b>variant</b>
+                                            <a href="#variant">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>variant:     <code>string | &quot;icon&quot; | &quot;in_button&quot; | &quot;ios&quot; | &quot;android&quot;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | &quot;icon&quot; | &quot;in_button&quot; | &quot;ios&quot; | &quot;android&quot;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;variant&quot;. Setting &quot;ios&quot; or &quot;android&quot; will style the toggle to match the respective
+platform, otherwise the default is to match the current device platform, using &quot;android&quot; on web.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &quot;@angular/core&quot;;
+import { Capacitor } from &quot;@capacitor/core&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { ITemplateRowProps } from &quot;../../models&quot;;
+import {
+  getStringParamFromTemplateRow,
+  getBooleanParamFromTemplateRow,
+} from &quot;src/app/shared/utils&quot;;
+
+interface IToggleParams {
+  /**
+   * TEMPLATE PARAMETER: &quot;variant&quot;. Setting &quot;ios&quot; or &quot;android&quot; will style the toggle to match the respective
+   * platform, otherwise the default is to match the current device platform, using &quot;android&quot; on web.
+   * */
+  variant: &quot;&quot; | &quot;icon&quot; | &quot;in_button&quot; | &quot;ios&quot; | &quot;android&quot;;
+  /** TEMPLATE PARAMETER: &quot;style&quot;. Legacy, use &quot;variant&quot; instead. */
+  style: string;
+  /** TEMPLATE PARAMETER: &quot;show_icons&quot;. Display icons within toggle to represent enabled/disabled state. Default true. */
+  showIcons: boolean;
+  /** TEMPLATE PARAMETER: &quot;show_tick_and_cross&quot;. Legacy, use &quot;show-icons&quot; instead */
+  showTickAndCross: boolean;
+  /** TEMPLATE PARAMETER: &quot;position&quot;. Default &quot;left&quot; */
+  position: &quot;left&quot; | &quot;center&quot; | &quot;right&quot;;
+  /** TEMPLATE PARAMETER: &quot;false_text&quot;. Label text to display when value is false */
+  falseText: string;
+  /** TEMPLATE PARAMETER: &quot;true_text&quot;. Label text to display when value is true */
+  trueText: string;
+  /** TEMPLATE PARAMETER: &quot;icon_true_asset&quot;. Clickable icon to display when value is true */
+  iconTrue: string;
+  /** TEMPLATE PARAMETER: &quot;icon_false_asset&quot;. Clickable icon to display when value is false */
+  iconFalse: string;
+}
+
+@Component({
+  selector: &quot;plh-tmpl-toggle-bar&quot;,
+  templateUrl: &quot;./toggle-bar.html&quot;,
+  styleUrls: [&quot;./toggle-bar.scss&quot;],
+})
+export class TmplToggleBarComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit
+{
+  params: Partial&lt;IToggleParams&gt; &#x3D; {};
+  /**
+   * The ion-toggle component uses &quot;md&quot; (&quot;material design&quot;) and &quot;ios&quot; to refer to visual styles of the component
+   * corresponding to the respective platforms. See docs here: https://ionicframework.com/docs/api/toggle
+   */
+  platformVariant: &quot;ios&quot; | &quot;md&quot; &#x3D; &quot;ios&quot;;
+  /** @ignore */
+  variantMap: { icon: boolean };
+
+  ngOnInit() {
+    this.getParams();
+  }
+
+  /**
+   * As its not possible to stop click events bubbling from the ionChange event,
+   * use click handlers to handle state change
+   */
+  public async handleClick(e: Event) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    await this.setValue(!this._row.value);
+    this.triggerActions(&quot;changed&quot;);
+  }
+
+  getParams() {
+    this.params.falseText &#x3D; getStringParamFromTemplateRow(this._row, &quot;false_text&quot;, &quot;&quot;);
+    this.params.trueText &#x3D; getStringParamFromTemplateRow(this._row, &quot;true_text&quot;, &quot;&quot;);
+    this.params.position &#x3D; getStringParamFromTemplateRow(
+      this._row,
+      &quot;position&quot;,
+      &quot;left&quot;
+    ) as IToggleParams[&quot;position&quot;];
+    this.params.showTickAndCross &#x3D; getBooleanParamFromTemplateRow(
+      this._row,
+      &quot;show_tick_and_cross&quot;,
+      true
+    );
+    this.params.showIcons &#x3D; getBooleanParamFromTemplateRow(this._row, &quot;show_icons&quot;, true);
+    this.params.style &#x3D; getStringParamFromTemplateRow(this._row, &quot;style&quot;, &quot;&quot;);
+    this.params.variant &#x3D; getStringParamFromTemplateRow(this._row, &quot;variant&quot;, &quot;&quot;)
+      .split(&quot;,&quot;)
+      .join(&quot; &quot;) as IToggleParams[&quot;variant&quot;];
+    this.setPlatformVariant(this.params.variant);
+    this.populateVariantMap();
+    this.params.iconTrue &#x3D; getStringParamFromTemplateRow(this._row, &quot;icon_true_asset&quot;, &quot;&quot;);
+    this.params.iconFalse &#x3D; getStringParamFromTemplateRow(this._row, &quot;icon_false_asset&quot;, &quot;&quot;);
+  }
+
+  /**
+   * Use the platform variant explicitly set by the author,
+   * otherwise default to &quot;ios&quot; on iOS, and &quot;md&quot; on Android and web
+   * @param variantString A space-separated string of variants
+   */
+  private setPlatformVariant(variantString: string) {
+    const variantArray &#x3D; variantString.split(&quot; &quot;);
+
+    if (variantArray.includes(&quot;ios&quot;)) {
+      this.platformVariant &#x3D; &quot;ios&quot;;
+    } else if (variantArray.includes(&quot;android&quot;)) {
+      this.platformVariant &#x3D; &quot;md&quot;;
+    } else {
+      this.platformVariant &#x3D; Capacitor.getPlatform() &#x3D;&#x3D;&#x3D; &quot;ios&quot; ? &quot;ios&quot; : &quot;md&quot;;
+    }
+  }
+
+  private populateVariantMap() {
+    const variantArray &#x3D; this.params.variant.split(&quot; &quot;);
+    this.variantMap &#x3D; {
+      icon: variantArray.includes(&quot;icon&quot;),
+    };
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'IToggleParams.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
