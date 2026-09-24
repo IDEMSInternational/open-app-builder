@@ -220,7 +220,7 @@ describe("ContextCreatorService", () => {
     ]);
     variableStore.set({ name: "items.Beta.question", type: "local" }, "answer-for-beta");
 
-    const context = service.createContext([{ name: "items", type: "local" }], "");
+    const context = service.createContext([{ name: "items", type: "local" }], "", true);
     const items = context.local.items as any;
 
     expect(items[0]).toEqual({ name: "Alpha", value: 10 });
@@ -237,7 +237,8 @@ describe("ContextCreatorService", () => {
 
     const context = service.createContext(
       [{ name: "answer_loop.key_1.question_loop", type: "local" }],
-      ""
+      "",
+      true
     );
 
     const resolved = (context.local as any).answer_loop.key_1.question_loop;

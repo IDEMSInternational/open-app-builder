@@ -41,9 +41,11 @@ export function mergeDescendants(
   const prefix = `${name}.`;
   let container: any;
 
-  for (const [key, value] of entries) {
-    if (!key.startsWith(prefix)) continue;
+  const descendants = Array.from(entries)
+    .filter(([key]) => key.startsWith(prefix))
+    .sort(([left], [right]) => left.split(".").length - right.split(".").length);
 
+  for (const [key, value] of descendants) {
     if (!container) {
       container = Array.isArray(exactValue)
         ? [...exactValue]
