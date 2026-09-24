@@ -27,7 +27,8 @@ export class ContextCreatorService {
 
   public createContext(
     dependencies: VariableReference[],
-    namespace: string
+    namespace: string,
+    includeDescendants: boolean = false
   ): {
     local: Record<string, any>;
     global: Record<string, any>;
@@ -42,7 +43,10 @@ export class ContextCreatorService {
     };
 
     dependencies.forEach((dependency) => {
-      const value = this.variableStore.getWithDescendants(dependency);
+      const value = includeDescendants
+        ? this.variableStore.getWithDescendants(dependency)
+        : this.variableStore.get(dependency);
+
       this.assignValue(context[dependency.type], dependency, value);
     });
 
