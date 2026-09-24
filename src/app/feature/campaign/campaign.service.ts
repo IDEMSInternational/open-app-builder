@@ -35,6 +35,10 @@ type IScheduledNotificationsHashmap = {
 
 interface ICampaignNotificationExtra {
   campaign_id: string;
+  /** Authored campaign row id */
+  row_id: string;
+  /** Authored campaign row name, when provided */
+  row_name?: string;
   action_list?: FlowTypes.TemplateRowAction[];
 }
 
@@ -278,7 +282,12 @@ export class CampaignService extends AsyncServiceBase {
     // HACK - remove markdown form title and text as not currently supported in capacitor notifications
     row.text = this.hackStripNotificationMarkdown(row.text);
     row.title = this.hackStripNotificationMarkdown(row.title);
-    const extra: ICampaignNotificationExtra = { campaign_id, action_list: row.action_list };
+    const extra: ICampaignNotificationExtra = {
+      campaign_id,
+      row_id: row.id,
+      row_name: row.name,
+      action_list: row.action_list,
+    };
 
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },

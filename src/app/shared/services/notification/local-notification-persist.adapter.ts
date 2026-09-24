@@ -53,7 +53,7 @@ export class LocalNotificationPersistAdapter {
         const update: Partial<ILocalNotificationInteraction> = {
           action_id: actionId,
           action_recorded_timestamp: generateTimestamp(),
-          notification_meta: notification.extra,
+          notification_meta: this.buildNotificationMeta(notification),
         };
         if (inputValue) {
           update.action_meta = { inputValue };
@@ -70,13 +70,29 @@ export class LocalNotificationPersistAdapter {
         const timestamp = generateTimestamp();
         for (const notification of notifications) {
           await this.recordNotificationInteraction(notification.id, {
-            notification_meta: notification.extra,
+            notification_meta: this.buildNotificationMeta(notification),
             schedule_timestamp: generateTimestamp(notification.schedule.at),
             sent_recorded_timestamp: timestamp,
           });
         }
         this.loadInteractedNotifications();
       });
+  }
+
+  /** Persist campaign extra plus display fields for analytics */
+  private buildNotificationMeta(notification: {
+    title?: string;
+    body?: string;
+    extra?: Record<string, any>;
+    _row_id?: string;
+  }) {
+    return {
+      ...notification.extra,
+      // Prefer authored row id from extra; fall back to local _row_id when present
+      row_id: notification.extra?.row_id ?? notification._row_id,
+      title: notification.title,
+      text: notification.body,
+    };
   }
 
   private async recordNotificationInteraction(
@@ -91,6 +107,13 @@ export class LocalNotificationPersistAdapter {
         notification_id,
       } as any;
     }
-    await this.db.put({ ...entry, ...update, _sync_status: "pending" });
+    await this.db.put({
+      ...entry,
+      ...update,
+      ...(entry.sent_recorded_timestamp
+        ? { sent_recorded_timestamp: entry.sent_recorded_timestamp }
+        : {}),
+      _sync_status: "pending",
+    });
   }
 }
