@@ -68,7 +68,7 @@
   &[data-variant~="box_secondary_alt"],
   &[data-variant~="box_white"] {
     margin-top: var(--regular-margin);
-    padding: var(--display-group-box-padding-block) var(--regular-padding);
+    padding: var(--regular-padding);
     border-radius: var(--ion-border-radius-secondary);
     flex: 1;
     background-color: var(--background-color, transparent);

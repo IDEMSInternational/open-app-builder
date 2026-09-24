@@ -130,13 +130,6 @@
 
   // Dashed-box //
   --dashed-box-item-min-height: 60px;
-  --advanced-dashed-box-padding-block: var(--regular-padding);
-
-  // Display group //
-  --display-group-box-padding-block: var(--regular-padding);
-
-  // Radio list //
-  --radio-list-option-label-margin-block: 0px;
 
   // Checkbox //
   --checkbox-border-width: 2px;
@@ -222,7 +215,6 @@
   --accordion-section-padding: 0 10px;
   --accordion-section-open-height: 400px;
   --accordion-section-width: 85%;
-  --accordion-content-padding-bottom: 1rem;
 
   // TILES
   --tile-default-height: 104px;
