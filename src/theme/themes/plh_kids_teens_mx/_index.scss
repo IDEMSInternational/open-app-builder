@@ -4,17 +4,31 @@
 @use "./overrides" as overrides;
 @use "./typography";
 
-@mixin theme-plh_kids_teens_pa {
+@mixin theme-plh_kids_teens_mx {
   @include utils.theme(
-    $theme-name: "plh_kids_teens_pa",
-    $color-primary: hsl(202, 98%, 32%),
-    $color-primary-variant: hsl(196, 83%, 55%),
-    $color-secondary: hsl(78, 53%, 55%),
-    $color-red: hsl(9, 85%, 48%),
+    $theme-name: "plh_kids_teens_mx",
+    $color-primary: hsl(183 100% 16%),
+    $color-secondary: hsl(18 87% 35%),
+    $color-primary-variant: hsl(183 77% 43%),
+    $color-secondary-variant: hsl(17 74% 55%),
     $page-background: white,
     $variable-overrides: map.merge(
         parent.$variables,
         (
+          // PRIMARY PALETTE OVERRIDE
+          // $color-primary is the dark brand teal; the generator remaps it into a fully
+          // saturated 50–900 scale that reads neon. These tokens replace 50–800 with a
+          // muted tonal ramp of the same hue. 900 is left as the brand colour.
+          ion-color-primary-800: #00383b,
+          ion-color-primary-700: #004448,
+          ion-color-primary-600: #0f696d,
+          ion-color-primary-500: #2c8388,
+          ion-color-primary-400: #509ca1,
+          ion-color-primary-300: #77b6b9,
+          ion-color-primary-200: #a2ced1,
+          ion-color-primary-100: #d0e7e8,
+          ion-color-primary-50: #e7f3f4,
+
           ion-font-family: "Quicksand",
 
           font-size-text-tiny: 12px,
@@ -66,7 +80,7 @@
           text-bubble-border-color-4: var(--ion-color-secondary-300),
           plh-lesson-cta-border-color: var(--ion-color-secondary-800),
           plh-lesson-cta-background-color: var(--ion-color-secondary-600),
-          title-text-color: var(--ion-color-gray-900),
+          title-text-color: var(--ion-color-gray-900)
         )
       )
   ) {
