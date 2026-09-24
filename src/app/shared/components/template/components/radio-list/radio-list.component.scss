@@ -16,8 +16,8 @@ ion-radio-group {
   }
 
   ion-radio::part(label) {
-    margin-top: var(--radio-list-option-label-margin-block);
-    margin-bottom: var(--radio-list-option-label-margin-block);
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   ion-radio {
