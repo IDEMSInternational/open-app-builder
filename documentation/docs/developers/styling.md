@@ -100,7 +100,7 @@ attribute, so component styles never match them. The text bubble styles its mark
 
 **Ionic components injected elsewhere in the DOM.** Modals are created by `ModalController` and
 attached outside the component that opened them, so their styling has to be global. Nav-stacks and
-popups both work this way.
+pop-ups both work this way.
 
 ### Modals get a second copy of every theme variable
 
@@ -115,9 +115,9 @@ Two consequences:
 - You cannot write descendant selectors after `::part()`. Rules nested under it are emitted but
   never match, so only the variable declarations take effect.
 
-"Modal" here means everything Ionic presents as one: nav-stacks, template popups, the combo box
+"Modal" here means everything Ionic presents as one: nav-stacks, template pop-ups, the combo box
 modal and search, the audio transcript, the reactive dropdown. A nav-stack holds a whole template,
-so a change that looks like it affects a dialog can affect a main app flow.
+so a change that looks confined to a small overlay can reach a main app flow.
 
 ## Page rows and nested content
 
