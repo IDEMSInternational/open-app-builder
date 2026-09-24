@@ -16,7 +16,6 @@ const parameters = () =>
 @Component({
   selector: "oab-text",
   templateUrl: "./text.component.html",
-  styleUrls: ["./text.component.scss"],
   imports: [
     TemplatePipesModule, // todo: make pipes standalone
   ],
