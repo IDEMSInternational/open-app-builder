@@ -66,7 +66,9 @@ const copyDeploymentDataToApp = async () => {
 };
 const optimiseBuild = async () => new AppDataOptimiser(WorkflowRunner.config).run();
 
-function generateRuntimeConfig(deploymentConfig: IDeploymentConfigJson): IDeploymentRuntimeConfig {
+export function generateRuntimeConfig(
+  deploymentConfig: IDeploymentConfigJson
+): IDeploymentRuntimeConfig {
   const {
     analytics,
     api,

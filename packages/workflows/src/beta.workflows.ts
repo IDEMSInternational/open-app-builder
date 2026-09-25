@@ -57,6 +57,30 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      sync_sheets: {
+        label: "Sync sheets to external deployment",
+        options: [
+          {
+            flags: "-s, --skip-download",
+            description: "Skip download and just process local sheets",
+          },
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "sync_sheets",
+            function: async ({ tasks, options }) => {
+              await tasks.beta.syncExternalSheets({
+                skipDownload: !!options.skipDownload,
+                verbose: !!options.verbose,
+              });
+            },
+          },
+        ],
+      },
     },
   },
 };

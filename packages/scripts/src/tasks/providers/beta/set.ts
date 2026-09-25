@@ -10,6 +10,9 @@ export async function setExternalDeployment(deploymentName?: string) {
   if (!deploymentName) {
     deploymentName = await deploymentSet.promptDeploymentSelect();
   }
+  if (!deploymentName) {
+    throw new Error("No deployment name provided or selected");
+  }
   await deploymentSet.setActiveDeployment(deploymentName);
 
   // 2. Check for .external_source and update activeDeployment.json

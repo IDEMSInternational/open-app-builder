@@ -1,7 +1,11 @@
 import fs from "fs-extra";
 import path from "path";
-import { DEPLOYMENTS_PATH } from "../../../paths";
-import { logOutput, logWarning } from "../../../utils";
+import { SRC_ASSETS_PATH } from "../../../paths";
+import { generateRuntimeConfig } from "../appData";
+import { logOutput } from "../../../utils";
+import { loadExternalDeploymentJson } from "./deploymentConfig";
+import { decryptExternalFolder } from "./encryption";
+import { processSheets } from "./processSheets";
 
 export async function importExternalDeployment(sourcePath: string, verbose = false) {
   const absoluteSourcePath = path.resolve(sourcePath);
@@ -11,130 +15,43 @@ export async function importExternalDeployment(sourcePath: string, verbose = fal
     throw new Error(`Source location does not exist: ${absoluteSourcePath}`);
   }
 
-  // Extract deployment name from config.ts
-  const configPath = path.join(absoluteSourcePath, "config.ts");
-  if (!fs.existsSync(configPath)) {
-    throw new Error(`config.ts not found in source path: ${configPath}`);
-  }
-
-  const configContent = fs.readFileSync(configPath, "utf8");
-  const match = configContent.match(/generateDeploymentConfig\s*\(\s*["']([^"']+)["']\s*\)/);
-
-  if (!match || !match[1]) {
-    throw new Error(
-      "Could not extract deployment name from config.ts. Expected generateDeploymentConfig('name')"
-    );
-  }
-
-  const deploymentName = match[1];
-  const targetDeploymentPath = path.resolve(DEPLOYMENTS_PATH, deploymentName);
+  const targetAppDataFolder = path.resolve(SRC_ASSETS_PATH, "app_data");
 
   logOutput({
-    msg1: `Importing external deployment: ${deploymentName}`,
+    msg1: "Importing external deployment",
     msg2: `Source: ${absoluteSourcePath}`,
   });
 
-  // Delete the entire deployment directory if it exists, then recreate it
-  if (fs.existsSync(targetDeploymentPath)) {
-    fs.removeSync(targetDeploymentPath);
-    if (verbose) {
-      logOutput({
-        msg1: `Deleted existing deployment directory: ${deploymentName}`,
-        msg2: targetDeploymentPath,
-      });
-    }
-  }
-  fs.ensureDirSync(targetDeploymentPath);
-
-  if (verbose) {
-    logOutput({
-      msg1: `Created target deployment directory: ${deploymentName}`,
-      msg2: targetDeploymentPath,
-    });
-  }
+  fs.ensureDirSync(targetAppDataFolder);
 
   // Save the source path for later use by 'set' command
-  fs.writeFileSync(path.join(targetDeploymentPath, ".external_source"), absoluteSourcePath);
+  fs.writeFileSync(path.join(targetAppDataFolder, ".external_source"), absoluteSourcePath);
 
-  await copySourceDeploymentFiles(absoluteSourcePath, targetDeploymentPath, verbose);
+  // Decrypt config before compiling so it can populate to deployment json
+  await decryptExternalFolder(path.resolve(absoluteSourcePath, "encrypted"));
+  writeDeploymentJson(absoluteSourcePath, targetAppDataFolder);
+
+  processSheets({
+    sourceSheetsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
+    targetAppDataFolder,
+    verbose,
+  });
 
   if (verbose) {
     logOutput({
-      msg1: `Import complete for deployment: ${deploymentName}`,
-      msg2: targetDeploymentPath,
+      msg1: "Import complete",
+      msg2: targetAppDataFolder,
     });
   }
 }
 
-/**
- * Copy all necessary files from a source deployment to the target deployment
- * Excludes .git and app_data folders as specified
- */
-async function copySourceDeploymentFiles(
-  sourceLocation: string,
-  targetLocation: string,
-  verbose = false
-): Promise<void> {
-  if (verbose) {
-    logOutput({
-      msg1: `Starting copy from source: ${sourceLocation}`,
-      msg2: `To target: ${targetLocation}`,
-    });
-  }
-
-  // Get list of all items in the source directory
-  const sourceItems = fs.readdirSync(sourceLocation, { withFileTypes: true });
-
-  if (verbose) {
-    logOutput({
-      msg1: `Found ${sourceItems.length} items in source directory`,
-      msg2: sourceItems
-        .map((item) => `${item.name} (${item.isDirectory() ? "dir" : "file"})`)
-        .join(", "),
-    });
-  }
-
-  // Copy all items except .git and app_data folders
-  for (const item of sourceItems) {
-    const sourcePath = path.resolve(sourceLocation, item.name);
-    const targetPath = path.resolve(targetLocation, item.name);
-
-    // Skip .git and app_data folders
-    if (item.name === ".git" || item.name === "app_data" || item.name === ".gitignore") {
-      if (verbose) {
-        logOutput({
-          msg1: `Skipping excluded folder: ${item.name}`,
-          msg2: sourcePath,
-        });
-      }
-      continue;
-    }
-
-    try {
-      if (item.isDirectory()) {
-        fs.copySync(sourcePath, targetPath, { overwrite: true });
-        if (verbose) {
-          logOutput({
-            msg1: `Copied folder: ${item.name}`,
-            msg2: `${sourcePath} -> ${targetPath}`,
-          });
-        }
-      } else {
-        fs.copySync(sourcePath, targetPath, { overwrite: true });
-        if (verbose) {
-          logOutput({
-            msg1: `Copied file: ${item.name}`,
-            msg2: `${sourcePath} -> ${targetPath}`,
-          });
-        }
-      }
-    } catch (error) {
-      logWarning({
-        msg1: `Failed to copy ${item.name}:`,
-        msg2: error.message,
-      });
-    }
-  }
+/** Compile the source deployment config and write the runtime config to deployment.json */
+function writeDeploymentJson(sourcePath: string, targetAppDataFolder: string) {
+  const deploymentConfig = loadExternalDeploymentJson(sourcePath);
+  const runtimeConfig = generateRuntimeConfig(deploymentConfig);
+  fs.writeJsonSync(path.resolve(targetAppDataFolder, "deployment.json"), runtimeConfig, {
+    spaces: 2,
+  });
 }
 
 export default {
