@@ -25,12 +25,13 @@ import {
   ASSET_PACK_STORAGE_MARGIN_MIN_BYTES,
   ASSET_PACK_STORAGE_MARGIN_RATIO,
 } from "./remote-asset.types";
-import type { IDBAssetPack } from "./remote-asset.types";
+import type { IAssetPackStorageReport, IDBAssetPack } from "./remote-asset.types";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { NetworkService } from "../network/network.service";
 import {
   isImmediateAssetPackAction,
   resolveDebugDownloadDelayMs,
+  resolveDebugFreeSpaceBytes,
   resolveDownloadAssetPackName,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
@@ -926,8 +927,8 @@ describe("RemoteAssetsService", () => {
 
     expect(success).toBeTrue();
     expect(downloadSpy.calls.allArgs()).toEqual([
-      ["asset_pack_1", { debugDownloadDelayMs: 0 }],
-      ["asset_pack_2", { debugDownloadDelayMs: 0 }],
+      ["asset_pack_1", { debugDownloadDelayMs: 0, debugFreeSpaceBytes: undefined }],
+      ["asset_pack_2", { debugDownloadDelayMs: 0, debugFreeSpaceBytes: undefined }],
     ]);
   });
 
@@ -2851,6 +2852,64 @@ describe("RemoteAssetsService", () => {
       );
     });
 
+    it("refuses on a roomy device when debug_free_space_mb simulates a full one", async () => {
+      // The point of the param: exercise the out-of-space path without filling a real device
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(PLENTY_OF_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: 1024 * 1024,
+      });
+
+      expect(success).toBeFalse();
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      // The device is never consulted once a reading is simulated
+      expect(getFreeDiskSpaceBytesSpy).not.toHaveBeenCalled();
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({
+          download_status: "insufficient_storage",
+          // The REAL figure, because the reading is simulated rather than the threshold - a tester
+          // sees the same warning text a user would
+          download_size_mb: REFUSAL_THRESHOLD_MB,
+        })
+      );
+    });
+
+    it("treats a simulated 0 as a full device, not as an unreadable one", async () => {
+      // Unlike the plugin's 0, which is its sentinel for a failed read and means "unknown"
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: 0,
+      });
+
+      expect(success).toBeFalse();
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("insufficient_storage");
+    });
+
+    it("lets a genuinely full test device through when the simulated reading is large", async () => {
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(1024);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: PLENTY_OF_SPACE,
+      });
+
+      expect(success).toBeTrue();
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("completed");
+    });
+
     it("is retried by ensure_downloaded, which only skips packs that are completed", async () => {
       assetPacks.seed(buildMockAssetPack({ download_status: "insufficient_storage" }));
       const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
@@ -2909,8 +2968,12 @@ describe("RemoteAssetsService", () => {
         existingContentsRows: Partial<IAssetEntry>[] = []
       ) {
         spyOn(service["fileManagerService"], "getFreeDiskSpaceBytes").and.resolveTo(undefined);
+        spyOn(console, "log");
         assetPacks.setFlowRows("_assets_contents", existingContentsRows);
-        return service.measureAssetPackStorage(manifestRows as IAssetEntry[]);
+        return service["measureAssetPackStorage"](
+          "asset_pack_1",
+          manifestRows as IAssetEntry[]
+        ) as Promise<IAssetPackStorageReport>;
       }
       /* eslint-enable jasmine/no-unsafe-spy */
 
@@ -3853,6 +3916,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3876,6 +3940,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3900,6 +3965,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
       debugDownloadDelayMs: 3000,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3922,6 +3988,7 @@ describe("RemoteAssetActionFactory download", () => {
 
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 3000,
+      debugFreeSpaceBytes: undefined,
     });
   });
 
@@ -3941,6 +4008,7 @@ describe("RemoteAssetActionFactory download", () => {
 
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
     });
   });
 
@@ -3955,70 +4023,6 @@ describe("RemoteAssetActionFactory download", () => {
     await asset_pack({ trigger: "click", action_id: "asset_pack", args: ["download"], params: {} });
 
     expect(mockService.downloadAssetPackByName).not.toHaveBeenCalled();
-  });
-});
-
-describe("RemoteAssetActionFactory check_storage", () => {
-  /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
-  /** Debug aid: it reports, it never writes, so it can be run on a pack without disturbing it */
-  function setup() {
-    const mockService = {
-      remoteAssetsEnabled: () => true,
-      logAssetPackStorageCheck: jasmine.createSpy("logAssetPackStorageCheck").and.resolveTo(),
-      downloadAssetPackByName: jasmine.createSpy("downloadAssetPackByName").and.resolveTo(true),
-    } as unknown as RemoteAssetService;
-    return { mockService, ...new RemoteAssetActionFactory(mockService) };
-  }
-  /* eslint-enable jasmine/no-unsafe-spy */
-
-  it("checks the pack named as an action arg", async () => {
-    const { mockService, asset_pack } = setup();
-
-    await asset_pack({
-      trigger: "click",
-      action_id: "asset_pack",
-      args: ["check_storage", "asset_pack_1"],
-      params: {},
-    });
-
-    expect(mockService.logAssetPackStorageCheck).toHaveBeenCalledWith("asset_pack_1");
-    // Reporting only - a debug check that started a download would defeat its purpose
-    expect(mockService.downloadAssetPackByName).not.toHaveBeenCalled();
-  });
-
-  it("checks the pack named as an asset_pack param", async () => {
-    const { mockService, asset_pack } = setup();
-
-    await asset_pack({
-      trigger: "click",
-      action_id: "asset_pack",
-      args: ["check_storage"],
-      params: { asset_pack: "asset_pack_1" },
-    });
-
-    expect(mockService.logAssetPackStorageCheck).toHaveBeenCalledWith("asset_pack_1");
-  });
-
-  it("does nothing when no asset pack name is provided", async () => {
-    spyOn(console, "error");
-    const { mockService, asset_pack } = setup();
-
-    await asset_pack({
-      trigger: "click",
-      action_id: "asset_pack",
-      args: ["check_storage"],
-      params: {},
-    });
-
-    expect(mockService.logAssetPackStorageCheck).not.toHaveBeenCalled();
-  });
-
-  it("runs on the template action queue, unlike cancel_download", () => {
-    // It fetches a manifest, so jumping the queue would only add a round trip ahead of the
-    // author's real work, and nothing needs it to pre-empt a download
-    expect(
-      isImmediateAssetPackAction({ args: ["check_storage"] } as FlowTypes.TemplateRowAction)
-    ).toBeFalse();
   });
 });
 
@@ -4062,6 +4066,30 @@ describe("isImmediateAssetPackAction", () => {
     expect(isImmediateAssetPackAction({ ...action, args: ["ensure_downloaded"] })).toBeFalse();
     expect(isImmediateAssetPackAction({ ...action, args: ["reset"] })).toBeFalse();
     expect(isImmediateAssetPackAction({ ...action, args: undefined })).toBeFalse();
+  });
+});
+
+describe("resolveDebugFreeSpaceBytes", () => {
+  it("converts megabytes to bytes", () => {
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: 50 })).toBe(50 * 1024 * 1024);
+  });
+
+  it("reads an authored string value", () => {
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "10" })).toBe(10 * 1024 * 1024);
+  });
+
+  it("keeps 0 as a real instruction to simulate a full device", () => {
+    // Distinct from unset, which reads the device
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: 0 })).toBe(0);
+  });
+
+  it("falls back to reading the device when unset or unusable", () => {
+    spyOn(console, "warn");
+    expect(resolveDebugFreeSpaceBytes({})).toBeUndefined();
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "" })).toBeUndefined();
+    // A bad value must never silently decide a download
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "lots" })).toBeUndefined();
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: -1 })).toBeUndefined();
   });
 });
 

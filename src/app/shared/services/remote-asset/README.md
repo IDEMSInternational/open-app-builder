@@ -66,7 +66,7 @@ Rows store `local://remote_assets/<path>`, **never an absolute device path** —
 ## Template API
 
 ```yaml
-asset_pack: download | ensure_downloaded | cancel_download | reset | check_storage
+asset_pack: download | ensure_downloaded | cancel_download | reset
 ```
 
 | Action | Behaviour |
@@ -75,7 +75,6 @@ asset_pack: download | ensure_downloaded | cancel_download | reset | check_stora
 | `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `false`) and `check_for_updates` (default `true`) |
 | `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued |
 | `reset` | Return **every** pack to its pre-download state: cancel active downloads, delete all downloaded files, clear both data lists. All or nothing — if files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk |
-| `check_storage` | Debug only. Fetches a named pack's manifest, logs what the storage check would decide, and writes nothing. Named like `download`. Not needed by authors — the real check runs inside every download |
 
 ### Progress and status for authoring
 
@@ -94,6 +93,20 @@ asset_pack: download | ensure_downloaded | cancel_download | reset | check_stora
 | `version_check_attempted_at` | Last check **attempt**. Always `>=` `version_checked_at`, strictly greater exactly when the last check failed |
 | `version_check_status` | `"never"`, `"ok"`, or `"failed"` |
 | `download_size_mb` | Megabytes that must be free for the pack to download — outstanding size **plus the margin**, i.e. the threshold the check applied, so freeing the stated figure is guaranteed to pass. Written by `insufficient_storage` and cleared by the settling statuses; left alone by `in_progress`/`waiting_for_connection` so a retry does not blink it to 0 |
+
+### Debug: `debug_free_space_mb`
+
+Both `download` and `ensure_downloaded` accept it. Makes the storage check treat the device as having that many MB free instead of measuring it, so the out-of-space path can be exercised without filling a device — `0` refuses any pack, and a large value lets a genuinely full test device through.
+
+```yaml
+asset_pack | ensure_downloaded | asset_pack: my_asset_pack | debug_free_space_mb: 0
+```
+
+Simulates the **reading**, not the threshold, so the margin maths and the `download_size_mb` an author's warning shows are the real ones. Unset means measure the device, and an unparseable value falls back to that — a bad value must never silently decide a download. `0` is therefore a legitimate value rather than "unset", and unlike the plugin's own `0` (its failed-read sentinel) it means "genuinely empty".
+
+Scoped to the single action call, and logged with a warning whenever it takes effect.
+
+There is deliberately **no `check_storage` action**. A debug action that only logs is invisible to the device testers who need it, and one that wrote to `_asset_packs` would either invent a status for a pack that never attempted a download (row creation is a privilege of the download path — see `buildDefaultAssetPackRow`) or knock a `completed` pack off its status. Displaying free space in the UI would additionally pull in Apple's `85F4.1`, which is deliberately not declared. The check instead logs its figures on every real attempt, and testers read `download_status` / `download_size_mb` from the pack's row.
 
 ### Debug: `debug_download_delay_ms`
 

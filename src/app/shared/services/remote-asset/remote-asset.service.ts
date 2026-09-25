@@ -45,6 +45,7 @@ import {
 } from "./remote-asset.types";
 import type {
   IActiveAssetPackDownload,
+  IAssetPackDebugOverrides,
   IAssetPackDownloadStatus,
   IAssetPackDownloadStatusTimestamps,
   IAssetPackSlotPlan,
@@ -277,6 +278,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     const awaitCompletion = options.awaitCompletion ?? true;
     const debugDownloadDelayMs = options.debugDownloadDelayMs ?? 0;
+    const debugFreeSpaceBytes = options.debugFreeSpaceBytes;
     const checkForUpdates = options.checkForUpdates ?? true;
     const assetPacks = await this.remoteAssetMetadataService.snapshotAssetPacks();
     const completedPackIds = new Set(
@@ -300,9 +302,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     // exactly the latency this is meant to avoid. `asset_pack: download` is the way to block on
     // getting the latest.
     if (checkForUpdates && completedPacks.length) {
-      void this.checkAssetPacksForUpdates(completedPacks, debugDownloadDelayMs).catch((error) =>
-        console.error("[REMOTE ASSETS] Asset pack update check failed", error)
-      );
+      void this.checkAssetPacksForUpdates(completedPacks, {
+        debugDownloadDelayMs,
+        debugFreeSpaceBytes,
+      }).catch((error) => console.error("[REMOTE ASSETS] Asset pack update check failed", error));
     }
 
     if (!pendingPacks.length) {
@@ -316,6 +319,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         void this.ensureAssetPacksDownloaded(assetPackNames, {
           awaitCompletion: true,
           debugDownloadDelayMs,
+          debugFreeSpaceBytes,
           // Already checked above; re-checking on retry would double the manifest fetches and
           // ignore a caller who asked for no checks at all
           checkForUpdates: false,
@@ -326,6 +330,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       const started = await this.downloadAssetPackByName(firstPendingPack, {
         awaitCompletion: false,
         debugDownloadDelayMs,
+        debugFreeSpaceBytes,
         onDownloadStarted: (completion) => {
           if (!remainingPendingPacks.length) {
             return;
@@ -349,7 +354,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
 
     let allSucceeded = true;
     for (const assetPackName of pendingPacks) {
-      const success = await this.downloadAssetPackByName(assetPackName, { debugDownloadDelayMs });
+      const success = await this.downloadAssetPackByName(assetPackName, {
+        debugDownloadDelayMs,
+        debugFreeSpaceBytes,
+      });
       if (!success) {
         allSucceeded = false;
       }
@@ -365,7 +373,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * remains the job of the per-slot resume gate comparing checksums, so an update transfers bytes
    * only for the files that actually changed.
    */
-  private async checkAssetPacksForUpdates(assetPackNames: string[], debugDownloadDelayMs: number) {
+  private async checkAssetPacksForUpdates(
+    assetPackNames: string[],
+    debugOverrides: IAssetPackDebugOverrides
+  ) {
     const packsToUpdate: { assetPackName: string; manifest: FlowTypes.AssetPack }[] = [];
     for (const assetPackName of assetPackNames) {
       // An in-flight walk is already reading a manifest at least as fresh as one we would fetch now
@@ -416,7 +427,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     // of retrying for a full interval.
     // Awaiting here costs nothing: this whole routine is already fire-and-forget.
     for (const { assetPackName, manifest } of packsToUpdate) {
-      await this.downloadAssetPackUpdate(assetPackName, manifest, debugDownloadDelayMs);
+      await this.downloadAssetPackUpdate(assetPackName, manifest, debugOverrides);
     }
   }
 
@@ -428,14 +439,14 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   private async downloadAssetPackUpdate(
     assetPackName: string,
     manifest: FlowTypes.AssetPack,
-    debugDownloadDelayMs: number
+    debugOverrides: IAssetPackDebugOverrides
   ) {
     let completion: Promise<boolean> | undefined;
     const started = await this.downloadAssetPackByName(assetPackName, {
       // `awaitCompletion: false` so a refusal is reported rather than being indistinguishable from
       // a failed download; the completion handle is then used to keep updates serial.
       awaitCompletion: false,
-      debugDownloadDelayMs,
+      ...debugOverrides,
       manifest,
       onDownloadStarted: (downloadCompletion) => (completion = downloadCompletion),
     });
@@ -450,7 +461,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     await this.waitForActiveAssetPackDownloads();
     // Deliberately without the prefetched manifest: an unrelated download has since run, so re-fetch
     // rather than walk a manifest that may already be out of date.
-    await this.downloadAssetPackByName(assetPackName, { debugDownloadDelayMs });
+    await this.downloadAssetPackByName(assetPackName, { ...debugOverrides });
   }
 
   /**
@@ -522,6 +533,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
       debugDownloadDelayMs: options.debugDownloadDelayMs ?? 0,
+      debugFreeSpaceBytes: options.debugFreeSpaceBytes,
       prefetchedManifest: options.manifest,
     });
     const activeDownload: IActiveAssetPackDownload = {
@@ -552,6 +564,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       downloadStartedAt,
       removeAssetPackConnectionStatusListener,
       debugDownloadDelayMs,
+      debugFreeSpaceBytes,
       prefetchedManifest,
     }: {
       abortController: AbortController;
@@ -559,6 +572,7 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       removeAssetPackConnectionStatusListener: () => void;
       prefetchedManifest?: FlowTypes.AssetPack;
       debugDownloadDelayMs: number;
+      debugFreeSpaceBytes?: number;
     }
   ) {
     // Used for the first attempt only. A retry after parking offline may be much later, by which
@@ -606,7 +620,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
           await this.assertSufficientStorageForAssetPack(
             assetPackName,
             assetEntries,
-            abortController.signal
+            abortController.signal,
+            debugFreeSpaceBytes
           );
           const total = this.countDownloadFiles(assetEntries);
           this.downloadProgressCount.set(total ? { completed: 0, total } : null);
@@ -1048,10 +1063,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   private async assertSufficientStorageForAssetPack(
     assetPackName: string,
     assetEntries: IAssetEntry[],
-    signal: AbortSignal
+    signal: AbortSignal,
+    debugFreeSpaceBytes?: number
   ) {
     if (!Capacitor.isNativePlatform()) return;
-    const report = await this.measureAssetPackStorage(assetEntries);
+    const report = await this.measureAssetPackStorage(
+      assetPackName,
+      assetEntries,
+      debugFreeSpaceBytes
+    );
     // A cancel can land during the data read or the disk-space call
     this.throwIfDownloadCancelled(signal);
     if (report.isSufficient) return;
@@ -1069,8 +1089,10 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    * A pack with nothing outstanding short-circuits to sufficient, or the margin floor would refuse
    * an up-to-date pack on a device low on space.
    */
-  public async measureAssetPackStorage(
-    assetEntries: IAssetEntry[]
+  private async measureAssetPackStorage(
+    assetPackName: string,
+    assetEntries: IAssetEntry[],
+    debugFreeSpaceBytes?: number
   ): Promise<IAssetPackStorageReport> {
     const slots = this.buildAssetSlotPlan(assetEntries);
     const existingContents = await this.snapshotAssetContents();
@@ -1099,6 +1121,38 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         `[REMOTE ASSETS] ${unknownSizeSlotCount} outstanding file(s) have no size in the manifest; storage check will under-estimate`
       );
     }
+    const report = await this.buildAssetPackStorageReport(
+      { outstandingBytes, outstandingSlotCount, unknownSizeSlotCount },
+      debugFreeSpaceBytes
+    );
+    // Logged on every attempt, not behind a separate action: the figures are only of interest
+    // alongside a real download, and a device tester cannot read a console anyway - they watch
+    // `download_status` and `download_size_mb` on the pack's row.
+    console.log(`[REMOTE ASSETS] Storage check for ${assetPackName}`, {
+      outstandingFiles: report.outstandingSlotCount,
+      filesWithNoSizeInManifest: report.unknownSizeSlotCount,
+      outstandingMb: formatBytesAsMb(report.outstandingBytes),
+      requiredMbIncludingMargin: formatBytesAsMb(report.requiredBytes),
+      freeMb: report.freeBytes === undefined ? "unknown" : formatBytesAsMb(report.freeBytes),
+      verdict: !report.isSufficient
+        ? "refusing as insufficient_storage"
+        : report.outstandingSlotCount === 0
+          ? "nothing to download"
+          : "proceeding",
+    });
+    return report;
+  }
+
+  /** Apply the margin and compare against free space. Split out to keep the tallying above clear */
+  private async buildAssetPackStorageReport(
+    tallies: {
+      outstandingBytes: number;
+      outstandingSlotCount: number;
+      unknownSizeSlotCount: number;
+    },
+    debugFreeSpaceBytes?: number
+  ): Promise<IAssetPackStorageReport> {
+    const { outstandingBytes, outstandingSlotCount, unknownSizeSlotCount } = tallies;
     // Keyed on bytes, not on slot count: a pack whose outstanding files carry no `size_kb` reaches
     // here with slots but zero bytes, and applying the margin floor to that would refuse a download
     // whose size we never established - exactly the block the "counts as 0" rule above exists to
@@ -1118,10 +1172,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
         outstandingBytes * ASSET_PACK_STORAGE_MARGIN_RATIO,
         ASSET_PACK_STORAGE_MARGIN_MIN_BYTES
       );
-    const freeBytes = await this.fileManagerService.getFreeDiskSpaceBytes();
-    if (freeBytes === undefined) {
-      console.log(
-        `[REMOTE ASSETS] Free space could not be read; proceeding with download of ${formatBytesAsMb(outstandingBytes)}MB`
+    // A simulated reading stands in for the device's, so the margin maths, the comparison and the
+    // `download_size_mb` an author sees are all the real ones. NB unlike the plugin's reading, a
+    // debug 0 means "genuinely empty" rather than "could not be read" - it is an explicit
+    // instruction, not a sentinel, and simulating a completely full device is the point of it.
+    const freeBytes =
+      debugFreeSpaceBytes ?? (await this.fileManagerService.getFreeDiskSpaceBytes());
+    if (debugFreeSpaceBytes !== undefined) {
+      console.warn(
+        `[REMOTE ASSETS] Using debug_free_space_mb (${formatBytesAsMb(debugFreeSpaceBytes)}MB) in place of the device's free space. Remove this param outside testing.`
       );
     }
     return {
@@ -1132,38 +1191,6 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
       freeBytes,
       isSufficient: freeBytes === undefined || freeBytes >= requiredBytes,
     };
-  }
-
-  /**
-   * Fetch a pack's manifest, measure it against free space and log the verdict. Writes nothing, so
-   * it can be run without disturbing a pack's real status. Backs `asset_pack: check_storage`, which
-   * exists to make the check observable during device testing.
-   */
-  public async logAssetPackStorageCheck(assetPackName: string) {
-    if (!Capacitor.isNativePlatform()) {
-      console.log(
-        `[REMOTE ASSETS] check_storage: nothing to check for ${assetPackName} on web - packs are served from cloud storage and nothing is saved to the device`
-      );
-      return;
-    }
-    const manifest = await this.getAssetPackManifest(assetPackName);
-    if (!manifest) {
-      console.error(`[REMOTE ASSETS] check_storage: could not load manifest for ${assetPackName}`);
-      return;
-    }
-    const report = await this.measureAssetPackStorage((manifest.rows || []) as IAssetEntry[]);
-    console.log(`[REMOTE ASSETS] check_storage: ${assetPackName}`, {
-      outstandingFiles: report.outstandingSlotCount,
-      filesWithNoSizeInManifest: report.unknownSizeSlotCount,
-      outstandingMb: formatBytesAsMb(report.outstandingBytes),
-      requiredMbIncludingMargin: formatBytesAsMb(report.requiredBytes),
-      freeMb: report.freeBytes === undefined ? "unknown" : formatBytesAsMb(report.freeBytes),
-      verdict: report.isSufficient
-        ? report.outstandingSlotCount === 0
-          ? "nothing to download"
-          : "would download"
-        : "would be refused as insufficient_storage",
-    });
   }
 
   /** Check each planned slot against local storage, marking those already downloaded */

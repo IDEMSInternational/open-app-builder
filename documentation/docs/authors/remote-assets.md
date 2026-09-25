@@ -83,7 +83,6 @@ Downloads are triggered from templates with the `asset_pack` action:
 | `ensure_downloaded` | Download those packs not already completed, and check the rest for a published update. **Does not wait** for downloads unless `await: true` is set                       |
 | `cancel_download`   | Abort any active download and mark it `cancelled`                                                                                                                        |
 | `reset`             | Return **every** pack to its pre-download state                                                                                                                          |
-| `check_storage`     | Debugging aid. Logs whether a named pack would fit on the device, and changes nothing                                                                                    |
 
 
 !!! important "`ensure_downloaded` does not wait for downloads to finish"
@@ -113,7 +112,6 @@ Downloads are triggered from templates with the `asset_pack` action:
 | button | Ensure and block until done    | `click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack | await: true`  |
 | button | Cancel download                | `click | asset_pack: cancel_download`                                              |
 | button | Reset all packs                | `click | asset_pack: reset`                                                        |
-| button | Log a storage check            | `click | asset_pack: check_storage: my_asset_pack`                                 |
 
 
 `asset_pack_list` accepts an array (e.g. a field set via `set_field`) or a JSON array string.
@@ -123,11 +121,12 @@ Downloads are triggered from templates with the `asset_pack` action:
 
 | Parameter                 | Action                          | Description                                                                                          |
 | ------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `asset_pack`              | `download`, `ensure_downloaded`, `check_storage` | Single pack name. For `download` and `check_storage`, an alternative to giving the name as an argument |
+| `asset_pack`              | `download`, `ensure_downloaded` | Single pack name. For `download`, an alternative to giving the name as an argument                   |
 | `asset_pack_list`         | `ensure_downloaded`             | One or more pack names, as an array or JSON array string                                             |
 | `await`                   | `ensure_downloaded`             | Default `false`, so downloads start in the background. When `true`, blocks the action queue instead  |
 | `check_for_updates`       | `ensure_downloaded`             | Default `true`. When `false`, skips the version check on packs already downloaded                    |
 | `debug_download_delay_ms` | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
+| `debug_free_space_mb`     | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
 
 
 `download` has no `await` parameter — it always blocks the action queue until the download finishes.
@@ -597,16 +596,32 @@ outside local testing. Note that the delay applies to skipped files too, so a re
 look any faster with it enabled: check that status and counts reach completion rather than judging by
 speed.
 
-`check_storage` logs what the storage check would decide for a named pack — how much of it is still
-missing, how much free space there is, and whether it would be refused:
+### Testing the out-of-space warning
+
+Filling a real device to test the [out-of-space](#running-out-of-space) path is slow and awkward, so
+`download` and `ensure_downloaded` accept `debug_free_space_mb`. It makes the app treat the device as
+having that much space free, instead of measuring it:
+
 
 ```
-click | asset_pack: check_storage: my_asset_pack
+click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack, debug_free_space_mb: 0
 ```
 
-It writes nothing, so it can be run against a pack without disturbing its real `download_status`. It
-is a debugging aid only: the check authors rely on runs by itself inside every download, and there is
-no need to call this first. On web it logs that there is nothing to check.
+`0` simulates a completely full device, so any pack is refused. The pack lands at
+`insufficient_storage` with its real `download_size_mb`, so the warning shown is exactly the one a
+user would see.
+
+It also works the other way: a large value lets a download run on a device that genuinely is short of
+space, which is useful for getting a test device past the check.
+
+The storage check writes its figures to the console on every download attempt, so there is no
+separate action to call — trigger a normal download and read the log. On a device, where the console
+isn't visible, watch `download_status` and `download_size_mb` on the pack's row instead.
+
+!!! warning
+
+    Remove `debug_free_space_mb` outside local testing. Left in, it decides every download of that
+    pack, whatever the device actually has free.
 
 The debug deployment content (the `app-debug-content` repo and its Debug Sheets drive folder) contains
 reference templates — `debug_remote_assets` and `debug_asset_packs` — covering downloads, progress

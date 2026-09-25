@@ -45,6 +45,7 @@ export class RemoteAssetActionFactory {
         }
         await this.service.downloadAssetPackByName(assetPackName, {
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          debugFreeSpaceBytes: resolveDebugFreeSpaceBytes(params as IAssetPackDownloadParams),
         });
       },
       // Unlike other actions, this does not block the action queue by default: downloads start in
@@ -69,29 +70,9 @@ export class RemoteAssetActionFactory {
         await this.service.ensureAssetPacksDownloaded(assetPackList, {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          debugFreeSpaceBytes: resolveDebugFreeSpaceBytes(params as IAssetPackDownloadParams),
           checkForUpdates: shouldCheckForUpdates(params as IAssetPackEnsureDownloadedParams),
         });
-      },
-      // Debug aid only: logs what the check inside every download would decide for this pack, and
-      // writes nothing, so it cannot disturb the pack's real status.
-      check_storage: async () => {
-        if (!this.service.remoteAssetsEnabled()) {
-          console.error(
-            "The 'asset_pack: check_storage' action is not available. To enable asset pack functionality, please ensure that the remote asset provider is configured in the deployment config."
-          );
-          return;
-        }
-        const assetPackName = resolveDownloadAssetPackName(
-          assetPackArgs,
-          params as IAssetPackDownloadParams
-        );
-        if (!assetPackName) {
-          console.error(
-            "The 'asset_pack: check_storage' action requires an asset pack name, given either as an argument ('asset_pack: check_storage: my_pack') or an 'asset_pack' parameter."
-          );
-          return;
-        }
-        await this.service.logAssetPackStorageCheck(assetPackName);
       },
       cancel_download: async () => {
         if (this.service.remoteAssetsEnabled()) {
@@ -169,6 +150,24 @@ export function resolveDebugDownloadDelayMs(params?: IAssetPackDownloadParams): 
     return 0;
   }
   return delayMs;
+}
+
+/**
+ * Read the `debug_free_space_mb` testing param, in bytes. Unset means "read the real device", and
+ * anything unparseable falls back to that too - a bad value must never silently decide a download.
+ * 0 is a legitimate value (simulate a completely full device), so it is not treated as unset.
+ */
+export function resolveDebugFreeSpaceBytes(params?: IAssetPackDownloadParams): number | undefined {
+  const value = params?.debug_free_space_mb;
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+  const freeSpaceMb = Number(value);
+  if (!Number.isFinite(freeSpaceMb) || freeSpaceMb < 0) {
+    console.warn("[REMOTE ASSETS] Ignoring invalid debug_free_space_mb value:", value);
+    return undefined;
+  }
+  return freeSpaceMb * 1024 * 1024;
 }
 
 /** Read the `await` param. Only an explicit `true` blocks - see `ensure_downloaded` */

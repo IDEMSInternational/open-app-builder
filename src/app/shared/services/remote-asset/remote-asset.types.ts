@@ -365,6 +365,16 @@ export interface IAssetPackDownloadParams {
    * speed-up that resume is supposed to give.
    */
   debug_download_delay_ms?: number | string;
+  /**
+   * Manual testing aid: treat the device as having this many MB free, instead of reading it. Lets
+   * the out-of-space path be exercised without filling a device - `debug_free_space_mb: 0` refuses
+   * any pack - and, upward, lets a genuinely full test device through.
+   *
+   * Simulates the *reading*, not the threshold, so the margin maths and the `download_size_mb` an
+   * author's warning shows are the real ones a user would get. Omit outside local testing: left in,
+   * it would decide every download on this pack.
+   */
+  debug_free_space_mb?: number | string;
 }
 
 export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
@@ -379,12 +389,24 @@ export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadPara
   check_for_updates?: boolean | string;
 }
 
-/** Options shared by the service methods that start a download */
-interface IAssetPackDownloadOptions {
-  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
-  awaitCompletion?: boolean;
+/**
+ * Testing-only overrides, resolved from an attempt's `debug_*` action params and carried down to
+ * wherever each takes effect. Grouped so the download paths thread one value rather than a growing
+ * list of bare numbers.
+ */
+export interface IAssetPackDebugOverrides {
   /** See `IAssetPackDownloadParams.debug_download_delay_ms`. Defaults to 0 (no delay). */
   debugDownloadDelayMs?: number;
+  /**
+   * See `IAssetPackDownloadParams.debug_free_space_mb`, in bytes. Undefined reads the real device.
+   */
+  debugFreeSpaceBytes?: number;
+}
+
+/** Options shared by the service methods that start a download */
+interface IAssetPackDownloadOptions extends IAssetPackDebugOverrides {
+  /** When false, return once a download is registered without waiting for completion. Defaults to true. */
+  awaitCompletion?: boolean;
 }
 
 export interface IEnsureAssetPacksDownloadedOptions extends IAssetPackDownloadOptions {
