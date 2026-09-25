@@ -92,6 +92,21 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 | `version_checked_at` | Last **successful** check |
 | `version_check_attempted_at` | Last check **attempt**. Always `>=` `version_checked_at`, strictly greater exactly when the last check failed |
 | `version_check_status` | `"never"`, `"ok"`, or `"failed"` |
+| `download_size_mb` | Megabytes that must be free for the pack to download — outstanding size **plus the margin**, i.e. the threshold the check applied, so freeing the stated figure is guaranteed to pass. Written by `insufficient_storage` and cleared by the settling statuses; left alone by `in_progress`/`waiting_for_connection` so a retry does not blink it to 0 |
+
+### Debug: `debug_free_space_mb`
+
+Both `download` and `ensure_downloaded` accept it. Makes the storage check treat the device as having that many MB free instead of measuring it, so the out-of-space path can be exercised without filling a device — `0` refuses any pack, and a large value lets a genuinely full test device through.
+
+```yaml
+asset_pack | ensure_downloaded | asset_pack: my_asset_pack | debug_free_space_mb: 0
+```
+
+Simulates the **reading**, not the threshold, so the margin maths and the `download_size_mb` an author's warning shows are the real ones. Unset means measure the device, and an unparseable value falls back to that — a bad value must never silently decide a download. `0` is therefore a legitimate value rather than "unset", and unlike the plugin's own `0` (its failed-read sentinel) it means "genuinely empty".
+
+Scoped to the single action call, and logged with a warning whenever it takes effect.
+
+There is deliberately **no `check_storage` action**. A debug action that only logs is invisible to the device testers who need it, and one that wrote to `_asset_packs` would either invent a status for a pack that never attempted a download (row creation is a privilege of the download path — see `buildDefaultAssetPackRow`) or knock a `completed` pack off its status. Displaying free space in the UI would additionally pull in Apple's `85F4.1`, which is deliberately not declared. The check instead logs its figures on every real attempt, and testers read `download_status` / `download_size_mb` from the pack's row.
 
 ### Debug: `debug_download_delay_ms`
 
@@ -114,6 +129,7 @@ One row per pack in `_asset_packs`, with a `download_status` of:
 | `completed` | Every slot downloaded and integrated |
 | `error` | Something failed; needs an explicit re-trigger |
 | `cancelled` | The user/template cancelled it |
+| `insufficient_storage` | The device has no room for the pack. Nothing was downloaded; needs an explicit re-trigger |
 
 Execution is deliberately serial: **one pack at a time**, and within it either one archive or one file at a time. There is no download queue yet — a `TODO` in `downloadAndIntegrateAssetPack` tracks it.
 
@@ -183,6 +199,35 @@ Point 3 does the real work: integrating a base asset writes the whole manifest e
 
 Anything unverified re-downloads. A false negative costs one wasted fetch; a false positive is a corrupt asset that never heals, so the gate is biased toward re-downloading. On-disk bytes are never hashed (Web Crypto has no MD5); that belongs to a future `asset_pack: verify`/repair action.
 
+## Free storage check
+
+Before any file is fetched, a download attempt checks the device has room for the pack. If it hasn't, nothing is downloaded and the pack lands at `insufficient_storage` — so authors can tell the user to free up space rather than showing a generic failure.
+
+**Where it runs.** Inside `runAssetPackDownload`, once the manifest is in hand and before the pack is walked. That is the only point a pack's size is known without paying for an extra request, and it is common to every trigger — `ensure_downloaded`, `download`, the download button, launch-time resume — so one check covers them all. A refusal therefore costs the user the manifest fetch and nothing else. Being after the offline park is also the right order: a device with no connection cannot fetch a manifest, so it parks at `waiting_for_connection` before any storage check, and nothing could be downloaded anyway.
+
+**Space needed** is the manifest's `size_kb` for every slot not already held at the current version. Presence is judged from `_assets_contents` alone (`getRecordedAssetSlotState` — the data-list half of the resume gate, factored out so the two cannot drift), *not* by statting each file: the check needs an answer for every slot at once, and a `Filesystem.stat` each would be hundreds of native calls to decide whether a download is worth starting. The trade is that a file deleted from under the app is counted as present, which under-estimates — the safe direction for a check that must never wrongly block. Archives stream straight into files and are never saved whole, so there is no temporary overhead to account for.
+
+**Free space** comes from `FileManagerService.getFreeDiskSpaceBytes`, the single place `@capacitor-community/device` is read, so the plugin can be swapped without touching callers. `realDiskFree` is `volumeAvailableCapacityForImportantUsage` on iOS (counting space the OS will free on demand) and the data partition on Android. **A check that cannot answer never blocks a download**: web, a plugin throw, and the plugin's `0` — which it returns when the native read fails, so it cannot be told apart from a genuinely full disk — all read as "unknown" and proceed.
+
+**The verdict** refuses only when free space is known *and* short of the pack's size plus a margin (`ASSET_PACK_STORAGE_MARGIN_RATIO`, floored at `ASSET_PACK_STORAGE_MARGIN_MIN_BYTES` — 50MB, decided against the 100MB first proposed in #3677). A pack with **zero outstanding bytes** short-circuits to sufficient before the margin is applied — keyed on bytes rather than slot count, so this covers both an up-to-date pack and one whose outstanding files declare no `size_kb`. Applying the floor to the latter would refuse a download whose size was never established, which is precisely what the "no size counts as 0" rule exists to avoid.
+
+A refusal throws `AssetPackInsufficientStorageError`, which the attempt loop rethrows ahead of its offline check — space does not appear because connectivity returned, so parking and retrying would spin forever on a full device.
+
+A pack that has completed before is restored to `completed` like any other failure: the previous version is still on disk and still usable, and the update is retried by the next check. The cost is that "an update is waiting for space" cannot be told apart from "up to date"; the alternative loses the "this pack is usable" signal that `ensure_downloaded` and template gating both depend on.
+
+### Privacy: Apple's disk space rules
+
+Disk space is one of Apple's *required reason* APIs. `ios/App/App/PrivacyInfo.xcprivacy` declares `NSPrivacyAccessedAPICategoryDiskSpace` with reason **E174.1** (checking whether there is sufficient disk space to write files, where the app then behaves observably differently — here, refusing the download and showing a warning). Without it App Store uploads are rejected with ITMS-91053. It is not a user permission: no prompt, no `Info.plist` text, no change to the privacy labels, and nothing needed for Android or the Play data-safety form. **85F4.1** (displaying disk space) is deliberately not declared, because the figure is never shown.
+
+E174.1 forbids sending the value **or anything derived from it** off-device. That constrains the design, and the constraints must hold:
+
+- **The free-space figure is never stored** — read, compared, discarded. It exists only on `IAssetPackStorageReport.freeBytes`, which is never persisted.
+- **`insufficient_storage` is derived information.** It lives in `_asset_packs`, which is excluded from sync by `LOCAL_ONLY_DYNAMIC_DATA_FLOWS` (since `4e2239216`) — both server sync and `user: import` skip it. **The design depends on that exclusion staying in place.**
+- **`download_size_mb` is not derived from it.** Manifest size plus a fixed constant, computed without reference to free space, so it is safe to show to users.
+- **Never add disk fields to `device_info`**, which is sent to the server on sync and exposed to `@calc`.
+- **Keep it out of Crashlytics** — not via `log`/`setCustomKey`, nor in error messages that may reach `recordException`.
+- **Authors are warned** in the author docs not to copy the status into fields, which do sync.
+
 ### Concurrency
 
 Two requests for the **same** pack join the same in-flight attempt — launch-time resume can easily race a template-triggered download.
@@ -242,6 +287,8 @@ Manifests are fetched with caching bypassed (`cache: "no-store"` plus a cache-bu
 - **No background continuation.** Downloads stop when the app is backgrounded or killed and resume on next launch. Continuing while backgrounded needs a native downloader plugin.
 - **No download queue, and no parallelism within a pack.** Bulk downloads avoid the cost by pulling an archive, but a pack that falls back to per-file (no archive published, or an unversioned manifest) is still slow.
 - **No integrity repair.** No way to detect or fix an already-integrated file corrupted after the fact.
+- **The storage check is an estimate.** Other apps can consume space between the check and the download finishing, so downloads can still fail the old way. Updates err conservative (they overwrite in place, so real growth is smaller than the figure checked), and Android's figure does not count cache the system could clear.
+- **The disk-space plugin has a single maintainer.** Its native code is around 20 lines, so it could be vendored as a local plugin if abandoned — `getFreeDiskSpaceBytes` is the only place it is referenced.
 - **No per-pack delete.** Storage is reclaimed all at once via `reset` or not at all. Files are stored flat and may legitimately be shared, so deleting one pack needs a record of which files it fetched — see the options weighed on `spike/remote-asset-storage-migration`.
 - **Files downloaded before the `remote_assets/` folder existed are orphaned.** Older builds saved straight into the deployment folder, so they are neither found by the resume gate (each affected pack re-downloads once) nor reclaimed by `reset`. Accepted as a one-off; a cleanup migration is prototyped on the same spike branch.
 - **Superseded archives accumulate in the bucket.** The object key carries the version, and uploads are manual and additive, so old archives have to be deleted separately. Sync removes them from the generated pack folder, so only the current one is ever uploaded.
@@ -259,6 +306,9 @@ This README is deliberately thin on rationale, because most of it is recorded ne
 | Why is a cancel not a failed download? | `withDownloadRetry` and `isAbortError` |
 | Why are status writes serialised? | `RemoteAssetMetadataService.queueStatusWrite` |
 | Why is the resume gate shaped like that? | `isSavedAssetSlotTrustworthy` |
+| Why does the storage check not stat files? | `getRecordedAssetSlotState` |
+| Why is `0` free bytes treated as unknown? | `normaliseFreeDiskSpaceBytes` in `file-manager.service.ts` |
+| Why that storage margin? | `ASSET_PACK_STORAGE_MARGIN_*` in `remote-asset.types.ts` |
 | Why `start()` every archive entry? | `remote-asset-archive.ts`, `onfile` |
 | Why is a row only written when all its slots settle? | `remote-asset-contents.writer.ts` |
 | Why is the version in the object key? | `getAssetPackArchiveFileName` in `data-models` |

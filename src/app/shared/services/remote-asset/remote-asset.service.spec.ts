@@ -22,13 +22,16 @@ import {
   ASSET_DOWNLOAD_CONSECUTIVE_FAILURE_LIMIT,
   ASSET_DOWNLOAD_RETRY_BASE_DELAY_MS,
   ASSET_DOWNLOAD_RETRY_LIMIT,
+  ASSET_PACK_STORAGE_MARGIN_MIN_BYTES,
+  ASSET_PACK_STORAGE_MARGIN_RATIO,
 } from "./remote-asset.types";
-import type { IDBAssetPack } from "./remote-asset.types";
+import type { IAssetPackStorageReport, IDBAssetPack } from "./remote-asset.types";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
 import { NetworkService } from "../network/network.service";
 import {
   isImmediateAssetPackAction,
   resolveDebugDownloadDelayMs,
+  resolveDebugFreeSpaceBytes,
   resolveDownloadAssetPackName,
   resolveEnsureDownloadedAssetPackList,
   shouldAwaitEnsureDownloaded,
@@ -155,6 +158,7 @@ function buildMockAssetPack(overrides: Partial<IDBAssetPack> = {}): IDBAssetPack
     download_status_updated_at: "2024-01-01T00:01:00.000Z",
     assets_total_count: 1,
     assets_downloaded_count: 1,
+    download_size_mb: 0,
     download_progress_percent: 100,
     version: "",
     available_version: "",
@@ -923,8 +927,8 @@ describe("RemoteAssetsService", () => {
 
     expect(success).toBeTrue();
     expect(downloadSpy.calls.allArgs()).toEqual([
-      ["asset_pack_1", { debugDownloadDelayMs: 0 }],
-      ["asset_pack_2", { debugDownloadDelayMs: 0 }],
+      ["asset_pack_1", { debugDownloadDelayMs: 0, debugFreeSpaceBytes: undefined }],
+      ["asset_pack_2", { debugDownloadDelayMs: 0, debugFreeSpaceBytes: undefined }],
     ]);
   });
 
@@ -1056,6 +1060,11 @@ describe("RemoteAssetsService", () => {
     const getSavedFileInfoSpy = spyOn(fileManager, "getSavedFileInfo").and.resolveTo({
       exists: false,
     });
+    // Likewise the disk-space plugin. `undefined` is "could not be read", which downloads proceed
+    // through, so the storage check stays invisible to tests that are not about it.
+    const getFreeDiskSpaceBytesSpy = spyOn(fileManager, "getFreeDiskSpaceBytes").and.resolveTo(
+      undefined
+    );
 
     // `_asset_packs` state comes from the shared store; feed `_assets_contents` from the fixture
     assetPacks.setFlowRows("_assets_contents", existingContentsRows);
@@ -1064,6 +1073,7 @@ describe("RemoteAssetsService", () => {
       downloadFileSpy,
       saveFileSpy,
       getSavedFileInfoSpy,
+      getFreeDiskSpaceBytesSpy,
       getAssetPackRow: () => assetPacks.get(assetPackName),
     };
   }
@@ -1354,6 +1364,7 @@ describe("RemoteAssetsService", () => {
     });
     // See `setupNativeDownload`: an unstubbed stat reaches the real Filesystem plugin and can hang
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    spyOn(service["fileManagerService"], "getFreeDiskSpaceBytes").and.resolveTo(undefined);
     return { manifest, downloadFileAsTextSpy };
   }
   /* eslint-enable jasmine/no-unsafe-spy */
@@ -1415,6 +1426,7 @@ describe("RemoteAssetsService", () => {
       rows: [clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>],
     } as FlowTypes.AssetPack);
     spyOn(service["fileManagerService"], "getSavedFileInfo").and.resolveTo({ exists: false });
+    spyOn(service["fileManagerService"], "getFreeDiskSpaceBytes").and.resolveTo(undefined);
 
     const firebaseService = { app: { options: { storageBucket: "test-bucket.appspot.com" } } };
     const provider = new FirebaseRemoteAssetProvider();
@@ -2009,6 +2021,10 @@ describe("RemoteAssetsService", () => {
             : { exists: false }
       );
 
+      const getFreeDiskSpaceBytesSpy = spyOn(fileManager, "getFreeDiskSpaceBytes").and.resolveTo(
+        undefined
+      );
+
       assetPacks.setFlowRows("_assets_contents", existingContentsRows);
 
       return {
@@ -2017,6 +2033,7 @@ describe("RemoteAssetsService", () => {
         fetchSpy,
         saveFileSpy,
         getSavedFileInfoSpy,
+        getFreeDiskSpaceBytesSpy,
         savedFiles,
         archiveBytes,
         getAssetPackRow: () => assetPacks.get(assetPackName),
@@ -2697,6 +2714,384 @@ describe("RemoteAssetsService", () => {
     });
   });
 
+  describe("free storage check before downloading", () => {
+    // Packs here are small, so the required figure is dominated by the margin floor. Tests state
+    // free space either side of it rather than computing it, so tuning the ratio cannot break them.
+    const PLENTY_OF_SPACE = 500 * 1024 * 1024;
+    const ALMOST_NO_SPACE = 1024 * 1024;
+    /** What a refused 100kb pack reports: its own size plus the margin floor, in MB */
+    const REFUSAL_THRESHOLD_MB =
+      Math.round(((100 * 1024 + ASSET_PACK_STORAGE_MARGIN_MIN_BYTES) / (1024 * 1024)) * 10) / 10;
+
+    it("refuses a pack that will not fit, without fetching a single file", async () => {
+      spyOn(console, "warn");
+      const { downloadFileSpy, saveFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } =
+        setupNativeDownload([clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(ALMOST_NO_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      // Refusing costs the manifest fetch and nothing else
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      expect(saveFileSpy).not.toHaveBeenCalled();
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({
+          download_status: "insufficient_storage",
+          // The threshold the check applied (100kb pack + the margin floor), NOT the 0.1MB pack
+          // size - a user told to free 0.1MB would free it and be refused again
+          download_size_mb: REFUSAL_THRESHOLD_MB,
+        })
+      );
+    });
+
+    it("downloads as normal when free space cannot be read", async () => {
+      // A check that cannot answer must never block a download
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(undefined);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("completed");
+    });
+
+    it("leaves a pack that fits completely unaffected", async () => {
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(PLENTY_OF_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({ download_status: "completed", download_size_mb: 0 })
+      );
+    });
+
+    it("never reads free space on web, where nothing is saved to the device", async () => {
+      const getFreeDiskSpaceBytesSpy = spyOn(
+        service["fileManagerService"],
+        "getFreeDiskSpaceBytes"
+      ).and.resolveTo(ALMOST_NO_SPACE);
+      spyOn<any>(service, "isOffline").and.returnValue(false);
+      spyOn<any>(service, "getAssetPackManifest").and.resolveTo({
+        flow_type: "asset_pack",
+        flow_name: "asset_pack_1",
+        rows: [clone(MOCK_ASSET_ENTRY)],
+      } as FlowTypes.AssetPack);
+      service["provider"] = {
+        getPublicUrl: jasmine.createSpy("getPublicUrl").and.returnValue("https://cdn/asset.png"),
+      } as any;
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(getFreeDiskSpaceBytesSpy).not.toHaveBeenCalled();
+    });
+
+    it("clears the recorded size once the pack downloads on a retry", async () => {
+      spyOn(console, "warn");
+      const { getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(ALMOST_NO_SPACE);
+      await service.downloadAssetPackByName("asset_pack_1");
+      expect(getAssetPackRow().download_size_mb).toBe(REFUSAL_THRESHOLD_MB);
+
+      // The user frees up space and the author's retry button runs `ensure_downloaded` again
+      getFreeDiskSpaceBytesSpy.and.resolveTo(PLENTY_OF_SPACE);
+      const success = await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+
+      expect(success).toBeTrue();
+      // A stale figure here would read as "still short of space"
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({ download_status: "completed", download_size_mb: 0 })
+      );
+    });
+
+    it("downloads a pack whose files declare no size, even on a nearly full device", async () => {
+      // Nothing established how big this pack is, so the margin floor must not be applied on its
+      // own - that would refuse a download over a figure we never had
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        { id: "images/no_size.png", md5Checksum: "abc" } as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(ALMOST_NO_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeTrue();
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("completed");
+    });
+
+    it("keeps the size on display while a retry that will also fail is under way", async () => {
+      // A retry passes through `in_progress` before it can re-check, so clearing the field there
+      // would blink an author's "needs X MB" warning to "needs 0 MB" and back on every retry
+      spyOn(console, "warn");
+      const { getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(ALMOST_NO_SPACE);
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+
+      // Asserted across the whole write history, not just the end state, since the blink is
+      // transient and an author's template renders every intermediate value
+      expect(assetPacks.history.map((row) => row.download_size_mb)).toEqual(
+        jasmine.arrayWithExactContents(
+          new Array(assetPacks.history.length).fill(REFUSAL_THRESHOLD_MB)
+        )
+      );
+    });
+
+    it("refuses on a roomy device when debug_free_space_mb simulates a full one", async () => {
+      // The point of the param: exercise the out-of-space path without filling a real device
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(PLENTY_OF_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: 1024 * 1024,
+      });
+
+      expect(success).toBeFalse();
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      // The device is never consulted once a reading is simulated
+      expect(getFreeDiskSpaceBytesSpy).not.toHaveBeenCalled();
+      expect(getAssetPackRow()).toEqual(
+        jasmine.objectContaining({
+          download_status: "insufficient_storage",
+          // The REAL figure, because the reading is simulated rather than the threshold - a tester
+          // sees the same warning text a user would
+          download_size_mb: REFUSAL_THRESHOLD_MB,
+        })
+      );
+    });
+
+    it("treats a simulated 0 as a full device, not as an unreadable one", async () => {
+      // Unlike the plugin's 0, which is its sentinel for a failed read and means "unknown"
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: 0,
+      });
+
+      expect(success).toBeFalse();
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("insufficient_storage");
+    });
+
+    it("lets a genuinely full test device through when the simulated reading is large", async () => {
+      spyOn(console, "warn");
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(1024);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1", {
+        debugFreeSpaceBytes: PLENTY_OF_SPACE,
+      });
+
+      expect(success).toBeTrue();
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("completed");
+    });
+
+    it("is retried by ensure_downloaded, which only skips packs that are completed", async () => {
+      assetPacks.seed(buildMockAssetPack({ download_status: "insufficient_storage" }));
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(PLENTY_OF_SPACE);
+
+      await service.ensureAssetPacksDownloaded(["asset_pack_1"]);
+
+      expect(downloadFileSpy).toHaveBeenCalled();
+      expect(getAssetPackRow().download_status).toBe("completed");
+    });
+
+    it("is not picked up by launch-time resume, like error and cancelled", async () => {
+      // Space does not appear by itself, so retrying every launch would just burn a manifest fetch
+      assetPacks.seed(buildMockAssetPack({ download_status: "insufficient_storage" }));
+      const downloadSpy = spyOn(service, "downloadAssetPackByName");
+
+      await service["resumeInterruptedAssetPackDownloads"]();
+
+      expect(downloadSpy).not.toHaveBeenCalled();
+    });
+
+    it("keeps a previously-downloaded pack at completed when an update will not fit", async () => {
+      spyOn(console, "warn");
+      // The old version is still on disk and usable, so reporting it as short of space would
+      // strand a working pack and stop `ensure_downloaded` skipping it
+      assetPacks.seed(
+        buildMockAssetPack({
+          download_status: "in_progress",
+          version: "v1",
+          has_completed_download: true,
+        })
+      );
+      const { downloadFileSpy, getAssetPackRow, getFreeDiskSpaceBytesSpy } = setupNativeDownload([
+        clone(MOCK_ASSET_ENTRY) as FlowTypes.Data_listRow<IAssetEntry>,
+      ]);
+      getFreeDiskSpaceBytesSpy.and.resolveTo(ALMOST_NO_SPACE);
+
+      const success = await service.downloadAssetPackByName("asset_pack_1");
+
+      expect(success).toBeFalse();
+      expect(downloadFileSpy).not.toHaveBeenCalled();
+      const row = getAssetPackRow();
+      expect(row.download_status).toBe("completed");
+      // Still at the version it last fully completed, so the next check retries the update
+      expect(row.version).toBe("v1");
+      expect(row.download_size_mb).toBe(0);
+    });
+
+    describe("space still needed", () => {
+      /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
+      /** Measure a manifest against `_assets_contents`, with free space read as unknown */
+      async function measure(
+        manifestRows: Partial<IAssetEntry>[],
+        existingContentsRows: Partial<IAssetEntry>[] = []
+      ) {
+        spyOn(service["fileManagerService"], "getFreeDiskSpaceBytes").and.resolveTo(undefined);
+        spyOn(console, "log");
+        assetPacks.setFlowRows("_assets_contents", existingContentsRows);
+        return service["measureAssetPackStorage"](
+          "asset_pack_1",
+          manifestRows as IAssetEntry[]
+        ) as Promise<IAssetPackStorageReport>;
+      }
+      /* eslint-enable jasmine/no-unsafe-spy */
+
+      /** An `_assets_contents` row proving THIS app integrated the slot from THIS manifest */
+      const integrated = (entry: IAssetEntry): Partial<IAssetEntry> => ({
+        id: entry.id,
+        md5Checksum: entry.md5Checksum,
+        filePath: localAssetPath(packPath(entry.id)),
+        ...(entry.overrides && {
+          overrides: {
+            theme_default: {
+              tz_sw: {
+                ...entry.overrides.theme_default.tz_sw,
+                filePath: localAssetPath(
+                  packPath(entry.overrides.theme_default.tz_sw.filePath as string)
+                ),
+              },
+            },
+          },
+        }),
+      });
+
+      it("counts a base file and each of its overrides", async () => {
+        const report = await measure([clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES)]);
+
+        // 43.4kb base + 21.6kb override
+        expect(report.outstandingSlotCount).toBe(2);
+        expect(report.outstandingBytes).toBe(65 * 1024);
+      });
+
+      it("counts only the override of an overrides-only entry", async () => {
+        // The base file is never published for these, so counting it would inflate the pack
+        const report = await measure([clone(MOCK_ASSET_ENTRY_OVERRIDES_ONLY)]);
+
+        expect(report.outstandingSlotCount).toBe(1);
+        expect(report.outstandingBytes).toBe(42.4 * 1024);
+      });
+
+      it("counts only what is missing from a partly downloaded pack", async () => {
+        const report = await measure(
+          [clone(MOCK_ASSET_ENTRY), clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES)],
+          [integrated(MOCK_ASSET_ENTRY)]
+        );
+
+        expect(report.outstandingSlotCount).toBe(2);
+        expect(report.outstandingBytes).toBe(65 * 1024);
+      });
+
+      it("needs nothing, and requires nothing, for a pack that is up to date", async () => {
+        const report = await measure([clone(MOCK_ASSET_ENTRY)], [integrated(MOCK_ASSET_ENTRY)]);
+
+        expect(report.outstandingSlotCount).toBe(0);
+        expect(report.outstandingBytes).toBe(0);
+        // No download to refuse, so the margin floor must not be applied
+        expect(report.requiredBytes).toBe(0);
+        expect(report.isSufficient).toBeTrue();
+      });
+
+      it("re-counts a file whose recorded checksum no longer matches the manifest", async () => {
+        // Republished with new content, so the local copy is stale
+        const report = await measure(
+          [clone(MOCK_ASSET_ENTRY)],
+          [{ ...integrated(MOCK_ASSET_ENTRY), md5Checksum: "a_previous_version" }]
+        );
+
+        expect(report.outstandingBytes).toBe(100 * 1024);
+      });
+
+      it("re-counts a file saved but never integrated", async () => {
+        // A manifest-shaped row with no local filePath: an interrupted write, not a held file
+        const report = await measure(
+          [clone(MOCK_ASSET_ENTRY)],
+          [{ id: MOCK_ASSET_ENTRY.id, md5Checksum: MOCK_ASSET_ENTRY.md5Checksum }]
+        );
+
+        expect(report.outstandingBytes).toBe(100 * 1024);
+      });
+
+      it("under-estimates rather than guesses when the manifest carries no size", async () => {
+        spyOn(console, "warn");
+        const report = await measure([{ id: "images/no_size.png", md5Checksum: "abc" }]);
+
+        expect(report.outstandingSlotCount).toBe(1);
+        expect(report.unknownSizeSlotCount).toBe(1);
+        // Counts as 0, so at worst the download starts and fails the old way
+        expect(report.outstandingBytes).toBe(0);
+      });
+
+      it("requires nothing when no outstanding file declared a size", async () => {
+        spyOn(console, "warn");
+        const report = await measure([{ id: "images/no_size.png", md5Checksum: "abc" }]);
+
+        // Slots outstanding, but no size established, so there is no threshold to hold it to
+        expect(report.outstandingSlotCount).toBe(1);
+        expect(report.unknownSizeSlotCount).toBe(1);
+        expect(report.requiredBytes).toBe(0);
+        expect(report.isSufficient).toBeTrue();
+      });
+
+      it("adds the margin floor to a small pack", async () => {
+        const report = await measure([clone(MOCK_ASSET_ENTRY)]);
+
+        expect(report.outstandingBytes).toBe(100 * 1024);
+        expect(report.requiredBytes).toBe(100 * 1024 + ASSET_PACK_STORAGE_MARGIN_MIN_BYTES);
+      });
+
+      it("scales the margin with the size of a large pack", async () => {
+        // 1GB, where 10% comfortably exceeds the floor
+        const oneGbKb = 1024 * 1024;
+        const report = await measure([
+          { id: "video/big.mp4", md5Checksum: "abc", size_kb: oneGbKb },
+        ]);
+
+        expect(report.requiredBytes).toBe(oneGbKb * 1024 * (1 + ASSET_PACK_STORAGE_MARGIN_RATIO));
+      });
+    });
+  });
+
   describe("attempts on a pack that has completed before", () => {
     /* eslint-disable jasmine/no-unsafe-spy -- helper is only ever called from within an `it` */
     /** Fail the download once it is under way, without the manifest fetch itself failing */
@@ -3328,6 +3723,7 @@ describe("RemoteAssetsService", () => {
         download_status_updated_at: jasmine.any(String),
         assets_total_count: 0,
         assets_downloaded_count: 0,
+        download_size_mb: 0,
         download_progress_percent: 0,
         version: "",
         available_version: "",
@@ -3520,6 +3916,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: true,
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3543,6 +3940,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3567,6 +3965,7 @@ describe("RemoteAssetActionFactory ensure_downloaded", () => {
     expect(mockService.ensureAssetPacksDownloaded).toHaveBeenCalledWith(["asset_pack_1"], {
       awaitCompletion: false,
       debugDownloadDelayMs: 3000,
+      debugFreeSpaceBytes: undefined,
       checkForUpdates: true,
     });
   });
@@ -3589,6 +3988,7 @@ describe("RemoteAssetActionFactory download", () => {
 
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 3000,
+      debugFreeSpaceBytes: undefined,
     });
   });
 
@@ -3608,6 +4008,7 @@ describe("RemoteAssetActionFactory download", () => {
 
     expect(mockService.downloadAssetPackByName).toHaveBeenCalledWith("asset_pack_1", {
       debugDownloadDelayMs: 0,
+      debugFreeSpaceBytes: undefined,
     });
   });
 
@@ -3665,6 +4066,30 @@ describe("isImmediateAssetPackAction", () => {
     expect(isImmediateAssetPackAction({ ...action, args: ["ensure_downloaded"] })).toBeFalse();
     expect(isImmediateAssetPackAction({ ...action, args: ["reset"] })).toBeFalse();
     expect(isImmediateAssetPackAction({ ...action, args: undefined })).toBeFalse();
+  });
+});
+
+describe("resolveDebugFreeSpaceBytes", () => {
+  it("converts megabytes to bytes", () => {
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: 50 })).toBe(50 * 1024 * 1024);
+  });
+
+  it("reads an authored string value", () => {
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "10" })).toBe(10 * 1024 * 1024);
+  });
+
+  it("keeps 0 as a real instruction to simulate a full device", () => {
+    // Distinct from unset, which reads the device
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: 0 })).toBe(0);
+  });
+
+  it("falls back to reading the device when unset or unusable", () => {
+    spyOn(console, "warn");
+    expect(resolveDebugFreeSpaceBytes({})).toBeUndefined();
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "" })).toBeUndefined();
+    // A bad value must never silently decide a download
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: "lots" })).toBeUndefined();
+    expect(resolveDebugFreeSpaceBytes({ debug_free_space_mb: -1 })).toBeUndefined();
   });
 });
 

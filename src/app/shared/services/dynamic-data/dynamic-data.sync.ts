@@ -10,6 +10,10 @@ export type IDynamicDataFlowRef = {
 /**
  * Flows persisted locally via the dynamic data write cache but excluded from
  * server `dynamic_data` sync.
+ *
+ * `_asset_packs` must stay listed here: its `download_status` can be `insufficient_storage`, which
+ * is derived from the device's free space, and Apple's E174.1 declaration
+ * (`ios/App/App/PrivacyInfo.xcprivacy`) forbids that leaving the device.
  */
 export const LOCAL_ONLY_DYNAMIC_DATA_FLOWS: readonly IDynamicDataFlowRef[] = [
   // Flow names match remote-asset.types.ts constants
