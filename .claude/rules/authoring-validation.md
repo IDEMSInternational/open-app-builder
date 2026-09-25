@@ -93,3 +93,12 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
 Meta fields are removed, `@local.<row>` is rewritten to `this.value`, `display_group` variables are hoisted
 (rows physically moved), names are auto-generated, and types are defaulted (empty → `set_variable`,
 `template_group` → `template`). Treat generated JSON as compiled output.
+
+- **`SyntaxError: Unexpected token ';'` at runtime = an unbalanced `@calc(...)` on the page.** The converter
+  does not check bracket balance: `extractDynamicEvaluators` takes everything after `@calc(` as the
+  expression and stores it unchanged. At runtime `evaluateJSExpression`
+  (`src/app/shared/utils/utils.ts:355`) builds the body as `… return (${expression});`, so a missing `)`
+  puts the appended `;` where JS expected the bracket. The reported location is always inside the generated
+  VM script (the globals prelude pushes it ~line 90+), never the sheet, and the page renders blank with no
+  other clue. Scan the generated JSON for unbalanced `value`/`condition` cells containing `@calc(` rather
+  than reading the stack trace. (verified 2026-09-23, cef_m `loop_example`)
