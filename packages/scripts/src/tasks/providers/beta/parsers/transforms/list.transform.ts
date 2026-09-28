@@ -17,23 +17,8 @@ export function isListName(name?: string) {
 export function parseListValue(value: any) {
   // Assume all falsy values indicate an empty array
   if (!value) return [];
-
-  // Assume any non-string values already parsed
-  //  if (typeof value !== "string") return value;
-
-  // HACK - use list separator to infer whether an actual list or not
-  // E.g. avoid parsing reference `my_list : @local.some_other_list`
-  //  if (!value.includes(";")) return value;
-
-  // HACK - assume any list with | characters designed as parameter list
-  //  const isCollectionList = value.includes("|");
-
   // convert to array
   let parsed: any[] = parseAppDataListString(value);
-  // map array elements if collection list
-  // if (isCollectionList) {
-  //    parsed = parsed.map((el: string) => parseAppDataCollectionString(el, "|"));
-  // }
   return parsed;
 }
 
@@ -47,31 +32,6 @@ function parseAppDataListString(str: string, delimeter = ";"): string[] {
       .filter((val: string) => val !== "")
   );
 }
-
-// function parseAppDataCollectionString(
-//   str: string,
-//   delimeter = ";"
-// ): { [key: string]: string | boolean } {
-//   const collection = {};
-//   const entryList = parseAppDataListString(str, delimeter);
-//   entryList.forEach((el) => {
-//     let [key, value] = el.split(":");
-//     value = value ? value.trim() : value;
-//     // handle keys that define deeper nesting, such as time.hours: 7
-//     // do not nest dynamic references
-//     if (key.includes(".") && !key.startsWith("@")) {
-//       const [base, ...nested] = key.split(".");
-//       collection[base] = setNestedProperty(
-//         nested.join("."),
-//         parseStringValue(value),
-//         collection[base]
-//       );
-//     } else {
-//       collection[key] = parseStringValue(value);
-//     }
-//   });
-//   return collection;
-// }
 
 /** Parse the value of every column with a name ending `_list` into an array */
 export function parseListColumns<T extends Record<string, any>>(row: T): T {

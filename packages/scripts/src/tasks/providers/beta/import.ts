@@ -1,13 +1,30 @@
 import fs from "fs-extra";
 import path from "path";
+import { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { SRC_ASSETS_PATH } from "../../../paths";
 import { generateRuntimeConfig } from "../appData";
 import { logOutput } from "../../../utils";
 import { loadExternalDeploymentJson } from "./deploymentConfig";
 import { decryptExternalFolder } from "./encryption";
+import { processAssets } from "./processAssets";
 import { processSheets } from "./processSheets";
+import { downloadExternalAssets, downloadExternalSheets } from "./sync";
 
-export async function importExternalDeployment(sourcePath: string, verbose = false) {
+interface IImportOptions {
+  /** Sync sheets and assets from google drive to the source folder before processing */
+  sync?: boolean;
+  /** When syncing, skip download and use previously downloaded files */
+  skipDownload?: boolean;
+  verbose?: boolean;
+}
+
+/**
+ * Import an external deployment from a local folder, writing its deployment config, sheets and
+ * assets to the app assets app_data folder. Optionally sync sheets and assets from google drive
+ * to the source folder first
+ */
+export async function importExternalDeployment(sourcePath: string, options: IImportOptions = {}) {
+  const { sync = false, verbose = false } = options;
   const absoluteSourcePath = path.resolve(sourcePath);
 
   // Verify source exists
@@ -24,16 +41,29 @@ export async function importExternalDeployment(sourcePath: string, verbose = fal
 
   fs.ensureDirSync(targetAppDataFolder);
 
-  // Save the source path for later use by 'set' command
+  // Save the source path for later use by sync commands
   fs.writeFileSync(path.join(targetAppDataFolder, ".external_source"), absoluteSourcePath);
 
   // Decrypt config before compiling so it can populate to deployment json
   await decryptExternalFolder(path.resolve(absoluteSourcePath, "encrypted"));
-  writeDeploymentJson(absoluteSourcePath, targetAppDataFolder);
+  const deploymentConfig = loadExternalDeploymentJson(absoluteSourcePath);
+  writeDeploymentJson(deploymentConfig, targetAppDataFolder);
+
+  if (sync) {
+    await downloadExternalSheets(absoluteSourcePath, deploymentConfig, options);
+    await downloadExternalAssets(absoluteSourcePath, deploymentConfig, options);
+  }
 
   processSheets({
     sourceSheetsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
     targetAppDataFolder,
+    verbose,
+  });
+
+  processAssets({
+    sourceAssetsFolder: path.resolve(absoluteSourcePath, "app_data", "assets"),
+    targetAppDataFolder,
+    deploymentConfig,
     verbose,
   });
 
@@ -46,8 +76,7 @@ export async function importExternalDeployment(sourcePath: string, verbose = fal
 }
 
 /** Compile the source deployment config and write the runtime config to deployment.json */
-function writeDeploymentJson(sourcePath: string, targetAppDataFolder: string) {
-  const deploymentConfig = loadExternalDeploymentJson(sourcePath);
+function writeDeploymentJson(deploymentConfig: IDeploymentConfigJson, targetAppDataFolder: string) {
   const runtimeConfig = generateRuntimeConfig(deploymentConfig);
   fs.writeJsonSync(path.resolve(targetAppDataFolder, "deployment.json"), runtimeConfig, {
     spaces: 2,

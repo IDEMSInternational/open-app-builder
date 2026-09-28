@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
 import { logOutput, logWarning, recursiveFindByExtension } from "../../../utils";
-import { combineGlobals, parseDataList, parseTemplate } from "./parsers";
+import { combineGlobals, IGlobalSheet, parseDataList, parseTemplate } from "./parsers";
 
 /** Flow types copied from the source sheets folder. All other flow types are skipped */
 export const IMPORTED_FLOW_TYPES = ["data_list", "global", "template"] as const;
@@ -23,7 +23,7 @@ const FLOW_PARSERS: {
 interface IProcessSheetsOptions {
   /** Folder containing source flow jsons (including subfolders) */
   sourceSheetsFolder: string;
-  /** Target app_data folder, where flows are written to `sheets` and listed in `contents.json` */
+  /** Target app_data folder, where flows are written to `sheets` and listed in `sheets/contents.json` */
   targetAppDataFolder: string;
   /**
    * Specific source json files to process. If omitted, all files in the source folder are
@@ -38,8 +38,8 @@ interface IProcessSheetsOptions {
  * and template folders based on their flow_type, and update contents.json.
  *
  * When `filePaths` are provided only those flows are written and merged into the existing
- * contents.json. Globals are combined into a single output, so if any global is updated all
- * globals are re-read from the source folder
+ * contents.json. Globals are combined into a single `_global` flow, so if any global is updated
+ * all globals are re-read from the source folder and the combined flow rebuilt
  */
 export function processSheets(options: IProcessSheetsOptions): IFlowsByType {
   const { sourceSheetsFolder, targetAppDataFolder, filePaths, verbose = false } = options;
@@ -49,7 +49,7 @@ export function processSheets(options: IProcessSheetsOptions): IFlowsByType {
   const isPartialUpdate = filePaths !== undefined;
   const targetSheetsFolder = path.resolve(targetAppDataFolder, "sheets");
 
-  const flowsByType = readFlowFiles(
+  const { flowsByType } = readFlowFiles(
     filePaths ?? recursiveFindByExtension(sourceSheetsFolder, "json"),
     verbose
   );
@@ -75,14 +75,19 @@ export function processSheets(options: IProcessSheetsOptions): IFlowsByType {
     }
   }
 
+  let combinedGlobal: FlowTypes.FlowTypeWithData | undefined;
   if (!isPartialUpdate || flowsByType.global.length > 0) {
-    const allGlobals = isPartialUpdate
-      ? readFlowFiles(recursiveFindByExtension(sourceSheetsFolder, "json")).global
-      : flowsByType.global;
-    combineGlobals(allGlobals, path.resolve(targetSheetsFolder, "global"), verbose);
+    // Always rebuild from all source globals, as rows from a single sheet cannot be safely
+    // replaced if its flow has been renamed or removed
+    const globalSheets = readGlobalSheets(sourceSheetsFolder);
+    combinedGlobal = combineGlobals(
+      globalSheets,
+      path.resolve(targetSheetsFolder, "global"),
+      verbose
+    );
   }
 
-  writeContentsJson(flowsByType, targetAppDataFolder, isPartialUpdate);
+  writeContentsJson(flowsByType, targetAppDataFolder, isPartialUpdate, combinedGlobal);
 
   logOutput({
     msg1: isPartialUpdate ? "Updated sheets" : "Imported sheets",
@@ -94,23 +99,55 @@ export function processSheets(options: IProcessSheetsOptions): IFlowsByType {
 
 /**
  * Write contents.json listing flows by type and name, excluding rows.
- * If merging, entries are added to the existing contents.json instead of replacing it
+ * If merging, entries are added to the existing contents.json instead of replacing it.
+ * Individual globals are not listed, only the combined global flow (when rebuilt)
  */
-function writeContentsJson(flowsByType: IFlowsByType, targetAppDataFolder: string, merge: boolean) {
+function writeContentsJson(
+  flowsByType: IFlowsByType,
+  targetAppDataFolder: string,
+  merge: boolean,
+  combinedGlobal?: FlowTypes.FlowTypeWithData
+) {
   const contents: IContentsJson = merge ? readContentsJson(targetAppDataFolder) : {};
   for (const flowType of IMPORTED_FLOW_TYPES) {
     contents[flowType] ??= {};
+    if (flowType === "global") continue;
     for (const flow of flowsByType[flowType]) {
-      const { rows, status, ...keptFields } = flow;
-      contents[flowType][flow.flow_name] = keptFields as FlowTypes.FlowTypeBase;
+      contents[flowType][flow.flow_name] = extractContentsData(flow);
     }
   }
-  fs.writeJsonSync(path.resolve(targetAppDataFolder, "contents.json"), contents, { spaces: 2 });
+  if (combinedGlobal) {
+    contents.global = { [combinedGlobal.flow_name]: extractContentsData(combinedGlobal) };
+  }
+  fs.writeJsonSync(getContentsPath(targetAppDataFolder), contents, { spaces: 2 });
+}
+
+function extractContentsData(flow: FlowTypes.FlowTypeWithData) {
+  const { rows, status, ...keptFields } = flow;
+  return keptFields as FlowTypes.FlowTypeBase;
+}
+
+/** Read all global flows from the source sheets folder, along with their sheet name */
+function readGlobalSheets(sourceSheetsFolder: string): IGlobalSheet[] {
+  const { flowsByType, sourcePaths } = readFlowFiles(
+    recursiveFindByExtension(sourceSheetsFolder, "json")
+  );
+  return flowsByType.global.map((flow) => {
+    const sourcePath = sourcePaths[`global/${flow.flow_name}`];
+    const relativePath = path.relative(sourceSheetsFolder, sourcePath).split(path.sep).join("/");
+    const sheet = relativePath.replace(/\.json$/, "");
+    return { sheet, flow };
+  });
 }
 
 function readContentsJson(targetAppDataFolder: string): IContentsJson {
-  const contentsPath = path.resolve(targetAppDataFolder, "contents.json");
+  const contentsPath = getContentsPath(targetAppDataFolder);
   return fs.existsSync(contentsPath) ? fs.readJsonSync(contentsPath) : {};
+}
+
+/** Sheets contents.json sits within the sheets folder, where it is imported by the app */
+function getContentsPath(targetAppDataFolder: string) {
+  return path.resolve(targetAppDataFolder, "sheets", "contents.json");
 }
 
 /**
@@ -131,7 +168,7 @@ function removeRenamedFlowTypes(flowsByType: IFlowsByType, targetAppDataFolder: 
     }
   }
   if (changed) {
-    fs.writeJsonSync(path.resolve(targetAppDataFolder, "contents.json"), contents, { spaces: 2 });
+    fs.writeJsonSync(getContentsPath(targetAppDataFolder), contents, { spaces: 2 });
   }
 }
 
@@ -142,6 +179,7 @@ function readFlowFiles(filePaths: string[], verbose = false) {
     global: [],
     template: [],
   };
+  /** Source file path of each flow, keyed by `flow_type/flow_name` */
   const seenFlowPaths: { [key: string]: string } = {};
 
   for (const filePath of filePaths) {
@@ -175,7 +213,7 @@ function readFlowFiles(filePaths: string[], verbose = false) {
     seenFlowPaths[key] = filePath;
     flowsByType[flow_type].push(flow);
   }
-  return flowsByType;
+  return { flowsByType, sourcePaths: seenFlowPaths };
 }
 
 function isImportedFlowType(flowType: string): flowType is IImportedFlowType {

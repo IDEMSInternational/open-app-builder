@@ -40,19 +40,38 @@ const workflows: IDeploymentWorkflows = {
               if (!sourcePath) {
                 throw new Error("Source path is required");
               }
-              await tasks.beta.importExternalDeployment(sourcePath, !!options.verbose);
+              await tasks.beta.importExternalDeployment(sourcePath, {
+                verbose: !!options.verbose,
+              });
             },
           },
         ],
       },
-      set: {
-        label: "Set active deployment",
+      import_sync: {
+        label: "Sync sheets and assets then import deployment",
+        options: [
+          {
+            flags: "-s, --skip-download",
+            description: "Skip download and just process local sheets and assets",
+          },
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
         steps: [
           {
-            name: "set",
-            function: async ({ tasks, args }) => {
-              const deploymentName = args[0];
-              await tasks.beta.setExternalDeployment(deploymentName);
+            name: "import_sync",
+            function: async ({ tasks, args, options }) => {
+              const sourcePath = args[0];
+              if (!sourcePath) {
+                throw new Error("Source path is required");
+              }
+              await tasks.beta.importExternalDeployment(sourcePath, {
+                sync: true,
+                skipDownload: !!options.skipDownload,
+                verbose: !!options.verbose,
+              });
             },
           },
         ],
@@ -74,6 +93,30 @@ const workflows: IDeploymentWorkflows = {
             name: "sync_sheets",
             function: async ({ tasks, options }) => {
               await tasks.beta.syncExternalSheets({
+                skipDownload: !!options.skipDownload,
+                verbose: !!options.verbose,
+              });
+            },
+          },
+        ],
+      },
+      sync_assets: {
+        label: "Sync assets to external deployment",
+        options: [
+          {
+            flags: "-s, --skip-download",
+            description: "Skip download and just process local assets",
+          },
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "sync_assets",
+            function: async ({ tasks, options }) => {
+              await tasks.beta.syncExternalAssets({
                 skipDownload: !!options.skipDownload,
                 verbose: !!options.verbose,
               });
