@@ -167,6 +167,40 @@ describe("UserMetaService", () => {
       );
     });
 
+    it("should skip local-only dynamic data flows during import", async () => {
+      spyOn(mockDynamicDataService, "resetAll").and.returnValue(Promise.resolve());
+      spyOn(mockDynamicDataService, "snapshot").and.returnValue(Promise.resolve([]));
+      spyOn(mockDynamicDataService, "bulkUpsert").and.returnValue(Promise.resolve());
+      spyOn(mockDynamicDataService, "getState").and.returnValue(Promise.resolve({}));
+
+      const dynamicData = {
+        data_list: {
+          test_flow: {
+            item1: { name: "Item 1", value: "value_1" },
+          },
+          _asset_packs: {
+            pack_1: { download_status: "completed" },
+          },
+        },
+        asset_pack: {
+          _assets_contents: {
+            "images/a.png": { filepath: "/local/a.png" },
+          },
+        },
+      };
+
+      await (service as any).importUserDynamicData(dynamicData);
+
+      expect(mockDynamicDataService.bulkUpsert).toHaveBeenCalledTimes(1);
+      expect(mockDynamicDataService.bulkUpsert).toHaveBeenCalledWith(
+        "data_list",
+        "test_flow",
+        jasmine.arrayContaining([
+          jasmine.objectContaining({ id: "item1", name: "Item 1", value: "value_1" }),
+        ])
+      );
+    });
+
     it("should call getState to ensure all writes are persisted", async () => {
       spyOn(mockDynamicDataService, "resetAll").and.returnValue(Promise.resolve());
       spyOn(mockDynamicDataService, "snapshot").and.returnValue(Promise.resolve([]));

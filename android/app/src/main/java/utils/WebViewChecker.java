@@ -20,10 +20,10 @@ public class WebViewChecker {
     private static final String TAG = "WebViewChecker";
 
     public static void check(Activity activity) {
-        // 1. Ensure running on android 6.0 (API 23) or higher
+        // 1. Ensure running on android 7.0 (API 24) or higher
         // NOTE - play store will prevent install but could potentially be older device updating or sideloaded
-        if (Build.VERSION.SDK_INT < 23) {
-            showUnsupportedDialog(activity, "🚫📱 This app is not supported on Android 5.\n➡️📱 Use a device running Android 6 or higher");
+        if (Build.VERSION.SDK_INT < 24) {
+            showUnsupportedDialog(activity, "🚫📱 This app is not supported on Android 6 or older.\n➡️📱 Use a device running Android 7 or higher");
             return;
         }
 
@@ -54,8 +54,8 @@ public class WebViewChecker {
             return WebView.getCurrentWebViewPackage();
         }
 
-        // Android 6 and 7 - check multiple potential providers with fallback
-        // Likely chrome on android 7 and google webview on Android 6, but may vary depending on manufacturer
+        // Android 7 (API 24-25) - check multiple potential providers with fallback
+        // Likely chrome, but may vary depending on manufacturer
         String[] providers = {"com.android.chrome", "com.google.android.webview", "com.android.webview"};
         PackageManager pm = activity.getPackageManager();
 

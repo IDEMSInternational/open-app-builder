@@ -1,7 +1,17 @@
 import { normalize, resolve } from "path";
 import { logWarning, replicateDir } from "shared";
-import type { IDeploymentWorkflows, IWorkflowStepContext } from "./workflow.model";
+import type { IDeploymentWorkflows, IWorkflow, IWorkflowStepContext } from "./workflow.model";
 import type { IAssetSource, IDeploymentConfigJson } from "data-models";
+
+/**
+ * Copy processed data to src assets, so that a running dev server can pick up changes.
+ * Skipped when run from a parent workflow, which should copy once all child workflows complete
+ */
+const copyToAppStep: IWorkflow["steps"][number] = {
+  name: "copy_to_app",
+  condition: async ({ parent }) => !parent,
+  function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+};
 
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -29,10 +39,7 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
-      {
-        name: "copy_to_app",
-        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
-      },
+      copyToAppStep,
       {
         name: "sync_watch",
         condition: async ({ options }) => options.contentWatch === true,
@@ -116,6 +123,7 @@ const workflows: IDeploymentWorkflows = {
             sourceTranslationsFolder: workflow.translations_apply.output.strings,
           }),
       },
+      copyToAppStep,
     ],
   },
   sync_assets: {
@@ -123,12 +131,12 @@ const workflows: IDeploymentWorkflows = {
     options: [
       {
         flags: "-s, --skip-download",
-        description: "Skip download and just process local sheets",
+        description: "Skip download and just process local assets",
       },
     ],
     steps: [
       {
-        name: "assets_dl",
+        name: "gdrive_assets_dl",
         function: async ({ tasks, config, options }) => {
           // HACK - ensure drive id provided as array (can be removed once deprecation removed)
           const { assets_folders } = migrateLegacyGdriveConfig(config.google_drive);
@@ -156,22 +164,37 @@ const workflows: IDeploymentWorkflows = {
         },
       },
       {
-        name: "assets_post_process",
-        function: async ({ tasks, workflow }) => {
-          return tasks.appData.postProcessAssets({
-            sources: workflow.assets_dl.output.map(({ path, folderConfig }) => ({
-              path,
-              name: folderConfig.name,
-              remote: folderConfig.remote,
-            })),
-          });
+        name: "canto_assets_dl",
+        condition: async ({ config }) => config.canto !== undefined,
+        function: async ({ tasks, options }) => {
+          if (options.skipDownload) {
+            return tasks.canto.download.getDownloadedFolders();
+          }
+          return tasks.canto.download.downloadFiles();
         },
       },
       {
-        name: "sync_remote_assets",
-        condition: async ({ config }) => config.remote_assets !== undefined,
-        function: async ({ tasks }) => tasks.appData.syncRemoteAssets(),
+        name: "canto_assets_restructure",
+        condition: async ({ config }) => config.canto !== undefined,
+        function: async ({ tasks, workflow }) => {
+          return tasks.canto.copy.copyFiles(workflow.canto_assets_dl.output);
+        },
       },
+      {
+        name: "assets_post_process",
+        function: async ({ tasks, workflow }) => {
+          const gdriveSources = workflow.gdrive_assets_dl.output.map(({ path, folderConfig }) => ({
+            path,
+            name: folderConfig.name,
+            remote: folderConfig.remote,
+          }));
+          const cantoSources = workflow.canto_assets_restructure?.output || [];
+          return tasks.appData.postProcessAssets({
+            sources: [...gdriveSources, ...cantoSources],
+          });
+        },
+      },
+      copyToAppStep,
     ],
   },
   sync_local: {
@@ -235,6 +258,15 @@ const workflows: IDeploymentWorkflows = {
           await tasks.gdrive.authorize();
           process.exit(0);
         },
+      },
+    ],
+  },
+  sync_canto_authorize: {
+    label: "Authorize Canto for asset sync",
+    steps: [
+      {
+        name: "authorize",
+        function: async ({ tasks }) => tasks.canto.authorize.authorize(),
       },
     ],
   },

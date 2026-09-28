@@ -16,6 +16,7 @@ import { DeploymentService } from "../deployment/deployment.service";
 import { Observable, defer, switchMap } from "rxjs";
 import { MigrationService } from "../migration/migration.service";
 import { DYNAMIC_DATA_MIGRATIONS } from "./migrations";
+import { omitLocalOnlyDynamicDataFlows } from "./dynamic-data.sync";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -257,6 +258,11 @@ export class DynamicDataService extends AsyncServiceBase {
     // ensure all writes are complete before returning overall state
     await this.writeCache.persistStateToDB();
     return this.writeCache.state;
+  }
+
+  /** Access persisted state excluding flows that should not sync to the server */
+  public async getSyncState() {
+    return omitLocalOnlyDynamicDataFlows(await this.getState());
   }
 
   public async getSchema(flow_type: FlowTypes.FlowType, flow_name: string) {

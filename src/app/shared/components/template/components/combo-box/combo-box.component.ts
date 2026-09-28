@@ -42,6 +42,8 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   input_position: coerce.string("bottom"),
   /** Placeholder text for the answer input field. Modal variant only. */
   answer_placeholder: coerce.string(""),
+  /** When true, allows the displayed button text to wrap over multiple lines. */
+  wrap: coerce.boolean(false),
 }));
 
 @Component({
@@ -56,7 +58,7 @@ export class TmplComboBoxComponent
 {
   public answerText = signal("");
   private customAnswerSelected = signal(false);
-  private customAnswerText: string;
+  private customAnswerText = "";
   private componentDestroyed$ = new ReplaySubject(1);
 
   // HACK - allow combo_box to include data_items child row to define answer list

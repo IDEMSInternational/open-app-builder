@@ -36,6 +36,18 @@ To enable reactive templates in your app, set the `useReactiveTemplates` flag to
 
 Once enabled, the app will use the new reactive template system for supported flows and components.
 
+## Reactive Expressions
+
+| type         | name | value                                             | parameter_list     | condition             | comments                                                                                               |
+| ----         | ---- | -----                                             | --------------     | ---------             | --------                                                                                               |
+| text         | ex1  | This value: ${local.myVar} will be displayed      | value_type: string |                       | typical string value type in a displayed component                                                     |
+| text         | ex2  | "This value" + local.myVar + "will be displayed"  | value_type: script |                       | alternative syntax to resolve a string for display                                                     |
+| text         | ex3  | This is conditional                               | value_type: string | local.myVar === "foo" | condition is always evaluated as value_type: script                                                    |
+| text         | ex4  | local.count > 0 ? local.count + " items" : "none" | value_type: script |                       | ternary expression returning a computed string                                                         |
+| set_variable | ex5  | key: name_1 \| value: This is value 1;<br>key: name_2 \| value: This is value 2; | value_type: list   |                       | semicolon-separated entries, each with pipe-separated key:value pairs; parsed into an array of objects |
+| set_variable | ex6  | key: ${local.key} \| value: static label;         | value_type: list   |                       | values may reference local/global/system variables using `${local.var}` or bare `local.var` syntax     |
+| dropdown     | ex7  | key: opt_a \| value: Option A;<br>key: opt_b \| value: Option B;<br>key: opt_c \| value: Option C; | value_type: list   |                       | inline static options list for a dropdown component                                                    |
+
 ## Further Reading
 
 - See the `reactive-components` directory for available base and UI components.
@@ -54,29 +66,31 @@ Functionality not yet supported by reactive templates:
 
 Components without reactive equivalents:
 
-* accordion
+* accordion x
+* course accordion
 * animated-slides
-* audio
+* audio x
 * button-apple-sign-in
 * button-google-sign-in
 * carousel
-* combo-box
+* combo-box x
 * dashed-box
 * data-items
-* date-time-picker
+* date-time-picker x
 * drawer
 * html
 * icon-banner
 * latex
 * layout
-* navigation-bar
+* navigation-bar x
 * number-selector
 * odk-form
-* pdf
+* pdf x
 * progress-path
 * qr-code
 * radio-button-grid
-* radio-group
+* radio-group 
+* radio-list x
 * round-icon-button
 * select-text
 * shared-data
@@ -90,4 +104,4 @@ Components without reactive equivalents:
 * text-bubble
 * tile-component
 * timer
-* youtube
+* youtube x

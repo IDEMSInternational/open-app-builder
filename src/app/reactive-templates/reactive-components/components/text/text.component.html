@@ -2,10 +2,10 @@
   <div
     class="large standard normal"
     [class]="params.style.value()"
-    [ngStyle]="!hasTextValue ? { display: 'none' } : { display: 'block' }"
-    [innerHTML]="this.value()?.toString() | markdown"
+    [innerHTML]="this.value() | markdown"
     [style]="row().style_list"
     [style.textAlign]="params.textAlign.value()"
+    [style.display]="hasTextValue() ? 'block' : 'none'"
     [attr.data-test]="name()"
   ></div>
 }

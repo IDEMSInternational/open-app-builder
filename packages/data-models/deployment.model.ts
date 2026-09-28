@@ -137,6 +137,89 @@ export interface IAssetSource {
   remote?: boolean;
 }
 
+/** Match a Canto custom field value */
+export interface ICantoRemoteAssetPackCustomFieldCondition {
+  type: "custom_field";
+  /** Canto custom field name, e.g. "Caregiver Gender" */
+  field: string;
+  /** Value the custom field must match */
+  value: string;
+}
+
+/** Match when all nested conditions match */
+export interface ICantoRemoteAssetPackAndCondition {
+  type: "and";
+  conditions: ICantoRemoteAssetPackCondition[];
+}
+
+/** Match when any nested condition matches */
+export interface ICantoRemoteAssetPackOrCondition {
+  type: "or";
+  conditions: ICantoRemoteAssetPackCondition[];
+}
+
+/** Match when a Canto custom field has no value set */
+export interface ICantoRemoteAssetPackFieldEmptyCondition {
+  type: "field_empty";
+  /** Canto custom field name, e.g. "Child Age Category" */
+  field: string;
+}
+
+/**
+ * Condition used to select Canto assets for a remote asset pack.
+ *
+ * Supported leaf types: `custom_field`, `field_empty`. `and` / `or` composition
+ * is supported and can combine any condition types as they are added.
+ *
+ * To add a new leaf type (e.g. subfolder, scheme, file extension):
+ * 1. Add an interface here with a `type` discriminator
+ * 2. Extend this union
+ * 3. Handle the new type in `packages/scripts/src/tasks/providers/canto/remote-assets.ts`
+ *
+ * @example Custom field only
+ * `{ type: "custom_field", field: "Caregiver Gender", value: "Female" }`
+ *
+ * @example Field has no value set
+ * `{ type: "field_empty", field: "Child Age Category" }`
+ *
+ * @example Combine conditions (all must match)
+ * `{ type: "and", conditions: [
+ *   { type: "custom_field", field: "Language", value: "English" },
+ *   { type: "field_empty", field: "Child Age Category" },
+ * ]}`
+ *
+ * @example Future leaf types (not yet implemented)
+ * `{ type: "subfolder", path: "videos/intro" }`
+ * `{ type: "scheme", scheme: "audio" }`
+ * `{ type: "extension", extension: ".mp3" }`
+ */
+export type ICantoRemoteAssetPackCondition =
+  | ICantoRemoteAssetPackCustomFieldCondition
+  | ICantoRemoteAssetPackAndCondition
+  | ICantoRemoteAssetPackOrCondition
+  | ICantoRemoteAssetPackFieldEmptyCondition;
+
+/**
+ * Remote asset pack defined within a Canto source folder.
+ * Matching assets are written to `app_data/remote_assets/{name}` instead of core assets.
+ * Packs are not exclusive: an asset is copied into every pack whose condition it matches.
+ */
+export interface ICantoRemoteAssetPack {
+  /** Asset pack name used for `app_data/remote_assets/{name}` and the pack manifest */
+  name: string;
+  condition: ICantoRemoteAssetPackCondition;
+}
+
+export interface ICantoSourceFolder {
+  id: string;
+  name: string;
+  /**
+   * Remote asset packs to extract from this Canto folder.
+   * Each pack uses a `condition` to select matching files (see `ICantoRemoteAssetPackCondition`).
+   */
+  remote_assets?: ICantoRemoteAssetPack[];
+}
+
 /** Deployment settings not available at runtime  */
 interface IDeploymentCoreConfig {
   google_drive: {
@@ -164,6 +247,19 @@ interface IDeploymentCoreConfig {
     sheets_path: string;
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
+  };
+  canto?: {
+    /** Canto API keys used for authentication. API keys are created/managed at <canto-url>/settings/basicSettings/apiKeys */
+    appId: string;
+    appSecret: string;
+    /** Optional path for generated Canto OAuth token cache. Defaults to `packages/scripts/config/canto-token.json`. */
+    accessTokenPath?: string;
+    /** The URL of the Canto repository, e.g. "https://parentingforlifelonghealth.canto.com/" */
+    url: string;
+    /** Canto folder/album id and local name for downloaded source assets */
+    sourceFolders: ICantoSourceFolder[];
+    /** Optional overrides mapping Canto language labels to app language codes, e.g. `{ English: "us_en" }`. */
+    languageMappings?: Record<string, string>;
   };
   android: {
     /** Play store unique app identifier, e.g. international.idems.example_app" */

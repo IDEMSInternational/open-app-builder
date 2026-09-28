@@ -16,6 +16,8 @@ enum PROTECTED_FIELDS {
   APP_UPDATE_AVAILABLE = "app_update_available",
   /** Track whether an update has been downloaded and is available for install */
   APP_UPDATE_DOWNLOADED = "app_update_downloaded",
+  /** Track whether a remote asset pack download is currently in progress */
+  ASSET_PACK_DOWNLOAD_IN_PROGRESS = "asset_pack_download_in_progress",
   APP_USER_ID = "app_user_id",
   APP_VERSION = "app_version",
   AUTH_USER_ID = "auth_user_id",

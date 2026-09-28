@@ -1,4 +1,6 @@
 import { TestBed } from "@angular/core/testing";
+import { Capacitor } from "@capacitor/core";
+import { Directory, Filesystem } from "@capacitor/filesystem";
 import { FileManagerService } from "./file-manager.service";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { MockErrorHandlerService } from "../error-handler/error-handler.service.mock.spec";
@@ -48,6 +50,40 @@ describe("FileManagerService", () => {
     expect(downloadTemplateAssetSpy).toHaveBeenCalledOnceWith({
       relativePath: "assets/example.pdf",
       open: true,
+    });
+  });
+
+  /**
+   * Driven against the real (web) Filesystem rather than a stub: Capacitor registers plugins behind
+   * a Proxy, so `spyOn(Filesystem, ...)` does not take effect and would silently test nothing.
+   */
+  describe("deleteSavedFolder", () => {
+    const TARGET_PATH = "remote_assets";
+
+    beforeEach(() => {
+      spyOn(Capacitor, "isNativePlatform").and.returnValue(true);
+    });
+
+    it("deletes a folder that exists under the deployment's storage", async () => {
+      const path = `${service.cacheName}/${TARGET_PATH}`;
+      await Filesystem.mkdir({ path, directory: Directory.Data, recursive: true });
+
+      await expectAsync(service.deleteSavedFolder(TARGET_PATH)).toBeResolvedTo(true);
+
+      await expectAsync(service.getSavedFileInfo(TARGET_PATH)).toBeResolvedTo({ exists: false });
+    });
+
+    it("reports nothing deleted when the folder does not exist", async () => {
+      // Expected, e.g. resetting before anything has been downloaded - not a failure
+      await expectAsync(service.deleteSavedFolder(TARGET_PATH)).toBeResolvedTo(false);
+    });
+
+    it("rethrows when a folder that does exist cannot be deleted", async () => {
+      // A real filesystem failure must reach the caller rather than looking like "nothing to do".
+      // The folder is absent so rmdir genuinely fails; the existence check is what decides which.
+      spyOn(service, "getSavedFileInfo").and.resolveTo({ exists: true });
+
+      await expectAsync(service.deleteSavedFolder(TARGET_PATH)).toBeRejected();
     });
   });
 });
