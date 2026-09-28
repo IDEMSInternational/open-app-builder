@@ -29,6 +29,17 @@ const DEFLATE_EXTENSIONS = new Set([
 const DEFLATE_LEVEL = 6;
 const STORE_LEVEL = 0;
 
+/**
+ * Fixed modification time stamped into every archive entry: fflate otherwise stamps `Date.now()`,
+ * so a pack whose content had not changed rebuilt to different bytes every sync. 1980-01-01 is the
+ * zero point of the DOS timestamp format zip headers use - nothing earlier can be encoded at all.
+ *
+ * Built from local components rather than a fixed instant because fflate reads `getFullYear()`,
+ * `getHours()` and friends: an instant encodes differently per timezone, and throws outright in
+ * any zone that was behind UTC in 1980.
+ */
+const ARCHIVE_ENTRY_MTIME = new Date(1980, 0, 1);
+
 /** @returns the fflate compression level to use for a given pack-relative path */
 export function getArchiveCompressionLevel(relativePath: string): 0 | 6 {
   return DEFLATE_EXTENSIONS.has(path.extname(relativePath).toLowerCase())
@@ -151,7 +162,11 @@ export function writeAssetPackArchive(
     });
   }
 
-  const archive = zipSync(archiveEntries as any, { level: STORE_LEVEL });
+  // Merged into each entry's own options, which win - entries set only `level`, so all get the mtime
+  const archive = zipSync(archiveEntries as any, {
+    level: STORE_LEVEL,
+    mtime: ARCHIVE_ENTRY_MTIME,
+  });
   const archiveFileName = getAssetPackArchiveFileName(assetPackName, manifest.version);
   fs.writeFileSync(path.resolve(targetFolder, archiveFileName), archive);
   // Cleaned after the write, never before: a failed write then leaves the previous archive in place

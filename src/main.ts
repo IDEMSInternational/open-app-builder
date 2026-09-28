@@ -7,9 +7,13 @@ import { AppModule } from "./app/app.module";
 import { environment } from "./environments/environment";
 import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS, IDeploymentRuntimeConfig } from "packages/data-models";
 import { DEPLOYMENT_CONFIG } from "./app/shared/services/deployment/deployment.service";
+import { reloadOnDevSync } from "./app/shared/utils/dev-sync.utils";
 
 if (environment.production) {
   enableProdMode();
+} else {
+  // Start before bootstrap so that a sync can also fix an app that fails to load
+  reloadOnDevSync();
 }
 
 /** Load deployment config from asset json, returning default config if not available*/
