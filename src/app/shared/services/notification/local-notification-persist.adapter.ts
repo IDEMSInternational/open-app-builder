@@ -5,7 +5,7 @@ import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
 import { generateTimestamp } from "../../utils";
 import { generateDBMeta } from "../db/db.service";
-import type { LocalNotificationService } from "./local-notification.service";
+import type { ILocalNotification, LocalNotificationService } from "./local-notification.service";
 
 export interface ILocalNotificationInteraction {
   sent_recorded_timestamp: string;
@@ -79,16 +79,16 @@ export class LocalNotificationPersistAdapter {
       });
   }
 
-  /** Persist campaign extra plus display fields for analytics */
-  private buildNotificationMeta(notification: {
-    title?: string;
-    body?: string;
-    extra?: Record<string, any>;
-    _row_id?: string;
-  }) {
+  /**
+   * Persist notification `extra` (e.g. campaign_id, action_list) alongside display fields for analytics.
+   * Campaign notifications include the authored `row_id` in `extra`, otherwise fall back to the
+   * `_row_id` stored locally when scheduling (not available on notifications from action callbacks)
+   */
+  private buildNotificationMeta(
+    notification: Partial<Pick<ILocalNotification, "title" | "body" | "extra" | "_row_id">>
+  ) {
     return {
       ...notification.extra,
-      // Prefer authored row id from extra; fall back to local _row_id when present
       row_id: notification.extra?.row_id ?? notification._row_id,
       title: notification.title,
       text: notification.body,
@@ -110,9 +110,9 @@ export class LocalNotificationPersistAdapter {
     await this.db.put({
       ...entry,
       ...update,
-      ...(entry.sent_recorded_timestamp
-        ? { sent_recorded_timestamp: entry.sent_recorded_timestamp }
-        : {}),
+      // Only record the first time a notification is seen as sent. Session notifications are re-emitted
+      // on every notification load, which would otherwise keep moving the timestamp forward (#3581)
+      sent_recorded_timestamp: entry.sent_recorded_timestamp ?? update.sent_recorded_timestamp,
       _sync_status: "pending",
     });
   }
