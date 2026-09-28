@@ -72,7 +72,7 @@ asset_pack: download | ensure_downloaded | cancel_download | reset
 | Action | Behaviour |
 | --- | --- |
 | `download` | Download a single named pack, named either as an action arg (`asset_pack: download: my_pack`) or an `asset_pack` param, arg winning if both are given. Always runs, even if already `completed`, and always blocks the action queue. Because it always re-walks the manifest, it is also how to force an update check |
-| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `true`) and `check_for_updates` (default `true`) |
+| `ensure_downloaded` | Download only packs not already `completed`. Takes `asset_pack` or `asset_pack_list` (array or JSON string), plus `await` (default `false`) and `check_for_updates` (default `true`) |
 | `cancel_download` | Abort all active downloads and mark them `cancelled`. Dispatched immediately rather than queued |
 | `reset` | Return **every** pack to its pre-download state: cancel active downloads, delete all downloaded files, clear both data lists. All or nothing — if files cannot be deleted the data lists are left alone, so the app keeps describing what is actually on disk |
 
@@ -189,8 +189,8 @@ Two requests for the **same** pack join the same in-flight attempt — launch-ti
 
 A request for a **different** pack while one is active is refused, and the entry points differ in what follows:
 
-- **Background** (`awaitCompletion: false`, used by resume): refused packs are retried once the active download settles, so the queue is not dropped.
-- **Awaited** (`awaitCompletion: true`, the default for `ensure_downloaded`): returns `false` immediately. An awaited call blocks the template action queue, and a pack parked in `waiting_for_connection` can wait indefinitely, so it must not be able to wedge the queue behind unrelated work.
+- **Background** (`awaitCompletion: false`, used by resume and the default for `ensure_downloaded`): refused packs are retried once the active download settles, so the queue is not dropped.
+- **Awaited** (`awaitCompletion: true`, `ensure_downloaded` with `await: true`): returns `false` immediately. An awaited call blocks the template action queue, and a pack parked in `waiting_for_connection` can wait indefinitely, so it must not be able to wedge the queue behind unrelated work.
 
 ### Cancelling
 

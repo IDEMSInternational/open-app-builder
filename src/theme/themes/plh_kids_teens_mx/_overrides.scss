@@ -1,4 +1,4 @@
-/// Theme rule overrides specific to plh_kids_teens_pa.
+/// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
   // button
@@ -192,7 +192,7 @@
   // module header
   plh-module-details-header {
     .module-header {
-      background-color: #9ecbf5;
+      background-color: var(--ion-color-primary-200);
     }
     .module-title {
       padding: 0 16px 30px 16px;
@@ -276,7 +276,7 @@
     .circle-card-wrapper {
       .image-and-badge-wrapper {
         .circle-wrapper.highlighted {
-          box-shadow: 0px 2px 12px rgba($color: #007fbf, $alpha: 0.7);
+          box-shadow: 0px 2px 12px color-mix(in srgb, var(--ion-color-primary-500) 70%, transparent);
         }
         .circle-wrapper.completed {
           border: 4px solid var(--ion-color-primary-variant-200) !important;
@@ -304,19 +304,6 @@
           justify-content: center;
           margin-bottom: 10px;
         }
-      }
-    }
-  }
-
-  // bottom_nav
-  plh-bottom-navigation-bar {
-    .plh-bottom-nav-wrapper {
-      border-top: 1px solid #e7e8e9;
-      .label {
-        color: #6686b1;
-      }
-      .active-link .label {
-        color: #0066a1;
       }
     }
   }
