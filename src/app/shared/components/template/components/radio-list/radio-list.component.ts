@@ -16,6 +16,16 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   options_key: coerce.string("name"),
   options_value: coerce.string("text"),
   /**
+   * Key of the option to select when the row has no value of its own, i.e. the option's
+   * `options_key` field. Applied once, as soon as the answer options are available, and written
+   * in whichever shape `value_as_object` specifies.
+   *
+   * Provides a way to preselect an option by key when `value_as_object` is true, where authoring
+   * the full object value on the row directly is impractical. An authored row `value` takes
+   * precedence, so the two should not be combined.
+   */
+  initial_selected_option_key: coerce.string(""),
+  /**
    * When true, the row value is set as `{ key, value }` using the selected option's
    * options_key and options_value fields. When false (default), the value is the key string only.
    * Required for options with `input_allowed`.
@@ -60,6 +70,9 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   /** Whether we have warned about the missing `value_as_object` flag. */
   private hasWarnedValueAsObject = false;
 
+  /** Whether `initial_selected_option_key` has been resolved (applied or discarded). */
+  private hasAppliedInitialSelection = false;
+
   constructor(private dataItemsService: DataItemsService) {
     super();
     // An `input_allowed` option renders nothing without `value_as_object`, as there is
@@ -71,6 +84,17 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
       console.warn("[radio_list] options with `input_allowed` require `value_as_object: true`", {
         row: this._row?.name,
       });
+    });
+
+    // Apply `initial_selected_option_key` once the answer options are known (they may arrive
+    // asynchronously via a nested `data_items` row, and are needed to build an object value).
+    effect(() => {
+      if (this.hasAppliedInitialSelection) return;
+      const initialKey = this.params().initialSelectedOptionKey;
+      // Wait rather than discard - a dynamic reference may not have resolved yet
+      if (!initialKey || this.answerOptions().length === 0) return;
+      this.hasAppliedInitialSelection = true;
+      void this.applyInitialSelection(initialKey);
     });
   }
 
@@ -94,23 +118,54 @@ export class TmplRadioListComponent extends TemplateBaseComponentWithParams(Auth
   public async handleItemClick(selectedKey: string) {
     if (this.params().valueAsObject) {
       this.persistCurrentCustomInput();
-      const option = this.answerOptions().find(
-        (item) => item[this.params().optionsKey] === selectedKey
+    }
+    await this.setValue(this.buildValueForKey(selectedKey));
+  }
+
+  /** Build the row value representing a selected option, in the shape set by `value_as_object`. */
+  private buildValueForKey(selectedKey: string): string | IRadioListObjectValue {
+    if (!this.params().valueAsObject) return selectedKey;
+    const option = this.answerOptions().find(
+      (item) => item[this.params().optionsKey] === selectedKey
+    );
+    if (option && this.isInputAllowed(option)) {
+      return { key: selectedKey, value: this.getCustomTextForKey(selectedKey) };
+    }
+    return { key: selectedKey, value: option?.[this.params().optionsValue] ?? null };
+  }
+
+  /**
+   * Select the option named by `initial_selected_option_key`, writing the value in full so that
+   * references such as `@local.<row_name>.key` resolve before the user has touched the list.
+   * Triggers `set_self` (and so dependent row re-evaluation) but not `changed` actions, as this
+   * is initialisation rather than a user selection.
+   */
+  private async applyInitialSelection(initialKey: string) {
+    const currentValue = this.value();
+    if (currentValue !== undefined && currentValue !== null && currentValue !== "") {
+      console.warn(
+        "[radio_list] `initial_selected_option_key` ignored as row already has a value",
+        {
+          row: this._row?.name,
+          value: currentValue,
+        }
       );
-      if (option && this.isInputAllowed(option)) {
-        await this.setValue({
-          key: selectedKey,
-          value: this.getCustomTextForKey(selectedKey),
-        });
-        return;
-      }
-      await this.setValue({
-        key: selectedKey,
-        value: option?.[this.params().optionsValue] ?? null,
+      return;
+    }
+    // Compare as strings, as the authored parameter cannot express a non-string data list key,
+    // then select using the option's own key so the type matches what a click would produce.
+    const option = this.answerOptions().find(
+      (item) => String(item[this.params().optionsKey]) === initialKey
+    );
+    if (!option) {
+      console.warn("[radio_list] `initial_selected_option_key` does not match any answer option", {
+        row: this._row?.name,
+        initial_selected_option_key: initialKey,
+        options_key: this.params().optionsKey,
       });
       return;
     }
-    await this.setValue(selectedKey);
+    await this.setValue(this.buildValueForKey(option[this.params().optionsKey]), false);
   }
 
   /** Remember draft text immediately (before debounced setValue). */

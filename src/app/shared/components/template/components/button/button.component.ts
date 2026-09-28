@@ -9,11 +9,13 @@ const VARIANTS = [
   "card",
   "card-portrait",
   "compact",
+  "faq",
   "flexible",
   "full",
   "information",
   "medium",
   "navigation",
+  "nested_color",
   "short",
   "standard",
   "tall",
@@ -28,11 +30,13 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
    * - "card"
    * - "card-portrait"
    * - "compact"
+   * - "faq"
    * - "flexible"
    * - "full"
    * - "information"
    * - "medium"
    * - "navigation"
+   * - "nested_color"
    * - "short"
    * - "standard"
    * - "tall"

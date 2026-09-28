@@ -32,7 +32,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   justify-content: center;
   align-items: start;
   height: fit-content;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 
   &[data-variant~="gray"] {
     .text-bubble {
@@ -117,13 +117,8 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   }
 }
 
-.text-bubble {
-  // Override default margins of child text component:
-  // handle with padding on this parent element instead
-  plh-tmpl-text {
-    --margin-text: 0;
-  }
-}
+// NOTE: font size of the child text component's rendered markdown is handled in
+// `text-bubble.component.global.scss`, as that content cannot be reached from here
 
 // This creates the bubble shape, including the tail
 .text-bubble {
@@ -132,6 +127,11 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   --h: 0em; /* height */
 
   --p: 0%; /* triangle position (0%:left 100%:right) */
+
+  // The bubble's padding handles spacing at its edges, so remove the outer margins of text inside it.
+  // Spacing between blocks within the text is unaffected
+  --text-outer-margin: 0;
+
   position: relative;
 
   clip-path: none;
@@ -143,12 +143,10 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   min-width: 124px;
 
   p {
-    font-size: var(--font-size-text-medium);
     color: var(--ion-color-gray-900);
   }
 
   li {
-    font-size: var(--font-size-text-medium);
     color: var(--ion-color-gray-900);
   }
 
