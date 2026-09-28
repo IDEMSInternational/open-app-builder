@@ -13,9 +13,11 @@ interface IComponentParams {
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [attr.data-param-style]="params().style">
-      <img [src]="value() | translatedAsset" />
-    </div>
+    @if (value()) {
+      <div class="tmpl-image-container" [attr.data-param-style]="params().style">
+        <img [src]="value() | translatedAsset" />
+      </div>
+    }
   `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [

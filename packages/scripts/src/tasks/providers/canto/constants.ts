@@ -1,5 +1,7 @@
 /** Canto custom field containing an app theme folder name, configured in Canto. */
 export const CANTO_CUSTOM_FIELD_THEME = "app_theme";
+/** Theme name treated as the default by the assets post-processor (i.e. requires no theme folder). */
+export const DEFAULT_THEME_NAME = "theme_default";
 /** Canto custom field containing a Canto language label, configured in Canto. */
 export const CANTO_CUSTOM_FIELD_LANGUAGE_LABEL = "Language";
 

@@ -19,6 +19,7 @@ nav:
       - authors/feedback.md
       - authors/actions.md
       - authors/translations.md
+      - authors/remote-assets.md
       - Advanced:
           - authors/advanced/looping-data.md
           - authors/advanced/data-generators.md
