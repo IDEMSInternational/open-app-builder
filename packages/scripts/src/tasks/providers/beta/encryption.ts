@@ -30,7 +30,7 @@ export async function decryptExternalFolder(folderPath: string) {
   const privateKey = await loadPrivateKey(folderPath);
   for (const filePath of filePaths) {
     const decryptedData = privateKey.decrypt(fs.readFileSync(filePath));
-    const decryptedFilePath = filePath.replace(`.${ENCRYPTED_SUFFIX}`, "");
+    const decryptedFilePath = filePath.slice(0, -`.${ENCRYPTED_SUFFIX}`.length);
     fs.writeFileSync(decryptedFilePath, decryptedData);
     // keep same modified time so up-to-date files are not decrypted again
     const { atime, mtime } = fs.statSync(filePath);
