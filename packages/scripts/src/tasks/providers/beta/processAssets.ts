@@ -37,12 +37,8 @@ export function processAssets(options: IProcessAssetsOptions) {
   const targetAssetsFolder = path.resolve(targetAppDataFolder, "assets");
   if (!fs.existsSync(sourceAssetsFolder)) {
     logWarning({ msg1: "Assets folder not found in source path", msg2: sourceAssetsFolder });
-    // The app imports assets contents.json at build time, so ensure it exists
-    const contentsPath = path.resolve(targetAssetsFolder, "contents.json");
-    if (!fs.existsSync(contentsPath)) {
-      fs.ensureDirSync(targetAssetsFolder);
-      fs.writeFileSync(contentsPath, JSON.stringify({}, null, 2));
-    }
+    fs.emptyDirSync(targetAssetsFolder);
+    fs.writeJsonSync(path.resolve(targetAssetsFolder, "contents.json"), {}, { spaces: 2 });
     return;
   }
 

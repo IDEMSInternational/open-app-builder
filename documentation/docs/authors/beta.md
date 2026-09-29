@@ -39,7 +39,7 @@ yarn workflow beta import_sync [source_path]
 | `-v, --verbose` | Show all logs |
 
 ### Sync Sheets
-Download sheets from the `google_drive.sheets_folders` listed in the deployment config, convert them to flow jsons in the external repository `app_data/sheets` folder, then process all sheets into the app. Flows no longer present in google drive are deleted from the external repository.
+Download sheets from the `google_drive.sheets_folders` listed in the deployment config, convert them to flow json in the external repository `app_data/sheets` folder, then process all sheets into the app. Flows no longer present in google drive are deleted from the external repository.
 
 Requires a deployment to have been imported first.
 

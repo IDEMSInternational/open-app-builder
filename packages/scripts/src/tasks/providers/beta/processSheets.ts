@@ -2,6 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
 import { logOutput, logWarning, recursiveFindByExtension } from "../../../utils";
+import { isValidFlowName } from "./utils";
 import { combineGlobals, IGlobalSheet, parseDataList, parseTemplate } from "./parsers";
 
 /** Flow types copied from the source sheets folder. All other flow types are skipped */
@@ -199,6 +200,13 @@ function readFlowFiles(filePaths: string[], verbose = false) {
     }
     if (!flow_name) {
       logWarning({ msg1: "Skipping flow with no flow_name", msg2: filePath });
+      continue;
+    }
+    if (!isValidFlowName(flow_name)) {
+      logWarning({
+        msg1: "Skipping flow with invalid flow_name",
+        msg2: `${flow_name}: ${filePath}`,
+      });
       continue;
     }
     // Flows are written flat by name, so warn if the same name appears in multiple subfolders

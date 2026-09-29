@@ -24,6 +24,7 @@ import { decryptExternalFolder } from "./encryption";
 import { parseSheetWorkbook } from "./parsers";
 import { processAssets } from "./processAssets";
 import { processSheets } from "./processSheets";
+import { isValidFlowName } from "./utils";
 
 /** Local cache of workbooks downloaded from google drive, used to only download changed files */
 const SHEETS_CACHE_PATH = path.resolve(SCRIPTS_WORKSPACE_PATH, "cache", "beta_sheets");
@@ -336,6 +337,9 @@ function writeFlows(
   const existingPaths = listExistingFilePaths(targetSheetsFolder);
   const updatedPaths: string[] = [];
   for (const flow of flows) {
+    if (!isValidFlowName(flow.flow_name)) {
+      throw new Error(`Invalid flow name: ${flow.flow_name}`);
+    }
     const filename = `${flow.flow_name}.json`;
     const targetPath = existingPaths[filename] || path.resolve(targetSheetsFolder, filename);
     // Match fs.writeJsonSync output so unchanged files can be skipped

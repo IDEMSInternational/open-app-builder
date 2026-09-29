@@ -23,7 +23,7 @@ export function parseSheetWorkbook(
   const flows: FlowTypes.FlowTypeWithData[] = [];
   for (const { flow_type, flow_name, ...contentColumns } of contentList) {
     if (!flow_name) continue;
-    if (!sheetData.hasOwnProperty(flow_name)) {
+    if (!Object.prototype.hasOwnProperty.call(sheetData, flow_name)) {
       logWarning({ msg1: `No Contents: ${flow_name}`, msg2: sourcePath });
       continue;
     }
