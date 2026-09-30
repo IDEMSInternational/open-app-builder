@@ -1,194 +1,6 @@
 /// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
-  // button
-  plh-button {
-    ion-button[data-variant~="card"][data-param-style~="no-background"] {
-      color: var(--ion-color-gray-900);
-    }
-  }
-
-  // audio
-  plh-audio {
-    ion-button.btn-play[data-variant~="button_only"],
-    ion-button.btn-play[data-variant~="compact"] {
-      --background: var(--ion-color-primary-variant-700) !important;
-    }
-
-    .container-player[data-variant~="compact"],
-    .container-player[data-variant~="large"] {
-      .progress-block {
-        ion-range {
-          --bar-background: white !important;
-        }
-      }
-    }
-
-    // Compact variant
-    .container-player[data-variant~="compact"] {
-      .second-row {
-        border: 0.9px solid var(--ion-color-primary-100);
-        background: var(--ion-color-primary-50);
-        .progress-block {
-          ion-range {
-            --knob-background: var(--ion-color-primary-variant-700) !important;
-          }
-        }
-      }
-    }
-
-    // Large variant
-    .container-player[data-variant~="large"] {
-      .second-row {
-        border: 0.9px solid var(--ion-color-primary-100);
-        background: var(--ion-color-primary-50);
-        .controls {
-          .rewind,
-          .forward {
-            ion-icon {
-              color: var(--ion-color-primary-variant-700) !important;
-            }
-          }
-          .btn-play {
-            --background: var(--ion-color-primary-50) !important;
-            ion-icon {
-              color: var(--ion-color-primary-variant-700) !important;
-            }
-          }
-        }
-        .progress-block {
-          .audio-range {
-            --bar-background-active: var(--ion-color-primary-400) !important;
-            --pin-background: var(--ion-color-primary-300) !important;
-            --knob-background: var(--ion-color-primary-300) !important;
-          }
-        }
-      }
-    }
-  }
-
-  // accordion
-  plh-accordion-component {
-    ion-accordion {
-      background: var(--ion-color-primary-700);
-      .accordion-section-title {
-        color: white;
-      }
-    }
-    ion-item.accordion-content {
-      border-top: 1px solid var(--ion-color-gray-300) !important;
-
-      plh-tmpl-text {
-        .standard {
-          color: white !important;
-          p,
-          ul,
-          ol {
-            a {
-              color: var(--ion-color-gray-50) !important;
-            }
-          }
-          a {
-            color: var(--ion-color-gray-50) !important;
-          }
-        }
-      }
-    }
-  }
-
-  // Text Bubble
-  tmpl-text-bubble {
-    .text-bubble-container {
-      .speaker-name {
-        color: var(--ion-color-gray-600);
-      }
-    }
-  }
-
-  // Text
-  plh-tmpl-text {
-    .standard {
-      color: var(--ion-color-gray-900);
-    }
-  }
-
-  // Text Area
-  plh-text-area {
-    .wrapper .text_area {
-      background: white !important;
-      border: 1px solid var(--ion-color-gray-300) !important;
-    }
-  }
-
-  // Text Box
-  plh-text-box {
-    .wrapper {
-      .text-box-input {
-        background: white !important;
-        border: 1px solid var(--ion-color-gray-300) !important;
-        color: var(--ion-color-gray-900) !important;
-      }
-    }
-  }
-
-  // Select Text
-  plh-select-text {
-    .box-wrapper {
-      .text {
-        border: 1px solid var(--ion-color-secondary-200);
-      }
-      .copy-button {
-        background-color: var(--ion-color-secondary-600);
-        color: white;
-      }
-
-      &[data-toggled="true"] {
-        background-color: var(--ion-color-secondary-50) !important;
-      }
-    }
-  }
-
-  // Radio Button Group
-  plh-radio-group {
-    .btn_triangle {
-      &_container {
-        label {
-          border: 1px solid var(--ion-color-primary-variant-400);
-        }
-        .checked {
-          border: 2px solid var(--ion-color-primary-variant-400);
-        }
-      }
-    }
-    .standard-label {
-      background-color: var(--ion-color-secondary-variant-100);
-    }
-    .checked {
-      background: var(--ion-color-secondary-variant-200);
-      border: 2px solid var(--ion-color-secondary-variant-300);
-    }
-  }
-
-  // Display Group
-  .display-group-wrapper {
-    &[data-variant~="box_primary"] {
-      border: none;
-      border-inline-start: 6px solid var(--ion-color-secondary-400);
-    }
-    &[data-variant~="box_secondary"] {
-      border: none;
-      border-inline-start: 6px solid var(--ion-color-primary-variant-600);
-    }
-    &[data-variant~="box_gray"] {
-      border: none;
-      border-inline-start: 6px solid var(--ion-color-gray-600);
-    }
-    &[data-variant~="box_white"] {
-      border: none;
-      border-inline-start: 6px solid var(--ion-color-primary-600);
-    }
-  }
-
   // module header
   plh-module-details-header {
     .module-header {
@@ -196,16 +8,12 @@
     }
     .module-title {
       padding: 0 16px 30px 16px;
-      h2 {
-        font-size: 24px;
-      }
     }
   }
 
   // Module list item
   plh-module-list-item {
     .container {
-      min-height: 54px !important;
       background-color: var(--ion-color-secondary-200);
       border-radius: 16px !important;
       margin-bottom: 8px !important;
@@ -216,13 +24,11 @@
         }
       }
       &[data-highlighted~="true"] {
-        border: none;
         background-color: var(--ion-color-primary-variant-700) !important;
         padding: 16px 12px !important;
       }
       &[data-locked~="true"] {
         box-shadow: none !important;
-        border: 1px solid var(--ion-color-gray-300);
         background-color: var(--ion-color-gray-50);
         padding: 8px 12px !important;
         .module-title {
@@ -233,7 +39,6 @@
         }
       }
       &[data-completed~="true"] {
-        border: 1px solid var(--ion-color-primary-700);
         background-color: var(--ion-color-primary-100);
         padding: 8px 12px !important;
         .module-title {
@@ -254,8 +59,6 @@
     }
     &[data-variant~="module"] {
       background: var(--ion-color-primary-variant-600) !important;
-      box-shadow: -1px 2px 12px rgba(43, 144, 199, 0.6);
-      border: 1px solid var(--ion-color-primary-variant-400);
     }
     &[data-variant~="orange"] {
       background: var(--ion-color-secondary-variant-400);
@@ -278,22 +81,12 @@
         .circle-wrapper.highlighted {
           box-shadow: 0px 2px 12px color-mix(in srgb, var(--ion-color-primary-500) 70%, transparent);
         }
-        .circle-wrapper.completed {
-          border: 4px solid var(--ion-color-primary-variant-200) !important;
-        }
       }
     }
   }
 
   // Completion Modal
   plh-completion-modal {
-    .completion-modal {
-      background: linear-gradient(
-        310deg,
-        var(--ion-color-primary-variant-500),
-        var(--ion-color-primary-variant-200)
-      );
-    }
     .wrapper {
       .title-wrapper {
         justify-content: center;
@@ -312,22 +105,11 @@
   .popup-backdrop {
     &[data-variant~="plh_completion"] {
       .popup-container {
-        .popup-content {
-          background: linear-gradient(
-            310deg,
-            var(--ion-color-secondary-400),
-            var(--ion-color-secondary-100)
-          );
-        }
         plh-tmpl-text p,
         plh-tmpl-text h1,
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           color: var(--ion-color-secondary-900);
-        }
-        .close-button {
-          border: 0.8px solid var(--ion-color-primary-variant-200);
-          color: var(--ion-color-primary-variant-500);
         }
       }
     }
