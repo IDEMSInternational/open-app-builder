@@ -79,6 +79,16 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   (or contains `@calc(now())`). It ends only when two shuffles pick the same item (~1/n per round), rebuilding
   nested templates each round. Fix: gate the row on its own output (e.g. `condition: !@local.picked_id`) so it
   picks once, or drop `shuffle`. (found 2026-09-10)
+  - **Rows inside a `data_items` loop don't react to `set_local`.** The loop re-evaluates its child rows
+  (conditions, values) only when its data list changes or its own row object changes; the parent hands
+  the children over unprocessed (`template-row.service.ts` returns early for `data_items`), so a local
+  changing on the parent doesn't re-run them. A `condition: @local.x` on a child looks like it works if the
+  same action list also writes to the loop's list (e.g. `set_data` on that list), and silently does nothing
+  otherwise. Keep rows that are shown/hidden by locals outside the loop; if the loop only selects one row
+  by a known id, drop it and use the id directly.
+  (found 2026-09-30: V3 stack_hp_review_gen inside `get_check_in`; back from the check-in set
+  show_po: false but nothing redrew)
+
   
 ## Pre-wired hooks for validation
 
@@ -102,3 +112,8 @@ Meta fields are removed, `@local.<row>` is rewritten to `this.value`, `display_g
   VM script (the globals prelude pushes it ~line 90+), never the sheet, and the page renders blank with no
   other clue. Scan the generated JSON for unbalanced `value`/`condition` cells containing `@calc(` rather
   than reading the stack trace. (verified 2026-09-23, cef_m `loop_example`)
+  Also: anything nested *inside* such a loop (e.g. a whole module template) is rebuilt with a new @item every
+  time the parent re-processes, which any set_local / set_field triggers. Keep stateful templates outside
+  the loop: pick into a latched local (`data_changed | set_local: picked_id: @items[0]?.id` with
+  `condition: !@local.picked_id`, no child rows) and reference `@local.picked_id`.
+  (found 2026-09-25: V3 gen_stack_module_start_at_id, the module restarted at its first page after the check-in hand-over)
