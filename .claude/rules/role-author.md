@@ -56,7 +56,18 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   `config.ts`; a copied tab in the deployment workbook deliberately overrides the shared one.
 - Field defaults (`declare_field_default`) only apply if the field has never been set on that device/origin.
 - **`emit: completed` / `emit: uncompleted` at the root of a `nav_stack` template goes nowhere.** The nav-stack renders the template with no parent row and no `emittedValue` binding, so nothing listens. A template that must work both nested (parent row handles the emit) and as a nav-stack root can handle its own emit with an `update_action_list` row — its actions are merged into the container's own row as `_self_triggered`, e.g. `uncompleted | nav_stack: close_top`. Condition that row so it only applies in the standalone case: when the template *is* nested, `update_action_list` merges into the parent's row, which usually already carries the same handler, and you close one stack too many. (verified 2026-09-09)
-- **A `nav_stack` modal does not refresh the page behind it when it closes.** Nav-stack dismissal only removes the modal (`src/app/feature/nav-stack/nav-stack.service.ts`); the automatic re-render `nav_resume` emit only happens on router navigation (`go_to`/`pop_up`, see `template-nav.service.ts` `handleQueryParamChange`). So any `set_variable` on the underlying page (e.g. a `@calc()` over a `@field.*` that the modal changed) stays stale until a manual refresh. Workaround: on the row that opens the stack, add `click | emit: force_reload` **after** `click | nav_stack: open` — that row is inside the underlying page's container chain, so the reload reaches the top-most template and happens invisibly behind the modal. Ordering matters: put it last, or the re-render destroys the row before the modal opens. Not usable: `emit: force_reload` from inside the modal (its container has no parent, so it only reloads itself), or `emit: force_reprocess` anywhere (it deliberately skips `set_variable` rows).(verified 2026-09-09)
+- **A `nav_stack` modal does not refresh the page behind it when it closes.** Nav-stack dismissal only removes the modal (`src/app/feature/nav-stack/nav-stack.service.ts`); the automatic re-render `nav_resume` emit only happens on router navigation (`go_to`/`pop_up`, see `template-nav.service.ts` `handleQueryParamChange`). So any `set_variable` on the underlying page (e.g. a `@calc()` over a `@field.*` that the modal changed) stays stale until a manual refresh. Workaround: on the row that opens the stack, add `click | emit: force_reload` **after** `click | nav_stack: open` — that row is inside the underlying page's container chain, so the reload reaches the top-most template and happens invisibly behind the modal. Ordering matters: put it last, or the re-render destroys the row before the modal opens. Not usable: `emit: force_reload` from inside the modal (its container has no parent, so it only reloads itself), or `emit: force_reprocess` anywhere (it deliberately skips `set_variable` rows).(verified 2026-09-09)   If the fields only change *later inside the modal* (so a reload at open is too early), latch on the
+  underlying page instead: the opening row ends with `click | emit: completed` (not `force_reload`, which would
+  reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
+  conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
+  (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
+- **`@local`/`@fields` are not resolved in action parameters whose name starts with `_`**, except `_id`,
+  `_index`, `_first`, `_last` (`shouldEvaluateField`, `template-variables.service.ts`;
+  `TEMPLATE_ROW_ITEM_METADATA_FIELDS`, `flowTypes.ts`). So `set_data | _list_id: @local.x` passes the
+  literal text `@local.x`, set_data throws "[data_list] … not found", and the rest of that action list
+  never runs. Use a fixed list name (or one row per list). (verified 2026-09-25: gen_stack_module_start_at_id
+  check-in hand-over)
+
 
 - **`click | …` on a `template` row never fires.** Actions on a nested-template row only run when the child template emits a value matching the trigger (`template-action.service.ts`, `emit` handler). Use the child's emitted values (e.g. `completed` / `uncompleted` from nav-button templates). (verified 2026-09-14)
 
@@ -86,5 +97,20 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   do not run. Use `set_field`, `set_data`, `add_data`, `go_to`, `nav_stack` etc., and keep values static,
   since they may be evaluated when the notification is created rather than when it's tapped. The variable
   holding the list must be named `…_action_list` to parse. (verified 2026-09-21)
+- **A `==content_list==` without its header row silently drops the whole workbook.** The first row is read as
+  the column names (`flow_type`, `flow_subtype`, `flow_name`, `status`, …); if it's deleted, no row matches and
+  every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
+  runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
+  (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
+- **`set_variable` values are evaluated as JavaScript**, so `value: @local.a >= @global.b` stores a real
+  true/false, not text, and `!@local.x` in a condition negates it correctly. References are swapped for
+  `this.local.…` and the whole expression is evaluated; plain-text substitution is only the fallback when
+  that fails (e.g. mixed text like `Score: @local.x`) (`template-variables.service.ts`
+  `parseContextExpression`). No `@calc()` wrapper is needed for comparisons. (verified 2026-09-25)
+- **A `display_group` without `style` is a row.** The default is `style: row`
+  (`display-group.component.ts`), so wrapping a `header` and a page in a display group puts them side by side,
+  and every child after the first gets a `1em` left margin (`display-group.component.scss`). Add
+  `parameter_list: style: column` to any display group used just to show/hide a stack of rows.
+  (found 2026-09-25: V3 article_wrap `is_relax`, white space left of the module pause)
 
 
