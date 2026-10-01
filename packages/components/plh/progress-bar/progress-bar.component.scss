@@ -23,7 +23,7 @@ $progress-bar-row-gap: 24px;
     // Gap between the title and the bar below it
     margin-bottom: var(--small-margin);
     font-size: var(--progress-header-font-size);
-    font-weight: 500;
+    font-weight: var(--font-weight-standard);
 
     .progress-title {
       margin: 0;
