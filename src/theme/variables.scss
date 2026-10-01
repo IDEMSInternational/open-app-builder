@@ -93,6 +93,8 @@
   --line-height-text-large: 25px;
   // Vertical margin above and below paragraphs (all <p> elements)
   --paragraph-spacing: 0.75em;
+  // Margin above the first block and below the last block of a text component's content
+  --text-outer-margin: 0.75em;
 
   // Font Weight //
   --font-weight-standard: 400;
