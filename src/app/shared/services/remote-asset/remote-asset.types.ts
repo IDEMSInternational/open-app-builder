@@ -281,7 +281,7 @@ export interface IAssetPackDownloadParams {
 export interface IAssetPackEnsureDownloadedParams extends IAssetPackDownloadParams {
   /** One or more asset pack names, as an array or JSON string array */
   asset_pack_list?: string | string[];
-  /** When false, start downloads without blocking the action queue. Defaults to true. */
+  /** When true, block the action queue until downloads finish. Defaults to false (background). */
   await?: boolean | string;
   /**
    * When false, skip the remote version check for packs already downloaded. Defaults to true.
