@@ -93,6 +93,8 @@
   --line-height-text-large: 25px;
   // Vertical margin above and below paragraphs (all <p> elements)
   --paragraph-spacing: 0.75em;
+  // Margin above the first block and below the last block of a text component's content
+  --text-outer-margin: 0.75em;
 
   // Font Weight //
   --font-weight-standard: 400;
@@ -226,6 +228,12 @@
   --tile-parent-point-height: 104px;
   --tile-image-text-width: 176px;
   --tile-button-style-height: 60px;
+
+  // Nav stack //
+  // Gap between the top of the safe area and the first nav-stack (0px for full height)
+  --nav-stack-top-offset: 56px;
+  // Additional gap applied per successive nav-stack, so underlying stacks remain visible
+  --nav-stack-stagger-offset: 16px;
 
   --drawer-handle-height: 42px;
   // Odd number, but means that the icons inside will be 32px high (without text)
