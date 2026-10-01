@@ -23252,15 +23252,15 @@ __metadata:
   linkType: hard
 
 "morgan@npm:^1.10.0, morgan@npm:^1.8.2":
-  version: 1.11.0
-  resolution: "morgan@npm:1.11.0"
+  version: 1.12.1
+  resolution: "morgan@npm:1.12.1"
   dependencies:
     basic-auth: ~2.0.1
     debug: 2.6.9
     depd: ~2.0.0
     on-finished: ~2.4.1
     on-headers: ~1.1.0
-  checksum: 8d3b8f3a5a1e7e04b10931b8a846f6751fef6f13ee14249281c926de06af8c580bf5414e77d4bc3115ceb34e4e9c270cef48b2a7eb2b4c0bb3a773cc3066d8da
+  checksum: 847daa272de93c824c10140916808946c2f507ca75d8ddc8106dfea6dd65f1ccb1fb8c05f7638072bef6bbe992f1fed4e4e11eaa7cbd4beb6f08dc934141c4fe
   languageName: node
   linkType: hard
 
