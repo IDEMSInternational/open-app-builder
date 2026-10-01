@@ -2,7 +2,7 @@
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
   // Radio Button Group
-  // Selected triangle buttons and radio button grid items use primary colours rather than
+  // Selected plh-radio-group buttons and radio button grid items use primary colours rather than
   // this theme's radio group selected styles
   plh-radio-group .btn_triangle_container {
     --radio-group-background-selected: var(--ion-color-primary-300);
