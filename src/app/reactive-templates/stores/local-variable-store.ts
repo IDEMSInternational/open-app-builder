@@ -84,6 +84,11 @@ export class LocalVariableStore implements IStore {
    * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
    * nested onto "foo"). Unlike 'get', a scope candidate counts as resolved if it has descendant
    * keys even without an exact own value (e.g. a nested loop only referenced via its child rows).
+   *
+   * This can resolve to a different scope than 'get'. E.g. from namespace
+   * 'answer_loop.key_1', with only 'question_loop.key_1.question' stored, `local.question_loop[k]`
+   * resolves root 'question_loop' here, whereas 'get' finds no exact 'question_loop' key.
+   * If no candidate matches, falls back to 'ref.name' as given.
    */
   public getWithDescendants(ref: VariableReference): any {
     const resolvedName = this.resolveScopeWithDescendants(ref) ?? ref.name;
