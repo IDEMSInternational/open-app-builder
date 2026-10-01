@@ -28,6 +28,56 @@ def allow_provisioning_changes?
   ENV["ALLOW_PROVISIONING_CHANGES"].to_s.downcase == "true"
 end
 
+# Register the bundle identifier on the Developer Portal when it is missing.
+# match cannot create a provisioning profile without one.
+#
+# `produce` in fastlane <= 2.240.1 has no `api_key` option and only supports Apple ID login,
+# which CI does not have. CI already has an App Store Connect API token from
+# `app_store_connect_api_key`, so call the portal API directly.
+# TODO: switch back to `produce(api_key: ...)` once a fastlane release after 2.240.1 supports it.
+# No-op if the App ID exists, including its capabilities.
+# Capabilities must match App/App.entitlements.
+# The App Store Connect app record must still be created manually before the first upload.
+def register_app_id_if_needed(app_identifier, app_name)
+  existing = Spaceship::ConnectAPI::BundleId.find(app_identifier)
+  if existing
+    UI.success("App ID '#{app_identifier}' already exists, skipping registration")
+    return
+  end
+
+  UI.message("Registering App ID '#{app_identifier}' (#{app_name})")
+  bundle_id = Spaceship::ConnectAPI::BundleId.create(
+    name: app_name,
+    platform: "IOS",
+    identifier: app_identifier,
+    seed_id: ENV["APP_STORE_TEAM_ID"]
+  )
+  UI.user_error!("Failed to register App ID '#{app_identifier}'") unless bundle_id
+
+  # Later runs skip an existing App ID, so a failure here would otherwise leave it without
+  # capabilities and match would silently create a profile that is missing these entitlements
+  begin
+    capability = Spaceship::ConnectAPI::BundleIdCapability
+    bundle_id.create_capability(capability::Type::PUSH_NOTIFICATIONS)
+    bundle_id.create_capability(capability::Type::APP_ATTEST)
+    bundle_id.create_capability(
+      capability::Type::APPLE_ID_AUTH,
+      settings: [{
+        key: capability::Settings::APPLE_ID_AUTH_APP_CONSENT,
+        options: [{ key: capability::Options::PRIMARY_APP_CONSENT }]
+      }]
+    )
+  rescue => e
+    UI.user_error!(
+      "Registered App ID '#{app_identifier}' but failed to enable its capabilities: #{e.message}\n" \
+      "Re-running will not retry this. Either enable Push Notifications, App Attest and " \
+      "Sign in with Apple on the App ID in the Apple Developer Portal, or delete the App ID " \
+      "and re-run this workflow."
+    )
+  end
+  UI.success("Registered App ID '#{app_identifier}'")
+end
+
 # Fastlane Methods
 platform :ios do
   desc "Build and deploy to TestFlight"
@@ -40,23 +90,9 @@ platform :ios do
       setup_ci
       creds = setup_credentials
 
-      # 1. Register App ID (bundle identifier) on the Developer Portal if it doesn't already exist,
-      # as match cannot create provisioning profiles without one. No-op if the App ID exists.
-      # Capabilities should match those in App/App.entitlements.
-      # NB - the App Store Connect app record must still be created manually (not supported by API)
+      # 1. Register App ID (bundle identifier) on the Developer Portal if it doesn't already exist
       if allow_provisioning_changes?
-        produce(
-          api_key: creds[:api_key],
-          app_identifier: "${APP_ID}",
-          app_name: "${APP_NAME}",
-          team_id: ENV["APP_STORE_TEAM_ID"],
-          skip_itc: true,
-          enable_services: {
-            app_attest: "on",
-            push_notification: "on",
-            sign_in_with_apple: "on"
-          }
-        )
+        register_app_id_if_needed("${APP_ID}", "${APP_NAME}")
       end
 
       # 2. Fetch signing certs & provisioning profiles from Google Cloud
