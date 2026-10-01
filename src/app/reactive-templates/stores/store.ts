@@ -84,9 +84,14 @@ function assignNestedPath(target: any, segments: string[], value: unknown): void
       return;
     }
 
-    if (!Object.hasOwn(cursor, segment) || typeof cursor[segment] !== "object") {
-      cursor[segment] = Object.create(null);
-    }
+    // Clone intermediates so writes never leak into the original stored value.
+    const existing = Object.hasOwn(cursor, segment) ? cursor[segment] : undefined;
+    cursor[segment] =
+      existing && typeof existing === "object"
+        ? Array.isArray(existing)
+          ? [...existing]
+          : { ...existing }
+        : Object.create(null);
 
     cursor = cursor[segment];
   }

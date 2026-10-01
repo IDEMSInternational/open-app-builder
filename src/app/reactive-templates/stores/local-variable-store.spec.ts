@@ -142,4 +142,33 @@ describe("LocalVariableStore", () => {
 
     subscription.unsubscribe();
   });
+
+  it("getWithDescendants merges default-index loop children without mutating the stored value", () => {
+    store.set({ name: "loop", type: "local" }, [{ id: "a" }, { id: "b" }]);
+    store.set({ name: "loop.0.answer", type: "local" }, "X");
+
+    const result = store.getWithDescendants({ name: "loop", type: "local" });
+
+    expect(result[0]).toEqual({ id: "a", answer: "X" });
+    expect(result[1]).toEqual({ id: "b" });
+    expect(store.get({ name: "loop", type: "local" })).toEqual([{ id: "a" }, { id: "b" }]);
+  });
+
+  it("set does not emit after a getWithDescendants read when the loop value is unchanged", () => {
+    store.set({ name: "loop", type: "local" }, [{ id: "a" }, { id: "b" }]);
+    store.set({ name: "loop.0.answer", type: "local" }, "X");
+    store.getWithDescendants({ name: "loop", type: "local" });
+
+    const emissions: any[] = [];
+    // watchWithDescendants emits on every store change, so it surfaces any spurious set() emission.
+    const subscription = store
+      .watchWithDescendants({ name: "loop", type: "local" })
+      .subscribe((value) => emissions.push(value));
+
+    store.set({ name: "loop", type: "local" }, [{ id: "a" }, { id: "b" }]);
+
+    expect(emissions.length).toBe(1);
+
+    subscription.unsubscribe();
+  });
 });
