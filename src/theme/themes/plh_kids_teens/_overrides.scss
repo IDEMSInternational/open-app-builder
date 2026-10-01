@@ -509,8 +509,8 @@
     }
     .checked {
       transition: 0.3s linear;
-      background: var(--radio-group-background-checked);
-      border: var(--radio-group-border-checked);
+      background: var(--radio-group-background-selected);
+      border: var(--radio-group-border-selected);
     }
     img {
       padding: 8px;
