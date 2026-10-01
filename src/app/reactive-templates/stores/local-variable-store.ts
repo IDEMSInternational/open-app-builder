@@ -26,7 +26,8 @@ export interface VariablePointer {
 })
 export class LocalVariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
-  private readonly stateChanged$ = new Subject<void>();
+  /** Emits the changed key, or 'undefined' when the whole store changed (e.g. 'clear'). */
+  private readonly stateChanged$ = new Subject<string | undefined>();
   private readonly stateStructureChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
 
@@ -49,11 +50,11 @@ export class LocalVariableStore implements IStore {
     if (!currentState) {
       this.state.set(ref.name, new BehaviorSubject<any>(value));
       this.stateStructureChanged$.next(ref.name);
-      this.stateChanged$.next();
+      this.stateChanged$.next(ref.name);
     } else {
       if (!isEqual(value, currentState.value)) {
         currentState.next(value);
-        this.stateChanged$.next();
+        this.stateChanged$.next(ref.name);
       }
     }
   }
@@ -122,8 +123,8 @@ export class LocalVariableStore implements IStore {
   }
 
   /**
-   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever any
-   * variable in the store changes, since a descendant key changing elsewhere should also count.
+   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever a
+   * scope candidate of 'ref' or any of its descendant keys changes.
    *
    * Deliberately does NOT use 'distinctUntilChanged'/'isEqual' here: 'isEqual' only compares
    * arrays by numeric index/length, so it's blind to the extra string-keyed descendant
@@ -131,7 +132,14 @@ export class LocalVariableStore implements IStore {
    * real descendant changes (e.g. a sibling loop's row value updating).
    */
   public watchWithDescendants(ref: VariableReference): Observable<any> {
+    const candidates = this.getScopeFallbackCandidates(ref.name);
+
     return this.stateChanged$.pipe(
+      filter(
+        (changedName) =>
+          changedName === undefined ||
+          candidates.some((c) => changedName === c || changedName.startsWith(`${c}.`))
+      ),
       startWith(undefined),
       map(() => this.getWithDescendants(ref))
     );
@@ -253,7 +261,7 @@ export class LocalVariableStore implements IStore {
     });
     this.state.clear();
     this.stateStructureChanged$.next(undefined);
-    this.stateChanged$.next();
+    this.stateChanged$.next(undefined);
   }
 
   /**

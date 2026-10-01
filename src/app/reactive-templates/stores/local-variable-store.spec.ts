@@ -143,6 +143,26 @@ describe("LocalVariableStore", () => {
     subscription.unsubscribe();
   });
 
+  it("watchWithDescendants ignores changes to unrelated keys", () => {
+    store.set({ name: "items", type: "local" }, [{ key: "key_1" }]);
+
+    const emissions: any[] = [];
+    const subscription = store
+      .watchWithDescendants({ name: "page.items", type: "local" })
+      .subscribe((value) => emissions.push(value));
+
+    store.set({ name: "other", type: "local" }, 1);
+    store.set({ name: "itemsExtra", type: "local" }, 1);
+    store.set({ name: "page.other.items", type: "local" }, 1);
+    expect(emissions.length).toBe(1);
+
+    store.set({ name: "items.key_1.question", type: "local" }, "Q");
+    store.set({ name: "page.items", type: "local" }, []);
+    expect(emissions.length).toBe(3);
+
+    subscription.unsubscribe();
+  });
+
   it("getWithDescendants merges default-index loop children without mutating the stored value", () => {
     store.set({ name: "loop", type: "local" }, [{ id: "a" }, { id: "b" }]);
     store.set({ name: "loop.0.answer", type: "local" }, "X");

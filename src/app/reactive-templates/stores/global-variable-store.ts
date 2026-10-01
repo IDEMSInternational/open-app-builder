@@ -1,7 +1,7 @@
 import { Injectable, Injector, Signal } from "@angular/core";
 import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
-import { distinctUntilChanged, map, startWith, switchMap } from "rxjs/operators";
+import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
 import { IStore, mergeDescendants, VariableReference } from "./store";
 
@@ -13,7 +13,8 @@ import { IStore, mergeDescendants, VariableReference } from "./store";
 })
 export class GlobalVariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
-  private readonly stateChanged$ = new Subject<void>();
+  /** Emits the changed key, or 'undefined' when the whole store changed (e.g. 'clear'). */
+  private readonly stateChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
 
   protected storageKeyPrefix: string = "global-";
@@ -26,10 +27,10 @@ export class GlobalVariableStore implements IStore {
 
     if (!subject) {
       this.state.set(name, new BehaviorSubject<any>(value));
-      this.stateChanged$.next();
+      this.stateChanged$.next(name);
     } else if (!isEqual(value, subject.value)) {
       subject.next(value);
-      this.stateChanged$.next();
+      this.stateChanged$.next(name);
     }
 
     this.setStoredValue(name, value);
@@ -73,8 +74,8 @@ export class GlobalVariableStore implements IStore {
   }
 
   /**
-   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever any
-   * variable in the store changes, since a descendant key changing elsewhere should also count.
+   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever 'ref'
+   * or any of its descendant keys changes.
    *
    * Deliberately does NOT use 'distinctUntilChanged'/'isEqual' here: 'isEqual' only compares
    * arrays by numeric index/length, so it's blind to the extra string-keyed descendant
@@ -82,7 +83,13 @@ export class GlobalVariableStore implements IStore {
    * real descendant changes.
    */
   public watchWithDescendants(ref: VariableReference): Observable<any> {
+    const prefix = `${ref.name}.`;
+
     return this.stateChanged$.pipe(
+      filter(
+        (changedName) =>
+          changedName === undefined || changedName === ref.name || changedName.startsWith(prefix)
+      ),
       startWith(undefined),
       map(() => this.getWithDescendants(ref))
     );
@@ -205,7 +212,7 @@ export class GlobalVariableStore implements IStore {
       value.complete();
     });
     this.state.clear();
-    this.stateChanged$.next();
+    this.stateChanged$.next(undefined);
   }
 
   private getStoredValue(name: string): any {

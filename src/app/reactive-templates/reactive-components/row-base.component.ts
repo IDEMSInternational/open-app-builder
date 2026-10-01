@@ -93,6 +93,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   private navigationEndSubscription?: Subscription;
   private pageTemplate: string = "";
+  private storeValueVersion = 0;
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -192,6 +193,8 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
+    // Latest call wins: a slower, older evaluation must not overwrite a newer result.
+    const version = ++this.storeValueVersion;
     const preEvaluated = await this.preEvaluation(this.expression());
 
     const value = this.evaluationService.evaluateExpression(
@@ -201,6 +204,10 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     );
 
     const postEvaluated = await this.postEvaluation(value);
+
+    if (version !== this.storeValueVersion) {
+      return;
+    }
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, postEvaluated);
   }
