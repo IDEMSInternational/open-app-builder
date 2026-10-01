@@ -16,6 +16,8 @@ export class GlobalVariableStore implements IStore {
   /** Emits the changed key, or 'undefined' when the whole store changed (e.g. 'clear'). */
   private readonly stateChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
+  /** Root names whose persisted descendant keys have already been loaded into 'state'. */
+  private readonly hydratedDescendantRoots = new Set<string>();
 
   protected storageKeyPrefix: string = "global-";
 
@@ -57,6 +59,7 @@ export class GlobalVariableStore implements IStore {
    */
   public getWithDescendants(ref: VariableReference): any {
     const prefix = ref.name + ".";
+    this.hydrateDescendants(ref.name);
 
     // Only include keys that match the root or its descendants
     const relevantEntries = Array.from(this.state, ([key, subject]) => {
@@ -212,7 +215,30 @@ export class GlobalVariableStore implements IStore {
       value.complete();
     });
     this.state.clear();
+    this.hydratedDescendantRoots.clear();
     this.stateChanged$.next(undefined);
+  }
+
+  private hydrateDescendants(name: string): void {
+    if (this.hydratedDescendantRoots.has(name)) {
+      return;
+    }
+
+    const storagePrefix = `${this.storageKeyPrefix}${name}.`;
+    const persistedNames: string[] = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key?.startsWith(storagePrefix)) {
+        persistedNames.push(key.slice(this.storageKeyPrefix.length));
+      }
+    }
+
+    persistedNames
+      .filter((persistedName) => !this.state.has(persistedName))
+      .forEach((persistedName) => this.has({ name: persistedName, type: "global" }));
+
+    this.hydratedDescendantRoots.add(name);
   }
 
   private getStoredValue(name: string): any {
