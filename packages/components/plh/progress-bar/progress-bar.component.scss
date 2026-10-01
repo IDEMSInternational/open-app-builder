@@ -12,7 +12,7 @@ $progress-bar-row-gap: 24px;
 
   .progress-header {
     // Typography shared by the title and the percentage beside it
-    --progress-header-font-size: var(--font-size-text-small);
+    --progress-header-font-size: var(--font-size-text-medium);
     // Reserve the same width for the percentage and the tick which replaces it, so that the
     // title wraps the same way either side of completion. Wide enough for the widest value ("99%")
     --progress-percentage-width: calc(var(--progress-header-font-size) * 2.4);
@@ -21,7 +21,7 @@ $progress-bar-row-gap: 24px;
     align-items: center;
     gap: var(--small-padding);
     // Gap between the title and the bar below it
-    margin-bottom: var(--tiny-margin);
+    margin-bottom: var(--small-margin);
     font-size: var(--progress-header-font-size);
     font-weight: 500;
 
