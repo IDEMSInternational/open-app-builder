@@ -35,7 +35,6 @@ import { IRow, RowRegistry } from "../services/row.registry";
 import { StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
 import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
-import { hasIndexer } from "../services/expression-utils";
 
 export const ROW_PARAMETERS = new InjectionToken<Parameters>("ROW_PARAMETERS");
 
@@ -267,7 +266,11 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       return;
     }
 
-    const watcher = hasIndexer(this.expression())
+    const watcher = this.evaluationService.hasDynamicIndexer(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    )
       ? this.variableStore.watchMultipleWithDescendants(dependencies)
       : this.variableStore.watchMultiple(dependencies);
 

@@ -128,4 +128,16 @@ describe("DependencyExtractorService", () => {
       { type: "local", name: "column" },
     ]);
   });
+
+  it("detects dynamic (unquoted) bracket indexers", () => {
+    expect(service.hasDynamicIndexer("local.items[item.id].question")).toBeTrue();
+    expect(service.hasDynamicIndexer("Answer: ${local.items[item.id]}", "string")).toBeTrue();
+  });
+
+  it("does not treat static brackets as dynamic indexers", () => {
+    expect(service.hasDynamicIndexer("[1, 2].includes(local.x)")).toBeFalse();
+    expect(service.hasDynamicIndexer('local.a["b"]')).toBeFalse();
+    expect(service.hasDynamicIndexer("local.a['b'].c")).toBeFalse();
+    expect(service.hasDynamicIndexer("See [label](url) for ${local.x}", "string")).toBeFalse();
+  });
 });

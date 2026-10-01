@@ -5,7 +5,6 @@ import { ValueType } from "../reactive-components/row-base.component";
 import { DependencyExtractorService } from "./dependency-extractor.service";
 import { ExpressionParser } from "./expression-parsers/expression-parser";
 import { JavascriptEvaluator } from "./javascript.evaluator";
-import { hasIndexer } from "./expression-utils";
 
 @Injectable({ providedIn: "root" })
 export class EvaluationService {
@@ -41,6 +40,21 @@ export class EvaluationService {
 
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     return this.getDependenciesInternal(parsedExpression, namespace, valueType);
+  }
+
+  /** Whether the expression indexes a variable dynamically, so descendant values are needed. */
+  public hasDynamicIndexer(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): boolean {
+    if (typeof expression !== "string") return false;
+
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    return (
+      typeof parsedExpression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(parsedExpression, valueType)
+    );
   }
 
   private getDependenciesInternal(
@@ -79,7 +93,10 @@ export class EvaluationService {
     valueType: ValueType
   ): any {
     let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
+    const includeDescendants =
+      typeof expression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(expression, valueType);
 
-    return this.contextCreator.createContext(dependencies, namespace, hasIndexer(expression));
+    return this.contextCreator.createContext(dependencies, namespace, includeDescendants);
   }
 }

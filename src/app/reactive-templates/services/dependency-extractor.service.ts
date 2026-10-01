@@ -19,12 +19,23 @@ export class DependencyExtractorService {
   ];
 
   public extractVariableReferences(input: string, mode: ValueType = "script"): VariableReference[] {
+    return this.matchVariablePaths(input, mode).flatMap(
+      (path) => this.parseVariablePath(path).references
+    );
+  }
+
+  /** True if any variable path indexes with an unquoted (dynamic) bracket, e.g. `local.foo[item.id]`. */
+  public hasDynamicIndexer(input: string, mode: ValueType = "script"): boolean {
+    return this.matchVariablePaths(input, mode).some(
+      (path) => this.parseVariablePath(path).hasDynamicSegment
+    );
+  }
+
+  private matchVariablePaths(input: string, mode: ValueType): string[] {
     const source = mode === "string" ? this.extractTemplateExpressions(input) : input;
     const normalizedInput = this.replaceShorthands(source);
 
-    return (normalizedInput.match(this.variablePathPattern) ?? []).flatMap((path) =>
-      this.parseVariablePath(path)
-    );
+    return normalizedInput.match(this.variablePathPattern) ?? [];
   }
 
   private extractTemplateExpressions(input: string): string {
@@ -47,7 +58,10 @@ export class DependencyExtractorService {
    * dynamic (unquoted) bracket expressions, e.g. "all_questions_loop[item.id]" depends on both
    * "all_questions_loop" (the collection) and "loop.item.id" (the dynamic index).
    */
-  private parseVariablePath(path: string): VariableReference[] {
+  private parseVariablePath(path: string): {
+    references: VariableReference[];
+    hasDynamicSegment: boolean;
+  } {
     const type = this.rootPattern.exec(path)![0] as VariableReference["type"];
     const segmentPattern = new RegExp(this.pathSegmentPattern.source, "g");
     segmentPattern.lastIndex = type.length;
@@ -84,7 +98,7 @@ export class DependencyExtractorService {
           ]
         : [];
 
-    return [...references, ...nestedReferences];
+    return { references: [...references, ...nestedReferences], hasDynamicSegment };
   }
 
   private escapeRegExp(value: string): string {
