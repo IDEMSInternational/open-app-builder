@@ -1,14 +1,27 @@
+// Theme variables used by this component, which a theme can set to restyle it.
+//
+// Defaults that follow the theme's colours (theme/themes/utils/generate-theme.scss):
+//   --input-background      input background
+//   --input-border          input border
+//   --input-box-shadow      input shadow
+//   --input-font-weight     weight of the entered text
+//   --text-area-text-color  colour of the entered text
+//
+// Fixed defaults (theme/variables.scss):
+//   --input-padding-inline  space inside the input, left and right
+//   --text-box-font-size    size of the entered text, shared with the text box
+
 .wrapper {
   .text_area {
-    background: var(--ion-color-primary-contrast);
-    border: var(--border-standard);
+    background: var(--input-background);
+    border: var(--input-border);
     font-size: var(--text-box-font-size);
-    color: var(--ion-color-primary);
-    font-weight: var(--font-weight-standard);
-    box-shadow: var(--ion-default-box-shadow);
+    color: var(--text-area-text-color);
+    font-weight: var(--input-font-weight);
+    box-shadow: var(--input-box-shadow);
     border-radius: var(--ion-border-radius-standard);
-    --padding-end: var(--small-padding);
-    --padding-start: var(--small-padding);
+    --padding-end: var(--input-padding-inline);
+    --padding-start: var(--input-padding-inline);
     min-height: 30vh;
     max-height: 30vh;
     overflow: hidden;

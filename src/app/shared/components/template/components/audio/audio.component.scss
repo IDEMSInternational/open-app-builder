@@ -1,16 +1,31 @@
 @use "/src/theme/mixins";
 
-$control-background: var(--audio-control-background, var(--ion-color-primary-500));
+// Theme variables used by this component, which a theme can set to restyle it.
+//
+// Defaults that follow the theme's colours (theme/themes/utils/generate-theme.scss):
+//   --audio-background                   player background, and the large play button
+//   --audio-border-color                 border around the player
+//   --audio-control-color                play, rewind and forward controls
+//   --audio-range-bar-background-active  played part of the progress bar
+//   --audio-range-knob-background        progress bar knob
+//
+// Fixed defaults (theme/variables.scss):
+//   --audio-bar-height                   progress bar height
+//   --audio-controls-width               width of the controls row
+//   --audio-range-bar-background         progress bar track
+//   --audio-title-and-help-height        minimum height of the title row
+//   --audio-title-size                   title font size
 
 @mixin compact-play-button {
-  @include mixins.medium-square;
-  --background: #{$control-background};
+  height: 52px;
+  width: 52px;
+  --background: var(--audio-control-color);
   --border-radius: var(--ion-border-radius-rounded);
-  --box-shadow: var(--ion-default-box-shadow);
+  --box-shadow: none;
 
   ion-icon {
     position: absolute;
-    font-size: var(--icon-size-tiny);
+    font-size: var(--icon-size-large);
 
     // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
     &.play-icon {
@@ -24,35 +39,61 @@ ion-button.btn-play[data-variant~="compact"] {
   @include compact-play-button;
 }
 
-.container-player[data-variant~="compact"] {
-  background: white;
-  border: var(--border-standard);
+// Styling shared by the compact and large variants. The container itself is not visible: the
+// border and background belong to the second row
+.container-player[data-variant~="compact"],
+.container-player[data-variant~="large"] {
   box-sizing: border-box;
-  box-shadow: var(--ion-default-box-shadow);
-  border-radius: var(--ion-border-radius-standard);
-  padding: var(--small-padding);
   display: flex;
   position: relative;
   flex-direction: column;
+
   .top-row {
     @include mixins.flex-space-between;
     width: 100%;
-    display: flex;
     min-height: var(--audio-title-and-help-height);
+    padding-bottom: 18px;
     h3 {
       margin: 0;
       margin-right: var(--small-margin);
-      color: var(--ion-color-primary);
       max-width: 85%;
+      color: var(--ion-color-gray-900);
       font-weight: var(--font-weight-bold);
       font-size: var(--audio-title-size);
     }
   }
 
   .second-row {
+    border: 0.9px solid var(--audio-border-color);
+    background: var(--audio-background);
+  }
+
+  .progress-block {
+    ion-range {
+      --bar-height: 12px;
+      --bar-border-radius: var(--ion-border-radius-standard);
+      --bar-background: var(--audio-range-bar-background);
+    }
+
+    .time-value {
+      font-size: var(--font-size-text-small);
+      line-height: var(--line-height-text-tiny);
+      color: var(--ion-color-gray-700);
+    }
+  }
+}
+
+.container-player[data-variant~="compact"] {
+  width: 100%;
+
+  .second-row {
+    width: 100%;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    border-radius: var(--ion-border-radius-rounded);
+    padding: 8px 16px;
+    padding-right: 24px;
 
     .controls {
       @include mixins.flex-space-between;
@@ -72,22 +113,18 @@ ion-button.btn-play[data-variant~="compact"] {
       margin: 0 var(--tiny-margin);
       ion-range {
         width: 100%;
-        --bar-background: var(--ion-color-gray-200);
-        --bar-height: 4px;
-        --knob-size: 18px;
-        --knob-background: var(--ion-color-primary);
-        --bar-border-radius: 10px;
+        --knob-size: 20px;
+        --knob-background: var(--audio-control-color);
       }
       .time {
         @include mixins.flex-space-between;
         margin-left: var(--small-margin);
         .time-value {
-          font-size: var(--font-size-text-small);
-          line-height: var(--line-height-text-small);
-          color: var(--ion-color-primary);
+          font-weight: var(--font-weight-medium);
         }
       }
     }
+
     ion-button.action-button {
       --padding-start: 2px;
       --padding-end: 2px;
@@ -96,30 +133,7 @@ ion-button.btn-play[data-variant~="compact"] {
 }
 
 .container-player[data-variant~="large"] {
-  background: var(--ion-color-primary-contrast);
-  border: var(--border-standard);
-  box-sizing: border-box;
-  box-shadow: var(--ion-default-box-shadow);
-  border-radius: var(--ion-border-radius-standard);
-  padding: var(--regular-padding);
-  display: flex;
-  position: relative;
-  flex-direction: column;
   .top-row {
-    @include mixins.flex-space-between;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: var(--audio-title-and-help-height);
-    h3 {
-      margin: 0;
-      margin-right: var(--small-margin);
-      color: var(--ion-color-primary);
-      max-width: 85%;
-      font-weight: var(--font-weight-bold);
-      font-size: var(--audio-title-size);
-    }
     ion-button.action-button {
       --padding-start: 2px;
       --padding-end: 2px;
@@ -129,38 +143,32 @@ ion-button.btn-play[data-variant~="compact"] {
   .second-row {
     display: flex;
     flex-direction: column;
+    border-radius: var(--ion-border-radius-standard);
+    padding: 12px 16px;
 
     .progress-block {
       width: 100%;
       .audio-range {
-        --bar-background-active: #{$control-background};
-        --bar-background: transparent;
-        --bar-height: 4px;
-        --bar-border-radius: var(--ion-border-radius-secondary);
         --knob-size: 0px;
-        --pin-background: var(--ion-color-primary);
-        --knob-background: var(--ion-color-primary);
+        --knob-background: var(--audio-range-knob-background);
+        --pin-background: var(--audio-range-knob-background);
+        --bar-background-active: var(--audio-range-bar-background-active);
         padding-inline: 0;
       }
 
       ion-range::part(bar) {
-        border: var(--border-thin-standard);
         height: var(--audio-bar-height);
       }
 
       ion-range::part(bar-active) {
-        top: 4px;
-        margin-left: 3px;
+        top: -1.5px;
+        margin-left: 0;
       }
       .time {
         @include mixins.flex-space-between;
-        &-value {
-          font-size: var(--font-size-text-large);
-          line-height: var(--line-height-text-small);
-          color: var(--ion-color-primary);
-        }
       }
     }
+
     .controls {
       @include mixins.flex-space-between;
       width: var(--audio-controls-width);
@@ -168,8 +176,9 @@ ion-button.btn-play[data-variant~="compact"] {
       .rewind,
       .forward {
         ion-icon {
-          font-size: var(--icon-size-largest);
-          color: var(--ion-color-primary);
+          font-size: var(--icon-size-extra-large);
+          border-radius: 2px;
+          color: var(--audio-control-color);
         }
       }
       .rewind {
@@ -179,13 +188,14 @@ ion-button.btn-play[data-variant~="compact"] {
       }
       .btn-play {
         @include mixins.large-square;
-        --background: #{$control-background};
+        --background: var(--audio-background);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
-        --box-shadow: var(--ion-default-box-shadow);
+        --box-shadow: none;
         ion-icon {
           position: absolute;
-          font-size: var(--icon-size-medium);
+          font-size: var(--icon-size-largest);
+          color: var(--audio-control-color);
           // Fine-tune spacing of 'play' icon so that triangle appears to be centred visually
           &.play-icon {
             padding-left: 4px;
@@ -195,6 +205,7 @@ ion-button.btn-play[data-variant~="compact"] {
     }
   }
 }
+
 .disabled {
   pointer-events: none;
 }

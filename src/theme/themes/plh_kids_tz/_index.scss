@@ -12,6 +12,7 @@
     $page-background: white,
     $color-green: #92cb44,
     $variable-overrides: (
+      audio-control-color: var(--ion-color-secondary-600),
       // Custom palette
       color-accent-pink: #ee007b,
       ion-color-primary-500: #0092d4,
@@ -65,7 +66,6 @@
       tile-button-background-primary-light: var(--ion-color-primary-300),
       tile-button-background-secondary: var(--ion-color-secondary),
       tile-button-background-secondary-light: var(--ion-color-yellow),
-      // audio-control-background: #1980d2,
       points-item-background: var(--ion-background-color),
       points-item-background-complete: var(--ion-color-primary-200),
       points-item-border: rgba(black, 0.07),
