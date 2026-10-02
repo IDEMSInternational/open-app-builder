@@ -66,7 +66,6 @@ Functionality not yet supported by reactive templates:
 
 Components without reactive equivalents:
 
-* accordion x
 * course accordion
 * animated-slides
 * audio x
