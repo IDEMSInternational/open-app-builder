@@ -42,6 +42,21 @@ export class EvaluationService {
     return this.getDependenciesInternal(parsedExpression, namespace, valueType);
   }
 
+  /** Whether the expression indexes a variable dynamically, so descendant values are needed. */
+  public hasDynamicIndexer(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): boolean {
+    if (typeof expression !== "string") return false;
+
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    return (
+      typeof parsedExpression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(parsedExpression, valueType)
+    );
+  }
+
   private getDependenciesInternal(
     expression: string | number | boolean,
     namespace: string,
@@ -78,7 +93,10 @@ export class EvaluationService {
     valueType: ValueType
   ): any {
     let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
+    const includeDescendants =
+      typeof expression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(expression, valueType);
 
-    return this.contextCreator.createContext(dependencies, namespace);
+    return this.contextCreator.createContext(dependencies, namespace, includeDescendants);
   }
 }

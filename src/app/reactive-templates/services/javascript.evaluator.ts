@@ -6,13 +6,15 @@ export class JavascriptEvaluator {
   private context: any = {};
 
   public evaluate(expression: string | number | boolean, valueType: ValueType): any {
+    const context = this.context;
     const raw = typeof expression === "string" ? expression : String(expression);
     const safeTemplate = raw.replace(/\\/g, "\\\\").replace(/`/g, "\\`");
     const expressionBody =
       valueType === "string" ? `return \`${safeTemplate}\`;` : `return (${raw});`;
     const body = `"use strict"; ${expressionBody}`;
 
-    return this.evaluateBody(body, expression);
+    const value = this.evaluateBody(body, expression);
+    return value;
   }
 
   public setContext(context: any) {
@@ -23,7 +25,7 @@ export class JavascriptEvaluator {
     try {
       return Function(...Object.keys(this.context), body)(...Object.values(this.context));
     } catch (error) {
-      console.error("Failed to evaluate expression", { expression, error });
+      console.warn("Failed to evaluate expression", { expression, error });
       return undefined;
     }
   }

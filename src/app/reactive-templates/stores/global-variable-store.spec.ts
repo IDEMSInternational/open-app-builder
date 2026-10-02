@@ -139,4 +139,16 @@ describe("GlobalVariableStore", () => {
     expect(() => store.get({ name: "bad", type: "global" })).not.toThrow();
     expect(store.get({ name: "bad", type: "global" })).toBeUndefined();
   });
+
+  it("getWithDescendants hydrates persisted descendant keys not yet read this session", () => {
+    storage.set("global-answers", JSON.stringify({}));
+    storage.set("global-answers.q1", JSON.stringify("yes"));
+    storage.set("global-answersOther", JSON.stringify("ignored"));
+    spyOnProperty(Storage.prototype, "length", "get").and.callFake(() => storage.size);
+    spyOn(localStorage, "key").and.callFake((i: number) => Array.from(storage.keys())[i] ?? null);
+
+    const result = store.getWithDescendants({ name: "answers", type: "global" });
+
+    expect(result).toEqual({ q1: "yes" });
+  });
 });

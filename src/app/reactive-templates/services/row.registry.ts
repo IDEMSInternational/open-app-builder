@@ -6,7 +6,8 @@ export interface IRow {
   name(): string;
   value(): any;
   params: Parameters;
-  setExpression(expression: any): void;
+  setExpression(expression: any): Promise<void>;
+  evaluate(): Promise<void>;
   row(): FlowTypes.TemplateRow;
 }
 
