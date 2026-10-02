@@ -79,6 +79,10 @@ const APP_ROUTE_DEFAULTS = {
       path: "privacy",
       redirectTo: "/template/app_menu_privacy_policy",
     },
+    {
+      path: "terms",
+      redirectTo: "/template/app_menu_terms",
+    },
   ],
 };
 
