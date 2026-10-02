@@ -25,6 +25,9 @@ export class NotificationService {
   /** Readonly permission status, e.g. for display in debug pages */
   public readonly status = this.permissionStatus.asReadonly();
 
+  /** Track any in-progress check for ignored notifications */
+  private checkIgnoredInProgress?: Promise<void>;
+
   /** Hack - proxy to native LocalNotification api for easier test mocking */
   private api = LocalNotifications;
 
@@ -194,8 +197,18 @@ export class NotificationService {
    * are suspended while the app is minimised and do not catch up
    *
    * If notifications received while app in foreground they handled via native listener callback
+   *
+   * Calls made while a check is already in progress share the same check, to avoid concurrent
+   * checks (e.g. resume and permission granted) both triggering actions for the same notifications
    */
-  private async checkIgnoredNotifications() {
+  private checkIgnoredNotifications() {
+    this.checkIgnoredInProgress ??= this.processIgnoredNotifications().finally(() => {
+      this.checkIgnoredInProgress = undefined;
+    });
+    return this.checkIgnoredInProgress;
+  }
+
+  private async processIgnoredNotifications() {
     // HACK - ensure check performed after any pending db writes related to actions processed
     await _wait(1000);
     // notification schedule_at will not be indexed so retrieve all notifications and filter after

@@ -1,11 +1,11 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Pending Notifications</h2>
-    @if (localNotificationService.permissionGranted) {
+    @if (notificationService.status() === "granted") {
     <ion-button fill="clear">
       <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
     </ion-button>
-    } @if (!localNotificationService.permissionGranted) {
+    } @else {
     <ion-button
       fill="outline"
       (click)="requestPermission()"

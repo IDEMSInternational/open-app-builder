@@ -499,6 +499,23 @@ describe("NotificationService", () => {
       await service["checkIgnoredNotifications"]();
       expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
     });
+    it("should only trigger actions once when ignored checks overlap", async () => {
+      const pastDate = new Date(Date.now() - 60000).toISOString();
+      const dbNotification: IDBNotification = {
+        ...validNotification,
+        schedule_at: pastDate,
+        action_list,
+        status: "pending",
+        _internal_id: 12345,
+      };
+      // Return fresh copy each query, as db would before either check has written updates
+      mockDynamicDataService.query$.and.callFake(() => of([{ ...dbNotification }]) as any);
+      await Promise.all([
+        service["checkIgnoredNotifications"](),
+        service["checkIgnoredNotifications"](),
+      ]);
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
+    });
   });
 
   describe("generateInternalNotification", () => {
