@@ -6,6 +6,7 @@ import {
   ILocalNotification,
   LocalNotificationService,
 } from "src/app/shared/services/notification/local-notification.service";
+import { NotificationService } from "../../notification.service";
 
 @Component({
   templateUrl: "./notifications-debug.page.html",
@@ -21,6 +22,7 @@ export class NotificationsDebugPage implements OnInit {
 
   constructor(
     public localNotificationService: LocalNotificationService,
+    public notificationService: NotificationService,
     private dbSyncService: DBSyncService
   ) {}
   async ngOnInit() {
@@ -30,6 +32,14 @@ export class NotificationsDebugPage implements OnInit {
 
   public get dbEntries$() {
     return this.localNotificationService.persistAdapter.dbEntries$;
+  }
+
+  /** Request permission via same method as authored `notification: request_permission` action */
+  public async requestPermission() {
+    const status = await this.notificationService.requestPermission();
+    // Reflect in legacy service so debug UI updates. Note - legacy service init processes
+    // (e.g. interaction listeners) will still only run following next app launch
+    this.localNotificationService.permissionGranted = status === "granted";
   }
 
   public async syncInteractedNotifications() {

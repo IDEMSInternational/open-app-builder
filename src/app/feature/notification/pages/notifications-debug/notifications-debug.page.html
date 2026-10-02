@@ -6,11 +6,21 @@
       <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
     </ion-button>
     } @if (!localNotificationService.permissionGranted) {
-    <ion-button fill="outline" (click)="localNotificationService.requestPermission()">
+    <ion-button
+      fill="outline"
+      (click)="requestPermission()"
+      [disabled]="notificationService.status() === 'unsupported'"
+    >
       <ion-icon name="notifications-off" slot="start"></ion-icon> Enable
     </ion-button>
     }
   </div>
+  <p>
+    Permission status: <code>{{ notificationService.status() }}</code>
+    @if (notificationService.status() === "denied") {
+    <br />Device may not show prompt again (always on iOS, or after repeat denial on Android). If no
+    prompt appears, enable from device settings }
+  </p>
 
   <!-- Pending Notifications -->
   <ion-list>

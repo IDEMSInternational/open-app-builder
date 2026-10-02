@@ -22,6 +22,8 @@ type IPermissionStatus = PermissionState | "unsupported";
 @Injectable({ providedIn: "root" })
 export class NotificationService {
   private permissionStatus = signal<IPermissionStatus | undefined>(undefined);
+  /** Readonly permission status, e.g. for display in debug pages */
+  public readonly status = this.permissionStatus.asReadonly();
 
   /** Hack - proxy to native LocalNotification api for easier test mocking */
   private api = LocalNotifications;
@@ -146,7 +148,12 @@ export class NotificationService {
     return null;
   }
 
-  private async checkPermissions() {
+  /**
+   * Check current permission status and update signal and system variable.
+   * Public so that permission requests made elsewhere (e.g. legacy local notification service)
+   * can keep status in sync
+   */
+  public async checkPermissions() {
     // If running in browser first check to ensure notification api exists
     if (!Capacitor.isNativePlatform()) {
       if (!window.Notification) {
@@ -243,8 +250,12 @@ export class NotificationService {
       }
     );
     // Additionally listen to app resume events to also trigger processing to make sure
-    // DB up-to-date if a user has minimised the app and returns after notifications ignored
-    App.addListener("resume", () => this.checkIgnoredNotifications());
+    // DB up-to-date if a user has minimised the app and returns after notifications ignored.
+    // Also re-check permissions in case changed from device settings while minimised
+    App.addListener("resume", () => {
+      this.checkPermissions();
+      this.checkIgnoredNotifications();
+    });
   }
 
   /** When notification interacted with update the db accordingly */
