@@ -53,9 +53,11 @@ export class NotificationService {
   }
 
   public async requestPermission() {
-    const { display } = await this.api.requestPermissions();
-    this.permissionStatus.set(display);
-    return display;
+    await this.api.requestPermissions();
+    // Re-check rather than use request result, as android request only returns granted/denied
+    // (not prompt-with-rationale), and ensure system variable reflects updated status
+    await this.checkPermissions();
+    return this.permissionStatus();
   }
 
   public async scheduleNotification(notification: INotification) {
@@ -297,8 +299,8 @@ export class NotificationService {
     }
     if (this.permissionStatus() !== "granted") {
       const request = await this.requestPermission();
-      if (request === "denied") {
-        return { valid: false, msg: "denied by user permission" };
+      if (request !== "granted") {
+        return { valid: false, msg: `permission not granted (status: ${request})` };
       }
     }
     if (!id) {

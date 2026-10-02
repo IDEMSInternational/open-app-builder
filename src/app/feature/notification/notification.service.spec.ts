@@ -143,6 +143,23 @@ describe("NotificationService", () => {
     );
   });
 
+  it("should update permission status system variable after permission request", async () => {
+    const checkPermissionsSpy = spyOn(service["api"], "checkPermissions").and.resolveTo({
+      display: "prompt" as PermissionState,
+    });
+    // Android only returns granted/denied from request, so status should come from re-check
+    spyOn(service["api"], "requestPermissions").and.callFake(async () => {
+      checkPermissionsSpy.and.resolveTo({ display: "prompt-with-rationale" as PermissionState });
+      return { display: "denied" as PermissionState };
+    });
+    const status = await service.requestPermission();
+    expect(status).toEqual("prompt-with-rationale");
+    expect(mockSystemVariableService.set).toHaveBeenCalledWith(
+      "NOTIFICATION_PERMISSION_STATUS",
+      "prompt-with-rationale"
+    );
+  });
+
   describe("scheduleNotification", () => {
     it("should schedule a valid notification", async () => {
       await service.scheduleNotification(validNotification);
@@ -323,19 +340,40 @@ describe("NotificationService", () => {
       await service.scheduleNotification(validNotification);
       expect(consoleWarnSpy).toHaveBeenCalledOnceWith(
         "[Notification]",
-        "denied by user permission",
+        "permission not granted (status: denied)",
+        "cannot create"
+      );
+      expect(scheduleSpy).not.toHaveBeenCalled();
+    });
+
+    it("should reject scheduling when permission request not granted", async () => {
+      const consoleWarnSpy = spyOn(console, "warn");
+      spyOn(service["api"], "checkPermissions").and.resolveTo({
+        display: "prompt-with-rationale" as PermissionState,
+      });
+      spyOn(service["api"], "requestPermissions").and.resolveTo({
+        display: "denied" as PermissionState,
+      });
+      await service.scheduleNotification(validNotification);
+      expect(consoleWarnSpy).toHaveBeenCalledOnceWith(
+        "[Notification]",
+        "permission not granted (status: prompt-with-rationale)",
         "cannot create"
       );
       expect(scheduleSpy).not.toHaveBeenCalled();
     });
 
     it("should request permission when not granted and proceed if granted", async () => {
-      spyOn(service["api"], "checkPermissions").and.resolveTo({
+      const checkPermissionsSpy = spyOn(service["api"], "checkPermissions").and.resolveTo({
         display: "prompt" as PermissionState,
       });
-      const requestPermissionsSpy = spyOn(service["api"], "requestPermissions").and.resolveTo({
-        display: "granted" as PermissionState,
-      });
+      // Permission status re-checked after request, so update check result once granted
+      const requestPermissionsSpy = spyOn(service["api"], "requestPermissions").and.callFake(
+        async () => {
+          checkPermissionsSpy.and.resolveTo({ display: "granted" as PermissionState });
+          return { display: "granted" as PermissionState };
+        }
+      );
 
       const notification: INotification = {
         id: "test",
