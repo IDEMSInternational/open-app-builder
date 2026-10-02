@@ -1,5 +1,9 @@
 [
 	{
+		"pkg": "@capacitor-community/device",
+		"classpath": "com.ryltsov.alex.plugins.device.CommunityDevicePlugin"
+	},
+	{
 		"pkg": "@capacitor-community/file-opener",
 		"classpath": "com.ryltsov.alex.plugins.file.opener.FileOpenerPlugin"
 	},
