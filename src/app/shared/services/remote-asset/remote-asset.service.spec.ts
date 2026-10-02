@@ -13,7 +13,7 @@ import { FlowTypes } from "../../model";
 import { IAssetEntry, IDeploymentRuntimeConfig } from "data-models";
 import clone from "clone";
 import { zipSync } from "fflate";
-import { arrayToHashmap } from "../../utils";
+import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
 import type { IRemoteAssetProvider } from "./providers/base.remote-asset";
@@ -187,7 +187,21 @@ function installAssetPackStore(mock: jasmine.SpyObj<DynamicDataService>) {
     record(row.id);
   });
   mock.update.and.callFake(async (_type, flow_name, id: string, update: any, options?: any) => {
-    if (flow_name !== "_asset_packs") return;
+    if (flow_name !== "_asset_packs") {
+      // Per-file integration merges each slot into its `_assets_contents` row, and the next
+      // attempt's resume gate reads that row back, so model the real service's deep merge
+      const flowRows = otherFlowRows[flow_name] || [];
+      const existingRow = flowRows.find((row: any) => row.id === id);
+      if (existingRow) {
+        const merged = deepMergeObjects(clone(existingRow), update);
+        otherFlowRows[flow_name] = flowRows.map((row: any) => (row === existingRow ? merged : row));
+      } else if (options?.upsert) {
+        otherFlowRows[flow_name] = [...flowRows, clone(update)];
+      } else {
+        throw new Error(`[Update Fail] no doc exists for ${flow_name} with id: ${id}`);
+      }
+      return;
+    }
     const existing = rows.get(id);
     if (existing) rows.set(id, { ...existing, ...update });
     else if (options?.upsert) rows.set(id, { ...update });
@@ -335,61 +349,6 @@ describe("RemoteAssetsService", () => {
   it("generates an asset contents pack from asset contents", () => {
     const assetContentsPack = service["generateAssetContentsPack"](MOCK_ASSETS_CONTENTS_LIST);
     expect(assetContentsPack).toEqual(MOCK_ASSET_CONTENTS_PACK);
-  });
-
-  it("adds filepath to asset entry for asset without overrides", () => {
-    const assetEntryWithFilePath = service["addFilePathToAssetEntry"](
-      MOCK_ASSET_ENTRY,
-      "new/path/to/asset.png"
-    );
-    expect(assetEntryWithFilePath).toEqual({
-      ...MOCK_ASSET_ENTRY,
-      filePath: "new/path/to/asset.png",
-    });
-  });
-
-  it("adds filepath to asset entry for asset with overrides", () => {
-    const assetEntryWithOverrideWithFilePath = service["addFilePathToAssetEntry"](
-      MOCK_ASSET_ENTRY_WITH_OVERRIDES,
-      "new/path/to/asset_with_overrides.mp3",
-      { themeName: "theme_default", languageCode: "tz_sw" }
-    );
-    expect(assetEntryWithOverrideWithFilePath).toEqual({
-      id: "audio/asset_with_overrides.mp3",
-      md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
-      size_kb: 43.4,
-      overrides: {
-        theme_default: {
-          tz_sw: {
-            filePath: "new/path/to/asset_with_overrides.mp3",
-            md5Checksum: "d851eef52c8d12fdbf0497210961a407",
-            size_kb: 21.6,
-          },
-        },
-      },
-    });
-  });
-
-  it("adds filepath to asset entry for asset that is solely an override", () => {
-    const assetEntryWithOverrideWithFilePath = service["addFilePathToAssetEntry"](
-      MOCK_ASSET_ENTRY_WITH_OVERRIDES,
-      "new/path/to/asset_with_overrides.mp3",
-      { themeName: "theme_default", languageCode: "tz_sw" }
-    );
-    expect(assetEntryWithOverrideWithFilePath).toEqual({
-      id: "audio/asset_with_overrides.mp3",
-      md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
-      size_kb: 43.4,
-      overrides: {
-        theme_default: {
-          tz_sw: {
-            filePath: "new/path/to/asset_with_overrides.mp3",
-            md5Checksum: "d851eef52c8d12fdbf0497210961a407",
-            size_kb: 21.6,
-          },
-        },
-      },
-    });
   });
 
   it("does not count an override with no file path as a downloadable slot", () => {
@@ -1708,9 +1667,10 @@ describe("RemoteAssetsService", () => {
   });
 
   it("re-downloads an override recorded only by a previous base-asset integration", async () => {
-    // Integrating a base asset upserts the whole manifest entry, so the row also gains every
-    // override's checksum. That must not count as evidence for the override slots themselves: only
-    // the recorded filePath (still the pack-relative manifest path here) proves this app saved one.
+    // Older app versions integrated a base asset by upserting the whole manifest entry, so rows
+    // they wrote also carry every override's checksum. That must not count as evidence for the
+    // override slots themselves: only the recorded filePath (still the pack-relative manifest path
+    // here) proves this app saved one.
     const { downloadFileSpy, saveFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
       [clone(MOCK_ASSET_ENTRY_WITH_OVERRIDES) as FlowTypes.Data_listRow<IAssetEntry>],
       [
@@ -1774,6 +1734,68 @@ describe("RemoteAssetsService", () => {
     expect(saveFileSpy).toHaveBeenCalledWith(
       jasmine.objectContaining({ targetPath: packPath("tz_sw/audio/asset_with_overrides.mp3") })
     );
+  });
+
+  it("does not trust a base file an update failed to replace after its override succeeded", async () => {
+    spyOn(console, "error");
+    spyOn(console, "warn");
+    const basePath = "audio/asset_with_overrides.mp3";
+    const overridePath = "tz_sw/audio/asset_with_overrides.mp3";
+    // An update changing both files, where the base keeps its exact size (a colour change in an
+    // SVG, say) - so the size check cannot tell the old bytes from the new
+    const updatedEntry = {
+      id: basePath,
+      md5Checksum: "base-v2",
+      size_kb: 43.4,
+      overrides: {
+        theme_default: {
+          tz_sw: { filePath: overridePath, md5Checksum: "override-v2", size_kb: 21.6 },
+        },
+      },
+    } as FlowTypes.Data_listRow<IAssetEntry>;
+    const { downloadFileSpy, getSavedFileInfoSpy } = setupNativeDownload(
+      [updatedEntry],
+      // Both slots integrated at the previous version
+      [
+        {
+          id: basePath,
+          md5Checksum: "base-v1",
+          size_kb: 43.4,
+          filePath: localAssetPath(packPath(basePath)),
+          overrides: {
+            theme_default: {
+              tz_sw: {
+                filePath: localAssetPath(packPath(overridePath)),
+                md5Checksum: "override-v1",
+                size_kb: 21.6,
+              },
+            },
+          },
+        },
+      ]
+    );
+    spyOn<any>(service, "abortableDelay").and.resolveTo();
+    // Both on disk at the new manifest sizes (44442 -> 43.4kb, 22118 -> 21.6kb)
+    getSavedFileInfoSpy.and.callFake(async (targetPath: string) => ({
+      exists: true,
+      sizeBytes: targetPath === packPath(basePath) ? 44442 : 22118,
+    }));
+    // First attempt: the base fails every retry while its override gets through
+    downloadFileSpy.and.callFake(async (remotePath: string) =>
+      remotePath.includes("tz_sw/") ? new Blob(["x"]) : null
+    );
+    expect(await service.downloadAssetPackByName("asset_pack_1")).toBeFalse();
+
+    downloadFileSpy.calls.reset();
+    downloadFileSpy.and.resolveTo(new Blob(["x"]));
+    const success = await service.downloadAssetPackByName("asset_pack_1");
+
+    // The override's integration must not have vouched for the base: the old bytes are still on
+    // disk, and trusting them would record them as the new version, never to be re-fetched
+    expect(success).toBeTrue();
+    expect(downloadFileSpy.calls.allArgs().map(([remotePath]) => remotePath)).toEqual([
+      `asset_pack_1/${basePath}`,
+    ]);
   });
 
   it("saves files under the shared remote_assets folder, not a per-pack one", async () => {
@@ -2308,11 +2330,8 @@ describe("RemoteAssetsService", () => {
 
       await service.downloadAssetPackByName("asset_pack_1");
 
-      // Completing a row flushes it, which writes the manifest merge - so settling slots the
-      // stream never reached would publish manifest-relative paths for files this attempt never
-      // touched. Harmless where a per-file pass follows and corrects them, but a cancel or an
-      // offline abort has no such pass, and these paths can sit over another pack's `local://`
-      // rows where the two packs share an asset.
+      // Rows the stream never reached have nothing integrated, so writing them could only restate
+      // the snapshot - or, for rows with no snapshot, invent rows describing no files at all.
       const writtenIds = mockDynamicDataService.bulkUpsert.calls
         .allArgs()
         .flatMap(([, , bulkRows]) => (bulkRows as { id: string }[]).map((row) => row.id));
@@ -2351,13 +2370,20 @@ describe("RemoteAssetsService", () => {
       const savedPaths = setup.saveFileSpy.calls.allArgs().map(([args]) => args.targetPath);
       expect(savedPaths.filter((path) => path === packPath("audio/a.mp3")).length).toBe(1);
       // The row was written even though one of its slots never arrived: the base carries its local
-      // path, and the missing override was settled *without* one, so it keeps the manifest's remote
-      // path - which is exactly what sends the resume gate after that file and nothing else.
-      // (The per-file pass then rewrites it via `update`, which this fake models only for
-      // `_asset_packs`, so the row here shows the state the archive path left behind.)
+      // path, and the missing override was settled *without* one, so nothing is recorded for it -
+      // which is exactly what sends the resume gate after that file and nothing else
+      const [[, , archiveRows]] = mockDynamicDataService.bulkUpsert.calls
+        .allArgs()
+        .filter(([, flow]) => flow === "_assets_contents");
+      const [archiveRow] = archiveRows as IAssetEntry[];
+      expect(archiveRow.filePath).toBe(localAssetPath(packPath("audio/a.mp3")));
+      expect(archiveRow.overrides).toBeUndefined();
+      // ...and the per-file pass then records the override it fetched
       const row = setup.contentsRow("audio/a.mp3");
       expect(row.filePath).toBe(localAssetPath(packPath("audio/a.mp3")));
-      expect(row.overrides.theme_default.tz_sw.filePath).toBe("tz_sw/audio/a.mp3");
+      expect(row.overrides.theme_default.tz_sw.filePath).toBe(
+        localAssetPath(packPath("tz_sw/audio/a.mp3"))
+      );
     });
 
     it("rejects an archive entry that escapes the pack root", async () => {
@@ -2562,6 +2588,39 @@ describe("RemoteAssetsService", () => {
       // bytes; without a shared baseline the second metric would restart from zero
       expectNonDecreasing(persistedPercentages());
       expect(setup.getAssetPackRow().download_progress_percent).toBe(100);
+    });
+
+    it("starts an archive that follows files already on disk from their share, not 99", async () => {
+      const present = archiveEntry("images/present.png", 51200);
+      const missing = archiveEntry("images/missing.png", 51200);
+      const another = archiveEntry("images/another.png", 51200);
+      const setup = setupArchiveDownload({
+        manifestRows: [present, missing, another],
+        archiveFiles: {
+          "images/present.png": fileOfLength(51200),
+          "images/missing.png": fileOfLength(51200),
+          "images/another.png": fileOfLength(51200),
+        },
+        existingContentsRows: [
+          {
+            id: "images/present.png",
+            md5Checksum: present.md5Checksum,
+            size_kb: present.size_kb,
+            filePath: localAssetPath(packPath("images/present.png")),
+          },
+        ],
+      });
+      setup.savedFiles.set(packPath("images/present.png"), 51200);
+
+      await service.downloadAssetPackByName("asset_pack_1");
+
+      // Files already on disk are integrated before the first chunk arrives, with no byte total
+      // yet to measure against. They are a third of the pack, and reported progress only ever
+      // moves up, so reporting anything higher here would pin the bar there for the whole transfer.
+      const percentages = persistedPercentages();
+      expect(percentages.find((percent) => percent > 0)).toBe(33);
+      // ...and the bar then visibly climbs while the archive streams
+      expect(percentages.some((percent) => percent > 33 && percent < 99)).toBeTrue();
     });
 
     it("does not rewind progress when a truncated archive falls back to per-file", async () => {
