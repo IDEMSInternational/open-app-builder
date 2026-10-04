@@ -40,10 +40,18 @@ export class HTTPCacheAdapterOPFS implements IHttpCacheAdapter {
     }
   }
 
-  public async getUrl(key: string): Promise<string | undefined> {
-    const file = await this.get(key);
-    if (!file) return undefined;
-    return URL.createObjectURL(file);
+  public async getUrl(key: string) {
+    const fh = await this.rootFS.getFileHandle(key);
+    const file = await fh.getFile();
+    const src = URL.createObjectURL(file);
+    return { src, revoke: () => URL.revokeObjectURL(src) };
+  }
+
+  public async setStream(key: string, readable: ReadableStream<Uint8Array>) {
+    const fh = await this.rootFS.getFileHandle(key, { create: true });
+    const writable = await fh.createWritable();
+    await readable.pipeTo(writable);
+    return true;
   }
 
   public async set(key: string, value: Blob) {
