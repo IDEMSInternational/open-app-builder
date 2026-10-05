@@ -5,11 +5,21 @@ import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 import { JsonFileCache } from "../../cacheStrategy/jsonFile";
 import { createHash } from "crypto";
+import {
+  FlowParserPerfLogger,
+  getFlowMeta,
+  IFlowParserRunTimings,
+  IPhaseTimings,
+  perfNow,
+} from "./flowParserDebug";
 
 const cacheVersion = 20251029.0;
 const namespace = "FlowParserProcessor";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
+  public perfLogger = new FlowParserPerfLogger();
+  private currentParserTimings: IFlowParserRunTimings | null = null;
+
   constructor(context: { cache: JsonFileCache }) {
     super({ namespace, cache: context.cache });
     this.cache.configure(namespace, cacheVersion);
@@ -38,6 +48,43 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     [flowType in FlowTypes.FlowType]?: { [flow_name: string]: FlowTypes.FlowTypeWithData };
   } = {};
 
+  public override async process(inputs: FlowTypes.FlowTypeWithData[] = []) {
+    this.perfLogger.start(inputs.length);
+    FlowParserPerfLogger.setCurrent(this.perfLogger);
+    try {
+      return await super.process(inputs);
+    } finally {
+      this.perfLogger.finish();
+      FlowParserPerfLogger.setCurrent(null);
+    }
+  }
+
+  protected override onQueueProgress(processed: number, total: number): void {
+    this.perfLogger.updateQueueProgress(processed, total);
+  }
+
+  protected override recordInputProcessingTimings(
+    input: FlowTypes.FlowTypeWithData,
+    result: { value: any; source: "cache" | "processor" },
+    timings: Record<string, number>
+  ): void {
+    const deferred = result.source === "processor" && !result.value;
+    this.perfLogger.recordFlow({
+      ...getFlowMeta(input),
+      source: result.value ? result.source : "skipped",
+      timings: {
+        cacheEntryNameMs: timings.cacheEntryNameMs,
+        cacheGetMs: timings.cacheGetMs,
+        processInputMs: timings.processInputMs,
+        cacheAddMs: timings.cacheAddMs,
+        totalMs: timings.totalMs,
+        deferred,
+        parser: this.currentParserTimings ?? undefined,
+      },
+    });
+    this.currentParserTimings = null;
+  }
+
   public override processInput(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _source } = flow;
     const parser = this.parsers[flow_type];
@@ -56,6 +103,14 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
       });
       return null;
     }
+  }
+
+  public setParserTimings(timings: IFlowParserRunTimings): void {
+    this.currentParserTimings = timings;
+  }
+
+  public accumulateParserPhases(phases: IPhaseTimings): void {
+    this.perfLogger.accumulatePhases(phases);
   }
 
   /**  When an input has been processed keep a reference in the hashmap */
@@ -80,13 +135,24 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    * @returns hashmap of flowtypes with postprocessed flows
    */
   public async postProcess(flows: FlowTypes.FlowTypeWithData[]) {
+    const postProcessStart = perfNow();
     // post process flows by type
     const flowArraysByType = groupJsonByKey(flows, "flow_type");
     for (const [flowType, parser] of Object.entries(this.parsers)) {
       if (flowArraysByType[flowType]) {
+        const typeStart = perfNow();
         flowArraysByType[flowType] = parser.postProcessFlows(flowArraysByType[flowType]);
+        this.perfLogger.recordPostProcess({
+          phase: "postProcess",
+          flow_type: flowType,
+          flow_count: flowArraysByType[flowType].length,
+          duration_ms: perfNow() - typeStart,
+        });
       }
     }
+    const groupByTypeMs = perfNow() - postProcessStart;
+
+    const hashmapStart = perfNow();
     // convert to hashmap for easier processing of generated flows
     const flowHashmapByType: IFlowHashmapByType = {};
     for (const [type, typeFlows] of Object.entries(flowArraysByType)) {
@@ -95,12 +161,28 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
         return k;
       });
     }
+    const hashmapMs = perfNow() - hashmapStart;
 
+    const outputStart = perfNow();
     // convert back from hashmap to hashArrays for final output
     const outputData: IParsedWorkbookData = {};
     for (const [type, typeHashmap] of Object.entries(flowHashmapByType)) {
       outputData[type] = Object.values(typeHashmap);
     }
+    const outputMs = perfNow() - outputStart;
+
+    this.logger.info({
+      message: "FlowParser postProcess phase timings",
+      details: {
+        groupByTypeMs,
+        hashmapMs,
+        outputMs,
+        totalMs: perfNow() - postProcessStart,
+      },
+    });
+
+    this.perfLogger.recordPostProcessComplete();
+
     return outputData;
   }
 

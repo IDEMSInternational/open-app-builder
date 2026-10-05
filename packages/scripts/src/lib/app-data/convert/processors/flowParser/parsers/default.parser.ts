@@ -9,6 +9,7 @@ import {
 } from "../../../utils";
 import { ActiveDeployment } from "../../../../../../commands/deployment/get";
 import { FlowParserProcessor } from "../flowParser";
+import { FlowParserPhaseTracker, isFlowParserDebugEnabled, perfNow } from "../flowParserDebug";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
 
@@ -29,32 +30,44 @@ export class DefaultParser<
   /** All rows are handled in a queue, processing linearly */
   public queue: IRowData[];
   private summary = { missingAssets: [] };
+  public phaseTracker: FlowParserPhaseTracker;
 
   /** All parsers have access to main processor */
   constructor(public flowProcessor: FlowParserProcessor) {}
 
   /** Default function to call a start the process of parsing rows */
-  public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
-    this.flow = JSON.parse(JSON.stringify(flow));
+  public run(
+    flow: FlowTypes.FlowTypeWithData,
+    options?: { parentPhaseTracker?: FlowParserPhaseTracker }
+  ): FlowTypes.FlowTypeWithData {
+    const phaseTracker = new FlowParserPhaseTracker();
+    this.phaseTracker = phaseTracker;
+    const isTopLevel = !options?.parentPhaseTracker;
+
+    this.flow = phaseTracker.time("clone", () => JSON.parse(JSON.stringify(flow)));
 
     this.queue = flow.rows;
     const processedRows = [];
-    // If first row specifies default values extract them and remove row from queue
-    const rowDefaultValues = this.extractRowDefaultValues(this.flow);
+    const rowDefaultValues = phaseTracker.time("extractRowDefaultValues", () =>
+      this.extractRowDefaultValues(this.flow)
+    );
     if (rowDefaultValues) {
       this.queue.shift();
     }
-    // Process queue
+
     let rowNumber = 1;
     while (this.queue.length > 0) {
-      // Start rowNumber from 2 to match sheet (without header row)
       rowNumber++;
       const row = this.queue[0];
+      const rowStart = perfNow();
       try {
-        const processed = new RowProcessor(row, this, rowDefaultValues).run();
-        // some rows may be omitted during processing so ignore
+        const processed = phaseTracker.time("rowProcessor.run", () =>
+          new RowProcessor(row, this, rowDefaultValues).run(phaseTracker)
+        );
         if (processed) {
-          const postProcessed = this.postProcessRow(processed, rowNumber);
+          const postProcessed = phaseTracker.time("postProcessRow", () =>
+            this.postProcessRow(processed, rowNumber)
+          );
           if (postProcessed) {
             processedRows.push(postProcessed);
           }
@@ -63,13 +76,40 @@ export class DefaultParser<
       } catch (error) {
         throwRowParseError(error, row);
       }
+      const rowMs = perfNow() - rowStart;
+      const slowRowThreshold = isFlowParserDebugEnabled() ? 50 : 200;
+      if (rowMs >= slowRowThreshold) {
+        phaseTracker.recordSlowRow({ rowNumber, type: row.type, ms: rowMs });
+      }
     }
+
     if (this.summary.missingAssets.length > 0) {
       console.log(chalk.red("Missing Assets:"));
       console.table(this.summary.missingAssets);
     }
     this.flow.rows = processedRows;
-    this.flow = this.postProcessFlow(this.flow);
+    this.flow = phaseTracker.time("postProcessFlow", () => this.postProcessFlow(this.flow));
+
+    if (isTopLevel) {
+      if (typeof this.flowProcessor.setParserTimings === "function") {
+        this.flowProcessor.setParserTimings({
+          cloneMs: phaseTracker.get("clone"),
+          rowLoopMs:
+            phaseTracker.get("rowProcessor.run") +
+            phaseTracker.get("postProcessRow") +
+            phaseTracker.get("extractRowDefaultValues"),
+          postProcessRowMs: phaseTracker.get("postProcessRow"),
+          postProcessFlowMs: phaseTracker.get("postProcessFlow"),
+          rowCount: flow.rows?.length ?? 0,
+          processedRowCount: processedRows.length,
+          phases: phaseTracker.toRecord(),
+          slowRows: phaseTracker.getSlowRows(),
+        });
+      }
+    } else {
+      options.parentPhaseTracker.mergeNested(phaseTracker);
+    }
+
     return this.flow;
   }
 
@@ -106,6 +146,10 @@ export class DefaultParser<
   public postProcessFlows(flows: FlowType[]) {
     return flows;
   }
+
+  protected trackPhase<T>(phase: string, fn: () => T): T {
+    return this.phaseTracker ? this.phaseTracker.time(phase, fn) : fn();
+  }
 }
 
 /**
@@ -119,20 +163,19 @@ export class RowProcessor {
     public defaultValues?: Record<string, any>
   ) {}
 
-  public run() {
-    this.processRowDefaultValues();
-    this.removeMetaFields();
-    this.cleanFieldValues();
-    this.migrateDeprecatedFields();
-    this.assignTranslatedFields();
-    this.replaceRowSelfReferences();
+  public run(phaseTracker?: FlowParserPhaseTracker) {
+    const track = <T>(phase: string, fn: () => T): T =>
+      phaseTracker ? phaseTracker.time(phase, fn) : fn();
 
-    // NOTE - translated and row-reference fields can both reference each other
-    // (e.g. @row.title -> title::eng -> @row.id ) so additional update required after translate and replace
-    this.updateTranslatedFields();
-
-    this.handleSpecialFieldTypes();
-    this.processNestedRowGroups();
+    track("row.processRowDefaultValues", () => this.processRowDefaultValues());
+    track("row.removeMetaFields", () => this.removeMetaFields());
+    track("row.cleanFieldValues", () => this.cleanFieldValues());
+    track("row.migrateDeprecatedFields", () => this.migrateDeprecatedFields());
+    track("row.assignTranslatedFields", () => this.assignTranslatedFields());
+    track("row.replaceRowSelfReferences", () => this.replaceRowSelfReferences());
+    track("row.updateTranslatedFields", () => this.updateTranslatedFields());
+    track("row.handleSpecialFieldTypes", () => this.handleSpecialFieldTypes());
+    track("row.processNestedRowGroups", () => this.processNestedRowGroups());
 
     // remove rows now left as empty (null return will remove from future processing)
     if (Object.keys(this.row).length === 0) {
@@ -195,7 +238,9 @@ export class RowProcessor {
         const subParser = new DefaultParser(this.parent.flowProcessor);
         const childFlow = JSON.parse(JSON.stringify(this.parent.flow));
         childFlow.rows = group;
-        const parsedGroup = subParser.run(childFlow);
+        const parsedGroup = subParser.run(childFlow, {
+          parentPhaseTracker: this.parent.phaseTracker,
+        });
         this.row = { ...this.row, type: groupType, rows: parsedGroup.rows as any };
       } catch (err) {
         if (err.message === "missing_end_statement") {

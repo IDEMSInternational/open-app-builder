@@ -8,66 +8,70 @@ import {
   parseAppDataListString,
   parseAppDataActionString,
 } from "../../../utils";
+import { FlowParserPhaseTracker } from "../flowParserDebug";
 
 export class TemplateParser extends DefaultParser {
   public override postProcessRow(row: FlowTypes.TemplateRow, rowNumber = 1, nestedPath?: string) {
-    // remove empty rows
+    const tracker = this.phaseTracker;
+    const track = <T>(phase: string, fn: () => T): T => (tracker ? tracker.time(phase, fn) : fn());
+
     if (Object.keys(row).length === 0) {
       return;
     }
-    // set all empty row and nested row types to 'set_variable' type
-    if (!row.type) {
-      row.type = "set_variable";
-    }
-    // TODO - confirm if handling the same and then remove from excel sheets
-    if (row.type === ("template_group" as any)) {
-      row.type = "template";
-    }
-    // when unique name not specified assume namespacing with template value (flow_name)
-    // or the row type for non-templates
-    if (!row.name) {
-      row.name = this.generateRowName(row, rowNumber);
-    }
-
-    // Ensure nested item or data_items rows also have unique names
-    if (row.type === "data_items" || row.type === "items") {
-      if (row.rows) {
-        row.rows = this.generateItemRowNames(row.rows);
+    track("postProcessRow.setDefaults", () => {
+      if (!row.type) {
+        row.type = "set_variable";
       }
-    }
+      if (row.type === ("template_group" as any)) {
+        row.type = "template";
+      }
+      if (!row.name) {
+        row.name = this.generateRowName(row, rowNumber);
+      }
+      if (row.type === "data_items" || row.type === "items") {
+        if (row.rows) {
+          row.rows = this.generateItemRowNames(row.rows);
+        }
+      }
+      row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
+    });
 
-    // track path to row when nested
-    row._nested_name = nestedPath ? `${nestedPath}.${row.name}` : row.name;
-    // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
-    // in similar way to how top-level properties get converted by default parser
-    row.value = this.transformRowValue(row.name, row.value);
+    row.value = track("postProcessRow.transformRowValue", () =>
+      this.transformRowValue(row.name, row.value)
+    );
 
     if (row.parameter_list) {
-      row.parameter_list = this.parseParameterList(row.parameter_list as any);
+      row.parameter_list = track("postProcessRow.parseParameterList", () =>
+        this.parseParameterList(row.parameter_list as any)
+      );
     }
     if (row.action_list) {
-      row.action_list = this.hackUpdateActionSelfReferences(row.action_list, row.name);
-    }
-
-    // extract dynamic fields for runtime evaluation
-    const dynamicFields = extractDynamicFields(row);
-    if (dynamicFields) {
-      row._dynamicFields = dynamicFields;
-      row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
-    }
-
-    // handle nested rows in same way
-    if (row.rows) {
-      row.rows = row.rows.map((r, i) => this.postProcessRow(r, i + 1, row._nested_name));
-    }
-
-    if (row.exclude_from_translation) {
-      row.exclude_from_translation = this.parseExcludeFromTranslation(
-        row.exclude_from_translation as any
+      row.action_list = track("postProcessRow.hackUpdateActionSelfReferences", () =>
+        this.hackUpdateActionSelfReferences(row.action_list, row.name)
       );
     }
 
-    const errors = this.qualityControlCheck(row);
+    track("postProcessRow.extractDynamicFields", () => {
+      const dynamicFields = extractDynamicFields(row);
+      if (dynamicFields) {
+        row._dynamicFields = dynamicFields;
+        row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
+      }
+    });
+
+    if (row.rows) {
+      row.rows = track("postProcessRow.nestedRows", () =>
+        row.rows.map((r, i) => this.postProcessRow(r, i + 1, row._nested_name))
+      );
+    }
+
+    if (row.exclude_from_translation) {
+      row.exclude_from_translation = track("postProcessRow.parseExcludeFromTranslation", () =>
+        this.parseExcludeFromTranslation(row.exclude_from_translation as any)
+      );
+    }
+
+    const errors = track("postProcessRow.qualityControlCheck", () => this.qualityControlCheck(row));
     if (errors.length > 0) {
       throw JSON.stringify(errors, null, 2);
     }
@@ -75,13 +79,20 @@ export class TemplateParser extends DefaultParser {
   }
 
   public override postProcessFlow(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
-    const hoisted = this.hackHoistDisplayGroupVariables(flow);
-    return hoisted;
+    return this.trackPhase("postProcessFlow.hackHoistDisplayGroupVariables", () =>
+      this.hackHoistDisplayGroupVariables(flow)
+    );
   }
 
   public override postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
-    const flowsWithOverrides = assignFlowOverrides(flows);
-    return flowsWithOverrides;
+    const phaseTracker = new FlowParserPhaseTracker();
+    const result = phaseTracker.time("template.postProcessFlows.assignFlowOverrides", () =>
+      assignFlowOverrides(flows)
+    );
+    if (typeof this.flowProcessor.accumulateParserPhases === "function") {
+      this.flowProcessor.accumulateParserPhases(phaseTracker.toRecord());
+    }
+    return result;
   }
 
   /**
