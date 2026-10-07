@@ -148,6 +148,7 @@ export async function downloadExternalAssets(
     });
   }
   const coreFolders = assets_folders.filter(({ remote }) => !remote);
+  if (coreFolders.length === 0) return;
 
   const downloadFolders = await downloadDriveFolders(coreFolders, {
     cachePath: ASSETS_CACHE_PATH,

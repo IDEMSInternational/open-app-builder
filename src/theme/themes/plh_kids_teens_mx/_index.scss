@@ -74,6 +74,9 @@
           module-list-item-border-highlighted: none,
           module-list-item-border-locked: 1px solid var(--ion-color-gray-300),
           module-list-item-min-height: 54px,
+          // Full-height nav-stacks. Units required as the values are used in calc()
+          nav-stack-top-offset: 0px,
+          nav-stack-stagger-offset: 0px,
           popup-completion-background: linear-gradient(
               310deg,
               var(--ion-color-secondary-400),
@@ -81,8 +84,9 @@
             ),
           popup-completion-close-button-border-color: var(--ion-color-primary-variant-200),
           popup-completion-close-button-color: var(--ion-color-primary-variant-500),
-          radio-group-background-checked: var(--ion-color-secondary-variant-200),
-          radio-group-border-checked: 2px solid var(--ion-color-secondary-variant-300),
+          radio-group-background: var(--ion-color-secondary-variant-50),
+          radio-group-background-selected: var(--ion-color-secondary-variant-200),
+          radio-group-border-selected: 2px solid var(--ion-color-secondary-variant-300),
           radio-group-border-selected-triangle: 2px solid var(--ion-color-primary-variant-400),
           radio-group-border-triangle: 1px solid var(--ion-color-primary-variant-400),
           radio-group-label-background: var(--ion-color-secondary-variant-100),
