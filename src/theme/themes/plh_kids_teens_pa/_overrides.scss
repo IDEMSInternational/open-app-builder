@@ -1,6 +1,17 @@
 /// Theme rule overrides specific to plh_kids_teens_pa.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
+  // Radio Button Group
+  // Selected plh-radio-group buttons and radio button grid items use primary colours rather than
+  // this theme's radio group selected styles
+  plh-radio-group .btn_triangle_container {
+    --radio-group-background-selected: var(--ion-color-primary-300);
+  }
+  plh-radio-button-grid {
+    --radio-group-background-selected: var(--ion-color-primary-300);
+    --radio-group-border-selected: 1px solid var(--ion-color-primary-400);
+  }
+
   // module header
   plh-module-details-header {
     .module-header {
