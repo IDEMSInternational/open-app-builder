@@ -26,6 +26,9 @@ yarn workflow beta import C:\Source\my-deployment-repo
 !!! note
     The source repository must contain a valid `config.ts` file. The import will fail if this file is missing.
 
+!!! note
+    `[source_path]` must come before any flags, e.g. `yarn workflow beta import C:\Source\my-deployment-repo -v`. This also applies to `import_sync`.
+
 ### Import Sync
 Sync sheets and assets from google drive to the external repository (as `sync_sheets` and `sync_assets`), then import it.
 

@@ -23,8 +23,6 @@ interface IProgramOptions {
 export default program
   .description("Run a workflow")
   .argument("[name]", "Name of workflow to run")
-  .passThroughOptions()
-  .passThroughOptions()
   .allowUnknownOption()
   .helpOption("--helpIgnored", "will show help from child workflow instead of this")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
@@ -86,15 +84,10 @@ export class WorkflowRunnerClass {
     // if workflow supports options ensure any main process args are also parsed to populate
     // and merge with existing
     if (workflow.options) {
-      const { options: parsedOptions, args: remainingArgs } = this.parseWorkflowOptions(
-        workflow.options,
-        workflowArgs
-      );
       this.activeWorkflowOptions = {
         ...this.activeWorkflowOptions,
-        ...parsedOptions,
+        ...this.parseWorkflowOptions(workflow.options, args),
       };
-      workflowArgs = remainingArgs;
     }
     return this.executeWorkflow(workflow, workflowArgs, parent);
   }
@@ -152,7 +145,7 @@ export class WorkflowRunnerClass {
     // and use commander's parsing methods to process the args list
     const [sysArg1, sysArg2] = process.argv;
     subProgram.parse([sysArg1, sysArg2, ...args]);
-    return { options: parsedOptions, args: subProgram.args };
+    return parsedOptions;
   }
 
   private async executeWorkflow(workflow: IWorkflow, args: string[] = [], parent?: string) {
