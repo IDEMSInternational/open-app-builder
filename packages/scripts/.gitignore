@@ -8,3 +8,5 @@ exec
 test/data/cache
 test/data/output
 test/data/reports
+# cached downloads for beta commands
+cache
