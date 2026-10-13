@@ -112,5 +112,11 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   and every child after the first gets a `1em` left margin (`display-group.component.scss`). Add
   `parameter_list: style: column` to any display group used just to show/hide a stack of rows.
   (found 2026-09-25: V3 article_wrap `is_relax`, white space left of the module pause)
+- **`SyntaxError: Mismatched Bracket: }` with `{@items[0}].…` in the console = a `data_items` row matched
+  nothing.** `data_changed` fires even with zero items; `@items[0].id` then fails as JS (swallowed,
+  `appDataEvaluator.ts` `evaluateExpression`) and the string-template fallback mangles the brackets
+  (`delimiters.ts` `addStringDelimiters`). The throw stops the whole `data_changed` action list.
+  Always write `@items[0]?.id`, and decide what the page should do when the list is empty.
+  (found 2026-10-13: module_start_at_id `find_last_completed`, home_screen `module_tasks`)
 
 
