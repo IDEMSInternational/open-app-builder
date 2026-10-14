@@ -32,4 +32,12 @@ describe("TmplAudioComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+
+  it("unloads the player on destroy", async () => {
+    const player = jasmine.createSpyObj("Howl", ["stop", "unload"]);
+    component.player = player;
+    await component.ngOnDestroy();
+    expect(player.unload).toHaveBeenCalled();
+    expect(component.player).toBeNull();
+  });
 });

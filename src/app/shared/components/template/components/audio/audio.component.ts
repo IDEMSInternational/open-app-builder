@@ -286,7 +286,11 @@ export class TmplAudioComponent
   }
 
   async ngOnDestroy() {
-    this.player?.stop();
+    this.stopProgressTracker();
+    // Release the HTML5 <audio> node (used on iOS): otherwise it keeps loading after the page is left,
+    // and a later load error is logged against a component that no longer exists
+    this.player?.unload();
+    this.player = null;
     if (this.transcriptModal) {
       await this.transcriptModal.dismiss();
     }
