@@ -1,4 +1,9 @@
 $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
+$logo-size: 20px;
+$border-width: 1px;
+// Centre of the circle that forms the button's rounded corner. The browser clamps the radius
+// to half the button's height, so clamp this the same way
+$corner-centre: min(#{$border-radius}, calc(var(--buttons-medium-height) / 2));
 
 // native_apple variant is styled precisely in line with Apple's guidleines:
 // https://developer.apple.com/documentation/sign_in_with_apple/displaying-sign-in-with-apple-buttons-on-the-web
@@ -11,6 +16,12 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   background-color: white;
   color: black;
   padding: var(--regular-margin);
+  // Align the logo with the centre of the corner circle, where the radius is large enough for
+  // that to sit outside the default padding. Set on both sides so the label stays centred
+  padding-inline: max(
+    var(--regular-margin),
+    calc(#{$corner-centre} - #{$logo-size * 0.5} - #{$border-width})
+  );
   border-radius: $border-radius;
   font-size: var(--buttons-font-size);
   font-weight: var(--font-weight-bold);
@@ -19,11 +30,16 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   height: 100%;
+  min-height: var(--buttons-medium-height);
   width: 100%;
   min-width: 140px;
 
   .apple-logo {
-    height: 20px;
+    height: $logo-size;
+    // The logo is taller than it is wide, so give it a square footprint to centre it in,
+    // matching the Google icon
+    width: $logo-size;
+    object-fit: contain;
     margin-inline-end: 12px;
     filter: invert(1);
     flex-shrink: 0;
@@ -33,7 +49,7 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   // This centers the text content while keeping the icon at the start
   &::after {
     content: "";
-    width: 32px; // 20px icon + 12px margin
+    width: $logo-size + 12px; // logo + its margin
     flex-shrink: 0;
   }
   &[data-style="width_content"] {
@@ -66,11 +82,13 @@ $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   border: none;
   height: 40px;
+  min-height: 40px;
   width: auto;
   justify-content: space-between;
 
   .apple-logo {
     height: 14px;
+    width: auto;
     margin-inline-end: 10px;
     filter: none;
   }

@@ -4,7 +4,7 @@
       @if (params().progressDisplay === "spinner") {
         <ion-spinner color="primary"></ion-spinner>
       }
-      @if (params().progressDisplay === "count" && progressCountText()) {
+      @if (progressCountText()) {
         <plh-tmpl-text
           [row]="{ _nested_name: '', name: '', type: 'text', value: progressCountText() }"
           [parentContainerComponentRef]="parentContainerComponentRef"

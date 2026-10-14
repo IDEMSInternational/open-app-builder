@@ -32,6 +32,12 @@ export class AsyncServiceBase {
   private initFunction: () => Promise<void>;
 
   /**
+   * Error thrown by the init function, if it failed. The service will still be marked as ready
+   * (see `callInitFunction`), so this can be inspected by services that want to handle the failure
+   */
+  public initError?: unknown;
+
+  /**
    * @param serviceName Name of child service for use in logging
    */
   protected constructor(private serviceName: string) {}
@@ -120,11 +126,26 @@ export class AsyncServiceBase {
     this.initCalled = true;
     const startTime = performance.now();
     console.log(`%c ${this.serviceName || ""} `, "background: #deaa50; color: black");
-    await this.initFunction();
+    // A failed init must still mark the service as ready. Init is only ever attempted once, so
+    // otherwise `initialised$` would never emit and every future `ready()` call would stall for the
+    // full timeout (default 60s) before silently resolving anyway.
+    try {
+      await this.initFunction();
+    } catch (error) {
+      this.initError = error;
+    }
     this.initialised$.next(true);
     const endTime = performance.now();
     const totalTime = Math.round(endTime - startTime);
-    console.log(`%c ${this.serviceName} (${totalTime}ms) `, "background: #7ebd73; color: black");
+    if (this.initError) {
+      console.error(
+        `%c ${this.serviceName} (init failed after ${totalTime}ms) `,
+        "background: #bd7373; color: black",
+        this.initError
+      );
+    } else {
+      console.log(`%c ${this.serviceName} (${totalTime}ms) `, "background: #7ebd73; color: black");
+    }
   }
 
   /**

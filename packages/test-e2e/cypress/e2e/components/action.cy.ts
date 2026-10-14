@@ -49,4 +49,12 @@ describe("action component", () => {
     cy.url().should("include", "/template/test_action_nav_target");
     cy.getDataTest("theTitle").contains("Navigated by external action with param via a sub action");
   });
+
+  it("actions with false condition do not execute", () => {
+    cy.getDataTest("disabledActionExecuted").contains("Disabled Action Not Executed");
+
+    cy.getDataTest("disabledActionExecuteButton").click();
+
+    cy.getDataTest("disabledActionExecuted").contains("Disabled Action Not Executed");
+  });
 });

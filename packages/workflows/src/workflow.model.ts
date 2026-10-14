@@ -22,6 +22,8 @@ export interface IWorkflowStepContext {
   /** Positional args passed to workflow script */
   args: string[];
   options: { [optionName: string]: string | boolean };
+  /** Name of parent workflow step, if run from another workflow */
+  parent?: string;
 }
 
 export interface IWorkflow {

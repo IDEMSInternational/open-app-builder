@@ -14,7 +14,7 @@ $text-color: var(--title-text-color, var(--ion-color-primary-900));
     margin: 0;
   }
   h1 {
-    line-height: var(--line-height-text-largest);
+    line-height: var(--line-height-text-large);
     font-weight: var(--font-weight-bold);
     color: $text-color;
     @media (max-width: 375px) {
@@ -25,7 +25,7 @@ $text-color: var(--title-text-color, var(--ion-color-primary-900));
     }
   }
   .alternative {
-    line-height: var(--line-height-text-largest);
+    line-height: var(--line-height-text-large);
     color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: var(--font-size-title-small-device);
