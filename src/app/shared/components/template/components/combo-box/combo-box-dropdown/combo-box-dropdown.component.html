@@ -40,11 +40,10 @@
       cssClass="combo-box-select-popover"
     >
       <ng-template>
-        <ion-list class="combo-box-dropdown-list" lines="none">
+        <ion-list class="combo-box-dropdown-list" lines="full">
           @for (answerOption of answerOptions(); track answerOption[optionsKey()]) {
             <ion-item
               button
-              lines="none"
               detail="false"
               (click)="selectOption(answerOption)"
               [class.selected]="isSelected(answerOption)"
