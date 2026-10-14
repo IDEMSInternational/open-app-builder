@@ -67,6 +67,12 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
   literal text `@local.x`, set_data throws "[data_list] … not found", and the rest of that action list
   never runs. Use a fixed list name (or one row per list). (verified 2026-09-25: gen_stack_module_start_at_id
   check-in hand-over)
+- **`set_field | name : value` (pipe instead of colon) silently writes nothing useful.** The text after the
+  second `|` becomes named params, so the action gets `args: []` and `set_field` (which only reads args,
+  `template-field.service.ts` `registerTemplateActionHandlers`) calls `setField(undefined, undefined)`:
+  console `[SET FIELD] undefined undefined`, a localStorage key `rp-contact-field.undefined`, no error. Write
+  `set_field: name: value`. (found 2026-10-14: V3 `module_start_at_id_get_unlock`, `completed_all` never set
+  in mx/my/pa)
 
 
 - **`click | …` on a `template` row never fires.** Actions on a nested-template row only run when the child template emits a value matching the trigger (`template-action.service.ts`, `emit` handler). Use the child's emitted values (e.g. `completed` / `uncompleted` from nav-button templates). (verified 2026-09-14)
