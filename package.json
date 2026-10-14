@@ -44,6 +44,7 @@
     "@angular/platform-browser": "~21.2.4",
     "@angular/platform-browser-dynamic": "~21.2.4",
     "@angular/router": "~21.2.4",
+    "@capacitor-community/device": "^7.0.0",
     "@capacitor-community/file-opener": "^7.0.1",
     "@capacitor-firebase/app-check": "^7.3.0",
     "@capacitor-firebase/authentication": "^7.2.0",
