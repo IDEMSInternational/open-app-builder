@@ -37,7 +37,7 @@
     "p-queue": "^6.6.2",
     "semver": "^7.5.2",
     "shared": "workspace:*",
-    "simple-git": "^3.36.0",
+    "simple-git": "^4.0.1",
     "subtitles-parser-vtt": "^0.1.0",
     "ts-morph": "^15.0.0",
     "typescript": "5.5.4",
