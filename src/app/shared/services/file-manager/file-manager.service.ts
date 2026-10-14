@@ -11,6 +11,20 @@ import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { DeploymentService } from "../deployment/deployment.service";
 import { basenameFromExternalUrl, isExternalHttpUrl } from "shared/src/utils/string-utils";
 
+/** Result of statting a file previously written via `FileManagerService.saveFile` */
+export interface ISavedFileInfo {
+  exists: boolean;
+  sizeBytes?: number;
+}
+
+/** Location of the folder `FileManagerService.saveFile` writes to, for the current app container */
+export interface ILocalAssetPathConfig {
+  /** `file://` uri of the save folder, resolved against the container the app is running in *now* */
+  baseUri: string;
+  /** Deployment name, i.e. the folder segment `saveFile` inserts before every target path */
+  deploymentName: string;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -161,7 +175,9 @@ export class FileManagerService extends SyncServiceBase {
    * @param options.directory the name of the directory in which to save the file.
    * E.g. the permenent "Data" directory (default) or the temporary "Cache" (see https://capacitorjs.com/docs/apis/filesystem#directory)
    * @param options.subdirectory Additional folder path to be added between "directory" and target path. The app deployment name is always added.
-   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src format
+   * @returns the local filesystem path to the saved file, in both "file://*" format and usable src
+   * format. NB the returned `src` is an absolute path and is only safe for immediate, in-session use
+   * - never persist it, see `getLocalAssetPathConfig`.
    */
   public async saveFile(options: {
     data: Blob;
@@ -194,6 +210,73 @@ export class FileManagerService extends SyncServiceBase {
       throw new Error("deleteFile() is only supported on native platforms");
     }
     return await Filesystem.deleteFile({ path: localFilepath });
+  }
+
+  /**
+   * Native only: check whether a file previously written via `saveFile` exists on disk, and if so
+   * return its size in bytes. Uses the same path rule as `saveFile` so callers do not re-derive it.
+   * Returns `{ exists: false }` when the file is not present (stat throws for a missing path).
+   *
+   * Deliberately does not return a webview src: callers that need one must resolve it at the point
+   * of display via `getLocalAssetPathConfig`, so that no absolute path is ever persisted.
+   */
+  public async getSavedFileInfo(
+    targetPath: string,
+    options: { directory?: keyof typeof Directory; subdirectory?: string } = {}
+  ): Promise<ISavedFileInfo> {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("getSavedFileInfo() is only supported on native platforms");
+    }
+    const { directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    try {
+      const { size } = await Filesystem.stat({ path, directory: Directory[directory] });
+      return { exists: true, sizeBytes: size };
+    } catch {
+      return { exists: false };
+    }
+  }
+
+  /**
+   * Native only: recursively delete a folder previously written to via `saveFile`, reclaiming the
+   * storage it used. Uses the same path rule as `saveFile` so callers do not re-derive it.
+   * Deleting a folder that does not exist is a no-op rather than an error.
+   * @returns true if a folder was deleted, false if there was nothing to delete
+   */
+  public async deleteSavedFolder(
+    targetPath: string,
+    options: { directory?: keyof typeof Directory; subdirectory?: string } = {}
+  ): Promise<boolean> {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("deleteSavedFolder() is only supported on native platforms");
+    }
+    const { directory = "Data", subdirectory = "" } = options;
+    const path = (subdirectory ? subdirectory + "/" : "") + `${this.cacheName}/${targetPath}`;
+    try {
+      await Filesystem.rmdir({ path, directory: Directory[directory], recursive: true });
+      return true;
+    } catch (error) {
+      // Distinguish "nothing to delete" (expected, e.g. a pack that was never downloaded) from a
+      // real failure, which the caller should hear about rather than silently treat as success.
+      const { exists } = await this.getSavedFileInfo(targetPath, options);
+      if (!exists) return false;
+      throw error;
+    }
+  }
+
+  /**
+   * Native only: resolve where `saveFile` writes to in the container the app is running in *now*.
+   *
+   * The container path is not stable across app updates on iOS (Apple TN2285), so this must be
+   * called once per session and combined with a stored *relative* path at the point of use, rather
+   * than baked into anything that gets persisted.
+   */
+  public async getLocalAssetPathConfig(): Promise<ILocalAssetPathConfig> {
+    if (!Capacitor.isNativePlatform()) {
+      throw new Error("getLocalAssetPathConfig() is only supported on native platforms");
+    }
+    const { uri } = await Filesystem.getUri({ path: this.cacheName, directory: Directory.Data });
+    return { baseUri: uri, deploymentName: this.cacheName };
   }
 
   /**

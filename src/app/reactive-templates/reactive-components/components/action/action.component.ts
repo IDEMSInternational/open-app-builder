@@ -1,7 +1,6 @@
 import {
   Component,
   ComponentRef,
-  createComponent,
   EnvironmentInjector,
   inject,
   OnDestroy,
@@ -17,6 +16,7 @@ import {
 } from "src/app/reactive-templates/services/action.registry";
 import { REACTIVE_COMPONENT_MAP } from "..";
 import { SetVariableComponent } from "../set-variable/set-variable.component";
+import { createReactiveComponentRef, destroyComponentRefs } from "../../reactive-component-host";
 
 const parameters = () => defineParameters({});
 
@@ -50,6 +50,10 @@ export class ActionComponent
   }
 
   public async execute(params?: IActionParameter[]): Promise<void> {
+    if (!this.condition()) {
+      return;
+    }
+
     const name = this.name();
     const expression = this.expression();
 
@@ -88,7 +92,10 @@ export class ActionComponent
     for (const action of this.actions.values()) {
       // Action components need to be manually initialised as ngOnInit is not called automatically
       action.init();
-      await action.execute(mergedParams);
+
+      if (action.condition()) {
+        await action.execute(mergedParams);
+      }
     }
   }
 
@@ -105,11 +112,12 @@ export class ActionComponent
       const componentType = (REACTIVE_COMPONENT_MAP as any)[row.type];
 
       if (componentType) {
-        const componentRef = createComponent(componentType, {
-          environmentInjector: this.injector,
-        });
-        componentRef.setInput("row", row);
-        componentRef.setInput("namespace", this.namespace());
+        const componentRef = createReactiveComponentRef(
+          componentType,
+          this.injector,
+          row,
+          this.namespace()
+        );
 
         this.componentRefs.push(componentRef);
 
@@ -132,6 +140,6 @@ export class ActionComponent
     super.ngOnDestroy();
 
     this.actionRegistry.unregister(this.name());
-    this.componentRefs.forEach((ref) => ref.destroy());
+    destroyComponentRefs(this.componentRefs);
   }
 }

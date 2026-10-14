@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, DestroyRef, inject, OnInit } from "@angular/core";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { IAppConfig } from "data-models";
 import { ThemeService } from "../../services/theme.service";
 
@@ -12,11 +13,15 @@ export class ThemeEditorPage implements OnInit {
   availableThemes: IAppConfig["APP_THEMES"]["available"];
   currentTheme: string;
 
+  private destroyRef = inject(DestroyRef);
+
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.availableThemes = this.themeService.availableThemes;
-    this.themeService.currentTheme$.subscribe((currentTheme) => (this.currentTheme = currentTheme));
+    this.themeService.currentTheme$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((currentTheme) => (this.currentTheme = currentTheme));
   }
 
   setTheme(theme: string) {

@@ -11,7 +11,7 @@ import type {
   CantoSourceFolder,
   CantoSourceFolderFileList,
 } from "./types";
-import { getCantoConfig, getFilePath, getOutputFolder } from "./utils";
+import { getCantoConfig, getLocalFilePath, getManifestFileMap, getOutputFolder } from "./utils";
 import { ensureValidAccessToken } from "./authorize";
 import { cleanupEmptyFolders, generateFolderFlatMap } from "../../../utils";
 
@@ -198,8 +198,7 @@ const prepareSyncActions = (
   };
   const manifestPaths = new Set<string>();
 
-  for (const file of manifest) {
-    const relativePath = getFilePath(file, folderId);
+  for (const [relativePath, file] of getManifestFileMap(manifest, folderId)) {
     manifestPaths.add(relativePath);
     const localFile = localFiles[relativePath];
 
@@ -321,7 +320,7 @@ const downloadFile = async (
   downloadedFolder: CantoDownloadedFolder
 ) => {
   const url = fileEntry.url.directUrlOriginal;
-  const filePath = getFilePath(fileEntry, downloadedFolder.folderConfig.id);
+  const filePath = getLocalFilePath(fileEntry, downloadedFolder.folderConfig.id);
   const fullPath = path.join(downloadedFolder.path, filePath);
   let lastError: unknown;
   let attemptsMade = 0;
@@ -366,4 +365,5 @@ export {
   getDownloadedFolders,
   isRetryableDownloadError,
   listFiles,
+  prepareSyncActions,
 };
