@@ -55,6 +55,19 @@ $text-color: var(--radio-button-font-color, var(--ion-color-primary));
   }
 }
 
+.radio-buttons[data-variant="default"] {
+  .item {
+    display: flex;
+    flex-direction: column;
+    .item-text {
+      margin-block: auto;
+      p {
+        margin: var(--text-outer-margin) 0;
+      }
+    }
+  }
+}
+
 .radio-buttons[data-variant="circle-icon"] {
   display: grid;
 
