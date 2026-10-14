@@ -231,6 +231,21 @@ ion-popover.combo-box-select-popover .combo-box-dropdown-list {
   background: var(--ion-list-item-background, #fff);
 }
 
+// Divide and pad items in all popover lists, so items that wrap onto multiple lines
+// (e.g. at large text sizes) remain visually distinct. Lists in our own templates set
+// `lines="full"`, but ion-select's popover markup is internal to Ionic so its border is set here
+ion-popover ion-select-popover ion-item {
+  --border-width: 0 0 1px 0;
+  --inner-border-width: 0;
+}
+ion-popover ion-list ion-item {
+  --padding-top: 6px;
+  --padding-bottom: 6px;
+  &:last-child {
+    --border-width: 0;
+  }
+}
+
 ion-popover.combo-box-select-popover .combo-box-dropdown-list ion-item.selected {
   --background: var(--combo-box-background-with-value, var(--ion-color-primary-100));
   --color: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
