@@ -2800,12 +2800,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/ios@npm:^7.0.0":
-  version: 7.4.5
-  resolution: "@capacitor/ios@npm:7.4.5"
+"@capacitor/ios@npm:^7.6.9":
+  version: 7.6.9
+  resolution: "@capacitor/ios@npm:7.6.9"
   peerDependencies:
-    "@capacitor/core": ^7.4.0
-  checksum: 995c49d5fd93560e7a8bbe9f201debabe918ed4464fcaa5f584006f5e2a4d5892e2d59e824c6466a8c88971d4259102b3b1606ac891b586ea1c0d078de6f4240
+    "@capacitor/core": ^7.6.0
+  checksum: 8bcb430343e154bd8740995b14b30f28d395ead4d0b80eae98ad2555a967a4e3cac277b2235997957f69d17b07fdb231ff1934419226cdb44b76c9b05513276f
   languageName: node
   linkType: hard
 
@@ -17800,7 +17800,7 @@ __metadata:
     "@capacitor/core": ^7.0.0
     "@capacitor/device": ^7.0.0
     "@capacitor/filesystem": ^7.0.0
-    "@capacitor/ios": ^7.0.0
+    "@capacitor/ios": ^7.6.9
     "@capacitor/local-notifications": ^7.0.0
     "@capacitor/network": ^7.0.0
     "@capacitor/push-notifications": ^7.0.0
