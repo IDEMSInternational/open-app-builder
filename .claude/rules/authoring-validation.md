@@ -7,7 +7,7 @@ paths:
   - ".idems_app/**"
 ---
 
-# Silent-failure catalogue and validation hooks (as of 2026-08-12; verify before relying on line-level claims)
+# Silent-failure catalogue and validation hooks (as of 2026-08-12; verify against the code)
 
 Useful when debugging "the sheet says X but the app does nothing", or when adding lint/validation.
 Symptom → entry index: `role-author.md`.
@@ -52,7 +52,7 @@ Symptom → entry index: `role-author.md`.
 - **`SyntaxError: Unexpected token ';'` at runtime = an unbalanced `@calc(...)` on the page.** The converter
   does not check bracket balance: `extractDynamicEvaluators` takes everything after `@calc(` as the
   expression and stores it unchanged. At runtime `evaluateJSExpression`
-  (`src/app/shared/utils/utils.ts:355`) builds the body as `… return (${expression});`, so a missing `)`
+  (`src/app/shared/utils/utils.ts`) builds the body as `… return (${expression});`, so a missing `)`
   puts the appended `;` where JS expected the bracket. The reported location is always inside the generated
   VM script (the globals prelude pushes it ~line 90+), never the sheet, and the page renders blank with no
   other clue. Scan the generated JSON for unbalanced `value`/`condition` cells containing `@calc(` rather

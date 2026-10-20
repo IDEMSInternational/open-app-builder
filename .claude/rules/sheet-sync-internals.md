@@ -5,7 +5,7 @@ paths:
   - "packages/workflows/**"
 ---
 
-# Sheet sync internals and performance (as of 2026-08-13; verify before relying on line-level claims)
+# Sheet sync internals and performance (as of 2026-08-13, updated 2026-10-20; verify against the code)
 
 Tracked upstream as https://github.com/IDEMSInternational/open-app-builder/issues/3605.
 
@@ -15,17 +15,16 @@ Tracked upstream as https://github.com/IDEMSInternational/open-app-builder/issue
   `gdrive-tools` → the full `googleapis` index even for convert-only commands. Windows Defender scanning makes
   cold start much worse (a repo exclusion is a legitimate developer workaround). `translations_apply` spawns a
   second CLI.
-- **Flow parse (~3 min for zero changes)** is I/O-bound cache bookkeeping:
-  `JsonFileCache.add()` → `writeCacheContents()` (`convert/cacheStrategy/jsonFile.ts`) re-reads and md5s the
-  *entire* cache folder and rewrites `_contents.json` on every add. `shouldUseCachedEntry` (`flowParser.ts`)
-  returns false for all `data_pipe`/`generator` flows, so each of those triggers a remove+parse+add cycle →
-  cost is O(#data_pipes × #cache_entries). The cache is never pruned (content-keyed orphans accumulate), so it
-  compounds over months with no code change and hits generator-heavy deployments hardest.
+- **Flow parse** was dominated by cache bookkeeping: `JsonFileCache.add()` (`convert/cacheStrategy/jsonFile.ts`)
+  used to re-read and md5 the *entire* cache folder on every add. It now updates only the added entry in
+  `_contents.json` (fixed 2026-09, commit 2a12f4cfc); the full rescan (`writeCacheContents`) only runs on load
+  or clear. Still true: `shouldUseCachedEntry` (`flowParser.ts`) returns false for all `data_pipe`/`generator`
+  flows, so those are re-parsed every sync, and the cache is never pruned (content-keyed orphans accumulate).
 - xlsx cache and translations are cheap; converter/gdrive-tools code had not changed for months when this
   was measured (non-cause).
 
-Proposed fixes (not implemented as of 2026-08-13): incremental `_contents.json` update written once at the
-end; dependency-aware cache keys for data_pipe/generator (hash input + referenced data_list hashes);
+Further fixes proposed in the issue: dependency-aware cache keys for data_pipe/generator (hash input +
+referenced data_list hashes);
 mark-and-sweep cache pruning; bundle the CLI / lazy-import gdrive-tools; write-if-changed instead of
 emptyDir+rewrite for `sheet_json`/outputs/post-process.
 

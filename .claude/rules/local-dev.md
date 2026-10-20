@@ -19,10 +19,9 @@
 4. **Content authored against an unmerged feature looks "broken" on master.** Because actions are parsed at
    sync time, a sheet using a trigger/parameter that only an open PR's parser understands will be silently
    parsed as `click` on master. Check the PR/branch state with `gh pr view <n> --repo
-   IDEMSInternational/open-app-builder` before debugging. Example (as of 2026-08-18, PR #3580 still open):
-   `plh_progress_bar` `on_progress`/`completed` triggers exist only on branch
-   `feat/progress-bar-progress-action-trigger`, which changes both
-   `packages/components/plh/progress-bar/progress-bar.logic.ts` and the parser.
+   IDEMSInternational/open-app-builder` before debugging, and check that the trigger is in the parser's
+   allowlist (`app-data-action.utils.ts`) on the branch the content was synced with. A new trigger usually
+   needs both a component change and a parser change, so both must be merged and the content re-synced.
 
 5. "Duplicate flows found" entries in `packages/scripts/logs/error.log` are usually pre-existing authoring
    noise (last-wins resolution, see `content-pipeline.md`), not blockers.

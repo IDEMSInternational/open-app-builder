@@ -102,6 +102,9 @@ More: `.claude/rules/local-dev.md`.
   duplicate; if it is a new symptom, also add a line to the symptom index in `role-author.md`.
 - **Entry format:** one bullet, wrapped at ~110 characters, in this order:
   `**<symptom or rule, in bold>.** <cause, citing file/function> <fix or workaround> (verified|found YYYY-MM-DD: <example>)`.
+- **Don't store facts that go stale on their own.** Cite files and function names, not line numbers (`path:line`
+  links are fine in answers, not in these notes). Don't record whether a PR or issue is open or merged; link it
+  and check its state live with `gh`. When a documented bug is fixed, update or remove its entry.
 - **Write tool-neutral:** say "the assistant", not a product name. Tool-specific mechanics (permissions,
   auto-loading, memory) belong in that tool's file (`CLAUDE.md` for Claude Code), not here or in the topic notes.
 - Multi-step procedures worth repeating go in `.claude/skills/<name>/SKILL.md`; list them under "Topic notes".
