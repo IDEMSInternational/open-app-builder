@@ -6,7 +6,7 @@ import { IContextMenuAction, IContextMenuActionData } from "./context-menu.types
   selector: "app-context-menu",
   template: `
     <ion-content class="no-padding ">
-      <ion-list class="context-menu-content">
+      <ion-list class="context-menu-content" lines="full">
         <ion-list-header>Menu</ion-list-header>
         @for (action of actions; track action) {
           <ion-item class="context-menu-button" button (click)="handleActionButtonClick(action)">{{
