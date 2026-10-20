@@ -36,3 +36,10 @@
 
 7. **`ng serve` binds to IPv6 `::1` only on Windows/Node ≥17,** so `127.0.0.1:4200` refuses connections. To use the
    `127.0.0.1` onboarding workaround (item 1), start with `yarn start --host 127.0.0.1`. (verified 2026-09-11)
+
+8. **Testing a content fix without editing repo files or sheets:** re-run the converter's `TemplateParser` on the
+   raw `<deployment>/tasks/template/sheet_json/template/<flow>.json` with the rows overridden (ts-node from
+   `packages/scripts`, `NODE_PATH=packages/scripts/node_modules`), then serve that JSON to headless Chrome via
+   CDP `Fetch.enable` interception of `*<flow>.json*`. Dynamic-data state can be seeded with
+   `ng.getComponent(document.querySelector('plh-data-items')).dataItemsService.dynamicDataService.update(...)`.
+   (verified 2026-08-19)

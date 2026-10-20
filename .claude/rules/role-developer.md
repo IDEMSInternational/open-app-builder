@@ -19,7 +19,7 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   `yarn format` (prettier), `yarn build`
 - Scripts CLI: `yarn scripts …`; workflow task providers live in `packages/scripts/src/tasks/providers/`
 
-## What Claude does for developers (suggest-only mode)
+## What the assistant does for developers (suggest-only mode)
 
 - **Explain and locate**: trace a behaviour from sheet row → generated JSON → component/service, citing
   `path:line`. The template engine is under `src/app/shared/components/template/` (services: `template.service.ts`,
@@ -50,5 +50,5 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   download cache) — usually more than you want.
 - Sheet-sync slowness is dominated by cache bookkeeping and CLI cold start, not the xlsx conversion —
   `.claude/rules/sheet-sync-internals.md`, upstream issue #3605.
-- Local `localhost` runs force `user_mode=false` (`app.component.ts` `hackSetDeveloperOptions`); use
-  `127.0.0.1` to test onboarding.
+- Local previews (`localhost` forces `user_mode=false`, persisted fields): see `AGENTS.md` → Local preview
+  gotchas and `local-dev.md`.

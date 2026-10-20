@@ -4,13 +4,17 @@ paths:
   - "packages/data-models/**"
   - "packages/components/**"
   - "src/app/shared/components/template/**"
+  - ".idems_app/**"
 ---
 
 # Silent-failure catalogue and validation hooks (as of 2026-08-12; verify before relying on line-level claims)
 
 Useful when debugging "the sheet says X but the app does nothing", or when adding lint/validation.
+Symptom → entry index: `role-author.md`.
 
 ## Things that fail silently
+
+### Parser and converter
 
 - **Unknown action trigger** → rewritten to `click` (`convert/utils/app-data-action.utils.ts`).
 - **Unknown row type** → renders blank; the warning is commented out
@@ -29,7 +33,7 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
 - Only ~22 of ~70 components declare zod param schemas (`defineAuthorParameterSchema`,
   `parameter-list.utils.ts`); the rest read params ad hoc. `optimise_build` makes the valid component set
   deployment-specific.
--  **A `parameter_list` value that happens to start with `@item.` crashes the whole flow's compile, silently.**
+- **A `parameter_list` value that happens to start with `@item.` crashes the whole flow's compile, silently.**
   `handleSpecialFieldTypes()`'s `shouldSkip` check (`convert/processors/flowParser/parsers/default.parser.ts`)
   skips the `_list`→array split for any string field starting with `@item.` — intended for pure item-array
   references like `action_list: @item.action_list`, but it also matches a bare conditional-display expression
@@ -45,6 +49,16 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   `flowTypes.ts`) — a bare `@item.`/`@local.`/`@fields.` expression belongs there, not in `parameter_list`.
   Example (found 2026-08-27): `proximal_outcome_checkin` tab in `PLH proximal outcomes.xlsx` (kids_teens_mx) —
   rows `icon_checkin`/`icon_progress`/`title_checkin`/`title_progress` had their condition in `parameter_list`.
+- **`SyntaxError: Unexpected token ';'` at runtime = an unbalanced `@calc(...)` on the page.** The converter
+  does not check bracket balance: `extractDynamicEvaluators` takes everything after `@calc(` as the
+  expression and stores it unchanged. At runtime `evaluateJSExpression`
+  (`src/app/shared/utils/utils.ts:355`) builds the body as `… return (${expression});`, so a missing `)`
+  puts the appended `;` where JS expected the bracket. The reported location is always inside the generated
+  VM script (the globals prelude pushes it ~line 90+), never the sheet, and the page renders blank with no
+  other clue. Scan the generated JSON for unbalanced `value`/`condition` cells containing `@calc(` rather
+  than reading the stack trace. (verified 2026-09-23, cef_m `loop_example`)
+
+### Runtime: re-render timing, `data_items` and locals
 
 - **Rows gated on values set by `data_changed | set_local` render their fallback branch first.** `data_items`
   fires `data_changed` only after its data subscription emits, i.e. after the first render
@@ -55,8 +69,6 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   empty rather than `0` so `== 0` and `> 0` are both false until loaded.
   Example (found 2026-09-15): kids_teens_mx `home_screen_header` flashed `proximal_outcome_header_b` before the
   hp review `header_button`.
-
-
 - **An action list that writes a field its own (or a sibling's) condition derives from will invalidate that
   condition before the next row renders.** `set_field`, `set_local`, `set_self` and `trigger_actions` trigger
   exactly one full row reprocess, and it runs *after the entire action queue drains*
@@ -71,7 +83,6 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   they describe, not the start — otherwise abandoning the flow still marks it done.
   Example (found 2026-09-09): a module-completion action list set `prox_7d_last_ts: @calc(now())` while the
   follow-on check-in row was gated on `days_since >= frequency`; the check-in never rendered.
-
 - **`data_items` with `shuffle` + `data_changed | set_local` can loop.** Components get a fresh row object on
   every parent re-render and `rowSignal` deliberately has no equality check (`components/base.ts`), so a
   `data_items` re-subscribes and re-runs its pipe; `shuffle` re-randomises each time, so `data_changed` fires
@@ -79,7 +90,7 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   (or contains `@calc(now())`). It ends only when two shuffles pick the same item (~1/n per round), rebuilding
   nested templates each round. Fix: gate the row on its own output (e.g. `condition: !@local.picked_id`) so it
   picks once, or drop `shuffle`. (found 2026-09-10)
-  - **Rows inside a `data_items` loop don't react to `set_local`.** The loop re-evaluates its child rows
+- **Rows inside a `data_items` loop don't react to `set_local`.** The loop re-evaluates its child rows
   (conditions, values) only when its data list changes or its own row object changes; the parent hands
   the children over unprocessed (`template-row.service.ts` returns early for `data_items`), so a local
   changing on the parent doesn't re-run them. A `condition: @local.x` on a child looks like it works if the
@@ -88,8 +99,13 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
   by a known id, drop it and use the id directly.
   (found 2026-09-30: V3 stack_hp_review_gen inside `get_check_in`; back from the check-in set
   show_po: false but nothing redrew)
+  Conversely, anything nested *inside* such a loop (e.g. a whole module template) is rebuilt with a new
+  `@item` every time the parent re-processes, which any `set_local` / `set_field` triggers. Keep stateful
+  templates outside the loop: pick into a latched local (`data_changed | set_local: picked_id: @items[0]?.id`
+  with `condition: !@local.picked_id`, no child rows) and reference `@local.picked_id`.
+  (found 2026-09-25: V3 gen_stack_module_start_at_id, the module restarted at its first page after the
+  check-in hand-over)
 
-  
 ## Pre-wired hooks for validation
 
 - `TemplateParser.qualityControlCheck` (`template.parser.ts`) — row-level, currently empty; **skipped for
@@ -103,17 +119,3 @@ Useful when debugging "the sheet says X but the app does nothing", or when addin
 Meta fields are removed, `@local.<row>` is rewritten to `this.value`, `display_group` variables are hoisted
 (rows physically moved), names are auto-generated, and types are defaulted (empty → `set_variable`,
 `template_group` → `template`). Treat generated JSON as compiled output.
-
-- **`SyntaxError: Unexpected token ';'` at runtime = an unbalanced `@calc(...)` on the page.** The converter
-  does not check bracket balance: `extractDynamicEvaluators` takes everything after `@calc(` as the
-  expression and stores it unchanged. At runtime `evaluateJSExpression`
-  (`src/app/shared/utils/utils.ts:355`) builds the body as `… return (${expression});`, so a missing `)`
-  puts the appended `;` where JS expected the bracket. The reported location is always inside the generated
-  VM script (the globals prelude pushes it ~line 90+), never the sheet, and the page renders blank with no
-  other clue. Scan the generated JSON for unbalanced `value`/`condition` cells containing `@calc(` rather
-  than reading the stack trace. (verified 2026-09-23, cef_m `loop_example`)
-  Also: anything nested *inside* such a loop (e.g. a whole module template) is rebuilt with a new @item every
-  time the parent re-processes, which any set_local / set_field triggers. Keep stateful templates outside
-  the loop: pick into a latched local (`data_changed | set_local: picked_id: @items[0]?.id` with
-  `condition: !@local.picked_id`, no child rows) and reference `@local.picked_id`.
-  (found 2026-09-25: V3 gen_stack_module_start_at_id, the module restarted at its first page after the check-in hand-over)
