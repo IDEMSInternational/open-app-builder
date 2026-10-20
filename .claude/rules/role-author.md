@@ -139,6 +139,15 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `@local.row`. (verified 2026-08-19)
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is
   silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
+- **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields are
+  stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is always true
+  even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
+  (found 2026-10-20: ZA `nf_definition_inactive` positive_reinforcement active for every user)
+- **A campaign row listed in two `campaign_list` schedules is only scheduled once.** Notifications are keyed by
+  row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later schedule
+  replaces the earlier one when both pick the same row. Give each schedule its own copy of the row with a
+  distinct id. (found 2026-10-20: ZA win_back/resume_lesson in 2-day and 1-week schedules)
+
 
 ### Loops and `data_items`
 
