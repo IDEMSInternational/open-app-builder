@@ -70,6 +70,8 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Combo-box badge shows "FALSE" | boolean `false` in the badge column | below: Layout |
 | Header and page side by side, left gap | `display_group` defaults to `style: row` | below: Layout |
 | Onboarding never starts locally | `localhost` forces `user_mode=false` | `AGENTS.md` |
+| Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
+| One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
 
 ## Authoring gotchas (tell authors proactively)
 
