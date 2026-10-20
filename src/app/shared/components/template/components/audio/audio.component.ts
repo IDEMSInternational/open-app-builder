@@ -286,7 +286,12 @@ export class TmplAudioComponent
   }
 
   async ngOnDestroy() {
-    this.player?.stop();
+    this.stopProgressTracker();
+    // Detach handlers first so in-flight loads (e.g. Web Audio decode) can't fire callbacks after destroy
+    this.player?.off();
+    // Release the HTML5 <audio> node (used on iOS)
+    this.player?.unload();
+    this.player = null;
     if (this.transcriptModal) {
       await this.transcriptModal.dismiss();
     }
