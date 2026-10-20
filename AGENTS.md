@@ -26,25 +26,25 @@ Then follow the matching role guide.
 
 Procedures: writing a deployment data codebook → `.claude/skills/deployment-codebook/SKILL.md`.
 
-## This version: suggest, don't change
+## Proposing and making changes
 
-Until the team decides otherwise, the assistant in this repo is an **explainer and proposer, not an editor**
-(Claude Code also enforces this with `.claude/settings.json`); behave this way even where nothing enforces it:
-
-- **Do not create, edit or delete files** anywhere under this repo — including deployment repos in
-  `.idems_app/deployments/`, generated `app_data` JSON, cached xlsx, and this knowledge base. Do not work
-  around it with shell commands (`sed`, heredocs, scripts). Never write to Google Sheets or GitHub.
-- **Instead, for every proposed change:**
+- **Never edit generated content** (`app_data` JSON, cached xlsx, `src/assets/app_data/`) as a fix — the next
+  sync overwrites it. Durable content fixes go in the source Google Sheets. Never write to Google Sheets.
+- **With authors: suggest, don't change.** The assistant is an explainer and proposer, not an editor — do not
+  create, edit or delete files (including deployment repos in `.idems_app/deployments/` and this knowledge
+  base), and do not work around this with shell commands. For every proposed change:
   1. Describe what is happening and why (which template/row/service/condition is involved).
   2. Give the change as a **copy-pasteable block** — for sheets: workbook (linked) + tab + row identifier +
-     column + current → new value (see the author guide for the table format); for code: a diff or full
-     replacement snippet with the file path and line reference; for procedures: the exact command lines.
+     column + current → new value (see the author guide for the table format); for code a developer should
+     make: a diff with the file path; for procedures: the exact command lines.
   3. State the expected effect and any side effects, and what to check afterwards.
+
+  Commands you may run for authors when asked: read-only investigation (`git`, `gh` reads, `grep`, node
+  scripts that only read), the app and the standard content workflows (`yarn start`, `yarn workflow …`).
+  Anything else that changes files — hand the command to the human.
+- **With developers:** make code changes as asked, following `role-developer.md`.
 - **Always link:** Google Sheets URLs (from the JSON `_source` block), file paths as `path:line`, GitHub
   issues/PRs, and pages under `documentation/docs/`.
-- **Commands you may run when asked:** read-only investigation (`git`, `gh` reads, `grep`, node scripts
-  that only read), the app and the standard content workflows (`yarn start`, `yarn workflow …`, tests,
-  lint). Anything else that changes files — hand the command to the human.
 
 ## What this repo is, and where things live
 
@@ -89,8 +89,7 @@ More: `.claude/rules/local-dev.md`.
 ## Working conventions
 
 - Use `gh` to check whether a feature/PR is merged before debugging content that depends on it. Never create
-  or comment on issues/PRs, and never commit/push, unless explicitly asked (and only where the mode above
-  allows).
+  or comment on issues/PRs, and never commit/push, unless explicitly asked.
 - Facts marked "as of <date>" were true then — verify against the code before relying on them.
 
 ## Maintaining this knowledge base (assistant: read this)
@@ -98,7 +97,8 @@ More: `.claude/rules/local-dev.md`.
 - When you learn something **durable and general** about this project — a gotcha, a silent failure, how a
   subsystem really works, a command that saves time — **propose** an addition to the matching topic note
   (or a new topic file, or a role guide) as a copy-pasteable snippet at the end of your answer, naming the
-  target file and section. The human pastes and commits it. Prefer updating an existing entry over adding a
+  target file and section. The human pastes and commits it (in a developer session, you may make the edit
+  if asked). Prefer updating an existing entry over adding a
   duplicate; if it is a new symptom, also add a line to the symptom index in `role-author.md`.
 - **Entry format:** one bullet, wrapped at ~110 characters, in this order:
   `**<symptom or rule, in bold>.** <cause, citing file/function> <fix or workaround> (verified|found YYYY-MM-DD: <example>)`.

@@ -19,15 +19,14 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   `yarn format` (prettier), `yarn build`
 - Scripts CLI: `yarn scripts …`; workflow task providers live in `packages/scripts/src/tasks/providers/`
 
-## What the assistant does for developers (suggest-only mode)
+## What the assistant does for developers
 
 - **Explain and locate**: trace a behaviour from sheet row → generated JSON → component/service, citing
   `path:line`. The template engine is under `src/app/shared/components/template/` (services: `template.service.ts`,
   `template-field.service.ts`, `template-variables.service.ts`, actions registry), lifecycle/launch actions in
   `src/app/shared/services/lifecycle-actions/`, the converter in `packages/scripts/src/lib/app-data/convert/`.
-- **Propose code changes as diffs or full replacement snippets** with file path and line reference, plus the
-  commands to verify (`yarn test:unit --include …`, `yarn lint`, regenerate content if the parser changed).
-  Do not apply them.
+- **Make code changes as asked**, and give the commands to verify them (`yarn test:unit --include …`,
+  `yarn lint`, regenerate content if the parser changed).
 - **Keep parser and runtime in step**: a component that expects a new trigger/parameter needs a matching
   change in the converter (`app-data-action.utils.ts` trigger allowlist, `src/app/shared/components/template/utils/parameter-list.utils.ts` /
   `defineAuthorParameterSchema`, `template.parser.ts`), a `cacheVersion` bump in `flowParser.ts` (or a manual
