@@ -1,8 +1,60 @@
-.divider {
-  margin: 1em 0;
-  border-top: 1px solid var(--ion-color-primary-contrast);
+section {
+  margin-bottom: 32px;
 }
-ion-list {
-  --background: white;
-  padding-top: 0;
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hint {
+  color: var(--ion-color-medium);
+  font-size: 0.9em;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+ion-segment {
+  max-width: 400px;
+}
+
+ion-note {
+  font-size: 0.85em;
+}
+
+ion-badge {
+  margin-inline-start: 8px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// Notification sources
+.source-campaign {
+  --background: var(--ion-color-primary);
+}
+.source-action {
+  --background: var(--ion-color-success);
+}
+.source-other {
+  --background: var(--ion-color-medium);
+}
+
+// `notification` action record status
+.status-pending {
+  --background: var(--ion-color-primary);
+}
+.status-interacted {
+  --background: var(--ion-color-success);
+}
+.status-ignored {
+  --background: var(--ion-color-medium);
 }
