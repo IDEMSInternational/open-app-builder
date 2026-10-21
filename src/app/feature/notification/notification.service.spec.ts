@@ -312,18 +312,32 @@ describe("NotificationService", () => {
   });
 
   describe("cancelAll", () => {
-    it("should cancel all notifications", async () => {
-      const pendingNotifications = [{ id: 1 }, { id: 2 }];
+    const actionNotification = { id: 1, extra: { source: "action", id: "action_notification" } };
+    const campaignNotification = { id: 2, extra: { campaign_id: "campaign_1", row_id: "row_1" } };
+
+    it("should cancel all notifications booked by the notification action", async () => {
       spyOn(service["api"], "getPending").and.resolveTo({
-        notifications: pendingNotifications as any,
+        notifications: [actionNotification, campaignNotification] as any,
       });
       const cancelSpy = spyOn(service["api"], "cancel").and.resolveTo();
 
       await service.cancelAll();
 
-      expect(cancelSpy).toHaveBeenCalledWith({
-        notifications: pendingNotifications,
+      expect(cancelSpy).toHaveBeenCalledOnceWith({
+        notifications: [actionNotification] as any,
       });
+      expect(mockDynamicDataService.resetFlow).toHaveBeenCalledWith("data_list", "_notifications");
+    });
+
+    it("should not cancel notifications booked by other sources (e.g. campaigns)", async () => {
+      spyOn(service["api"], "getPending").and.resolveTo({
+        notifications: [campaignNotification] as any,
+      });
+      const cancelSpy = spyOn(service["api"], "cancel").and.resolveTo();
+
+      await service.cancelAll();
+
+      expect(cancelSpy).not.toHaveBeenCalled();
       expect(mockDynamicDataService.resetFlow).toHaveBeenCalledWith("data_list", "_notifications");
     });
   });
