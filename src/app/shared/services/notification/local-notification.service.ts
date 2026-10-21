@@ -149,8 +149,8 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
     const { notifications } = await this.api.getPending();
-    // Only replace notifications owned by this service. Notifications booked by the NotificationService
-    // (`notification` action) are not in this service's db, so would not be rescheduled if cancelled
+    // Keep notifications booked by the NotificationService (`notification` action): they are not in
+    // this service's db, so would not be booked again. All others are replaced from this service's db
     const toCancel = notifications.filter((n) => !isActionNotification(n));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
     if (isNonEmptyArray(toCancel)) {
