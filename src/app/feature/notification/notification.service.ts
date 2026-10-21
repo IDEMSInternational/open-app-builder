@@ -19,6 +19,7 @@ import { _wait } from "packages/shared/src/utils/async-utils";
 import { NotificationActionFactory } from "./notification.actions";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -42,7 +43,8 @@ export class NotificationService {
     private dynamicDataService: DynamicDataService,
     private capacitorEventService: CapacitorEventService,
     private actionRegistry: TemplateActionRegistry,
-    private systemVariableService: SystemVariableService
+    private systemVariableService: SystemVariableService,
+    private appStartupService: AppStartupService
   ) {
     // Register action handlers
     const { notification } = new NotificationActionFactory(this);
@@ -317,7 +319,12 @@ export class NotificationService {
     action_list: FlowTypes.TemplateRowAction[] = [],
     trigger: FlowTypes.TemplateRowActionTrigger
   ) {
-    for (const action of action_list.filter((v) => v.trigger === trigger)) {
+    const actions = action_list.filter((v) => v.trigger === trigger);
+    if (actions.length === 0) return;
+    // Wait for app startup to finish (e.g. when a notification tap opened the app), so actions run
+    // after field defaults, globals and launch actions instead of part-way through startup
+    await this.appStartupService.whenComplete();
+    for (const action of actions) {
       await this.actionRegistry.trigger(action);
     }
   }

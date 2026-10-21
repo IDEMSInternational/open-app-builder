@@ -12,6 +12,8 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -51,7 +53,6 @@ export class CampaignService extends AsyncServiceBase {
 
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
-  private _notificationActions$: Subscription;
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
@@ -59,10 +60,13 @@ export class CampaignService extends AsyncServiceBase {
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
     private deploymentService: DeploymentService,
+    private capacitorEventService: CapacitorEventService,
+    private appStartupService: AppStartupService,
     private injector: Injector
   ) {
     super("Campaigns");
     this.registerInitFunction(this.initialise);
+    this.subscribeToNotificationTaps();
   }
 
   /**
@@ -113,15 +117,13 @@ export class CampaignService extends AsyncServiceBase {
   }
 
   /**
-   * remove any old subscriptions, subscribe to updates from sent and interacted notifications,
+   * remove any old subscriptions, subscribe to updates from sent notifications,
    * and handle actions lists accordingly
+   * (tapped notifications are handled separately, see `subscribeToNotificationTaps`)
    */
   private _subscribeToNotificationUpdates() {
     if (this._notificationUpdates$) {
       this._notificationUpdates$.unsubscribe();
-    }
-    if (this._notificationActions$) {
-      this._notificationActions$.unsubscribe();
     }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
       async (notifications) => {
@@ -130,13 +132,26 @@ export class CampaignService extends AsyncServiceBase {
         }
       }
     );
-    this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
-      async (action) => {
-        if (action) {
-          await this.handledTriggeredNotifications([action.notification] as any, "click");
-        }
-      }
-    );
+  }
+
+  /**
+   * Run the `click` actions of a tapped campaign notification.
+   * Subscribed once when the service is created, rather than on each (re)initialisation, which would
+   * replay the last tap and run its actions again. The actions are read from the notification itself,
+   * and run once app startup has finished rather than part-way through it.
+   */
+  private subscribeToNotificationTaps() {
+    this.capacitorEventService.localNotificationActionPerformed.subscribe(async (action) => {
+      const extra = action?.notification?.extra as ICampaignNotificationExtra | undefined;
+      if (!extra?.campaign_id) return;
+      const clickActions = (extra.action_list || []).filter((a) => a.trigger === "click");
+      if (clickActions.length === 0) return;
+      await this.appStartupService.whenComplete();
+      await this.triggerRowActions(clickActions);
+      // reschedule, as actions may change fields that campaign conditions depend on
+      await this.ready();
+      await this.scheduleCampaignNotifications();
+    });
   }
 
   // TODO: Should this also be unsubscribing from existing subscriptions?
