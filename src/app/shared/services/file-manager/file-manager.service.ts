@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Directory, Filesystem } from "@capacitor/filesystem";
+import { CommunityDevice } from "@capacitor-community/device";
 import { FileOpener } from "@capacitor-community/file-opener";
 import { Capacitor } from "@capacitor/core";
 import write_blob from "capacitor-blob-writer";
@@ -238,6 +239,32 @@ export class FileManagerService extends SyncServiceBase {
   }
 
   /**
+   * Free space available to files this app writes, in bytes. The single point the disk-space API is
+   * read from, so the plugin behind it can be swapped without touching callers. `realDiskFree` is
+   * `volumeAvailableCapacityForImportantUsage` on iOS (counting space the OS will free on demand)
+   * and the data partition on Android, where `saveFile` writes.
+   *
+   * PRIVACY: one of Apple's "required reason" APIs, declared as E174.1 in
+   * `ios/App/App/PrivacyInfo.xcprivacy`, which forbids sending the value or anything derived from
+   * it off-device. Compare it and discard it - never persist or display it, add it to
+   * `device_info`, or pass it to Crashlytics.
+   *
+   * @returns free bytes, or `undefined` when the figure cannot be trusted (see
+   * `normaliseFreeDiskSpaceBytes`). Callers MUST read that as "unknown" and carry on: a check that
+   * cannot answer must never be what blocks a download.
+   */
+  public async getFreeDiskSpaceBytes(): Promise<number | undefined> {
+    if (!Capacitor.isNativePlatform()) return undefined;
+    try {
+      const { realDiskFree } = await CommunityDevice.getInfo();
+      return normaliseFreeDiskSpaceBytes(realDiskFree);
+    } catch (error) {
+      console.warn("[FILE MANAGER] Could not read free disk space", error);
+      return undefined;
+    }
+  }
+
+  /**
    * Native only: recursively delete a folder previously written to via `saveFile`, reclaiming the
    * storage it used. Uses the same path rule as `saveFile` so callers do not re-derive it.
    * Deleting a folder that does not exist is a no-op rather than an error.
@@ -310,4 +337,19 @@ export class FileManagerService extends SyncServiceBase {
     const filePath = Capacitor.convertFileSrc(uri);
     return filePath;
   }
+}
+
+/**
+ * Map a `realDiskFree` reading that cannot be trusted to `undefined` ("unknown") rather than to a
+ * number a caller might act on.
+ *
+ * 0 is what the plugin resolves when the native read fails, so it cannot be told apart from a
+ * genuinely full disk. Read as "unknown", a full device starts a download that fails as it does
+ * today; read as "full", downloads would be blocked on every device the plugin cannot measure.
+ */
+export function normaliseFreeDiskSpaceBytes(realDiskFree: unknown): number | undefined {
+  if (typeof realDiskFree !== "number" || !Number.isFinite(realDiskFree) || realDiskFree <= 0) {
+    return undefined;
+  }
+  return realDiskFree;
 }
