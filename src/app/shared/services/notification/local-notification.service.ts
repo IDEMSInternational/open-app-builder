@@ -25,6 +25,7 @@ import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
 import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
 import { NotificationService } from "src/app/feature/notification/notification.service";
+import { isActionNotification } from "src/app/feature/notification/notification.types";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -94,6 +95,9 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
 
+  /** Hack - proxy to native LocalNotification api for easier test mocking */
+  private api = LocalNotifications;
+
   constructor(
     private dbService: DbService,
     private appConfigService: AppConfigService,
@@ -123,7 +127,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     this.permissionGranted = await this.requestPermission();
     if (this.permissionGranted) {
       if (Capacitor.isNativePlatform()) {
-        await LocalNotifications.registerActionTypes({
+        await this.api.registerActionTypes({
           types: Object.values(NOTIFICATION_ACTIONS),
         });
       }
@@ -144,14 +148,17 @@ export class LocalNotificationService extends AsyncServiceBase {
 
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
-    const existingNotifications = await LocalNotifications.getPending();
+    const { notifications } = await this.api.getPending();
+    // Only replace notifications owned by this service. Notifications booked by the NotificationService
+    // (`notification` action) are not in this service's db, so would not be rescheduled if cancelled
+    const toCancel = notifications.filter((n) => !isActionNotification(n));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
-    if (isNonEmptyArray(existingNotifications.notifications)) {
-      await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
+    if (isNonEmptyArray(toCancel)) {
+      await this.api.cancel({ notifications: toCancel });
     }
     const toSchedule = this.pendingNotifications$.value;
     if (isNonEmptyArray(toSchedule)) {
-      await LocalNotifications.schedule({ notifications: toSchedule });
+      await this.api.schedule({ notifications: toSchedule });
     }
   }
 
@@ -166,7 +173,7 @@ export class LocalNotificationService extends AsyncServiceBase {
 
     try {
       // Return state of already granted
-      const { display } = await LocalNotifications.checkPermissions();
+      const { display } = await this.api.checkPermissions();
       if (display === "granted") {
         return true;
       }
@@ -181,7 +188,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       const granted = await Promise.race([
         new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
         new Promise<boolean>(async (resolve) => {
-          const { display } = await LocalNotifications.requestPermissions();
+          const { display } = await this.api.requestPermissions();
           // Keep notification service permission status (and authored field) in sync
           await this.notificationService.checkPermissions();
           resolve(display === "granted");
@@ -374,7 +381,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     };
     await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
     // ensure api notification scheduled immediately
-    await LocalNotifications.schedule({ notifications: [immediateNotification] });
+    await this.api.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNativePlatform() && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
