@@ -66,15 +66,24 @@ describe("LocalNotificationService", () => {
   });
 
   describe("setApiNotifications", () => {
-    it("should not cancel notifications booked by the notification action", async () => {
+    it("should replace its own notifications and keep notification action ones", async () => {
+      const pendingCampaignNotification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() + 60000) },
+      } as ILocalNotification;
       spyOn(api, "getPending").and.resolveTo({
-        notifications: [campaignNotification, actionNotification],
+        notifications: [pendingCampaignNotification, actionNotification],
       });
+      service.pendingNotifications$.next([pendingCampaignNotification]);
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+      const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
 
       await service["setApiNotifications"]();
 
-      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [campaignNotification] });
+      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [pendingCampaignNotification] });
+      expect(scheduleSpy).toHaveBeenCalledOnceWith({
+        notifications: [pendingCampaignNotification],
+      });
     });
 
     it("should not call cancel when only notification action notifications are pending", async () => {
@@ -84,19 +93,6 @@ describe("LocalNotificationService", () => {
       await service["setApiNotifications"]();
 
       expect(cancelSpy).not.toHaveBeenCalled();
-    });
-
-    it("should reschedule its own pending notifications", async () => {
-      const pendingNotification = {
-        ...campaignNotification,
-        schedule: { at: new Date(Date.now() + 60000) },
-      } as ILocalNotification;
-      service.pendingNotifications$.next([pendingNotification]);
-      const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
-
-      await service["setApiNotifications"]();
-
-      expect(scheduleSpy).toHaveBeenCalledOnceWith({ notifications: [pendingNotification] });
     });
   });
 });
