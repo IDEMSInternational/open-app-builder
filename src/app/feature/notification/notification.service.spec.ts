@@ -18,6 +18,7 @@ import { CapacitorEventService } from "src/app/shared/services/capacitor-event/c
 import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -123,6 +124,9 @@ describe("NotificationService", () => {
     });
 
     service = TestBed.inject(NotificationService);
+
+    // Most tests assume app startup has finished, so notification actions run straight away
+    TestBed.inject(AppStartupService).markComplete();
 
     // Replace localnotification api with mock
     service["api"] = new MockCapacitorLocalNotifications() as any as LocalNotificationsPlugin;
@@ -490,6 +494,23 @@ describe("NotificationService", () => {
         extra: { id: notification.id },
       } as INotificationInternal);
       expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
+    });
+    it("should wait for app startup to finish before triggering actions", async () => {
+      // e.g. a notification tap that opened the app
+      const appStartupService = new AppStartupService();
+      service["appStartupService"] = appStartupService;
+      const notification = { ...validNotification, action_list };
+      mockDynamicDataService.query$.and.returnValue(of([notification]));
+
+      const handled = service["handleNotificationInteracted"]("tap", {
+        extra: { id: notification.id },
+      } as INotificationInternal);
+      await new Promise((resolve) => setTimeout(resolve));
+      expect(mockTemplateActionRegistry.trigger).not.toHaveBeenCalled();
+
+      appStartupService.markComplete();
+      await handled;
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[1]);
     });
     it("should triggers actions when interacted", async () => {
       const notification = { ...validNotification, action_list };
