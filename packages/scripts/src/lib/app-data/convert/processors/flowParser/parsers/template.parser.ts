@@ -67,10 +67,13 @@ export class TemplateParser extends DefaultParser {
       );
     }
 
+    // Ensure errors tracked - these will be thrown at end
     const errors = this.qualityControlCheck(row);
-    if (errors.length > 0) {
-      throw JSON.stringify(errors, null, 2);
+    for (const error of errors) {
+      const { rows: childRows, ...loggedRow } = row;
+      this.logRowParseError(error, loggedRow);
     }
+
     return row;
   }
 
@@ -256,6 +259,13 @@ export class TemplateParser extends DefaultParser {
 
   private qualityControlCheck(row: FlowTypes.TemplateRow) {
     const errors: string[] = [];
+    // Avoid legacy `disabled` column
+    // https://github.com/IDEMSInternational/open-app-builder/pull/3463
+    if (row["disabled"]) {
+      errors.push(
+        'Do not set "disabled" property on row. Use parameter_list disabled property instead'
+      );
+    }
 
     return errors;
   }

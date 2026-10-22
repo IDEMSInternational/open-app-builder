@@ -25,7 +25,7 @@ describe("Template Parser PostProcessor", () => {
 
   // TODO - notify authors of change (can now auto gen multiple)
   it("Generates default row names when omitted for multiple rows", () => {
-    const res = parser.run({
+    const { data: res } = parser.run({
       flow_name: "test_name_generate_multiple",
       flow_type: "template",
       rows: [
@@ -51,7 +51,7 @@ describe("Template Parser PostProcessor", () => {
   it("Generates row names for nested item rows", () => {
     const itemRows = [{ type: "text" }, { type: "button", name: "btn_@item.id" }];
 
-    const res = parser.run({
+    const { data: res } = parser.run({
       flow_name: "",
       flow_type: "template",
       rows: [{ ...ROW_BASE, name: "", type: "data_items", rows: itemRows }],
@@ -224,7 +224,7 @@ describe("Template Parser PostProcessor", () => {
         ],
       },
     ];
-    const res = parser.run({ flow_type: "template", flow_name: "test_nested", rows });
+    const { data: res } = parser.run({ flow_type: "template", flow_name: "test_nested", rows });
     const itemRows = res.rows[0].rows;
     const nestedNames = itemRows.map((n) => n._nested_name);
     expect(nestedNames).toEqual(["dg.named_text", "dg.text_2"]);
