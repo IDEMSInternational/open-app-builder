@@ -13,12 +13,14 @@ import { NavComponent } from "./nav/nav.component";
 import { SetGlobalComponent } from "./set-global/set-global.component";
 import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
+import { ExpressionBuilderComponent } from "./expression-builder/expression-builder.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   action: ActionComponent,
   button: ButtonComponent,
   display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
+  expression_builder: ExpressionBuilderComponent,
   loop: LoopComponent,
   nav: NavComponent,
   set_global: SetGlobalComponent,
