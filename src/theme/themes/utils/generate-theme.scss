@@ -34,6 +34,24 @@
   }
 }
 
+/// Default values for component variables that follow other theme variables.
+/// These are declared per theme rather than in variables.scss: a custom property is resolved where
+/// it is declared, so a default written at `:root` would capture the value at `:root` and ignore
+/// whatever the theme sets. A theme can still override any of these via $variable-overrides.
+$component-variable-defaults: (
+  audio-background: var(--ion-color-primary-50),
+  audio-border-color: var(--ion-color-primary-100),
+  audio-control-color: var(--ion-color-primary),
+  audio-range-bar-background-active: var(--ion-color-primary-400),
+  audio-range-knob-background: var(--ion-color-primary-300),
+  input-background: var(--ion-color-primary-contrast),
+  input-border: var(--border-standard),
+  input-box-shadow: var(--ion-default-box-shadow),
+  input-font-weight: var(--font-weight-standard),
+  text-box-text-color: var(--ion-color-primary),
+  text-area-text-color: var(--ion-color-primary),
+);
+
 // Generates color palettes and applies variable overrides
 @mixin generate-theme-variables(
   $color-primary,
@@ -56,6 +74,9 @@
     $pv: $color-primary-variant,
     $sv: $color-secondary-variant
   );
+  @each $name, $value in $component-variable-defaults {
+    --#{$name}: #{$value};
+  }
   @each $name, $value in $variable-overrides {
     --#{$name}: #{$value};
   }
