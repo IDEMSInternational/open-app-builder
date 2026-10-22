@@ -54,6 +54,7 @@ const actionNotification = {
 describe("LocalNotificationService", () => {
   let service: LocalNotificationService;
   let api: MockLocalNotificationsApi;
+  let getDBNotificationsSpy: jasmine.Spy;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -63,6 +64,8 @@ describe("LocalNotificationService", () => {
     // Replace localnotification api with mock
     api = new MockLocalNotificationsApi();
     service["api"] = api as any as LocalNotificationsPlugin;
+    // Replace db notification records with mock
+    getDBNotificationsSpy = spyOn(service as any, "getDBNotifications").and.resolveTo([]);
   });
 
   it("should be created", () => {
@@ -78,6 +81,7 @@ describe("LocalNotificationService", () => {
       spyOn(api, "getPending").and.resolveTo({
         notifications: [pendingCampaignNotification, actionNotification],
       });
+      getDBNotificationsSpy.and.resolveTo([pendingCampaignNotification]);
       service.pendingNotifications$.next([pendingCampaignNotification]);
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
       const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
@@ -97,6 +101,54 @@ describe("LocalNotificationService", () => {
       await service["setApiNotifications"]();
 
       expect(cancelSpy).not.toHaveBeenCalled();
+    });
+
+    it("should keep its own notifications that are due but not yet shown", async () => {
+      // e.g. Android delivering an inexact alarm after its scheduled time
+      const dueNotification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 60000) },
+      } as ILocalNotification;
+      getDBNotificationsSpy.and.resolveTo([dueNotification]);
+      spyOn(api, "getPending").and.resolveTo({ notifications: [dueNotification] });
+      const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+
+      await service["setApiNotifications"]();
+
+      expect(cancelSpy).not.toHaveBeenCalled();
+    });
+
+    it("should cancel due notifications that are no longer in its records", async () => {
+      // e.g. removed when its campaign was deactivated
+      const dueNotification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 60000) },
+      } as ILocalNotification;
+      spyOn(api, "getPending").and.resolveTo({ notifications: [dueNotification] });
+      const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+
+      await service["setApiNotifications"]();
+
+      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [dueNotification] });
+    });
+  });
+
+  describe("scheduleNotification", () => {
+    beforeEach(() => {
+      service.permissionGranted = true;
+      service.localNotificationDefaults = { id: null, title: "", body: "", extra: {} };
+      spyOn(service as any, "addDBNotification").and.resolveTo();
+    });
+
+    it("should allow delivery while the device is idle", async () => {
+      const notification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() + 60000) },
+      } as ILocalNotification;
+
+      await service.scheduleNotification(notification, "row_1");
+
+      expect(notification.schedule.allowWhileIdle).toBeTrue();
     });
   });
 
