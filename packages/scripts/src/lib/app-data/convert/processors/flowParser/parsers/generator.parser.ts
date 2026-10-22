@@ -1,36 +1,43 @@
 import { FlowTypes } from "data-models";
 import { DefaultParser } from "./default.parser";
 import { TemplatedData } from "shared";
+import { FlowParserPhaseTracker } from "../flowParserDebug";
 
 export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
   /** local hashmap of generated outputs. Used for tests  */
   private outputHashmap: { [flow_name: string]: { [output_name: string]: any } } = {};
 
   public override postProcessFlow(flow: FlowTypes.GeneratorFlow): FlowTypes.GeneratorFlow {
-    flow.parameter_list = this.validateParameterList(flow);
+    const tracker = this.phaseTracker;
+    const track = <T>(phase: string, fn: () => T): T => (tracker ? tracker.time(phase, fn) : fn());
 
-    const inputSources = this.loadInputSources();
+    flow.parameter_list = track("generator.validateParameterList", () =>
+      this.validateParameterList(flow)
+    );
+
+    const inputSources = track("generator.loadInputSources", () => this.loadInputSources());
     const dataListRows: FlowTypes.Data_listRow[] =
       inputSources[flow.parameter_list.input_data_list];
-    // Try to defer processing if inputs are missing as they might be generated as part
-    // of another flow
     if (!dataListRows) {
       const deferId = `${flow.flow_type}.${flow.flow_name}`;
       this.flowProcessor.deferInputProcess(flow, deferId);
       return;
     }
     try {
-      const generated = this.generateFlows(flow, dataListRows);
-      // HACK - populate to output hashmap for use in tests. Clone output due to deep nest issues
-      this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(generated));
+      const generated = track("generator.generateFlows", () =>
+        this.generateFlows(flow, dataListRows, tracker)
+      );
+      track("generator.cloneOutputs", () => {
+        this.outputHashmap[flow.flow_name] = JSON.parse(JSON.stringify(generated));
+      });
 
-      // Pass all generated flows to the back of the current processing queue so that they can be
-      // populated to processed hashmap and referenced from other processes as required
-      for (const generatedFlow of generated) {
-        const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
-        this.flowProcessor.deferInputProcess(generatedFlow, deferId);
-      }
-      // Return the parsed generator along with a summary of output flows to store within outputs
+      track("generator.deferGeneratedFlows", () => {
+        for (const generatedFlow of generated) {
+          const deferId = `${generatedFlow.flow_type}.${generatedFlow.flow_subtype}.${generatedFlow.flow_name}`;
+          this.flowProcessor.deferInputProcess(generatedFlow, deferId);
+        }
+      });
+
       flow._output_flows = generated.map(({ rows, ...keptFields }) => keptFields);
       return flow;
     } catch (error) {
@@ -66,30 +73,35 @@ export class GeneratorParser extends DefaultParser<FlowTypes.GeneratorFlow> {
   /** Iterate over provided data list rows and use to create a new generated flow from generator base flow  */
   private generateFlows(
     generator: FlowTypes.GeneratorFlow,
-    dataListRows: FlowTypes.Data_listRow[]
+    dataListRows: FlowTypes.Data_listRow[],
+    tracker: FlowParserPhaseTracker
   ) {
     const generated: FlowTypes.FlowTypeWithData[] = [];
 
     for (const listRow of dataListRows) {
-      const parser = new TemplatedData({
-        context: { gen: listRow },
-      });
-      const { output_flow_name, output_flow_type, output_flow_subtype } = parser.parse(
-        // ensure original values used each parse
-        JSON.parse(JSON.stringify(generator.parameter_list))
-      ) as FlowTypes.GeneratorFlow["parameter_list"];
-      const parsedRows = generator.rows.map((genRow) => {
-        const parsed = parser.parse(JSON.parse(JSON.stringify(genRow)));
-        return parsed;
-      });
-      // populate as generated flow
-      const generatedFlow: FlowTypes.FlowTypeWithData = {
-        flow_name: output_flow_name,
-        flow_subtype: output_flow_subtype,
-        flow_type: output_flow_type,
-        rows: parsedRows,
+      const perRow = () => {
+        const parser = new TemplatedData({
+          context: { gen: listRow },
+        });
+        const { output_flow_name, output_flow_type, output_flow_subtype } = parser.parse(
+          JSON.parse(JSON.stringify(generator.parameter_list))
+        ) as FlowTypes.GeneratorFlow["parameter_list"];
+        const parsedRows = generator.rows.map((genRow) => {
+          const parsed = parser.parse(JSON.parse(JSON.stringify(genRow)));
+          return parsed;
+        });
+        generated.push({
+          flow_name: output_flow_name,
+          flow_subtype: output_flow_subtype,
+          flow_type: output_flow_type,
+          rows: parsedRows,
+        });
       };
-      generated.push(generatedFlow);
+      if (tracker) {
+        tracker.time("generator.generateFlows.perRow", perRow);
+      } else {
+        perRow();
+      }
     }
     return generated;
   }

@@ -6,6 +6,7 @@ import {
   setNestedProperty,
 } from "../../../utils";
 import { DefaultParser } from "./default.parser";
+import { FlowParserPhaseTracker } from "../flowParserDebug";
 import { isEmptyObjectDeep, isObjectLiteral, Logger } from "shared";
 
 export class DataListParser extends DefaultParser {
@@ -35,13 +36,18 @@ export class DataListParser extends DefaultParser {
   }
 
   public override postProcessFlow(flow: FlowTypes.Data_list) {
-    const flowWithMetadata = this.getFlowMetadata(flow);
-    return flowWithMetadata;
+    return this.trackPhase("data_list.getFlowMetadata", () => this.getFlowMetadata(flow));
   }
 
   public postProcessFlows(flows: FlowTypes.Data_list[]) {
-    const flowsWithOverrides = assignFlowOverrides(flows);
-    return flowsWithOverrides;
+    const phaseTracker = new FlowParserPhaseTracker();
+    const result = phaseTracker.time("data_list.postProcessFlows.assignFlowOverrides", () =>
+      assignFlowOverrides(flows)
+    );
+    if (typeof this.flowProcessor.accumulateParserPhases === "function") {
+      this.flowProcessor.accumulateParserPhases(phaseTracker.toRecord());
+    }
+    return result;
   }
 
   /** Assign column metadata from @metadata row if provided, or infer from data if not */
