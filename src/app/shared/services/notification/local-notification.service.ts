@@ -30,6 +30,13 @@ import { isActionNotification } from "src/app/feature/notification/notification.
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
 
+/**
+ * Longest time a notification may still be waiting to be shown after its scheduled time.
+ * Without exact alarm permission, Android delivers inexact alarms up to 75% of the time until
+ * they were due, capped at one hour
+ */
+const MAX_LATE_DELIVERY_MS = 60 * 60 * 1000;
+
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
   schedule: LocalNotificationSchema["schedule"];
@@ -149,13 +156,13 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
     const { notifications } = await this.api.getPending();
-    const pastDueIds = await this.getPastDueNotificationIds();
+    const lateIds = await this.getLateNotificationIds();
     // Keep notifications that would not be booked again if cancelled:
     // - those booked by the NotificationService (`notification` action), which are not in this db
-    // - this service's notifications whose time has passed but which the device has not shown yet,
-    //   as Android delivers inexact alarms up to an hour late (only future ones are rebooked)
+    // - this service's notifications that are due but may not have been shown yet (only future ones
+    //   are rebooked, as capacitor will not schedule a time in the past)
     // All others are replaced from this service's db
-    const toCancel = notifications.filter((n) => !isActionNotification(n) && !pastDueIds.has(n.id));
+    const toCancel = notifications.filter((n) => !isActionNotification(n) && !lateIds.has(n.id));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
     if (isNonEmptyArray(toCancel)) {
       await this.api.cancel({ notifications: toCancel });
@@ -167,14 +174,32 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Ids of this service's notifications whose scheduled time has passed.
+   * Ids of this service's notifications that are due but may not have been shown yet, i.e. whose
+   * scheduled time passed less than `MAX_LATE_DELIVERY_MS` ago.
    * Read from the db, as on native `getPending` returns times as platform-formatted text
    */
-  private async getPastDueNotificationIds() {
+  private async getLateNotificationIds() {
     const now = Date.now();
     const dbNotifications = await this.getDBNotifications();
-    const pastDue = dbNotifications.filter((n) => new Date(n.schedule.at).getTime() <= now);
-    return new Set(pastDue.map((n) => n.id));
+    const late = dbNotifications.filter((n) => {
+      const msSinceDue = now - new Date(n.schedule.at).getTime();
+      return msSinceDue >= 0 && msSinceDue <= MAX_LATE_DELIVERY_MS;
+    });
+    return new Set(late.map((n) => n.id));
+  }
+
+  /**
+   * Cancel notifications that are due but not yet shown, e.g. when their campaign no longer applies.
+   * Their db records are kept, as with any other notification whose time has passed
+   * @param filterFn select which notifications to cancel, e.g. by `extra.campaign_id`
+   */
+  public async cancelLateNotifications(filterFn: (notification: { extra?: any }) => boolean) {
+    const lateIds = await this.getLateNotificationIds();
+    const { notifications } = await this.api.getPending();
+    const toCancel = notifications.filter((n) => lateIds.has(n.id) && filterFn(n));
+    if (isNonEmptyArray(toCancel)) {
+      await this.api.cancel({ notifications: toCancel });
+    }
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -349,9 +374,9 @@ export class LocalNotificationService extends AsyncServiceBase {
     if (!notification.schedule) {
       throw new Error(`no schedule supplied for notification\n${notification._row_id}`);
     }
-    // Let Android deliver the notification while the device is idle, rather than waiting until it
-    // is next woken (exact alarms are not allowed, so notifications already use inexact alarms)
-    notification.schedule = { allowWhileIdle: true, ...notification.schedule };
+    // Let Android deliver the notification while the device is idle, rather than holding it until
+    // the device next wakes (applies to both exact and inexact alarms)
+    notification.schedule = { ...notification.schedule, allowWhileIdle: true };
     // Capacitor notifications use a random integer as id, however we also want to retain the id of the
     // row used to trigger the notification to avoid duplicates. Ideally this _row_id should be the primary
     // key, however swapping the columns would require additional db migration so just retaining both for now

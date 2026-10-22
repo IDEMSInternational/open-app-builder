@@ -131,6 +131,75 @@ describe("LocalNotificationService", () => {
 
       expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [dueNotification] });
     });
+
+    it("should cancel notifications that became due more than an hour ago", async () => {
+      // Android delivers inexact alarms at most an hour late
+      const staleNotification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+      } as ILocalNotification;
+      getDBNotificationsSpy.and.resolveTo([staleNotification]);
+      spyOn(api, "getPending").and.resolveTo({ notifications: [staleNotification] });
+      const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+
+      await service["setApiNotifications"]();
+
+      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [staleNotification] });
+    });
+
+    describe("across syncs", () => {
+      beforeEach(() => jasmine.clock().install());
+      afterEach(() => jasmine.clock().uninstall());
+
+      it("should keep a notification that becomes due between syncs but is not yet shown", async () => {
+        const start = new Date("2026-10-22T19:00:00");
+        jasmine.clock().mockDate(start);
+        const notification = {
+          ...campaignNotification,
+          schedule: { at: new Date(start.getTime() + 60 * 1000) },
+        } as ILocalNotification;
+        getDBNotificationsSpy.and.resolveTo([notification]);
+        spyOn(api, "getPending").and.resolveTo({ notifications: [notification] });
+        const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+
+        // first sync while still in the future: replaced (cancelled and rebooked)
+        service.pendingNotifications$.next([notification]);
+        await service["setApiNotifications"]();
+        expect(cancelSpy).toHaveBeenCalledTimes(1);
+
+        // next sync after its time, with the alarm still pending on the device
+        jasmine.clock().mockDate(new Date(start.getTime() + 3 * 60 * 1000));
+        service.pendingNotifications$.next([]);
+        await service["setApiNotifications"]();
+        expect(cancelSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
+  describe("cancelLateNotifications", () => {
+    it("should cancel selected notifications that are due but not yet shown", async () => {
+      const late = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 60 * 1000) },
+      } as ILocalNotification;
+      const lateOtherCampaign = {
+        ...late,
+        id: 3,
+        extra: { campaign_id: "campaign_2", row_id: "row_2" },
+      } as ILocalNotification;
+      const future = {
+        ...campaignNotification,
+        id: 4,
+        schedule: { at: new Date(Date.now() + 60 * 1000) },
+      } as ILocalNotification;
+      getDBNotificationsSpy.and.resolveTo([late, lateOtherCampaign, future]);
+      spyOn(api, "getPending").and.resolveTo({ notifications: [late, lateOtherCampaign, future] });
+      const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+
+      await service.cancelLateNotifications((n) => n.extra?.campaign_id === "campaign_1");
+
+      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [late] });
+    });
   });
 
   describe("scheduleNotification", () => {
@@ -149,6 +218,31 @@ describe("LocalNotificationService", () => {
       await service.scheduleNotification(notification, "row_1");
 
       expect(notification.schedule.allowWhileIdle).toBeTrue();
+    });
+
+    it("should allow delivery while idle even if a schedule turns it off", async () => {
+      const notification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() + 60000), allowWhileIdle: false },
+      } as ILocalNotification;
+
+      await service.scheduleNotification(notification, "row_1");
+
+      expect(notification.schedule.allowWhileIdle).toBeTrue();
+    });
+
+    it("should allow delivery while idle for notifications sent immediately", async () => {
+      // e.g. "Send Now" on the notifications debug page
+      const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
+      const notification = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() + 60000) },
+      } as ILocalNotification;
+
+      await service.scheduleImmediateNotification(notification, 4);
+
+      const [{ notifications }] = scheduleSpy.calls.mostRecent().args;
+      expect(notifications[0].schedule).toEqual(jasmine.objectContaining({ allowWhileIdle: true }));
     });
   });
 
