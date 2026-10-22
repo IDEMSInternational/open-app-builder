@@ -149,9 +149,13 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
     const { notifications } = await this.api.getPending();
-    // Keep notifications booked by the NotificationService (`notification` action): they are not in
-    // this service's db, so would not be booked again. All others are replaced from this service's db
-    const toCancel = notifications.filter((n) => !isActionNotification(n));
+    const pastDueIds = await this.getPastDueNotificationIds();
+    // Keep notifications that would not be booked again if cancelled:
+    // - those booked by the NotificationService (`notification` action), which are not in this db
+    // - this service's notifications whose time has passed but which the device has not shown yet,
+    //   as Android delivers inexact alarms up to an hour late (only future ones are rebooked)
+    // All others are replaced from this service's db
+    const toCancel = notifications.filter((n) => !isActionNotification(n) && !pastDueIds.has(n.id));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
     if (isNonEmptyArray(toCancel)) {
       await this.api.cancel({ notifications: toCancel });
@@ -160,6 +164,17 @@ export class LocalNotificationService extends AsyncServiceBase {
     if (isNonEmptyArray(toSchedule)) {
       await this.api.schedule({ notifications: toSchedule });
     }
+  }
+
+  /**
+   * Ids of this service's notifications whose scheduled time has passed.
+   * Read from the db, as on native `getPending` returns times as platform-formatted text
+   */
+  private async getPastDueNotificationIds() {
+    const now = Date.now();
+    const dbNotifications = await this.getDBNotifications();
+    const pastDue = dbNotifications.filter((n) => new Date(n.schedule.at).getTime() <= now);
+    return new Set(pastDue.map((n) => n.id));
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -334,6 +349,9 @@ export class LocalNotificationService extends AsyncServiceBase {
     if (!notification.schedule) {
       throw new Error(`no schedule supplied for notification\n${notification._row_id}`);
     }
+    // Let Android deliver the notification while the device is idle, rather than waiting until it
+    // is next woken (exact alarms are not allowed, so notifications already use inexact alarms)
+    notification.schedule = { allowWhileIdle: true, ...notification.schedule };
     // Capacitor notifications use a random integer as id, however we also want to retain the id of the
     // row used to trigger the notification to avoid duplicates. Ideally this _row_id should be the primary
     // key, however swapping the columns would require additional db migration so just retaining both for now
