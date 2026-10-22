@@ -33,9 +33,9 @@ describe("HttpCacheAdapterMemory", () => {
     const mockBlob = new Blob(["data"]);
     await adapter.set("test", mockBlob);
 
-    const url = await adapter.getUrl("test");
-    expect(url).toBeDefined();
-    expect(url?.startsWith("blob:")).toBeTrue();
+    const res = await adapter.getUrl("test");
+    expect(res.src).toBeDefined();
+    expect(res.src?.startsWith("blob:")).toBeTrue();
   });
 
   it("should return undefined URL if file doesn't exist", async () => {

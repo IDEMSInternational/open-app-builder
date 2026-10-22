@@ -1,127 +1,151 @@
-# HTTP Service
+# Smart HTTP Service (`HttpService`)
 
-## Overview
-The HTTP service is used to retrieve data from external sources, with support for request caching,
-progress sharing, download abort and failed download retry
+The `HttpService` is a comprehensive, offline-first network orchestrator for the application domain.
 
-It builds on top of the ky http client, as a language-agnostics and more feature rich alternative to angular's own http client.
-https://github.com/sindresorhus/ky
+At its core, it applies the **Adapter** pattern to execute network requests, caching them efficiently using platform-specific storage mechanisms with a unified **stale-while-revalidate** approach. It automatically distinguishes between data and large media streams, deciding the most memory-efficient way to transport data.
 
-Takes inspiration from service worker caching strategies, cacheable-request spec
-https://developer.chrome.com/docs/workbox/caching-strategies-overview
-https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
+## Features
 
+- **Cross Platform Transports**: Automatically selects the best underlying HTTP client (Browser Fetch, Web Workers, or Native Capacitor transfers).
+- **Smart Mimetype Routing**: Media requests (Audio, Video, PDF) are intelligently offloaded to OPFS workers or Native file transfer plugins to protect the Javascript UI thread.
+- **Stale-While-Revalidate Caching**: Cached responses are always served immediately. Stale entries trigger a silent background revalidation, ensuring the UI is never blocked and offline access is never broken.
+- **Granular Cache Control**: Dedicated `removeCacheEntry()` and `removeCacheEntries()` methods allow precise, on-demand cache busting without interfering with offline availability.
+- **Base64 Bypass**: Massively optimizes Capacitor bridge memory by downloading media directly to the Native filesystem, returning secure `localhost` native mapped URLs (`convertFileSrc`) instead of sluggish Base64 payloads.
 
-## Storage Adaptors
-As there are typically no universally effective ways to persist data to storage, a series of 
-storage adapters are used to handle read/write operations in different environments (e.g. Capacitor Filesystem on native, OPFS on browser).
+---
 
-The architecture uses a **Sidecar Pattern** for performance and resilience on low-resource devices:
-- **Atomic Storage**: Each response is stored as two distinct files: `[hash].data` (the raw binary body) and `[hash].meta` (metadata including headers, status, and expiry).
-- **URL Hashing**: Keys are generated using a SHA-1 hash of the Request URL. This provides fast, constant-time lookup without the CPU overhead of hashing entire binary blobs.
-- **Bypassing the Native Bridge**: On Capacitor, the service uses `Capacitor.convertFileSrc` and native `fetch` to read files directly from the local webserver. This avoids the memory bottleneck of transferring large files as Base64 strings across the Javascript bridge.
-- **No Global Manifest**: By avoiding a monolithic JSON index, the app removes I/O bottlenecks during startup and prevents the "Write Contention" corruption risks common in low-connectivity environments.
+## Core Architecture
 
-It takes inspiration from:
-- https://github.com/BYOJS/storage
-- https://keyv.org/
+The architecture decouples request orchestration from the transport details (the HTTP adapters). A single, unified caching flow handles all requests.
 
+### Caching Flow
 
+1. **Fresh cache hit** → Return immediately. No network request.
+2. **Stale cache hit** → Return stale data immediately. Revalidate silently in the background for the next request.
+3. **Cache miss** → Fetch from network, cache the response, and return.
 
-## Template Interaction
+```mermaid
+sequenceDiagram
+    participant UI as Component
+    participant HS as HttpService (Orchestrator)
+    participant Cache as HttpCache (Storage Broker)
+    participant Adapter as Transport Adapter
 
-### TODO (WiP from #3000)
-- [ ] Template Interaction
+    UI->>HS: getMediaSrc('https://video.mp4')
 
-The service populates download progress and status to the `@data._http` table, and stores cached
-responses locally (file system on native devices, OPFS on browser with indexeddb fallback (?) )
+    activate HS
+    HS->>Cache: getEntry('video.mp4')
 
-It can be called directly through authored actions, or integrated into specific components (e.g. image)
+    alt Fresh cache hit
+        Cache-->>HS: entry (not expired)
+        HS-->>UI: { src, revoke() }
+    else Stale cache hit
+        Cache-->>HS: entry (expired)
+        HS-->>UI: { src, revoke() } (stale)
+        HS--)Adapter: revalidate in background (fire & forget)
+        Adapter--)Cache: update entry
+    else Cache miss
+        HS->>Adapter: request('video.mp4')
+        activate Adapter
+        Note right of Adapter: Adapter fetches & streams<br/>directly to file/OPFS!
+        Adapter-->>HS: IHttpAdapterResponse
+        deactivate Adapter
+        HS-->>UI: { src, revoke() }
+    end
 
-
-- [ ] Add markdown table example
+    deactivate HS
 ```
 
+### The Adapters & `IHttpAdapterResponse`
+
+All client Adapters (Web, Capacitor, Worker) guarantee the same uniform data-retrieval interface (`IHttpAdapterResponse`):
+
+1. **`getUri()`**: Returns a safe, bindable URL.
+   - _Web/Worker_: Returns a short-lived `blob:http://` URL with a `revoke()` garbage collection function.
+   - _Native_: Returns a secure device file path using `Capacitor.convertFileSrc()`.
+2. **`getRawData()`**: Returns raw `ArrayBuffer` contents.
+   - _Native_: Bypasses the expensive bridge by using the native browser `fetch()` API against the secure local file URL.
+
+---
+
+## Usage Examples
+
+### 1. Simple Data Requests (JSON, Text)
+
+Use `.get()` when you only need standard API responses. This returns a standard DOM `Response` object.
+
+```typescript
+const response = await this.httpService.get(
+  "https://api.example.com/data.json",
+  { cacheExpiry: "7d" }
+);
+const data = await response.json();
 ```
 
+### 2. Media SRC Requests (Images, Audio, Video)
 
+Always use `.getMediaSrc()` when binding files to the UI. It automatically uses the more performant worker/capacitor adapters to avoid JavaScript thread blocking.
 
-Inspiration:
-- https://tanstack.com/query/latest/docs/framework/react/overview
+```typescript
+const media = await this.httpService.getMediaSrc(
+  "https://example.com/huge-video.mp4",
+  {
+    cacheName: "videos", // Store in a dedicated namespace for easy bulk cleanup
+  }
+);
 
-## TODOs
+// Bind to <video [src]="videoUrl">
+this.videoUrl = media.src;
 
-- [ ] Support passing custom _id to requests to subscribe to result elsewhere (possibly as part of download service)
-
-- [ ] Component support 
-E.g Image component properties - `cache` (no expiry), `cache: 30d`. A separate `cache_update` parameter can be included to force update after response. 
-
-E.g. `external_data` component to handle fetch and map to data_items
-Or would it just wrap other components? E.g.
-```ts
-<data-download #item ['parameter_list']={cache_expiry: '30d', autodownload:false}>
-    <tmpl-component [value]="download.start()">
-    <tmpl-component [value]="download.stop()">
-    <tmpl-component [value]="download.status()">
-    <tmpl-component [value]="download.progress()">
-    <tmpl-component [value]="download.value()" />
-    <tmpl-component [value]="download.source()" />
-</data-download>
-
-<data-download>
-<api-data>
-// similar wrapper for db queries? or is this just data-items?
-<db-query>
+// Clean up memory if destroying component on Web (no-op on native)
+media.revoke();
 ```
 
-- [ ] Local storage table for cache entries, just metadata (status, content-type, size, expiry)
+### 2b. Media from API Endpoints
 
-- [ ] Response body parsing and store. OPFS / File-based downloads cache
+`getMediaSrc()` works with any URL format, including API endpoints without file extensions:
 
-- [ ] Move actions to child component/feature
+```typescript
+const media = await this.httpService.getMediaSrc(
+  "https://api.example.com/content/123",
+  { cacheName: "downloads" }
+);
+this.imageUrl = media.src;
+```
 
-- [ ] Demo sheet, showing full cache, button to clear cache, way to download image with custom expiry,
-remove item from cache, bypass cache etc.
+### 3. Bypassing Cache
 
-- System cache - start as tmp folder, clean on init and move when downloads complete
-- Rename as `downloads.service`? Or possibly create new downloads service that builds on top of core?
-- Handle network update if data changed/not (opfs supports write to tmp file and rename - probably want similar for capacitor)
+For requests that should never be cached (e.g., auth tokens, session checks):
 
+```typescript
+const response = await this.httpService.get(
+  "https://api.example.com/auth/session",
+  { bypassCache: true }
+);
+```
 
-## FAQs
+### 4. Cache Invalidation
 
-- Why not use the angular http client directly
-Cross-browser support and compatibility
+Invalidate a single resource or clear an entire namespace:
 
-- Why not use service workers
-Not available in native builds
+```typescript
+// Remove a single cached URL
+await this.httpService.invalidate(
+  "https://example.com/outdated-image.png",
+  "images"
+);
 
-- Why not use [insert tool name here]
+// Wipe all cached videos
+await this.httpService.removeCacheEntries("videos");
+```
 
-A number of popular tools were evaluated when considering ways to enable request caching
+---
 
-*Must Haves*
-Run both in browser and on native device
-Support for binary/blob response formats (e.g. images)
+## When NOT to use HttpService
 
-*Nice to Haves*
-Efficient read/write mechanisms (e.g. prefer native file over in-memory data for large binary files)
-Language agnostic. Angular-specific might be prone to breaking with major platform updates, also potential use in other projects
+The `HttpService` is optimized for **Offline-First** scenarios and **Large Media** persistence. Because it uses the Native Filesystem or OPFS for efficient retrieval, it always leaves a persistent file behind.
 
-Some popular options which were evaluated (and ruled out)
+For purely **transient, online-only resources** that do not require offline persistence (e.g., dynamic session icons, highly volatile tracking pixels, or preview-quality thumbnails):
 
-https://github.com/jaredwray/cacheable/tree/main/packages/cacheable-request
-Only supports Node environment (not browser). Similar for underlying `cacheable` package.
-
-https://github.com/sindresorhus/got
-Uses cacheable-request under the hood, so again only supports node
-
-https://www.npmjs.com/package/@ngneat/cashew
-Angular specific. Designed as global interceptor, not service-specific
-
-https://www.npmjs.com/package/ng-http-caching
-Angular specific. Binary cache strategies (cache or not), no support of cache-first / network-first with fallback
-
-https://github.com/jaredwray/keyv
-Designed around json-serializable data (no support for binary files, blobs etc.)
-Would require custom storage adapters for opfs and capacitor-file
+1. **Bypass HttpService**: Bind absolute HTTPS URLs directly to standard HTML tags (e.g., `<img src="https://...">`).
+2. **Leverage Browser Cache**: Standard WebViews and Browsers already have highly optimized ephemeral caching and garbage collection mechanisms for these types of resources, which is more efficient than persistent manual storage.
