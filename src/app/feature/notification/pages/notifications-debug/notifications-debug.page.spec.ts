@@ -9,9 +9,14 @@ import { NotificationService } from "../../notification.service";
 import {
   NotificationsDebugPage,
   TEST_CAMPAIGN_ID,
-  TEST_NOTIFICATION_ID,
+  TEST_NOTIFICATION_ID_PREFIX,
   toDeviceNotification,
 } from "./notifications-debug.page";
+
+/** Test notification ids are the prefix followed by the due time */
+const testNotificationId = jasmine.stringMatching(
+  new RegExp(`^${TEST_NOTIFICATION_ID_PREFIX}_\\d+$`)
+);
 
 const campaignNotification: PendingLocalNotificationSchema = {
   id: 1,
@@ -118,7 +123,7 @@ describe("NotificationsDebugPage", () => {
       await component.sendTestNotification("action");
 
       const [notification] = mockNotificationService.scheduleNotification.calls.mostRecent().args;
-      expect(notification.id).toEqual(TEST_NOTIFICATION_ID);
+      expect(notification.id).toEqual(testNotificationId);
       expect(notification.action_list).toEqual([
         jasmine.objectContaining({ trigger: "notification_interacted", action_id: "toast" }),
       ]);
@@ -132,11 +137,23 @@ describe("NotificationsDebugPage", () => {
 
       const [notification, rowId] =
         mockLocalNotificationService.scheduleNotification.calls.mostRecent().args;
-      expect(rowId).toEqual(TEST_NOTIFICATION_ID);
+      expect(rowId).toEqual(testNotificationId);
       expect(notification.extra.campaign_id).toEqual(TEST_CAMPAIGN_ID);
       expect(notification.extra.action_list).toEqual([
         jasmine.objectContaining({ trigger: "click", action_id: "toast" }),
       ]);
+    });
+
+    it("gives each test notification its own id, so several can be pending at once", async () => {
+      component.setDelay(60);
+      await component.sendTestNotification("campaign");
+      component.setDelay(300);
+      await component.sendTestNotification("campaign");
+
+      const [first, second] = mockLocalNotificationService.scheduleNotification.calls
+        .allArgs()
+        .map(([, rowId]) => rowId);
+      expect(first).not.toEqual(second);
     });
 
     it("sends copies of campaign notifications after the selected delay", async () => {

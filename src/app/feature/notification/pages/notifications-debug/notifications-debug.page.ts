@@ -31,8 +31,8 @@ export interface IDeviceNotification {
   raw: PendingLocalNotificationSchema;
 }
 
-/** Id shared by test notifications, so that sending another replaces the last */
-export const TEST_NOTIFICATION_ID = "debug_test_notification";
+/** Prefix of test notification ids. Each test gets its own id, so several can be pending at once */
+export const TEST_NOTIFICATION_ID_PREFIX = "debug_test_notification";
 /** Campaign id given to campaign test notifications */
 export const TEST_CAMPAIGN_ID = "debug_test";
 
@@ -127,11 +127,12 @@ export class NotificationsDebugPage implements OnInit {
    */
   public async sendTestNotification(source: "campaign" | "action") {
     const at = new Date(Date.now() + this.delaySeconds() * 1000);
+    const id = `${TEST_NOTIFICATION_ID_PREFIX}_${at.getTime()}`;
     if (source === "campaign") {
-      await this.scheduleCampaignTestNotification(at);
+      await this.scheduleCampaignTestNotification(id, at);
       this.lastTest.set({ label: "Campaign", at });
     } else {
-      await this.scheduleActionTestNotification(at);
+      await this.scheduleActionTestNotification(id, at);
       this.lastTest.set({ label: "Notification action", at });
     }
     // campaign notifications reach the device after the legacy service's 2s debounce
@@ -157,9 +158,9 @@ export class NotificationsDebugPage implements OnInit {
   }
 
   /** Schedule as `notification: create` does */
-  private scheduleActionTestNotification(at: Date) {
+  private scheduleActionTestNotification(id: string, at: Date) {
     return this.notificationService.scheduleNotification({
-      id: TEST_NOTIFICATION_ID,
+      id,
       schedule_at: at.toISOString(),
       title: "Test notification (notification action)",
       text: "Tap to check that its actions run",
@@ -168,20 +169,20 @@ export class NotificationsDebugPage implements OnInit {
   }
 
   /** Schedule through the campaign notification service, as a campaign row does */
-  private scheduleCampaignTestNotification(at: Date) {
+  private scheduleCampaignTestNotification(id: string, at: Date) {
     const notification = {
-      // replaced with a generated id when scheduled
+      // replaced with a generated integer id when scheduled
       id: 0,
       title: "Test notification (campaign)",
       body: "Tap to check that its actions run",
       schedule: { at },
       extra: {
         campaign_id: TEST_CAMPAIGN_ID,
-        row_id: TEST_NOTIFICATION_ID,
+        row_id: id,
         action_list: [toastAction("click", "Tap actions ran: campaign")],
       },
     } as ILocalNotification;
-    return this.localNotificationService.scheduleNotification(notification, TEST_NOTIFICATION_ID);
+    return this.localNotificationService.scheduleNotification(notification, id);
   }
 }
 
