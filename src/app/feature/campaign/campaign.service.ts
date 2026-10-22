@@ -225,6 +225,12 @@ export class CampaignService extends AsyncServiceBase {
             earliestStart = addSeconds(schedule.schedule.at, 60);
           }
         }
+      } else {
+        // A notification that is already due may not have been shown yet (Android can deliver it
+        // up to an hour late). Cancel it, as the campaign no longer applies
+        await this.localNotificationService.cancelLateNotifications(
+          (n) => n.extra?.campaign_id === campaign.id
+        );
       }
     }
     this.scheduledNotifications = scheduled;

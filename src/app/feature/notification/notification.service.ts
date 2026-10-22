@@ -140,8 +140,8 @@ export class NotificationService {
     const internalNotification: INotificationInternal = {
       title,
       body: text,
-      // Let Android deliver the notification while the device is idle, rather than waiting until it
-      // is next woken (exact alarms are not allowed, so notifications already use inexact alarms)
+      // Let Android deliver the notification while the device is idle, rather than holding it until
+      // the device next wakes (applies to both exact and inexact alarms)
       schedule: { at: new Date(schedule_at), allowWhileIdle: true },
       // replace string id with randomly generated integer and store original id in extra
       id: internalId,
