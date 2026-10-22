@@ -32,7 +32,7 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
-import { IStore, StoreType } from "../stores/store";
+import { StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
 import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
 
@@ -75,7 +75,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
-  protected variableStore: IStore = inject(VariableStore);
+  protected variableStore: VariableStore = inject(VariableStore);
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
@@ -92,6 +92,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   private navigationEndSubscription?: Subscription;
   private pageTemplate: string = "";
+  private storeValueVersion = 0;
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -164,11 +165,15 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   /*
    * Sets the rows expression value and updates the variable store.
    */
-  public setExpression(expression: any): void {
+  public async setExpression(expression: any): Promise<void> {
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.storeValue();
+    await this.storeValue();
+  }
+
+  public async evaluate() {
+    await this.storeValue();
   }
 
   public triggerActions(trigger: string) {
@@ -187,6 +192,8 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
+    // Latest call wins: a slower, older evaluation must not overwrite a newer result.
+    const version = ++this.storeValueVersion;
     const preEvaluated = await this.preEvaluation(this.expression());
 
     const value = this.evaluationService.evaluateExpression(
@@ -196,6 +203,10 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     );
 
     const postEvaluated = await this.postEvaluation(value);
+
+    if (version !== this.storeValueVersion) {
+      return;
+    }
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, postEvaluated);
   }
@@ -255,7 +266,15 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       return;
     }
 
-    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+    const watcher = this.evaluationService.hasDynamicIndexer(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    )
+      ? this.variableStore.watchMultipleWithDescendants(dependencies)
+      : this.variableStore.watchMultiple(dependencies);
+
+    const sub = watcher.subscribe(async () => {
       await this.storeValue();
     });
 
