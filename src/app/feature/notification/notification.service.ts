@@ -142,7 +142,8 @@ export class NotificationService {
     const internalNotification: INotificationInternal = {
       title,
       body: text,
-      schedule: { at: new Date(schedule_at) },
+      // let Android deliver while the device is idle, not only once it next wakes
+      schedule: { at: new Date(schedule_at), allowWhileIdle: true },
       // replace string id with randomly generated integer and store original id in extra
       id: internalId,
       extra: { id, source: NOTIFICATION_SOURCE_ACTION },

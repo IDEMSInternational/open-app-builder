@@ -567,7 +567,7 @@ describe("NotificationService", () => {
           jasmine.objectContaining({
             title: "Test Title",
             body: "Test Text",
-            schedule: { at: jasmine.any(Date) },
+            schedule: { at: jasmine.any(Date), allowWhileIdle: true },
             id: jasmine.any(Number),
             extra: { id: "test-notification", source: "action" },
           }),
