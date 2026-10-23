@@ -159,8 +159,31 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (`delimiters.ts` `addStringDelimiters`). The throw stops the whole `data_changed` action list.
   Always write `@items[0]?.id`, and decide what the page should do when the list is empty.
   (found 2026-10-13: module_start_at_id `find_last_completed`, home_screen `module_tasks`)
+
 - Re-render timing, loops and rows inside `data_items` that ignore `set_local`: see `authoring-validation.md`
   → Runtime.
+  - **Forking a shared workbook into a deployment folder works per tab, by `flow_name`.** Copy the workbook into a
+  folder listed *after* the shared one in the deployment's `sheets_folders`; each tab with an identical
+  `flow_name` replaces the shared one, and any tab missing from the copy (even if its `==content_list==` row
+  is present) silently falls back to the shared version. A replacing tab is not merged with the shared one, so
+  copy every row. Check the result via `_source` at the end of each generated JSON.
+  (verified 2026-10-21: kids_teens_mx MX goals / MX proximal_outcomes over V3)
+- **Renaming a module ID means renaming its article tab and that tab's `==content_list==` row too.** The
+  generator (`gen_prep_articles`, input `{@gen.id}_articles`) and the shared article templates
+  (`article`, `question`, `section`: `@local.module_id@local.articles`) look up `<module id>_articles` by name.
+  A module with no such list is generated without articles (only "Max defer limit reached" for
+  `prep_<id>_articles` in error.log), and a content-list row whose tab was renamed only gives a
+  "No Contents: <name>" warning. Splitting a module (`_f`/`_m`, `_p1`/`_p2`) needs one tab per new ID.
+  (found 2026-10-21: kids_teens_mx module restructure, 85 of 98 modules without articles)
+- **How globals override each other.** (1) Same global `flow_name` in two workbooks: the later `sheets_folders`
+  entry replaces the whole tab at sync (no merge; missing constants become undefined). (2) Same constant name in
+  different tabs: all global tabs are applied at app start in `contents.json` order (alphabetical by
+  `flow_name`) and `setGlobal` overwrites, so the alphabetically later tab wins, with no warning
+  (`template.service.ts` `initialiseDefaultFieldAndGlobals`, `template-field.service.ts` `setGlobal`).
+  (3) `override_target` + `override_condition` on a global tab swaps the whole target tab at start-up when
+  the condition holds (the docs only mention templates/data lists). Constants are re-applied on every start
+  (not stored on the device), unlike `declare_field_default`. (verified 2026-10-23)
+
 
 ### Templates, pop-ups and `nav_stack`
 
@@ -228,3 +251,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   the list name as a word (`parents` → `ibu bapa`), the translated app fails with
   `[data_list] "ibu bapa" not found`. Avoid plain-word list names, or remove that source string from the
   dictionary. (verified 2026-09-22, MY GlitchTip 7037593)
+
+- - **Where translations live (deployment repo):** runtime lookup is `app_data/translations/<lang>/strings.json`
+  (English source text → translation); raw download is `app_data/translations_source/translated_strings/
+  translated.<lang>.json`; each row also needs `_translations.<field>.<lang>: true` in the generated sheet JSON.
+  The "translation sync" action does **not** commit to main — it opens a PR (branch `create-pull-request/patch`)
+  whose Deployment Preview run is green before merge. Locally on `main` the strings stay English until that PR
+  is merged or checked out. (verified 2026-10-16: kids_teens_my PR #281)
+
