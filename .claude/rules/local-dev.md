@@ -36,19 +36,19 @@
 7. **`ng serve` binds to IPv6 `::1` only on Windows/Node ≥17,** so `127.0.0.1:4200` refuses connections. To use the
    `127.0.0.1` onboarding workaround (item 1), start with `yarn start --host 127.0.0.1`. (verified 2026-09-11)
 
-<<<<<<< Updated upstream
+
 8. **Testing a content fix without editing repo files or sheets:** re-run the converter's `TemplateParser` on the
    raw `<deployment>/tasks/template/sheet_json/template/<flow>.json` with the rows overridden (ts-node from
    `packages/scripts`, `NODE_PATH=packages/scripts/node_modules`), then serve that JSON to headless Chrome via
    CDP `Fetch.enable` interception of `*<flow>.json*`. Dynamic-data state can be seeded with
    `ng.getComponent(document.querySelector('plh-data-items')).dataItemsService.dynamicDataService.update(...)`.
    (verified 2026-08-19)
-=======
-8. **A Google Sheet whose name contains `:` (e.g. Drive's "Copy of X - October 20, 5:32 PM") cannot be synced on
+
+9. **A Google Sheet whose name contains `:` (e.g. Drive's "Copy of X - October 20, 5:32 PM") cannot be synced on
    Windows.** The downloader writes `<name>.xlsx` and NTFS treats the colon as an alternate-data-stream
    separator: you get an empty file cut at the colon, with the real xlsx hidden in a stream (`dir /r` shows it).
    The converter loads nothing from that workbook, with no error; its flows are simply missing (seen as
    "data list not found" at runtime). Rename the sheet without `: \ / * ? " < > |`, delete the truncated file
    with `Remove-Item -LiteralPath`, and sync again. Linux CI is not affected. (verified 2026-10-21)
 
->>>>>>> Stashed changes
+
