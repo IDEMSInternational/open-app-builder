@@ -148,10 +148,9 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (`delimiters.ts` `addStringDelimiters`). The throw stops the whole `data_changed` action list.
   Always write `@items[0]?.id`, and decide what the page should do when the list is empty.
   (found 2026-10-13: module_start_at_id `find_last_completed`, home_screen `module_tasks`)
-<<<<<<< Updated upstream
+
 - Re-render timing, loops and rows inside `data_items` that ignore `set_local`: see `authoring-validation.md`
   → Runtime.
-=======
   - **Forking a shared workbook into a deployment folder works per tab, by `flow_name`.** Copy the workbook into a
   folder listed *after* the shared one in the deployment's `sheets_folders`; each tab with an identical
   `flow_name` replaces the shared one, and any tab missing from the copy (even if its `==content_list==` row
@@ -173,11 +172,10 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (3) `override_target` + `override_condition` on a global tab swaps the whole target tab at start-up when
   the condition holds (the docs only mention templates/data lists). Constants are re-applied on every start
   (not stored on the device), unlike `declare_field_default`. (verified 2026-10-23)
->>>>>>> Stashed changes
+
 
 ### Templates, pop-ups and `nav_stack`
 
-<<<<<<< Updated upstream
 - **`click | …` on a `template` row never fires.** Actions on a nested-template row only run when the child
   template emits a value matching the trigger (`template-action.service.ts`, `emit` handler). Use the child's
   emitted values (e.g. `completed` / `uncompleted` from nav-button templates). (verified 2026-09-14)
@@ -242,13 +240,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   the list name as a word (`parents` → `ibu bapa`), the translated app fails with
   `[data_list] "ibu bapa" not found`. Avoid plain-word list names, or remove that source string from the
   dictionary. (verified 2026-09-22, MY GlitchTip 7037593)
-=======
 
-## Translation
 - - **Where translations live (deployment repo):** runtime lookup is `app_data/translations/<lang>/strings.json`
   (English source text → translation); raw download is `app_data/translations_source/translated_strings/
   translated.<lang>.json`; each row also needs `_translations.<field>.<lang>: true` in the generated sheet JSON.
   The "translation sync" action does **not** commit to main — it opens a PR (branch `create-pull-request/patch`)
   whose Deployment Preview run is green before merge. Locally on `main` the strings stay English until that PR
   is merged or checked out. (verified 2026-10-16: kids_teens_my PR #281)
->>>>>>> Stashed changes
+
