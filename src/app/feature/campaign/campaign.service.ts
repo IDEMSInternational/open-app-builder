@@ -3,6 +3,7 @@ import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
 import { extractDynamicFields, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
+import { filter, skip } from "rxjs/operators";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
@@ -92,7 +93,6 @@ export class CampaignService extends AsyncServiceBase {
     ]);
     this.ensureSyncServicesReady([this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    await this.hackDeactivateAllNotifications();
 
     const schedules = await this.loadCampaignSchedules();
 
@@ -104,7 +104,12 @@ export class CampaignService extends AsyncServiceBase {
     // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
     // console.log("[All Campaigns]", this.allCampaigns);
 
-    await this.scheduleCampaignNotifications();
+    // Only schedule (and clear old notifications) once notifications can reach the device.
+    // Subscribe before checking, so a change in between isn't missed
+    this.subscribeToSchedulingAvailability();
+    if (this.localNotificationService.canSchedule$.value) {
+      await this.replaceAllNotifications();
+    }
 
     this._subscribeToNotificationUpdates();
   }
@@ -208,6 +213,8 @@ export class CampaignService extends AsyncServiceBase {
    * any notifications requiring scheduling
    */
   public async scheduleCampaignNotifications() {
+    // Until notifications can reach the device, keep existing ones: they couldn't be replaced
+    if (!this.localNotificationService.canSchedule$.value) return;
     const scheduled: IScheduledNotificationsHashmap = {};
     for (const campaign of Object.values(this.scheduledCampaigns)) {
       scheduled[campaign.id] = {};
@@ -226,8 +233,7 @@ export class CampaignService extends AsyncServiceBase {
           }
         }
       } else {
-        // A notification that is already due may not have been shown yet (Android can deliver it
-        // up to an hour late). Cancel it, as the campaign no longer applies
+        // a due notification may not be shown yet (Android can be up to an hour late): cancel it
         await this.localNotificationService.cancelLateNotifications(
           (n) => n.extra?.campaign_id === campaign.id
         );
@@ -235,6 +241,30 @@ export class CampaignService extends AsyncServiceBase {
     }
     this.scheduledNotifications = scheduled;
     console.log("[Scheduled Notifications]", this.scheduledNotifications);
+  }
+
+  private _canSchedule$?: Subscription;
+
+  /** Schedule again whenever notifications can reach the device, e.g. permission granted later */
+  private subscribeToSchedulingAvailability() {
+    this._canSchedule$?.unsubscribe();
+    this._canSchedule$ = this.localNotificationService.canSchedule$
+      .pipe(
+        // current value is handled on load
+        skip(1),
+        filter((canSchedule) => canSchedule)
+      )
+      .subscribe(() => {
+        this.replaceAllNotifications().catch((error) =>
+          console.error("[Campaigns] Could not schedule notifications", error)
+        );
+      });
+  }
+
+  /** Clear old notifications (incl. from removed campaigns) and schedule campaigns again */
+  private async replaceAllNotifications() {
+    await this.hackDeactivateAllNotifications();
+    await this.scheduleCampaignNotifications();
   }
 
   /**

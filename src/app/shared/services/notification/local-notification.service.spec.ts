@@ -1,4 +1,6 @@
+import { signal } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
+import type { PermissionState } from "@capacitor/core";
 import type {
   CancelOptions,
   LocalNotificationsPlugin,
@@ -10,6 +12,7 @@ import type {
 import { ILocalNotification, LocalNotificationService } from "./local-notification.service";
 import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
+import { NotificationService } from "src/app/feature/notification/notification.service";
 
 /** Mock of the capacitor LocalNotifications api methods used when syncing notifications to the device */
 class MockLocalNotificationsApi implements Pick<
@@ -51,10 +54,16 @@ describe("LocalNotificationService", () => {
   let service: LocalNotificationService;
   let api: MockLocalNotificationsApi;
   let getDBNotificationsSpy: jasmine.Spy;
+  /** Notification permission status, as tracked by the NotificationService */
+  let permissionStatus: ReturnType<typeof signal<PermissionState | undefined>>;
 
   beforeEach(() => {
+    permissionStatus = signal<PermissionState | undefined>(undefined);
     TestBed.configureTestingModule({
-      providers: [{ provide: AppConfigService, useValue: new MockAppConfigService() }],
+      providers: [
+        { provide: AppConfigService, useValue: new MockAppConfigService() },
+        { provide: NotificationService, useValue: { status: permissionStatus.asReadonly() } },
+      ],
     });
     service = TestBed.inject(LocalNotificationService);
     // Replace localnotification api with mock
@@ -68,7 +77,151 @@ describe("LocalNotificationService", () => {
     expect(service).toBeTruthy();
   });
 
+  describe("notification permission", () => {
+    it("should start syncing notifications when permission is granted after launch", async () => {
+      spyOn(service, "ready").and.resolveTo(true);
+      const startSyncSpy = spyOn(service as any, "startNotificationSync").and.resolveTo();
+
+      permissionStatus.set("granted");
+      TestBed.tick();
+      await Promise.resolve();
+
+      expect(service.permissionGranted).toBeTrue();
+      expect(startSyncSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("should keep the permission found at launch until the status is first checked", () => {
+      service.permissionGranted = true;
+
+      TestBed.tick();
+
+      expect(service.permissionGranted).toBeTrue();
+    });
+
+    describe("when permission is withdrawn", () => {
+      beforeEach(() => {
+        service.permissionGranted = true;
+        service.canSchedule$.next(true);
+        permissionStatus.set("denied");
+        TestBed.tick();
+      });
+
+      it("should mark notifications as unable to reach the device", () => {
+        expect(service.permissionGranted).toBeFalse();
+        expect(service.canSchedule$.value).toBeFalse();
+      });
+
+      it("should not record new notifications", async () => {
+        const addDBNotificationSpy = spyOn(service as any, "addDBNotification").and.resolveTo();
+        const notification = {
+          ...campaignNotification,
+          schedule: { at: new Date(Date.now() + 60000) },
+        } as ILocalNotification;
+
+        await service.scheduleNotification(notification, "row_1");
+
+        expect(addDBNotificationSpy).not.toHaveBeenCalled();
+      });
+
+      it("should not sync notifications to the device", async () => {
+        const getPendingSpy = spyOn(api, "getPending").and.callThrough();
+        const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
+        service.pendingNotifications$.next([
+          { ...campaignNotification, schedule: { at: new Date(Date.now() + 60000) } },
+        ]);
+
+        await service["setApiNotifications"]();
+
+        expect(getPendingSpy).not.toHaveBeenCalled();
+        expect(scheduleSpy).not.toHaveBeenCalled();
+      });
+    });
+
+    describe("startNotificationSync", () => {
+      let loaderSubscribeSpy: jasmine.Spy;
+
+      beforeEach(() => {
+        service.permissionGranted = true;
+        // the notification loader is piped once per subscription
+        loaderSubscribeSpy = spyOn(
+          service["notificationsLoader$"] as any,
+          "pipe"
+        ).and.callThrough();
+      });
+
+      it("should load existing notifications before allowing scheduling", async () => {
+        // so that the first schedule after permission is granted replaces them
+        spyOn(service as any, "handleUnprocessedNotifications").and.resolveTo();
+        const existing = {
+          ...campaignNotification,
+          schedule: { at: new Date(Date.now() + 60000) },
+        } as ILocalNotification;
+        getDBNotificationsSpy.and.resolveTo([existing]);
+        let pendingWhenAllowed: ILocalNotification[] = [];
+        service.canSchedule$.subscribe((canSchedule) => {
+          if (canSchedule) pendingWhenAllowed = service.pendingNotifications$.value;
+        });
+
+        await service["startNotificationSync"]();
+
+        expect(pendingWhenAllowed).toEqual([existing]);
+      });
+
+      it("should only set up notification sync once", async () => {
+        spyOn(service as any, "handleUnprocessedNotifications").and.resolveTo();
+
+        await service["startNotificationSync"]();
+        await service["startNotificationSync"]();
+
+        expect(loaderSubscribeSpy).toHaveBeenCalledTimes(1);
+        expect(service.canSchedule$.value).toBeTrue();
+      });
+
+      it("should share a setup already in progress", async () => {
+        spyOn(service as any, "handleUnprocessedNotifications").and.resolveTo();
+
+        await Promise.all([service["startNotificationSync"](), service["startNotificationSync"]()]);
+
+        expect(loaderSubscribeSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it("should retry a failed setup when called again", async () => {
+        spyOn(console, "error");
+        let attempts = 0;
+        spyOn(service as any, "handleUnprocessedNotifications").and.callFake(async () => {
+          if (attempts++ === 0) throw new Error("db error");
+        });
+
+        await service["startNotificationSync"]();
+        expect(service.canSchedule$.value).toBeFalse();
+        expect(loaderSubscribeSpy).not.toHaveBeenCalled();
+
+        await service["startNotificationSync"]();
+        expect(service.canSchedule$.value).toBeTrue();
+        expect(loaderSubscribeSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it("should allow scheduling again when permission is granted again", async () => {
+        spyOn(service as any, "handleUnprocessedNotifications").and.resolveTo();
+        await service["startNotificationSync"]();
+        // permission withdrawn, then granted again
+        service.permissionGranted = false;
+        service["setCanSchedule"](false);
+        service.permissionGranted = true;
+
+        await service["startNotificationSync"]();
+
+        expect(service.canSchedule$.value).toBeTrue();
+        expect(loaderSubscribeSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
   describe("setApiNotifications", () => {
+    beforeEach(() => {
+      service.permissionGranted = true;
+    });
+
     it("should replace its own notifications and keep notification action ones", async () => {
       const pendingCampaignNotification = {
         ...campaignNotification,
