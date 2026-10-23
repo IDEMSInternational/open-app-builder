@@ -1,4 +1,4 @@
-import { Component, effect, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonDatetime, IonModal } from "@ionic/angular";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import type { ILocalNotificationInteraction } from "src/app/shared/services/notification/local-notification-persist.adapter";
@@ -24,15 +24,7 @@ export class NotificationsDebugPage implements OnInit {
     public localNotificationService: LocalNotificationService,
     public notificationService: NotificationService,
     private dbSyncService: DBSyncService
-  ) {
-    // Mirror permission status to legacy service, as required for debug notification sends.
-    // Note - legacy service init processes (e.g. interaction listeners) will still only run
-    // following next app launch if permission was not granted at launch
-    effect(() => {
-      this.localNotificationService.permissionGranted =
-        this.notificationService.status() === "granted";
-    });
-  }
+  ) {}
   async ngOnInit() {
     await this.dbSyncService.ready();
     await this.localNotificationService.ready();
