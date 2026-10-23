@@ -1,70 +1,182 @@
 <ion-content class="ion-padding">
-  <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Pending Notifications</h2>
-    @if (notificationService.status() === "granted") {
-    <ion-button fill="clear">
-      <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
-    </ion-button>
-    } @else {
-    <ion-button
-      fill="outline"
-      (click)="requestPermission()"
-      [disabled]="notificationService.status() === 'unsupported'"
-    >
-      <ion-icon name="notifications-off" slot="start"></ion-icon> Enable
-    </ion-button>
-    }
-  </div>
+  <h1>Notifications</h1>
   <p>
-    Permission status: <code>{{ notificationService.status() }}</code>
-    @if (notificationService.status() === "denied") {
-    <br />Device may not show prompt again (always on iOS, or after repeat denial on Android). If no
-    prompt appears, enable from device settings }
+    The app has two separate systems for scheduling notifications: <strong>campaigns</strong>,
+    authored as campaign schedules and rows in data lists, and the
+    <strong>notification action</strong> (<code>notification: create</code>), authored in template
+    action lists. Each keeps its own records, so this page shows both, alongside everything
+    scheduled on the device.
+  </p>
+  <p class="hint">
+    Tap a list item to log its full details to the console. In a browser, each tab runs its own copy
+    of the app, so this page only shows notifications scheduled in the same tab.
   </p>
 
-  <!-- Pending Notifications -->
-  <ion-list>
-    @for (notification of localNotificationService.pendingNotifications$ | async; track
-    notification) {
-    <notification-debug-row
-      [notification]="notification"
-      (showNotificationScheduleClicked)="showCustomNotificationSchedule($event)"
-    ></notification-debug-row>
+  <!-- Permission -->
+  <section>
+    <div class="section-header">
+      <h2>Permission</h2>
+      @if (!permissionGranted()) {
+      <ion-button
+        fill="outline"
+        size="small"
+        (click)="requestPermission()"
+        [disabled]="notificationService.status() === 'unsupported'"
+      >
+        <ion-icon name="notifications-outline" slot="start"></ion-icon>
+        Enable
+      </ion-button>
+      }
+    </div>
+    <p>Status: <code>{{ notificationService.status() }}</code></p>
+    @if (notificationService.status() === "denied") {
+    <p class="hint">
+      The device may not show the prompt again (always on iOS, or after repeated denial on Android).
+      If no prompt appears, enable notifications in the device settings.
+    </p>
     }
-  </ion-list>
+  </section>
 
-  @if ((localNotificationService.pendingNotifications$ | async).length===0) {
-  <ion-card>
-    <ion-card-header>No Scheduled Notifications</ion-card-header>
-  </ion-card>
-  }
-
-  <!-- Sent Notifications -->
-  <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Sent Notifications</h2>
-    <ion-button (click)="syncInteractedNotifications()">Sync</ion-button>
-  </div>
-  <ion-list>
-    @for (notification of dbEntries$ | async; track notification) {
-    <notification-debug-interacted-row
-      [notification]="notification"
-    ></notification-debug-interacted-row>
+  <!-- Test notifications -->
+  <section>
+    <h2>Send a test notification</h2>
+    <p class="hint">
+      Tapping the notification shows a toast. To test a tap that opens the app, close the app before
+      the notification arrives.
+    </p>
+    <ion-segment [value]="delaySeconds()" (ionChange)="setDelay($event.detail.value)">
+      @for (delay of delays; track delay.seconds) {
+      <ion-segment-button [value]="delay.seconds">
+        <ion-label>{{ delay.label }}</ion-label>
+      </ion-segment-button>
+      }
+    </ion-segment>
+    <div class="button-row">
+      <ion-button [disabled]="!permissionGranted()" (click)="sendTestNotification('campaign')">
+        Campaign
+      </ion-button>
+      <ion-button [disabled]="!permissionGranted()" (click)="sendTestNotification('action')">
+        Notification action
+      </ion-button>
+    </div>
+    @if (lastTest(); as test) {
+    <p class="hint">{{ test.label }} test due at {{ test.at | date: "HH:mm:ss" }}</p>
     }
-  </ion-list>
+  </section>
 
-  <!-- Hidden picker used when creating custom datetime -->
-  <ion-modal #datetimePickerModal [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="0.75">
-    <ng-template>
-      <ion-content>
-        <ion-datetime
-          (ionChange)="setCustomNotificationSchedule($any(picker.value))"
-          #picker
-          locale="en-GB-u-hc-h12"
-          [value]="pickerValue"
-          [min]="pickerMin"
-        ></ion-datetime>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-  <!-- displayFormat="MMM DD, h:mm A" -->
+  <!-- Device -->
+  <section>
+    <div class="section-header">
+      <h2>Scheduled on this device ({{ deviceNotifications().length }})</h2>
+      <ion-button fill="clear" size="small" (click)="refreshDeviceNotifications()">
+        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+    <p class="hint">
+      Everything scheduled on the device, from both notification systems. Refreshes every 5 seconds.
+    </p>
+    <ion-list>
+      @for (notification of deviceNotifications(); track notification.id) {
+      <ion-item button detail="false" (click)="logDetails(notification.raw)">
+        <ion-label>
+          <h3>{{ notification.title }}</h3>
+          <p>{{ notification.sourceId }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ notification.at | date: "MMM d HH:mm:ss" }}</ion-note>
+        <ion-badge slot="end" [class]="'source-' + notification.source">
+          {{ notification.source }}
+        </ion-badge>
+      </ion-item>
+      } @empty {
+      <ion-item lines="none"><ion-label class="hint">Nothing scheduled</ion-label></ion-item>
+      }
+    </ion-list>
+  </section>
+
+  <!-- Campaign records -->
+  <section>
+    <h2>Campaign notifications ({{ campaignRecords().length }})</h2>
+    <p class="hint">
+      Pending notifications in the campaign notification service's own records. "Send" schedules a
+      copy, with the same tap actions, arriving after the delay chosen above.
+    </p>
+    <ion-list>
+      @for (notification of campaignRecords(); track notification.id) {
+      <ion-item>
+        <ion-label class="clickable" (click)="logDetails(notification)">
+          <h3>{{ notification.title }}</h3>
+          <p>{{ notification.extra?.campaign_id }} · {{ notification._row_id }}</p>
+          <p>{{ notification.schedule?.at | date: "MMM d HH:mm" }}</p>
+        </ion-label>
+        <ion-button
+          slot="end"
+          fill="outline"
+          size="small"
+          [disabled]="!permissionGranted()"
+          (click)="sendCampaignNotificationCopy(notification)"
+        >
+          Send in {{ delayLabel() }}
+        </ion-button>
+      </ion-item>
+      } @empty {
+      <ion-item lines="none"><ion-label class="hint">None pending</ion-label></ion-item>
+      }
+    </ion-list>
+  </section>
+
+  <!-- Notification action records -->
+  <section>
+    <h2>Notification action records ({{ actionRecords().length }})</h2>
+    <p class="hint">
+      The <code>_notifications</code> data list, written by <code>notification: create</code>.
+    </p>
+    <ion-list>
+      @for (notification of actionRecords(); track notification.id) {
+      <ion-item button detail="false" (click)="logDetails(notification)">
+        <ion-label>
+          <h3>{{ notification.title || notification.id }}</h3>
+          <p>{{ notification.id }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ notification.schedule_at | date: "MMM d HH:mm:ss" }}</ion-note>
+        <ion-badge slot="end" [class]="'status-' + notification.status">
+          {{ notification.status }}
+        </ion-badge>
+      </ion-item>
+      } @empty {
+      <ion-item lines="none"><ion-label class="hint">None scheduled</ion-label></ion-item>
+      }
+    </ion-list>
+  </section>
+
+  <!-- Campaign history -->
+  <section>
+    <div class="section-header">
+      <h2>Campaign notification history ({{ campaignHistory().length }})</h2>
+      <ion-button fill="outline" size="small" (click)="syncCampaignHistory()">Sync</ion-button>
+    </div>
+    <p class="hint">
+      Sent and tapped campaign notifications (<code>local_notifications_interaction</code>), which
+      sync to the server.
+    </p>
+    <ion-list>
+      @for (notification of campaignHistory(); track notification.notification_id) {
+      <ion-item button detail="false" (click)="logDetails(notification)">
+        <ion-label>
+          <h3>{{ notification.notification_meta?.title }}</h3>
+          <p>
+            {{ notification.notification_meta?.campaign_id }} · {{
+            notification.notification_meta?.row_id }}
+          </p>
+          <p>Sync: {{ notification._sync_status }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ notification.schedule_timestamp | date: "MMM d HH:mm" }}</ion-note>
+        @if (notification.action_id) {
+        <ion-badge slot="end" class="status-interacted">{{ notification.action_id }}</ion-badge>
+        }
+      </ion-item>
+      } @empty {
+      <ion-item lines="none"><ion-label class="hint">No history</ion-label></ion-item>
+      }
+    </ion-list>
+  </section>
 </ion-content>
