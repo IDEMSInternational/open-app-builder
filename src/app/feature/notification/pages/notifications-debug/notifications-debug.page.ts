@@ -1,86 +1,115 @@
-import { DatePipe } from "@angular/common";
+import { DatePipe, NgTemplateOutlet } from "@angular/common";
 import { Component, computed, effect, inject, OnInit, signal } from "@angular/core";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
+import { Clipboard } from "@capacitor/clipboard";
+import { Capacitor } from "@capacitor/core";
 import type { PendingLocalNotificationSchema } from "@capacitor/local-notifications";
-import { IonicModule } from "@ionic/angular";
+import { IonicModule, ToastController } from "@ionic/angular";
 import type { FlowTypes } from "data-models";
+import { format, formatDistanceStrict } from "date-fns";
 import { interval } from "rxjs";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import {
   ILocalNotification,
   LocalNotificationService,
+  TEST_CAMPAIGN_ID,
 } from "src/app/shared/services/notification/local-notification.service";
+import { generateTimestamp } from "src/app/shared/utils";
 import { NotificationService } from "../../notification.service";
 import { IDBNotification } from "../../notification.types";
 import {
   NOTIFICATION_DEBUG_DEFAULT_DELAY,
   NOTIFICATION_DEBUG_DELAYS,
+  TEST_COPY_DELAY_SECONDS,
+  TEST_COPY_ID_PREFIX,
+  TEST_NOTIFICATION_ID_PREFIX,
 } from "./notifications-debug.constants";
+import {
+  buildNotificationLists,
+  groupActionsByTrigger,
+  groupByDay,
+  IDebugNotification,
+  IDebugNotificationSources,
+  INotificationSource,
+  isTestActionNotification,
+  isTestCampaignNotification,
+  isTestHistoryEntry,
+  OVERDUE_NOTICE,
+} from "./notifications-debug.utils";
 
-/** Which notification system scheduled a notification */
-type INotificationSource = "campaign" | "action" | "other";
+/** How often to refresh the lists, e.g. to move notifications from upcoming to past */
+const REFRESH_MS = 5000;
+/** Campaign notifications reach the device after the campaign notification service's 2 s debounce */
+const CAMPAIGN_SCHEDULING_DELAY_MS = 2500;
+/** Number of past notifications to show at first, and to add with "Show more" */
+const PAST_PAGE_SIZE = 20;
 
-/** Notification pending on the device, labelled by the system that scheduled it */
-export interface IDeviceNotification {
-  id: number;
-  title: string;
-  at?: Date;
-  source: INotificationSource;
-  /** Campaign id, or `notification` action id */
-  sourceId?: string;
-  raw: PendingLocalNotificationSchema;
-}
-
-/** Prefix of test notification ids. Each test gets its own id, so several can be pending at once */
-export const TEST_NOTIFICATION_ID_PREFIX = "debug_test_notification";
-/** Campaign id given to campaign test notifications */
-export const TEST_CAMPAIGN_ID = "debug_test";
-
-/** How often to refresh the list of notifications scheduled on the device */
-const DEVICE_REFRESH_MS = 5000;
+const SOURCE_LABELS: Record<INotificationSource, string> = {
+  campaign: "Campaign",
+  action: "Action",
+  other: "Other",
+};
+const SOURCE_COLORS: Record<INotificationSource, string> = {
+  campaign: "primary",
+  action: "secondary",
+  other: "medium",
+};
 
 @Component({
   templateUrl: "./notifications-debug.page.html",
   styleUrl: "./notifications-debug.page.scss",
   standalone: true,
-  imports: [IonicModule, DatePipe],
+  imports: [IonicModule, DatePipe, NgTemplateOutlet],
 })
 export class NotificationsDebugPage implements OnInit {
   public notificationService = inject(NotificationService);
   private localNotificationService = inject(LocalNotificationService);
   private dbSyncService = inject(DBSyncService);
+  private toastController = inject(ToastController);
 
+  public isWeb = !Capacitor.isNativePlatform();
   public permissionGranted = computed(() => this.notificationService.status() === "granted");
+  public sourceLabels = SOURCE_LABELS;
+  public sourceColors = SOURCE_COLORS;
+  public overdueNotice = OVERDUE_NOTICE;
 
   /** Delay before test notifications arrive, in seconds */
   public delays = NOTIFICATION_DEBUG_DELAYS;
   public delaySeconds = signal(NOTIFICATION_DEBUG_DEFAULT_DELAY);
-  public delayLabel = computed(
-    () => this.delays.find((d) => d.seconds === this.delaySeconds())?.label
-  );
   /** Most recent test notification, to confirm when it is due */
   public lastTest = signal<{ label: string; at: Date } | undefined>(undefined);
 
-  /** Everything scheduled on the device, from either notification system */
-  public deviceNotifications = signal<IDeviceNotification[]>([]);
-
-  /** Pending notifications in the campaign notification service's own records */
-  public campaignRecords = toSignal(this.localNotificationService.pendingNotifications$, {
+  private now = signal(Date.now());
+  private devicePending = signal<PendingLocalNotificationSchema[]>([]);
+  private campaignRecords = signal<ILocalNotification[]>([]);
+  private campaignHistory = toSignal(this.localNotificationService.persistAdapter.dbEntries$, {
     initialValue: [],
   });
-
-  /** Sent and tapped campaign notifications (`local_notifications_interaction`) */
-  public campaignHistory = toSignal(this.localNotificationService.persistAdapter.dbEntries$, {
-    initialValue: [],
-  });
-
-  /** Notifications scheduled by the `notification` action (`_notifications` data list), newest first */
-  private actionRecordList = toSignal(this.notificationService.listNotifications$(), {
+  private actionRecords = toSignal(this.notificationService.listNotifications$(), {
     initialValue: [] as IDBNotification[],
   });
-  public actionRecords = computed(() =>
-    [...this.actionRecordList()].sort((a, b) => b.schedule_at.localeCompare(a.schedule_at))
+  private sources = computed<IDebugNotificationSources>(() => ({
+    device: this.devicePending(),
+    campaignRecords: this.campaignRecords(),
+    campaignHistory: this.campaignHistory(),
+    actionRecords: this.actionRecords(),
+    now: this.now(),
+  }));
+
+  private lists = computed(() => buildNotificationLists(this.sources()));
+  public upcoming = computed(() => this.lists().upcoming);
+  public past = computed(() => this.lists().past);
+  public upcomingGroups = computed(() => groupByDay(this.upcoming(), this.now()));
+  public pastLimit = signal(PAST_PAGE_SIZE);
+  public pastGroups = computed(() =>
+    groupByDay(this.past().slice(0, this.pastLimit()), this.now())
   );
+  public testCount = computed(
+    () => [...this.upcoming(), ...this.past()].filter((n) => n.isTest).length
+  );
+
+  /** Keys of notifications with details shown */
+  public expanded = signal<Record<string, boolean>>({});
 
   constructor() {
     // Mirror permission status to legacy service, as required for campaign test notifications.
@@ -89,16 +118,15 @@ export class NotificationsDebugPage implements OnInit {
     effect(() => {
       this.localNotificationService.permissionGranted = this.permissionGranted();
     });
-    // Keep the device list current, e.g. to see a notification cancelled by the other system
-    interval(DEVICE_REFRESH_MS)
+    interval(REFRESH_MS)
       .pipe(takeUntilDestroyed())
-      .subscribe(() => this.refreshDeviceNotifications());
+      .subscribe(() => this.refresh());
   }
 
   async ngOnInit() {
     await this.dbSyncService.ready();
     await this.localNotificationService.ready();
-    await this.refreshDeviceNotifications();
+    await this.refresh();
   }
 
   /** Request permission via same method as authored `notification: request_permission` action */
@@ -106,19 +134,71 @@ export class NotificationsDebugPage implements OnInit {
     await this.notificationService.requestPermission();
   }
 
-  public setDelay(value: string | number | undefined) {
-    this.delaySeconds.set(Number(value));
+  /** Reload notifications scheduled on the device and saved by the campaign service */
+  public async refresh() {
+    // Update each independently, so that one failing does not leave the other out of date
+    const [device, campaignRecords] = await Promise.allSettled([
+      this.notificationService.listDevicePendingNotifications(),
+      this.localNotificationService.getDBNotifications(),
+    ]);
+    if (device.status === "fulfilled") this.devicePending.set(device.value);
+    if (campaignRecords.status === "fulfilled") this.campaignRecords.set(campaignRecords.value);
+    for (const result of [device, campaignRecords]) {
+      if (result.status === "rejected") {
+        console.warn("[Notifications Debug] Could not list notifications", result.reason);
+      }
+    }
+    this.now.set(Date.now());
   }
 
-  public async refreshDeviceNotifications() {
-    try {
-      const pending = await this.notificationService.listDevicePendingNotifications();
-      const notifications = pending.map(toDeviceNotification);
-      notifications.sort((a, b) => (a.at?.getTime() ?? 0) - (b.at?.getTime() ?? 0));
-      this.deviceNotifications.set(notifications);
-    } catch (error) {
-      console.warn("[Notifications Debug] Could not list device notifications", error);
+  public toggleDetails(key: string) {
+    this.expanded.update((expanded) => ({ ...expanded, [key]: !expanded[key] }));
+  }
+
+  public showMorePast() {
+    this.pastLimit.update((limit) => limit + PAST_PAGE_SIZE);
+  }
+
+  public actionGroups(notification: IDebugNotification) {
+    return groupActionsByTrigger(notification.actions);
+  }
+
+  public tapStatus({ tapped, tappedAt }: IDebugNotification) {
+    if (!tapped) return "Not tapped";
+    return tappedAt ? `Tapped at ${format(tappedAt, "HH:mm")}` : "Tapped";
+  }
+
+  public relativeTime(at?: Date) {
+    return at ? formatDistanceStrict(at, this.now(), { addSuffix: true }) : "";
+  }
+
+  /** Send a test copy of a notification, with the same text and actions, in 1 minute */
+  public async sendTestCopy({ original }: IDebugNotification) {
+    if (!original) return;
+    const at = new Date(Date.now() + TEST_COPY_DELAY_SECONDS * 1000);
+    if (original.source === "campaign") {
+      await this.localNotificationService.scheduleImmediateNotification(
+        original.notification,
+        TEST_COPY_DELAY_SECONDS
+      );
+    } else {
+      const { id, title, text, action_list } = original.notification;
+      await this.notificationService.scheduleNotification({
+        id: `${TEST_COPY_ID_PREFIX}_${id}_${at.getTime()}`,
+        schedule_at: at.toISOString(),
+        title,
+        text,
+        action_list,
+      });
     }
+    this.refreshAfterScheduling();
+    await this.showToast(
+      `Test copy due at ${format(at, "HH:mm:ss")}. To test a tap that opens the app, close the app first.`
+    );
+  }
+
+  public setDelay(value: string | number | undefined) {
+    this.delaySeconds.set(Number(value));
   }
 
   /**
@@ -133,19 +213,57 @@ export class NotificationsDebugPage implements OnInit {
       this.lastTest.set({ label: "Campaign", at });
     } else {
       await this.scheduleActionTestNotification(id, at);
-      this.lastTest.set({ label: "Notification action", at });
+      this.lastTest.set({ label: "Action", at });
     }
-    // campaign notifications reach the device after the legacy service's 2s debounce
-    setTimeout(() => this.refreshDeviceNotifications(), 2500);
+    this.refreshAfterScheduling();
   }
 
-  /** Send a copy of a campaign notification after the selected delay, keeping its tap actions */
-  public async sendCampaignNotificationCopy(notification: ILocalNotification) {
-    await this.localNotificationService.scheduleImmediateNotification(
-      notification,
-      this.delaySeconds()
-    );
-    setTimeout(() => this.refreshDeviceNotifications(), 2500);
+  /**
+   * Remove test notifications and test copies sent from debug pages, from the device and from
+   * both systems' records. Records already synced to the server stay there.
+   * Only test notifications are cancelled, so other notifications on the device are left as they are
+   */
+  public async clearTestNotifications() {
+    const deviceIds = this.upcoming()
+      .filter((n) => n.isTest && n.deviceId !== undefined)
+      .map((n) => n.deviceId as number);
+    await this.notificationService.cancelDevicePendingNotifications(deviceIds);
+    const actionIds = this.actionRecords()
+      .map((record) => record.id)
+      .filter((id) => isTestActionNotification(id));
+    for (const id of actionIds) {
+      await this.notificationService.cancelNotification(id);
+    }
+    const campaignRecords = await this.localNotificationService.getDBNotifications();
+    const campaignIds = campaignRecords
+      .filter((record) => isTestCampaignNotification(record.extra))
+      .map((record) => record.id);
+    // Avoids `removeNotifications`, which reschedules and so cancels action notifications (#3722)
+    await this.localNotificationService.removeNotificationsWithoutRescheduling(campaignIds);
+    const historyIds = this.campaignHistory()
+      .filter((entry) => isTestHistoryEntry(entry))
+      .map((entry) => entry.notification_id);
+    // Include cleared campaign notifications without history yet, so it is not recorded later
+    const removedHistoryIds = [...new Set([...historyIds, ...campaignIds])];
+    if (removedHistoryIds.length > 0) {
+      await this.localNotificationService.persistAdapter.removeEntries(removedHistoryIds);
+    }
+    this.lastTest.set(undefined);
+    this.refreshAfterScheduling();
+    await this.showToast("Test notifications cleared");
+  }
+
+  /** Copy a notification's details, e.g. to paste into a bug report */
+  public async copyDetails({ title, text, source, at, raw }: IDebugNotification) {
+    const scheduled_for = at ? generateTimestamp(at) : undefined;
+    const details = JSON.stringify({ title, text, source, scheduled_for, ...raw }, null, 2);
+    try {
+      await Clipboard.write({ string: details });
+      await this.showToast("Details copied");
+    } catch (error) {
+      console.warn("[Notifications Debug] Could not copy details", error);
+      await this.showToast("Could not copy details");
+    }
   }
 
   public async syncCampaignHistory() {
@@ -153,8 +271,15 @@ export class NotificationsDebugPage implements OnInit {
     await this.localNotificationService.persistAdapter.loadInteractedNotifications();
   }
 
-  public logDetails(details: unknown) {
-    console.log("[Notifications Debug]", details);
+  /** Refresh now, and again once campaign notifications have reached the device */
+  private refreshAfterScheduling() {
+    this.refresh();
+    setTimeout(() => this.refresh(), CAMPAIGN_SCHEDULING_DELAY_MS);
+  }
+
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({ message, duration: 3000 });
+    await toast.present();
   }
 
   /** Schedule as `notification: create` does */
@@ -162,9 +287,9 @@ export class NotificationsDebugPage implements OnInit {
     return this.notificationService.scheduleNotification({
       id,
       schedule_at: at.toISOString(),
-      title: "Test notification (notification action)",
+      title: "Test notification (action)",
       text: "Tap to check that its actions run",
-      action_list: [toastAction("notification_interacted", "Tap actions ran: notification action")],
+      action_list: [toastAction("notification_interacted", "Tap actions ran: action")],
     });
   }
 
@@ -184,24 +309,6 @@ export class NotificationsDebugPage implements OnInit {
     } as ILocalNotification;
     return this.localNotificationService.scheduleNotification(notification, id);
   }
-}
-
-/** Label a pending device notification by the notification system that scheduled it */
-export function toDeviceNotification(
-  notification: PendingLocalNotificationSchema
-): IDeviceNotification {
-  const { id, title, schedule, extra } = notification;
-  const at = schedule?.at ? new Date(schedule.at) : undefined;
-  let source: INotificationSource = "other";
-  let sourceId: string | undefined;
-  if (extra?.campaign_id) {
-    source = "campaign";
-    sourceId = extra.campaign_id;
-  } else if (extra?.source === "action") {
-    source = "action";
-    sourceId = extra.id;
-  }
-  return { id, title, at, source, sourceId, raw: notification };
 }
 
 function toastAction(
