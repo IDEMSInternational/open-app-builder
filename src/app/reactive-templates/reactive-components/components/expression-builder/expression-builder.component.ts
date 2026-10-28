@@ -54,7 +54,7 @@ export class ExpressionBuilderComponent
 
       let operationValue = this.evaluationService.evaluateExpression(
         this.expression(),
-        this.name(),
+        this.namespace(),
         valueType,
         context
       ) as any;
@@ -84,7 +84,7 @@ export class ExpressionBuilderComponent
   }
 
   public async execute(params?: IActionParameter[]): Promise<void> {
-    if (!this.condition()) {
+    if (this.condition()) {
       await this.storeValue();
     }
   }
