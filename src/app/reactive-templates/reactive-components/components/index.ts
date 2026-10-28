@@ -14,14 +14,20 @@ import { SetGlobalComponent } from "./set-global/set-global.component";
 import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
 import { ExpressionBuilderComponent } from "./expression-builder/expression-builder.component";
+import { PopupComponent } from "./popup/popup.component";
+import { AccordionComponent } from "./accordion/accordion.component";
+import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
 
 export const REACTIVE_COMPONENT_MAP = {
+  accordion: AccordionComponent,
+  accordion_section: AccordionSectionComponent,
   action: ActionComponent,
   button: ButtonComponent,
   display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
   expression_builder: ExpressionBuilderComponent,
   loop: LoopComponent,
+  popup: PopupComponent,
   nav: NavComponent,
   set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,
