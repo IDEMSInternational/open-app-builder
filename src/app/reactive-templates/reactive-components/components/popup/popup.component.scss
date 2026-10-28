@@ -1,14 +1,18 @@
-// Note that --pop-up-background is always defined (populated by theme generation), so no fallback is needed
-// This avoids self-reference when re-defining --ion-background-color below
-$pop-up-background: var(--pop-up-background);
 $pop-up-padding: var(--pop-up-padding, 20px);
 
-// Set the background color var to the popup background color for any children
-:host {
-  --ion-background-color: var(--pop-up-background);
-}
-
+// Popup colours are set on the modal rather than :host, as Ionic moves an open inline modal into ion-app
 ion-modal {
+  --background: var(--pop-up-background);
+
+  // Themes re-declare their variables on ion-modal::part(content) (see theme-selectors.scss), and the
+  // modal's children inherit from there. The class selectors make this more specific than the theme rule.
+  // --pop-up-background is always defined (populated by theme generation), so no fallback is needed,
+  // which avoids a self-reference to --ion-background-color
+  &.dialog::part(content),
+  &.fullscreen::part(content) {
+    --ion-background-color: var(--pop-up-background);
+  }
+
   ion-header {
     box-shadow: none;
   }
@@ -72,11 +76,17 @@ ion-modal.fullscreen {
     margin: 0;
   }
 
+  // min-height (not height) so the toolbar can grow to fit the top safe-area padding
   ion-toolbar {
-    height: var(--header-height);
+    --min-height: var(--header-height);
   }
 
   .popup-container {
     height: 100%;
+  }
+
+  // No header when the close button is hidden, so keep content clear of the status bar
+  .popup-container:first-child {
+    padding-top: var(--ion-safe-area-top, 0);
   }
 }

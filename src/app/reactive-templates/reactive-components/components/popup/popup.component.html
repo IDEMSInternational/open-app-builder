@@ -1,17 +1,16 @@
 <ion-modal
   [isOpen]="isOpen()"
+  (didDismiss)="isOpen.set(false)"
   [class.dialog]="!params.fullscreen.value()"
   [class.fullscreen]="params.fullscreen.value()"
 >
   <ng-template>
-    @if (params.fullscreen.value()) {
+    @if (params.fullscreen.value() && params.showCloseButton.value()) {
       <ion-header>
         <ion-toolbar>
-          @if (params.showCloseButton.value()) {
-            <div slot="end">
-              <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
-            </div>
-          }
+          <div slot="end">
+            <ng-container [ngTemplateOutlet]="closeButton"></ng-container>
+          </div>
         </ion-toolbar>
       </ion-header>
     }
