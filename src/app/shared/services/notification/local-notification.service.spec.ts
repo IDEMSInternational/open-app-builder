@@ -7,7 +7,11 @@ import type {
   ScheduleResult,
 } from "@capacitor/local-notifications";
 
-import { ILocalNotification, LocalNotificationService } from "./local-notification.service";
+import {
+  createTestCopy,
+  ILocalNotification,
+  LocalNotificationService,
+} from "./local-notification.service";
 import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
 
@@ -94,5 +98,65 @@ describe("LocalNotificationService", () => {
 
       expect(cancelSpy).not.toHaveBeenCalled();
     });
+  });
+
+  it("removes notifications without rescheduling the others on the device", async () => {
+    const db = jasmine.createSpyObj("Table", ["bulkDelete"]);
+    db.bulkDelete.and.resolveTo();
+    (service as any).db = db;
+    const reschedule = spyOn(service as any, "loadNotifications");
+    service.pendingNotifications$.next([{ id: 1 }, { id: 3 }] as ILocalNotification[]);
+
+    await service.removeNotificationsWithoutRescheduling([1, 2]);
+
+    expect(db.bulkDelete).toHaveBeenCalledOnceWith([1, 2]);
+    expect(service.pendingNotifications$.value.map((n) => n.id)).toEqual([3]);
+    expect(reschedule).not.toHaveBeenCalled();
+  });
+});
+
+describe("createTestCopy", () => {
+  const notification: ILocalNotification = {
+    id: 123,
+    title: "Title",
+    body: "Text",
+    schedule: { at: new Date("2026-10-27T09:00:00") },
+    extra: { campaign_id: "campaign_1", row_id: "row_1", action_list: [] },
+    _row_id: "row_1",
+    _action_performed: "tap",
+    _callbacks_processed_time: 1000,
+  };
+  const at = new Date("2026-10-27T12:00:00");
+
+  it("sends the copy as part of the test campaign, keeping the original campaign", () => {
+    const { immediateNotification } = createTestCopy(notification, at);
+    expect(immediateNotification.schedule).toEqual({ at });
+    expect(immediateNotification.extra).toEqual({
+      campaign_id: "debug_test",
+      original_campaign_id: "campaign_1",
+      row_id: "row_1",
+      action_list: [],
+      test_copy: true,
+    });
+    expect(notification.extra.campaign_id).toEqual("campaign_1");
+  });
+
+  it("does not copy whether the original was tapped or processed", () => {
+    const { immediateNotification } = createTestCopy(notification, at);
+    expect(immediateNotification._action_performed).toBeUndefined();
+    expect(immediateNotification._callbacks_processed_time).toBeUndefined();
+  });
+
+  it("keeps the original campaign when copying a copy", () => {
+    const { immediateNotification: copy } = createTestCopy(notification, at);
+    const { immediateNotification } = createTestCopy(copy, at);
+    expect(immediateNotification.extra.original_campaign_id).toEqual("campaign_1");
+  });
+
+  it("gives each copy its own row id, so copies made at once do not replace each other", () => {
+    const first = createTestCopy(notification, at);
+    const second = createTestCopy(notification, at);
+    expect(first.rowId).toMatch(/^row_1_test_copy_/);
+    expect(first.rowId).not.toEqual(second.rowId);
   });
 });
