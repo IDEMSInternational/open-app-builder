@@ -2666,12 +2666,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:^7.0.0":
-  version: 7.4.5
-  resolution: "@capacitor/android@npm:7.4.5"
+"@capacitor/android@npm:^7.6.9":
+  version: 7.6.9
+  resolution: "@capacitor/android@npm:7.6.9"
   peerDependencies:
-    "@capacitor/core": ^7.4.0
-  checksum: 90723b7f92470dfe8762cccef1f273c08238a6ba1434edf81a1fc67f2f054231f26c9b6f53d273100be26b25bffa9eec03588de918367a28b15ac3232265c06a
+    "@capacitor/core": ^7.6.0
+  checksum: c155c80172b1b6855bbea35fb124ac335299324699f53d7ad569a62bdfa8a9457853c2a23299be6b4ecdf45f1e15a8bb6b3fcf1696eb2863ea3bac73c53ff300
   languageName: node
   linkType: hard
 
@@ -17793,7 +17793,7 @@ __metadata:
     "@capacitor-firebase/functions": ^7.3.0
     "@capacitor-firebase/performance": ^7.2.0
     "@capacitor-firebase/storage": ^7.3.1
-    "@capacitor/android": ^7.0.0
+    "@capacitor/android": ^7.6.9
     "@capacitor/app": ^7.0.0
     "@capacitor/cli": ^7.0.0
     "@capacitor/clipboard": ^7.0.0
