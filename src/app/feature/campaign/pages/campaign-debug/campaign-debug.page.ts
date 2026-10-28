@@ -5,6 +5,10 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
+import {
+  NOTIFICATION_DEBUG_DEFAULT_DELAY,
+  NOTIFICATION_DEBUG_DELAYS,
+} from "src/app/feature/notification/pages/notifications-debug/notifications-debug.constants";
 import { CampaignService } from "../../campaign.service";
 import { CampaignDebugVariablesEditorComponent } from "./components/campaign-variables-editor";
 
@@ -23,6 +27,9 @@ export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: IDebugCampaignRows;
   debugCampaignsEnabled: boolean;
+  /** Delay before notifications sent from this page arrive, in seconds */
+  delays = NOTIFICATION_DEBUG_DELAYS;
+  delaySeconds = NOTIFICATION_DEBUG_DEFAULT_DELAY;
 
   constructor(
     public campaignService: CampaignService,
@@ -68,18 +75,21 @@ export class CampaignDebugPage implements OnInit {
     this.campaignService.reInitialise();
   }
 
-  /**
-   * TODO - duplicate code from notifications-debug.page should be merged */
+  public setDelay(value: string | number | undefined) {
+    this.delaySeconds = Number(value);
+  }
+
+  /** Send a campaign row's notification after the selected delay */
   public async sendNotification(row: FlowTypes.Campaign_listRow) {
     const notification = await this.campaignService.scheduleNotification(row, this.debugCampaignId);
-    const delaySeconds = 3;
     await this.localNotificationService.scheduleImmediateNotification(
       notification,
-      delaySeconds + 1
+      this.delaySeconds
     );
+    const label = this.delays.find((d) => d.seconds === this.delaySeconds)?.label;
     const toast = await this.toastCtrl.create({
-      message: `Sending notification in ${delaySeconds}s`,
-      duration: delaySeconds * 1000,
+      message: `Sending notification in ${label}`,
+      duration: 3000,
     });
     await toast.present();
   }
