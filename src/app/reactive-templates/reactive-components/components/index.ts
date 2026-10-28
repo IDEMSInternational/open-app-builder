@@ -13,6 +13,7 @@ import { NavComponent } from "./nav/nav.component";
 import { SetGlobalComponent } from "./set-global/set-global.component";
 import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
+import { RadioListComponent } from "./radio-list/radio-list.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
@@ -27,6 +28,7 @@ export const REACTIVE_COMPONENT_MAP = {
   loop: LoopComponent,
   popup: PopupComponent,
   nav: NavComponent,
+  radio_list: RadioListComponent,
   set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,
   template: NestedTemplateComponent,
