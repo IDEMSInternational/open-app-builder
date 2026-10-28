@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import semver from "semver";
 import logUpdate from "log-update";
-import simpleGit, { ResetMode } from "simple-git";
+import { simpleGit, ResetMode } from "simple-git";
 import type { SimpleGit, FileStatusResult } from "simple-git";
 import { Project, SyntaxKind } from "ts-morph";
 import { ActiveDeployment } from "../../commands/deployment/get";
