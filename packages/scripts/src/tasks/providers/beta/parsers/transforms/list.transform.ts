@@ -2,11 +2,10 @@ import { parseAppDataActionString } from "../../../../../lib/app-data/convert/ut
 
 /**
  * Whether a row or column name should have its value parsed as a list, e.g. `my_list` or
- * `my_list_1`. Action lists are excluded as they require their own parsing
+ * `my_list_1`.
  */
 export function isListName(name?: string) {
   if (!name || typeof name !== "string") return false;
-  // if (name.endsWith("action_list") || name.includes("_action_list_")) return false;
   return name.endsWith("_list") || name.includes("_list_");
 }
 
