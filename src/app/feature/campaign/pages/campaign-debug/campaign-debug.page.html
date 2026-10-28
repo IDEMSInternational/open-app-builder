@@ -50,8 +50,18 @@
       <ion-icon slot="end" name="reload-outline"></ion-icon>
     </ion-button>
   </div>
-
-  @if (debugCampaignRows) {
+  @if (debugCampaignId) {
+  <ion-item lines="none">
+    <ion-label>Send Notification arrives in</ion-label>
+    <ion-segment [value]="delaySeconds" (ionChange)="setDelay($event.detail.value)">
+      @for (delay of delays; track delay.seconds) {
+      <ion-segment-button [value]="delay.seconds">
+        <ion-label>{{ delay.label }}</ion-label>
+      </ion-segment-button>
+      }
+    </ion-segment>
+  </ion-item>
+  } @if (debugCampaignRows) {
   <ion-list>
     <ion-list-header class="list-header activated">Activated</ion-list-header>
     @for (row of debugCampaignRows.activated; track row) {
