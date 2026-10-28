@@ -19,6 +19,7 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   align-items: center;
   min-height: var(--combo-box-min-height, 58px);
   font-size: var(--combo-box-font-size-standard, 18px);
+  font-weight: var(--font-weight-standard);
   border-radius: var(--ion-border-radius-standard, 8px);
   background: white;
   padding: var(--small-padding, 10px);

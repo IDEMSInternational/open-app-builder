@@ -373,13 +373,21 @@ export function readContentsFileAsHashmap(
 
 /**
  * Copy all files from src dir to target, and remove target files that no longer exist in src
- * Ignores unchanged files based on md5 hash and preserves src file stats
+ * Ignores unchanged files based on md5 hash and preserves src file modified times by default
  * @param filter_fn optional filter function applied to src folder files
+ * @param preserveTimestamps set `false` to give copied files the current time as modified time
+ * instead of src modified time (default `true`)
+ * @param keepTargetFiles relative paths of target files to keep even if they do not exist in src
  * */
 export function replicateDir(
   src: string,
   target: string,
-  opts: { filter_fn?: (entry: IContentsEntry) => boolean; cleanEmpty?: boolean } = {
+  opts: {
+    filter_fn?: (entry: IContentsEntry) => boolean;
+    cleanEmpty?: boolean;
+    preserveTimestamps?: boolean;
+    keepTargetFiles?: string[];
+  } = {
     cleanEmpty: true,
   }
 ) {
@@ -399,7 +407,7 @@ export function replicateDir(
   const ops = { copy: [], delete: [], ignore: [] };
   // remove target files that no longer exist in src
   Object.keys(targetFiles).forEach((filepath) => {
-    if (!srcFiles.hasOwnProperty(filepath)) {
+    if (!srcFiles.hasOwnProperty(filepath) && !opts.keepTargetFiles?.includes(filepath)) {
       ops.delete.push(filepath);
     }
   });
@@ -427,10 +435,12 @@ export function replicateDir(
     const { relativePath, modifiedTime } = entry as IContentsEntry;
     const srcPath = path.resolve(src, relativePath);
     const targetPath = path.resolve(target, relativePath);
-    const mtime = new Date(modifiedTime);
     fs.ensureDirSync(path.dirname(targetPath));
     fs.copyFileSync(srcPath, targetPath);
-    fs.utimesSync(targetPath, mtime, mtime);
+    if (opts.preserveTimestamps !== false) {
+      const mtime = new Date(modifiedTime);
+      fs.utimesSync(targetPath, mtime, mtime);
+    }
   });
   // remove hanging directories]
   if (opts.cleanEmpty) {

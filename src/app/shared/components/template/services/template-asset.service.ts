@@ -8,6 +8,12 @@ import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
 import { cleanAssetName } from "packages/shared/src/utils/string-utils";
 import { DomSanitizer } from "@angular/platform-browser";
+import { Capacitor } from "@capacitor/core";
+import {
+  getLocalAssetTargetPath,
+  LOCAL_ASSET_PATH_PREFIX,
+} from "src/app/shared/services/remote-asset/remote-asset.types";
+import type { ILocalAssetPathConfig } from "src/app/shared/services/file-manager/file-manager.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
 const ASSETS_BASE = `assets/app_data/assets`;
@@ -22,6 +28,13 @@ const EXTERNAL_URL_PREFIXES = ["blob:", "http", "file://", "content://", "capaci
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
   public assetsContentsList = signal<IAssetContents>(ASSETS_CONTENTS_LIST);
+
+  /**
+   * Where downloaded remote assets live in the current app container, set by `RemoteAssetService`
+   * during its init (native only, and before any downloaded row can reach `assetsContentsList`).
+   * A signal so that any asset path computed before it lands recomputes once it arrives.
+   */
+  public localAssetPathConfig = signal<ILocalAssetPathConfig | undefined>(undefined);
 
   /**
    * Cache translated asset computed signals to avoid duplicate creation if same
@@ -145,7 +158,35 @@ export class TemplateAssetService extends AsyncServiceBase {
     assetName: string,
     contentsEntry: IAssetContentsEntryMinimal | Partial<IAssetEntry>
   ) {
-    return this.convertGdriveRelativePathToAssetPath(contentsEntry.filePath || assetName);
+    const filePath = contentsEntry.filePath || assetName;
+    const pathConfig = this.localAssetPathConfig();
+    if (pathConfig) {
+      const targetPath = getLocalAssetTargetPath(filePath, pathConfig.deploymentName);
+      if (targetPath !== undefined) return this.toLocalAssetSrc(pathConfig.baseUri, targetPath);
+    } else if (filePath.startsWith(LOCAL_ASSET_PATH_PREFIX)) {
+      // A downloaded asset, but the container it lives in is not known yet. Give up rather than
+      // fall through: the rewriter below would emit `assets/app_data/assets/local://...` and fire a
+      // request that can only 404. `RemoteAssetService` sets the config during init, before any
+      // downloaded row can reach `assetsContentsList`, so this should be unreachable in the app.
+      console.error("[Remote Asset] Local asset path config unavailable for", filePath);
+      return "";
+    }
+    return this.convertGdriveRelativePathToAssetPath(filePath);
+  }
+
+  /**
+   * Build a webview src for a downloaded asset, against the container the app is running in *now*.
+   * The container path changes when the app is updated on iOS, so it cannot be resolved once at
+   * download time and stored - see `LOCAL_ASSET_PATH_PREFIX`.
+   *
+   * Joined via `URL` rather than string concatenation so that the result matches what
+   * `Filesystem.getUri` would have produced for the whole path in one call (which is how the file
+   * was written, via `write_blob`): a trailing slash on the base is absorbed, and any character in
+   * the target path needing percent-encoding is encoded with the same URL path semantics.
+   */
+  private toLocalAssetSrc(baseUri: string, targetPath: string) {
+    const fileUri = new URL(targetPath, `${baseUri.replace(/\/$/, "")}/`).href;
+    return Capacitor.convertFileSrc(fileUri);
   }
 
   /**

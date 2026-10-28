@@ -19,6 +19,7 @@ nav:
       - authors/feedback.md
       - authors/actions.md
       - authors/translations.md
+      - authors/remote-assets.md
       - Advanced:
           - authors/advanced/looping-data.md
           - authors/advanced/data-generators.md
@@ -30,6 +31,8 @@ nav:
   - Developers:
       - developers/quickstart.md
       - developers/adding-components.md
+      - developers/styling.md
+      - developers/themes.md
       - developers/deployments.md
       - developers/server-development.md
       - developers/device-testing.md

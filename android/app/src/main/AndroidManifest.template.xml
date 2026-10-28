@@ -5,7 +5,12 @@
         <!-- usesCleartextTraffic is required by capacitor-blob-writer -->
         <!-- requestLegacyExternalStorage is required to save files to "Documents" folder on Android 10 -->
 
-        <activity android:exported="true" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" android:name="${APP_ID}.MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask">
+        <activity android:exported="true" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density" android:name="${APP_ID}.MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask">
+
+            <!-- Android 16 (targetSdk 36) no longer applies orientation/resizability restrictions at sw>=600dp,
+                 which would silently stop template-driven orientation locks being honoured on tablets and inner folds.
+                 Opt back in, activity-scoped. NOTE - this property is ignored from targetSdk 37 -->
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" android:value="true" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import {
   LocalNotifications,
@@ -24,6 +24,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
 import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
+import { NotificationService } from "src/app/feature/notification/notification.service";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -96,10 +97,16 @@ export class LocalNotificationService extends AsyncServiceBase {
   constructor(
     private dbService: DbService,
     private appConfigService: AppConfigService,
-    private capacitorEventService: CapacitorEventService
+    private capacitorEventService: CapacitorEventService,
+    private injector: Injector
   ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
+  }
+
+  // Call via injector to avoid potential cyclic dependency (as with campaign service)
+  get notificationService() {
+    return this.injector.get(NotificationService);
   }
 
   private async init() {
@@ -163,12 +170,20 @@ export class LocalNotificationService extends AsyncServiceBase {
       if (display === "granted") {
         return true;
       }
+      // Only show native prompt if user has not previously responded. Avoids repeat prompts on
+      // every app launch, which on android 13+ could make a soft decline permanent without context.
+      // Subsequent requests should instead be authored via `notification: request_permission` action
+      if (display !== "prompt") {
+        return false;
+      }
       // Use notifications api to check permissions. Run in parallel with a 5-second
       // timeout to resolve in cases where prompt does not appear or user fails to interact with it
       const granted = await Promise.race([
         new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
         new Promise<boolean>(async (resolve) => {
           const { display } = await LocalNotifications.requestPermissions();
+          // Keep notification service permission status (and authored field) in sync
+          await this.notificationService.checkPermissions();
           resolve(display === "granted");
         }),
       ]);
@@ -341,7 +356,26 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Debug method used to Schedule/Reschedule a notification to trigger after short delay
+   * Cancel notifications on the device and remove them from the database, without rescheduling the
+   * others. Rescheduling (`loadNotifications`) cancels every notification on the device, including
+   * those from the `notification` action (#3722), so debug pages use this to clear test notifications
+   */
+  public async removeNotificationsWithoutRescheduling(ids: number[]) {
+    if (!isNonEmptyArray(ids)) return;
+    await LocalNotifications.cancel({ notifications: ids.map((id) => ({ id })) });
+    await this.removeDBNotifications(ids);
+    // Keep in-memory records in step until the next reschedule rebuilds them
+    const removed = new Set(ids);
+    this.pendingNotifications$.next(
+      this.pendingNotifications$.value.filter((notification) => !removed.has(notification.id))
+    );
+    for (const [rowId, notification] of Object.entries(this.notificationsByRowId)) {
+      if (removed.has(notification.id)) delete this.notificationsByRowId[rowId];
+    }
+  }
+
+  /**
+   * Debug method used to send a test copy of a notification after a short delay (see `createTestCopy`)
    * @param notification
    * @param delay - number of seconds to delay sending notification (default 3s)
    * @param forceBackground - WiP - minimise the app to show notification when app in background
@@ -353,11 +387,8 @@ export class LocalNotificationService extends AsyncServiceBase {
   ) {
     if (!this.permissionGranted) return;
     const notificationDeliveryTime = addSeconds(new Date(), delay);
-    const immediateNotification = {
-      ...notification,
-      schedule: { at: notificationDeliveryTime },
-    };
-    await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
+    const { immediateNotification, rowId } = createTestCopy(notification, notificationDeliveryTime);
+    await this.scheduleNotification(immediateNotification, rowId);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNativePlatform() && forceBackground) {
@@ -392,7 +423,8 @@ export class LocalNotificationService extends AsyncServiceBase {
     return this.db.bulkDelete(ids);
   }
 
-  private async getDBNotifications() {
+  /** List every notification in the database, past and future, e.g. for debug pages */
+  public async getDBNotifications() {
     return this.db.toArray();
   }
 
@@ -425,6 +457,39 @@ export class LocalNotificationService extends AsyncServiceBase {
       this.loadNotifications();
     });
   }
+}
+
+/** Campaign id of test notifications and test copies sent from debug pages */
+export const TEST_CAMPAIGN_ID = "debug_test";
+
+/** Number of test copies made this session, to keep their row ids distinct */
+let testCopyCount = 0;
+
+/**
+ * Create a test copy of a notification, arriving at the given time.
+ *
+ * The copy belongs to the test campaign rather than the original's campaign, so rescheduling the
+ * original campaign does not remove it, and notification history (which syncs to the server) does
+ * not record it as part of that campaign. The original campaign is kept in `original_campaign_id`.
+ * Tap actions still run, as for any notification with a campaign id
+ */
+export function createTestCopy(notification: ILocalNotification, at: Date) {
+  // Omit processing records of the original, which do not apply to the copy
+  const { _action_performed, _callbacks_processed_time, ...original } = notification;
+  const extra = notification.extra ?? {};
+  const immediateNotification: ILocalNotification = {
+    ...original,
+    schedule: { at },
+    extra: {
+      ...extra,
+      campaign_id: TEST_CAMPAIGN_ID,
+      original_campaign_id: extra.original_campaign_id ?? extra.campaign_id,
+      test_copy: true,
+    },
+  };
+  // Each copy needs its own row id, or scheduling one copy replaces another
+  const rowId = `${extra.row_id ?? notification._row_id}_test_copy_${Date.now()}_${testCopyCount++}`;
+  return { immediateNotification, rowId };
 }
 
 // Explicitly list actions here to enforce strict typing later

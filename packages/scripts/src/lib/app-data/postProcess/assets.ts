@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
+import { createHash } from "crypto";
 import {
   generateFolderFlatMap,
   logOutput,
@@ -20,6 +21,7 @@ import {
   checkTotalAssetSize,
   filterAppAssets,
   handleAssetOverrides,
+  writeAssetPackArchive,
 } from "./asset-processors";
 
 /** Unique value to be used internally as name for core asset pack */
@@ -128,7 +130,8 @@ export class AssetsPostProcessor {
   /**
    * Process assets and write them to the target folder
    * Handles asset overrides, copying files, and writing contents files
-   * @param assetPackName If provided, writes AssetPack format manifest instead of contents.json
+   * @param assetPackName If provided, writes an AssetPack manifest plus its archive instead of the
+   * core `contents.json`/untracked pair
    */
   private processAndWriteAssets(
     assetsHashmap: IContentsEntryHashmap,
@@ -152,20 +155,27 @@ export class AssetsPostProcessor {
     replicateDir(stagingDir, targetFolder);
     fs.removeSync(stagingDir);
 
-    // Always write standard contents files (contents.json)
-    this.writeAssetsContentsFile(targetFolder, contentsData);
-
     // For remote assets, write the asset pack manifest
     if (assetPackName) {
       this.writeRemoteAssetsManifest(targetFolder, assetPackName, contentsData, untrackedData);
     }
-    // For core assets, check total asset size and write the untracked assets file
+    // For core assets, write contents.json (the format the app bundles and reads at startup),
+    // check total size, and record the untracked assets.
+    // A pack folder deliberately gets no contents.json: the manifest is built from `contentsData`
+    // in memory, nothing reads the file at runtime or at build time, and it was only ever dead
+    // weight in every manual upload.
     else {
+      this.writeAssetsContentsFile(targetFolder, contentsData);
       checkTotalAssetSize({ tracked: contentsData, untracked: untrackedData });
       this.writeUntrackedAssetsFile(targetFolder, untrackedData);
     }
   }
 
+  /**
+   * Write the pack manifest and, alongside it, the `{packName}.zip` the app downloads when most
+   * of a pack is missing locally. Both are generated here from the same manifest so they cannot
+   * drift - a zip describing different content to its manifest is a silent, whole-pack bug.
+   */
   private writeRemoteAssetsManifest(
     targetFolder: string,
     assetPackName: string,
@@ -179,6 +189,19 @@ export class AssetsPostProcessor {
     );
     const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
     fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
+
+    const { archiveFileName, removedArchives, rawBytes, archiveBytes } = writeAssetPackArchive(
+      targetFolder,
+      assetPackName,
+      assetPackManifest
+    );
+    const supersededNote = removedArchives.length
+      ? `, replacing ${removedArchives.join(", ")}`
+      : "";
+    logOutput({
+      msg1: `Asset pack archive: ${archiveFileName}`,
+      msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)${supersededNote}`,
+    });
   }
 
   /**
@@ -202,12 +225,15 @@ export class AssetsPostProcessor {
     return {
       flow_type: "asset_pack",
       flow_name: assetPackName,
+      version: generateAssetPackVersion(rows),
       rows,
     };
   }
 
   /**
-   * Convert asset entries hashmap to array of rows
+   * Convert asset entries hashmap to array of rows (`id` = asset path).
+   * Reversed by `convertAssetPackRowsToHashmap`, other than the `overridesOnly` values
+   * substituted below.
    * @param entries Asset entries hashmap
    * @param overridesOnly Whether these entries are overridesOnly
    */
@@ -301,4 +327,44 @@ export class AssetsPostProcessor {
       }
     }
   }
+}
+
+/**
+ * Generate a content hash identifying this exact set of asset files, written to the manifest as
+ * `version`. The app compares it against the version recorded for a downloaded pack to decide
+ * whether the pack needs re-walking - it never decides which individual files to fetch, which
+ * remains the job of each entry's `md5Checksum`.
+ *
+ * Hashes asset identity and checksums only, so it changes if and only if pack content changes -
+ * never because of the build environment, input ordering or object key order. `size_kb`,
+ * `filePath` and `modifiedTime` are deliberately excluded: they either duplicate what the checksum
+ * already says, or vary without the content changing.
+ *
+ * The serialisation below is a fixed format rather than an implementation detail, because changing
+ * it re-versions every pack in every deployment and forces a manifest walk on every install. It is
+ * pinned by a golden-hash test.
+ *   base entry: `${id}\0${md5Checksum}`, omitted for `overridesOnly` rows
+ *   override:   `${id}\0${themeName}\0${languageCode}\0${md5Checksum}`
+ * sorted lexicographically, joined with newlines.
+ *
+ * NB an `overridesOnly` row carries a copy of its first override's checksum as its own
+ * `md5Checksum` (see `convertAssetEntriesToRows`), so emitting a base line for one would duplicate
+ * a value already covered by that override's own line rather than add any signal.
+ */
+export function generateAssetPackVersion(rows: FlowTypes.Data_listRow<IAssetEntry>[]): string {
+  const lines: string[] = [];
+  for (const row of rows) {
+    if (!row.overridesOnly) {
+      lines.push([row.id, row.md5Checksum ?? ""].join("\0"));
+    }
+    for (const [themeName, languages] of Object.entries(row.overrides || {})) {
+      for (const [languageCode, override] of Object.entries(languages || {})) {
+        lines.push([row.id, themeName, languageCode, override?.md5Checksum ?? ""].join("\0"));
+      }
+    }
+  }
+  // Sorting the emitted lines (rather than the rows) makes the result independent of both input
+  // order and object key order in one step. Hashed via `createHash` rather than the shared
+  // `getDataMD5Checsum` helper, which throws on falsy input - an empty pack must still hash.
+  return createHash("md5").update(lines.sort().join("\n")).digest("hex");
 }

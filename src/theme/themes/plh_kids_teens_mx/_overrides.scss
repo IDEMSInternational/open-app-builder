@@ -1,0 +1,117 @@
+/// Theme rule overrides specific to plh_kids_teens_mx.
+/// Applied after the shared overrides from ../plh_kids_teens.
+@mixin overrides {
+  // module header
+  plh-module-details-header {
+    .module-header {
+      background-color: var(--ion-color-primary-200);
+    }
+    .module-title {
+      padding: 0 16px 30px 16px;
+    }
+  }
+
+  // Module list item
+  plh-module-list-item {
+    .container {
+      background-color: var(--ion-color-secondary-200);
+      border-radius: 16px !important;
+      margin-bottom: 8px !important;
+      .module-title {
+        p {
+          color: var(--ion-color-secondary-900) !important;
+          padding: 0px !important;
+        }
+      }
+      &[data-highlighted~="true"] {
+        background-color: var(--ion-color-primary-variant-700) !important;
+        padding: 16px 12px !important;
+      }
+      &[data-locked~="true"] {
+        box-shadow: none !important;
+        background-color: var(--ion-color-gray-50);
+        padding: 8px 12px !important;
+        .module-title {
+          p {
+            color: var(--ion-color-gray-500) !important;
+            padding: 0px !important;
+          }
+        }
+      }
+      &[data-completed~="true"] {
+        background-color: var(--ion-color-primary-100);
+        padding: 8px 12px !important;
+        .module-title {
+          p {
+            color: var(--ion-color-gray-500) !important;
+            padding: 0px !important;
+            font-weight: var(--font-weight-standard) !important;
+          }
+        }
+      }
+    }
+  }
+
+  // Round Button
+  ion-tab-button {
+    &[data-variant~="navigation"] {
+      background: var(--ion-color-primary-700) !important;
+    }
+    &[data-variant~="module"] {
+      background: var(--ion-color-primary-variant-600) !important;
+    }
+    &[data-variant~="orange"] {
+      background: var(--ion-color-secondary-variant-400);
+    }
+    &[data-variant~="yellow"] {
+      background: var(--ion-color-yellow-300);
+    }
+    &[data-variant~="dark_orange"] {
+      background: var(--ion-color-secondary-variant-700);
+    }
+    &[data-variant~="information"] {
+      background: var(--ion-color-primary-variant-600);
+    }
+  }
+
+  // Task Card
+  plh-task-card {
+    .circle-card-wrapper {
+      .image-and-badge-wrapper {
+        .circle-wrapper.highlighted {
+          box-shadow: 0px 2px 12px color-mix(in srgb, var(--ion-color-primary-500) 70%, transparent);
+        }
+      }
+    }
+  }
+
+  // Completion Modal
+  plh-completion-modal {
+    .wrapper {
+      .title-wrapper {
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      plh-tmpl-text {
+        .standard {
+          justify-content: center;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  // Pop Up
+  .popup-backdrop {
+    &[data-variant~="plh_completion"] {
+      .popup-container {
+        plh-tmpl-text p,
+        plh-tmpl-text h1,
+        plh-tmpl-title p,
+        plh-tmpl-title h1 {
+          color: var(--ion-color-secondary-900);
+        }
+      }
+    }
+  }
+}

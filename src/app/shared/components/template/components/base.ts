@@ -97,9 +97,10 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /**
    * Update the current value of the row by setting a local variable that matches
-   * @ignore
-   **/
-  async setValue(value: any) {
+   * @param value
+   * @param triggerChangedActions Emit "changed" action trigger (default true)
+   */
+  async setValue(value: any, triggerChangedActions = true) {
     // TODO - also want to prevent triggering changed action
     if (value === this._row.value) {
       return;
@@ -108,13 +109,20 @@ export class TemplateBaseComponent implements ITemplateRowProps {
     this._row.value = value;
     this.rowSignal.update((v) => ({ ...v, value }));
 
+    await this.triggerSetSelfAction(value);
+
+    if (triggerChangedActions) {
+      await this.triggerActions("changed");
+    }
+  }
+
+  async triggerSetSelfAction(value: any) {
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_self",
       args: [this._row._nested_name, value],
       trigger: "click",
     };
     await this.parent.handleActions([action], this._row);
-    await this.triggerActions("changed");
   }
 
   /** @ignore */
