@@ -3,7 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
 import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
-import { IStore, VariableReference } from "./store";
+import { IStore, mergeDescendants, VariableReference } from "./store";
 
 export interface VariablePointer {
   /** Stable identifier used as the key in aggregated watch results. */
@@ -26,7 +26,8 @@ export interface VariablePointer {
 })
 export class LocalVariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
-  private readonly stateChanged$ = new Subject<void>();
+  /** Emits the changed key, or 'undefined' when the whole store changed (e.g. 'clear'). */
+  private readonly stateChanged$ = new Subject<string | undefined>();
   private readonly stateStructureChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
 
@@ -49,11 +50,11 @@ export class LocalVariableStore implements IStore {
     if (!currentState) {
       this.state.set(ref.name, new BehaviorSubject<any>(value));
       this.stateStructureChanged$.next(ref.name);
-      this.stateChanged$.next();
+      this.stateChanged$.next(ref.name);
     } else {
       if (!isEqual(value, currentState.value)) {
         currentState.next(value);
-        this.stateChanged$.next();
+        this.stateChanged$.next(ref.name);
       }
     }
   }
@@ -77,6 +78,76 @@ export class LocalVariableStore implements IStore {
    */
   public asSignal(ref: VariableReference): Signal<any> {
     return toSignal(this.watch(ref), { equal: isEqual, injector: this.injector });
+  }
+
+  /**
+   * Resolves a value merged with any descendant keys nested onto it (e.g. "foo.bar" values
+   * nested onto "foo"). Unlike 'get', a scope candidate counts as resolved if it has descendant
+   * keys even without an exact own value (e.g. a nested loop only referenced via its child rows).
+   *
+   * This can resolve to a different scope than 'get'. E.g. from namespace
+   * 'answer_loop.key_1', with only 'question_loop.key_1.question' stored, `local.question_loop[k]`
+   * resolves root 'question_loop' here, whereas 'get' finds no exact 'question_loop' key.
+   * If no candidate matches, falls back to 'ref.name' as given.
+   */
+  public getWithDescendants(ref: VariableReference): any {
+    const resolvedName = this.resolveScopeWithDescendants(ref) ?? ref.name;
+    const exactValue = this.getExact({ ...ref, name: resolvedName });
+
+    return mergeDescendants(
+      exactValue,
+      resolvedName,
+      Array.from(this.state, ([key, subject]) => [key, subject.value])
+    );
+  }
+
+  /**
+   * Same candidate order as 'resolveWithScopeFallback', but a candidate is accepted if it has
+   * an exact value OR any descendant key, since 'getWithDescendants' can resolve from either.
+   */
+  private resolveScopeWithDescendants(ref: VariableReference): string | undefined {
+    return this.getScopeFallbackCandidates(ref.name).find((candidate) =>
+      this.hasValueOrDescendants(candidate)
+    );
+  }
+
+  private hasValueOrDescendants(name: string): boolean {
+    if (this.state.has(name)) {
+      return true;
+    }
+
+    const prefix = `${name}.`;
+
+    for (const key of this.state.keys()) {
+      if (key.startsWith(prefix)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Reactive counterpart of 'getWithDescendants'. Re-derives the merged snapshot whenever a
+   * scope candidate of 'ref' or any of its descendant keys changes.
+   *
+   * Deliberately does NOT use 'distinctUntilChanged'/'isEqual' here: 'isEqual' only compares
+   * arrays by numeric index/length, so it's blind to the extra string-keyed descendant
+   * properties 'mergeDescendants' attaches onto an array clone - deduping would silently drop
+   * real descendant changes (e.g. a sibling loop's row value updating).
+   */
+  public watchWithDescendants(ref: VariableReference): Observable<any> {
+    const candidates = this.getScopeFallbackCandidates(ref.name);
+
+    return this.stateChanged$.pipe(
+      filter(
+        (changedName) =>
+          changedName === undefined ||
+          candidates.some((c) => changedName === c || changedName.startsWith(`${c}.`))
+      ),
+      startWith(undefined),
+      map(() => this.getWithDescendants(ref))
+    );
   }
 
   /**
@@ -195,7 +266,7 @@ export class LocalVariableStore implements IStore {
     });
     this.state.clear();
     this.stateStructureChanged$.next(undefined);
-    this.stateChanged$.next();
+    this.stateChanged$.next(undefined);
   }
 
   /**

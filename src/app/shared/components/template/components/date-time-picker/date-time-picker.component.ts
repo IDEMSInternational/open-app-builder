@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, computed } from "@angular/core";
+import { authorDateParamToIso8601 } from "packages/shared/src/utils/string-utils";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
 import { generateUUID } from "src/app/shared/utils";
 
@@ -22,6 +23,12 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
 export class TmplDateTimePickerComponent extends TemplateBaseComponentWithParams(AuthorSchema) {
   // Generate unique ID to allow multiple date-time components to correctly bind datetime-button with datetime
   public uuid = generateUUID();
+
+  /** `min` as full ISO 8601 for ion-datetime (date-only input uses start of that UTC day). */
+  public minIso = computed(() => authorDateParamToIso8601(this.params().min, false));
+
+  /** `max` as full ISO 8601 for ion-datetime (date-only input uses end of that UTC day). */
+  public maxIso = computed(() => authorDateParamToIso8601(this.params().max, true));
 
   constructor() {
     super();
