@@ -26,47 +26,31 @@
 
   <!-- Upcoming -->
   <section>
-    <div class="section-header">
-      <h2>Upcoming ({{ upcoming().length }})</h2>
-      <ion-button fill="clear" size="small" aria-label="Refresh" (click)="refresh()">
-        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </div>
-    <p class="hint">
-      "Send in 1 min" sends a test copy. Tapping a received test notification runs its actions.
-    </p>
-    @for (group of upcomingGroups(); track group.label) {
-    <h3 class="day">{{ group.label }}</h3>
+    <h2>Upcoming ({{ upcoming().length }})</h2>
+    @if (upcoming().length > 0) {
     <ion-list>
-      @for (notification of group.items; track notification.key) {
+      @for (notification of upcoming(); track notification.key) {
       <ng-container
         [ngTemplateOutlet]="notificationItem"
         [ngTemplateOutletContext]="{ $implicit: notification }"
       ></ng-container>
       }
     </ion-list>
-    } @empty {
-    <p class="hint">
-      Nothing scheduled. @if (permissionGranted()) { Send a test notification below. }
-    </p>
     }
   </section>
 
   <!-- Past -->
   <section>
     <h2>Past ({{ past().length }})</h2>
-    @for (group of pastGroups(); track group.label) {
-    <h3 class="day">{{ group.label }}</h3>
+    @if (past().length > 0) {
     <ion-list>
-      @for (notification of group.items; track notification.key) {
+      @for (notification of pastShown(); track notification.key) {
       <ng-container
         [ngTemplateOutlet]="notificationItem"
         [ngTemplateOutletContext]="{ $implicit: notification, past: true }"
       ></ng-container>
       }
     </ion-list>
-    } @empty {
-    <p class="hint">No past notifications.</p>
     } @if (past().length > pastLimit()) {
     <ion-button fill="clear" size="small" (click)="showMorePast()">Show more</ion-button>
     }
@@ -75,10 +59,7 @@
   <!-- Test notifications -->
   <section>
     <h2>Send a test notification</h2>
-    <p class="hint">
-      Tapping it shows a message, to check that taps work. To test a tap that opens the app, close
-      the app before it arrives.
-    </p>
+    <p class="hint">Tapping it shows a message, to check that taps work.</p>
     <ion-segment [value]="delaySeconds()" (ionChange)="setDelay($event.detail.value)">
       @for (delay of delays; track delay.seconds) {
       <ion-segment-button [value]="delay.seconds">
@@ -131,7 +112,13 @@
       <p class="text">{{ notification.text }}</p>
       }
       <div class="meta">
-        <span> {{ notification.at | date: "HH:mm" }} · {{ relativeTime(notification.at) }} </span>
+        @if (notification.at) {
+        <span>
+          {{ notification.at | date: "MMM d h:mm a" }} · {{ relativeTime(notification.at) }}
+        </span>
+        } @else {
+        <span>No time set</span>
+        }
         <ion-badge [color]="sourceColors[notification.source]">
           {{ sourceLabels[notification.source] }}
         </ion-badge>

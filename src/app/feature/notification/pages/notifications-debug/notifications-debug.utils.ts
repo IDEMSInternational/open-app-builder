@@ -1,6 +1,5 @@
 import type { PendingLocalNotificationSchema } from "@capacitor/local-notifications";
 import type { FlowTypes } from "data-models";
-import { differenceInCalendarDays, format } from "date-fns";
 import type { ILocalNotificationInteractionDB } from "src/app/shared/services/notification/local-notification-persist.adapter";
 import {
   type ILocalNotification,
@@ -144,21 +143,6 @@ export function buildNotificationLists(sources: IDebugNotificationSources) {
     upcoming: upcoming.sort((a, b) => getTime(a) - getTime(b)),
     past: past.sort((a, b) => getTime(b) - getTime(a)),
   };
-}
-
-/** Group notifications by day, keeping their order. Overdue notifications are grouped together */
-export function groupByDay<T extends { at?: Date; overdue?: boolean }>(items: T[], now: number) {
-  const groups: { label: string; items: T[] }[] = [];
-  for (const item of items) {
-    const label = item.overdue ? "Overdue" : dayLabel(item.at, now);
-    const group = groups[groups.length - 1];
-    if (group?.label === label) {
-      group.items.push(item);
-    } else {
-      groups.push({ label, items: [item] });
-    }
-  }
-  return groups;
 }
 
 /** Group actions by trigger, written as they are authored, e.g. `go_to: home` */
@@ -342,16 +326,6 @@ function toDate(value?: string | number | Date) {
   if (value === undefined || value === null || value === "") return undefined;
   const date = new Date(value);
   return isNaN(date.getTime()) ? undefined : date;
-}
-
-function dayLabel(at: Date | undefined, now: number) {
-  if (!at) return "No time set";
-  const days = differenceInCalendarDays(at, now);
-  if (days === 0) return "Today";
-  if (days === 1) return "Tomorrow";
-  if (days === -1) return "Yesterday";
-  const sameYear = at.getFullYear() === new Date(now).getFullYear();
-  return format(at, sameYear ? "EEE d MMM" : "EEE d MMM yyyy");
 }
 
 function formatValue(value: unknown) {

@@ -27,7 +27,6 @@ import {
 import {
   buildNotificationLists,
   groupActionsByTrigger,
-  groupByDay,
   IDebugNotification,
   IDebugNotificationSources,
   INotificationSource,
@@ -99,11 +98,8 @@ export class NotificationsDebugPage implements OnInit {
   private lists = computed(() => buildNotificationLists(this.sources()));
   public upcoming = computed(() => this.lists().upcoming);
   public past = computed(() => this.lists().past);
-  public upcomingGroups = computed(() => groupByDay(this.upcoming(), this.now()));
   public pastLimit = signal(PAST_PAGE_SIZE);
-  public pastGroups = computed(() =>
-    groupByDay(this.past().slice(0, this.pastLimit()), this.now())
-  );
+  public pastShown = computed(() => this.past().slice(0, this.pastLimit()));
   public testCount = computed(
     () => [...this.upcoming(), ...this.past()].filter((n) => n.isTest).length
   );
@@ -192,9 +188,7 @@ export class NotificationsDebugPage implements OnInit {
       });
     }
     this.refreshAfterScheduling();
-    await this.showToast(
-      `Test copy due at ${format(at, "HH:mm:ss")}. To test a tap that opens the app, close the app first.`
-    );
+    await this.showToast(`Test copy due at ${format(at, "HH:mm:ss")}.`);
   }
 
   public setDelay(value: string | number | undefined) {

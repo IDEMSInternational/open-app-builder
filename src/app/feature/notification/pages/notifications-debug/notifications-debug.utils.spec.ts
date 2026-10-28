@@ -6,7 +6,6 @@ import {
   buildNotificationLists,
   formatAction,
   groupActionsByTrigger,
-  groupByDay,
   IDebugNotificationSources,
   NOT_ON_DEVICE_WARNING,
 } from "./notifications-debug.utils";
@@ -184,13 +183,6 @@ describe("Notifications debug utils", () => {
       ]);
       expect(lists.past).toEqual([]);
     });
-
-    it("groups them as overdue rather than by day", () => {
-      const upcoming = upcomingFrom(
-        sources({ device: [deviceNotification(3, -24 * HOUR), deviceNotification(4, HOUR)] })
-      );
-      expect(groupByDay(upcoming, NOW).map((g) => g.label)).toEqual(["Overdue", "Today"]);
-    });
   });
 
   describe("past notifications", () => {
@@ -263,20 +255,6 @@ describe("Notifications debug utils", () => {
         })
       );
       expect(past).toEqual([]);
-    });
-  });
-
-  describe("groupByDay", () => {
-    it("labels today, tomorrow and yesterday, and other days by date", () => {
-      const at = (days: number) => ({ at: new Date(NOW + days * 24 * HOUR) });
-      const groups = groupByDay([at(-1), at(0), at(0), at(1), at(3), {}], NOW);
-      expect(groups.map((g) => [g.label, g.items.length])).toEqual([
-        ["Yesterday", 1],
-        ["Today", 2],
-        ["Tomorrow", 1],
-        ["Fri 30 Oct", 1],
-        ["No time set", 1],
-      ]);
     });
   });
 

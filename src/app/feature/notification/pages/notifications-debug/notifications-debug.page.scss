@@ -2,13 +2,6 @@ section {
   margin-bottom: 32px;
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
 .hint {
   color: var(--ion-color-medium);
   font-size: 0.9em;
@@ -19,12 +12,6 @@ section {
   padding: 8px 16px;
   border: 1px solid var(--ion-color-medium);
   border-radius: 8px;
-}
-
-.day {
-  margin: 16px 0 0;
-  font-size: 0.9em;
-  color: var(--ion-color-medium);
 }
 
 .button-row {
