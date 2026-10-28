@@ -13,6 +13,7 @@ import { NavComponent } from "./nav/nav.component";
 import { SetGlobalComponent } from "./set-global/set-global.component";
 import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
+import { ExpressionBuilderComponent } from "./expression-builder/expression-builder.component";
 import { RadioListComponent } from "./radio-list/radio-list.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
@@ -25,6 +26,7 @@ export const REACTIVE_COMPONENT_MAP = {
   button: ButtonComponent,
   display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
+  expression_builder: ExpressionBuilderComponent,
   loop: LoopComponent,
   popup: PopupComponent,
   nav: NavComponent,
