@@ -1,0 +1,93 @@
+$pop-up-padding: var(--pop-up-padding, 20px);
+
+ion-modal {
+  --background: var(--pop-up-background);
+
+  // Themes re-declare their variables on ion-modal::part(content) (see theme-selectors.scss), and the
+  // modal's children inherit from there. The class selectors make this more specific than the theme rule.
+  // --pop-up-background is always defined (populated by theme generation), so no fallback is needed,
+  // which avoids a self-reference to --ion-background-color
+  &.dialog::part(content),
+  &.fullscreen::part(content) {
+    --ion-background-color: var(--pop-up-background);
+  }
+
+  ion-header {
+    box-shadow: none;
+  }
+
+  &::part(content) {
+    overflow: visible;
+    margin: 20px;
+  }
+
+  .popup-container {
+    position: relative;
+    overflow: visible;
+  }
+
+  .popup-content {
+    height: fit-content;
+    max-height: 100%;
+    border-radius: 20px;
+    padding: $pop-up-padding;
+    overflow: auto;
+  }
+  .popup-content::-webkit-scrollbar {
+    display: none;
+  }
+
+  .close-button {
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ion-color-primary);
+    font-size: 24px;
+    z-index: 100;
+    box-shadow: var(--ion-default-box-shadow);
+    color: var(--ion-color-primary);
+    inset-inline-end: 0;
+    cursor: pointer;
+  }
+}
+
+ion-modal.dialog {
+  --width: fit-content;
+  --height: fit-content;
+  --min-width: 250px;
+  --border-radius: 20px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    transform: translate(50%, -50%);
+  }
+}
+
+ion-modal.fullscreen {
+  &::part(content) {
+    margin: 0;
+  }
+
+  // min-height (not height) so the toolbar can grow to fit the top safe-area padding.
+  ion-toolbar {
+    --min-height: var(--header-height);
+    --padding-start: var(--small-padding);
+    --padding-end: var(--small-padding);
+  }
+
+  .popup-container {
+    height: 100%;
+  }
+
+  // No header when the close button is hidden, so keep content clear of the status bar
+  .popup-container:first-child {
+    padding-top: var(--ion-safe-area-top, 0);
+  }
+}

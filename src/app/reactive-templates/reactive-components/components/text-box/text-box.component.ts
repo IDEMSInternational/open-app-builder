@@ -22,6 +22,6 @@ const parameters = () =>
 })
 export class TextBoxComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   public async handleChange(value: any) {
-    this.setExpression(value);
+    await this.setExpression(value);
   }
 }

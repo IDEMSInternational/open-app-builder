@@ -108,13 +108,13 @@ export class LoopComponent
   protected override async storeValue(): Promise<void> {
     await super.storeValue();
     const prefix = `${this.name()}.`;
-    this.rowRegistry
-      .getAllNames()
-      .filter((name) => name.startsWith(prefix))
-      .forEach((name) => {
-        const row = this.rowRegistry.get(name);
-        row.setExpression(row.row().value);
-      });
+
+    await Promise.all(
+      this.rowRegistry
+        .getAllNames()
+        .filter((name) => name.startsWith(prefix))
+        .map((name) => this.rowRegistry.get(name).evaluate())
+    );
   }
 
   public ngOnDestroy(): void {

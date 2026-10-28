@@ -100,4 +100,44 @@ describe("DependencyExtractorService", () => {
   it("returns empty array when no matches exist", () => {
     expect(service.extractVariableReferences("Math.max(a, b)")).toEqual([]);
   });
+
+  it("splits dynamic (unquoted) bracket index into a separate dependency", () => {
+    const input = "local.all_questions_loop[item.id].question.value";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "all_questions_loop" },
+      { type: "loop", name: "item.id" },
+    ]);
+  });
+
+  it("supports dynamic bracket index referencing an explicit path", () => {
+    const input = "local.all_questions_loop[loop.item.id]";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "all_questions_loop" },
+      { type: "loop", name: "item.id" },
+    ]);
+  });
+
+  it("extracts dependencies from multiple dynamic bracket indexes", () => {
+    const input = "local.matrix[local.row][local.column]";
+
+    expect(service.extractVariableReferences(input)).toEqual([
+      { type: "local", name: "matrix" },
+      { type: "local", name: "row" },
+      { type: "local", name: "column" },
+    ]);
+  });
+
+  it("detects dynamic (unquoted) bracket indexers", () => {
+    expect(service.hasDynamicIndexer("local.items[item.id].question")).toBeTrue();
+    expect(service.hasDynamicIndexer("Answer: ${local.items[item.id]}", "string")).toBeTrue();
+  });
+
+  it("does not treat static brackets as dynamic indexers", () => {
+    expect(service.hasDynamicIndexer("[1, 2].includes(local.x)")).toBeFalse();
+    expect(service.hasDynamicIndexer('local.a["b"]')).toBeFalse();
+    expect(service.hasDynamicIndexer("local.a['b'].c")).toBeFalse();
+    expect(service.hasDynamicIndexer("See [label](url) for ${local.x}", "string")).toBeFalse();
+  });
 });

@@ -160,6 +160,27 @@ export class NotificationService {
     return null;
   }
 
+  /** Live list of all notifications scheduled by this service (the `_notifications` data list) */
+  public listNotifications$() {
+    return this.dynamicDataService.query$<IDBNotification>("data_list", "_notifications");
+  }
+
+  /**
+   * List every notification pending on the device, whichever service scheduled it
+   * (e.g. this service or the legacy service used by campaigns)
+   */
+  public async listDevicePendingNotifications() {
+    const { notifications } = await this.api.getPending();
+    return notifications;
+  }
+
+  /** Cancel notifications pending on the device by id, whichever service scheduled them */
+  public async cancelDevicePendingNotifications(ids: number[]) {
+    if (ids.length > 0) {
+      await this.api.cancel({ notifications: ids.map((id) => ({ id })) });
+    }
+  }
+
   /**
    * Check current permission status and update signal and system variable.
    * Public so that permission requests made elsewhere (e.g. legacy local notification service)
