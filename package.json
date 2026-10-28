@@ -97,7 +97,7 @@
     "intro.js": "^3.4.0",
     "jquery": "^3.7.1",
     "jquery-touchswipe": "^1.6.19",
-    "katex": "^0.16.21",
+    "katex": "^0.18.2",
     "ky": "^2.0.0",
     "lottie-web": "^5.13.0",
     "marked": "^11",
