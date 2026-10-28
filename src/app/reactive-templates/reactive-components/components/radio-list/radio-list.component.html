@@ -1,0 +1,9 @@
+<ion-radio-group [value]="value()" (ionChange)="onChange($event)">
+  @for (option of options(); track option[optionsKey()]) {
+    <ion-item lines="none">
+      <ion-radio labelPlacement="end" justify="start" mode="md" [value]="option[optionsKey()]">
+        {{ option[optionsValue()] }}
+      </ion-radio>
+    </ion-item>
+  }
+</ion-radio-group>
