@@ -4,7 +4,6 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { SharedDataService } from "src/app/feature/shared-data/shared-data.service";
 import { firstValueFrom } from "rxjs";
-import { generateRandomCode } from "src/app/shared/utils";
 import type {
   IParent,
   IParentFromExternalSource,
@@ -16,6 +15,9 @@ import { RemoteFunctionService } from "src/app/feature/remote-function/remote-fu
 
 /** Name of the remote function that proxies groupJoin invocations to the facilitator app */
 const GROUP_JOIN_PROXY_FUNCTION_NAME = "groupJoinProxy";
+
+/** Name of the remote function that generates and saves a unique access code for a shared parent group */
+const GENERATE_ACCESS_CODE_FUNCTION_NAME = "generateAccessCode";
 
 /**
  * Normalized return from {@link PlhParentGroupService.handleJoinRemote} after `invoke`.
@@ -165,7 +167,7 @@ export class PlhParentGroupService extends SyncServiceBase {
   }
 
   /**
-   * Generate a random access code for a parent group and add it to the parent group's shared data
+   * Generate a unique access code for a parent group, via remote function which also adds it to the parent group's shared data
    * Adds the specified parent group to shared data if it is not already shared
    */
   public async generateAccessCode(
@@ -185,10 +187,19 @@ export class PlhParentGroupService extends SyncServiceBase {
         parents_data_list
       );
 
-      const code = generateRandomCode(4);
-      // TODO - validate code to check no conflict with other groups
-      // will likely require backend function to generate and check as user will not have query permission
-      await this.sharedDataService.setCustomSharedMeta(shared_id, "access_code", code);
+      // Code is generated and saved to shared data by remote function, as checking for conflicts
+      // with other groups requires querying shared data the user does not have permission to access
+      await this.remoteFunctionService.ready();
+      const result = await this.remoteFunctionService.invoke(GENERATE_ACCESS_CODE_FUNCTION_NAME, {
+        shared_id,
+      });
+      // Callable function response is nested within `data` of the invoke result
+      const response = result?.data as unknown as { data?: { access_code?: string } } | undefined;
+      const code = response?.data?.access_code;
+      if (!code) {
+        console.error("[PLH PARENT GROUP] - GENERATE ACCESS CODE - Remote function error", result);
+        return;
+      }
 
       // Update local parent group data to add access code
       await this.setLocalParentGroupProperty(parent_group_id, parent_groups_data_list, {
