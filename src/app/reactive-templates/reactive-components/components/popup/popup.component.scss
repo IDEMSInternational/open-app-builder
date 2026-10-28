@@ -1,6 +1,5 @@
 $pop-up-padding: var(--pop-up-padding, 20px);
 
-// Popup colours are set on the modal rather than :host, as Ionic moves an open inline modal into ion-app
 ion-modal {
   --background: var(--pop-up-background);
 
@@ -76,9 +75,11 @@ ion-modal.fullscreen {
     margin: 0;
   }
 
-  // min-height (not height) so the toolbar can grow to fit the top safe-area padding
+  // min-height (not height) so the toolbar can grow to fit the top safe-area padding.
   ion-toolbar {
     --min-height: var(--header-height);
+    --padding-start: var(--small-padding);
+    --padding-end: var(--small-padding);
   }
 
   .popup-container {
