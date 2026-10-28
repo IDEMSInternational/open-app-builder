@@ -8,6 +8,7 @@ import {
   input,
   OnDestroy,
   OnInit,
+  output,
   signal,
   Signal,
   WritableSignal,
@@ -23,6 +24,7 @@ export const defineBaseParameters = () =>
   });
 
 export type BaseParameters = ReturnType<typeof defineBaseParameters>;
+export type RowEmitEvent = { emitValue: string; emitData: any };
 
 /** Merges component-specific params with BaseParameters, handling null (components with no params) */
 export type MergeParams<TParams> = TParams extends null ? BaseParameters : TParams & BaseParameters;
@@ -32,7 +34,7 @@ import { Subscription } from "rxjs";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { EvaluationService } from "../services/evaluation.service";
 import { IRow, RowRegistry } from "../services/row.registry";
-import { IStore, StoreType } from "../stores/store";
+import { StoreType } from "../stores/store";
 import { VariableStore } from "../stores/variable-store";
 import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
 
@@ -52,6 +54,9 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 {
   public row = input.required<FlowTypes.TemplateRow>();
   public namespace = input("");
+  public emittedValue = output<RowEmitEvent>();
+  public onEmit = input<((event: RowEmitEvent) => void) | undefined>(undefined);
+
   public name = computed(() =>
     this.namespaceService.getFullName(this.namespace(), this.row().name)
   );
@@ -75,7 +80,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
 
-  protected variableStore: IStore = inject(VariableStore);
+  protected variableStore: VariableStore = inject(VariableStore);
   protected evaluationService = inject(EvaluationService);
   protected namespaceService = inject(NamespaceService);
   protected actionService = inject(ActionService);
@@ -92,6 +97,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   private navigationEndSubscription?: Subscription;
   private pageTemplate: string = "";
+  private storeValueVersion = 0;
 
   @HostBinding("style.display")
   get displayStyle() {
@@ -161,18 +167,42 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     this.rowRegistry.register(this);
   }
 
+  public onEmittedValue(event: RowEmitEvent) {
+    const emit = this.onEmit();
+    if (emit) {
+      emit(event);
+      return;
+    }
+
+    this.emittedValue.emit(event);
+  }
+
   /*
    * Sets the rows expression value and updates the variable store.
    */
-  public setExpression(expression: any): void {
+  public async setExpression(expression: any): Promise<void> {
     this._expression.set(expression);
     this.watchValueDependencies();
 
-    this.storeValue();
+    await this.storeValue();
+  }
+
+  public async evaluate() {
+    await this.storeValue();
   }
 
   public triggerActions(trigger: string) {
     this.actionService.handleActions(this, trigger, this.namespace());
+    const emitActions = this.row().action_list?.filter(
+      (a) => a.trigger === trigger && a.action_id === "emit"
+    );
+
+    for (const action of emitActions ?? []) {
+      this.onEmittedValue({
+        emitValue: action.args[0],
+        emitData: action.args[1],
+      });
+    }
   }
 
   // Override to transform the value before storing in variable store.
@@ -187,6 +217,8 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
   // Store the evaluated value of the row in the variable store.
   protected async storeValue() {
+    // Latest call wins: a slower, older evaluation must not overwrite a newer result.
+    const version = ++this.storeValueVersion;
     const preEvaluated = await this.preEvaluation(this.expression());
 
     const value = this.evaluationService.evaluateExpression(
@@ -196,6 +228,10 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     );
 
     const postEvaluated = await this.postEvaluation(value);
+
+    if (version !== this.storeValueVersion) {
+      return;
+    }
 
     this.variableStore.set({ name: this.name(), type: this.storeType }, postEvaluated);
   }
@@ -255,7 +291,15 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       return;
     }
 
-    let sub = this.variableStore.watchMultiple(dependencies).subscribe(async () => {
+    const watcher = this.evaluationService.hasDynamicIndexer(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    )
+      ? this.variableStore.watchMultipleWithDescendants(dependencies)
+      : this.variableStore.watchMultiple(dependencies);
+
+    const sub = watcher.subscribe(async () => {
       await this.storeValue();
     });
 
