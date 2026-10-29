@@ -18,14 +18,17 @@ export class EvaluationService {
   public evaluateExpression<T>(
     expression: string | number | boolean,
     namespace: string,
-    valueType: ValueType = "string"
+    valueType: ValueType = "string",
+    overrideContext?: Record<string, any>
   ): T {
     if (expression === null || expression === undefined) return expression as T;
 
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
-    this.expressionEvaluator.setContext(context);
+    const mergedContext = { ...context, ...overrideContext }; // merge overrideContext with context
+
+    this.expressionEvaluator.setContext(mergedContext);
     const evaluatedValue = this.expressionEvaluator.evaluate(parsedExpression, valueType);
     return evaluatedValue as T;
   }
