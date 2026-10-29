@@ -206,6 +206,10 @@ export namespace FlowTypes {
       day_of_week?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
       /** maximum of notifications to schedule at a given time for the campaign*/
       batch_size?: number;
+      /** days between repeats, counted from `start_date` (or the next scheduled time) */
+      repeat_every_days?: number;
+      /** number of notifications to schedule, including the first */
+      repeat_count?: number;
     };
     /** computed list of campaign rows merged into campaign */
     _campaign_rows?: Campaign_listRow[];
@@ -452,6 +456,7 @@ export namespace FlowTypes {
     "audio_end",
     "audio_play",
     "auth",
+    "campaign",
     "changed",
     "copy",
     "emit",
