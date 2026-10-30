@@ -45,6 +45,7 @@ export class ActionService {
           ...a,
           args: a.args.map((arg) => this.evaluationService.evaluateExpression(arg, namespace)),
           rawArgs: a.args,
+          namespace,
         };
       });
 
