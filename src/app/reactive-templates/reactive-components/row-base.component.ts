@@ -211,6 +211,16 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     return value;
   }
 
+  // Override to replace the default evaluation of the value
+  protected async evaluation(value: any): Promise<any> {
+    return this.evaluationService.evaluateExpression(
+      value,
+      this.namespace(),
+      this.params.valueType.value()
+    );
+  }
+
+  // Override to transform the value after the default evaluation.
   protected async postEvaluation(value: any): Promise<any> {
     return value;
   }
@@ -221,11 +231,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     const version = ++this.storeValueVersion;
     const preEvaluated = await this.preEvaluation(this.expression());
 
-    const value = this.evaluationService.evaluateExpression(
-      preEvaluated,
-      this.namespace(),
-      this.params.valueType.value()
-    );
+    const value = await this.evaluation(preEvaluated);
 
     const postEvaluated = await this.postEvaluation(value);
 
