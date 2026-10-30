@@ -3,6 +3,7 @@ import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
+import json5 from "json5";
 
 const parameters = () =>
   defineParameters({
@@ -39,11 +40,15 @@ export class UpdateComponent
     try {
       const value = `{${this.expression()}}`;
 
-      const evaluatedValue = this.evaluationService.evaluateExpression(
+      let evaluatedValue = this.evaluationService.evaluateExpression(
         value,
         this.namespace(),
         this.params.valueType.value()
       ) as any;
+
+      if (this.params.valueType.value() === "string") {
+        evaluatedValue = json5.parse(evaluatedValue);
+      }
 
       if (!evaluatedValue.id) {
         console.error(

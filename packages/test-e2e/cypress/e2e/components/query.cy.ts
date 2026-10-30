@@ -95,4 +95,37 @@ describe("dropdown component", () => {
         ]);
       });
   });
+
+  it("Queries with dynamic string filter", () => {
+    cy.getDataTest("dynamicStringQueriedDataDropdown").click();
+
+    cy.get("ion-popover")
+      .should("be.visible")
+      .last()
+      .find("ion-item")
+      .should("have.length", 2)
+      .then(($items) => {
+        const texts = $items.map((i, el) => Cypress.$(el).text().trim()).get();
+        expect(texts).to.deep.equal(["Test 3 Name (A)", "Test 1 Name (A)"]);
+      });
+    cy.get("ion-popover").find("ion-item").contains("Test 3 Name (A)").click();
+
+    cy.getDataTest("categoryDropdown").click();
+
+    cy.get("ion-popover").last().find("ion-item").contains("B").click();
+
+    cy.getDataTest("dynamicStringQueriedDataDropdown").click();
+    cy.get("ion-popover:visible")
+      .last()
+      .find("ion-item")
+      .should("have.length", 3)
+      .then(($items) => {
+        const texts = $items.map((i, el) => Cypress.$(el).text().trim()).get();
+        expect(texts).to.deep.equal(["Test 5 Name (B)", "Test 4 Name (B)", "Test 2 Name (B)"]);
+      });
+
+    cy.get("ion-popover").last().find("ion-item").contains("Test 2 Name (B)").click();
+
+    cy.getDataTest("dynamicStringQueriedOption").contains("id2");
+  });
 });
