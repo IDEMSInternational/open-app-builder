@@ -6,13 +6,20 @@ import { firstValueFrom } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { IDBNotification, INotification, INotificationInternal } from "./notification.types";
+import {
+  IDBNotification,
+  INotification,
+  INotificationInternal,
+  isActionNotification,
+  NOTIFICATION_SOURCE_ACTION,
+} from "./notification.types";
 import { App } from "@capacitor/app";
 import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import { _wait } from "packages/shared/src/utils/async-utils";
 import { NotificationActionFactory } from "./notification.actions";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
 
 // Notification ids must be integer +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -36,7 +43,8 @@ export class NotificationService {
     private dynamicDataService: DynamicDataService,
     private capacitorEventService: CapacitorEventService,
     private actionRegistry: TemplateActionRegistry,
-    private systemVariableService: SystemVariableService
+    private systemVariableService: SystemVariableService,
+    private appStartupService: AppStartupService
   ) {
     // Register action handlers
     const { notification } = new NotificationActionFactory(this);
@@ -115,10 +123,12 @@ export class NotificationService {
     }
   }
 
+  /** Cancel all notifications booked by this service. Campaign notifications are not affected */
   public async cancelAll() {
     const { notifications } = await this.api.getPending();
-    if (notifications.length > 0) {
-      await this.api.cancel({ notifications });
+    const actionNotifications = notifications.filter((n) => isActionNotification(n));
+    if (actionNotifications.length > 0) {
+      await this.api.cancel({ notifications: actionNotifications });
     }
     await this.dynamicDataService.resetFlow("data_list", "_notifications");
   }
@@ -132,10 +142,11 @@ export class NotificationService {
     const internalNotification: INotificationInternal = {
       title,
       body: text,
-      schedule: { at: new Date(schedule_at) },
+      // let Android deliver while the device is idle, not only once it next wakes
+      schedule: { at: new Date(schedule_at), allowWhileIdle: true },
       // replace string id with randomly generated integer and store original id in extra
       id: internalId,
-      extra: { id, source: "action" },
+      extra: { id, source: NOTIFICATION_SOURCE_ACTION },
     };
     return internalNotification;
   }
@@ -268,7 +279,7 @@ export class NotificationService {
     this.capacitorEventService.localNotificationActionPerformed.subscribe((action) => {
       const notification = action.notification as INotificationInternal;
       // Only trigger actions for notifications also created by same service
-      if (notification.extra?.id && notification.extra?.source === "action") {
+      if (notification.extra?.id && isActionNotification(notification)) {
         console.log("[Notification] Action", action);
         this.handleNotificationInteracted(action.actionId, notification);
       }
@@ -277,7 +288,7 @@ export class NotificationService {
     // This may be replaced in the future if the above action is triggered
     this.capacitorEventService.localNotificationReceived.subscribe(
       (notification: INotificationInternal) => {
-        if (notification.extra?.id && notification.extra?.source === "action") {
+        if (notification.extra?.id && isActionNotification(notification)) {
           console.log("[Notification] Received", notification);
           this.handleNotificationReceived(notification);
         }
@@ -330,7 +341,12 @@ export class NotificationService {
     action_list: FlowTypes.TemplateRowAction[] = [],
     trigger: FlowTypes.TemplateRowActionTrigger
   ) {
-    for (const action of action_list.filter((v) => v.trigger === trigger)) {
+    const actions = action_list.filter((v) => v.trigger === trigger);
+    if (actions.length === 0) return;
+    // Wait for app startup to finish (e.g. when a notification tap opened the app), so actions run
+    // after field defaults, globals and launch actions instead of part-way through startup
+    await this.appStartupService.whenComplete();
+    for (const action of actions) {
       await this.actionRegistry.trigger(action);
     }
   }

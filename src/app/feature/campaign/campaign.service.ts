@@ -1,8 +1,10 @@
-import { Injectable, Injector } from "@angular/core";
+import { inject, Injectable, Injector } from "@angular/core";
 import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
 import { extractDynamicFields, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
+import { debounceTime, filter, skip } from "rxjs/operators";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
@@ -12,6 +14,9 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
+import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -33,6 +38,15 @@ type IScheduledNotificationsHashmap = {
   [campaign_id: string]: { [row_id: string]: ILocalNotification };
 };
 
+/** Wait after a referenced field changes before re-checking campaigns, so a burst triggers one */
+const FIELD_CHANGE_DEBOUNCE_MS = 2000;
+
+/** A notification in a repeating schedule: when it is sent, and its number in the series */
+interface ICampaignRepeat {
+  at: Date;
+  number: number;
+}
+
 interface ICampaignNotificationExtra {
   campaign_id: string;
   /** Authored campaign row id */
@@ -51,7 +65,12 @@ export class CampaignService extends AsyncServiceBase {
 
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
-  private _notificationActions$: Subscription;
+
+  private localStorageService = inject(LocalStorageService);
+  private actionRegistry = inject(TemplateActionRegistry);
+  /** Fields referenced by campaign schedules and rows, which re-check campaigns when they change */
+  private referencedFields = new Set<string>();
+  private _fieldChanges$?: Subscription;
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
@@ -59,10 +78,27 @@ export class CampaignService extends AsyncServiceBase {
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
     private deploymentService: DeploymentService,
+    private capacitorEventService: CapacitorEventService,
+    private appStartupService: AppStartupService,
     private injector: Injector
   ) {
     super("Campaigns");
     this.registerInitFunction(this.initialise);
+    this.subscribeToNotificationTaps();
+    this.registerActionHandlers();
+  }
+
+  /** `campaign: recalculate` re-checks campaigns, e.g. after changes they can't detect themselves */
+  private registerActionHandlers() {
+    this.actionRegistry.register({
+      campaign: async ({ args }) => {
+        const [subAction] = args;
+        if (subAction === "recalculate") {
+          return this.recalculate();
+        }
+        console.error("[Campaigns] Unknown campaign action:", subAction);
+      },
+    });
   }
 
   /**
@@ -92,19 +128,15 @@ export class CampaignService extends AsyncServiceBase {
     ]);
     this.ensureSyncServicesReady([this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    await this.hackDeactivateAllNotifications();
+    await this.loadCampaigns();
+    this.subscribeToFieldChanges();
 
-    const schedules = await this.loadCampaignSchedules();
-
-    const { allCampaigns, scheduledCampaigns } = await this.loadCampaignRows(schedules);
-
-    this.scheduledCampaigns = scheduledCampaigns;
-    this.allCampaigns = allCampaigns;
-
-    // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
-    // console.log("[All Campaigns]", this.allCampaigns);
-
-    await this.scheduleCampaignNotifications();
+    // Only schedule (and clear old notifications) once notifications can reach the device.
+    // Subscribe before checking, so a change in between isn't missed
+    this.subscribeToSchedulingAvailability();
+    if (this.localNotificationService.canSchedule$.value) {
+      await this.replaceAllNotifications();
+    }
 
     this._subscribeToNotificationUpdates();
   }
@@ -113,15 +145,76 @@ export class CampaignService extends AsyncServiceBase {
   }
 
   /**
-   * remove any old subscriptions, subscribe to updates from sent and interacted notifications,
+   * Re-check campaigns: evaluate their conditions and dates again, then schedule their notifications.
+   * Runs when a field they reference changes, and from a `campaign: recalculate` action
+   */
+  public async recalculate() {
+    if (!this.deploymentService.config.campaigns.enabled) return;
+    await this.ready();
+    await this.loadCampaigns();
+    await this.scheduleCampaignNotifications();
+  }
+
+  /** Load campaign schedules and rows, evaluating their conditions and dates */
+  private async loadCampaigns() {
+    const schedules = await this.loadCampaignSchedules();
+    const { allCampaigns, scheduledCampaigns } = await this.loadCampaignRows(schedules);
+    this.scheduledCampaigns = scheduledCampaigns;
+    this.allCampaigns = allCampaigns;
+    this.referencedFields = await this.getReferencedFields();
+  }
+
+  /** Re-check campaigns when a field they reference changes, e.g. the date a schedule counts from */
+  private subscribeToFieldChanges() {
+    this._fieldChanges$?.unsubscribe();
+    this._fieldChanges$ = this.localStorageService.changes$
+      .pipe(
+        filter((field) => this.referencedFields.has(field)),
+        debounceTime(FIELD_CHANGE_DEBOUNCE_MS)
+      )
+      .subscribe(() => {
+        this.recalculate().catch((error) =>
+          console.error("[Campaigns] Could not re-check campaigns", error)
+        );
+      });
+  }
+
+  /**
+   * Names of fields referenced by campaign schedules and rows: `@fields.name` (or `@field.name`)
+   * anywhere in their data, and the fields of `field_evaluation` conditions
+   */
+  private async getReferencedFields() {
+    const dataLists = await this.appDataService.getSheetsWithData("data_list", (list) =>
+      ["campaign_schedule", "campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
+    );
+    const rows: FlowTypes.RowWithActivationConditions[] = mergeArrayOfArrays(
+      dataLists.map((list) => list.rows)
+    );
+    const fields = new Set<string>();
+    for (const [, field] of JSON.stringify(rows).matchAll(/@fields?\.(\w+)/g)) {
+      fields.add(field);
+    }
+    for (const row of rows) {
+      const conditions = [
+        ...(row.activation_condition_list || []),
+        ...(row.deactivation_condition_list || []),
+      ];
+      for (const condition of conditions) {
+        const field = condition.condition_args?.field_evaluation?.field;
+        if (field) fields.add(field);
+      }
+    }
+    return fields;
+  }
+
+  /**
+   * remove any old subscriptions, subscribe to updates from sent notifications,
    * and handle actions lists accordingly
+   * (tapped notifications are handled separately, see `subscribeToNotificationTaps`)
    */
   private _subscribeToNotificationUpdates() {
     if (this._notificationUpdates$) {
       this._notificationUpdates$.unsubscribe();
-    }
-    if (this._notificationActions$) {
-      this._notificationActions$.unsubscribe();
     }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
       async (notifications) => {
@@ -130,13 +223,26 @@ export class CampaignService extends AsyncServiceBase {
         }
       }
     );
-    this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
-      async (action) => {
-        if (action) {
-          await this.handledTriggeredNotifications([action.notification] as any, "click");
-        }
-      }
-    );
+  }
+
+  /**
+   * Run the `click` actions of a tapped campaign notification.
+   * Subscribed once when the service is created, rather than on each (re)initialisation, which would
+   * replay the last tap and run its actions again. The actions are read from the notification itself,
+   * and run once app startup has finished rather than part-way through it.
+   */
+  private subscribeToNotificationTaps() {
+    this.capacitorEventService.localNotificationActionPerformed.subscribe(async (action) => {
+      const extra = action?.notification?.extra as ICampaignNotificationExtra | undefined;
+      if (!extra?.campaign_id) return;
+      const clickActions = (extra.action_list || []).filter((a) => a.trigger === "click");
+      if (clickActions.length === 0) return;
+      await this.appStartupService.whenComplete();
+      await this.triggerRowActions(clickActions);
+      // reschedule, as actions may change fields that campaign conditions depend on
+      await this.ready();
+      await this.scheduleCampaignNotifications();
+    });
   }
 
   // TODO: Should this also be unsubscribing from existing subscriptions?
@@ -205,9 +311,20 @@ export class CampaignService extends AsyncServiceBase {
 
   /**
    * Check all campaigns for those with notification schedules and evaluate
-   * any notifications requiring scheduling
+   * any notifications requiring scheduling.
+   * Runs one at a time, as overlapping runs could each schedule the same notification
    */
-  public async scheduleCampaignNotifications() {
+  public scheduleCampaignNotifications() {
+    const run = this.schedulingQueue.then(() => this.scheduleAllCampaigns());
+    // a failed run shouldn't block later ones (its caller still gets the error)
+    this.schedulingQueue = run.catch(() => undefined);
+    return run;
+  }
+  private schedulingQueue: Promise<void> = Promise.resolve();
+
+  private async scheduleAllCampaigns() {
+    // Until notifications can reach the device, keep existing ones: they couldn't be replaced
+    if (!this.localNotificationService.canSchedule$.value) return;
     const scheduled: IScheduledNotificationsHashmap = {};
     for (const campaign of Object.values(this.scheduledCampaigns)) {
       scheduled[campaign.id] = {};
@@ -215,7 +332,19 @@ export class CampaignService extends AsyncServiceBase {
       await this.deactiveCampaignNotifications(campaign.id);
       if (campaign._active) {
         const nextRows = await this.getNextCampaignRows(campaign.id, campaign.schedule?.batch_size);
-        if (nextRows) {
+        if (nextRows?.length > 0 && this.isRepeating(campaign)) {
+          // every repeat sends the first eligible row
+          const [row] = nextRows;
+          for (const repeat of this.getRepeatDates(campaign)) {
+            const notification = await this.scheduleNotification(
+              row,
+              campaign.id,
+              undefined,
+              repeat
+            );
+            scheduled[campaign.id][`${row.id}:${repeat.number}`] = notification;
+          }
+        } else if (nextRows) {
           // add new notifications
           let earliestStart = new Date();
           for (const nextRow of nextRows) {
@@ -225,10 +354,39 @@ export class CampaignService extends AsyncServiceBase {
             earliestStart = addSeconds(schedule.schedule.at, 60);
           }
         }
+      } else {
+        // a due notification may not be shown yet (Android can be up to an hour late): cancel it
+        await this.localNotificationService.cancelLateNotifications(
+          (n) => n.extra?.campaign_id === campaign.id
+        );
       }
     }
     this.scheduledNotifications = scheduled;
     console.log("[Scheduled Notifications]", this.scheduledNotifications);
+  }
+
+  private _canSchedule$?: Subscription;
+
+  /** Schedule again whenever notifications can reach the device, e.g. permission granted later */
+  private subscribeToSchedulingAvailability() {
+    this._canSchedule$?.unsubscribe();
+    this._canSchedule$ = this.localNotificationService.canSchedule$
+      .pipe(
+        // current value is handled on load
+        skip(1),
+        filter((canSchedule) => canSchedule)
+      )
+      .subscribe(() => {
+        this.replaceAllNotifications().catch((error) =>
+          console.error("[Campaigns] Could not schedule notifications", error)
+        );
+      });
+  }
+
+  /** Clear old notifications (incl. from removed campaigns) and schedule campaigns again */
+  private async replaceAllNotifications() {
+    await this.hackDeactivateAllNotifications();
+    await this.scheduleCampaignNotifications();
   }
 
   /**
@@ -263,21 +421,26 @@ export class CampaignService extends AsyncServiceBase {
    * Convert PLH notification schedule data and create local notification
    * @returns list of all currently scheduled notifications
    * @param earliestStart override default campaign start date if scheduling notifications in batch
+   * @param repeat for repeating schedules, when to send and the repeat's number in the series
    */
   public async scheduleNotification(
     row: FlowTypes.Campaign_listRow,
     campaign_id: string,
-    earliestStart?: Date
+    earliestStart?: Date,
+    repeat?: ICampaignRepeat
   ) {
     const schedule = this.scheduledCampaigns[campaign_id];
     if (!schedule) {
       console.error("No notification schedule provided for campaign", campaign_id);
       return;
     }
-    const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
-    // may return null if schedule would be outside permitted timeframe, in which case do not schedule
-    if (!notification_schedule) return;
-    let { _schedule_at } = notification_schedule;
+    let _schedule_at = repeat?.at;
+    if (!repeat) {
+      const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
+      // may return null if schedule would be outside permitted timeframe, in which case do not schedule
+      if (!notification_schedule) return;
+      _schedule_at = notification_schedule._schedule_at;
+    }
 
     // HACK - remove markdown form title and text as not currently supported in capacitor notifications
     row.text = this.hackStripNotificationMarkdown(row.text);
@@ -298,7 +461,9 @@ export class CampaignService extends AsyncServiceBase {
       extra,
       id: stringToIntegerHash(row.id),
     };
-    await this.localNotificationService.scheduleNotification(notificationSchedule, row.id);
+    // notifications with the same key replace each other, so each repeat of a row needs its own
+    const key = repeat ? `${row.id}:${repeat.number}` : row.id;
+    await this.localNotificationService.scheduleNotification(notificationSchedule, key);
     return notificationSchedule;
   }
 
@@ -468,13 +633,51 @@ export class CampaignService extends AsyncServiceBase {
         return null;
       }
     }
+    d = this.addDelay(d, delay);
+    scheduleRow._schedule_at = d;
+    return scheduleRow;
+  }
+
+  private addDelay(d: Date, delay: FlowTypes.Campaign_Schedule["delay"]) {
     if (delay) {
       d = addDays(d, Number(delay.days || 0));
       d = addHours(d, Number(delay.hours || 0));
       d = addMinutes(d, Number(delay.minutes || 0));
     }
-    scheduleRow._schedule_at = d;
-    return scheduleRow;
+    return d;
+  }
+
+  /** Whether a schedule sends a series of notifications (`repeat_every_days` and `repeat_count`) */
+  private isRepeating(scheduleRow: FlowTypes.Campaign_Schedule) {
+    const { repeat_every_days, repeat_count } = scheduleRow.schedule || {};
+    return Number(repeat_every_days) > 0 && Number(repeat_count) > 0;
+  }
+
+  /**
+   * Dates of a repeating schedule: `repeat_count` notifications, `repeat_every_days` apart, from
+   * `start_date` (or the next time of day the schedule sends at), plus any `delay`.
+   * Repeats after `end_date` (checked before `delay`, as for single notifications) or in the past
+   * are skipped; each keeps its number in the series
+   */
+  public getRepeatDates(scheduleRow: FlowTypes.Campaign_Schedule) {
+    const { start_date, end_date, repeat_every_days, repeat_count } = scheduleRow.schedule || {};
+    const time = scheduleRow.time || this.notificationDefaults.time;
+    const now = new Date();
+    let first = start_date ? new Date(start_date) : new Date(now);
+    first.setHours(Number(time.hour), Number(time.minute), 0, 0);
+    if (!start_date && isBefore(first, now)) {
+      first = addDays(first, 1);
+    }
+    const repeats: ICampaignRepeat[] = [];
+    for (let i = 0; i < Number(repeat_count); i++) {
+      const due = addDays(first, i * Number(repeat_every_days));
+      if (end_date && isAfter(due, endOfDay(new Date(end_date)))) break;
+      const at = this.addDelay(due, scheduleRow.delay);
+      if (isAfter(at, now)) {
+        repeats.push({ at, number: i + 1 });
+      }
+    }
+    return repeats;
   }
 
   private async evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
@@ -489,8 +692,8 @@ export class CampaignService extends AsyncServiceBase {
   private evaluateRowSchedule(scheduleRow: FlowTypes.Campaign_Schedule) {
     if (scheduleRow.schedule) {
       const { end_date } = scheduleRow.schedule;
-      // schedule end date must not be before than current date
-      if (end_date && isBefore(new Date(end_date), new Date())) return false;
+      // the end date is included until the end of that day, as when scheduling notifications
+      if (end_date && isBefore(endOfDay(new Date(end_date)), new Date())) return false;
     }
     return true;
   }

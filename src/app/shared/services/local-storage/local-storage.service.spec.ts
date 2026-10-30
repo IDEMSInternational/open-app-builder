@@ -63,6 +63,37 @@ describe("LocalStorageService", () => {
     expect(res).toEqual({});
   });
 
+  describe("changes$", () => {
+    let changes: string[];
+
+    beforeEach(() => {
+      changes = [];
+      service.changes$.subscribe((key) => changes.push(key));
+    });
+
+    it("emits the name of an entry when its value changes", () => {
+      service.setString("test", "a");
+      service.setString("test", "b");
+      service.setJSON("test_json", { a: 1 });
+      expect(changes).toEqual(["test", "test", "test_json"]);
+    });
+
+    it("does not emit when a value is set again unchanged", () => {
+      service.setString("test", "a");
+      service.setString("test", "a");
+      service.setJSON("test_json", { a: 1 });
+      service.setJSON("test_json", { a: 1 });
+      expect(changes).toEqual(["test", "test_json"]);
+    });
+
+    it("emits when an existing entry is removed", () => {
+      service.setProtected("APP_USER_ID", "test_user_1234");
+      service.removeProtected("APP_USER_ID");
+      service.removeProtected("APP_USER_ID");
+      expect(changes).toEqual(["_app_user_id", "_app_user_id"]);
+    });
+  });
+
   // TODO - currently deprecated but not throwing error
   // it("prevents setting protected fields", () => {});
 });

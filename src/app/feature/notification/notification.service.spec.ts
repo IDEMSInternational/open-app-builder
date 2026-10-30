@@ -18,6 +18,7 @@ import { CapacitorEventService } from "src/app/shared/services/capacitor-event/c
 import { MockCapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.mock.spec";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { SystemVariableService } from "src/app/shared/services/system-variable/system-variable.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
 
 /**
  * Mock methods designed to replace native calls to capacitor api
@@ -123,6 +124,9 @@ describe("NotificationService", () => {
     });
 
     service = TestBed.inject(NotificationService);
+
+    // Most tests assume app startup has finished, so notification actions run straight away
+    TestBed.inject(AppStartupService).markComplete();
 
     // Replace localnotification api with mock
     service["api"] = new MockCapacitorLocalNotifications() as any as LocalNotificationsPlugin;
@@ -312,18 +316,32 @@ describe("NotificationService", () => {
   });
 
   describe("cancelAll", () => {
-    it("should cancel all notifications", async () => {
-      const pendingNotifications = [{ id: 1 }, { id: 2 }];
+    const actionNotification = { id: 1, extra: { source: "action", id: "action_notification" } };
+    const campaignNotification = { id: 2, extra: { campaign_id: "campaign_1", row_id: "row_1" } };
+
+    it("should cancel all notifications booked by the notification action", async () => {
       spyOn(service["api"], "getPending").and.resolveTo({
-        notifications: pendingNotifications as any,
+        notifications: [actionNotification, campaignNotification] as any,
       });
       const cancelSpy = spyOn(service["api"], "cancel").and.resolveTo();
 
       await service.cancelAll();
 
-      expect(cancelSpy).toHaveBeenCalledWith({
-        notifications: pendingNotifications,
+      expect(cancelSpy).toHaveBeenCalledOnceWith({
+        notifications: [actionNotification] as any,
       });
+      expect(mockDynamicDataService.resetFlow).toHaveBeenCalledWith("data_list", "_notifications");
+    });
+
+    it("should not cancel notifications booked by other sources (e.g. campaigns)", async () => {
+      spyOn(service["api"], "getPending").and.resolveTo({
+        notifications: [campaignNotification] as any,
+      });
+      const cancelSpy = spyOn(service["api"], "cancel").and.resolveTo();
+
+      await service.cancelAll();
+
+      expect(cancelSpy).not.toHaveBeenCalled();
       expect(mockDynamicDataService.resetFlow).toHaveBeenCalledWith("data_list", "_notifications");
     });
   });
@@ -477,6 +495,23 @@ describe("NotificationService", () => {
       } as INotificationInternal);
       expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[0]);
     });
+    it("should wait for app startup to finish before triggering actions", async () => {
+      // e.g. a notification tap that opened the app
+      const appStartupService = new AppStartupService();
+      service["appStartupService"] = appStartupService;
+      const notification = { ...validNotification, action_list };
+      mockDynamicDataService.query$.and.returnValue(of([notification]));
+
+      const handled = service["handleNotificationInteracted"]("tap", {
+        extra: { id: notification.id },
+      } as INotificationInternal);
+      await new Promise((resolve) => setTimeout(resolve));
+      expect(mockTemplateActionRegistry.trigger).not.toHaveBeenCalled();
+
+      appStartupService.markComplete();
+      await handled;
+      expect(mockTemplateActionRegistry.trigger).toHaveBeenCalledOnceWith(action_list[1]);
+    });
     it("should triggers actions when interacted", async () => {
       const notification = { ...validNotification, action_list };
       await service.scheduleNotification(notification);
@@ -532,7 +567,7 @@ describe("NotificationService", () => {
           jasmine.objectContaining({
             title: "Test Title",
             body: "Test Text",
-            schedule: { at: jasmine.any(Date) },
+            schedule: { at: jasmine.any(Date), allowWhileIdle: true },
             id: jasmine.any(Number),
             extra: { id: "test-notification", source: "action" },
           }),
