@@ -1,0 +1,1402 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TmplAudioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/audio/audio.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>ITemplateRowProps</code>
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-audio</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./audio.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./audio.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#params" >params</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#range" >range</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkChange" >checkChange</a>
+                            </li>
+                            <li>
+                                <a href="#checkFocus" >checkFocus</a>
+                            </li>
+                            <li>
+                                <a href="#customUpdateWhenRewind" >customUpdateWhenRewind</a>
+                            </li>
+                            <li>
+                                <a href="#getAssetParamFromTemplateRow" >getAssetParamFromTemplateRow</a>
+                            </li>
+                            <li>
+                                <a href="#getParams" >getParams</a>
+                            </li>
+                            <li>
+                                <a href="#initPlayer" >initPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#rewindNext" >rewindNext</a>
+                            </li>
+                            <li>
+                                <a href="#rewindPrev" >rewindPrev</a>
+                            </li>
+                            <li>
+                                <a href="#seek" >seek</a>
+                            </li>
+                            <li>
+                                <a href="#togglePlayer" >togglePlayer</a>
+                            </li>
+                            <li>
+                                <a href="#updateProgress" >updateProgress</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#template" >template</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(plhAssetPipe: PLHAssetPipe)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>plhAssetPipe</td>
+                                                  
+                                                        <td>
+                                                                    <code>PLHAssetPipe</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="template"></a>
+                        <b>template</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FlowTypes.Template</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:57</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkChange"></a>
+                    <span class="name">
+                        <span ><b>checkChange</b></span>
+                        <a href="#checkChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="190"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:190</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkFocus"></a>
+                    <span class="name">
+                        <span ><b>checkFocus</b></span>
+                        <a href="#checkFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkFocus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customUpdateWhenRewind"></a>
+                    <span class="name">
+                        <span ><b>customUpdateWhenRewind</b></span>
+                        <a href="#customUpdateWhenRewind"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>customUpdateWhenRewind()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="199"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:199</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAssetParamFromTemplateRow"></a>
+                    <span class="name">
+                        <span ><b>getAssetParamFromTemplateRow</b></span>
+                        <a href="#getAssetParamFromTemplateRow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAssetParamFromTemplateRow(parameterName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, _default: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>parameterName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>_default</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParams"></a>
+                    <span class="name">
+                        <span ><b>getParams</b></span>
+                        <a href="#getParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getParams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initPlayer"></a>
+                    <span class="name">
+                        <span ><b>initPlayer</b></span>
+                        <a href="#initPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initPlayer()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rewindNext"></a>
+                    <span class="name">
+                        <span ><b>rewindNext</b></span>
+                        <a href="#rewindNext"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rewindNext()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rewindPrev"></a>
+                    <span class="name">
+                        <span ><b>rewindPrev</b></span>
+                        <a href="#rewindPrev"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>rewindPrev()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seek"></a>
+                    <span class="name">
+                        <span ><b>seek</b></span>
+                        <a href="#seek"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>seek()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePlayer"></a>
+                    <span class="name">
+                        <span ><b>togglePlayer</b></span>
+                        <a href="#togglePlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePlayer()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProgress"></a>
+                    <span class="name">
+                        <span ><b>updateProgress</b></span>
+                        <a href="#updateProgress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateProgress()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="params"></a>
+                    <span class="name">
+                        <span ><b>params</b></span>
+                        <a href="#params"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IAudioParams.html" target="_self" >Partial&lt;IAudioParams&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="range"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>range</b></span>
+                        <a href="#range"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IonRange</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;range&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/shared/components/template/components/audio/audio.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy, OnInit, signal, ViewChild } from &quot;@angular/core&quot;;
+import { FlowTypes } from &quot;../../../../model&quot;;
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from &quot;../../../../utils&quot;;
+import { Howl } from &quot;howler&quot;;
+import { IonRange } from &quot;@ionic/angular&quot;;
+import { ITemplateRowProps } from &quot;../../models&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { PLHAssetPipe } from &quot;../../pipes/plh-asset.pipe&quot;;
+
+// Names of ion-icons to be used by default in the player.
+// Will be overridden if user provides values for play_icon_asset, pause_icon_asset or forward_icon_asset
+const PLAY_ICON_DEFAULT &#x3D; &quot;play-outline&quot;;
+const PAUSE_ICON_DEFAULT &#x3D; &quot;pause-outline&quot;;
+const FORWARD_ICON_DEFAULT &#x3D; &quot;play-forward&quot;;
+
+interface IAudioParams {
+  /** TEMPLATE PARAMETER: &quot;src&quot;. Will be overridden by a value passed as &quot;value&quot; to the component. */
+  src: string;
+  /** TEMPLATE PARAMETER: &quot;title&quot; */
+  title: string;
+  /** TEMPLATE PARAMETER: &quot;play_icon_asset&quot;. The path to an svg to override the default play icon. Default icon is ion&#x27;s &quot;play-outline&quot; */
+  playIconAsset: string;
+  /** TEMPLATE PARAMETER: &quot;pause_icon_asset&quot;. The path to an svg to override the default pause icon. Default icon is ion&#x27;s &quot;pause-outline&quot; */
+  pauseIconAsset: string;
+  /** TEMPLATE PARAMETER: &quot;forward_icon_asset&quot;. The path to an svg to override the default forward icon.
+   * Will be mirrored to be used as the reqind icon. Default icon is ion&#x27;s &quot;play-forward&quot;
+   * */
+  forwardIconAsset: string;
+  /** TEMPLATE PARAMETER: &quot;help_icon_asset&quot;. The path to an svg to override the default help icon. */
+  helpIconAsset: string;
+  /** TEMPLATE PARAMETER: &quot;help_text&quot;. Text to be displayed as a tooltip when clicking the &quot;help&quot; icon.
+   * Icon and tooltip will not be displayed if value not provided. Default null */
+  helpText: string;
+  /** TEMPLATE PARAMETER: &quot;range_bar_disabled&quot;. If true, the use cannot scrub through the audio using the range bar.
+   * Default false.
+   */
+  rangeBarDisabled: boolean;
+  /** TEMPLATE PARAMETER: &quot;time_to_rewind&quot;. The increment of time, in seconds, that will be applied when clicking the forward or backward buttons.
+   * Default 15.
+   */
+  timeToRewind: number;
+}
+
+@Component({
+  selector: &quot;plh-audio&quot;,
+  templateUrl: &quot;./audio.component.html&quot;,
+  styleUrls: [&quot;./audio.component.scss&quot;],
+})
+export class TmplAudioComponent
+  extends TemplateBaseComponent
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
+  @Input() template: FlowTypes.Template;
+  @ViewChild(&quot;range&quot;, { static: false }) range: IonRange;
+
+  params: Partial&lt;IAudioParams&gt; &#x3D; {};
+
+  /** @ignore */
+  player: Howl &#x3D; null;
+  /** @ignore */
+  isPlayed: boolean &#x3D; false;
+  /** @ignore */
+  errorTxt: string | null;
+  /** @ignore */
+  progress &#x3D; signal(0);
+  /** @ignore */
+  rangeBarTouched: boolean &#x3D; false;
+  /** @ignore */
+  currentTimeSong: string &#x3D; &quot;0&quot;;
+  /** @ignore */
+  hasStarted: boolean &#x3D; false;
+
+  constructor(private plhAssetPipe: PLHAssetPipe) {
+    super();
+  }
+
+  ngOnInit() {
+    this.getParams();
+    this.initPlayer();
+  }
+
+  getParams() {
+    this.params.src &#x3D; this.plhAssetPipe.transform(
+      this._row.value || getStringParamFromTemplateRow(this._row, &quot;src&quot;, null)
+    );
+    this.params.playIconAsset &#x3D; this.getAssetParamFromTemplateRow(
+      &quot;play_icon_asset&quot;,
+      PLAY_ICON_DEFAULT
+    );
+    this.params.pauseIconAsset &#x3D; this.getAssetParamFromTemplateRow(
+      &quot;pause_icon_asset&quot;,
+      PAUSE_ICON_DEFAULT
+    );
+    this.params.forwardIconAsset &#x3D; this.getAssetParamFromTemplateRow(
+      &quot;forward_icon_asset&quot;,
+      FORWARD_ICON_DEFAULT
+    );
+    this.params.title &#x3D; getStringParamFromTemplateRow(this._row, &quot;title&quot;, &quot;&quot;);
+    this.params.helpText &#x3D; getStringParamFromTemplateRow(this._row, &quot;help_text&quot;, null);
+    this.params.helpIconAsset &#x3D; getStringParamFromTemplateRow(this._row, &quot;help_icon_asset&quot;, null);
+    this.params.rangeBarDisabled &#x3D; getBooleanParamFromTemplateRow(
+      this._row,
+      &quot;range_bar_disabled&quot;,
+      false
+    );
+    this.params.timeToRewind &#x3D; getNumberParamFromTemplateRow(this._row, &quot;time_to_rewind&quot;, 15);
+  }
+
+  getAssetParamFromTemplateRow(parameterName: string, _default: string | null) {
+    const value &#x3D; getStringParamFromTemplateRow(this._row, parameterName, null);
+    return value ? this.plhAssetPipe.transform(value) : _default;
+  }
+
+  initPlayer() {
+    return this.params.src
+      ? (this.player &#x3D; new Howl({
+          src: [this.params.src],
+          onplay: () &#x3D;&gt; {
+            this.isPlayed &#x3D; true;
+            this.updateProgress();
+            if (!this.hasStarted) {
+              this.hasStarted &#x3D; true;
+              this.triggerActions(&quot;audio_first_start&quot;);
+            }
+            this.triggerActions(&quot;audio_play&quot;);
+          },
+          onend: () &#x3D;&gt; {
+            this.isPlayed &#x3D; false;
+            this.range.value &#x3D; 0;
+            this.currentTimeSong &#x3D; &quot;0&quot;;
+            this.updateProgress();
+            this.triggerActions(&quot;audio_end&quot;);
+          },
+          onpause: () &#x3D;&gt; {
+            this.isPlayed &#x3D; false;
+            this.updateProgress();
+            this.triggerActions(&quot;audio_pause&quot;);
+          },
+        }))
+      : (this.errorTxt &#x3D; &quot;Src is undefined, player not initialized&quot;);
+  }
+
+  togglePlayer() {
+    this.isPlayed &#x3D; !this.isPlayed;
+    return this.isPlayed ? this.player.play() : this.player.pause();
+  }
+
+  rewindNext() {
+    this.player.seek((this.player.seek() as any) + this.params.timeToRewind);
+    this.customUpdateWhenRewind();
+  }
+
+  rewindPrev() {
+    this.player.seek(
+      (this.player.seek() as any) &lt; this.params.timeToRewind
+        ? (this.player.seek(0) as any)
+        : (this.player.seek() as any) - this.params.timeToRewind
+    );
+    this.customUpdateWhenRewind();
+  }
+
+  seek() {
+    let newValue &#x3D; +this.range.value;
+    let duration &#x3D; this.player.duration();
+    this.player.seek(duration * (newValue / 100));
+    this.rangeBarTouched &#x3D; false;
+    this.updateProgress();
+  }
+
+  updateProgress() {
+    const ref &#x3D; setInterval(() &#x3D;&gt; {
+      if (!this.isPlayed || this.rangeBarTouched) {
+        clearInterval(ref);
+        return;
+      }
+      let seek: any &#x3D; this.player.seek();
+      this.progress.set((seek / this.player.duration()) * 100 || 0);
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }, 1000);
+  }
+
+  checkFocus() {
+    this.rangeBarTouched &#x3D; true;
+  }
+
+  checkChange() {
+    if (this.rangeBarTouched) {
+      let newValue &#x3D; +this.range.value;
+      let duration &#x3D; this.player.duration();
+      this.player.seek(duration * (newValue / 100));
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }
+  }
+
+  customUpdateWhenRewind() {
+    if (!this.isPlayed) {
+      let seek: any &#x3D; this.player.seek();
+      this.progress.set((seek / this.player.duration()) * 100 || 0);
+      this.currentTimeSong &#x3D; this.player.seek() ? (this.player.seek() as any).toString() : &quot;0&quot;;
+    }
+  }
+
+  ngOnDestroy() {
+    this.player.stop();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-player margin-t-large&quot;&gt;
+  &lt;div class&#x3D;&quot;top-row&quot;&gt;
+    &lt;div class&#x3D;&quot;title_and_help&quot;&gt;
+      &lt;h3 *ngIf&#x3D;&quot;params.title&quot;&gt;{{ params.title }}&lt;/h3&gt;
+      &lt;ion-icon
+        *ngIf&#x3D;&quot;params.helpText&quot;
+        [pTooltip]&#x3D;&quot;params.helpText&quot;
+        tooltipPosition&#x3D;&quot;left&quot;
+        tooltipEvent&#x3D;&quot;click&quot;
+        name&#x3D;&quot;help-circle-outline&quot;
+        [src]&#x3D;&quot;params.helpIconAsset&quot;
+        class&#x3D;&quot;audio-help&quot;
+      &gt;&lt;/ion-icon&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;progress-block&quot; [class.disabled]&#x3D;&quot;params.rangeBarDisabled || !player&quot;&gt;
+    &lt;ion-range
+      #range
+      class&#x3D;&quot;audio-range&quot;
+      max&#x3D;&quot;100&quot;
+      aria-readonly&#x3D;&quot;true&quot;
+      [value]&#x3D;&quot;progress()&quot;
+      (ionChange)&#x3D;&quot;checkChange()&quot;
+      (touchstart)&#x3D;&quot;checkFocus()&quot;
+      (touchend)&#x3D;&quot;seek()&quot;
+      (mouseup)&#x3D;&quot;seek()&quot;
+    &gt;&lt;/ion-range&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;time&quot;&gt;
+    &lt;div class&#x3D;&quot;time-value&quot;&gt;
+      {{ +currentTimeSong * 1000 | date: &quot;mm:ss&quot; }}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;time-value&quot;&gt;
+      {{ !player ? &quot;00:00&quot; : (player.duration() * 1000 | date: &quot;mm:ss&quot;) }}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;controls&quot; *ngIf&#x3D;&quot;!errorTxt&quot;&gt;
+    &lt;div class&#x3D;&quot;rewind&quot;&gt;
+      &lt;ion-icon
+        [name]&#x3D;&quot;params.forwardIconAsset&quot;
+        [src]&#x3D;&quot;params.forwardIconAsset&quot;
+        (click)&#x3D;&quot;rewindPrev()&quot;
+      &gt;&lt;/ion-icon&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;play&quot;&gt;
+      &lt;ion-button class&#x3D;&quot;btn-play&quot; (click)&#x3D;&quot;togglePlayer()&quot;&gt;
+        &lt;ion-icon
+          [name]&#x3D;&quot;!isPlayed ? params.playIconAsset : params.pauseIconAsset&quot;
+          [src]&#x3D;&quot;!isPlayed ? params.playIconAsset : params.pauseIconAsset&quot;
+          [class.play-icon]&#x3D;&quot;!isPlayed&quot;
+        &gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;forward&quot;&gt;
+      &lt;ion-icon
+        [name]&#x3D;&quot;params.forwardIconAsset&quot;
+        [src]&#x3D;&quot;params.forwardIconAsset&quot;
+        (click)&#x3D;&quot;rewindNext()&quot;
+      &gt;&lt;/ion-icon&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;error-text&quot; *ngIf&#x3D;&quot;errorTxt&quot;&gt;
+    {{ errorTxt }}
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./audio.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &quot;/src/theme/mixins&quot;;
+
+$control-background: var(--audio-control-background, var(--ion-color-primary-500));
+
+.container-player {
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
+  box-sizing: border-box;
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  padding: var(--regular-padding);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .top-row {
+    @include mixins.flex-space-between;
+    .title_and_help {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--audio-title-and-help-height);
+      h3 {
+        margin: 0;
+        margin-right: var(--small-margin);
+        color: var(--ion-color-primary);
+        max-width: 85%;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--audio-title-size);
+      }
+      .audio-help {
+        color: var(--ion-color-primary);
+        height: var(--help-icon-standard-size);
+        width: var(--help-icon-standard-size);
+      }
+    }
+  }
+  .progress-block {
+    .audio-range {
+      --bar-background-active: #{$control-background};
+      --bar-background: transparent;
+      --bar-height: 4px;
+      --bar-border-radius: var(--ion-border-radius-secondary);
+      --knob-size: 0px;
+      --pin-background: var(--ion-color-primary);
+      --knob-background: var(--ion-color-primary);
+      padding-inline: 0;
+    }
+
+    ion-range::part(bar) {
+      border: var(--ion-border-thin-standard);
+      height: var(--audio-bar-height);
+    }
+
+    ion-range::part(bar-active) {
+      top: 4px;
+      margin-left: 3px;
+    }
+  }
+  .time {
+    @include mixins.flex-space-between;
+    &amp;-value {
+      font-size: var(--font-size-text-large);
+      line-height: var(--line-height-text-small);
+      color: var(--ion-color-primary);
+    }
+  }
+  .controls {
+    @include mixins.flex-space-between;
+    min-width: var(--audio-controls-width);
+    align-self: center;
+    .rewind,
+    .forward {
+      ion-icon {
+        font-size: var(--icon-size-largest);
+        color: var(--ion-color-primary);
+      }
+    }
+    .rewind {
+      ion-icon {
+        transform: rotate(180deg);
+      }
+    }
+    .play {
+      .btn-play {
+        @include mixins.large-square;
+        --background: #{$control-background};
+        --border-radius: var(--ion-border-radius-rounded);
+        --padding: 0;
+        --box-shadow: var(--ion-default-box-shadow);
+        ion-icon {
+          position: absolute;
+          font-size: var(--icon-size-medium);
+          // Fine-tune spacing of &#x27;play&#x27; icon so that triangle appears to be centred visually
+          &amp;.play-icon {
+            padding-left: 4px;
+          }
+        }
+      }
+    }
+  }
+  .error-text {
+    margin: var(--small-margin) 0;
+    text-align: center;
+  }
+}
+.disabled {
+  pointer-events: none;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-player margin-t-large">  <div class="top-row">    <div class="title_and_help">      <h3 *ngIf="params.title">{{ params.title }}</h3>      <ion-icon        *ngIf="params.helpText"        [pTooltip]="params.helpText"        tooltipPosition="left"        tooltipEvent="click"        name="help-circle-outline"        [src]="params.helpIconAsset"        class="audio-help"      ></ion-icon>    </div>  </div>  <div class="progress-block" [class.disabled]="params.rangeBarDisabled || !player">    <ion-range      #range      class="audio-range"      max="100"      aria-readonly="true"      [value]="progress()"      (ionChange)="checkChange()"      (touchstart)="checkFocus()"      (touchend)="seek()"      (mouseup)="seek()"    ></ion-range>  </div>  <div class="time">    <div class="time-value">      {{ +currentTimeSong * 1000 | date: "mm:ss" }}    </div>    <div class="time-value">      {{ !player ? "00:00" : (player.duration() * 1000 | date: "mm:ss") }}    </div>  </div>  <div class="controls" *ngIf="!errorTxt">    <div class="rewind">      <ion-icon        [name]="params.forwardIconAsset"        [src]="params.forwardIconAsset"        (click)="rewindPrev()"      ></ion-icon>    </div>    <div class="play">      <ion-button class="btn-play" (click)="togglePlayer()">        <ion-icon          [name]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"          [src]="!isPlayed ? params.playIconAsset : params.pauseIconAsset"          [class.play-icon]="!isPlayed"        ></ion-icon>      </ion-button>    </div>    <div class="forward">      <ion-icon        [name]="params.forwardIconAsset"        [src]="params.forwardIconAsset"        (click)="rewindNext()"      ></ion-icon>    </div>  </div>  <div class="error-text" *ngIf="errorTxt">    {{ errorTxt }}  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TmplAudioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplAudioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
