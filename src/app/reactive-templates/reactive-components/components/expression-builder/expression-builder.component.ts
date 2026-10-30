@@ -79,7 +79,8 @@ export class ExpressionBuilderComponent
     return value;
   }
 
-  public async postEvaluation(): Promise<any> {
+  public async evaluation(): Promise<any> {
+    // Latest call wins: a slower, older evaluation must not overwrite a newer result.
     return await this.build();
   }
 
