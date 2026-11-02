@@ -65,6 +65,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
 | Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
 | Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Workbooks |
+| Link from the sheet isn't clickable, or a link opens the wrong page | cell hyperlinks are dropped; address has no `https://` | below: Workbooks |
 | `@local.row.key` breaks when re-entering a `radio_list` page | `value_as_object` returns a string when re-rendered | below: Variables |
 | `navigation_bar` button always opens `home_screen` | relative link; only works in the footer | below: Layout |
 | Combo-box badge shows "FALSE" | boolean `false` in the badge column | below: Layout |
@@ -95,6 +96,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
   runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
   (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
+- **A hyperlink set on a spreadsheet cell does not reach the app; only the cell's text does.** `xlsxToJson`
+  (`xlsx.utils.ts`) ignores the cell's link field, and the text component decides links from the text via
+  `parseMarkdown` (`utils.ts`). `https://…`, lowercase `www.…` and emails become links; `example.com` stays plain
+  text; `Www.example.com` and `[x](example.com)` become relative links that miss the website. Write
+  `[example.com](https://example.com)`. (verified 2026-11-02: marked 11.2 in Node and SheetJS round trip)
 
 ### Actions
 
