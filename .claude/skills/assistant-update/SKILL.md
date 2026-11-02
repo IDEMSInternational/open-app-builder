@@ -7,7 +7,8 @@ description: Commit an addition to the assistant knowledge base (.claude/, AGENT
 
 Knowledge-base additions share one running PR, so they don't each become a PR on the code repo. `.claude/`-only
 PRs get the `assistant` label, which keeps them out of release notes and lets people filter them out of the PR
-list (`-label:assistant`). Esmee (`esmeetewinkel`) reviews and merges the PR every couple of weeks.
+list (`-label:assistant`). The repo's normal review rules apply: any human on the team reviews and merges the PR.
+The assistant never approves or merges it, even when asked, because it would be acting under a person's account.
 
 Before starting, check all of this. If any fails, stop and say why:
 
@@ -48,7 +49,7 @@ push again. Then make sure a PR is open, creating it only if this prints nothing
 ```sh
 gh pr list --repo "$REPO" --head assistant-updates --state open --json url --jq '.[].url'
 
-gh pr create --repo "$REPO" --base master --head assistant-updates --assignee esmeetewinkel \
+gh pr create --repo "$REPO" --base master --head assistant-updates \
   --title "chore: assistant knowledge base updates" \
   --body "Running PR for assistant knowledge base additions, merged every couple of weeks."
 ```

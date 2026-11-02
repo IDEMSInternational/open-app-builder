@@ -103,7 +103,8 @@ More: `.claude/rules/local-dev.md`.
 - **Additions go to the one running `assistant-updates` PR, not to their own PRs.** A developer with write
   access can ask the assistant to add them (`.claude/skills/assistant-update/SKILL.md`); only do so when asked.
   Authors pass the snippet to a developer. Keep this lane free of code: bugs the assistant finds become normal
-  issues and fixes become normal code PRs, each only when asked.
+  issues and fixes become normal code PRs, each only when asked. A human on the team reviews and merges the
+  running PR; the assistant never approves or merges it.
 - **Entry format:** one bullet, wrapped at ~110 characters, in this order:
   `**<symptom or rule, in bold>.** <cause, citing file/function> <fix or workaround> (verified|found YYYY-MM-DD: <example>)`.
 - **Don't store facts that go stale on their own.** Cite files and function names, not line numbers (`path:line`
