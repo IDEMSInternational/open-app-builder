@@ -27,6 +27,9 @@ export class LocalNotificationPersistAdapter {
   /** List of all interacted notifications */
   public dbEntries$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
 
+  /** Notifications whose entries have been removed this session, so should not be recorded again */
+  private removedIds = new Set<number>();
+
   public init(
     service: LocalNotificationService,
     table: Table<ILocalNotificationInteractionDB, number>
@@ -40,6 +43,17 @@ export class LocalNotificationPersistAdapter {
   public async loadInteractedNotifications() {
     const interactedNotifications = await this.db.reverse().toArray();
     this.dbEntries$.next(interactedNotifications);
+  }
+
+  /**
+   * Remove entries for the given notifications, e.g. to clear test notifications from debug pages.
+   * Entries are only removed from this device: any already synced stay on the server
+   */
+  public async removeEntries(notificationIds: number[]) {
+    // Writes are debounced, so stop any still to come from adding the entries back
+    notificationIds.forEach((id) => this.removedIds.add(id));
+    await this.db.where("notification_id").anyOf(notificationIds).delete();
+    await this.loadInteractedNotifications();
   }
 
   private subscribeToNotifications(localNotificationService: LocalNotificationService) {
@@ -99,6 +113,7 @@ export class LocalNotificationPersistAdapter {
     notification_id: number,
     update: Partial<ILocalNotificationInteraction>
   ) {
+    if (this.removedIds.has(notification_id)) return;
     let entry: ILocalNotificationInteractionDB = await this.db.where({ notification_id }).first();
 
     if (!entry) {
@@ -107,6 +122,8 @@ export class LocalNotificationPersistAdapter {
         notification_id,
       } as any;
     }
+    // Check again, in case the entry was removed while it was being read
+    if (this.removedIds.has(notification_id)) return;
     await this.db.put({
       ...entry,
       ...update,

@@ -1,8 +1,104 @@
-.divider {
-  margin: 1em 0;
-  border-top: 1px solid var(--ion-color-primary-contrast);
+section {
+  margin-bottom: 32px;
 }
-ion-list {
-  --background: white;
-  padding-top: 0;
+
+.hint {
+  color: var(--ion-color-medium);
+  font-size: 0.9em;
+}
+
+.permission {
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 8px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+ion-segment {
+  max-width: 400px;
+}
+
+// Notification list item
+.notification {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 0 4px;
+
+  p {
+    margin: 4px 0;
+  }
+}
+
+.text {
+  font-size: 0.9em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85em;
+  color: var(--ion-color-medium);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 0.85em;
+}
+
+.item-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.details {
+  margin: 4px 0 8px;
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid var(--ion-color-medium);
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+
+  .trigger {
+    margin: 8px 0 4px;
+    font-weight: bold;
+
+    code {
+      font-weight: normal;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  .action {
+    display: block;
+    margin: 2px 0;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 12px;
+    margin: 12px 0 4px;
+  }
+
+  dt {
+    color: var(--ion-color-medium);
+  }
+
+  dd {
+    margin: 0;
+  }
 }

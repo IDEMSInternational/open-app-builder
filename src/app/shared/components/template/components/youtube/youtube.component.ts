@@ -14,6 +14,8 @@ const IFRAME_PROXY_URL = "https://idemsinternational.github.io/youtube-iframe-pr
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   allow_fullscreen: coerce.boolean(true),
+  /** Player shape: `landscape` (16:9) or `portrait` (9:16, for vertical videos) */
+  orientation: coerce.allowedValues(["landscape", "portrait"], "landscape"),
 }));
 
 /**
