@@ -3,5 +3,6 @@
     [namespace]="getName(item, $index)"
     [rows]="rows()"
     [attr.data-test]="getName(item, $index)"
+    (emittedValue)="onEmittedValue($event)"
   ></oab-row-list>
 }

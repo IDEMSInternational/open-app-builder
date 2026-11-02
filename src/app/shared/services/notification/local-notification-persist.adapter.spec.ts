@@ -104,6 +104,28 @@ describe("LocalNotificationPersistAdapter", () => {
     expect(entry.notification_meta.row_id).toEqual("mock_row");
   });
 
+  it("removes entries for the given notifications", async () => {
+    service.sessionNotifications$.next([MOCK_NOTIFICATION, { ...MOCK_NOTIFICATION, id: 456 }]);
+    await waitForEntries((entries) => entries.length === 2);
+    await adapter.removeEntries([123]);
+    expect(adapter.dbEntries$.value.map((entry) => entry.notification_id)).toEqual([456]);
+  });
+
+  it("does not record removed notifications again", async () => {
+    await adapter.removeEntries([123]);
+    service.sessionNotifications$.next([MOCK_NOTIFICATION, { ...MOCK_NOTIFICATION, id: 456 }]);
+    const entries = await waitForEntries((list) => list.length > 0);
+    expect(entries.map((entry) => entry.notification_id)).toEqual([456]);
+  });
+
+  it("does not record a notification removed while its entry is being read", async () => {
+    // call directly, as writes from notification events are debounced
+    const recording = (adapter as any).recordNotificationInteraction(123, { action_id: "tap" });
+    await adapter.removeEntries([123]);
+    await recording;
+    expect(await table.count()).toEqual(0);
+  });
+
   it("falls back to local _row_id when not included in notification extra", async () => {
     service.sessionNotifications$.next([{ ...MOCK_NOTIFICATION, extra: {} }]);
     const [entry] = await waitForEntries((entries) => entries.length > 0);

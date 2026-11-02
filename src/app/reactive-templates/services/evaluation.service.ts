@@ -18,14 +18,17 @@ export class EvaluationService {
   public evaluateExpression<T>(
     expression: string | number | boolean,
     namespace: string,
-    valueType: ValueType = "string"
+    valueType: ValueType = "string",
+    overrideContext?: Record<string, any>
   ): T {
     if (expression === null || expression === undefined) return expression as T;
 
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     const context = this.createExecutionContext(parsedExpression, namespace, valueType);
 
-    this.expressionEvaluator.setContext(context);
+    const mergedContext = { ...context, ...overrideContext }; // merge overrideContext with context
+
+    this.expressionEvaluator.setContext(mergedContext);
     const evaluatedValue = this.expressionEvaluator.evaluate(parsedExpression, valueType);
     return evaluatedValue as T;
   }
@@ -40,6 +43,21 @@ export class EvaluationService {
 
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
     return this.getDependenciesInternal(parsedExpression, namespace, valueType);
+  }
+
+  /** Whether the expression indexes a variable dynamically, so descendant values are needed. */
+  public hasDynamicIndexer(
+    expression: string | number | boolean,
+    namespace: string,
+    valueType: ValueType = "string"
+  ): boolean {
+    if (typeof expression !== "string") return false;
+
+    const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
+    return (
+      typeof parsedExpression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(parsedExpression, valueType)
+    );
   }
 
   private getDependenciesInternal(
@@ -78,7 +96,10 @@ export class EvaluationService {
     valueType: ValueType
   ): any {
     let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
+    const includeDescendants =
+      typeof expression === "string" &&
+      this.dependencyExtractor.hasDynamicIndexer(expression, valueType);
 
-    return this.contextCreator.createContext(dependencies, namespace);
+    return this.contextCreator.createContext(dependencies, namespace, includeDescendants);
   }
 }

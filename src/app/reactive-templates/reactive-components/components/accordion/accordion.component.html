@@ -1,0 +1,7 @@
+<ion-accordion-group
+  [multiple]="params.multiple.value()"
+  [value]="groupValue()"
+  (ionChange)="handleChange($event)"
+>
+  <oab-row-list [namespace]="namespace()" [rows]="row().rows ?? []"></oab-row-list>
+</ion-accordion-group>

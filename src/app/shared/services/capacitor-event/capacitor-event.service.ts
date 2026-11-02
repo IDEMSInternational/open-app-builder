@@ -36,12 +36,15 @@ export class CapacitorEventService extends SyncServiceBase {
 
   public localNotificationReceived = new ReplaySubject<LocalNotificationSchema>(BUFFER_SIZE);
 
-  private setupListeners() {
-    LocalNotifications.addListener("localNotificationActionPerformed", (e) => {
+  private async setupListeners() {
+    // On web, plugin calls made before the plugin has loaded each create their own copy of it, and
+    // events only reach listeners on the copy used later. Add listeners one at a time so they share it.
+    // https://github.com/ionic-team/capacitor/issues/6938
+    await LocalNotifications.addListener("localNotificationActionPerformed", (e) => {
       // console.log("[Capacitor Event] localNotificationActionPerformed", e);
       this.localNotificationActionPerformed.next(e);
     });
-    LocalNotifications.addListener("localNotificationReceived", (e) => {
+    await LocalNotifications.addListener("localNotificationReceived", (e) => {
       // console.log("[Capacitor Event] localNotificationReceived", e);
       this.localNotificationReceived.next(e);
     });

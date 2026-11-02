@@ -356,7 +356,26 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Debug method used to Schedule/Reschedule a notification to trigger after short delay
+   * Cancel notifications on the device and remove them from the database, without rescheduling the
+   * others. Rescheduling (`loadNotifications`) cancels every notification on the device, including
+   * those from the `notification` action (#3722), so debug pages use this to clear test notifications
+   */
+  public async removeNotificationsWithoutRescheduling(ids: number[]) {
+    if (!isNonEmptyArray(ids)) return;
+    await LocalNotifications.cancel({ notifications: ids.map((id) => ({ id })) });
+    await this.removeDBNotifications(ids);
+    // Keep in-memory records in step until the next reschedule rebuilds them
+    const removed = new Set(ids);
+    this.pendingNotifications$.next(
+      this.pendingNotifications$.value.filter((notification) => !removed.has(notification.id))
+    );
+    for (const [rowId, notification] of Object.entries(this.notificationsByRowId)) {
+      if (removed.has(notification.id)) delete this.notificationsByRowId[rowId];
+    }
+  }
+
+  /**
+   * Debug method used to send a test copy of a notification after a short delay (see `createTestCopy`)
    * @param notification
    * @param delay - number of seconds to delay sending notification (default 3s)
    * @param forceBackground - WiP - minimise the app to show notification when app in background
@@ -368,11 +387,8 @@ export class LocalNotificationService extends AsyncServiceBase {
   ) {
     if (!this.permissionGranted) return;
     const notificationDeliveryTime = addSeconds(new Date(), delay);
-    const immediateNotification = {
-      ...notification,
-      schedule: { at: notificationDeliveryTime },
-    };
-    await this.scheduleNotification(immediateNotification, `${notificationDeliveryTime}`);
+    const { immediateNotification, rowId } = createTestCopy(notification, notificationDeliveryTime);
+    await this.scheduleNotification(immediateNotification, rowId);
     // ensure api notification scheduled immediately
     await LocalNotifications.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNativePlatform() && forceBackground) {
@@ -407,7 +423,8 @@ export class LocalNotificationService extends AsyncServiceBase {
     return this.db.bulkDelete(ids);
   }
 
-  private async getDBNotifications() {
+  /** List every notification in the database, past and future, e.g. for debug pages */
+  public async getDBNotifications() {
     return this.db.toArray();
   }
 
@@ -440,6 +457,39 @@ export class LocalNotificationService extends AsyncServiceBase {
       this.loadNotifications();
     });
   }
+}
+
+/** Campaign id of test notifications and test copies sent from debug pages */
+export const TEST_CAMPAIGN_ID = "debug_test";
+
+/** Number of test copies made this session, to keep their row ids distinct */
+let testCopyCount = 0;
+
+/**
+ * Create a test copy of a notification, arriving at the given time.
+ *
+ * The copy belongs to the test campaign rather than the original's campaign, so rescheduling the
+ * original campaign does not remove it, and notification history (which syncs to the server) does
+ * not record it as part of that campaign. The original campaign is kept in `original_campaign_id`.
+ * Tap actions still run, as for any notification with a campaign id
+ */
+export function createTestCopy(notification: ILocalNotification, at: Date) {
+  // Omit processing records of the original, which do not apply to the copy
+  const { _action_performed, _callbacks_processed_time, ...original } = notification;
+  const extra = notification.extra ?? {};
+  const immediateNotification: ILocalNotification = {
+    ...original,
+    schedule: { at },
+    extra: {
+      ...extra,
+      campaign_id: TEST_CAMPAIGN_ID,
+      original_campaign_id: extra.original_campaign_id ?? extra.campaign_id,
+      test_copy: true,
+    },
+  };
+  // Each copy needs its own row id, or scheduling one copy replaces another
+  const rowId = `${extra.row_id ?? notification._row_id}_test_copy_${Date.now()}_${testCopyCount++}`;
+  return { immediateNotification, rowId };
 }
 
 // Explicitly list actions here to enforce strict typing later
