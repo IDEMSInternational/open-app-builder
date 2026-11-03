@@ -1,5 +1,5 @@
 @if (iframeSrc(); as src) {
-  <div class="youtube-container">
+  <div class="youtube-container" [attr.data-orientation]="params().orientation">
     <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
      see https://angular.dev/errors/NG0910 -->
     @if (showFullScreenButton()) {

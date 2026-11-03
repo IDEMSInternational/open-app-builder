@@ -5,4 +5,11 @@
     width: 100%;
     height: 100%;
   }
+  // Limit height to 70% of the screen by capping the width, so the player keeps its 9:16 shape
+  // (a max-height would shrink the height only, leaving the width at 100%)
+  &[data-orientation="portrait"] {
+    aspect-ratio: 9 / 16;
+    width: min(100%, calc(70vh * 9 / 16));
+    margin-inline: auto;
+  }
 }
