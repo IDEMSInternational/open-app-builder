@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { ActionRegistry } from "./action.registry";
+import { getScopeFallbackCandidates } from "../scope-fallback.utils";
 
 interface IActionParameters {
   name: string;
@@ -29,10 +30,13 @@ export class ActionHandler {
   }
 
   private async handle(params: IActionParameters, namespace?: string) {
-    const actionName = `${namespace ? `${namespace}.` : ""}${params.name}`;
+    const requestedActionName = `${namespace ? `${namespace}.` : ""}${params.name}`;
+    const actionName = getScopeFallbackCandidates(requestedActionName).find((candidate) =>
+      this.actionRegistry.has(candidate)
+    );
 
-    if (!this.actionRegistry.has(actionName)) {
-      return console.error(`[ACTION] No action registered with name: ${actionName}`);
+    if (!actionName) {
+      return console.error(`[ACTION] No action registered with name: ${requestedActionName}`);
     }
 
     const action = this.actionRegistry.get(actionName);
