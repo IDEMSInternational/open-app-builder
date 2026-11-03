@@ -96,11 +96,20 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
   runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
   (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
+
 - **A hyperlink set on a spreadsheet cell does not reach the app; only the cell's text does.** `xlsxToJson`
   (`xlsx.utils.ts`) ignores the cell's link field, and the text component decides links from the text via
   `parseMarkdown` (`utils.ts`). `https://…`, lowercase `www.…` and emails become links; `example.com` stays plain
   text; `Www.example.com` and `[x](example.com)` become relative links that miss the website. Write
   `[example.com](https://example.com)`. (verified 2026-11-02: marked 11.2 in Node and SheetJS round trip)
+
+  - **Tab names (and so `flow_name`s) over 31 characters silently drop the flow.** The xlsx export cuts tab names
+  to 31 characters (Excel limit); `mergeContentsSheet` (`convert/index.ts`) matches `flow_name` to the tab name
+  exactly, so the flow is skipped with only a `No Contents: <flow_name>` warning in
+  `packages/scripts/logs/warn.log`. Keep tab-based flow names ≤ 31 characters (generated flows can be longer).
+  (found 2026-10-29: kids_teens_mx A/B override template `proximal_outcome_base_question_ab_po_scale_3`)
+
+>>>>>>> Stashed changes
 
 ### Actions
 
@@ -147,6 +156,7 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `@local.row`. (verified 2026-08-19)
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is
   silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
+
 - **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields are
   stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is always true
   even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
@@ -155,6 +165,12 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later schedule
   replaces the earlier one when both pick the same row. Give each schedule its own copy of the row with a
   distinct id. (found 2026-10-20: ZA win_back/resume_lesson in 2-day and 1-week schedules)
+
+
+- **A `number_input` text box treats 0 as empty in `!x` / `x == ''` checks.** With `number_input: true` the
+  value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
+  true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
+  `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
 
 
 ### Loops and `data_items`
@@ -224,6 +240,14 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
   conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
   (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
+  - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
+  are processed in its own context before being merged into the child (`template-row.service.ts`
+  `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like
+  `options_list: name: 1 | text: @local.option_1` resolves to nothing if `option_1` only exists in the child.
+  Override plain inputs instead (a static value the child branches on with `condition`). Note `radio_list`
+  renders every `answer_list` entry, even one whose text is undefined; only the older `radio_group` drops
+  them (`parseAnswerList`, `src/app/shared/utils/utils.ts`). (found 2026-10-30: kids_teens_mx po_scale B)
+
 
 ### Layout and components
 
