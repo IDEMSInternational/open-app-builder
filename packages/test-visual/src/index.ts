@@ -3,6 +3,7 @@ import { Command } from "commander";
 import compareCmd from "./commands/compare";
 import generateCmd from "./commands/generate";
 import downloadCmd from "./commands/download";
+import themeLayoutCmd from "./commands/theme-layout";
 import { logProgramHelp } from "./utils";
 
 const program = new Command();
@@ -13,6 +14,7 @@ program.version("1.0.0").description("IDEMS Visual Test CLI");
 program.addCommand(compareCmd);
 program.addCommand(generateCmd);
 program.addCommand(downloadCmd);
+program.addCommand(themeLayoutCmd);
 
 if (!process.argv.slice(2).length) {
   logProgramHelp(program);
