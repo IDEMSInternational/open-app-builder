@@ -5,7 +5,7 @@
   align-items: center;
   h1 {
     margin: 0;
-    line-height: var(--line-height-text-largest);
+    line-height: var(--line-height-text-large);
     font-weight: var(--font-weight-bold);
     @media (max-width: 375px) {
       font-size: var(--font-size-title-tiny);
@@ -15,7 +15,7 @@
     }
   }
   .alternative {
-    line-height: var(--line-height-text-largest);
+    line-height: var(--line-height-text-large);
     color: var(--ion-color-primary-contrast);
     @media (max-width: 320px) {
       font-size: var(--font-size-title-small-device);

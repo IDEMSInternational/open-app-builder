@@ -22,6 +22,11 @@ type IPermissionStatus = PermissionState | "unsupported";
 @Injectable({ providedIn: "root" })
 export class NotificationService {
   private permissionStatus = signal<IPermissionStatus | undefined>(undefined);
+  /** Readonly permission status, e.g. for display in debug pages */
+  public readonly status = this.permissionStatus.asReadonly();
+
+  /** Track any in-progress check for ignored notifications */
+  private checkIgnoredInProgress?: Promise<void>;
 
   /** Hack - proxy to native LocalNotification api for easier test mocking */
   private api = LocalNotifications;
@@ -53,9 +58,11 @@ export class NotificationService {
   }
 
   public async requestPermission() {
-    const { display } = await this.api.requestPermissions();
-    this.permissionStatus.set(display);
-    return display;
+    await this.api.requestPermissions();
+    // Re-check rather than use request result, as android request only returns granted/denied
+    // (not prompt-with-rationale), and ensure system variable reflects updated status
+    await this.checkPermissions();
+    return this.permissionStatus();
   }
 
   public async scheduleNotification(notification: INotification) {
@@ -144,7 +151,12 @@ export class NotificationService {
     return null;
   }
 
-  private async checkPermissions() {
+  /**
+   * Check current permission status and update signal and system variable.
+   * Public so that permission requests made elsewhere (e.g. legacy local notification service)
+   * can keep status in sync
+   */
+  public async checkPermissions() {
     // If running in browser first check to ensure notification api exists
     if (!Capacitor.isNativePlatform()) {
       if (!window.Notification) {
@@ -185,8 +197,18 @@ export class NotificationService {
    * are suspended while the app is minimised and do not catch up
    *
    * If notifications received while app in foreground they handled via native listener callback
+   *
+   * Calls made while a check is already in progress share the same check, to avoid concurrent
+   * checks (e.g. resume and permission granted) both triggering actions for the same notifications
    */
-  private async checkIgnoredNotifications() {
+  private checkIgnoredNotifications() {
+    this.checkIgnoredInProgress ??= this.processIgnoredNotifications().finally(() => {
+      this.checkIgnoredInProgress = undefined;
+    });
+    return this.checkIgnoredInProgress;
+  }
+
+  private async processIgnoredNotifications() {
     // HACK - ensure check performed after any pending db writes related to actions processed
     await _wait(1000);
     // notification schedule_at will not be indexed so retrieve all notifications and filter after
@@ -241,8 +263,12 @@ export class NotificationService {
       }
     );
     // Additionally listen to app resume events to also trigger processing to make sure
-    // DB up-to-date if a user has minimised the app and returns after notifications ignored
-    App.addListener("resume", () => this.checkIgnoredNotifications());
+    // DB up-to-date if a user has minimised the app and returns after notifications ignored.
+    // Also re-check permissions in case changed from device settings while minimised
+    App.addListener("resume", () => {
+      this.checkPermissions();
+      this.checkIgnoredNotifications();
+    });
   }
 
   /** When notification interacted with update the db accordingly */
@@ -297,8 +323,8 @@ export class NotificationService {
     }
     if (this.permissionStatus() !== "granted") {
       const request = await this.requestPermission();
-      if (request === "denied") {
-        return { valid: false, msg: "denied by user permission" };
+      if (request !== "granted") {
+        return { valid: false, msg: `permission not granted (status: ${request})` };
       }
     }
     if (!id) {

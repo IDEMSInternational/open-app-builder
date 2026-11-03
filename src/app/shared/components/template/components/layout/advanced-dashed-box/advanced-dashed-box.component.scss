@@ -15,7 +15,7 @@
     .text {
       text-align: center;
       font-size: var(--font-size-text-medium);
-      line-height: var(--line-height-text-largest);
+      line-height: var(--line-height-text-large);
     }
     .icon {
       @include mixins.small-square;

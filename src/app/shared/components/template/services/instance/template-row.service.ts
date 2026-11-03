@@ -51,6 +51,13 @@ export class TemplateRowService extends SyncServiceBase {
 
   public renderedRows = signal<FlowTypes.TemplateRow[]>([], { equal: isEqual }); // rows processed and filtered by condition
 
+  /**
+   * Names of update_action_list rows that have added actions during the current processing pass.
+   * Used so that a row with a false condition does not remove actions added by a same-named row
+   * with a true condition, regardless of the order the rows are authored in
+   */
+  private appliedActionListUpdates = new Set<string>();
+
   constructor(
     private injector: Injector,
     public container: TemplateContainerComponent
@@ -96,6 +103,7 @@ export class TemplateRowService extends SyncServiceBase {
     log_group("[Rows Init]", name, row?.value || "");
     const overrides = this.getParentOverridesHashmap(row?.rows, name);
     const rowsWithOverrides = this.processParentOverrides(template?.rows, overrides, name);
+    this.appliedActionListUpdates.clear();
     await this.processRows(rowsWithOverrides);
     log_groupEnd();
   }
@@ -274,6 +282,10 @@ export class TemplateRowService extends SyncServiceBase {
         evalContext
       );
       if (!condition || condition === "false") {
+        // actions added while the condition was previously true should no longer apply
+        if (preProcessedRow.type === "update_action_list" && !isNestedTemplate) {
+          this.removeActionListUpdate(preProcessedRow.name);
+        }
         return { ...preProcessedRow, condition: false };
       }
     }
@@ -357,19 +369,7 @@ export class TemplateRowService extends SyncServiceBase {
           return;
         // merge new actions with existing container action list
         case "update_action_list":
-          // TODO - refactor to standalone array merge method
-          const existing_actions = this.container.row?.action_list || [];
-          // remove any actions previously added by the same update and then add newly processed actions
-          const base_actions = existing_actions.filter(
-            (a) => !a["_update_name"] || a["_update_name"] !== name
-          );
-          const new_actions = row.action_list.map((a) => ({
-            ...a,
-            _update_name: name, // keep track for future updates
-            _self_triggered: true, // by default actions are triggered from parent context, specify self
-          }));
-          const updated_actions = [...base_actions, ...new_actions];
-          this.container.row = { ...this.container.row, action_list: updated_actions };
+          this.applyActionListUpdate(name, row.action_list);
           break;
         default:
           // all other types should just set own value for use in future processing
@@ -387,7 +387,43 @@ export class TemplateRowService extends SyncServiceBase {
    */
   public async processRowUpdates() {
     await this.ensurePublicMethodServices();
+    this.appliedActionListUpdates.clear();
     return this.processRows(this.container.template.rows);
+  }
+
+  /***************************************************************************************
+   *  Action List Updates
+   **************************************************************************************/
+
+  /** Replace any actions previously added by the named update_action_list with newly processed actions */
+  private applyActionListUpdate(name: string, actions: FlowTypes.TemplateRowAction[] = []) {
+    const base_actions = this.getActionsExcludingUpdate(name);
+    const new_actions = actions.map((a) => ({
+      ...a,
+      _update_name: name, // keep track for future updates
+      _self_triggered: true, // by default actions are triggered from parent context, specify self
+    }));
+    const updated_actions = [...base_actions, ...new_actions];
+    this.container.row = { ...this.container.row, action_list: updated_actions };
+    this.appliedActionListUpdates.add(name);
+  }
+
+  /**
+   * Remove any actions previously added by the named update_action_list, e.g. when its condition
+   * is no longer met. Actions passed from a parent template or added by other updates are retained
+   */
+  private removeActionListUpdate(name: string) {
+    // a row with the same name and a true condition has provided the actions for this pass
+    if (this.appliedActionListUpdates.has(name)) return;
+    const existing_actions = this.container.row?.action_list || [];
+    const base_actions = this.getActionsExcludingUpdate(name);
+    if (base_actions.length === existing_actions.length) return;
+    this.container.row = { ...this.container.row, action_list: base_actions };
+  }
+
+  private getActionsExcludingUpdate(name: string) {
+    const existing_actions = this.container.row?.action_list || [];
+    return existing_actions.filter((a) => a["_update_name"] !== name);
   }
 
   /***************************************************************************************

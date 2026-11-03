@@ -1,4 +1,5 @@
 import { HttpClient } from "@angular/common/http";
+import { DEFAULT_APP_LANGUAGE_CODE } from "data-models";
 import { Injectable } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
@@ -47,7 +48,10 @@ export class AppDataService extends SyncServiceBase {
       const strings = await lastValueFrom(this.http.get(assetPath));
       return strings as { [source_string: string]: string };
     } else {
-      console.error("No translations exist for language", language_code);
+      // Source language strings are authored directly in sheets, so no translation file is expected
+      if (language_code !== DEFAULT_APP_LANGUAGE_CODE) {
+        console.error("No translations exist for language", language_code);
+      }
       return {};
     }
   }

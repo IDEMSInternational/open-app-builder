@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import {
   LocalNotifications,
@@ -24,6 +24,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
 import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
+import { NotificationService } from "src/app/feature/notification/notification.service";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
@@ -96,10 +97,16 @@ export class LocalNotificationService extends AsyncServiceBase {
   constructor(
     private dbService: DbService,
     private appConfigService: AppConfigService,
-    private capacitorEventService: CapacitorEventService
+    private capacitorEventService: CapacitorEventService,
+    private injector: Injector
   ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
+  }
+
+  // Call via injector to avoid potential cyclic dependency (as with campaign service)
+  get notificationService() {
+    return this.injector.get(NotificationService);
   }
 
   private async init() {
@@ -163,12 +170,20 @@ export class LocalNotificationService extends AsyncServiceBase {
       if (display === "granted") {
         return true;
       }
+      // Only show native prompt if user has not previously responded. Avoids repeat prompts on
+      // every app launch, which on android 13+ could make a soft decline permanent without context.
+      // Subsequent requests should instead be authored via `notification: request_permission` action
+      if (display !== "prompt") {
+        return false;
+      }
       // Use notifications api to check permissions. Run in parallel with a 5-second
       // timeout to resolve in cases where prompt does not appear or user fails to interact with it
       const granted = await Promise.race([
         new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
         new Promise<boolean>(async (resolve) => {
           const { display } = await LocalNotifications.requestPermissions();
+          // Keep notification service permission status (and authored field) in sync
+          await this.notificationService.checkPermissions();
           resolve(display === "granted");
         }),
       ]);

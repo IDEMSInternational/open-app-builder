@@ -4,6 +4,9 @@
 // Nav-stack modal
 @use "../app/feature/nav-stack/components/nav-stack/nav-stack.component.global.scss";
 
+// Text bubble markdown content
+@use "../app/shared/components/template/components/text-bubble/text-bubble.component.global.scss";
+
 // Template popup modal
 ion-modal.template-popup-modal {
   --width: 100%;

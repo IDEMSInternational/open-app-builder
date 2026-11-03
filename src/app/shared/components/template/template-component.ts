@@ -12,6 +12,7 @@ import {
   HostBinding,
   ComponentRef,
 } from "@angular/core";
+import { isEqual } from "packages/shared/src/utils/object-utils";
 import { TEMPLATE_COMPONENT_MAPPING } from "./components";
 import type { FlowTypes, ITemplateRowProps } from "./models";
 import { TemplateContainerComponent } from "./template-container.component";
@@ -68,11 +69,15 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   // @Input()
   _row: FlowTypes.TemplateRow;
   @Input() set row(row: FlowTypes.TemplateRow) {
+    const previousRow = this._row;
     this._row = row;
     if (this.componentRef) {
       log("[Component Update]", row.name, row);
-      this.componentRef.setInput("row", row);
-      this.hackForceReprocessNestedTemplate();
+      if (row.type === "template") {
+        this.updateNestedTemplate(previousRow, row);
+      } else {
+        this.componentRef.setInput("row", row);
+      }
     } else {
       log("[Component Create]", row.name, row);
     }
@@ -169,6 +174,32 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
     componentRef.instance.parentContainerComponentRef = this.parent;
     componentRef.instance.parentTemplateComponentRef = this;
     this.componentRef = componentRef;
+  }
+
+  /**
+   * Pass an updated row to a nested template, only fully recreating the template when required.
+   *
+   * A nested template only reads its row action_list when emitting, so when that is the only change
+   * the row is updated in place. Recreating would otherwise reset the template's local variables
+   * and replace its rendered elements, e.g. losing a click that is in progress
+   */
+  private updateNestedTemplate(previousRow: FlowTypes.TemplateRow, row: FlowTypes.TemplateRow) {
+    const componentRef = this.componentRef as ComponentRef<TemplateContainerComponent>;
+    const { action_list: _previousActions, ...previousRowWithoutActions } = previousRow;
+    const { action_list: _actions, ...rowWithoutActions } = row;
+    if (isEqual(previousRowWithoutActions, rowWithoutActions)) {
+      // retain any actions the nested template added to itself via update_action_list
+      const selfActions = (componentRef.instance.row?.action_list || []).filter(
+        (a) => a._self_triggered
+      );
+      componentRef.setInput("row", {
+        ...row,
+        action_list: [...(row.action_list || []), ...selfActions],
+      });
+      return;
+    }
+    componentRef.setInput("row", row);
+    this.hackForceReprocessNestedTemplate();
   }
 
   /**

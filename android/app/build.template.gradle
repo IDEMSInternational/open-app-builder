@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "${APP_ID}"
-    compileSdk rootProject.ext.compileSdkVersion
+    namespace = "${APP_ID}"
+    compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "${APP_ID}"
         minSdkVersion rootProject.ext.minSdkVersion

@@ -39,6 +39,22 @@ describe("TemplateActionRegistry", () => {
     expect(fakeHandler).toHaveBeenCalledOnceWith(action);
   });
 
+  it("treats actions as queued unless registered as immediate", () => {
+    const action = { action_id: "test_action_1" as any, args: [], trigger: "click" as any };
+    expect(registry.isImmediate(action)).toBeFalse();
+    registry.registerImmediate("test_action_1" as any);
+    expect(registry.isImmediate(action)).toBeTrue();
+    // other triggers are unaffected
+    expect(registry.isImmediate({ ...action, action_id: "test_action_2" as any })).toBeFalse();
+  });
+
+  it("matches immediate actions on a specific child action", () => {
+    registry.registerImmediate("test_action_1" as any, (action) => action.args?.[0] === "cancel");
+    const action = { action_id: "test_action_1" as any, trigger: "click" as any };
+    expect(registry.isImmediate({ ...action, args: ["cancel"] })).toBeTrue();
+    expect(registry.isImmediate({ ...action, args: ["download"] })).toBeFalse();
+  });
+
   // QA
   it("throws on duplicate registration", () => {
     expect(() =>

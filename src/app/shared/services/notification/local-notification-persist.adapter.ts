@@ -5,7 +5,7 @@ import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
 import { generateTimestamp } from "../../utils";
 import { generateDBMeta } from "../db/db.service";
-import type { LocalNotificationService } from "./local-notification.service";
+import type { ILocalNotification, LocalNotificationService } from "./local-notification.service";
 
 export interface ILocalNotificationInteraction {
   sent_recorded_timestamp: string;
@@ -53,7 +53,7 @@ export class LocalNotificationPersistAdapter {
         const update: Partial<ILocalNotificationInteraction> = {
           action_id: actionId,
           action_recorded_timestamp: generateTimestamp(),
-          notification_meta: notification.extra,
+          notification_meta: this.buildNotificationMeta(notification),
         };
         if (inputValue) {
           update.action_meta = { inputValue };
@@ -70,13 +70,29 @@ export class LocalNotificationPersistAdapter {
         const timestamp = generateTimestamp();
         for (const notification of notifications) {
           await this.recordNotificationInteraction(notification.id, {
-            notification_meta: notification.extra,
+            notification_meta: this.buildNotificationMeta(notification),
             schedule_timestamp: generateTimestamp(notification.schedule.at),
             sent_recorded_timestamp: timestamp,
           });
         }
         this.loadInteractedNotifications();
       });
+  }
+
+  /**
+   * Persist notification `extra` (e.g. campaign_id, action_list) alongside display fields for analytics.
+   * Campaign notifications include the authored `row_id` in `extra`, otherwise fall back to the
+   * `_row_id` stored locally when scheduling (not available on notifications from action callbacks)
+   */
+  private buildNotificationMeta(
+    notification: Partial<Pick<ILocalNotification, "title" | "body" | "extra" | "_row_id">>
+  ) {
+    return {
+      ...notification.extra,
+      row_id: notification.extra?.row_id ?? notification._row_id,
+      title: notification.title,
+      text: notification.body,
+    };
   }
 
   private async recordNotificationInteraction(
@@ -91,6 +107,13 @@ export class LocalNotificationPersistAdapter {
         notification_id,
       } as any;
     }
-    await this.db.put({ ...entry, ...update, _sync_status: "pending" });
+    await this.db.put({
+      ...entry,
+      ...update,
+      // Only record the first time a notification is seen as sent. Session notifications are re-emitted
+      // on every notification load, which would otherwise keep moving the timestamp forward (#3581)
+      sent_recorded_timestamp: entry.sent_recorded_timestamp ?? update.sent_recorded_timestamp,
+      _sync_status: "pending",
+    });
   }
 }

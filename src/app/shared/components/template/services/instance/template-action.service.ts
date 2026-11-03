@@ -124,8 +124,25 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
     await this.ensurePublicServicesReady();
     // process any global action interceptors
     const unhandledActions = await this.handleActionsInterceptor(actions);
-    unhandledActions.forEach((action) => this.actionsQueue.push({ ...action }));
-    const res = await this.processActionQueue();
+    const immediateActions: FlowTypes.TemplateRowAction[] = [];
+    const queuedActions: FlowTypes.TemplateRowAction[] = [];
+    for (const action of unhandledActions) {
+      const target = this.templateActionRegistry.isImmediate(action)
+        ? immediateActions
+        : queuedActions;
+      target.push({ ...action });
+    }
+    // Dispatched ahead of the queue rather than appended to it (see `registerImmediate`)
+    for (const action of immediateActions) {
+      await this.processImmediateAction(action);
+    }
+    queuedActions.forEach((action) => this.actionsQueue.push(action));
+    // Skip the queue when this call contributed nothing to it - waiting on a queue held open by
+    // another call would re-couple an interrupt to the work it just interrupted
+    let res: any;
+    if (queuedActions.length > 0 || immediateActions.length === 0) {
+      res = await this.processActionQueue();
+    }
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.container?.parent) {
       await this.templateNavService.handleNavActionsFromChild(actions, this.container);
@@ -206,6 +223,17 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
         await this.container.templateRowService.processRowUpdates();
       }
     }
+  }
+
+  /**
+   * Run an action outside the queue. Interceptors are applied exactly as `processActionQueue` does
+   * it - as a gate on whether the action runs at all, passing on the original action rather than
+   * the interceptor's return value - so that immediate and queued actions behave the same way
+   */
+  private async processImmediateAction(action: FlowTypes.TemplateRowAction) {
+    const postInterceptAction = await this.processActionInterceptors(action);
+    if (!postInterceptAction) return;
+    return this.processAction(action);
   }
 
   private async processActionInterceptors(action: FlowTypes.TemplateRowAction) {

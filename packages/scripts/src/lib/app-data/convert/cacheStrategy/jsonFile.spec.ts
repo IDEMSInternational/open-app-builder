@@ -1,6 +1,7 @@
 import { emptyDirSync, existsSync, readdirSync, readJsonSync, rmdirSync, statSync } from "fs-extra";
 import path from "path";
 import { JsonFileCache } from "./jsonFile";
+import { generateFolderFlatMap } from "../utils";
 
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache", "spec");
@@ -93,6 +94,29 @@ describe("Json File Cache", () => {
     // Remove entry
     cache.remove(entryName);
     expect(existsSync(filePath)).toEqual(false);
+    expect(cache.get(entryName)).toBeUndefined();
+  });
+
+  it("Saves added entry to contents file", () => {
+    const { entryName } = cache.add({ saved: true });
+    const savedContents = readJsonSync(cache.contentsPath);
+    // Entry should match one generated from the cache folder
+    const folderContents = generateFolderFlatMap(cache.folderPath);
+    expect(savedContents[entryName]).toEqual(folderContents[entryName]);
+  });
+
+  it("Retains entries when reloaded", () => {
+    const { entryName } = cache.add({ reloaded: true });
+    cache.configure("test", 1);
+    expect(cache.get(entryName)).toEqual({ reloaded: true });
+  });
+
+  it("Does not retain removed entries when reloaded", () => {
+    // e.g. a generator is removed to reprocess, but fails so is not added back
+    const { entryName } = cache.add({ removed: true });
+    cache.remove(entryName);
+    cache.configure("test", 1);
+    cache.add({ other: true });
     expect(cache.get(entryName)).toBeUndefined();
   });
 

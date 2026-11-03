@@ -5,6 +5,7 @@ import {
   ILocalNotification,
   LocalNotificationService,
 } from "src/app/shared/services/notification/local-notification.service";
+import { NotificationService } from "../../../notification.service";
 
 @Component({
   selector: "notification-debug-row",
@@ -40,7 +41,7 @@ import {
               class="no-padding"
               style="margin: 0"
               [disabled]="
-                !localNotificationService.permissionGranted || previewCountdown ? true : false
+                notificationService.status() !== 'granted' || previewCountdown ? true : false
               "
             >
               @if (previewCountdown) {
@@ -68,7 +69,10 @@ export class NotificationDebugRowComponent {
   @Input() notification: ILocalNotification;
   @Output() showNotificationScheduleClicked = new EventEmitter<ILocalNotification>();
 
-  constructor(public localNotificationService: LocalNotificationService) {}
+  constructor(
+    public localNotificationService: LocalNotificationService,
+    public notificationService: NotificationService
+  ) {}
 
   /**
    * Reschedule a notification to be triggered after 2s
