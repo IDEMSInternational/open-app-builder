@@ -3,6 +3,7 @@ import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
 import { extractDynamicFields, IAppConfig } from "data-models";
 import { Subscription } from "rxjs";
+import { filter, skip } from "rxjs/operators";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
@@ -12,9 +13,12 @@ import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { AppStartupService } from "src/app/shared/services/app-startup/app-startup.service";
+import { CapacitorEventService } from "src/app/shared/services/capacitor-event/capacitor-event.service";
 import {
   ILocalNotification,
   LocalNotificationService,
+  TEST_CAMPAIGN_ID,
 } from "src/app/shared/services/notification/local-notification.service";
 import {
   arrayToHashmap,
@@ -51,7 +55,6 @@ export class CampaignService extends AsyncServiceBase {
 
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
-  private _notificationActions$: Subscription;
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
@@ -59,10 +62,13 @@ export class CampaignService extends AsyncServiceBase {
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
     private deploymentService: DeploymentService,
+    private capacitorEventService: CapacitorEventService,
+    private appStartupService: AppStartupService,
     private injector: Injector
   ) {
     super("Campaigns");
     this.registerInitFunction(this.initialise);
+    this.subscribeToNotificationTaps();
   }
 
   /**
@@ -92,7 +98,6 @@ export class CampaignService extends AsyncServiceBase {
     ]);
     this.ensureSyncServicesReady([this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    await this.hackDeactivateAllNotifications();
 
     const schedules = await this.loadCampaignSchedules();
 
@@ -104,7 +109,12 @@ export class CampaignService extends AsyncServiceBase {
     // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
     // console.log("[All Campaigns]", this.allCampaigns);
 
-    await this.scheduleCampaignNotifications();
+    // Only schedule (and clear old notifications) once notifications can reach the device.
+    // Subscribe before checking, so a change in between isn't missed
+    this.subscribeToSchedulingAvailability();
+    if (this.localNotificationService.canSchedule$.value) {
+      await this.replaceAllNotifications();
+    }
 
     this._subscribeToNotificationUpdates();
   }
@@ -113,15 +123,13 @@ export class CampaignService extends AsyncServiceBase {
   }
 
   /**
-   * remove any old subscriptions, subscribe to updates from sent and interacted notifications,
+   * remove any old subscriptions, subscribe to updates from sent notifications,
    * and handle actions lists accordingly
+   * (tapped notifications are handled separately, see `subscribeToNotificationTaps`)
    */
   private _subscribeToNotificationUpdates() {
     if (this._notificationUpdates$) {
       this._notificationUpdates$.unsubscribe();
-    }
-    if (this._notificationActions$) {
-      this._notificationActions$.unsubscribe();
     }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
       async (notifications) => {
@@ -130,13 +138,26 @@ export class CampaignService extends AsyncServiceBase {
         }
       }
     );
-    this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
-      async (action) => {
-        if (action) {
-          await this.handledTriggeredNotifications([action.notification] as any, "click");
-        }
-      }
-    );
+  }
+
+  /**
+   * Run the `click` actions of a tapped campaign notification.
+   * Subscribed once when the service is created, rather than on each (re)initialisation, which would
+   * replay the last tap and run its actions again. The actions are read from the notification itself,
+   * and run once app startup has finished rather than part-way through it.
+   */
+  private subscribeToNotificationTaps() {
+    this.capacitorEventService.localNotificationActionPerformed.subscribe(async (action) => {
+      const extra = action?.notification?.extra as ICampaignNotificationExtra | undefined;
+      if (!extra?.campaign_id) return;
+      const clickActions = (extra.action_list || []).filter((a) => a.trigger === "click");
+      if (clickActions.length === 0) return;
+      await this.appStartupService.whenComplete();
+      await this.triggerRowActions(clickActions);
+      // reschedule, as actions may change fields that campaign conditions depend on
+      await this.ready();
+      await this.scheduleCampaignNotifications();
+    });
   }
 
   // TODO: Should this also be unsubscribing from existing subscriptions?
@@ -208,6 +229,8 @@ export class CampaignService extends AsyncServiceBase {
    * any notifications requiring scheduling
    */
   public async scheduleCampaignNotifications() {
+    // Until notifications can reach the device, keep existing ones: they couldn't be replaced
+    if (!this.localNotificationService.canSchedule$.value) return;
     const scheduled: IScheduledNotificationsHashmap = {};
     for (const campaign of Object.values(this.scheduledCampaigns)) {
       scheduled[campaign.id] = {};
@@ -225,10 +248,39 @@ export class CampaignService extends AsyncServiceBase {
             earliestStart = addSeconds(schedule.schedule.at, 60);
           }
         }
+      } else {
+        // a due notification may not be shown yet (Android can be up to an hour late): cancel it
+        await this.localNotificationService.cancelLateNotifications(
+          (n) => n.extra?.campaign_id === campaign.id
+        );
       }
     }
     this.scheduledNotifications = scheduled;
     console.log("[Scheduled Notifications]", this.scheduledNotifications);
+  }
+
+  private _canSchedule$?: Subscription;
+
+  /** Schedule again whenever notifications can reach the device, e.g. permission granted later */
+  private subscribeToSchedulingAvailability() {
+    this._canSchedule$?.unsubscribe();
+    this._canSchedule$ = this.localNotificationService.canSchedule$
+      .pipe(
+        // current value is handled on load
+        skip(1),
+        filter((canSchedule) => canSchedule)
+      )
+      .subscribe(() => {
+        this.replaceAllNotifications().catch((error) =>
+          console.error("[Campaigns] Could not schedule notifications", error)
+        );
+      });
+  }
+
+  /** Clear old notifications (incl. from removed campaigns) and schedule campaigns again */
+  private async replaceAllNotifications() {
+    await this.hackDeactivateAllNotifications();
+    await this.scheduleCampaignNotifications();
   }
 
   /**
@@ -335,8 +387,11 @@ export class CampaignService extends AsyncServiceBase {
    * as part of new version load (TBC)
    */
   private async hackDeactivateAllNotifications() {
-    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
-    await this.localNotificationService.removeNotifications(pendingNotifications.map((n) => n.id));
+    // Keep test notifications from debug pages: they belong to no campaign, so would not be booked again
+    const toRemove = this.localNotificationService.pendingNotifications$.value.filter(
+      (n) => n.extra?.campaign_id !== TEST_CAMPAIGN_ID
+    );
+    await this.localNotificationService.removeNotifications(toRemove.map((n) => n.id));
   }
 
   /**
