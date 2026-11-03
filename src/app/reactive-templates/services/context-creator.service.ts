@@ -28,7 +28,8 @@ export class ContextCreatorService {
   public createContext(
     dependencies: VariableReference[],
     namespace: string,
-    includeDescendants: boolean = false
+    includeDescendants: boolean = false,
+    loopNamespace: string = namespace
   ): {
     local: Record<string, any>;
     global: Record<string, any>;
@@ -39,12 +40,12 @@ export class ContextCreatorService {
       local: {} as Record<string, any>,
       global: {} as Record<string, any>,
       system: {} as Record<string, any>,
-      loop: this.createLoopContext(namespace),
+      loop: this.createLoopContext(loopNamespace),
     };
 
     dependencies.forEach((dependency) => {
       const value = includeDescendants
-        ? this.variableStore.getWithDescendants(dependency)
+        ? this.variableStore.getWithDescendants(dependency, namespace)
         : this.variableStore.get(dependency);
 
       this.assignValue(context[dependency.type], dependency, value);

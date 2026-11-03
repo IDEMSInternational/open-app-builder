@@ -302,7 +302,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       this.namespace(),
       this.params.valueType.value()
     )
-      ? this.variableStore.watchMultipleWithDescendants(dependencies)
+      ? this.variableStore.watchMultipleWithDescendants(dependencies, this.namespace())
       : this.variableStore.watchMultiple(dependencies);
 
     const sub = watcher.subscribe(async () => {

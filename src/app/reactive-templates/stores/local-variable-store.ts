@@ -91,8 +91,8 @@ export class LocalVariableStore implements IStore {
    * resolves root 'question_loop' here, whereas 'get' finds no exact 'question_loop' key.
    * If no candidate matches, falls back to 'ref.name' as given.
    */
-  public getWithDescendants(ref: VariableReference): any {
-    const resolvedName = this.resolveScopeWithDescendants(ref) ?? ref.name;
+  public getWithDescendants(ref: VariableReference, namespace?: string): any {
+    const resolvedName = this.resolveScopeWithDescendants(ref, namespace) ?? ref.name;
     const exactValue = this.getExact({ ...ref, name: resolvedName });
 
     return mergeDescendants(
@@ -106,8 +106,11 @@ export class LocalVariableStore implements IStore {
    * Same candidate order as 'resolveWithScopeFallback', but a candidate is accepted if it has
    * an exact value OR any descendant key, since 'getWithDescendants' can resolve from either.
    */
-  private resolveScopeWithDescendants(ref: VariableReference): string | undefined {
-    return getScopeFallbackCandidates(ref.name).find((candidate) =>
+  private resolveScopeWithDescendants(
+    ref: VariableReference,
+    namespace?: string
+  ): string | undefined {
+    return this.getScopeFallbackCandidates(ref.name, namespace).find((candidate) =>
       this.hasValueOrDescendants(candidate)
     );
   }
@@ -137,8 +140,8 @@ export class LocalVariableStore implements IStore {
    * properties 'mergeDescendants' attaches onto an array clone - deduping would silently drop
    * real descendant changes (e.g. a sibling loop's row value updating).
    */
-  public watchWithDescendants(ref: VariableReference): Observable<any> {
-    const candidates = getScopeFallbackCandidates(ref.name);
+  public watchWithDescendants(ref: VariableReference, namespace?: string): Observable<any> {
+    const candidates = this.getScopeFallbackCandidates(ref.name, namespace);
 
     return this.stateChanged$.pipe(
       filter(
@@ -147,8 +150,24 @@ export class LocalVariableStore implements IStore {
           candidates.some((c) => changedName === c || changedName.startsWith(`${c}.`))
       ),
       startWith(undefined),
-      map(() => this.getWithDescendants(ref))
+      map(() => this.getWithDescendants(ref, namespace))
     );
+  }
+
+  private getScopeFallbackCandidates(name: string, namespace?: string): string[] {
+    const candidates: string[] = [];
+
+    if (namespace && name.startsWith(`${namespace}.`)) {
+      const relativeName = name.slice(namespace.length + 1);
+      const namespaceSegments = namespace.split(".");
+
+      for (let scopeCount = namespaceSegments.length; scopeCount >= 0; scopeCount -= 1) {
+        candidates.push([...namespaceSegments.slice(0, scopeCount), relativeName].join("."));
+      }
+    }
+
+    candidates.push(...getScopeFallbackCandidates(name));
+    return [...new Set(candidates)];
   }
 
   /**
