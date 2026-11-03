@@ -4,6 +4,7 @@ import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { firstValueFrom } from "rxjs";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
+import json5 from "json5";
 
 const parameters = () =>
   defineParameters({
@@ -43,6 +44,10 @@ export class QueryComponent
   protected async postEvaluation(value: any) {
     if (value === null || value === undefined) {
       return value;
+    }
+
+    if (this.params.valueType.value() === "string") {
+      value = json5.parse(value);
     }
 
     return await this.executeQuery(value);
