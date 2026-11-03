@@ -8,8 +8,6 @@ import {
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
 import type { Table } from "dexie";
-import { interval } from "rxjs";
-import { Subscription } from "rxjs";
 import { BehaviorSubject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { IAppConfig } from "../../model";
@@ -48,6 +46,15 @@ export interface ILocalNotification extends LocalNotificationSchema {
   _callbacks_processed_time?: number;
 }
 
+/**
+ * Whether a notification's scheduled time has passed. One without a time counts as due, as it
+ * cannot be booked
+ */
+function isDue(notification: Pick<LocalNotificationSchema, "schedule">, now = Date.now()) {
+  const at = notification.schedule?.at;
+  return !at || new Date(at).getTime() <= now;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -74,7 +81,10 @@ export class LocalNotificationService extends AsyncServiceBase {
    * Includes any notifications previously scheduled but no longer present (e.g dismissed while app closed)
    **/
   public sessionNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
-  /** Observable list of all scheduled notifications */
+  /**
+   * Observable list of all scheduled notifications, as of the last load. Can include notifications
+   * that became due since then: use `getPendingNotifications` to exclude them
+   */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
 
@@ -86,9 +96,6 @@ export class LocalNotificationService extends AsyncServiceBase {
 
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
-
-  /** Resync notifications periodically using timer */
-  private syncTimer$: Subscription;
 
   /** Use a subject to trigger notification reload to allow debounce */
   private notificationsLoader$ = new BehaviorSubject(true);
@@ -192,10 +199,17 @@ export class LocalNotificationService extends AsyncServiceBase {
 
     // complete intial load
     // defer and debounce any further calls to load notifications to avoid duplicate processing
-    this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(async () => {
-      await this.handleNotificationLoad();
-      await this.setApiNotifications();
-    });
+    this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(() => this.syncNotifications());
+  }
+
+  /**
+   * Process notifications shown since the last load, e.g. while the app is running, so campaigns
+   * run their `sent` actions. Then sync the device with the db
+   */
+  private async syncNotifications() {
+    await this.handleUnprocessedNotifications();
+    await this.handleNotificationLoad();
+    await this.setApiNotifications();
   }
 
   private setCanSchedule(canSchedule: boolean) {
@@ -215,9 +229,16 @@ export class LocalNotificationService extends AsyncServiceBase {
     const toCancel = notifications.filter((n) => !isActionNotification(n) && !lateIds.has(n.id));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
     if (isNonEmptyArray(toCancel)) {
+      // Due ones still on the device after the late window were never shown (e.g. alarms cleared by a
+      // force stop). Remove their records first, so they are not processed as shown once cancelled
+      const dueIds = new Set(
+        (await this.getDBNotifications()).filter((n) => isDue(n)).map((n) => n.id)
+      );
+      const missedIds = toCancel.map((n) => n.id).filter((id) => dueIds.has(id));
+      if (missedIds.length > 0) await this.removeDBNotifications(missedIds);
       await this.api.cancel({ notifications: toCancel });
     }
-    const toSchedule = this.pendingNotifications$.value;
+    const toSchedule = this.getPendingNotifications();
     if (isNonEmptyArray(toSchedule)) {
       await this.api.schedule({ notifications: toSchedule });
     }
@@ -237,12 +258,16 @@ export class LocalNotificationService extends AsyncServiceBase {
     return new Set(late.map((n) => n.id));
   }
 
-  /** Cancel late notifications matching `filterFn`, e.g. by `extra.campaign_id`. Db records kept */
+  /**
+   * Cancel late notifications matching `filterFn`, e.g. by `extra.campaign_id`. Their records are
+   * removed first, so they are never processed as shown
+   */
   public async cancelLateNotifications(filterFn: (notification: { extra?: any }) => boolean) {
     const lateIds = await this.getLateNotificationIds();
     const { notifications } = await this.api.getPending();
     const toCancel = notifications.filter((n) => lateIds.has(n.id) && filterFn(n));
     if (isNonEmptyArray(toCancel)) {
+      await this.removeNotifications(toCancel.map((n) => n.id));
       await this.api.cancel({ notifications: toCancel });
     }
   }
@@ -297,16 +322,13 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Handle notification default and resync initialisation depending on app config changes
+   * Handle notification defaults depending on app config changes
    * Includes initial value subscription to set initial values as first update
    */
   private subscribeToAppConfigChanges() {
     this.appConfigService.changesWithInitialValue$.subscribe((appConfig) => {
       if (appConfig.NOTIFICATION_DEFAULTS) {
         this.setNotificationDefaults(appConfig.NOTIFICATION_DEFAULTS as any);
-      }
-      if (appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS) {
-        this.setNotificationSyncFrequency(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
       }
     });
   }
@@ -324,11 +346,14 @@ export class LocalNotificationService extends AsyncServiceBase {
       autoCancel: false,
     };
   }
-  private setNotificationSyncFrequency(frequency: number) {
-    if (this.syncTimer$ && !this.syncTimer$.closed) {
-      this.syncTimer$.unsubscribe();
-    }
-    this.syncTimer$ = interval(frequency).subscribe(() => this.loadNotifications());
+
+  /**
+   * Scheduled notifications not yet due. Ones that became due since the last load are left out, as
+   * they may still be waiting to show
+   */
+  public getPendingNotifications() {
+    const now = Date.now();
+    return this.pendingNotifications$.value.filter((n) => !isDue(n, now));
   }
 
   /**
@@ -338,15 +363,14 @@ export class LocalNotificationService extends AsyncServiceBase {
    */
   private async handleNotificationLoad() {
     const dbNotifications = await this.getDBNotifications();
-    const currentTime = new Date().getTime();
-    this.notificationsByRowId = arrayToHashmap(dbNotifications, "_row_id");
+    const now = Date.now();
+    const pendingNotifications = dbNotifications.filter((n) => !isDue(n, now));
+    // Only bookings still to come are replaced when their row is scheduled again
+    this.notificationsByRowId = arrayToHashmap(pendingNotifications, "_row_id");
     const sessionNotifications = dbNotifications.filter(
       (n) => n._callbacks_processed_time >= this.sessionStartTime
     );
     this.sessionNotifications$.next(this._sortBySchedule(sessionNotifications));
-    const pendingNotifications = dbNotifications.filter(
-      (n) => n.schedule.at.getTime() > currentTime
-    );
     this.pendingNotifications$.next(this._sortBySchedule(pendingNotifications));
   }
 
@@ -355,24 +379,28 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * HACK - in the past duplicate notifications where only tracked by randomly generated ID numbers,
-   * which could lead to multiple notifications scheduled for a single authored notification row.
-   * Ensure any such duplicates are purged from DB
+   * Remove records no longer needed. For each notification row, keep:
+   * - one booking still to come (older versions could book a row more than once)
+   * - the most recently processed record
+   * - any that are due but not processed yet, as they may not have been shown yet
    */
   private async cleanDBNotifications() {
+    const now = Date.now();
     const dbNotifications = await this.getDBNotifications();
-    const duplicatesByRowId = arrayToHashmapArray<any>(dbNotifications, "_row_id");
+    const notificationsByRowId = arrayToHashmapArray<ILocalNotification>(
+      dbNotifications,
+      "_row_id"
+    );
     const removeIds: number[] = [];
-    // in case multiple entries scheduled for a given row notification id
-    // retain only the most recently interacted with (if exists), or can just pick any one
-    Object.values(duplicatesByRowId).forEach((duplicates) => {
-      if (duplicates.length > 0) {
-        const sorted = duplicates.sort(
-          (a, b) => b._callbacks_processed_time - a._callbacks_processed_time
-        );
-        sorted.slice(1).forEach((n) => removeIds.push(n.id));
+    for (const notifications of Object.values(notificationsByRowId)) {
+      const upcoming = notifications.filter((n) => !isDue(n, now));
+      const processed = notifications
+        .filter((n) => n._callbacks_processed_time)
+        .sort((a, b) => b._callbacks_processed_time - a._callbacks_processed_time);
+      for (const n of [...upcoming.slice(1), ...processed.slice(1)]) {
+        removeIds.push(n.id);
       }
-    });
+    }
     if (removeIds.length > 0) {
       console.log("[Notifications] remove duplicates", removeIds);
       await this.db.bulkDelete(removeIds);
@@ -380,19 +408,21 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Mark any notifications that have not been processed but should have been sent with
-   * the current processing timestamp to include in session notifications list
+   * Mark notifications shown since the last load as processed, with the current time, to include
+   * them in the session notifications list (so campaigns run their `sent` actions).
+   * A notification counts as shown once it is due and no longer pending on the device. Due ones still
+   * pending are left until they are shown, as Android can deliver up to an hour late
    */
   private async handleUnprocessedNotifications() {
+    const now = Date.now();
+    const { notifications } = await this.api.getPending();
+    const pendingIds = new Set(notifications.map((n) => n.id));
     const dbNotifications = await this.getDBNotifications();
-    const unprocessedNotifications = dbNotifications
-      .filter((n) => !n._callbacks_processed_time)
-      .filter((n) => n.schedule.at.getTime() < new Date().getTime());
-    const processTime = new Date().getTime();
-    for (const notification of unprocessedNotifications) {
-      await this.updateDBNotification(notification.id, {
-        _callbacks_processed_time: processTime,
-      });
+    const shownNotifications = dbNotifications.filter(
+      (n) => !n._callbacks_processed_time && isDue(n, now) && !pendingIds.has(n.id)
+    );
+    for (const notification of shownNotifications) {
+      await this.updateDBNotification(notification.id, { _callbacks_processed_time: now });
     }
   }
 
@@ -429,8 +459,10 @@ export class LocalNotificationService extends AsyncServiceBase {
     // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
     notification.largeBody = notification.largeBody || notification.body;
 
+    // Replace the row's booking only if still to come: a due one may not have been shown or
+    // processed yet
     const existingNotification = this.notificationsByRowId[id];
-    if (existingNotification) {
+    if (existingNotification && !isDue(existingNotification)) {
       await this.removeNotifications([existingNotification.id]);
     }
     // When writing to db and scheduling use integer ID as required by capacitor
@@ -545,11 +577,16 @@ export class LocalNotificationService extends AsyncServiceBase {
     // TODO emit event for action to other listeners?
     // good to have default as can only ever have 1 listener for each type
 
-    // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
+    // Fires on Android while the app is running (including in the background), on web, and on iOS
+    // only while the app is in the foreground. Otherwise notifications are processed on resume or launch
     this.capacitorEventService.localNotificationReceived.subscribe(async (notification) => {
       console.log("[LOCAL NOTIFICATION] RECEIVED", notification);
       this.loadNotifications();
     });
+
+    // The app can return to the foreground without restarting, after notifications were shown in
+    // the background, so load again to process them
+    this.capacitorEventService.appResume.subscribe(() => this.loadNotifications());
   }
 }
 

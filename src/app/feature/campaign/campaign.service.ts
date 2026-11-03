@@ -370,7 +370,7 @@ export class CampaignService extends AsyncServiceBase {
 
   /** Deactivate all notifications for a given campaign */
   private async deactiveCampaignNotifications(campaign_id: string) {
-    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
+    const pendingNotifications = this.localNotificationService.getPendingNotifications();
     const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
@@ -386,7 +386,7 @@ export class CampaignService extends AsyncServiceBase {
    * as part of new version load (TBC)
    */
   private async hackDeactivateAllNotifications() {
-    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
+    const pendingNotifications = this.localNotificationService.getPendingNotifications();
     await this.localNotificationService.removeNotifications(pendingNotifications.map((n) => n.id));
   }
 

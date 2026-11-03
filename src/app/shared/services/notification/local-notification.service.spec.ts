@@ -16,6 +16,8 @@ import {
 } from "./local-notification.service";
 import { AppConfigService } from "../app-config/app-config.service";
 import { MockAppConfigService } from "../app-config/app-config.service.mock.spec";
+import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
+import { MockCapacitorEventService } from "../capacitor-event/capacitor-event.mock.spec";
 import { NotificationService } from "src/app/feature/notification/notification.service";
 
 /** Mock of the capacitor LocalNotifications api methods used when syncing notifications to the device */
@@ -57,16 +59,20 @@ const actionNotification = {
 describe("LocalNotificationService", () => {
   let service: LocalNotificationService;
   let api: MockLocalNotificationsApi;
+  /** Capacitor events, e.g. to emit an app resume */
+  let capacitorEvents: MockCapacitorEventService;
   let getDBNotificationsSpy: jasmine.Spy;
   /** Notification permission status, as tracked by the NotificationService */
   let permissionStatus: ReturnType<typeof signal<PermissionState | undefined>>;
 
   beforeEach(() => {
     permissionStatus = signal<PermissionState | undefined>(undefined);
+    capacitorEvents = new MockCapacitorEventService();
     TestBed.configureTestingModule({
       providers: [
         { provide: AppConfigService, useValue: new MockAppConfigService() },
         { provide: NotificationService, useValue: { status: permissionStatus.asReadonly() } },
+        { provide: CapacitorEventService, useValue: capacitorEvents },
       ],
     });
     service = TestBed.inject(LocalNotificationService);
@@ -145,6 +151,8 @@ describe("LocalNotificationService", () => {
       let loaderSubscribeSpy: jasmine.Spy;
 
       beforeEach(() => {
+        // keep the debounced sync set up here from firing after the spec ends
+        jasmine.clock().install();
         service.permissionGranted = true;
         // the notification loader is piped once per subscription
         loaderSubscribeSpy = spyOn(
@@ -152,6 +160,7 @@ describe("LocalNotificationService", () => {
           "pipe"
         ).and.callThrough();
       });
+      afterEach(() => jasmine.clock().uninstall());
 
       it("should load existing notifications before allowing scheduling", async () => {
         // so that the first schedule after permission is granted replaces them
@@ -218,6 +227,122 @@ describe("LocalNotificationService", () => {
         expect(service.canSchedule$.value).toBeTrue();
         expect(loaderSubscribeSpy).toHaveBeenCalledTimes(1);
       });
+
+      it("should load notifications again when the app returns to the foreground", async () => {
+        // so that notifications delivered while the app was in the background are processed
+        spyOn(service as any, "handleUnprocessedNotifications").and.resolveTo();
+        const loadSpy = spyOn(service as any, "loadNotifications");
+        await service["startNotificationSync"]();
+        loadSpy.calls.reset();
+
+        capacitorEvents.appResume.next();
+
+        expect(loadSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
+  describe("syncNotifications", () => {
+    let dbNotifications: ILocalNotification[];
+    let getPendingSpy: jasmine.Spy;
+    let cancelSpy: jasmine.Spy;
+
+    /** A due notification and an upcoming one, both in the db */
+    const due = () =>
+      ({
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 60 * 1000) },
+      }) as ILocalNotification;
+    const upcoming = () =>
+      ({
+        ...campaignNotification,
+        id: 3,
+        extra: { campaign_id: "campaign_1", row_id: "row_3" },
+        schedule: { at: new Date(Date.now() + 60 * 1000) },
+      }) as ILocalNotification;
+
+    beforeEach(() => {
+      service.permissionGranted = true;
+      dbNotifications = [due(), upcoming()];
+      getDBNotificationsSpy.and.callFake(async () => dbNotifications);
+      spyOn(service as any, "updateDBNotification").and.callFake(
+        async (id: number, update: Partial<ILocalNotification>) => {
+          Object.assign(
+            dbNotifications.find((n) => n.id === id),
+            update
+          );
+        }
+      );
+      getPendingSpy = spyOn(api, "getPending");
+      cancelSpy = spyOn(api, "cancel").and.resolveTo();
+    });
+
+    it("should process notifications shown since the last load", async () => {
+      // e.g. shown while the app is running, so that campaigns run their `sent` actions
+      const [shown, stillToCome] = dbNotifications;
+      getPendingSpy.and.resolveTo({ notifications: [stillToCome] });
+
+      await service["syncNotifications"]();
+
+      expect(service.sessionNotifications$.value).toEqual([shown]);
+    });
+
+    it("should not process notifications that are due but still on the device", async () => {
+      // Android can deliver up to an hour late: `sent` actions wait until it is shown
+      const [late, stillToCome] = dbNotifications;
+      getPendingSpy.and.resolveTo({ notifications: [late, stillToCome] });
+
+      await service["syncNotifications"]();
+
+      expect(service.sessionNotifications$.value).toEqual([]);
+      expect(late._callbacks_processed_time).toBeUndefined();
+      // kept on the device, while the upcoming one is replaced
+      expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [stillToCome] });
+    });
+  });
+
+  describe("getPendingNotifications", () => {
+    it("should leave out notifications that became due since the last load", () => {
+      // they may be due but not yet shown, so campaigns should not remove them as pending
+      const becameDue = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 1000) },
+      } as ILocalNotification;
+      const upcoming = {
+        ...campaignNotification,
+        id: 3,
+        schedule: { at: new Date(Date.now() + 60000) },
+      } as ILocalNotification;
+      const withoutTime = { ...campaignNotification, id: 4, schedule: {} } as ILocalNotification;
+      service.pendingNotifications$.next([becameDue, upcoming, withoutTime]);
+
+      expect(service.getPendingNotifications()).toEqual([upcoming]);
+    });
+  });
+
+  describe("cleanDBNotifications", () => {
+    it("should keep one upcoming booking, the latest processed record and any not processed yet", async () => {
+      const row = (id: number, minutesFromNow: number, processedTime?: number) =>
+        ({
+          ...campaignNotification,
+          id,
+          _row_id: "row_1",
+          schedule: { at: new Date(Date.now() + minutesFromNow * 60 * 1000) },
+          _callbacks_processed_time: processedTime,
+        }) as ILocalNotification;
+      getDBNotificationsSpy.and.resolveTo([
+        row(1, 60),
+        row(2, 120), // duplicate booking, as made by older versions
+        row(3, -60 * 24, 100),
+        row(4, -60 * 48, 50), // older record
+        row(5, -1), // due, not processed: may not have been shown yet
+      ]);
+      const bulkDeleteSpy = jasmine.createSpy("bulkDelete").and.resolveTo();
+      service["db"] = { bulkDelete: bulkDeleteSpy } as any;
+
+      await service["cleanDBNotifications"]();
+
+      expect(bulkDeleteSpy).toHaveBeenCalledOnceWith([2, 4]);
     });
   });
 
@@ -294,10 +419,13 @@ describe("LocalNotificationService", () => {
       getDBNotificationsSpy.and.resolveTo([staleNotification]);
       spyOn(api, "getPending").and.resolveTo({ notifications: [staleNotification] });
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+      const removeDBSpy = spyOn(service as any, "removeDBNotifications").and.resolveTo();
 
       await service["setApiNotifications"]();
 
       expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [staleNotification] });
+      // never shown, so its record goes too
+      expect(removeDBSpy).toHaveBeenCalledOnceWith([staleNotification.id]);
     });
 
     describe("across syncs", () => {
@@ -348,10 +476,15 @@ describe("LocalNotificationService", () => {
       getDBNotificationsSpy.and.resolveTo([late, lateOtherCampaign, future]);
       spyOn(api, "getPending").and.resolveTo({ notifications: [late, lateOtherCampaign, future] });
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
+      const removeSpy = spyOn(service, "removeNotifications").and.resolveTo();
 
       await service.cancelLateNotifications((n) => n.extra?.campaign_id === "campaign_1");
 
       expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [late] });
+      // so it is not processed as shown once it is off the device
+      expect(removeSpy).toHaveBeenCalledOnceWith([late.id]);
+      // records first, so a sync in between can't process it
+      expect(removeSpy).toHaveBeenCalledBefore(cancelSpy);
     });
   });
 
@@ -360,6 +493,38 @@ describe("LocalNotificationService", () => {
       service.permissionGranted = true;
       service.localNotificationDefaults = { id: null, title: "", body: "", extra: {} };
       spyOn(service as any, "addDBNotification").and.resolveTo();
+    });
+
+    describe("when the same row was booked before", () => {
+      let removeSpy: jasmine.Spy;
+      const booking = (minutesFromNow: number) =>
+        ({
+          ...campaignNotification,
+          schedule: { at: new Date(Date.now() + minutesFromNow * 60 * 1000) },
+        }) as ILocalNotification;
+
+      beforeEach(() => {
+        removeSpy = spyOn(service, "removeNotifications").and.resolveTo();
+      });
+
+      it("should replace the earlier booking if it is still to come", async () => {
+        const earlier = { ...booking(60), id: 10 };
+        service["notificationsByRowId"] = { row_1: earlier };
+
+        await service.scheduleNotification(booking(120), "row_1");
+
+        expect(removeSpy).toHaveBeenCalledOnceWith([10]);
+      });
+
+      it("should keep the earlier booking if it is already due", async () => {
+        // e.g. tapped, with `sent` actions not processed yet, or still to be shown (late)
+        const earlier = { ...booking(-1), id: 10 };
+        service["notificationsByRowId"] = { row_1: earlier };
+
+        await service.scheduleNotification(booking(60), "row_1");
+
+        expect(removeSpy).not.toHaveBeenCalled();
+      });
     });
 
     it("should allow delivery while the device is idle", async () => {
