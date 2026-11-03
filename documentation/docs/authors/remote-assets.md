@@ -126,6 +126,7 @@ Downloads are triggered from templates with the `asset_pack` action:
 | `await`                   | `ensure_downloaded`             | Default `false`, so downloads start in the background. When `true`, blocks the action queue instead  |
 | `check_for_updates`       | `ensure_downloaded`             | Default `true`. When `false`, skips the version check on packs already downloaded                    |
 | `debug_download_delay_ms` | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
+| `debug_free_space_mb`     | `download`, `ensure_downloaded` | Testing aid, see [Testing and debugging](#testing-and-debugging)                                     |
 
 
 `download` has no `await` parameter — it always blocks the action queue until the download finishes.
@@ -220,8 +221,9 @@ progress bar or status display:
 | Column                       | Description                                                                  |
 | ---------------------------- | ---------------------------------------------------------------------------- |
 | `id` / `name`                | Asset pack name                                                              |
-| `download_status`            | `in_progress`, `waiting_for_connection`, `completed`, `error` or `cancelled` |
+| `download_status`            | `in_progress`, `waiting_for_connection`, `completed`, `error`, `cancelled` or `insufficient_storage` |
 | `assets_total_count`         | Total number of files in the pack                                            |
+| `download_size_mb`           | Megabytes that must be free for the pack to download — its remaining size plus headroom. Set when the pack is refused, and cleared once it completes, errors or is cancelled. It stays set while a retry is running, so pair it with `download_status` rather than reading a non-zero value as "out of space" on its own |
 | `assets_downloaded_count`    | Number processed so far in the current attempt                               |
 | `download_progress_percent`  | Percentage complete for the current attempt, 0-100                           |
 | `download_started_at`        | ISO timestamp of when the current attempt started                            |
@@ -273,8 +275,66 @@ connectivity returns.
 app was closed mid-download.
 - Individual files are retried a few times before a pack is given up on, so `error` means a
 persistent problem rather than one failed request.
-- `error` and `cancelled` are not retried automatically, but either `download` or `ensure_downloaded`
-will retry them (`ensure_downloaded` only skips packs that are `completed`).
+- `insufficient_storage` means the device did not have room for the pack, so nothing was downloaded.
+See [Running out of space](#running-out-of-space).
+- `error`, `cancelled` and `insufficient_storage` are not retried automatically, but either `download`
+or `ensure_downloaded` will retry them (`ensure_downloaded` only skips packs that are `completed`).
+
+## Running out of space
+
+Packs can be large, and users on low-end devices are often short of space. Before a download starts,
+the app works out how much of the pack is still missing and checks the device has room for it. If it
+doesn't, nothing is downloaded and the pack is left at `download_status: insufficient_storage`, with
+`download_size_mb` set to the space that must be free for the download to go ahead.
+
+A little more is required than the pack's remaining size — 10% on top, or 50 MB, whichever is larger
+— to allow for the device being used while the download runs. `download_size_mb` **includes** that
+headroom, so a user who frees up the figure shown is guaranteed to get past the check. (Telling them
+the bare pack size instead would send them round a loop of freeing exactly that and being refused
+again.)
+
+Nothing new has to be called for this: the check runs inside every download, so `ensure_downloaded`,
+`download` and the download button all get it.
+
+Authors just need to show the warning, the same way they would for `waiting_for_connection` or
+`error`:
+
+
+| type             | name                     | value                                                                                 | action_list                                                            | condition                                              |
+| ---------------- | ------------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ |
+| begin_data_items |                          | @data._asset_packs                                                                    |                                                                        |                                                        |
+| text             | storage_warning_@item.id | @item.name needs @item.download_size_mb MB. Please free up space, then try again      |                                                                        | @item.download_status == "insufficient_storage"        |
+| button           | storage_retry_@item.id   | Retry download                                                                        | `click | asset_pack: ensure_downloaded | asset_pack: @item.id`         | @item.download_status == "insufficient_storage"        |
+| end_data_items   |                          |                                                                                       |                                                                        |                                                        |
+
+
+The button retries that row's own pack. The storage check runs again, so if the user hasn't freed up
+enough space the warning simply stays, and the download starts as soon as there is room.
+
+!!! warning "Don't copy this status into a field"
+
+    Don't write `download_status` or `download_size_mb` into a field with `set_field`, or into any
+    other data list. Fields are synced to the server, and Apple's rules for reading device disk space
+    forbid that value — or anything derived from it, which includes this status — leaving the device.
+    `_asset_packs` itself is never synced, so reading it in a template as above is fine.
+
+A few things worth knowing:
+
+- **It only applies on native devices.** On web, packs are served from cloud storage and nothing is
+saved to the device, so there is nothing to check.
+- **It is checked when a download is triggered, not ahead of time.** Following the recommended
+pattern of calling `ensure_downloaded` on template entry, the status arrives in the background, as it
+does for other failures.
+- **Offline comes first.** The check needs the pack's manifest, so a device with no connection parks
+at `waiting_for_connection` before any storage check. Nothing can be downloaded offline anyway.
+- **A pack that has downloaded before stays `completed`.** If an *update* won't fit, the version
+already on the device is still there and still works, so the pack is left at `completed` and the
+update is retried by the next check. This does mean "an update is waiting for space" can't be told
+apart from "up to date".
+- **It's an estimate.** Other apps can use up space while the pack downloads, so a download can still
+fail the old way.
+- **A pack whose files have no recorded size is never refused.** The check has nothing to go on, so
+it lets the download run rather than blocking on a figure it doesn't have.
 
 
 
@@ -536,6 +596,33 @@ outside local testing. Note that the delay applies to skipped files too, so a re
 look any faster with it enabled: check that status and counts reach completion rather than judging by
 speed.
 
+### Testing the out-of-space warning
+
+Filling a real device to test the [out-of-space](#running-out-of-space) path is slow and awkward, so
+`download` and `ensure_downloaded` accept `debug_free_space_mb`. It makes the app treat the device as
+having that much space free, instead of measuring it:
+
+
+```
+click | asset_pack: ensure_downloaded | asset_pack: my_asset_pack, debug_free_space_mb: 0
+```
+
+`0` simulates a completely full device, so any pack is refused. The pack lands at
+`insufficient_storage` with its real `download_size_mb`, so the warning shown is exactly the one a
+user would see.
+
+It also works the other way: a large value lets a download run on a device that genuinely is short of
+space, which is useful for getting a test device past the check.
+
+The storage check writes its figures to the console on every download attempt, so there is no
+separate action to call — trigger a normal download and read the log. On a device, where the console
+isn't visible, watch `download_status` and `download_size_mb` on the pack's row instead.
+
+!!! warning
+
+    Remove `debug_free_space_mb` outside local testing. Left in, it decides every download of that
+    pack, whatever the device actually has free.
+
 The debug deployment content (the `app-debug-content` repo and its Debug Sheets drive folder) contains
 reference templates — `debug_remote_assets` and `debug_asset_packs` — covering downloads, progress
 display, overrides and reset.
@@ -553,4 +640,7 @@ another pack does not still need that file. Changed content is overwritten in pl
 arises from removals and renames.
 - **No integrity repair.** There is no way to detect or fix an asset file that becomes corrupted after
 it has been downloaded.
+- **The storage check can't see an update's true cost.** Updates overwrite files in place, so an
+update's real growth on disk is smaller than the figure checked against. Packs are therefore refused
+slightly sooner than they strictly need to be.
 
