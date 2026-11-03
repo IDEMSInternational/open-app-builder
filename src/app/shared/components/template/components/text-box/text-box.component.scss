@@ -1,15 +1,34 @@
+// Theme variables used by this component, which a theme can set to restyle it.
+//
+// Defaults that follow the theme's colours (theme/themes/utils/generate-theme.scss):
+//   --input-background        input background
+//   --input-border            input border
+//   --input-box-shadow        input shadow
+//   --input-font-weight       weight of the entered text
+//   --text-box-text-color     colour of the entered text
+//
+// Fixed defaults (theme/variables.scss):
+//   --input-padding-inline    space inside the input, left and right
+//   --text-box-font-size      size of the entered text
+//   --text-box-height         input height
+//   --text-box-min-height     minimum input height
+//   --text-box-padding-block  space inside the input, top and bottom
+
 .wrapper {
   .text-box-input {
-    background: var(--ion-color-primary-contrast);
-    border: var(--border-standard);
+    background: var(--input-background);
+    border: var(--input-border);
     width: 100%;
     height: var(--text-box-height);
+    min-height: var(--text-box-min-height);
     font-size: var(--text-box-font-size);
-    color: var(--ion-color-primary);
-    font-weight: var(--font-weight-standard);
-    box-shadow: var(--ion-default-box-shadow);
+    color: var(--text-box-text-color);
+    font-weight: var(--input-font-weight);
+    box-shadow: var(--input-box-shadow);
     border-radius: var(--ion-border-radius-standard);
-    --padding-end: var(--small-padding);
-    --padding-start: var(--small-padding);
+    --padding-end: var(--input-padding-inline);
+    --padding-start: var(--input-padding-inline);
+    --padding-top: var(--text-box-padding-block);
+    --padding-bottom: var(--text-box-padding-block);
   }
 }
