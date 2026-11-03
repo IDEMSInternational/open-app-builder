@@ -17,6 +17,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import {
   ILocalNotification,
   LocalNotificationService,
+  TEST_CAMPAIGN_ID,
 } from "src/app/shared/services/notification/local-notification.service";
 import { CampaignService } from "./campaign.service";
 
@@ -552,6 +553,26 @@ describe("CampaignService", () => {
 
       expect(mockLocalNotificationService.removeNotifications).toHaveBeenCalledOnceWith([1]);
       expect(mockLocalNotificationService.removeNotifications).toHaveBeenCalledBefore(scheduleSpy);
+    });
+
+    it("should keep test notifications from debug pages when clearing old notifications", async () => {
+      // test notifications belong to no campaign, so would not be booked again
+      mockLocalNotificationService.pendingNotifications$.next([
+        { id: 1, title: "", body: "", schedule: { at: new Date() }, extra: { campaign_id: "c" } },
+        {
+          id: 2,
+          title: "",
+          body: "",
+          schedule: { at: new Date() },
+          extra: { campaign_id: TEST_CAMPAIGN_ID },
+        },
+      ]);
+      await service.reInitialise();
+
+      mockLocalNotificationService.canSchedule$.next(true);
+      await flush();
+
+      expect(mockLocalNotificationService.removeNotifications).toHaveBeenCalledOnceWith([1]);
     });
 
     it("should schedule again when permission is granted again", async () => {

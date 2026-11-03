@@ -20,6 +20,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import {
   ILocalNotification,
   LocalNotificationService,
+  TEST_CAMPAIGN_ID,
 } from "src/app/shared/services/notification/local-notification.service";
 import {
   arrayToHashmap,
@@ -500,8 +501,11 @@ export class CampaignService extends AsyncServiceBase {
    * as part of new version load (TBC)
    */
   private async hackDeactivateAllNotifications() {
-    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
-    await this.localNotificationService.removeNotifications(pendingNotifications.map((n) => n.id));
+    // Keep test notifications from debug pages: they belong to no campaign, so would not be booked again
+    const toRemove = this.localNotificationService.pendingNotifications$.value.filter(
+      (n) => n.extra?.campaign_id !== TEST_CAMPAIGN_ID
+    );
+    await this.localNotificationService.removeNotifications(toRemove.map((n) => n.id));
   }
 
   /**
