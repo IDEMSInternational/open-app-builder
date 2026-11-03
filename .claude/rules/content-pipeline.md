@@ -66,3 +66,13 @@ an older parser.
 `lifecycle_actions/launch_actions.json`, sorts by priority, evaluates `condition_list`, runs actions
 (typically fullscreen `pop_up`s; those with `waitForDismiss` run sequentially). Onboarding steps are gated
 like `@fields.user_mode && !@fields.onboarding_x_completed && @global.has_onboarding_x`.
+
+# Canto assets
+- **Canto custom fields are matched by name only, so changing a field's type is safe.** `additional` in the Canto API is keyed by field
+  name; text fields arrive as strings, multi-select as arrays, and both are handled
+  (`packages/scripts/src/tasks/providers/canto/remote-assets.ts` `getCantoCustomFieldValues`,
+  `matchesCustomFieldCondition`). Renaming or deleting a field named in `config.ts` (`remote_assets` conditions,
+  `Language`, `app_theme`) silently moves its assets back to core assets (the remote packs end up empty), with no error. To check
+  after Canto changes, profile `<deployment>/tasks/canto/outputs/original/<folder>/manifest.json` and compare
+  `app_data/assets` + `app_data/remote_assets` with git. (verified 2026-10-23: PA, fields redefined as
+  multi-select, old copies renamed "(Old)", sync output unchanged)
