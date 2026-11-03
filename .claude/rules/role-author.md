@@ -96,6 +96,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
   runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
   (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
+  - **A data list column name with a space or symbol blanks every page that loads the list.** Lists used by
+  a page are loaded into the on-device database (RxDB), which only accepts names matching
+  `^[a-zA-Z](…[a-zA-Z0-9])?$`; anything else throws `RxError (SC1) fieldnames do not match the regex` and
+  the page stays blank. Data pipes copy columns into generated lists, so one bad column can break many
+  modules. Use letters, digits and `_` in column headers. (found 2026-11-03: kids_teens_mx MX relax
+  `New version` → 42 `<module>_article_tasks` lists, content 1.1.39–1.1.44)
+
 
 - **A hyperlink set on a spreadsheet cell does not reach the app; only the cell's text does.** `xlsxToJson`
   (`xlsx.utils.ts`) ignores the cell's link field, and the text component decides links from the text via
