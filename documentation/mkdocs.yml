@@ -57,6 +57,7 @@ nav:
       - components/text.md
       - components/timer.md
       - components/video.md
+      - components/youtube.md
   - System Architecture:
       - system/diagrams.md        
       - system/technologies.md
