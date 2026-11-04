@@ -50,6 +50,7 @@ import { CapacitorEventService } from "./shared/services/capacitor-event/capacit
 import { AuthService } from "./shared/services/auth/auth.service";
 import { SystemVariableService } from "./shared/services/system-variable/system-variable.service";
 import { RemoteFunctionService } from "./feature/remote-function/remote-function.service";
+import { AppStartupService } from "./shared/services/app-startup/app-startup.service";
 
 @Component({
   selector: "app-root",
@@ -153,7 +154,8 @@ export class AppComponent {
     private capacitorEventService: CapacitorEventService,
     private authService: AuthService,
     private systemVariableService: SystemVariableService,
-    private remoteFunctionService: RemoteFunctionService
+    private remoteFunctionService: RemoteFunctionService,
+    private appStartupService: AppStartupService
   ) {
     this.initializeApp();
   }
@@ -188,6 +190,8 @@ export class AppComponent {
         }
         await SplashScreen.hide();
       }
+      // Allow deferred work to run, e.g. actions of a notification tap that opened the app
+      this.appStartupService.markComplete();
       // Show main template
       this.renderAppTemplates.set(true);
       this.scheduleReinitialisation();

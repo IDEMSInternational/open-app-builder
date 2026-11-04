@@ -72,6 +72,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Onboarding never starts locally | `localhost` forces `user_mode=false` | `AGENTS.md` |
 | Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
 | One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
+| Date condition still true after its field is reset to `false` | `new Date(false)` is 1 Jan 1970 | below: Variables |
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -149,6 +150,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later schedule
   replaces the earlier one when both pick the same row. Give each schedule its own copy of the row with a
   distinct id. (found 2026-10-20: ZA win_back/resume_lesson in 2-day and 1-week schedules)
+- **A date comparison with a field that was reset to `false` is always true.** Fields saved as `false` are
+  read back as boolean `false` (`template-field.service.ts` `getField`), and `new Date(false)` is
+  1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
+  Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
+  list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
 
 
 ### Loops and `data_items`

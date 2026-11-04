@@ -48,6 +48,13 @@ Once enabled, the app will use the new reactive template system for supported fl
 | set_variable | ex6  | key: ${local.key} \| value: static label;         | value_type: list   |                       | values may reference local/global/system variables using `${local.var}` or bare `local.var` syntax     |
 | dropdown     | ex7  | key: opt_a \| value: Option A;<br>key: opt_b \| value: Option B;<br>key: opt_c \| value: Option C; | value_type: list   |                       | inline static options list for a dropdown component                                                    |
 
+## Data list pages
+
+Data lists can be viewed at `/data_list/<flow_name>` (all lists, with a search box, at `/data_list`).
+The page shows the list's source sheet, with an **Open spreadsheet** link when it was synced from
+Google Drive, and a table of the rows in its json (as loaded from app_data, before any dynamic data
+changes; the first 500 rows).
+
 ## Further Reading
 
 - See the `reactive-components` directory for available base and UI components.
