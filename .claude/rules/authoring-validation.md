@@ -105,6 +105,14 @@ Symptom → entry index: `role-author.md`.
   with `condition: !@local.picked_id`, no child rows) and reference `@local.picked_id`.
   (found 2026-09-25: V3 gen_stack_module_start_at_id, the module restarted at its first page after the
   check-in hand-over)
+  - **A data_list override can't remove rows from a list with saved data.** Writes are stored under the original
+  list's name by row `id`, and `prepareInitialData` merges every saved row into the override's rows
+  (`dynamic-data.service.ts` `mergeWriteCacheData` → `deepMergeArrays`), including ids the override doesn't have,
+  which come back as partial rows without `row_index`. Keep every id in the override list and change only static
+  columns. Rich-text formatting in an `override_condition` cell (e.g. one bold word) adds `<span>`/`<b>` tags,
+  which make the condition fail and, so, apply the override to everyone. (found 2026-10-30: kids_teens_mx
+  po_refl demo, `proximal_outcome_7d_pages`)
+
 
 ## Pre-wired hooks for validation
 

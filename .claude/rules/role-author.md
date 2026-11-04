@@ -65,6 +65,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
 | Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
 | Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Workbooks |
+| Link from the sheet isn't clickable, or a link opens the wrong page | cell hyperlinks are dropped; address has no `https://` | below: Workbooks |
 | `@local.row.key` breaks when re-entering a `radio_list` page | `value_as_object` returns a string when re-rendered | below: Variables |
 | `navigation_bar` button always opens `home_screen` | relative link; only works in the footer | below: Layout |
 | Combo-box badge shows "FALSE" | boolean `false` in the badge column | below: Layout |
@@ -96,6 +97,27 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
   runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
   (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
+  - **A data list column name with a space or symbol blanks every page that loads the list.** Lists used by
+  a page are loaded into the on-device database (RxDB), which only accepts names matching
+  `^[a-zA-Z](…[a-zA-Z0-9])?$`; anything else throws `RxError (SC1) fieldnames do not match the regex` and
+  the page stays blank. Data pipes copy columns into generated lists, so one bad column can break many
+  modules. Use letters, digits and `_` in column headers. (found 2026-11-03: kids_teens_mx MX relax
+  `New version` → 42 `<module>_article_tasks` lists, content 1.1.39–1.1.44)
+
+
+- **A hyperlink set on a spreadsheet cell does not reach the app; only the cell's text does.** `xlsxToJson`
+  (`xlsx.utils.ts`) ignores the cell's link field, and the text component decides links from the text via
+  `parseMarkdown` (`utils.ts`). `https://…`, lowercase `www.…` and emails become links; `example.com` stays plain
+  text; `Www.example.com` and `[x](example.com)` become relative links that miss the website. Write
+  `[example.com](https://example.com)`. (verified 2026-11-02: marked 11.2 in Node and SheetJS round trip)
+
+  - **Tab names (and so `flow_name`s) over 31 characters silently drop the flow.** The xlsx export cuts tab names
+  to 31 characters (Excel limit); `mergeContentsSheet` (`convert/index.ts`) matches `flow_name` to the tab name
+  exactly, so the flow is skipped with only a `No Contents: <flow_name>` warning in
+  `packages/scripts/logs/warn.log`. Keep tab-based flow names ≤ 31 characters (generated flows can be longer).
+  (found 2026-10-29: kids_teens_mx A/B override template `proximal_outcome_base_question_ab_po_scale_3`)
+
+>>>>>>> Stashed changes
 
 ### Actions
 
@@ -142,6 +164,7 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `@local.row`. (verified 2026-08-19)
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is
   silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
+
 - **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields are
   stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is always true
   even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
@@ -155,6 +178,12 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
   Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
   list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
+
+
+- **A `number_input` text box treats 0 as empty in `!x` / `x == ''` checks.** With `number_input: true` the
+  value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
+  true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
+  `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
 
 
 ### Loops and `data_items`
@@ -224,6 +253,14 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
   conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
   (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
+  - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
+  are processed in its own context before being merged into the child (`template-row.service.ts`
+  `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like
+  `options_list: name: 1 | text: @local.option_1` resolves to nothing if `option_1` only exists in the child.
+  Override plain inputs instead (a static value the child branches on with `condition`). Note `radio_list`
+  renders every `answer_list` entry, even one whose text is undefined; only the older `radio_group` drops
+  them (`parseAnswerList`, `src/app/shared/utils/utils.ts`). (found 2026-10-30: kids_teens_mx po_scale B)
+
 
 ### Layout and components
 
