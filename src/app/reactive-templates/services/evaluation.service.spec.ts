@@ -21,6 +21,59 @@ describe("EvaluationService", () => {
     variableStore.clear();
   });
 
+  it("evaluates display_text from an object-valued nested template parameter", () => {
+    variableStore.set(
+      { name: "pagesLoop.key_1.nested_page_template.page_details", type: "local" },
+      { key: "key_1", value: "This is value 1" }
+    );
+
+    expect(
+      service.evaluateExpression<string>(
+        "${local.page_details.value}",
+        "pagesLoop.key_1.nested_page_template",
+        "string"
+      )
+    ).toBe("This is value 1");
+  });
+
+  it("evaluates display_text from an object parameter in a numerically indexed loop", () => {
+    variableStore.set(
+      { name: "pagesLoop.0.nested_page_template.page_details", type: "local" },
+      { key: "key_1", value: "This is value 1" }
+    );
+
+    expect(
+      service.evaluateExpression<string>(
+        "${local.page_details.value}",
+        "pagesLoop.0.nested_page_template",
+        "string"
+      )
+    ).toBe("This is value 1");
+  });
+
+  it("updates display_text when its object-valued parameter is supplied or replaced", () => {
+    const namespace = "pagesLoop.key_1.nested_page_template";
+    const expression = "${local.page_details.value}";
+    const values: string[] = [];
+    const subscription = variableStore
+      .watchMultiple(service.getDependencies(expression, namespace, "string"))
+      .subscribe(() => {
+        values.push(service.evaluateExpression<string>(expression, namespace, "string"));
+      });
+
+    variableStore.set(
+      { name: `${namespace}.page_details`, type: "local" },
+      { key: "key_1", value: "This is value 1" }
+    );
+    variableStore.set(
+      { name: `${namespace}.page_details`, type: "local" },
+      { key: "key_1", value: "Updated value" }
+    );
+
+    expect(values).toEqual(["undefined", "This is value 1", "Updated value"]);
+    subscription.unsubscribe();
+  });
+
   it("resolves a quoted numeric index from a flattened local variable path", () => {
     variableStore.set({ name: "items.0.question", type: "local" }, "Question 1");
 

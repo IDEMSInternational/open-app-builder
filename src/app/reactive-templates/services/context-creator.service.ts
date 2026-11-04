@@ -90,6 +90,8 @@ export class ContextCreatorService {
       last: loopValues.at(-1),
       is_first: numericIndex === 0,
       is_last: numericIndex === loopValues.length - 1,
+      previous: loopValues.at(Math.max(0, numericIndex - 1)),
+      next: loopValues.at(Math.min(loopValues.length - 1, numericIndex + 1)),
     };
   }
 

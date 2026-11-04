@@ -29,7 +29,6 @@ export class LocalVariableStore implements IStore {
   private readonly state = new Map<string, BehaviorSubject<any>>();
   /** Emits the changed key, or 'undefined' when the whole store changed (e.g. 'clear'). */
   private readonly stateChanged$ = new Subject<string | undefined>();
-  private readonly stateStructureChanged$ = new Subject<string | undefined>();
   private allSignal: Signal<{ [name: string]: any }> | undefined;
 
   /**
@@ -42,7 +41,6 @@ export class LocalVariableStore implements IStore {
    *
    * Behavior:
    * - Creates a new variable if it does not exist.
-   * - Emits structural-change events when a new key is added.
    * - Emits value-change events only when the value actually changed (deep-equality aware).
    */
   public set(ref: VariableReference, value: any): void {
@@ -50,7 +48,6 @@ export class LocalVariableStore implements IStore {
 
     if (!currentState) {
       this.state.set(ref.name, new BehaviorSubject<any>(value));
-      this.stateStructureChanged$.next(ref.name);
       this.stateChanged$.next(ref.name);
     } else {
       if (!isEqual(value, currentState.value)) {
@@ -61,17 +58,42 @@ export class LocalVariableStore implements IStore {
   }
 
   /**
-   * Gets the current value for a variable name using scope fallback resolution.
+   * Gets a stored key or a property of a stored object using scope fallback resolution.
    * Returns 'undefined' when no candidate key currently exists.
    */
   public get(ref: VariableReference): any {
     const resolvedName = this.resolveWithScopeFallback(ref);
 
     if (!resolvedName) {
-      return undefined;
+      return this.resolveObjectProperty(ref.name)?.value;
     }
 
     return this.getExact({ ...ref, name: resolvedName });
+  }
+
+  private resolveObjectProperty(name: string): { name: string; value: unknown } | undefined {
+    const segments = name.split(".");
+
+    for (let length = segments.length - 1; length > 0; length--) {
+      const path = segments.slice(length);
+      for (const candidate of getScopeFallbackCandidates(segments.slice(0, length).join("."))) {
+        const state = this.state.get(candidate);
+        if (!state) continue;
+
+        let value: unknown = state.value;
+        const found = path.every((segment) => {
+          if (value === null || typeof value !== "object" || !Object.hasOwn(value, segment)) {
+            return false;
+          }
+          value = Reflect.get(value, segment);
+          return true;
+        });
+
+        if (found) return { name: candidate, value };
+      }
+    }
+
+    return undefined;
   }
 
   /**
@@ -89,10 +111,13 @@ export class LocalVariableStore implements IStore {
    * This can resolve to a different scope than 'get'. E.g. from namespace
    * 'answer_loop.key_1', with only 'question_loop.key_1.question' stored, `local.question_loop[k]`
    * resolves root 'question_loop' here, whereas 'get' finds no exact 'question_loop' key.
-   * If no candidate matches, falls back to 'ref.name' as given.
+   * If no candidate matches, tries the property path within a stored parent object.
    */
   public getWithDescendants(ref: VariableReference, namespace?: string): any {
-    const resolvedName = this.resolveScopeWithDescendants(ref, namespace) ?? ref.name;
+    const resolvedName = this.resolveScopeWithDescendants(ref, namespace);
+    if (!resolvedName) {
+      return this.resolveObjectProperty(ref.name)?.value;
+    }
     const exactValue = this.getExact({ ...ref, name: resolvedName });
 
     return mergeDescendants(
@@ -147,7 +172,13 @@ export class LocalVariableStore implements IStore {
       filter(
         (changedName) =>
           changedName === undefined ||
-          candidates.some((c) => changedName === c || changedName.startsWith(`${c}.`))
+          candidates.some(
+            (c) =>
+              changedName === c ||
+              changedName.startsWith(`${c}.`) ||
+              c.startsWith(`${changedName}.`)
+          ) ||
+          this.isObjectPropertySource(ref.name, changedName)
       ),
       startWith(undefined),
       map(() => this.getWithDescendants(ref, namespace))
@@ -278,14 +309,13 @@ export class LocalVariableStore implements IStore {
 
   /**
    * Clears all variables and completes all per-key subjects.
-   * Emits both structure and state change events so subscribers can re-evaluate cleanly.
+   * Emits a state change event so subscribers can re-evaluate cleanly.
    */
   public clear(): void {
     this.state.forEach((state) => {
       state.complete();
     });
     this.state.clear();
-    this.stateStructureChanged$.next(undefined);
     this.stateChanged$.next(undefined);
   }
 
@@ -297,39 +327,43 @@ export class LocalVariableStore implements IStore {
   }
 
   /**
-   * Watches one exact key without applying scope fallback.
-   *
-   * If the key does not exist yet, returns an observable that emits 'undefined'.
-   */
-  private watchExact(name: string): Observable<any> {
-    const state = this.state.get(name);
-    return state ? state.asObservable() : of(undefined);
-  }
-
-  /**
    * Watches a pointer and emits both the resolved concrete key and its current value.
    *
-   * Re-evaluates pointer resolution whenever store structure changes, then switches
-   * to the matching exact-key stream.
+   * Re-evaluates when a candidate key or a parent object changes.
    */
   private watchPointer(
     pointer: VariablePointer
   ): Observable<{ resolvedName: string | undefined; value: any }> {
-    const pointerCandidates = new Set(pointer.candidates);
-
-    return this.stateStructureChanged$.pipe(
+    return this.stateChanged$.pipe(
       startWith(undefined),
-      filter((changedName) => changedName === undefined || pointerCandidates.has(changedName)),
-      map(() => this.resolvePointer(pointer)),
-      distinctUntilChanged(),
-      switchMap((resolvedName) => {
-        if (!resolvedName) {
-          return of({ resolvedName: undefined, value: undefined });
+      filter(
+        (changedName) =>
+          changedName === undefined ||
+          pointer.candidates.some(
+            (candidate) => candidate === changedName || candidate.startsWith(`${changedName}.`)
+          ) ||
+          this.isObjectPropertySource(pointer.id, changedName)
+      ),
+      map(() => {
+        const resolvedName = this.resolvePointer(pointer);
+        if (resolvedName) {
+          return { resolvedName, value: this.getExact({ name: resolvedName, type: "local" }) };
         }
 
-        return this.watchExact(resolvedName).pipe(map((value) => ({ resolvedName, value })));
+        const property = this.resolveObjectProperty(pointer.id);
+        return { resolvedName: property?.name, value: property?.value };
       })
     );
+  }
+
+  private isObjectPropertySource(name: string, changedName: string): boolean {
+    const segments = name.split(".");
+    for (let length = segments.length - 1; length > 0; length--) {
+      if (getScopeFallbackCandidates(segments.slice(0, length).join(".")).includes(changedName)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
