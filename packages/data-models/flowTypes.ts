@@ -60,6 +60,11 @@ export namespace FlowTypes {
       path?: string;
       /** Remote url of source */
       url?: string;
+      /**
+       * Folder of a local flow json, relative to the source sheets folder ("" for the root).
+       * Set by the beta import for flows not synced from google drive
+       */
+      folder?: string;
     };
     process_on_start?: number; // priority order to process template variable setters on startup
   }
