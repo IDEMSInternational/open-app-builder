@@ -157,7 +157,8 @@
             [name]="expanded()[notification.key] ? 'chevron-up-outline' : 'chevron-down-outline'"
           ></ion-icon>
         </ion-button>
-        @if (notification.original) {
+        <!-- Not for test notifications: they are tests already -->
+        @if (notification.original && !notification.isTest) {
         <ion-button
           fill="outline"
           size="small"
