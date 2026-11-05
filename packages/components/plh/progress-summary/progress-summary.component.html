@@ -4,7 +4,12 @@
       <img [src]="params().imageAsset | translatedAsset" alt="" />
     </div>
   }
-  <div class="step-rows" [style.--steps-per-row]="stepsPerRow">
+  <div
+    class="step-rows"
+    role="img"
+    [attr.aria-label]="completedCount()"
+    [style.--steps-per-row]="stepsPerRow"
+  >
     @for (row of stepRows(); track $index) {
       <div class="step-row">
         @for (step of row; track step.index) {

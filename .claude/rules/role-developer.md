@@ -65,3 +65,8 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   (emulated encapsulation), so the global `p` margin from `src/theme/_typography.scss` applies. For short
   labels inside a component, interpolate plain text (`{{ params().title }}`) as `plh_progress_bar` does,
   rather than reaching in with `::ng-deep`. (found 2026-11-05)
+- **CSS entrance animations replay every time a page is shown again**, even though Ionic keeps the page
+  alive (`IonicRouteStrategy` in `app.module.ts`, same DOM nodes): cached pages are hidden with
+  `.ion-page-hidden { display: none }`, and `display: none` cancels CSS animations, so they restart on
+  return. To play only on a real change, the component has to track that itself. (verified 2026-11-05:
+  plh_progress_summary, footer navigation then back)

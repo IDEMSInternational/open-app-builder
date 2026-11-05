@@ -6,19 +6,15 @@ import {
 import { getStepRows, parseCompletedCount, STEPS_PER_ROW } from "./progress-summary.logic";
 
 const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
-  /** Bold heading shown under the steps. Hidden when empty. */
+  /** Shown in bold under the steps */
   title: coerce.string(""),
-  /** Text shown under the title. Hidden when empty. */
+  /** Shown under the title */
   text: coerce.string(""),
-  /** Image shown in a white circle above the steps. The circle is hidden when empty. */
+  /** Shown in a circle above the steps */
   image_asset: coerce.string(""),
 }));
 
-/**
- * Shows a number of completed steps, read from the row's `value`, as rows of ticked circles with
- * the most recent step highlighted. There is always at least one empty step after the completed
- * ones, see `getStepRows`.
- */
+/** Shows the number of completed steps (row `value`) as ticked circles */
 @Component({
   selector: "plh-progress-summary",
   templateUrl: "./progress-summary.component.html",

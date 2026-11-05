@@ -1,6 +1,6 @@
-import { getStepRows, parseCompletedCount } from "./progress-summary.logic";
+import { getStepRows, MAX_COMPLETED_COUNT, parseCompletedCount } from "./progress-summary.logic";
 
-/** Summarise rows as strings for readable expectations, e.g. "CCX__" */
+/** Rows as strings, e.g. "CCX__" */
 function summarise(completedCount: number) {
   const symbols = { completed: "C", current: "X", empty: "_" };
   return getStepRows(completedCount).map((row) => row.map((s) => symbols[s.status]).join(""));
@@ -53,6 +53,12 @@ describe("parseCompletedCount", () => {
   it("rounds decimals down", () => {
     expect(parseCompletedCount(4.9)).toBe(4);
     expect(parseCompletedCount("2.5")).toBe(2);
+  });
+
+  it("caps the count", () => {
+    expect(parseCompletedCount(MAX_COMPLETED_COUNT)).toBe(MAX_COMPLETED_COUNT);
+    expect(parseCompletedCount(MAX_COMPLETED_COUNT + 1)).toBe(MAX_COMPLETED_COUNT);
+    expect(parseCompletedCount("1762300800000")).toBe(MAX_COMPLETED_COUNT);
   });
 
   it("treats missing, invalid or negative values as 0", () => {

@@ -1,13 +1,11 @@
-// Colours can be overridden by themes via the `--progress-summary-*` variables
 $background: var(--progress-summary-background, var(--ion-color-primary-50));
 $track-color: var(--progress-summary-track-color, var(--ion-color-primary-100));
 $completed-color: var(--progress-summary-completed-color, var(--ion-color-primary-500));
 $current-color: var(--progress-summary-current-color, var(--ion-color-secondary-500));
 $title-color: var(--progress-summary-title-color, var(--ion-color-primary-600));
 
-/// Rows never grow wider than this, so steps stay a sensible size on wide screens
 $step-rows-max-width: 340px;
-/// Step diameter as a share of its column, so steps shrink to fit narrow screens
+/// Share of the column width
 $step-size: 58%;
 $step-size-current: 71%;
 $step-lip-height: 2px;
@@ -15,7 +13,6 @@ $step-tick-size: 72%;
 $connector-thickness: 4px;
 $badge-size: 84px;
 $badge-lip-height: 3px;
-/// Darken a step's colour for the "lip" along its bottom edge
 $lip-darken: 25%;
 $connector-fill-duration: 250ms;
 $step-pop-duration: 450ms;
@@ -56,7 +53,7 @@ $step-pop-duration: 450ms;
 
 .step-row {
   display: grid;
-  // `--steps-per-row` is set by the component from `STEPS_PER_ROW`
+  // `--steps-per-row` is set by the component
   grid-template-columns: repeat(var(--steps-per-row), 1fr);
 }
 
@@ -67,8 +64,7 @@ $step-pop-duration: 450ms;
   align-items: center;
   justify-content: center;
 
-  // Connector from the centre of the previous step to the centre of this one, behind both.
-  // Anchored at the inline start so that it fills in the right direction in RTL layouts too
+  // Connector from the previous step
   &::before {
     content: "";
     position: absolute;
@@ -106,8 +102,11 @@ $step-pop-duration: 450ms;
     &::before {
       animation: connector-fill $connector-fill-duration ease-out both;
     }
+    // No connector to wait for
+    &:first-child .step {
+      animation-delay: 0s;
+    }
   }
-  // A white circle whose dashed edge gives it a "stamp" outline
   &.empty .step {
     border: 3px dashed white;
     background: white padding-box;

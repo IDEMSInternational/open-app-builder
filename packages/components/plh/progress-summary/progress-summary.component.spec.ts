@@ -5,6 +5,7 @@ import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { TemplateAssetService } from "src/app/shared/components/template/services/template-asset.service";
 
 import { PlhProgressSummaryComponent } from "./progress-summary.component";
+import { MAX_COMPLETED_COUNT } from "./progress-summary.logic";
 
 /**
  * Call standalone tests via:
@@ -73,6 +74,20 @@ describe("PlhProgressSummaryComponent", () => {
     setRow("5");
     expect(stepStatuses().length).toBe(2);
     expect(element.querySelectorAll(".step-cell.current").length).toBe(1);
+  });
+
+  it("labels the steps with the completed count", () => {
+    setRow(12);
+    const steps = element.querySelector(".step-rows");
+    expect(steps?.getAttribute("role")).toBe("img");
+    expect(steps?.getAttribute("aria-label")).toBe("12");
+  });
+
+  it("caps the number of steps drawn", () => {
+    setRow("1762300800000");
+    expect(element.querySelectorAll(".step-cell.completed, .step-cell.current").length).toBe(
+      MAX_COMPLETED_COUNT
+    );
   });
 
   it("updates when the value changes", () => {
