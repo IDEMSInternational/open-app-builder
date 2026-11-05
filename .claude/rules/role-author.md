@@ -73,6 +73,12 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Onboarding never starts locally | `localhost` forces `user_mode=false` | `AGENTS.md` |
 | Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
 | One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
+<<<<<<< Updated upstream
+=======
+| Date condition still true after its field is reset to `false` | `new Date(false)` is 1 Jan 1970 | below: Variables |
+| Button `variant`/colour has no visible effect | unknown variant, or theme's `information` style wins | below: Layout |
+
+>>>>>>> Stashed changes
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -279,6 +285,15 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   first gets a `1em` left margin (`display-group.component.scss`). Add `parameter_list: style: column` to any
   display group used just to show/hide a stack of rows. (found 2026-09-25: V3 article_wrap `is_relax`, white
   space left of the module pause)
+- **A button `variant` can be silently ignored.** `variant` only accepts the values in `VARIANTS`
+  (`button.component.ts`); anything else (e.g. `orange`) is dropped by `allowedValuesList`
+  (`parameter-list.utils.ts`) with no warning. Even valid colour variants like `card` lose to the theme in
+  plh_kids_teens_*: every button also gets the legacy `style` class (default `information`), which the theme
+  colours with higher specificity (`themes/plh_kids_teens/_overrides.scss`). To change the colour, set
+  `style:` instead, e.g. `style: navigation` (primary-variant, bright turquoise in MX). (verified 2026-11-05:
+  V3 debug_complete_course)
+
+
 
 ### Translations
 
