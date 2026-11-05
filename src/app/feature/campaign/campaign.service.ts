@@ -485,7 +485,7 @@ export class CampaignService extends AsyncServiceBase {
 
   /** Deactivate all notifications for a given campaign */
   private async deactiveCampaignNotifications(campaign_id: string) {
-    const pendingNotifications = this.localNotificationService.getPendingNotifications();
+    const pendingNotifications = await this.localNotificationService.getPendingNotifications();
     const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
@@ -502,9 +502,9 @@ export class CampaignService extends AsyncServiceBase {
    */
   private async hackDeactivateAllNotifications() {
     // Keep test notifications from debug pages: they belong to no campaign, so would not be booked again
-    const toRemove = this.localNotificationService
-      .getPendingNotifications()
-      .filter((n) => n.extra?.campaign_id !== TEST_CAMPAIGN_ID);
+    const toRemove = (await this.localNotificationService.getPendingNotifications()).filter(
+      (n) => n.extra?.campaign_id !== TEST_CAMPAIGN_ID
+    );
     await this.localNotificationService.removeNotifications(toRemove.map((n) => n.id));
   }
 

@@ -302,21 +302,33 @@ describe("LocalNotificationService", () => {
   });
 
   describe("getPendingNotifications", () => {
-    it("should leave out notifications that became due since the last load", () => {
-      // they may be due but not yet shown, so campaigns should not remove them as pending
-      const becameDue = {
-        ...campaignNotification,
-        schedule: { at: new Date(Date.now() - 1000) },
-      } as ILocalNotification;
-      const upcoming = {
+    const upcoming = () =>
+      ({
         ...campaignNotification,
         id: 3,
         schedule: { at: new Date(Date.now() + 60000) },
+      }) as ILocalNotification;
+
+    it("should leave out notifications that are due", async () => {
+      // they may be due but not yet shown, so campaigns should not remove them as pending
+      const due = {
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() - 1000) },
       } as ILocalNotification;
       const withoutTime = { ...campaignNotification, id: 4, schedule: {} } as ILocalNotification;
-      service.pendingNotifications$.next([becameDue, upcoming, withoutTime]);
+      const stillToCome = upcoming();
+      getDBNotificationsSpy.and.resolveTo([due, stillToCome, withoutTime]);
 
-      expect(service.getPendingNotifications()).toEqual([upcoming]);
+      expect(await service.getPendingNotifications()).toEqual([stillToCome]);
+    });
+
+    it("should include notifications booked since the last load", async () => {
+      // e.g. by the scheduling run just before, so the next one can replace them
+      const bookedSinceLoad = upcoming();
+      getDBNotificationsSpy.and.resolveTo([bookedSinceLoad]);
+      service.pendingNotifications$.next([]);
+
+      expect(await service.getPendingNotifications()).toEqual([bookedSinceLoad]);
     });
   });
 
@@ -360,7 +372,6 @@ describe("LocalNotificationService", () => {
         notifications: [pendingCampaignNotification, actionNotification],
       });
       getDBNotificationsSpy.and.resolveTo([pendingCampaignNotification]);
-      service.pendingNotifications$.next([pendingCampaignNotification]);
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
       const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
 
@@ -444,13 +455,11 @@ describe("LocalNotificationService", () => {
         const cancelSpy = spyOn(api, "cancel").and.resolveTo();
 
         // first sync while still in the future: replaced (cancelled and rebooked)
-        service.pendingNotifications$.next([notification]);
         await service["setApiNotifications"]();
         expect(cancelSpy).toHaveBeenCalledTimes(1);
 
         // next sync after its time, with the alarm still pending on the device
         jasmine.clock().mockDate(new Date(start.getTime() + 3 * 60 * 1000));
-        service.pendingNotifications$.next([]);
         await service["setApiNotifications"]();
         expect(cancelSpy).toHaveBeenCalledTimes(1);
       });

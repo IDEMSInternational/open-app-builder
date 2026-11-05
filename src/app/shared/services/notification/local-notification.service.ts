@@ -82,8 +82,8 @@ export class LocalNotificationService extends AsyncServiceBase {
    **/
   public sessionNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   /**
-   * Observable list of all scheduled notifications, as of the last load. Can include notifications
-   * that became due since then: use `getPendingNotifications` to exclude them
+   * Observable list of all scheduled notifications, as of the last load, e.g. for debug pages. It can
+   * include ones that became due since then and miss ones booked since: use `getPendingNotifications`
    */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
@@ -238,7 +238,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       if (missedIds.length > 0) await this.removeDBNotifications(missedIds);
       await this.api.cancel({ notifications: toCancel });
     }
-    const toSchedule = this.getPendingNotifications();
+    const toSchedule = await this.getPendingNotifications();
     if (isNonEmptyArray(toSchedule)) {
       await this.api.schedule({ notifications: toSchedule });
     }
@@ -348,12 +348,14 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Scheduled notifications not yet due. Ones that became due since the last load are left out, as
-   * they may still be waiting to show
+   * Scheduled notifications not yet due. Read from the db, so it includes any booked since the last
+   * load, e.g. by a campaign scheduling run just before. Due ones are left out, as they may still be
+   * waiting to show
    */
-  public getPendingNotifications() {
+  public async getPendingNotifications() {
     const now = Date.now();
-    return this.pendingNotifications$.value.filter((n) => !isDue(n, now));
+    const dbNotifications = await this.getDBNotifications();
+    return this._sortBySchedule(dbNotifications.filter((n) => !isDue(n, now)));
   }
 
   /**

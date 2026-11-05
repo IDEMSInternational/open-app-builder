@@ -80,16 +80,13 @@ describe("CampaignService", () => {
         "getPendingNotifications",
       ],
       {
-        pendingNotifications$: new BehaviorSubject<ILocalNotification[]>([]),
         sessionNotifications$: new BehaviorSubject<ILocalNotification[]>([]),
         interactedNotification$: new BehaviorSubject(null),
         canSchedule$: new BehaviorSubject(false),
       }
     );
     mockLocalNotificationService.ready.and.resolveTo(true);
-    mockLocalNotificationService.getPendingNotifications.and.callFake(
-      () => mockLocalNotificationService.pendingNotifications$.value
-    );
+    mockLocalNotificationService.getPendingNotifications.and.resolveTo([]);
     const ready = async () => true;
     TestBed.configureTestingModule({
       providers: [
@@ -531,7 +528,7 @@ describe("CampaignService", () => {
 
     it("should keep existing notifications while scheduling waits", async () => {
       // e.g. campaigns reloaded while permission is withdrawn
-      mockLocalNotificationService.pendingNotifications$.next([
+      mockLocalNotificationService.getPendingNotifications.and.resolveTo([
         { id: 1, title: "", body: "", schedule: { at: new Date() }, extra: { campaign_id: "c" } },
       ]);
 
@@ -552,7 +549,7 @@ describe("CampaignService", () => {
 
     it("should clear old notifications before scheduling once notifications can reach the device", async () => {
       // e.g. leftovers from a removed campaign
-      mockLocalNotificationService.pendingNotifications$.next([
+      mockLocalNotificationService.getPendingNotifications.and.resolveTo([
         { id: 1, title: "", body: "", schedule: { at: new Date() }, extra: { campaign_id: "c" } },
       ]);
       await service.reInitialise();
@@ -566,7 +563,7 @@ describe("CampaignService", () => {
 
     it("should keep test notifications from debug pages when clearing old notifications", async () => {
       // test notifications belong to no campaign, so would not be booked again
-      mockLocalNotificationService.pendingNotifications$.next([
+      mockLocalNotificationService.getPendingNotifications.and.resolveTo([
         { id: 1, title: "", body: "", schedule: { at: new Date() }, extra: { campaign_id: "c" } },
         {
           id: 2,
