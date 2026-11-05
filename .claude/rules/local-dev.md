@@ -51,4 +51,9 @@
    "data list not found" at runtime). Rename the sheet without `: \ / * ? " < > |`, delete the truncated file
    with `Remove-Item -LiteralPath`, and sync again. Linux CI is not affected. (verified 2026-10-21)
 
+10. **Reaching debug pages on a device.** The side menu (`app_menu`) opens by swiping in from the left edge
+   when the app header is hidden (no menu icon). Its developer section only shows when `@fields.user_mode` is
+   false; on a device you set that from "Developer mode" (`enter_dev_mode`), using `@global.dev_mode_code` /
+   `test_mode_code`, then the app restarts. `/notifications` and `/campaigns` are the built-in notification
+   debug pages. (found 2026-11-04: kids_teens_mx)
 
