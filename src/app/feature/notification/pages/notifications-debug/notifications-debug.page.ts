@@ -158,6 +158,11 @@ export class NotificationsDebugPage implements OnInit {
     return tappedAt ? `Tapped at ${format(tappedAt, "HH:mm")}` : "Tapped";
   }
 
+  public sentStatus({ sentActionsRanAt }: IDebugNotification) {
+    if (!sentActionsRanAt) return "Sent actions not run yet";
+    return `Sent actions ran at ${format(sentActionsRanAt, "HH:mm:ss")}`;
+  }
+
   public relativeTime(at?: Date) {
     return at ? formatDistanceStrict(at, this.now(), { addSuffix: true }) : "";
   }
@@ -294,7 +299,10 @@ export class NotificationsDebugPage implements OnInit {
       extra: {
         campaign_id: TEST_CAMPAIGN_ID,
         row_id: id,
-        action_list: [toastAction("click", "Tap actions ran: campaign")],
+        action_list: [
+          toastAction("sent", "Sent actions ran: campaign"),
+          toastAction("click", "Tap actions ran: campaign"),
+        ],
       },
     } as ILocalNotification;
     return this.localNotificationService.scheduleNotification(notification, id);
