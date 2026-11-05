@@ -17,6 +17,9 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   from cached xlsx; `yarn workflow sync` for a full sync. Other workflows in `packages/workflows/src/`.
 - `yarn test:unit` (karma), `yarn test:workspaces` (shared + scripts jest), `yarn test:e2e`, `yarn lint`,
   `yarn format` (prettier), `yarn build`
+- One spec, headless, no watch: `yarn ng test --no-watch --browsers=ChromeHeadless --include=<path>`.
+  `--include` resolves from `src/`, so specs under `packages/` need `../packages/…`; a `packages/…` path
+  silently runs 0 specs. (verified 2026-11-05)
 - Scripts CLI: `yarn scripts …`; workflow task providers live in `packages/scripts/src/tasks/providers/`
 
 ## What the assistant does for developers
@@ -51,3 +54,14 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   `.claude/rules/sheet-sync-internals.md`, upstream issue #3605.
 - Local previews (`localhost` forces `user_mode=false`, persisted fields): see `AGENTS.md` → Local preview
   gotchas and `local-dev.md`.
+- **A component's themable colours go at the top of its own stylesheet** as
+  `$track: var(--my-component-track-color, var(--ion-color-primary-100));` and themes set
+  `my-component-track-color` in their `$variable-overrides` (e.g. `text-bubble.component.scss`,
+  `plh/progress-summary`). Don't add component defaults to `generate-theme.scss` or to `:root` in
+  `variables.scss`: palettes are set on `[data-theme] body` (`theme-selectors.scss`), so a `:root` value
+  can't refer to them. Global variables (spacing, font sizes, line-heights) do need a base value in
+  `src/theme/variables.scss` rather than a fallback. (verified 2026-11-05: plh_progress_summary)
+- **Markdown inserted with `[innerHTML]="… | markdown"` can't be styled from the component's SCSS**
+  (emulated encapsulation), so the global `p` margin from `src/theme/_typography.scss` applies. For short
+  labels inside a component, interpolate plain text (`{{ params().title }}`) as `plh_progress_bar` does,
+  rather than reaching in with `::ng-deep`. (found 2026-11-05)

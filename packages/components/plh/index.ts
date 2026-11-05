@@ -13,6 +13,7 @@ import { PlhParentGroupModule } from "./parent-group/plh-parent-group.module";
 import { PlhParentPointBoxComponent } from "./parent-point-box/parent-point-box.component";
 import { PlhParentPointCounterComponent } from "./parent-point-counter/parent-point-counter.component";
 import { PlhProgressBarComponent } from "./progress-bar/progress-bar.component";
+import { PlhProgressSummaryComponent } from "./progress-summary/progress-summary.component";
 import { PlhGetUpNextComponent } from "./get-up-next/get-up-next.component";
 
 export {
@@ -31,6 +32,7 @@ export {
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
   PlhProgressBarComponent,
+  PlhProgressSummaryComponent,
   PlhGetUpNextComponent,
 };
 
@@ -50,6 +52,7 @@ export const PLH_COMPONENTS = [
   PlhParentPointCounterComponent,
   PlhProgressPathComponent,
   PlhProgressBarComponent,
+  PlhProgressSummaryComponent,
   PlhGetUpNextComponent,
 ];
 
@@ -67,6 +70,7 @@ export const PLH_COMPONENT_MAPPING = {
   plh_module_list_item: PlhModuleListItemComponent,
   plh_progress_path: PlhProgressPathComponent,
   plh_progress_bar: PlhProgressBarComponent,
+  plh_progress_summary: PlhProgressSummaryComponent,
   plh_get_up_next: PlhGetUpNextComponent,
 };
 

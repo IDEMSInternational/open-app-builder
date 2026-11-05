@@ -1,0 +1,178 @@
+// Colours can be overridden by themes via the `--progress-summary-*` variables
+$background: var(--progress-summary-background, var(--ion-color-primary-50));
+$track-color: var(--progress-summary-track-color, var(--ion-color-primary-100));
+$completed-color: var(--progress-summary-completed-color, var(--ion-color-primary-500));
+$current-color: var(--progress-summary-current-color, var(--ion-color-secondary-500));
+$title-color: var(--progress-summary-title-color, var(--ion-color-primary-600));
+
+/// Rows never grow wider than this, so steps stay a sensible size on wide screens
+$step-rows-max-width: 340px;
+/// Step diameter as a share of its column, so steps shrink to fit narrow screens
+$step-size: 58%;
+$step-size-current: 71%;
+$step-lip-height: 2px;
+$step-tick-size: 72%;
+$connector-thickness: 4px;
+$badge-size: 84px;
+$badge-lip-height: 3px;
+/// Darken a step's colour for the "lip" along its bottom edge
+$lip-darken: 25%;
+$connector-fill-duration: 250ms;
+$step-pop-duration: 450ms;
+
+.progress-summary {
+  padding: var(--large-padding) var(--regular-padding);
+  border-radius: var(--ion-border-radius-secondary);
+  background: $background;
+  text-align: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $badge-size;
+  height: $badge-size;
+  margin: 0 auto calc(var(--regular-margin) + #{$badge-lip-height});
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 $badge-lip-height 0 $track-color;
+
+  img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+}
+
+.step-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--regular-margin);
+  width: 100%;
+  max-width: $step-rows-max-width;
+  margin: 0 auto;
+}
+
+.step-row {
+  display: grid;
+  // `--steps-per-row` is set by the component from `STEPS_PER_ROW`
+  grid-template-columns: repeat(var(--steps-per-row), 1fr);
+}
+
+.step-cell {
+  --step-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Connector from the centre of the previous step to the centre of this one, behind both.
+  // Anchored at the inline start so that it fills in the right direction in RTL layouts too
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    inset-inline-start: -50%;
+    width: 100%;
+    height: $connector-thickness;
+    transform: translateY(-50%);
+    background: $track-color;
+  }
+  &:first-child::before {
+    display: none;
+  }
+
+  &.completed,
+  &.current {
+    &::before {
+      background: $completed-color;
+    }
+    .step {
+      background: var(--step-color);
+      box-shadow: 0 $step-lip-height 0 color-mix(in srgb, var(--step-color), black $lip-darken);
+    }
+  }
+  &.completed {
+    --step-color: #{$completed-color};
+  }
+  &.current {
+    --step-color: #{$current-color};
+    .step {
+      width: $step-size-current;
+      animation: step-pop $step-pop-duration cubic-bezier(0.34, 1.56, 0.64, 1)
+        $connector-fill-duration both;
+    }
+    &::before {
+      animation: connector-fill $connector-fill-duration ease-out both;
+    }
+  }
+  // A white circle whose dashed edge gives it a "stamp" outline
+  &.empty .step {
+    border: 3px dashed white;
+    background: white padding-box;
+  }
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $step-size;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  ion-icon {
+    width: $step-tick-size;
+    height: auto;
+    aspect-ratio: 1;
+    color: white;
+    --ionicon-stroke-width: 72px;
+  }
+}
+
+.title,
+.text {
+  margin: 0;
+  font-size: var(--font-size-text-medium);
+  line-height: var(--line-height-text-medium);
+}
+
+.title {
+  margin-top: var(--regular-margin);
+  font-weight: var(--font-weight-bold);
+  color: $title-color;
+}
+
+.step-rows + .text {
+  margin-top: var(--regular-margin);
+}
+
+@keyframes connector-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes step-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-cell.current {
+    .step,
+    &::before {
+      animation: none;
+    }
+  }
+}
