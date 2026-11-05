@@ -82,8 +82,9 @@ export class LocalNotificationService extends AsyncServiceBase {
    **/
   public sessionNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   /**
-   * Observable list of all scheduled notifications, as of the last load, e.g. for debug pages. It can
-   * include ones that became due since then and miss ones booked since: use `getPendingNotifications`
+   * Observable list of scheduled notifications not yet due. Updated as soon as one is booked or
+   * removed, and rebuilt on each sync. One that becomes due stays listed until the next sync, as
+   * nothing runs when its time passes: use `getPendingNotifications` to leave those out
    */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
@@ -238,7 +239,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       if (missedIds.length > 0) await this.removeDBNotifications(missedIds);
       await this.api.cancel({ notifications: toCancel });
     }
-    const toSchedule = await this.getPendingNotifications();
+    const toSchedule = this.getPendingNotifications();
     if (isNonEmptyArray(toSchedule)) {
       await this.api.schedule({ notifications: toSchedule });
     }
@@ -348,14 +349,12 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Scheduled notifications not yet due. Read from the db, so it includes any booked since the last
-   * load, e.g. by a campaign scheduling run just before. Due ones are left out, as they may still be
-   * waiting to show
+   * Scheduled notifications not yet due. Ones that became due since they were listed are left out, as
+   * they may still be waiting to show
    */
-  public async getPendingNotifications() {
+  public getPendingNotifications() {
     const now = Date.now();
-    const dbNotifications = await this.getDBNotifications();
-    return this._sortBySchedule(dbNotifications.filter((n) => !isDue(n, now)));
+    return this.pendingNotifications$.value.filter((n) => !isDue(n, now));
   }
 
   /**
@@ -492,14 +491,6 @@ export class LocalNotificationService extends AsyncServiceBase {
     if (!isNonEmptyArray(ids)) return;
     await this.api.cancel({ notifications: ids.map((id) => ({ id })) });
     await this.removeDBNotifications(ids);
-    // Keep in-memory records in step until the next reschedule rebuilds them
-    const removed = new Set(ids);
-    this.pendingNotifications$.next(
-      this.pendingNotifications$.value.filter((notification) => !removed.has(notification.id))
-    );
-    for (const [rowId, notification] of Object.entries(this.notificationsByRowId)) {
-      if (removed.has(notification.id)) delete this.notificationsByRowId[rowId];
-    }
   }
 
   /**
@@ -537,9 +528,14 @@ export class LocalNotificationService extends AsyncServiceBase {
    * sent while app in background and not processed
    **************************************************************************************************/
 
-  private addDBNotification(notification: ILocalNotification) {
+  // Bookings are added and removed only through these methods, which keep the in-memory lists in
+  // step with the db, so a scheduling run sees the bookings of the one before
+
+  private async addDBNotification(notification: ILocalNotification) {
     notification._created = generateTimestamp();
-    return this.db.put(notification);
+    await this.db.put(notification);
+    const others = this.pendingNotifications$.value.filter((n) => n.id !== notification.id);
+    this.pendingNotifications$.next(this._sortBySchedule([...others, notification]));
   }
 
   /** Apply changes on top of an existing notification, with simple merge (i.e. non-nested) */
@@ -548,7 +544,14 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   private async removeDBNotifications(ids: number[]) {
-    return this.db.bulkDelete(ids);
+    await this.db.bulkDelete(ids);
+    const removed = new Set(ids);
+    this.pendingNotifications$.next(
+      this.pendingNotifications$.value.filter((notification) => !removed.has(notification.id))
+    );
+    for (const [rowId, notification] of Object.entries(this.notificationsByRowId)) {
+      if (removed.has(notification.id)) delete this.notificationsByRowId[rowId];
+    }
   }
 
   /** List every notification in the database, past and future, e.g. for debug pages */

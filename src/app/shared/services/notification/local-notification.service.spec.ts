@@ -302,33 +302,21 @@ describe("LocalNotificationService", () => {
   });
 
   describe("getPendingNotifications", () => {
-    const upcoming = () =>
-      ({
-        ...campaignNotification,
-        id: 3,
-        schedule: { at: new Date(Date.now() + 60000) },
-      }) as ILocalNotification;
-
-    it("should leave out notifications that are due", async () => {
+    it("should leave out notifications that became due since the last load", () => {
       // they may be due but not yet shown, so campaigns should not remove them as pending
-      const due = {
+      const becameDue = {
         ...campaignNotification,
         schedule: { at: new Date(Date.now() - 1000) },
       } as ILocalNotification;
+      const upcoming = {
+        ...campaignNotification,
+        id: 3,
+        schedule: { at: new Date(Date.now() + 60000) },
+      } as ILocalNotification;
       const withoutTime = { ...campaignNotification, id: 4, schedule: {} } as ILocalNotification;
-      const stillToCome = upcoming();
-      getDBNotificationsSpy.and.resolveTo([due, stillToCome, withoutTime]);
+      service.pendingNotifications$.next([becameDue, upcoming, withoutTime]);
 
-      expect(await service.getPendingNotifications()).toEqual([stillToCome]);
-    });
-
-    it("should include notifications booked since the last load", async () => {
-      // e.g. by the scheduling run just before, so the next one can replace them
-      const bookedSinceLoad = upcoming();
-      getDBNotificationsSpy.and.resolveTo([bookedSinceLoad]);
-      service.pendingNotifications$.next([]);
-
-      expect(await service.getPendingNotifications()).toEqual([bookedSinceLoad]);
+      expect(service.getPendingNotifications()).toEqual([upcoming]);
     });
   });
 
@@ -372,6 +360,7 @@ describe("LocalNotificationService", () => {
         notifications: [pendingCampaignNotification, actionNotification],
       });
       getDBNotificationsSpy.and.resolveTo([pendingCampaignNotification]);
+      service.pendingNotifications$.next([pendingCampaignNotification]);
       const cancelSpy = spyOn(api, "cancel").and.resolveTo();
       const scheduleSpy = spyOn(api, "schedule").and.resolveTo({ notifications: [] });
 
@@ -455,11 +444,13 @@ describe("LocalNotificationService", () => {
         const cancelSpy = spyOn(api, "cancel").and.resolveTo();
 
         // first sync while still in the future: replaced (cancelled and rebooked)
+        service.pendingNotifications$.next([notification]);
         await service["setApiNotifications"]();
         expect(cancelSpy).toHaveBeenCalledTimes(1);
 
         // next sync after its time, with the alarm still pending on the device
         jasmine.clock().mockDate(new Date(start.getTime() + 3 * 60 * 1000));
+        service.pendingNotifications$.next([]);
         await service["setApiNotifications"]();
         expect(cancelSpy).toHaveBeenCalledTimes(1);
       });
@@ -585,6 +576,32 @@ describe("LocalNotificationService", () => {
     expect(db.bulkDelete).toHaveBeenCalledOnceWith([1, 2]);
     expect(service.pendingNotifications$.value.map((n) => n.id)).toEqual([3]);
     expect(reschedule).not.toHaveBeenCalled();
+  });
+
+  it("updates the pending list as soon as notifications are booked or removed", async () => {
+    // not only on the next sync, so a scheduling run sees the bookings of the one just before
+    service.permissionGranted = true;
+    service.localNotificationDefaults = { id: null, title: "", body: "", extra: {} };
+    const db = jasmine.createSpyObj("Table", ["put", "bulkDelete"]);
+    db.put.and.resolveTo();
+    db.bulkDelete.and.resolveTo();
+    (service as any).db = db;
+    const booking = (minutesFromNow: number) =>
+      ({
+        ...campaignNotification,
+        schedule: { at: new Date(Date.now() + minutesFromNow * 60 * 1000) },
+      }) as ILocalNotification;
+    const first = booking(60);
+    const replacement = booking(120);
+    const otherRow = booking(30);
+
+    await service.scheduleNotification(first, "row_1");
+    await service.scheduleNotification(replacement, "row_1");
+    await service.scheduleNotification(otherRow, "row_2");
+    expect(service.getPendingNotifications()).toEqual([otherRow, replacement]);
+
+    await service.removeNotifications([otherRow.id]);
+    expect(service.getPendingNotifications()).toEqual([replacement]);
   });
 });
 
