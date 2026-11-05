@@ -299,6 +299,17 @@ describe("LocalNotificationService", () => {
       // kept on the device, while the upcoming one is replaced
       expect(cancelSpy).toHaveBeenCalledOnceWith({ notifications: [stillToCome] });
     });
+
+    it("should not process notifications without a time", async () => {
+      // they could never be booked, so were never shown and must not run `sent` actions
+      const withoutTime = { ...campaignNotification, id: 4, schedule: {} } as ILocalNotification;
+      dbNotifications.push(withoutTime);
+      getPendingSpy.and.resolveTo({ notifications: [] });
+
+      await service["syncNotifications"]();
+
+      expect(withoutTime._callbacks_processed_time).toBeUndefined();
+    });
   });
 
   describe("getPendingNotifications", () => {
@@ -321,18 +332,19 @@ describe("LocalNotificationService", () => {
   });
 
   describe("cleanDBNotifications", () => {
-    it("should keep one upcoming booking, the latest processed record and any not processed yet", async () => {
-      const row = (id: number, minutesFromNow: number, processedTime?: number) =>
+    it("should keep the latest upcoming booking, the latest processed record and any not processed yet", async () => {
+      const row = (id: number, minutesFromNow: number, processedTime?: number, created?: string) =>
         ({
           ...campaignNotification,
           id,
           _row_id: "row_1",
           schedule: { at: new Date(Date.now() + minutesFromNow * 60 * 1000) },
           _callbacks_processed_time: processedTime,
+          _created: created,
         }) as ILocalNotification;
       getDBNotificationsSpy.and.resolveTo([
-        row(1, 60),
-        row(2, 120), // duplicate booking, as made by older versions
+        row(1, 60, undefined, "2026-11-01T10:00:00"), // earlier duplicate, as made by older versions
+        row(2, 120, undefined, "2026-11-02T10:00:00"),
         row(3, -60 * 24, 100),
         row(4, -60 * 48, 50), // older record
         row(5, -1), // due, not processed: may not have been shown yet
@@ -342,7 +354,7 @@ describe("LocalNotificationService", () => {
 
       await service["cleanDBNotifications"]();
 
-      expect(bulkDeleteSpy).toHaveBeenCalledOnceWith([2, 4]);
+      expect(bulkDeleteSpy).toHaveBeenCalledOnceWith([1, 4]);
     });
   });
 
@@ -569,11 +581,14 @@ describe("LocalNotificationService", () => {
     db.bulkDelete.and.resolveTo();
     (service as any).db = db;
     const reschedule = spyOn(service as any, "loadNotifications");
+    const cancelSpy = spyOn(api, "cancel").and.resolveTo();
     service.pendingNotifications$.next([{ id: 1 }, { id: 3 }] as ILocalNotification[]);
 
     await service.removeNotificationsWithoutRescheduling([1, 2]);
 
     expect(db.bulkDelete).toHaveBeenCalledOnceWith([1, 2]);
+    // records first, so a sync in between can't process a cancelled one as shown
+    expect(db.bulkDelete).toHaveBeenCalledBefore(cancelSpy);
     expect(service.pendingNotifications$.value.map((n) => n.id)).toEqual([3]);
     expect(reschedule).not.toHaveBeenCalled();
   });

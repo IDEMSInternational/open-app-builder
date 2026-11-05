@@ -245,6 +245,10 @@ describe("NotificationsDebugPage", () => {
       expect(
         mockLocalNotificationService.removeNotificationsWithoutRescheduling
       ).toHaveBeenCalledOnceWith([1, 2]);
+      // records first, so a sync in between can't process a cancelled one as shown
+      expect(
+        mockLocalNotificationService.removeNotificationsWithoutRescheduling
+      ).toHaveBeenCalledBefore(mockNotificationService.cancelDevicePendingNotifications);
       expect(mockLocalNotificationService.removeNotifications).not.toHaveBeenCalled();
       // history of cleared campaign notifications, including any not recorded yet
       expect(mockPersistAdapter.removeEntries).toHaveBeenCalledOnceWith([1, 5, 2]);

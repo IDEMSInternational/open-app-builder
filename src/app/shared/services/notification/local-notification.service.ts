@@ -381,7 +381,7 @@ export class LocalNotificationService extends AsyncServiceBase {
 
   /**
    * Remove records no longer needed. For each notification row, keep:
-   * - one booking still to come (older versions could book a row more than once)
+   * - the latest booking still to come (older versions could book a row more than once)
    * - the most recently processed record
    * - any that are due but not processed yet, as they may not have been shown yet
    */
@@ -394,7 +394,9 @@ export class LocalNotificationService extends AsyncServiceBase {
     );
     const removeIds: number[] = [];
     for (const notifications of Object.values(notificationsByRowId)) {
-      const upcoming = notifications.filter((n) => !isDue(n, now));
+      const upcoming = notifications
+        .filter((n) => !isDue(n, now))
+        .sort((a, b) => (a._created < b._created ? 1 : -1));
       const processed = notifications
         .filter((n) => n._callbacks_processed_time)
         .sort((a, b) => b._callbacks_processed_time - a._callbacks_processed_time);
@@ -412,7 +414,8 @@ export class LocalNotificationService extends AsyncServiceBase {
    * Mark notifications shown since the last load as processed, with the current time, to include
    * them in the session notifications list (so campaigns run their `sent` actions).
    * A notification counts as shown once it is due and no longer pending on the device. Due ones still
-   * pending are left until they are shown, as Android can deliver up to an hour late
+   * pending are left until they are shown, as Android can deliver up to an hour late. Ones without a
+   * time are skipped: they could never be booked, so were never shown
    */
   private async handleUnprocessedNotifications() {
     const now = Date.now();
@@ -420,7 +423,8 @@ export class LocalNotificationService extends AsyncServiceBase {
     const pendingIds = new Set(notifications.map((n) => n.id));
     const dbNotifications = await this.getDBNotifications();
     const shownNotifications = dbNotifications.filter(
-      (n) => !n._callbacks_processed_time && isDue(n, now) && !pendingIds.has(n.id)
+      (n) =>
+        n.schedule?.at && !n._callbacks_processed_time && isDue(n, now) && !pendingIds.has(n.id)
     );
     for (const notification of shownNotifications) {
       await this.updateDBNotification(notification.id, { _callbacks_processed_time: now });
@@ -483,14 +487,15 @@ export class LocalNotificationService extends AsyncServiceBase {
   }
 
   /**
-   * Cancel notifications on the device and remove them from the database, without rescheduling the
+   * Remove notifications from the database and cancel them on the device, without rescheduling the
    * others. Rescheduling (`loadNotifications`) cancels every notification on the device, including
-   * those from the `notification` action (#3722), so debug pages use this to clear test notifications
+   * those from the `notification` action (#3722), so debug pages use this to clear test notifications.
+   * Records are removed first, so a sync in between never processes them as shown
    */
   public async removeNotificationsWithoutRescheduling(ids: number[]) {
     if (!isNonEmptyArray(ids)) return;
-    await this.api.cancel({ notifications: ids.map((id) => ({ id })) });
     await this.removeDBNotifications(ids);
+    await this.api.cancel({ notifications: ids.map((id) => ({ id })) });
   }
 
   /**
