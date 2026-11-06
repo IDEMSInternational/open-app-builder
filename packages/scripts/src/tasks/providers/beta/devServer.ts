@@ -26,6 +26,10 @@ export function startDevServer(options: { port?: number } = {}) {
     if (origin && !ALLOWED_ORIGIN.test(origin)) {
       return sendJson(res, 403, { error: "Origin not allowed" });
     }
+    // Browsers always send an origin with POST, so only allow commands from the local app
+    if (req.method === "POST" && !origin) {
+      return sendJson(res, 403, { error: "Origin required" });
+    }
     if (origin) {
       res.setHeader("Access-Control-Allow-Origin", origin);
       res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
