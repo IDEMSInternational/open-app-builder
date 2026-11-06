@@ -22,7 +22,7 @@ Here is an example of two rows added to a `==content_list==` for creating notifi
 | schedule.start_date           | Date of earliest notification. If in past will be ignored |
 | schedule.end_date             | Date of latest notification, including the whole of that day. If in past will be ignored |
 | schedule.day_of_week          | Send notifications weekly on a given day of the week (numbered from 1 - Monday, to 7 - Sunday) |
-| schedule.batch_size           | Maximum number of notifications to schedule, e.g. if scheduling weekly specify number of weeks to pre-schedule |
+| schedule.batch_size           | Number of notifications to schedule in advance, each sending a different campaign row (the next highest priority one that applies), at the schedule's next send times. E.g. if scheduling weekly, the number of weeks to pre-schedule |
 | schedule.repeat_every_days    | Days between notifications in a [repeating schedule](#repeating-schedules) |
 | schedule.repeat_count         | Number of notifications in a [repeating schedule](#repeating-schedules), including the first |
 | time.hour                     | Hour of day to send notifications on, in 24h format       |
@@ -35,7 +35,7 @@ The default settings for notifications will schedule a daily at 12pm. These sett
 
 ### Repeating schedules
 
-A schedule with `schedule.repeat_every_days` and `schedule.repeat_count` schedules a series of notifications in advance: the first at `schedule.start_date` (at `time.hour` and `time.minute`, plus any `delay`), then one every `repeat_every_days` days, `repeat_count` in total. Each sends the highest priority campaign row that applies.
+A schedule with `schedule.repeat_every_days` and `schedule.repeat_count` schedules a series of notifications in advance: the first at `schedule.start_date` (at `time.hour` and `time.minute`, plus any `delay`), then one every `repeat_every_days` days, `repeat_count` in total. Every notification in the series sends the same row: the highest priority campaign row that applies. To send a different row each time, use `schedule.batch_size` instead.
 
 For example, a check-in every 30 days after the date stored in the field `last_check_in`, 5 in total, with a reminder a week after each:
 
