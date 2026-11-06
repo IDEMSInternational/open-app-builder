@@ -10,9 +10,8 @@ import {
   parseListColumns,
   parseListRows,
   setDefaultValue,
-  updateElement,
 } from "./transforms";
-import { IFlowParserOptions, localFlowSource } from "./data_list.parser";
+import { FlowParser, IFlowParserOptions } from "./flow.parser";
 
 /**
  * Process an imported template flow before it is written to app_data
@@ -25,30 +24,30 @@ import { IFlowParserOptions, localFlowSource } from "./data_list.parser";
  * - Generate names for any rows without one
  * - Assign `_nested_name` path to all rows (ignoring display_group parents)
  * - Assign `_dynamicFields` and `_dynamicDependencies` for values evaluated at runtime
- * - Replace `_source` with the local folder unless `fixed` is set
+ * - Update `_source` (see `FlowParser`)
  */
-export function parseTemplate(
-  flow: FlowTypes.FlowTypeWithData,
-  options: IFlowParserOptions = {}
-): FlowTypes.FlowTypeWithData {
-  const { fixed = false, folder } = options;
-  // Transforms applied to each individual row
-  let rows = (flow.rows || []).map((row: FlowTypes.TemplateRow) => {
-    let parsed = setDefaultValue(row, "type", "set_variable");
-    parsed = parseListColumns(parsed);
-    parsed = parseListRows(parsed);
-    parsed = parseKeyValueList(parsed, "parameter_list");
-    parsed = parseActionList(parsed, "action_list");
-    return parsed;
-  });
+export class TemplateParser extends FlowParser {
+  protected parseRows(templateRows: FlowTypes.TemplateRow[], flow: FlowTypes.FlowTypeWithData) {
+    // Transforms applied to each individual row
+    let rows = templateRows.map((row) => {
+      let parsed = setDefaultValue(row, "type", "set_variable");
+      parsed = parseListColumns(parsed);
+      parsed = parseListRows(parsed);
+      parsed = parseKeyValueList(parsed, "parameter_list");
+      parsed = parseActionList(parsed, "action_list");
+      return parsed;
+    });
 
-  // Transforms applied to all rows together
-  rows = nestBeginEndRows(rows, flow.flow_name);
-  rows = assignRowNames(rows);
-  rows = assignNestedNames(rows, ["display_group"]);
-  rows = assignDynamicFields(rows);
-  rows = assignDynamicDependencies(rows);
+    // Transforms applied to all rows together
+    rows = nestBeginEndRows(rows, flow.flow_name);
+    rows = assignRowNames(rows);
+    rows = assignNestedNames(rows, ["display_group"]);
+    rows = assignDynamicFields(rows);
+    rows = assignDynamicDependencies(rows);
+    return rows;
+  }
+}
 
-  const parsedFlow = fixed ? flow : updateElement(flow, "_source", localFlowSource(folder));
-  return { ...parsedFlow, rows };
+export function parseTemplate(flow: FlowTypes.FlowTypeWithData, options?: IFlowParserOptions) {
+  return new TemplateParser().parse(flow, options);
 }

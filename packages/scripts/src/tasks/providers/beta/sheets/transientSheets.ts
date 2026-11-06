@@ -52,12 +52,12 @@ export function transientTag(_source: FlowTypes.FlowTypeBase["_source"]) {
   return { _source, transient: "true" };
 }
 
-/** Add `_source` and the transient tag to a flow json and its contents entry in app_data */
-export function tagAppDataFlow(
-  flowType: string,
-  flowName: string,
-  _source: FlowTypes.FlowTypeBase["_source"]
-) {
+/**
+ * Link a flow json and its contents entry in app_data to its transient sheet: `_source` gets
+ * the sheet url and `"type": "transient"` (keeping its path), and the transient tag is added.
+ * Parsing removes the url of transient flows, so this is applied after
+ */
+export function tagAppDataFlow(flowType: string, flowName: string, url: string) {
   const flowPath = getAppDataFlowPath(flowType, flowName);
   const flow = readAppDataFlow(flowType, flowName);
   if (!flow) {
@@ -65,10 +65,13 @@ export function tagAppDataFlow(
     return;
   }
   const {
-    _source: _,
-    transient: __,
+    _source: existingSource,
+    transient: _,
     ...data
   } = flow as FlowTypes.FlowTypeWithData & { transient?: string };
+  // Any name is from the flow's fixed sheet, if it had one
+  const { name: __, url: ___, ...kept } = existingSource || {};
+  const _source: FlowTypes.FlowTypeBase["_source"] = { ...kept, type: "transient", url };
   fs.writeJsonSync(flowPath, { ...data, ...transientTag(_source) }, { spaces: 2 });
 
   const contentsPath = path.resolve(APP_DATA_PATH, "sheets", "contents.json");

@@ -13,7 +13,7 @@ import {
 import { FIXED_SHEETS_FOLDER, isValidFlowName, isWithinFolder } from "../utils";
 import { getAuthTokenPath } from "./auth";
 import { SheetConvertor } from "./sheetConvertor";
-import { ITransientSheetEntry, readAppDataFlow, transientTag } from "./transientSheets";
+import { ITransientSheetEntry } from "./transientSheets";
 
 /** Local cache of workbooks downloaded from google drive, used to only download changed files */
 const SHEETS_CACHE_PATH = path.resolve(SCRIPTS_WORKSPACE_PATH, "cache", "beta_sheets");
@@ -80,7 +80,8 @@ export async function downloadFixedSheets(
 
 /**
  * Download the sheets of the given transient sheet entries and write the listed flows to
- * `TRANSIENT_SHEETS_CACHE_PATH` (emptied first), tagged with `_source` and `"transient": "true"`.
+ * `TRANSIENT_SHEETS_CACHE_PATH` (emptied first), tagged with `"transient": "true"`. The sheet
+ * url is not included, as transient flows are parsed without one (see `tagAppDataFlow`).
  * Flows in a sheet that are not listed are ignored
  * @returns number of sheets and paths of the flow jsons written
  */
@@ -132,8 +133,7 @@ export async function downloadTransientSheets(
         logWarning({ msg1: `Flow not found in sheet: ${entry.flow_name}`, msg2: url });
         continue;
       }
-      const existingSource = readAppDataFlow(entry.flow_type, entry.flow_name)?._source;
-      const flow = { ...parsed, ...transientTag({ ...existingSource, url }) };
+      const flow = { ...parsed, transient: "true" };
       const filePath = path.resolve(TRANSIENT_SHEETS_CACHE_PATH, `${entry.flow_name}.json`);
       fs.writeFileSync(filePath, JSON.stringify(flow, null, 2) + "\n");
       filePaths.push(filePath);

@@ -14,6 +14,7 @@ import { SheetConvertor } from "./sheetConvertor";
 import {
   addTransientSheet,
   findTransientSheet,
+  readAppDataFlow,
   tagAppDataFlow,
   TRANSIENT_FLOW_TYPES,
 } from "./transientSheets";
@@ -59,7 +60,8 @@ export async function openFlowSheet(flowName: string, options: ISheetOptions = {
 }
 
 /**
- * Create a transient google sheet from one or more flow jsons in the external deployment,
+ * Create a transient google sheet from one or more flow jsons, found by the `_source.path` of
+ * their app_data copies (see `findFlowBySourcePath`),
  * containing a `==content_list==` tab listing the flows and a tab of rows per flow, so they can
  * be edited and synced.
  *
@@ -75,7 +77,7 @@ export async function createFlowSheet(flowNames: string | string[], options: ISh
   if (names.length === 0) throw new Error("At least one flow name is required");
   const sheetName = options.sheetName || names[0];
   const deploymentConfig = await loadExternalConfig(readExternalSourcePath());
-  const flows = names.map((flowName) => findSourceFlow(flowName, options.flowType).flow);
+  const flows = names.map((flowName) => findFlowBySourcePath(flowName, options.flowType).flow);
   for (const flow of flows) {
     if (!TRANSIENT_FLOW_TYPES.includes(flow.flow_type)) {
       throw new Error(
@@ -103,7 +105,6 @@ export async function createFlowSheet(flowNames: string | string[], options: ISh
     });
 
   let file: Awaited<ReturnType<typeof createFile>>;
-  let createdInFolder = !!folderId;
   try {
     file = await createFile(folderId ? [folderId] : undefined);
   } catch (error) {
@@ -114,14 +115,12 @@ export async function createFlowSheet(flowNames: string | string[], options: ISh
       msg2: (error as Error).message,
     });
     file = await createFile();
-    createdInFolder = false;
   }
   const url = `https://docs.google.com/spreadsheets/d/${file.data.id}`;
-  const _source = { name: createdInFolder ? folderId : undefined, path: `${sheetName}.xlsx`, url };
 
   // Each flow is listed separately, syncTransientSheets downloads a shared sheet once
   for (const flow of flows) {
-    tagAppDataFlow(flow.flow_type, flow.flow_name, _source);
+    tagAppDataFlow(flow.flow_type, flow.flow_name, url);
     addTransientSheet({ flow_type: flow.flow_type, flow_name: flow.flow_name, url });
   }
 
@@ -130,6 +129,33 @@ export async function createFlowSheet(flowNames: string | string[], options: ISh
   const result: ISheetResult = { flow_name: names[0], url, created: true };
   if (names.length > 1) result.flow_names = names;
   return result;
+}
+
+/**
+ * Find the json a flow was imported from, using the `_source.path` of its copy in app_data.
+ * If that is missing or does not contain the flow (e.g. the external deployment has moved),
+ * search the external deployment sheets folder instead (see `findSourceFlow`)
+ */
+export function findFlowBySourcePath(flowName: string, flowType?: string) {
+  if (!isValidFlowName(flowName)) {
+    throw new Error(`Invalid flow name: ${flowName}`);
+  }
+  const sheetsFolder = path.resolve(readExternalSourcePath(), "app_data", "sheets");
+  for (const type of flowType ? [flowType] : TRANSIENT_FLOW_TYPES) {
+    const filePath = readAppDataFlow(type, flowName)?._source?.path;
+    if (!filePath || path.extname(filePath) !== ".json" || !fs.existsSync(filePath)) continue;
+    let flow: FlowTypes.FlowTypeWithData;
+    try {
+      flow = fs.readJsonSync(filePath);
+    } catch {
+      continue;
+    }
+    if (flow?.flow_name !== flowName || flow.flow_type !== type) continue;
+    // Same rule as findSourceFlow: only synced files link to a sheet, others may be copies
+    if (!isFixedFlow(filePath, sheetsFolder)) delete flow._source;
+    return { filePath, flow };
+  }
+  return findSourceFlow(flowName, flowType);
 }
 
 /** Find a flow json by name anywhere within the external deployment sheets folder */

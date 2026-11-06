@@ -29,35 +29,50 @@ describe("Beta processFlows", () => {
     return fs.readJsonSync(path.join(appDataFolder, "sheets", "contents.json"));
   }
 
-  it("keeps _source on flows in the google_drive folder", () => {
+  function sourcePath(relativePath: string) {
+    return path.resolve(sheetsFolder, relativePath);
+  }
+
+  it("keeps _source on flows in the google_drive folder, adding path and type", () => {
     writeFlow("google_drive/synced.json", "synced");
     processFlows({ sourceFlowsFolder: sheetsFolder, targetAppDataFolder: appDataFolder });
-    expect(readOutput("synced")._source).toEqual(_source);
-    expect(readContents().data_list.synced._source).toEqual(_source);
+    const expected = { ..._source, path: sourcePath("google_drive/synced.json"), type: "fixed" };
+    expect(readOutput("synced")._source).toEqual(expected);
+    expect(readContents().data_list.synced._source).toEqual(expected);
   });
 
-  it("replaces _source with the folder for flows outside the google_drive folder", () => {
+  it("marks flows outside the google_drive folder as transient, without name or url", () => {
     writeFlow("copied.json", "copied");
     writeFlow("local/deeper/nested.json", "nested");
     processFlows({ sourceFlowsFolder: sheetsFolder, targetAppDataFolder: appDataFolder });
-    expect(readOutput("copied")._source).toEqual({ folder: "" });
-    expect(readOutput("nested")._source).toEqual({ folder: "local/deeper" });
-    expect(readContents().data_list.copied._source).toEqual({ folder: "" });
+    expect(readOutput("copied")._source).toEqual({
+      path: sourcePath("copied.json"),
+      type: "transient",
+    });
+    expect(readOutput("nested")._source).toEqual({
+      path: sourcePath("local/deeper/nested.json"),
+      type: "transient",
+    });
+    expect(readContents().data_list.copied._source.type).toEqual("transient");
   });
 
-  it("does not treat a folder only starting with google_drive as synced", () => {
+  it("does not treat a folder only starting with google_drive as fixed", () => {
     writeFlow("google_drive_copy/flow.json", "flow");
     processFlows({ sourceFlowsFolder: sheetsFolder, targetAppDataFolder: appDataFolder });
-    expect(readOutput("flow")._source).toEqual({ folder: "google_drive_copy" });
+    expect(readOutput("flow")._source.type).toEqual("transient");
   });
 
-  it("keeps all _source when keepAllSources is set", () => {
-    writeFlow("transient.json", "transient");
+  it("uses the given type for all flows", () => {
+    writeFlow("local.json", "local");
     processFlows({
       sourceFlowsFolder: sheetsFolder,
       targetAppDataFolder: appDataFolder,
-      keepAllSources: true,
+      type: "fixed",
     });
-    expect(readOutput("transient")._source).toEqual(_source);
+    expect(readOutput("local")._source).toEqual({
+      ..._source,
+      path: sourcePath("local.json"),
+      type: "fixed",
+    });
   });
 });

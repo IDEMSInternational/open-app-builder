@@ -6,6 +6,7 @@ import { isFixedFlow, isValidFlowName } from "./utils";
 import {
   combineGlobals,
   IFlowParserOptions,
+  IFlowSourceType,
   IGlobalSheet,
   parseDataList,
   parseTemplate,
@@ -39,11 +40,11 @@ interface IProcessFlowsOptions {
    */
   filePaths?: string[];
   /**
-   * Keep `_source` on all flows. By default flows are only parsed as `fixed` (keeping
-   * `_source`) when in the `google_drive` subfolder. Elsewhere `_source` is replaced with the
-   * flow's folder, as files may be copies of synced files
+   * `_source.type` of all flows. By default flows in the `google_drive` subfolder are `fixed`
+   * and all others `transient` (which removes the `_source` name and url, as files may be
+   * copies of synced files)
    */
-  keepAllSources?: boolean;
+  type?: IFlowSourceType;
   verbose?: boolean;
 }
 
@@ -56,13 +57,7 @@ interface IProcessFlowsOptions {
  * all globals are re-read from the source folder and the combined flow rebuilt
  */
 export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
-  const {
-    sourceFlowsFolder,
-    targetAppDataFolder,
-    filePaths,
-    keepAllSources = false,
-    verbose = false,
-  } = options;
+  const { sourceFlowsFolder, targetAppDataFolder, filePaths, type, verbose = false } = options;
   if (!fs.existsSync(sourceFlowsFolder)) {
     throw new Error(`Flows folder not found in source path: ${sourceFlowsFolder}`);
   }
@@ -90,9 +85,10 @@ export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
     // Parsed flows replace the source flows, so contents.json is written from parsed values
     flowsByType[flowType] = flowsByType[flowType].map((flow) => {
       const sourcePath = sourcePaths[`${flowType}/${flow.flow_name}`];
-      const fixed = keepAllSources || isFixedFlow(sourcePath, sourceFlowsFolder);
-      const folder = relativeFolder(sourcePath, sourceFlowsFolder);
-      const parsed = parser(flow, { fixed, folder });
+      const parsed = parser(flow, {
+        path: path.resolve(sourcePath),
+        type: type ?? (isFixedFlow(sourcePath, sourceFlowsFolder) ? "fixed" : "transient"),
+      });
       fs.writeJsonSync(path.resolve(targetFolder, `${parsed.flow_name}.json`), parsed, {
         spaces: 2,
       });
@@ -163,12 +159,6 @@ function readGlobalSheets(sourceFlowsFolder: string): IGlobalSheet[] {
     const sheet = relativePath.replace(/\.json$/, "");
     return { sheet, flow };
   });
-}
-
-/** Folder of a file relative to the sheets folder, using `/` separators ("" for the root) */
-function relativeFolder(filePath: string, sheetsFolder: string) {
-  const folder = path.relative(sheetsFolder, path.dirname(filePath));
-  return folder.split(path.sep).join("/");
 }
 
 function readContentsJson(targetAppDataFolder: string): IContentsJson {

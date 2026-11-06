@@ -39,7 +39,7 @@ describe("Beta Data List Parser", () => {
       status: "released",
       rows: [],
     } as FlowTypes.FlowTypeWithData;
-    expect(parseDataList(flow)).toEqual({ ...flow, _source: { folder: "" } });
+    expect(parseDataList(flow)).toEqual({ ...flow, _source: { type: "transient" } });
   });
 
   describe("_source", () => {
@@ -50,28 +50,32 @@ describe("Beta Data List Parser", () => {
       rows: [],
       _source,
     } as FlowTypes.FlowTypeWithData;
+    const path = "/deployment/app_data/sheets/test_source.json";
 
-    it("replaces _source with the root folder by default", () => {
-      expect(parseDataList(flow)._source).toEqual({ folder: "" });
+    it("removes name and url from transient flows, which is the default", () => {
+      expect(parseDataList(flow, { path })._source).toEqual({ path, type: "transient" });
+      expect(parseDataList(flow, { path, type: "transient" })._source).toEqual({
+        path,
+        type: "transient",
+      });
       expect(flow._source).toEqual(_source);
     });
 
-    it("replaces _source with the given folder", () => {
-      expect(parseDataList(flow, { folder: "local/nested" })._source).toEqual({
-        folder: "local/nested",
+    it("keeps name and url of fixed flows, replacing the path", () => {
+      expect(parseDataList(flow, { path, type: "fixed" })._source).toEqual({
+        ..._source,
+        path,
+        type: "fixed",
       });
     });
 
     it("adds _source when missing", () => {
       const { _source: _, ...withoutSource } = flow;
       const parsed = parseDataList(withoutSource as FlowTypes.FlowTypeWithData, {
-        folder: "local",
+        path,
+        type: "fixed",
       });
-      expect(parsed._source).toEqual({ folder: "local" });
-    });
-
-    it("keeps _source when fixed is set", () => {
-      expect(parseDataList(flow, { fixed: true })._source).toEqual(_source);
+      expect(parsed._source).toEqual({ path, type: "fixed" });
     });
   });
 });

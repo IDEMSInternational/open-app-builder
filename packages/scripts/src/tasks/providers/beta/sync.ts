@@ -22,6 +22,7 @@ import {
   getAppDataFlowPath,
   getAuthTokenPath,
   readTransientSheets,
+  tagAppDataFlow,
   TRANSIENT_SHEETS_CACHE_PATH,
   TRANSIENT_SHEETS_LIST_PATH,
 } from "./sheets";
@@ -54,8 +55,8 @@ export async function syncFixedSheets(options: ISyncOptions) {
 
 /**
  * Download the sheets in the transient sheets list and process the listed flows into the app
- * assets app_data folder, tagged with `_source` and `"transient": "true"`. Only listed flows are
- * updated, and the external deployment folder is not changed
+ * assets app_data folder, as `transient` flows linked to their sheet (see `tagAppDataFlow`).
+ * Only listed flows are updated, and the external deployment folder is not changed
  */
 export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
   const { verbose = false } = options;
@@ -76,10 +77,15 @@ export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
       sourceFlowsFolder: TRANSIENT_SHEETS_CACHE_PATH,
       targetAppDataFolder: APP_DATA_PATH,
       filePaths,
-      // Transient sheets are tagged with the sheet they were downloaded from
-      keepAllSources: true,
+      type: "transient",
       verbose,
     });
+    // Parsing removes the url of transient flows, so link each one to its sheet again
+    for (const filePath of filePaths) {
+      const { flow_type, flow_name } = fs.readJsonSync(filePath);
+      const entry = entries.find((e) => e.flow_type === flow_type && e.flow_name === flow_name);
+      if (entry) tagAppDataFlow(flow_type, flow_name, entry.url);
+    }
   }
   const updated = filePaths.filter((p) => readAppDataFileFor(p) !== before.get(p)).length;
   logOutput({
