@@ -59,7 +59,11 @@
   <!-- Test notifications -->
   <section>
     <h2>Send a test notification</h2>
-    <p class="hint">Tapping it shows a message, to check that taps work.</p>
+    <p class="hint">
+      Tapping it shows a message, to check that taps work. A campaign test also shows one when the
+      app finds it has arrived, to check its sent actions: within seconds while the app is open,
+      otherwise when you return to the app.
+    </p>
     <ion-segment [value]="delaySeconds()" (ionChange)="setDelay($event.detail.value)">
       @for (delay of delays; track delay.seconds) {
       <ion-segment-button [value]="delay.seconds">
@@ -130,6 +134,10 @@
       <ion-text class="status" [color]="notification.tapped ? 'success' : 'medium'">
         {{ tapStatus(notification) }}
       </ion-text>
+      } @if (past && notification.sentActionsRanAt !== undefined) {
+      <ion-text class="status" [color]="notification.sentActionsRanAt ? 'success' : 'medium'">
+        {{ sentStatus(notification) }}
+      </ion-text>
       } @if (notification.overdue) {
       <ion-text class="status" color="medium">
         <ion-icon name="time-outline"></ion-icon>
@@ -149,7 +157,8 @@
             [name]="expanded()[notification.key] ? 'chevron-up-outline' : 'chevron-down-outline'"
           ></ion-icon>
         </ion-button>
-        @if (notification.original) {
+        <!-- Not for test notifications: they are tests already -->
+        @if (notification.original && !notification.isTest) {
         <ion-button
           fill="outline"
           size="small"
