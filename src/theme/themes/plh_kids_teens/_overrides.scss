@@ -58,9 +58,8 @@
       margin-right: 0;
     }
     // Color Alternatives
-    .standard {
-      color: white;
-    }
+    // Default button text colour comes from button.component.scss (`.standard`: primary-contrast),
+    // so per-style colours set there (e.g. --button-text-color-secondary) are not overridden here
     .card.standard {
       color: var(--ion-color-primary-800);
     }
