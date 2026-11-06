@@ -21,10 +21,10 @@ export function parseListValue(value: any) {
   return parsed;
 }
 
-function parseAppDataListString(str: string, delimeter = ";"): string[] {
+function parseAppDataListString(str: string, delimiter = ";"): string[] {
   return (
     str
-      .split(delimeter)
+      .split(delimiter)
       // remove whitespace between elements
       .map((val: string) => val.trim())
       // remove any trailing empty elements left by final ';'

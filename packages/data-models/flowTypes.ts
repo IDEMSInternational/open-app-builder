@@ -60,6 +60,11 @@ export namespace FlowTypes {
       path?: string;
       /** Remote url of source */
       url?: string;
+      /**
+       * Set by the beta import: `fixed` when synced from the deployment google drive folders,
+       * `transient` otherwise (`path` is then the absolute path of the flow json)
+       */
+      type?: "fixed" | "transient";
     };
     process_on_start?: number; // priority order to process template variable setters on startup
   }
