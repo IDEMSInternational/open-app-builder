@@ -30,10 +30,14 @@ export class ActionHandler {
   }
 
   private async handle(params: IActionParameters, namespace?: string) {
-    const requestedActionName = `${namespace ? `${namespace}.` : ""}${params.name}`;
-    const actionName = getScopeFallbackCandidates(requestedActionName).find((candidate) =>
-      this.actionRegistry.has(candidate)
-    );
+    const isQualifiedName = params.name.includes(".");
+    const requestedActionName = isQualifiedName
+      ? params.name
+      : `${namespace ? `${namespace}.` : ""}${params.name}`;
+    const actionCandidates = isQualifiedName
+      ? [requestedActionName]
+      : getScopeFallbackCandidates(requestedActionName);
+    const actionName = actionCandidates.find((candidate) => this.actionRegistry.has(candidate));
 
     if (!actionName) {
       return console.error(`[ACTION] No action registered with name: ${requestedActionName}`);

@@ -38,6 +38,27 @@ describe("ActionHandler", () => {
 
     expect(action.execute).toHaveBeenCalled();
   });
+
+  it("executes an explicitly qualified action without applying the caller namespace", async () => {
+    const requestedAction = createAction("loop.key_1.save");
+    const callerScopedAction = createAction("loop.key_2.save");
+    actionRegistry.register(requestedAction);
+    actionRegistry.register(callerScopedAction);
+
+    await templateActionRegistry.trigger(createActionCall("loop.key_1.save", "loop.key_2"));
+
+    expect(requestedAction.execute).toHaveBeenCalled();
+    expect(callerScopedAction.execute).not.toHaveBeenCalled();
+  });
+
+  it("does not fall back when an explicitly qualified action is not registered", async () => {
+    const callerScopedAction = createAction("loop.key_2.save");
+    actionRegistry.register(callerScopedAction);
+
+    await templateActionRegistry.trigger(createActionCall("loop.key_1.save", "loop.key_2"));
+
+    expect(callerScopedAction.execute).not.toHaveBeenCalled();
+  });
 });
 
 function createAction(name: string): jasmine.SpyObj<IAction> {
