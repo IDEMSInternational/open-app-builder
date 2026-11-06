@@ -1,6 +1,7 @@
 $background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
+$text-color-secondary: var(--button-text-color-secondary, var(--ion-color-primary-contrast));
 
 :host {
   width: 100%;
@@ -176,6 +177,12 @@ ion-button[data-variant~="card"] {
 
 .standard {
   color: var(--ion-color-primary-contrast);
+}
+// Text on the secondary background. Must come after .standard, which every button has;
+// .alternative below still takes precedence.
+.navigation,
+.get_me_going {
+  color: $text-color-secondary;
 }
 .alternative {
   color: var(--ion-color-primary);

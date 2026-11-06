@@ -13,7 +13,7 @@
       --box-shadow: none;
 
       font-size: var(--buttons-font-size);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--button-font-weight);
       letter-spacing: var(--font-letter-spacing);
       text-transform: none;
     }
@@ -58,9 +58,8 @@
       margin-right: 0;
     }
     // Color Alternatives
-    .standard {
-      color: white;
-    }
+    // Default button text colour comes from button.component.scss (`.standard`: primary-contrast),
+    // so per-style colours set there (e.g. --button-text-color-secondary) are not overridden here
     .card.standard {
       color: var(--ion-color-primary-800);
     }
@@ -525,17 +524,17 @@
       border-end-end-radius: var(--ion-border-radius-small) !important;
     }
     &[data-variant~="box_primary"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--display-group-box-primary-border-color);
     }
     &[data-variant~="box_secondary"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--display-group-box-secondary-border-color);
     }
     &[data-variant~="box_gray"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--ion-color-gray-600);
     }
@@ -624,6 +623,8 @@
       min-height: 64px;
       box-shadow: var(--round-button-module-box-shadow);
       border: 1px solid var(--round-button-module-border-color);
+      background: var(--round-button-module-background) !important;
+      color: var(--round-button-module-color);
     }
   }
 
@@ -848,6 +849,7 @@
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           text-align: center;
+          color: var(--popup-completion-text-color);
         }
         plh-tmpl-title {
           div.title-wrapper {
