@@ -19,6 +19,7 @@
     "firebasestorage",
     "firestore",
     "fontawesome",
+    "fullscreen",
     "gdrive",
     "glitchtip",
     "gradlew",
@@ -47,6 +48,7 @@
     "tmpl",
     "venv",
     "viewbox",
+    "youtu",
     "youtube",
   ]
 # flagWords - list of words to be always considered incorrect
