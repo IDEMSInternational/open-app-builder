@@ -34,6 +34,10 @@ $step-pop-duration: 450ms;
   border-radius: 50%;
   background: white;
   box-shadow: 0 $badge-lip-height 0 $track-color;
+  --celebration-color: #{$current-color};
+  --celebration-alt-color: #{$completed-color};
+  // Once the most recent step has popped in
+  --celebration-delay: #{$connector-fill-duration + $step-pop-duration};
 
   img {
     width: 50%;

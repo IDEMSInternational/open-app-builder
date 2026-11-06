@@ -26,7 +26,7 @@ Steps are shown in rows of 5. There is always at least one empty step after the 
 | 5                   | 2 rows: the first full, the second empty                |
 | 12                  | 3 rows: 10 ticked in the first two, then 2 ticked and 3 empty |
 
-The most recent step is larger and in the highlight colour. It animates in each time the component is shown, including when returning to the page, and whenever the count changes.
+The most recent step is larger and in the highlight colour. It animates in each time the component is shown, including when returning to the page, and whenever the count changes. Once it has appeared, the image bounces and a ring and sparks spread out from it, if at least one step is completed. Animations are turned off when the device is set to reduce motion.
 
 !!! note "Text is plain and is not translated"
 
@@ -54,6 +54,6 @@ Themes can change the colours by setting these variables in their variable overr
 | ------------------------------------ | ---------------------------- | -------- |
 | `progress-summary-background`        | `var(--ion-color-primary-50)`  | Card background |
 | `progress-summary-track-color`       | `var(--ion-color-primary-100)` | Lines after the most recent step, and the edge under the image circle |
-| `progress-summary-completed-color`   | `var(--ion-color-primary-500)` | Completed steps and the lines between them |
-| `progress-summary-current-color`     | `var(--ion-color-secondary-500)` | The most recent step |
+| `progress-summary-completed-color`   | `var(--ion-color-primary-500)` | Completed steps, the lines between them, and half of the sparks |
+| `progress-summary-current-color`     | `var(--ion-color-secondary-500)` | The most recent step, the ring and the other sparks |
 | `progress-summary-title-color`       | `var(--ion-color-primary-600)` | Title |

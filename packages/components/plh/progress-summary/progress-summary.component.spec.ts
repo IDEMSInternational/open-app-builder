@@ -4,6 +4,7 @@ import { IonicModule } from "@ionic/angular";
 import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
 import { TemplateAssetService } from "src/app/shared/components/template/services/template-asset.service";
 
+import { PlhProgressSummaryCelebrationComponent } from "./celebration/celebration.component";
 import { PlhProgressSummaryComponent } from "./progress-summary.component";
 import { MAX_COMPLETED_COUNT } from "./progress-summary.logic";
 
@@ -37,7 +38,7 @@ describe("PlhProgressSummaryComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PlhProgressSummaryComponent],
+      declarations: [PlhProgressSummaryComponent, PlhProgressSummaryCelebrationComponent],
       imports: [IonicModule.forRoot(), TemplatePipesModule],
       providers: [
         {
@@ -106,6 +107,17 @@ describe("PlhProgressSummaryComponent", () => {
     expect(element.querySelector(".title")?.textContent).toBe("That is 2 check-ins!");
     expect(element.querySelector(".text")?.textContent).toBe("Keep going");
     expect(element.querySelector(".badge img")).toBeTruthy();
+  });
+
+  it("celebrates the image once a step is completed", () => {
+    setRow(0, { image_asset: "images/icons/star_yellow.svg" });
+    expect(element.querySelector(".badge.play")).toBeNull();
+    expect(element.querySelectorAll(".badge .spark").length).toBe(0);
+
+    setRow(1, { image_asset: "images/icons/star_yellow.svg" });
+    expect(element.querySelector(".badge.play img")).toBeTruthy();
+    expect(element.querySelector(".badge .burst")).toBeTruthy();
+    expect(element.querySelectorAll(".badge .spark").length).toBe(8);
   });
 
   it("hides the title, text and image when not set", () => {

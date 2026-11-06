@@ -1,8 +1,8 @@
 <div class="progress-summary">
   @if (params().imageAsset) {
-    <div class="badge">
+    <plh-progress-summary-celebration class="badge" [play]="completedCount() > 0">
       <img [src]="params().imageAsset | translatedAsset" alt="" />
-    </div>
+    </plh-progress-summary-celebration>
   }
   <div
     class="step-rows"

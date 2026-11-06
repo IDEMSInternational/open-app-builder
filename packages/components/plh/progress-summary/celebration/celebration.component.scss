@@ -1,0 +1,85 @@
+// Set by the parent
+$color: var(--celebration-color);
+$alt-color: var(--celebration-alt-color);
+$delay: var(--celebration-delay, 0s);
+
+$bounce-duration: 600ms;
+$burst-duration: 800ms;
+$spark-size: 8px;
+$spark-distance: 70px;
+
+:host {
+  position: relative;
+}
+
+:host(.play) {
+  animation: celebration-bounce $bounce-duration cubic-bezier(0.34, 1.56, 0.64, 1) $delay both;
+}
+
+.burst,
+.spark {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burst {
+  inset: -2px;
+  border: 3px solid $color;
+  animation: celebration-burst $burst-duration ease-out $delay;
+}
+
+.spark {
+  top: 50%;
+  left: 50%;
+  width: $spark-size;
+  height: $spark-size;
+  margin: calc(#{$spark-size} / -2);
+  background: $color;
+  animation: celebration-spark $burst-duration ease-out $delay;
+
+  &.alt {
+    background: $alt-color;
+  }
+}
+
+@keyframes celebration-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes celebration-burst {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes celebration-spark {
+  from {
+    transform: rotate(var(--angle)) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(var(--angle)) translateY(-$spark-distance) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.play),
+  .burst,
+  .spark {
+    animation: none;
+  }
+}
