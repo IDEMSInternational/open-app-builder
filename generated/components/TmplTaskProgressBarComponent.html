@@ -1,0 +1,1198 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TmplTaskProgressBarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="../components/TemplateBaseComponent.html" target="_self" >TemplateBaseComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>plh-task-progress-bar</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./task-progress-bar.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./task-progress-bar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dataRows" >dataRows</a>
+                            </li>
+                            <li>
+                                <a href="#params" >params</a>
+                            </li>
+                            <li>
+                                <a href="#standalone" >standalone</a>
+                            </li>
+                            <li>
+                                <a href="#subtasksCompleted" >subtasksCompleted</a>
+                            </li>
+                            <li>
+                                <a href="#subtasksTotal" >subtasksTotal</a>
+                            </li>
+                            <li>
+                                <a href="#useDynamicData" >useDynamicData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getParams" >getParams</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#completedField" >completedField</a>
+                            </li>
+                            <li>
+                                <a href="#dataListName" >dataListName</a>
+                            </li>
+                            <li>
+                                <a href="#highlighted" >highlighted</a>
+                            </li>
+                            <li>
+                                <a href="#progressStatus" >progressStatus</a>
+                            </li>
+                            <li>
+                                <a href="#progressUnitsName" >progressUnitsName</a>
+                            </li>
+                            <li>
+                                <a href="#showText" >showText</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#newlyCompleted" >newlyCompleted</a>
+                            </li>
+                            <li>
+                                <a href="#progressStatusChange" >progressStatusChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#progressPercentage" >progressPercentage</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdr: ChangeDetectorRef, dynamicDataService: DynamicDataService, taskService: TaskService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:87</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dynamicDataService</td>
+                                                  
+                                                        <td>
+                                                                    <code>DynamicDataService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>taskService</td>
+                                                  
+                                                        <td>
+                                                                    <code>TaskService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="completedField"></a>
+                        <b>completedField</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:74</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataListName"></a>
+                        <b>dataListName</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:73</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="highlighted"></a>
+                        <b>highlighted</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean | null</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:75</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="progressStatus"></a>
+                        <b>progressStatus</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IProgressStatus</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:76</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="progressUnitsName"></a>
+                        <b>progressUnitsName</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:77</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showText"></a>
+                        <b>showText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:78</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="newlyCompleted"></a>
+                        <b>newlyCompleted</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:80</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="progressStatusChange"></a>
+                        <b>progressStatusChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:79</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParams"></a>
+                    <span class="name">
+                        <span ><b>getParams</b></span>
+                        <a href="#getParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getParams()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataRows"></a>
+                    <span class="name">
+                        <span ><b>dataRows</b></span>
+                        <a href="#dataRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="params"></a>
+                    <span class="name">
+                        <span ><b>params</b></span>
+                        <a href="#params"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ITaskProgressBarParams.html" target="_self" >Partial&lt;ITaskProgressBarParams&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="standalone"></a>
+                    <span class="name">
+                        <span ><b>standalone</b></span>
+                        <a href="#standalone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subtasksCompleted"></a>
+                    <span class="name">
+                        <span ><b>subtasksCompleted</b></span>
+                        <a href="#subtasksCompleted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subtasksTotal"></a>
+                    <span class="name">
+                        <span ><b>subtasksTotal</b></span>
+                        <a href="#subtasksTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useDynamicData"></a>
+                    <span class="name">
+                        <span ><b>useDynamicData</b></span>
+                        <a href="#useDynamicData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="progressPercentage"></a>
+                        <span class="name"><b>progressPercentage</b><a href="#progressPercentage"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>progressPercentage()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/app/shared/components/template/components/task-progress-bar/task-progress-bar.component.ts:146</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from &quot;@angular/core&quot;;
+import { TaskService } from &quot;src/app/shared/services/task/task.service&quot;;
+import {
+  getBooleanParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from &quot;src/app/shared/utils&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { IProgressStatus } from &quot;src/app/shared/services/task/task.service&quot;;
+import { Subscription, debounceTime } from &quot;rxjs&quot;;
+import { DynamicDataService } from &quot;src/app/shared/services/dynamic-data/dynamic-data.service&quot;;
+
+interface ITaskProgressBarParams {
+  /**
+   * TEMPLATE PARAMETER: task_group_data.
+   * The name of the task group to track the progress of (through the completion of its subtasks)
+   */
+  dataListName: string;
+  /**
+   * TEMPLATE PARAMETER: completed_field.
+   * The name of the field that stores the completion status of the task group
+   */
+  completedField: string;
+  /**
+   * TEMPLATE PARAMETER: progress_units_name.
+   * The displayed name of the units of progress associated with
+   * the constituent tasks of the task group.
+   * Default &quot;sections&quot;
+   */
+  progressUnitsName: string;
+  /**
+   * TEMPLATE PARAMETER: show_text.
+   * Show the text associated with progress bar, e.g. &quot;8 sections&quot;
+   * Default false
+   */
+  showText: boolean;
+  /**
+   * TEMPLATE PARAMETER: completed_column_name.
+   * The name of the column in the source data list that tracks the completed value of each subtask.
+   * If there is no column with this name, the component will look for a column matching completed_field_column_name,
+   * and use the corresponding app fields to track the completion status of subtasks.
+   * Deafult &quot;completed&quot;
+   * */
+  completedColumnName: string;
+  /**
+   * TEMPLATE PARAMETER: completed_field_column_name.
+   * The name of the column in the source data list which stores the name of the completed field of each subtask.
+   * The app fields corresponding to the values in this column are used to evaluate the completion of subtasks iff the
+   * completed_column_name column is not present. In this case, the task progress bar will not update without a page reload.
+   * Deafult &quot;completed_field&quot;
+   * */
+  completedFieldColumnName: string;
+}
+
+@Component({
+  selector: &quot;plh-task-progress-bar&quot;,
+  templateUrl: &quot;./task-progress-bar.component.html&quot;,
+  styleUrls: [&quot;./task-progress-bar.component.scss&quot;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TmplTaskProgressBarComponent
+  extends TemplateBaseComponent
+  implements OnInit, OnDestroy
+{
+  @Input() dataListName: string | null;
+  @Input() completedField: string | null;
+  @Input() highlighted: boolean | null;
+  @Input() progressStatus: IProgressStatus;
+  @Input() progressUnitsName: string;
+  @Input() showText: boolean;
+  @Output() progressStatusChange &#x3D; new EventEmitter&lt;IProgressStatus&gt;();
+  @Output() newlyCompleted &#x3D; new EventEmitter&lt;boolean&gt;();
+  params: Partial&lt;ITaskProgressBarParams&gt; &#x3D; {};
+  dataRows: any[];
+  subtasksTotal: number;
+  subtasksCompleted: number;
+  standalone: boolean &#x3D; false;
+  useDynamicData: boolean;
+  private dataQuery$: Subscription;
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private dynamicDataService: DynamicDataService,
+    private taskService: TaskService
+  ) {
+    super();
+  }
+
+  async ngOnInit() {
+    this.getParams();
+    await this.getTaskGroupDataRows();
+    this.checkAndSetUseDynamicData();
+    if (this.useDynamicData) {
+      this.subscribeToData();
+    } else {
+      this.evaluateTaskGroupData();
+    }
+  }
+
+  getParams() {
+    // If component is being explicitly instantiated from a template, get the params from the template row
+    if (this._row) {
+      this.standalone &#x3D; true;
+      this.params.dataListName &#x3D; getStringParamFromTemplateRow(this._row, &quot;task_group_data&quot;, null);
+      this.params.completedField &#x3D; getStringParamFromTemplateRow(
+        this._row,
+        &quot;completed_field&quot;,
+        null
+      );
+      this.params.progressUnitsName &#x3D; getStringParamFromTemplateRow(
+        this._row,
+        &quot;progress_units_name&quot;,
+        &quot;sections&quot;
+      );
+      this.params.showText &#x3D; getBooleanParamFromTemplateRow(this._row, &quot;show_text&quot;, false);
+      this.params.completedColumnName &#x3D; getStringParamFromTemplateRow(
+        this._row,
+        &quot;completed_column_name&quot;,
+        &quot;completed&quot;
+      );
+      this.params.completedFieldColumnName &#x3D; getStringParamFromTemplateRow(
+        this._row,
+        &quot;completed_field_column_name&quot;,
+        &quot;completed_field&quot;
+      );
+    }
+    // If component is being instantiated by a parent component (e.g. task-card), use Input() values for params.
+    else {
+      this.params.dataListName &#x3D; this.dataListName;
+      this.params.completedField &#x3D; this.completedField;
+      this.params.progressUnitsName &#x3D; this.progressUnitsName;
+      this.params.showText &#x3D; this.showText;
+      this.params.completedColumnName &#x3D; &quot;completed&quot;;
+      this.params.completedFieldColumnName &#x3D; &quot;completed_field&quot;;
+    }
+  }
+
+  get progressPercentage() {
+    return (this.subtasksCompleted / this.subtasksTotal) * 100;
+  }
+
+  private async getTaskGroupDataRows() {
+    await this.taskService.ready();
+    this.dataRows &#x3D; await this.taskService.getTaskGroupDataRows(this.params.dataListName);
+  }
+
+  private checkAndSetUseDynamicData() {
+    this.useDynamicData &#x3D; this.dataRows?.[0]?.hasOwnProperty(this.params.completedColumnName);
+  }
+
+  private async evaluateTaskGroupData() {
+    const previousProgressStatus &#x3D; this.progressStatus;
+    const { subtasksTotal, subtasksCompleted, progressStatus, newlyCompleted } &#x3D;
+      await this.taskService.evaluateTaskGroupData(this.dataRows, {
+        completedColumnName: this.params.completedColumnName,
+        completedField: this.params.completedField,
+        completedFieldColumnName: this.params.completedFieldColumnName,
+        dataListName: this.params.dataListName,
+        useDynamicData: this.useDynamicData,
+      });
+    this.progressStatus &#x3D; progressStatus;
+    this.subtasksCompleted &#x3D; subtasksCompleted;
+    this.subtasksTotal &#x3D; subtasksTotal;
+
+    if (previousProgressStatus !&#x3D;&#x3D; this.progressStatus)
+      this.progressStatusChange.emit(this.progressStatus);
+    if (newlyCompleted) this.newlyCompleted.emit(true);
+
+    this.cdr.markForCheck();
+  }
+
+  // Adapted from data-items component
+  private async subscribeToData() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
+    if (this.params.dataListName) {
+      await this.dynamicDataService.ready();
+      const query &#x3D; await this.dynamicDataService.query$(&quot;data_list&quot;, this.params.dataListName);
+      this.dataQuery$ &#x3D; query.pipe(debounceTime(50)).subscribe(async (data) &#x3D;&gt; {
+        this.dataRows &#x3D; data;
+        await this.evaluateTaskGroupData();
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  class&#x3D;&quot;progress-bar-wrapper&quot;
+  [class.highlighted]&#x3D;&quot;highlighted&quot;
+  [class]&#x3D;&quot;progressStatus&quot;
+  [class.standalone]&#x3D;&quot;standalone&quot;
+&gt;
+  &lt;p *ngIf&#x3D;&quot;params.showText&quot; class&#x3D;&quot;tiny progress-text&quot;&gt;
+    {{ subtasksTotal + &quot; &quot; + params.progressUnitsName }}
+  &lt;/p&gt;
+  &lt;div class&#x3D;&quot;progress-bar-background&quot;&gt;
+    &lt;div class&#x3D;&quot;progress-bar&quot; [style.width]&#x3D;&quot;progressPercentage + &#x27;%&#x27;&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./task-progress-bar.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &quot;/src/theme/mixins&quot;;
+
+// Colour to be used for the progress bar when the component is standalone (explicitly instantiated from a template)
+// Within the task-card component, the progress bar colour is determined by the status of the task group, i.e.,
+// &quot;notStarted&quot; | &quot;inProgress&quot; | &quot;completed&quot; | &quot;highlighted&quot;
+$progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
+
+.progress-bar-wrapper {
+  @include mixins.flex-space-between;
+
+  .progress-text {
+    padding-right: var(--tiny-padding);
+    white-space: nowrap;
+  }
+  .progress-bar-background {
+    width: 100%;
+    border-radius: var(--ion-border-radius-small);
+    background-color: var(--ion-color-gray-100);
+  }
+  .progress-bar {
+    width: 1%;
+    height: 5px;
+    border-radius: var(--ion-border-radius-small);
+    background-color: $progress-colour;
+  }
+  &amp;.notStarted,
+  &amp;.inProgress {
+    .progress-bar {
+      background-color: var(--ion-color-gray-400);
+    }
+  }
+  &amp;.completed {
+    .progress-bar {
+      background-color: var(--ion-color-green);
+    }
+  }
+  &amp;.highlighted {
+    .progress-bar-background {
+      background-color: var(--ion-color-secondary-100);
+    }
+    .progress-bar {
+      background-color: var(--ion-color-secondary);
+    }
+  }
+  &amp;.standalone {
+    .progress-bar {
+      background-color: $progress-colour;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div  class="progress-bar-wrapper"  [class.highlighted]="highlighted"  [class]="progressStatus"  [class.standalone]="standalone">  <p *ngIf="params.showText" class="tiny progress-text">    {{ subtasksTotal + " " + params.progressUnitsName }}  </p>  <div class="progress-bar-background">    <div class="progress-bar" [style.width]="progressPercentage + \'%\'"></div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionSectionComponent', 'selector': 'plh-tmpl-accordion-section'},{'name': 'AnimatedSectionComponent', 'selector': 'plh-tmpl-animated-section'},{'name': 'AnimatedSectionGroupComponent', 'selector': 'plh-tmpl-animated-section-group'},{'name': 'ComboBoxModalComponent', 'selector': 'combo-box-modal'},{'name': 'FormComponent', 'selector': 'plh-tmpl-form'},{'name': 'NavGroupComponent', 'selector': 'plh-tmpl-nav-group'},{'name': 'RoundIconButtonComponent', 'selector': 'plh-round-button'},{'name': 'SelectTextComponent', 'selector': 'plh-select-text'},{'name': 'SquareIconButtonComponent', 'selector': 'plh-square-icon-button'},{'name': 'TemplateBaseComponent', 'selector': ''},{'name': 'TemplateDebuggerComponent', 'selector': 'plh-template-debugger'},{'name': 'TemplateHTMLComponent', 'selector': 'template-html-component'},{'name': 'TemplateLayoutComponent', 'selector': ''},{'name': 'TemplatePopupComponent', 'selector': ''},{'name': 'TmplAccordionComponent', 'selector': 'plh-accordion-component'},{'name': 'TmplAdvancedDashedBoxComponent', 'selector': 'plh-advanced-dashed-box'},{'name': 'TmplAnimatedSlidesComponent', 'selector': 'template-animated-slides'},{'name': 'TmplAudioComponent', 'selector': 'plh-audio'},{'name': 'TmplButtonComponent', 'selector': 'plh-button'},{'name': 'TmplCarouselComponent', 'selector': 'plh-carousel'},{'name': 'TmplComboBoxComponent', 'selector': 'plh-combo-box'},{'name': 'TmplDashedBoxComponent', 'selector': 'plh-dashed-box'},{'name': 'TmplDataItemsComponent', 'selector': 'plh-data-items'},{'name': 'TmplDisplayGridComponent', 'selector': 'plh-display-grid'},{'name': 'TmplDisplayGroupComponent', 'selector': 'plh-tmpl-display-group'},{'name': 'TmplDrawerComponent', 'selector': 'plh-drawer'},{'name': 'TmplHelpIconComponent', 'selector': 'plh-tmpl-help-icon'},{'name': 'TmplIconBannerComponent', 'selector': 'plh-icon-banner'},{'name': 'TmplImageComponent', 'selector': 'plh-tmpl-image'},{'name': 'TmplLatexComponent', 'selector': 'template-latex-component'},{'name': 'TmplLottieAnimation', 'selector': 'plh-tmpl-lottie-animation'},{'name': 'TmplNavigationBarComponent', 'selector': 'plh-navigation-bar'},{'name': 'TmplNumberComponent', 'selector': 'plh-number-selector'},{'name': 'TmplOdkFormComponent', 'selector': 'tmpl-odk-form'},{'name': 'TmplParentPointBoxComponent', 'selector': 'plh-points-item'},{'name': 'TmplParentPointCounterComponent', 'selector': 'plh-parent-point-counter'},{'name': 'TmplPdfComponent', 'selector': 'plh-pdf'},{'name': 'TmplProgressPathComponent', 'selector': 'plh-progress-path'},{'name': 'TmplQRCodeComponent', 'selector': 'plh-qr-code'},{'name': 'TmplRadioButtonGridComponent', 'selector': 'plh-radio-button-grid'},{'name': 'TmplRadioGroupComponent', 'selector': 'plh-radio-group'},{'name': 'TmplSimpleCheckboxComponent', 'selector': 'plh-simple-checkbox'},{'name': 'TmplSliderComponent', 'selector': 'plh-slider-new'},{'name': 'TmplSubtitleComponent', 'selector': 'plh-tmpl-subtitle'},{'name': 'TmplTaskCardComponent', 'selector': 'plh-task-card'},{'name': 'TmplTaskProgressBarComponent', 'selector': 'plh-task-progress-bar'},{'name': 'TmplTextAreaComponent', 'selector': 'plh-text-area'},{'name': 'TmplTextBoxComponent', 'selector': 'plh-text-box'},{'name': 'TmplTextBubbleComponent', 'selector': 'tmpl-text-bubble'},{'name': 'TmplTextComponent', 'selector': 'plh-tmpl-text'},{'name': 'TmplTileComponent', 'selector': 'plh-tile-component'},{'name': 'TmplTimerComponent', 'selector': 'plh-timer'},{'name': 'TmplTitleComponent', 'selector': 'plh-tmpl-title'},{'name': 'TmplToggleBarComponent', 'selector': 'plh-tmpl-toggle-bar'},{'name': 'TmplVideoComponent', 'selector': 'plh-tmpl-video'},{'name': 'WorkshopsComponent', 'selector': 'plh-tmpl-workshops-accordion'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TmplTaskProgressBarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TmplTaskProgressBarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

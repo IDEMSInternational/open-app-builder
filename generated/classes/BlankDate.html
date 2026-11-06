@@ -1,0 +1,277 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li >BlankDate</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/components/template/components/odk-form/libs/openrosa/date-extensions.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Consistent with JavaRosa, the following should produce an empty string:</p>
+<ul>
+<li><code>date(&#39;&#39;)</code></li>
+<li><code>format-date(&#39;&#39;)</code></li>
+<li><code>format-date(date(&#39;&#39;))</code></li>
+</ul>
+<p>Conversions of <code>date(&#39;&#39;)</code> to a number is still invalid. This behavior
+deviates from JavaRosa by producing &#39;Invalid Date&#39; rather than <code>NaN</code>,
+for consistency with historical behavior.</p>
+
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../miscellaneous/variables.html#D" target="_self" >Date</a></code>
+            </p>
+
+
+
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/template/components/odk-form/libs/openrosa/date-extensions.ts:16</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class BlankDate extends Date {
+  constructor() {
+    super(NaN);
+  }
+
+  toString() {
+    return &quot;&quot;;
+  }
+}
+
+/**
+ * Converts a native Date UTC String to a RFC 3339-compliant date string with local offsets
+ * used in ODK, so it replaces the Z in the ISOstring with a local offset
+ * @param {Date} date
+ * @return {string} a datetime string formatted according to RC3339 with local offset
+ */
+export const toISOLocalString &#x3D; (date) &#x3D;&gt; {
+  //2012-09-05T12:57:00.000-04:00 (ODK)
+
+  if ([&quot;Invalid Date&quot;, &quot;&quot;].includes(date.toString())) {
+    return date.toString();
+  }
+
+  var dt &#x3D; new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000)
+    .toISOString()
+    .replace(&quot;Z&quot;, getTimezoneOffsetAsTime(date));
+
+  if (dt.indexOf(&quot;T00:00:00.000&quot;) &gt; 0) {
+    return dt.split(&quot;T&quot;)[0];
+  } else {
+    return dt;
+  }
+};
+
+/**
+ * @param {Date} date
+ * @return {string}
+ */
+export const getTimezoneOffsetAsTime &#x3D; (date) &#x3D;&gt; {
+  var offsetMinutesTotal;
+  var hours;
+  var minutes;
+  var direction;
+  var pad2 &#x3D; function (x) {
+    return x &lt; 10 ? &quot;0&quot; + x : x;
+  };
+
+  if (date.toString() &#x3D;&#x3D;&#x3D; &quot;Invalid Date&quot;) {
+    return date.toString();
+  }
+
+  offsetMinutesTotal &#x3D; date.getTimezoneOffset();
+
+  direction &#x3D; offsetMinutesTotal &lt; 0 ? &quot;+&quot; : &quot;-&quot;;
+  hours &#x3D; pad2(Math.floor(Math.abs(offsetMinutesTotal / 60)));
+  minutes &#x3D; pad2(Math.floor(Math.abs(offsetMinutesTotal % 60)));
+
+  return direction + hours + &quot;:&quot; + minutes;
+};
+
+// /**
+//  * @deprecated
+//  * @see {toISOLocalString}
+//  */
+// Date.prototype.toISOLocalString &#x3D; function() {
+//   return toISOLocalString(this);
+// };
+
+// /**
+//  * @deprecated
+//  * @see {getTimezoneOffsetAsTime}
+//  */
+// Date.prototype.getTimezoneOffsetAsTime &#x3D; function() {
+//   return getTimezoneOffsetAsTime(this);
+// };
+
+// module.exports &#x3D; {
+//   BlankDate,
+//   getTimezoneOffsetAsTime,
+//   toISOLocalString,
+// };
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'BlankDate.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
