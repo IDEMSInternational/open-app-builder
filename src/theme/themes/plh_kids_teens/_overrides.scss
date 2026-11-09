@@ -13,7 +13,6 @@
       --box-shadow: none;
 
       font-size: var(--buttons-font-size);
-      font-weight: var(--button-font-weight);
       letter-spacing: var(--font-letter-spacing);
       text-transform: none;
     }
@@ -67,9 +66,14 @@
       color: var(--ion-color-primary-50);
     }
     .information {
-      --background: var(--ion-color-primary-600);
+      --background: var(--button-background-information);
       --background-hover: var(--ion-color-primary-500);
       --background-activated: var(--ion-color-primary-500);
+      // Card buttons get this background instead of white, so they need the text colour of other
+      // information buttons (`.standard` in button.component.scss) rather than the card's
+      &[data-variant~="card"] {
+        color: var(--ion-color-primary-contrast);
+      }
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {

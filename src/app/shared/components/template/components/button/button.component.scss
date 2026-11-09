@@ -2,6 +2,7 @@ $background-primary: var(--button-background-primary, var(--gradient-primary-mid
 $background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
 $text-color-secondary: var(--button-text-color-secondary, var(--ion-color-primary-contrast));
+$font-weight: var(--button-font-weight, var(--font-weight-standard));
 
 :host {
   width: 100%;
@@ -19,7 +20,7 @@ $text-color-secondary: var(--button-text-color-secondary, var(--ion-color-primar
 }
 ion-button {
   font-size: var(--buttons-font-size-small);
-  font-weight: var(--font-weight-standard);
+  font-weight: $font-weight;
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
@@ -167,7 +168,6 @@ ion-button[data-variant~="card"] {
   min-height: 80px !important;
   max-width: fit-content;
   --background: #{$background-secondary};
-  color: var(--ion-color-primary-contrast);
 }
 
 .options {

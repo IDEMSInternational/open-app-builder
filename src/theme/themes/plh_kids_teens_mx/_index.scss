@@ -4,12 +4,15 @@
 @use "./overrides" as overrides;
 @use "./typography";
 
+// Hueso (bone), the brand's neutral background colour
+$hueso: #f6f3eb;
+
 @mixin theme-plh_kids_teens_mx {
   @include utils.theme(
     $theme-name: "plh_kids_teens_mx",
     // Crianza+ brand palette (https://ingenieus-crianzamas-manual.netlify.app/):
     // primary = Azul Pizarra, primary-variant = Turquesa, secondary = Naranja Cálido,
-    // green = Verde Crecer, yellow = Amarillo. Hueso (#f6f3eb) is used for the footer.
+    // green = Verde Crecer, yellow = Amarillo.
     // secondary-variant = secondary, so the "orange" ramps stay brand orange
     // (the generated default would be red-orange).
     $color-primary: #25415b,
@@ -29,7 +32,7 @@
               var(--ion-font-family),
               sans-serif,
             ),
-          footer-background: #f6f3eb,
+          footer-background: $hueso,
           font-size-text-tiny: 12px,
           font-size-text-small: 14px,
           font-size-text-medium: 20px,
@@ -67,8 +70,8 @@
               var(--ion-color-primary-variant-500),
               var(--ion-color-primary-variant-200)
             ),
-          // Box display groups (box_primary, box_secondary, box_gray): Hueso
-          display-group-box-background: #f6f3eb,
+          // Box display groups (box_primary, box_secondary, box_gray)
+          display-group-box-background: $hueso,
           display-group-box-primary-border-color: var(--ion-color-secondary-400),
           display-group-box-secondary-border-color: var(--ion-color-primary-variant-600),
           module-details-header-title-font-size: 24px,
@@ -113,6 +116,7 @@
           text-color: var(--ion-color-gray-900),
           combo-box-font-size-standard: 20px,
           button-background-option: var(--ion-color-primary-800),
+          button-background-information: var(--ion-color-primary),
           button-background-primary: var(--ion-color-primary),
           button-background-secondary: var(--ion-color-primary-variant),
           // Brand contrast rule: text on turquoise is slate, not white (white on #6dc4ca is ~2:1)
