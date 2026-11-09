@@ -100,6 +100,10 @@ export class ActionComponent
   }
 
   public init(): void {
+    if (this.initialised()) {
+      return;
+    }
+
     super.init();
 
     // An action's expression should be its own name if not already set.
