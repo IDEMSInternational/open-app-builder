@@ -39,6 +39,43 @@ describe("Beta Data List Parser", () => {
       status: "released",
       rows: [],
     } as FlowTypes.FlowTypeWithData;
-    expect(parseDataList(flow)).toEqual(flow);
+    expect(parseDataList(flow)).toEqual({ ...flow, _source: { type: "transient" } });
+  });
+
+  describe("_source", () => {
+    const _source = { name: "folder", path: "workbook.xlsx", url: "https://example.com/sheet" };
+    const flow = {
+      flow_type: "data_list",
+      flow_name: "test_source",
+      rows: [],
+      _source,
+    } as FlowTypes.FlowTypeWithData;
+    const path = "/deployment/app_data/sheets/test_source.json";
+
+    it("removes name and url from transient flows, which is the default", () => {
+      expect(parseDataList(flow, { path })._source).toEqual({ path, type: "transient" });
+      expect(parseDataList(flow, { path, type: "transient" })._source).toEqual({
+        path,
+        type: "transient",
+      });
+      expect(flow._source).toEqual(_source);
+    });
+
+    it("keeps name and url of fixed flows, replacing the path", () => {
+      expect(parseDataList(flow, { path, type: "fixed" })._source).toEqual({
+        ..._source,
+        path,
+        type: "fixed",
+      });
+    });
+
+    it("adds _source when missing", () => {
+      const { _source: _, ...withoutSource } = flow;
+      const parsed = parseDataList(withoutSource as FlowTypes.FlowTypeWithData, {
+        path,
+        type: "fixed",
+      });
+      expect(parsed._source).toEqual({ path, type: "fixed" });
+    });
   });
 });

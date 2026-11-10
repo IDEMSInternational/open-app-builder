@@ -30,7 +30,7 @@ yarn workflow beta import C:\Source\my-deployment-repo
     `[source_path]` must come before any flags, e.g. `yarn workflow beta import C:\Source\my-deployment-repo -v`. This also applies to `import_sync`.
 
 ### Import Sync
-Sync sheets and assets from google drive to the external repository (as `sync_sheets` and `sync_assets`), then import it.
+Sync sheets and assets from google drive to the external repository (as `sync_fixed_sheets` and `sync_assets`), then import it.
 
 ```sh
 yarn workflow beta import_sync [source_path]
@@ -47,7 +47,7 @@ Download sheets from the `google_drive.sheets_folders` listed in the deployment 
 Requires a deployment to have been imported first.
 
 ```sh
-yarn workflow beta sync_sheets
+yarn workflow beta sync_fixed_sheets
 ```
 
 | Flag | Description |
