@@ -73,12 +73,17 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Onboarding never starts locally | `localhost` forces `user_mode=false` | `AGENTS.md` |
 | Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
 | One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
-<<<<<<< Updated upstream
-=======
+
 | Date condition still true after its field is reset to `false` | `new Date(false)` is 1 Jan 1970 | below: Variables |
+
 | Button `variant`/colour has no visible effect | unknown variant, or theme's `information` style wins | below: Layout |
 
->>>>>>> Stashed changes
+
+
+| Loop condition/toggle true for every item, only with text values | `@fields.@item.x == @item.y` compares unquoted text | below: Loops |
+
+
+
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -218,6 +223,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (3) `override_target` + `override_condition` on a global tab swaps the whole target tab at start-up when
   the condition holds (the docs only mention templates/data lists). Constants are re-applied on every start
   (not stored on the device), unlike `declare_field_default`. (verified 2026-10-23)
+- **`@fields.@item.x == @item.y` is always "true" when `y` is text.** A dynamic field name makes the first
+  JS evaluation fail, so values are substituted unquoted and re-evaluated (`template-variables.service.ts`
+  `parseContextExpression`): `@fields.f == yes` throws again and the fallback is the non-empty string
+  `"no == yes"`, which counts as true (toggles on, conditions pass). Numbers happen to work. Quote the item:
+  `@fields.@item.x == "@item.y"`. (verified 2026-11-06: debug_ab_tests po_refl toggles)
+
+
 
 
 ### Templates, pop-ups and `nav_stack`
