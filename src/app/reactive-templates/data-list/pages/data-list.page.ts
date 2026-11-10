@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { map } from "rxjs";
 import { FlowTypes } from "packages/data-models";
+import { SheetLinkComponent } from "src/app/reactive-templates/reactive-components/debug/sheet-link/sheet-link.component";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 /** Limit rendered rows so large lists don't slow the page down */
@@ -12,12 +13,12 @@ const MAX_ROWS = 500;
 
 /**
  * View a data list as a table of the rows in its json (as loaded from app_data, before any
- * dynamic data changes), with a link to its google sheet
+ * dynamic data changes), with a link to open or create its google sheet
  */
 @Component({
   templateUrl: "./data-list.page.html",
   styleUrls: ["./data-list.page.scss"],
-  imports: [IonicModule, FormsModule, RouterLink],
+  imports: [IonicModule, FormsModule, RouterLink, SheetLinkComponent],
 })
 export class DataListPage {
   private appDataService = inject(AppDataService);
@@ -35,7 +36,7 @@ export class DataListPage {
   });
   public flow = signal<FlowTypes.Data_list | undefined>(undefined);
 
-  /** Sheet the list was synced from */
+  /** Sheet the list was synced from, as shown in the template debugger */
   public source = computed(() => this.flow()?._source || this.contents()?._source);
   public sourceUrl = computed(() => this.source()?.url);
   public rows = computed(() => this.flow()?.rows || []);

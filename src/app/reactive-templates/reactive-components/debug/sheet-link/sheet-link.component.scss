@@ -1,0 +1,28 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.sheet-button {
+  padding: 2px 6px;
+  font-size: 12px;
+  color: var(--color-debug, #888);
+  background-color: inherit;
+  border: 1px solid var(--color-debug, #888);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.sheet-status {
+  font-size: 12px;
+  color: var(--color-debug, #888);
+}

@@ -2,8 +2,12 @@
   @if (dataListName(); as name) {
   <div class="header">
     <h2>{{ name }}</h2>
-    @if (sourceUrl(); as url) {
-    <a class="sheet-button" [href]="url" target="_blank" rel="noopener">Open spreadsheet</a>
+    @if (contents()) {
+    <oab-sheet-link
+      flowType="data_list"
+      [flowName]="name"
+      [sourceUrl]="sourceUrl()"
+    ></oab-sheet-link>
     }
   </div>
   @if (contents()) {

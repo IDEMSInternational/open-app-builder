@@ -330,6 +330,43 @@ describe("Beta Template Parser", () => {
       override_target: "other_template",
       rows: [],
     } as FlowTypes.FlowTypeWithData;
-    expect(parseTemplate(flow)).toEqual(flow);
+    expect(parseTemplate(flow)).toEqual({ ...flow, _source: { type: "transient" } });
+  });
+
+  describe("_source", () => {
+    const _source = { name: "folder", path: "workbook.xlsx", url: "https://example.com/sheet" };
+    const flow = {
+      flow_type: "template",
+      flow_name: "test_source",
+      rows: [],
+      _source,
+    } as FlowTypes.FlowTypeWithData;
+    const path = "/deployment/app_data/sheets/test_source.json";
+
+    it("removes name and url from transient flows, which is the default", () => {
+      expect(parseTemplate(flow, { path })._source).toEqual({ path, type: "transient" });
+      expect(parseTemplate(flow, { path, type: "transient" })._source).toEqual({
+        path,
+        type: "transient",
+      });
+      expect(flow._source).toEqual(_source);
+    });
+
+    it("keeps name and url of fixed flows, replacing the path", () => {
+      expect(parseTemplate(flow, { path, type: "fixed" })._source).toEqual({
+        ..._source,
+        path,
+        type: "fixed",
+      });
+    });
+
+    it("adds _source when missing", () => {
+      const { _source: _, ...withoutSource } = flow;
+      const parsed = parseTemplate(withoutSource as FlowTypes.FlowTypeWithData, {
+        path,
+        type: "fixed",
+      });
+      expect(parsed._source).toEqual({ path, type: "fixed" });
+    });
   });
 });

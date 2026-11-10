@@ -7,8 +7,9 @@ import { logOutput } from "../../../utils";
 import { loadExternalDeploymentJson } from "./deploymentConfig";
 import { decryptExternalFolder } from "./encryption";
 import { processAssets } from "./processAssets";
-import { processSheets } from "./processSheets";
-import { downloadExternalAssets, downloadExternalSheets } from "./sync";
+import { processFlows } from "./processFlows";
+import { downloadFixedSheets } from "./sheets";
+import { downloadExternalAssets } from "./sync";
 
 interface IImportOptions {
   /** Sync sheets and assets from google drive to the source folder before processing */
@@ -50,12 +51,12 @@ export async function importExternalDeployment(sourcePath: string, options: IImp
   writeDeploymentJson(deploymentConfig, targetAppDataFolder);
 
   if (sync) {
-    await downloadExternalSheets(absoluteSourcePath, deploymentConfig, options);
+    await downloadFixedSheets(absoluteSourcePath, deploymentConfig, options);
     await downloadExternalAssets(absoluteSourcePath, deploymentConfig, options);
   }
 
-  processSheets({
-    sourceSheetsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
+  processFlows({
+    sourceFlowsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
     targetAppDataFolder,
     verbose,
   });

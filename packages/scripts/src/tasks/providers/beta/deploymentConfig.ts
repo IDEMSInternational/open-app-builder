@@ -4,7 +4,8 @@ import path from "path";
 import { compileDeploymentTSSync } from "../../../commands/deployment/compile";
 import { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { convertStringsToFunctions } from "../../../commands/deployment/utils";
-import { ROOT_DIR } from "../../../paths";
+import { ROOT_DIR, SRC_ASSETS_PATH } from "../../../paths";
+import { decryptExternalFolder } from "./encryption";
 
 /**
  * Compile the config.ts from an external source folder and return the parsed json.
@@ -40,4 +41,24 @@ export function loadExternalDeploymentJson(sourcePath: string): IDeploymentConfi
     }
     fs.removeSync(tempDir);
   }
+}
+
+/** Decrypt and compile the external deployment config */
+export async function loadExternalConfig(externalSourcePath: string) {
+  // Decrypt config before compiling in case it references encrypted values
+  await decryptExternalFolder(path.resolve(externalSourcePath, "encrypted"));
+  return loadExternalDeploymentJson(externalSourcePath);
+}
+
+/** Read the external deployment path saved by the beta import command */
+export function readExternalSourcePath() {
+  const externalSourceFile = path.resolve(SRC_ASSETS_PATH, "app_data", ".external_source");
+  if (!fs.existsSync(externalSourceFile)) {
+    throw new Error(`No external source found, run 'beta import' first: ${externalSourceFile}`);
+  }
+  const externalSourcePath = fs.readFileSync(externalSourceFile, "utf8").trim();
+  if (!fs.existsSync(externalSourcePath)) {
+    throw new Error(`External source path does not exist: ${externalSourcePath}`);
+  }
+  return externalSourcePath;
 }

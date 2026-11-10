@@ -76,7 +76,7 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
-      sync_sheets: {
+      sync_fixed_sheets: {
         label: "Sync sheets to external deployment",
         options: [
           {
@@ -90,9 +90,9 @@ const workflows: IDeploymentWorkflows = {
         ],
         steps: [
           {
-            name: "sync_sheets",
+            name: "sync_fixed_sheets",
             function: async ({ tasks, options }) => {
-              await tasks.beta.syncExternalSheets({
+              await tasks.beta.syncFixedSheets({
                 skipDownload: !!options.skipDownload,
                 verbose: !!options.verbose,
               });
@@ -124,8 +124,122 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      sync_transient_sheets: {
+        label: "Sync sheets created from flows (open_sheet/create_sheet) and process into the app",
+        options: [
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "sync_transient_sheets",
+            function: async ({ tasks, options }) => {
+              await tasks.beta.syncTransientSheets({ verbose: !!options.verbose });
+            },
+          },
+        ],
+      },
+      open_sheet: {
+        label: "Open the google sheet for a flow, creating one if it has no _source",
+        options: [
+          {
+            flags: "-t, --type <flow_type>",
+            description: "Only match flows of this type",
+          },
+          {
+            flags: "-f, --folder <folder_id>",
+            description:
+              "Drive folder for new sheets (default: My Drive, synced as a transient sheet)",
+          },
+        ],
+        steps: [
+          {
+            name: "open_sheet",
+            function: async ({ tasks, args, options }) => {
+              const flowName = args[0];
+              if (!flowName) throw new Error("Flow name is required");
+              await tasks.beta.openFlowSheet(flowName, {
+                flowType: options.type as string,
+                folderId: options.folder as string,
+              });
+            },
+          },
+        ],
+      },
+      create_sheet: {
+        label:
+          "Create a google sheet from one or more flow jsons (one ==content_list== and a tab per flow)",
+        options: [
+          {
+            flags: "-t, --type <flow_type>",
+            description: "Only match flows of this type",
+          },
+          {
+            flags: "-f, --folder <folder_id>",
+            description:
+              "Drive folder for the new sheet (default: My Drive, synced as a transient sheet)",
+          },
+          {
+            flags: "-n, --name <sheet_name>",
+            description: "Name of the new sheet (default: the first flow name)",
+          },
+        ],
+        steps: [
+          {
+            name: "create_sheet",
+            function: async ({ tasks, args, options }) => {
+              const flowNames = positionalArgs(args);
+              if (flowNames.length === 0) throw new Error("At least one flow name is required");
+              await tasks.beta.createFlowSheet(flowNames, {
+                flowType: options.type as string,
+                folderId: options.folder as string,
+                sheetName: options.name as string,
+              });
+            },
+          },
+        ],
+      },
+      dev_server: {
+        label: "Start a local server so the app can run beta commands (e.g. open sheets)",
+        options: [
+          {
+            // No short flag, as `-p` is used by the workflow runner for `--parent`
+            flags: "--port <port>",
+            description: "Port to listen on (default 3010)",
+          },
+        ],
+        steps: [
+          {
+            name: "dev_server",
+            function: async ({ tasks, options }) => {
+              tasks.beta.startDevServer({ port: Number(options.port) || undefined });
+              // Keep the workflow running until the process is stopped
+              await new Promise(() => {});
+            },
+          },
+        ],
+      },
     },
   },
 };
+
+/**
+ * Positional values from workflow args, which also contain the raw option flags.
+ * Assumes every option takes a value, e.g. `a b -t template c` => `["a", "b", "c"]`
+ */
+function positionalArgs(args: string[] = []) {
+  const values: string[] = [];
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg.startsWith("-")) {
+      if (!arg.includes("=")) i++;
+      continue;
+    }
+    values.push(arg);
+  }
+  return values;
+}
 
 export default workflows;
