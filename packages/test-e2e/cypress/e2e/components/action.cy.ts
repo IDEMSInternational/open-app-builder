@@ -57,4 +57,28 @@ describe("action component", () => {
 
     cy.getDataTest("disabledActionExecuted").contains("Disabled Action Not Executed");
   });
+
+  it("click triggers namespaced actions which update only their own loop iteration", () => {
+    cy.getDataTest("actionLoop.key_1.namespacedActionExecuted").contains(
+      "Namespaced Action Not Executed"
+    );
+    cy.getDataTest("actionLoop.key_2.namespacedActionExecuted").contains(
+      "Namespaced Action Not Executed"
+    );
+
+    cy.getDataTest("actionLoop.key_1.namespacedExecuteButton").click();
+
+    cy.getDataTest("actionLoop.key_1.namespacedActionExecuted").contains(
+      "Namespaced Action Executed"
+    );
+    cy.getDataTest("actionLoop.key_2.namespacedActionExecuted").contains(
+      "Namespaced Action Not Executed"
+    );
+
+    cy.getDataTest("actionLoop.key_2.namespacedExecuteButton").click();
+
+    cy.getDataTest("actionLoop.key_2.namespacedActionExecuted").contains(
+      "Namespaced Action Executed"
+    );
+  });
 });

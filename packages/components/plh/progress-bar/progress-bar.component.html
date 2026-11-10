@@ -1,11 +1,12 @@
 <div class="progress-bar-wrapper">
-  @if (params().title || showPercentageDisplay()) {
+  @if (params().title || params().showPercentage) {
     <div class="progress-header" [style.color]="accentColor()">
       @if (params().title) {
         <p class="progress-title">{{ params().title }}</p>
       }
-      @if (showPercentageDisplay()) {
-        <div class="progress-percentage">
+      @if (params().showPercentage) {
+        <!-- Always rendered so that its width is reserved; contents hidden while progress is 0 -->
+        <div class="progress-percentage" [class.hidden]="!showPercentageDisplay()">
           @if (isComplete()) {
             <ion-icon name="checkmark-outline"></ion-icon>
           } @else {
