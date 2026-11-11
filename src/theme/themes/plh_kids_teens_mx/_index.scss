@@ -30,10 +30,10 @@ $hueso: #f6f3eb;
           ion-font-family: "DM Sans",
           font-weight-standard: 400,
           // TEXT COLOUR: all text in dark blue (Azul Pizarra). --text-color defaults to the primary
-          // colour and --text-color-muted to a lighter version of it (see generate-theme.scss); set
-          // `text-color` here to change it. Text that components colour grey by default uses
-          // --text-color, or --text-color-muted where the grey was lighter (secondary text);
-          // placeholder and locked text stay grey
+          // colour and --text-color-muted to a lighter shade of it, primary-600 (see
+          // generate-theme.scss); to change them, set `text-color` and `text-color-muted` here.
+          // Text that components colour grey by default uses --text-color, or --text-color-muted
+          // where the grey was lighter (secondary text); placeholder and locked text stay grey
           ion-text-color: var(--text-color),
           title-text-color: var(--text-color),
           audio-title-color: var(--text-color),
