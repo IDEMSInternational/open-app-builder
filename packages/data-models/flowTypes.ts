@@ -60,6 +60,11 @@ export namespace FlowTypes {
       path?: string;
       /** Remote url of source */
       url?: string;
+      /**
+       * Set by the beta import: `fixed` when synced from the deployment google drive folders,
+       * `transient` otherwise (`path` is then the absolute path of the flow json)
+       */
+      type?: "fixed" | "transient";
     };
     process_on_start?: number; // priority order to process template variable setters on startup
   }
@@ -508,6 +513,7 @@ export namespace FlowTypes {
     action_id: (typeof ACTION_ID_LIST)[number];
     args: any[]; // should be boolean | string, but breaks type-checking for templates;
     rawArgs?: any; // original args before evaluation
+    namespace?: string; // optional namespace for the action
     params?: ParamsType; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;

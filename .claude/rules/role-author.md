@@ -34,7 +34,10 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 
   Identify rows by their `name` column and type (row numbers in the cached xlsx can be read with a small
   read-only node/SheetJS script from `packages/scripts/node_modules/xlsx`; they are approximate once the sheet
-  is edited). New rows: give the full row as tab-separated cells so it pastes into the sheet.
+  is edited). New rows: give the full row as tab-separated cells so it pastes into the sheet. Keep each
+  cell on one line: several `parameter_list` entries can be written `a: x; b: y;` (entries are split on `;`
+  and trimmed, `parseAppDataListString`). Avoid cell values Sheets converts on paste, e.g. a button label
+  `+1` becomes the number 1.
 - **Explain sync and preview**: what `yarn workflow sync_sheets --skip-download` + `populate_src_assets`
   do, when the parser cache must be deleted, why "Duplicate flows found" is usually noise, and the localhost
   `user_mode` trap (`AGENTS.md` → Local preview gotchas).
@@ -65,6 +68,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
 | Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
 | Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Workbooks |
+| Component title/text set in `parameter_list` stays English | `parameter_list` is never translated | below: Translations |
 | `@local.row.key` breaks when re-entering a `radio_list` page | `value_as_object` returns a string when re-rendered | below: Variables |
 | `navigation_bar` button always opens `home_screen` | relative link; only works in the footer | below: Layout |
 | Combo-box badge shows "FALSE" | boolean `false` in the badge column | below: Layout |
@@ -257,8 +261,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   the list name as a word (`parents` → `ibu bapa`), the translated app fails with
   `[data_list] "ibu bapa" not found`. Avoid plain-word list names, or remove that source string from the
   dictionary. (verified 2026-09-22, MY GlitchTip 7037593)
-
-- - **Where translations live (deployment repo):** runtime lookup is `app_data/translations/<lang>/strings.json`
+- **Text in `parameter_list` is never translated.** For templates only the `value` column is marked for
+  translation (`packages/translations/src/commands/compile.ts` `getTranslatedFields`), and at runtime
+  `translateRow` (`template-translate.service.ts`) only translates fields listed in `_translations`. So
+  `title: Well done!` on a component stays English in a translated app. Put the text in the `value` of a
+  `set_variable` row and pass it in: `title: @local.<name>`. (verified 2026-11-05: `plh_progress_summary`
+  title/text; `plh_progress_bar` title works the same way)
+- **Where translations live (deployment repo):** runtime lookup is `app_data/translations/<lang>/strings.json`
   (English source text → translation); raw download is `app_data/translations_source/translated_strings/
   translated.<lang>.json`; each row also needs `_translations.<field>.<lang>: true` in the generated sheet JSON.
   The "translation sync" action does **not** commit to main — it opens a PR (branch `create-pull-request/patch`)

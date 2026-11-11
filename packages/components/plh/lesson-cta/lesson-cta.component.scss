@@ -1,5 +1,8 @@
 $border-color: var(--plh-lesson-cta-border-color, var(--ion-color-green-900));
 $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-700));
+$text-color: var(--plh-lesson-cta-text-color, white);
+$subtitle-color: var(--plh-lesson-cta-subtitle-color, var(--ion-color-gray-50));
+$badge-text-color: var(--plh-lesson-cta-badge-text-color, black);
 
 :host {
   margin-bottom: var(--small-margin);
@@ -10,7 +13,7 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
 
   position: relative;
   width: 100%;
-  color: white;
+  color: $text-color;
   border: 1px solid $border-color;
   border-radius: var(--ion-border-radius-small);
   display: flex;
@@ -34,7 +37,7 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
     transform: translate(-15%, -50%);
 
     background-color: var(--ion-background-color);
-    color: black;
+    color: $badge-text-color;
     border-style: solid;
     border-width: 1px;
     border-color: $border-color;
@@ -66,7 +69,7 @@ $background-color: var(--plh-lesson-cta-background-color, var(--ion-color-green-
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
       line-height: var(--line-height-text-small);
-      color: var(--ion-color-gray-50);
+      color: $subtitle-color;
       margin: 0;
     }
 

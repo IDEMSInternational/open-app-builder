@@ -17,16 +17,19 @@ export interface IAuthorizeOptions {
  * Main Methods
  *************************************************************************************/
 
+/** Scopes required to read and download files */
+export const GDRIVE_READ_SCOPES = [
+  "https://www.googleapis.com/auth/drive.readonly",
+  "https://www.googleapis.com/auth/drive.metadata.readonly",
+];
+
 /** Authorize access to the Gdrive api and return client */
 export function authorizeGDrive(
   options: IAuthorizeOptions,
   driveOptions?: drive_v3.Options
 ): Promise<{ drive: drive_v3.Drive }> {
   const { authTokenPath, credentialsPath } = options;
-  const authScopes = [
-    "https://www.googleapis.com/auth/drive.readonly",
-    "https://www.googleapis.com/auth/drive.metadata.readonly",
-  ];
+  const authScopes = GDRIVE_READ_SCOPES;
   return new Promise((resolve, reject) => {
     try {
       const credentials = getAuthCredentials(credentialsPath);
@@ -39,6 +42,44 @@ export function authorizeGDrive(
       reject(ex);
     }
   });
+}
+
+/**
+ * Scopes required to create files. Includes the read scopes used by `authorizeGDrive`, so the
+ * same token can be shared by both. `drive.file` only allows access to files created by this app
+ */
+export const GDRIVE_FILE_SCOPES = [
+  ...GDRIVE_READ_SCOPES,
+  "https://www.googleapis.com/auth/drive.file",
+];
+
+/**
+ * Authorize access to the Gdrive api with permission to create files, and return client.
+ * If the stored token is missing the required scopes the user is asked to authorize again
+ */
+export function authorizeGDriveFiles(
+  options: IAuthorizeOptions,
+  driveOptions?: drive_v3.Options
+): Promise<{ drive: drive_v3.Drive }> {
+  const { authTokenPath, credentialsPath } = options;
+  return new Promise((resolve, reject) => {
+    try {
+      const credentials = getAuthCredentials(credentialsPath);
+      authorize(credentials, authTokenPath, GDRIVE_FILE_SCOPES, (auth) => {
+        const drive = google.drive({ version: "v3", auth, ...driveOptions });
+        resolve({ drive });
+      });
+    } catch (ex) {
+      console.warn("Error authorizing google drive access", ex);
+      reject(ex);
+    }
+  });
+}
+
+/** Whether a stored auth token exists and includes all the given scopes */
+export function hasAuthTokenScopes(authTokenPath: string, scopes: string[]) {
+  const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", authTokenPath);
+  return !!token?.scope && doesTokenHaveRequiredScopes(token.scope, scopes);
 }
 
 /** Authorize access to the GdriveActivity api and return client */

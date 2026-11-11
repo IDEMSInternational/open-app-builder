@@ -43,6 +43,12 @@ $progress-bar-row-gap: 24px;
       ion-icon {
         font-size: var(--progress-header-font-size);
       }
+
+      // Keep the width (and the header's height) while progress is 0, so that the title does not
+      // rewrap, nor the bar move down, when the percentage first appears
+      &.hidden {
+        visibility: hidden;
+      }
     }
   }
 
