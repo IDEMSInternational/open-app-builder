@@ -40,15 +40,20 @@ $hueso: #f6f3eb;
           audio-time-color: var(--text-color-muted),
           combo-box-text-color: var(--text-color),
           combo-box-text-color-muted: var(--text-color-muted),
-          // Placeholder as in Ionic inputs (text box, text area): the text colour at 60% opacity
+          // Placeholders as in Ionic inputs (text box, text area): the text colour at 60% opacity.
+          // Used for every combo-box variant, and for its text when it has no value
           combo-box-placeholder-style-text: color-mix(in srgb, var(--text-color) 60%, transparent),
+          combo-box-placeholder-text: var(--combo-box-placeholder-style-text),
+          combo-box-empty-text-color: var(--combo-box-placeholder-style-text),
           course-accordion-sub-items-header-color: var(--text-color),
           course-sub-item-text-color: var(--text-color),
           course-sub-item-locked-text-color: var(--text-color-disabled),
           course-sub-item-locked-title-color: var(--text-color-disabled),
           radio-button-grid-item-text-color: var(--text-color),
           radio-group-label-text-color: var(--text-color),
+          select-text-text-color: var(--text-color),
           task-progress-bar-text-color: var(--text-color-muted),
+          task-progress-bar-title-color: var(--text-color-muted),
           text-area-text-color: var(--text-color),
           text-bubble-text-color: var(--text-color),
           footer-background: $hueso,

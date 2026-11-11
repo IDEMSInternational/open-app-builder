@@ -6,6 +6,7 @@
 // "notStarted" | "inProgress" | "completed" | "highlighted"
 $progress-colour: var(--task-progress-bar-color, var(--ion-color-primary));
 $task-progress-bar-text-color: var(--task-progress-bar-text-color, var(--ion-color-gray-700));
+$task-progress-bar-title-color: var(--task-progress-bar-title-color, var(--ion-color-gray-600));
 $progress-bar-background-color: var(
   --task-progress-bar-background-color,
   var(--ion-color-gray-100)
@@ -107,7 +108,7 @@ $progress-bar-height: var(--task-progress-bar-height, 5px);
     margin: 16px auto;
     font-size: var(--font-size-text-small);
     text-align: center;
-    color: var(--ion-color-gray-600);
+    color: $task-progress-bar-title-color;
     font-weight: var(--font-weight-bold);
   }
 }

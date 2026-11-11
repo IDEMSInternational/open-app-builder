@@ -418,7 +418,7 @@
         padding: 0 12px;
         height: 60px;
 
-        color: var(--ion-color-gray-600);
+        color: var(--select-text-text-color, var(--ion-color-gray-600));
         font-size: var(--font-size-text-small) !important;
         text-overflow: ellipsis;
         border: 1px solid var(--select-text-border-color);

@@ -27,13 +27,19 @@
       margin-bottom: 8px !important;
       .module-title {
         p {
-          color: var(--ion-color-secondary-900) !important;
+          color: var(--text-color) !important;
           padding: 0px !important;
         }
       }
       &[data-highlighted~="true"] {
         background-color: var(--ion-color-primary-variant-700) !important;
         padding: 16px 12px !important;
+        // TODO: dark text on this background has low contrast (~2.6:1); white would be ~4.7:1
+        .module-title {
+          p {
+            color: var(--ion-color-secondary-900) !important;
+          }
+        }
       }
       &[data-locked~="true"] {
         box-shadow: none !important;
