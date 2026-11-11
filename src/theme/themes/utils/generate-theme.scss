@@ -310,13 +310,15 @@
   --ion-item-background: #{map.get($colorPalette, "color-primary-50")};
 
   // TEXT
-  // Theme text colour, and a lighter shade of it for secondary text (e.g. labels, times). The muted
-  // default is a palette step (higher lightness, same hue) rather than a transparent or white-mixed
-  // colour, like the other palette shades. Themes can override either via $variable-overrides; a
-  // theme that changes text-color should set text-color-muted to match. Components that colour text
-  // with a grey expose their own variable for it, which a theme can set to one of these
+  // Theme text colour, a lighter shade of it for secondary text (e.g. labels, times), and a grey for
+  // disabled or locked text. The muted default is a palette step (higher lightness, same hue) rather
+  // than a transparent or white-mixed colour, like the other palette shades. Themes can override
+  // any of these via $variable-overrides; a theme that changes text-color should set
+  // text-color-muted to match. Components that colour text with a grey expose their own variable
+  // for it, which a theme can set to one of these
   --text-color: var(--ion-color-primary);
   --text-color-muted: var(--ion-color-primary-600);
+  --text-color-disabled: var(--ion-color-gray-500);
 
   // BORDERS
   --border-standard: 1px solid #{map.get($colorPalette, "color-primary")};

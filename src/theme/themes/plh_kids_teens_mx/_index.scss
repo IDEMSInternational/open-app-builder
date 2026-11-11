@@ -33,17 +33,19 @@ $hueso: #f6f3eb;
           // colour and --text-color-muted to a lighter shade of it, primary-600 (see
           // generate-theme.scss); to change them, set `text-color` and `text-color-muted` here.
           // Text that components colour grey by default uses --text-color, or --text-color-muted
-          // where the grey was lighter (secondary text); placeholder and locked text stay grey
+          // where the grey was lighter (secondary text). Locked text uses --text-color-disabled.
           ion-text-color: var(--text-color),
           title-text-color: var(--text-color),
           audio-title-color: var(--text-color),
           audio-time-color: var(--text-color-muted),
           combo-box-text-color: var(--text-color),
           combo-box-text-color-muted: var(--text-color-muted),
-          combo-box-placeholder-style-text: var(--ion-color-gray-600),
+          // Placeholder as in Ionic inputs (text box, text area): the text colour at 60% opacity
+          combo-box-placeholder-style-text: color-mix(in srgb, var(--text-color) 60%, transparent),
           course-accordion-sub-items-header-color: var(--text-color),
           course-sub-item-text-color: var(--text-color),
-          course-sub-item-locked-text-color: var(--ion-color-gray-600),
+          course-sub-item-locked-text-color: var(--text-color-disabled),
+          course-sub-item-locked-title-color: var(--text-color-disabled),
           radio-button-grid-item-text-color: var(--text-color),
           radio-group-label-text-color: var(--text-color),
           task-progress-bar-text-color: var(--text-color-muted),
