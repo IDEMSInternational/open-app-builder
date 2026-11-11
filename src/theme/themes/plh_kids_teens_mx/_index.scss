@@ -70,10 +70,11 @@ $hueso: #f6f3eb;
               var(--ion-color-primary-variant-500),
               var(--ion-color-primary-variant-200)
             ),
-          // Box display groups (box_primary, box_secondary, box_gray)
+          // Box display groups (box_primary, box_secondary, box_green, box_gray)
           display-group-box-background: $hueso,
           display-group-box-primary-border-color: var(--ion-color-secondary-400),
           display-group-box-secondary-border-color: var(--ion-color-primary-variant-600),
+          display-group-box-green-border-color: var(--ion-color-green),
           module-details-header-title-font-size: 24px,
           module-list-item-border-completed: 1px solid var(--ion-color-primary-700),
           module-list-item-border-highlighted: none,
@@ -140,10 +141,12 @@ $hueso: #f6f3eb;
           text-bubble-border-color-gray: var(--ion-color-gray-600),
           text-bubble-background-color-secondary: var(--ion-color-secondary-variant-50),
           text-bubble-border-color-secondary: var(--ion-color-secondary-600),
-          text-bubble-background-color-3: var(--ion-color-secondary-50),
-          text-bubble-border-color-3: var(--ion-color-secondary-variant-300),
-          text-bubble-background-color-4: var(--ion-color-secondary-50),
-          text-bubble-border-color-4: var(--ion-color-secondary-300),
+          // Facilitators (variant set per character in the `characters` data list), matching the
+          // backgrounds of their photos: speaker-3 = Cris (Verde Crecer), speaker-4 = Dani (Turquesa)
+          text-bubble-background-color-3: var(--ion-color-green-50),
+          text-bubble-border-color-3: var(--ion-color-green),
+          text-bubble-background-color-4: var(--ion-color-primary-variant-50),
+          text-bubble-border-color-4: var(--ion-color-primary-variant),
           // Lesson CTA: slate text on brand orange
           plh-lesson-cta-border-color: var(--ion-color-primary),
           plh-lesson-cta-background-color: var(--ion-color-secondary),
