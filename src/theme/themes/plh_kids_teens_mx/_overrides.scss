@@ -1,8 +1,11 @@
 /// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
-  // Plain text rows use the theme text colour (the shared default is primary-900)
-  .standard {
+  // Text rows use the theme text colour (the shared .standard default is primary-900).
+  // Scoped to text components: buttons also have a .standard class (white text), and
+  // text rows with style `alternative` keep their own colour
+  plh-tmpl-text .standard:not(.alternative),
+  oab-text .standard:not(.alternative) {
     color: var(--text-color);
   }
 
