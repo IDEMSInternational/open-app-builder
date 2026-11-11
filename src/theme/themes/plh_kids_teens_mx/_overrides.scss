@@ -1,6 +1,11 @@
 /// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
+  // Plain text rows use the theme text colour (the shared default is primary-900)
+  .standard {
+    color: var(--text-color);
+  }
+
   // module header
   plh-module-details-header {
     .module-header {
