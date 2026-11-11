@@ -1,7 +1,7 @@
 @use "/src/theme/mixins";
 
-$text-color: var(--combo-box-text-color, var(--ion-color-gray-800));
-$text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
+$combo-box-text-color: var(--combo-box-text-color, var(--ion-color-gray-800));
+$combo-box-text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
 
 :host {
   display: contents;
@@ -15,7 +15,7 @@ $text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
     width: 100%;
     min-height: 58px;
     font-size: var(--combo-box-font-size-standard, 18px);
-    color: $text-color;
+    color: $combo-box-text-color;
     text-align: center;
     font-weight: 500;
     box-shadow: var(--ion-default-box-shadow);
@@ -42,7 +42,7 @@ $text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
   .header {
     font-size: var(--combo-box-font-size-standard, 20px);
     font-weight: 600;
-    color: $text-color-muted;
+    color: $combo-box-text-color-muted;
     margin-bottom: 20px;
   }
   .form {
@@ -74,7 +74,7 @@ $text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
         @include mixins.flex-centered;
         font-weight: var(--font-weight-standard);
         font-size: var(--combo-box-font-size-standard, 18px);
-        color: $text-color;
+        color: $combo-box-text-color;
         min-height: 56px;
         border-radius: var(--ion-border-radius-small);
         text-align: center;

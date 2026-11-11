@@ -1,7 +1,7 @@
 @use "/src/theme/mixins";
 
-$text-color: var(--combo-box-text-color, var(--ion-color-gray-800));
-$text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
+$combo-box-text-color: var(--combo-box-text-color, var(--ion-color-gray-800));
+$combo-box-text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
 
 .searchbar {
   padding-top: 12px;
@@ -15,7 +15,7 @@ $text-color-muted: var(--combo-box-text-color-muted, var(--ion-color-gray-700));
 .modal-title {
   font-size: 20px;
   text-align: center;
-  color: $text-color;
+  color: $combo-box-text-color;
   margin-top: 8px;
   margin-bottom: 8px;
   position: relative;
@@ -36,8 +36,8 @@ ion-item {
   --background: var(--ion-item-background, white);
   --background-hover: var(--ion-color-primary-50);
   --border-color: var(--ion-color-gray-200);
-  --color: #{$text-color-muted};
-  --color-hover: #{$text-color};
+  --color: #{$combo-box-text-color-muted};
+  --color-hover: #{$combo-box-text-color};
   --inner-padding-bottom: 12px;
   --inner-padding-top: 12px;
   font-size: var(--combo-box-font-size-standard, 18px);

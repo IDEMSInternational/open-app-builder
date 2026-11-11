@@ -1,4 +1,7 @@
-$sub-items-header-color: var(--course-accordion-sub-items-header-color, var(--ion-color-gray-800));
+$course-accordion-sub-items-header-color: var(
+  --course-accordion-sub-items-header-color,
+  var(--ion-color-gray-800)
+);
 
 :host {
   display: block;
@@ -152,7 +155,7 @@ $sub-items-header-color: var(--course-accordion-sub-items-header-color, var(--io
     .sub-items-header {
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
-      color: $sub-items-header-color;
+      color: $course-accordion-sub-items-header-color;
       margin: 0 0 8px 0;
       padding: 0;
     }
