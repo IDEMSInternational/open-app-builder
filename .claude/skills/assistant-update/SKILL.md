@@ -14,6 +14,8 @@ Before starting, check all of this. If any fails, stop and say why:
 
 - A developer with write access asked for this addition. Authors pass the snippet to a developer instead.
 - It only touches `.claude/`, `AGENTS.md` or `CLAUDE.md`. Code fixes get a normal PR, and bugs a normal issue.
+- It stands on its own. If it documents a code change that has its own PR (e.g. a gotcha of a new component),
+  add it to that PR instead, so the two are reviewed and merged together.
 - It follows "Maintaining this knowledge base" in `AGENTS.md`: durable, general, in the entry format.
 
 ## Steps
@@ -56,5 +58,20 @@ gh pr create --repo "$REPO" --base master --head assistant-updates \
 
 Delete the temporary clone and give the person the PR link.
 
-The branch is deleted when the PR merges, so the next addition starts again from `master`. Master must be merged
-into the branch before the PR can be merged, because the repo requires branches to be up to date.
+The branch is deleted when the PR merges, so the next addition starts again from `master`.
+
+## Bringing the branch up to date with master
+
+The repo requires branches to be up to date before merging. If the PR has no conflicts, GitHub's "Update branch"
+button is enough. Conflicts happen when a feature PR changed the same rule file, so merge master in a clone made
+as in Steps (it will be on `assistant-updates`). That clone is shallow and single-branch: it has no merge base and
+no `origin/master`, so fetch both explicitly:
+
+```sh
+git fetch --unshallow origin assistant-updates master:refs/remotes/origin/master
+git merge origin/master
+```
+
+Conflicts can only be in `.claude/`, `AGENTS.md` or `CLAUDE.md`, which the sparse checkout includes. Keep the
+entries from both sides; where two say the same thing, combine them into one entry. Show the person the resolved
+files, then `git add` them, `git commit --no-edit` and `git push origin assistant-updates`. Never force-push.
