@@ -35,7 +35,19 @@ export function generateDeploymentConfig(name: string) {
  **/
 export function loadEncryptedConfig(filename: string) {
   // Determine path to deployment config ts that called function for source of encrypted config
-  const configTsPath = getStackFileNames().find((filePath) => filePath.includes(".idems_app"));
+  // Fallback to any config.ts in the stack to support external deployments outside .idems_app
+  const stackFileNames = getStackFileNames();
+  const configTsPath =
+    stackFileNames.find((filePath) => filePath.includes(".idems_app")) ??
+    stackFileNames.find((filePath) => filePath && path.basename(filePath) === "config.ts");
+  if (!configTsPath) {
+    logWarning({
+      msg1: `Could not find the deployment config.ts that loads encrypted config,
+some features may be unavailable`,
+      msg2: filename,
+    });
+    return null;
+  }
   const encryptedConfigPath = path.resolve(configTsPath, "../", "encrypted");
   const target = path.resolve(encryptedConfigPath, filename);
   if (!existsSync(target)) {

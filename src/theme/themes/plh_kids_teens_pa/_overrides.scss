@@ -68,9 +68,6 @@
     &[data-variant~="navigation"] {
       background: var(--ion-color-primary-700) !important;
     }
-    &[data-variant~="module"] {
-      background: var(--ion-color-primary-variant-600) !important;
-    }
     &[data-variant~="orange"] {
       background: var(--ion-color-secondary-variant-400);
     }
@@ -121,20 +118,6 @@
       }
       .active-link .label {
         color: #0066a1;
-      }
-    }
-  }
-
-  // Pop Up
-  .popup-backdrop {
-    &[data-variant~="plh_completion"] {
-      .popup-container {
-        plh-tmpl-text p,
-        plh-tmpl-text h1,
-        plh-tmpl-title p,
-        plh-tmpl-title h1 {
-          color: var(--ion-color-secondary-900);
-        }
       }
     }
   }
