@@ -51,4 +51,18 @@
    "data list not found" at runtime). Rename the sheet without `: \ / * ? " < > |`, delete the truncated file
    with `Remove-Item -LiteralPath`, and sync again. Linux CI is not affected. (verified 2026-10-21)
 
+10. **Previewing a debug sheet that isn't in Drive yet** (e.g. for a new component): write the workbook as an
+   xlsx (SheetJS from `packages/scripts/node_modules/xlsx`, tabs `==content_list==` and the template) into
+   `<deployment>/tasks/gdrive/outputs/sheets/<sheets folder name>/…`, then run `yarn workflow sync_sheets
+   --skip-download`; every xlsx in that folder is converted. The next sync *with* download deletes it, since
+   files not on Drive are removed (`gdrive-tools` `download.ts` `prepareSyncActionsList`).
+   (verified 2026-11-05: debug `comp_plh_progress_summary`)
+
+11. **Screenshotting the app headlessly** (puppeteer is in `packages/test-visual/node_modules`): once assets
+   are populated, serve with `yarn ng serve --no-open` (`yarn start` opens a browser). Dismiss first-launch
+   pop-ups by calling `.dismiss()` on each `ion-modal`. For a full-page shot, size the viewport to the
+   largest `ion-content` `getScrollElement()` height, as pages scroll inside it. Switch theme by setting
+   `data-theme` on `<html>`. For RTL, set `dir` on the app's own `[dir]` element (bound in
+   `app.component.html`); `<html dir>` is overridden. (verified 2026-11-05)
+
 

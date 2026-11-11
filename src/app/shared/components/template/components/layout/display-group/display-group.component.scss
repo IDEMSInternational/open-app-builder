@@ -64,6 +64,7 @@
 
 .display-group-wrapper {
   &[data-variant~="box_gray"],
+  &[data-variant~="box_green"],
   &[data-variant~="box_primary"],
   &[data-variant~="box_secondary"],
   &[data-variant~="box_secondary_alt"],
@@ -80,6 +81,11 @@
   &[data-variant~="box_gray"] {
     --background-color: var(--ion-color-gray-100);
     --border-color: var(--ion-color-gray-300);
+  }
+
+  &[data-variant~="box_green"] {
+    --background-color: var(--ion-color-green-100);
+    --border-color: var(--ion-color-green-500);
   }
 
   &[data-variant~="box_primary"] {
