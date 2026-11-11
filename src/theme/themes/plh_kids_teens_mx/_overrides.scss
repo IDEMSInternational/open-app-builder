@@ -9,18 +9,6 @@
     color: var(--text-color);
   }
 
-  // Muted text that the components colour with gray-700/800, which this theme maps to the text
-  // colour: keep it grey
-  plh-combo-box .open-combobox.no-value.placeholder-style {
-    color: var(--ion-color-gray-600);
-  }
-  plh-course-sub-item .course-sub-item[data-state="locked"] .state-container {
-    .state-badge p,
-    ion-icon {
-      color: var(--ion-color-gray-600);
-    }
-  }
-
   // module header
   plh-module-details-header {
     .module-header {

@@ -29,16 +29,26 @@ $hueso: #f6f3eb;
           // medium (500), so text reads lighter
           ion-font-family: "DM Sans",
           font-weight-standard: 400,
-          // TEXT COLOUR: all text in one dark blue (Azul Pizarra). Set here only; everything below
-          // refers to --text-color
-          text-color: var(--ion-color-primary),
+          // TEXT COLOUR: all text in dark blue (Azul Pizarra). --text-color defaults to the primary
+          // colour and --text-color-muted to a lighter version of it (see generate-theme.scss); set
+          // `text-color` here to change it. Text that components colour grey by default uses
+          // --text-color, or --text-color-muted where the grey was lighter (secondary text);
+          // placeholder and locked text stay grey
           ion-text-color: var(--text-color),
           title-text-color: var(--text-color),
-          // Components that colour their text with the near-black greys directly (text bubbles,
-          // accordions, combo box, audio time, ...) get the text colour too
-          ion-color-gray-900: var(--text-color),
-          ion-color-gray-800: var(--text-color),
-          ion-color-gray-700: var(--text-color),
+          audio-title-color: var(--text-color),
+          audio-time-color: var(--text-color-muted),
+          combo-box-text-color: var(--text-color),
+          combo-box-text-color-muted: var(--text-color-muted),
+          combo-box-placeholder-style-text: var(--ion-color-gray-600),
+          course-accordion-sub-items-header-color: var(--text-color),
+          course-sub-item-text-color: var(--text-color),
+          course-sub-item-locked-text-color: var(--ion-color-gray-600),
+          radio-button-grid-item-text-color: var(--text-color),
+          radio-group-label-text-color: var(--text-color),
+          task-progress-bar-text-color: var(--text-color-muted),
+          text-area-text-color: var(--text-color),
+          text-bubble-text-color: var(--text-color),
           footer-background: $hueso,
           font-size-text-tiny: 12px,
           font-size-text-small: 14px,

@@ -1,3 +1,5 @@
+$sub-items-header-color: var(--course-accordion-sub-items-header-color, var(--ion-color-gray-800));
+
 :host {
   display: block;
   margin: var(--small-padding) 0;
@@ -161,7 +163,7 @@
     .sub-items-header {
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
-      color: var(--ion-color-gray-800);
+      color: $sub-items-header-color;
       margin: 0 0 8px 0;
       padding: 0;
     }

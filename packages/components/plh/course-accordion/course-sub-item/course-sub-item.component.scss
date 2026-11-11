@@ -1,3 +1,6 @@
+$text-color: var(--course-sub-item-text-color, var(--ion-color-gray-800));
+$locked-text-color: var(--course-sub-item-locked-text-color, var(--ion-color-gray-700));
+
 :host {
   display: block;
 }
@@ -17,7 +20,7 @@
   border: 1px solid var(--ion-color-gray-500);
   border-radius: var(--ion-border-radius-standard);
   background-color: white;
-  color: var(--ion-color-gray-800);
+  color: $text-color;
   margin: var(--tiny-padding, 6px) 0;
 
   .course-sub-item-title {
@@ -84,11 +87,11 @@
         border-color: var(--ion-color-gray-500);
         background-color: white;
         p {
-          color: var(--ion-color-gray-700);
+          color: $locked-text-color;
         }
       }
       ion-icon {
-        color: var(--ion-color-gray-700);
+        color: $locked-text-color;
       }
     }
   }

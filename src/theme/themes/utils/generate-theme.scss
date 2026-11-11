@@ -309,6 +309,13 @@
 
   --ion-item-background: #{map.get($colorPalette, "color-primary-50")};
 
+  // TEXT
+  // Theme text colour, and a muted version of it for secondary text (e.g. labels, times).
+  // Themes can override either via $variable-overrides. Components that colour text with a grey
+  // expose their own variable for it, which a theme can set to one of these
+  --text-color: var(--ion-color-primary);
+  --text-color-muted: color-mix(in srgb, var(--text-color) 80%, transparent);
+
   // BORDERS
   --border-standard: 1px solid #{map.get($colorPalette, "color-primary")};
   --border-thin-standard: 0.5px solid #{map.get($colorPalette, "color-primary")};
