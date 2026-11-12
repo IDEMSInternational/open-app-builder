@@ -2,6 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { ActionRegistry } from "./action.registry";
 import { getScopeFallbackCandidates } from "../scope-fallback.utils";
+import { ActionContextService } from "./action-context.service";
 
 interface IActionParameters {
   name: string;
@@ -13,6 +14,7 @@ interface IActionParameters {
 export class ActionHandler {
   private templateActionRegistry = inject(TemplateActionRegistry);
   private actionRegistry = inject(ActionRegistry);
+  private actionContext = inject(ActionContextService);
 
   constructor() {
     this.templateActionRegistry.register({
@@ -21,7 +23,11 @@ export class ActionHandler {
         const namespace = action.namespace;
 
         if (params.name) {
-          await this.handle(params, namespace);
+          await this.handle(
+            params,
+            namespace,
+            this.actionContext.get(action)?.actions ?? this.actionRegistry
+          );
         } else {
           return console.error("[ACTION] Name parameter not provided to action");
         }
@@ -29,7 +35,11 @@ export class ActionHandler {
     });
   }
 
-  private async handle(params: IActionParameters, namespace?: string) {
+  private async handle(
+    params: IActionParameters,
+    namespace: string | undefined,
+    actionRegistry: ActionRegistry
+  ) {
     const isQualifiedName = params.name.includes(".");
     const requestedActionName = isQualifiedName
       ? params.name
@@ -37,13 +47,13 @@ export class ActionHandler {
     const actionCandidates = isQualifiedName
       ? [requestedActionName]
       : getScopeFallbackCandidates(requestedActionName);
-    const actionName = actionCandidates.find((candidate) => this.actionRegistry.has(candidate));
+    const actionName = actionCandidates.find((candidate) => actionRegistry.has(candidate));
 
     if (!actionName) {
       return console.error(`[ACTION] No action registered with name: ${requestedActionName}`);
     }
 
-    const action = this.actionRegistry.get(actionName);
+    const action = actionRegistry.get(actionName);
 
     try {
       await action.execute();
