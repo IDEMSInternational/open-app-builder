@@ -27,11 +27,6 @@
 
 /** Ionic CSS Variables **/
 :root {
-  // The total height of the central safe area of the device viewport.
-  // Use 100% rather than 100vh to handle browsers with toolbars,
-  // see https://github.com/IDEMSInternational/open-app-builder/issues/2680
-  --safe-area-height: calc(100% - var(--ion-safe-area-top, 0) - var(--ion-safe-area-bottom, 0));
-
   // Text and icon style of the device status bar and navigation bar, which the app draws behind.
   // "auto" picks the style from the colour shown behind the bar. A theme can instead set
   // "light" (light background, dark icons) or "dark" (dark background, light icons)
