@@ -7,8 +7,8 @@ description: Build the app for an iOS simulator or Android emulator, then launch
 
 [Maestro](https://maestro.dev) launches the app on a local iOS simulator or Android emulator, taps by visible
 text and takes screenshots. Its MCP server (`maestro mcp`) exposes the same as tools: `list_devices`,
-`inspect_screen`, `take_screenshot`, `run` (inline YAML or flow files) and `cheat_sheet`. Background and pilot
-results: issue #3761.
+`inspect_screen`, `take_screenshot`, `run` (inline YAML or flow files) and `cheat_sheet`. Developer docs:
+`documentation/docs/developers/maestro.md` (keep the two in step). Background and pilot results: issue #3761.
 
 Flows depend on a deployment's content, so they live in that deployment's repo, in
 `.idems_app/deployments/<name>/.maestro/` (e.g. `smoke.yaml` in the `debug` deployment, app-debug-content).
