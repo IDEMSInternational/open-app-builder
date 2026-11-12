@@ -5,7 +5,9 @@ ion-toolbar {
     --ion-color-contrast: var(--ion-color-primary);
   }
   &.header-hidden {
+    // The toolbar keeps its top safe area padding, so only the status bar area remains
     height: 0px;
+    --min-height: 0px;
     --border-style: none;
   }
 }

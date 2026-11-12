@@ -149,6 +149,12 @@ export class headerComponent implements OnInit, OnDestroy {
     }
   }
 
+  /** Height of the status bar area, which the toolbar pads itself by (--ion-safe-area-top) */
+  private getTopSafeAreaPadding() {
+    const toolbar = this.headerElement.el.querySelector("ion-toolbar");
+    return toolbar ? parseFloat(getComputedStyle(toolbar).paddingTop) || 0 : 0;
+  }
+
   private removeScrollEventListeners() {
     // If previously scroll events were subscribed then should be able to unsubscribe.
     // If initial config change undefined->false can ignore
@@ -175,8 +181,9 @@ export class headerComponent implements OnInit, OnDestroy {
             // temporarily disable scroll events whilst animation moves bar
             // as that would trigger negative scroll direction
             this.scrollEvents$.unsubscribe();
-            // set negative margin to move header off-screen
-            this.marginTop.set(headerHeight * -1);
+            // set negative margin to move header off-screen, leaving its top safe area padding
+            // in place as a background for the status bar
+            this.marginTop.set((headerHeight - this.getTopSafeAreaPadding()) * -1);
             await _wait(500);
             this.listenToScrollEvents();
           }
