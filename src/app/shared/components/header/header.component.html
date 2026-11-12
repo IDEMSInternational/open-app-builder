@@ -1,5 +1,12 @@
+<!-- Stays in place behind the device status bar when the header collapses, so page content is not shown there -->
+@if (!headerConfig().hidden) {
+  <div
+    class="status-bar-background"
+    [class]="'ion-color ion-color-' + headerConfig().background"
+  ></div>
+}
 <ion-header
-  [class.ion-no-border]="headerConfig().background === 'none'"
+  [class.ion-no-border]="headerConfig().background === 'none' || headerConfig().hidden"
   [style.marginTop]="marginTop() + 'px'"
 >
   <!-- When the header is hidden at the app config level, render the ion-toolbar element with 0 height to handle the top safe area on iOS.

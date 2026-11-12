@@ -9,9 +9,11 @@ const config: CapacitorConfig = {
   webDir: "www",
   zoomEnabled: toBoolean("${ZOOM_ENABLED}"),
   plugins: {
-    // Insets are handled by @capawesome/capacitor-android-edge-to-edge-support, see app.component.ts
     SystemBars: {
-      insetsHandling: "disable",
+      // The app draws behind the system bars; safe areas are applied in CSS via --ion-safe-area-*
+      insetsHandling: "css",
+      // Matches the viewport meta tag in index.html, avoids a layout shift on launch
+      initialViewportFitValueHint: "cover",
     },
     SplashScreen: {
       launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
