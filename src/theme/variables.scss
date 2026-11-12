@@ -32,6 +32,12 @@
   // see https://github.com/IDEMSInternational/open-app-builder/issues/2680
   --safe-area-height: calc(100% - var(--ion-safe-area-top, 0) - var(--ion-safe-area-bottom, 0));
 
+  // Text and icon style of the device status bar and navigation bar, which the app draws behind.
+  // "auto" picks the style from the colour shown behind the bar. A theme can instead set
+  // "light" (light background, dark icons) or "dark" (dark background, light icons)
+  --system-bar-style-status: auto;
+  --system-bar-style-nav: auto;
+
   // Margins //
   --row-margin-top: 1em; // used in downstream calculations, e.g. sticky display-group
   --tiny-margin: 5px;

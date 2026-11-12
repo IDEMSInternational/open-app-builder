@@ -1,6 +1,14 @@
 .route-container {
   flex: 1;
   overflow: auto;
+  // Keep page content clear of display cutouts and system bars at the sides (e.g. in landscape).
+  // The header and footer are not inset, so their backgrounds reach the screen edges
+  padding-left: var(--ion-safe-area-left, 0px);
+  padding-right: var(--ion-safe-area-right, 0px);
+  // The footer covers the bottom safe area when there is one
+  &.no-footer {
+    padding-bottom: var(--ion-safe-area-bottom, 0px);
+  }
 }
 .app-version {
   margin-right: 8px;

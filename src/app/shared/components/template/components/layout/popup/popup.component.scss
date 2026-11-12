@@ -10,8 +10,10 @@ $pop-up-padding: var(--pop-up-padding, 20px);
 
 .popup-backdrop {
   // Ensure some padding applied even when --ion-safe-area-* is 0px
-  --pop-up-top-padding: max(var(--ion-safe-area-top), 24px);
-  --pop-up-bottom-padding: max(var(--ion-safe-area-bottom), 24px);
+  --pop-up-top-padding: max(var(--ion-safe-area-top, 0px), 24px);
+  --pop-up-bottom-padding: max(var(--ion-safe-area-bottom, 0px), 24px);
+  // Clear of display cutouts and system bars at the sides (e.g. in landscape)
+  --pop-up-side-padding: max(var(--ion-safe-area-left, 0px), var(--ion-safe-area-right, 0px));
 
   // Expose pop-up specific vars to children
   // e.g. used to calculate padding on sticky display groups that are inside a fullscreen popup
@@ -27,9 +29,10 @@ $pop-up-padding: var(--pop-up-padding, 20px);
   .popup-container {
     position: relative;
     height: fit-content;
-    max-height: var(--safe-area-height);
+    // The container's own padding keeps the content inside the safe area
+    max-height: 100%;
     width: var(--content-max-width);
-    padding: 0 2rem;
+    padding: 0 max(2rem, var(--pop-up-side-padding));
     margin: auto;
     padding-top: var(--pop-up-top-padding);
     padding-bottom: var(--pop-up-bottom-padding);
@@ -40,8 +43,8 @@ $pop-up-padding: var(--pop-up-padding, 20px);
       height: 100%;
       max-height: unset;
       .close-button {
-        top: calc(var(--ion-safe-area-top, 0) + 10px);
-        inset-inline-end: 10px;
+        top: calc(var(--ion-safe-area-top, 0px) + 10px);
+        inset-inline-end: calc(var(--pop-up-side-padding) + 10px);
       }
     }
   }
