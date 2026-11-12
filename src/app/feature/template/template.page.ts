@@ -54,14 +54,14 @@ export class TemplatePage implements OnInit, OnDestroy {
   }
 
   private subscribeToAppConfigChanges() {
-    this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(
-      (changes: IAppConfig) => {
-        // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
-        if (Capacitor.getPlatform() === "ios") return;
+    this.appConfigChanges$ = this.appConfigService.changesWithInitialValue$.subscribe(() => {
+      // TODO: current header collapse implementation does not work on ios, so do not enable on this platform
+      if (Capacitor.getPlatform() === "ios") return;
 
-        this.shouldEmitScrollEvents = !!changes.APP_HEADER_DEFAULTS?.collapse;
-      }
-    );
+      // Read the full config, as the changes only include the header when it is what changed
+      this.shouldEmitScrollEvents =
+        !!this.appConfigService.appConfig().APP_HEADER_DEFAULTS?.collapse;
+    });
   }
 
   ngOnDestroy() {

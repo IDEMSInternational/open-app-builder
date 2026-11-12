@@ -1,3 +1,10 @@
+<!-- Stays in place behind the device status bar when the header collapses, so page content is not shown there -->
+@if (!headerConfig().hidden) {
+  <div
+    class="status-bar-background"
+    [class]="'ion-color ion-color-' + headerConfig().background"
+  ></div>
+}
 <ion-header
   [class.ion-no-border]="headerConfig().background === 'none'"
   [style.marginTop]="marginTop() + 'px'"
