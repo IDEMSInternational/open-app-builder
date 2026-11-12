@@ -10,6 +10,9 @@ import { flattenColours, IRGBA, isLightColour, parseCssColour } from "./system-b
 /** Values of the css variables that fix a bar's style instead of detecting it */
 type IStyleOverride = "light" | "dark";
 
+/** First Android WebView version that Capacitor draws behind the system bars */
+const MIN_EDGE_TO_EDGE_WEBVIEW_VERSION = 140;
+
 /** Delays after a change to re-check the bars, covering page and modal transitions (ms) */
 const UPDATE_DELAYS = [50, 400, 800];
 
@@ -36,6 +39,13 @@ export class SystemBarsService extends SyncServiceBase {
     super("SystemBars");
     if (!Capacitor.isNativePlatform()) return;
 
+    // With an older WebView, Capacitor keeps the web view clear of the system bars, which then show
+    // the native window background. The default style suits that background (light or dark mode)
+    if (!this.isWebViewBehindSystemBars()) {
+      SystemBars.setStyle({ style: SystemBarsStyle.Default });
+      return;
+    }
+
     // Theme and layout (header, footer) changes
     effect(() => {
       this.themeService.currentTheme();
@@ -50,6 +60,12 @@ export class SystemBarsService extends SyncServiceBase {
       document.addEventListener(eventName, () => this.scheduleUpdate());
     }
     window.addEventListener("resize", () => this.scheduleUpdate());
+  }
+
+  private isWebViewBehindSystemBars() {
+    if (Capacitor.getPlatform() !== "android") return true;
+    const webViewVersion = Number(navigator.userAgent.match(/Chrome\/(\d+)/)?.[1]);
+    return webViewVersion >= MIN_EDGE_TO_EDGE_WEBVIEW_VERSION;
   }
 
   private scheduleUpdate() {
