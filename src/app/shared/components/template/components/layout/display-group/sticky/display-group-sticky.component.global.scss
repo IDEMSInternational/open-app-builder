@@ -3,9 +3,9 @@
 
 // If sticky display groups are inside a fullscreen popup, add padding to reflect the device safe area
 tmpl-display-group-sticky[sticky-position="top"] .display-group-wrapper {
-  padding-top: var(--ion-safe-area-top, 0);
+  padding-top: var(--ion-safe-area-top, 0px);
 }
 
 tmpl-display-group-sticky[sticky-position="bottom"] .display-group-wrapper {
-  padding-bottom: var(--ion-safe-area-bottom, 0);
+  padding-bottom: var(--ion-safe-area-bottom, 0px);
 }
