@@ -25,7 +25,8 @@ Then follow the matching role guide.
 | `.claude/rules/sheet-sync-internals.md` | sync slowness, caches, download change detection, cell conversion |
 
 Procedures: writing a deployment data codebook → `.claude/skills/deployment-codebook/SKILL.md`; adding to this
-knowledge base → `.claude/skills/assistant-update/SKILL.md`.
+knowledge base → `.claude/skills/assistant-update/SKILL.md`; building and driving the native app on an iOS
+simulator or Android emulator (Maestro) → `.claude/skills/maestro/SKILL.md`.
 
 ## Proposing and making changes
 
