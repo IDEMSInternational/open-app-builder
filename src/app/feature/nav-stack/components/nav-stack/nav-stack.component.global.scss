@@ -29,6 +29,8 @@ ion-modal.nav-stack-modal {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     position: absolute;
     bottom: 0px;
+    // Padding is part of the sheet's width and height
+    box-sizing: border-box;
     padding-bottom: var(--ion-safe-area-bottom, 0px);
     padding-left: var(--ion-safe-area-left, 0px);
     padding-right: var(--ion-safe-area-right, 0px);

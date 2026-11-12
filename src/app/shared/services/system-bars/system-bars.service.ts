@@ -60,7 +60,15 @@ export class SystemBarsService extends SyncServiceBase {
   private update() {
     const x = window.innerWidth / 2;
     this.setStyle(SystemBarType.StatusBar, "--system-bar-style-status", x, 1);
-    this.setStyle(SystemBarType.NavigationBar, "--system-bar-style-nav", x, window.innerHeight - 2);
+    // iOS has one style for both bars, so setting the navigation bar would replace the status bar style
+    if (Capacitor.getPlatform() === "android") {
+      this.setStyle(
+        SystemBarType.NavigationBar,
+        "--system-bar-style-nav",
+        x,
+        window.innerHeight - 2
+      );
+    }
   }
 
   private setStyle(bar: SystemBarType, overrideVariable: string, x: number, y: number) {
