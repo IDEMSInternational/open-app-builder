@@ -38,7 +38,9 @@ end
 target 'App' do
   capacitor_pods
   # Add your Pods here
-  pod 'FirebaseCore', '~> 11'
+  pod 'FirebaseCore', '~> 12'
+  # Minimum version with the fix for the revoked eMudhra certificates
+  pod 'FirebaseFirestore', '>= 12.19.3'
   pod 'CapacitorFirebaseAuthentication/Google', :path => '../../node_modules/@capacitor-firebase/authentication'
 end
 
