@@ -1,0 +1,43 @@
+<div
+  class="course-accordion-container"
+  [class.accordion-closed]="!isOpen()"
+  [attr.data-state]="state()"
+  [attr.data-test]="name()"
+>
+  <div class="course-button" (click)="toggleOpen()">
+    @if (params.imageAsset.value()) {
+      <div class="course-image" [attr.data-image-alignment]="imageAlignment()">
+        <img [src]="params.imageAsset.value() | plhAsset" />
+      </div>
+    }
+    <div class="course-title-and-progress-bar">
+      <p class="course-title">{{ value() || params.title.value() }}</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar-background">
+          <div class="progress-bar" [style.width.%]="progressPercent()"></div>
+        </div>
+        <div class="progress-bar-text">
+          <p>{{ subItemsCompleted() }}/{{ subItemsTotal() }} {{ params.subItemsName.value() }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="course-button-icon">
+      @if (params.locked.value()) {
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      } @else if (isOpen()) {
+        <ion-icon name="chevron-up-circle-outline"></ion-icon>
+      } @else {
+        <ion-icon name="chevron-down-circle-outline"></ion-icon>
+      }
+    </div>
+  </div>
+
+  <!-- Sub-items stay rendered while closed so that their count and progress are still shown -->
+  <div class="sub-items-container">
+    <oab-row-list
+      [namespace]="namespace()"
+      [rows]="row().rows ?? []"
+      (emittedValue)="onEmittedValue($event)"
+    ></oab-row-list>
+  </div>
+</div>

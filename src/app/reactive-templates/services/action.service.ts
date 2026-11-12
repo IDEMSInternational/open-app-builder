@@ -37,7 +37,9 @@ export class ActionService {
           // We replace "this.value" with the actual field name, so that it can be evaluated in context
           // this.value is a hack used in the old templates to refer to the current field value
           //
-          args: a.args.map((arg) => arg.replace("this.value", `@local.${name}`)),
+          args: a.args.map((arg) =>
+            typeof arg === "string" ? arg.replace("this.value", `@local.${name}`) : arg
+          ),
         };
       })
       .map((a) => {
