@@ -1,3 +1,5 @@
+$toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
+
 :host {
   display: block;
   margin: var(--small-padding) 0;
@@ -9,7 +11,7 @@
   border-radius: var(--ion-border-radius-small);
   background-color: var(--ion-color-primary-50);
   color: var(--ion-color-primary-800);
-  letter-spacing: var(--font-letter-spacing, 0);
+  letter-spacing: var(--font-letter-spacing);
   width: 100%;
   height: auto;
 
@@ -89,7 +91,7 @@
       min-width: 0;
 
       .course-title {
-        font-size: var(--font-size-text-medium, 20px);
+        font-size: var(--font-size-text-medium);
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
         text-align: start;
@@ -101,7 +103,7 @@
         width: 100%;
         display: flex;
         flex-flow: row wrap;
-        gap: var(--tiny-padding, 6px);
+        gap: var(--tiny-padding);
         align-items: center;
         justify-content: space-between;
         margin-top: 12px;
@@ -114,7 +116,7 @@
         }
         .progress-bar-text {
           flex-shrink: 0;
-          font-size: var(--font-size-text-small, 14px);
+          font-size: var(--font-size-text-small);
           font-weight: var(--font-weight-medium);
           color: var(--ion-color-primary-700);
           margin: 0;
@@ -129,7 +131,7 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      font-size: var(--icon-size-large, 32px);
+      font-size: $toggle-icon-size;
       font-weight: var(--font-weight-bold);
       margin: 0 6px;
       padding: var(--regular-padding) 0;
