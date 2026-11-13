@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import os from "os";
 import path from "path";
 import { toPot } from "./pot";
-import { updateTranslations } from "./index";
+import { groupEntries, updateTranslations } from "./index";
 
 /** yarn workspace scripts test -t pot.spec.ts */
 describe("Beta translations pot", () => {
@@ -47,6 +47,24 @@ describe("Beta translations pot", () => {
   it("splits text with line breaks and escapes quotes and backslashes", () => {
     const pot = toPot([{ context: "global", text: 'Say "hi"\n\nC:\\path' }]);
     expect(pot).toContain(['msgid ""', '"Say \\"hi\\"\\n"', '"\\n"', '"C:\\\\path"'].join("\n"));
+  });
+
+  it("keeps placeholder comments on one line when an expression has line breaks", () => {
+    const pot = toPot([{ context: "template", text: "Total: ${local.a +\nlocal.b}" }]);
+    expect(pot).toContain("#. The string ${local.a +\\nlocal.b} should not be translated.");
+    // Every line is a comment, keyword or quoted string
+    for (const line of pot.split("\n")) {
+      expect(line === "" || /^(#|msg|")/.test(line)).toBe(true);
+    }
+  });
+});
+
+describe("Beta translations groupEntries", () => {
+  it("groups subtypes named like object properties", () => {
+    const entry = { language: "eng", file: "constructor", context: "data_list", text: "Hi" };
+    const grouped = groupEntries([entry, { ...entry, file: "toString" }]);
+    expect(grouped.eng.constructor).toEqual([entry]);
+    expect(grouped.eng.toString).toEqual([{ ...entry, file: "toString" }]);
   });
 });
 

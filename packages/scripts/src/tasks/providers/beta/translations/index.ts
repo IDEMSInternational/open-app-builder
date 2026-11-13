@@ -36,11 +36,13 @@ export function updateTranslations(options: IUpdateTranslationsOptions = {}) {
   }
   const { flowsByType } = readFlowFiles(recursiveFindByExtension(sheetsFolder, "json"), verbose);
   const entries = extractTranslationEntries(flowsByType, options);
+  // Group before clearing previous output, so it is kept if grouping fails
+  const grouped = groupEntries(entries);
 
   const targetFolder = path.resolve(externalSourcePath, "app_data", "translations", "source");
   fs.emptyDirSync(targetFolder);
   const written: string[] = [];
-  for (const [language, files] of Object.entries(groupEntries(entries))) {
+  for (const [language, files] of Object.entries(grouped)) {
     for (const [file, fileEntries] of Object.entries(files)) {
       const filePath = path.resolve(targetFolder, toSafeFileName(language), `${file}.pot`);
       fs.outputFileSync(filePath, toPot(fileEntries));
@@ -56,11 +58,15 @@ export function updateTranslations(options: IUpdateTranslationsOptions = {}) {
   return written;
 }
 
-/** Group entries by language then file */
-function groupEntries(entries: ITranslationEntry[]) {
-  const grouped: { [language: string]: { [file: string]: ITranslationEntry[] } } = {};
+/**
+ * Group entries by language then file. Uses maps without a prototype, so names such as a
+ * `constructor` subtype are ordinary keys
+ */
+export function groupEntries(entries: ITranslationEntry[]) {
+  const grouped: { [language: string]: { [file: string]: ITranslationEntry[] } } =
+    Object.create(null);
   for (const entry of entries) {
-    grouped[entry.language] ??= {};
+    grouped[entry.language] ??= Object.create(null);
     grouped[entry.language][entry.file] ??= [];
     grouped[entry.language][entry.file].push(entry);
   }

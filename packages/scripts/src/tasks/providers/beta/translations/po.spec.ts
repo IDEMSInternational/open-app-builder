@@ -62,6 +62,32 @@ describe("Beta translations po", () => {
     expect(parsePo(po).map((e) => e.msgstr)).toEqual(["Isa", "Dalawa"]);
   });
 
+  it("starts a new entry at a msgid after a msgstr, without inheriting the context", () => {
+    const po = 'msgctxt "a"\nmsgid "One"\nmsgstr "Isa"\nmsgid "Two"\nmsgstr "Dalawa"';
+    expect(parsePo(po)).toEqual([
+      { context: "a", msgid: "One", msgstr: "Isa" },
+      { context: "", msgid: "Two", msgstr: "Dalawa" },
+    ]);
+  });
+
+  it("treats contexts and strings named like object properties as ordinary keys", () => {
+    const folder = fs.mkdtempSync(path.join(os.tmpdir(), "beta-po-proto-"));
+    try {
+      fs.outputFileSync(
+        path.join(folder, "fil", "fil_main.po"),
+        'msgctxt "__proto__"\nmsgid "polluted"\nmsgstr "yes"\n\nmsgctxt "a"\nmsgid "constructor"\nmsgstr "Tagabuo"'
+      );
+      const strings = loadTranslationStrings(folder);
+      expect(({} as any).polluted).toBeUndefined();
+      expect(getTranslation(strings, "fil", "__proto__", "polluted")).toEqual("yes");
+      expect(getTranslation(strings, "fil", "a", "constructor")).toEqual("Tagabuo");
+      expect(getTranslation(strings, "fil", "a", "toString")).toBeUndefined();
+      expect(getTranslation(strings, "constructor", "a", "constructor")).toBeUndefined();
+    } finally {
+      fs.removeSync(folder);
+    }
+  });
+
   it("reads only the first plural form", () => {
     const po = 'msgid "day"\nmsgid_plural "days"\nmsgstr[0] "araw"\nmsgstr[1] "mga araw"';
     expect(parsePo(po)).toEqual([{ context: "", msgid: "day", msgstr: "araw" }]);

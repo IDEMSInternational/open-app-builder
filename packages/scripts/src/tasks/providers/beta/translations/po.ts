@@ -28,15 +28,16 @@ export function getTranslatedFolder(externalSourcePath: string) {
  * (including subfolders). Untranslated (empty) and fuzzy strings are skipped
  */
 export function loadTranslationStrings(folder?: string): ITranslationStrings {
-  const strings: ITranslationStrings = {};
+  // Keys come from translated files, so use maps without a prototype (e.g. `__proto__` context)
+  const strings: ITranslationStrings = Object.create(null);
   if (!folder || !fs.existsSync(folder)) return strings;
   for (const language of fs.readdirSync(folder)) {
     const languageFolder = path.resolve(folder, language);
     if (!fs.statSync(languageFolder).isDirectory()) continue;
     for (const filePath of recursiveFindByExtension(languageFolder, "po")) {
       for (const { context, msgid, msgstr } of parsePo(fs.readFileSync(filePath, "utf8"))) {
-        strings[language] ??= {};
-        strings[language][context] ??= {};
+        strings[language] ??= Object.create(null);
+        strings[language][context] ??= Object.create(null);
         strings[language][context][msgid] = msgstr;
       }
     }
@@ -54,9 +55,16 @@ export function getTranslation(
   context: string,
   source: string
 ): string | undefined {
-  const byContext = strings?.[language];
+  const byContext = ownValue(strings, language);
   if (!byContext) return undefined;
-  return byContext[context]?.[source] ?? byContext[""]?.[source];
+  return (
+    ownValue(ownValue(byContext, context), source) ?? ownValue(ownValue(byContext, ""), source)
+  );
+}
+
+/** A value only if set on the object itself, so inherited properties (e.g. `toString`) are ignored */
+function ownValue<T>(obj: { [key: string]: T } | undefined, key: string): T | undefined {
+  return obj && Object.prototype.hasOwnProperty.call(obj, key) ? obj[key] : undefined;
 }
 
 /**
@@ -92,7 +100,9 @@ export function parsePo(content: string): IPoEntry[] {
     const keyword = /^(msgctxt|msgid_plural|msgid|msgstr(?:\[(\d+)\])?)\s+(".*")$/.exec(line);
     if (keyword) {
       const [, key, pluralIndex, quoted] = keyword;
+      // A new entry can start without a blank line, with or without a msgctxt
       if (key === "msgctxt" && entry.msgid !== undefined) finish();
+      if (key === "msgid" && entry.msgstr !== undefined) finish();
       if (key === "msgid_plural" || (pluralIndex !== undefined && pluralIndex !== "0")) {
         field = undefined;
         continue;

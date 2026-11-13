@@ -35,7 +35,10 @@ export function toPot(entries: IPotEntry[]) {
 
 /** Comments telling translators which parts of the text to leave unchanged */
 function placeholderComments(text: string) {
-  const placeholders = getPlaceholders(text).filter((p, i, all) => all.indexOf(p) === i);
+  const placeholders = getPlaceholders(text)
+    .filter((p, i, all) => all.indexOf(p) === i)
+    // A comment is one line, so show line breaks within an expression (e.g. `${…}`) as `\n`
+    .map((p) => p.replace(/\r/g, "\\r").replace(/\n/g, "\\n"));
   if (placeholders.length === 0) return [];
   if (placeholders.length === 1) {
     return [`#. The string ${placeholders[0]} should not be translated.`];
