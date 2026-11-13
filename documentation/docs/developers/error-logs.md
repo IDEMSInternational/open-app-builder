@@ -38,6 +38,12 @@ As you scroll down you can see the page viewed in the app as well as exact devic
     The release is `<deployment name>-<app builder version>-<commit>`. Builds made before November 2026 have no
     `content_version` tag, and their native releases end in `-` without a commit.
 
+    The commit is the first 6 characters of the app code commit the build used, usually the commit of the
+    [code release](code-releases.md) tag set in `APP_CODE_BRANCH`. You can find it next to the tag on the
+    [releases page](https://github.com/IDEMSInternational/open-app-builder/releases), or with
+    `git rev-parse --short=6 v0.26.12^{commit}`. If `APP_CODE_BRANCH` is a branch, it is the latest commit on that
+    branch at build time.
+
 ## Replicating errors
 In most cases errors can likely be recreated by navigating to the same template page when browsing locally. There may however be some cases where an issue is specific to a particular browser (often older ones), or Android device.
 
