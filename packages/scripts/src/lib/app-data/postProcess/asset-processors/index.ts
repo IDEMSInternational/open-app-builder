@@ -4,3 +4,4 @@ export * from "./asset-pack-archive";
 export * from "./asset-pack-manifest";
 export * from "./asset-quality-check";
 export * from "./asset-size";
+export * from "./types";

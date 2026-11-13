@@ -18,8 +18,10 @@ import type { FlowTypes } from "data-models";
 import { resolve } from "path";
 import {
   assetsQualityCheck,
-  checkTotalAssetSize,
   filterAppAssets,
+  IAssetEntriesByType,
+  IAssetPackSizeSummary,
+  logAssetSizeSummary,
   handleAssetOverrides,
   writeAssetPackArchive,
 } from "./asset-processors";
@@ -45,6 +47,10 @@ interface IAssetPostProcessorOptions {
  *************************************************************************************/
 export class AssetsPostProcessor {
   private activeDeployment = ActiveDeployment.get();
+  /** Sizes collected while writing, logged together once all assets are processed */
+  private sizeSummary: { bundled?: IAssetEntriesByType; packs: IAssetPackSizeSummary[] } = {
+    packs: [],
+  };
   constructor(private options: IAssetPostProcessorOptions) {}
 
   public run() {
@@ -107,6 +113,8 @@ export class AssetsPostProcessor {
     // Clean up old asset pack folders that are no longer in the config
     this.cleanupOldRemoteAssetFolders(app_data.output_path, currentRemotePacks);
 
+    logAssetSizeSummary(this.sizeSummary);
+
     console.log(chalk.green("Asset Process Complete"));
   }
 
@@ -160,13 +168,13 @@ export class AssetsPostProcessor {
       this.writeRemoteAssetsManifest(targetFolder, assetPackName, contentsData, untrackedData);
     }
     // For core assets, write contents.json (the format the app bundles and reads at startup),
-    // check total size, and record the untracked assets.
+    // record sizes for the summary, and record the untracked assets.
     // A pack folder deliberately gets no contents.json: the manifest is built from `contentsData`
     // in memory, nothing reads the file at runtime or at build time, and it was only ever dead
     // weight in every manual upload.
     else {
       this.writeAssetsContentsFile(targetFolder, contentsData);
-      checkTotalAssetSize({ tracked: contentsData, untracked: untrackedData });
+      this.sizeSummary.bundled = { tracked: contentsData, untracked: untrackedData };
       this.writeUntrackedAssetsFile(targetFolder, untrackedData);
     }
   }
@@ -190,17 +198,16 @@ export class AssetsPostProcessor {
     const manifestPath = path.resolve(targetFolder, `${assetPackName}.json`);
     fs.writeFileSync(manifestPath, JSON.stringify(sortJsonKeys(assetPackManifest), null, 2));
 
-    const { archiveFileName, removedArchives, rawBytes, archiveBytes } = writeAssetPackArchive(
+    const { archiveFileName, rawBytes, archiveBytes } = writeAssetPackArchive(
       targetFolder,
       assetPackName,
       assetPackManifest
     );
-    const supersededNote = removedArchives.length
-      ? `, replacing ${removedArchives.join(", ")}`
-      : "";
-    logOutput({
-      msg1: `Asset pack archive: ${archiveFileName}`,
-      msg2: `${(archiveBytes / 1024 / 1024).toFixed(1)}MB (from ${(rawBytes / 1024 / 1024).toFixed(1)}MB)${supersededNote}`,
+    this.sizeSummary.packs.push({
+      packName: assetPackName,
+      archiveFileName,
+      archiveBytes,
+      rawBytes,
     });
   }
 
