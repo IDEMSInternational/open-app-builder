@@ -537,6 +537,11 @@
       border: none;
       border-inline-start: 6px solid var(--display-group-box-secondary-border-color);
     }
+    &[data-variant~="box_green"] {
+      --background-color: var(--display-group-box-background) !important;
+      border: none;
+      border-inline-start: 6px solid var(--display-group-box-green-border-color);
+    }
     &[data-variant~="box_gray"] {
       --background-color: var(--display-group-box-background) !important;
       border: none;

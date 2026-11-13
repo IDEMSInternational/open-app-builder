@@ -78,7 +78,8 @@ export class ErrorHandlerService extends ErrorHandler {
    * https://docs.sentry.io/platforms/javascript/guides/capacitor/
    */
   private async initialiseSentry() {
-    const { error_logging, name, _app_builder_version } = this.deploymentService.config;
+    const { error_logging, name, _app_builder_version, _content_version } =
+      this.deploymentService.config;
     Sentry.init({
       dsn: error_logging?.dsn,
       environment: environment.production ? "production" : "development",
@@ -87,6 +88,10 @@ export class ErrorHandlerService extends ErrorHandler {
       enabled: true,
       tracesSampleRate: 0, // ensure performance traces not sent (not installed)
     });
+    // Content version is set at build time, so tagging once at startup is enough
+    if (_content_version) {
+      Sentry.setTag("content_version", _content_version);
+    }
     const { identifier: uuid } = await Device.getId();
     Sentry.setUser({ id: uuid });
   }

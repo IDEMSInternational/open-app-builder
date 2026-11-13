@@ -93,6 +93,8 @@ terminal once if the app reports Drive is not authorized.
 ## Further Reading
 
 - See the `reactive-components` directory for available base and UI components.
+- Deployment-specific components (currently PLH) live in `reactive-components/plh/`, with their own
+  component map that is spread into `REACTIVE_COMPONENT_MAP`, so they can be moved to a separate package later.
 - Review the `parameters.ts` file for how to define and use parameters in templates.
 
 ## TODO
@@ -108,7 +110,6 @@ Functionality not yet supported by reactive templates:
 
 Components without reactive equivalents:
 
-* course accordion
 * animated-slides
 * audio x
 * button-apple-sign-in

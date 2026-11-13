@@ -12,6 +12,7 @@ interface IDisplayGroupParams {
   /** TEMPLATE PARAMETER: "variant" */
   variant:
     | "box_gray"
+    | "box_green"
     | "box_primary"
     | "box_secondary"
     | "box_white"
