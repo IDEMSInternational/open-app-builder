@@ -212,8 +212,7 @@ export class TemplateNavService extends SyncServiceBase {
     container?: TemplateContainerComponent
   ) {
     const templatename = action.args[0];
-    const variant = action.params?.variant;
-    const background_image_asset = action.params?.background_image_asset;
+    const { variant, background_image_asset, background_image_position } = action.params || {};
     // if triggered outside templating system (e.g. via notification action) still enable
     // popup creation and dismiss on nav changes
     if (!container) {
@@ -221,6 +220,7 @@ export class TemplateNavService extends SyncServiceBase {
       return this.createPopupAndWaitForDismiss(templatename, null, {
         variant,
         backgroundImageAsset: background_image_asset,
+        backgroundImagePosition: background_image_position,
       });
     }
 
@@ -233,6 +233,7 @@ export class TemplateNavService extends SyncServiceBase {
       popup_parent_triggered_by: action._triggeredBy?.name || null,
       popup_variant: variant,
       popup_background_image_asset: background_image_asset,
+      popup_background_image_position: background_image_position,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -306,6 +307,7 @@ export class TemplateNavService extends SyncServiceBase {
         popup_parent_triggered_by: null,
         popup_variant: null,
         popup_background_image_asset: null,
+        popup_background_image_position: null,
       };
       this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
     }
@@ -418,14 +420,19 @@ export interface INavQueryParams {
   popup_parent_triggered_by?: string; //
   popup_variant?: string;
   popup_background_image_asset?: string;
+  popup_background_image_position?: string;
 }
 
 /** Popup props that set its appearance, passed on from pop_up action params */
-type IPopupStyleProps = Pick<ITemplatePopupComponentProps, "variant" | "backgroundImageAsset">;
+type IPopupStyleProps = Pick<
+  ITemplatePopupComponentProps,
+  "variant" | "backgroundImageAsset" | "backgroundImagePosition"
+>;
 
 function getPopupStyleProps(params: INavQueryParams): IPopupStyleProps {
   return {
     variant: params.popup_variant,
     backgroundImageAsset: params.popup_background_image_asset,
+    backgroundImagePosition: params.popup_background_image_position,
   };
 }

@@ -17,8 +17,12 @@ import { TemplateAssetService } from "../../../services/template-asset.service";
 export class TemplatePopupComponent implements OnInit {
   @Input() props: ITemplatePopupComponentProps;
 
-  /** Inline styles for an optional background image covering the whole popup content */
-  public backgroundImageStyles: Record<string, string> = {};
+  /**
+   * Inline styles for an optional background image. It covers the popup content, or the whole screen
+   * (the backdrop) for a fullscreen popup, whose content is inset by the popup container padding
+   */
+  public contentStyles: Record<string, string> = {};
+  public backdropStyles: Record<string, string> = {};
 
   constructor(
     private modalCtrl: ModalController,
@@ -29,22 +33,27 @@ export class TemplatePopupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.backgroundImageStyles = this.getBackgroundImageStyles();
+    const backgroundImageStyles = this.getBackgroundImageStyles();
+    if (this.props.fullscreen) {
+      this.backdropStyles = backgroundImageStyles;
+    } else {
+      this.contentStyles = backgroundImageStyles;
+    }
   }
 
   /**
-   * Cover the whole popup content with the background image, whatever the height of the template inside.
+   * Cover the whole popup with the background image, whatever the height of the template inside.
    * Set inline so that variant styles that use the `background` shorthand (e.g. plh_completion) keep their
    * colour but cannot reset the image size or position
    */
   private getBackgroundImageStyles(): Record<string, string> {
-    const { backgroundImageAsset } = this.props;
+    const { backgroundImageAsset, backgroundImagePosition } = this.props;
     if (!backgroundImageAsset) return {};
     const url = this.templateAssetService.getTranslatedAssetPath(backgroundImageAsset);
     return {
       backgroundImage: `url("${url}")`,
       backgroundSize: "cover",
-      backgroundPosition: "center",
+      backgroundPosition: backgroundImagePosition || "center",
       backgroundRepeat: "no-repeat",
     };
   }
@@ -103,4 +112,9 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
    * `click | pop_up: my_template | variant: plh_completion, background_image_asset: images/bg.svg`
    */
   backgroundImageAsset?: string;
+  /**
+   * Template Parameter: "background_image_position". Which part of the background image stays visible when
+   * it is cropped to fit, as a CSS background-position, e.g. `top`, `bottom` (default: `center`)
+   */
+  backgroundImagePosition?: string;
 }

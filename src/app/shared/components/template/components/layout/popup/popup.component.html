@@ -4,6 +4,7 @@
   [attr.data-fullscreen]="props.fullscreen ? true : null"
   [attr.data-variant]="props.variant ? props.variant : null"
   [dir]="templateTranslateService.languageDirection()"
+  [ngStyle]="backdropStyles"
 >
   <div class="popup-container">
     @if (props.showCloseButton) {
@@ -14,7 +15,7 @@
     <div
       class="popup-content"
       [attr.data-fullscreen]="props.fullscreen ? true : null"
-      [ngStyle]="backgroundImageStyles"
+      [ngStyle]="contentStyles"
     >
       @if (props.popupText) {
         <!-- Use a text component row to display popup text -->

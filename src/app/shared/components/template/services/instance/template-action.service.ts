@@ -275,6 +275,7 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
           return this.templateService.runStandaloneTemplate(action.args[0], {
             ...action.params,
             backgroundImageAsset: action.params.background_image_asset,
+            backgroundImagePosition: action.params.background_image_position,
           });
         }
         return this.templateNavService.handlePopupAction(action, this.container);

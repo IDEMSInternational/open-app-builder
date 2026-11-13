@@ -46,9 +46,17 @@ describe("TemplatePopupComponent", () => {
     expect(modalCtrl.dismiss).not.toHaveBeenCalled();
   });
 
+  const expectedBackgroundStyles = {
+    backgroundImage: 'url("assets/app_data/assets/images/bg.svg")',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
+
   it("has no background image styles by default", () => {
     const { component } = createComponent({});
-    expect(component.backgroundImageStyles).toEqual({});
+    expect(component.contentStyles).toEqual({});
+    expect(component.backdropStyles).toEqual({});
   });
 
   it("covers the popup content with the translated background image asset", () => {
@@ -56,11 +64,27 @@ describe("TemplatePopupComponent", () => {
       backgroundImageAsset: "images/bg.svg",
     });
     expect(templateAssetService.getTranslatedAssetPath).toHaveBeenCalledWith("images/bg.svg");
-    expect(component.backgroundImageStyles).toEqual({
-      backgroundImage: 'url("assets/app_data/assets/images/bg.svg")',
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
+    expect(component.contentStyles).toEqual(expectedBackgroundStyles);
+    expect(component.backdropStyles).toEqual({});
+  });
+
+  it("positions the background image as set", () => {
+    const { component } = createComponent({
+      backgroundImageAsset: "images/bg.svg",
+      backgroundImagePosition: "bottom",
     });
+    expect(component.contentStyles).toEqual({
+      ...expectedBackgroundStyles,
+      backgroundPosition: "bottom",
+    });
+  });
+
+  it("covers the whole screen with the background image for a fullscreen popup", () => {
+    const { component } = createComponent({
+      backgroundImageAsset: "images/bg.svg",
+      fullscreen: true,
+    });
+    expect(component.backdropStyles).toEqual(expectedBackgroundStyles);
+    expect(component.contentStyles).toEqual({});
   });
 });
