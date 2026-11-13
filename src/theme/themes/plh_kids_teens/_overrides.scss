@@ -871,6 +871,26 @@
           border: 0.8px solid var(--popup-completion-close-button-border-color);
           color: var(--popup-completion-close-button-color);
         }
+        // Let a single top-level display group fill the pop-up edge to edge, so a background image
+        // set with background_image_asset (e.g. kites on unlock_play) covers the whole pop-up instead
+        // of only the content's height (display groups use background-size: contain).
+        // The group extends over the pop-up padding and re-applies it inside, so content stays put.
+        .popup-content
+          > plh-template-container
+          > plh-template-component:only-child
+          > plh-tmpl-display-group {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          margin: calc(-1 * var(--pop-up-padding, 20px));
+          > .display-group-wrapper {
+            flex: 1;
+            padding: var(--pop-up-padding, 20px);
+            background-position: center;
+            background-size: cover;
+          }
+        }
       }
     }
   }
