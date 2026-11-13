@@ -1,4 +1,35 @@
 $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
+// Themable colours. The card is the course button; the area below it holds the sub-items.
+// Muted versions are used for locked and completed courses; the muted card defaults to the
+// sub-items background
+$plh-course-accordion-card-background: var(
+  --plh-course-accordion-card-background,
+  var(--ion-color-primary-100)
+);
+$plh-course-accordion-sub-items-background: var(
+  --plh-course-accordion-sub-items-background,
+  var(--ion-color-primary-50)
+);
+$plh-course-accordion-card-background-muted: var(
+  --plh-course-accordion-card-background-muted,
+  #{$plh-course-accordion-sub-items-background}
+);
+$plh-course-accordion-border-color: var(
+  --plh-course-accordion-border-color,
+  var(--ion-color-primary-500)
+);
+$plh-course-accordion-border-color-muted: var(
+  --plh-course-accordion-border-color-muted,
+  var(--ion-color-primary-200)
+);
+$plh-course-accordion-progress-bar-color: var(
+  --plh-course-accordion-progress-bar-color,
+  var(--ion-color-primary-700)
+);
+$plh-course-accordion-sub-items-header-color: var(
+  --plh-course-accordion-sub-items-header-color,
+  var(--ion-color-gray-800)
+);
 
 :host {
   display: block;
@@ -9,7 +40,7 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
   container-type: inline-size;
 
   border-radius: var(--ion-border-radius-small);
-  background-color: var(--ion-color-primary-50);
+  background-color: $plh-course-accordion-sub-items-background;
   color: var(--ion-color-primary-800);
   letter-spacing: var(--font-letter-spacing);
   width: 100%;
@@ -18,8 +49,8 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
   &[data-state="locked"] {
     pointer-events: none;
     .course-button {
-      border-color: var(--ion-color-primary-200);
-      background-color: var(--ion-color-primary-50);
+      border-color: $plh-course-accordion-border-color-muted;
+      background-color: $plh-course-accordion-card-background-muted;
     }
     .course-image {
       opacity: 0.5;
@@ -36,11 +67,11 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
   &[data-state="completed"] {
     color: var(--ion-color-primary-700);
     .course-button {
-      border-color: var(--ion-color-primary-200);
-      background-color: var(--ion-color-primary-50);
+      border-color: $plh-course-accordion-border-color-muted;
+      background-color: $plh-course-accordion-card-background-muted;
     }
     .sub-items-container {
-      border-color: var(--ion-color-primary-200);
+      border-color: $plh-course-accordion-border-color-muted;
     }
   }
 
@@ -58,8 +89,8 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
     height: auto;
     min-height: 90px;
     padding: 0 12px;
-    background-color: var(--ion-color-primary-100);
-    border: 1px solid var(--ion-color-primary-500);
+    background-color: $plh-course-accordion-card-background;
+    border: 1px solid $plh-course-accordion-border-color;
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
 
     .course-image {
@@ -108,7 +139,7 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
         justify-content: space-between;
         margin-top: 12px;
         margin-bottom: 4px;
-        --task-progress-bar-color: var(--ion-color-primary-700);
+        --task-progress-bar-color: #{$plh-course-accordion-progress-bar-color};
         --task-progress-bar-background-color: white;
         --task-progress-bar-height: 6px;
         plh-task-progress-bar {
@@ -145,14 +176,14 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
     border: var(--border-standard);
     border-top: 0;
     border-width: 1px;
-    border-color: var(--ion-color-primary-500);
+    border-color: $plh-course-accordion-border-color;
     border-radius: 0 0 var(--ion-border-radius-small) var(--ion-border-radius-small);
     padding: var(--small-padding);
 
     .sub-items-header {
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
-      color: var(--ion-color-gray-800);
+      color: $plh-course-accordion-sub-items-header-color;
       margin: 0 0 8px 0;
       padding: 0;
     }
