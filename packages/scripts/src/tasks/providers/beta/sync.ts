@@ -14,6 +14,7 @@ import { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import { loadExternalConfig, readExternalSourcePath } from "./deploymentConfig";
 import { processAssets } from "./processAssets";
 import { processFlows } from "./processFlows";
+import { getTranslatedFolder } from "./translations/po";
 import {
   APP_DATA_PATH,
   downloadDriveFolders,
@@ -49,6 +50,7 @@ export async function syncFixedSheets(options: ISyncOptions) {
   processFlows({
     sourceFlowsFolder: path.resolve(externalSourcePath, "app_data", "sheets"),
     targetAppDataFolder: path.resolve(SRC_ASSETS_PATH, "app_data"),
+    translationsFolder: getTranslatedFolder(externalSourcePath),
     verbose,
   });
 }
@@ -65,7 +67,8 @@ export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
     logOutput({ msg1: "No transient sheets to sync", msg2: TRANSIENT_SHEETS_LIST_PATH });
     return { sheets: 0, flows: 0, updated: 0 };
   }
-  const deploymentConfig = await loadExternalConfig(readExternalSourcePath());
+  const externalSourcePath = readExternalSourcePath();
+  const deploymentConfig = await loadExternalConfig(externalSourcePath);
   const { sheets, filePaths } = await downloadTransientSheets(entries, deploymentConfig, {
     verbose,
   });
@@ -78,6 +81,7 @@ export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
       targetAppDataFolder: APP_DATA_PATH,
       filePaths,
       type: "transient",
+      translationsFolder: getTranslatedFolder(externalSourcePath),
       verbose,
     });
     // Parsing removes the url of transient flows, so link each one to its sheet again

@@ -1,4 +1,5 @@
 import { FlowTypes } from "data-models";
+import type { ITranslationStrings } from "../translations/po";
 
 /**
  * Where a flow comes from
@@ -12,6 +13,8 @@ export interface IFlowParserOptions {
   path?: string;
   /** Defaults to `transient` */
   type?: IFlowSourceType;
+  /** Translated strings added to `_translatedFields` (see `assignTranslatedFields`) */
+  translations?: ITranslationStrings;
 }
 
 /**
@@ -23,12 +26,16 @@ export abstract class FlowParser {
     flow: FlowTypes.FlowTypeWithData,
     options: IFlowParserOptions = {}
   ): FlowTypes.FlowTypeWithData {
-    const rows = this.parseRows(flow.rows || [], flow);
+    const rows = this.parseRows(flow.rows || [], flow, options);
     return { ...this.updateSource(flow, options), rows };
   }
 
   /** Parse the rows of a flow. The flow should not be changed */
-  protected abstract parseRows(rows: any[], flow: FlowTypes.FlowTypeWithData): any[];
+  protected abstract parseRows(
+    rows: any[],
+    flow: FlowTypes.FlowTypeWithData,
+    options: IFlowParserOptions
+  ): any[];
 
   /**
    * Add `path` and `type` to `_source`. A transient flow may be a copy of a fixed one, so any
