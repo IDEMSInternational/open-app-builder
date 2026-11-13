@@ -1,0 +1,33 @@
+<div class="progress-summary">
+  @if (params().imageAsset) {
+    <plh-progress-summary-celebration class="badge" [play]="completedCount() > 0">
+      <img [src]="params().imageAsset | translatedAsset" alt="" />
+    </plh-progress-summary-celebration>
+  }
+  <div
+    class="step-rows"
+    role="img"
+    [attr.aria-label]="completedCount()"
+    [style.--steps-per-row]="stepsPerRow"
+  >
+    @for (row of stepRows(); track $index) {
+      <div class="step-row">
+        @for (step of row; track step.index) {
+          <div class="step-cell" [class]="step.status">
+            <div class="step">
+              @if (step.status !== "empty") {
+                <ion-icon name="checkmark" aria-hidden="true"></ion-icon>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+  @if (params().title) {
+    <p class="title">{{ params().title }}</p>
+  }
+  @if (params().text) {
+    <p class="text">{{ params().text }}</p>
+  }
+</div>

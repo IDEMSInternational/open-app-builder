@@ -3,6 +3,7 @@ import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { BehaviorSubject, Observable, Subject, combineLatest, of } from "rxjs";
 import { distinctUntilChanged, filter, map, startWith, switchMap } from "rxjs/operators";
 import { isEqual } from "packages/shared/src/utils/object-utils";
+import { getScopeFallbackCandidates } from "../scope-fallback.utils";
 import { IStore, mergeDescendants, VariableReference } from "./store";
 
 export interface VariablePointer {
@@ -106,7 +107,7 @@ export class LocalVariableStore implements IStore {
    * an exact value OR any descendant key, since 'getWithDescendants' can resolve from either.
    */
   private resolveScopeWithDescendants(ref: VariableReference): string | undefined {
-    return this.getScopeFallbackCandidates(ref.name).find((candidate) =>
+    return getScopeFallbackCandidates(ref.name).find((candidate) =>
       this.hasValueOrDescendants(candidate)
     );
   }
@@ -137,7 +138,7 @@ export class LocalVariableStore implements IStore {
    * real descendant changes (e.g. a sibling loop's row value updating).
    */
   public watchWithDescendants(ref: VariableReference): Observable<any> {
-    const candidates = this.getScopeFallbackCandidates(ref.name);
+    const candidates = getScopeFallbackCandidates(ref.name);
 
     return this.stateChanged$.pipe(
       filter(
@@ -340,32 +341,7 @@ export class LocalVariableStore implements IStore {
   private createScopeFallbackPointer(ref: VariableReference): VariablePointer {
     return {
       id: ref.name,
-      candidates: this.getScopeFallbackCandidates(ref.name),
+      candidates: getScopeFallbackCandidates(ref.name),
     };
-  }
-
-  /**
-   * Builds fallback candidates for a dotted dependency name.
-   *
-   * Example:
-   * - input: 'a.b.c.value'
-   * - output: ['a.b.c.value', 'a.b.value', 'a.value', 'value']
-   */
-  private getScopeFallbackCandidates(name: string): string[] {
-    const segments = name.split(".");
-    if (segments.length <= 1) {
-      return [name];
-    }
-
-    const variableName = segments[segments.length - 1];
-    const scopes = segments.slice(0, -1);
-    const candidates: string[] = [];
-
-    for (let scopeCount = scopes.length; scopeCount >= 0; scopeCount -= 1) {
-      const candidate = [...scopes.slice(0, scopeCount), variableName].join(".");
-      candidates.push(candidate);
-    }
-
-    return candidates;
   }
 }
