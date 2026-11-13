@@ -45,6 +45,7 @@ export class RemoteAssetMetadataService {
       download_status_updated_at: "",
       assets_total_count: 0,
       assets_downloaded_count: 0,
+      download_size_mb: 0,
       download_progress_percent: 0,
       version: "",
       available_version: "",
@@ -96,13 +97,15 @@ export class RemoteAssetMetadataService {
    * mid-attempt, and a write from the attempt it cancelled must not resurrect the pack.
    * @param options.version manifest version to record. Only pass on a fully successful download -
    * see `IDBAssetPack.version`.
+   * @param options.downloadSizeMb megabytes the pack still needs, recorded only alongside
+   * `insufficient_storage` - see `IDBAssetPack.download_size_mb`.
    */
   public setDownloadStatus(
     assetPackName: string,
     downloadStatus: IAssetPackDownloadStatus,
     timestamps: IAssetPackDownloadStatusTimestamps = {},
     assetCounts: IAssetPackAssetCounts = {},
-    options: { signal?: AbortSignal; version?: string } = {}
+    options: { signal?: AbortSignal; version?: string; downloadSizeMb?: number } = {}
   ) {
     return this.queueStatusWrite(async () => {
       if (options.signal?.aborted) return;
@@ -130,6 +133,16 @@ export class RemoteAssetMetadataService {
         download_completed_at: downloadCompletedAt,
         download_status_updated_at: downloadStatusUpdatedAt,
       };
+      // Set by a refusal, cleared by any status that settles the pack, and deliberately left ALONE
+      // by the in-flight ones. Clearing on `in_progress` would blank the figure mid-retry, so an
+      // author's "needs X MB" warning would blink to "needs 0 MB" while the retry fetched its
+      // manifest and then come back. Every path out of an attempt ends in one of the statuses
+      // below, so the figure still cannot outlive the refusal it describes.
+      if (downloadStatus === "insufficient_storage") {
+        update.download_size_mb = options.downloadSizeMb ?? 0;
+      } else if (["completed", "error", "cancelled"].includes(downloadStatus)) {
+        update.download_size_mb = 0;
+      }
       if (assetCounts.assetsTotalCount !== undefined) {
         update.assets_total_count = assetCounts.assetsTotalCount;
       }
