@@ -1,29 +1,32 @@
 // Themable colours. The card is the course button; the area below it holds the sub-items.
 // Muted versions are used for locked and completed courses; the muted card defaults to the
 // sub-items background
-$course-accordion-card-background: var(
-  --course-accordion-card-background,
+$plh-course-accordion-card-background: var(
+  --plh-course-accordion-card-background,
   var(--ion-color-primary-100)
 );
-$course-accordion-sub-items-background: var(
-  --course-accordion-sub-items-background,
+$plh-course-accordion-sub-items-background: var(
+  --plh-course-accordion-sub-items-background,
   var(--ion-color-primary-50)
 );
-$course-accordion-card-background-muted: var(
-  --course-accordion-card-background-muted,
-  #{$course-accordion-sub-items-background}
+$plh-course-accordion-card-background-muted: var(
+  --plh-course-accordion-card-background-muted,
+  #{$plh-course-accordion-sub-items-background}
 );
-$course-accordion-border-color: var(--course-accordion-border-color, var(--ion-color-primary-500));
-$course-accordion-border-color-muted: var(
-  --course-accordion-border-color-muted,
+$plh-course-accordion-border-color: var(
+  --plh-course-accordion-border-color,
+  var(--ion-color-primary-500)
+);
+$plh-course-accordion-border-color-muted: var(
+  --plh-course-accordion-border-color-muted,
   var(--ion-color-primary-200)
 );
-$course-accordion-progress-bar-color: var(
-  --course-accordion-progress-bar-color,
+$plh-course-accordion-progress-bar-color: var(
+  --plh-course-accordion-progress-bar-color,
   var(--ion-color-primary-700)
 );
-$course-accordion-sub-items-header-color: var(
-  --course-accordion-sub-items-header-color,
+$plh-course-accordion-sub-items-header-color: var(
+  --plh-course-accordion-sub-items-header-color,
   var(--ion-color-gray-800)
 );
 
@@ -36,7 +39,7 @@ $course-accordion-sub-items-header-color: var(
   container-type: inline-size;
 
   border-radius: var(--ion-border-radius-small);
-  background-color: $course-accordion-sub-items-background;
+  background-color: $plh-course-accordion-sub-items-background;
   color: var(--ion-color-primary-800);
   letter-spacing: var(--font-letter-spacing, 0);
   width: 100%;
@@ -45,8 +48,8 @@ $course-accordion-sub-items-header-color: var(
   &[data-state="locked"] {
     pointer-events: none;
     .course-button {
-      border-color: $course-accordion-border-color-muted;
-      background-color: $course-accordion-card-background-muted;
+      border-color: $plh-course-accordion-border-color-muted;
+      background-color: $plh-course-accordion-card-background-muted;
     }
     .course-image {
       opacity: 0.5;
@@ -63,11 +66,11 @@ $course-accordion-sub-items-header-color: var(
   &[data-state="completed"] {
     color: var(--ion-color-primary-700);
     .course-button {
-      border-color: $course-accordion-border-color-muted;
-      background-color: $course-accordion-card-background-muted;
+      border-color: $plh-course-accordion-border-color-muted;
+      background-color: $plh-course-accordion-card-background-muted;
     }
     .sub-items-container {
-      border-color: $course-accordion-border-color-muted;
+      border-color: $plh-course-accordion-border-color-muted;
     }
   }
 
@@ -92,8 +95,8 @@ $course-accordion-sub-items-header-color: var(
     height: auto;
     min-height: 90px;
     padding: 0 12px;
-    background-color: $course-accordion-card-background;
-    border: 1px solid $course-accordion-border-color;
+    background-color: $plh-course-accordion-card-background;
+    border: 1px solid $plh-course-accordion-border-color;
     border-radius: var(--ion-border-radius-small) var(--ion-border-radius-small) 0 0;
 
     &:disabled {
@@ -146,7 +149,7 @@ $course-accordion-sub-items-header-color: var(
         justify-content: space-between;
         margin-top: 12px;
         margin-bottom: 4px;
-        --task-progress-bar-color: #{$course-accordion-progress-bar-color};
+        --task-progress-bar-color: #{$plh-course-accordion-progress-bar-color};
         --task-progress-bar-background-color: white;
         --task-progress-bar-height: 6px;
         plh-task-progress-bar {
@@ -183,14 +186,14 @@ $course-accordion-sub-items-header-color: var(
     border: var(--border-standard);
     border-top: 0;
     border-width: 1px;
-    border-color: $course-accordion-border-color;
+    border-color: $plh-course-accordion-border-color;
     border-radius: 0 0 var(--ion-border-radius-small) var(--ion-border-radius-small);
     padding: var(--small-padding);
 
     .sub-items-header {
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
-      color: $course-accordion-sub-items-header-color;
+      color: $plh-course-accordion-sub-items-header-color;
       margin: 0 0 8px 0;
       padding: 0;
     }

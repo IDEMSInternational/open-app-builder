@@ -1,21 +1,25 @@
-$course-sub-item-locked-title-color: var(
-  --course-sub-item-locked-title-color,
+$badge-border-radius: var(--plh-course-sub-item-badge-border-radius, 50px);
+$plh-course-sub-item-locked-title-color: var(
+  --plh-course-sub-item-locked-title-color,
   var(--ion-color-gray-400)
 );
-$course-sub-item-text-color: var(--course-sub-item-text-color, var(--ion-color-gray-800));
-$course-sub-item-locked-text-color: var(
-  --course-sub-item-locked-text-color,
+$plh-course-sub-item-text-color: var(--plh-course-sub-item-text-color, var(--ion-color-gray-800));
+$plh-course-sub-item-locked-text-color: var(
+  --plh-course-sub-item-locked-text-color,
   var(--ion-color-gray-700)
 );
 // Border of default and completed sub-items; locked ones keep a grey border
-$course-sub-item-border-color: var(--course-sub-item-border-color, var(--ion-color-gray-500));
+$plh-course-sub-item-border-color: var(
+  --plh-course-sub-item-border-color,
+  var(--ion-color-gray-500)
+);
 // Highlighted sub-item (`highlighted` parameter, e.g. the lesson in progress); its text is white
-$course-sub-item-highlighted-background: var(
-  --course-sub-item-highlighted-background,
+$plh-course-sub-item-highlighted-background: var(
+  --plh-course-sub-item-highlighted-background,
   var(--ion-color-primary-700)
 );
-$course-sub-item-highlighted-border-color: var(
-  --course-sub-item-highlighted-border-color,
+$plh-course-sub-item-highlighted-border-color: var(
+  --plh-course-sub-item-highlighted-border-color,
   var(--ion-color-primary-800)
 );
 
@@ -34,17 +38,17 @@ $course-sub-item-highlighted-border-color: var(
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  padding: var(--regular-padding, 16px);
-  border: 1px solid $course-sub-item-border-color;
+  padding: var(--regular-padding);
+  border: 1px solid $plh-course-sub-item-border-color;
   border-radius: var(--ion-border-radius-standard);
   background-color: white;
-  color: $course-sub-item-text-color;
-  margin: var(--tiny-padding, 6px) 0;
+  color: $plh-course-sub-item-text-color;
+  margin: var(--tiny-padding) 0;
 
   .course-sub-item-title {
-    font-size: var(--font-size-text-medium, 18px);
+    font-size: var(--font-size-text-medium);
     font-weight: 500;
-    letter-spacing: var(--font-letter-spacing, 0);
+    letter-spacing: var(--font-letter-spacing);
     margin-inline-end: 6px;
     flex: 1 1 8rem;
     min-width: 0;
@@ -55,25 +59,25 @@ $course-sub-item-highlighted-border-color: var(
     align-items: center;
     gap: var(--tiny-padding);
     .state-badge {
-      font-size: var(--font-size-text-tiny, 10px);
+      font-size: var(--font-size-text-tiny);
       font-weight: var(--font-weight-bold);
       padding: 2px 8px;
       border-style: solid;
       border-width: 1px;
-      border-radius: var(--ion-border-radius-rounded, 50px);
+      border-radius: $badge-border-radius;
       p {
         margin: 0;
       }
     }
     ion-icon {
-      font-size: var(--icon-size-tiny, 1.8rem);
+      font-size: var(--icon-size-tiny);
       --ionicon-stroke-width: 42px;
     }
   }
 
   &[data-state="highlighted"] {
-    background-color: $course-sub-item-highlighted-background;
-    border-color: $course-sub-item-highlighted-border-color;
+    background-color: $plh-course-sub-item-highlighted-background;
+    border-color: $plh-course-sub-item-highlighted-border-color;
     color: white;
     font-weight: var(--font-weight-bold);
     min-height: 66px;
@@ -99,18 +103,18 @@ $course-sub-item-highlighted-border-color: var(
     border-color: var(--ion-color-gray-500);
     background-color: var(--ion-color-gray-50);
     .course-sub-item-title {
-      color: $course-sub-item-locked-title-color;
+      color: $plh-course-sub-item-locked-title-color;
     }
     .state-container {
       .state-badge {
         border-color: var(--ion-color-gray-500);
         background-color: white;
         p {
-          color: $course-sub-item-locked-text-color;
+          color: $plh-course-sub-item-locked-text-color;
         }
       }
       ion-icon {
-        color: $course-sub-item-locked-text-color;
+        color: $plh-course-sub-item-locked-text-color;
       }
     }
   }

@@ -23,9 +23,9 @@ export interface IStore {
    * Resolves a value merged with any "descendant" keys stored under it (e.g. "foo.bar" values
    * nested onto "foo"), so dynamic property/index access (e.g. `foo[someId]`) works naturally.
    */
-  getWithDescendants(ref: VariableReference): any;
+  getWithDescendants(ref: VariableReference, namespace?: string): any;
   /** Reactive counterpart of `getWithDescendants`; re-evaluates whenever any store value changes. */
-  watchWithDescendants(ref: VariableReference): Observable<any>;
+  watchWithDescendants(ref: VariableReference, namespace?: string): Observable<any>;
 }
 
 /**
