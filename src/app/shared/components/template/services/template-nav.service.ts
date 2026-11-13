@@ -213,11 +213,15 @@ export class TemplateNavService extends SyncServiceBase {
   ) {
     const templatename = action.args[0];
     const variant = action.params?.variant;
+    const background_image_asset = action.params?.background_image_asset;
     // if triggered outside templating system (e.g. via notification action) still enable
     // popup creation and dismiss on nav changes
     if (!container) {
       this.router.events.pipe(first()).subscribe(() => this.dismissPopup(templatename));
-      return this.createPopupAndWaitForDismiss(templatename, null, variant);
+      return this.createPopupAndWaitForDismiss(templatename, null, {
+        variant,
+        backgroundImageAsset: background_image_asset,
+      });
     }
 
     const { name } = container;
@@ -228,6 +232,7 @@ export class TemplateNavService extends SyncServiceBase {
       popup_parent: name,
       popup_parent_triggered_by: action._triggeredBy?.name || null,
       popup_variant: variant,
+      popup_background_image_asset: background_image_asset,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
@@ -236,7 +241,7 @@ export class TemplateNavService extends SyncServiceBase {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    const { popup_child, nav_child_emit, popup_parent_triggered_by, popup_variant } = params;
+    const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
     const { template } = container;
     const existingPopup = this.openPopupsByName[popup_child];
     log("[Popup] - parent", { params, parent: container.name });
@@ -276,16 +281,16 @@ export class TemplateNavService extends SyncServiceBase {
     }
     // If no popup already exists, create, present, and react to dismiss
     else {
-      await this.createPopupAndWaitForDismiss(popup_child, container, popup_variant);
+      await this.createPopupAndWaitForDismiss(popup_child, container, getPopupStyleProps(params));
     }
   }
 
   private async createPopupAndWaitForDismiss(
     popup_child: string,
     container: TemplateContainerComponent,
-    variant: string
+    styleProps: IPopupStyleProps
   ) {
-    const childTemplateModal = await this.createChildPopupModal(popup_child, container, variant);
+    const childTemplateModal = await this.createChildPopupModal(popup_child, container, styleProps);
     if (childTemplateModal) {
       await childTemplateModal.present();
       const { data } = await childTemplateModal.onDidDismiss();
@@ -300,6 +305,7 @@ export class TemplateNavService extends SyncServiceBase {
         popup_parent: null,
         popup_parent_triggered_by: null,
         popup_variant: null,
+        popup_background_image_asset: null,
       };
       this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
     }
@@ -318,19 +324,19 @@ export class TemplateNavService extends SyncServiceBase {
     container: TemplateContainerComponent
   ) {
     // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
-    const { popup_child, popup_variant } = params;
+    const { popup_child } = params;
     const existingPopup = this.openPopupsByName[popup_child];
     if (existingPopup) {
       existingPopup.modal.classList.add("hide-popup-on-template");
     } else {
-      this.createPopupAndWaitForDismiss(params.popup_child, container, popup_variant);
+      this.createPopupAndWaitForDismiss(popup_child, container, getPopupStyleProps(params));
     }
   }
 
   private async createChildPopupModal(
     popup_child: string,
     container: TemplateContainerComponent,
-    variant?: string
+    styleProps: IPopupStyleProps = {}
   ) {
     const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
@@ -339,7 +345,7 @@ export class TemplateNavService extends SyncServiceBase {
       parent: container,
       showCloseButton: true,
       dismissOnEmit: true,
-      variant,
+      ...styleProps,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
@@ -411,4 +417,15 @@ export interface INavQueryParams {
   popup_parent?: string;
   popup_parent_triggered_by?: string; //
   popup_variant?: string;
+  popup_background_image_asset?: string;
+}
+
+/** Popup props that set its appearance, passed on from pop_up action params */
+type IPopupStyleProps = Pick<ITemplatePopupComponentProps, "variant" | "backgroundImageAsset">;
+
+function getPopupStyleProps(params: INavQueryParams): IPopupStyleProps {
+  return {
+    variant: params.popup_variant,
+    backgroundImageAsset: params.popup_background_image_asset,
+  };
 }

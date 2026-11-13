@@ -11,7 +11,11 @@
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </div>
     }
-    <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
+    <div
+      class="popup-content"
+      [attr.data-fullscreen]="props.fullscreen ? true : null"
+      [ngStyle]="backgroundImageStyles"
+    >
       @if (props.popupText) {
         <!-- Use a text component row to display popup text -->
         <plh-tmpl-text

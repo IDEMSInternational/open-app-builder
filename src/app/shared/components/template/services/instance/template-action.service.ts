@@ -272,7 +272,10 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
         return this.setLocalVariable(key, value);
       case "pop_up":
         if (action.params?.fullscreen) {
-          return this.templateService.runStandaloneTemplate(action.args[0], action.params);
+          return this.templateService.runStandaloneTemplate(action.args[0], {
+            ...action.params,
+            backgroundImageAsset: action.params.background_image_asset,
+          });
         }
         return this.templateNavService.handlePopupAction(action, this.container);
 
