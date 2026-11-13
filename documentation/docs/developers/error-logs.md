@@ -1,33 +1,47 @@
 # Error Logs
 
 ## Providers
-Logs are configured for multiple providers
+Logs are configured for multiple providers.
 
 ### Crashlytics
-Firebase crashlytics logs any native crashes as well as logged errors. The dashboard will be linked to the profile used in the firebaseConfig.ts file, for PLH access can be requested from the core team.
+Firebase Crashlytics logs any native crashes as well as logged errors. The dashboard will be linked to the profile used in the `firebaseConfig.ts` file. For PLH, access can be requested from the core team.
 
-### Sentry
-In addition runtime errors can be logged to sentry (or glitchtip) by specifying a dsn in a deployment config
+### Sentry / GlitchTip
+In addition runtime errors can be logged to Sentry (or GlitchTip) by specifying a DSN in a deployment config:
+
 ```ts
- error_logging:{
-    dsn:'https://abcde@domain.com/1234'
-  },
+error_logging: {
+  dsn: "https://abcde@domain.com/1234",
+},
 ```
 
-## Debugging Logs
-Logs viewed in glitchtip will include a lot of useful information that can be used for debugging
+## Debugging logs
+Logs viewed in GlitchTip will include a lot of useful information that can be used for debugging.
 
 ![](images/glitchtip-error.png)  
 
-A full stack trace will be given at the bottom, which includes both path to minified code alongside mapping to source code (sourcemaps are populated during the build process but not available in the main build)
+A full stack trace will be given at the bottom, with the path to the minified code. It is only mapped to the source code when the build includes source maps: the `production` build configuration in `angular.json` has none, while the `preview` and `glitchtip` configurations add them.
 
-As you scroll down you can see the page viewed in the app as well as exact device/browser information
+As you scroll down you can see the page viewed in the app as well as exact device/browser information.
+
 ![](images/glitchtip-error-2.png)  
 
-### Replicating errors
-In most cases errors can likely be recreated by navigating to the same template page when browsing locally. There may however be some cases where an issue is specific to a particular browser (often older ones), or android device
+!!! tip "Filtering by content or code release"
+    To see errors from one build, for example to check whether an error still happens after a fix, type in the
+    issue search bar of the deployment's GlitchTip project:
 
-In order to replicate older browsers, it is recommended to download a portable version of chromium (zip) from [https://chromium.cypress.io](https://chromium.cypress.io)
+    ```
+    content_version:1.3.19
+    release:plh_kids_teens_my-0.26.12-fa3810
+    ```
 
+    The release is `<deployment name>-<app builder version>-<commit>`. Find the commit corresponding to a code release next to the tag on the
+    [releases page](https://github.com/IDEMSInternational/open-app-builder/releases) (use the first 6 characters). Builds made before November 2026 have no
+    `content_version` tag, and their native releases end in `-` without a commit.
 
-If even older versions are required (not recommended) you can follow instructions from the [chromium website](https://www.chromium.org/getting-involved/download-chromium/#downloading-old-builds-of-chrome-chromium)
+## Replicating errors
+In most cases errors can likely be recreated by navigating to the same template page when browsing locally. There may however be some cases where an issue is specific to a particular browser (often older ones), or Android device.
+
+In order to replicate older browsers, it is recommended to download a portable version of Chromium (zip) from [https://chromium.cypress.io](https://chromium.cypress.io).
+
+If even older versions are required (not recommended) you can follow instructions from the [Chromium website](https://www.chromium.org/getting-involved/download-chromium/#downloading-old-builds-of-chrome-chromium).

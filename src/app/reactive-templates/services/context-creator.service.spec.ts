@@ -182,7 +182,13 @@ describe("ContextCreatorService", () => {
       last: { name: "Beta", value: 20 },
       is_first: false,
       is_last: true,
+      previous: { name: "Alpha", value: 10 },
+      next: { name: "Beta", value: 20 },
     });
+
+    const firstContext = service.createContext([], "items.0");
+    expect(firstContext.loop.previous).toEqual({ name: "Alpha", value: 10 });
+    expect(firstContext.loop.next).toEqual({ name: "Beta", value: 20 });
   });
 
   it("creates loop context using custom index", () => {
@@ -210,7 +216,13 @@ describe("ContextCreatorService", () => {
       last: { name: "Beta", value: 20 },
       is_first: false,
       is_last: true,
+      previous: { name: "Alpha", value: 10 },
+      next: { name: "Beta", value: 20 },
     });
+
+    const firstContext = service.createContext([], "items.Alpha");
+    expect(firstContext.loop.previous).toEqual({ name: "Alpha", value: 10 });
+    expect(firstContext.loop.next).toEqual({ name: "Beta", value: 20 });
   });
 
   it("resolves a dynamic bracket index (e.g. items[item.name]) via nested descendant keys", () => {

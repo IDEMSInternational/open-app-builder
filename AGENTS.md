@@ -24,7 +24,8 @@ Then follow the matching role guide.
 | `.claude/rules/local-dev.md` | running the app locally, previewing or testing content fixes |
 | `.claude/rules/sheet-sync-internals.md` | sync slowness, caches, download change detection, cell conversion |
 
-Procedures: writing a deployment data codebook → `.claude/skills/deployment-codebook/SKILL.md`.
+Procedures: writing a deployment data codebook → `.claude/skills/deployment-codebook/SKILL.md`; adding to this
+knowledge base → `.claude/skills/assistant-update/SKILL.md`.
 
 ## Proposing and making changes
 
@@ -97,9 +98,14 @@ More: `.claude/rules/local-dev.md`.
 - When you learn something **durable and general** about this project — a gotcha, a silent failure, how a
   subsystem really works, a command that saves time — **propose** an addition to the matching topic note
   (or a new topic file, or a role guide) as a copy-pasteable snippet at the end of your answer, naming the
-  target file and section. The human pastes and commits it (in a developer session, you may make the edit
-  if asked). Prefer updating an existing entry over adding a
-  duplicate; if it is a new symptom, also add a line to the symptom index in `role-author.md`.
+  target file and section. Prefer updating an existing entry over adding a duplicate; if it is a new symptom,
+  also add a line to the symptom index in `role-author.md`.
+- **Standalone additions go to the one running `assistant-updates` PR, not to their own PRs.** A developer
+  with write access can ask the assistant to add them (`.claude/skills/assistant-update/SKILL.md`); only do so
+  when asked. Authors pass the snippet to a developer. Knowledge-base edits that document a code change (e.g.
+  a gotcha of a new component) stay in that code PR, so they are reviewed and merged with it. Keep the running
+  PR free of code: bugs the assistant finds become normal issues and fixes become normal code PRs, each only
+  when asked. A human on the team reviews and merges the running PR; the assistant never approves or merges it.
 - **Entry format:** one bullet, wrapped at ~110 characters, in this order:
   `**<symptom or rule, in bold>.** <cause, citing file/function> <fix or workaround> (verified|found YYYY-MM-DD: <example>)`.
 - **Don't store facts that go stale on their own.** Cite files and function names, not line numbers (`path:line`

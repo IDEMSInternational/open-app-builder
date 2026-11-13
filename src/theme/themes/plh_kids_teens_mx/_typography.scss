@@ -1,5 +1,5 @@
 // Crianza+ brand typography
-// DM Sans for all text, except titles in Poppins Bold (--title-font-family).
+// DM Sans for all text, titles included.
 // (Momo Trust Display is reserved for the logo and is not loaded in the app.)
 
 /* dm-sans-regular - latin */
@@ -43,12 +43,4 @@
   font-style: normal;
   font-weight: 700;
   src: url("../../../assets/fonts/dm-sans-v17-latin/dm-sans-v17-latin-700.woff2") format("woff2");
-}
-/* poppins-700 - latin (titles) */
-@font-face {
-  font-display: swap;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../../../assets/fonts/poppins-v24-latin/poppins-v24-latin-700.woff2") format("woff2");
 }
