@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { DEFAULT_APP_LANGUAGE_CODE } from "data-models";
-import { Injectable } from "@angular/core";
+import { Injectable, Optional } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data/app-data";
 import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
@@ -8,6 +8,7 @@ import { arrayToHashmap } from "../../utils";
 import { SyncServiceBase } from "../syncService.base";
 import { ErrorHandlerService } from "../error-handler/error-handler.service";
 import { AppDataVariableService } from "./app-data-variable.service";
+import { DeploymentService } from "../deployment/deployment.service";
 
 /** Default folder app_data copied into (as defined in angular.json) */
 const APP_DATA_BASE = "assets/app_data";
@@ -17,7 +18,9 @@ export class AppDataService extends SyncServiceBase {
   constructor(
     private http: HttpClient,
     private errorHandler: ErrorHandlerService,
-    private variableService: AppDataVariableService
+    private variableService: AppDataVariableService,
+    /** Optional so mocks can omit it, which keeps the default subtype folders */
+    @Optional() private deploymentService?: DeploymentService
   ) {
     super("AppData");
     this.initialise();
@@ -166,7 +169,9 @@ export class AppDataService extends SyncServiceBase {
   ) {
     const { flow_type, flow_subtype, flow_name } = contents;
     let type_path = `${flow_type}`;
-    if (flow_subtype) type_path += `/${flow_subtype}`;
+    // Reactive template deployments (beta sync) keep flows flat within each flow_type folder
+    const useSubtypeFolder = !this.deploymentService?.config.useReactiveTemplates;
+    if (flow_subtype && useSubtypeFolder) type_path += `/${flow_subtype}`;
     const path = `${APP_DATA_BASE}/sheets/${type_path}/${flow_name}.json`;
     try {
       const data = await lastValueFrom(this.http.get(path));

@@ -10,6 +10,7 @@ import { processAssets } from "./processAssets";
 import { processFlows } from "./processFlows";
 import { downloadFixedSheets } from "./sheets";
 import { downloadExternalAssets } from "./sync";
+import { getTranslatedFolder } from "./translations/po";
 
 interface IImportOptions {
   /** Sync sheets and assets from google drive to the source folder before processing */
@@ -58,6 +59,7 @@ export async function importExternalDeployment(sourcePath: string, options: IImp
   processFlows({
     sourceFlowsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
     targetAppDataFolder,
+    translationsFolder: getTranslatedFolder(absoluteSourcePath),
     verbose,
   });
 

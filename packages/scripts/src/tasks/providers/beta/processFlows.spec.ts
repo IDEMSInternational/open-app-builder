@@ -62,6 +62,40 @@ describe("Beta processFlows", () => {
     expect(readOutput("flow")._source.type).toEqual("transient");
   });
 
+  it("writes flows with a flow_subtype flat within the flow_type folder, keeping the subtype", () => {
+    const flow = {
+      flow_type: "data_list",
+      flow_subtype: "modules",
+      flow_name: "courses",
+      rows: [{ id: "a" }],
+    };
+    fs.outputJsonSync(path.join(sheetsFolder, "courses.json"), flow);
+    processFlows({ sourceFlowsFolder: sheetsFolder, targetAppDataFolder: appDataFolder });
+    expect(readOutput("courses").flow_subtype).toEqual("modules");
+    expect(readContents().data_list.courses.flow_subtype).toEqual("modules");
+  });
+
+  it("adds translations from the translations folder to _translatedFields", () => {
+    const translationsFolder = path.join(tempDir, "translated");
+    fs.outputFileSync(
+      path.join(translationsFolder, "fil", "fil_main.po"),
+      'msgctxt "data_list"\nmsgid "Hello"\nmsgstr "Kumusta"\n'
+    );
+    fs.outputJsonSync(path.join(sheetsFolder, "greetings.json"), {
+      flow_type: "data_list",
+      flow_name: "greetings",
+      rows: [{ id: "a", "title::eng": "Hello" }],
+    });
+    processFlows({
+      sourceFlowsFolder: sheetsFolder,
+      targetAppDataFolder: appDataFolder,
+      translationsFolder,
+    });
+    expect(readOutput("greetings").rows[0]._translatedFields).toEqual({
+      title: { eng: "Hello", fil: "Kumusta" },
+    });
+  });
+
   it("uses the given type for all flows", () => {
     writeFlow("local.json", "local");
     processFlows({
