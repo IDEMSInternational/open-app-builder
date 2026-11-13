@@ -6,7 +6,7 @@ const env = loadEnvVars();
 
 const __dirname = import.meta.dirname;
 
-const ROOT_FOLDER = path.resolve(__dirname, "../../../../");
+export const ROOT_FOLDER = path.resolve(__dirname, "../../../../");
 const REPO_FOLDER = path.resolve(__dirname, "../../");
 
 export const paths = {
@@ -17,6 +17,8 @@ export const paths = {
   CACHED_ASSETS: path.resolve(REPO_FOLDER, "cache/assets"),
   DOWNLOADED_SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "output/downloaded"),
   WWW_FOLDER: path.resolve(ROOT_FOLDER, "www"),
+  /** output path for theme layout comparison pages and report */
+  THEME_LAYOUT_OUTPUT_FOLDER: path.resolve(REPO_FOLDER, "output/theme-layout"),
 };
 
 Object.values(paths).forEach((p) => {
