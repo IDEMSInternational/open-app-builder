@@ -85,6 +85,13 @@ describe("TemplatePopupComponent", () => {
       fullscreen: true,
     });
     expect(component.backdropStyles).toEqual(expectedBackgroundStyles);
+    // content background must not hide the image
+    expect(component.contentStyles).toEqual({ background: "transparent" });
+  });
+
+  it("keeps the fullscreen popup content background when there is no background image", () => {
+    const { component } = createComponent({ fullscreen: true });
     expect(component.contentStyles).toEqual({});
+    expect(component.backdropStyles).toEqual({});
   });
 });

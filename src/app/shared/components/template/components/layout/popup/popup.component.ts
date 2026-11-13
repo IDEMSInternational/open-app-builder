@@ -36,6 +36,11 @@ export class TemplatePopupComponent implements OnInit {
     const backgroundImageStyles = this.getBackgroundImageStyles();
     if (this.props.fullscreen) {
       this.backdropStyles = backgroundImageStyles;
+      // The content fills the screen with its own background colour, which would hide the image. The backdrop
+      // of a fullscreen popup is already painted with the same colour
+      if (this.props.backgroundImageAsset) {
+        this.contentStyles = { background: "transparent" };
+      }
     } else {
       this.contentStyles = backgroundImageStyles;
     }
