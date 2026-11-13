@@ -94,6 +94,15 @@ $hueso: #f6f3eb;
               var(--ion-color-primary-variant-500),
               var(--ion-color-primary-variant-200)
             ),
+          // Home screen course cards in light turquoise (Turquesa) rather than light slate. Locked
+          // and completed cards follow the sub-items background; the lesson in progress and the
+          // progress bar stay slate (component defaults)
+          course-accordion-card-background: var(--ion-color-primary-variant-100),
+          course-accordion-sub-items-background: var(--ion-color-primary-variant-50),
+          course-accordion-border-color: var(--ion-color-primary-variant-400),
+          course-accordion-border-color-muted: var(--ion-color-primary-variant-200),
+          // Lessons inside the course cards (not locked ones) get the same pale turquoise border
+          course-sub-item-border-color: var(--course-accordion-border-color-muted),
           // Box display groups (box_primary, box_secondary, box_gray)
           display-group-box-background: $hueso,
           display-group-box-primary-border-color: var(--ion-color-secondary-400),
