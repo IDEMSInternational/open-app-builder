@@ -4,6 +4,8 @@
 @use "./overrides" as overrides;
 @use "./typography";
 
+// Azul Pizarra (slate blue), the brand primary colour
+$azul-pizarra: #25415b;
 // Hueso (bone), the brand's neutral background colour
 $hueso: #f6f3eb;
 
@@ -15,7 +17,7 @@ $hueso: #f6f3eb;
     // green = Verde Crecer, yellow = Amarillo.
     // secondary-variant = secondary, so the "orange" ramps stay brand orange
     // (the generated default would be red-orange).
-    $color-primary: #25415b,
+    $color-primary: $azul-pizarra,
     $color-primary-variant: #6dc4ca,
     $color-secondary: #f39b38,
     $color-secondary-variant: #f39b38,
@@ -25,13 +27,38 @@ $hueso: #f6f3eb;
     $variable-overrides: map.merge(
         parent.$variables,
         (
+          // DM Sans for all text, titles included. Regular (400) body text rather than the shared
+          // medium (500), so text reads lighter
           ion-font-family: "DM Sans",
-          // Brand typography: Poppins Bold for titles (DM Sans everywhere else)
-          title-font-family: (
-              Poppins,
-              var(--ion-font-family),
-              sans-serif,
-            ),
+          font-weight-standard: 400,
+          // TEXT COLOUR: all text in dark blue (Azul Pizarra). --text-color defaults to the primary
+          // colour and --text-color-muted to a lighter shade of it, primary-600 (see
+          // generate-theme.scss); to change them, set `text-color` and `text-color-muted` here.
+          // Text that components colour grey by default uses --text-color, or --text-color-muted
+          // where the grey was lighter (secondary text). Locked text uses --text-color-disabled.
+          ion-text-color: var(--text-color),
+          title-text-color: var(--text-color),
+          audio-title-color: var(--text-color),
+          audio-time-color: var(--text-color-muted),
+          combo-box-text-color: var(--text-color),
+          combo-box-text-color-muted: var(--text-color-muted),
+          // Placeholders as in Ionic inputs (text box, text area): the text colour at 60% opacity.
+          // Used for every combo-box variant, and for its text when it has no value. Set from the
+          // Sass colour, as color-mix() is not supported by the oldest WebViews the app allows
+          combo-box-placeholder-style-text: rgba($azul-pizarra, 0.6),
+          combo-box-placeholder-text: var(--combo-box-placeholder-style-text),
+          combo-box-empty-text-color: var(--combo-box-placeholder-style-text),
+          plh-course-accordion-sub-items-header-color: var(--text-color),
+          plh-course-sub-item-text-color: var(--text-color),
+          plh-course-sub-item-locked-text-color: var(--text-color-disabled),
+          plh-course-sub-item-locked-title-color: var(--text-color-disabled),
+          radio-button-grid-item-text-color: var(--text-color),
+          radio-group-label-text-color: var(--text-color),
+          select-text-text-color: var(--text-color),
+          task-progress-bar-text-color: var(--text-color-muted),
+          task-progress-bar-title-color: var(--text-color-muted),
+          text-area-text-color: var(--text-color),
+          text-bubble-text-color: var(--text-color),
           footer-background: $hueso,
           font-size-text-tiny: 12px,
           font-size-text-small: 14px,
@@ -64,7 +91,7 @@ $hueso: #f6f3eb;
           audio-range-bar-background: white,
           audio-range-bar-background-active: var(--ion-color-primary-400),
           audio-range-knob-background: var(--ion-color-primary-300),
-          button-card-no-background-color: var(--ion-color-gray-900),
+          button-card-no-background-color: var(--text-color),
           completion-modal-background: linear-gradient(
               310deg,
               var(--ion-color-primary-variant-500),
@@ -88,7 +115,7 @@ $hueso: #f6f3eb;
           popup-completion-background: var(--ion-color-secondary),
           popup-completion-close-button-border-color: var(--ion-color-primary),
           popup-completion-close-button-color: var(--ion-color-primary),
-          popup-completion-text-color: var(--ion-color-primary),
+          popup-completion-text-color: var(--text-color),
           progress-summary-completed-color: var(--ion-color-primary-400),
           // brand orange (Naranja Cálido)
           progress-summary-current-color: var(--ion-color-secondary),
@@ -112,20 +139,19 @@ $hueso: #f6f3eb;
           text-area-border-color: var(--ion-color-gray-300),
           text-box-background: white,
           text-box-border-color: var(--ion-color-gray-300),
-          text-box-color: var(--ion-color-gray-900),
+          text-box-color: var(--text-color),
           text-bubble-speaker-name-color: var(--ion-color-gray-600),
-          text-color: var(--ion-color-gray-900),
           combo-box-font-size-standard: 20px,
           button-background-option: var(--ion-color-primary-800),
           button-background-information: var(--ion-color-primary),
           button-background-primary: var(--ion-color-primary),
           button-background-secondary: var(--ion-color-primary-variant),
           // Brand contrast rule: text on turquoise is slate, not white (white on #6dc4ca is ~2:1)
-          button-text-color-secondary: var(--ion-color-primary),
+          button-text-color-secondary: var(--text-color),
           display-group-background-banner-secondary: var(--ion-color-primary-variant-300),
           module-list-item-color-highlighted: var(--ion-color-secondary-300),
           points-item-border: var(--ion-color-gray-900),
-          radio-button-font-color: var(--ion-color-secondary-900),
+          radio-button-font-color: var(--text-color),
           radio-group-background-secondary: var(--ion-color-secondary-100),
           radio-group-background-selected-secondary: var(--ion-color-secondary-200),
           radio-group-border-selected-secondary: 2px solid var(--ion-color-secondary-300),
@@ -150,10 +176,9 @@ $hueso: #f6f3eb;
           // Lesson CTA: slate text on brand orange
           plh-lesson-cta-border-color: var(--ion-color-primary),
           plh-lesson-cta-background-color: var(--ion-color-secondary),
-          plh-lesson-cta-text-color: var(--ion-color-primary),
-          plh-lesson-cta-subtitle-color: var(--ion-color-primary),
-          plh-lesson-cta-badge-text-color: var(--ion-color-primary),
-          title-text-color: var(--ion-color-gray-900),
+          plh-lesson-cta-text-color: var(--text-color),
+          plh-lesson-cta-subtitle-color: var(--text-color),
+          plh-lesson-cta-badge-text-color: var(--text-color)
         )
       )
   ) {

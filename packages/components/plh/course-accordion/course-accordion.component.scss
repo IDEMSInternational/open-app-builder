@@ -1,4 +1,8 @@
 $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
+$plh-course-accordion-sub-items-header-color: var(
+  --plh-course-accordion-sub-items-header-color,
+  var(--ion-color-gray-800)
+);
 
 :host {
   display: block;
@@ -152,7 +156,7 @@ $toggle-icon-size: var(--plh-course-accordion-toggle-icon-size, 32px);
     .sub-items-header {
       font-size: var(--font-size-text-small);
       font-weight: var(--font-weight-medium);
-      color: var(--ion-color-gray-800);
+      color: $plh-course-accordion-sub-items-header-color;
       margin: 0 0 8px 0;
       padding: 0;
     }
