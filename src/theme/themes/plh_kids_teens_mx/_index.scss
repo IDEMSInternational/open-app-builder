@@ -4,6 +4,8 @@
 @use "./overrides" as overrides;
 @use "./typography";
 
+// Azul Pizarra (slate blue), the brand primary colour
+$azul-pizarra: #25415b;
 // Hueso (bone), the brand's neutral background colour
 $hueso: #f6f3eb;
 
@@ -15,7 +17,7 @@ $hueso: #f6f3eb;
     // green = Verde Crecer, yellow = Amarillo.
     // secondary-variant = secondary, so the "orange" ramps stay brand orange
     // (the generated default would be red-orange).
-    $color-primary: #25415b,
+    $color-primary: $azul-pizarra,
     $color-primary-variant: #6dc4ca,
     $color-secondary: #f39b38,
     $color-secondary-variant: #f39b38,
@@ -41,14 +43,15 @@ $hueso: #f6f3eb;
           combo-box-text-color: var(--text-color),
           combo-box-text-color-muted: var(--text-color-muted),
           // Placeholders as in Ionic inputs (text box, text area): the text colour at 60% opacity.
-          // Used for every combo-box variant, and for its text when it has no value
-          combo-box-placeholder-style-text: color-mix(in srgb, var(--text-color) 60%, transparent),
+          // Used for every combo-box variant, and for its text when it has no value. Set from the
+          // Sass colour, as color-mix() is not supported by the oldest WebViews the app allows
+          combo-box-placeholder-style-text: rgba($azul-pizarra, 0.6),
           combo-box-placeholder-text: var(--combo-box-placeholder-style-text),
           combo-box-empty-text-color: var(--combo-box-placeholder-style-text),
-          course-accordion-sub-items-header-color: var(--text-color),
-          course-sub-item-text-color: var(--text-color),
-          course-sub-item-locked-text-color: var(--text-color-disabled),
-          course-sub-item-locked-title-color: var(--text-color-disabled),
+          plh-course-accordion-sub-items-header-color: var(--text-color),
+          plh-course-sub-item-text-color: var(--text-color),
+          plh-course-sub-item-locked-text-color: var(--text-color-disabled),
+          plh-course-sub-item-locked-title-color: var(--text-color-disabled),
           radio-button-grid-item-text-color: var(--text-color),
           radio-group-label-text-color: var(--text-color),
           select-text-text-color: var(--text-color),
