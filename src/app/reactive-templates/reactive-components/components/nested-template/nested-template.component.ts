@@ -1,5 +1,5 @@
 import { Component, effect, forwardRef, OnDestroy, OnInit, signal, viewChild } from "@angular/core";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { ROW_PARAMETERS, RowBaseComponent, ValueType } from "../../row-base.component";
 import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-template/reactive-template.component";
 import { FlowTypes } from "packages/data-models";
 import { Subscription } from "rxjs";
@@ -41,17 +41,23 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
 
   private watchChildDependencies() {
     for (const row of this.row().rows) {
+      const valueType =
+        (row.parameter_list?.value_type as ValueType | undefined) ?? this.params.valueType.value();
       const dependencies = this.evaluationService.getDependencies(
         row.value,
-        this.namespace(),
-        this.params.valueType.value()
+        this.name(),
+        valueType
       );
 
       if (!dependencies || dependencies.length === 0) {
         continue;
       }
 
-      const sub = this.variableStore.watchMultiple(dependencies).subscribe(() => {
+      const watcher = this.evaluationService.hasDynamicIndexer(row.value, this.name(), valueType)
+        ? this.variableStore.watchMultipleWithDescendants(dependencies, this.name())
+        : this.variableStore.watchMultiple(dependencies);
+
+      const sub = watcher.subscribe(() => {
         this.setChildExpression(row);
       });
       this.childDependencySubscriptions.push(sub);
@@ -66,8 +72,10 @@ export class NestedTemplateComponent extends RowBaseComponent<null> implements O
     if (this.rowRegistry.has(rowFullName)) {
       const value = this.evaluationService.evaluateExpression(
         row.value,
-        this.namespace(),
-        this.params.valueType.value()
+        this.name(),
+        (row.parameter_list?.value_type as ValueType | undefined) ?? this.params.valueType.value(),
+        undefined,
+        this.namespace()
       );
       this.rowRegistry.get(rowFullName)?.setExpression(value);
     }
