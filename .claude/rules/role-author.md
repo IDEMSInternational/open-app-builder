@@ -70,6 +70,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | `navigation_bar` button always opens `home_screen` | relative link; only works in the footer | below: Layout |
 | Combo-box badge shows "FALSE" | boolean `false` in the badge column | below: Layout |
 | Header and page side by side, left gap | `display_group` defaults to `style: row` | below: Layout |
+| Content under the notch / Dynamic Island in a sticky group | `padding` in `style_list` overrides safe area | below: Layout |
 | Onboarding never starts locally | `localhost` forces `user_mode=false` | `AGENTS.md` |
 | Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
 | One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
@@ -297,6 +298,12 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   first gets a `1em` left margin (`display-group.component.scss`). Add `parameter_list: style: column` to any
   display group used just to show/hide a stack of rows. (found 2026-09-25: V3 article_wrap `is_relax`, white
   space left of the module pause)
+- **`padding` in a sticky display group's `style_list` hides the safe area.** `sticky: top`/`bottom` adds
+  `--ion-safe-area-top`/`-bottom` padding to the group's wrapper (`display-group-sticky.component.global.scss`),
+  but `style_list` is applied inline on the same element (`display-group.component.html`) and wins, so content
+  slides under the notch or Dynamic Island. Include the safe area yourself, e.g.
+  `padding: calc(var(--ion-safe-area-top, 0px) + 24px) 24px 24px`. (found 2026-11-13: MX
+  onboarding_baseline_questions page_success, mx-content #199)
 - **A button `variant` can be silently ignored.** `variant` only accepts the values in `VARIANTS`
   (`button.component.ts`); anything else (e.g. `orange`) is dropped by `allowedValuesList`
   (`parameter-list.utils.ts`) with no warning. Even valid colour variants like `card` lose to the theme in
