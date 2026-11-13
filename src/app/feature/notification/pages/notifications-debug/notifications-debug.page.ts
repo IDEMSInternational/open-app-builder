@@ -158,6 +158,11 @@ export class NotificationsDebugPage implements OnInit {
     return tappedAt ? `Tapped at ${format(tappedAt, "HH:mm")}` : "Tapped";
   }
 
+  public sentStatus({ sentActionsRanAt }: IDebugNotification) {
+    if (!sentActionsRanAt) return "Sent actions not run yet";
+    return `Sent actions ran at ${format(sentActionsRanAt, "HH:mm:ss")}`;
+  }
+
   public relativeTime(at?: Date) {
     return at ? formatDistanceStrict(at, this.now(), { addSuffix: true }) : "";
   }
@@ -212,6 +217,14 @@ export class NotificationsDebugPage implements OnInit {
    * Only test notifications are cancelled, so other notifications on the device are left as they are
    */
   public async clearTestNotifications() {
+    // Campaign records go before anything is cancelled on the device, so a sync in between can't
+    // process a cancelled one as shown and run its `sent` actions
+    const campaignRecords = await this.localNotificationService.getDBNotifications();
+    const campaignIds = campaignRecords
+      .filter((record) => isTestCampaignNotification(record.extra))
+      .map((record) => record.id);
+    // Avoids `removeNotifications`, which reschedules and so cancels action notifications (#3722)
+    await this.localNotificationService.removeNotificationsWithoutRescheduling(campaignIds);
     const deviceIds = this.upcoming()
       .filter((n) => n.isTest && n.deviceId !== undefined)
       .map((n) => n.deviceId as number);
@@ -222,12 +235,6 @@ export class NotificationsDebugPage implements OnInit {
     for (const id of actionIds) {
       await this.notificationService.cancelNotification(id);
     }
-    const campaignRecords = await this.localNotificationService.getDBNotifications();
-    const campaignIds = campaignRecords
-      .filter((record) => isTestCampaignNotification(record.extra))
-      .map((record) => record.id);
-    // Avoids `removeNotifications`, which reschedules and so cancels action notifications (#3722)
-    await this.localNotificationService.removeNotificationsWithoutRescheduling(campaignIds);
     const historyIds = this.campaignHistory()
       .filter((entry) => isTestHistoryEntry(entry))
       .map((entry) => entry.notification_id);
@@ -292,7 +299,10 @@ export class NotificationsDebugPage implements OnInit {
       extra: {
         campaign_id: TEST_CAMPAIGN_ID,
         row_id: id,
-        action_list: [toastAction("click", "Tap actions ran: campaign")],
+        action_list: [
+          toastAction("sent", "Sent actions ran: campaign"),
+          toastAction("click", "Tap actions ran: campaign"),
+        ],
       },
     } as ILocalNotification;
     return this.localNotificationService.scheduleNotification(notification, id);

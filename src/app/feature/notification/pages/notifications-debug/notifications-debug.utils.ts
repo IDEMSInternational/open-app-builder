@@ -38,6 +38,11 @@ export interface IDebugNotification {
   /** Past notifications only */
   tapped?: boolean;
   tappedAt?: Date;
+  /**
+   * Past campaign notifications with `sent` actions: when the app found the notification had been
+   * shown and ran them, or null if it hasn't yet
+   */
+  sentActionsRanAt?: Date | null;
   /** Not set for notifications from other sources, as there is nothing to copy */
   original?: IDebugNotificationOriginal;
   /** Underlying records, for "Copy details" */
@@ -103,6 +108,9 @@ export function buildNotificationLists(sources: IDebugNotificationSources) {
     const history = historyById.get(record.id);
     item.tapped = !!(history?.action_id || record._action_performed);
     item.tappedAt = toDate(history?.action_recorded_timestamp);
+    if (item.actions.some((action) => action.trigger === "sent")) {
+      item.sentActionsRanAt = toDate(record._callbacks_processed_time) ?? null;
+    }
     if (history) {
       item.info.push(...historyInfo(history));
       item.raw.history = history;

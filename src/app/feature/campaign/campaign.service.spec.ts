@@ -72,7 +72,13 @@ describe("CampaignService", () => {
     dataLists = [];
     mockLocalNotificationService = jasmine.createSpyObj<LocalNotificationService>(
       "LocalNotificationService",
-      ["ready", "removeNotifications", "cancelLateNotifications", "scheduleNotification"],
+      [
+        "ready",
+        "removeNotifications",
+        "cancelLateNotifications",
+        "scheduleNotification",
+        "getPendingNotifications",
+      ],
       {
         pendingNotifications$: new BehaviorSubject<ILocalNotification[]>([]),
         sessionNotifications$: new BehaviorSubject<ILocalNotification[]>([]),
@@ -81,6 +87,9 @@ describe("CampaignService", () => {
       }
     );
     mockLocalNotificationService.ready.and.resolveTo(true);
+    mockLocalNotificationService.getPendingNotifications.and.callFake(
+      () => mockLocalNotificationService.pendingNotifications$.value
+    );
     const ready = async () => true;
     TestBed.configureTestingModule({
       providers: [
