@@ -79,9 +79,9 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 
 | Button `variant`/colour has no visible effect | unknown variant, or theme's `information` style wins | below: Layout |
 
-
-
 | Loop condition/toggle true for every item, only with text values | `@fields.@item.x == @item.y` compares unquoted text | below: Loops |
+
+| A counter jumps or a sum looks like "011" | \+` on a `set_local`/`set_field` value that is text | below: Variables |`
 
 
 
@@ -128,7 +128,6 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `packages/scripts/logs/warn.log`. Keep tab-based flow names ≤ 31 characters (generated flows can be longer).
   (found 2026-10-29: kids_teens_mx A/B override template `proximal_outcome_base_question_ab_po_scale_3`)
 
->>>>>>> Stashed changes
 
 ### Actions
 
@@ -190,6 +189,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
   true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
   `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
+
+- **Numbers saved by an action come back as text, so `+ 1` joins instead of adding.** Action arguments are
+  strings (`set_local: n: 0` stores `"0"`; `setLocalVariable` in `template-action.service.ts` only converts
+  `"true"`/`"false"`), unlike a `set_variable` value typed as a number in the sheet. `@calc(@local.n + 1)` then
+  gives `"01"`, `"011"`…, and comparisons read that as 11. Wrap the value: `@calc(Number(@local.n) + 1)`.
+  Fields behave the same (see numeric field defaults above). (found 2026-11-13: V3 settings `version_taps`, menu
+  opened after 3 taps instead of 5)
 
 
 ### Loops and `data_items`
