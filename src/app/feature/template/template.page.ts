@@ -6,11 +6,28 @@ import { Subscription } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { LocalVariableStore } from "src/app/reactive-templates/stores/local-variable-store";
+import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
+import { ContextCreatorService } from "src/app/reactive-templates/services/context-creator.service";
+import { EvaluationService } from "src/app/reactive-templates/services/evaluation.service";
+import { RowRegistry } from "src/app/reactive-templates/services/row.registry";
+import { ActionRegistry } from "src/app/reactive-templates/services/action.registry";
+import { ActionService } from "src/app/reactive-templates/services/action.service";
 
 @Component({
   selector: "plh-template-page",
   templateUrl: "./template.page.html",
   styleUrls: ["./template.page.scss"],
+  // Each page instance owns its reactive locals and row/action registries; nested templates share them.
+  providers: [
+    LocalVariableStore,
+    VariableStore,
+    ContextCreatorService,
+    EvaluationService,
+    RowRegistry,
+    ActionRegistry,
+    ActionService,
+  ],
   standalone: false,
 })
 export class TemplatePage implements OnInit, OnDestroy {

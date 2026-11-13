@@ -4,6 +4,7 @@ import { SettingsService } from "src/app/shared/services/settings.service";
 import { AnalyticsService } from "src/app/shared/services/analytics";
 import { RowRegistry } from "./row.registry";
 import { FlowTypes } from "src/app/shared/components/template/models";
+import { ActionContextService } from "./action-context.service";
 
 class ActionNotImplementedError extends Error {
   constructor(action: string) {
@@ -32,7 +33,8 @@ export class CoreActionsService {
     private templateActionRegistry: TemplateActionRegistry,
     private settingsService: SettingsService,
     private analyticsService: AnalyticsService,
-    private rowRegistry: RowRegistry
+    private rowRegistry: RowRegistry,
+    private actionContext: ActionContextService
   ) {
     this.registerHandlers();
   }
@@ -71,7 +73,7 @@ export class CoreActionsService {
   private setVariable(action: FlowTypes.TemplateRowAction<any>) {
     const [key, value] = action.args;
     const expression = action.rawArgs[1];
-    const row = this.rowRegistry.get(key);
+    const row = (this.actionContext.get(action)?.rows ?? this.rowRegistry).get(key);
 
     if (!row) {
       console.warn(`set_local: no row found with name '${key}'`);

@@ -3,6 +3,7 @@ import {
   ComponentRef,
   EnvironmentInjector,
   inject,
+  Injector,
   OnDestroy,
   OnInit,
   signal,
@@ -32,6 +33,7 @@ export class ActionComponent
 {
   private actionRegistry = inject(ActionRegistry);
   private injector = inject(EnvironmentInjector);
+  private elementInjector = inject(Injector);
 
   private readonly actions = new Map<string, IAction>();
 
@@ -121,6 +123,7 @@ export class ActionComponent
         const componentRef = createReactiveComponentRef(
           componentType,
           this.injector,
+          this.elementInjector,
           row,
           this.namespace()
         );
