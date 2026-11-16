@@ -5,5 +5,7 @@ module.exports = {
     "^.+.tsx?$": ["ts-jest", {}],
   },
   globalSetup: "<rootDir>/test/setup.ts",
+  // Compiled output of `yarn workspace scripts build`
+  testPathIgnorePatterns: ["/node_modules/", "<rootDir>/build/"],
 };
 
