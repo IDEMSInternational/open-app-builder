@@ -49,7 +49,7 @@ describe("TemplatePopupComponent", () => {
   const expectedBackgroundStyles = {
     backgroundImage: 'url("assets/app_data/assets/images/bg.svg")',
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: "top",
     backgroundRepeat: "no-repeat",
   };
 

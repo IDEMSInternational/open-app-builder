@@ -58,7 +58,8 @@ export class TemplatePopupComponent implements OnInit {
     return {
       backgroundImage: `url("${url}")`,
       backgroundSize: "cover",
-      backgroundPosition: backgroundImagePosition || "center",
+      // Default matches display group background images
+      backgroundPosition: backgroundImagePosition || "top",
       backgroundRepeat: "no-repeat",
     };
   }
@@ -119,7 +120,7 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
   backgroundImageAsset?: string;
   /**
    * Template Parameter: "background_image_position". Which part of the background image stays visible when
-   * it is cropped to fit, as a CSS background-position, e.g. `top`, `bottom` (default: `center`)
+   * it is cropped to fit, as a CSS background-position, e.g. `center`, `bottom` (default: `top`)
    */
   backgroundImagePosition?: string;
 }
