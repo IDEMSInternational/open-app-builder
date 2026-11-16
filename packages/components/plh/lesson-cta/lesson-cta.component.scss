@@ -33,8 +33,13 @@ $badge-text-color: var(--plh-lesson-cta-badge-text-color, black);
   .badge {
     position: absolute;
     top: 0;
-    left: 0;
-    transform: translate(-15%, -50%);
+    // Fixed overhang (a percentage of the badge's own width pushed long labels off screen), sized so the
+    // badge text starts in line with the card's left border: badge padding + badge border + card border
+    $badge-padding-x: var(--small-padding);
+    $badge-overhang: calc(#{$badge-padding-x} + 2px);
+    left: calc(-1 * #{$badge-overhang});
+    transform: translateY(-50%);
+    max-width: calc(100% + #{$badge-overhang});
 
     background-color: var(--ion-background-color);
     color: $badge-text-color;
@@ -42,7 +47,7 @@ $badge-text-color: var(--plh-lesson-cta-badge-text-color, black);
     border-width: 1px;
     border-color: $border-color;
     border-radius: var(--ion-border-radius-rounded);
-    padding: 4px 16px;
+    padding: 4px $badge-padding-x;
     font-size: var(--font-size-text-small);
     font-weight: var(--font-weight-medium);
     margin: 0;
