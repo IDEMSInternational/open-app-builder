@@ -15,6 +15,35 @@ export function parseCssColour(value: string): IRGBA | null {
   return [r, g, b, a];
 }
 
+/**
+ * The background colour an element paints, with its opacity applied,
+ * e.g. an Ionic backdrop is opaque black faded with `opacity`
+ */
+export function getElementColour(
+  style: Pick<CSSStyleDeclaration, "backgroundColor" | "opacity">
+): IRGBA | null {
+  const colour = parseCssColour(style.backgroundColor);
+  if (!colour) return null;
+  const opacity = parseFloat(style.opacity);
+  if (!Number.isNaN(opacity)) colour[3] *= opacity;
+  return colour;
+}
+
+/** Values of the css variables that fix a bar's style instead of detecting it */
+export type IStyleOverride = "light" | "dark";
+
+/**
+ * The bar style a theme sets with a css variable, or null to detect it.
+ * Themes set their variables on body (see theme-selectors.scss), so read them there
+ */
+export function getStyleOverride(
+  variable: string,
+  element: Element = document.body
+): IStyleOverride | null {
+  const value = getComputedStyle(element).getPropertyValue(variable).trim();
+  return value === "light" || value === "dark" ? value : null;
+}
+
 /** Combine colours listed from the top layer down into the single colour that is seen */
 export function flattenColours(layers: IRGBA[], base: IRGBA = [255, 255, 255, 1]): IRGBA {
   const result = [0, 0, 0];
