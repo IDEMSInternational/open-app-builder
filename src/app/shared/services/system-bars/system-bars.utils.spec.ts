@@ -1,11 +1,62 @@
 import {
   flattenColours,
+  getElementColour,
+  getStyleOverride,
   isLightColour,
   parseCssColour,
   relativeLuminance,
 } from "./system-bars.utils";
 
 describe("system-bars utils", () => {
+  it("applies element opacity to the background colour", () => {
+    // e.g. ion-backdrop: opaque black faded by the modal animation
+    expect(getElementColour({ backgroundColor: "rgb(0, 0, 0)", opacity: "0.5" })).toEqual([
+      0, 0, 0, 0.5,
+    ]);
+    expect(getElementColour({ backgroundColor: "rgba(0, 0, 0, 0.5)", opacity: "0.5" })).toEqual([
+      0, 0, 0, 0.25,
+    ]);
+    expect(getElementColour({ backgroundColor: "rgb(1, 2, 3)", opacity: "1" })).toEqual([
+      1, 2, 3, 1,
+    ]);
+    expect(getElementColour({ backgroundColor: "", opacity: "1" })).toBeNull();
+  });
+
+  describe("getStyleOverride", () => {
+    const themeName = "system-bars-spec";
+    let styleEl: HTMLStyleElement;
+    let previousTheme: string | null;
+
+    beforeEach(() => {
+      previousTheme = document.documentElement.getAttribute("data-theme");
+      // Same selector shape as theme-selectors.scss
+      styleEl = document.createElement("style");
+      styleEl.textContent = `[data-theme="${themeName}"] body { --system-bar-style-status: dark; }`;
+      document.head.appendChild(styleEl);
+    });
+
+    afterEach(() => {
+      styleEl.remove();
+      if (previousTheme === null) document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", previousTheme);
+    });
+
+    it("reads a theme's override, which is set on body", () => {
+      document.documentElement.setAttribute("data-theme", themeName);
+      expect(getStyleOverride("--system-bar-style-status")).toBe("dark");
+      // not visible on the html element
+      expect(getStyleOverride("--system-bar-style-status", document.documentElement)).toBeNull();
+    });
+
+    it("returns null when the style is detected", () => {
+      const el = document.createElement("div");
+      el.style.setProperty("--system-bar-style-nav", "auto");
+      document.body.appendChild(el);
+      expect(getStyleOverride("--system-bar-style-nav", el)).toBeNull();
+      el.remove();
+    });
+  });
+
   it("parses computed css colours", () => {
     expect(parseCssColour("rgb(10, 20, 30)")).toEqual([10, 20, 30, 1]);
     expect(parseCssColour("rgba(10, 20, 30, 0.5)")).toEqual([10, 20, 30, 0.5]);

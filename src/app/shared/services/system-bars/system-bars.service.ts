@@ -5,10 +5,13 @@ import { filter } from "rxjs";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
-import { flattenColours, IRGBA, isLightColour, parseCssColour } from "./system-bars.utils";
-
-/** Values of the css variables that fix a bar's style instead of detecting it */
-type IStyleOverride = "light" | "dark";
+import {
+  flattenColours,
+  getElementColour,
+  getStyleOverride,
+  IRGBA,
+  isLightColour,
+} from "./system-bars.utils";
 
 /** First Android WebView version that Capacitor draws behind the system bars */
 const MIN_EDGE_TO_EDGE_WEBVIEW_VERSION = 140;
@@ -88,15 +91,8 @@ export class SystemBarsService extends SyncServiceBase {
   }
 
   private setStyle(bar: SystemBarType, overrideVariable: string, x: number, y: number) {
-    const override = getComputedStyle(document.documentElement)
-      .getPropertyValue(overrideVariable)
-      .trim() as IStyleOverride;
-    let isLight: boolean;
-    if (override === "light" || override === "dark") {
-      isLight = override === "light";
-    } else {
-      isLight = isLightColour(this.getColourAt(x, y));
-    }
+    const override = getStyleOverride(overrideVariable);
+    const isLight = override ? override === "light" : isLightColour(this.getColourAt(x, y));
     // "Light" is the style for a light background, i.e. dark text and icons
     const style = isLight ? SystemBarsStyle.Light : SystemBarsStyle.Dark;
     if (this.currentStyles[bar] === style) return;
@@ -110,7 +106,7 @@ export class SystemBarsService extends SyncServiceBase {
   private getColourAt(x: number, y: number): IRGBA {
     const layers: IRGBA[] = [];
     for (const element of this.getElementsAt(document, x, y)) {
-      const colour = parseCssColour(getComputedStyle(element).backgroundColor);
+      const colour = getElementColour(getComputedStyle(element));
       if (colour && colour[3] > 0) {
         layers.push(colour);
         if (colour[3] >= 1) break;
