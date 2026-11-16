@@ -119,9 +119,9 @@ $hueso: #f6f3eb;
           // Full-height nav-stacks. Units required as the values are used in calc()
           nav-stack-top-offset: 0px,
           nav-stack-stagger-offset: 0px,
-          // Completion ("Bravo") pop-up: flat brand orange; close button matches the default pop-up
+          // Completion ("Bravo") pop-up: flat light yellow; close button matches the default pop-up
           // close button (popup.component.scss: primary border and icon)
-          popup-completion-background: var(--ion-color-secondary),
+          popup-completion-background: var(--ion-color-yellow-200),
           popup-completion-close-button-border-color: var(--ion-color-primary),
           popup-completion-close-button-color: var(--ion-color-primary),
           popup-completion-text-color: var(--text-color),
