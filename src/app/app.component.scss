@@ -9,6 +9,12 @@
   &.no-footer {
     padding-bottom: var(--ion-safe-area-bottom, 0px);
   }
+  // The padding above already applies the side safe areas, so Ionic components on the page
+  // (e.g. ion-item in accordions and radio lists) must not add them again
+  > ion-router-outlet {
+    --ion-safe-area-left: 0px;
+    --ion-safe-area-right: 0px;
+  }
 }
 .app-version {
   margin-right: 8px;
