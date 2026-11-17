@@ -1,0 +1,5 @@
+@if (value()) {
+  <div class="tmpl-image-container" [attr.data-param-style]="params.style.value()">
+    <img [src]="value() | translatedAsset" />
+  </div>
+}

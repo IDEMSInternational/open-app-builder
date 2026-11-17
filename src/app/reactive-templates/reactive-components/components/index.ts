@@ -18,6 +18,7 @@ import { RadioListComponent } from "./radio-list/radio-list.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
+import { ImageComponent } from "./image/image.component";
 import { PLH_REACTIVE_COMPONENT_MAP } from "../plh";
 
 export const REACTIVE_COMPONENT_MAP = {
@@ -28,6 +29,7 @@ export const REACTIVE_COMPONENT_MAP = {
   display_group: DisplayGroupComponent,
   dropdown: DropdownComponent,
   expression_builder: ExpressionBuilderComponent,
+  image: ImageComponent,
   loop: LoopComponent,
   popup: PopupComponent,
   nav: NavComponent,
