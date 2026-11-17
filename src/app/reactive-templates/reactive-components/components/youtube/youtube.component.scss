@@ -1,0 +1,15 @@
+.youtube-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  &[data-orientation="portrait"] {
+    aspect-ratio: 9 / 16;
+    width: min(100%, calc(70vh * 9 / 16));
+    margin-inline: auto;
+  }
+}
