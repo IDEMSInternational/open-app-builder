@@ -71,3 +71,27 @@ yarn workflow beta sync_assets
 
 !!! note
     Remote asset folders (`remote: true`) are not yet supported and will be skipped.
+
+### Update Translations
+Extract the strings to translate from the external repository flows (`app_data/sheets`) and write them as gettext templates (`.pot`) to `app_data/translations/source/<language>/`. Translation tools such as Crowdin use each `.pot` file to create a `.po` file of translations per language. Previous output in `translations/source` is replaced.
+
+Requires a deployment to have been imported first.
+
+```sh
+yarn workflow beta update_translations
+```
+
+| Flag | Description |
+| ---- | ----------- |
+| `--split-by-subtype` | Write strings from flows with a `flow_subtype` to `<flow_subtype>.pot`. Strings from other flows are written to `main.pot` |
+| `-v, --verbose` | Show all logs |
+
+Strings included:
+
+| Flow type | Strings |
+| --------- | ------- |
+| `global` | `value` of every row, unless `exclude_from_translation` is `TRUE` |
+| `data_list` | every column with a language suffix, e.g. `title::eng` |
+| `template` | `value` of rows where `include_in_translation` is `TRUE` |
+
+The language of a string is its column suffix (e.g. `value::eng`), or else the flow's `language` column in the `==content_list==`, which defaults to `eng`. One folder is written per language found. Values that are empty, not text, or only references (e.g. `@global.app_name`) are skipped, and each string is listed once per file.
