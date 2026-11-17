@@ -174,6 +174,7 @@ export class AppComponent {
       }
 
       await this.handleEdgeToEdge();
+      this.refreshAndroidModalAccessibilityBounds();
 
       // Run app-specific launch tasks
 
@@ -356,6 +357,23 @@ export class AppComponent {
       await EdgeToEdge.setBackgroundColor({ color: "#000000" });
       await StatusBar.setStyle({ style: Style.Dark });
     }
+  }
+
+  /**
+   * Android WebView can keep a modal's accessibility bounds from the first frame of its enter
+   * animation (40px low), so UI test taps based on them (e.g. Maestro) miss. A brief layout change
+   * makes it recompute them. Debuggable builds only (`Capacitor.DEBUG`), not store releases.
+   */
+  private refreshAndroidModalAccessibilityBounds() {
+    if (Capacitor.getPlatform() !== "android" || !Capacitor.DEBUG) return;
+    document.addEventListener("ionModalDidPresent", (e) => {
+      const modal = e.target as HTMLElement;
+      const paddingBottom = modal.style.paddingBottom;
+      modal.style.paddingBottom = "1px";
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => (modal.style.paddingBottom = paddingBottom))
+      );
+    });
   }
 
   /** ensure localhost dev can see all non-user content */
