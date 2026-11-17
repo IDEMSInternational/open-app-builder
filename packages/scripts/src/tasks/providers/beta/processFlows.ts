@@ -3,6 +3,7 @@ import path from "path";
 import { FlowTypes } from "data-models";
 import { logOutput, logWarning, recursiveFindByExtension } from "../../../utils";
 import { isFixedFlow, isValidFlowName } from "./utils";
+import { loadTranslationStrings } from "./translations/po";
 import {
   combineGlobals,
   IFlowParserOptions,
@@ -15,7 +16,7 @@ import {
 /** Flow types copied from the source sheets folder. All other flow types are skipped */
 export const IMPORTED_FLOW_TYPES = ["data_list", "global", "template"] as const;
 type IImportedFlowType = (typeof IMPORTED_FLOW_TYPES)[number];
-type IFlowsByType = { [flowType in IImportedFlowType]: FlowTypes.FlowTypeWithData[] };
+export type IFlowsByType = { [flowType in IImportedFlowType]: FlowTypes.FlowTypeWithData[] };
 type IContentsJson = { [flowType: string]: { [flow_name: string]: FlowTypes.FlowTypeBase } };
 
 /** Parsers applied to each flow before it is written. Globals are handled separately */
@@ -45,6 +46,11 @@ interface IProcessFlowsOptions {
    * copies of synced files)
    */
   type?: IFlowSourceType;
+  /**
+   * Folder of translated `.po` files, with a subfolder per language, added to each flow's
+   * `_translatedFields` (see `getTranslatedFolder`). Translations are skipped if omitted
+   */
+  translationsFolder?: string;
   verbose?: boolean;
 }
 
@@ -63,6 +69,7 @@ export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
   }
   const isPartialUpdate = filePaths !== undefined;
   const targetSheetsFolder = path.resolve(targetAppDataFolder, "sheets");
+  const translations = loadTranslationStrings(options.translationsFolder);
 
   const { flowsByType, sourcePaths } = readFlowFiles(
     filePaths ?? recursiveFindByExtension(sourceFlowsFolder, "json"),
@@ -88,6 +95,7 @@ export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
       const parsed = parser(flow, {
         path: path.resolve(sourcePath),
         type: type ?? (isFixedFlow(sourcePath, sourceFlowsFolder) ? "fixed" : "transient"),
+        translations,
       });
       fs.writeJsonSync(path.resolve(targetFolder, `${parsed.flow_name}.json`), parsed, {
         spaces: 2,
@@ -194,7 +202,7 @@ function removeRenamedFlowTypes(flowsByType: IFlowsByType, targetAppDataFolder: 
 }
 
 /** Load json flows from a list of files, grouped by supported flow_type */
-function readFlowFiles(filePaths: string[], verbose = false) {
+export function readFlowFiles(filePaths: string[], verbose = false) {
   const flowsByType: IFlowsByType = {
     data_list: [],
     global: [],

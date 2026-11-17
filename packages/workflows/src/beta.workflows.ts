@@ -141,6 +141,32 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      update_translations: {
+        label:
+          "Extract strings to translate from the external flows to app_data/translations/source/<language>/*.pot",
+        options: [
+          {
+            flags: "--split-by-subtype",
+            description:
+              "Write strings from flows with a flow_subtype to <flow_subtype>.pot (others to main.pot)",
+          },
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "update_translations",
+            function: async ({ tasks, options }) => {
+              tasks.beta.updateTranslations({
+                splitBySubtype: !!options.splitBySubtype,
+                verbose: !!options.verbose,
+              });
+            },
+          },
+        ],
+      },
       open_sheet: {
         label: "Open the google sheet for a flow, creating one if it has no _source",
         options: [

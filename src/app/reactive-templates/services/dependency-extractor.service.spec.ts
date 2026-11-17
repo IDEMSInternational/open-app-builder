@@ -134,6 +134,11 @@ describe("DependencyExtractorService", () => {
     expect(service.hasDynamicIndexer("Answer: ${local.items[item.id]}", "string")).toBeTrue();
   });
 
+  it("detects dynamic (quoted) bracket numeric indexers", () => {
+    expect(service.hasDynamicIndexer('local.items["0"].question')).toBeTrue();
+    expect(service.hasDynamicIndexer("Answer: ${local.items[0].value}", "string")).toBeTrue();
+  });
+
   it("does not treat static brackets as dynamic indexers", () => {
     expect(service.hasDynamicIndexer("[1, 2].includes(local.x)")).toBeFalse();
     expect(service.hasDynamicIndexer('local.a["b"]')).toBeFalse();

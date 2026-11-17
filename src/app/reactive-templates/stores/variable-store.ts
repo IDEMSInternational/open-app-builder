@@ -42,12 +42,12 @@ export class VariableStore implements IStore {
     return this.getStore(ref).watch(ref);
   }
 
-  getWithDescendants(ref: VariableReference): any {
-    return this.getStore(ref).getWithDescendants(ref);
+  getWithDescendants(ref: VariableReference, namespace?: string): any {
+    return this.getStore(ref).getWithDescendants(ref, namespace);
   }
 
-  watchWithDescendants(ref: VariableReference): Observable<any> {
-    return this.getStore(ref).watchWithDescendants(ref);
+  watchWithDescendants(ref: VariableReference, namespace?: string): Observable<any> {
+    return this.getStore(ref).watchWithDescendants(ref, namespace);
   }
 
   /**
@@ -111,7 +111,10 @@ export class VariableStore implements IStore {
    * Descendant-aware counterpart of 'watchMultiple', used where dynamic property/index access
    * (e.g. `foo[someId]`) means a dependency's relevant descendants aren't known statically.
    */
-  watchMultipleWithDescendants(refs: VariableReference[]): Observable<{ [key: string]: any }> {
+  watchMultipleWithDescendants(
+    refs: VariableReference[],
+    namespace?: string
+  ): Observable<{ [key: string]: any }> {
     const supportedRefs = refs.filter(
       (ref): ref is VariableReference & { type: StoreType } => ref.type !== "loop"
     );
@@ -120,7 +123,7 @@ export class VariableStore implements IStore {
       return of({});
     }
 
-    const observables = supportedRefs.map((ref) => this.watchWithDescendants(ref));
+    const observables = supportedRefs.map((ref) => this.watchWithDescendants(ref, namespace));
 
     return combineLatest(observables).pipe(
       map((values) => {

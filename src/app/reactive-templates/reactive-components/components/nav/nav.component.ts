@@ -1,7 +1,13 @@
-import { Component } from "@angular/core";
-import { navParamPrefix, ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { Component, inject } from "@angular/core";
+import {
+  navParamPrefix,
+  ROW_PARAMETERS,
+  RowBaseComponent,
+  ValueType,
+} from "../../row-base.component";
 import { defineParameters } from "../../parameters";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
+import { EvaluationService } from "src/app/reactive-templates/services/evaluation.service";
 
 const parameters = () => defineParameters({});
 
@@ -32,8 +38,17 @@ export class NavComponent
 
     // Store nav parameters in session storage so that they can be picked up by the target template
     for (const row of rows) {
-      const value = params?.find((p) => p.name === row.name)?.value ?? row.value;
-      sessionStorage.setItem(`${navParamPrefix(url)}${row.name}`, value.toString());
+      const expression = params?.find((p) => p.name === row.name)?.value ?? row.value;
+      const namespace = this.namespace();
+      const value = this.evaluationService.evaluateExpression<string>(
+        expression,
+        namespace,
+        row.parameter_list?.value_type as ValueType
+      );
+
+      if (value) {
+        sessionStorage.setItem(`${navParamPrefix(url)}${row.name}`, value.toString());
+      }
     }
 
     await this.router.navigate([url]);
