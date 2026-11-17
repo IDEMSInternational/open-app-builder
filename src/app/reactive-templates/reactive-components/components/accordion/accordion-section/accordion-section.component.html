@@ -7,13 +7,9 @@
 >
   <ion-item slot="header" class="accordion-header clear" lines="none">
     <ion-label class="accordion-section-title ion-text-wrap">
-      {{ value() || "" }}
+      {{ title() }}
     </ion-label>
-    <ion-icon
-      class="ion-accordion-toggle-icon"
-      [name]="params.iconName.value()"
-      slot="end"
-    ></ion-icon>
+    <ion-icon class="ion-accordion-toggle-icon" [name]="iconName()" slot="end"></ion-icon>
   </ion-item>
 
   <!-- Accordion section Content -->
