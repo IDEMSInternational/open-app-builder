@@ -12,6 +12,7 @@ import { MockTemplateCalcService } from "./template-calc.service.mock.spec";
 import { TemplateTranslateService } from "./template-translate.service";
 import { MockTemplateTranslateService } from "./template-translate.service.spec";
 import { FlowTypes } from "packages/data-models";
+import { extractDynamicEvaluators } from "data-models";
 
 const MOCK_APP_DATA = {};
 
@@ -218,6 +219,29 @@ describe("TemplateVariablesService", () => {
       TEST_LOCAL_CONTEXT
     );
     expect(resWithLocalContext).toEqual("Hello Jasper");
+  });
+
+  it("Keeps local values separate when templates evaluate the same expression concurrently", async () => {
+    // E.g. the same `section` template nested several times in one page, each with its own
+    // section_no, picking an entry from a list
+    const expression =
+      "@local.section_variants[(@local.section_no - 1) % @local.section_variants.length]";
+    const section_variants = ["box_primary", "box_green", "box_secondary"];
+    const contexts = [1, 2, 3, 4].map(
+      (section_no): FlowTypes.TemplateRowEvalContext => ({
+        ...MOCK_CONTEXT_BASE,
+        local: { section_variants, section_no },
+        row: {
+          ...MOCK_CONTEXT_BASE.row,
+          value: expression,
+          _dynamicFields: { value: extractDynamicEvaluators(expression) },
+        },
+      })
+    );
+    const results = await Promise.all(
+      contexts.map((context) => service.evaluatePLHData(expression, context))
+    );
+    expect(results).toEqual(["box_primary", "box_green", "box_secondary", "box_primary"]);
   });
 
   it("Evaluates templateLiteral with dynamic keys", async () => {
