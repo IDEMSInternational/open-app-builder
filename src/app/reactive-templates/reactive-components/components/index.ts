@@ -15,6 +15,7 @@ import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
 import { ExpressionBuilderComponent } from "./expression-builder/expression-builder.component";
 import { RadioListComponent } from "./radio-list/radio-list.component";
+import { TextBubbleComponent } from "./text-bubble/text-bubble.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
@@ -36,6 +37,7 @@ export const REACTIVE_COMPONENT_MAP = {
   set_variable: SetVariableComponent,
   template: NestedTemplateComponent,
   text: TextComponent,
+  text_bubble: TextBubbleComponent,
   text_box: TextBoxComponent,
   title: TitleComponent,
   toggle_bar: ToggleBarComponent,
