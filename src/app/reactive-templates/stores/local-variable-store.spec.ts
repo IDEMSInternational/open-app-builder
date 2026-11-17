@@ -14,6 +14,46 @@ describe("LocalVariableStore", () => {
     store.clear();
   });
 
+  it("reads properties from stored objects without requiring separate leaf keys", () => {
+    store.set({ name: "page_details", type: "local" }, { value: "Page text" });
+
+    expect(store.get({ name: "page_details.value", type: "local" })).toBe("Page text");
+    expect(store.get({ name: "page_details.missing", type: "local" })).toBeUndefined();
+    expect(store.get({ name: "page_details.toString", type: "local" })).toBeUndefined();
+  });
+
+  it("preserves explicit leaf values over properties of stored parent objects", () => {
+    store.set({ name: "page_details", type: "local" }, { value: "Parent text" });
+    store.set({ name: "page_details.value", type: "local" }, undefined);
+
+    expect(store.get({ name: "page_details.value", type: "local" })).toBeUndefined();
+  });
+
+  it("preserves falsy properties and reads nested object and array properties", () => {
+    store.set(
+      { name: "page_details", type: "local" },
+      { empty: "", enabled: false, count: 0, items: [{ value: "First" }] }
+    );
+
+    expect(store.get({ name: "page_details.empty", type: "local" })).toBe("");
+    expect(store.get({ name: "page_details.enabled", type: "local" })).toBeFalse();
+    expect(store.get({ name: "page_details.count", type: "local" })).toBe(0);
+    expect(store.get({ name: "page_details.items.0.value", type: "local" })).toBe("First");
+  });
+
+  it("reads and watches object properties through descendant-aware access", () => {
+    const ref = { name: "pages.0.page_details.value", type: "local" as const };
+    const values: unknown[] = [];
+    const subscription = store.watchWithDescendants(ref).subscribe((value) => values.push(value));
+
+    store.set({ name: "pages.0.page_details", type: "local" }, { value: "First" });
+    expect(store.getWithDescendants(ref)).toBe("First");
+    store.set({ name: "pages.0.page_details", type: "local" }, { value: "Second" });
+
+    expect(values).toEqual([undefined, "First", "Second"]);
+    subscription.unsubscribe();
+  });
+
   it("falls back to higher scopes for get", () => {
     store.set({ name: "root.myVar", type: "local" }, "root-value");
 

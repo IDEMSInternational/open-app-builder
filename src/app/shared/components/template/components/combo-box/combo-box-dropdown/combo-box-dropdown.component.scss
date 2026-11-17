@@ -1,5 +1,6 @@
 $placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-gray-500));
 $selected-value-text: var(--combo-box-selected-value-text, var(--ion-color-primary-800));
+$combo-box-empty-text-color: var(--combo-box-empty-text-color, var(--ion-color-gray-400));
 $background-no-value: var(--combo-box-background-no-value, #fff);
 $background-with-value: var(--combo-box-background-with-value, var(--ion-color-primary-100));
 $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-300));
@@ -43,7 +44,7 @@ $border-with-value: var(--combo-box-border-with-value, var(--ion-color-primary-3
   &.no-value {
     background: inherit;
     border: 1px solid var(--ion-color-gray-500);
-    color: var(--ion-color-gray-400);
+    color: $combo-box-empty-text-color;
   }
 
   &.dropdown-open {

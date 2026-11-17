@@ -24,7 +24,7 @@ export class DependencyExtractorService {
     );
   }
 
-  /** True if any variable path indexes with an unquoted (dynamic) bracket, e.g. `local.foo[item.id]`. */
+  /** True if any variable path has a dynamic or numeric bracket index. */
   public hasDynamicIndexer(input: string, mode: ValueType = "script"): boolean {
     return this.matchVariablePaths(input, mode).some(
       (path) => this.parseVariablePath(path).hasDynamicSegment
@@ -56,7 +56,8 @@ export class DependencyExtractorService {
   /**
    * Splits a matched path into its static segments plus any nested references found inside
    * dynamic (unquoted) bracket expressions, e.g. "all_questions_loop[item.id]" depends on both
-   * "all_questions_loop" (the collection) and "loop.item.id" (the dynamic index).
+   * "all_questions_loop" (the collection) and "loop.item.id" (the dynamic index). Numeric
+   * brackets are also dynamic so array-indexed descendants are included.
    */
   private parseVariablePath(path: string): {
     references: VariableReference[];
@@ -69,6 +70,7 @@ export class DependencyExtractorService {
     const segments: string[] = [];
     const nestedReferences: VariableReference[] = [];
     let hasDynamicSegment = false;
+    let hasDynamicExpression = false;
     let match: RegExpExecArray | null;
 
     while ((match = segmentPattern.exec(path))) {
@@ -77,11 +79,17 @@ export class DependencyExtractorService {
       if (unquoted !== undefined) {
         nestedReferences.push(...this.extractVariableReferences(unquoted));
         hasDynamicSegment = true;
+        hasDynamicExpression = true;
         continue;
       }
 
-      if (!hasDynamicSegment) {
-        segments.push((dotProp ?? doubleQuoted ?? singleQuoted)!);
+      const quotedProp = doubleQuoted ?? singleQuoted;
+      if (quotedProp !== undefined && /^\d+$/.test(quotedProp)) {
+        hasDynamicSegment = true;
+      }
+
+      if (!hasDynamicExpression) {
+        segments.push((dotProp ?? quotedProp)!);
       }
     }
 

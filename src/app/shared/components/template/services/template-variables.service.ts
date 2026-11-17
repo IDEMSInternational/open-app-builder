@@ -188,7 +188,14 @@ export class TemplateVariablesService extends AsyncServiceBase {
 
     log_group(fullExpression);
     // create a base context of variables and functions that will be available when evaluating javascript
-    let calcContext = this.templateCalcService.getCalcContext();
+    // Use a copy for each evaluation: the base context is shared app-wide, and each evaluator below is
+    // awaited before the expression is run, so concurrent evaluations (e.g. the same nested template
+    // rendered several times with different local values) would otherwise overwrite each other's values
+    const baseCalcContext = this.templateCalcService.getCalcContext();
+    const calcContext: ICalcContext = {
+      ...baseCalcContext,
+      thisCtxt: { ...baseCalcContext.thisCtxt },
+    };
 
     // evaluate each dynamic expression and store to the 'this' context that will be used to evaluate
     // at the end. E.g. this.fields = { some_value: 4 }. Update the context and full expression
