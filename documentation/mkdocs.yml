@@ -37,6 +37,7 @@ nav:
       - developers/deployments.md
       - developers/server-development.md
       - developers/device-testing.md
+      - developers/maestro.md
       - developers/native-assets.md
       - developers/in-app-updates.md
       - developers/error-logs.md
