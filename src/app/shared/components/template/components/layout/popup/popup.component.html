@@ -7,7 +7,13 @@
 >
   <div class="popup-container">
     @if (props.showCloseButton) {
-      <div (click)="dismiss()" class="close-button" fill="clear">
+      <div
+        (click)="dismiss()"
+        class="close-button"
+        fill="clear"
+        role="button"
+        aria-label="Close popup"
+      >
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </div>
     }

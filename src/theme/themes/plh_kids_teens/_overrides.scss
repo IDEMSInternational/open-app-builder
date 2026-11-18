@@ -13,7 +13,6 @@
       --box-shadow: none;
 
       font-size: var(--buttons-font-size);
-      font-weight: var(--font-weight-bold);
       letter-spacing: var(--font-letter-spacing);
       text-transform: none;
     }
@@ -58,9 +57,8 @@
       margin-right: 0;
     }
     // Color Alternatives
-    .standard {
-      color: white;
-    }
+    // Default button text colour comes from button.component.scss (`.standard`: primary-contrast),
+    // so per-style colours set there (e.g. --button-text-color-secondary) are not overridden here
     .card.standard {
       color: var(--ion-color-primary-800);
     }
@@ -68,9 +66,14 @@
       color: var(--ion-color-primary-50);
     }
     .information {
-      --background: var(--ion-color-primary-600);
+      --background: var(--button-background-information);
       --background-hover: var(--ion-color-primary-500);
       --background-activated: var(--ion-color-primary-500);
+      // Card buttons get this background instead of white, so they need the text colour of other
+      // information buttons (`.standard` in button.component.scss) rather than the card's
+      &[data-variant~="card"] {
+        color: var(--ion-color-primary-contrast);
+      }
     }
     ion-button[data-variant~="card"],
     ion-button[data-param-style~="no-background"] {
@@ -154,7 +157,7 @@
         padding-bottom: 18px;
         h3 {
           margin: 0;
-          color: var(--ion-color-gray-900) !important;
+          color: var(--audio-title-color, var(--ion-color-gray-900)) !important;
           max-width: 95%;
           font-weight: var(--font-weight-bold);
         }
@@ -174,7 +177,7 @@
         .time-value {
           font-size: var(--font-size-text-small) !important;
           line-height: var(--line-height-text-tiny) !important;
-          color: var(--ion-color-gray-700) !important;
+          color: var(--audio-time-color, var(--ion-color-gray-700)) !important;
         }
       }
     }
@@ -333,11 +336,11 @@
         min-width: 124px;
 
         p {
-          color: var(--ion-color-gray-900);
+          color: var(--text-bubble-text-color, var(--ion-color-gray-900));
         }
 
         li {
-          color: var(--ion-color-gray-900);
+          color: var(--text-bubble-text-color, var(--ion-color-gray-900));
         }
       }
 
@@ -366,7 +369,7 @@
   plh-text-area {
     .wrapper .text_area {
       font-size: var(--font-size-text-medium) !important;
-      color: var(--ion-color-gray-900) !important;
+      color: var(--text-area-text-color, var(--ion-color-gray-900)) !important;
       box-shadow: none !important;
       border-radius: var(--ion-border-radius-standard);
       --padding-end: 16px !important;
@@ -415,7 +418,7 @@
         padding: 0 12px;
         height: 60px;
 
-        color: var(--ion-color-gray-600);
+        color: var(--select-text-text-color, var(--ion-color-gray-600));
         font-size: var(--font-size-text-small) !important;
         text-overflow: ellipsis;
         border: 1px solid var(--select-text-border-color);
@@ -502,7 +505,7 @@
       max-width: unset;
       box-shadow: none;
       border: none;
-      color: var(--ion-color-gray-900);
+      color: var(--radio-group-label-text-color, var(--ion-color-gray-900));
       width: auto;
       margin: 12px !important;
       background-color: var(--radio-group-label-background);
@@ -525,17 +528,22 @@
       border-end-end-radius: var(--ion-border-radius-small) !important;
     }
     &[data-variant~="box_primary"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--display-group-box-primary-border-color);
     }
     &[data-variant~="box_secondary"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--display-group-box-secondary-border-color);
     }
+    &[data-variant~="box_green"] {
+      --background-color: var(--display-group-box-background) !important;
+      border: none;
+      border-inline-start: 6px solid var(--display-group-box-green-border-color);
+    }
     &[data-variant~="box_gray"] {
-      --background-color: var(--ion-color-gray-100) !important;
+      --background-color: var(--display-group-box-background) !important;
       border: none;
       border-inline-start: 6px solid var(--ion-color-gray-600);
     }
@@ -624,6 +632,8 @@
       min-height: 64px;
       box-shadow: var(--round-button-module-box-shadow);
       border: 1px solid var(--round-button-module-border-color);
+      background: var(--round-button-module-background) !important;
+      color: var(--round-button-module-color);
     }
   }
 
@@ -848,6 +858,7 @@
         plh-tmpl-title p,
         plh-tmpl-title h1 {
           text-align: center;
+          color: var(--popup-completion-text-color);
         }
         plh-tmpl-title {
           div.title-wrapper {

@@ -32,3 +32,14 @@ export type INotificationInternal = Omit<LocalNotificationSchema, "extra"> & {
     source: string;
   };
 };
+
+/** `extra.source` of notifications booked by the NotificationService (`notification` action) */
+export const NOTIFICATION_SOURCE_ACTION = "action";
+
+/**
+ * Whether a notification was booked by the NotificationService (`notification` action),
+ * rather than the legacy LocalNotificationService used by campaigns
+ */
+export function isActionNotification(notification: { extra?: any }) {
+  return notification?.extra?.source === NOTIFICATION_SOURCE_ACTION;
+}

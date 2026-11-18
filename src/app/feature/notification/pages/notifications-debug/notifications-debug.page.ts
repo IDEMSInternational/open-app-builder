@@ -1,5 +1,5 @@
 import { DatePipe, NgTemplateOutlet } from "@angular/common";
-import { Component, computed, effect, inject, OnInit, signal } from "@angular/core";
+import { Component, computed, inject, OnInit, signal } from "@angular/core";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
 import { Clipboard } from "@capacitor/clipboard";
 import { Capacitor } from "@capacitor/core";
@@ -108,12 +108,6 @@ export class NotificationsDebugPage implements OnInit {
   public expanded = signal<Record<string, boolean>>({});
 
   constructor() {
-    // Mirror permission status to legacy service, as required for campaign test notifications.
-    // Note - legacy service init processes (e.g. interaction listeners) will still only run
-    // following next app launch if permission was not granted at launch
-    effect(() => {
-      this.localNotificationService.permissionGranted = this.permissionGranted();
-    });
     interval(REFRESH_MS)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.refresh());

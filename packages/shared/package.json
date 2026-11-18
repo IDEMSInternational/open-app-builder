@@ -16,7 +16,7 @@
     "commander": "^8.3.0",
     "danfojs": "1.1.2",
     "fs-extra": "^9.0.1",
-    "glob": "^9.0.0",
+    "glob": "^14.0.2",
     "inquirer": "^7.3.3",
     "winston": "^3.8.1"
   },

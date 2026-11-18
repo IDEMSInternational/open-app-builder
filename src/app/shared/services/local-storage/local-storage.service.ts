@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { IProtectedFieldName, getProtectedFieldName, isPrivateFieldName } from "data-models";
+import { Subject } from "rxjs";
 import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
@@ -8,6 +9,9 @@ import { SyncServiceBase } from "../syncService.base";
 export class LocalStorageService extends SyncServiceBase {
   /** Prefix applied to all localStorage entries */
   public prefix = "rp-contact-field";
+
+  /** Names (without prefix) of entries whose value changes, e.g. to react to field changes */
+  public changes$ = new Subject<string>();
 
   constructor() {
     super("LocalStorage");
@@ -29,7 +33,12 @@ export class LocalStorageService extends SyncServiceBase {
     if (!key.startsWith(this.prefix)) {
       key = `${this.prefix}.${key}`;
     }
-    return localStorage.setItem(key, value);
+    const previous = localStorage.getItem(key);
+    localStorage.setItem(key, value);
+    // compare stored values, as localStorage converts values to strings
+    if (localStorage.getItem(key) !== previous) {
+      this.changes$.next(this.removePrefix(key));
+    }
   }
 
   private remove(key: string) {
@@ -37,7 +46,15 @@ export class LocalStorageService extends SyncServiceBase {
     if (!key.startsWith(this.prefix)) {
       key = `${this.prefix}.${key}`;
     }
-    return localStorage.removeItem(key);
+    const existed = localStorage.getItem(key) !== null;
+    localStorage.removeItem(key);
+    if (existed) {
+      this.changes$.next(this.removePrefix(key));
+    }
+  }
+
+  private removePrefix(key: string) {
+    return key.replace(`${this.prefix}.`, "");
   }
 
   getString(key: string) {

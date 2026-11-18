@@ -50,6 +50,7 @@ import { CapacitorEventService } from "./shared/services/capacitor-event/capacit
 import { AuthService } from "./shared/services/auth/auth.service";
 import { SystemVariableService } from "./shared/services/system-variable/system-variable.service";
 import { RemoteFunctionService } from "./feature/remote-function/remote-function.service";
+import { AppStartupService } from "./shared/services/app-startup/app-startup.service";
 
 @Component({
   selector: "app-root",
@@ -153,7 +154,8 @@ export class AppComponent {
     private capacitorEventService: CapacitorEventService,
     private authService: AuthService,
     private systemVariableService: SystemVariableService,
-    private remoteFunctionService: RemoteFunctionService
+    private remoteFunctionService: RemoteFunctionService,
+    private appStartupService: AppStartupService
   ) {
     this.initializeApp();
   }
@@ -172,6 +174,7 @@ export class AppComponent {
       }
 
       await this.handleEdgeToEdge();
+      this.refreshAndroidModalAccessibilityBounds();
 
       // Run app-specific launch tasks
 
@@ -188,6 +191,8 @@ export class AppComponent {
         }
         await SplashScreen.hide();
       }
+      // Allow deferred work to run, e.g. actions of a notification tap that opened the app
+      this.appStartupService.markComplete();
       // Show main template
       this.renderAppTemplates.set(true);
       this.scheduleReinitialisation();
@@ -352,6 +357,23 @@ export class AppComponent {
       await EdgeToEdge.setBackgroundColor({ color: "#000000" });
       await StatusBar.setStyle({ style: Style.Dark });
     }
+  }
+
+  /**
+   * Android WebView can keep a modal's accessibility bounds from the first frame of its enter
+   * animation (40px low), so UI test taps based on them (e.g. Maestro) miss. A brief layout change
+   * makes it recompute them. Debuggable builds only (`Capacitor.DEBUG`), not store releases.
+   */
+  private refreshAndroidModalAccessibilityBounds() {
+    if (Capacitor.getPlatform() !== "android" || !Capacitor.DEBUG) return;
+    document.addEventListener("ionModalDidPresent", (e) => {
+      const modal = e.target as HTMLElement;
+      const paddingBottom = modal.style.paddingBottom;
+      modal.style.paddingBottom = "1px";
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => (modal.style.paddingBottom = paddingBottom))
+      );
+    });
   }
 
   /** ensure localhost dev can see all non-user content */

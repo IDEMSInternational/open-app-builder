@@ -25,6 +25,7 @@ nav:
           - authors/advanced/data-generators.md
           - authors/advanced/overrides.md
       - authors/local-sheets.md
+      - authors/beta.md
   - Contributors:
       - contributors/documentation/running-server.md
       - contributors/documentation/authoring.md
@@ -36,6 +37,7 @@ nav:
       - developers/deployments.md
       - developers/server-development.md
       - developers/device-testing.md
+      - developers/maestro.md
       - developers/native-assets.md
       - developers/in-app-updates.md
       - developers/error-logs.md
@@ -50,6 +52,7 @@ nav:
       - components/html.md
       - components/latex.md
       - components/pdf.md
+      - components/plh_progress_summary.md
       - components/radio_group.md
       - components/round_button.md
       - components/slider.md

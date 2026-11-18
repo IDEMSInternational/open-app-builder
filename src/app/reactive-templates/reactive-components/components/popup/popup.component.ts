@@ -41,7 +41,6 @@ export class PopupComponent
   public isOpen = signal(false);
 
   public execute(params?: IActionParameter[]): Promise<void> {
-    // todo: show modal.
     this.isOpen.set(true);
     return Promise.resolve();
   }

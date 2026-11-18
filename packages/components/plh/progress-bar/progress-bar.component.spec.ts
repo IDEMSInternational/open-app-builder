@@ -39,4 +39,32 @@ describe("PlhProgressBarComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+
+  function setRow(value: number, parameter_list: Record<string, any>) {
+    component.row = { ...component.row, value, parameter_list } as any;
+    fixture.detectChanges();
+  }
+
+  function getPercentage(): HTMLElement | null {
+    return fixture.nativeElement.querySelector(".progress-percentage");
+  }
+
+  it("reserves the percentage width while progress is 0", () => {
+    setRow(0, { title: "Title", show_percentage: true });
+    const percentage = getPercentage();
+    expect(percentage).toBeTruthy();
+    expect(percentage.classList).toContain("hidden");
+  });
+
+  it("shows the percentage once progress starts", () => {
+    setRow(40, { title: "Title", show_percentage: true });
+    const percentage = getPercentage();
+    expect(percentage.classList).not.toContain("hidden");
+    expect(percentage.textContent.trim()).toBe("40%");
+  });
+
+  it("does not render the percentage when show_percentage is off", () => {
+    setRow(40, { title: "Title" });
+    expect(getPercentage()).toBeNull();
+  });
 });

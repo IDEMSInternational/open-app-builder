@@ -1,0 +1,12 @@
+<ng-content></ng-content>
+@if (play()) {
+  <span class="burst" aria-hidden="true"></span>
+  @for (angle of sparkAngles; track angle) {
+    <span
+      class="spark"
+      [class.alt]="$odd"
+      [style.--angle]="angle + 'deg'"
+      aria-hidden="true"
+    ></span>
+  }
+}

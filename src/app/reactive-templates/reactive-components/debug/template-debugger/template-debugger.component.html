@@ -1,6 +1,11 @@
 <oab-debugger-base>
   <oab-debugger-title>
     <span class="name">{{ templateName() }}</span>
+    <oab-sheet-link
+      flowType="template"
+      [flowName]="templateName()"
+      [sourceUrl]="template()?._source?.url"
+    ></oab-sheet-link>
   </oab-debugger-title>
   <oab-debugger-info>
     <table>

@@ -19,12 +19,19 @@ export class EvaluationService {
     expression: string | number | boolean,
     namespace: string,
     valueType: ValueType = "string",
-    overrideContext?: Record<string, any>
+    overrideContext?: Record<string, any>,
+    loopNamespace: string = namespace
   ): T {
+    if (typeof expression === "object") return expression as T;
     if (expression === null || expression === undefined) return expression as T;
 
     const parsedExpression = this.expressionParser.parse(expression, namespace, valueType);
-    const context = this.createExecutionContext(parsedExpression, namespace, valueType);
+    const context = this.createExecutionContext(
+      parsedExpression,
+      namespace,
+      valueType,
+      loopNamespace
+    );
 
     const mergedContext = { ...context, ...overrideContext }; // merge overrideContext with context
 
@@ -93,13 +100,19 @@ export class EvaluationService {
   private createExecutionContext(
     expression: string | number | boolean,
     namespace: string,
-    valueType: ValueType
+    valueType: ValueType,
+    loopNamespace: string
   ): any {
     let dependencies = this.getDependenciesInternal(expression, namespace, valueType);
     const includeDescendants =
       typeof expression === "string" &&
       this.dependencyExtractor.hasDynamicIndexer(expression, valueType);
 
-    return this.contextCreator.createContext(dependencies, namespace, includeDescendants);
+    return this.contextCreator.createContext(
+      dependencies,
+      namespace,
+      includeDescendants,
+      loopNamespace
+    );
   }
 }
