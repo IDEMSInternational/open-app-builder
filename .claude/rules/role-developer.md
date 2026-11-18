@@ -43,8 +43,8 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
 
 ## Developer gotchas (as of 2026-08-18)
 
-- Parser cache: `<deployment>/tasks/template/cache/FlowParserProcessor/` ignores converter code changes
-  (`cacheVersion` constant in `flowParser.ts`); `data_pipe`/`generator` flows are never served from cache.
+- Parser cache: ignores converter code changes, so delete it (or bump `cacheVersion`) after changing the
+  converter; details in `content-pipeline.md` → Cache.
 - Row-level parser hooks (`TemplateParser.qualityControlCheck`) don't run for cached flows;
   `FlowParserProcessor.postProcess` runs for all — see `.claude/rules/authoring-validation.md`.
 - Converter `{errors, warnings}` are discarded in `packages/scripts/src/tasks/providers/template.ts`; CI

@@ -67,7 +67,14 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Follow-on row / pop-up never appears after an action list | the list rewrites a value its condition depends on | validation |
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
 | Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
-| Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Workbooks |
+| Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Overriding |
+| Page blank, console `RxError (SC1) fieldnames do not match the regex` | data list column name with a space or symbol | below: Workbooks |
+| Flow missing, only `No Contents: <flow_name>` in `warn.log` | tab name over 31 characters, or tab renamed but not its `==content_list==` row | below: Workbooks |
+| Module generated without articles | no `<module id>_articles` tab after renaming a module | below: Workbooks |
+| Override applies to everyone | bold/italic in the `override_condition` cell | below: Workbooks |
+| Data list override still shows removed rows, some without `row_index` | saved data is merged into the override | below: Overriding |
+| Override value on a nested template comes out empty | override values are evaluated in the parent | below: Templates |
+| Number input: 0 passes an "empty" check, or disables the button | `!0` and `0 == ''` are true in JS | below: Variables |
 | Link from the sheet isn't clickable, or a link opens the wrong page | cell hyperlinks are dropped; address has no `https://` | below: Workbooks |
 | Component title/text set in `parameter_list` stays English | `parameter_list` is never translated | below: Translations |
 | `@local.row.key` breaks when re-entering a `radio_list` page | `value_as_object` returns a string when re-rendered | below: Variables |
@@ -91,15 +98,9 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
 ### Workbooks, `contents` and cells
 
 - Bold/italic in a cell becomes literal `<b>`/`<em>` in the value; %-formatted numbers become text; dates
-  become Excel serial numbers unless the column is a known date field; empty rows/columns are dropped.
-  (as of 2026-08-12)
-- **The same `flow_name` in two workbooks: last workbook wins** by `sheets_folders` order in the deployment
-  `config.ts`; a copied tab in the deployment workbook deliberately overrides the shared one. (as of 2026-08-12)
-- **A deployment copy of a shared tab only overrides it if the `flow_name` matches exactly.** A near-miss
-  (`app_menu_global` vs shared `app_menu_globals`) loads *both* tabs; for globals, the later one in
-  `contents.json` order (alphabetical) wins per constant, so the shared English values silently beat the
-  translated copy. Check with: same constant names declared in two global tabs from different workbooks.
-  (found 2026-09-16: kids_teens_mx `app_menu_global`, `auth_global`)
+  become Excel serial numbers unless the column is a known date field; empty rows/columns are dropped. In an
+  `override_condition` cell, the added `<span>`/`<b>` tags make the condition fail, which applies the override
+  to everyone. (as of 2026-08-12; override_condition found 2026-10-30: kids_teens_mx po_refl demo)
 - **A `==content_list==` without its header row silently drops the whole workbook.** The first row is read as
   the column names (`flow_type`, `flow_subtype`, `flow_name`, `status`, …); if it's deleted, no row matches and
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
@@ -121,6 +122,39 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   exactly, so the flow is skipped with only a `No Contents: <flow_name>` warning in
   `packages/scripts/logs/warn.log`. Keep tab-based flow names ≤ 31 characters (generated flows can be longer).
   (found 2026-10-29: kids_teens_mx A/B override template `proximal_outcome_base_question_ab_po_scale_3`)
+- **Renaming a module ID means renaming its article tab and that tab's `==content_list==` row too.** The
+  generator (`gen_prep_articles`, input `{@gen.id}_articles`) and the shared article templates
+  (`article`, `question`, `section`: `@local.module_id@local.articles`) look up `<module id>_articles` by name.
+  A module with no such list is generated without articles (only "Max defer limit reached" for
+  `prep_<id>_articles` in error.log), and a content-list row whose tab was renamed only gives a
+  "No Contents: <name>" warning. Splitting a module (`_f`/`_m`, `_p1`/`_p2`) needs one tab per new ID.
+  (found 2026-10-21: kids_teens_mx module restructure, 85 of 98 modules without articles)
+
+### Overriding shared tabs, globals and data lists
+
+- **The same `flow_name` in two workbooks: the last workbook wins, per tab.** The order is `sheets_folders`
+  in the deployment `config.ts`. This is how a deployment overrides or forks a shared workbook: copy it into a
+  folder listed *after* the shared one. Each tab with an identical `flow_name` replaces the shared one whole
+  (no merge, so copy every row; a global constant left out becomes undefined), and any tab missing from the
+  copy (even if its `==content_list==` row is present) silently falls back to the shared version. Check the
+  result via `_source` at the end of each generated JSON. (verified 2026-10-21: kids_teens_mx MX goals / MX
+  proximal_outcomes over V3)
+- **A deployment copy of a shared tab only overrides it if the `flow_name` matches exactly.** A near-miss
+  (`app_menu_global` vs shared `app_menu_globals`) loads *both* tabs; for globals the alphabetically later tab
+  then wins per constant (next entry), so the shared English values silently beat the translated copy. Check
+  with: same constant names declared in two global tabs from different workbooks. (found 2026-09-16:
+  kids_teens_mx `app_menu_global`, `auth_global`)
+- **The same constant in two global tabs: the alphabetically later tab wins.** All global tabs are applied at
+  app start in `contents.json` order (alphabetical by `flow_name`) and `setGlobal` overwrites, with no warning
+  (`template.service.ts` `initialiseDefaultFieldAndGlobals`, `template-field.service.ts` `setGlobal`).
+  `override_target` + `override_condition` also work on a global tab: it swaps the whole target tab at
+  start-up when the condition holds (the docs only mention templates/data lists). Constants are re-applied on
+  every start (not stored on the device), unlike `declare_field_default`. (verified 2026-10-23)
+- **A data_list override can't remove rows from a list with saved data.** Writes are stored under the
+  original list's name by row `id`, and `prepareInitialData` merges every saved row into the override's rows
+  (`dynamic-data.service.ts` `mergeWriteCacheData` → `deepMergeArrays`), including ids the override doesn't
+  have, which come back as partial rows without `row_index`. Keep every id in the override list and change
+  only static columns. (found 2026-10-30: kids_teens_mx po_refl demo, `proximal_outcome_7d_pages`)
 
 ### Actions
 
@@ -167,10 +201,18 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `@local.row`. (verified 2026-08-19)
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is
   silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
-- **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields
-  are stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is
-  always true even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
-  (found 2026-10-20: ZA `nf_definition_inactive` positive_reinforcement active for every user)
+- **Numbers in fields and in values saved by actions are text, so `===`/`!==` and `+` misbehave.** Fields are
+  stored in localStorage as strings (`template-field.service.ts` `getField`), and action arguments are strings
+  too (`set_local: n: 0` stores `"0"`; `setLocalVariable` in `template-action.service.ts` only converts
+  `"true"`/`"false"`), unlike a `set_variable` value typed as a number in the sheet. So `@fields.n !== 0` is
+  always true even when the field is `"0"`: use `==`/`!=`/`>`, e.g. `@fields.n > 0`. And
+  `@calc(@local.n + 1)` gives `"01"`, `"011"`…, which comparisons read as 11: use
+  `@calc(Number(@local.n) + 1)`. (found 2026-10-20: ZA `nf_definition_inactive` positive_reinforcement
+  active for every user; 2026-11-13: V3 settings `version_taps`, menu opened after 3 taps instead of 5)
+- **A `number_input` text box treats 0 as empty in `!x` / `x == ''` checks.** With `number_input: true` the
+  value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
+  true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
+  `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
 - **A campaign row listed in two `campaign_list` schedules is only scheduled once.** Notifications are keyed
   by row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later
   schedule replaces the earlier one when both pick the same row. Give each schedule its own copy of the row
@@ -180,16 +222,6 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
   Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
   list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
-- **A `number_input` text box treats 0 as empty in `!x` / `x == ''` checks.** With `number_input: true` the
-  value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
-  true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
-  `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
-- **Numbers saved by an action come back as text, so `+ 1` joins instead of adding.** Action arguments are
-  strings (`set_local: n: 0` stores `"0"`; `setLocalVariable` in `template-action.service.ts` only converts
-  `"true"`/`"false"`), unlike a `set_variable` value typed as a number in the sheet. `@calc(@local.n + 1)` then
-  gives `"01"`, `"011"`…, and comparisons read that as 11. Wrap the value: `@calc(Number(@local.n) + 1)`.
-  Fields behave the same (see numeric field defaults above). (found 2026-11-13: V3 settings `version_taps`, menu
-  opened after 3 taps instead of 5)
 
 ### Loops and `data_items`
 
@@ -199,35 +231,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (`delimiters.ts` `addStringDelimiters`). The throw stops the whole `data_changed` action list.
   Always write `@items[0]?.id`, and decide what the page should do when the list is empty.
   (found 2026-10-13: module_start_at_id `find_last_completed`, home_screen `module_tasks`)
-
-- Re-render timing, loops and rows inside `data_items` that ignore `set_local`: see `authoring-validation.md`
-  → Runtime.
-- **Forking a shared workbook into a deployment folder works per tab, by `flow_name`.** Copy the workbook into a
-  folder listed *after* the shared one in the deployment's `sheets_folders`; each tab with an identical
-  `flow_name` replaces the shared one, and any tab missing from the copy (even if its `==content_list==` row
-  is present) silently falls back to the shared version. A replacing tab is not merged with the shared one, so
-  copy every row. Check the result via `_source` at the end of each generated JSON.
-  (verified 2026-10-21: kids_teens_mx MX goals / MX proximal_outcomes over V3)
-- **Renaming a module ID means renaming its article tab and that tab's `==content_list==` row too.** The
-  generator (`gen_prep_articles`, input `{@gen.id}_articles`) and the shared article templates
-  (`article`, `question`, `section`: `@local.module_id@local.articles`) look up `<module id>_articles` by name.
-  A module with no such list is generated without articles (only "Max defer limit reached" for
-  `prep_<id>_articles` in error.log), and a content-list row whose tab was renamed only gives a
-  "No Contents: <name>" warning. Splitting a module (`_f`/`_m`, `_p1`/`_p2`) needs one tab per new ID.
-  (found 2026-10-21: kids_teens_mx module restructure, 85 of 98 modules without articles)
-- **How globals override each other.** (1) Same global `flow_name` in two workbooks: the later `sheets_folders`
-  entry replaces the whole tab at sync (no merge; missing constants become undefined). (2) Same constant name in
-  different tabs: all global tabs are applied at app start in `contents.json` order (alphabetical by
-  `flow_name`) and `setGlobal` overwrites, so the alphabetically later tab wins, with no warning
-  (`template.service.ts` `initialiseDefaultFieldAndGlobals`, `template-field.service.ts` `setGlobal`).
-  (3) `override_target` + `override_condition` on a global tab swaps the whole target tab at start-up when
-  the condition holds (the docs only mention templates/data lists). Constants are re-applied on every start
-  (not stored on the device), unlike `declare_field_default`. (verified 2026-10-23)
 - **`@fields.@item.x == @item.y` is always "true" when `y` is text.** A dynamic field name makes the first
   JS evaluation fail, so values are substituted unquoted and re-evaluated (`template-variables.service.ts`
   `parseContextExpression`): `@fields.f == yes` throws again and the fallback is the non-empty string
   `"no == yes"`, which counts as true (toggles on, conditions pass). Numbers happen to work. Quote the item:
   `@fields.@item.x == "@item.y"`. (verified 2026-11-06: debug_ab_tests po_refl toggles)
+- Re-render timing, loops and rows inside `data_items` that ignore `set_local`: see `authoring-validation.md`
+  → Runtime.
 
 ### Templates, pop-ups and `nav_stack`
 
@@ -328,3 +338,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   The "translation sync" action does **not** commit to main — it opens a PR (branch `create-pull-request/patch`)
   whose Deployment Preview run is green before merge. Locally on `main` the strings stay English until that PR
   is merged or checked out. (verified 2026-10-16: kids_teens_my PR #281)
+
+### Testing on a device
+
+- **Reaching debug pages on a device.** The side menu (`app_menu`) opens by swiping in from the left edge
+  when the app header is hidden (no menu icon). Its developer section only shows when `@fields.user_mode` is
+  false; on a device you set that from "Developer mode" (`enter_dev_mode`), using `@global.dev_mode_code` /
+  `test_mode_code`, then the app restarts. `/notifications` and `/campaigns` are the built-in notification
+  debug pages. (found 2026-11-04: kids_teens_mx)
