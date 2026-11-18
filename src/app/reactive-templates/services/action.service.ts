@@ -6,6 +6,9 @@ import { EvaluationService } from "./evaluation.service";
 import { RowBaseComponent } from "../reactive-components/row-base.component";
 import { ActionHandler } from "./action.handler";
 import { SetGlobalActionService } from "./actions/set-global.action";
+import { ActionRegistry } from "./action.registry";
+import { RowRegistry } from "./row.registry";
+import { ActionContextService } from "./action-context.service";
 
 @Injectable({
   providedIn: "root",
@@ -14,9 +17,12 @@ export class ActionService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private evaluationService: EvaluationService,
-    private coreActionsService: CoreActionsService, // Not used, just forces initialisation - todo: replace with individual action registers & use APP_INITIALIZER
-    private actionHandler: ActionHandler, // Also just to force initialisation - todo: as above
-    private setGlobalActionService: SetGlobalActionService // Also just to force initialisation - todo: as above
+    private coreActionsService: CoreActionsService,
+    private actionHandler: ActionHandler,
+    private setGlobalActionService: SetGlobalActionService, // Also just to force initialisation - todo: as above
+    private actionRegistry: ActionRegistry,
+    private rowRegistry: RowRegistry,
+    private actionContext: ActionContextService
   ) {}
 
   public async handleActions(
@@ -55,6 +61,7 @@ export class ActionService {
   }
 
   private async handleAction(action: FlowTypes.TemplateRowAction) {
+    this.actionContext.set(action, this.actionRegistry, this.rowRegistry);
     return this.templateActionRegistry.trigger(action);
   }
 }

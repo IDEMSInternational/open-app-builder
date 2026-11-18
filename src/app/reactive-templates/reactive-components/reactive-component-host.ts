@@ -1,14 +1,16 @@
-import { ComponentRef, createComponent, EnvironmentInjector, Type } from "@angular/core";
+import { ComponentRef, createComponent, EnvironmentInjector, Injector, Type } from "@angular/core";
 import { FlowTypes } from "packages/data-models";
 
 export function createReactiveComponentRef<T>(
   componentType: Type<T>,
   injector: EnvironmentInjector,
+  elementInjector: Injector,
   row: FlowTypes.TemplateRow,
   namespace: string
 ): ComponentRef<T> {
   const componentRef = createComponent(componentType, {
     environmentInjector: injector,
+    elementInjector,
   });
 
   componentRef.setInput("row", row);
