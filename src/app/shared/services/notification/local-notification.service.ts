@@ -1,4 +1,4 @@
-import { Injectable, Injector } from "@angular/core";
+import { effect, Injectable, Injector, untracked } from "@angular/core";
 import { Capacitor } from "@capacitor/core";
 import {
   LocalNotifications,
@@ -25,9 +25,13 @@ import { DbService } from "../db/db.service";
 import { LocalNotificationPersistAdapter } from "./local-notification-persist.adapter";
 import { CapacitorEventService } from "../capacitor-event/capacitor-event.service";
 import { NotificationService } from "src/app/feature/notification/notification.service";
+import { isActionNotification } from "src/app/feature/notification/notification.types";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
 const NOTIFICATION_ID_MAX = 2147483647;
+
+/** Android delivers inexact alarms up to 75% of their lead time late, capped at an hour */
+const MAX_LATE_DELIVERY_MS = 60 * 60 * 1000;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
@@ -94,6 +98,15 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
 
+  /** Hack - proxy to native LocalNotification api for easier test mocking */
+  private api = LocalNotifications;
+
+  /** Whether notifications reach the device: permission granted and setup complete */
+  public canSchedule$ = new BehaviorSubject(false);
+
+  /** Setup result, kept so setup runs once and cleared on failure to allow a retry */
+  private notificationSyncSetUp?: Promise<boolean>;
+
   constructor(
     private dbService: DbService,
     private appConfigService: AppConfigService,
@@ -102,6 +115,7 @@ export class LocalNotificationService extends AsyncServiceBase {
   ) {
     super("Local Notifications");
     this.registerInitFunction(this.init);
+    this.handlePermissionChanges();
   }
 
   // Call via injector to avoid potential cyclic dependency (as with campaign service)
@@ -122,36 +136,114 @@ export class LocalNotificationService extends AsyncServiceBase {
     this.sessionStartTime = new Date().getTime();
     this.permissionGranted = await this.requestPermission();
     if (this.permissionGranted) {
-      if (Capacitor.isNativePlatform()) {
-        await LocalNotifications.registerActionTypes({
-          types: Object.values(NOTIFICATION_ACTIONS),
-        });
-      }
-      this.addLocalNotificationInteractionListeners();
+      await this.startNotificationSync();
+    }
+  }
 
-      // housekeeping
-      await this.cleanDBNotifications();
-      await this.handleUnprocessedNotifications();
-
-      // complete intial load
-      // defer and debounce any further calls to load notifications to avoid duplicate processing
-      this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(async () => {
-        await this.handleNotificationLoad();
-        await this.setApiNotifications();
+  /** Follow permission changes after launch, e.g. from `notification: request_permission` */
+  private handlePermissionChanges() {
+    // resolved outside the effect, as the service's constructor creates effects
+    const { status } = this.notificationService;
+    effect(() => {
+      const permissionStatus = status();
+      untracked(() => {
+        // not yet checked: keep the value from init
+        if (permissionStatus === undefined) return;
+        if (permissionStatus === "granted") {
+          this.permissionGranted = true;
+          this.ready().then(() => this.startNotificationSync());
+        } else {
+          this.permissionGranted = false;
+          this.setCanSchedule(false);
+        }
       });
+    });
+  }
+
+  /** Run setup once (retried if it fails), then allow scheduling */
+  private async startNotificationSync() {
+    this.notificationSyncSetUp ??= this.setUpNotificationSync().then(
+      () => true,
+      (error) => {
+        console.error("[Local Notifications] Setup failed", error);
+        this.notificationSyncSetUp = undefined;
+        return false;
+      }
+    );
+    const setUp = await this.notificationSyncSetUp;
+    this.setCanSchedule(setUp && this.permissionGranted);
+  }
+
+  /** Setup that needs permission. Subscriptions last, so a failure leaves nothing to undo */
+  private async setUpNotificationSync() {
+    if (Capacitor.isNativePlatform()) {
+      await this.api.registerActionTypes({
+        types: Object.values(NOTIFICATION_ACTIONS),
+      });
+    }
+
+    // housekeeping
+    await this.cleanDBNotifications();
+    await this.handleUnprocessedNotifications();
+    // load db records now, so that scheduling (allowed after setup) sees existing notifications
+    await this.handleNotificationLoad();
+
+    this.addLocalNotificationInteractionListeners();
+
+    // complete intial load
+    // defer and debounce any further calls to load notifications to avoid duplicate processing
+    this.notificationsLoader$.pipe(debounceTime(2000)).subscribe(async () => {
+      await this.handleNotificationLoad();
+      await this.setApiNotifications();
+    });
+  }
+
+  private setCanSchedule(canSchedule: boolean) {
+    if (this.canSchedule$.value !== canSchedule) {
+      this.canSchedule$.next(canSchedule);
     }
   }
 
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
-    const existingNotifications = await LocalNotifications.getPending();
+    // without permission keep db records, to sync once it is granted again
+    if (!this.permissionGranted) return;
+    const { notifications } = await this.api.getPending();
+    const lateIds = await this.getLateNotificationIds();
+    // Replace from the db, except notifications that couldn't be booked again: those from the
+    // `notification` action (not in this db) and late ones (capacitor won't book a past time)
+    const toCancel = notifications.filter((n) => !isActionNotification(n) && !lateIds.has(n.id));
     // Ensure notification ops use non-empty arrays to avoid error shown in #1827
-    if (isNonEmptyArray(existingNotifications.notifications)) {
-      await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
+    if (isNonEmptyArray(toCancel)) {
+      await this.api.cancel({ notifications: toCancel });
     }
     const toSchedule = this.pendingNotifications$.value;
     if (isNonEmptyArray(toSchedule)) {
-      await LocalNotifications.schedule({ notifications: toSchedule });
+      await this.api.schedule({ notifications: toSchedule });
+    }
+  }
+
+  /**
+   * Ids of notifications due within `MAX_LATE_DELIVERY_MS`, which may not be shown yet.
+   * Read from the db, as native `getPending` returns times as text
+   */
+  private async getLateNotificationIds() {
+    const now = Date.now();
+    const dbNotifications = await this.getDBNotifications();
+    const late = dbNotifications.filter((n) => {
+      const msSinceDue = now - new Date(n.schedule.at).getTime();
+      return msSinceDue >= 0 && msSinceDue <= MAX_LATE_DELIVERY_MS;
+    });
+    return new Set(late.map((n) => n.id));
+  }
+
+  /** Cancel late notifications matching `filterFn`, e.g. by `extra.campaign_id`. Db records kept */
+  public async cancelLateNotifications(filterFn: (notification: { extra?: any }) => boolean) {
+    const lateIds = await this.getLateNotificationIds();
+    const { notifications } = await this.api.getPending();
+    const toCancel = notifications.filter((n) => lateIds.has(n.id) && filterFn(n));
+    if (isNonEmptyArray(toCancel)) {
+      await this.api.cancel({ notifications: toCancel });
     }
   }
 
@@ -166,7 +258,7 @@ export class LocalNotificationService extends AsyncServiceBase {
 
     try {
       // Return state of already granted
-      const { display } = await LocalNotifications.checkPermissions();
+      const { display } = await this.api.checkPermissions();
       if (display === "granted") {
         return true;
       }
@@ -181,7 +273,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       const granted = await Promise.race([
         new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
         new Promise<boolean>(async (resolve) => {
-          const { display } = await LocalNotifications.requestPermissions();
+          const { display } = await this.api.requestPermissions();
           // Keep notification service permission status (and authored field) in sync
           await this.notificationService.checkPermissions();
           resolve(display === "granted");
@@ -327,6 +419,8 @@ export class LocalNotificationService extends AsyncServiceBase {
     if (!notification.schedule) {
       throw new Error(`no schedule supplied for notification\n${notification._row_id}`);
     }
+    // let Android deliver while the device is idle, not only once it next wakes
+    notification.schedule = { ...notification.schedule, allowWhileIdle: true };
     // Capacitor notifications use a random integer as id, however we also want to retain the id of the
     // row used to trigger the notification to avoid duplicates. Ideally this _row_id should be the primary
     // key, however swapping the columns would require additional db migration so just retaining both for now
@@ -362,7 +456,7 @@ export class LocalNotificationService extends AsyncServiceBase {
    */
   public async removeNotificationsWithoutRescheduling(ids: number[]) {
     if (!isNonEmptyArray(ids)) return;
-    await LocalNotifications.cancel({ notifications: ids.map((id) => ({ id })) });
+    await this.api.cancel({ notifications: ids.map((id) => ({ id })) });
     await this.removeDBNotifications(ids);
     // Keep in-memory records in step until the next reschedule rebuilds them
     const removed = new Set(ids);
@@ -390,7 +484,7 @@ export class LocalNotificationService extends AsyncServiceBase {
     const { immediateNotification, rowId } = createTestCopy(notification, notificationDeliveryTime);
     await this.scheduleNotification(immediateNotification, rowId);
     // ensure api notification scheduled immediately
-    await LocalNotifications.schedule({ notifications: [immediateNotification] });
+    await this.api.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNativePlatform() && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:

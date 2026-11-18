@@ -79,6 +79,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     ...defineBaseParameters(),
   } as MergeParams<TParams>;
   public onInitialised = input<(() => void) | undefined>(undefined);
+  public initialised = signal(false);
 
   protected variableStore: VariableStore = inject(VariableStore);
   protected evaluationService = inject(EvaluationService);
@@ -133,6 +134,10 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
   }
 
   public init(): void {
+    if (this.initialised()) {
+      return;
+    }
+
     const row = this.row();
 
     this.value = this.variableStore.asSignal({ name: this.name(), type: this.storeType });
@@ -164,7 +169,11 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
 
     this.setParams();
 
-    this.rowRegistry.register(this);
+    if (!this.rowRegistry.has(this.name())) {
+      this.rowRegistry.register(this);
+    }
+
+    this.initialised.set(true);
   }
 
   public onEmittedValue(event: RowEmitEvent) {
@@ -302,7 +311,7 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
       this.namespace(),
       this.params.valueType.value()
     )
-      ? this.variableStore.watchMultipleWithDescendants(dependencies)
+      ? this.variableStore.watchMultipleWithDescendants(dependencies, this.namespace())
       : this.variableStore.watchMultiple(dependencies);
 
     const sub = watcher.subscribe(async () => {

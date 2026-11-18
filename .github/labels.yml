@@ -121,5 +121,20 @@
     "color": "DDCD15",
     "description": "Core updates, refactoring and code quality improvements",
     "name": "maintenance"
+  },
+  {
+    "color": "BFD4F2",
+    "description": "Assistant knowledge base only (.claude/, AGENTS.md, CLAUDE.md)",
+    "name": "assistant"
+  },
+  {
+    "color": "168700",
+    "description": "Pull requests that update javascript code",
+    "name": "javascript"
+  },
+  {
+    "color": "2b67c6",
+    "description": "Pull requests that update python code",
+    "name": "python"
   }
 ]

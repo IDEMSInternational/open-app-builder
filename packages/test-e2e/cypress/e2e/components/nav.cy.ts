@@ -16,4 +16,11 @@ describe("nav component", () => {
     cy.url().should("include", "/template/test_nav_target");
     cy.getDataTest("targetTitle").contains("Dynamic Title");
   });
+
+  it("click triggers navigation with a parameter from a nested loop", () => {
+    cy.getDataTest("nestedLoop.1.nestedNavButton").click();
+
+    cy.url().should("include", "/template/test_nav_target");
+    cy.getDataTest("targetTitle").contains("Nested Title 2");
+  });
 });

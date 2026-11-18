@@ -1,0 +1,72 @@
+<ion-content class="ion-padding">
+  @if (dataListName(); as name) {
+  <div class="header">
+    <h2>{{ name }}</h2>
+    @if (contents()) {
+    <oab-sheet-link
+      flowType="data_list"
+      [flowName]="name"
+      [sourceUrl]="sourceUrl()"
+    ></oab-sheet-link>
+    }
+  </div>
+  @if (contents()) {
+  <table class="source">
+    <tbody>
+      <tr>
+        <th>Url</th>
+        <td>
+          <a [href]="source()?.url" target="_blank" rel="noopener">{{ source()?.url }}</a>
+        </td>
+      </tr>
+      <tr>
+        <th>Path</th>
+        <td>{{ source()?.path }}</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>{{ source()?.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  } @if (!contents()) {
+  <p>No data list named "{{ name }}". <a routerLink="/data_list">See all data lists</a></p>
+  } @else if (!flow()) {
+  <p>Loading…</p>
+  } @else {
+  <p class="summary">{{ rows().length }} rows</p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          @for (column of columns(); track column) {
+          <th>{{ column }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of visibleRows(); track $index) {
+        <tr>
+          @for (column of columns(); track column) {
+          <td>{{ formatCell(row[column]) }}</td>
+          }
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  @if (hiddenRowCount() > 0) {
+  <p class="summary">{{ hiddenRowCount() }} more rows not shown</p>
+  } } } @else {
+  <h3>Select a Data List</h3>
+  <ion-searchbar
+    [ngModel]="filterTerm()"
+    (ngModelChange)="filterTerm.set($event || '')"
+  ></ion-searchbar>
+  <ion-list>
+    @for (name of filteredDataLists(); track name) {
+    <ion-item [routerLink]="name">{{ name }}</ion-item>
+    }
+  </ion-list>
+  }
+</ion-content>

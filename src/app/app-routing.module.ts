@@ -20,6 +20,10 @@ const featureRoutes: Routes = [
       ),
   },
   {
+    path: "data_list",
+    loadChildren: () => import("./reactive-templates/data-list").then((m) => m.DATA_LIST_ROUTES),
+  },
+  {
     path: "notifications",
     loadChildren: () =>
       import("./feature/notification/notification.module").then((m) => m.NotificationsModule),

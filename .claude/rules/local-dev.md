@@ -56,4 +56,19 @@
    false; on a device you set that from "Developer mode" (`enter_dev_mode`), using `@global.dev_mode_code` /
    `test_mode_code`, then the app restarts. `/notifications` and `/campaigns` are the built-in notification
    debug pages. (found 2026-11-04: kids_teens_mx)
+   
+11. **Previewing a debug sheet that isn't in Drive yet** (e.g. for a new component): write the workbook as an
+   xlsx (SheetJS from `packages/scripts/node_modules/xlsx`, tabs `==content_list==` and the template) into
+   `<deployment>/tasks/gdrive/outputs/sheets/<sheets folder name>/…`, then run `yarn workflow sync_sheets
+   --skip-download`; every xlsx in that folder is converted. The next sync *with* download deletes it, since
+   files not on Drive are removed (`gdrive-tools` `download.ts` `prepareSyncActionsList`).
+   (verified 2026-11-05: debug `comp_plh_progress_summary`)
+
+12. **Screenshotting the app headlessly** (puppeteer is in `packages/test-visual/node_modules`): once assets
+   are populated, serve with `yarn ng serve --no-open` (`yarn start` opens a browser). Dismiss first-launch
+   pop-ups by calling `.dismiss()` on each `ion-modal`. For a full-page shot, size the viewport to the
+   largest `ion-content` `getScrollElement()` height, as pages scroll inside it. Switch theme by setting
+   `data-theme` on `<html>`. For RTL, set `dir` on the app's own `[dir]` element (bound in
+   `app.component.html`); `<html dir>` is overridden. (verified 2026-11-05)
+
 

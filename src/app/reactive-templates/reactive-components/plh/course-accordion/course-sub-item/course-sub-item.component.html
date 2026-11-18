@@ -1,0 +1,20 @@
+<div
+  class="course-sub-item"
+  [attr.data-state]="state()"
+  [attr.data-test]="name()"
+  (click)="handleClick()"
+>
+  <span class="course-sub-item-title">{{ value() || params.title.value() }}</span>
+  <div class="state-container">
+    @if (state() === "completed") {
+      <span class="state-badge">
+        <p>{{ params.completedText.value() | uppercase }}</p>
+      </span>
+    } @else if (state() === "locked") {
+      <span class="state-badge">
+        <p>{{ params.lockedText.value() | uppercase }}</p>
+      </span>
+    }
+    <ion-icon [name]="iconName()"></ion-icon>
+  </div>
+</div>

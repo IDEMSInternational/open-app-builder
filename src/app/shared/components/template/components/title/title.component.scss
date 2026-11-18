@@ -1,6 +1,7 @@
 @use "/src/theme/mixins";
 
 $text-color: var(--title-text-color, var(--ion-color-primary-900));
+$font-family: var(--title-font-family, inherit);
 
 .title-wrapper {
   display: flex;
@@ -14,6 +15,7 @@ $text-color: var(--title-text-color, var(--ion-color-primary-900));
     margin: 0;
   }
   h1 {
+    font-family: $font-family;
     line-height: var(--line-height-text-large);
     font-weight: var(--font-weight-bold);
     color: $text-color;

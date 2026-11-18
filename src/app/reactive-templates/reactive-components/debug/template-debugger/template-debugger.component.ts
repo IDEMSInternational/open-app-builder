@@ -6,6 +6,7 @@ import {
   DebuggerTitleDirective,
 } from "../debugger-base/debugger-base.component";
 import { LocalVariableStoreDebuggerComponent } from "../local-variable-store-debugger/local-variable-store-debugger.component";
+import { SheetLinkComponent } from "../sheet-link/sheet-link.component";
 
 @Component({
   selector: "oab-template-debugger",
@@ -16,6 +17,7 @@ import { LocalVariableStoreDebuggerComponent } from "../local-variable-store-deb
     DebuggerInfoDirective,
     DebuggerTitleDirective,
     LocalVariableStoreDebuggerComponent,
+    SheetLinkComponent,
   ],
 })
 export class TemplateDebuggerComponent {

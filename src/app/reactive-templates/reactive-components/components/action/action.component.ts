@@ -5,6 +5,7 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  signal,
 } from "@angular/core";
 import { defineParameters } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
@@ -38,6 +39,7 @@ export class ActionComponent
   private readonly setVariableRows = new Map<string, SetVariableComponent>();
 
   private readonly componentRefs: ComponentRef<any>[] = [];
+  private actionInitialized = signal(false);
 
   public actionParameters(): IActionParameter[] {
     return Array.from(this.setVariableRows.values()).map((row) => {
@@ -100,6 +102,10 @@ export class ActionComponent
   }
 
   public init(): void {
+    if (this.actionInitialized()) {
+      return;
+    }
+
     super.init();
 
     // An action's expression should be its own name if not already set.
@@ -134,6 +140,7 @@ export class ActionComponent
     }
 
     this.actionRegistry.register(this);
+    this.actionInitialized.set(true);
   }
 
   public ngOnDestroy(): void {

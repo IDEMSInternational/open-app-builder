@@ -37,6 +37,9 @@ export class TemplatePopupComponent {
   }
 
   dismissOnBackdrop(e: MouseEvent) {
+    // Fullscreen popups have no visible backdrop (it is painted with the popup background), but on wide
+    // screens the backdrop still shows either side of the content, so clicks there should not dismiss
+    if (this.props.fullscreen) return;
     const el = e.target as HTMLElement;
     if (el.classList.contains("popup-backdrop")) {
       this.dismiss();
