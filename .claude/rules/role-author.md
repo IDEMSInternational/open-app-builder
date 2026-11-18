@@ -79,17 +79,9 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Notification sent to users it shouldn't reach | `!==`/`===` against a number on a text field | below: Variables |
 | One of two scheduled notifications never arrives | same campaign row in two `campaign_list` schedules | below: Variables |
 | Date condition still true after its field is reset to `false` | `new Date(false)` is 1 Jan 1970 | below: Variables |
-
-| Date condition still true after its field is reset to `false` | `new Date(false)` is 1 Jan 1970 | below: Variables |
-
 | Button `variant`/colour has no visible effect | unknown variant, or theme's `information` style wins | below: Layout |
-
 | Loop condition/toggle true for every item, only with text values | `@fields.@item.x == @item.y` compares unquoted text | below: Loops |
-
-| A counter jumps or a sum looks like "011" | \+` on a `set_local`/`set_field` value that is text | below: Variables |`
-
-
-
+| A counter jumps or a sum looks like "011" | `+` on a `set_local`/`set_field` value that is text | below: Variables |
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -113,26 +105,22 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   every tab in that workbook is skipped with nothing in `packages/scripts/logs/error.log`. The app then fails at
   runtime with `[template] "<name>" not found`. Easy to do when deleting rows at the top of the tab.
   (found 2026-09-25: PLH proximal outcomes, 20 flows missing)
-  - **A data list column name with a space or symbol blanks every page that loads the list.** Lists used by
+- **A data list column name with a space or symbol blanks every page that loads the list.** Lists used by
   a page are loaded into the on-device database (RxDB), which only accepts names matching
   `^[a-zA-Z](…[a-zA-Z0-9])?$`; anything else throws `RxError (SC1) fieldnames do not match the regex` and
   the page stays blank. Data pipes copy columns into generated lists, so one bad column can break many
   modules. Use letters, digits and `_` in column headers. (found 2026-11-03: kids_teens_mx MX relax
   `New version` → 42 `<module>_article_tasks` lists, content 1.1.39–1.1.44)
-
-
 - **A hyperlink set on a spreadsheet cell does not reach the app; only the cell's text does.** `xlsxToJson`
   (`xlsx.utils.ts`) ignores the cell's link field, and the text component decides links from the text via
-  `parseMarkdown` (`utils.ts`). `https://…`, lowercase `www.…` and emails become links; `example.com` stays plain
-  text; `Www.example.com` and `[x](example.com)` become relative links that miss the website. Write
+  `parseMarkdown` (`utils.ts`). `https://…`, lowercase `www.…` and emails become links; `example.com` stays
+  plain text; `Www.example.com` and `[x](example.com)` become relative links that miss the website. Write
   `[example.com](https://example.com)`. (verified 2026-11-02: marked 11.2 in Node and SheetJS round trip)
-
-  - **Tab names (and so `flow_name`s) over 31 characters silently drop the flow.** The xlsx export cuts tab names
+- **Tab names (and so `flow_name`s) over 31 characters silently drop the flow.** The xlsx export cuts tab names
   to 31 characters (Excel limit); `mergeContentsSheet` (`convert/index.ts`) matches `flow_name` to the tab name
   exactly, so the flow is skipped with only a `No Contents: <flow_name>` warning in
   `packages/scripts/logs/warn.log`. Keep tab-based flow names ≤ 31 characters (generated flows can be longer).
   (found 2026-10-29: kids_teens_mx A/B override template `proximal_outcome_base_question_ab_po_scale_3`)
-
 
 ### Actions
 
@@ -179,34 +167,29 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `@local.row`. (verified 2026-08-19)
 - **`text_area` shows the row's `value` column, not a `value:` parameter.** `parameter_list: value: …` is
   silently ignored; pre-fill with `value: @fields.x` in the value column. (verified 2026-09-14)
-
-- **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields are
-  stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is always true
-  even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
+- **Numeric field defaults come back as text, so `!==`/`===` against a number is always true/false.** Fields
+  are stored in localStorage as strings (`template-field.service.ts` `getField`), so `@fields.n !== 0` is
+  always true even when the field is `"0"`. Use `==`/`!=`/`>` rather than `===`/`!==`, e.g. `@fields.n > 0`.
   (found 2026-10-20: ZA `nf_definition_inactive` positive_reinforcement active for every user)
-- **A campaign row listed in two `campaign_list` schedules is only scheduled once.** Notifications are keyed by
-  row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later schedule
-  replaces the earlier one when both pick the same row. Give each schedule its own copy of the row with a
-  distinct id. (found 2026-10-20: ZA win_back/resume_lesson in 2-day and 1-week schedules)
+- **A campaign row listed in two `campaign_list` schedules is only scheduled once.** Notifications are keyed
+  by row `id` (`campaign.service.ts` `scheduleNotification` → `local-notification.service.ts`), so the later
+  schedule replaces the earlier one when both pick the same row. Give each schedule its own copy of the row
+  with a distinct id. (found 2026-10-20: ZA win_back/resume_lesson in 2-day and 1-week schedules)
 - **A date comparison with a field that was reset to `false` is always true.** Fields saved as `false` are
   read back as boolean `false` (`template-field.service.ts` `getField`), and `new Date(false)` is
   1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
   Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
   list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
-
-
 - **A `number_input` text box treats 0 as empty in `!x` / `x == ''` checks.** With `number_input: true` the
   value is stored as a number (`coerceValue`, `text-box.component.ts`), and in JS `!0` and `0 == ''` are both
   true, so a "valid or empty" rule accepts 0 (no warning) while `!!x` disables the button. Test empty with
   `x === '' || x == null`. (found 2026-11-03: kids_teens_mx onboarding_settings_page_10 / _4)
-
 - **Numbers saved by an action come back as text, so `+ 1` joins instead of adding.** Action arguments are
   strings (`set_local: n: 0` stores `"0"`; `setLocalVariable` in `template-action.service.ts` only converts
   `"true"`/`"false"`), unlike a `set_variable` value typed as a number in the sheet. `@calc(@local.n + 1)` then
   gives `"01"`, `"011"`…, and comparisons read that as 11. Wrap the value: `@calc(Number(@local.n) + 1)`.
   Fields behave the same (see numeric field defaults above). (found 2026-11-13: V3 settings `version_taps`, menu
   opened after 3 taps instead of 5)
-
 
 ### Loops and `data_items`
 
@@ -219,7 +202,7 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
 
 - Re-render timing, loops and rows inside `data_items` that ignore `set_local`: see `authoring-validation.md`
   → Runtime.
-  - **Forking a shared workbook into a deployment folder works per tab, by `flow_name`.** Copy the workbook into a
+- **Forking a shared workbook into a deployment folder works per tab, by `flow_name`.** Copy the workbook into a
   folder listed *after* the shared one in the deployment's `sheets_folders`; each tab with an identical
   `flow_name` replaces the shared one, and any tab missing from the copy (even if its `==content_list==` row
   is present) silently falls back to the shared version. A replacing tab is not merged with the shared one, so
@@ -245,9 +228,6 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `parseContextExpression`): `@fields.f == yes` throws again and the fallback is the non-empty string
   `"no == yes"`, which counts as true (toggles on, conditions pass). Numbers happen to work. Quote the item:
   `@fields.@item.x == "@item.y"`. (verified 2026-11-06: debug_ab_tests po_refl toggles)
-
-
-
 
 ### Templates, pop-ups and `nav_stack`
 
@@ -282,14 +262,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
   conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
   (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
-  - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
+- **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
   are processed in its own context before being merged into the child (`template-row.service.ts`
   `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like
   `options_list: name: 1 | text: @local.option_1` resolves to nothing if `option_1` only exists in the child.
   Override plain inputs instead (a static value the child branches on with `condition`). Note `radio_list`
   renders every `answer_list` entry, even one whose text is undefined; only the older `radio_group` drops
   them (`parseAnswerList`, `src/app/shared/utils/utils.ts`). (found 2026-10-30: kids_teens_mx po_scale B)
-
 
 ### Layout and components
 
@@ -308,7 +287,8 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
 - **A `combo_box` badge shows "FALSE" when the badge column holds boolean `false`.**
   `resolveOptionMetaBadgeText` (`combo-box-meta-badge.config.ts`) only treats empty/null as "no badge" and
   stringifies anything else (since PR #3488, 2026-06). Store `""` rather than `false` in the column named by
-  `options_meta_badge_text`, e.g. a separate field set to `@calc(@local.x || "")`. (verified 2026-08-25, MY #315)
+  `options_meta_badge_text`, e.g. a separate field set to `@calc(@local.x || "")`. (verified 2026-08-25,
+  MY #315)
 - **A `display_group` without `style` is a row.** The default is `style: row` (`display-group.component.ts`),
   so wrapping a `header` and a page in a display group puts them side by side, and every child after the
   first gets a `1em` left margin (`display-group.component.scss`). Add `parameter_list: style: column` to any
@@ -327,8 +307,6 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   colours with higher specificity (`themes/plh_kids_teens/_overrides.scss`). To change the colour, set
   `style:` instead, e.g. `style: navigation` (primary-variant, bright turquoise in MX). (verified 2026-11-05:
   V3 debug_complete_course)
-
-
 
 ### Translations
 
@@ -350,4 +328,3 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   The "translation sync" action does **not** commit to main — it opens a PR (branch `create-pull-request/patch`)
   whose Deployment Preview run is green before merge. Locally on `main` the strings stay English until that PR
   is merged or checked out. (verified 2026-10-16: kids_teens_my PR #281)
-
