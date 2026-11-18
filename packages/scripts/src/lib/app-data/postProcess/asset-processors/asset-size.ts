@@ -10,7 +10,6 @@ const MAX_BUNDLED_SIZE_MB = 150;
 
 export interface IAssetPackSizeSummary {
   packName: string;
-  archiveFileName: string;
   /** Size of the zip the app downloads */
   archiveBytes: number;
   /** Combined size of the files once extracted */
@@ -50,7 +49,7 @@ export function logAssetSizeSummary(params: {
     const packLines = packs.map((pack) => {
       const archiveMB = kbToMB(pack.archiveBytes / 1024);
       const rawMB = kbToMB(pack.rawBytes / 1024);
-      return `  ${pack.packName}: ${archiveMB} MB download (${rawMB} MB unzipped)\n    ${pack.archiveFileName}`;
+      return `  ${pack.packName}: ${archiveMB} MB download (${rawMB} MB unzipped)`;
     });
     sections.push(["Asset packs (managed in remote assets storage):", ...packLines].join("\n"));
   }
@@ -78,9 +77,9 @@ function summariseBundledAssets(assets: IAssetEntriesByType) {
   }
   const overrideEntries = Object.entries(overrideKB);
   const bundledAssetsKB = overrideEntries.reduce((total, [, kb]) => total + kb, baseKB);
-  const lines = [`base: ${kbToMB(baseKB)} MB`];
+  const lines: string[] = [];
   if (overrideEntries.length > 0) {
-    lines.push("overrides:");
+    lines.push(`base: ${kbToMB(baseKB)} MB`, "overrides:");
     for (const [key, kb] of overrideEntries) {
       lines.push(`  ${key}: ${kbToMB(kb)} MB`);
     }
