@@ -31,39 +31,26 @@ $badge-text-color: var(--plh-lesson-cta-badge-text-color, black);
   background-position-x: center;
   background-size: cover;
 
-  // The badge is a full-width row in the card's own layout (not positioned on top of it), pulled up over
-  // the card's top border with negative margins. A label that wraps onto more lines therefore makes the
-  // card taller instead of covering the card's title or the content above the card.
+  // A row of the card, so a wrapped label makes the card taller
   .badge {
-    // Half the height of a one-line badge: used as corner radius and side padding, so one line reads as a
-    // pill and a wrapped label becomes a rounded rectangle with its text clear of the corners
+    // Half the height of a one-line badge
     $badge-radius: 14px;
-    // Fixed overhang (a percentage of the badge's own width pushed long labels off screen), sized so the
-    // badge text starts in line with the card's left border: badge padding + badge border + card border
-    $badge-overhang: calc(#{$badge-radius} + 2px);
-    $card-padding-top: var(--large-padding);
-    $card-padding-x: var(--regular-padding);
-    $card-gap: var(--small-padding);
+    // Aligns badge text with the card border: badge padding + badge border + card border
+    $badge-overhang: $badge-radius + 2px;
 
-    display: flex;
-    align-self: flex-start;
-    // Own row, from the overhang to the card's right padding edge
-    flex: 0 0 calc(100% + #{$card-padding-x} + #{$badge-overhang});
-    // Badge top sits one radius above the card's top border, so a one-line badge is centred on it
-    margin-top: calc(-1 * #{$badge-radius});
-    margin-left: calc(-1 * (#{$card-padding-x} + #{$badge-overhang}));
-    // With the one-line badge's lower half and the row gap, makes up the card's top padding, so the content
-    // starts where it would without a badge; each extra line of the label pushes it down
-    margin-bottom: calc(#{$card-padding-top} - #{$badge-radius} - #{$card-gap});
+    flex: 1 0 100%;
+    min-height: 2 * $badge-radius;
+    margin-top: -$badge-radius;
+    margin-inline-start: calc(-1 * var(--regular-padding) - #{$badge-overhang});
+    // Card top padding, less the badge's lower half and the row gap
+    margin-bottom: calc(var(--large-padding) - #{$badge-radius} - var(--small-padding));
 
     .badge-text {
       width: fit-content;
-      min-width: 0;
+      overflow-wrap: anywhere;
       background-color: var(--ion-background-color);
       color: $badge-text-color;
-      border-style: solid;
-      border-width: 1px;
-      border-color: $border-color;
+      border: 1px solid $border-color;
       border-radius: $badge-radius;
       padding: 4px $badge-radius;
       font-size: var(--font-size-text-small);
