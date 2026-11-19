@@ -4,6 +4,10 @@ $control-background: var(--audio-control-background, var(--ion-color-primary-500
 
 @mixin compact-play-button {
   @include mixins.medium-square;
+  // Keep the button round: on iOS, Ionic sets a min-height and padding that grow with the text size
+  min-height: 0;
+  --padding-start: 0;
+  --padding-end: 0;
   --background: #{$control-background};
   --border-radius: var(--ion-border-radius-rounded);
   --box-shadow: var(--ion-default-box-shadow);
@@ -179,6 +183,9 @@ ion-button.btn-play[data-variant~="compact"] {
       }
       .btn-play {
         @include mixins.large-square;
+        min-height: 0;
+        --padding-start: 0;
+        --padding-end: 0;
         --background: #{$control-background};
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;

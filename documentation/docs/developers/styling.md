@@ -163,7 +163,9 @@ Text grows with the device's text size setting (Dynamic Type on iOS). On iOS, Io
 
 Values that are not a single px length (`em`, `rem`, `var()`) are left as they are. An `em` size already follows the text around it. A `rem` size also grows, but isn't limited by `--text-scale-max`, and renders about 6% larger on iOS than on the web, as the iOS root is 17px.
 
-Icons (`--icon-size-*`) and other box sizes are not text sizes, and stay fixed. A box that holds text should set a `min-height` rather than a `height`, so the text isn't cut off when it grows.
+Icons (`--icon-size-*`) and other box sizes are not text sizes, and stay fixed. A box that holds text must grow with it: use a `min-height` rather than a `height`, or, where a fixed height is part of the design, scale the height too (`height: text-size.scaled(44px)`, as for text boxes).
+
+On iOS, Ionic gives every `ion-button` a `min-height` in `em`, which grows with the text size and wins over a fixed `height`. An icon-only button with a fixed size, such as a round play button, needs `min-height: 0` to keep its shape.
 
 To preview larger text in a browser, set a larger font size on `html` in the developer tools, e.g. `20px` for 125%.
 

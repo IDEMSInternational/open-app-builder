@@ -142,7 +142,7 @@
   --checkbox-label-max-width: 290px;
 
   // Text box //
-  --text-box-height: 44px;
+  --text-box-height: #{text-size.scaled(44px)};
 
   // Home screen //
   --home-screen-height: 154px;

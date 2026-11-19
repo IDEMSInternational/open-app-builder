@@ -1,4 +1,5 @@
 @use "../../mixins";
+@use "../../text-size";
 
 /// Theme rule overrides shared by all plh_kids_teens_* themes.
 /// Each child theme applies its own overrides after these.
@@ -389,7 +390,7 @@
         --padding-start: 16px !important;
         --padding-top: 14px;
         --padding-bottom: 14px;
-        min-height: 58px;
+        min-height: text-size.scaled(58px);
         background: var(--text-box-background) !important;
         border: 1px solid var(--text-box-border-color) !important;
         color: var(--text-box-color) !important;
@@ -416,7 +417,7 @@
         display: flex;
         align-items: center;
         padding: 0 12px;
-        height: 60px;
+        min-height: 60px;
 
         color: var(--select-text-text-color, var(--ion-color-gray-600));
         font-size: var(--font-size-text-small) !important;
@@ -425,7 +426,7 @@
       }
       .copy-button {
         width: 40%;
-        height: 60px;
+        min-height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;

@@ -13,6 +13,8 @@ $background-secondary: var(--button-background-secondary, var(--gradient-seconda
 }
 ion-button {
   margin: 0 auto;
+  // On iOS, Ionic sets a min-height that grows with the text size; the icon sets the height instead
+  min-height: 0;
   padding-right: var(--tiny-padding);
   ion-icon {
     font-size: xxx-large;
