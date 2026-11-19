@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "sass:map";
 @use "./breakpoints";
+@use "./text-size";
 @use "./themes/index" as themes;
 
 // Ionic Variables and Theming. For more info, please see:
@@ -24,6 +25,8 @@
 @include themes.theme-plh_kids_teens_pa;
 @include themes.theme-plh_kids_teens_my;
 @include themes.theme-plh_kids_teens_mx;
+
+@include text-size.root-variables;
 
 /** Ionic CSS Variables **/
 :root {
@@ -68,29 +71,29 @@
   --ion-border-radius-rounded: 50%;
 
   // Title //
-  --font-size-title-small-device: 20px;
-  --font-size-title-tiny: 24px;
-  --font-size-title-small: 26px;
-  --font-size-title-medium: 30px;
-  --font-size-title-large: 34px;
-  --font-size-title-largest: 36px;
+  --font-size-title-small-device: #{text-size.scaled(20px)};
+  --font-size-title-tiny: #{text-size.scaled(24px)};
+  --font-size-title-small: #{text-size.scaled(26px)};
+  --font-size-title-medium: #{text-size.scaled(30px)};
+  --font-size-title-large: #{text-size.scaled(34px)};
+  --font-size-title-largest: #{text-size.scaled(36px)};
 
   // Subtitle //
-  --font-size-subtitle-small-device: 17px;
-  --font-size-subtitle-small: 18px;
-  --font-size-subtitle-medium: 20px;
-  --font-size-subtitle-large: 22px;
+  --font-size-subtitle-small-device: #{text-size.scaled(17px)};
+  --font-size-subtitle-small: #{text-size.scaled(18px)};
+  --font-size-subtitle-medium: #{text-size.scaled(20px)};
+  --font-size-subtitle-large: #{text-size.scaled(22px)};
 
   // Text //
-  --font-size-text-tiny: 14px;
-  --font-size-text-small: 16px;
-  --font-size-text-medium: 18px;
-  --font-size-text-large: 20px;
-  --line-height-text-tiny: 15px;
-  --line-height-text-small: 20px;
-  --line-height-text: 22px;
-  --line-height-text-medium: 22px;
-  --line-height-text-large: 25px;
+  --font-size-text-tiny: #{text-size.scaled(14px)};
+  --font-size-text-small: #{text-size.scaled(16px)};
+  --font-size-text-medium: #{text-size.scaled(18px)};
+  --font-size-text-large: #{text-size.scaled(20px)};
+  --line-height-text-tiny: #{text-size.scaled(15px)};
+  --line-height-text-small: #{text-size.scaled(20px)};
+  --line-height-text: #{text-size.scaled(22px)};
+  --line-height-text-medium: #{text-size.scaled(22px)};
+  --line-height-text-large: #{text-size.scaled(25px)};
   // Vertical margin above and below paragraphs (all <p> elements)
   --paragraph-spacing: 0.75em;
   // Margin above the first block and below the last block of a text component's content
@@ -103,17 +106,17 @@
   --font-letter-spacing: normal;
 
   // Text box //
-  --text-box-font-size: 18px;
+  --text-box-font-size: #{text-size.scaled(18px)};
 
   // Components variables //
-  --timer-title-size: 22px;
+  --timer-title-size: #{text-size.scaled(22px)};
 
   // Text bubble //
   // Font size of text bubble content. Default matches the size of the surrounding text
   --text-bubble-font-size: 1em;
 
-  --number-selector-short-font-size: 15px;
-  --number-selector-normal-font-size: 20px;
+  --number-selector-short-font-size: #{text-size.scaled(15px)};
+  --number-selector-normal-font-size: #{text-size.scaled(20px)};
 
   // Banner //
   --banner-short-height: 95px;
@@ -147,7 +150,7 @@
 
   // Audio //
   --audio-container-padding: 17px 14px 16px 20px;
-  --audio-title-size: 22px;
+  --audio-title-size: #{text-size.scaled(22px)};
   --audio-title-and-help-height: 30px;
   --audio-bar-height: 10px;
   --audio-play-img-width: 35px;
@@ -161,11 +164,11 @@
 
   // Timer //
   --timer-counter-height: 73px;
-  --timer-counter-font-size: 40px;
+  --timer-counter-font-size: #{text-size.scaled(40px)};
   --timer-title-width: 80%;
 
   // Combo box //
-  --combo-box-font-size-standard: 20px;
+  --combo-box-font-size-standard: #{text-size.scaled(20px)};
   --combo-box-min-height: 55px;
   --combo-box-min-width: 260px;
 
@@ -189,9 +192,9 @@
   --buttons-short-height: 50px;
   --buttons-medium-height: 65px;
   --buttons-tall-height: 80px;
-  --buttons-font-size-tiny: 18px;
-  --buttons-font-size-small: 20px;
-  --buttons-font-size: 20px;
+  --buttons-font-size-tiny: #{text-size.scaled(18px)};
+  --buttons-font-size-small: #{text-size.scaled(20px)};
+  --buttons-font-size: #{text-size.scaled(20px)};
   --buttons-size: 64px;
 
   // Round button //
@@ -205,8 +208,8 @@
   --round-button-wrapper-small-device-width: 84px;
   --round-button-navigation-width: 50px;
   --round-button-navigation-min-height: 50px;
-  --round-button-font-size: 12px;
-  --round-button-home-screen-font-size: 11px;
+  --round-button-font-size: #{text-size.scaled(12px)};
+  --round-button-home-screen-font-size: #{text-size.scaled(11px)};
 
   // Square button //
   --square-button-navigation-min-height: 50px;

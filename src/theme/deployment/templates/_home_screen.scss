@@ -1,4 +1,5 @@
 @use "../../mixins.scss";
+@use "../../text-size";
 
 /// home_screen
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
@@ -44,7 +45,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
     }
     @media (max-width: 320px) {
       h1 {
-        font-size: 18px !important;
+        font-size: text-size.scaled(18px) !important;
       }
     }
     plh-tmpl-display-group {

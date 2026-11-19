@@ -1,7 +1,9 @@
+@use "/src/theme/text-size";
+
 $button-background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 
 ion-button {
-  font-size: 25px;
+  font-size: text-size.scaled(25px);
   font-weight: 500;
   color: var(--ion-color-primary-contrast);
   text-transform: none;

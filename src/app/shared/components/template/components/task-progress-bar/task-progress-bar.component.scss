@@ -1,4 +1,5 @@
 @use "/src/theme/mixins";
+@use "/src/theme/text-size";
 
 // Colour to be used for the progress bar when the component is standalone (explicitly instantiated from a template)
 // When instantiated programmatically from a parent component, the progress bar colour can be overridden by setting the --progress-bar-color from the parent
@@ -98,7 +99,7 @@ $progress-bar-height: var(--task-progress-bar-height, 5px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 28px;
+    font-size: text-size.scaled(28px);
     font-weight: var(--font-weight-medium);
     color: $task-progress-bar-text-color;
   }
