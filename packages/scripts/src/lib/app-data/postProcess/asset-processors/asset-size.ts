@@ -51,7 +51,9 @@ export function logAssetSizeSummary(params: {
   }
 
   if (packs.length > 0) {
-    const packLines = packs.map((pack) => {
+    // Sorted by name, matching the order of the deployment report
+    const sortedPacks = [...packs].sort((a, b) => (a.packName > b.packName ? 1 : -1));
+    const packLines = sortedPacks.map((pack) => {
       const archiveMB = kbToMB(pack.archiveBytes / 1024);
       const rawMB = kbToMB(pack.rawBytes / 1024);
       return `  ${pack.packName}: ${archiveMB} MB download (${rawMB} MB unzipped)`;

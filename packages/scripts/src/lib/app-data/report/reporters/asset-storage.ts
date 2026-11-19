@@ -48,20 +48,20 @@ export class AssetStorageReport {
       }
       data.push(this.allPacksRow(packs, installedKB));
       description +=
-        " Asset packs are unzipped once downloaded and the zip is not kept, so each pack takes up its unzipped size. Users only have the packs the app has downloaded for them, so actual storage falls between the two totals.";
+        " Asset packs are unzipped once downloaded and the zip is not kept, so each pack takes up its unzipped size. Users only have the packs the app has downloaded for them, so the actual size on a device falls between the two totals.";
       footer += " Files that appear in more than one asset pack are stored once and counted once.";
     }
 
-    const assets_storage: IReportTable = {
+    const app_size_on_device: IReportTable = {
       data,
       display: "collapse_open",
-      title: "Estimated App Storage",
+      title: "Estimated App Size on Device",
       description,
       footer,
       type: "table",
       columns: ["item", "download", "on_device"],
     };
-    return { assets_storage };
+    return { app_size_on_device };
   }
 
   private row(item: string, on_device: string, download = NO_VALUE): IAssetStorageRow {

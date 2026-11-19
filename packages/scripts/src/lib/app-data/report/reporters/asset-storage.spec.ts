@@ -6,7 +6,7 @@ const BUNDLED: IAssetStorageData["bundled"] = {
 };
 
 const generate = async (data: Omit<IAssetStorageData, "contentKB">) =>
-  (await new AssetStorageReport({ ...data, contentKB: 1000 }).process()).assets_storage;
+  (await new AssetStorageReport({ ...data, contentKB: 1000 }).process()).app_size_on_device;
 
 /** yarn workspace scripts test -t asset-storage.spec.ts */
 describe("Asset Storage Report", () => {
