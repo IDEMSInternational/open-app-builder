@@ -72,3 +72,9 @@
    `app.component.html`); `<html dir>` is overridden. (verified 2026-11-05)
 
 
+13. **An asset folder whose name changes only in capital letters keeps its old name in `src/assets` on Windows.**
+    Windows ignores case, so copying `one_on_one_time/` over an existing `One_on_one_time/` keeps the old
+    folder name, but `ng serve` matches paths case-sensitively and returns 404, so the images vanish only
+    locally. Check by fetching both spellings from `http://localhost:4200/assets/app_data/assets/…`; fix by
+    deleting the folder under `src/assets/app_data/assets/` and re-running `populate_src_assets`.
+    (found 2026-11-19: MX `comic/relation/One_on_one_time`)
