@@ -31,6 +31,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     info_click: true,
     notification_interacted: true,
     notification_received: true,
+    nav_enter: true,
     nav_resume: true,
     on_progress: true,
     sent: true,

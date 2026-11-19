@@ -438,6 +438,7 @@ export namespace FlowTypes {
     | "completed"
     | "data_changed"
     | "info_click"
+    | "nav_enter" // page or nav-stack template comes to the front (first visit, return, or pop-up/nav stack above it closing)
     | "nav_resume" // return to template after navigation or popup close;
     | "notification_interacted"
     | "notification_received"

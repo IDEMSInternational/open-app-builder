@@ -67,6 +67,8 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Follow-on row / pop-up never appears after an action list | the list rewrites a value its condition depends on | validation |
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
 | Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
+| Pop-up opened from `nav_enter` reopens every time it is closed | closing it fires `nav_enter` again | below: Templates |
+| Page's `nav_enter` pop-up opens together with a nav stack's pop-up | the stack closes, then opens a pop-up | below: Templates |
 | Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Overriding |
 | Page blank, console `RxError (SC1) fieldnames do not match the regex` | data list column name with a space or symbol | below: Workbooks |
 | Flow missing, only `No Contents: <flow_name>` in `warn.log` | tab name over 31 characters, or tab renamed but not its `==content_list==` row | below: Workbooks |
@@ -272,6 +274,17 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
   conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
   (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
+  A page with a `nav_enter` row needs neither workaround: it is reprocessed when the stack closes, before its
+  `nav_enter` actions run (`template-lifecycle.service.ts`). (verified 2026-11-19: local debug probe)
+- **`nav_enter` fires each time a page or nav-stack template comes to the front, including in between.**
+  `TemplateLifecycleService` (`template-lifecycle.service.ts`) works out the template in front from the active
+  page, open nav stacks (removed at `onWillDismiss`) and pop-ups (`popup_child`, `standaloneTemplateName`),
+  and fires on every change. So `completed | nav_stack: close_top` then `completed | pop_up: x` runs the page's
+  `nav_enter` actions as `x` opens, and a pop-up opened from `nav_enter` reopens every time it is closed unless
+  its row's condition uses a field its own actions set (e.g. `x_shown`). For the hand-over, use a hold field set
+  by the stack before closing, or let the page open the pop-up from a field the stack sets
+  (`documentation/docs/authors/navigation-triggers.md`). Only page and nav-stack root templates get it; a
+  nested or pop-up template that declares it logs a console warning. (verified 2026-11-19: local debug probe)
 - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
   are processed in its own context before being merged into the child (`template-row.service.ts`
   `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like

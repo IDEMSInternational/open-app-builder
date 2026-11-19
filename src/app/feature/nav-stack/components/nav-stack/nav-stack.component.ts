@@ -1,5 +1,7 @@
-import { Component, Input } from "@angular/core";
-import { ModalController } from "@ionic/angular";
+import { Component, inject, Input, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { IonModalToken, ModalController } from "@ionic/angular";
+import { TemplateContainerComponent } from "src/app/shared/components/template/template-container.component";
+import { TemplateLifecycleService } from "src/app/shared/components/template/services/template-lifecycle.service";
 
 export interface INavStackConfig {
   templateName: string;
@@ -15,9 +17,23 @@ export interface INavStackConfig {
   templateUrl: "./nav-stack.component.html",
   standalone: false,
 })
-export class NavStackComponent {
+export class NavStackComponent implements OnInit, OnDestroy {
   @Input() config: INavStackConfig;
+  private container = viewChild(TemplateContainerComponent);
+  private modal = inject(IonModalToken, { optional: true });
+  private lifecycleService = inject(TemplateLifecycleService);
+
   constructor(private modalCtrl: ModalController) {}
+
+  ngOnInit() {
+    this.lifecycleService.addNavStack(this.container);
+    // no longer in front once the nav stack starts closing
+    this.modal?.onWillDismiss().then(() => this.lifecycleService.removeNavStack(this.container));
+  }
+
+  ngOnDestroy() {
+    this.lifecycleService.removeNavStack(this.container);
+  }
 
   public close() {
     this.modalCtrl.dismiss();
