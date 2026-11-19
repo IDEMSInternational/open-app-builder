@@ -13,6 +13,8 @@ export interface ITemplateActionServiceHandle {
     actions: FlowTypes.TemplateRowAction[],
     _triggeredBy?: FlowTypes.TemplateRow
   ): void;
+  /** Resolves once the queue has finished, including actions queued after the current one */
+  whenQueueIdle(): Promise<void>;
 }
 
 export type IActionHandler<ParamsType = any> = (

@@ -1,6 +1,6 @@
 /* eslint-disable jasmine/no-unsafe-spy */
 import { TestBed } from "@angular/core/testing";
-import { NavStackService } from "./nav-stack.service";
+import { INavStacksClosedEvent, NavStackService } from "./nav-stack.service";
 import { ModalController } from "@ionic/angular";
 import { INavStackConfig } from "./components/nav-stack/nav-stack.component";
 import { _wait } from "packages/shared/src/utils/async-utils";
@@ -15,7 +15,7 @@ const MOCK_NAV_STACK = (): INavStackConfig => ({
 function createModalSpy() {
   const modalSpy: jasmine.SpyObj<HTMLIonModalElement> = jasmine.createSpyObj(
     "HTMLIonModalElement",
-    ["dismiss", "onWillDismiss", "present", "getAttribute", "setAttribute"]
+    ["dismiss", "onWillDismiss", "onDidDismiss", "present", "getAttribute", "setAttribute"]
   );
   Object.defineProperty(modalSpy, "style", {
     value: {
@@ -29,12 +29,13 @@ function createModalSpy() {
 
   // mock event emitter for dismiss and triggered onWillDismiss
   const modalDismissEvent = new Subject<any>();
-  modalSpy.dismiss.and.callFake((data) => {
+  modalSpy.dismiss.and.callFake(async (data) => {
     modalDismissEvent.next(data);
     modalDismissEvent.complete();
-    return data;
+    return true;
   });
   modalSpy.onWillDismiss.and.callFake(async () => lastValueFrom(modalDismissEvent));
+  modalSpy.onDidDismiss.and.callFake(async () => lastValueFrom(modalDismissEvent));
   modalSpy.present.and.resolveTo();
   return modalSpy;
 }
@@ -116,5 +117,54 @@ describe("NavStackService", () => {
     expect(modalSpy1.dismiss).toHaveBeenCalled();
     expect(modalSpy2.dismiss).toHaveBeenCalled();
     expect(service.openNavStacks().length).toBe(0);
+  });
+
+  describe("navStacksClosed$", () => {
+    let closedEvents: INavStacksClosedEvent[];
+
+    beforeEach(() => {
+      closedEvents = [];
+      service.navStacksClosed$.subscribe((e) => closedEvents.push(e));
+    });
+
+    it("emits when the top nav stack is closed", async () => {
+      await pushNavStack();
+      await service.closeTopNavStack();
+      await _wait(0);
+
+      expect(closedEvents.length).toBe(1);
+    });
+
+    it("emits once when all nav stacks are closed", async () => {
+      await pushNavStack();
+      await pushNavStack();
+      await service.closeAllNavStacks();
+      await _wait(0);
+
+      expect(closedEvents.length).toBe(1);
+    });
+
+    it("emits when a nav stack is dismissed directly (e.g. its close button)", async () => {
+      const modalSpy = await pushNavStack();
+      await modalSpy.dismiss();
+      await _wait(0);
+
+      expect(closedEvents.length).toBe(1);
+    });
+
+    it("passes on the promise for the rest of the closing action list", async () => {
+      const afterActions = Promise.resolve();
+      await pushNavStack();
+      await service.closeTopNavStack(afterActions);
+
+      expect(closedEvents[0].afterActions).toBe(afterActions);
+    });
+
+    it("does not emit when no nav stack is open", async () => {
+      await service.closeTopNavStack();
+      await service.closeAllNavStacks();
+
+      expect(closedEvents.length).toBe(0);
+    });
   });
 });

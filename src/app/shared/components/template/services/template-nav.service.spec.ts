@@ -4,6 +4,7 @@ import { Location } from "@angular/common";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { _wait } from "packages/shared/src/utils/async-utils";
+import { NavStackService } from "src/app/feature/nav-stack/nav-stack.service";
 import { TemplateContainerComponent } from "../template-container.component";
 import { INavQueryParams, TemplateNavService } from "./template-nav.service";
 
@@ -37,6 +38,35 @@ function mockContainer(name: string) {
     name,
     parent: undefined,
   } as Partial<TemplateContainerComponent> as TemplateContainerComponent;
+}
+
+/** Rendered container whose element sits inside the given page or modal element */
+function mockRenderedContainer(layerEl: HTMLElement, parent?: TemplateContainerComponent) {
+  const el = document.createElement("plh-template-container");
+  layerEl.appendChild(el);
+  return {
+    name: "mock_template",
+    parent,
+    template: { flow_name: "mock_template" },
+    elRef: { nativeElement: el },
+    forceRerender: jasmine.createSpy("forceRerender").and.resolveTo(),
+    templateActionService: jasmine.createSpyObj("TemplateActionService", {
+      handleActions: Promise.resolve(),
+    }),
+  } as unknown as TemplateContainerComponent;
+}
+
+function createLayerElement(tagName: "div" | "ion-modal", className: string) {
+  const el = document.createElement(tagName);
+  el.className = className;
+  return el;
+}
+
+function wasResumed(container: TemplateContainerComponent) {
+  const handleActions = container.templateActionService.handleActions as jasmine.Spy;
+  return handleActions.calls
+    .allArgs()
+    .some(([actions]) => actions.some((a) => a.trigger === "nav_resume"));
 }
 
 /**
@@ -122,5 +152,98 @@ describe("TemplateNavService", () => {
 
     expect(modalControllerSpy.create).toHaveBeenCalledTimes(2);
     expect(modal.present).toHaveBeenCalled();
+  });
+
+  describe("nav_resume", () => {
+    let navStackService: NavStackService;
+    let pageEl: HTMLElement;
+    let navStackEl: HTMLIonModalElement;
+
+    beforeEach(() => {
+      navStackService = TestBed.inject(NavStackService);
+      pageEl = createLayerElement("div", "ion-page");
+      navStackEl = createLayerElement("ion-modal", "nav-stack-modal") as HTMLIonModalElement;
+    });
+
+    /** Subscribe containers to resume events, as rendered containers do */
+    function subscribeToNavResume(...containers: TemplateContainerComponent[]) {
+      for (const container of containers) {
+        service.navResume$.subscribe(() => service.handleNavResume(container));
+      }
+    }
+
+    async function closeNavStack(afterActions?: Promise<void>) {
+      navStackService.navStacksClosed$.next({ afterActions });
+      await _wait(0);
+    }
+
+    it("resumes the page and its nested templates when the last nav stack closes", async () => {
+      const page = mockRenderedContainer(pageEl);
+      const nested = mockRenderedContainer(pageEl, page);
+      subscribeToNavResume(page, nested);
+      await closeNavStack();
+
+      expect(wasResumed(page)).toBeTrue();
+      expect(wasResumed(nested)).toBeTrue();
+      // only the top-level template reprocesses, which includes its nested templates
+      expect(page.forceRerender).toHaveBeenCalledOnceWith(false);
+      expect(nested.forceRerender).not.toHaveBeenCalled();
+    });
+
+    it("resumes only the nav stack now on top when a nav stack closes over another", async () => {
+      const page = mockRenderedContainer(pageEl);
+      const navStack = mockRenderedContainer(navStackEl);
+      navStackService.openNavStacks.set([navStackEl]);
+      subscribeToNavResume(page, navStack);
+      await closeNavStack();
+
+      expect(wasResumed(navStack)).toBeTrue();
+      expect(wasResumed(page)).toBeFalse();
+    });
+
+    it("resumes once the action list that closed the nav stack has finished", async () => {
+      const page = mockRenderedContainer(pageEl);
+      subscribeToNavResume(page);
+      let finishActions: () => void;
+      await closeNavStack(new Promise<void>((resolve) => (finishActions = resolve)));
+      expect(wasResumed(page)).toBeFalse();
+
+      finishActions();
+      await _wait(0);
+      expect(wasResumed(page)).toBeTrue();
+    });
+
+    it("does not resume when the closing action list opened a pop-up", async () => {
+      const page = mockRenderedContainer(pageEl);
+      subscribeToNavResume(page);
+      TestBed.inject(ActivatedRoute).snapshot.queryParams = { popup_child: "mock_popup" };
+      await closeNavStack();
+
+      expect(wasResumed(page)).toBeFalse();
+    });
+
+    it("does not resume a previous page that is hidden", async () => {
+      const hiddenPage = mockRenderedContainer(
+        createLayerElement("div", "ion-page ion-page-hidden")
+      );
+      const page = mockRenderedContainer(pageEl);
+      subscribeToNavResume(hiddenPage, page);
+      await closeNavStack();
+
+      expect(wasResumed(page)).toBeTrue();
+      expect(wasResumed(hiddenPage)).toBeFalse();
+    });
+
+    it("does not resume a page covered by a nav stack when a pop-up closes", async () => {
+      const page = mockRenderedContainer(pageEl);
+      const navStack = mockRenderedContainer(navStackEl);
+      navStackService.openNavStacks.set([navStackEl]);
+      // closing a pop-up clears its query params, which every container handles
+      await service.handleQueryParamChange({}, page);
+      await service.handleQueryParamChange({}, navStack);
+
+      expect(wasResumed(page)).toBeFalse();
+      expect(wasResumed(navStack)).toBeTrue();
+    });
   });
 });

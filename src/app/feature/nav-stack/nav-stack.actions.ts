@@ -12,7 +12,7 @@ interface INavStackActionParams {
 export class NavStackActionFactory {
   constructor(private service: NavStackService) {}
 
-  public nav_stack: IActionHandler<INavStackActionParams> = async ({ params, args }) => {
+  public nav_stack: IActionHandler<INavStackActionParams> = async ({ params, args }, host) => {
     const [actionId] = args;
     const childActions = {
       open: async () => {
@@ -25,11 +25,12 @@ export class NavStackActionFactory {
         } as INavStackConfig;
         this.service.pushNavStack(navStackConfig);
       },
+      // the template underneath resumes after the rest of the action list, e.g. a following pop_up
       close_top: async () => {
-        await this.service.closeTopNavStack();
+        await this.service.closeTopNavStack(host?.whenQueueIdle());
       },
       close_all: async () => {
-        await this.service.closeAllNavStacks();
+        await this.service.closeAllNavStacks(host?.whenQueueIdle());
       },
     };
     if (!(actionId in childActions)) {

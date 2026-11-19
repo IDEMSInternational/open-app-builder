@@ -233,6 +233,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
           // allow templateNavService to process actions based on query param change
           await this.templateNavService.handleQueryParamChange(params, this);
         });
+      // resume when returning to this template without a url change (e.g. closing a nav stack)
+      this.templateNavService.navResume$
+        .pipe(takeUntil(this.componentDestroyed$))
+        .subscribe(() => this.templateNavService.handleNavResume(this));
     }
   }
 

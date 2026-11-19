@@ -2,7 +2,9 @@ import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { Subject } from "rxjs";
 import { first } from "rxjs/operators";
+import { NavStackService } from "src/app/feature/nav-stack/nav-stack.service";
 import { FlowTypes } from "src/app/shared/model";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { arrayToHashmapArray, parseBoolean } from "src/app/shared/utils";
@@ -30,11 +32,19 @@ export class TemplateNavService extends SyncServiceBase {
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private templateActionRegistry: TemplateActionRegistry
+    private templateActionRegistry: TemplateActionRegistry,
+    private navStackService: NavStackService
   ) {
     super("TemplateNav");
     this.registerTemplateActionHandlers();
+    this.navStackService.navStacksClosed$.subscribe(async ({ afterActions }) => {
+      await afterActions;
+      this.resumeAfterNavStackClose();
+    });
   }
+
+  /** Emits when the templates now on top should resume, handled by each container */
+  public navResume$ = new Subject<void>();
 
   /**
    * Track list of modals created. As we can navigate repeatedly to the same page we want to avoid recreating same modals
@@ -69,17 +79,75 @@ export class TemplateNavService extends SyncServiceBase {
 
     // HACK - handle rerender on return
     // TODO - merge with hacks folder on merge
-    if (!popup_child && !popup_parent && container.template) {
-      // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
-      // force rerender on top-most template only
-      if (!parent) {
-        await container.forceRerender(false);
-      }
-      // trigger any actions defined for the nav_resume trigger on all templates
-      await container.templateActionService.handleActions([
-        { action_id: "emit", args: ["nav_resume"], trigger: "nav_resume" },
-      ]);
+    if (
+      !popup_child &&
+      !popup_parent &&
+      container.template &&
+      !this.isCoveredByNavStack(container)
+    ) {
+      await this.resumeTemplate(container);
     }
+  }
+
+  /** Resume a container if it is in the layer now on top, following `navResume$` */
+  public async handleNavResume(container: TemplateContainerComponent) {
+    if (container.template && this.isOnTopNavLayer(container)) {
+      await this.resumeTemplate(container);
+    }
+  }
+
+  /**
+   * Resume the top nav stack, or the current page if none are open.
+   * Skipped if a pop-up is open (e.g. the closing action list opened one), as closing it resumes instead
+   */
+  private resumeAfterNavStackClose() {
+    if (this.route.snapshot.queryParams.popup_child) return;
+    this.navResume$.next();
+  }
+
+  private async resumeTemplate(container: TemplateContainerComponent) {
+    // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
+    // force rerender on top-most template only
+    if (!container.parent) {
+      await container.forceRerender(false);
+    }
+    // trigger any actions defined for the nav_resume trigger on all templates
+    await container.templateActionService.handleActions([
+      { action_id: "emit", args: ["nav_resume"], trigger: "nav_resume" },
+    ]);
+  }
+
+  /** The element of the top-level template that a template is rendered within (pop-ups included) */
+  private getRootElement(container: TemplateContainerComponent): HTMLElement | undefined {
+    let root = container;
+    while (root.parent) root = root.parent;
+    return root.elRef?.nativeElement;
+  }
+
+  /**
+   * The layer a template is shown in: its nav-stack modal, the page, or undefined for other overlays
+   * (e.g. a fullscreen pop-up)
+   */
+  private getNavLayer(container: TemplateContainerComponent) {
+    const rootEl = this.getRootElement(container);
+    if (!rootEl) return undefined;
+    const modal = rootEl.closest("ion-modal");
+    if (!modal) return "page";
+    return modal.classList.contains("nav-stack-modal") ? modal : undefined;
+  }
+
+  private isCoveredByNavStack(container: TemplateContainerComponent) {
+    const topNavStack = this.navStackService.openNavStacks().at(-1);
+    const layer = this.getNavLayer(container);
+    return !!topNavStack && layer !== undefined && layer !== topNavStack;
+  }
+
+  private isOnTopNavLayer(container: TemplateContainerComponent) {
+    const topNavStack = this.navStackService.openNavStacks().at(-1);
+    const layer = this.getNavLayer(container);
+    if (topNavStack) return layer === topNavStack;
+    // previous pages stay rendered but hidden, so only the visible page resumes
+    return layer === "page" && !this.getRootElement(container).closest(".ion-page-hidden");
   }
   /*****************************************************************************************************
    *  Nav Actions
@@ -232,7 +300,12 @@ export class TemplateNavService extends SyncServiceBase {
       popup_parent_triggered_by: action._triggeredBy?.name || null,
       popup_variant: variant,
     };
-    this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    // wait for navigation so that later actions see the pop-up in the url (e.g. nav stack resume check)
+    return this.router.navigate([], {
+      queryParams,
+      replaceUrl: true,
+      queryParamsHandling: "merge",
+    });
   }
 
   private async handlePopupActionsFromParent(

@@ -1,16 +1,26 @@
 import { Injectable, signal } from "@angular/core";
 import { ModalController } from "@ionic/angular";
+import { Subject } from "rxjs";
 import { INavStackConfig, NavStackComponent } from "./components/nav-stack/nav-stack.component";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 interface NavStackModal extends HTMLIonModalElement {}
+
+export interface INavStacksClosedEvent {
+  /** When closed by an action, resolves once the rest of its action list has finished */
+  afterActions?: Promise<void>;
+}
 
 @Injectable({
   providedIn: "root",
 })
 export class NavStackService extends SyncServiceBase {
   public openNavStacks = signal<HTMLIonModalElement[]>([]);
+  /** Emits once each time one or more nav stacks close */
+  public navStacksClosed$ = new Subject<INavStacksClosedEvent>();
   private readonly MAX_NAV_STACKS = 10;
+  /** Nav stacks closed by this service, which emits their close event itself */
+  private closingNavStacks = new WeakSet<HTMLIonModalElement>();
 
   constructor(private modalCtrl: ModalController) {
     super("navStack");
@@ -31,13 +41,14 @@ export class NavStackService extends SyncServiceBase {
     return modal;
   }
 
-  public closeAllNavStacks() {
-    return Promise.all(this.openNavStacks().map((navStack) => navStack.dismiss()));
+  public closeAllNavStacks(afterActions?: Promise<void>) {
+    return this.closeNavStacks(this.openNavStacks(), afterActions);
   }
 
-  public async closeTopNavStack() {
-    if (this.openNavStacks().length === 0) return;
-    await this.closeNavStack(this.openNavStacks().length - 1);
+  public async closeTopNavStack(afterActions?: Promise<void>) {
+    const topNavStack = this.openNavStacks().at(-1);
+    if (!topNavStack) return;
+    await this.closeNavStacks([topNavStack], afterActions);
   }
 
   /**
@@ -60,6 +71,10 @@ export class NavStackService extends SyncServiceBase {
 
     // Handle nav stack dismissal here (whether programmatically from service or from nav-stack component)
     modal.onWillDismiss().then(() => this.handleNavStackDismissal(modal));
+    // closed from the nav-stack itself (e.g. close button) rather than by this service
+    modal.onDidDismiss().then(() => {
+      if (!this.closingNavStacks.has(modal)) this.navStacksClosed$.next({});
+    });
 
     this.addNavStackToArray(modal);
     await modal.present();
@@ -76,13 +91,16 @@ export class NavStackService extends SyncServiceBase {
   }
 
   /**
-   * Programmatically dismiss a nav-stack. Handling removing from openNavStacks array is done elsewhere
+   * Programmatically dismiss nav-stacks. Handling removing from openNavStacks array is done elsewhere
    * to handle both programmatic dismissal and dismissal from nav-stack component (e.g. via close button)
    */
-  private async closeNavStack(index: number) {
-    const modal = this.openNavStacks()[index];
-    if (modal) {
-      await modal.dismiss();
+  private async closeNavStacks(modals: HTMLIonModalElement[], afterActions?: Promise<void>) {
+    if (modals.length === 0) return;
+    modals.forEach((modal) => this.closingNavStacks.add(modal));
+    const dismissed = await Promise.all(modals.map((modal) => modal.dismiss()));
+    modals.forEach((modal, i) => !dismissed[i] && this.closingNavStacks.delete(modal));
+    if (dismissed.includes(true)) {
+      this.navStacksClosed$.next({ afterActions });
     }
   }
 

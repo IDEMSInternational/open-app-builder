@@ -109,6 +109,13 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
     copies.forEach((action) => this.actionsQueue.push({ ...action }));
   }
 
+  /** Resolves once the queue has finished, including actions queued after the current one */
+  public async whenQueueIdle() {
+    await lastValueFrom(this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)), {
+      defaultValue: undefined,
+    });
+  }
+
   /** Public method to add actions to processing queue and process */
   public async handleActions(
     actions: FlowTypes.TemplateRowAction[] = [],
@@ -206,9 +213,7 @@ export class TemplateActionService extends SyncServiceBase implements ITemplateA
       log_groupEnd();
     }
     // resolve once full queue processed
-    await lastValueFrom(this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)), {
-      defaultValue: "No action queue",
-    });
+    await this.whenQueueIdle();
     // once all actions have been processed re-render rows (ignore if running standalone without container)
     if (processedActions.length > 0 && this.container) {
       // assume rows might need re-evaluation if actions contain set_field or set_local

@@ -66,7 +66,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Wrong card flashes, then the right one | `data_changed \| set_local` runs after first render | validation |
 | Follow-on row / pop-up never appears after an action list | the list rewrites a value its condition depends on | validation |
 | Rows inside a `data_items` loop ignore `set_local`; nested module restarts | loop children are not re-processed / rebuilt | validation |
-| Page behind a `nav_stack` modal is stale after closing it | nav-stack close does not refresh the page | below: Templates |
+| Page's `nav_resume` actions run when a nav stack closes | closing a stack resumes the page beneath | below: Templates |
 | Translated copy of globals/tab shows English | deployment copy's `flow_name` is a near-miss | below: Overriding |
 | Page blank, console `RxError (SC1) fieldnames do not match the regex` | data list column name with a space or symbol | below: Workbooks |
 | Flow missing, only `No Contents: <flow_name>` in `warn.log` | tab name over 31 characters, or tab renamed but not its `==content_list==` row | below: Workbooks |
@@ -257,21 +257,17 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   only applies in the standalone case: when the template *is* nested, `update_action_list` merges into the
   parent's row, which usually already carries the same handler, and you close one stack too many.
   (verified 2026-09-09)
-- **A `nav_stack` modal does not refresh the page behind it when it closes.** Nav-stack dismissal only removes
-  the modal (`src/app/feature/nav-stack/nav-stack.service.ts`); the automatic re-render `nav_resume` emit only
-  happens on router navigation (`go_to`/`pop_up`, see `template-nav.service.ts` `handleQueryParamChange`). So
-  any `set_variable` on the underlying page (e.g. a `@calc()` over a `@field.*` that the modal changed) stays
-  stale until a manual refresh. Workaround: on the row that opens the stack, add `click | emit: force_reload`
-  **after** `click | nav_stack: open` — that row is inside the underlying page's container chain, so the
-  reload reaches the top-most template and happens invisibly behind the modal. Ordering matters: put it last,
-  or the re-render destroys the row before the modal opens. Not usable: `emit: force_reload` from inside the
-  modal (its container has no parent, so it only reloads itself), or `emit: force_reprocess` anywhere (it
-  deliberately skips `set_variable` rows). (verified 2026-09-09)
-  If the fields only change *later inside the modal* (so a reload at open is too early), latch on the
-  underlying page instead: the opening row ends with `click | emit: completed` (not `force_reload`, which would
-  reset the latch), the parent row handles `completed | set_local: <x>_opened: true`, and the page's
-  conditions use that local. It resets on the next redraw, when everything is recalculated from fields.
-  (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
+- **Closing a nav stack resumes the template underneath.** `NavStackService` emits `navStacksClosed$`, and
+  `TemplateNavService` `resumeAfterNavStackClose` reprocesses the top remaining nav stack, or else the visible
+  page, and fires `nav_resume` on it and its nested templates (`handleNavResume`, layers from `getNavLayer`).
+  After `nav_stack: close_top`/`close_all` it waits for the rest of that action list and skips if a pop-up is
+  then open, since closing the pop-up resumes instead: `close_top` then `pop_up: x` doesn't run the page's
+  `nav_resume` actions under the pop-up. While a stack is open, `nav_resume` doesn't fire on the page beneath.
+  So `set_variable` values from `@fields` that the stack changed are up to date on close, and the earlier
+  workarounds (`click | emit: force_reload` after `nav_stack: open`, or a `completed` latch on the opening row)
+  aren't needed. App builds from before this change don't refresh the page, so the workarounds still apply
+  there. Author docs: `documentation/docs/authors/navigation-triggers.md`. (verified 2026-11-19: debug probe,
+  `set_variable` from `@fields` updated after close; close button, `close_all`, nested stacks)
 - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
   are processed in its own context before being merged into the child (`template-row.service.ts`
   `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like
