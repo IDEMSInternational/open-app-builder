@@ -1264,8 +1264,6 @@ PODS:
     - Capacitor
   - CapacitorSplashScreen (8.0.2):
     - Capacitor
-  - CapacitorStatusBar (8.0.4):
-    - Capacitor
   - CapacitorToast (8.0.1):
     - Capacitor
   - CapawesomeCapacitorAppUpdate (8.1.1):
@@ -1545,7 +1543,6 @@ DEPENDENCIES:
   - "CapacitorScreenOrientation (from `../../node_modules/@capacitor/screen-orientation`)"
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
-  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - "CapacitorToast (from `../../node_modules/@capacitor/toast`)"
   - "CapawesomeCapacitorAppUpdate (from `../../node_modules/@capawesome/capacitor-app-update`)"
   - FirebaseCore (~> 12)
@@ -1635,8 +1632,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/share"
   CapacitorSplashScreen:
     :path: "../../node_modules/@capacitor/splash-screen"
-  CapacitorStatusBar:
-    :path: "../../node_modules/@capacitor/status-bar"
   CapacitorToast:
     :path: "../../node_modules/@capacitor/toast"
   CapawesomeCapacitorAppUpdate:
@@ -1668,7 +1663,6 @@ SPEC CHECKSUMS:
   CapacitorScreenOrientation: 0ccb98cbbfbb1dce509da837a3e35848128417ce
   CapacitorShare: 5b5e53347556bee89ae6163ed20b5b3c25fe75f1
   CapacitorSplashScreen: 7bf61c2001557ff9e195e601c6b87344480d3c65
-  CapacitorStatusBar: ff844df1f126da6c4fbc4028272425fa3a91e7e3
   CapacitorToast: 408036fbd702120d3adde3980b740f3c0fb60c9e
   CapawesomeCapacitorAppUpdate: c952614bc2c82c43ec3c12c06cd8a07b60da6d53
   FirebaseABTesting: 3f0f330ed5e19323fe512006d62a38399a7de7c1
@@ -1706,6 +1700,6 @@ SPEC CHECKSUMS:
   PromisesSwift: 217dea0fd5d2ad65222a109c48698add13cc1c5b
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
 
-PODFILE CHECKSUM: cfb8fbcae584654c0849eac09154bd6c32343a54
+PODFILE CHECKSUM: 84a711fa8ff1d26726c4bcbf62ff06da83a8f7a6
 
 COCOAPODS: 1.16.2
