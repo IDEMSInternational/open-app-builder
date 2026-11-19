@@ -1,5 +1,6 @@
 import { FlowTypes } from "data-models";
 import { FlowParser, IFlowParserOptions } from "./flow.parser";
+import { FlowDebugLog } from "./flowDebugLog";
 import {
   assignTranslatedFields,
   getColumnMetadata,
@@ -19,12 +20,13 @@ import {
  * - Update `_source` (see `FlowParser`)
  */
 export class DataListParser extends FlowParser {
-  override parse(
+  protected override parseFlow(
     flow: FlowTypes.FlowTypeWithData,
-    options: IFlowParserOptions = {}
+    options: IFlowParserOptions,
+    log: FlowDebugLog
   ): FlowTypes.FlowTypeWithData {
-    const { metadataRow, rows } = splitMetadataRow(flow.rows || [], flow.flow_name);
-    const parsed = super.parse({ ...flow, rows }, options);
+    const { metadataRow, rows } = splitMetadataRow(flow.rows || [], log);
+    const parsed = super.parseFlow({ ...flow, rows }, options, log);
     const _metadata = getColumnMetadata(parsed.rows, metadataRow);
     if (Object.keys(_metadata).length === 0) return parsed;
     return { ...parsed, _metadata } as FlowTypes.FlowTypeWithData;

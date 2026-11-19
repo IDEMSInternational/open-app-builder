@@ -215,6 +215,49 @@ describe("Beta Template Parser", () => {
     expect(parseRows(input)).toEqual(expected);
   });
 
+  it("writes unmatched begin and end rows to _debug", () => {
+    const rows = [
+      { type: "end_accordion" },
+      { type: "begin_display_group", name: "a" },
+      { type: "begin_accordion", name: "b" },
+      { type: "end_display_group" },
+    ];
+    const flow = { flow_type: "template", flow_name: "test_template", rows };
+    expect(parseTemplate(flow as FlowTypes.FlowTypeWithData)._debug).toEqual({
+      errors: [
+        '"end_accordion" row has no matching begin row, skipping',
+        '"end_display_group" row closes "begin_accordion"',
+        'Missing "end_display_group" row',
+      ],
+    });
+  });
+
+  it("writes nested templates and navigation to _debug", () => {
+    const rows = [
+      { type: "template", name: "t", value: "header" },
+      { type: "begin_template", name: "card", value: "card_template" },
+      { type: "end_template" },
+      { type: "begin_nav", name: "nav", value: "nav_tabs" },
+      { type: "end_nav" },
+      { type: "button", name: "b", action_list: "click | go_to : plh_parent_menu" },
+    ];
+    const flow = { flow_type: "template", flow_name: "test_template", rows };
+    expect(parseTemplate(flow as FlowTypes.FlowTypeWithData)._debug).toEqual({
+      nested_templates: ["header", "card_template"],
+      navigation: ["nav_tabs", "plh_parent_menu"],
+    });
+  });
+
+  it("omits _debug when there are no messages, replacing any existing _debug", () => {
+    const flow = {
+      flow_type: "template",
+      flow_name: "test_template",
+      rows: [{ type: "text", name: "a" }],
+      _debug: { errors: ["old"] },
+    };
+    expect(parseTemplate(flow as FlowTypes.FlowTypeWithData)).not.toHaveProperty("_debug");
+  });
+
   it("assigns dynamic fields and dependencies to top-level and nested rows", () => {
     const input = [
       { type: "set_variable", name: "count", value: 1 },
@@ -341,7 +384,7 @@ describe("Beta Template Parser", () => {
       rows: [],
       _source,
     } as FlowTypes.FlowTypeWithData;
-    const path = "/deployment/app_data/sheets/test_source.json";
+    const path = "local/test_source.json";
 
     it("removes name and url from transient flows, which is the default", () => {
       expect(parseTemplate(flow, { path })._source).toEqual({ path, type: "transient" });

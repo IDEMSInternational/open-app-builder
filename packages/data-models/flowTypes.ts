@@ -56,15 +56,30 @@ export namespace FlowTypes {
     _source?: {
       /** Name of input source, e.g. folder name */
       name?: string;
-      /** Nested path to flow data, e.g. sheet path */
+      /**
+       * Nested path to flow data, e.g. sheet path. Set by the beta import to the path of the
+       * flow json relative to the external deployment sheets folder, e.g. `google_drive/core/home.json`
+       */
       path?: string;
       /** Remote url of source */
       url?: string;
       /**
        * Set by the beta import: `fixed` when synced from the deployment google drive folders,
-       * `transient` otherwise (`path` is then the absolute path of the flow json)
+       * `transient` otherwise
        */
       type?: "fixed" | "transient";
+    };
+    /**
+     * Errors, warnings and references to other flows found when the flow was processed by the
+     * beta import, shown on the `/debug` page. Omitted if there are none (see `FlowDebugLog`)
+     */
+    _debug?: {
+      errors?: string[];
+      warnings?: string[];
+      /** Names of templates nested in a template (`template` and `begin_template` rows) */
+      nested_templates?: string[];
+      /** Templates navigated to: `nav` and `begin_nav` rows, and `go_to` actions */
+      navigation?: string[];
     };
     process_on_start?: number; // priority order to process template variable setters on startup
   }

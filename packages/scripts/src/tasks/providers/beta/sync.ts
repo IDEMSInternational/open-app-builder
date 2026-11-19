@@ -1,240 +1,82 @@
 import fs from "fs-extra";
-import path from "path";
-import { SCRIPTS_WORKSPACE_PATH, SRC_ASSETS_PATH } from "../../../paths";
+import { logOutput, logWarning } from "../../../utils";
+import { readExternalSourcePath } from "./deploymentConfig";
+import { syncFlowFiles } from "./flows";
 import {
-  cleanupEmptyFolders,
-  copyFileWithTimestamp,
-  generateFolderFlatMap,
-  getFileMD5Checksum,
-  IContentsEntryHashmap,
-  logOutput,
-  logWarning,
-} from "../../../utils";
-import { IDeploymentConfigJson } from "../../../commands/deployment/common";
-import { loadExternalConfig, readExternalSourcePath } from "./deploymentConfig";
-import { processAssets } from "./processAssets";
-import { processFlows } from "./processFlows";
-import { getTranslatedFolder } from "./translations/po";
-import {
-  APP_DATA_PATH,
-  downloadDriveFolders,
-  downloadFixedSheets,
-  downloadTransientSheets,
-  getAppDataFlowPath,
-  getAuthTokenPath,
-  readTransientSheets,
-  tagAppDataFlow,
-  TRANSIENT_SHEETS_CACHE_PATH,
+  isTransientFlowType,
+  listDownloadedTransientFlows,
+  readTransientSheetsList,
+  syncSheets,
   TRANSIENT_SHEETS_LIST_PATH,
+  syncFixedSheetsToExternalFolder,
 } from "./sheets";
+import { getTranslatedFolder } from "./translations/po";
+import { TRANSIENT_FLOW_TYPES } from "./utils";
 
-/** Local cache of assets downloaded from google drive, used to only download changed files */
-const ASSETS_CACHE_PATH = path.resolve(SCRIPTS_WORKSPACE_PATH, "cache", "beta_assets");
-/** Metadata files written by the gdrive downloader that should not be synced as assets */
-const DOWNLOAD_METADATA_FILES = ["_metadata.json", "_contents.json"];
+/**
+ * Syncs combining google drive sheets (`sheets`) with the external deployment flows (`flows`),
+ * which do not use each other. Sheets are synced to the external deployment, then the external
+ * flow jsons that changed are processed into the app assets app_data folder (see `syncFiles`)
+ */
 
-interface ISyncOptions {
-  skipDownload?: boolean;
-  verbose?: boolean;
+/** Sync sheets from the external deployment config `google_drive.sheets_folders` */
+export async function syncFixedSheets() {
+  await syncFixedSheetsToExternalFolder();
+  syncFiles();
 }
 
 /**
- * Sync sheets from google drive to the previously imported external deployment
- * (see `downloadFixedSheets`), then process all sheets into the app assets app_data folder
+ * Sync the transient sheets folder recorded in the transient sheets list, using the auth token it
+ * was created with. The deployment config is not used. Flows replace the json of the same name
+ * in the external deployment (outside the `google_drive` folder), without `_source`, so their
+ * edits are kept there. Flows added to a sheet are added to the transient sheets list
+ * @returns number of sheets and flows downloaded, external jsons updated and flows added to
+ * the transient sheets list
  */
-export async function syncFixedSheets(options: ISyncOptions) {
-  const { verbose = false } = options;
-  const externalSourcePath = readExternalSourcePath();
-  const deploymentConfig = await loadExternalConfig(externalSourcePath);
-  await downloadFixedSheets(externalSourcePath, deploymentConfig, options);
-  processFlows({
-    sourceFlowsFolder: path.resolve(externalSourcePath, "app_data", "sheets"),
-    targetAppDataFolder: path.resolve(SRC_ASSETS_PATH, "app_data"),
-    translationsFolder: getTranslatedFolder(externalSourcePath),
-    verbose,
-  });
-}
-
-/**
- * Download the sheets in the transient sheets list and process the listed flows into the app
- * assets app_data folder, as `transient` flows linked to their sheet (see `tagAppDataFlow`).
- * Only listed flows are updated, and the external deployment folder is not changed
- */
-export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
-  const { verbose = false } = options;
-  const entries = readTransientSheets();
-  if (entries.length === 0) {
-    logOutput({ msg1: "No transient sheets to sync", msg2: TRANSIENT_SHEETS_LIST_PATH });
-    return { sheets: 0, flows: 0, updated: 0 };
+export async function syncTransientSheets() {
+  const { folder } = readTransientSheetsList();
+  if (!folder) {
+    logOutput({ msg1: "No transient sheets folder to sync", msg2: TRANSIENT_SHEETS_LIST_PATH });
+    return { sheets: 0, flows: 0, updated: 0, added: 0 };
   }
   const externalSourcePath = readExternalSourcePath();
-  const deploymentConfig = await loadExternalConfig(externalSourcePath);
-  const { sheets, filePaths } = await downloadTransientSheets(entries, deploymentConfig, {
-    verbose,
+  const folders = [{ id: folder.id, name: "transient sheets" }];
+  const result = await syncSheets(externalSourcePath, folders, {
+    type: "transient",
+    authTokenPath: folder.auth_token_path,
+    flowFilter: isTransientFlowType,
   });
-
-  // Only compare processed output, so unchanged flows are not rewritten
-  const before = new Map(filePaths.map((p) => [p, readAppDataFileFor(p)]));
-  if (filePaths.length > 0) {
-    processFlows({
-      sourceFlowsFolder: TRANSIENT_SHEETS_CACHE_PATH,
-      targetAppDataFolder: APP_DATA_PATH,
-      filePaths,
-      type: "transient",
-      translationsFolder: getTranslatedFolder(externalSourcePath),
-      verbose,
-    });
-    // Parsing removes the url of transient flows, so link each one to its sheet again
-    for (const filePath of filePaths) {
-      const { flow_type, flow_name } = fs.readJsonSync(filePath);
-      const entry = entries.find((e) => e.flow_type === flow_type && e.flow_name === flow_name);
-      if (entry) tagAppDataFlow(flow_type, flow_name, entry.url);
-    }
-  }
-  const updated = filePaths.filter((p) => readAppDataFileFor(p) !== before.get(p)).length;
+  syncFiles();
+  const flows = result.flows.filter((flow) => TRANSIENT_FLOW_TYPES.includes(flow.flow_type));
+  const added = listDownloadedTransientFlows(flows, folder.id).length;
+  const { sheets, updated } = result;
   logOutput({
-    msg1: `Synced ${sheets} transient sheets, ${filePaths.length} flows, ${updated} updated`,
-    msg2: TRANSIENT_SHEETS_LIST_PATH,
+    msg1: `Synced ${sheets} transient sheets, ${flows.length} flows, ${updated} updated, ${added} added`,
+    msg2: folder.url,
   });
-  return { sheets, flows: filePaths.length, updated };
+  return { sheets, flows: flows.length, updated, added };
 }
 
 /**
- * Sync assets from google drive to the previously imported external deployment
- * (see `downloadExternalAssets`), then process all assets into the app assets app_data folder
+ * Process flow jsons changed in the external deployment, or all of them with `refreshAll`
+ * (see `syncFlowFiles`)
  */
-export async function syncExternalAssets(options: ISyncOptions) {
-  const { verbose = false } = options;
-  const externalSourcePath = readExternalSourcePath();
-  const deploymentConfig = await loadExternalConfig(externalSourcePath);
-  await downloadExternalAssets(externalSourcePath, deploymentConfig, options);
-  processAssets({
-    sourceAssetsFolder: path.resolve(externalSourcePath, "app_data", "assets"),
-    targetAppDataFolder: path.resolve(SRC_ASSETS_PATH, "app_data"),
-    deploymentConfig,
-    verbose,
-  });
+export function syncFiles(options: { refreshAll?: boolean; verbose?: boolean } = {}) {
+  return syncFlowFiles(options);
 }
 
 /**
- * Download assets from the google drive folders listed in the external deployment config and
- * write to the external deployment app_data/assets folder. Assets from multiple folders are
- * merged, with later folders taking priority. Only new or changed files are written, and
- * existing files not present in drive are deleted
+ * Re-process all flows from the previously imported external deployment, so the latest
+ * translated `.po` files (`app_data/translations/translated`) are added to them. Nothing is
+ * downloaded
+ * @returns number of flows processed
  */
-export async function downloadExternalAssets(
-  externalSourcePath: string,
-  deploymentConfig: IDeploymentConfigJson,
-  options: ISyncOptions
-) {
-  const { skipDownload = false, verbose = false } = options;
-  const { assets_folders = [], assets_filter_function } = deploymentConfig.google_drive || {};
-  if (assets_folders.length === 0) {
-    throw new Error(`No google_drive.assets_folders specified in config: ${externalSourcePath}`);
+export function syncTranslations(options: { verbose?: boolean } = {}) {
+  const translationsFolder = getTranslatedFolder(readExternalSourcePath());
+  if (!fs.existsSync(translationsFolder)) {
+    logWarning({ msg1: "No translated files found", msg2: translationsFolder });
   }
-  // TODO - remote asset packs are not yet supported by beta workflows
-  const remoteFolders = assets_folders.filter(({ remote }) => remote);
-  if (remoteFolders.length > 0) {
-    logWarning({
-      msg1: "Remote asset folders are not supported, skipping",
-      msg2: remoteFolders.map(({ name }) => name).join(", "),
-    });
-  }
-  const coreFolders = assets_folders.filter(({ remote }) => !remote);
-  if (coreFolders.length === 0) return;
-
-  const downloadFolders = await downloadDriveFolders(coreFolders, {
-    cachePath: ASSETS_CACHE_PATH,
-    authTokenPath: getAuthTokenPath(deploymentConfig),
-    filterFn: assets_filter_function,
-    skipDownload,
-  });
-
-  const assets: IContentsEntryHashmap = {};
-  // Only remove files from the external folder when all sources are available, so a missing
-  // download does not delete everything it would have contained
-  let allFoldersFound = true;
-  for (const folder of downloadFolders) {
-    if (!fs.existsSync(folder)) {
-      logWarning({ msg1: "Assets download folder not found", msg2: folder });
-      allFoldersFound = false;
-      continue;
-    }
-    const folderAssets = generateFolderFlatMap(folder, {
-      includeLocalPath: true,
-      filterFn: (relativePath) => !DOWNLOAD_METADATA_FILES.includes(relativePath),
-    });
-    Object.assign(assets, folderAssets);
-  }
-
-  const targetAssetsFolder = path.resolve(externalSourcePath, "app_data", "assets");
-  const updatedPaths = writeAssets(assets, targetAssetsFolder, verbose);
-  let deletedPaths: string[] = [];
-  if (allFoldersFound) {
-    deletedPaths = deleteRemovedAssets(assets, targetAssetsFolder, verbose);
-  } else {
-    logWarning({ msg1: "Skipping removal of deleted assets", msg2: "Not all folders were found" });
-  }
-
-  logOutput({
-    msg1: `Synced ${Object.keys(assets).length} assets, ${updatedPaths.length} updated, ${deletedPaths.length} deleted`,
-    msg2: targetAssetsFolder,
-  });
+  const { flows } = syncFiles({ ...options, refreshAll: true });
+  logOutput({ msg1: `Re-processed ${flows} flows with translations`, msg2: translationsFolder });
+  return { flows };
 }
-
-/** Raw app_data output for a downloaded transient flow file, used to detect changes */
-function readAppDataFileFor(downloadedPath: string) {
-  const { flow_type, flow_name } = fs.readJsonSync(downloadedPath);
-  const flowPath = getAppDataFlowPath(flow_type, flow_name);
-  return fs.existsSync(flowPath) ? fs.readFileSync(flowPath, "utf8") : undefined;
-}
-
-/**
- * Copy assets to the target folder, skipping files with unchanged content
- * @returns paths of files that were created or updated
- */
-function writeAssets(assets: IContentsEntryHashmap, targetAssetsFolder: string, verbose = false) {
-  fs.ensureDirSync(targetAssetsFolder);
-  const updatedPaths: string[] = [];
-  for (const { relativePath, localPath, md5Checksum, modifiedTime } of Object.values(assets)) {
-    const targetPath = path.resolve(targetAssetsFolder, relativePath);
-    if (fs.existsSync(targetPath) && getFileMD5Checksum(targetPath) === md5Checksum) continue;
-    copyFileWithTimestamp(localPath, targetPath, modifiedTime);
-    updatedPaths.push(targetPath);
-    if (verbose) {
-      logOutput({ msg1: "Wrote asset", msg2: targetPath });
-    }
-  }
-  return updatedPaths;
-}
-
-/**
- * Delete files from the target folder that are not present in the synced assets,
- * and remove any folders left empty
- * @returns paths of files that were deleted
- */
-function deleteRemovedAssets(
-  assets: IContentsEntryHashmap,
-  targetAssetsFolder: string,
-  verbose = false
-) {
-  const deletedPaths: string[] = [];
-  for (const relativePath of Object.keys(generateFolderFlatMap(targetAssetsFolder))) {
-    if (relativePath in assets) continue;
-    const targetPath = path.resolve(targetAssetsFolder, relativePath);
-    fs.removeSync(targetPath);
-    deletedPaths.push(targetPath);
-    if (verbose) {
-      logOutput({ msg1: "Deleted asset", msg2: targetPath });
-    }
-  }
-  cleanupEmptyFolders(targetAssetsFolder);
-  // Keep the root folder (removed if empty) so the app assets are still cleared when processed
-  fs.ensureDirSync(targetAssetsFolder);
-  return deletedPaths;
-}
-
-export default {
-  syncFixedSheets: syncFixedSheets,
-  syncAssets: syncExternalAssets,
-};

@@ -29,8 +29,9 @@ describe("Beta processFlows", () => {
     return fs.readJsonSync(path.join(appDataFolder, "sheets", "contents.json"));
   }
 
+  /** `_source.path` is written relative to the sheets folder */
   function sourcePath(relativePath: string) {
-    return path.resolve(sheetsFolder, relativePath);
+    return relativePath;
   }
 
   it("keeps _source on flows in the google_drive folder, adding path and type", () => {
@@ -94,6 +95,19 @@ describe("Beta processFlows", () => {
     expect(readOutput("greetings").rows[0]._translatedFields).toEqual({
       title: { eng: "Hello", fil: "Kumusta" },
     });
+  });
+
+  it("adds duplicate flow jsons to _debug warnings of the flow kept", () => {
+    writeFlow("a/dup.json", "dup");
+    writeFlow("b/dup.json", "dup");
+    processFlows({ sourceFlowsFolder: sheetsFolder, targetAppDataFolder: appDataFolder });
+    const output = readOutput("dup");
+    expect(output._source.path).toEqual("b/dup.json");
+    expect(output._debug).toEqual({
+      warnings: ["Duplicate flow json: a/dup.json was replaced by b/dup.json"],
+    });
+    // Debug messages are only in the flow json, not contents.json
+    expect(readContents().data_list.dup._debug).toBeUndefined();
   });
 
   it("uses the given type for all flows", () => {

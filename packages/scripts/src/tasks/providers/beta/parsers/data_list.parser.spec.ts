@@ -87,6 +87,19 @@ describe("Beta Data List Parser", () => {
     expect(parseDataList(flow)).toEqual({ ...flow, _source: { type: "transient" } });
   });
 
+  it("writes a metadata row that is not first to _debug warnings", () => {
+    const flow = {
+      flow_type: "data_list",
+      flow_name: "test_data_list",
+      rows: [{ id: "a" }, { id: "${metadata}", number: "type: number" }],
+    } as FlowTypes.FlowTypeWithData;
+    const parsed = parseDataList(flow);
+    expect(parsed.rows).toEqual([{ id: "a" }]);
+    expect(parsed._debug).toEqual({
+      warnings: ['"${metadata}" row must be the first row, skipping'],
+    });
+  });
+
   describe("_source", () => {
     const _source = { name: "folder", path: "workbook.xlsx", url: "https://example.com/sheet" };
     const flow = {
@@ -95,7 +108,7 @@ describe("Beta Data List Parser", () => {
       rows: [],
       _source,
     } as FlowTypes.FlowTypeWithData;
-    const path = "/deployment/app_data/sheets/test_source.json";
+    const path = "local/test_source.json";
 
     it("removes name and url from transient flows, which is the default", () => {
       expect(parseDataList(flow, { path })._source).toEqual({ path, type: "transient" });

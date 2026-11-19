@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import type { IFlowsByType } from "../processFlows";
+import type { IFlowsByType } from "../flows";
 import { extractTranslationEntries, getPlaceholders, getTranslationFile } from "./extract";
 
 function flows(partial: Partial<IFlowsByType>): IFlowsByType {
