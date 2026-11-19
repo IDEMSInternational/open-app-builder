@@ -6,7 +6,7 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
 .timer-counter {
   @include mixins.flex-centered;
   width: calc(100% - 10px);
-  height: var(--timer-counter-height);
+  min-height: var(--timer-counter-height);
   margin: 0 var(--tiny-margin);
   div {
     font-weight: var(--font-weight-bold);
@@ -40,6 +40,10 @@ $button-background: var(--timer-button-background, var(--ion-color-primary-500))
 }
 .btn {
   @include mixins.large-square;
+  // Keep the button round: on iOS, Ionic sets a min-height and padding that grow with the text size
+  min-height: 0;
+  --padding-start: 0;
+  --padding-end: 0;
   min-width: var(--buttons-size);
   position: relative;
   --background: #{$button-background};

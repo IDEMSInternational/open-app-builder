@@ -43,6 +43,8 @@
 }
 
 .label {
+  // Tab labels grow less than other text with the device text size, as in iOS tab bars
+  font-size: min(1rem, calc(var(--font-root) * 1.35px));
   width: 100%;
   text-align: center;
   padding: 0;

@@ -38,7 +38,7 @@
     // size on iOS (`-apple-system-body`, 17px by default), under the same query as below
     --font-root: 16;
     // Largest text scale supported, relative to the default text size
-    --text-scale-max: 1.35;
+    --text-scale-max: 2;
     // 1px at the default text size, scaled with the root font size up to --text-scale-max
     --text-px: min(calc(1rem / var(--font-root)), calc(1px * var(--text-scale-max)));
   }
