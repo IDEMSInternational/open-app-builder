@@ -18,6 +18,7 @@ import { RadioListComponent } from "./radio-list/radio-list.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
+import { VideoComponent } from "./video/video.component";
 import { PLH_REACTIVE_COMPONENT_MAP } from "../plh";
 
 export const REACTIVE_COMPONENT_MAP = {
@@ -41,5 +42,6 @@ export const REACTIVE_COMPONENT_MAP = {
   toggle_bar: ToggleBarComponent,
   query: QueryComponent,
   update: UpdateComponent,
+  video: VideoComponent,
   ...PLH_REACTIVE_COMPONENT_MAP,
 };
