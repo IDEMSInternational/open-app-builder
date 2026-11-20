@@ -3,6 +3,7 @@ import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 import { AccordionGroupCustomEvent, IonicModule } from "@ionic/angular";
+import { getAccordionMultiple } from "./accordion.utils";
 
 interface AccordionSection {
   element: HTMLElement;
@@ -13,6 +14,9 @@ const parameters = () =>
   defineParameters({
     disabled: new Parameter("disabled", false),
     multiple: new Parameter("multiple", true),
+    openMultiple: new Parameter("open_multiple", false),
+    openIcon: new Parameter("open_icon_src", ""),
+    closeIcon: new Parameter("close_icon_src", ""),
   });
 
 @Component({
@@ -23,12 +27,21 @@ const parameters = () =>
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class AccordionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+  /** Support the legacy `open_multiple` name while retaining `multiple` for reactive templates. */
+  public multiple = computed(() =>
+    getAccordionMultiple(
+      this.row().parameter_list,
+      this.params.multiple.value(),
+      this.params.openMultiple.value()
+    )
+  );
+
   /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */
   public openSections = signal<string[]>([]);
 
   /** ion-accordion-group expects a single value rather than an array when only one section can be open */
   public groupValue = computed(() =>
-    this.params.multiple.value() ? this.openSections() : this.openSections().at(-1)
+    this.multiple() ? this.openSections() : this.openSections().at(-1)
   );
 
   /** All child sections (including those within loops), in document order */
@@ -63,7 +76,7 @@ export class AccordionComponent extends RowBaseComponent<ReturnType<typeof param
         return openSections.filter((name) => name !== sectionName);
       }
       // As when the user opens a section, opening one closes any others unless `multiple` is set
-      return this.params.multiple.value() ? [...openSections, sectionName] : [sectionName];
+      return this.multiple() ? [...openSections, sectionName] : [sectionName];
     });
   }
 

@@ -10,6 +10,7 @@ const parameters = () =>
     disabled: new Parameter("disabled", false),
     iconName: new Parameter("icon_name", "chevron-down-outline"),
     state: new Parameter<"open" | "closed">("state", "closed"),
+    title: new Parameter("title", ""),
   });
 
 @Component({
@@ -27,8 +28,23 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
    * (ion-accordion-group only passes `disabled` down to ion-accordions that are its direct children)
    */
   public disabled = computed(
-    () => this.params.disabled.value() || !!this.accordion?.params.disabled.value()
+    () =>
+      !!this.row().disabled ||
+      this.params.disabled.value() ||
+      !!this.accordion?.row().disabled ||
+      !!this.accordion?.params.disabled.value()
   );
+
+  public title = computed(() => this.params.title.value() || this.value() || "");
+
+  public iconName = computed(() => {
+    const isOpen = this.accordion?.openSections().includes(this.name()) ?? false;
+    const accordionIcon = isOpen
+      ? this.accordion?.params.closeIcon.value()
+      : this.accordion?.params.openIcon.value();
+
+    return accordionIcon || this.params.iconName.value();
+  });
 
   /** Position among the accordion's visible sections, or -1 if hidden or not within an accordion */
   public sectionIndex = computed(
