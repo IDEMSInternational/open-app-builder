@@ -1,0 +1,16 @@
+@if (iframeSrc(); as src) {
+  <div class="youtube-container" [attr.data-orientation]="orientation()">
+    <!-- The `iframe` property `allowFullscreen` must be set as a static attribute,
+     see https://angular.dev/errors/NG0910 -->
+    @if (params.allowFullscreen.value()) {
+      <iframe
+        [src]="src"
+        frameborder="0"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    } @else {
+      <iframe [src]="src" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
+    }
+  </div>
+}
