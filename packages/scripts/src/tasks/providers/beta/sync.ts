@@ -9,6 +9,7 @@ import {
   syncSheets,
   TRANSIENT_SHEETS_LIST_PATH,
   syncFixedSheetsToExternalFolder,
+  syncTransientSheetsToExternalFolder,
 } from "./sheets";
 import { getTranslatedFolder } from "./translations/po";
 import { TRANSIENT_FLOW_TYPES } from "./utils";
@@ -20,9 +21,9 @@ import { TRANSIENT_FLOW_TYPES } from "./utils";
  */
 
 /** Sync sheets from the external deployment config `google_drive.sheets_folders` */
-export async function syncFixedSheets() {
+export async function syncFixedSheets(options: { verbose?: boolean } = {}) {
   await syncFixedSheetsToExternalFolder();
-  syncFiles();
+  syncFlowFiles({ verbose: options.verbose });
 }
 
 /**
@@ -33,28 +34,9 @@ export async function syncFixedSheets() {
  * @returns number of sheets and flows downloaded, external jsons updated and flows added to
  * the transient sheets list
  */
-export async function syncTransientSheets() {
-  const { folder } = readTransientSheetsList();
-  if (!folder) {
-    logOutput({ msg1: "No transient sheets folder to sync", msg2: TRANSIENT_SHEETS_LIST_PATH });
-    return { sheets: 0, flows: 0, updated: 0, added: 0 };
-  }
-  const externalSourcePath = readExternalSourcePath();
-  const folders = [{ id: folder.id, name: "transient sheets" }];
-  const result = await syncSheets(externalSourcePath, folders, {
-    type: "transient",
-    authTokenPath: folder.auth_token_path,
-    flowFilter: isTransientFlowType,
-  });
-  syncFiles();
-  const flows = result.flows.filter((flow) => TRANSIENT_FLOW_TYPES.includes(flow.flow_type));
-  const added = listDownloadedTransientFlows(flows, folder.id).length;
-  const { sheets, updated } = result;
-  logOutput({
-    msg1: `Synced ${sheets} transient sheets, ${flows.length} flows, ${updated} updated, ${added} added`,
-    msg2: folder.url,
-  });
-  return { sheets, flows: flows.length, updated, added };
+export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
+  await syncTransientSheetsToExternalFolder();
+  syncFlowFiles({ verbose: options.verbose });
 }
 
 /**
@@ -72,11 +54,5 @@ export function syncFiles(options: { refreshAll?: boolean; verbose?: boolean } =
  * @returns number of flows processed
  */
 export function syncTranslations(options: { verbose?: boolean } = {}) {
-  const translationsFolder = getTranslatedFolder(readExternalSourcePath());
-  if (!fs.existsSync(translationsFolder)) {
-    logWarning({ msg1: "No translated files found", msg2: translationsFolder });
-  }
-  const { flows } = syncFiles({ ...options, refreshAll: true });
-  logOutput({ msg1: `Re-processed ${flows} flows with translations`, msg2: translationsFolder });
-  return { flows };
+  syncFlowFiles({ refreshAll: true, verbose: options.verbose });
 }
