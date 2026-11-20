@@ -13,7 +13,7 @@ export type ITemplateContainerRef = Signal<TemplateContainerComponent | undefine
 /**
  * Lifecycle of top-level templates (pages and nav stacks): tracks which one is in front and fires
  * lifecycle triggers on it, currently `nav_enter` each time a template comes to the front (first
- * visit, back navigation, or a pop-up or nav stack above it closing).
+ * visit, back navigation, or a pop-up or nav stack above it closing) or is reloaded while in front.
  * The template page and nav-stack components register their template containers.
  * Separate from `LifecycleActionsService`, which runs app-level launch actions
  */
@@ -36,19 +36,27 @@ export class TemplateLifecycleService extends SyncServiceBase {
     if (popupOpen) return undefined;
     const ref = this.navStacks().at(-1) ?? this.activePage();
     const container = ref?.();
-    return container?.hasRendered() ? container : undefined;
+    return container?.renderCount() > 0 ? container : undefined;
   });
 
   private lastFront: TemplateContainerComponent | undefined;
+  private lastRenderCount = 0;
   private enteredContainers = new WeakSet<TemplateContainerComponent>();
+  /** Template whose `nav_enter` actions are running */
+  private entering: TemplateContainerComponent | undefined;
 
   constructor() {
     super("TemplateLifecycle");
     effect(() => {
       const front = this.front();
-      if (front === this.lastFront) return;
+      const renderCount = front?.renderCount() ?? 0;
+      const reloaded = !!front && front === this.lastFront && renderCount > this.lastRenderCount;
+      if (front === this.lastFront && !reloaded) return;
       this.lastFront = front;
-      if (front) untracked(() => this.enter(front));
+      this.lastRenderCount = renderCount;
+      // a reload by the template's own nav_enter actions (e.g. `emit: force_reload`) would loop
+      if (!front || (reloaded && this.entering === front)) return;
+      untracked(() => this.enter(front, reloaded));
     });
   }
 
@@ -68,11 +76,19 @@ export class TemplateLifecycleService extends SyncServiceBase {
     this.navStacks.update((refs) => refs.filter((r) => r !== ref));
   }
 
-  private async enter(container: TemplateContainerComponent) {
+  private async enter(container: TemplateContainerComponent, reloaded = false) {
     const firstEntry = !this.enteredContainers.has(container);
     this.enteredContainers.add(container);
-    // rows may depend on fields changed while the template was covered (already current on first entry)
-    await this.emitTrigger(container, "nav_enter", { reprocess: !firstEntry });
+    this.entering = container;
+    try {
+      // rows may depend on fields changed while the template was covered
+      // (already current on first entry or after a reload)
+      await this.emitTrigger(container, "nav_enter", { reprocess: !firstEntry && !reloaded });
+    } finally {
+      if (this.entering === container) this.entering = undefined;
+      // reloads caused by its own nav_enter actions do not fire it again
+      if (this.lastFront === container) this.lastRenderCount = container.renderCount();
+    }
   }
 
   /** Emit a lifecycle trigger on a top-level template, if any of its rows declare actions for it */

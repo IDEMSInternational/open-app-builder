@@ -58,8 +58,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   children: { [name: string]: TemplateContainerComponent } = {};
 
   template: FlowTypes.Template;
-  /** True once the template has rendered for the first time */
-  public hasRendered = signal(false);
+  /** Number of times the template has rendered, including full reloads (`emit: force_reload`) */
+  public renderCount = signal(0);
 
   /** */
   templateRowService: TemplateRowService;
@@ -214,7 +214,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
       this.parent.children[this.name] = this;
     }
     log_groupEnd();
-    this.hasRendered.set(true);
+    this.renderCount.update((count) => count + 1);
     // Ensure any parents using onPush are notified of changes (e.g. data-items)
     this.cdr.markForCheck();
   }

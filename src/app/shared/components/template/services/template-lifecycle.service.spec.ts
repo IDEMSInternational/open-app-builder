@@ -8,7 +8,7 @@ import { hasLifecycleActions, TemplateLifecycleService } from "./template-lifecy
 import { TemplateService } from "./template.service";
 
 interface IMockContainer {
-  hasRendered: WritableSignal<boolean>;
+  renderCount: WritableSignal<number>;
   template: { rows: any[] };
   forceRerender: jasmine.Spy;
   templateActionService: { handleActions: jasmine.Spy };
@@ -23,7 +23,7 @@ const NAV_ENTER_ROW = {
 function mockContainer(options: { navEnter?: boolean; rendered?: boolean } = {}) {
   const { navEnter = true, rendered = true } = options;
   const container: IMockContainer = {
-    hasRendered: signal(rendered),
+    renderCount: signal(rendered ? 1 : 0),
     template: { rows: navEnter ? [NAV_ENTER_ROW] : [] },
     forceRerender: jasmine.createSpy("forceRerender").and.resolveTo(),
     templateActionService: { handleActions: jasmine.createSpy("handleActions").and.resolveTo() },
@@ -78,7 +78,7 @@ describe("TemplateLifecycleService nav_enter", () => {
     service.setActivePage(page.ref);
     await flush();
     expect(entries(page.container)).toBe(0);
-    page.container.hasRendered.set(true);
+    page.container.renderCount.set(1);
     await flush();
     expect(entries(page.container)).toBe(1);
   });
@@ -223,6 +223,54 @@ describe("TemplateLifecycleService nav_enter", () => {
     await flush();
     expect(entries(page.container)).toBe(1);
   });
+
+  it("fires again, without reprocessing, when the template in front is reloaded", async () => {
+    const page = mockContainer();
+    service.setActivePage(page.ref);
+    await flush();
+    // emit: force_reload renders the template again
+    page.container.renderCount.update((n) => n + 1);
+    await flush();
+    expect(entries(page.container)).toBe(2);
+    expect(page.container.forceRerender).not.toHaveBeenCalled();
+  });
+
+  it("does not fire on a reload while covered, then fires once when back in front", async () => {
+    const page = mockContainer();
+    const stack = mockContainer();
+    service.setActivePage(page.ref);
+    await flush();
+    service.addNavStack(stack.ref);
+    await flush();
+    page.container.renderCount.update((n) => n + 1);
+    await flush();
+    expect(entries(page.container)).toBe(1);
+
+    service.removeNavStack(stack.ref);
+    await flush();
+    expect(entries(page.container)).toBe(2);
+  });
+
+  // nav_enter | emit: force_reload, with the effect running during or after its actions
+  for (const effectTiming of ["during", "after"]) {
+    it(`does not fire again when its own nav_enter actions reload it (effect ${effectTiming})`, async () => {
+      const page = mockContainer();
+      page.container.templateActionService.handleActions.and.callFake(async () => {
+        page.container.renderCount.update((n) => n + 1);
+        if (effectTiming === "during") await flush();
+      });
+      service.setActivePage(page.ref);
+      await flush();
+      await flush();
+      expect(entries(page.container)).toBe(1);
+
+      // a later reload, e.g. from a button, still fires
+      page.container.renderCount.update((n) => n + 1);
+      await flush();
+      await flush();
+      expect(entries(page.container)).toBe(2);
+    });
+  }
 });
 
 describe("hasLifecycleActions", () => {
