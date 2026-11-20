@@ -11,6 +11,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  signal,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
@@ -18,6 +19,7 @@ import { Subject } from "rxjs";
 import { FlowTypes } from "./models";
 import { TemplateActionService } from "./services/instance/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
+import { hasLifecycleActions } from "./services/template-lifecycle.service";
 import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
@@ -56,6 +58,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   children: { [name: string]: TemplateContainerComponent } = {};
 
   template: FlowTypes.Template;
+  /** Number of times the template has rendered, including full reloads (`emit: force_reload`) */
+  public renderCount = signal(0);
 
   /** */
   templateRowService: TemplateRowService;
@@ -192,6 +196,11 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     this.name = this.name || templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
+    if (this.parent && hasLifecycleActions(template?.rows, "nav_enter")) {
+      console.warn(
+        `[nav_enter] "${templatename}" is nested in another template or a pop-up, so its nav_enter actions will not run. nav_enter only fires on page and nav-stack templates.`
+      );
+    }
     log_group("[Template Render Start]", this.name);
     await this.templateRowService.processContainerTemplateRows();
     log("[Template] Rendered", this.name, {
@@ -205,6 +214,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
       this.parent.children[this.name] = this;
     }
     log_groupEnd();
+    this.renderCount.update((count) => count + 1);
     // Ensure any parents using onPush are notified of changes (e.g. data-items)
     this.cdr.markForCheck();
   }
