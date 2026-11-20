@@ -1,9 +1,9 @@
 import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
-import { logOutput, logWarning, recursiveFindByExtension } from "../../../utils";
-import { isFixedFlow, isValidFlowName } from "./utils";
-import { loadTranslationStrings } from "./translations/po";
+import { logOutput, logWarning, recursiveFindByExtension } from "../../../../utils";
+import { isFixedFlow, isValidFlowName } from "../utils";
+import { loadTranslationStrings } from "../translations/po";
 import {
   combineGlobals,
   IFlowParserOptions,
@@ -11,7 +11,7 @@ import {
   IGlobalSheet,
   parseDataList,
   parseTemplate,
-} from "./parsers";
+} from "../parsers";
 
 /** Flow types copied from the source sheets folder. All other flow types are skipped */
 export const IMPORTED_FLOW_TYPES = ["data_list", "global", "template"] as const;
@@ -71,7 +71,7 @@ export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
   const targetSheetsFolder = path.resolve(targetAppDataFolder, "sheets");
   const translations = loadTranslationStrings(options.translationsFolder);
 
-  const { flowsByType, sourcePaths } = readFlowFiles(
+  const { flowsByType, sourcePaths, replacedPaths } = readFlowFiles(
     filePaths ?? recursiveFindByExtension(sourceFlowsFolder, "json"),
     verbose
   );
@@ -91,11 +91,18 @@ export function processFlows(options: IProcessFlowsOptions): IFlowsByType {
     fs.ensureDirSync(targetFolder);
     // Parsed flows replace the source flows, so contents.json is written from parsed values
     flowsByType[flowType] = flowsByType[flowType].map((flow) => {
-      const sourcePath = sourcePaths[`${flowType}/${flow.flow_name}`];
+      const key = `${flowType}/${flow.flow_name}`;
+      const sourcePath = sourcePaths[key];
+      const relativePath = toRelativeSourcePath(sourceFlowsFolder, sourcePath);
       const parsed = parser(flow, {
-        path: path.resolve(sourcePath),
+        path: relativePath,
         type: type ?? (isFixedFlow(sourcePath, sourceFlowsFolder) ? "fixed" : "transient"),
         translations,
+        // Already logged by readFlowFiles, so only added to _debug
+        loggedWarnings: (replacedPaths[key] || []).map(
+          (replaced) =>
+            `Duplicate flow json: ${toRelativeSourcePath(sourceFlowsFolder, replaced)} was replaced by ${relativePath}`
+        ),
       });
       fs.writeJsonSync(path.resolve(targetFolder, `${parsed.flow_name}.json`), parsed, {
         spaces: 2,
@@ -151,8 +158,9 @@ function writeContentsJson(
   fs.writeJsonSync(getContentsPath(targetAppDataFolder), contents, { spaces: 2 });
 }
 
+/** Fields kept in contents.json. `_debug` is only in the flow json, loaded when viewed */
 function extractContentsData(flow: FlowTypes.FlowTypeWithData) {
-  const { rows, status, ...keptFields } = flow;
+  const { rows, status, _debug, ...keptFields } = flow;
   return keptFields as FlowTypes.FlowTypeBase;
 }
 
@@ -163,8 +171,7 @@ function readGlobalSheets(sourceFlowsFolder: string): IGlobalSheet[] {
   );
   return flowsByType.global.map((flow) => {
     const sourcePath = sourcePaths[`global/${flow.flow_name}`];
-    const relativePath = path.relative(sourceFlowsFolder, sourcePath).split(path.sep).join("/");
-    const sheet = relativePath.replace(/\.json$/, "");
+    const sheet = toRelativeSourcePath(sourceFlowsFolder, sourcePath).replace(/\.json$/, "");
     return { sheet, flow };
   });
 }
@@ -210,6 +217,8 @@ export function readFlowFiles(filePaths: string[], verbose = false) {
   };
   /** Source file path of each flow, keyed by `flow_type/flow_name` */
   const seenFlowPaths: { [key: string]: string } = {};
+  /** Paths of earlier files for the same flow that were replaced, keyed by `flow_type/flow_name` */
+  const replacedPaths: { [key: string]: string[] } = {};
 
   for (const filePath of filePaths) {
     let flow: FlowTypes.FlowTypeWithData;
@@ -245,11 +254,24 @@ export function readFlowFiles(filePaths: string[], verbose = false) {
         msg2: `${seenFlowPaths[key]} will be overwritten by ${filePath}`,
       });
       flowsByType[flow_type] = flowsByType[flow_type].filter((f) => f.flow_name !== flow_name);
+      (replacedPaths[key] ??= []).push(seenFlowPaths[key]);
     }
     seenFlowPaths[key] = filePath;
     flowsByType[flow_type].push(flow);
   }
-  return { flowsByType, sourcePaths: seenFlowPaths };
+  return { flowsByType, sourcePaths: seenFlowPaths, replacedPaths };
+}
+
+/**
+ * Path of a flow json relative to the folder it was processed from, with `/` separators so it
+ * is the same on all platforms. Written to `_source.path`, where it is resolved against the
+ * external deployment sheets folder (see `findFlowBySourcePath`)
+ */
+export function toRelativeSourcePath(sourceFlowsFolder: string, sourcePath: string) {
+  return path
+    .relative(path.resolve(sourceFlowsFolder), path.resolve(sourcePath))
+    .split(path.sep)
+    .join("/");
 }
 
 function isImportedFlowType(flowType: string): flowType is IImportedFlowType {

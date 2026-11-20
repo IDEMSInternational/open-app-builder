@@ -1,4 +1,11 @@
 import path from "path";
+import { SRC_ASSETS_PATH } from "../../../paths";
+
+/** App assets folder that external deployment flows are processed into */
+export const APP_DATA_PATH = path.resolve(SRC_ASSETS_PATH, "app_data");
+
+/** Flow types that can have transient sheets (globals are combined from all sheets) */
+export const TRANSIENT_FLOW_TYPES = ["data_list", "template"];
 
 /**
  * Whether a flow_name is safe to use as a filename. Flows are written as `{flow_name}.json`,
@@ -20,6 +27,11 @@ export function isValidFlowName(flow_name: unknown): flow_name is string {
  * Subfolder of the external sheets folder that downloaded flows are written to, keeping them
  * separate from flow jsons that are edited directly
  */
+/** Folder of flow jsons in an external deployment */
+export function getExternalFlowsFolder(externalSourcePath: string) {
+  return path.resolve(externalSourcePath, "app_data", "sheets");
+}
+
 export const FIXED_SHEETS_FOLDER = "google_drive";
 
 export function isWithinFolder(filePath: string, folder: string) {

@@ -1,0 +1,43 @@
+ion-searchbar {
+  --background: var(--ion-color-primary-contrast);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+
+  ion-segment {
+    width: auto;
+  }
+}
+
+.summary {
+  margin: 8px 0;
+  font-size: 12px;
+  color: var(--ion-color-medium, #888);
+}
+
+.folder {
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .count {
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--ion-color-medium, #888);
+  }
+
+  .folder-contents {
+    margin-left: 12px;
+    padding-left: 8px;
+    border-left: 1px solid var(--ion-color-light, #eee);
+  }
+}

@@ -7,10 +7,9 @@ import { logOutput } from "../../../utils";
 import { loadExternalDeploymentJson } from "./deploymentConfig";
 import { decryptExternalFolder } from "./encryption";
 import { processAssets } from "./processAssets";
-import { processFlows } from "./processFlows";
-import { downloadFixedSheets } from "./sheets";
-import { downloadExternalAssets } from "./sync";
-import { getTranslatedFolder } from "./translations/po";
+import { downloadExternalAssets } from "./assets";
+import { syncFlowFiles } from "./flows";
+import { getAuthTokenPath, getFixedSheetsFolders, syncSheets } from "./sheets";
 
 interface IImportOptions {
   /** Sync sheets and assets from google drive to the source folder before processing */
@@ -52,16 +51,17 @@ export async function importExternalDeployment(sourcePath: string, options: IImp
   writeDeploymentJson(deploymentConfig, targetAppDataFolder);
 
   if (sync) {
-    await downloadFixedSheets(absoluteSourcePath, deploymentConfig, options);
+    const { folders, filterFn } = getFixedSheetsFolders(deploymentConfig, absoluteSourcePath);
+    await syncSheets(absoluteSourcePath, folders, {
+      type: "fixed",
+      authTokenPath: getAuthTokenPath(deploymentConfig),
+      filterFn,
+    });
     await downloadExternalAssets(absoluteSourcePath, deploymentConfig, options);
   }
 
-  processFlows({
-    sourceFlowsFolder: path.resolve(absoluteSourcePath, "app_data", "sheets"),
-    targetAppDataFolder,
-    translationsFolder: getTranslatedFolder(absoluteSourcePath),
-    verbose,
-  });
+  // Uses the external source path saved above
+  syncFlowFiles({ refreshAll: true, verbose });
 
   processAssets({
     sourceAssetsFolder: path.resolve(absoluteSourcePath, "app_data", "assets"),

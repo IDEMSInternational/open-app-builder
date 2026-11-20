@@ -1,0 +1,116 @@
+<div
+  class="row"
+  [class.transient]="isTransient()"
+  [class.expanded]="expanded()"
+  role="button"
+  tabindex="0"
+  [attr.aria-expanded]="expanded()"
+  (click)="toggleExpanded()"
+  (keydown.enter)="toggleExpanded()"
+>
+  <span class="type" [attr.data-type]="sheet().flow_type">
+    {{ sheet().flow_type === "template" ? "T" : "DL" }}
+  </span>
+  <span class="name">{{ sheet().flow_name }}</span>
+
+  <span class="actions" (keydown.enter)="stopPropagation($event)">
+    <a
+      class="action"
+      [href]="goHref()"
+      target="_blank"
+      rel="noopener"
+      title="Open in a new tab"
+      (click)="stopPropagation($event)"
+      >Go</a
+    >
+    @if (url(); as url) {
+      <a
+        class="action"
+        [href]="url"
+        target="_blank"
+        rel="noopener"
+        title="Open spreadsheet"
+        (click)="stopPropagation($event)"
+        >Open</a
+      >
+    } @else if (devTools.isAvailable) {
+      <button
+        class="action"
+        [disabled]="!!running()"
+        title="Create a transient spreadsheet from the flow json"
+        (click)="createSheet($event)"
+      >
+        {{ running() === "create" ? "Processing…" : "Create" }}
+      </button>
+    }
+    <!-- A folder's sheet is removed from the folder, with all its flows -->
+    @if (isTransient() && url() && !sheet().sheetFolder && devTools.isAvailable) {
+      <button
+        class="action destroy"
+        [disabled]="!!running()"
+        title="Delete the transient spreadsheet from google drive and unlink it (beta remove_transient_sheet)"
+        (click)="destroySheet($event)"
+      >
+        {{ running() === "destroy" ? "Processing…" : "Destroy" }}
+      </button>
+    }
+  </span>
+  @if (status()) {
+    <span class="status">{{ status() }}</span>
+  }
+</div>
+
+@if (expanded()) {
+  <div class="details">
+    <table class="source">
+      <tbody>
+        <tr>
+          <th>Path</th>
+          <td>{{ sheet().path || "–" }}</td>
+        </tr>
+        <tr>
+          <th>Sheet</th>
+          <td>
+            @if (url(); as url) {
+              <a [href]="url" target="_blank" rel="noopener">{{ url }}</a>
+            } @else {
+              –
+            }
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Debug</h4>
+    @if (loading()) {
+      <p class="placeholder">Loading…</p>
+    } @else {
+      @let debug = flow()?._debug;
+      @for (error of debug?.errors; track $index) {
+        <p class="message error">{{ error }}</p>
+      }
+      @for (warning of debug?.warnings; track $index) {
+        <p class="message warning">{{ warning }}</p>
+      }
+      @if (!debug?.errors?.length && !debug?.warnings?.length) {
+        <p class="placeholder">No errors or warnings</p>
+      }
+      @if (debug?.nested_templates?.length) {
+        <h4>Nested templates</h4>
+        <ul class="references">
+          @for (name of debug.nested_templates; track name) {
+            <li>{{ name }}</li>
+          }
+        </ul>
+      }
+      @if (debug?.navigation?.length) {
+        <h4>Navigation</h4>
+        <ul class="references">
+          @for (name of debug.navigation; track name) {
+            <li>{{ name }}</li>
+          }
+        </ul>
+      }
+    }
+  </div>
+}

@@ -1,0 +1,131 @@
+:host {
+  display: block;
+  border-bottom: 1px solid var(--ion-color-light, #eee);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(var(--ion-color-medium-rgb, 146, 148, 156), 0.08);
+  }
+
+  &.transient {
+    background-color: rgba(var(--ion-color-warning-rgb, 255, 196, 9), 0.15);
+    box-shadow: inset 3px 0 0 var(--ion-color-warning, #ffc409);
+  }
+}
+
+.type {
+  min-width: 24px;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: var(--ion-color-primary, #3880ff);
+
+  &[data-type="data_list"] {
+    background-color: var(--ion-color-tertiary, #5260ff);
+  }
+}
+
+.name {
+  word-break: break-all;
+}
+
+.actions {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.action {
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-debug, #888);
+  background-color: inherit;
+  border: 1px solid var(--color-debug, #888);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &.destroy {
+    color: var(--ion-color-danger, #eb445a);
+    border-color: var(--ion-color-danger, #eb445a);
+  }
+}
+
+.status {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--color-debug, #888);
+}
+
+.details {
+  padding: 4px 8px 8px 40px;
+  font-size: 12px;
+
+  h4 {
+    margin: 8px 0 4px;
+    font-size: 13px;
+  }
+
+  pre {
+    margin: 0;
+    max-height: 50vh;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}
+
+table.source {
+  color: var(--color-debug, #888);
+
+  th,
+  td {
+    padding: 2px 8px 2px 0;
+    text-align: left;
+    vertical-align: top;
+    word-break: break-all;
+  }
+}
+
+.placeholder {
+  margin: 0;
+  color: var(--color-debug, #888);
+  font-style: italic;
+}
+
+.message {
+  margin: 2px 0;
+  padding-left: 6px;
+  border-left: 3px solid;
+
+  &.error {
+    border-color: var(--ion-color-danger, #eb445a);
+  }
+
+  &.warning {
+    border-color: var(--ion-color-warning, #ffc409);
+  }
+}
+
+.references {
+  margin: 0;
+  padding-left: 18px;
+}

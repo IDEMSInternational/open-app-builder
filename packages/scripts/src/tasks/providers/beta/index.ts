@@ -1,7 +1,9 @@
 import { startDevServer } from "./devServer";
 import { importExternalDeployment } from "./import";
-import { createFlowSheet, openFlowSheet } from "./sheets";
-import { syncExternalAssets, syncFixedSheets, syncTransientSheets } from "./sync";
+import { syncExternalAssets } from "./assets";
+import { createFlowSheet, openFlowSheet } from "./flowSheets";
+import { removeTransientSheet } from "./sheets";
+import { syncFiles, syncFixedSheets, syncTransientSheets, syncTranslations } from "./sync";
 import { updateTranslations } from "./translations";
 
 export default {
@@ -9,8 +11,11 @@ export default {
   importExternalDeployment,
   syncExternalAssets,
   syncFixedSheets,
+  syncFlowFiles: syncFiles,
   syncTransientSheets,
+  syncTranslations,
   openFlowSheet,
   createFlowSheet,
+  removeTransientSheet,
   startDevServer,
 };

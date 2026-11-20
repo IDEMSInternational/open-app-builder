@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { isObjectLiteral } from "shared";
 import { parseAppDataCollectionString } from "../../../../../lib/app-data/convert/utils";
-import { logWarning } from "../../../../../utils";
+import { FlowDebugLog } from "../flowDebugLog";
 import { splitLanguageSuffix } from "./translations.transform";
 
 /**
@@ -16,12 +16,12 @@ type IDataListMetadata = NonNullable<FlowTypes.Data_list["_metadata"]>;
  * Remove the metadata row from data_list rows. Only a first row is used, any other metadata
  * row is removed with a warning so it is not kept as data
  */
-export function splitMetadataRow(rows: FlowTypes.Data_listRow[], context?: string) {
+export function splitMetadataRow(rows: FlowTypes.Data_listRow[], log = new FlowDebugLog()) {
   const [firstRow, ...otherRows] = rows;
   const metadataRow = firstRow?.id === METADATA_ROW_ID ? firstRow : undefined;
   const dataRows = (metadataRow ? otherRows : rows).filter((row) => {
     if (row.id !== METADATA_ROW_ID) return true;
-    logWarning({ msg1: `"${METADATA_ROW_ID}" row must be the first row, skipping`, msg2: context });
+    log.warning(`"${METADATA_ROW_ID}" row must be the first row, skipping`);
     return false;
   });
   return { metadataRow, rows: dataRows };
