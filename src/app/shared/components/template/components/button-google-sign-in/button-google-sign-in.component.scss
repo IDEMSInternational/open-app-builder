@@ -1,3 +1,5 @@
+@use "/src/theme/text-size";
+
 $border-radius: var(--button-border-radius, var(--ion-border-radius-standard));
 $logo-size: 20px;
 $border-width: 1px;
@@ -146,7 +148,7 @@ Native Google variant reflects the example styling exactly
   .gsi-material-button-contents {
     font-family: "Roboto", arial, sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: text-size.scaled(14px);
     -webkit-flex-grow: 1;
     flex-grow: 1;
     overflow: hidden;

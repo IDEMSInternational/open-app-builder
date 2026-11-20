@@ -1,6 +1,8 @@
+@use "/src/theme/text-size";
+
 .animated-slides-wrapper {
   p {
-    font-size: 20px;
+    font-size: text-size.scaled(20px);
   }
   .section-container {
     position: relative;

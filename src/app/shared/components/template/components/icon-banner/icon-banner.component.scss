@@ -1,4 +1,5 @@
 @use "/src/theme/mixins";
+@use "/src/theme/text-size";
 
 .icon-banner-wrapper {
   width: 373px;
@@ -10,8 +11,8 @@
   position: relative;
   .title,
   .text {
-    font-size: 19px;
-    line-height: 22px;
+    font-size: text-size.scaled(19px);
+    line-height: text-size.scaled(22px);
     color: var(--ion-color-primary-contrast);
   }
   .title {

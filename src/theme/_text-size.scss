@@ -1,0 +1,50 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+// Text sizes scale with the device's text size setting (iOS Dynamic Type). Write font sizes and
+// line heights in px, at their size for the default text setting, and convert them with `scaled`.
+// See documentation/docs/developers/styling.md
+
+/// A single px value as a multiple of `--text-px` (1px at the default text size), e.g.
+/// `20px` -> `calc(20 * var(--text-px))`. Any other value is returned unchanged
+@function scaled($value) {
+  @if meta.type-of($value) == "number" and math.unit($value) == "px" {
+    @return calc(#{math.div($value, 1px)} * var(--text-px));
+  }
+  @return $value;
+}
+
+/// Whether a theme variable holds a text size: its name contains `font-size` or starts with
+/// `line-height`
+@function is-text-size-variable($name) {
+  $name: string.unquote("#{$name}");
+  @return string.index($name, "font-size") != null or string.index($name, "line-height") == 1;
+}
+
+/// A theme variable's value, with text sizes converted by `scaled`
+@function theme-variable-value($name, $value) {
+  @if is-text-size-variable($name) {
+    @return scaled($value);
+  }
+  @return $value;
+}
+
+/// The variables that `scaled` values depend on. Declared on `:root` only: values that use
+/// `var()` are resolved where they are declared, so a theme could not change them
+@mixin root-variables {
+  :root {
+    // Root font size at the default text size, in px. Ionic sets the root from the device's text
+    // size on iOS (`-apple-system-body`, 17px by default), under the same query as below
+    --font-root: 16;
+    // Largest text scale supported, relative to the default text size
+    --text-scale-max: 1.35;
+    // 1px at the default text size, scaled with the root font size up to --text-scale-max
+    --text-px: min(calc(1rem / var(--font-root)), calc(1px * var(--text-scale-max)));
+  }
+  @supports (-webkit-touch-callout: none) {
+    :root {
+      --font-root: 17;
+    }
+  }
+}

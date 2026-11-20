@@ -143,6 +143,30 @@ So a rule meant for page-level content has to say so, by targeting
 copy of it nested inside a container, where the container's own padding is usually already
 handling the spacing — and where the result depends on what the container happens to hold.
 
+## Text sizes
+
+Text grows with the device's text size setting (Dynamic Type on iOS). On iOS, Ionic sets the root font size from that setting, so a size has to be relative to the root to follow it. Sizes are still written in px, at their size for the default setting, and converted to a multiple of `--text-px`:
+
+- **Theme variables** whose name contains `font-size` or starts with `line-height` are converted automatically: `font-size-text-large: 24px` in a theme becomes `calc(24 * var(--text-px))`.
+- **Base values and rules** (`variables.scss`, component styles, theme overrides) use `text-size.scaled()`:
+
+```scss
+@use "/src/theme/text-size";
+
+.title {
+  font-size: text-size.scaled(20px);
+  line-height: text-size.scaled(24px);
+}
+```
+
+`--text-px` is 1px at the default text size on every platform (the default root is 16px, or 17px on iOS), and grows with the root font size up to `--text-scale-max` (in `src/theme/_text-size.scss`). So nothing changes at the default setting, and a font size and its line height grow together. Line heights need converting too, or lines of text overlap as they grow.
+
+Values that are not a single px length (`em`, `rem`, `var()`) are left as they are. An `em` size already follows the text around it. A `rem` size also grows, but isn't limited by `--text-scale-max`, and renders about 6% larger on iOS than on the web, as the iOS root is 17px.
+
+Icons (`--icon-size-*`) and other box sizes are not text sizes, and stay fixed. A box that holds text should set a `min-height` rather than a `height`, so the text isn't cut off when it grows.
+
+To preview larger text in a browser, set a larger font size on `html` in the developer tools, e.g. `20px` for 125%.
+
 ## Checking a change
 
 Theme CSS is generated at build time, so a change can be checked by compiling it, and a refactor
