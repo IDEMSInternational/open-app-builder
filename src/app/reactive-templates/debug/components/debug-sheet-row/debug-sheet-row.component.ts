@@ -92,8 +92,20 @@ export class DebugSheetRowComponent {
     const { flow_type, flow_name } = this.sheet();
     this.loading.set(true);
     try {
-      // Skip overrides, so the flow itself is shown
-      const flow = await this.appDataService.getSheet(flow_type, flow_name, true);
+      // Skip overrides, so the flow itself is shown.
+      let flow: FlowTypes.FlowTypeWithData | undefined;
+      if (this.appDataService.hasFlow(flow_type, flow_name)) {
+        flow = await this.appDataService.getSheet(flow_type, flow_name, true);
+      } else {
+        // Live contents can include a flow not yet present in the app bundle.
+        const response = await fetch(
+          `assets/app_data/sheets/${flow_type}/${encodeURIComponent(flow_name)}.json?t=${Date.now()}`
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to load ${flow_name}: HTTP ${response.status}`);
+        }
+        flow = (await response.json()) as FlowTypes.FlowTypeWithData;
+      }
       this.flow.set(flow || undefined);
     } finally {
       this.loading.set(false);
