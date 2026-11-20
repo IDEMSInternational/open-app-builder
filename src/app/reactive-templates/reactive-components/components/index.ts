@@ -15,6 +15,7 @@ import { DisplayGroupComponent } from "./display-group/display-group.component";
 import { UpdateComponent } from "./update/update.component";
 import { ExpressionBuilderComponent } from "./expression-builder/expression-builder.component";
 import { RadioListComponent } from "./radio-list/radio-list.component";
+import { RadioButtonGridComponent } from "./radio-button-grid/radio-button-grid.component";
 import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
@@ -32,6 +33,7 @@ export const REACTIVE_COMPONENT_MAP = {
   popup: PopupComponent,
   nav: NavComponent,
   radio_list: RadioListComponent,
+  radio_button_grid: RadioButtonGridComponent,
   set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,
   template: NestedTemplateComponent,
