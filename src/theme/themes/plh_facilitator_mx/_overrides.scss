@@ -1,4 +1,5 @@
 @use "../../mixins";
+@use "../../text-size";
 
 @mixin overrides {
   // Text
@@ -837,7 +838,7 @@
       padding-left: 16px;
       h2 {
         font-weight: var(--font-weight-bold);
-        font-size: 28px;
+        font-size: text-size.scaled(28px);
       }
     }
     .wrapper[data-language-direction~="rtl"] {

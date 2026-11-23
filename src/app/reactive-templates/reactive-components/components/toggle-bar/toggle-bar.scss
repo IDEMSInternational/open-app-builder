@@ -1,3 +1,5 @@
+@use "/src/theme/text-size";
+
 $toggleHeight: 22px;
 $toggleWidth: 42px;
 $togglePadding: 12px;
@@ -55,7 +57,7 @@ ion-toggle {
   margin-left: var(--small-margin);
   margin-right: var(--small-margin);
   text-align: right;
-  line-height: 27px;
+  line-height: text-size.scaled(27px);
 }
 
 .center {

@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "sass:map";
 @use "sass:math";
+@use "../../text-size";
 @use "./contrast-colour.scss";
 @use "./theme-selectors.scss";
 
@@ -56,8 +57,10 @@
     $pv: $color-primary-variant,
     $sv: $color-secondary-variant
   );
+  // Text sizes (font sizes and line heights) given in px are converted to scale with the device's
+  // text size setting
   @each $name, $value in $variable-overrides {
-    --#{$name}: #{$value};
+    --#{$name}: #{text-size.theme-variable-value($name, $value)};
   }
 }
 

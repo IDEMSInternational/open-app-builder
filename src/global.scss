@@ -11,6 +11,7 @@
 
 @use "./theme/breakpoints";
 @use "./theme/components";
+@use "./theme/text-size";
 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
@@ -130,14 +131,14 @@ $tour-next-button-background: var(
   font-size: var(--font-size-text-medium);
   right: 0;
   @media (max-width: 320px) {
-    font-size: 16px;
+    font-size: text-size.scaled(16px);
   }
   .introjs-tooltip-header {
     padding-top: var(--largest-padding);
     .introjs-tooltip-title {
       font-size: var(--font-size-title-tiny);
       @media (max-width: 320px) {
-        font-size: 20px;
+        font-size: text-size.scaled(20px);
       }
     }
   }
@@ -176,9 +177,9 @@ $tour-next-button-background: var(
   outline: none;
   color: var(--ion-color-primary);
   font-weight: 500;
-  font-size: 20px;
+  font-size: text-size.scaled(20px);
   @media (max-width: 320px) {
-    font-size: 16px;
+    font-size: text-size.scaled(16px);
   }
   &.introjs-nextbutton {
     background: $tour-next-button-background;
