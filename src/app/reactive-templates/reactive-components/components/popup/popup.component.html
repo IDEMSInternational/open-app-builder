@@ -1,6 +1,6 @@
 <ion-modal
   [isOpen]="isOpen()"
-  (didDismiss)="isOpen.set(false)"
+  (didDismiss)="onDidDismiss()"
   [class.dialog]="!params.fullscreen.value()"
   [class.fullscreen]="params.fullscreen.value()"
 >

@@ -2,13 +2,9 @@ import { Component, forwardRef, inject, signal } from "@angular/core";
 import { NgTemplateOutlet } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { defineParameters, Parameter } from "../../parameters";
-import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
+import { ROW_PARAMETERS, RowBaseComponent, RowEmitEvent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
-import {
-  ActionRegistry,
-  IAction,
-  IActionParameter,
-} from "src/app/reactive-templates/services/action.registry";
+import { ActionRegistry, IAction } from "src/app/reactive-templates/services/action.registry";
 import { NestedTemplateComponent } from "../nested-template/nested-template.component";
 
 const parameters = () =>
@@ -39,13 +35,25 @@ export class PopupComponent
   private readonly actionRegistry = inject(ActionRegistry);
 
   public isOpen = signal(false);
+  private closePromise?: Promise<void>;
+  private resolveClose?: () => void;
+  private confirmation?: "completed" | "cancelled";
 
-  public execute(params?: IActionParameter[]): Promise<void> {
+  public execute(): Promise<void> {
+    if (!this.closePromise) {
+      this.confirmation = undefined;
+      this.closePromise = new Promise<void>((resolve) => {
+        this.resolveClose = resolve;
+      });
+    }
     this.isOpen.set(true);
-    return Promise.resolve();
+    return this.closePromise;
   }
 
   public init(): void {
+    if (this.initialised()) {
+      return;
+    }
     super.init();
 
     this.actionRegistry.register(this);
@@ -62,11 +70,49 @@ export class PopupComponent
     this.isOpen.set(false);
   }
 
-  public onEmittedValue(event: { emitValue: string; emitData: any }) {
+  public override onEmittedValue(event: RowEmitEvent) {
     super.onEmittedValue(event);
 
-    if (["completed", "uncompleted"].includes(event.emitValue)) {
+    if (this.closePromise && event.emitValue === "completed") {
+      this.confirmation = "completed";
+    } else if (this.closePromise && event.emitValue === "cancelled") {
+      this.confirmation = "cancelled";
+    }
+
+    if (
+      ["completed", "uncompleted"].includes(event.emitValue) ||
+      (this.closePromise && event.emitValue === "cancelled")
+    ) {
       this.dismiss(event);
     }
+  }
+
+  public onDidDismiss(): void {
+    this.isOpen.set(false);
+    this.finishClose();
+  }
+
+  private finishClose(): void {
+    const resolve = this.resolveClose;
+    if (!resolve) {
+      return;
+    }
+    this.resolveClose = undefined;
+    this.closePromise = undefined;
+    if (this.confirmation !== "completed" && this.confirmation !== "cancelled") {
+      this.onEmittedValue({ emitValue: "cancelled", emitData: undefined });
+    }
+    resolve();
+  }
+
+  public override ngOnDestroy(): void {
+    if (this.confirmation === "completed") {
+      this.confirmation = undefined;
+    }
+    this.finishClose();
+    if (this.actionRegistry.has(this.name()) && this.actionRegistry.get(this.name()) === this) {
+      this.actionRegistry.unregister(this.name());
+    }
+    super.ngOnDestroy();
   }
 }

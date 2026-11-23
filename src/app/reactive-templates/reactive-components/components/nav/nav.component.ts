@@ -7,7 +7,7 @@ import {
 } from "../../row-base.component";
 import { defineParameters } from "../../parameters";
 import { IAction, IActionParameter } from "src/app/reactive-templates/services/action.registry";
-import { EvaluationService } from "src/app/reactive-templates/services/evaluation.service";
+import { NavigationService } from "src/app/reactive-templates/services/navigation-service";
 
 const parameters = () => defineParameters({});
 
@@ -20,6 +20,8 @@ export class NavComponent
   extends RowBaseComponent<ReturnType<typeof parameters>>
   implements IAction
 {
+  private readonly navigationService = inject(NavigationService);
+
   public async execute(params?: IActionParameter[]): Promise<void> {
     const templateName = this.evaluationService.evaluateExpression(
       this.row().value,
@@ -29,28 +31,26 @@ export class NavComponent
     const rows = this.row().rows ?? [];
     const url = "/template/" + templateName;
 
-    // Clear out any nav params in local session storage that begin with this url
-    Object.keys(sessionStorage).forEach((key) => {
-      if (key.startsWith(navParamPrefix(url))) {
-        sessionStorage.removeItem(key);
+    await this.navigationService.navigate([url], () => {
+      // Only replace destination parameters once navigation has been allowed.
+      Object.keys(sessionStorage).forEach((key) => {
+        if (key.startsWith(navParamPrefix(url))) {
+          sessionStorage.removeItem(key);
+        }
+      });
+
+      for (const row of rows) {
+        const expression = params?.find((p) => p.name === row.name)?.value ?? row.value;
+        const value = this.evaluationService.evaluateExpression<string>(
+          expression,
+          this.namespace(),
+          row.parameter_list?.value_type as ValueType
+        );
+
+        if (value) {
+          sessionStorage.setItem(`${navParamPrefix(url)}${row.name}`, value.toString());
+        }
       }
     });
-
-    // Store nav parameters in session storage so that they can be picked up by the target template
-    for (const row of rows) {
-      const expression = params?.find((p) => p.name === row.name)?.value ?? row.value;
-      const namespace = this.namespace();
-      const value = this.evaluationService.evaluateExpression<string>(
-        expression,
-        namespace,
-        row.parameter_list?.value_type as ValueType
-      );
-
-      if (value) {
-        sessionStorage.setItem(`${navParamPrefix(url)}${row.name}`, value.toString());
-      }
-    }
-
-    await this.router.navigate([url]);
   }
 }

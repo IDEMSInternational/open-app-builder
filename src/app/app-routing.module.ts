@@ -95,6 +95,7 @@ export const APP_FEATURE_ROUTES = [...featureRoutes, ...sidebarRoutes];
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",
+      canceledNavigationResolution: "computed",
     }),
   ],
   exports: [RouterModule],
