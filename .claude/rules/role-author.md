@@ -73,6 +73,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Module generated without articles | no `<module id>_articles` tab after renaming a module | below: Workbooks |
 | Override applies to everyone | bold/italic in the `override_condition` cell | below: Workbooks |
 | Data list override still shows removed rows, some without `row_index` | saved data is merged into the override | below: Overriding |
+| Completed module shows an old title; its page header says "null" | module `id` renamed; saved row comes back | below: Overriding |
 | Override value on a nested template comes out empty | override values are evaluated in the parent | below: Templates |
 | Number input: 0 passes an "empty" check, or disables the button | `!0` and `0 == ''` are true in JS | below: Variables |
 | Link from the sheet isn't clickable, or a link opens the wrong page | cell hyperlinks are dropped; address has no `https://` | below: Workbooks |
@@ -156,6 +157,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (`dynamic-data.service.ts` `mergeWriteCacheData` → `deepMergeArrays`), including ids the override doesn't
   have, which come back as partial rows without `row_index`. Keep every id in the override list and change
   only static columns. (found 2026-10-30: kids_teens_mx po_refl demo, `proximal_outcome_7d_pages`)
+- **Renaming a data list row's `id` after release leaves a ghost copy on devices that wrote to it.**
+  `set_data` saves the whole row, not just the changed columns (`set_data.action.ts` `parseUpdateData`
+  → `bulkUpsert`), and `mergeWriteCacheData` (`dynamic-data.service.ts`) adds saved rows back even when
+  their id is gone from the sheet. The old row keeps its old title/columns, so it still passes list
+  filters, and lookups by its id in other lists return nothing (a module_landing header shows "null").
+  Progress also doesn't move to the new id. Avoid renaming ids once users have data, or plan a migration.
+  (found 2026-11-23: kids_teens_mx `i_one_on_one_t` → `one_on_one_time_t_*`, content 1.1.33/1.1.38)
 
 ### Actions
 
