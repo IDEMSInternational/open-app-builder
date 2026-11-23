@@ -28,6 +28,8 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
 .text-bubble-container {
   position: relative;
   width: fit-content;
+  // A word too long for the row (e.g. in Xhosa at large text sizes) wraps instead of widening the bubble
+  max-width: 100%;
   min-width: $imageSize;
   display: flex;
   flex-direction: row-reverse;
@@ -35,6 +37,9 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
   align-items: start;
   height: fit-content;
   margin-bottom: 12px;
+  > div {
+    min-width: 0;
+  }
 
   &[data-variant~="gray"] {
     .text-bubble {

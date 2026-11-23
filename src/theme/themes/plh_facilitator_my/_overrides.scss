@@ -597,7 +597,7 @@
         --padding-start: 16px !important;
         --padding-top: 14px;
         --padding-bottom: 14px;
-        min-height: 58px;
+        min-height: text-size.scaled(58px);
       }
     }
   }
