@@ -90,6 +90,8 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 
 
 
+| A counter jumps or a sum looks like "011" | `+` on a `set_local`/`set_field` value that is text | below: Variables |
+| Character in a speech bubble faces the wrong way | text_bubble mirrors right-side speakers | below: Layout|
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -327,6 +329,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   colours with higher specificity (`themes/plh_kids_teens/_overrides.scss`). To change the colour, set
   `style:` instead, e.g. `style: navigation` (primary-variant, bright turquoise in MX). (verified 2026-11-05:
   V3 debug_complete_course)
+  - **A `text_bubble` speaker on the `right` is mirrored.** `speaker_position: right` applies `scaleX(-1)` to
+  the speaker image (`text-bubble.component.scss`), assuming images are drawn facing right; an image drawn
+  facing left ends up looking away from its bubble. Upload right-facing art, or ask a developer for an
+  option to turn the mirroring off. (found 2026-11-19: MX #238, caregivers in `comic_bubble`)
+
 
 
 
