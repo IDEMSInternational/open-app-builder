@@ -10,13 +10,17 @@ There are two: `nav_enter` and the older `nav_resume`. Use `nav_enter` for new c
 
 ## nav_enter
 
-`nav_enter` fires on a page, the template a nav stack opens, or a fullscreen pop-up, each time it comes to the front:
+`nav_enter` fires on a page, nav stack or fullscreen pop-up template each time it comes to the front:
 
-- on the first visit to a page, or when a nav stack or fullscreen pop-up opens
-- when going back to a page, or on `go_to` a different page
-- when a pop-up or nav stack above it closes
+| When                                                                                       | `nav_enter` fires on                                                                        |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| A page is shown: on the first visit, on `go_to` from another page, or on going back to it  | That page                                                                                   |
+| A nav stack or fullscreen pop-up opens                                                     | Its template                                                                                |
+| A pop-up or nav stack closes, however it's closed                                          | The template now in front: the nav stack or fullscreen pop-up underneath, or else the page  |
+| `nav_stack: close_all`                                                                     | The page, once                                                                              |
+| `go_to` the page you're on, `emit: force_reload`, or the app returning from the background | Nothing                                                                                     |
 
-It doesn't fire on `go_to` the page you are on, after `emit: force_reload`, or when the app returns from the background. At app start, a page's `nav_enter` waits until any launch pop-ups (e.g. onboarding) have closed.
+A template covered by a pop-up or nav stack doesn't get `nav_enter` until it's in front again. At app start, a page's `nav_enter` waits until any launch pop-ups (e.g. onboarding) have closed.
 
 Before the actions run, the template is reprocessed, so values that depend on fields changed elsewhere are up to date. Templates nested inside another template and pop-ups that aren't fullscreen don't get `nav_enter`, and log a warning in the browser console if they declare it.
 
