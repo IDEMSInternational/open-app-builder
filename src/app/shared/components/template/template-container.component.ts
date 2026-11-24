@@ -58,10 +58,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   children: { [name: string]: TemplateContainerComponent } = {};
 
   template: FlowTypes.Template;
-  /** Number of times the template has rendered, including full reloads (`emit: force_reload`) */
-  public renderCount = signal(0);
-  /** Number of times the template has started rendering, including any render still in progress */
-  public rendersStarted = 0;
+  /** True once the template has rendered for the first time */
+  public hasRendered = signal(false);
   /** Reprocesses and reloads started from this template as the top-most parent, not yet finished */
   private rerendersInProgress = new Set<Promise<void>>();
 
@@ -211,7 +209,6 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
    **************************************************************************************/
 
   private async renderTemplate(templatename: string) {
-    this.rendersStarted++;
     // Lookup template
     const template = await this.templateService.getTemplateByName(
       templatename,
@@ -220,11 +217,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     this.name = this.name || templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
-    if (
-      this.parent &&
-      this.renderCount() === 0 &&
-      hasLifecycleActions(template?.rows, "nav_enter")
-    ) {
+    if (this.parent && !this.hasRendered() && hasLifecycleActions(template?.rows, "nav_enter")) {
       console.warn(
         `[nav_enter] "${templatename}" is nested in another template or is a pop-up that is not fullscreen, so its nav_enter actions will not run. nav_enter only fires on page, nav-stack and fullscreen pop-up templates.`
       );
@@ -242,7 +235,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
       this.parent.children[this.name] = this;
     }
     log_groupEnd();
-    this.renderCount.update((count) => count + 1);
+    this.hasRendered.set(true);
     // Ensure any parents using onPush are notified of changes (e.g. data-items)
     this.cdr.markForCheck();
   }

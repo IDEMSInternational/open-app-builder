@@ -16,8 +16,10 @@ import { TemplateTranslateService } from "../../../services/template-translate.s
  */
 export class TemplatePopupComponent implements OnInit, OnDestroy {
   @Input() props: ITemplatePopupComponentProps;
-  private container = viewChild(TemplateContainerComponent);
-  private modal = inject(IonModalToken, { optional: true });
+  // queried by reference: this component and the container import each other
+  private container = viewChild<TemplateContainerComponent>("container");
+  // not `modal`, which Ionic sets on modal components
+  private ionModal = inject(IonModalToken, { optional: true });
   private lifecycleService = inject(TemplateLifecycleService);
 
   constructor(
@@ -31,7 +33,7 @@ export class TemplatePopupComponent implements OnInit, OnDestroy {
     if (!this.props.standalone) return;
     this.lifecycleService.addOverlay(this.container);
     // no longer in front once the pop-up starts closing
-    this.modal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
+    this.ionModal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
   }
 
   ngOnDestroy() {

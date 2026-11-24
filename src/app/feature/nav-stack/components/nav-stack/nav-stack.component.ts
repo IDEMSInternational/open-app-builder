@@ -20,7 +20,8 @@ export interface INavStackConfig {
 export class NavStackComponent implements OnInit, OnDestroy {
   @Input() config: INavStackConfig;
   private container = viewChild(TemplateContainerComponent);
-  private modal = inject(IonModalToken, { optional: true });
+  // not `modal`, which Ionic sets on modal components
+  private ionModal = inject(IonModalToken, { optional: true });
   private lifecycleService = inject(TemplateLifecycleService);
 
   constructor(private modalCtrl: ModalController) {}
@@ -28,7 +29,7 @@ export class NavStackComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.lifecycleService.addOverlay(this.container);
     // no longer in front once the nav stack starts closing
-    this.modal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
+    this.ionModal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
   }
 
   ngOnDestroy() {

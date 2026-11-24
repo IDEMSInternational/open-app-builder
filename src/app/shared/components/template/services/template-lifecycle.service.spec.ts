@@ -7,8 +7,7 @@ import type { TemplateContainerComponent } from "../template-container.component
 import { hasLifecycleActions, TemplateLifecycleService } from "./template-lifecycle.service";
 
 interface IMockContainer {
-  renderCount: WritableSignal<number>;
-  rendersStarted: number;
+  hasRendered: WritableSignal<boolean>;
   template: { rows: any[] };
   forceRerender: jasmine.Spy;
   waitForRerender: jasmine.Spy;
@@ -24,8 +23,7 @@ const NAV_ENTER_ROW = {
 function mockContainer(options: { navEnter?: boolean; rendered?: boolean } = {}) {
   const { navEnter = true, rendered = true } = options;
   const container: IMockContainer = {
-    renderCount: signal(rendered ? 1 : 0),
-    rendersStarted: rendered ? 1 : 0,
+    hasRendered: signal(rendered),
     template: { rows: navEnter ? [NAV_ENTER_ROW] : [] },
     forceRerender: jasmine.createSpy("forceRerender").and.resolveTo(),
     waitForRerender: jasmine.createSpy("waitForRerender").and.resolveTo(false),
@@ -33,17 +31,6 @@ function mockContainer(options: { navEnter?: boolean; rendered?: boolean } = {})
   };
   const ref = signal(container as unknown as TemplateContainerComponent);
   return { container, ref };
-}
-
-/** Start rendering a template, returning a function that completes the render */
-function startRender(container: IMockContainer) {
-  container.rendersStarted++;
-  return () => container.renderCount.update((n) => n + 1);
-}
-
-/** Render a template again, e.g. `emit: force_reload` */
-function reload(container: IMockContainer) {
-  startRender(container)();
 }
 
 /** Number of times nav_enter has been emitted on a container */
@@ -87,7 +74,7 @@ describe("TemplateLifecycleService nav_enter", () => {
     service.setActivePage(page.ref);
     await flush();
     expect(entries(page.container)).toBe(0);
-    reload(page.container);
+    page.container.hasRendered.set(true);
     await flush();
     expect(entries(page.container)).toBe(1);
     expect(page.container.forceRerender).not.toHaveBeenCalled();
@@ -249,7 +236,7 @@ describe("TemplateLifecycleService nav_enter", () => {
     expect(service.front()).toBeUndefined();
     expect(entries(popup.container)).toBe(0);
 
-    reload(popup.container);
+    popup.container.hasRendered.set(true);
     await flush();
     expect(entries(popup.container)).toBe(1);
     expect(entries(page.container)).toBe(1);
@@ -314,7 +301,7 @@ describe("TemplateLifecycleService nav_enter", () => {
     service.setActivePage(page.ref);
     service.addOverlay(launchPopup.ref);
     await flush();
-    reload(page.container);
+    page.container.hasRendered.set(true);
     await flush();
     expect(entries(page.container)).toBe(0);
 
@@ -344,102 +331,6 @@ describe("TemplateLifecycleService nav_enter", () => {
     await flush();
     expect(entries(page.container)).toBe(2);
     expect(page.container.forceRerender).not.toHaveBeenCalled();
-  });
-
-  it("fires again, without reprocessing, when the template in front is reloaded", async () => {
-    const page = mockContainer();
-    service.setActivePage(page.ref);
-    await flush();
-    reload(page.container);
-    await flush();
-    expect(entries(page.container)).toBe(2);
-    expect(page.container.forceRerender).not.toHaveBeenCalled();
-  });
-
-  it("does not fire on a reload while covered, then fires once when back in front", async () => {
-    const page = mockContainer();
-    const stack = mockContainer();
-    service.setActivePage(page.ref);
-    await flush();
-    service.addOverlay(stack.ref);
-    await flush();
-    reload(page.container);
-    await flush();
-    expect(entries(page.container)).toBe(1);
-
-    service.removeOverlay(stack.ref);
-    await flush();
-    expect(entries(page.container)).toBe(2);
-  });
-
-  // nav_enter | emit: force_reload, with the effect running during or after its actions
-  for (const effectTiming of ["during", "after"]) {
-    it(`does not fire again when its own nav_enter actions reload it (effect ${effectTiming})`, async () => {
-      const page = mockContainer();
-      page.container.templateActionService.handleActions.and.callFake(async () => {
-        reload(page.container);
-        if (effectTiming === "during") await flush();
-      });
-      service.setActivePage(page.ref);
-      await flush();
-      await flush();
-      expect(entries(page.container)).toBe(1);
-
-      // a later reload, e.g. from a button, still fires
-      reload(page.container);
-      await flush();
-      await flush();
-      expect(entries(page.container)).toBe(2);
-    });
-  }
-
-  // e.g. `nav_resume | emit: force_reload` when going back to a page, finishing after its nav_enter actions
-  it("does not fire again for a reload that started before its nav_enter actions finished", async () => {
-    const page = mockContainer();
-    const stack = mockContainer();
-    service.setActivePage(page.ref);
-    await flush();
-    service.addOverlay(stack.ref);
-    await flush();
-
-    const finishReload = startRender(page.container);
-    service.removeOverlay(stack.ref);
-    await flush();
-    expect(entries(page.container)).toBe(2);
-    finishReload();
-    await flush();
-    expect(entries(page.container)).toBe(2);
-
-    reload(page.container);
-    await flush();
-    expect(entries(page.container)).toBe(3);
-  });
-
-  it("still suppresses reloads from a re-entry's actions when an earlier entry ends first", async () => {
-    const page = mockContainer();
-    const popup = mockContainer({ navEnter: false });
-    let finishFirstEntry: () => void;
-    let call = 0;
-    page.container.templateActionService.handleActions.and.callFake(async () => {
-      call++;
-      // nav_enter | pop_up: x | fullscreen: true waits until the pop-up closes
-      if (call === 1) {
-        service.addOverlay(popup.ref);
-        await new Promise<void>((resolve) => (finishFirstEntry = resolve));
-      }
-      // the re-entry's actions reload the page after the first entry has ended
-      if (call === 2) {
-        await flush();
-        reload(page.container);
-        await flush();
-      }
-    });
-    service.setActivePage(page.ref);
-    await flush();
-    service.removeOverlay(popup.ref);
-    finishFirstEntry();
-    for (let i = 0; i < 4; i++) await flush();
-    expect(entries(page.container)).toBe(2);
   });
 });
 

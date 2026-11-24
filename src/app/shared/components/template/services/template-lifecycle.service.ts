@@ -12,9 +12,9 @@ export type ITemplateContainerRef = Signal<TemplateContainerComponent | undefine
 /**
  * Lifecycle of top-level templates (pages, nav stacks and standalone pop-ups, e.g. fullscreen): tracks
  * which one is in front and fires lifecycle triggers on it, currently `nav_enter` each time a template
- * comes to the front (first visit, back navigation, or a pop-up or nav stack above it closing) or is
- * reloaded while in front. The template page, nav-stack and pop-up components register their template
- * containers. Separate from `LifecycleActionsService`, which runs app-level launch actions
+ * comes to the front (first visit, back navigation, or a pop-up or nav stack above it closing).
+ * The template page, nav-stack and pop-up components register their template containers.
+ * Separate from `LifecycleActionsService`, which runs app-level launch actions
  */
 @Injectable({ providedIn: "root" })
 export class TemplateLifecycleService extends SyncServiceBase {
@@ -31,16 +31,12 @@ export class TemplateLifecycleService extends SyncServiceBase {
     if (this.snapshot()?.queryParams?.popup_child) return undefined;
     const ref = this.overlays().at(-1) ?? this.activePage();
     const container = ref?.();
-    return container?.renderCount() > 0 ? container : undefined;
+    return container?.hasRendered() ? container : undefined;
   });
 
   private lastFront: TemplateContainerComponent | undefined;
-  private lastRenderCount = 0;
-  /** Templates that have come to the front: entries in progress, and renders started by the last one's end */
-  private entries = new WeakMap<
-    TemplateContainerComponent,
-    { active: number; rendersStarted: number }
-  >();
+  /** Templates that have come to the front */
+  private entered = new WeakSet<TemplateContainerComponent>();
   /** Templates that have rendered while not in front, e.g. a page opened from inside a nav stack */
   private renderedCovered = new WeakSet<TemplateContainerComponent>();
 
@@ -48,22 +44,15 @@ export class TemplateLifecycleService extends SyncServiceBase {
     super("TemplateLifecycle");
     effect(() => {
       const front = this.front();
-      const renderCount = front?.renderCount() ?? 0;
-      const reloaded = !!front && front === this.lastFront && renderCount > this.lastRenderCount;
-      if (front === this.lastFront && !reloaded) return;
+      if (front === this.lastFront) return;
       this.lastFront = front;
-      this.lastRenderCount = renderCount;
-      if (!front) return;
-      // a reload that started before the last nav_enter actions finished belongs to that entry, e.g. one
-      // they caused with `emit: force_reload` (which would otherwise loop), or a `nav_resume` reload
-      if (reloaded && !this.isNewReload(front, renderCount)) return;
-      untracked(() => this.enter(front, reloaded));
+      if (front) untracked(() => this.enter(front));
     });
     effect(() => {
       const front = this.front();
       for (const ref of [this.activePage(), ...this.overlays()]) {
         const container = ref?.();
-        if (container && container !== front && container.renderCount() > 0) {
+        if (container && container !== front && container.hasRendered()) {
           this.renderedCovered.add(container);
         }
       }
@@ -87,26 +76,13 @@ export class TemplateLifecycleService extends SyncServiceBase {
     this.overlays.update((refs) => refs.filter((r) => r !== ref));
   }
 
-  /** Whether the latest completed render of a template in front started after its last entry ended */
-  private isNewReload(container: TemplateContainerComponent, renderCount: number) {
-    const entry = this.entries.get(container);
-    return !entry || (entry.active === 0 && renderCount > entry.rendersStarted);
-  }
-
-  private async enter(container: TemplateContainerComponent, reloaded = false) {
-    const firstEntry = !this.entries.has(container);
-    const entry = this.entries.get(container) ?? { active: 0, rendersStarted: 0 };
-    this.entries.set(container, entry);
-    entry.active++;
-    // rows may depend on fields changed while the template was covered (not if it has just
-    // reloaded, or is shown for the first time and rendered in front)
-    const reprocess = !reloaded && (!firstEntry || this.renderedCovered.has(container));
-    try {
-      await this.emitTrigger(container, "nav_enter", { reprocess });
-    } finally {
-      entry.active--;
-      entry.rendersStarted = container.rendersStarted;
-    }
+  private async enter(container: TemplateContainerComponent) {
+    const firstEntry = !this.entered.has(container);
+    this.entered.add(container);
+    // rows may depend on fields changed while the template was covered (not if it is shown for the
+    // first time and rendered in front)
+    const reprocess = !firstEntry || this.renderedCovered.has(container);
+    await this.emitTrigger(container, "nav_enter", { reprocess });
   }
 
   /** Emit a lifecycle trigger on a top-level template, if any of its rows declare actions for it */
