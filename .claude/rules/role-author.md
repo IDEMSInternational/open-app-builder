@@ -131,6 +131,16 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `prep_<id>_articles` in error.log), and a content-list row whose tab was renamed only gives a
   "No Contents: <name>" warning. Splitting a module (`_f`/`_m`, `_p1`/`_p2`) needs one tab per new ID.
   (found 2026-10-21: kids_teens_mx module restructure, 85 of 98 modules without articles)
+  - **A `@default` first row fills empty cells in the rest of the tab.** If the first row's id is `@default`,
+  its values are copied into every row where that cell is empty (`default.parser.ts`
+  `processRowDefaultValues`). It only matters if it holds values other rows rely on; GPI Sidekick fails on an
+  empty one (`appendTable` with `number[]`, doc stops after "@default"). (verified 2026-11-24: MX/PA
+  `*_articles` held only `nested: FALSE`, safe to remove; `check_in`, `hp_check_in`, `hp_challenges` hold content)
+  - **A data pipe can read lists from any workbook in the deployment.** `data_pipe.parser.ts`
+  `loadInputSources` gets every processed data list, and the pipe waits and retries if an input isn't
+  processed yet, so a pipe can live in a shared workbook and build from each deployment's own list (e.g.
+  `courses`). If the input doesn't exist, the output list is missing with only "Max defer limit reached"
+  in error.log. (verified 2026-11-24: certificate_tracking from courses)
 
 ### Overriding shared tabs, globals and data lists
 
