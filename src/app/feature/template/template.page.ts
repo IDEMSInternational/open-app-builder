@@ -25,6 +25,7 @@ export class TemplatePage implements OnInit, OnDestroy {
 
   public useReactiveTemplates: boolean = false;
 
+  // none with reactive templates, so their pages don't get nav_enter
   private container = viewChild(TemplateContainerComponent);
   private lifecycleService = inject(TemplateLifecycleService);
 

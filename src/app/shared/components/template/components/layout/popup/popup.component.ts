@@ -30,14 +30,16 @@ export class TemplatePopupComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (!this.props.standalone) return;
-    this.lifecycleService.addOverlay(this.container);
-    // no longer in front once the pop-up starts closing
-    this.ionModal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
+    if (this.isTopLevel()) this.lifecycleService.addOverlay(this.container, this.ionModal);
   }
 
   ngOnDestroy() {
-    if (this.props.standalone) this.lifecycleService.removeOverlay(this.container);
+    if (this.isTopLevel()) this.lifecycleService.removeOverlay(this.container);
+  }
+
+  /** Fullscreen pop-ups opened by `TemplateService.runStandaloneTemplate` get `nav_enter` */
+  private isTopLevel() {
+    return this.props.standalone && this.props.fullscreen;
   }
 
   /**
@@ -84,7 +86,7 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
   waitForDismiss?: boolean;
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
-  /** Opened by `TemplateService.runStandaloneTemplate`, so its template is top-level (gets `nav_enter`) */
+  /** Opened by `TemplateService.runStandaloneTemplate`, outside any template */
   standalone?: boolean;
   /** Pass text only to render that text in a popup, bypassing any templates */
   popupText?: string;

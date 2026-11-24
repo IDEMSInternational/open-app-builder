@@ -109,6 +109,24 @@ describe("TemplateLifecycleService nav_enter", () => {
     expect(page.container.forceRerender).toHaveBeenCalledOnceWith(false);
   });
 
+  it("removes a nav stack or pop-up once its modal starts closing", async () => {
+    const page = mockContainer();
+    const stack = mockContainer();
+    let willDismiss: () => void;
+    const modal = { onWillDismiss: () => new Promise<void>((resolve) => (willDismiss = resolve)) };
+    service.setActivePage(page.ref);
+    await flush();
+    service.addOverlay(stack.ref, modal as unknown as HTMLIonModalElement);
+    await flush();
+    expect(service.front()).toBe(stack.ref());
+
+    willDismiss();
+    await Promise.resolve();
+    await flush();
+    expect(service.front()).toBe(page.ref());
+    expect(entries(page.container)).toBe(2);
+  });
+
   it("fires on the nav stack below when the top nav stack closes", async () => {
     const page = mockContainer();
     const lower = mockContainer();

@@ -277,18 +277,12 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   A page with a `nav_enter` row needs neither workaround: it is reprocessed when the stack closes, before its
   `nav_enter` actions run (`template-lifecycle.service.ts`). (verified 2026-11-19: local debug probe)
 - **`nav_enter` fires each time a page, nav-stack or fullscreen pop-up template comes to the front, including
-  in between.** `TemplateLifecycleService` (`template-lifecycle.service.ts`) works out the template in front
-  from the active page, the nav stacks and standalone (fullscreen) pop-ups open above it, in the order they
-  opened (removed at `onWillDismiss`), and `popup_child` pop-ups, which cover everything, and fires on every
-  change. It reprocesses the template first, including on a first entry if it rendered while covered (e.g.
-  `go_to` from inside a nav stack, or under launch pop-ups). `emit: force_reload` doesn't fire it, and resets
-  locals its actions set (keep lasting values in fields). `completed | nav_stack: close_top` then
-  `completed | pop_up: x` runs the page's `nav_enter` actions as `x` opens, and a pop-up opened from
-  `nav_enter` reopens every time it is closed unless its row's condition uses a field its own actions set
-  (e.g. `x_shown`). For the hand-over, use a hold field set by the stack before closing, or let the page open
-  the pop-up from a field the stack sets. Templates with a parent (nested, or a pop-up that isn't fullscreen)
-  don't get it and log a console warning if they declare it. (verified 2026-11-19: local debug probe; fixes
-  2026-11-23; fullscreen pop-ups 2026-11-24)
+  in between.** `TemplateLifecycleService` (`template-lifecycle.service.ts`) fires it on the template in front,
+  after reprocessing it; cases are listed in `documentation/docs/authors/navigation-triggers.md`. So a pop-up
+  opened from `nav_enter` reopens each time it closes unless its row's condition uses a field its own actions
+  set (e.g. `x_shown`), and `completed | nav_stack: close_top` then `completed | pop_up: x` runs the page's
+  `nav_enter` actions as `x` opens: use a hold field set by the stack before closing, or let the page open the
+  pop-up from a field the stack sets. (verified 2026-11-19: local debug probe; fullscreen pop-ups 2026-11-24)
 - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
   are processed in its own context before being merged into the child (`template-row.service.ts`
   `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like

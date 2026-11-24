@@ -10,8 +10,7 @@ function createComponent(props: Partial<ITemplatePopupComponentProps>) {
     "TemplateLifecycleService",
     ["addOverlay", "removeOverlay"]
   );
-  let willDismiss: () => void;
-  const modal = { onWillDismiss: () => new Promise<void>((resolve) => (willDismiss = resolve)) };
+  const modal = { onWillDismiss: () => new Promise<void>(() => null) };
   TestBed.configureTestingModule({
     providers: [
       { provide: TemplateLifecycleService, useValue: lifecycleService },
@@ -22,7 +21,7 @@ function createComponent(props: Partial<ITemplatePopupComponentProps>) {
     () => new TemplatePopupComponent(modalCtrl, {} as TemplateTranslateService)
   );
   component.props = { name: "test", templatename: "test", ...props };
-  return { component, modalCtrl, lifecycleService, willDismiss: () => willDismiss() };
+  return { component, modalCtrl, lifecycleService, modal };
 }
 
 function clickOn(className: string) {
@@ -50,20 +49,28 @@ describe("TemplatePopupComponent", () => {
     expect(modalCtrl.dismiss).not.toHaveBeenCalled();
   });
 
-  it("registers a standalone popup's template as top-level until it starts closing", async () => {
-    const { component, lifecycleService, willDismiss } = createComponent({ standalone: true });
+  it("registers a standalone fullscreen popup's template as top-level while it is open", () => {
+    const { component, lifecycleService, modal } = createComponent({
+      standalone: true,
+      fullscreen: true,
+    });
     component.ngOnInit();
     expect(lifecycleService.addOverlay).toHaveBeenCalledTimes(1);
-    const [ref] = lifecycleService.addOverlay.calls.mostRecent().args;
+    const [ref, registeredModal] = lifecycleService.addOverlay.calls.mostRecent().args;
+    expect(registeredModal).toBe(modal as unknown as HTMLIonModalElement);
 
-    willDismiss();
-    await Promise.resolve();
+    component.ngOnDestroy();
     expect(lifecycleService.removeOverlay).toHaveBeenCalledOnceWith(ref);
   });
 
-  it("does not register a popup opened from a template", () => {
-    const { component, lifecycleService } = createComponent({});
-    component.ngOnInit();
-    expect(lifecycleService.addOverlay).not.toHaveBeenCalled();
+  it("does not register a popup opened from a template, or a standalone popup that is not fullscreen", () => {
+    for (const props of [{ fullscreen: true }, { standalone: true }]) {
+      const { component, lifecycleService } = createComponent(props);
+      component.ngOnInit();
+      component.ngOnDestroy();
+      expect(lifecycleService.addOverlay).not.toHaveBeenCalled();
+      expect(lifecycleService.removeOverlay).not.toHaveBeenCalled();
+      TestBed.resetTestingModule();
+    }
   });
 });

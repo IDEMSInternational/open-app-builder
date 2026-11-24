@@ -6,11 +6,11 @@ import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { ngRouterMergedSnapshot$ } from "src/app/shared/utils/angular.utils";
 import type { TemplateContainerComponent } from "../template-container.component";
 
-/** Template container of a page, nav stack or standalone pop-up, resolved once its view has been created */
+/** Template container of a page, nav stack or fullscreen pop-up, resolved once its view has been created */
 export type ITemplateContainerRef = Signal<TemplateContainerComponent | undefined>;
 
 /**
- * Lifecycle of top-level templates (pages, nav stacks and standalone pop-ups, e.g. fullscreen): tracks
+ * Lifecycle of top-level templates (pages, nav stacks and fullscreen pop-ups): tracks
  * which one is in front and fires lifecycle triggers on it, currently `nav_enter` each time a template
  * comes to the front (first visit, back navigation, or a pop-up or nav stack above it closing).
  * The template page, nav-stack and pop-up components register their template containers.
@@ -23,7 +23,7 @@ export class TemplateLifecycleService extends SyncServiceBase {
 
   /** Container of the page currently shown in the main router outlet */
   private activePage = signal<ITemplateContainerRef | undefined>(undefined);
-  /** Containers of open nav stacks and standalone pop-ups, from bottom to top */
+  /** Containers of open nav stacks and fullscreen pop-ups, from bottom to top */
   private overlays = signal<ITemplateContainerRef[]>([]);
 
   /** The template in front, or undefined while a pop-up covers it or it has not yet rendered */
@@ -67,9 +67,14 @@ export class TemplateLifecycleService extends SyncServiceBase {
     if (this.activePage() === ref) this.activePage.set(undefined);
   }
 
-  /** Add a nav stack or standalone pop-up that has opened above the current template */
-  public addOverlay(ref: ITemplateContainerRef) {
+  /**
+   * Add a nav stack or fullscreen pop-up that has opened above the current template, until its modal
+   * starts closing. The template underneath is then in front during the close animation, before any
+   * action that follows the close (e.g. `nav_stack: close_top` then `pop_up`)
+   */
+  public addOverlay(ref: ITemplateContainerRef, modal?: HTMLIonModalElement | null) {
     this.overlays.update((refs) => [...refs.filter((r) => r !== ref), ref]);
+    modal?.onWillDismiss().then(() => this.removeOverlay(ref));
   }
 
   public removeOverlay(ref: ITemplateContainerRef) {
@@ -95,8 +100,8 @@ export class TemplateLifecycleService extends SyncServiceBase {
     if (options.reprocess) {
       // if one is already in progress (e.g. the template-nav service's when a pop-up closes or on
       // back navigation), wait for it rather than reprocess again at the same time
-      const waited = await container.waitForRerender();
-      if (!waited) await container.forceRerender(false);
+      const reprocessed = await container.waitForRerender();
+      if (!reprocessed) await container.forceRerender(false);
     }
     await container.templateActionService.handleActions([
       { action_id: "emit", args: [trigger], trigger },

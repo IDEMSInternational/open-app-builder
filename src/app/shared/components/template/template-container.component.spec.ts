@@ -56,4 +56,11 @@ describe("TemplateComponent", () => {
     expect(waited).toBeTrue();
     expect(await component.waitForRerender()).toBeFalse();
   });
+
+  it("waitForRerender resolves false if the reprocess in progress fails", async () => {
+    spyOn(component.templateRowService, "processRowUpdates").and.rejectWith(new Error("failed"));
+    const reprocess = component.forceRerender(false).catch(() => null);
+    expect(await component.waitForRerender()).toBeFalse();
+    await reprocess;
+  });
 });

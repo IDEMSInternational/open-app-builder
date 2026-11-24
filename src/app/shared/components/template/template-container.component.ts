@@ -179,12 +179,12 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
 
   /**
    * Wait for any reprocess or reload of this template (as the top-most parent) in progress, e.g. the
-   * template-nav service's when a pop-up closes. Resolves `false` if there was none
+   * template-nav service's when a pop-up closes. Resolves `false` if there was none, or one failed
    */
   public async waitForRerender() {
     if (this.rerendersInProgress.size === 0) return false;
-    await Promise.allSettled([...this.rerendersInProgress]);
-    return true;
+    const results = await Promise.allSettled([...this.rerendersInProgress]);
+    return results.every((result) => result.status === "fulfilled");
   }
 
   private async forceRerenderFromTop(full: boolean) {
