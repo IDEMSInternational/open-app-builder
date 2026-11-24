@@ -26,13 +26,13 @@ export class NavStackComponent implements OnInit, OnDestroy {
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
-    this.lifecycleService.addNavStack(this.container);
+    this.lifecycleService.addOverlay(this.container);
     // no longer in front once the nav stack starts closing
-    this.modal?.onWillDismiss().then(() => this.lifecycleService.removeNavStack(this.container));
+    this.modal?.onWillDismiss().then(() => this.lifecycleService.removeOverlay(this.container));
   }
 
   ngOnDestroy() {
-    this.lifecycleService.removeNavStack(this.container);
+    this.lifecycleService.removeOverlay(this.container);
   }
 
   public close() {

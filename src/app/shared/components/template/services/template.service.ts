@@ -76,6 +76,7 @@ export class TemplateService extends SyncServiceBase {
       fullscreen: true,
       showCloseButton: true,
       ...options,
+      standalone: true,
     };
     const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,

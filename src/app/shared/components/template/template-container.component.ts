@@ -60,6 +60,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
   template: FlowTypes.Template;
   /** Number of times the template has rendered, including full reloads (`emit: force_reload`) */
   public renderCount = signal(0);
+  /** Number of times the template has started rendering, including any render still in progress */
+  public rendersStarted = 0;
+  /** Reprocesses and reloads started from this template as the top-most parent, not yet finished */
+  private rerendersInProgress = new Set<Promise<void>>();
 
   /** */
   templateRowService: TemplateRowService;
@@ -163,23 +167,42 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
         return this.parent.forceRerender(full, shouldProcess);
       } else {
         if (this.elRef) {
-          // we have the top-most parent. Process re-renders, taking note of current
-          // page scroll position and trying to return to it once complete
-          shouldProcess = true;
-          const top = getIonContentScrollTop(this.elRef);
-          // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
-          if (full && top > 0) {
-            await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
-          }
-          await this.forceRerender(full, shouldProcess);
-          if (full && top > 0) {
-            setTimeout(async () => {
-              setIonContentScrollTop(this.elRef, top);
-              await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
-            }, 0);
+          const rerender = this.forceRerenderFromTop(full);
+          this.rerendersInProgress.add(rerender);
+          try {
+            await rerender;
+          } finally {
+            this.rerendersInProgress.delete(rerender);
           }
         }
       }
+    }
+  }
+
+  /**
+   * Wait for any reprocess or reload of this template (as the top-most parent) in progress, e.g. the
+   * template-nav service's when a pop-up closes. Resolves `false` if there was none
+   */
+  public async waitForRerender() {
+    if (this.rerendersInProgress.size === 0) return false;
+    await Promise.allSettled([...this.rerendersInProgress]);
+    return true;
+  }
+
+  private async forceRerenderFromTop(full: boolean) {
+    // we have the top-most parent. Process re-renders, taking note of current
+    // page scroll position and trying to return to it once complete
+    const top = getIonContentScrollTop(this.elRef);
+    // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
+    if (full && top > 0) {
+      await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
+    }
+    await this.forceRerender(full, true);
+    if (full && top > 0) {
+      setTimeout(async () => {
+        setIonContentScrollTop(this.elRef, top);
+        await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
+      }, 0);
     }
   }
 
@@ -188,6 +211,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
    **************************************************************************************/
 
   private async renderTemplate(templatename: string) {
+    this.rendersStarted++;
     // Lookup template
     const template = await this.templateService.getTemplateByName(
       templatename,
@@ -196,9 +220,13 @@ export class TemplateContainerComponent implements OnInit, OnDestroy {
     this.name = this.name || templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
-    if (this.parent && hasLifecycleActions(template?.rows, "nav_enter")) {
+    if (
+      this.parent &&
+      this.renderCount() === 0 &&
+      hasLifecycleActions(template?.rows, "nav_enter")
+    ) {
       console.warn(
-        `[nav_enter] "${templatename}" is nested in another template or a pop-up, so its nav_enter actions will not run. nav_enter only fires on page and nav-stack templates.`
+        `[nav_enter] "${templatename}" is nested in another template or is a pop-up that is not fullscreen, so its nav_enter actions will not run. nav_enter only fires on page, nav-stack and fullscreen pop-up templates.`
       );
     }
     log_group("[Template Render Start]", this.name);

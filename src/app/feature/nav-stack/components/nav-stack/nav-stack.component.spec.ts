@@ -26,7 +26,7 @@ describe("NavStackComponent", () => {
       providers: [
         {
           provide: TemplateLifecycleService,
-          useValue: { addNavStack: () => null, removeNavStack: () => null },
+          useValue: { addOverlay: () => null, removeOverlay: () => null },
         },
       ],
     }).compileComponents();

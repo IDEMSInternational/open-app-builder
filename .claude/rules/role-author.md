@@ -276,18 +276,21 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (used 2026-09-25: kids_teens_mx home check-in button, po_opened)
   A page with a `nav_enter` row needs neither workaround: it is reprocessed when the stack closes, before its
   `nav_enter` actions run (`template-lifecycle.service.ts`). (verified 2026-11-19: local debug probe)
-- **`nav_enter` fires each time a page or nav-stack template comes to the front, including in between.**
-  `TemplateLifecycleService` (`template-lifecycle.service.ts`) works out the template in front from the active
-  page, open nav stacks (removed at `onWillDismiss`) and pop-ups (`popup_child`, `standaloneTemplateName`),
-  and fires on every change, and after `emit: force_reload` re-renders the template in front (container
-  `renderCount`; not when its own `nav_enter` actions caused the reload, which would loop). So a page with
-  `nav_resume | emit: force_reload` gets `nav_enter` twice on return, `completed | nav_stack: close_top` then
+- **`nav_enter` fires each time a page, nav-stack or fullscreen pop-up template comes to the front, including
+  in between.** `TemplateLifecycleService` (`template-lifecycle.service.ts`) works out the template in front
+  from the active page, the nav stacks and standalone (fullscreen) pop-ups open above it, in the order they
+  opened (removed at `onWillDismiss`), and `popup_child` pop-ups, which cover everything. It fires on every
+  change, and after `emit: force_reload` re-renders the template in front (container `renderCount`; not for a
+  reload that started before its last `nav_enter` actions finished, e.g. one they caused, which would loop, or
+  a `nav_resume | emit: force_reload` on the same return, so that row only adds a redundant reload). It
+  reprocesses the template first, including on a first entry if it rendered while covered (e.g. `go_to` from
+  inside a nav stack, or under launch pop-ups). `completed | nav_stack: close_top` then
   `completed | pop_up: x` runs the page's `nav_enter` actions as `x` opens, and a pop-up opened from
   `nav_enter` reopens every time it is closed (or reloaded) unless its row's condition uses a field its own
   actions set (e.g. `x_shown`). For the hand-over, use a hold field set by the stack before closing, or let the
-  page open the pop-up from a field the stack sets. Only page and nav-stack root templates get it; a nested or
-  pop-up template that declares it logs a console warning.
-  (verified 2026-11-19: local debug probe; `force_reload` cases 2026-11-20)
+  page open the pop-up from a field the stack sets. Templates with a parent (nested, or a pop-up that isn't
+  fullscreen) don't get it and log a console warning if they declare it. (verified 2026-11-19: local debug
+  probe; `force_reload` cases 2026-11-20; fixes 2026-11-23; fullscreen pop-ups 2026-11-24)
 - **Override values on a nested template are evaluated in the parent, not the child.** The parent's child rows
   are processed in its own context before being merged into the child (`template-row.service.ts`
   `processParentOverrides`; `extractOverrideFields` drops dynamic refs), so an override like
