@@ -44,24 +44,8 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
 
   private handleSizeChange(entries: ResizeObserverEntry[]) {
     const [{ contentRect }] = entries;
-
-    // As the display group sits at the edge of the content window, ignoring the padding of the page or
-    // pop-up around the scrollable content, the inline placeholder should account for this padding
-    this.height.set(contentRect.height - this.getContentContainerPadding(this.position()));
-  }
-
-  private getContentContainerPadding(side: "top" | "bottom") {
-    const element: HTMLElement = this.viewRef.element.nativeElement;
-    // Pop-ups pad their container, which can use max() and env(), so read the resolved padding
-    const popUpContainer = element.closest(".popup-container");
-    if (popUpContainer) {
-      const { paddingTop, paddingBottom } = getComputedStyle(popUpContainer);
-      return parseFloat(side === "top" ? paddingTop : paddingBottom) || 0;
-    }
-    // Pages and nav-stacks: ion-content padding
-    const pagePadding = getComputedStyle(element).getPropertyValue(
-      side === "top" ? "--padding-top" : "--padding-bottom"
-    );
-    return parseFloat(pagePadding) || 0;
+    // The page or pop-up drops its padding on the edge the group covers, so the placeholder starts at that
+    // edge (display-group-sticky.component.global.scss)
+    this.height.set(contentRect.height);
   }
 }
