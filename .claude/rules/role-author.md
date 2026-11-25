@@ -241,7 +241,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
   Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
   list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
-
+- **`set_local` on a `set_variable` whose value contains `@` references only lasts until the next
+  recalculation.** Rows with dynamic values are kept as formulas and re-evaluated after every
+  `set_local`/`set_field` (`template-row.service.ts` `set_variable` case, `processRowUpdates`), while
+  plain values (`TRUE`, `0`) are not, so `set_local` on those sticks. To latch a formula, add a plain
+  variable (`x_latched: FALSE`), `set_local` that, and read it in the formula (`… || @local.x_latched`).
+  (verified 2026-11-24: onboarding_loading `ask_po`, question bars swapped for the plain bars)
+  
 ### Loops and `data_items`
 
 - **`SyntaxError: Mismatched Bracket: }` with `{@items[0}].…` in the console = a `data_items` row matched
