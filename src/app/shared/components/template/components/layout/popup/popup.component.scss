@@ -15,9 +15,6 @@ $pop-up-padding: var(--pop-up-padding, 20px);
   // Clear of display cutouts and system bars at the sides (e.g. in landscape)
   --pop-up-side-padding: max(var(--ion-safe-area-left, 0px), var(--ion-safe-area-right, 0px));
 
-  // Read by sticky display groups inside a fullscreen pop-up to size their placeholder
-  --pop-up-safe-area-top: var(--ion-safe-area-top, 0px);
-
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);

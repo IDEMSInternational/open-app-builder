@@ -45,22 +45,23 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
   private handleSizeChange(entries: ResizeObserverEntry[]) {
     const [{ contentRect }] = entries;
 
-    let topPadding = 0;
-    if (this.position() === "top") {
-      // As the display group now sits at the top of the content window ignoring the app-wide padding applied to ion-content,
-      // the height of the inline display group placeholder should account for this padding
-      topPadding = this.getContentContainerTopPadding();
-    }
-
-    this.height.set(contentRect.height - topPadding);
+    // As the display group sits at the edge of the content window, ignoring the padding of the page or
+    // pop-up around the scrollable content, the inline placeholder should account for this padding
+    this.height.set(contentRect.height - this.getContentContainerPadding(this.position()));
   }
 
-  private getContentContainerTopPadding() {
-    const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
-    const ionContentPaddingStart =
-      parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    const popUpStickyTopPadding =
-      parseFloat(computedStyles.getPropertyValue("--pop-up-safe-area-top")) || 0;
-    return ionContentPaddingStart + popUpStickyTopPadding;
+  private getContentContainerPadding(side: "top" | "bottom") {
+    const element: HTMLElement = this.viewRef.element.nativeElement;
+    // Pop-ups pad their container, which can use max() and env(), so read the resolved padding
+    const popUpContainer = element.closest(".popup-container");
+    if (popUpContainer) {
+      const { paddingTop, paddingBottom } = getComputedStyle(popUpContainer);
+      return parseFloat(side === "top" ? paddingTop : paddingBottom) || 0;
+    }
+    // Pages and nav-stacks: ion-content padding
+    const pagePadding = getComputedStyle(element).getPropertyValue(
+      side === "top" ? "--padding-top" : "--padding-bottom"
+    );
+    return parseFloat(pagePadding) || 0;
   }
 }
