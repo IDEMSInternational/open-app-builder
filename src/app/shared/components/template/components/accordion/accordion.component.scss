@@ -1,13 +1,18 @@
+$background: var(--accordion-background, white);
+$border: var(--accordion-border, var(--border-standard));
+$border-radius: var(--accordion-border-radius, 10px);
+$box-shadow: var(--accordion-box-shadow, var(--ion-default-box-shadow));
 $icon-color: var(--accordion-toggle-icon-color, var(--ion-color-primary));
+$title-color: var(--accordion-title-color, var(--ion-color-primary));
 
 // Create overlapping effect
 ion-accordion {
-  background: white;
-  border: var(--border-standard);
-  border-radius: 10px;
+  background: $background;
+  border: $border;
+  border-radius: $border-radius;
   margin-top: -12px;
   padding-top: 8px;
-  box-shadow: var(--ion-default-box-shadow);
+  box-shadow: $box-shadow;
 }
 
 // ion-icon doesn't adjust colour as expected, so target explicitly with theme variable
@@ -20,7 +25,7 @@ ion-accordion:first-of-type {
   padding-top: unset;
 }
 ion-label.accordion-section-title {
-  color: var(--ion-color-primary);
+  color: $title-color;
   font-size: 1.3rem;
 }
 ion-item.accordion-content {
