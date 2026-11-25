@@ -25,4 +25,8 @@ ion-toolbar {
 ion-header {
   // animate header collapse animation as margin moves off-screen
   transition: margin 500ms;
+  // Page content starts below the status bar background while the header is off-screen
+  &.collapsed {
+    margin-bottom: var(--ion-safe-area-top, 0px);
+  }
 }

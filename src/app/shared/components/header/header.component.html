@@ -7,6 +7,7 @@
 }
 <ion-header
   [class.ion-no-border]="headerConfig().background === 'none' || headerConfig().hidden"
+  [class.collapsed]="marginTop() < 0"
   [style.marginTop]="marginTop() + 'px'"
 >
   <!-- When the header is hidden at the app config level, render the ion-toolbar element with 0 height to handle the top safe area on iOS.

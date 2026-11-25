@@ -13,7 +13,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
-import { Subscription, fromEvent, map } from "rxjs";
+import { Subscription, fromEvent } from "rxjs";
 import type { IHeaderVariantOptions } from "data-models/appConfig";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
@@ -161,27 +161,34 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** Listen to scroll events to trigger header collapse */
   private listenToScrollEvents() {
-    this.scrollEvents$ = fromEvent(window, "ionScroll")
-      .pipe(map((e: ScrollCustomEvent) => e.detail))
-      .subscribe(async (detail) => {
-        const headerHeight = this.headerElement.el.clientHeight;
-        const { deltaY, currentY } = detail;
-        // bring header into view when scrolling in reverse or at top of page
-        if (deltaY <= 0 || currentY < headerHeight) {
+    let previousY: number | undefined;
+    this.scrollEvents$ = fromEvent<ScrollCustomEvent>(window, "ionScroll").subscribe(async (e) => {
+      const { currentY } = e.detail;
+      const scrollingUp = previousY !== undefined && currentY < previousY;
+      const scrollingDown = previousY !== undefined && currentY > previousY;
+      previousY = currentY;
+      const headerHeight = this.headerElement.el.clientHeight;
+      // bring header into view when scrolling in reverse or at top of page
+      if (scrollingUp || currentY < headerHeight) {
+        this.marginTop.set(0);
+      } else if (scrollingDown && this.marginTop() === 0) {
+        // temporarily disable scroll events whilst animation moves bar
+        // as that would trigger negative scroll direction
+        const subscription = this.scrollEvents$;
+        subscription.unsubscribe();
+        // set negative margin to move header off-screen
+        this.marginTop.set(headerHeight * -1);
+        await _wait(500);
+        // collapse was turned off or restarted meanwhile
+        if (this.scrollEvents$ !== subscription) return;
+        // events were ignored during the animation, so check whether the page is back at the top
+        const scrollElement = await (e.target as HTMLIonContentElement).getScrollElement();
+        if (scrollElement.scrollTop < headerHeight) {
           this.marginTop.set(0);
-        } else {
-          // hide header after scrolled further than header height
-          if (currentY >= headerHeight) {
-            // temporarily disable scroll events whilst animation moves bar
-            // as that would trigger negative scroll direction
-            this.scrollEvents$.unsubscribe();
-            // set negative margin to move header off-screen
-            this.marginTop.set(headerHeight * -1);
-            await _wait(500);
-            this.listenToScrollEvents();
-          }
         }
-      });
+        this.listenToScrollEvents();
+      }
+    });
   }
 
   ngOnDestroy() {
