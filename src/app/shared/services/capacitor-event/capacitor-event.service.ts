@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { SyncServiceBase } from "../syncService.base";
+import { App } from "@capacitor/app";
 import {
   ActionPerformed,
   LocalNotifications,
   LocalNotificationSchema,
 } from "@capacitor/local-notifications";
+import { Subject } from "rxjs";
 import { ReplaySubject } from "rxjs/internal/ReplaySubject";
 import { Platform } from "@ionic/angular";
 
@@ -36,6 +38,9 @@ export class CapacitorEventService extends SyncServiceBase {
 
   public localNotificationReceived = new ReplaySubject<LocalNotificationSchema>(BUFFER_SIZE);
 
+  /** App returned to the foreground. Not replayed, as subscribers only need later resumes */
+  public appResume = new Subject<void>();
+
   private async setupListeners() {
     // On web, plugin calls made before the plugin has loaded each create their own copy of it, and
     // events only reach listeners on the copy used later. Add listeners one at a time so they share it.
@@ -48,5 +53,6 @@ export class CapacitorEventService extends SyncServiceBase {
       // console.log("[Capacitor Event] localNotificationReceived", e);
       this.localNotificationReceived.next(e);
     });
+    await App.addListener("resume", () => this.appResume.next());
   }
 }

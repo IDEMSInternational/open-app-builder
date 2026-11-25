@@ -227,6 +227,24 @@ describe("Notifications debug utils", () => {
       expect(past[0].raw.history).toBeDefined();
     });
 
+    it("shows when the sent actions of campaign notifications ran", () => {
+      const action_list = [{ trigger: "sent", action_id: "toast", args: [], params: {} }];
+      const ran = {
+        ...campaignRecord(1, -2 * HOUR, { action_list }),
+        _callbacks_processed_time: NOW - HOUR,
+      };
+      const notRunYet = campaignRecord(2, -HOUR, { action_list });
+      const noSentActions = { ...campaignRecord(3, -3 * HOUR), _callbacks_processed_time: NOW };
+
+      const past = pastFrom(sources({ campaignRecords: [ran, notRunYet, noSentActions] }));
+
+      expect(past.map((n) => [n.key, n.sentActionsRanAt])).toEqual([
+        ["campaign_2", null],
+        ["campaign_1", new Date(NOW - HOUR)],
+        ["campaign_3", undefined],
+      ]);
+    });
+
     it("lists campaign history without a saved notification, so it can be sent again", () => {
       const meta = {
         campaign_id: "campaign_1",

@@ -186,7 +186,7 @@ describe("NotificationsDebugPage", () => {
       expect(delayMs).toBeLessThan(61000);
     });
 
-    it("schedules a campaign test that shows a toast when tapped", async () => {
+    it("schedules a campaign test that shows a toast when its sent actions run and when tapped", async () => {
       await component.sendTestNotification("campaign");
 
       const [notification, rowId] =
@@ -194,6 +194,7 @@ describe("NotificationsDebugPage", () => {
       expect(rowId).toEqual(testNotificationId);
       expect(notification.extra.campaign_id).toEqual(TEST_CAMPAIGN_ID);
       expect(notification.extra.action_list).toEqual([
+        jasmine.objectContaining({ trigger: "sent", action_id: "toast" }),
         jasmine.objectContaining({ trigger: "click", action_id: "toast" }),
       ]);
     });
@@ -245,6 +246,10 @@ describe("NotificationsDebugPage", () => {
       expect(
         mockLocalNotificationService.removeNotificationsWithoutRescheduling
       ).toHaveBeenCalledOnceWith([1, 2]);
+      // records first, so a sync in between can't process a cancelled one as shown
+      expect(
+        mockLocalNotificationService.removeNotificationsWithoutRescheduling
+      ).toHaveBeenCalledBefore(mockNotificationService.cancelDevicePendingNotifications);
       expect(mockLocalNotificationService.removeNotifications).not.toHaveBeenCalled();
       // history of cleared campaign notifications, including any not recorded yet
       expect(mockPersistAdapter.removeEntries).toHaveBeenCalledOnceWith([1, 5, 2]);
