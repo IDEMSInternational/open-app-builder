@@ -12,6 +12,24 @@
 				<string>C617.1</string>
 			</array>
 		</dict>
+		<!--
+			Read before an asset pack download, to refuse one the device has no room for (see
+			FileManagerService.getFreeDiskSpaceBytes). E174.1 covers checking for sufficient disk
+			space where the app then behaves observably differently - here, declining the download.
+			85F4.1 is NOT declared: the figure is never shown or stored.
+
+			E174.1 also forbids sending the value OR ANYTHING DERIVED FROM IT off-device, which is
+			why `_asset_packs` must stay in LOCAL_ONLY_DYNAMIC_DATA_FLOWS and disk fields must never
+			reach `device_info` or Crashlytics.
+		-->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>E174.1</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

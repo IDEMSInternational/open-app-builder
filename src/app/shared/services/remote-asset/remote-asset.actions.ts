@@ -45,6 +45,7 @@ export class RemoteAssetActionFactory {
         }
         await this.service.downloadAssetPackByName(assetPackName, {
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          debugFreeSpaceBytes: resolveDebugFreeSpaceBytes(params as IAssetPackDownloadParams),
         });
       },
       // Unlike other actions, this does not block the action queue by default: downloads start in
@@ -69,6 +70,7 @@ export class RemoteAssetActionFactory {
         await this.service.ensureAssetPacksDownloaded(assetPackList, {
           awaitCompletion: shouldAwaitEnsureDownloaded(params as IAssetPackEnsureDownloadedParams),
           debugDownloadDelayMs: resolveDebugDownloadDelayMs(params as IAssetPackDownloadParams),
+          debugFreeSpaceBytes: resolveDebugFreeSpaceBytes(params as IAssetPackDownloadParams),
           checkForUpdates: shouldCheckForUpdates(params as IAssetPackEnsureDownloadedParams),
         });
       },
@@ -148,6 +150,24 @@ export function resolveDebugDownloadDelayMs(params?: IAssetPackDownloadParams): 
     return 0;
   }
   return delayMs;
+}
+
+/**
+ * Read the `debug_free_space_mb` testing param, in bytes. Unset means "read the real device", and
+ * anything unparseable falls back to that too - a bad value must never silently decide a download.
+ * 0 is a legitimate value (simulate a completely full device), so it is not treated as unset.
+ */
+export function resolveDebugFreeSpaceBytes(params?: IAssetPackDownloadParams): number | undefined {
+  const value = params?.debug_free_space_mb;
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+  const freeSpaceMb = Number(value);
+  if (!Number.isFinite(freeSpaceMb) || freeSpaceMb < 0) {
+    console.warn("[REMOTE ASSETS] Ignoring invalid debug_free_space_mb value:", value);
+    return undefined;
+  }
+  return freeSpaceMb * 1024 * 1024;
 }
 
 /** Read the `await` param. Only an explicit `true` blocks - see `ensure_downloaded` */
