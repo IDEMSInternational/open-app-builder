@@ -34,5 +34,6 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit
       drawer.style.transform = `translateY(10px)`;
       this.isOpen = true;
     }
+    drawer.classList.toggle("open", this.isOpen);
   }
 }

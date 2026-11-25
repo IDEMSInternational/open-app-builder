@@ -1,17 +1,22 @@
 @use "/src/theme/mixins";
 
 $handle-height: var(--drawer-handle-height);
+// Set when the drawer reaches the bottom edge of the screen (drawer.component.global.scss)
+$safe-area-bottom: var(--drawer-safe-area-bottom, 0px);
+// The closed drawer shows its handle, above the safe area
+$closed-height: calc($handle-height + $safe-area-bottom);
 
-// Element to remain inline within scrollable content to ensure no content lost behind drawer handle
+// Element to remain inline within scrollable content to ensure no content lost behind drawer handle.
+// The page's bottom padding follows it (template-component.scss), so only the rest is needed
 .bottom-spacer {
   width: 100%;
-  height: $handle-height;
+  height: max(0px, calc($closed-height - var(--padding-bottom, 0px)));
 }
 
 .drawer {
   position: fixed;
   bottom: 0;
-  transform: translateY(calc(100% - $handle-height));
+  transform: translateY(calc(100% - $closed-height));
   left: 0px;
   width: 100%;
   border-style: solid solid none solid;
@@ -60,6 +65,15 @@ $handle-height: var(--drawer-handle-height);
   }
 
   .content {
-    padding: var(--regular-padding) var(--regular-padding) 30px;
+    padding: var(--regular-padding) var(--regular-padding) calc(30px + $safe-area-bottom);
+    // Below the handle of a closed drawer, only its background should show (e.g. behind the device
+    // navigation bar). Hidden once the closing animation ends
+    visibility: hidden;
+    transition: visibility 0s 0.3s;
+  }
+
+  &.open .content {
+    visibility: visible;
+    transition-delay: 0s;
   }
 }
