@@ -7,10 +7,12 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
 import {
   flattenColours,
+  getBackgroundForSystemBarText,
   getElementColour,
   getStyleOverride,
   IRGBA,
   isLightColour,
+  parseSystemBarText,
 } from "./system-bars.utils";
 
 /** First Android WebView version that Capacitor draws behind the system bars */
@@ -26,6 +28,8 @@ const UPDATE_DELAYS = [50, 400, 800];
  *
  * A theme can fix the style of a bar with the css variables `--system-bar-style-status` and
  * `--system-bar-style-nav`, set to `light` (light background, dark icons) or `dark`.
+ * Content under a bar can set the text colour it needs with `data-system-bar-text` (`light` or `dark`),
+ * e.g. a display group with a background image, which is not detected. It takes precedence over the theme.
  */
 @Injectable({
   providedIn: "root",
@@ -33,6 +37,7 @@ const UPDATE_DELAYS = [50, 400, 800];
 export class SystemBarsService extends SyncServiceBase {
   private currentStyles: Partial<Record<SystemBarType, SystemBarsStyle>> = {};
   private updateTimeouts: ReturnType<typeof setTimeout>[] = [];
+  private isActive = false;
 
   constructor(
     private appConfigService: AppConfigService,
@@ -49,6 +54,7 @@ export class SystemBarsService extends SyncServiceBase {
       return;
     }
 
+    this.isActive = true;
     // Theme and layout (header, footer) changes
     effect(() => {
       this.themeService.currentTheme();
@@ -71,7 +77,9 @@ export class SystemBarsService extends SyncServiceBase {
     return webViewVersion >= MIN_EDGE_TO_EDGE_WEBVIEW_VERSION;
   }
 
-  private scheduleUpdate() {
+  /** Check the bars again, e.g. when content that sets their text colour is added or removed */
+  public scheduleUpdate() {
+    if (!this.isActive) return;
     this.updateTimeouts.forEach((timeout) => clearTimeout(timeout));
     this.updateTimeouts = UPDATE_DELAYS.map((delay) => setTimeout(() => this.update(), delay));
   }
@@ -91,8 +99,9 @@ export class SystemBarsService extends SyncServiceBase {
   }
 
   private setStyle(bar: SystemBarType, overrideVariable: string, x: number, y: number) {
-    const override = getStyleOverride(overrideVariable);
-    const isLight = override ? override === "light" : isLightColour(this.getColourAt(x, y));
+    const { colour, isSetByContent } = this.getBackgroundAt(x, y);
+    const override = isSetByContent ? null : getStyleOverride(overrideVariable);
+    const isLight = override ? override === "light" : isLightColour(colour);
     // "Light" is the style for a light background, i.e. dark text and icons
     const style = isLight ? SystemBarsStyle.Light : SystemBarsStyle.Dark;
     if (this.currentStyles[bar] === style) return;
@@ -102,17 +111,27 @@ export class SystemBarsService extends SyncServiceBase {
     );
   }
 
-  /** The background colour shown at a point on the screen */
-  private getColourAt(x: number, y: number): IRGBA {
+  /**
+   * The background colour shown at a point on the screen. Content that sets the text colour it needs
+   * counts as a black or white background, below any translucent layers above it (e.g. a modal backdrop)
+   */
+  private getBackgroundAt(x: number, y: number): { colour: IRGBA; isSetByContent: boolean } {
     const layers: IRGBA[] = [];
     for (const element of this.getElementsAt(document, x, y)) {
+      const text = parseSystemBarText(element.getAttribute("data-system-bar-text"));
+      if (text) {
+        return {
+          colour: flattenColours(layers, getBackgroundForSystemBarText(text)),
+          isSetByContent: true,
+        };
+      }
       const colour = getElementColour(getComputedStyle(element));
       if (colour && colour[3] > 0) {
         layers.push(colour);
         if (colour[3] >= 1) break;
       }
     }
-    return flattenColours(layers);
+    return { colour: flattenColours(layers), isSetByContent: false };
   }
 
   /** Elements at a point from the top layer down, including those inside web components */

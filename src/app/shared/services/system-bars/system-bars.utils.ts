@@ -44,6 +44,19 @@ export function getStyleOverride(
   return value === "light" || value === "dark" ? value : null;
 }
 
+/** Text colour that content asks for on a system bar shown over it (display group `system_bar_text`) */
+export type ISystemBarText = "light" | "dark";
+
+export function parseSystemBarText(value: string | null | undefined): ISystemBarText | null {
+  const text = value?.trim().toLowerCase();
+  return text === "light" || text === "dark" ? text : null;
+}
+
+/** A background on which the requested text colour is readable: black for light, white for dark */
+export function getBackgroundForSystemBarText(text: ISystemBarText): IRGBA {
+  return text === "light" ? [0, 0, 0, 1] : [255, 255, 255, 1];
+}
+
 /** Combine colours listed from the top layer down into the single colour that is seen */
 export function flattenColours(layers: IRGBA[], base: IRGBA = [255, 255, 255, 1]): IRGBA {
   const result = [0, 0, 0];

@@ -1,13 +1,33 @@
 import {
   flattenColours,
+  getBackgroundForSystemBarText,
   getElementColour,
   getStyleOverride,
   isLightColour,
   parseCssColour,
+  parseSystemBarText,
   relativeLuminance,
 } from "./system-bars.utils";
 
 describe("system-bars utils", () => {
+  it("parses the text colour content asks for", () => {
+    expect(parseSystemBarText("light")).toBe("light");
+    expect(parseSystemBarText(" Dark ")).toBe("dark");
+    expect(parseSystemBarText("white")).toBeNull();
+    expect(parseSystemBarText(null)).toBeNull();
+  });
+
+  it("gives the text colour content asks for, below translucent layers", () => {
+    // light text: dark style (light icons)
+    expect(isLightColour(flattenColours([], getBackgroundForSystemBarText("light")))).toBeFalse();
+    expect(isLightColour(flattenColours([], getBackgroundForSystemBarText("dark")))).toBeTrue();
+    // a modal backdrop over content that asks for dark text darkens it enough for light text
+    const backdrop: [number, number, number, number] = [0, 0, 0, 0.6];
+    expect(
+      isLightColour(flattenColours([backdrop], getBackgroundForSystemBarText("dark")))
+    ).toBeFalse();
+  });
+
   it("applies element opacity to the background colour", () => {
     // e.g. ion-backdrop: opaque black faded by the modal animation
     expect(getElementColour({ backgroundColor: "rgb(0, 0, 0)", opacity: "0.5" })).toEqual([
