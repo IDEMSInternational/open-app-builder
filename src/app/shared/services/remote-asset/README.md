@@ -25,7 +25,7 @@ Without `remote_assets.provider` the service sets `remoteAssetsEnabled = false`,
 | `remote-asset-metadata.service.ts` | Reads/writes pack status rows in the `_asset_packs` data list |
 | `remote-asset.actions.ts` | The `asset_pack: *` template actions and their param parsing |
 | `remote-asset-archive.ts` | Streams a pack's `.zip` and hands back each wanted entry as it arrives |
-| `remote-asset-contents.writer.ts` | Batches `_assets_contents` row updates and writes them in bulk |
+| `remote-asset-contents.writer.ts` | Builds each slot's `_assets_contents` update, and batches row updates to write them in bulk |
 | `remote-asset.types.ts` | Shared types, the two protected data list names, the storage folder name, and the retry/archive/version-check tuning constants |
 | `providers/` | `IRemoteAssetProvider` plus Supabase and Firebase implementations |
 
@@ -179,7 +179,7 @@ Downloads run in the WebView's JS runtime, so killing or backgrounding the app k
 2. its size matches the manifest's `size_kb`, and
 3. the `_assets_contents` entry for that slot carries the manifest's checksum **and** has a `filePath` that is a local asset path.
 
-Point 3 does the real work: integrating a base asset writes the whole manifest entry, so the row picks up every override's checksum before those files exist — only a rewritten `filePath` proves this app saved one.
+Point 3 does the real work. Integrating a slot writes only that slot's own fields, never the rest of its manifest entry, so a checksum and `filePath` recorded together always describe the same file. Writing the whole entry would give a slot that failed its sibling's new checksum next to a `filePath` still pointing at the old file — and a base entry has no manifest `filePath` to overwrite that, so a stale base file of unchanged size would be trusted forever. The `filePath` half is still needed for rows written by older app versions, which did merge whole entries: there only a rewritten `filePath` proves this app saved a given override.
 
 Anything unverified re-downloads. A false negative costs one wasted fetch; a false positive is a corrupt asset that never heals, so the gate is biased toward re-downloading. On-disk bytes are never hashed (Web Crypto has no MD5); that belongs to a future `asset_pack: verify`/repair action.
 
@@ -259,6 +259,7 @@ This README is deliberately thin on rationale, because most of it is recorded ne
 | Why is a cancel not a failed download? | `withDownloadRetry` and `isAbortError` |
 | Why are status writes serialised? | `RemoteAssetMetadataService.queueStatusWrite` |
 | Why is the resume gate shaped like that? | `isSavedAssetSlotTrustworthy` |
+| Why does integrating a slot write only that slot's fields? | `buildAssetSlotUpdate` in `remote-asset-contents.writer.ts` |
 | Why `start()` every archive entry? | `remote-asset-archive.ts`, `onfile` |
 | Why is a row only written when all its slots settle? | `remote-asset-contents.writer.ts` |
 | Why is the version in the object key? | `getAssetPackArchiveFileName` in `data-models` |

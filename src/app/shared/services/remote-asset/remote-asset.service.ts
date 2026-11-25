@@ -18,7 +18,7 @@ import {
   type IAssetOverrideProps,
 } from "packages/data-models";
 import { DynamicDataService } from "../dynamic-data/dynamic-data.service";
-import { arrayToHashmap, convertBlobToBase64, deepMergeObjects } from "../../utils";
+import { arrayToHashmap, convertBlobToBase64 } from "../../utils";
 import { DeploymentService } from "../deployment/deployment.service";
 import {
   IRemoteAssetProvider,
@@ -50,7 +50,7 @@ import type {
 import { NetworkService } from "../network/network.service";
 import { isImmediateAssetPackAction, RemoteAssetActionFactory } from "./remote-asset.actions";
 import { RemoteAssetMetadataService } from "./remote-asset-metadata.service";
-import { AssetContentsWriter } from "./remote-asset-contents.writer";
+import { AssetContentsWriter, buildAssetSlotUpdate } from "./remote-asset-contents.writer";
 import { AssetPackArchiveNotFoundError, streamAssetPackArchive } from "./remote-asset-archive";
 import { SystemVariableService } from "../system-variable/system-variable.service";
 
@@ -1155,27 +1155,16 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Settle the slots the archive did not supply *on rows it had already started*, as failures.
+   * Settle every slot the archive did not supply, as a failure.
    *
-   * Leaving them without a `filePath` keeps the manifest's own (remote) path on those slots, which
-   * is precisely what makes the resume gate re-fetch just those and skip everything the archive
-   * delivered.
-   *
-   * Restricted to rows with a settled sibling on purpose. Sweeping every undelivered slot would
-   * also complete rows the stream never reached, and completing a row flushes it - writing the
-   * manifest merge for files this attempt never touched. On a cancel or an offline abort there is
-   * no per-file pass afterwards to correct that, so a pack whose paths overlap another's could
-   * leave manifest-relative `filePath`s sitting over the other pack's `local://` rows until
-   * something re-integrated them. A row with nothing settled has no evidence worth preserving,
-   * so dropping it is both safer and what happened before this sweep existed.
+   * Settling them without a `filePath` leaves those slots exactly as the snapshot recorded them,
+   * which is precisely what makes the resume gate re-fetch just those and skip everything the
+   * archive delivered. Rows the stream never reached complete with nothing integrated, and the
+   * writer drops those rather than writing them. Slots already handed to the writer - delivered,
+   * rejected, or present on disk - are skipped by `settleArchiveSlot` itself.
    */
   private settleUnsatisfiedArchiveSlots(slots: IAssetPackSlotPlan[], writer: AssetContentsWriter) {
-    const startedRowIds = new Set(
-      slots.filter((slot) => slot.writerSettled).map((slot) => slot.assetEntry.id)
-    );
     for (const slot of slots) {
-      if (slot.alreadyDownloaded || slot.writerSettled) continue;
-      if (!startedRowIds.has(slot.assetEntry.id)) continue;
       this.settleArchiveSlot(slot, writer);
     }
   }
@@ -1733,10 +1722,12 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
    *  - size unverifiable or mismatched -> truncated / wrong file
    *  - no/differing recorded checksum -> never integrated, or pack content changed (file is stale)
    *  - filePath not a local asset path -> saved but never integrated (interrupted mid-write)
-   * The filePath check is what makes the evidence per-slot: integrating a base asset writes the whole
-   * manifest entry, so it also copies in every override's checksum, and only a rewritten `filePath`
-   * distinguishes a slot this app actually saved from one merely described by the manifest (whose
-   * override entries carry a pack-relative path that is never itself a local asset path).
+   * Integrating a slot writes only that slot's fields (see `buildAssetSlotUpdate`), so a checksum
+   * and `filePath` recorded together describe the same file. The filePath check still earns its
+   * place for rows written by older app versions, which merged the whole manifest entry and so
+   * copied every override's checksum in with the base: only a rewritten `filePath` distinguishes a
+   * slot this app actually saved from one merely described by the manifest (whose override entries
+   * carry a pack-relative path that is never itself a local asset path).
    * `getLocalAssetTargetPath` also accepts the absolute paths written before the `local://` marker
    * existed, so upgrading from an older app version resumes rather than re-downloading the pack.
    * NB verifying on-disk bytes directly (MD5) is intentionally deferred to a future `asset_pack:
@@ -1809,7 +1800,8 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
   }
 
   /**
-   * Save updates to asset contents in dynamic data, including file path.
+   * Save one slot's updates to asset contents in dynamic data, including file path. Writes only
+   * that slot's fields, never the rest of the manifest entry - see `buildAssetSlotUpdate`.
    * On native this should be a `local://` path (see `LOCAL_ASSET_PATH_PREFIX`) and on web a remote
    * provider URL - never an absolute device path, which does not survive an app update on iOS.
    * */
@@ -1818,41 +1810,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     filepath: string,
     overrideProps?: IAssetOverrideProps
   ) {
-    const update = this.addFilePathToAssetEntry(assetEntry, filepath, overrideProps);
     // Update the asset contents pack in dynamic data, adding an entry for the asset or
-    // updating an existing entry if it already exists
+    // merging into an existing entry if it already exists
     await this.dynamicDataService.update<IAssetEntry & { id: string }>(
       "asset_pack",
       ASSET_CONTENTS_DATA_LIST,
       assetEntry.id,
-      update,
+      buildAssetSlotUpdate(assetEntry, filepath, overrideProps),
       { upsert: true }
     );
-  }
-
-  private addFilePathToAssetEntry(
-    assetEntry: IAssetEntry,
-    filePath: string,
-    overrideProps?: IAssetOverrideProps
-  ): IAssetEntry {
-    // In the case that the asset is an override, add the new filepath to the nested override entry
-    if (overrideProps) {
-      const { themeName, languageCode } = overrideProps;
-      const update = {
-        overrides: {
-          [themeName]: {
-            [languageCode]: {
-              filePath,
-            },
-          },
-        },
-      };
-      // Deep clone to ensure mutable object before merging (RxDB objects are immutable)
-      const mutableAssetEntry = JSON.parse(JSON.stringify(assetEntry));
-      return deepMergeObjects(mutableAssetEntry, update);
-    } else {
-      return { ...assetEntry, filePath };
-    }
   }
 
   /** A general function to download a file from a URL */
@@ -2099,11 +2065,15 @@ export class RemoteAssetService extends AsyncServiceBase implements OnDestroy {
     const archive = this.currentArchiveProgress;
     if (archive) {
       const floor = this.archiveProgressFloorPercent;
+      // No byte total to measure against. Mostly this is the files already on disk being
+      // integrated before the first chunk arrives, which is exactly what the floor measures. It is
+      // also a response with no `Content-Length` for a manifest with no sizes, where holding still
+      // is honest and any higher figure would stick, since reported progress never moves down.
+      if (!archive.totalBytes) return floor;
+      const transferred = Math.min(1, archive.bytesRead / archive.totalBytes);
+      // The archive covers whatever is not already on disk, so it moves the bar from the floor up.
       // Falling back to the manifest's summed size over-reports, because the archive is
       // compressed. Cap short of complete so the bar cannot claim to be finished mid-transfer.
-      if (!archive.totalBytes) return Math.max(floor, 99);
-      const transferred = Math.min(1, archive.bytesRead / archive.totalBytes);
-      // The archive covers whatever is not already on disk, so it moves the bar from the floor up
       return Math.min(99, Math.round(floor + (100 - floor) * transferred));
     }
     if (!progress.total) return 0;
