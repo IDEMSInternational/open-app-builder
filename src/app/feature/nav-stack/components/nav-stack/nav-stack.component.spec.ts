@@ -3,6 +3,7 @@ import { IonicModule } from "@ionic/angular";
 
 import { NavStackComponent } from "./nav-stack.component";
 import { Component, input } from "@angular/core";
+import { TemplateLifecycleService } from "src/app/shared/components/template/services/template-lifecycle.service";
 
 // HACK - mock child `<plh-template-container>` component to bypass imports
 @Component({
@@ -22,6 +23,12 @@ describe("NavStackComponent", () => {
     TestBed.configureTestingModule({
       declarations: [NavStackComponent, MockTemplateContainerComponent],
       imports: [IonicModule.forRoot()],
+      providers: [
+        {
+          provide: TemplateLifecycleService,
+          useValue: { addOverlay: () => null, removeOverlay: () => null },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavStackComponent);

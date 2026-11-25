@@ -1,58 +1,88 @@
+import type { IAssetEntryHashmap } from "data-models";
 import { kbToMB, logOutput, logWarning } from "shared";
 import { IAssetEntriesByType } from "./types";
 
 /** Approximate size of core build as populated to www folder (excluding assets) */
-const APP_CORE_BUILD_KB = 7 * 1024;
+const APP_CORE_BUILD_KB = 11430;
 /** Approximate size of core assets as populated to www folder (excluding assets/app_data) */
-const APP_CORE_ASSETS_KB = 5 * 1024;
-const APP_CORE_SIZE_KB = {
-  total: APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB,
-};
+const APP_CORE_ASSETS_KB = 4740;
+/** Approximate size of the app before any authored assets are added */
+export const APP_CODE_KB = APP_CORE_BUILD_KB + APP_CORE_ASSETS_KB;
+/** Warn if the estimated app size (build + bundled assets) exceeds this */
+const MAX_BUNDLED_SIZE_MB = 150;
 
-export function checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
-  let totalSize = APP_CORE_SIZE_KB.total;
-  let themeAndLanguageSizes = {
-    app_core: APP_CORE_SIZE_KB,
-    theme_default: { total: 0, global: 0 },
-  };
-  Object.values(sourceAssets.tracked).forEach((entry) => {
-    totalSize += entry.size_kb;
-    themeAndLanguageSizes.theme_default.total += entry.size_kb;
-    themeAndLanguageSizes.theme_default.global += entry.size_kb;
-    if (entry.overrides) {
-      Object.entries(entry.overrides).forEach(([themeName, languageEntries]) => {
-        Object.entries(languageEntries).forEach(([languageCode, languageEntry]) => {
-          const assetSize = languageEntry.size_kb;
-          totalSize += assetSize;
-          themeAndLanguageSizes[themeName] ??= {};
-          themeAndLanguageSizes[themeName].total ??= 0;
-          themeAndLanguageSizes[themeName].total += assetSize;
-          themeAndLanguageSizes[themeName][languageCode] ??= 0;
-          themeAndLanguageSizes[themeName][languageCode] += assetSize;
-        });
+export interface IAssetPackSizeSummary {
+  packName: string;
+  /** Size of the zip the app downloads */
+  archiveBytes: number;
+  /** Combined size of the files once extracted */
+  rawBytes: number;
+}
+
+/**
+ * Log a single summary of how asset size is split between what ships inside the app and what
+ * is downloaded later as asset packs
+ */
+export function logAssetSizeSummary(params: {
+  bundled?: IAssetEntriesByType;
+  packs: IAssetPackSizeSummary[];
+}) {
+  const { bundled, packs } = params;
+  const sections: string[] = [];
+
+  if (bundled) {
+    const { totalKB, baseKB, overrides } = summariseBundledAssets(bundled.tracked);
+    const lines = [`Bundled in app: ${kbToMB(totalKB)} MB`];
+    if (overrides.length > 0) {
+      lines.push(`  base: ${kbToMB(baseKB)} MB`, "  overrides:");
+      for (const { name, sizeKB } of overrides) {
+        lines.push(`    ${name}: ${kbToMB(sizeKB)} MB`);
+      }
+    }
+    sections.push(lines.join("\n"));
+    // App code isn't an asset, but counts towards the overall app size the warning guards
+    const appSizeMB = kbToMB(APP_CODE_KB + totalKB);
+    if (appSizeMB > MAX_BUNDLED_SIZE_MB) {
+      logWarning({
+        msg1: `Bundled app size too large`,
+        msg2: `Bundled assets plus approx. ${kbToMB(APP_CODE_KB)} MB of app code come to ${appSizeMB} MB, should be less than ${MAX_BUNDLED_SIZE_MB} MB. Consider moving assets to an asset pack`,
       });
     }
-  });
-
-  const themeLangSizesMBSummary = Object.entries(themeAndLanguageSizes)
-    .map(([themeName, themeEntry]) => {
-      const languageBreakdown = Object.entries(themeEntry)
-        .map(([language, size]) => `${language}: ${kbToMB(size)} MB`)
-        .join("\n    ");
-      return `${themeName}:\n  ${languageBreakdown}`;
-    })
-    .join("\n");
-  const totalSizeMB = kbToMB(totalSize);
-  const maxWarningSize = 150;
-  if (totalSizeMB > maxWarningSize) {
-    logWarning({
-      msg1: `Asset files too large`,
-      msg2: `All assets should combine to be less than ${maxWarningSize}MB`,
-    });
   }
 
-  logOutput({
-    msg1: "Assets Summary",
-    msg2: `Total size: ${totalSizeMB} MB\n\nBreakdown by theme and language:\n${themeLangSizesMBSummary}`,
-  });
+  if (packs.length > 0) {
+    // Sorted by name, matching the order of the deployment report
+    const sortedPacks = [...packs].sort((a, b) => (a.packName > b.packName ? 1 : -1));
+    const packLines = sortedPacks.map((pack) => {
+      const archiveMB = kbToMB(pack.archiveBytes / 1024);
+      const rawMB = kbToMB(pack.rawBytes / 1024);
+      return `  ${pack.packName}: ${archiveMB} MB download (${rawMB} MB unzipped)`;
+    });
+    sections.push(["Asset packs (managed in remote assets storage):", ...packLines].join("\n"));
+  }
+
+  if (sections.length > 0) {
+    logOutput({ msg1: "Assets Summary", msg2: sections.join("\n\n") });
+  }
+}
+
+/**
+ * Sum the size of bundled assets, split into base files (default theme, no language) and any
+ * theme/language overrides
+ */
+export function summariseBundledAssets(assets: IAssetEntryHashmap) {
+  let baseKB = 0;
+  const overrideKB: Record<string, number> = {};
+  for (const entry of Object.values(assets)) {
+    baseKB += entry.size_kb;
+    for (const [themeName, languageEntries] of Object.entries(entry.overrides || {})) {
+      for (const [languageCode, languageEntry] of Object.entries(languageEntries)) {
+        const key = `${themeName} / ${languageCode}`;
+        overrideKB[key] = (overrideKB[key] || 0) + languageEntry.size_kb;
+      }
+    }
+  }
+  const overrides = Object.entries(overrideKB).map(([name, sizeKB]) => ({ name, sizeKB }));
+  const totalKB = overrides.reduce((total, { sizeKB }) => total + sizeKB, baseKB);
+  return { totalKB, baseKB, overrides };
 }

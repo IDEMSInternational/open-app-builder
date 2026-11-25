@@ -4,7 +4,9 @@
   [style.backgroundImage]="'url(' + (params().backgroundImageAsset | plhAsset) + ')'"
 >
   <div class="badge">
-    <p class="badge-text">{{ params().badgeText }}</p>
+    @if (params().badgeText) {
+      <p class="badge-text">{{ params().badgeText }}</p>
+    }
   </div>
   <div class="content">
     <p class="title">{{ value() || params().title }}</p>

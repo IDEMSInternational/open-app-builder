@@ -32,6 +32,51 @@ describe("Beta Data List Parser", () => {
     expect(parseRows(input)).toEqual(expected);
   });
 
+  it("removes language suffixes from columns, using the flow language", () => {
+    const flow = {
+      flow_type: "data_list",
+      flow_name: "test_data_list",
+      language: "spa",
+      rows: [{ id: "a", title: "Hola", "title::eng": "Hello", "tags_list::eng": "x; y" }],
+    } as FlowTypes.FlowTypeWithData;
+    expect(parseDataList(flow).rows).toEqual([
+      {
+        id: "a",
+        title: "Hola",
+        tags_list: ["x", "y"],
+        _translatedFields: { title: { spa: "Hola", eng: "Hello" }, tags_list: { eng: "x; y" } },
+      },
+    ]);
+  });
+
+  it("assigns _metadata from a ${metadata} row, removing it from the rows", () => {
+    const flow = {
+      flow_type: "data_list",
+      flow_name: "test_data_list",
+      rows: [
+        { id: "${metadata}", completed: "type: boolean", "count::eng": "type: number" },
+        { id: "a", "count::eng": 1 },
+      ],
+    } as FlowTypes.FlowTypeWithData;
+    const parsed = parseDataList(flow);
+    expect(parsed.rows).toEqual([{ id: "a", count: 1, _translatedFields: { count: { eng: 1 } } }]);
+    expect((parsed as FlowTypes.Data_list)._metadata).toEqual({
+      completed: { type: "boolean" },
+      count: { type: "number" },
+    });
+  });
+
+  it("infers _metadata from the data without a ${metadata} row", () => {
+    const flow = {
+      flow_type: "data_list",
+      flow_name: "test_data_list",
+      rows: [{ id: "a", title: "Hello", number: 1 }],
+    } as FlowTypes.FlowTypeWithData;
+    expect((parseDataList(flow) as FlowTypes.Data_list)._metadata).toEqual({
+      number: { type: "number" },
+    });
+  });
+
   it("keeps flow properties other than rows", () => {
     const flow = {
       flow_type: "data_list",

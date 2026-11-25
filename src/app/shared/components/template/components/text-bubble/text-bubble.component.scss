@@ -22,6 +22,8 @@ $bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-colo
 $bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-yellow-700));
 $bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-yellow-50));
 $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-secondary-700));
+$text-bubble-text-color: var(--text-bubble-text-color, var(--ion-color-gray-900));
+$text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion-color-gray-800));
 
 .text-bubble-container {
   position: relative;
@@ -143,11 +145,11 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   min-width: 124px;
 
   p {
-    color: var(--ion-color-gray-900);
+    color: $text-bubble-text-color;
   }
 
   li {
-    color: var(--ion-color-gray-900);
+    color: $text-bubble-text-color;
   }
 
   ol {
@@ -171,7 +173,7 @@ $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-second
   position: relative;
   margin-bottom: 6px;
   font-size: var(--font-size-text-tiny);
-  color: var(--ion-color-gray-800);
+  color: $text-bubble-speaker-name-color;
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.1px;
 }
