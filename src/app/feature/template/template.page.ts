@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, inject, Injector, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { FlowTypes, IAppConfig } from "data-models";
@@ -15,6 +15,7 @@ import { EvaluationService } from "src/app/reactive-templates/services/evaluatio
 import { RowRegistry } from "src/app/reactive-templates/services/row.registry";
 import { ActionRegistry } from "src/app/reactive-templates/services/action.registry";
 import { ActionService } from "src/app/reactive-templates/services/action.service";
+import { NavigationService } from "src/app/reactive-templates/services/navigation-service";
 
 @Component({
   selector: "plh-template-page",
@@ -29,6 +30,7 @@ import { ActionService } from "src/app/reactive-templates/services/action.servic
     RowRegistry,
     ActionRegistry,
     ActionService,
+    NavigationService,
   ],
   standalone: false,
 })
@@ -50,7 +52,8 @@ export class TemplatePage implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
-    private deploymentService: DeploymentService
+    private deploymentService: DeploymentService,
+    private injector: Injector
   ) {
     this.useReactiveTemplates = this.deploymentService.config.useReactiveTemplates ?? false;
   }
@@ -63,13 +66,26 @@ export class TemplatePage implements OnInit, OnDestroy {
     this.subscribeToAppConfigChanges();
   }
 
+  ionViewWillEnter() {
+    if (this.useReactiveTemplates) {
+      this.injector.get(NavigationService).setActive(true);
+    }
+  }
+
+  ionViewWillLeave() {
+    if (this.useReactiveTemplates) {
+      this.injector.get(NavigationService).setActive(false);
+    }
+    this.lifecycleService.clearActivePage(this.container);
+  }
+
   /** Ionic page lifecycle: cached pages stay rendered but are not shown, so track the shown one */
   ionViewDidEnter() {
     this.lifecycleService.setActivePage(this.container);
   }
 
-  ionViewWillLeave() {
-    this.lifecycleService.clearActivePage(this.container);
+  public canLeave(): Promise<boolean> {
+    return this.injector.get(NavigationService).canLeave();
   }
 
   public search() {

@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { IRow } from "./row.registry";
 
+export type ActionExecutionResult = void | "cancelled";
+
 export interface IAction extends IRow {
   init(): void;
   name(): string;
-  execute(params?: IActionParameter[]): Promise<void>;
+  execute(params?: IActionParameter[]): Promise<ActionExecutionResult>;
   condition(): boolean;
 }
 

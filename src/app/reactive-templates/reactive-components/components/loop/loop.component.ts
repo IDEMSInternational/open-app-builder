@@ -12,6 +12,7 @@ import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 import {
+  ActionExecutionResult,
   IAction,
   IActionParameter,
   isAction,
@@ -58,7 +59,7 @@ export class LoopComponent
     return `${this.name()}.${this.getLoopIndex(item, index)}`;
   }
 
-  public async execute(params?: IActionParameter[]): Promise<void> {
+  public async execute(params?: IActionParameter[]): Promise<ActionExecutionResult> {
     if (!this.condition()) {
       return;
     }
@@ -93,8 +94,8 @@ export class LoopComponent
         const instance = componentRef.instance;
         if (isAction(instance)) {
           instance.init();
-          if (instance.condition()) {
-            await instance.execute(params);
+          if (instance.condition() && (await instance.execute(params)) === "cancelled") {
+            return "cancelled";
           }
         }
       }

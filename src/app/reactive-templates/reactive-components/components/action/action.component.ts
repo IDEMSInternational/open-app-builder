@@ -11,6 +11,7 @@ import {
 import { defineParameters } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import {
+  ActionExecutionResult,
   ActionRegistry,
   IAction,
   IActionParameter,
@@ -53,7 +54,7 @@ export class ActionComponent
     });
   }
 
-  public async execute(params?: IActionParameter[]): Promise<void> {
+  public async execute(params?: IActionParameter[]): Promise<ActionExecutionResult> {
     if (!this.condition()) {
       return;
     }
@@ -85,8 +86,7 @@ export class ActionComponent
       if (this.actionRegistry.has(value as string)) {
         const action = this.actionRegistry.get(value as string);
         action.init();
-        await action.execute(mergedParams);
-        return; // this action should not define any actions of its own, but removing this return would enable that.
+        return action.execute(mergedParams);
       } else {
         console.error(`[ACTION] No action registered with name: ${value}`);
         return;
@@ -97,8 +97,8 @@ export class ActionComponent
       // Action components need to be manually initialised as ngOnInit is not called automatically
       action.init();
 
-      if (action.condition()) {
-        await action.execute(mergedParams);
+      if (action.condition() && (await action.execute(mergedParams)) === "cancelled") {
+        return "cancelled";
       }
     }
   }

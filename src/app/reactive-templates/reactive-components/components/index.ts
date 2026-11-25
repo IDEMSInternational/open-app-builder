@@ -19,6 +19,7 @@ import { PopupComponent } from "./popup/popup.component";
 import { AccordionComponent } from "./accordion/accordion.component";
 import { AccordionSectionComponent } from "./accordion/accordion-section/accordion-section.component";
 import { PLH_REACTIVE_COMPONENT_MAP } from "../plh";
+import { OnLeaveComponent } from "./on-leave/on-leave.component";
 
 export const REACTIVE_COMPONENT_MAP = {
   accordion: AccordionComponent,
@@ -29,8 +30,9 @@ export const REACTIVE_COMPONENT_MAP = {
   dropdown: DropdownComponent,
   expression_builder: ExpressionBuilderComponent,
   loop: LoopComponent,
-  popup: PopupComponent,
   nav: NavComponent,
+  on_leave: OnLeaveComponent,
+  popup: PopupComponent,
   radio_list: RadioListComponent,
   set_global: SetGlobalComponent,
   set_variable: SetVariableComponent,

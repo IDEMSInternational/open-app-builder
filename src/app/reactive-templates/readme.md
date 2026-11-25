@@ -21,6 +21,35 @@ Internally, each page instance owns its local variable store and row/action regi
 templates and loops on that page share them, so existing local paths continue to work. Global and
 system stores remain shared across pages.
 
+### Leaving a page
+
+Each page also owns its navigation service. An `on_leave` row registers its child actions with that
+service while the row exists. When a reactive `nav` action navigates, enabled leave actions run in
+order; an action that emits `cancelled` before its `execute()` promise resolves stops navigation.
+For a confirmation, put a `popup` directly under `on_leave`; it automatically waits for dismissal.
+An `action` child can also reference an already rendered popup. Popup execution returns `cancelled`
+on Stay, dismissal or destruction; action references, action groups and loops propagate that result,
+stopping remaining actions and loop iterations before `on_leave` cancels navigation.
+Give the popup buttons with `click | emit: completed` (leave) and
+`click | emit: cancelled` (stay). Closing the popup without `completed`, including with the close
+button or backdrop, also cancels navigation. All popup `execute()` calls resolve after dismissal;
+callers can choose whether to await them. While a leave check is pending, further navigation
+attempts are ignored with a warning.
+Browser Back/Forward navigation within the app also waits for the current template page's leave
+actions through a route deactivation guard. Cancelling restores the current history entry, so Back
+can be attempted again. Browser history changes the address bar before the guard finishes, but the
+current page remains displayed until confirmation. Other router navigation does not run leave actions.
+Back navigation out of the app is a document unload and cannot wait for a custom popup.
+These navigation hooks and the history-restoration setting only apply when `useReactiveTemplates`
+is enabled. Legacy pages bypass the guard and do not activate the reactive navigation service.
+
+On browser refresh, tab close, or navigation away from the app, `beforeunload` also starts the
+current page's leave actions. Ionic page enter/leave hooks attach and remove the listener, so
+cached pages do not run their actions; destroying the page also removes it. Unloading does not
+navigate through the router or wait for actions to finish. This is best-effort only: browsers may
+skip the event (especially on mobile), asynchronous work may be interrupted, and popups or
+`cancelled` emissions cannot prevent unloading. Do not rely on it for critical persistence.
+
 ## Enabling Reactive Templates
 
 To enable reactive templates in your app, set the `useReactiveTemplates` flag to `true` in your app configuration. This is typically done in your deployment config.ts file
