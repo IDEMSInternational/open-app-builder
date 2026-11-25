@@ -12,7 +12,9 @@ import { Subscription } from "rxjs";
   providers: [{ provide: ROW_PARAMETERS, useValue: null }],
 })
 export class NestedTemplateComponent extends RowBaseComponent<null> implements OnInit, OnDestroy {
-  private reactiveTemplate = viewChild.required(ReactiveTemplateComponent);
+  private reactiveTemplate = viewChild.required<ReactiveTemplateComponent>(
+    forwardRef(() => ReactiveTemplateComponent)
+  );
   private childDependencySubscriptions: Subscription[] = [];
   private templateInitialised = signal(false);
 
