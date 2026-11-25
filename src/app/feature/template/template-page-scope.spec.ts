@@ -615,6 +615,126 @@ describe("reactive template page scope", () => {
     }
   });
 
+  for (const wrapper of ["reference", "group", "loop"] as const) {
+    it(`preserves rendered popup cancellation through an action ${wrapper}`, fakeAsync(() => {
+      const fixture = createPage();
+      const page = fixture.debugElement.injector;
+      const host: ScopeProbeComponent = fixture.debugElement.query(
+        By.directive(ScopeProbeComponent)
+      ).componentInstance;
+      const navigation = page.get(NavigationService);
+      const router = TestBed.inject(Router);
+      const executed: string[] = [];
+      spyOn(REACTIVE_COMPONENT_MAP.update.prototype, "execute").and.callFake(async function () {
+        executed.push(this.row().name);
+      });
+      const popup = createReactiveComponentRef(
+        REACTIVE_COMPONENT_MAP.popup,
+        TestBed.inject(EnvironmentInjector),
+        page,
+        { type: "popup", name: "confirm", value: "", _nested_name: "confirm" },
+        ""
+      );
+      const onEmit = jasmine.createSpy("rendered popup event handler");
+      popup.setInput("onEmit", onEmit);
+      host.viewContainer.insert(popup.hostView);
+      fixture.detectChanges();
+
+      const reference: FlowTypes.TemplateRow = {
+        type: "action",
+        name: "reference",
+        value: "confirm",
+        _nested_name: "reference",
+      };
+      const after = (name: string): FlowTypes.TemplateRow => ({
+        type: "update",
+        name,
+        value: "",
+        _nested_name: name,
+      });
+      const children: FlowTypes.TemplateRow[] =
+        wrapper === "reference"
+          ? [reference]
+          : [
+              {
+                type: "action",
+                name: "group",
+                value: "",
+                _nested_name: "group",
+                rows: [
+                  ...(wrapper === "group"
+                    ? [reference]
+                    : [
+                        {
+                          type: "loop" as const,
+                          name: "loop",
+                          value: "[1, 2]",
+                          _nested_name: "loop",
+                          rows: [reference, after("afterIteration")],
+                        },
+                      ]),
+                  after("afterGroup"),
+                ],
+              },
+            ];
+      const leave = createReactiveComponentRef(
+        REACTIVE_COMPONENT_MAP.on_leave,
+        TestBed.inject(EnvironmentInjector),
+        page,
+        {
+          type: "on_leave",
+          name: "leave",
+          value: "",
+          _nested_name: "leave",
+          rows: [...children, after("afterLeave")],
+        },
+        ""
+      );
+      leave.changeDetectorRef.detectChanges();
+
+      try {
+        void navigation.navigate(["/stay"]);
+        flushMicrotasks();
+        expect(popup.instance.isOpen()).toBeTrue();
+        popup.instance.onEmittedValue({ emitValue: "cancelled", emitData: undefined });
+        popup.instance.onDidDismiss();
+        flushMicrotasks();
+        expect(onEmit).toHaveBeenCalledWith({ emitValue: "cancelled", emitData: undefined });
+        expect(executed).toEqual([]);
+        expect(popup.instance.isOpen()).toBeFalse();
+        expect(router.navigate).not.toHaveBeenCalled();
+
+        void navigation.navigate(["/dismiss"]);
+        flushMicrotasks();
+        expect(popup.instance.isOpen()).toBeTrue();
+        popup.instance.dismiss();
+        popup.instance.onDidDismiss();
+        flushMicrotasks();
+        expect(executed).toEqual([]);
+        expect(popup.instance.isOpen()).toBeFalse();
+        expect(router.navigate).not.toHaveBeenCalled();
+
+        void navigation.navigate(["/leave"]);
+        flushMicrotasks();
+        for (let i = 0; i < (wrapper === "loop" ? 2 : 1); i++) {
+          expect(popup.instance.isOpen()).toBeTrue();
+          popup.instance.onEmittedValue({ emitValue: "completed", emitData: undefined });
+          popup.instance.onDidDismiss();
+          flushMicrotasks();
+        }
+        expect(executed).toEqual([
+          ...(wrapper === "loop" ? ["afterIteration", "afterIteration"] : []),
+          ...(wrapper !== "reference" ? ["afterGroup"] : []),
+          "afterLeave",
+        ]);
+        expect(router.navigate).toHaveBeenCalledOnceWith(["/leave"]);
+      } finally {
+        leave.destroy();
+        fixture.destroy();
+      }
+    }));
+  }
+
   it("resolves ordinary popup execution on dismissal or destruction", async () => {
     const page = createPage().debugElement.injector;
     const popup = createReactiveComponentRef(
@@ -626,8 +746,9 @@ describe("reactive template page scope", () => {
     );
     popup.instance.init();
     let resolved = false;
-    const execution = popup.instance.execute().then(() => {
+    const execution = popup.instance.execute().then((result) => {
       resolved = true;
+      return result;
     });
     expect(popup.instance.isOpen()).toBeTrue();
     await Promise.resolve();
@@ -635,12 +756,12 @@ describe("reactive template page scope", () => {
 
     popup.instance.dismiss();
     popup.instance.onDidDismiss();
-    await execution;
+    expect(await execution).toBe("cancelled");
     expect(resolved).toBeTrue();
 
     const reopened = popup.instance.execute();
     popup.destroy();
-    await reopened;
+    expect(await reopened).toBe("cancelled");
   });
 });
 

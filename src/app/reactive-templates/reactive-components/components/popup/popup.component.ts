@@ -4,7 +4,11 @@ import { IonicModule } from "@ionic/angular";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent, RowEmitEvent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
-import { ActionRegistry, IAction } from "src/app/reactive-templates/services/action.registry";
+import {
+  ActionExecutionResult,
+  ActionRegistry,
+  IAction,
+} from "src/app/reactive-templates/services/action.registry";
 import { NestedTemplateComponent } from "../nested-template/nested-template.component";
 
 const parameters = () =>
@@ -35,14 +39,14 @@ export class PopupComponent
   private readonly actionRegistry = inject(ActionRegistry);
 
   public isOpen = signal(false);
-  private closePromise?: Promise<void>;
-  private resolveClose?: () => void;
+  private closePromise?: Promise<ActionExecutionResult>;
+  private resolveClose?: (result: ActionExecutionResult) => void;
   private confirmation?: "completed" | "cancelled";
 
-  public execute(): Promise<void> {
+  public execute(): Promise<ActionExecutionResult> {
     if (!this.closePromise) {
       this.confirmation = undefined;
-      this.closePromise = new Promise<void>((resolve) => {
+      this.closePromise = new Promise<ActionExecutionResult>((resolve) => {
         this.resolveClose = resolve;
       });
     }
@@ -97,12 +101,13 @@ export class PopupComponent
     if (!resolve) {
       return;
     }
+    const result = this.confirmation === "completed" ? undefined : "cancelled";
     this.resolveClose = undefined;
     this.closePromise = undefined;
     if (this.confirmation !== "completed" && this.confirmation !== "cancelled") {
       this.onEmittedValue({ emitValue: "cancelled", emitData: undefined });
     }
-    resolve();
+    resolve(result);
   }
 
   public override ngOnDestroy(): void {

@@ -85,8 +85,8 @@ export class OnLeaveComponent extends RowBaseComponent<ReturnType<typeof paramet
           this.viewContainer.insert(componentRef.hostView);
           componentRef.changeDetectorRef.detectChanges();
         }
-        if (instance.condition()) {
-          await instance.execute();
+        if (instance.condition() && (await instance.execute()) === "cancelled") {
+          return false;
         }
         if (cancelled || this.destroyed) {
           return false;
