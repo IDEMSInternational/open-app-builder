@@ -81,13 +81,13 @@
       background: var(--ion-color-primary-600) !important;
     }
     &[data-variant~="orange"] {
-      background: var(--color-accent-orange-70);
+      background: var(--ion-color-secondary-variant-300);
     }
     &[data-variant~="yellow"] {
-      background: var(--color-accent-yellow-70);
+      background: var(--ion-color-primary-variant-500);
     }
     &[data-variant~="information"] {
-      background: var(--color-secondary-blue-40);
+      background: var(--ion-color-secondary-700);
     }
   }
 
