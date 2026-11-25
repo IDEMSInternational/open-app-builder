@@ -50,6 +50,15 @@
     height: 100%;
   }
 }
+// Feedback mode previews pages at a set width beside its sidebar. The split pane only shows the sidebar
+// on large screens (`when="lg"`), so on smaller screens pages keep the full width
+ion-split-pane.split-pane-visible > #main.feedback-page-width {
+  max-width: var(--feedback-page-width);
+  margin: auto;
+  // The preview does not reach the sides of the screen
+  --ion-safe-area-left: 0px;
+  --ion-safe-area-right: 0px;
+}
 #sidebar {
   width: 500px;
   min-width: 500px;
