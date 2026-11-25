@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
+import { Component, inject, Input, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { IonModalToken, ModalController } from "@ionic/angular";
 import { FlowTypes } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
+import { TemplateLifecycleService } from "../../../services/template-lifecycle.service";
 import { TemplateTranslateService } from "../../../services/template-translate.service";
 import { TemplateAssetService } from "../../../services/template-asset.service";
 
@@ -14,8 +15,13 @@ import { TemplateAssetService } from "../../../services/template-asset.service";
  * When opening a template as a popup, provide a minimal interface and load
  * the template directly as a regular template-container element
  */
-export class TemplatePopupComponent implements OnInit {
+export class TemplatePopupComponent implements OnInit, OnDestroy {
   @Input() props: ITemplatePopupComponentProps;
+  // queried by reference: this component and the container import each other
+  private container = viewChild<TemplateContainerComponent>("container");
+  // not `modal`, which Ionic sets on modal components
+  private ionModal = inject(IonModalToken, { optional: true });
+  private lifecycleService = inject(TemplateLifecycleService);
 
   /**
    * Inline styles for an optional background image. It covers the popup content, or the whole screen
@@ -33,6 +39,20 @@ export class TemplatePopupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.setBackgroundImageStyles();
+    if (this.isTopLevel()) this.lifecycleService.addOverlay(this.container, this.ionModal);
+  }
+
+  ngOnDestroy() {
+    if (this.isTopLevel()) this.lifecycleService.removeOverlay(this.container);
+  }
+
+  /** Fullscreen pop-ups opened by `TemplateService.runStandaloneTemplate` get `nav_enter` */
+  private isTopLevel() {
+    return this.props.standalone && this.props.fullscreen;
+  }
+
+  private setBackgroundImageStyles() {
     const backgroundImageStyles = this.getBackgroundImageStyles();
     if (this.props.fullscreen) {
       this.backdropStyles = backgroundImageStyles;
@@ -108,6 +128,8 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
   waitForDismiss?: boolean;
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
+  /** Opened by `TemplateService.runStandaloneTemplate`, outside any template */
+  standalone?: boolean;
   /** Pass text only to render that text in a popup, bypassing any templates */
   popupText?: string;
   /** Template Parameter: "variant". Defines style and use of pop up */

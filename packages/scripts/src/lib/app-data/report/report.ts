@@ -9,8 +9,9 @@ import { generateReportMarkdown } from "./report.utils";
 import { FlowByTypeReport } from "./reporters/flows-by-type";
 import { TemplateSummaryReport } from "./reporters/template-summary";
 import { AssetsSummaryReport } from "./reporters/asset-summary";
+import { AssetStorageReport } from "./reporters/asset-storage";
 import { IParsedWorkbookData } from "../convert/types";
-import { loadAssetEntries } from "./load-asset-entries";
+import { loadAssetEntries, loadAssetStorageData } from "./load-asset-entries";
 import { ISheetContents } from "../postProcess/sheets";
 
 /**
@@ -31,11 +32,20 @@ export class ReportGenerator {
   private async generateOutputReports() {
     const sheetsData = await this.loadSheetsData();
     const assetData = await this.loadAssetsData();
+    const assetStorageData = await loadAssetStorageData(
+      resolve(this.deployment._workspace_path, "app_data")
+    );
 
     const TemplateReports = await new TemplateSummaryReport().process(sheetsData);
     const FlowReports = await new FlowByTypeReport().process(sheetsData);
+    const AssetStorageReports = await new AssetStorageReport(assetStorageData).process();
     const AssetReports = await new AssetsSummaryReport(assetData).process(sheetsData);
-    const outputReports = { ...TemplateReports, ...AssetReports, ...FlowReports };
+    const outputReports = {
+      ...TemplateReports,
+      ...AssetStorageReports,
+      ...AssetReports,
+      ...FlowReports,
+    };
     return outputReports;
   }
 

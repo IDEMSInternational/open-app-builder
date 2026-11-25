@@ -45,6 +45,9 @@ export class TemplateNavService extends SyncServiceBase {
     [templatename: string]: { modal: HTMLIonModalElement; props: ITemplatePopupComponentProps };
   } = {};
 
+  /** Popups currently being created, so that a repeated request during creation is ignored */
+  private pendingPopups = new Set<string>();
+
   public async handleQueryParamChange(
     params: INavQueryParams,
     container: TemplateContainerComponent
@@ -355,17 +358,26 @@ export class TemplateNavService extends SyncServiceBase {
       existingPopup.modal.classList.remove("hide-popup-on-template");
       return;
     }
+    // The same request can arrive from more than one container (e.g. a page and a nav-stack above it)
+    if (this.pendingPopups.has(popup_child)) {
+      return;
+    }
 
-    const modal = await this.modalCtrl.create({
-      component: TemplatePopupComponent,
-      componentProps: { props: childContainerProps },
-      id: `popup-${popup_child}`,
-      // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
-      cssClass: "template-popup-modal",
-      showBackdrop: false,
-    });
-    this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
-    return modal;
+    this.pendingPopups.add(popup_child);
+    try {
+      const modal = await this.modalCtrl.create({
+        component: TemplatePopupComponent,
+        componentProps: { props: childContainerProps },
+        id: `popup-${popup_child}`,
+        // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
+        cssClass: "template-popup-modal",
+        showBackdrop: false,
+      });
+      this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
+      return modal;
+    } finally {
+      this.pendingPopups.delete(popup_child);
+    }
   }
 
   /*****************************************************************************************************

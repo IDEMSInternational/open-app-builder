@@ -10,6 +10,7 @@ import { MockAppConfigService } from "src/app/shared/services/app-config/app-con
 import { Component, input } from "@angular/core";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
 import { DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS } from "packages/data-models";
+import { TemplateLifecycleService } from "src/app/shared/components/template/services/template-lifecycle.service";
 
 // HACK - mock child `<plh-template-container>` component to bypass imports
 @Component({
@@ -45,6 +46,10 @@ describe("TemplatePage", () => {
         {
           provide: DeploymentService,
           useValue: new DeploymentService(DEPLOYMENT_RUNTIME_CONFIG_DEFAULTS),
+        },
+        {
+          provide: TemplateLifecycleService,
+          useValue: { setActivePage: () => null, clearActivePage: () => null },
         },
       ],
     }).compileComponents();
