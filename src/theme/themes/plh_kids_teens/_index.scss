@@ -33,6 +33,9 @@ $variables: (
   border-standard: var(--border-width-default) solid var(--border-color-default),
   // COMPONENT VARIABLES
   accordion-background-highlight: var(--ion-color-primary-300),
+  accordion-border: none,
+  accordion-border-radius: var(--ion-border-radius-small),
+  accordion-box-shadow: none,
   accordion-toggle-icon-color: var(--ion-color-primary-contrast),
   button-background-information: var(--ion-color-primary-600),
   button-border-radius: var(--ion-border-radius-rounded),
