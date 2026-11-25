@@ -1,8 +1,10 @@
 // Styling must be globally scoped ('@use'd in src/theme/_components.scss), as the sticky display group
 // needs to style projected content from the parent display-group component
 
-$sticky-top: 'tmpl-display-group-sticky[sticky-position="top"]';
-$sticky-bottom: 'tmpl-display-group-sticky[sticky-position="bottom"]';
+// Rows with `hidden: true` stay in the page without being displayed, so only match groups that are shown
+$not-hidden: ':not(plh-template-component[data-hidden="true"] *)';
+$sticky-top: 'tmpl-display-group-sticky[sticky-position="top"]#{$not-hidden}';
+$sticky-bottom: 'tmpl-display-group-sticky[sticky-position="bottom"]#{$not-hidden}';
 $shown-page: ".route-container .ion-page:not(.ion-page-hidden)";
 
 // A sticky group covers the padding between the content and the edge it is fixed to, so the content's
