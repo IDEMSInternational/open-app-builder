@@ -31,4 +31,18 @@ describe("Data Items Utils", () => {
       left: "40px",
     });
   });
+  it("getPaddingValuesFromShorthand gives unitless zero values a unit", () => {
+    expect(getPaddingValuesFromShorthand("0 0")).toEqual({
+      top: "0px",
+      right: "0px",
+      bottom: "0px",
+      left: "0px",
+    });
+    expect(getPaddingValuesFromShorthand("24px 0")).toEqual({
+      top: "24px",
+      right: "0px",
+      bottom: "24px",
+      left: "0px",
+    });
+  });
 });
