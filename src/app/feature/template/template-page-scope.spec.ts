@@ -15,6 +15,7 @@ import { RowRegistry } from "src/app/reactive-templates/services/row.registry";
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { TemplateMetadataService } from "src/app/shared/components/template/services/template-metadata.service";
+import { TemplateLifecycleService } from "src/app/shared/components/template/services/template-lifecycle.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
@@ -40,6 +41,13 @@ describe("reactive template page scope", () => {
         { provide: Router, useValue: { events: EMPTY, url: "/template/test" } },
         { provide: DebugService, useValue: { isEnabled: () => false } },
         { provide: TemplateMetadataService, useValue: { templateName: () => "test" } },
+        {
+          provide: TemplateLifecycleService,
+          useValue: jasmine.createSpyObj("TemplateLifecycleService", [
+            "setActivePage",
+            "clearActivePage",
+          ]),
+        },
         { provide: AppDataService, useValue: {} },
         {
           provide: AppConfigService,
