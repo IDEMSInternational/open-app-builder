@@ -1,5 +1,26 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { Router } from "@angular/router";
+import { inject, Injectable, OnDestroy, Provider } from "@angular/core";
+import { ExtraOptions, ROUTER_CONFIGURATION, Router } from "@angular/router";
+import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+
+export function canLeaveReactiveTemplatePage(page: {
+  useReactiveTemplates: boolean;
+  canLeave(): Promise<boolean>;
+}): boolean | Promise<boolean> {
+  if (!page.useReactiveTemplates) {
+    return true;
+  }
+  return inject(Router).currentNavigation()?.trigger === "popstate" ? page.canLeave() : true;
+}
+
+export function provideReactiveTemplateNavigation(routerOptions: ExtraOptions): Provider {
+  return {
+    provide: ROUTER_CONFIGURATION,
+    useFactory: (): ExtraOptions =>
+      inject(DeploymentService).config.useReactiveTemplates
+        ? { ...routerOptions, canceledNavigationResolution: "computed" }
+        : routerOptions,
+  };
+}
 
 @Injectable({ providedIn: "root" })
 export class NavigationService implements OnDestroy {

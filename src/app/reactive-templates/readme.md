@@ -40,6 +40,8 @@ actions through a route deactivation guard. Cancelling restores the current hist
 can be attempted again. Browser history changes the address bar before the guard finishes, but the
 current page remains displayed until confirmation. Other router navigation does not run leave actions.
 Back navigation out of the app is a document unload and cannot wait for a custom popup.
+These navigation hooks and the history-restoration setting only apply when `useReactiveTemplates`
+is enabled. Legacy pages bypass the guard and do not activate the reactive navigation service.
 
 On browser refresh, tab close, or navigation away from the app, `beforeunload` also starts the
 current page's leave actions. Ionic page enter/leave hooks attach and remove the listener, so

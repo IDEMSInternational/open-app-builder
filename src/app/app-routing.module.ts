@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { TourComponent } from "./feature/tour/tour.component";
+import { provideReactiveTemplateNavigation } from "./reactive-templates/services/navigation-service";
 
 /**
  * Routes required for main app features
@@ -89,15 +90,15 @@ const sidebarRoutes: Routes = [
 
 export const APP_FEATURE_ROUTES = [...featureRoutes, ...sidebarRoutes];
 
+const routerOptions: ExtraOptions = {
+  preloadingStrategy: PreloadAllModules,
+  useHash: false,
+  anchorScrolling: "enabled",
+};
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(APP_FEATURE_ROUTES, {
-      preloadingStrategy: PreloadAllModules,
-      useHash: false,
-      anchorScrolling: "enabled",
-      canceledNavigationResolution: "computed",
-    }),
-  ],
+  imports: [RouterModule.forRoot(APP_FEATURE_ROUTES, routerOptions)],
+  providers: [provideReactiveTemplateNavigation(routerOptions)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

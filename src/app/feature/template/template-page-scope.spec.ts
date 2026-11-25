@@ -103,6 +103,27 @@ describe("reactive template page scope", () => {
     TestBed.overrideComponent(TemplatePage, { set: { template: "<scope-probe />" } });
   });
 
+  it("does not initialise reactive navigation or attach unload handlers for legacy pages", fakeAsync(() => {
+    TestBed.overrideProvider(DeploymentService, {
+      useValue: { config: { useReactiveTemplates: false } },
+    });
+    const createNavigation = jasmine
+      .createSpy("create reactive navigation")
+      .and.throwError("Legacy pages must not initialise reactive navigation");
+    TestBed.overrideComponent(TemplatePage, {
+      add: { providers: [{ provide: NavigationService, useFactory: createNavigation }] },
+    });
+
+    const fixture = createPage();
+    fixture.componentInstance.ionViewWillEnter();
+    unload();
+    flushMicrotasks();
+    fixture.componentInstance.ionViewWillLeave();
+    fixture.destroy();
+
+    expect(createNavigation).not.toHaveBeenCalled();
+  }));
+
   it("isolates page locals and reactive dependencies but shares global and system values", () => {
     const first = createPage().debugElement.injector;
     const second = createPage().debugElement.injector;

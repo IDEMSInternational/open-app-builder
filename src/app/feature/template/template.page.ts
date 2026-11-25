@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { Component, inject, Injector, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { FlowTypes, IAppConfig } from "data-models";
@@ -53,7 +53,7 @@ export class TemplatePage implements OnInit, OnDestroy {
     private appDataService: AppDataService,
     private appConfigService: AppConfigService,
     private deploymentService: DeploymentService,
-    private navigationService: NavigationService
+    private injector: Injector
   ) {
     this.useReactiveTemplates = this.deploymentService.config.useReactiveTemplates ?? false;
   }
@@ -67,11 +67,15 @@ export class TemplatePage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter() {
-    this.navigationService.setActive(true);
+    if (this.useReactiveTemplates) {
+      this.injector.get(NavigationService).setActive(true);
+    }
   }
 
   ionViewWillLeave() {
-    this.navigationService.setActive(false);
+    if (this.useReactiveTemplates) {
+      this.injector.get(NavigationService).setActive(false);
+    }
     this.lifecycleService.clearActivePage(this.container);
   }
 
@@ -81,7 +85,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   }
 
   public canLeave(): Promise<boolean> {
-    return this.navigationService.canLeave();
+    return this.injector.get(NavigationService).canLeave();
   }
 
   public search() {
