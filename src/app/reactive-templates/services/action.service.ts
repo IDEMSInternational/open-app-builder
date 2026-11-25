@@ -17,9 +17,12 @@ export class ActionService {
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private evaluationService: EvaluationService,
+    // Not used directly: injecting these runs their constructors, which register the reactive
+    // action handlers. Don't move this to APP_INITIALIZER without checking useReactiveTemplates:
+    // TemplateActionRegistry is shared with legacy templates, and these would take precedence there.
     private coreActionsService: CoreActionsService,
     private actionHandler: ActionHandler,
-    private setGlobalActionService: SetGlobalActionService, // Also just to force initialisation - todo: as above
+    private setGlobalActionService: SetGlobalActionService,
     private actionRegistry: ActionRegistry,
     private rowRegistry: RowRegistry,
     private actionContext: ActionContextService
