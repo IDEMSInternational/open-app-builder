@@ -1,7 +1,8 @@
-import { Component, Input } from "@angular/core";
-import { ModalController } from "@ionic/angular";
+import { Component, inject, Input, OnDestroy, OnInit, viewChild } from "@angular/core";
+import { IonModalToken, ModalController } from "@ionic/angular";
 import { FlowTypes } from "../../../models";
 import { TemplateContainerComponent } from "../../../template-container.component";
+import { TemplateLifecycleService } from "../../../services/template-lifecycle.service";
 import { TemplateTranslateService } from "../../../services/template-translate.service";
 
 @Component({
@@ -13,8 +14,13 @@ import { TemplateTranslateService } from "../../../services/template-translate.s
  * When opening a template as a popup, provide a minimal interface and load
  * the template directly as a regular template-container element
  */
-export class TemplatePopupComponent {
+export class TemplatePopupComponent implements OnInit, OnDestroy {
   @Input() props: ITemplatePopupComponentProps;
+  // queried by reference: this component and the container import each other
+  private container = viewChild<TemplateContainerComponent>("container");
+  // not `modal`, which Ionic sets on modal components
+  private ionModal = inject(IonModalToken, { optional: true });
+  private lifecycleService = inject(TemplateLifecycleService);
 
   constructor(
     private modalCtrl: ModalController,
@@ -22,6 +28,19 @@ export class TemplatePopupComponent {
     // handle RTL language support directly in this component
     public templateTranslateService: TemplateTranslateService
   ) {}
+
+  ngOnInit() {
+    if (this.isTopLevel()) this.lifecycleService.addOverlay(this.container, this.ionModal);
+  }
+
+  ngOnDestroy() {
+    if (this.isTopLevel()) this.lifecycleService.removeOverlay(this.container);
+  }
+
+  /** Fullscreen pop-ups opened by `TemplateService.runStandaloneTemplate` get `nav_enter` */
+  private isTopLevel() {
+    return this.props.standalone && this.props.fullscreen;
+  }
 
   /**
    * When templates emit completed/uncompleted value from standalone popup close the popup
@@ -67,6 +86,8 @@ export interface ITemplatePopupComponentProps extends IContainerProps {
   waitForDismiss?: boolean;
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
+  /** Opened by `TemplateService.runStandaloneTemplate`, outside any template */
+  standalone?: boolean;
   /** Pass text only to render that text in a popup, bypassing any templates */
   popupText?: string;
   /** Template Parameter: "variant". Defines style and use of pop up */

@@ -36,4 +36,31 @@ describe("TemplateComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+
+  it("waitForRerender waits for a reprocess in progress, and resolves false when there is none", async () => {
+    let finishReprocess: () => void;
+    spyOn(component.templateRowService, "processRowUpdates").and.returnValue(
+      new Promise<any>((resolve) => (finishReprocess = () => resolve([])))
+    );
+    expect(await component.waitForRerender()).toBeFalse();
+
+    const reprocess = component.forceRerender(false);
+    let waited: boolean | undefined;
+    component.waitForRerender().then((result) => (waited = result));
+    await new Promise((resolve) => setTimeout(resolve));
+    expect(waited).toBeUndefined();
+
+    finishReprocess();
+    await reprocess;
+    await new Promise((resolve) => setTimeout(resolve));
+    expect(waited).toBeTrue();
+    expect(await component.waitForRerender()).toBeFalse();
+  });
+
+  it("waitForRerender resolves false if the reprocess in progress fails", async () => {
+    spyOn(component.templateRowService, "processRowUpdates").and.rejectWith(new Error("failed"));
+    const reprocess = component.forceRerender(false).catch(() => null);
+    expect(await component.waitForRerender()).toBeFalse();
+    await reprocess;
+  });
 });

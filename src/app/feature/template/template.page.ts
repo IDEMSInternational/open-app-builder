@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, viewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { FlowTypes, IAppConfig } from "data-models";
@@ -6,6 +6,8 @@ import { Subscription } from "rxjs";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DeploymentService } from "src/app/shared/services/deployment/deployment.service";
+import { TemplateContainerComponent } from "src/app/shared/components/template/template-container.component";
+import { TemplateLifecycleService } from "src/app/shared/components/template/services/template-lifecycle.service";
 import { LocalVariableStore } from "src/app/reactive-templates/stores/local-variable-store";
 import { VariableStore } from "src/app/reactive-templates/stores/variable-store";
 import { ContextCreatorService } from "src/app/reactive-templates/services/context-creator.service";
@@ -40,6 +42,10 @@ export class TemplatePage implements OnInit, OnDestroy {
 
   public useReactiveTemplates: boolean = false;
 
+  // none with reactive templates, so their pages don't get nav_enter
+  private container = viewChild(TemplateContainerComponent);
+  private lifecycleService = inject(TemplateLifecycleService);
+
   constructor(
     private route: ActivatedRoute,
     private appDataService: AppDataService,
@@ -55,6 +61,15 @@ export class TemplatePage implements OnInit, OnDestroy {
       this.listTemplates();
     }
     this.subscribeToAppConfigChanges();
+  }
+
+  /** Ionic page lifecycle: cached pages stay rendered but are not shown, so track the shown one */
+  ionViewDidEnter() {
+    this.lifecycleService.setActivePage(this.container);
+  }
+
+  ionViewWillLeave() {
+    this.lifecycleService.clearActivePage(this.container);
   }
 
   public search() {
@@ -82,6 +97,7 @@ export class TemplatePage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.lifecycleService.clearActivePage(this.container);
     this.appConfigChanges$.unsubscribe();
   }
 }
