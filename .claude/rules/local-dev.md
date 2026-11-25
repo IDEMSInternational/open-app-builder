@@ -72,3 +72,12 @@
     locally. Check by fetching both spellings from `http://localhost:4200/assets/app_data/assets/…`; fix by
     deleting the folder under `src/assets/app_data/assets/` and re-running `populate_src_assets`.
     (found 2026-11-19: MX `comic/relation/One_on_one_time`)
+
+13. **Live reload on the Android emulator: the app never starts unless the dev server's own reload is off.**
+    With it on, the dev server's websocket can reload the page before the vendor bundle has loaded, over and
+    over. Set `server.url: "http://10.0.2.2:4200"` (the host as seen from the emulator, so it works on any
+    network) and `cleartext: true` in the generated `capacitor.config.ts` (see its `server` comment), run
+    `npx cap sync android`, install a debug APK, and serve with `yarn ng serve --configuration=external
+    --live-reload=false --hmr=false`. Relaunch the app after each recompile (`adb shell am force-stop <app id>`,
+    then `adb shell monkey -p <app id> 1`). Afterwards run `yarn workflow android configure` to drop the url.
+    (verified 2026-11-24: debug deployment, Pixel 8 API 35)
