@@ -89,8 +89,9 @@ ion-button[data-variant~="card"] {
   }
 }
 
-// `no-background` (legacy style, styled per theme): Ionic draws the button from --background, which
-// variants such as `card` set to white, so reset it here for every theme. Keep after the variant rules.
+// `style: no-background`: transparent in every theme. Overrides the white --background set by
+// variants such as `card` above, so keep this after the variant rules. Themes style the rest
+// (border, padding, text colour) in their overrides.
 ion-button[data-param-style~="no-background"] {
   --background: transparent;
 }
