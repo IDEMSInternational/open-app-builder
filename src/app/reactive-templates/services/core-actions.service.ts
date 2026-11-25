@@ -71,15 +71,17 @@ export class CoreActionsService {
   }
 
   private setVariable(action: FlowTypes.TemplateRowAction<any>) {
-    const [key, value] = action.args;
+    const [key] = action.args;
     const expression = action.rawArgs[1];
-    const row = (this.actionContext.get(action)?.rows ?? this.rowRegistry).get(key);
+    // A page's ActionService attaches its registries. Anything else (e.g. notification actions)
+    // falls back to the app-wide registry, which reactive rows no longer register in.
+    const rows = this.actionContext.get(action)?.rows ?? this.rowRegistry;
 
-    if (!row) {
+    if (!rows.has(key)) {
       console.warn(`set_local: no row found with name '${key}'`);
       return;
     }
 
-    row.setExpression(expression);
+    rows.get(key).setExpression(expression);
   }
 }
