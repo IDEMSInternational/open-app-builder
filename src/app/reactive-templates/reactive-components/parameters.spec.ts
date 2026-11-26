@@ -43,6 +43,19 @@ describe("Parameter", () => {
     expect(param.value()).toBe(true);
   });
 
+  it("falls back to the default when a boolean parameter is set to a number", () => {
+    const param: Parameter<any> = new Parameter("show_close_button", true, "script");
+
+    param.setValue(0);
+    expect(param.value()).toBe(true);
+  });
+
+  it("treats boolean text as text only for boolean parameters", () => {
+    expect(new Parameter("disabled", false, "script").isBooleanText(" TRUE ")).toBeTrue();
+    expect(new Parameter("disabled", false, "script").isBooleanText("@local.x")).toBeFalse();
+    expect(new Parameter("max_length", -1, "script").isBooleanText("TRUE")).toBeFalse();
+  });
+
   it("falls back to the default when a number parameter is set to an unset value or text", () => {
     const param: Parameter<any> = new Parameter("max_length", -1);
 
@@ -55,6 +68,17 @@ describe("Parameter", () => {
     param.setValue(10);
     param.setValue(undefined);
     expect(param.value()).toBe(-1);
+
+    param.setValue(true);
+    expect(param.value()).toBe(-1);
+  });
+
+  it("keeps values as they are when the default is null", () => {
+    const param: Parameter<any> = new Parameter("help", null);
+
+    param.setValue("Some help");
+    param.setValue(5);
+    expect(param.value()).toBe(5);
   });
 
   it("falls back to the default when a list parameter is set to an unset value", () => {
