@@ -17,7 +17,6 @@ import { Subscription, fromEvent } from "rxjs";
 import type { IHeaderVariantOptions } from "data-models/appConfig";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
-import { _wait } from "packages/shared/src/utils/async-utils";
 import { activeRoute } from "../../utils/angular.utils";
 
 interface ScrollCustomEvent extends ScrollBaseCustomEvent {
@@ -162,31 +161,27 @@ export class headerComponent implements OnInit, OnDestroy {
   /** Listen to scroll events to trigger header collapse */
   private listenToScrollEvents() {
     let previousY: number | undefined;
-    this.scrollEvents$ = fromEvent<ScrollCustomEvent>(window, "ionScroll").subscribe(async (e) => {
+    let isAnimating = false;
+    this.scrollEvents$ = fromEvent<ScrollCustomEvent>(window, "ionScroll").subscribe((e) => {
       const { currentY } = e.detail;
       const scrollingUp = previousY !== undefined && currentY < previousY;
       const scrollingDown = previousY !== undefined && currentY > previousY;
       previousY = currentY;
+      // ignore the direction whilst the animation moves the bar, as it moves the page too
+      if (isAnimating) return;
       const headerHeight = this.headerElement.el.clientHeight;
       // bring header into view when scrolling in reverse or at top of page
       if (scrollingUp || currentY < headerHeight) {
         this.marginTop.set(0);
       } else if (scrollingDown && this.marginTop() === 0) {
-        // temporarily disable scroll events whilst animation moves bar
-        // as that would trigger negative scroll direction
-        const subscription = this.scrollEvents$;
-        subscription.unsubscribe();
         // set negative margin to move header off-screen
         this.marginTop.set(headerHeight * -1);
-        await _wait(500);
-        // collapse was turned off or restarted meanwhile
-        if (this.scrollEvents$ !== subscription) return;
-        // events were ignored during the animation, so check whether the page is back at the top
-        const scrollElement = await (e.target as HTMLIonContentElement).getScrollElement();
-        if (scrollElement.scrollTop < headerHeight) {
-          this.marginTop.set(0);
-        }
-        this.listenToScrollEvents();
+        isAnimating = true;
+        setTimeout(() => {
+          isAnimating = false;
+          // bring the header back if the page returned to the top during the animation
+          if (previousY < headerHeight) this.marginTop.set(0);
+        }, 500);
       }
     });
   }
