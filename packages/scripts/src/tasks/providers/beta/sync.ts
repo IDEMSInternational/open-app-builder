@@ -2,17 +2,8 @@ import fs from "fs-extra";
 import { logOutput, logWarning } from "../../../utils";
 import { readExternalSourcePath } from "./deploymentConfig";
 import { syncFlowFiles } from "./flows";
-import {
-  isTransientFlowType,
-  listDownloadedTransientFlows,
-  readTransientSheetsList,
-  syncSheets,
-  TRANSIENT_SHEETS_LIST_PATH,
-  syncFixedSheetsToExternalFolder,
-  syncTransientSheetsToExternalFolder,
-} from "./sheets";
+import { syncFixedSheetsToExternalFolder, syncTransientSheetsToExternalFolder } from "./sheets";
 import { getTranslatedFolder } from "./translations/po";
-import { TRANSIENT_FLOW_TYPES } from "./utils";
 
 /**
  * Syncs combining google drive sheets (`sheets`) with the external deployment flows (`flows`),
@@ -23,20 +14,19 @@ import { TRANSIENT_FLOW_TYPES } from "./utils";
 /** Sync sheets from the external deployment config `google_drive.sheets_folders` */
 export async function syncFixedSheets(options: { verbose?: boolean } = {}) {
   await syncFixedSheetsToExternalFolder();
-  syncFlowFiles({ verbose: options.verbose });
+  syncFiles(options);
 }
 
 /**
- * Sync the transient sheets folder recorded in the transient sheets list, using the auth token it
- * was created with. The deployment config is not used. Flows replace the json of the same name
- * in the external deployment (outside the `google_drive` folder), without `_source`, so their
- * edits are kept there. Flows added to a sheet are added to the transient sheets list
+ * Sync the transient sheets folder recorded in the transient sheets list
+ * (see `syncTransientSheetsToExternalFolder`), then process the changed flow jsons
  * @returns number of sheets and flows downloaded, external jsons updated and flows added to
  * the transient sheets list
  */
 export async function syncTransientSheets(options: { verbose?: boolean } = {}) {
-  await syncTransientSheetsToExternalFolder();
-  syncFlowFiles({ verbose: options.verbose });
+  const result = await syncTransientSheetsToExternalFolder();
+  syncFiles(options);
+  return result;
 }
 
 /**
@@ -54,5 +44,11 @@ export function syncFiles(options: { refreshAll?: boolean; verbose?: boolean } =
  * @returns number of flows processed
  */
 export function syncTranslations(options: { verbose?: boolean } = {}) {
-  syncFlowFiles({ refreshAll: true, verbose: options.verbose });
+  const translationsFolder = getTranslatedFolder(readExternalSourcePath());
+  if (!fs.existsSync(translationsFolder)) {
+    logWarning({ msg1: "No translated files found", msg2: translationsFolder });
+  }
+  const { flows } = syncFiles({ ...options, refreshAll: true });
+  logOutput({ msg1: `Re-processed ${flows} flows with translations`, msg2: translationsFolder });
+  return { flows };
 }
