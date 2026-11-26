@@ -1,11 +1,13 @@
 import {
   afterNextRender,
   Component,
+  effect,
   ElementRef,
   inject,
   OnInit,
   OnDestroy,
   signal,
+  untracked,
   AfterViewInit,
 } from "@angular/core";
 import { defineAuthorParameterSchema, TemplateBaseComponentWithParams } from "../base";
@@ -21,8 +23,10 @@ import { Circle, Icon, Stroke, Style, Fill } from "ol/style";
 import { OSM, Vector as VectorSource, XYZ } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { fromLonLat, getUserProjection, Projection, toLonLat } from "ol/proj";
+import { boundingExtent, isEmpty as isEmptyExtent } from "ol/extent";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { toMapPolygon } from "./map-geometry.utils";
+import { ItemDataPipe } from "../../processors/itemPipe";
 
 type MapDrawingMode = "static" | "polygon" | "select";
 type FeatureId = ReturnType<TerraDraw["getFeatureId"]>;
@@ -38,8 +42,21 @@ const AuthorSchema = defineAuthorParameterSchema((coerce) => ({
   center_lon: coerce.number(0),
   center_lat: coerce.number(0),
   zoom: coerce.number(2),
+  /** Closest zoom used when framing the loaded shapes. Set `0` to keep the authored `zoom` */
+  max_fit_zoom: coerce.number(18),
   /** When false, data list geometries are only displayed (no drawing, editing or saving) */
   editable: coerce.boolean(true),
+  /**
+   * Expression limiting which data list rows the map uses, as per data_items,
+   * e.g. `@item.upa_code == @local.upa_code`
+   */
+  filter: coerce.string(""),
+  /**
+   * Columns written to every saved row, so drawn features still satisfy `filter` when reloaded,
+   * e.g. `upa_code=@local.upa_code, annee=@local.annee_choisie`. Uses `=` rather than `:` as
+   * parameter_list values are truncated at their second colon
+   */
+  save_values: coerce.string(""),
 }));
 
 @Component({
@@ -76,6 +93,25 @@ export class MapComponent
   public satellite = signal(false);
   public readonly mapId = `map-${crypto.randomUUID()}`;
 
+  /** Layer holding view-only geometries, replaced whenever the filtered rows change */
+  private readOnlyLayer: VectorLayer | null = null;
+  /** Incremented per view-only load so a slower earlier load cannot overwrite a later one */
+  private readOnlyLoadId = 0;
+
+  constructor() {
+    super();
+    // Reload when author parameters change, e.g. a `filter` referencing a @local variable that the
+    // user has just updated. Only view-only maps reload: re-running an editable map would discard
+    // any features drawn but not yet saved
+    effect(() => {
+      // reading params() tracks every author parameter, so any change triggers a reload
+      const { editable, filter } = this.params();
+      if (editable || !filter) return;
+      const map = this.map;
+      if (map) untracked(() => this.loadReadOnly(map));
+    });
+  }
+
   public ngAfterViewInit(): void {
     this.initMap();
   }
@@ -85,6 +121,7 @@ export class MapComponent
     this.map?.dispose();
     this.terraDraw = null;
     this.map = null;
+    this.readOnlyLayer = null;
   }
 
   public initMap() {
@@ -241,15 +278,17 @@ export class MapComponent
       const propertiesFieldName = this.params().propertiesFieldName;
 
       const features = this.terraDraw?.getSnapshot() ?? [];
+      const savedValues = this.parseSaveValues();
       const rows = features.map((feature) => ({
+        ...savedValues,
         id: String(feature.id),
         [geometryFieldName]: feature.geometry,
         [propertiesFieldName]: feature.properties,
       }));
-      const existingRows = (await this.dynamicDataService.snapshot(
-        "data_list",
-        dataList
-      )) as StoredFeatureRow[];
+      // only consider rows the map loaded; filtered-out rows are not shown and must not be removed
+      const existingRows = this.applyFilter(
+        (await this.dynamicDataService.snapshot("data_list", dataList)) as StoredFeatureRow[]
+      );
       const rowsToRemove = existingRows.filter(
         (row) => row[geometryFieldName] && !rows.some((featureRow) => featureRow.id === row.id)
       );
@@ -278,7 +317,7 @@ export class MapComponent
     if (!dataList || !this.terraDraw) return;
 
     try {
-      const rows = await this.dynamicDataService.snapshot("data_list", dataList);
+      const rows = this.applyFilter(await this.dynamicDataService.snapshot("data_list", dataList));
       const features = rows
         .filter((row: any) => row[geometryFieldName])
         .map((row: any) => ({
@@ -299,6 +338,16 @@ export class MapComponent
           );
         }
       });
+
+      // zoom to the features that loaded, rather than relying on the authored center and zoom
+      const loaded = features.filter((_, index) => validations[index]?.valid !== false);
+      const points = loaded.flatMap((feature: any) => feature.geometry?.coordinates?.[0] ?? []);
+      if (this.map && points.length > 0) {
+        this.fitToExtent(
+          this.map,
+          boundingExtent(points.map((point: number[]) => fromLonLat([point[0], point[1]])))
+        );
+      }
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to load drawn features:`, error);
     }
@@ -314,10 +363,12 @@ export class MapComponent
 
     if (!dataList) return;
 
+    const loadId = ++this.readOnlyLoadId;
+
     try {
-      const rows = await this.dynamicDataService.snapshot("data_list", dataList);
-      // map may have been destroyed while loading
-      if (this.map !== map) return;
+      const rows = this.applyFilter(await this.dynamicDataService.snapshot("data_list", dataList));
+      // ignore if the map has been destroyed, or another load started, while reading the data
+      if (this.map !== map || loadId !== this.readOnlyLoadId) return;
 
       const features = rows.flatMap((row: any) => {
         const value = row[geometryFieldName];
@@ -329,6 +380,12 @@ export class MapComponent
         }
         return [{ type: "Feature", id: row.id, geometry, properties: {} }];
       });
+
+      // remove previously displayed shapes, so a reload replaces them rather than drawing on top
+      if (this.readOnlyLayer) {
+        map.removeLayer(this.readOnlyLayer);
+        this.readOnlyLayer = null;
+      }
       if (features.length === 0) return;
 
       const source = new VectorSource({
@@ -337,16 +394,57 @@ export class MapComponent
           { featureProjection: map.getView().getProjection() }
         ),
       });
-      map.addLayer(new VectorLayer({ source, style: this.readOnlyStyle() }));
+      this.readOnlyLayer = new VectorLayer({ source, style: this.readOnlyStyle() });
+      map.addLayer(this.readOnlyLayer);
 
       // zoom to the shapes rather than relying on the authored center and zoom
-      const size = map.getSize();
-      if (size && size[0] > 0 && size[1] > 0) {
-        map.getView().fit(source.getExtent(), { padding: [40, 40, 40, 40], maxZoom: 18 });
-      }
+      this.fitToExtent(map, source.getExtent());
     } catch (error) {
       console.error(`[MapDrawingComponent] Failed to load features:`, error);
     }
+  }
+
+  /**
+   * Zoom the view to an extent, so authored shapes are visible wherever `center_lon`, `center_lat`
+   * and `zoom` point. The map has no size until it has rendered, and fitting before then is ignored,
+   * so defer to the first render when data arrives first
+   */
+  private fitToExtent(map: Map, extent: number[]) {
+    const maxZoom = this.params().maxFitZoom;
+    if (!maxZoom) return;
+    if (!extent || isEmptyExtent(extent) || !extent.every((value) => Number.isFinite(value)))
+      return;
+    const fit = () => map.getView().fit(extent, { padding: [40, 40, 40, 40], maxZoom });
+    const size = map.getSize();
+    if (size && size[0] > 0 && size[1] > 0) fit();
+    else map.once("rendercomplete", fit);
+  }
+
+  /**
+   * Limit data list rows with the author `filter` expression, using the same pipe as data_items.
+   * `@item.*` references arrive as `this.item.*` and all other references already evaluated,
+   * e.g. `filter: @item.upa_code == @local.upa_code` -> `this.item.upa_code == "502"`
+   */
+  private applyFilter<T>(rows: T[]): T[] {
+    const filter = this.params().filter;
+    if (!filter) return rows;
+    return new ItemDataPipe().process(rows, [{ name: "filter", arg: filter }]);
+  }
+
+  /**
+   * Parse the `save_values` parameter into columns stored on every saved row, so that drawn
+   * features still satisfy `filter` when the map is next loaded,
+   * e.g. `upa_code=@local.upa_code, annee=2024` -> `{ upa_code: 502, annee: 2024 }`
+   */
+  private parseSaveValues() {
+    const values: Record<string, string | number> = {};
+    for (const pair of this.params().saveValues.split(",")) {
+      const [name, value] = pair.split("=").map((part) => part.trim());
+      if (!name || !value) continue;
+      // keep numeric columns numeric, as data list column types come from the sheet
+      values[name] = Number.isFinite(Number(value)) ? Number(value) : value;
+    }
+    return values;
   }
 
   private readOnlyStyle() {
