@@ -148,8 +148,8 @@ export class ContextCreatorService {
       return arg;
     }
 
-    // If arg is an empty array Number(arg) == 0, but we want to keep it as an empty array, so we check for that first.
-    const isNumber = !Array.isArray(arg) && !isNaN(Number(arg));
+    // Number(null) and Number([]) are 0, so null and arrays are kept as they are.
+    const isNumber = arg !== null && !Array.isArray(arg) && !isNaN(Number(arg));
 
     if (isNumber) {
       return Number(arg);
