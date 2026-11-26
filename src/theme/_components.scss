@@ -7,6 +7,9 @@
 // Text bubble markdown content
 @use "../app/shared/components/template/components/text-bubble/text-bubble.component.global.scss";
 
+// Reactive template rows
+@use "../app/reactive-templates/reactive-components/row-base.component.global.scss";
+
 // Template popup modal
 ion-modal.template-popup-modal {
   --width: 100%;
