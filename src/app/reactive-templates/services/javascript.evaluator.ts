@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ValueType } from "../reactive-components/row-base.component";
 
-const TEXT_TAG = "__text";
-
 /**
  * Template literal tag for string values. An unset (null or undefined) value adds no text,
  * and a value made only of unset variables is undefined rather than "undefined".
@@ -27,7 +25,7 @@ export class JavascriptEvaluator {
     const raw = typeof expression === "string" ? expression : String(expression);
     const safeTemplate = raw.replace(/\\/g, "\\\\").replace(/`/g, "\\`");
     const expressionBody =
-      valueType === "string" ? `return ${TEXT_TAG}\`${safeTemplate}\`;` : `return (${raw});`;
+      valueType === "string" ? `return joinText\`${safeTemplate}\`;` : `return (${raw});`;
     const body = `"use strict"; ${expressionBody}`;
 
     const value = this.evaluateBody(body, expression);
@@ -40,8 +38,9 @@ export class JavascriptEvaluator {
 
   private evaluateBody(body: string, expression: string | number | boolean): any {
     try {
+      // The compiled body can't see this module, so `joinText` is passed in like the context
       return Function(
-        TEXT_TAG,
+        "joinText",
         ...Object.keys(this.context),
         body
       )(joinText, ...Object.values(this.context));
