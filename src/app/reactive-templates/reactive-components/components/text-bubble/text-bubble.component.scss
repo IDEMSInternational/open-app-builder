@@ -22,7 +22,7 @@ $bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-colo
 $bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-yellow-700));
 $bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-yellow-50));
 $bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-secondary-700));
-$text-bubble-text-color: var(--text-bubble-text-color, var(--ion-color-gray-900));
+$text-bubble-text-color: var(--text-bubble-text-color, var(--ion-color-primary-900));
 $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion-color-gray-800));
 
 .text-bubble-container {
@@ -57,8 +57,7 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
     }
   }
 
-  &[data-variant~="no_border"],
-  &[data-variant~="no-border"] {
+  &[data-variant~="no_border"] {
     .text-bubble {
       border: 0px;
     }
@@ -124,7 +123,7 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
 // inherit into the markdown. The markdown nodes themselves are inserted with `[innerHTML]`
 // and are not in the template, so their outer margins are in `text-bubble.component.global.scss`.
 .text-bubble-content {
-  color: var(--ion-color-primary-900);
+  color: $text-bubble-text-color;
   font-size: var(--font-size-text-large);
   font-weight: var(--font-weight-standard);
   font-style: normal;
@@ -151,18 +150,6 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
   background-color: $bubble-background-color-primary;
   padding: 14px 16px;
   min-width: 124px;
-
-  p {
-    color: $text-bubble-text-color;
-  }
-
-  li {
-    color: $text-bubble-text-color;
-  }
-
-  ol {
-    margin: 4px 0;
-  }
 }
 
 .speaker-image {

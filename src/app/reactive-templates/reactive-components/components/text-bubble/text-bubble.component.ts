@@ -5,20 +5,12 @@ import { RowBaseComponent, ROW_PARAMETERS } from "../../row-base.component";
 import { defineParameters, Parameter } from "../../parameters";
 import { RowListComponent } from "../../row-list.component";
 
-const VARIANTS = [
-  "gray",
-  "primary",
-  "secondary",
-  "no-border",
-  "no_border",
-  "speaker-3",
-  "speaker-4",
-] as const;
+const VARIANTS = ["gray", "primary", "secondary", "no_border", "speaker-3", "speaker-4"] as const;
 
 const parameters = () =>
   defineParameters({
     speakerImageAsset: new Parameter("speaker_image_asset", ""),
-    speakerPosition: new Parameter<"left" | "right">("speaker_position", "left"),
+    speakerPosition: Parameter.oneOf("speaker_position", ["left", "right"], "left"),
     variant: new Parameter("variant", ""),
     speakerName: new Parameter("speaker_name", ""),
   });
@@ -33,9 +25,6 @@ const parameters = () =>
 export class TextBubbleComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   public templateTranslateService = inject(TemplateTranslateService);
   public rows = computed(() => this.row().rows || []);
-  public speakerPosition = computed(() =>
-    this.params.speakerPosition.value() === "right" ? "right" : "left"
-  );
   public variantsString = computed(() =>
     this.params.variant
       .value()

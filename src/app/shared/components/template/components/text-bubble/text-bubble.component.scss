@@ -57,8 +57,7 @@ $text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion
     }
   }
 
-  &[data-variant~="no_border"],
-  &[data-variant~="no-border"] {
+  &[data-variant~="no_border"] {
     .text-bubble {
       border: 0px;
     }

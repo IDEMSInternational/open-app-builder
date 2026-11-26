@@ -67,7 +67,7 @@ describe("TextBubbleComponent", () => {
         },
         {
           provide: TemplateAssetService,
-          useValue: { getTranslatedAssetPath: (path: string) => `assets/${path}` },
+          useValue: { getTranslatedAssetSignal: (path: string) => signal(`assets/${path}`) },
         },
         {
           provide: DebugService,
