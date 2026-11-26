@@ -42,7 +42,7 @@ yarn workflow beta import_sync [source_path]
 | `-v, --verbose` | Show all logs |
 
 ### Sync Flow Files
-Process the flow jsons in the previously imported external repository `app_data/sheets` folder that have changed since they were last processed. Nothing is downloaded. If a file was removed (or this is the first sync) all flows are processed. Changed flows linked to transient sheets stay linked to their sheet.
+Process the flow JSONs in the previously imported external repository `app_data/sheets` folder that have changed since they were last processed. Nothing is downloaded. If a file was removed (or this is the first sync) all flows are processed. Changed flows linked to transient sheets stay linked to their sheet.
 
 ```sh
 yarn workflow beta sync_flow_files
@@ -84,7 +84,7 @@ Download the sheets in the transient sheets folder (sheets created from flows wi
 
 Each flow replaces the flow json of the same name outside the `google_drive` folder, so edits made in the sheet are kept in the external repository. A flow added to a sheet's `==content_list==` is written next to the other flows from that sheet, and linked to the sheet. Nothing is deleted from the external repository.
 
-Flows are linked to their transient sheet only by `src/assets/app_data/transient_sheets.json`, which the `/debug` page reads. The flow jsons in the external repository have no `_source`, and processed flows in the app only have the `_source.path` of their json.
+Flows are linked to their transient sheet only by `src/assets/app_data/transient_sheets.json`, which the `/debug` page reads. The flow JSONs in the external repository have no `_source`, and processed flows in the app only have the `_source.path` of their json.
 
 Requires a deployment to have been imported first.
 
