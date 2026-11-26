@@ -51,7 +51,10 @@ describe("reactive template page scope", () => {
         { provide: AppDataService, useValue: {} },
         {
           provide: AppConfigService,
-          useValue: { changesWithInitialValue$: of({ APP_HEADER_DEFAULTS: { collapse: false } }) },
+          useValue: {
+            appConfig: () => ({ APP_HEADER_DEFAULTS: { collapse: false } }),
+            changesWithInitialValue$: of({ APP_HEADER_DEFAULTS: { collapse: false } }),
+          },
         },
         { provide: DeploymentService, useValue: { config: { useReactiveTemplates: true } } },
         { provide: SetGlobalActionService, useValue: {} },
