@@ -5,6 +5,7 @@ import {
   EnvironmentInjector,
   forwardRef,
   inject,
+  Injector,
   OnDestroy,
 } from "@angular/core";
 import { defineParameters, Parameter } from "../../parameters";
@@ -38,6 +39,7 @@ export class LoopComponent
   public index = this.params.index.value;
   public hasCustomIndex = computed(() => this.params.index.value() !== null);
   private injector = inject(EnvironmentInjector);
+  private elementInjector = inject(Injector);
 
   constructor() {
     super();
@@ -82,6 +84,7 @@ export class LoopComponent
         const componentRef = createReactiveComponentRef(
           componentType,
           this.injector,
+          this.elementInjector,
           row,
           this.getName(item, index)
         );
