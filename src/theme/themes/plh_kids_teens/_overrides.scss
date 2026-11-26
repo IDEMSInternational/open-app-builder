@@ -267,15 +267,10 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
-      border: none;
-      border-radius: var(--ion-border-radius-small);
-      box-shadow: none;
-      background: var(--accordion-background);
       .accordion-section-title {
         font-size: var(--font-size-text-medium);
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
-        color: var(--accordion-title-color);
       }
     }
     ion-item.accordion-header[slot="header"] {
