@@ -3,6 +3,8 @@ import { FlowTypes } from "packages/data-models";
 import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 import { ActionHandler } from "./action.handler";
 import { ActionRegistry, IAction } from "./action.registry";
+import { ActionContextService } from "./action-context.service";
+import { RowRegistry } from "./row.registry";
 
 describe("ActionHandler", () => {
   let actionRegistry: ActionRegistry;
@@ -58,6 +60,21 @@ describe("ActionHandler", () => {
     await templateActionRegistry.trigger(createActionCall("loop.key_1.save", "loop.key_2"));
 
     expect(callerScopedAction.execute).not.toHaveBeenCalled();
+  });
+
+  it("uses the action registry associated with the calling page", async () => {
+    const pageRegistry = new ActionRegistry();
+    const rootAction = createAction("save");
+    const pageAction = createAction("save");
+    actionRegistry.register(rootAction);
+    pageRegistry.register(pageAction);
+    const action = createActionCall("save", "");
+    TestBed.inject(ActionContextService).set(action, pageRegistry, TestBed.inject(RowRegistry));
+
+    await templateActionRegistry.trigger(action);
+
+    expect(pageAction.execute).toHaveBeenCalled();
+    expect(rootAction.execute).not.toHaveBeenCalled();
   });
 });
 

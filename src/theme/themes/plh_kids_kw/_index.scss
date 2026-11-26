@@ -64,7 +64,12 @@
       border-standard: var(--border-width-default) solid var(--border-color-default),
       border-thin-standard: 0.5px solid var(--border-color-default),
       // COMPONENT VARIABLES
+      accordion-background: var(--ion-color-primary-600),
       accordion-background-highlight: var(--ion-color-primary-300),
+      accordion-border: none,
+      accordion-border-radius: var(--ion-border-radius-small),
+      accordion-box-shadow: none,
+      accordion-title-color: white,
       accordion-toggle-icon-color: var(--ion-color-primary-contrast),
       combo-box-font-size-standard: 20px,
       button-background-option: var(--ion-color-primary-800),
