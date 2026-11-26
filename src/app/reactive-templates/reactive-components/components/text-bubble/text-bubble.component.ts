@@ -26,9 +26,7 @@ const parameters = () =>
 @Component({
   selector: "tmpl-text-bubble",
   templateUrl: "./text-bubble.component.html",
-  styleUrls: [
-    "../../../../shared/components/template/components/text-bubble/text-bubble.component.scss",
-  ],
+  styleUrls: ["./text-bubble.component.scss"],
   imports: [TemplatePipesModule, forwardRef(() => RowListComponent)],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })

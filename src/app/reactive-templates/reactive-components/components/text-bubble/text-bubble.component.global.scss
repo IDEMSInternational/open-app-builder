@@ -1,0 +1,14 @@
+// The markdown nodes inside `.text-bubble-content` are inserted with `[innerHTML]`. They are not
+// part of the template, so they have no encapsulation attribute and a component rule for
+// `.text-bubble-content > :first-child` never matches them.
+
+tmpl-text-bubble .text-bubble > .text-bubble-content {
+  // Only direct children: a descendant `:first-child` would also collapse the `<p>` inside
+  // each `<li>` of a loose list.
+  > :first-child {
+    margin-top: var(--text-outer-margin);
+  }
+  > :last-child {
+    margin-bottom: var(--text-outer-margin);
+  }
+}

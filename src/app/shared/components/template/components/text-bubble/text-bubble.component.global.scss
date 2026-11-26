@@ -16,8 +16,7 @@ tmpl-text-bubble .text-bubble {
 // NOTE: matching only direct children of the markdown wrapper (`> *`) is important. A descendant
 // `:first-child`/`:last-child` would also collapse the margins of the `<p>` that markdown nests
 // inside every `<li>` of a loose list, rendering blank-line-separated list items as a tight list.
-tmpl-text-bubble .text-bubble > plh-tmpl-text > *,
-tmpl-text-bubble .text-bubble > .text-bubble-content {
+tmpl-text-bubble .text-bubble > plh-tmpl-text > * {
   > :first-child {
     margin-top: var(--text-outer-margin);
   }

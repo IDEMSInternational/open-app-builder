@@ -1,0 +1,187 @@
+// Adapted from https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/
+// WIth code available here https://css-generators.com/tooltip-speech-bubble/
+// NOTE - when copying css border-image double-slash // misinterpreted so replace with / 0 /
+
+$imageSize: 64px;
+$bubble-background-color-gray: var(--text-bubble-background-color-gray, var(--ion-color-gray-100));
+$bubble-border-color-gray: var(--text-bubble-border-color-gray, var(--ion-color-gray-300));
+$bubble-background-color-primary: var(
+  --text-bubble-background-color-primary,
+  var(--ion-color-primary-100)
+);
+$bubble-border-color-primary: var(--text-bubble-border-color-primary, var(--ion-color-primary-700));
+$bubble-background-color-secondary: var(
+  --text-bubble-background-color-secondary,
+  var(--ion-color-secondary-100)
+);
+$bubble-border-color-secondary: var(
+  --text-bubble-border-color-secondary,
+  var(--ion-color-secondary-600)
+);
+$bubble-background-color-3: var(--text-bubble-background-color-3, var(--ion-color-yellow-50));
+$bubble-border-color-3: var(--text-bubble-border-color-3, var(--ion-color-yellow-700));
+$bubble-background-color-4: var(--text-bubble-background-color-4, var(--ion-color-yellow-50));
+$bubble-border-color-4: var(--text-bubble-border-color-4, var(--ion-color-secondary-700));
+$text-bubble-text-color: var(--text-bubble-text-color, var(--ion-color-gray-900));
+$text-bubble-speaker-name-color: var(--text-bubble-speaker-name-color, var(--ion-color-gray-800));
+
+.text-bubble-container {
+  position: relative;
+  width: fit-content;
+  min-width: $imageSize;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: start;
+  height: fit-content;
+  margin-bottom: 12px;
+
+  &[data-variant~="gray"] {
+    .text-bubble {
+      border: 1px solid $bubble-border-color-gray;
+      background-color: $bubble-background-color-gray;
+    }
+  }
+
+  &[data-variant~="primary"] {
+    .text-bubble {
+      border: 1px solid $bubble-border-color-primary;
+      background-color: $bubble-background-color-primary;
+    }
+  }
+
+  &[data-variant~="secondary"] {
+    .text-bubble {
+      border: 1px solid $bubble-border-color-secondary;
+      background-color: $bubble-background-color-secondary;
+    }
+  }
+
+  &[data-variant~="no_border"],
+  &[data-variant~="no-border"] {
+    .text-bubble {
+      border: 0px;
+    }
+  }
+
+  &[data-variant~="speaker-3"] {
+    .text-bubble {
+      border: 1px solid $bubble-border-color-3;
+      background-color: $bubble-background-color-3;
+    }
+  }
+
+  &[data-variant~="speaker-4"] {
+    .text-bubble {
+      border: 1px solid $bubble-border-color-4;
+      background-color: $bubble-background-color-4;
+    }
+  }
+
+  &[data-position="right"] {
+    float: right;
+
+    display: flex;
+    flex-direction: row;
+    .text-bubble {
+      border-radius: 12px 0px 12px 12px;
+    }
+    img.speaker-image {
+      margin-left: 8px;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+    .speaker-name {
+      text-align: end;
+      // right: 80px;
+    }
+  }
+
+  &[data-language-direction~="rtl"] {
+    .text-bubble {
+      border-radius: 12px 0px 12px 12px;
+    }
+    &[data-position="right"] {
+      float: left;
+      .text-bubble {
+        border-radius: 0px 12px 12px 12px;
+      }
+      img.speaker-image {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+    }
+    img.speaker-image {
+      // position: unset;
+      margin-left: 8px;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+  }
+}
+
+// Colour, size, and weight are set on the wrapper, which is in this template, so they
+// inherit into the markdown. The markdown nodes themselves are inserted with `[innerHTML]`
+// and are not in the template, so their outer margins are in `text-bubble.component.global.scss`.
+.text-bubble-content {
+  color: var(--ion-color-primary-900);
+  font-size: var(--font-size-text-large);
+  font-weight: var(--font-weight-standard);
+  font-style: normal;
+}
+
+// This creates the bubble shape, including the tail
+.text-bubble {
+  /* triangle dimension */
+  --a: 0deg; /* angle */
+  --h: 0em; /* height */
+
+  --p: 0%; /* triangle position (0%:left 100%:right) */
+
+  // The bubble's padding handles spacing at its edges, so remove the outer margins of text inside it.
+  // Spacing between blocks within the text is unaffected
+  --text-outer-margin: 0;
+
+  position: relative;
+
+  clip-path: none;
+  border-image: none;
+  border-radius: 0px 12px 12px 12px;
+  border: 1px solid $bubble-border-color-primary;
+  background-color: $bubble-background-color-primary;
+  padding: 14px 16px;
+  min-width: 124px;
+
+  p {
+    color: $text-bubble-text-color;
+  }
+
+  li {
+    color: $text-bubble-text-color;
+  }
+
+  ol {
+    margin: 4px 0;
+  }
+}
+
+.speaker-image {
+  position: relative;
+  width: $imageSize;
+  height: $imageSize;
+  margin-right: 8px;
+}
+
+.no-name {
+  margin-bottom: 20px;
+}
+
+// For the speaker name
+.speaker-name {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: var(--font-size-text-tiny);
+  color: $text-bubble-speaker-name-color;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.1px;
+}

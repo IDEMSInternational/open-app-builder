@@ -12,10 +12,7 @@
     }
     <div class="text-bubble" [attr.data-position]="speakerPosition()">
       @if (value()) {
-        <div
-          class="large standard normal text-bubble-content"
-          [innerHTML]="value() | markdown"
-        ></div>
+        <div class="text-bubble-content" [innerHTML]="value() | markdown"></div>
       }
       <oab-row-list
         [rows]="rows()"
