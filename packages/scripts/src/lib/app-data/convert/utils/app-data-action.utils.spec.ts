@@ -32,6 +32,12 @@ describe("parseAppDataActionString", () => {
     expect(action.trigger_args).toBeUndefined();
   });
 
+  it("parses the nav_enter trigger", () => {
+    const action = parseAppDataActionString("nav_enter | set_field: last_seen: true");
+    expect(action).toMatchObject({ trigger: "nav_enter", action_id: "set_field" });
+    expect(action.trigger_args).toBeUndefined();
+  });
+
   it("parses a trigger argument, e.g. `on_progress: 50`", () => {
     const action = parseAppDataActionString("on_progress: 50 | set_local: my_var | value: 3");
     expect(action.trigger).toEqual("on_progress");

@@ -3,7 +3,7 @@ import * as os from "os";
 import * as path from "path";
 import type { FlowTypes, IAssetEntry } from "data-models";
 import { logWarning } from "shared";
-import { loadAssetEntries } from "./load-asset-entries";
+import { loadAssetEntries, loadAssetStorageData } from "./load-asset-entries";
 
 jest.mock("shared", () => ({
   ...jest.requireActual("shared"),
@@ -100,5 +100,78 @@ describe("loadAssetEntries", () => {
       msg1: 'Skipping asset pack "corrupt_pack"',
       msg2: expect.stringContaining("Could not read remote_assets/corrupt_pack/corrupt_pack.json"),
     });
+  });
+});
+
+/** yarn workspace scripts test -t load-asset-entries.spec.ts */
+describe("loadAssetStorageData", () => {
+  let appDataDir: string;
+
+  beforeEach(() => {
+    appDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "asset-storage-report-"));
+    writeJson(path.join(appDataDir, "assets", "contents.json"), CORE_ASSETS);
+  });
+
+  afterEach(() => {
+    fs.removeSync(appDataDir);
+  });
+
+  it("returns only bundled assets when there is no remote_assets folder", async () => {
+    expect(await loadAssetStorageData(appDataDir)).toEqual({
+      bundled: CORE_ASSETS,
+      contentKB: 0,
+      packs: [],
+    });
+  });
+
+  it("measures sheets and translations as bundled content", async () => {
+    const writeFile = (relativePath: string, bytes: number) => {
+      fs.ensureDirSync(path.dirname(path.join(appDataDir, relativePath)));
+      fs.writeFileSync(path.join(appDataDir, relativePath), Buffer.alloc(bytes));
+    };
+    writeFile("sheets/template/nested/flow.json", 1024);
+    writeFile("translations/es_sp/strings.json", 2048);
+    writeFile("assets/image.png", 4096);
+
+    expect((await loadAssetStorageData(appDataDir)).contentKB).toEqual(3);
+  });
+
+  it("reads archive size and the size of every file a pack saves", async () => {
+    writePack(appDataDir, "pack_a", [
+      { id: "base.jpg", md5Checksum: "base", size_kb: 2 },
+      {
+        id: "translated.png",
+        md5Checksum: "override",
+        size_kb: 3,
+        overridesOnly: true,
+        overrides: {
+          theme_default: {
+            es_sp: { md5Checksum: "override", size_kb: 3, filePath: "es_sp/translated.png" },
+          },
+        },
+      },
+    ]);
+    fs.writeFileSync(path.join(appDataDir, "remote_assets", "pack_a", "pack_a.v1.zip"), "12345");
+
+    const { packs } = await loadAssetStorageData(appDataDir);
+
+    expect(packs).toEqual([
+      {
+        packName: "pack_a",
+        archiveBytes: 5,
+        fileSizesKB: { "base.jpg": 2, "es_sp/translated.png": 3 },
+      },
+    ]);
+  });
+
+  it("leaves archive size undefined when the archive is missing", async () => {
+    writePack(appDataDir, "pack_a", [{ id: "base.jpg", md5Checksum: "base", size_kb: 2 }]);
+    const { packs } = await loadAssetStorageData(appDataDir);
+    expect(packs[0].archiveBytes).toBeUndefined();
+  });
+
+  it("skips packs with an unreadable manifest", async () => {
+    fs.ensureDirSync(path.join(appDataDir, "remote_assets", "no_manifest"));
+    expect((await loadAssetStorageData(appDataDir)).packs).toEqual([]);
   });
 });
