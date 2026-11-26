@@ -15,6 +15,7 @@ nav:
   - Intro: index.md
   - Authors:
       - authors/quickstart.md
+      - authors/navigation-triggers.md
       - authors/notifications.md
       - authors/feedback.md
       - authors/actions.md
