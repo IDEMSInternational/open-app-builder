@@ -1,23 +1,11 @@
-:host {
-  display: contents;
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--tiny-padding);
 }
 
 .tmpl-image-container {
   width: 100%;
   height: 100%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: var(--tiny-padding);
-  }
-
-  &[data-param-style~="no-padding"] img {
-    padding: 0;
-  }
-
-  &[data-param-style~="rounded_corners"] img {
-    border-radius: var(--ion-border-radius-standard);
-  }
 }

@@ -50,7 +50,7 @@ describe("ImageComponent", () => {
         },
         {
           provide: TemplateAssetService,
-          useValue: { getTranslatedAssetSignal: (path: string) => signal(path) },
+          useValue: { getTranslatedAssetSignal: (path: string) => signal(`assets/${path}`) },
         },
       ],
     }).compileComponents();
@@ -61,7 +61,7 @@ describe("ImageComponent", () => {
       name: "image",
       type: "image",
       value: "image.png",
-      parameter_list: { style: "no-padding" },
+      parameter_list: { style: "rounded_corners" },
     } satisfies FlowTypes.TemplateRow);
     fixture.detectChanges();
     await fixture.whenStable();
@@ -73,14 +73,24 @@ describe("ImageComponent", () => {
     const image = fixture.nativeElement.querySelector("img");
     const container = fixture.nativeElement.querySelector(".tmpl-image-container");
 
-    expect(image.getAttribute("src")).toBe("image.png");
-    expect(container.getAttribute("data-param-style")).toBe("no-padding");
+    expect(image.getAttribute("src")).toBe("assets/image.png");
+    expect(container.getAttribute("data-param-style")).toBe("rounded_corners");
+    expect(container.getAttribute("data-test")).toBe("image");
   });
 
   it("updates the image when its reactive value changes", async () => {
     await fixture.componentInstance.setExpression("updated.png");
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelector("img").getAttribute("src")).toBe("updated.png");
+    expect(fixture.nativeElement.querySelector("img").getAttribute("src")).toBe(
+      "assets/updated.png"
+    );
+  });
+
+  it("renders nothing without a value", async () => {
+    await fixture.componentInstance.setExpression("");
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector(".tmpl-image-container")).toBeNull();
   });
 });
