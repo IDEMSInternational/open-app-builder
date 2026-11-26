@@ -38,7 +38,7 @@ export class Parameter<T> {
     this._value.set(this.cast(value));
   }
 
-  /** As in legacy parameter lists, an unset or invalid value falls back to the default */
+  /** An unset or invalid value falls back to the default */
   private cast(value: any): T {
     if (value === undefined || value === null) return this.defaultValue;
 
