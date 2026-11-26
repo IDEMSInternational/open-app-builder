@@ -19,7 +19,7 @@ const parameters = () =>
   defineParameters({
     speakerImageAsset: new Parameter("speaker_image_asset", ""),
     speakerPosition: new Parameter<"left" | "right">("speaker_position", "left"),
-    variant: new Parameter<string | string[]>("variant", []),
+    variant: new Parameter("variant", ""),
     speakerName: new Parameter("speaker_name", ""),
   });
 
@@ -36,11 +36,11 @@ export class TextBubbleComponent extends RowBaseComponent<ReturnType<typeof para
   public speakerPosition = computed(() =>
     this.params.speakerPosition.value() === "right" ? "right" : "left"
   );
-  public variantsString = computed(() => {
-    const variant = this.params.variant.value();
-    const variants = Array.isArray(variant) ? variant : variant.split(/[,\s]+/);
-    return variants
+  public variantsString = computed(() =>
+    this.params.variant
+      .value()
+      .split(/[,\s]+/)
       .filter((item) => VARIANTS.includes(item as (typeof VARIANTS)[number]))
-      .join(" ");
-  });
+      .join(" ")
+  );
 }

@@ -6,7 +6,8 @@
 
 // Text bubble markdown content
 @use "../app/shared/components/template/components/text-bubble/text-bubble.component.global.scss";
-@use "../app/reactive-templates/reactive-components/components/text-bubble/text-bubble.component.global.scss";
+@use "../app/reactive-templates/reactive-components/components/text-bubble/text-bubble.component.global.scss"
+  as reactive-text-bubble;
 
 // Template popup modal
 ion-modal.template-popup-modal {

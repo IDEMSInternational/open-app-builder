@@ -77,6 +77,10 @@ describe("TextBubbleComponent", () => {
       ],
     }).compileComponents();
 
+    await render();
+  });
+
+  async function render(parameterList: Record<string, unknown> = {}) {
     fixture = TestBed.createComponent(TextBubbleComponent);
     fixture.componentRef.setInput("row", {
       type: "text_bubble",
@@ -88,6 +92,7 @@ describe("TextBubbleComponent", () => {
         speaker_position: "right",
         speaker_image_asset: "speaker.png",
         variant: "gray, primary",
+        ...parameterList,
       },
       rows: [
         {
@@ -103,7 +108,7 @@ describe("TextBubbleComponent", () => {
     fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();
-  });
+  }
 
   it("renders evaluated text, child rows, speaker details, and variants", () => {
     const host = fixture.nativeElement as HTMLElement;
@@ -125,15 +130,14 @@ describe("TextBubbleComponent", () => {
     expect(host.textContent).toContain("Child text");
   });
 
-  it("accepts variants parsed as an array", () => {
-    fixture.componentInstance.params.variant.setValue(["speaker-3", "gray"]);
-    fixture.detectChanges();
+  it("ignores a variant that evaluates to undefined", async () => {
+    await render({ variant: undefined });
 
     expect(
       (fixture.nativeElement as HTMLElement)
         .querySelector(".text-bubble-container")
         ?.getAttribute("data-variant")
-    ).toBe("speaker-3 gray");
+    ).toBe("");
   });
 
   it("registers for reactive template rows", () => {
