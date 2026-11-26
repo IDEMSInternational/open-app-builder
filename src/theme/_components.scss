@@ -9,6 +9,9 @@
 @use "../app/reactive-templates/reactive-components/components/text-bubble/text-bubble.component.global.scss"
   as reactive-text-bubble;
 
+// Reactive template rows
+@use "../app/reactive-templates/reactive-components/row-base.component.global.scss";
+
 // Template popup modal
 ion-modal.template-popup-modal {
   --width: 100%;
