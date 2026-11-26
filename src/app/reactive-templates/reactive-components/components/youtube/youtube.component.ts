@@ -1,16 +1,16 @@
 import { Component, computed, inject } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Capacitor } from "@capacitor/core";
+import { getYoutubeEmbedUrl } from "src/app/shared/components/template/components/youtube/youtube.utils";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 
-const IFRAME_PROXY_URL = "https://idemsinternational.github.io/youtube-iframe-proxy/";
-
 const parameters = () =>
   defineParameters({
     allowFullscreen: new Parameter("allow_fullscreen", true),
-    orientation: new Parameter<"landscape" | "portrait">("orientation", "landscape"),
+    /** Player shape: `landscape` (16:9) or `portrait` (9:16, for vertical videos) */
+    orientation: Parameter.oneOf("orientation", ["landscape", "portrait"], "landscape"),
   });
 
 @Component({
@@ -22,51 +22,30 @@ const parameters = () =>
 export class YoutubeComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
   private domSanitizer = inject(DomSanitizer);
   private templateTranslateService = inject(TemplateTranslateService);
+
+  /** Use the iframe proxy site (fixes a protocol issue on iOS) */
   private useProxyIframe = Capacitor.getPlatform() === "ios";
 
-  public orientation = computed(() =>
-    this.params.orientation.value() === "portrait" ? "portrait" : "landscape"
+  /** Read through the `appLanguage` signal so that the player language follows language changes */
+  private languageCode = computed(() =>
+    this.templateTranslateService.appLanguage()
+      ? this.templateTranslateService.app_language_code
+      : undefined
   );
 
-  public urlParams = computed(() => {
-    const value = this.value();
-    if (value && typeof value === "string" && value.startsWith("https://")) {
-      const url = new URL(value);
-      const currentParams = Object.fromEntries(url.searchParams.entries());
-      const videoId = url.searchParams.get("v");
-      if (videoId) {
-        return {
-          ...currentParams,
-          color: "white",
-          fs: this.params.allowFullscreen.value() ? "1" : "0",
-          hl: this.templateTranslateService.app_language_code,
-          playsinline: "1",
-          rel: "0",
-          v: videoId,
-        };
-      }
-    }
-    console.error("[Youtube] Invalid value:", value);
-    return undefined;
-  });
-
   public iframeSrc = computed(() => {
-    const urlParams = this.urlParams();
-    if (!urlParams) return;
-
-    let url: URL;
-    if (this.useProxyIframe) {
-      url = new URL(IFRAME_PROXY_URL);
-      for (const [key, value] of Object.entries(urlParams)) {
-        url.searchParams.set(key, value);
-      }
-    } else {
-      const { v, ...keptParams } = urlParams;
-      url = new URL(`https://www.youtube-nocookie.com/embed/${v}`);
-      for (const [key, value] of Object.entries(keptParams)) {
-        url.searchParams.set(key, value);
-      }
+    const value = this.value();
+    // The value is undefined until the row is first evaluated
+    if (value === undefined) return undefined;
+    const embedUrl = getYoutubeEmbedUrl(value, {
+      allowFullscreen: this.params.allowFullscreen.value(),
+      languageCode: this.languageCode(),
+      useProxy: this.useProxyIframe,
+    });
+    if (!embedUrl) {
+      console.error("[Youtube] Invalid value:", value);
+      return undefined;
     }
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(url.toString());
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   });
 }
