@@ -2,9 +2,9 @@ import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfigJson } from "../../../commands/deployment/common";
 import {
-  checkTotalAssetSize,
   filterAppAssets,
   handleAssetOverrides,
+  logAssetSizeSummary,
 } from "../../../lib/app-data/postProcess/asset-processors";
 import {
   generateFolderFlatMap,
@@ -64,7 +64,7 @@ export function processAssets(options: IProcessAssetsOptions) {
     JSON.stringify(sortJsonKeys(entries.tracked), null, 2)
   );
   writeUntrackedAssetsFile(targetAssetsFolder, entries.untracked);
-  checkTotalAssetSize(entries);
+  logAssetSizeSummary({ bundled: entries, packs: [] });
 
   logOutput({
     msg1: "Imported assets",

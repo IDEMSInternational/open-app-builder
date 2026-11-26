@@ -54,7 +54,7 @@ describe("EvaluationService", () => {
   it("updates display_text when its object-valued parameter is supplied or replaced", () => {
     const namespace = "pagesLoop.key_1.nested_page_template";
     const expression = "${local.page_details.value}";
-    const values: string[] = [];
+    const values: (string | undefined)[] = [];
     const subscription = variableStore
       .watchMultiple(service.getDependencies(expression, namespace, "string"))
       .subscribe(() => {
@@ -70,7 +70,7 @@ describe("EvaluationService", () => {
       { key: "key_1", value: "Updated value" }
     );
 
-    expect(values).toEqual(["undefined", "This is value 1", "Updated value"]);
+    expect(values).toEqual([undefined, "This is value 1", "Updated value"]);
     subscription.unsubscribe();
   });
 
