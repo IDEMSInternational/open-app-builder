@@ -1,4 +1,4 @@
-// A row fills the width of its container, as a legacy row (`plh-template-component`) does.
+// A row fills the width of its container.
 // `:where` gives the rule no specificity, so a component's own host styles still apply.
 :where(.oab-row) {
   display: block;
