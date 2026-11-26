@@ -17,6 +17,10 @@ Reactive templates are a feature of Open App Builder that allow you to define dy
 - The system uses Angular signals and a variable store to keep the UI in sync with data changes.
 - Components implementing `RowBaseComponent` (e.g., `TextBoxComponent`, `SetVariableComponent`, etc.) are designed to work with reactive templates.
 
+Internally, each page instance owns its local variable store and row/action registries. Nested
+templates and loops on that page share them, so existing local paths continue to work. Global and
+system stores remain shared across pages.
+
 ## Enabling Reactive Templates
 
 To enable reactive templates in your app, set the `useReactiveTemplates` flag to `true` in your app configuration. This is typically done in your deployment config.ts file
