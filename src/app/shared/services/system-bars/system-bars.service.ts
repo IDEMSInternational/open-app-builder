@@ -106,9 +106,11 @@ export class SystemBarsService extends SyncServiceBase {
     const style = isLight ? SystemBarsStyle.Light : SystemBarsStyle.Dark;
     if (this.currentStyles[bar] === style) return;
     this.currentStyles[bar] = style;
-    SystemBars.setStyle({ bar, style }).catch((error) =>
-      console.error("[SYSTEM BARS] could not set style", error)
-    );
+    SystemBars.setStyle({ bar, style }).catch((error) => {
+      // so that the next update tries again
+      if (this.currentStyles[bar] === style) delete this.currentStyles[bar];
+      console.error("[SYSTEM BARS] could not set style", error);
+    });
   }
 
   /**
