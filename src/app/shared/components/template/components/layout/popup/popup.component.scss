@@ -58,6 +58,9 @@ $pop-up-padding: var(--pop-up-padding, 20px);
     border-radius: 0;
     margin: 0;
     padding: 0;
+    // The backdrop already shows the pop-up background. iOS 17 paints the content's own background over
+    // fixed elements inside it, such as sticky display groups
+    background: transparent;
   }
   .popup-content::-webkit-scrollbar {
     display: none;
