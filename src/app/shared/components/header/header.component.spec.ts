@@ -1,5 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  flushMicrotasks,
+  tick,
+  waitForAsync,
+} from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 import { headerComponent } from "./header.component";
 import { AppConfigService } from "../../services/app-config/app-config.service";
@@ -96,5 +103,56 @@ describe("headerComponent", () => {
       expect(location.back).toHaveBeenCalled();
       expect(router.navigateByUrl).not.toHaveBeenCalledWith("/");
     });
+  });
+
+  describe("header collapse", () => {
+    const headerHeight = 100;
+    let content: HTMLElement;
+    let scrollRange: number;
+
+    /** Emit an ionScroll event from a page that can scroll by `scrollRange` */
+    function scroll(currentY: number) {
+      content.dispatchEvent(new CustomEvent("ionScroll", { bubbles: true, detail: { currentY } }));
+      flushMicrotasks();
+    }
+
+    beforeEach(() => {
+      content = document.createElement("div");
+      (content as any).getScrollElement = async () => ({
+        scrollHeight: scrollRange + 500,
+        clientHeight: 500,
+      });
+      document.body.appendChild(content);
+      fixture.detectChanges();
+      component.headerElement = { el: { clientHeight: headerHeight } } as any;
+      (component as any).listenToScrollEvents();
+    });
+
+    afterEach(() => {
+      component.ngOnDestroy();
+      content.remove();
+    });
+
+    it("does not collapse when the page would not scroll past the header once collapsed", fakeAsync(() => {
+      scrollRange = 150;
+      [0, 50, 120, 150].forEach((y) => scroll(y));
+      expect(component.marginTop()).toBe(0);
+    }));
+
+    it("stays collapsed when collapsing moves the scroll position at the bottom of the page", fakeAsync(() => {
+      scrollRange = 600;
+      scroll(0);
+      scroll(150);
+      expect(component.marginTop()).toBe(-headerHeight);
+      tick(500);
+      scroll(600);
+      // The page is taller once the header has collapsed, so the browser moves the scroll position up
+      scrollRange = 500;
+      scroll(500);
+      expect(component.marginTop()).toBe(-headerHeight);
+      // Scrolling up brings the header back
+      scroll(480);
+      expect(component.marginTop()).toBe(0);
+    }));
   });
 });
