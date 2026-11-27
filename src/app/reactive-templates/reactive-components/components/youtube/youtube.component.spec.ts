@@ -17,7 +17,10 @@ const VIDEO_URL = "https://www.youtube.com/watch?v=YE7VzlLtp-4";
 describe("Reactive YoutubeComponent", () => {
   let fixture: ComponentFixture<YoutubeComponent>;
 
-  async function render(parameter_list: FlowTypes.TemplateRow["parameter_list"] = {}) {
+  async function render(
+    parameter_list: FlowTypes.TemplateRow["parameter_list"] = {},
+    value = VIDEO_URL
+  ) {
     const storedValue = signal<any>(undefined);
 
     await TestBed.configureTestingModule({
@@ -59,7 +62,7 @@ describe("Reactive YoutubeComponent", () => {
       _nested_name: "youtube",
       name: "youtube",
       type: "youtube",
-      value: VIDEO_URL,
+      value,
       parameter_list,
     } as FlowTypes.TemplateRow);
     fixture.detectChanges();
@@ -103,9 +106,18 @@ describe("Reactive YoutubeComponent", () => {
   });
 
   it("does not report an invalid value before the row is evaluated", async () => {
+    // The first render happens while the value is still undefined, before evaluation
     const error = spyOn(console, "error");
     await render();
 
     expect(error).not.toHaveBeenCalled();
+  });
+
+  it("reports a value that is not a YouTube link", async () => {
+    const error = spyOn(console, "error");
+    await render({}, "not a youtube link");
+
+    expect(fixture.nativeElement.querySelector("iframe")).toBeNull();
+    expect(error).toHaveBeenCalledWith("[Youtube] Invalid value:", "not a youtube link");
   });
 });
