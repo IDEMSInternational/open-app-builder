@@ -8,7 +8,7 @@ import { AccordionComponent } from "../accordion.component";
 const parameters = () =>
   defineParameters({
     disabled: new Parameter("disabled", false),
-    iconName: new Parameter("icon_name", "chevron-down-outline"),
+    iconName: new Parameter("icon_name", "arrow-down-circle"),
     state: new Parameter<"open" | "closed">("state", "closed"),
     title: new Parameter("title", ""),
   });
@@ -28,22 +28,31 @@ export class AccordionSectionComponent extends RowBaseComponent<ReturnType<typeo
    * (ion-accordion-group only passes `disabled` down to ion-accordions that are its direct children)
    */
   public disabled = computed(
-    () =>
-      !!this.row().disabled ||
-      this.params.disabled.value() ||
-      !!this.accordion?.row().disabled ||
-      !!this.accordion?.params.disabled.value()
+    () => this.params.disabled.value() || !!this.accordion?.params.disabled.value()
   );
 
   public title = computed(() => this.params.title.value() || this.value() || "");
 
-  public iconName = computed(() => {
-    const isOpen = this.accordion?.openSections().includes(this.name()) ?? false;
-    const accordionIcon = isOpen
-      ? this.accordion?.params.closeIcon.value()
-      : this.accordion?.params.openIcon.value();
+  /** Whether ion-accordion-group shows this section as open */
+  private isOpen = computed(() => {
+    const groupValue = this.accordion?.groupValue();
+    return Array.isArray(groupValue)
+      ? groupValue.includes(this.name())
+      : groupValue === this.name();
+  });
 
-    return accordionIcon || this.params.iconName.value();
+  /**
+   * The section's `icon_name`, or the accordion's `open_icon_src`. Either is rotated when the
+   * section opens. With both `open_icon_src` and `close_icon_src`, the icon is swapped instead.
+   */
+  public icon = computed(() => {
+    const openIcon = this.accordion?.params.openIcon.value();
+    const closeIcon = this.accordion?.params.closeIcon.value();
+    if (!openIcon || "icon_name" in (this.row().parameter_list ?? {})) {
+      return { name: this.params.iconName.value(), rotates: true };
+    }
+    if (!closeIcon) return { name: openIcon, rotates: true };
+    return { name: this.isOpen() ? closeIcon : openIcon, rotates: false };
   });
 
   /** Position among the accordion's visible sections, or -1 if hidden or not within an accordion */

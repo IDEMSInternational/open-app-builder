@@ -9,7 +9,13 @@
     <ion-label class="accordion-section-title ion-text-wrap">
       {{ title() }}
     </ion-label>
-    <ion-icon class="ion-accordion-toggle-icon" [name]="iconName()" slot="end"></ion-icon>
+    @if (icon().rotates) {
+      <ion-icon class="ion-accordion-toggle-icon" [name]="icon().name" slot="end"></ion-icon>
+    } @else {
+      <!-- Ionic adds its own icon unless the header has an element with this class -->
+      <div class="ion-accordion-toggle-icon"></div>
+      <ion-icon [name]="icon().name" slot="end"></ion-icon>
+    }
   </ion-item>
 
   <!-- Accordion section Content -->

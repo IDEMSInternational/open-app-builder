@@ -3,7 +3,6 @@ import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 import { RowListComponent } from "../../row-list.component";
 import { AccordionGroupCustomEvent, IonicModule } from "@ionic/angular";
-import { getAccordionMultiple } from "./accordion.utils";
 
 interface AccordionSection {
   element: HTMLElement;
@@ -13,27 +12,26 @@ interface AccordionSection {
 const parameters = () =>
   defineParameters({
     disabled: new Parameter("disabled", false),
-    multiple: new Parameter("multiple", true),
+    multiple: new Parameter("multiple", false),
     openMultiple: new Parameter("open_multiple", false),
     openIcon: new Parameter("open_icon_src", ""),
     closeIcon: new Parameter("close_icon_src", ""),
   });
 
 @Component({
-  selector: "oab-accordion",
+  // The legacy selector, so that theme overrides for the accordion apply
+  selector: "plh-accordion-component",
   templateUrl: "./accordion.component.html",
   styleUrls: ["./accordion.component.scss"],
   imports: [IonicModule, forwardRef(() => RowListComponent)],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class AccordionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
-  /** Support the legacy `open_multiple` name while retaining `multiple` for reactive templates. */
+  /** Whether several sections can be open: `multiple`, or the legacy name `open_multiple` */
   public multiple = computed(() =>
-    getAccordionMultiple(
-      this.row().parameter_list,
-      this.params.multiple.value(),
-      this.params.openMultiple.value()
-    )
+    "multiple" in (this.row().parameter_list ?? {})
+      ? this.params.multiple.value()
+      : this.params.openMultiple.value()
   );
 
   /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */

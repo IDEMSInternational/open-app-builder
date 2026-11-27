@@ -42,10 +42,42 @@ describe("accordion component", () => {
     cy.getDataTest("state_loop.2.loop_state_section").should("have.class", "accordion-collapsed");
   });
 
-  it("keeps multiple sections open by default", () => {
+  it("keeps one section open by default", () => {
     cy.getDataTest("first_section").click().should("have.class", "accordion-expanded");
     cy.getDataTest("second_section").click().should("have.class", "accordion-expanded");
-    cy.getDataTest("first_section").should("have.class", "accordion-expanded");
+    cy.getDataTest("first_section").should("have.class", "accordion-collapsed");
+  });
+
+  it("keeps multiple sections open when multiple is true", () => {
+    cy.getDataTest("multiple_first_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("multiple_second_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("multiple_first_section").should("have.class", "accordion-expanded");
+  });
+
+  it("reads the legacy open_multiple parameter", () => {
+    cy.getDataTest("legacy_first_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("legacy_titled_section").click().should("have.class", "accordion-expanded");
+    cy.getDataTest("legacy_first_section").should("have.class", "accordion-expanded");
+  });
+
+  it("shows the arrow-down-circle icon by default", () => {
+    cy.getDataTest("first_section")
+      .find("ion-icon.ion-accordion-toggle-icon")
+      .should("have.prop", "name", "arrow-down-circle");
+  });
+
+  it("swaps the open and close icons without rotating them", () => {
+    const icon = () => cy.getDataTest("legacy_first_section").find('[slot="header"] ion-icon');
+    icon().should("have.prop", "name", "add").and("not.have.class", "ion-accordion-toggle-icon");
+    cy.getDataTest("legacy_first_section").click();
+    icon().should("have.prop", "name", "remove");
+  });
+
+  it("shows the title parameter in place of the value", () => {
+    cy.getDataTest("legacy_titled_section")
+      .find(".accordion-section-title")
+      .should("contain.text", "Titled section")
+      .and("not.contain.text", "This value is replaced by the title");
   });
 
   it("keeps only one section open when multiple is false", () => {

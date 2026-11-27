@@ -12,7 +12,7 @@ ion-accordion {
 
 // ion-icon doesn't adjust colour as expected, so target explicitly with theme variable
 .accordion-header .ion-accordion-toggle-icon,
-.accordion-header ion-icon.ion-accordion-toggle-icon {
+.accordion-header ion-icon {
   color: $icon-color;
 }
 ion-accordion.first-section {
