@@ -106,13 +106,63 @@ describe("RadioButtonGridComponent", () => {
   });
 
   it("does not override a value authored on the row", async () => {
-    fixture.componentRef.setInput("row", { ...mockRow, value: "option_1" });
+    spyOn(component, "expression").and.returnValue("option_1");
     component.params.answerList.setValue([{ name: "option_2", text: "Second" }]);
     component.params.initialSelectedOptionKey.setValue("option_2");
     const setExpression = spyOn(component, "setExpression").and.resolveTo();
 
     fixture.detectChanges();
     await fixture.whenStable();
+
+    expect(setExpression).not.toHaveBeenCalled();
+  });
+
+  it("warns when the initial selected option key matches no option", async () => {
+    const warn = spyOn(console, "warn");
+    component.params.answerList.setValue([{ name: "option_2", text: "Second" }]);
+    component.params.initialSelectedOptionKey.setValue("option_3");
+
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(warn).toHaveBeenCalledWith(
+      jasmine.stringContaining("does not match any answer option"),
+      jasmine.anything()
+    );
+  });
+
+  it("reads options from a `key: value` text list", () => {
+    component.params.answerList.setValue("name: a | text: A; name: b | text: B");
+
+    expect(component.radioItems().map((item) => item.name)).toEqual(["a", "b"]);
+  });
+
+  it("reads options from a list stored as JSON text", () => {
+    component.params.answerList.setValue('[{"name":"a","text":"A"},{"name":"b","text":"B"}]');
+
+    expect(component.radioItems().map((item) => item.name)).toEqual(["a", "b"]);
+  });
+
+  it("falls back to the default variant for an unknown variant", () => {
+    component.params.variant.setValue("Card" as any);
+
+    expect(component.params.variant.value()).toBe("default");
+  });
+
+  it("matches a numeric option key with the stored text key", () => {
+    component.params.answerList.setValue([{ name: 1, text: "One" }]);
+    component.value = signal("1");
+
+    expect(component.isOptionSelected(component.radioItems()[0])).toBeTrue();
+    expect(component.selectedOptionKey()).toBe(1 as any);
+  });
+
+  it("does not trigger changed actions when the selected object key is unchanged", async () => {
+    component.params.valueAsObject.setValue(true);
+    component.value = signal({ key: "option_2", value: "Second" });
+    const setExpression = spyOn(component, "setExpression").and.resolveTo();
+
+    await component.handleKeySelection("option_2");
 
     expect(setExpression).not.toHaveBeenCalled();
   });

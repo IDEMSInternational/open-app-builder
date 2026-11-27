@@ -1,50 +1,57 @@
 import { Component, computed, effect } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { IonicModule } from "@ionic/angular";
-import { TemplatePipesModule } from "src/app/shared/components/template/pipes";
+import { NgStyle } from "@angular/common";
+import { TranslatedAssetPipe } from "src/app/shared/components/template/pipes/plh-asset.pipe";
+import type { IRadioButtonGridObjectValue } from "src/app/shared/components/template/components/radio-button-grid/radio-button-grid.component";
+import { RadioButtonGridCardComponent } from "src/app/shared/components/template/components/radio-button-grid/radio-button-grid-card/radio-button-grid-card.component";
+import { coerceMethods } from "src/app/shared/components/template/utils/parameter-list.utils";
 import { IAnswerOption } from "src/app/shared/utils";
 import { defineParameters, Parameter } from "../../parameters";
 import { ROW_PARAMETERS, RowBaseComponent } from "../../row-base.component";
 
-/** Shape of the row value when `value_as_object` is true. */
-export interface IRadioButtonGridObjectValue {
-  key: string;
-  value: string | null;
-}
-
 const parameters = () =>
   defineParameters({
-    answerList: new Parameter<IAnswerOption[]>("answer_list", [], "list"),
+    answerList: new Parameter<unknown>("answer_list", [], "list"),
     itemWidth: new Parameter("item_width", "200px"),
     gridWidth: new Parameter("grid_width", "100%"),
     gridGap: new Parameter("grid_gap", "16px"),
-    variant: new Parameter<"default" | "circle-icon" | "flex" | "card">("variant", "default"),
-    style: new Parameter<"default" | "secondary">("style", "default"),
+    variant: Parameter.oneOf("variant", ["default", "circle-icon", "flex", "card"], "default"),
+    style: Parameter.oneOf("style", ["default", "secondary"], "default"),
     optionsKey: new Parameter("options_key", "name"),
     optionsValue: new Parameter("options_value", "text"),
     initialSelectedOptionKey: new Parameter("initial_selected_option_key", ""),
     valueAsObject: new Parameter("value_as_object", false),
   });
 
+const isEmpty = (value: unknown) => value === undefined || value === null || value === "";
+
+/** A list held by a row without `value_type: list` arrives as JSON text */
+function parseJsonText(value: unknown) {
+  if (typeof value !== "string" || !/^\s*[[{]/.test(value)) return value;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value;
+  }
+}
+
 @Component({
-  selector: "oab-radio-button-grid",
+  // The legacy selector, so that theme overrides for the grid apply
+  selector: "plh-radio-button-grid",
   templateUrl: "./radio-button-grid.component.html",
   styleUrls: [
     "../../../../shared/components/template/components/radio-button-grid/radio-button-grid.component.scss",
-    "../../../../shared/components/template/components/radio-button-grid/radio-button-grid-card/radio-button-grid-card.component.scss",
   ],
-  imports: [CommonModule, IonicModule, TemplatePipesModule],
+  imports: [NgStyle, TranslatedAssetPipe, RadioButtonGridCardComponent],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class RadioButtonGridComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
-  /** Answer options from the row's `answer_list` parameter. */
+  /** Answer options from `answer_list`: an array, a hashmap, or text in either form */
   public radioItems = computed(() => {
-    const items = (this.params.answerList.value() ?? []) as IAnswerOption[];
+    const items = coerceMethods
+      .objectArray<IAnswerOption>([])
+      .parse(parseJsonText(this.params.answerList.value()) ?? []);
     const optionsValue = this.params.optionsValue.value();
-    return items.filter((item) => {
-      const label = item[optionsValue];
-      return (label !== undefined && label !== null && label !== "") || !!item.image;
-    });
+    return items.filter((item) => !isEmpty(item[optionsValue]) || !!item.image);
   });
 
   /** Key of the selected option, including when the row stores an object value. */
@@ -54,6 +61,15 @@ export class RadioButtonGridComponent extends RowBaseComponent<ReturnType<typeof
       return (value as IRadioButtonGridObjectValue).key;
     }
     return value;
+  });
+
+  /**
+   * The selected option's own key. The stored key is text, as the row value is evaluated,
+   * while option keys from a data list can be numbers.
+   */
+  public selectedOptionKey = computed(() => {
+    const option = this.radioItems().find((item) => this.isOptionSelected(item));
+    return option ? this.optionKey(option) : undefined;
   });
 
   private hasAppliedInitialSelection = false;
@@ -79,7 +95,8 @@ export class RadioButtonGridComponent extends RowBaseComponent<ReturnType<typeof
   }
 
   public isOptionSelected(item: IAnswerOption): boolean {
-    return this.optionKey(item) === this.selectedKey();
+    const selectedKey = this.selectedKey();
+    return !isEmpty(selectedKey) && String(this.optionKey(item)) === String(selectedKey);
   }
 
   public async handleItemClick(item: IAnswerOption): Promise<void> {
@@ -93,9 +110,8 @@ export class RadioButtonGridComponent extends RowBaseComponent<ReturnType<typeof
   }
 
   public async handleKeySelection(selectedKey: string): Promise<void> {
-    const value = this.buildValueForKey(selectedKey);
-    if (value === this.value()) return;
-    await this.setExpression(value);
+    if (String(selectedKey) === String(this.selectedKey())) return;
+    await this.setExpression(this.buildValueForKey(selectedKey));
     this.triggerActions("changed");
   }
 
@@ -105,19 +121,40 @@ export class RadioButtonGridComponent extends RowBaseComponent<ReturnType<typeof
 
   private buildValueForKey(selectedKey: string): string | IRadioButtonGridObjectValue {
     if (!this.params.valueAsObject.value()) return selectedKey;
-    const option = this.radioItems().find((item) => this.optionKey(item) === selectedKey);
+    const option = this.radioItems().find(
+      (item) => String(this.optionKey(item)) === String(selectedKey)
+    );
     return { key: selectedKey, value: option?.[this.params.optionsValue.value()] ?? null };
   }
 
+  /** Select the option named by `initial_selected_option_key`, unless the row has a value */
   private async applyInitialSelection(initialKey: string): Promise<void> {
-    const authoredValue = this.row().value;
-    if (authoredValue !== undefined && authoredValue !== null && authoredValue !== "") return;
-
-    const currentValue = this.value();
-    if (currentValue !== undefined && currentValue !== null && currentValue !== "") return;
-
+    // The expression includes a value passed by navigation, which isn't stored yet
+    const authoredValue = this.evaluationService.evaluateExpression(
+      this.expression(),
+      this.namespace(),
+      this.params.valueType.value()
+    );
+    const currentValue = isEmpty(this.value()) ? authoredValue : this.value();
+    if (!isEmpty(currentValue)) {
+      console.warn(
+        "[radio_button_grid] `initial_selected_option_key` ignored as row already has a value",
+        { row: this.name(), value: currentValue }
+      );
+      return;
+    }
     const option = this.radioItems().find((item) => String(this.optionKey(item)) === initialKey);
-    if (!option) return;
+    if (!option) {
+      console.warn(
+        "[radio_button_grid] `initial_selected_option_key` does not match any answer option",
+        {
+          row: this.name(),
+          initial_selected_option_key: initialKey,
+          options_key: this.params.optionsKey.value(),
+        }
+      );
+      return;
+    }
     await this.setExpression(this.buildValueForKey(this.optionKey(option)));
   }
 }

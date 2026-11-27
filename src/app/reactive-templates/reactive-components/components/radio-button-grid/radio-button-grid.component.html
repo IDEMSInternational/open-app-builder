@@ -1,55 +1,34 @@
 @if (params.variant.value() === "card") {
-  <div class="radio-buttons" [ngStyle]="gridStyle()" [attr.data-style]="params.style.value()">
-    <ion-radio-group [value]="selectedKey()" (ionChange)="handleKeySelection($event.detail.value)">
-      @for (item of radioItems(); track item[params.optionsKey.value()]) {
-        <ion-item lines="none">
-          <ion-radio
-            labelPlacement="start"
-            justify="space-between"
-            alignment="start"
-            mode="md"
-            [value]="item[params.optionsKey.value()]"
-          >
-            <div class="item-content">
-              @if (item.image) {
-                <div class="item-image-container">
-                  <img
-                    class="item-image"
-                    alt=""
-                    [src]="
-                      (item[params.optionsKey.value()] === selectedKey() && item.image_checked
-                        ? item.image_checked
-                        : item.image
-                      ) | plhAsset
-                    "
-                  />
-                </div>
-              }
-              @if (item[params.optionsValue.value()]) {
-                <div class="item-text">
-                  <p>{{ item[params.optionsValue.value()] }}</p>
-                </div>
-              }
-            </div>
-          </ion-radio>
-        </ion-item>
-      }
-    </ion-radio-group>
-  </div>
+  <radio-button-grid-card
+    [value]="selectedOptionKey()"
+    [answerOptions]="radioItems()"
+    [optionsKey]="params.optionsKey.value()"
+    [optionsValue]="params.optionsValue.value()"
+    [gridStyle]="gridStyle()"
+    [styleVariant]="params.style.value()"
+    (selectionChange)="handleKeySelection($event)"
+    [attr.data-test]="name()"
+  />
 } @else {
   <div
     class="radio-buttons"
+    role="radiogroup"
     [ngStyle]="gridStyle()"
     [attr.data-variant]="params.variant.value()"
     [attr.data-style]="params.style.value()"
+    [attr.data-test]="name()"
   >
     @for (item of radioItems(); track item[params.optionsKey.value()]) {
       <div
         class="item"
-        role="button"
+        role="radio"
         tabindex="0"
         (click)="handleItemClick(item)"
         (keydown)="handleItemKeydown($event, item)"
+        [attr.aria-checked]="isOptionSelected(item)"
+        [attr.aria-label]="
+          item[params.optionsValue.value()] ? null : item[params.optionsKey.value()]
+        "
         [attr.data-selected]="isOptionSelected(item)"
         [style.--min-item-width]="params.itemWidth.value()"
       >
@@ -60,7 +39,7 @@
               alt=""
               [src]="
                 (isOptionSelected(item) && item.image_checked ? item.image_checked : item.image)
-                  | plhAsset
+                  | translatedAsset
               "
             />
           </div>
