@@ -45,3 +45,23 @@ plh-template-container:not([data-hidden="true"]),
 plh-template-component:not([data-hidden="true"]) {
   display: block;
 }
+
+/// A page's container, and templates nested as its only row, fill the content area (above), so longer
+/// content overflows them and ion-content's bottom padding, which follows their own boxes, is lost.
+/// This adds the padding after the content. The negative margin keeps it out of the layout, so pages
+/// whose content fits are unchanged
+$page-container: "ion-content > plh-template-container";
+$nested-container: "> plh-template-component:only-child > plh-template-container";
+#{$page-container},
+#{$page-container} #{$nested-container},
+#{$page-container} #{$nested-container} #{$nested-container},
+#{$page-container} #{$nested-container} #{$nested-container} #{$nested-container} {
+  &::after {
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    height: var(--padding-bottom, 0px);
+    margin-bottom: calc(-1 * var(--padding-bottom, 0px));
+    pointer-events: none;
+  }
+}

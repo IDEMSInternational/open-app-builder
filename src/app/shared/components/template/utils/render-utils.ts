@@ -83,7 +83,8 @@ export function setElStyleAnimated(
 
 /** Extract constituent directional values from shorthand padding CSS value */
 export function getPaddingValuesFromShorthand(padding: string) {
-  const paddingArray = padding.split(" ");
+  // Unitless 0 is valid padding but invalid in calc(), where page padding is also used
+  const paddingArray = padding.split(" ").map((value) => (/^0*\.?0+$/.test(value) ? "0px" : value));
   const [top, right = top, bottom = top, left = right] = paddingArray;
   return { top, right, bottom, left };
 }

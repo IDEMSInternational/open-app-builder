@@ -5,11 +5,28 @@ ion-toolbar {
     --ion-color-contrast: var(--ion-color-primary);
   }
   &.header-hidden {
+    // The toolbar keeps its top safe area padding, so only the status bar area remains
     height: 0px;
+    --min-height: 0px;
     --border-style: none;
   }
+}
+.status-bar-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--ion-safe-area-top, 0px);
+  // above ion-header
+  z-index: 11;
+  // --ion-color-base is set by the ion-color classes, and is not set for a header with background "none"
+  background: var(--ion-color-base, var(--ion-background-color));
 }
 ion-header {
   // animate header collapse animation as margin moves off-screen
   transition: margin 500ms;
+  // Page content starts below the status bar background while the header is off-screen
+  &.collapsed {
+    margin-bottom: var(--ion-safe-area-top, 0px);
+  }
 }

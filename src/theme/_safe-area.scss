@@ -1,0 +1,20 @@
+// Android only reports a side inset on the side of the camera cutout or the navigation bar, so in landscape
+// the app would sit off-centre. Both sides take the larger inset, as iOS already reports them
+$side-inset: max(
+  var(--safe-area-inset-left, env(safe-area-inset-left, 0px)),
+  var(--safe-area-inset-right, env(safe-area-inset-right, 0px))
+);
+
+@mixin side-safe-area {
+  --ion-safe-area-left: #{$side-inset};
+  --ion-safe-area-right: #{$side-inset};
+}
+
+// Ionic sets the safe area variables to 0 on modals when the screen is at least 768x600px, as its own
+// modals are then centred cards. Modals that fill the screen at any size need the device values back.
+// The values match those set on the root element (Ionic's core.css, and `side-safe-area` above)
+@mixin restore-safe-area {
+  --ion-safe-area-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --ion-safe-area-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  @include side-safe-area;
+}

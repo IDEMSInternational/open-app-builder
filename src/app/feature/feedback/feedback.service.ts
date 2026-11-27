@@ -58,9 +58,6 @@ export class FeedbackService extends SyncServiceBase {
   } = {};
 
   private deviceInfo: DeviceInfo;
-  /** Track content el style to allow revert on component destroy */
-  private initialContentStyle?: Partial<CSSStyleDeclaration>;
-
   /** Track template action defaults to restore after disable */
   private actionListDefault: Partial<IActionHandlers>;
 
@@ -230,29 +227,23 @@ export class FeedbackService extends SyncServiceBase {
     await this.dbService.table("feedback").delete(id);
   }
 
-  /** Set the width of the main content */
+  /**
+   * Set the width at which pages are previewed beside the feedback sidebar. The sidebar is only shown on
+   * large screens, so the width only applies then (app.component.scss)
+   */
   public setContentPageWidth(pageWidth?: number) {
     const contentEl = document.getElementById("main");
     if (!contentEl) {
       console.error("Main content element not found, cannot set width");
       return;
     }
-
-    if (!this.initialContentStyle) {
-      const { width, maxWidth, margin } = contentEl.style;
-      this.initialContentStyle = { width, maxWidth, margin };
-    }
     if (pageWidth) {
       this.options.contentPageWidth = pageWidth;
-      contentEl.style.width = `${pageWidth}px`;
-      contentEl.style.maxWidth = `${pageWidth}px`;
-      contentEl.style.margin = `auto`;
+      contentEl.style.setProperty("--feedback-page-width", `${pageWidth}px`);
     } else {
-      const { width, maxWidth, margin } = this.initialContentStyle;
-      contentEl.style.width = width;
-      contentEl.style.maxWidth = maxWidth;
-      contentEl.style.margin = margin;
+      contentEl.style.removeProperty("--feedback-page-width");
     }
+    contentEl.classList.toggle("feedback-page-width", !!pageWidth);
   }
 
   /** Progamatically set router guards to enable/disable navigation */

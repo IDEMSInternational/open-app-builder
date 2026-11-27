@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      From Android 15 the app is drawn behind the navigation bar, so this colour is not shown, but a theme
+      without one gets dark navigation bar buttons forced whenever the window background is light, so the
+      app cannot set them. SystemBarsService picks the button colour for contrast, so no scrim is needed
+    -->
+    <style name="AppTheme.NoActionBar" parent="AppTheme.NoActionBarBase">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+    </style>
+</resources>

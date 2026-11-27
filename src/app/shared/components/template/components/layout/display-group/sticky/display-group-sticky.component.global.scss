@@ -1,11 +1,82 @@
 // Styling must be globally scoped ('@use'd in src/theme/_components.scss), as the sticky display group
 // needs to style projected content from the parent display-group component
 
-// If sticky display groups are inside a fullscreen popup, add padding to reflect the device safe area
-tmpl-display-group-sticky[sticky-position="top"] .display-group-wrapper {
-  padding-top: var(--ion-safe-area-top, 0);
+// Rows with `hidden: true` stay in the page without being displayed, so only match groups that are shown
+$not-hidden: ':not(plh-template-component[data-hidden="true"] *)';
+$sticky-top: 'tmpl-display-group-sticky[sticky-position="top"]#{$not-hidden}';
+$sticky-bottom: 'tmpl-display-group-sticky[sticky-position="bottom"]#{$not-hidden}';
+$shown-page: ".route-container .ion-page:not(.ion-page-hidden)";
+
+// A sticky group covers the padding between the content and the edge it is fixed to, so the content's
+// container drops that padding and the group's placeholder (its own height) starts at the edge instead.
+// Without :has() support the content keeps its padding, so the gap next to the group is larger
+ion-content {
+  &:has(#{$sticky-top}) {
+    --padding-top: 0px;
+  }
+  &:has(#{$sticky-bottom}) {
+    --padding-bottom: 0px;
+  }
 }
 
-tmpl-display-group-sticky[sticky-position="bottom"] .display-group-wrapper {
-  padding-bottom: var(--ion-safe-area-bottom, 0);
+ion-modal.template-popup-modal .popup-backdrop[data-fullscreen] .popup-container {
+  &:has(#{$sticky-top}) {
+    padding-top: 0;
+  }
+  &:has(#{$sticky-bottom}) {
+    padding-bottom: 0;
+  }
+}
+
+// Sticky display groups at the edge of the screen extend behind the device system bars, with padding
+// to keep their content clear of them. Only the group's own wrapper is padded, not nested display groups
+
+// Fullscreen pop-ups already reach the edges of the screen
+ion-modal.template-popup-modal {
+  // On the host, so that display group variants with their own padding are not affected
+  tmpl-display-group-sticky {
+    padding-left: var(--ion-safe-area-left, 0px);
+    padding-right: var(--ion-safe-area-right, 0px);
+  }
+
+  #{$sticky-top} > .display-group-wrapper {
+    padding-top: var(--ion-safe-area-top, 0px);
+  }
+
+  #{$sticky-bottom} > .display-group-wrapper {
+    padding-bottom: var(--ion-safe-area-bottom, 0px);
+  }
+}
+
+// A hidden header still covers the top safe area, so pages start below it. Give that area to the page
+// while it shows a sticky top group. Without :has() support the group stays below the safe area
+plh-main-header:has(~ #{$shown-page} #{$sticky-top}) ion-toolbar.header-hidden {
+  padding-top: 0;
+}
+
+plh-main-header:has(ion-toolbar.header-hidden)
+  ~ #{$shown-page}
+  #{$sticky-top}
+  > .display-group-wrapper {
+  padding-top: var(--ion-safe-area-top, 0px);
+}
+
+// Pages with no footer and nav-stacks stop above the bottom safe area, so reach the edge of the screen
+// while showing a sticky bottom group. Without :has() support the group stays above the safe area
+.route-container.no-footer:has(.ion-page:not(.ion-page-hidden) #{$sticky-bottom}) {
+  padding-bottom: 0;
+
+  #{$sticky-bottom} > .display-group-wrapper {
+    padding-bottom: var(--ion-safe-area-bottom, 0px);
+  }
+}
+
+ion-modal.nav-stack-modal:has(#{$sticky-bottom}) {
+  &::part(content) {
+    padding-bottom: 0;
+  }
+
+  #{$sticky-bottom} > .display-group-wrapper {
+    padding-bottom: var(--ion-safe-area-bottom, 0px);
+  }
 }

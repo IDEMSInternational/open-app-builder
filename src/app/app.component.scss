@@ -1,6 +1,20 @@
 .route-container {
   flex: 1;
   overflow: auto;
+  // Keep page content clear of display cutouts and system bars at the sides (e.g. in landscape).
+  // The header and footer are not inset, so their backgrounds reach the screen edges
+  padding-left: var(--ion-safe-area-left, 0px);
+  padding-right: var(--ion-safe-area-right, 0px);
+  // The footer covers the bottom safe area when there is one
+  &.no-footer {
+    padding-bottom: var(--ion-safe-area-bottom, 0px);
+  }
+  // The padding above already applies the side safe areas, so Ionic components on the page
+  // (e.g. ion-item in accordions and radio lists) must not add them again
+  > ion-router-outlet {
+    --ion-safe-area-left: 0px;
+    --ion-safe-area-right: 0px;
+  }
 }
 .app-version {
   margin-right: 8px;
@@ -35,6 +49,15 @@
     width: 100%;
     height: 100%;
   }
+}
+// Feedback mode previews pages at a set width beside its sidebar. The split pane only shows the sidebar
+// on large screens (`when="lg"`), so on smaller screens pages keep the full width
+ion-split-pane.split-pane-visible > #main.feedback-page-width {
+  max-width: var(--feedback-page-width);
+  margin: auto;
+  // The preview does not reach the sides of the screen
+  --ion-safe-area-left: 0px;
+  --ion-safe-area-right: 0px;
 }
 #sidebar {
   width: 500px;

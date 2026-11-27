@@ -5,8 +5,6 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { Device } from "@capacitor/device";
-import { StatusBar, Style } from "@capacitor/status-bar";
-import { EdgeToEdge } from "@capawesome/capacitor-android-edge-to-edge-support";
 import { DbService } from "./shared/services/db/db.service";
 import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
@@ -41,6 +39,7 @@ import { ShareService } from "./shared/services/share/share.service";
 import { LocalStorageService } from "./shared/services/local-storage/local-storage.service";
 import { DeploymentService } from "./shared/services/deployment/deployment.service";
 import { ScreenOrientationService } from "./shared/services/screen-orientation/screen-orientation.service";
+import { SystemBarsService } from "./shared/services/system-bars/system-bars.service";
 import { TemplateMetadataService } from "./shared/components/template/services/template-metadata.service";
 import { getPaddingValuesFromShorthand } from "./shared/components/template/utils";
 import { ClipboardService } from "./shared/services/clipboard/clipboard.service";
@@ -148,6 +147,7 @@ export class AppComponent {
     private shareService: ShareService,
     private fileManagerService: FileManagerService,
     private screenOrientationService: ScreenOrientationService,
+    private systemBarsService: SystemBarsService,
     private clipboardService: ClipboardService,
     private scrollService: ScrollService,
     private toastService: ToastService,
@@ -173,7 +173,6 @@ export class AppComponent {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
 
-      await this.handleEdgeToEdge();
       this.refreshAndroidModalAccessibilityBounds();
 
       // Run app-specific launch tasks
@@ -347,16 +346,6 @@ export class AppComponent {
         }
       }
     });
-  }
-
-  // On Android, handle edge-to-edge support by effectively disabling it and enforcing consistent status-bar styling
-  // Installing `@capawesome/capacitor-android-edge-to-edge-support` plugin applies insets to webview without further configuration
-  // TODO: expose options to app config, and handle edge-to-edge display
-  private async handleEdgeToEdge() {
-    if (Capacitor.getPlatform() === "android") {
-      await EdgeToEdge.setBackgroundColor({ color: "#000000" });
-      await StatusBar.setStyle({ style: Style.Dark });
-    }
   }
 
   /**

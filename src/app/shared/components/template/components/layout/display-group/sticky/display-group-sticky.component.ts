@@ -44,23 +44,8 @@ export class TmplDisplayGroupStickyComponent implements AfterViewInit, OnDestroy
 
   private handleSizeChange(entries: ResizeObserverEntry[]) {
     const [{ contentRect }] = entries;
-
-    let topPadding = 0;
-    if (this.position() === "top") {
-      // As the display group now sits at the top of the content window ignoring the app-wide padding applied to ion-content,
-      // the height of the inline display group placeholder should account for this padding
-      topPadding = this.getContentContainerTopPadding();
-    }
-
-    this.height.set(contentRect.height - topPadding);
-  }
-
-  private getContentContainerTopPadding() {
-    const computedStyles = getComputedStyle(this.viewRef.element.nativeElement);
-    const ionContentPaddingStart =
-      parseFloat(computedStyles.getPropertyValue("--padding-start")) || 0;
-    const popUpStickyTopPadding =
-      parseFloat(computedStyles.getPropertyValue("--pop-up-safe-area-top")) || 0;
-    return ionContentPaddingStart + popUpStickyTopPadding;
+    // The page or pop-up drops its padding on the edge the group covers, so the placeholder starts at that
+    // edge (display-group-sticky.component.global.scss)
+    this.height.set(contentRect.height);
   }
 }

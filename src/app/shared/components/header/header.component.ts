@@ -13,11 +13,10 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
-import { Subscription, fromEvent, map } from "rxjs";
+import { Subscription, concatMap, fromEvent } from "rxjs";
 import type { IHeaderVariantOptions } from "data-models/appConfig";
 import { AppConfigService } from "../../services/app-config/app-config.service";
 import { IonHeader, ScrollBaseCustomEvent, ScrollDetail } from "@ionic/angular";
-import { _wait } from "packages/shared/src/utils/async-utils";
 import { activeRoute } from "../../utils/angular.utils";
 
 interface ScrollCustomEvent extends ScrollBaseCustomEvent {
@@ -161,25 +160,43 @@ export class headerComponent implements OnInit, OnDestroy {
 
   /** Listen to scroll events to trigger header collapse */
   private listenToScrollEvents() {
-    this.scrollEvents$ = fromEvent(window, "ionScroll")
-      .pipe(map((e: ScrollCustomEvent) => e.detail))
-      .subscribe(async (detail) => {
+    let previousY: number | undefined;
+    let previousMaxY: number | undefined;
+    let isAnimating = false;
+    this.scrollEvents$ = fromEvent<ScrollCustomEvent>(window, "ionScroll")
+      .pipe(
+        concatMap(async (e) => {
+          const scrollElement = await (e.target as HTMLIonContentElement).getScrollElement();
+          const maxY = scrollElement.scrollHeight - scrollElement.clientHeight;
+          return { currentY: e.detail.currentY, maxY };
+        })
+      )
+      .subscribe(({ currentY, maxY }) => {
+        // When the page's scroll range changes (e.g. the header collapses near the bottom of the page),
+        // the browser can move the scroll position, which is not a scroll by the user
+        const rangeChanged = previousMaxY !== undefined && maxY !== previousMaxY;
+        const scrollingUp = !rangeChanged && previousY !== undefined && currentY < previousY;
+        const scrollingDown = !rangeChanged && previousY !== undefined && currentY > previousY;
+        previousY = currentY;
+        previousMaxY = maxY;
+        // ignore the direction whilst the animation moves the bar, as it moves the page too
+        if (isAnimating) return;
         const headerHeight = this.headerElement.el.clientHeight;
-        const { deltaY, currentY } = detail;
+        // Collapsing makes the page up to the header's height taller, so only collapse if the page
+        // would still scroll past the header, else the header would come straight back
+        const canCollapse = maxY >= 2 * headerHeight;
         // bring header into view when scrolling in reverse or at top of page
-        if (deltaY <= 0 || currentY < headerHeight) {
+        if (scrollingUp || currentY < headerHeight) {
           this.marginTop.set(0);
-        } else {
-          // hide header after scrolled further than header height
-          if (currentY >= headerHeight) {
-            // temporarily disable scroll events whilst animation moves bar
-            // as that would trigger negative scroll direction
-            this.scrollEvents$.unsubscribe();
-            // set negative margin to move header off-screen
-            this.marginTop.set(headerHeight * -1);
-            await _wait(500);
-            this.listenToScrollEvents();
-          }
+        } else if (scrollingDown && this.marginTop() === 0 && canCollapse) {
+          // set negative margin to move header off-screen
+          this.marginTop.set(headerHeight * -1);
+          isAnimating = true;
+          setTimeout(() => {
+            isAnimating = false;
+            // bring the header back if the page returned to the top during the animation
+            if (previousY < headerHeight) this.marginTop.set(0);
+          }, 500);
         }
       });
   }

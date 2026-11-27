@@ -1,0 +1,13 @@
+// Styling must be globally scoped ('@use'd in src/theme/_components.scss), as it applies to the page
+// container outside the drawer component
+
+// Pages with no footer stop above the bottom safe area. While a page shows a drawer, give that area to the
+// page, so the drawer reaches the edge of the screen, and keep the drawer's handle and content clear of it.
+// Without :has() support the drawer stays above the safe area. Rows with `hidden: true` stay in the page
+// without being displayed, so only match drawers that are shown
+.route-container.no-footer:has(
+    .ion-page:not(.ion-page-hidden) plh-drawer:not(plh-template-component[data-hidden="true"] *)
+  ) {
+  padding-bottom: 0;
+  --drawer-safe-area-bottom: var(--ion-safe-area-bottom, 0px);
+}
