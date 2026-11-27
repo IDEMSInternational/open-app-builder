@@ -1,0 +1,12 @@
+// A row fills the width of its container.
+// `:where` gives the rule no specificity, so a component's own host styles still apply.
+:where(.oab-row) {
+  display: block;
+  width: 100%;
+}
+
+// In a display group, rows are sized by its `align` and `child_sizing` (overrides the rule above).
+// Nested display groups stay full width.
+:where(.display-group) > :where(.oab-row:not(oab-display-group)) {
+  width: auto;
+}

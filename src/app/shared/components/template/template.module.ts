@@ -10,6 +10,7 @@ import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
 import { TemplateContainerComponent } from "./template-container.component";
 import { TEMPLATE_COMPONENTS } from "./components";
+import { RadioButtonGridCardComponent } from "./components/radio-button-grid/radio-button-grid-card/radio-button-grid-card.component";
 import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
@@ -35,6 +36,7 @@ import { ReactiveTemplateComponent } from "src/app/reactive-templates/reactive-t
     SharedPipesModule,
     TemplatePipesModule,
     ReactiveTemplateComponent,
+    RadioButtonGridCardComponent,
     TooltipDirective,
   ],
   exports: [

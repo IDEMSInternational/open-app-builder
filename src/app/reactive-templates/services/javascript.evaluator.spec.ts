@@ -142,9 +142,28 @@ describe("JavascriptEvaluator", () => {
     });
 
     it("evaluates template expressions in strict mode", () => {
-      const result = evaluator.evaluate("Strict mode: ${(function(){ return this; })()}", "string");
+      const result = evaluator.evaluate(
+        "Strict mode: ${typeof (function(){ return this; })()}",
+        "string"
+      );
 
       expect(result).toBe("Strict mode: undefined");
+    });
+
+    it("returns undefined when the value is only unset variables", () => {
+      evaluator.setContext({ local: { a: undefined, b: null } });
+
+      expect(evaluator.evaluate("${local.a}", "string")).toBeUndefined();
+      expect(evaluator.evaluate("${local.a}${local.b}", "string")).toBeUndefined();
+    });
+
+    it("adds no text for unset variables within text", () => {
+      evaluator.setContext({ local: { name: undefined, count: 0, text: "" } });
+
+      expect(evaluator.evaluate("Hi ${local.name}!", "string")).toBe("Hi !");
+      expect(evaluator.evaluate("${local.name} ", "string")).toBe(" ");
+      expect(evaluator.evaluate("${local.count}", "string")).toBe("0");
+      expect(evaluator.evaluate("${local.text}", "string")).toBe("");
     });
   });
 

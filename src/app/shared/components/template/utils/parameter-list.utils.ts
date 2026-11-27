@@ -13,7 +13,7 @@ import type { FlowTypes } from "src/app/shared/model";
  * NOTE - zod's `z.coerce` methods not used in favor of custom implementation
  * (e.g. support parsing boolean-string not just truthy/falsy values )
  */
-const coerceMethods = {
+export const coerceMethods = {
   /** Use authored string value with fallback if undefined */
   string: (fallback: string) => z.string().catch(fallback),
 

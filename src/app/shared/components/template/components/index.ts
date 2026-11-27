@@ -78,6 +78,7 @@ import { ComboBoxSearchComponent } from "./combo-box/combo-box-search/combo-box-
 import { YoutubeComponent } from "./youtube/youtube.component";
 
 export const TEMPLATE_STANDALONE_COMPONENTS = [
+  RadioButtonGridCardComponent,
   // tmpl prefix
   TmplSliderComponent,
   TmplTableComponent,
@@ -94,7 +95,6 @@ export const TEMPLATE_COMPONENTS = [
   ComboBoxSearchComponent,
   FormComponent,
   NavGroupComponent,
-  RadioButtonGridCardComponent,
   RadioListCustomInputComponent,
   RoundIconButtonComponent,
   SelectTextComponent,

@@ -1,0 +1,55 @@
+@if (params.variant.value() === "card") {
+  <radio-button-grid-card
+    [value]="selectedOptionKey()"
+    [answerOptions]="radioItems()"
+    [optionsKey]="params.optionsKey.value()"
+    [optionsValue]="params.optionsValue.value()"
+    [gridStyle]="gridStyle()"
+    [styleVariant]="params.style.value()"
+    (selectionChange)="handleKeySelection($event)"
+    [attr.data-test]="name()"
+  />
+} @else {
+  <div
+    class="radio-buttons"
+    role="radiogroup"
+    [ngStyle]="gridStyle()"
+    [attr.data-variant]="params.variant.value()"
+    [attr.data-style]="params.style.value()"
+    [attr.data-test]="name()"
+  >
+    @for (item of radioItems(); track item[params.optionsKey.value()]) {
+      <div
+        class="item"
+        role="radio"
+        tabindex="0"
+        (click)="handleItemClick(item)"
+        (keydown)="handleItemKeydown($event, item)"
+        [attr.aria-checked]="isOptionSelected(item)"
+        [attr.aria-label]="
+          item[params.optionsValue.value()] ? null : item[params.optionsKey.value()]
+        "
+        [attr.data-selected]="isOptionSelected(item)"
+        [style.--min-item-width]="params.itemWidth.value()"
+      >
+        @if (item.image) {
+          <div class="item-image-container">
+            <img
+              class="item-image"
+              alt=""
+              [src]="
+                (isOptionSelected(item) && item.image_checked ? item.image_checked : item.image)
+                  | translatedAsset
+              "
+            />
+          </div>
+        }
+        @if (item[params.optionsValue.value()]) {
+          <div class="item-text">
+            <p>{{ item[params.optionsValue.value()] }}</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

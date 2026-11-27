@@ -1,5 +1,8 @@
+import { NgStyle } from "@angular/common";
 import { Component, input, output } from "@angular/core";
+import { IonicModule } from "@ionic/angular";
 import { IAnswerOption } from "src/app/shared/utils";
+import { TranslatedAssetPipe } from "../../../pipes/plh-asset.pipe";
 
 /**
  * Boxed 'card' variant of the radio button grid.
@@ -14,7 +17,7 @@ import { IAnswerOption } from "src/app/shared/utils";
   selector: "radio-button-grid-card",
   templateUrl: "./radio-button-grid-card.component.html",
   styleUrls: ["./radio-button-grid-card.component.scss"],
-  standalone: false,
+  imports: [NgStyle, IonicModule, TranslatedAssetPipe],
 })
 export class RadioButtonGridCardComponent {
   /** Currently selected value (matched against `optionsKey`). */

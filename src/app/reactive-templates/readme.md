@@ -130,7 +130,6 @@ Components without reactive equivalents:
 * pdf x
 * progress-path
 * qr-code
-* radio-button-grid
 * radio-group 
 * radio-list x
 * round-icon-button
