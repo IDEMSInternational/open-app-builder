@@ -123,4 +123,14 @@ describe("TemplateNavService", () => {
     expect(modalControllerSpy.create).toHaveBeenCalledTimes(2);
     expect(modal.present).toHaveBeenCalled();
   });
+
+  it("warns and does not navigate when go_to has no template name", async () => {
+    const warn = spyOn(console, "warn");
+    const router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+
+    await service.handleNavAction({ trigger: "click", action_id: "go_to", args: [undefined] });
+
+    expect(router.navigate).not.toHaveBeenCalled();
+    expect(warn).toHaveBeenCalled();
+  });
 });
