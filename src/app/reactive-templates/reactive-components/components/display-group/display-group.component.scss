@@ -3,11 +3,6 @@ oab-display-group {
   width: 100%;
 }
 
-// Children are sized by `align` and `child_sizing`, not the default row width
-:where(.display-group) > :where(.oab-row) {
-  width: auto;
-}
-
 .display-group {
   display: flex;
   width: 100%;
