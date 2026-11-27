@@ -282,11 +282,13 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
         const param = params[key];
         if (rowParams && rowParams.hasOwnProperty(param.name)) {
           const paramExpression = rowParams[param.name];
-          const value = this.evaluationService.evaluateExpression(
-            paramExpression,
-            this.namespace(),
-            param.valueType
-          );
+          const value = param.isBooleanText(paramExpression)
+            ? paramExpression
+            : this.evaluationService.evaluateExpression(
+                paramExpression,
+                this.namespace(),
+                param.valueType
+              );
           params[key].setValue(value);
         }
       });
