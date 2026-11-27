@@ -143,7 +143,6 @@ Components without reactive equivalents:
 * task-card
 * task-progress-bar
 * text-area
-* text-bubble
 * tile-component
 * timer
 * youtube x

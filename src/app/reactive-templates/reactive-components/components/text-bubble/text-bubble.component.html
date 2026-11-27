@@ -1,0 +1,33 @@
+<div
+  class="text-bubble-container container"
+  [attr.data-position]="params.speakerPosition.value()"
+  [attr.data-variant]="variantsString()"
+  [attr.data-language-direction]="templateTranslateService.languageDirection()"
+  [attr.data-test]="name()"
+>
+  <div>
+    @if (params.speakerName.value()) {
+      <div class="speaker-name">{{ params.speakerName.value() }}</div>
+    } @else {
+      <div class="no-name"></div>
+    }
+    <div class="text-bubble" [attr.data-position]="params.speakerPosition.value()">
+      @if (value()) {
+        <div class="text-bubble-content" [innerHTML]="value() | markdown"></div>
+      }
+      <oab-row-list
+        [rows]="rows()"
+        [namespace]="namespace()"
+        (emittedValue)="onEmittedValue($event)"
+      ></oab-row-list>
+    </div>
+  </div>
+  @if (params.speakerImageAsset.value()) {
+    <img
+      [src]="params.speakerImageAsset.value() | translatedAsset"
+      alt=""
+      class="speaker-image"
+      [attr.data-position]="params.speakerPosition.value()"
+    />
+  }
+</div>

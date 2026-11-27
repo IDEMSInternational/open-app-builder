@@ -36,6 +36,14 @@ describe("EvaluationService", () => {
     ).toBe("This is value 1");
   });
 
+  it("adds no text for a stored null", () => {
+    variableStore.set({ name: "unset", type: "local" }, null);
+
+    expect(service.evaluateExpression<string>("Value: ${local.unset}", "", "string")).toBe(
+      "Value: "
+    );
+  });
+
   it("evaluates display_text from an object parameter in a numerically indexed loop", () => {
     variableStore.set(
       { name: "pagesLoop.0.nested_page_template.page_details", type: "local" },
@@ -54,7 +62,7 @@ describe("EvaluationService", () => {
   it("updates display_text when its object-valued parameter is supplied or replaced", () => {
     const namespace = "pagesLoop.key_1.nested_page_template";
     const expression = "${local.page_details.value}";
-    const values: string[] = [];
+    const values: (string | undefined)[] = [];
     const subscription = variableStore
       .watchMultiple(service.getDependencies(expression, namespace, "string"))
       .subscribe(() => {
@@ -70,7 +78,7 @@ describe("EvaluationService", () => {
       { key: "key_1", value: "Updated value" }
     );
 
-    expect(values).toEqual(["undefined", "This is value 1", "Updated value"]);
+    expect(values).toEqual([undefined, "This is value 1", "Updated value"]);
     subscription.unsubscribe();
   });
 
