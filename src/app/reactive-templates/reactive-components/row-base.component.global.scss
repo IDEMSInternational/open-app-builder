@@ -4,3 +4,9 @@
   display: block;
   width: 100%;
 }
+
+// In a display group, rows are sized by its `align` and `child_sizing` (overrides the rule above).
+// Nested display groups stay full width.
+:where(.display-group) > :where(.oab-row:not(oab-display-group)) {
+  width: auto;
+}
