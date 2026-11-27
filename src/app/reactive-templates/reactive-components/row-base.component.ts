@@ -105,6 +105,9 @@ export abstract class RowBaseComponent<TParams extends Parameters | null>
     return this.condition() ? "" : "none";
   }
 
+  /** Default row box, see `row-base.component.global.scss` */
+  @HostBinding("class.oab-row") readonly rowClass = true;
+
   /**
    * All RowBaseComponent implementations should call this method (`super.ngOnInit();`) in their ngOnInit lifecycle hook.
    */
