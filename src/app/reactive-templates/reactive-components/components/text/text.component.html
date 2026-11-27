@@ -1,6 +1,5 @@
 @if (this.value()) {
   <div
-    class="large standard normal"
     [class]="params.style.value()"
     [innerHTML]="this.value() | markdown"
     [style.textAlign]="params.textAlign.value()"
