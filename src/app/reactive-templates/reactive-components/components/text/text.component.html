@@ -1,9 +1,7 @@
 @if (this.value()) {
   <div
-    class="large standard normal"
     [class]="params.style.value()"
     [innerHTML]="this.value() | markdown"
-    [style]="row().style_list"
     [style.textAlign]="params.textAlign.value()"
     [style.display]="hasTextValue() ? 'block' : 'none'"
     [attr.data-test]="name()"

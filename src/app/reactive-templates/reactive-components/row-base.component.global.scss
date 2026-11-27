@@ -1,0 +1,6 @@
+// A row is a block, so it fills the width of its container in normal flow, and a container that
+// lays out its rows (e.g. a display group) sizes them itself.
+// `:where` gives the rule no specificity, so a component's own host styles still apply.
+:where(.oab-row) {
+  display: block;
+}

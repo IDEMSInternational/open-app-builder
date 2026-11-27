@@ -1,0 +1,8 @@
+$text-text-color: var(--text-text-color, var(--ion-color-primary-900));
+
+// Set on the host, so a row's `style_list` and `style` classes override it
+:host {
+  color: $text-text-color;
+  font-size: var(--font-size-text-large);
+  font-weight: var(--font-weight-standard);
+}

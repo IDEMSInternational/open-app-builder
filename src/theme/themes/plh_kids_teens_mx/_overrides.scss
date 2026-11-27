@@ -1,12 +1,6 @@
 /// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
-  // Reactive text rows use the theme text colour, as plh-tmpl-text does in the shared overrides
-  // (the global .standard default is primary-900). Rows with style `alternative` keep their own
-  oab-text .standard:not(.alternative) {
-    color: var(--text-color);
-  }
-
   // module header
   plh-module-details-header {
     .module-header {
