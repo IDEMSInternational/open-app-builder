@@ -31,7 +31,7 @@ describe("radio button grid component", () => {
     cy.getDataTest("grid_invalid_variant").should("have.attr", "data-variant", "default");
   });
 
-  it("selects an option with a number key", () => {
+  it("selects an option whose key is digits", () => {
     option("grid_numbers", "Two").click().should("have.attr", "data-selected", "true");
   });
 
