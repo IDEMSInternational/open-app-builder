@@ -89,6 +89,13 @@ ion-button[data-variant~="card"] {
   }
 }
 
+// `style: no-background`: transparent in every theme. Overrides the white --background set by
+// variants such as `card` above, so keep this after the variant rules. Themes style the rest
+// (border, padding, text colour) in their overrides.
+ion-button[data-param-style~="no-background"] {
+  --background: transparent;
+}
+
 .button-container[data-variant~="card-portrait"] {
   background-color: white;
   color: var(--ion-color-primary);

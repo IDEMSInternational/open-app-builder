@@ -264,8 +264,6 @@
     ion-button[data-variant~="card"][data-param-style~="no-background"] {
       border: 1px solid transparent;
       border-radius: 0px;
-      background-color: transparent;
-      background: transparent;
       color: var(--color-surface-black);
       // min-height: 64px;
       padding: 18px 24px;
@@ -481,13 +479,7 @@
   // accordion
   plh-accordion-component {
     ion-accordion {
-      background: var(--ion-color-primary-700);
-      border: none;
-      border-radius: var(--ion-border-radius-small);
-      box-shadow: none;
       .accordion-section-title {
-        color: var(--color-surface-white);
-
         font-size: var(--font-size-text-mid-size);
         font-weight: var(--font-weight-bold);
         line-height: var(--line-height-text-small);
