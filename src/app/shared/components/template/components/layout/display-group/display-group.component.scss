@@ -75,7 +75,7 @@ $box-secondary-alt-background: var(
   &[data-variant~="box_secondary"],
   &[data-variant~="box_secondary_alt"],
   &[data-variant~="box_white"] {
-    margin-top: var(--regular-margin);
+    // No outer margin: spacing between rows comes from --row-margin-top (template-component.scss)
     padding: var(--regular-padding);
     border-radius: var(--ion-border-radius-secondary);
     flex: 1;
