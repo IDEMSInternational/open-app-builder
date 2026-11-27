@@ -4,6 +4,9 @@
 
 ion-modal.nav-stack-modal {
   @include safe-area.restore-safe-area;
+  // The sheet sits at the bottom of the screen. Aligning it there, rather than positioning it, also moves
+  // the shadow element of iOS mode modals, which would otherwise cover the backdrop above the sheet
+  align-items: flex-end;
   // Offset from the top of the safe area, progressively staggering successive stack modals.
   // The sheet reaches the bottom of the screen, so only the top safe area is taken off its height
   // NB these theme variables must include units as they are used in calc()
@@ -27,8 +30,6 @@ ion-modal.nav-stack-modal {
 
   &::part(content) {
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    position: absolute;
-    bottom: 0px;
     // Padding is part of the sheet's width and height
     box-sizing: border-box;
     padding-bottom: var(--ion-safe-area-bottom, 0px);
