@@ -26,21 +26,22 @@
 5. "Duplicate flows found" entries in `packages/scripts/logs/error.log` are usually pre-existing authoring
    noise (last-wins resolution, see `content-pipeline.md`), not blockers.
 
-6. **`ng serve` can keep serving stale `src/assets` after a sync.** The dev server holds its own in-memory copy
-   of assets; after `sync`/`populate_src_assets` some files update and others don't (seen 2026-09-11: 1 generated
-   template stale while `contents.json` and the generator JSON updated). Likely cause: `replicateDir` back-dates
-   copies to the source mtime (`fs.utimesSync`, `packages/shared/src/utils/file-utils.ts`), which can land inside an
-   in-progress webpack rebuild's snapshot. Browser "Disable cache" does not help. Check by fetching
+6. **`ng serve` can keep serving stale `src/assets` after a sync.** The dev server holds its own in-memory
+   copy of assets; after `sync`/`populate_src_assets` some files update and others don't (seen 2026-09-11: 1
+   generated template stale while `contents.json` and the generator JSON updated). Likely cause:
+   `replicateDir` back-dates copies to the source mtime (`fs.utimesSync`,
+   `packages/shared/src/utils/file-utils.ts`), which can land inside an in-progress webpack rebuild's
+   snapshot. Browser "Disable cache" does not help. Check by fetching
    `http://localhost:4200/assets/app_data/<path>` and comparing to disk; fix by restarting `yarn start`.
 
-7. **`ng serve` binds to IPv6 `::1` only on Windows/Node ≥17,** so `127.0.0.1:4200` refuses connections. To use the
-   `127.0.0.1` onboarding workaround (item 1), start with `yarn start --host 127.0.0.1`. (verified 2026-09-11)
+7. **`ng serve` binds to IPv6 `::1` only on Windows/Node ≥17,** so `127.0.0.1:4200` refuses connections. To
+   use the `127.0.0.1` onboarding workaround (item 1), start with `yarn start --host 127.0.0.1`.
+   (verified 2026-09-11)
 
-
-8. **Testing a content fix without editing repo files or sheets:** re-run the converter's `TemplateParser` on the
-   raw `<deployment>/tasks/template/sheet_json/template/<flow>.json` with the rows overridden (ts-node from
-   `packages/scripts`, `NODE_PATH=packages/scripts/node_modules`), then serve that JSON to headless Chrome via
-   CDP `Fetch.enable` interception of `*<flow>.json*`. Dynamic-data state can be seeded with
+8. **Testing a content fix without editing repo files or sheets:** re-run the converter's `TemplateParser` on
+   the raw `<deployment>/tasks/template/sheet_json/template/<flow>.json` with the rows overridden (ts-node
+   from `packages/scripts`, `NODE_PATH=packages/scripts/node_modules`), then serve that JSON to headless
+   Chrome via CDP `Fetch.enable` interception of `*<flow>.json*`. Dynamic-data state can be seeded with
    `ng.getComponent(document.querySelector('plh-data-items')).dataItemsService.dynamicDataService.update(...)`.
    (verified 2026-08-19)
 
@@ -52,17 +53,15 @@
    with `Remove-Item -LiteralPath`, and sync again. Linux CI is not affected. (verified 2026-10-21)
 
 10. **Previewing a debug sheet that isn't in Drive yet** (e.g. for a new component): write the workbook as an
-   xlsx (SheetJS from `packages/scripts/node_modules/xlsx`, tabs `==content_list==` and the template) into
-   `<deployment>/tasks/gdrive/outputs/sheets/<sheets folder name>/…`, then run `yarn workflow sync_sheets
-   --skip-download`; every xlsx in that folder is converted. The next sync *with* download deletes it, since
-   files not on Drive are removed (`gdrive-tools` `download.ts` `prepareSyncActionsList`).
-   (verified 2026-11-05: debug `comp_plh_progress_summary`)
+    xlsx (SheetJS from `packages/scripts/node_modules/xlsx`, tabs `==content_list==` and the template) into
+    `<deployment>/tasks/gdrive/outputs/sheets/<sheets folder name>/…`, then run `yarn workflow sync_sheets
+    --skip-download`; every xlsx in that folder is converted. The next sync *with* download deletes it, since
+    files not on Drive are removed (`gdrive-tools` `download.ts` `prepareSyncActionsList`).
+    (verified 2026-11-05: debug `comp_plh_progress_summary`)
 
 11. **Screenshotting the app headlessly** (puppeteer is in `packages/test-visual/node_modules`): once assets
-   are populated, serve with `yarn ng serve --no-open` (`yarn start` opens a browser). Dismiss first-launch
-   pop-ups by calling `.dismiss()` on each `ion-modal`. For a full-page shot, size the viewport to the
-   largest `ion-content` `getScrollElement()` height, as pages scroll inside it. Switch theme by setting
-   `data-theme` on `<html>`. For RTL, set `dir` on the app's own `[dir]` element (bound in
-   `app.component.html`); `<html dir>` is overridden. (verified 2026-11-05)
-
-
+    are populated, serve with `yarn ng serve --no-open` (`yarn start` opens a browser). Dismiss first-launch
+    pop-ups by calling `.dismiss()` on each `ion-modal`. For a full-page shot, size the viewport to the
+    largest `ion-content` `getScrollElement()` height, as pages scroll inside it. Switch theme by setting
+    `data-theme` on `<html>`. For RTL, set `dir` on the app's own `[dir]` element (bound in
+    `app.component.html`); `<html dir>` is overridden. (verified 2026-11-05)
