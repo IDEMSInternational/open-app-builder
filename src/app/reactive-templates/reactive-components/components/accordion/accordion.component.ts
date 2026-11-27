@@ -12,23 +12,34 @@ interface AccordionSection {
 const parameters = () =>
   defineParameters({
     disabled: new Parameter("disabled", false),
-    multiple: new Parameter("multiple", true),
+    multiple: new Parameter("multiple", false),
+    openMultiple: new Parameter("open_multiple", false),
+    openIcon: new Parameter("open_icon_src", ""),
+    closeIcon: new Parameter("close_icon_src", ""),
   });
 
 @Component({
-  selector: "oab-accordion",
+  // The legacy selector, so that theme overrides for the accordion apply
+  selector: "plh-accordion-component",
   templateUrl: "./accordion.component.html",
   styleUrls: ["./accordion.component.scss"],
   imports: [IonicModule, forwardRef(() => RowListComponent)],
   providers: [{ provide: ROW_PARAMETERS, useFactory: parameters }],
 })
 export class AccordionComponent extends RowBaseComponent<ReturnType<typeof parameters>> {
+  /** Whether several sections can be open: `multiple`, or the legacy name `open_multiple` */
+  public multiple = computed(() =>
+    "multiple" in (this.row().parameter_list ?? {})
+      ? this.params.multiple.value()
+      : this.params.openMultiple.value()
+  );
+
   /** Full names of the open sections, set by each section's `state` and updated when the user toggles a section */
   public openSections = signal<string[]>([]);
 
   /** ion-accordion-group expects a single value rather than an array when only one section can be open */
   public groupValue = computed(() =>
-    this.params.multiple.value() ? this.openSections() : this.openSections().at(-1)
+    this.multiple() ? this.openSections() : this.openSections().at(-1)
   );
 
   /** All child sections (including those within loops), in document order */
@@ -63,7 +74,7 @@ export class AccordionComponent extends RowBaseComponent<ReturnType<typeof param
         return openSections.filter((name) => name !== sectionName);
       }
       // As when the user opens a section, opening one closes any others unless `multiple` is set
-      return this.params.multiple.value() ? [...openSections, sectionName] : [sectionName];
+      return this.multiple() ? [...openSections, sectionName] : [sectionName];
     });
   }
 
