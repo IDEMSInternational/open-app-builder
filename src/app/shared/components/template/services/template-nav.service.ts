@@ -88,6 +88,10 @@ export class TemplateNavService extends SyncServiceBase {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename, key, value] = action.args;
+    if (typeof templatename !== "string") {
+      console.warn("[TEMPLATE NAV] go_to has no template name", action);
+      return;
+    }
     const nav_parent_triggered_by = action._triggeredBy?.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation

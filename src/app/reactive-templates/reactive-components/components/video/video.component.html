@@ -1,0 +1,14 @@
+<!-- Removed rather than hidden when its condition is false, so that playback stops -->
+@if (value() && condition()) {
+  <div
+    class="tmpl-video-container margin-t-large"
+    [class]="params.style.value()"
+    [attr.data-test]="name()"
+  >
+    <video [src]="value() | translatedAsset" controls>
+      @if (params.subtitlesSrc.value()) {
+        <track [src]="params.subtitlesSrc.value() | translatedAsset" default label="Subtitles" />
+      }
+    </video>
+  </div>
+}

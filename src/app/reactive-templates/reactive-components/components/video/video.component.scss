@@ -1,0 +1,28 @@
+.tmpl-video-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  video {
+    width: 100%;
+    max-width: var(--video-max-width);
+    border-radius: var(--ion-border-radius-secondary);
+  }
+
+  &.left {
+    justify-content: start;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.rounded_corners {
+    border-radius: var(--ion-border-radius-standard);
+  }
+}
+
+::cue {
+  font-size: var(--video-subtitles-medium);
+}
