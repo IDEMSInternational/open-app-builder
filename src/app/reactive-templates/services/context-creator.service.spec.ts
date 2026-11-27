@@ -157,6 +157,14 @@ describe("ContextCreatorService", () => {
     expect(context.local.space_text).toBe("   ");
   });
 
+  it("does not coerce null values to number", () => {
+    variableStore.set({ name: "unset", type: "local" }, null);
+
+    const context = service.createContext([{ name: "unset", type: "local" }], "");
+
+    expect(context.local.unset).toBeNull();
+  });
+
   it("creates loop context from namespace", () => {
     variableStore.set({ name: "items", type: "local" }, [
       { name: "Alpha", value: 10 },
