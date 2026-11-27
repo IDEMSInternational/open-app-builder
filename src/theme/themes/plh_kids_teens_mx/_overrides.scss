@@ -1,12 +1,6 @@
 /// Theme rule overrides specific to plh_kids_teens_mx.
 /// Applied after the shared overrides from ../plh_kids_teens.
 @mixin overrides {
-  // Reactive text rows use the theme text colour, as plh-tmpl-text does in the shared overrides.
-  // A row's style class (e.g. `alternative`) still sets its own.
-  oab-text {
-    color: var(--text-color);
-  }
-
   // module header
   plh-module-details-header {
     .module-header {

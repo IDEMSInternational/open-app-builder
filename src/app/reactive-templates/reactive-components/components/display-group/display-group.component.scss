@@ -9,4 +9,9 @@
   &[data-child-sizing="equal"] > * {
     flex: 1 1 0;
   }
+
+  // A display group in a column group fills its width
+  &[data-direction="column"] > oab-display-group {
+    width: 100%;
+  }
 }
