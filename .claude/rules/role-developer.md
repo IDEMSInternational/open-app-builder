@@ -71,3 +71,9 @@ Docs: `documentation/docs/developers/` (quickstart, `deployments.md`, `workflows
   `.ion-page-hidden { display: none }`, and `display: none` cancels CSS animations, so they restart on
   return. To play only on a real change, the component has to track that itself. (verified 2026-11-05:
   plh_progress_summary, footer navigation then back)
+- **A new deployment content repo can't sync until an org admin shares the org secrets with it.** In
+  ParentingForLifelongHealth, `GDRIVE_CREDENTIALS`, `GDRIVE_TOKEN`, `PAT` and `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`
+  are org secrets shared with selected repos only (others, e.g. App Store / iOS certs, reach every repo). Check
+  with `gh api repos/<org>/<repo>/actions/organization-secrets`. Easiest setup for a new repo: an empty repo
+  plus a copy of a sibling's `.github/`, `.gitignore`, `encrypted/.gitignore`, `actions.env` and `config.ts`.
+  (found 2026-11-27: plh-kids-teens-app-ug-content)

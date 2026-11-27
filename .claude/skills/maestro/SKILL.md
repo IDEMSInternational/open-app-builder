@@ -28,7 +28,8 @@ Native builds also need Node ≥22, Xcode, the Android SDK, and JDK 21 for Gradl
 
 ## Build and install
 
-Every web change needs all three steps: web build, `cap sync`, native build.
+Every web change needs all three steps: web build, `cap sync`, native build (on the Android emulator, live
+reload avoids rebuilding: `.claude/rules/local-dev.md` #13).
 
 ```bash
 yarn workflow deployment set <name>           # the deployment whose flows you will run

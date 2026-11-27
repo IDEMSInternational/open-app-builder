@@ -75,6 +75,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Module generated without articles | no `<module id>_articles` tab after renaming a module | below: Workbooks |
 | Override applies to everyone | bold/italic in the `override_condition` cell | below: Workbooks |
 | Data list override still shows removed rows, some without `row_index` | saved data is merged into the override | below: Overriding |
+| Completed module shows an old title; its page header says "null" | module `id` renamed; saved row comes back | below: Overriding |
 | Override value on a nested template comes out empty | override values are evaluated in the parent | below: Templates |
 | Number input: 0 passes an "empty" check, or disables the button | `!0` and `0 == ''` are true in JS | below: Variables |
 | Link from the sheet isn't clickable, or a link opens the wrong page | cell hyperlinks are dropped; address has no `https://` | below: Workbooks |
@@ -91,6 +92,7 @@ Docs to point authors at: `documentation/docs/authors/` (quickstart, `actions.md
 | Button `variant`/colour has no visible effect | unknown variant, or theme's `information` style wins | below: Layout |
 | Loop condition/toggle true for every item, only with text values | `@fields.@item.x == @item.y` compares unquoted text | below: Loops |
 | A counter jumps or a sum looks like "011" | `+` on a `set_local`/`set_field` value that is text | below: Variables |
+| Character in a speech bubble faces the wrong way | text_bubble mirrors right-side speakers | below: Layout |
 
 ## Authoring gotchas (tell authors proactively)
 
@@ -131,6 +133,16 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   `prep_<id>_articles` in error.log), and a content-list row whose tab was renamed only gives a
   "No Contents: <name>" warning. Splitting a module (`_f`/`_m`, `_p1`/`_p2`) needs one tab per new ID.
   (found 2026-10-21: kids_teens_mx module restructure, 85 of 98 modules without articles)
+  - **A `@default` first row fills empty cells in the rest of the tab.** If the first row's id is `@default`,
+  its values are copied into every row where that cell is empty (`default.parser.ts`
+  `processRowDefaultValues`). It only matters if it holds values other rows rely on; GPI Sidekick fails on an
+  empty one (`appendTable` with `number[]`, doc stops after "@default"). (verified 2026-11-24: MX/PA
+  `*_articles` held only `nested: FALSE`, safe to remove; `check_in`, `hp_check_in`, `hp_challenges` hold content)
+  - **A data pipe can read lists from any workbook in the deployment.** `data_pipe.parser.ts`
+  `loadInputSources` gets every processed data list, and the pipe waits and retries if an input isn't
+  processed yet, so a pipe can live in a shared workbook and build from each deployment's own list (e.g.
+  `courses`). If the input doesn't exist, the output list is missing with only "Max defer limit reached"
+  in error.log. (verified 2026-11-24: certificate_tracking from courses)
 
 ### Overriding shared tabs, globals and data lists
 
@@ -157,6 +169,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   (`dynamic-data.service.ts` `mergeWriteCacheData` → `deepMergeArrays`), including ids the override doesn't
   have, which come back as partial rows without `row_index`. Keep every id in the override list and change
   only static columns. (found 2026-10-30: kids_teens_mx po_refl demo, `proximal_outcome_7d_pages`)
+- **Renaming a data list row's `id` after release leaves a ghost copy on devices that wrote to it.**
+  `set_data` saves the whole row, not just the changed columns (`set_data.action.ts` `parseUpdateData`
+  → `bulkUpsert`), and `mergeWriteCacheData` (`dynamic-data.service.ts`) adds saved rows back even when
+  their id is gone from the sheet. The old row keeps its old title/columns, so it still passes list
+  filters, and lookups by its id in other lists return nothing (a module_landing header shows "null").
+  Progress also doesn't move to the new id. Avoid renaming ids once users have data, or plan a migration.
+  (found 2026-11-23: kids_teens_mx `i_one_on_one_t` → `one_on_one_time_t_*`, content 1.1.33/1.1.38)
 
 ### Actions
 
@@ -224,7 +243,13 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   1 January 1970, so `@calc(new Date() >= new Date(@fields.x))` passes once `x` is "cleared" this way.
   Require the field as well, e.g. `@fields.x; @calc(new Date() >= new Date(@fields.x))` in a condition
   list. (found 2026-11-03: debug_campaigns `debug_recalculate`, active after Reset)
-
+- **`set_local` on a `set_variable` whose value contains `@` references only lasts until the next
+  recalculation.** Rows with dynamic values are kept as formulas and re-evaluated after every
+  `set_local`/`set_field` (`template-row.service.ts` `set_variable` case, `processRowUpdates`), while
+  plain values (`TRUE`, `0`) are not, so `set_local` on those sticks. To latch a formula, add a plain
+  variable (`x_latched: FALSE`), `set_local` that, and read it in the formula (`… || @local.x_latched`).
+  (verified 2026-11-24: onboarding_loading `ask_po`, question bars swapped for the plain bars)
+  
 ### Loops and `data_items`
 
 - **`SyntaxError: Mismatched Bracket: }` with `{@items[0}].…` in the console = a `data_items` row matched
@@ -328,6 +353,11 @@ becoming `click`, `_list`/`_collection` separator heuristics — are in `authori
   colours with higher specificity (`themes/plh_kids_teens/_overrides.scss`). To change the colour, set
   `style:` instead, e.g. `style: navigation` (primary-variant, bright turquoise in MX). (verified 2026-11-05:
   V3 debug_complete_course)
+- **A `text_bubble` speaker on the `right` is mirrored.** `speaker_position: right` applies `scaleX(-1)` to
+  the speaker image (`text-bubble.component.scss`), assuming images are drawn facing right; an image drawn
+  facing left ends up looking away from its bubble. Upload right-facing art, or ask a developer for an
+  option to turn the mirroring off. (found 2026-11-19: MX #238, caregivers in `comic_bubble`)
+
 
 ### Translations
 
