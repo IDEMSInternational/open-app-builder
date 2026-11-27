@@ -70,8 +70,6 @@
     }
     ion-button[data-variant~="card"][data-param-style~="no-background"] {
       border: 1px solid transparent;
-      background-color: transparent;
-      background: transparent;
       min-height: var(--buttons-size);
       --box-shadow: none;
       p {
