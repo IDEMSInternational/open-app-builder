@@ -7,9 +7,13 @@ export function defineParameters<T extends Record<string, Parameter<any>>>(p: T)
 
 export type Parameters = Record<string, Parameter<any>>;
 
+const BOOLEAN_TEXT = /^\s*(true|false)\s*$/i;
+
 export class Parameter<T> {
   private _value: WritableSignal<T>;
   private defaultValue: T;
+  /** Values are cast to the type of the default; a null or undefined default takes any value */
+  private readonly type: string;
   private allowedValues?: readonly T[];
   public value: Signal<T>;
   public name: string;
@@ -18,6 +22,7 @@ export class Parameter<T> {
   constructor(name: string, defaultValue: T, valueType: ValueType = "string") {
     this.name = name;
     this.defaultValue = defaultValue;
+    this.type = typeof defaultValue;
     this._value = signal(defaultValue);
     this.value = this._value.asReadonly();
     this.valueType = valueType;
@@ -38,15 +43,28 @@ export class Parameter<T> {
     this._value.set(this.cast(value));
   }
 
-  /** An unset or invalid value falls back to the default */
+  /** Whether the expression is boolean text such as `TRUE`, to be read as text rather than script */
+  public isBooleanText(expression: unknown): expression is string {
+    return (
+      this.type === "boolean" && typeof expression === "string" && BOOLEAN_TEXT.test(expression)
+    );
+  }
+
+  /**
+   * An unset value uses the default. A boolean parameter reads text as `true` only if it is "true"
+   * in any case, and uses the default for other types. A number parameter uses the default for a
+   * value that `Number()` can't read, or that is neither a number nor text.
+   */
   private cast(value: any): T {
     if (value === undefined || value === null) return this.defaultValue;
 
-    switch (typeof this.value()) {
+    switch (this.type) {
       case "boolean":
         if (typeof value === "boolean") return value as T;
-        return (String(value).trim().toLowerCase() === "true") as T;
+        if (typeof value !== "string") return this.defaultValue;
+        return (value.trim().toLowerCase() === "true") as T;
       case "number": {
+        if (typeof value !== "number" && typeof value !== "string") return this.defaultValue;
         const number = Number(value);
         return (isNaN(number) ? this.defaultValue : number) as T;
       }
