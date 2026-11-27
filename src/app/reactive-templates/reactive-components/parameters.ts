@@ -51,18 +51,18 @@ export class Parameter<T> {
   }
 
   /**
-   * An unset value uses the default. A boolean parameter reads text as `true` only if it is "true"
-   * in any case, and uses the default for other types. A number parameter uses the default for a
-   * value that `Number()` can't read, or that is neither a number nor text.
+   * A boolean parameter is `true` only for `true` or the text "true" in any case, so an unset value
+   * is `false`. Other parameters use the default for an unset value. A number parameter also uses
+   * the default for a value that `Number()` can't read, or that is neither a number nor text.
    */
   private cast(value: any): T {
+    if (this.type === "boolean") {
+      return (value === true ||
+        (typeof value === "string" && value.trim().toLowerCase() === "true")) as T;
+    }
     if (value === undefined || value === null) return this.defaultValue;
 
     switch (this.type) {
-      case "boolean":
-        if (typeof value === "boolean") return value as T;
-        if (typeof value !== "string") return this.defaultValue;
-        return (value.trim().toLowerCase() === "true") as T;
       case "number": {
         if (typeof value !== "number" && typeof value !== "string") return this.defaultValue;
         const number = Number(value);

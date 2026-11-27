@@ -54,10 +54,10 @@ describe("RowBaseComponent", () => {
     expect(params.showCloseButton.value()).toBeFalse();
   });
 
-  it("uses the default for a parameter set to an unset variable", () => {
+  it("reads a parameter set to an unset variable as the default, or false for a boolean", () => {
     const params = renderRow({ placeholder: "@local.hint", show_close_button: "@local.flag" });
 
     expect(params.placeholder.value()).toBe("Type here");
-    expect(params.showCloseButton.value()).toBeTrue();
+    expect(params.showCloseButton.value()).toBeFalse();
   });
 });

@@ -35,19 +35,22 @@ describe("Parameter", () => {
     expect(param.value()).toBe(false);
   });
 
-  it("falls back to the default when a boolean parameter is set to an unset value", () => {
+  it("reads an unset value of a boolean parameter as false, whatever the default", () => {
     const param: Parameter<any> = new Parameter("show_icons", true);
 
-    param.setValue(false);
     param.setValue(undefined);
-    expect(param.value()).toBe(true);
+    expect(param.value()).toBe(false);
+
+    param.setValue(true);
+    param.setValue(null);
+    expect(param.value()).toBe(false);
   });
 
-  it("falls back to the default when a boolean parameter is set to a number", () => {
+  it("reads a number in a boolean parameter as false", () => {
     const param: Parameter<any> = new Parameter("show_close_button", true, "script");
 
-    param.setValue(0);
-    expect(param.value()).toBe(true);
+    param.setValue(1);
+    expect(param.value()).toBe(false);
   });
 
   it("treats boolean text as text only for boolean parameters", () => {
