@@ -5,7 +5,7 @@ import {
   METADATA_ROW_ID,
   splitLanguageSuffix,
 } from "../parsers/transforms";
-import type { IFlowsByType } from "../processFlows";
+import type { IFlowsByType } from "../flows";
 
 /** File that strings from flows without a `flow_subtype` are written to */
 export const MAIN_TRANSLATION_FILE = "main";

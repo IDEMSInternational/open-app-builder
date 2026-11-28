@@ -1,9 +1,10 @@
-import { Component, computed, inject, input, signal } from "@angular/core";
+import { Component, computed, effect, inject, input, signal } from "@angular/core";
 import { DevToolsService } from "../../../services/dev-tools.service";
 
 /**
- * Debug link to a flow's google sheet. Opens `sourceUrl` if the flow has one, otherwise (when
- * running locally) creates a sheet from the flow json via the local dev server.
+ * Debug link to a flow's google sheet. Opens `sourceUrl` if the flow has one, or its transient
+ * sheet from the transient sheets list, otherwise (when running locally) creates a sheet from
+ * the flow json via the local dev server.
  * When running locally, also shows buttons to sync the fixed sheets (deployment google drive folders) and the transient sheets
  * created from flows, reloading the page afterwards so the updated content is shown
  */
@@ -50,13 +51,29 @@ export class SheetLinkComponent {
 
   /** Url of a sheet created in this session, as the loaded flow is not reloaded */
   private createdUrl = signal<string | undefined>(undefined);
-  public url = computed(() => this.sourceUrl() || this.createdUrl());
+  /** Url of the flow's transient sheet, as processed flows are not linked to it */
+  private transientUrl = signal<string | undefined>(undefined);
+  public url = computed(() => this.sourceUrl() || this.createdUrl() || this.transientUrl());
   public status = signal("");
   /** Action currently running, shown as "Processing…" on its button */
   public running = signal<"create" | "sync_fixed" | "sync_transient" | undefined>(undefined);
   public busy = computed(() => this.running() !== undefined);
   /** Set when the page is about to reload, so the button stays as "Processing…" until then */
   private reloading = false;
+
+  constructor() {
+    effect(() => {
+      const flowType = this.flowType();
+      const flowName = this.flowName();
+      this.transientUrl.set(undefined);
+      this.devTools.getTransientSheetUrl(flowType, flowName).then((url) => {
+        // Ignore results for a previous flow
+        if (this.flowType() === flowType && this.flowName() === flowName) {
+          this.transientUrl.set(url);
+        }
+      });
+    });
+  }
 
   public createSheet() {
     return this.run("create", "Creating sheet…", async () => {
@@ -75,12 +92,13 @@ export class SheetLinkComponent {
 
   public syncTransientSheets() {
     return this.run("sync_transient", "Syncing transient sheets…", async () => {
-      const { sheets, updated } = await this.devTools.syncTransientSheets();
+      const { sheets, updated, added } = await this.devTools.syncTransientSheets();
       if (updated === 0) {
         this.status.set(`Transient sheets synced (${sheets}), no changes`);
         return;
       }
-      this.reload(`Transient sheets synced (${sheets}), ${updated} flows updated`);
+      const addedText = added > 0 ? `, ${added} new flows added` : "";
+      this.reload(`Transient sheets synced (${sheets}), ${updated} flows updated${addedText}`);
     });
   }
 

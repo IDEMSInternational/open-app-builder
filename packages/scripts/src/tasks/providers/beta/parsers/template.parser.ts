@@ -12,9 +12,11 @@ import {
   parseKeyValueList,
   parseListColumns,
   parseListRows,
+  recordTemplateReferences,
   setDefaultValue,
 } from "./transforms";
 import { FlowParser, IFlowParserOptions } from "./flow.parser";
+import { FlowDebugLog } from "./flowDebugLog";
 
 /**
  * Process an imported template flow before it is written to app_data
@@ -30,13 +32,16 @@ import { FlowParser, IFlowParserOptions } from "./flow.parser";
  * - Generate names for any rows without one
  * - Assign `_nested_name` path to all rows (ignoring display_group parents)
  * - Assign `_dynamicFields` and `_dynamicDependencies` for values evaluated at runtime
+ * - Record nested templates and navigation (including `go_to` actions) in `_debug`
+ *   (see `recordTemplateReferences`)
  * - Update `_source` (see `FlowParser`)
  */
 export class TemplateParser extends FlowParser {
   protected parseRows(
     templateRows: FlowTypes.TemplateRow[],
     flow: FlowTypes.FlowTypeWithData,
-    options: IFlowParserOptions
+    options: IFlowParserOptions,
+    log: FlowDebugLog
   ) {
     const language = getFlowLanguage(flow);
     const { translations } = options;
@@ -57,7 +62,9 @@ export class TemplateParser extends FlowParser {
     });
 
     // Transforms applied to all rows together
-    rows = nestBeginEndRows(rows, flow.flow_name);
+    // Read once action lists are parsed, but before `begin_` types are changed by nesting
+    recordTemplateReferences(rows, log);
+    rows = nestBeginEndRows(rows, log);
     rows = assignRowNames(rows);
     rows = assignNestedNames(rows, ["display_group"]);
     rows = assignDynamicFields(rows);

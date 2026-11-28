@@ -20,6 +20,10 @@ const featureRoutes: Routes = [
       ),
   },
   {
+    path: "debug",
+    loadChildren: () => import("./reactive-templates/debug").then((m) => m.DEBUG_ROUTES),
+  },
+  {
     path: "data_list",
     loadChildren: () => import("./reactive-templates/data-list").then((m) => m.DATA_LIST_ROUTES),
   },

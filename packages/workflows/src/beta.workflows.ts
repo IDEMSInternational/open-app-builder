@@ -52,7 +52,7 @@ const workflows: IDeploymentWorkflows = {
         options: [
           {
             flags: "-s, --skip-download",
-            description: "Skip download and just process local sheets and assets",
+            description: "Skip download of assets and just process local assets",
           },
           {
             flags: "-v, --verbose",
@@ -76,12 +76,13 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
-      sync_fixed_sheets: {
-        label: "Sync sheets to external deployment",
+      sync_flow_files: {
+        label:
+          "Process flow jsons that changed in the external deployment app_data/sheets folder (no download)",
         options: [
           {
-            flags: "-s, --skip-download",
-            description: "Skip download and just process local sheets",
+            flags: "-a, --all",
+            description: "Process all flow jsons, not just changed ones",
           },
           {
             flags: "-v, --verbose",
@@ -90,12 +91,38 @@ const workflows: IDeploymentWorkflows = {
         ],
         steps: [
           {
-            name: "sync_fixed_sheets",
+            name: "sync_flow_files",
             function: async ({ tasks, options }) => {
-              await tasks.beta.syncFixedSheets({
-                skipDownload: !!options.skipDownload,
-                verbose: !!options.verbose,
-              });
+              tasks.beta.syncFlowFiles({ refreshAll: !!options.all, verbose: !!options.verbose });
+            },
+          },
+        ],
+      },
+      refresh_all: {
+        label:
+          "Re-process all flow jsons in the external deployment app_data/sheets folder, without downloads or cached data",
+        options: [
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "refresh_all",
+            function: async ({ tasks, options }) => {
+              tasks.beta.syncFlowFiles({ refreshAll: true, verbose: !!options.verbose });
+            },
+          },
+        ],
+      },
+      sync_fixed_sheets: {
+        label: "Sync sheets to external deployment",
+        steps: [
+          {
+            name: "sync_fixed_sheets",
+            function: async ({ tasks }) => {
+              await tasks.beta.syncFixedSheets();
             },
           },
         ],
@@ -126,17 +153,11 @@ const workflows: IDeploymentWorkflows = {
       },
       sync_transient_sheets: {
         label: "Sync sheets created from flows (open_sheet/create_sheet) and process into the app",
-        options: [
-          {
-            flags: "-v, --verbose",
-            description: "Show all logs",
-          },
-        ],
         steps: [
           {
             name: "sync_transient_sheets",
-            function: async ({ tasks, options }) => {
-              await tasks.beta.syncTransientSheets({ verbose: !!options.verbose });
+            function: async ({ tasks }) => {
+              await tasks.beta.syncTransientSheets();
             },
           },
         ],
@@ -167,6 +188,24 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      sync_translations: {
+        label:
+          "Re-process all external flows with the latest translations (app_data/translations/translated)",
+        options: [
+          {
+            flags: "-v, --verbose",
+            description: "Show all logs",
+          },
+        ],
+        steps: [
+          {
+            name: "sync_translations",
+            function: async ({ tasks, options }) => {
+              tasks.beta.syncTranslations({ verbose: !!options.verbose });
+            },
+          },
+        ],
+      },
       open_sheet: {
         label: "Open the google sheet for a flow, creating one if it has no _source",
         options: [
@@ -177,7 +216,7 @@ const workflows: IDeploymentWorkflows = {
           {
             flags: "-f, --folder <folder_id>",
             description:
-              "Drive folder for new sheets (default: My Drive, synced as a transient sheet)",
+              "Drive folder to create the transient sheets folder in, if it is created (default: My Drive)",
           },
         ],
         steps: [
@@ -205,7 +244,7 @@ const workflows: IDeploymentWorkflows = {
           {
             flags: "-f, --folder <folder_id>",
             description:
-              "Drive folder for the new sheet (default: My Drive, synced as a transient sheet)",
+              "Drive folder to create the transient sheets folder in, if it is created (default: My Drive)",
           },
           {
             flags: "-n, --name <sheet_name>",
@@ -222,6 +261,35 @@ const workflows: IDeploymentWorkflows = {
                 flowType: options.type as string,
                 folderId: options.folder as string,
                 sheetName: options.name as string,
+              });
+            },
+          },
+        ],
+      },
+      remove_transient_sheet: {
+        label:
+          "Delete the transient sheet of a flow (or ALL) from google drive and unlink it from the app",
+        options: [
+          {
+            flags: "-t, --type <flow_type>",
+            description: "Only match flows of this type",
+          },
+          {
+            flags: "--folder <folder>",
+            description:
+              "Remove the sheet created for a folder (relative to app_data/sheets) instead of a flow",
+          },
+        ],
+        steps: [
+          {
+            name: "remove_transient_sheet",
+            function: async ({ tasks, args, options }) => {
+              const [flowName] = positionalArgs(args);
+              const folder = options.folder as string | undefined;
+              if (!flowName && !folder) throw new Error("Flow name (or ALL) is required");
+              await tasks.beta.removeTransientSheet(flowName, {
+                flowType: options.type as string,
+                folder,
               });
             },
           },

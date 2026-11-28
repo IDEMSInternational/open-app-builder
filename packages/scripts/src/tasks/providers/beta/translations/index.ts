@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import { logOutput, recursiveFindByExtension } from "../../../../utils";
 import { readExternalSourcePath } from "../deploymentConfig";
-import { readFlowFiles } from "../processFlows";
+import { readFlowFiles } from "../flows";
 import {
   extractTranslationEntries,
   IExtractOptions,

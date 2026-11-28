@@ -1,0 +1,60 @@
+<ion-content class="ion-padding">
+  <oab-sync-buttons></oab-sync-buttons>
+  <ion-searchbar
+    placeholder="Search by name or path"
+    [ngModel]="filterTerm()"
+    (ngModelChange)="filterTerm.set($event || '')"
+  ></ion-searchbar>
+
+  <div class="controls">
+    <ion-segment [value]="typeFilter()" (ionChange)="typeFilter.set($any($event.detail.value))">
+      <ion-segment-button value="all"><ion-label>All</ion-label></ion-segment-button>
+      <ion-segment-button value="template"><ion-label>Templates</ion-label></ion-segment-button>
+      <ion-segment-button value="data_list"><ion-label>Data lists</ion-label></ion-segment-button>
+    </ion-segment>
+    <ion-segment [value]="view()" (ionChange)="view.set($any($event.detail.value))">
+      <ion-segment-button value="alphabetical"><ion-label>A–Z</ion-label></ion-segment-button>
+      <ion-segment-button value="folder"><ion-label>Folder</ion-label></ion-segment-button>
+    </ion-segment>
+    <ion-toggle
+      labelPlacement="end"
+      [checked]="transientOnly()"
+      (ionChange)="transientOnly.set($event.detail.checked)"
+      >Transient only ({{ transientCount() }})</ion-toggle
+    >
+  </div>
+
+  <p class="summary">{{ filteredSheets().length }} of {{ allSheets().length }} sheets</p>
+
+  @if (view() === "alphabetical") {
+  <div class="sheet-list">
+    @for (sheet of filteredSheets(); track sheet.flow_type + "/" + sheet.flow_name) {
+    <oab-debug-sheet-row [sheet]="sheet" />
+    }
+  </div>
+  } @else {
+  <ng-container *ngTemplateOutlet="folderContents; context: { $implicit: folderTree() }" />
+  } @if (filteredSheets().length === 0) {
+  <p>No sheets found</p>
+  }
+</ion-content>
+
+<ng-template #folderContents let-folder>
+  @for (child of folder.folders; track child.path) {
+  <details class="folder" open>
+    <summary>
+      <ion-icon name="folder-outline"></ion-icon>
+      <span class="folder-name">{{ child.name }}</span>
+      <span class="count">{{ child.count }}</span>
+      @if (folderStates().get(child.path); as state) {
+      <oab-debug-folder-actions [folder]="child.path" [state]="state" />
+      }
+    </summary>
+    <div class="folder-contents">
+      <ng-container *ngTemplateOutlet="folderContents; context: { $implicit: child }" />
+    </div>
+  </details>
+  } @for (sheet of folder.sheets; track sheet.flow_type + "/" + sheet.flow_name) {
+  <oab-debug-sheet-row [sheet]="sheet" />
+  }
+</ng-template>
